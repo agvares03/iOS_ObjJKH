@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RBF-H7-HI1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Выбор-->
+        <scene sceneID="3Vb-VL-MzI">
+            <objects>
+                <tableViewController id="hIr-Er-Goc" customClass="SelectItemController" customModule="ObjJKH" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7dj-No-cwI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="item" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" id="wXr-Cy-Cik">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wXr-Cy-Cik" id="cNN-PF-KG1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TB4-SL-OCD">
+                                            <rect key="frame" x="16" y="12" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="TB4-SL-OCD" firstAttribute="leading" secondItem="cNN-PF-KG1" secondAttribute="leadingMargin" id="QLe-jl-sBg"/>
+                                        <constraint firstItem="TB4-SL-OCD" firstAttribute="top" secondItem="cNN-PF-KG1" secondAttribute="topMargin" constant="1" id="qWX-Ad-Bdt"/>
+                                        <constraint firstItem="TB4-SL-OCD" firstAttribute="trailing" secondItem="cNN-PF-KG1" secondAttribute="trailingMargin" id="ygw-c6-gJB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hIr-Er-Goc" id="Fj7-fV-pfm"/>
+                            <outlet property="delegate" destination="hIr-Er-Goc" id="pdQ-zC-jR2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Выбор" id="Ejd-2B-n9N">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="YUP-qn-hdF">
+                            <connections>
+                                <action selector="cancelItem:" destination="hIr-Er-Goc" id="BGh-co-gDc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HDW-Aw-VrL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1807.2" y="101.19940029985008"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hVx-do-fw0">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HiD-Ur-cCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RBF-H7-HI1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jj5-jb-WWK">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hIr-Er-Goc" kind="relationship" relationship="rootViewController" id="WVG-4Y-145"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1064.8" y="101.19940029985008"/>
+        </scene>
+    </scenes>
+</document>
