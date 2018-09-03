@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BA6430A5373E25736C0D4BE /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
 		418ABF0B2133CC7B004DB75C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
 		418ABF0D2133CC7B004DB75C /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
 		418ABF102133CC7B004DB75C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
@@ -161,6 +162,187 @@
 		41DFC36F213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
 		41DFC370213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
 		41DFC371213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		41DFC377213CF14A002CEB62 /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		41DFC378213CF14A002CEB62 /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		41DFC379213CF14A002CEB62 /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		41DFC37D213CF4E9002CEB62 /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		41DFC37E213CF4E9002CEB62 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		41DFC37F213CF4E9002CEB62 /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		41DFC380213CF4E9002CEB62 /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		41DFC381213CF4E9002CEB62 /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		41DFC382213CF4E9002CEB62 /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		41DFC383213CF4E9002CEB62 /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		41DFC384213CF4E9002CEB62 /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		41DFC385213CF4E9002CEB62 /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02F213634CC004DB75C /* Counters+CoreDataProperties.swift */; };
+		41DFC386213CF4E9002CEB62 /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		41DFC387213CF4E9002CEB62 /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		41DFC388213CF4E9002CEB62 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		41DFC389213CF4E9002CEB62 /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		41DFC38A213CF4E9002CEB62 /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		41DFC38B213CF4E9002CEB62 /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		41DFC38C213CF4E9002CEB62 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		41DFC38D213CF4E9002CEB62 /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		41DFC38E213CF4E9002CEB62 /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		41DFC38F213CF4E9002CEB62 /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		41DFC390213CF4E9002CEB62 /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		41DFC391213CF4E9002CEB62 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		41DFC392213CF4E9002CEB62 /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		41DFC393213CF4E9002CEB62 /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		41DFC394213CF4E9002CEB62 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		41DFC395213CF4E9002CEB62 /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		41DFC396213CF4E9002CEB62 /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		41DFC397213CF4E9002CEB62 /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0C2138D92E00789370 /* Applications+CoreDataProperties.swift */; };
+		41DFC398213CF4E9002CEB62 /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		41DFC399213CF4E9002CEB62 /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0B2138D92E00789370 /* Applications+CoreDataClass.swift */; };
+		41DFC39A213CF4E9002CEB62 /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		41DFC39B213CF4E9002CEB62 /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		41DFC39C213CF4E9002CEB62 /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		41DFC39D213CF4E9002CEB62 /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		41DFC39E213CF4E9002CEB62 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		41DFC39F213CF4E9002CEB62 /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02E213634CC004DB75C /* Counters+CoreDataClass.swift */; };
+		41DFC3A0213CF4E9002CEB62 /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		41DFC3A1213CF4E9002CEB62 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		41DFC3A2213CF4E9002CEB62 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		41DFC3A3213CF4E9002CEB62 /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		41DFC3A4213CF4E9002CEB62 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		41DFC3A5213CF4E9002CEB62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		41DFC3A6213CF4E9002CEB62 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		41DFC3A7213CF4E9002CEB62 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		41DFC3A8213CF4E9002CEB62 /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		41DFC3A9213CF4E9002CEB62 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		41DFC3AA213CF4E9002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		41DFC3AB213CF4E9002CEB62 /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		41DFC3AC213CF4E9002CEB62 /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		41DFC3AD213CF4E9002CEB62 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		41DFC3AE213CF4E9002CEB62 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		41DFC3AF213CF4E9002CEB62 /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		41DFC3B0213CF4E9002CEB62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		41DFC3B1213CF4E9002CEB62 /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		41DFC3B2213CF4E9002CEB62 /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		41DFC3B3213CF4E9002CEB62 /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		41DFC3B4213CF4E9002CEB62 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		41DFC3B5213CF4E9002CEB62 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		41DFC3B7213CF4E9002CEB62 /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
+		41DFC3B9213CF4E9002CEB62 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41DFC3BA213CF4E9002CEB62 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		41DFC3BB213CF4E9002CEB62 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		41DFC3BC213CF4E9002CEB62 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		41DFC3BD213CF4E9002CEB62 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		41DFC3BE213CF4E9002CEB62 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41DFC3BF213CF4E9002CEB62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		41DFC3C0213CF4E9002CEB62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		41DFC3C1213CF4E9002CEB62 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		41DFC3C2213CF4E9002CEB62 /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		41DFC3C3213CF4E9002CEB62 /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		41DFC3C4213CF4E9002CEB62 /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		41DFC3C5213CF4E9002CEB62 /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		41DFC3C6213CF4E9002CEB62 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		41DFC3C7213CF4E9002CEB62 /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		41DFC3C8213CF4E9002CEB62 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		41DFC3C9213CF4E9002CEB62 /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		41DFC3CA213CF4E9002CEB62 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		41DFC3CB213CF4E9002CEB62 /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		41DFC3CC213CF4E9002CEB62 /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		41DFC3CD213CF4E9002CEB62 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		41DFC3CE213CF4E9002CEB62 /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		41DFC3CF213CF4E9002CEB62 /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		41DFC3D0213CF4E9002CEB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		41DFC3D1213CF4E9002CEB62 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		41DFC3D2213CF4E9002CEB62 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		41DFC3D3213CF4E9002CEB62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
+		41DFC3D4213CF4E9002CEB62 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		41DFC3D5213CF4E9002CEB62 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		41DFC3DE213CFD60002CEB62 /* logo_MupRCMytishi_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */; };
+		41DFC3E0213CFE05002CEB62 /* logo_MupRCMytishi.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */; };
+		41DFC3E4213D206C002CEB62 /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		41DFC3E5213D206C002CEB62 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		41DFC3E6213D206C002CEB62 /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		41DFC3E7213D206C002CEB62 /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		41DFC3E8213D206C002CEB62 /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		41DFC3E9213D206C002CEB62 /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		41DFC3EA213D206C002CEB62 /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		41DFC3EB213D206C002CEB62 /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		41DFC3EC213D206C002CEB62 /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02F213634CC004DB75C /* Counters+CoreDataProperties.swift */; };
+		41DFC3ED213D206C002CEB62 /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		41DFC3EE213D206C002CEB62 /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		41DFC3EF213D206C002CEB62 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		41DFC3F0213D206C002CEB62 /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		41DFC3F1213D206C002CEB62 /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		41DFC3F2213D206C002CEB62 /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		41DFC3F3213D206C002CEB62 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		41DFC3F4213D206C002CEB62 /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		41DFC3F5213D206C002CEB62 /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		41DFC3F6213D206C002CEB62 /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		41DFC3F7213D206C002CEB62 /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		41DFC3F8213D206C002CEB62 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		41DFC3F9213D206C002CEB62 /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		41DFC3FA213D206C002CEB62 /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		41DFC3FB213D206C002CEB62 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		41DFC3FC213D206C002CEB62 /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		41DFC3FD213D206C002CEB62 /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		41DFC3FE213D206C002CEB62 /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0C2138D92E00789370 /* Applications+CoreDataProperties.swift */; };
+		41DFC3FF213D206C002CEB62 /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		41DFC400213D206C002CEB62 /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0B2138D92E00789370 /* Applications+CoreDataClass.swift */; };
+		41DFC401213D206C002CEB62 /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		41DFC402213D206C002CEB62 /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		41DFC403213D206C002CEB62 /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		41DFC404213D206C002CEB62 /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		41DFC405213D206C002CEB62 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		41DFC406213D206C002CEB62 /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02E213634CC004DB75C /* Counters+CoreDataClass.swift */; };
+		41DFC407213D206C002CEB62 /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		41DFC408213D206C002CEB62 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		41DFC409213D206C002CEB62 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		41DFC40A213D206C002CEB62 /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		41DFC40B213D206C002CEB62 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		41DFC40C213D206C002CEB62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		41DFC40D213D206C002CEB62 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		41DFC40E213D206C002CEB62 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		41DFC40F213D206C002CEB62 /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		41DFC410213D206C002CEB62 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		41DFC411213D206C002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		41DFC412213D206C002CEB62 /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		41DFC413213D206C002CEB62 /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		41DFC414213D206C002CEB62 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		41DFC415213D206C002CEB62 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		41DFC416213D206C002CEB62 /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		41DFC417213D206C002CEB62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		41DFC418213D206C002CEB62 /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		41DFC419213D206C002CEB62 /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		41DFC41A213D206C002CEB62 /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		41DFC41B213D206C002CEB62 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		41DFC41C213D206C002CEB62 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		41DFC41E213D206C002CEB62 /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
+		41DFC420213D206C002CEB62 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41DFC421213D206C002CEB62 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		41DFC422213D206C002CEB62 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		41DFC423213D206C002CEB62 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		41DFC424213D206C002CEB62 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		41DFC425213D206C002CEB62 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41DFC426213D206C002CEB62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		41DFC427213D206C002CEB62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		41DFC428213D206C002CEB62 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		41DFC429213D206C002CEB62 /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		41DFC42A213D206C002CEB62 /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		41DFC42B213D206C002CEB62 /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		41DFC42C213D206C002CEB62 /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		41DFC42D213D206C002CEB62 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		41DFC42E213D206C002CEB62 /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		41DFC42F213D206C002CEB62 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		41DFC430213D206C002CEB62 /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		41DFC431213D206C002CEB62 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		41DFC432213D206C002CEB62 /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		41DFC433213D206C002CEB62 /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		41DFC434213D206C002CEB62 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		41DFC435213D206C002CEB62 /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		41DFC436213D206C002CEB62 /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		41DFC437213D206C002CEB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		41DFC438213D206C002CEB62 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		41DFC439213D206C002CEB62 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		41DFC43A213D206C002CEB62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
+		41DFC43B213D206C002CEB62 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		41DFC43C213D206C002CEB62 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		41DFC445213D2740002CEB62 /* logo_DJ_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC444213D2740002CEB62 /* logo_DJ_White.png */; };
+		41DFC447213D2758002CEB62 /* logo_DJ.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC446213D2758002CEB62 /* logo_DJ.png */; };
 		41EF59D82137A1DD00789370 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
 		41EF59D92137A1DD00789370 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
 		41EF59DA2137A1DD00789370 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
@@ -266,7 +448,6 @@
 		41EF5A6C213BAF9600789370 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
 		41EF5A6D213BAF9600789370 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
 		41EF5A6E213BAF9600789370 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
-		50549F5873384D4FB80AEBA1 /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -329,6 +510,15 @@
 		418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saldo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		418AC03E21363957004DB75C /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		41DFC36E213C0B5B002CEB62 /* FilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesController.swift; sourceTree = "<group>"; };
+		41DFC376213CF14A002CEB62 /* QuestionFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFinal.swift; sourceTree = "<group>"; };
+		41DFC3DA213CF4E9002CEB62 /* MupRCMytishi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MupRCMytishi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - MupRCMytishi.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - MupRCMytishi.plist"; sourceTree = "<absolute>"; };
+		41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_MupRCMytishi_White.png; sourceTree = "<group>"; };
+		41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_MupRCMytishi.png; sourceTree = "<group>"; };
+		41DFC441213D206D002CEB62 /* DJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		41DFC442213D2083002CEB62 /* ObjJKH copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ObjJKH copy-Info.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/ObjJKH copy-Info.plist"; sourceTree = "<absolute>"; };
+		41DFC444213D2740002CEB62 /* logo_DJ_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_DJ_White.png; sourceTree = "<group>"; };
+		41DFC446213D2758002CEB62 /* logo_DJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_DJ.png; sourceTree = "<group>"; };
 		41EF59D72137A1DD00789370 /* SaldoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaldoController.swift; sourceTree = "<group>"; };
 		41EF59DB2137A20300789370 /* Saldo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Saldo.storyboard; sourceTree = "<group>"; };
 		41EF59DF2137B6BA00789370 /* SaldoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaldoCell.swift; sourceTree = "<group>"; };
@@ -373,7 +563,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50549F5873384D4FB80AEBA1 /* Pods_ObjJKH.framework in Frameworks */,
+				2BA6430A5373E25736C0D4BE /* Pods_ObjJKH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +581,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41DFC3B6213CF4E9002CEB62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41DFC3B7213CF4E9002CEB62 /* Pods_ObjJKH.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41DFC41D213D206C002CEB62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41DFC41E213D206C002CEB62 /* Pods_ObjJKH.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -402,6 +608,7 @@
 				418ABF082133CC7B004DB75C /* Products */,
 				4294151068DBECC6BA96A772 /* Pods */,
 				F0BAD5FABF0F698BF24700C4 /* Frameworks */,
+				41DFC442213D2083002CEB62 /* ObjJKH copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -411,6 +618,8 @@
 				418ABF072133CC7B004DB75C /* ObjJKH.app */,
 				418ABF6A2134CF1B004DB75C /* OurObjHome.app */,
 				418ABFDC21357DA5004DB75C /* ChistDom.app */,
+				41DFC3DA213CF4E9002CEB62 /* MupRCMytishi.app */,
+				41DFC441213D206D002CEB62 /* DJ.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -421,6 +630,7 @@
 				418ABF162133CC8C004DB75C /* Info.plist */,
 				418ABF6B2134CF1C004DB75C /* Info - OurObjHome.plist */,
 				418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */,
+				41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */,
 				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
 				418ABF1D2133CDD3004DB75C /* Program */,
 				418ABF1C2133CCAA004DB75C /* StoryBoards */,
@@ -486,6 +696,8 @@
 		418ABF202133CF52004DB75C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				41DFC443213D2673002CEB62 /* DJ */,
+				41DFC3DC213CFCF0002CEB62 /* MupRCMytishi */,
 				418ABF6C2134D131004DB75C /* OurObjHome */,
 				418ABF282133D80B004DB75C /* ObjJKH */,
 				418ABFDE213580D7004DB75C /* ChistDom */,
@@ -585,6 +797,7 @@
 				418ABFA421357B14004DB75C /* QuestionsJson.swift */,
 				418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */,
 				41EF5A5A213A8F0D00789370 /* OnOffButton.swift */,
+				41DFC376213CF14A002CEB62 /* QuestionFinal.swift */,
 			);
 			path = Questions;
 			sourceTree = "<group>";
@@ -625,6 +838,24 @@
 				418AC03E21363957004DB75C /* DB.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		41DFC3DC213CFCF0002CEB62 /* MupRCMytishi */ = {
+			isa = PBXGroup;
+			children = (
+				41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */,
+				41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */,
+			);
+			path = MupRCMytishi;
+			sourceTree = "<group>";
+		};
+		41DFC443213D2673002CEB62 /* DJ */ = {
+			isa = PBXGroup;
+			children = (
+				41DFC444213D2740002CEB62 /* logo_DJ_White.png */,
+				41DFC446213D2758002CEB62 /* logo_DJ.png */,
+			);
+			path = DJ;
 			sourceTree = "<group>";
 		};
 		41EF59D62137A11500789370 /* Saldo */ = {
@@ -709,7 +940,6 @@
 				418ABF042133CC7B004DB75C /* Frameworks */,
 				418ABF052133CC7B004DB75C /* Resources */,
 				5DCCD0B87896354CA4E5C925 /* [CP] Embed Pods Frameworks */,
-				E4ED06E8F260449868E7022C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -754,6 +984,44 @@
 			productReference = 418ABFDC21357DA5004DB75C /* ChistDom.app */;
 			productType = "com.apple.product-type.application";
 		};
+		41DFC37A213CF4E9002CEB62 /* MupRCMytishi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41DFC3D7213CF4E9002CEB62 /* Build configuration list for PBXNativeTarget "MupRCMytishi" */;
+			buildPhases = (
+				41DFC37B213CF4E9002CEB62 /* [CP] Check Pods Manifest.lock */,
+				41DFC37C213CF4E9002CEB62 /* Sources */,
+				41DFC3B6213CF4E9002CEB62 /* Frameworks */,
+				41DFC3B8213CF4E9002CEB62 /* Resources */,
+				41DFC3D6213CF4E9002CEB62 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MupRCMytishi;
+			productName = ObjJKH;
+			productReference = 41DFC3DA213CF4E9002CEB62 /* MupRCMytishi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		41DFC3E1213D206C002CEB62 /* DJ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41DFC43E213D206C002CEB62 /* Build configuration list for PBXNativeTarget "DJ" */;
+			buildPhases = (
+				41DFC3E2213D206C002CEB62 /* [CP] Check Pods Manifest.lock */,
+				41DFC3E3213D206C002CEB62 /* Sources */,
+				41DFC41D213D206C002CEB62 /* Frameworks */,
+				41DFC41F213D206C002CEB62 /* Resources */,
+				41DFC43D213D206C002CEB62 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DJ;
+			productName = ObjJKH;
+			productReference = 41DFC441213D206D002CEB62 /* DJ.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -785,6 +1053,8 @@
 				418ABF062133CC7B004DB75C /* ObjJKH */,
 				418ABF4A2134CF1A004DB75C /* OurObjHome */,
 				418ABFAA21357DA5004DB75C /* ChistDom */,
+				41DFC37A213CF4E9002CEB62 /* MupRCMytishi */,
+				41DFC3E1213D206C002CEB62 /* DJ */,
 			);
 		};
 /* End PBXProject section */
@@ -902,6 +1172,82 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41DFC3B8213CF4E9002CEB62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41DFC3B9213CF4E9002CEB62 /* (null) in Resources */,
+				41DFC3BA213CF4E9002CEB62 /* WebCameras.storyboard in Resources */,
+				41DFC3BB213CF4E9002CEB62 /* app_open.png in Resources */,
+				41DFC3BC213CF4E9002CEB62 /* Registration.storyboard in Resources */,
+				41DFC3DE213CFD60002CEB62 /* logo_MupRCMytishi_White.png in Resources */,
+				41DFC3BD213CF4E9002CEB62 /* ForgotPass.storyboard in Resources */,
+				41DFC3BE213CF4E9002CEB62 /* (null) in Resources */,
+				41DFC3BF213CF4E9002CEB62 /* LaunchScreen.storyboard in Resources */,
+				41DFC3C0213CF4E9002CEB62 /* Assets.xcassets in Resources */,
+				41DFC3E0213CFE05002CEB62 /* logo_MupRCMytishi.png in Resources */,
+				41DFC3C1213CF4E9002CEB62 /* logo_SM.png in Resources */,
+				41DFC3C2213CF4E9002CEB62 /* app_close.png in Resources */,
+				41DFC3C3213CF4E9002CEB62 /* ic_close_action.png in Resources */,
+				41DFC3C4213CF4E9002CEB62 /* spin.png in Resources */,
+				41DFC3C5213CF4E9002CEB62 /* Counters.storyboard in Resources */,
+				41DFC3C6213CF4E9002CEB62 /* News.storyboard in Resources */,
+				41DFC3C7213CF4E9002CEB62 /* Saldo.storyboard in Resources */,
+				41DFC3C8213CF4E9002CEB62 /* main_background.png in Resources */,
+				41DFC3C9213CF4E9002CEB62 /* account_icon_cons.jpg in Resources */,
+				41DFC3CA213CF4E9002CEB62 /* Logo_DemoUC_White.png in Resources */,
+				41DFC3CB213CF4E9002CEB62 /* ic_action_files_grey.png in Resources */,
+				41DFC3CC213CF4E9002CEB62 /* arrow_rigth.png in Resources */,
+				41DFC3CD213CF4E9002CEB62 /* MainMenu.storyboard in Resources */,
+				41DFC3CE213CF4E9002CEB62 /* SelectItem.storyboard in Resources */,
+				41DFC3CF213CF4E9002CEB62 /* Questions.storyboard in Resources */,
+				41DFC3D0213CF4E9002CEB62 /* Main.storyboard in Resources */,
+				41DFC3D1213CF4E9002CEB62 /* Apps.storyboard in Resources */,
+				41DFC3D2213CF4E9002CEB62 /* Pays.storyboard in Resources */,
+				41DFC3D3213CF4E9002CEB62 /* GoogleService-Info.plist in Resources */,
+				41DFC3D4213CF4E9002CEB62 /* Logo_DemoUC.png in Resources */,
+				41DFC3D5213CF4E9002CEB62 /* account_icon_user.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41DFC41F213D206C002CEB62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41DFC420213D206C002CEB62 /* (null) in Resources */,
+				41DFC421213D206C002CEB62 /* WebCameras.storyboard in Resources */,
+				41DFC422213D206C002CEB62 /* app_open.png in Resources */,
+				41DFC423213D206C002CEB62 /* Registration.storyboard in Resources */,
+				41DFC424213D206C002CEB62 /* ForgotPass.storyboard in Resources */,
+				41DFC447213D2758002CEB62 /* logo_DJ.png in Resources */,
+				41DFC425213D206C002CEB62 /* (null) in Resources */,
+				41DFC426213D206C002CEB62 /* LaunchScreen.storyboard in Resources */,
+				41DFC427213D206C002CEB62 /* Assets.xcassets in Resources */,
+				41DFC428213D206C002CEB62 /* logo_SM.png in Resources */,
+				41DFC429213D206C002CEB62 /* app_close.png in Resources */,
+				41DFC42A213D206C002CEB62 /* ic_close_action.png in Resources */,
+				41DFC42B213D206C002CEB62 /* spin.png in Resources */,
+				41DFC42C213D206C002CEB62 /* Counters.storyboard in Resources */,
+				41DFC42D213D206C002CEB62 /* News.storyboard in Resources */,
+				41DFC42E213D206C002CEB62 /* Saldo.storyboard in Resources */,
+				41DFC42F213D206C002CEB62 /* main_background.png in Resources */,
+				41DFC430213D206C002CEB62 /* account_icon_cons.jpg in Resources */,
+				41DFC431213D206C002CEB62 /* Logo_DemoUC_White.png in Resources */,
+				41DFC432213D206C002CEB62 /* ic_action_files_grey.png in Resources */,
+				41DFC433213D206C002CEB62 /* arrow_rigth.png in Resources */,
+				41DFC434213D206C002CEB62 /* MainMenu.storyboard in Resources */,
+				41DFC435213D206C002CEB62 /* SelectItem.storyboard in Resources */,
+				41DFC436213D206C002CEB62 /* Questions.storyboard in Resources */,
+				41DFC437213D206C002CEB62 /* Main.storyboard in Resources */,
+				41DFC445213D2740002CEB62 /* logo_DJ_White.png in Resources */,
+				41DFC438213D206C002CEB62 /* Apps.storyboard in Resources */,
+				41DFC439213D206C002CEB62 /* Pays.storyboard in Resources */,
+				41DFC43A213D206C002CEB62 /* GoogleService-Info.plist in Resources */,
+				41DFC43B213D206C002CEB62 /* Logo_DemoUC.png in Resources */,
+				41DFC43C213D206C002CEB62 /* account_icon_user.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -923,13 +1269,31 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5DCCD0B87896354CA4E5C925 /* [CP] Embed Pods Frameworks */ = {
+		41DFC37B213CF4E9002CEB62 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ObjJKH-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41DFC3D6213CF4E9002CEB62 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -950,22 +1314,85 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E4ED06E8F260449868E7022C /* [CP] Copy Pods Resources */ = {
+		41DFC3E2213D206C002CEB62 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ObjJKH-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41DFC43D213D206C002CEB62 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
+				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DCCD0B87896354CA4E5C925 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
+				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1028,6 +1455,7 @@
 				41EF59E02137B6BA00789370 /* SaldoCell.swift in Sources */,
 				418ABF0B2133CC7B004DB75C /* AppDelegate.swift in Sources */,
 				41EF5A3A21390B8000789370 /* CloseAppAlert.swift in Sources */,
+				41DFC377213CF14A002CEB62 /* QuestionFinal.swift in Sources */,
 				41EF5A57213A87E600789370 /* Web_Camera.swift in Sources */,
 				41EF59FE2138D3F200789370 /* AppsController.swift in Sources */,
 				418ABFA521357B14004DB75C /* QuestionsJson.swift in Sources */,
@@ -1091,6 +1519,7 @@
 				41EF59E12137B6BA00789370 /* SaldoCell.swift in Sources */,
 				418ABF552134CF1A004DB75C /* AppDelegate.swift in Sources */,
 				41EF5A3B21390B8000789370 /* CloseAppAlert.swift in Sources */,
+				41DFC378213CF14A002CEB62 /* QuestionFinal.swift in Sources */,
 				41EF5A58213A87E600789370 /* Web_Camera.swift in Sources */,
 				41EF59FF2138D3F200789370 /* AppsController.swift in Sources */,
 				418ABFA621357B14004DB75C /* QuestionsJson.swift in Sources */,
@@ -1154,9 +1583,138 @@
 				41EF59E22137B6BA00789370 /* SaldoCell.swift in Sources */,
 				418ABFC021357DA5004DB75C /* AppDelegate.swift in Sources */,
 				41EF5A3C21390B8000789370 /* CloseAppAlert.swift in Sources */,
+				41DFC379213CF14A002CEB62 /* QuestionFinal.swift in Sources */,
 				41EF5A59213A87E600789370 /* Web_Camera.swift in Sources */,
 				41EF5A002138D3F200789370 /* AppsController.swift in Sources */,
 				418ABFC121357DA5004DB75C /* QuestionsJson.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41DFC37C213CF4E9002CEB62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41DFC37D213CF4E9002CEB62 /* QuestionAnswerVC.swift in Sources */,
+				41DFC37E213CF4E9002CEB62 /* NewsController.swift in Sources */,
+				41DFC37F213CF4E9002CEB62 /* AppsCell.swift in Sources */,
+				41DFC380213CF4E9002CEB62 /* QuestionsTableVC.swift in Sources */,
+				41DFC381213CF4E9002CEB62 /* Pay.swift in Sources */,
+				41DFC382213CF4E9002CEB62 /* AddLS.swift in Sources */,
+				41DFC383213CF4E9002CEB62 /* WebsController.swift in Sources */,
+				41DFC384213CF4E9002CEB62 /* CommCell.swift in Sources */,
+				41DFC385213CF4E9002CEB62 /* Counters+CoreDataProperties.swift in Sources */,
+				41DFC386213CF4E9002CEB62 /* SendSMSCod.swift in Sources */,
+				41DFC387213CF4E9002CEB62 /* NewPass.swift in Sources */,
+				41DFC388213CF4E9002CEB62 /* News.swift in Sources */,
+				41DFC389213CF4E9002CEB62 /* AddAppUser.swift in Sources */,
+				41DFC38A213CF4E9002CEB62 /* Comments+CoreDataClass.swift in Sources */,
+				41DFC38B213CF4E9002CEB62 /* PaysController.swift in Sources */,
+				41DFC38C213CF4E9002CEB62 /* CoreDataManager.swift in Sources */,
+				41DFC38D213CF4E9002CEB62 /* News+UITableViewDataSource.swift in Sources */,
+				41DFC38E213CF4E9002CEB62 /* Web_JSON.swift in Sources */,
+				41DFC38F213CF4E9002CEB62 /* Fotos+CoreDataProperties.swift in Sources */,
+				41DFC390213CF4E9002CEB62 /* SelectItemController.swift in Sources */,
+				41DFC391213CF4E9002CEB62 /* NewsView.swift in Sources */,
+				41DFC392213CF4E9002CEB62 /* CounterCell.swift in Sources */,
+				41DFC393213CF4E9002CEB62 /* CommCellCons.swift in Sources */,
+				41DFC394213CF4E9002CEB62 /* FirstController.swift in Sources */,
+				41DFC395213CF4E9002CEB62 /* CountersController.swift in Sources */,
+				41DFC396213CF4E9002CEB62 /* Saldo+CoreDataProperties.swift in Sources */,
+				41DFC397213CF4E9002CEB62 /* Applications+CoreDataProperties.swift in Sources */,
+				41DFC398213CF4E9002CEB62 /* QuestionsTableCell.swift in Sources */,
+				41DFC399213CF4E9002CEB62 /* Applications+CoreDataClass.swift in Sources */,
+				41DFC39A213CF4E9002CEB62 /* Fotos+CoreDataClass.swift in Sources */,
+				41DFC39B213CF4E9002CEB62 /* Comments+CoreDataProperties.swift in Sources */,
+				41DFC39C213CF4E9002CEB62 /* OnOffButton.swift in Sources */,
+				41DFC39D213CF4E9002CEB62 /* NewsClient.swift in Sources */,
+				41DFC39E213CF4E9002CEB62 /* NewsManager.swift in Sources */,
+				41DFC39F213CF4E9002CEB62 /* Counters+CoreDataClass.swift in Sources */,
+				41DFC3A0213CF4E9002CEB62 /* WebsCell.swift in Sources */,
+				41DFC3A1213CF4E9002CEB62 /* MainMenu.swift in Sources */,
+				41DFC3A2213CF4E9002CEB62 /* FloatRatingView.swift in Sources */,
+				41DFC3A3213CF4E9002CEB62 /* Saldo+CoreDataClass.swift in Sources */,
+				41DFC3A4213CF4E9002CEB62 /* AppUser.swift in Sources */,
+				41DFC3A5213CF4E9002CEB62 /* Extensions.swift in Sources */,
+				41DFC3A6213CF4E9002CEB62 /* SaldoController.swift in Sources */,
+				41DFC3A7213CF4E9002CEB62 /* Server.swift in Sources */,
+				41DFC3A8213CF4E9002CEB62 /* AppsCellClose.swift in Sources */,
+				41DFC3A9213CF4E9002CEB62 /* DB.swift in Sources */,
+				41DFC3AA213CF4E9002CEB62 /* FilesController.swift in Sources */,
+				41DFC3AB213CF4E9002CEB62 /* ObjJKH.xcdatamodeld in Sources */,
+				41DFC3AC213CF4E9002CEB62 /* ForgotPass.swift in Sources */,
+				41DFC3AD213CF4E9002CEB62 /* Registration.swift in Sources */,
+				41DFC3AE213CF4E9002CEB62 /* NewsCell.swift in Sources */,
+				41DFC3AF213CF4E9002CEB62 /* SaldoCell.swift in Sources */,
+				41DFC3B0213CF4E9002CEB62 /* AppDelegate.swift in Sources */,
+				41DFC3B1213CF4E9002CEB62 /* CloseAppAlert.swift in Sources */,
+				41DFC3B2213CF4E9002CEB62 /* QuestionFinal.swift in Sources */,
+				41DFC3B3213CF4E9002CEB62 /* Web_Camera.swift in Sources */,
+				41DFC3B4213CF4E9002CEB62 /* AppsController.swift in Sources */,
+				41DFC3B5213CF4E9002CEB62 /* QuestionsJson.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41DFC3E3213D206C002CEB62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41DFC3E4213D206C002CEB62 /* QuestionAnswerVC.swift in Sources */,
+				41DFC3E5213D206C002CEB62 /* NewsController.swift in Sources */,
+				41DFC3E6213D206C002CEB62 /* AppsCell.swift in Sources */,
+				41DFC3E7213D206C002CEB62 /* QuestionsTableVC.swift in Sources */,
+				41DFC3E8213D206C002CEB62 /* Pay.swift in Sources */,
+				41DFC3E9213D206C002CEB62 /* AddLS.swift in Sources */,
+				41DFC3EA213D206C002CEB62 /* WebsController.swift in Sources */,
+				41DFC3EB213D206C002CEB62 /* CommCell.swift in Sources */,
+				41DFC3EC213D206C002CEB62 /* Counters+CoreDataProperties.swift in Sources */,
+				41DFC3ED213D206C002CEB62 /* SendSMSCod.swift in Sources */,
+				41DFC3EE213D206C002CEB62 /* NewPass.swift in Sources */,
+				41DFC3EF213D206C002CEB62 /* News.swift in Sources */,
+				41DFC3F0213D206C002CEB62 /* AddAppUser.swift in Sources */,
+				41DFC3F1213D206C002CEB62 /* Comments+CoreDataClass.swift in Sources */,
+				41DFC3F2213D206C002CEB62 /* PaysController.swift in Sources */,
+				41DFC3F3213D206C002CEB62 /* CoreDataManager.swift in Sources */,
+				41DFC3F4213D206C002CEB62 /* News+UITableViewDataSource.swift in Sources */,
+				41DFC3F5213D206C002CEB62 /* Web_JSON.swift in Sources */,
+				41DFC3F6213D206C002CEB62 /* Fotos+CoreDataProperties.swift in Sources */,
+				41DFC3F7213D206C002CEB62 /* SelectItemController.swift in Sources */,
+				41DFC3F8213D206C002CEB62 /* NewsView.swift in Sources */,
+				41DFC3F9213D206C002CEB62 /* CounterCell.swift in Sources */,
+				41DFC3FA213D206C002CEB62 /* CommCellCons.swift in Sources */,
+				41DFC3FB213D206C002CEB62 /* FirstController.swift in Sources */,
+				41DFC3FC213D206C002CEB62 /* CountersController.swift in Sources */,
+				41DFC3FD213D206C002CEB62 /* Saldo+CoreDataProperties.swift in Sources */,
+				41DFC3FE213D206C002CEB62 /* Applications+CoreDataProperties.swift in Sources */,
+				41DFC3FF213D206C002CEB62 /* QuestionsTableCell.swift in Sources */,
+				41DFC400213D206C002CEB62 /* Applications+CoreDataClass.swift in Sources */,
+				41DFC401213D206C002CEB62 /* Fotos+CoreDataClass.swift in Sources */,
+				41DFC402213D206C002CEB62 /* Comments+CoreDataProperties.swift in Sources */,
+				41DFC403213D206C002CEB62 /* OnOffButton.swift in Sources */,
+				41DFC404213D206C002CEB62 /* NewsClient.swift in Sources */,
+				41DFC405213D206C002CEB62 /* NewsManager.swift in Sources */,
+				41DFC406213D206C002CEB62 /* Counters+CoreDataClass.swift in Sources */,
+				41DFC407213D206C002CEB62 /* WebsCell.swift in Sources */,
+				41DFC408213D206C002CEB62 /* MainMenu.swift in Sources */,
+				41DFC409213D206C002CEB62 /* FloatRatingView.swift in Sources */,
+				41DFC40A213D206C002CEB62 /* Saldo+CoreDataClass.swift in Sources */,
+				41DFC40B213D206C002CEB62 /* AppUser.swift in Sources */,
+				41DFC40C213D206C002CEB62 /* Extensions.swift in Sources */,
+				41DFC40D213D206C002CEB62 /* SaldoController.swift in Sources */,
+				41DFC40E213D206C002CEB62 /* Server.swift in Sources */,
+				41DFC40F213D206C002CEB62 /* AppsCellClose.swift in Sources */,
+				41DFC410213D206C002CEB62 /* DB.swift in Sources */,
+				41DFC411213D206C002CEB62 /* FilesController.swift in Sources */,
+				41DFC412213D206C002CEB62 /* ObjJKH.xcdatamodeld in Sources */,
+				41DFC413213D206C002CEB62 /* ForgotPass.swift in Sources */,
+				41DFC414213D206C002CEB62 /* Registration.swift in Sources */,
+				41DFC415213D206C002CEB62 /* NewsCell.swift in Sources */,
+				41DFC416213D206C002CEB62 /* SaldoCell.swift in Sources */,
+				41DFC417213D206C002CEB62 /* AppDelegate.swift in Sources */,
+				41DFC418213D206C002CEB62 /* CloseAppAlert.swift in Sources */,
+				41DFC419213D206C002CEB62 /* QuestionFinal.swift in Sources */,
+				41DFC41A213D206C002CEB62 /* Web_Camera.swift in Sources */,
+				41DFC41B213D206C002CEB62 /* AppsController.swift in Sources */,
+				41DFC41C213D206C002CEB62 /* QuestionsJson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1357,7 +1915,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isOur_Obj_Home DEBUG";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1378,7 +1936,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isOur_Obj_Home;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1399,7 +1957,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isChist_Dom DEBUG";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1420,7 +1978,95 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isChist_Dom;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		41DFC3D8213CF4E9002CEB62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47941F8DDDA754411A24541F /* Pods-ObjJKH.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(МУП РЦ Мытищи)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/Info - MupRCMytishi.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-DisMupRCMytishi";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isMupRCMytishi DEBUG";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		41DFC3D9213CF4E9002CEB62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EBA03EC81AF3055B0B62300 /* Pods-ObjJKH.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(МУП РЦ Мытищи)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/Info - MupRCMytishi.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-DisMupRCMytishi";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isMupRCMytishi;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		41DFC43F213D206C002CEB62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47941F8DDDA754411A24541F /* Pods-ObjJKH.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(DJ)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "ObjJKH copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-DisDJ";
+				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.dj-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isDJ DEBUG";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		41DFC440213D206C002CEB62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EBA03EC81AF3055B0B62300 /* Pods-ObjJKH.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(DJ)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "ObjJKH copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-DisDJ";
+				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.dj-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isDJ;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1459,6 +2105,24 @@
 			buildConfigurations = (
 				418ABFDA21357DA5004DB75C /* Debug */,
 				418ABFDB21357DA5004DB75C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41DFC3D7213CF4E9002CEB62 /* Build configuration list for PBXNativeTarget "MupRCMytishi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41DFC3D8213CF4E9002CEB62 /* Debug */,
+				41DFC3D9213CF4E9002CEB62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41DFC43E213D206C002CEB62 /* Build configuration list for PBXNativeTarget "DJ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41DFC43F213D206C002CEB62 /* Debug */,
+				41DFC440213D206C002CEB62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -103,6 +103,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
                 alert.addAction( UIAlertAction(title: "ОК", style: .default, handler: { (_) in } ) )
                 DispatchQueue.main.sync {
                     self.present(alert, animated: true, completion: nil)
+                    self.stopAnimation()
                 }
                 return
             }
@@ -128,11 +129,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
             DispatchQueue.main.async {
                 
                 self.stopAnimation()
-                //                self.delegate?.update(method: "Questions")
-                //                if !self.isFromMain_ {
-                //                    self.questionDelegate?.update()
-                //                }
-                //                self.performSegue(withIdentifier: Segues.fromQuestionAnswerVC.toFinal, sender: self)
+                self.performSegue(withIdentifier: "final", sender: self)
             }
             
             }.resume()

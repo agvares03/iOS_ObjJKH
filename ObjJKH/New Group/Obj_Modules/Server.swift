@@ -16,6 +16,10 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/nashobsdom/"
     #elseif isChist_Dom
         static let SERVER          = "http://uk-gkh.org/chist_dom/"
+    #elseif isMupRCMytishi
+        static let SERVER          = "http://uk-gkh.org/muprcmytishi/"
+    #elseif isDJ
+        static let SERVER          = "http://uk-gkh.org/dgservicnew/"
     #else
         static let SERVER          = "http://uk-gkh.org/newjkh/"
     #endif
@@ -37,7 +41,7 @@ class Server {
     static let GET_REQUEST_TYPES   = "DataExport.ashx?"              // Получение списка типов для заявок
     static let ADD_APP             = "AddRequest_Android.ashx?"      // Создание заявки
     static let GET_WEB_CAMERAS     = "GetHousesWebCams.ashx?"        // Получения списка веб-камер
-    static let SAVE_ANSWER         = "SaveUserAnswers.ashx?"         // Сохранение ответа
+    static let SAVE_ANSWER         = "SaveUserAnswers_iOS.ashx?"     // Сохранение ответа
     static let CLOSE_APP           = "chatCloseReq.ashx?"            // Закрытие заявки
     static let DOWNLOAD_PIC        = "DownloadRequestFile.ashx?"     // Загрузить пиктограмму файла
     

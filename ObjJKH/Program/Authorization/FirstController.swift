@@ -85,6 +85,10 @@ class FirstController: UIViewController {
             fon_top.image = UIImage(named: "logo_Our_Obj_Home")
         #elseif isChist_Dom
             fon_top.image = UIImage(named: "Logo_Chist_Dom")
+        #elseif isMupRCMytishi
+            fon_top.image = UIImage(named: "logo_MupRCMytishi")
+        #elseif isDJ
+            fon_top.image = UIImage(named: "logo_DJ")
         #endif
         
     }

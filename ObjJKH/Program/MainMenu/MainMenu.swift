@@ -66,9 +66,13 @@ class MainMenu: UIViewController {
 
         // Картинка в зависимости от Таргета
         #if isOur_Obj_Home
-             fon_top.image = UIImage(named: "logo_Our_Obj_Home_white")
+            fon_top.image = UIImage(named: "logo_Our_Obj_Home_white")
         #elseif isChist_Dom
-             fon_top.image = UIImage(named: "Logo_Chist_Dom_White")
+            fon_top.image = UIImage(named: "Logo_Chist_Dom_White")
+        #elseif isMupRCMytishi
+            fon_top.image = UIImage(named: "logo_MupRCMytishi_White")
+        #elseif isDJ
+            fon_top.image = UIImage(named: "logo_DJ_White")
         #endif
     }
     

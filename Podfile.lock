@@ -16,7 +16,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
     - GoogleUtilities/Network (~> 5.2)
-    - GoogleUtilities/NSData+zlib (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseCore (5.1.1):
     - GoogleUtilities/Logger (~> 5.2)
@@ -33,7 +33,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
     - GoogleUtilities/Network (~> 5.2)
-    - GoogleUtilities/NSData+zlib (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - GoogleUtilities/AppDelegateSwizzler (5.2.2):
     - GoogleUtilities/Environment
@@ -46,9 +46,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/Network (5.2.2):
     - GoogleUtilities/Logger
-    - GoogleUtilities/NSData+zlib
+    - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - GoogleUtilities/NSData+zlib (5.2.2)
+  - "GoogleUtilities/NSData+zlib (5.2.2)"
   - GoogleUtilities/Reachability (5.2.2):
     - GoogleUtilities/Logger
   - nanopb (0.3.8):
@@ -66,6 +66,20 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Gloss
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Dropper
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - Gloss
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - nanopb
+    - Protobuf
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -96,6 +110,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftyXMLParser: b5a79fb8a730903703d0a92d30752a0b05158967
 
-PODFILE CHECKSUM: f376dd95cbdb3d6150f3b5c868d296b3f44d3de1
+PODFILE CHECKSUM: 2dff59d5dab8aa991893882dcad924ee56a6b67f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.0.beta.1
