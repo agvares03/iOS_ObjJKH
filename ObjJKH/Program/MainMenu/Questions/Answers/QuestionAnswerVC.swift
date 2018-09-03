@@ -8,13 +8,17 @@
 
 import UIKit
 
+var i = Int()
+var kek: [Int] = []
+
+var isAccepted      = false
+var selectedAnswers: [Int] = []
+
 class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var collection: UICollectionView!
-    
-    var selectedAnswers: [Int] = []
     
     @IBAction func goButtonPressed(_ sender: UIButton) {
         // Добавляем опрос в список начатых опросов
@@ -31,12 +35,14 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
             answerArr.append((question_?.questions![currQuestion].answers![$0].id)!)
         }
         guard answerArr.count != 0 else { return }
-        
         answers[(question_?.questions![currQuestion].id!)!] = answerArr
-        
         print(answers)
-        //        isAccepted = false
+        isAccepted = false
         if (currQuestion + 1) < question_?.questions?.count ?? 0 {
+            if answers.count > currQuestion + 1{
+                kek = answers[(question_?.questions![currQuestion + 1].id!)!]!
+            }
+            i = 0
             collection.reloadData()
             currQuestion += 1
             NotificationCenter.default.post(name: NSNotification.Name("Uncheck"), object: nil)
@@ -138,6 +144,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: answers)
         userDefaults.set(encodedData, forKey: String(question_?.id ?? 0))
         userDefaults.synchronize()
+        i = 0
         
         navigationController?.popViewController(animated: true)
     }
@@ -151,24 +158,28 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         stopAnimation()
+        navigationItem.title    = question_?.name
+        
         let decoded = UserDefaults.standard.object(forKey: String(question_?.id ?? 0))
         if decoded != nil {
             answers = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as! [Int:[Int]]
         }
-        currQuestion = answers.count
+        currQuestion = 0
+        print("=")
         print(answers)
+        kek = answers[(question_?.questions![currQuestion].id!)!] ?? [0]
+        print(kek)
+        
+        automaticallyAdjustsScrollViewInsets = false
+        collection.delegate     = self
+        collection.dataSource   = self
         
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped(_:)))
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
         
         tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
-        
-        automaticallyAdjustsScrollViewInsets = false
-        collection.delegate     = self
-        collection.dataSource   = self
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -256,4 +267,115 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         goButton.isHidden = false
     }
     
+}
+
+class QuestionAnswerHeader: UICollectionViewCell {
+    
+    @IBOutlet weak var question: UILabel!
+    @IBOutlet weak var title: UILabel!
+    
+    func display(_ item: QuestionJson, currentQuestion: Int, questionCount: Int) {
+        question.text = item.question
+        title.text = "\(currentQuestion + 1) из \(questionCount)"
+    }
+    
+    class func fromNib() -> QuestionAnswerHeader? {
+        var cell: QuestionAnswerHeader?
+        let views = Bundle.main.loadNibNamed("DynamicCellsNib", owner: nil, options: nil)
+        views?.forEach {
+            if let view = $0 as? QuestionAnswerHeader {
+                cell = view
+            }
+        }
+        cell?.question.preferredMaxLayoutWidth = cell?.question.bounds.size.width ?? 0.0
+        
+        return cell
+    }
+    
+}
+
+class QuestionAnswerCell: UICollectionViewCell {
+    
+    @IBOutlet weak var toggle: OnOffButton!
+    @IBOutlet weak var question: UILabel!
+    @IBOutlet weak var toggleView: UIView!
+    
+    var isAccepted      = false
+    
+    @objc fileprivate func didTapOnOffButton(_ sender: UITapGestureRecognizer? = nil) {
+        if sender != nil {
+            isAccepted = false
+            NotificationCenter.default.post(name: NSNotification.Name("Uncheck"), object: nil)
+        }
+        
+        if isAccepted && checked { return }
+        if !isAccepted { isAccepted = true }
+        
+        if checked || ((currIndex == index + 1) && (i < kek.count)){
+            if (currIndex == index + 1) && (selectedAnswers.count < kek.count){
+                i += 1
+                selectedAnswers.append(index)
+            }
+            if checked{
+                selectedAnswers.append(index)
+            }
+            toggle.strokeColor  = blueColor
+            toggleView.isHidden = false
+            toggle.lineWidth    = 2
+            toggle.setBackgroundImage(nil, for: .normal)
+            
+            checked                 = false
+            isAccepted              = true
+            currIndex = 0
+            
+        } else {
+            
+            for (ind, item) in selectedAnswers.enumerated() {
+                if item == index {
+                    selectedAnswers.remove(at: ind)
+                }
+            }
+            toggle.strokeColor  = .lightGray
+            toggleView.isHidden = true
+            toggle.lineWidth    = 0
+            toggle.setBackgroundImage(UIImage(named: "ic_choice"), for: .normal)
+            
+            isAccepted              = false
+            checked                 = true
+        }
+        if i == kek.count{
+            i = 0
+        }
+    }
+    
+    private let blueColor = UIColor(red: 0/255, green: 100/255, blue: 255/255, alpha: 1)
+    fileprivate var checked  = false
+    private var index = 0
+    private var currIndex = 0
+    
+    func display(_ item: QuestionsTextJson, index: Int) {
+        self.index = index
+        kek.forEach {
+            if item.id == $0{
+                currIndex = index + 1
+            }
+        }
+        toggle.checked = false
+        
+        toggle.strokeColor  = .lightGray
+        toggle.lineWidth    = 2
+        
+        question.text = item.text
+        
+        checked = false
+        didTapOnOffButton()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnOffButton(_:)))
+        toggle.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("Uncheck"), object: nil, queue: nil) { _ in
+            self.checked = false
+            self.didTapOnOffButton()
+        }
+    }
 }
