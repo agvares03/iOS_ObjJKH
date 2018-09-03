@@ -62,7 +62,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         let phone = UserDefaults.standard.string(forKey: "phone")!
         let groupId = question_?.id ?? 0
         
-        var request = URLRequest(url: URL(string: "\(Server.SERVER)\(Server.SAVE_ANSWER)accID=\(phone)&groupID=\(groupId)")!)
+        var request = URLRequest(url: URL(string: "\(Server.SERVER)\(Server.SAVE_ANSWER)phone=\(phone)&groupID=\(groupId)")!)
         request.httpMethod = "POST"
         
         var json: [[String:Any]] = []
