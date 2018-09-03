@@ -58,10 +58,11 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
     
     private func sendAnswer() {
         
-        let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
+//        let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "phone")!
         let groupId = question_?.id ?? 0
         
-        var request = URLRequest(url: URL(string: "\(Server.SERVER)\(Server.SAVE_ANSWER)accID=\(id)&groupID=\(groupId)")!)
+        var request = URLRequest(url: URL(string: "\(Server.SERVER)\(Server.SAVE_ANSWER)accID=\(phone)&groupID=\(groupId)")!)
         request.httpMethod = "POST"
         
         var json: [[String:Any]] = []
@@ -98,6 +99,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
             data, error, responce in
             
             guard data != nil else { return }
+//            print(String(data: data!, encoding: .utf8))
             if String(data: data!, encoding: .utf8)?.contains("error") ?? false {
                 let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
                 alert.addAction( UIAlertAction(title: "ОК", style: .default, handler: { (_) in } ) )
