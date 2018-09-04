@@ -1,14 +1,14 @@
 PODS:
   - Alamofire (4.7.3)
   - Dropper (2.7.6)
-  - Firebase/Core (5.6.0):
+  - Firebase/Core (5.7.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.1.1)
-  - Firebase/CoreOnly (5.6.0):
-    - FirebaseCore (= 5.1.1)
-  - Firebase/Messaging (5.6.0):
+  - Firebase/CoreOnly (5.7.0):
+    - FirebaseCore (= 5.1.2)
+  - Firebase/Messaging (5.7.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.1.0)
+    - FirebaseMessaging (= 3.1.1)
   - FirebaseAnalytics (5.1.1):
     - FirebaseCore (~> 5.1)
     - FirebaseInstanceID (~> 3.2)
@@ -18,12 +18,12 @@ PODS:
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseCore (5.1.1):
+  - FirebaseCore (5.1.2):
     - GoogleUtilities/Logger (~> 5.2)
   - FirebaseInstanceID (3.2.1):
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.2)
-  - FirebaseMessaging (3.1.0):
+  - FirebaseMessaging (3.1.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
     - GoogleUtilities/Reachability (~> 5.2)
@@ -98,11 +98,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 5f691e36644ab9a04e6df58bfa74b2d627a6919b
   Dropper: 52a020beb6fef2e4b1d55447f17099e5776954ef
-  Firebase: 75ea9e232eefa158c1049028030b8f661a2ccb62
+  Firebase: 734a4f92957aa6c40e7ae3fda3d9359e1890aa87
   FirebaseAnalytics: 993577e91157feb40945abedd6ab346d8a4b6ac8
-  FirebaseCore: cb9ee75e0894def766167c95a4d5a14b1c138269
+  FirebaseCore: 3a97432acb324b439fbed338e642f9cbb516a63d
   FirebaseInstanceID: ea5af6920d0a4a29b40459d055bebe4a6c1333c4
-  FirebaseMessaging: f67b3719f520ee200da0e20ce577fe2bce0c01d0
+  FirebaseMessaging: 698c94dd1e3436346c29bb9c85dcdca4c4a0c30b
   Gloss: 1e8743f8de1fbe14a97f220ff901cba91ae5f8f8
   GoogleAppMeasurement: f7507b39b70ad0bd80b3d81518b2f43868974307
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
@@ -110,6 +110,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftyXMLParser: b5a79fb8a730903703d0a92d30752a0b05158967
 
-PODFILE CHECKSUM: 2dff59d5dab8aa991893882dcad924ee56a6b67f
+PODFILE CHECKSUM: 7ec8a5eca07435d66ea88a1d2d80368d94c0bd6a
 
 COCOAPODS: 1.6.0.beta.1
