@@ -516,7 +516,7 @@
 		41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_MupRCMytishi_White.png; sourceTree = "<group>"; };
 		41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_MupRCMytishi.png; sourceTree = "<group>"; };
 		41DFC441213D206D002CEB62 /* DJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41DFC442213D2083002CEB62 /* ObjJKH copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ObjJKH copy-Info.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/ObjJKH copy-Info.plist"; sourceTree = "<absolute>"; };
+		41DFC442213D2083002CEB62 /* Info - DJService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - DJService.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - DJService.plist"; sourceTree = "<absolute>"; };
 		41DFC444213D2740002CEB62 /* logo_DJ_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_DJ_White.png; sourceTree = "<group>"; };
 		41DFC446213D2758002CEB62 /* logo_DJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_DJ.png; sourceTree = "<group>"; };
 		41EF59D72137A1DD00789370 /* SaldoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaldoController.swift; sourceTree = "<group>"; };
@@ -608,7 +608,6 @@
 				418ABF082133CC7B004DB75C /* Products */,
 				4294151068DBECC6BA96A772 /* Pods */,
 				F0BAD5FABF0F698BF24700C4 /* Frameworks */,
-				41DFC442213D2083002CEB62 /* ObjJKH copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -631,6 +630,7 @@
 				418ABF6B2134CF1C004DB75C /* Info - OurObjHome.plist */,
 				418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */,
 				41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */,
+				41DFC442213D2083002CEB62 /* Info - DJService.plist */,
 				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
 				418ABF1D2133CDD3004DB75C /* Program */,
 				418ABF1C2133CCAA004DB75C /* StoryBoards */,
@@ -2033,7 +2033,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(DJ)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "ObjJKH copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info - DJService.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2044,7 +2044,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isDJ DEBUG";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2055,7 +2055,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(DJ)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "ObjJKH copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info - DJService.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2066,7 +2066,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isDJ;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
