@@ -14,7 +14,7 @@
         <!--First Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FirstController" customModule="ObjJKH" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FirstController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,11 +186,20 @@
                         <outlet property="new_face" destination="mDz-lf-0B3" id="pyD-6y-Gba"/>
                         <outlet property="new_zamoc" destination="OZB-QB-5Cf" id="p4t-G1-iPU"/>
                         <segue destination="62W-f1-6cX" kind="show" identifier="MainMenu" id="bsE-0I-EYW"/>
+                        <segue destination="cxN-jU-vJl" kind="show" identifier="MainMenuCons" id="4fX-lc-XiI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1055.2" y="117.39130434782609"/>
+        </scene>
+        <!--MainMenuCons-->
+        <scene sceneID="SCx-FJ-uqu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainMenuCons" id="cxN-jU-vJl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATM-Vp-ZEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1789" y="-56"/>
         </scene>
         <!--MainMenu-->
         <scene sceneID="83w-yO-F9Q">
@@ -198,7 +207,7 @@
                 <viewControllerPlaceholder storyboardName="MainMenu" id="62W-f1-6cX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Esf-Db-EHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799" y="27"/>
+            <point key="canvasLocation" x="1814" y="26"/>
         </scene>
         <!--Registration-->
         <scene sceneID="47n-GO-9Jd">
@@ -206,7 +215,7 @@
                 <viewControllerPlaceholder storyboardName="Registration" id="CSW-ZA-Agb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGv-MD-7Nu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808" y="117"/>
+            <point key="canvasLocation" x="1806" y="117"/>
         </scene>
         <!--ForgotPass-->
         <scene sceneID="88V-WB-8yf">

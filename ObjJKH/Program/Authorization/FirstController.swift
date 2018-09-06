@@ -255,7 +255,6 @@ class FirstController: UIViewController {
                 
                 // сохраним значения в defaults
                 self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10])
-
                 
                 // отправим на сервер данные об ид. устройства для отправки уведомлений
                 let token = Messaging.messaging().fcmToken
@@ -267,7 +266,11 @@ class FirstController: UIViewController {
                 let db = DB()
                 db.getDataByEnter(login: self.edLogin.text!, pass: self.edPass.text!)
                 
-                self.performSegue(withIdentifier: "MainMenu", sender: self)
+                if (answer[5] == "0") {
+                    self.performSegue(withIdentifier: "MainMenu", sender: self)
+                } else {
+                    self.performSegue(withIdentifier: "MainMenuCons", sender: self)
+                }
                 
                 self.StopIndicator()
             })

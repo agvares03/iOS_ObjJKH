@@ -114,6 +114,7 @@ class MainMenu: UIViewController {
     
     // Выход
     @IBAction func go_exit(_ sender: UIButton) {
+        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
     }
     
     @objc func timerEndedUp(_ timer : Timer) {

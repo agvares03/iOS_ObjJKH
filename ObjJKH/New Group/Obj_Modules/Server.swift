@@ -45,6 +45,13 @@ class Server {
     static let CLOSE_APP           = "chatCloseReq.ashx?"            // Закрытие заявки
     static let DOWNLOAD_PIC        = "DownloadRequestFile.ashx?"     // Загрузить пиктограмму файла
     
+    static let GET_APP             = "LockRequest.ashx?"             // Принять заявку (консультант)
+    static let SEND_COMM_CONS      = "AddConsultantMessage.ashx?"    // Добавить комментарий (консультант) по заявке
+    static let CH_CONS             = "ChangeConsultant.ashx?"        // Перевести другому консультанту
+    static let GET_CONS            = "getconsultants.ashx?"          // Получить список консультантов
+    static let OK_APP              = "PerformRequest.ashx?"          // Выполнить заявку (консультант)
+    static let CLOSE_APP_CONS      = "CloseRequestConsultant.ashx?"  // Закрыть заявку (консультант)
+    
     // Новая регистрация
     static let REGISTRATION_NEW    = "RegisterAccount.ashx?"         // Новая регистрация
     static let VALIDATE_SMS        = "ValidateCheckCode.ashx?"       // Отправка смс-кода на проверку

@@ -13,7 +13,11 @@ protocol AppsUserUpdateDelegate {
     func updateList()
 }
 
-class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddAppDelegate, ShowAppDelegate, AppsUserUpdateDelegate {
+protocol AppsConsUpdateDelegate {
+    func updateList()
+}
+
+class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddAppDelegate, AddAppConsDelegate, ShowAppDelegate, AppsUserUpdateDelegate, AppsConsUpdateDelegate {
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -23,6 +27,16 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var switchCloseApps: UISwitch!
     @IBAction func switch_Go(_ sender: UISwitch) {
         updateCloseApps()
+    }
+    
+    @IBAction func btnAddApp(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        let isCons = defaults.string(forKey: "isCons")
+        if (isCons == "0") {
+            self.performSegue(withIdentifier: "add_app", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "add_app_cons", sender: self)
+        }
     }
     
     private var refreshControl: UIRefreshControl?
@@ -56,7 +70,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             db.del_app(number: $0.number ?? "")
         }
         db.del_db(table_name: "Comments")
-        db.parse_Apps(login: UserDefaults.standard.string(forKey: "login") ?? "", pass: UserDefaults.standard.string(forKey: "pass") ?? "", isCons: "0")
+        db.parse_Apps(login: UserDefaults.standard.string(forKey: "login") ?? "", pass: UserDefaults.standard.string(forKey: "pass") ?? "", isCons: UserDefaults.standard.string(forKey: "isCons")!)
         load_data()
         updateTable()
     }
@@ -127,6 +141,28 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        let app = (fetchedResultsController?.object(at: indexPath))! as Applications
+        let defaults = UserDefaults.standard
+        let isCons = defaults.string(forKey: "isCons")
+        
+        if (app.is_close == 1) {
+            if (isCons == "0") {
+                self.performSegue(withIdentifier: "show_app", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "show_app_cons", sender: self)
+            }
+        } else {
+            if (isCons == "0") {
+                self.performSegue(withIdentifier: "show_app_close", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "show_app_close_cons", sender: self)
+            }
+        }
+        
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "show_app" {
             let indexPath = tableApps.indexPathForSelectedRow!
@@ -154,8 +190,37 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.delegate   = self
             AppUser.App        = app
             AppUser.updDelegt  = self
-        } else if (segue.identifier == "add_app") {
+        } else if segue.identifier == "show_app_cons" {
+            let indexPath = tableApps.indexPathForSelectedRow!
+            let app = fetchedResultsController!.object(at: indexPath)
+            
+            let AppUser             = segue.destination as! AppCons
+            AppUser.title           = "Заявка №" + app.number!
+            AppUser.txt_tema   = app.tema!
+            //            AppUser.txt_text   = app.text!
+            AppUser.txt_date   = app.date!
+            AppUser.id_app     = app.number!
+            AppUser.delegate   = self as? ShowAppConsDelegate
+            AppUser.App        = app
+            AppUser.updDelegt = self
+        } else if (segue.identifier == "show_app_close_cons") {
+            let indexPath = tableApps.indexPathForSelectedRow!
+            let app = fetchedResultsController!.object(at: indexPath)
+            
+            let AppUser             = segue.destination as! AppCons
+            AppUser.title           = "Заявка №" + app.number!
+            AppUser.txt_tema   = app.tema!
+            //            AppUser.txt_text   = app.text!
+            AppUser.txt_date   = app.date!
+            AppUser.id_app     = app.number!
+            AppUser.delegate   = self as? ShowAppConsDelegate
+            AppUser.App        = app
+            AppUser.updDelegt  = self
+        }else if (segue.identifier == "add_app") {
             let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppUser
+            AddApp.delegate = self
+        } else if (segue.identifier == "add_app_cons") {
+            let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppCons
             AddApp.delegate = self
         }
     }
@@ -164,8 +229,18 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         load_data()
         self.tableApps.reloadData()
     }
+
+    func addAppDoneCons(addApp: AddAppCons) {
+        load_data()
+        self.tableApps.reloadData()
+    }
     
     func showAppDone(showApp: AppUser) {
+        load_data()
+        updateTable()
+    }
+    
+    func showAppDoneCons(showApp: AppCons) {
         load_data()
         updateTable()
     }
@@ -185,10 +260,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let defaults = UserDefaults.standard
                     let login = defaults.object(forKey: "login")
                     let pass = defaults.object(forKey: "pass")
+                    let isCons = defaults.string(forKey: "isCons")
                     // ЗАЯВКИ С КОММЕНТАРИЯМИ
                     db.del_db(table_name: "Comments")
                     db.del_db(table_name: "Applications")
-                    db.parse_Apps(login: login as! String, pass: pass as! String, isCons: "0")
+                    db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!)
                     
                     self.load_data()
                     self.tableApps.reloadData()
