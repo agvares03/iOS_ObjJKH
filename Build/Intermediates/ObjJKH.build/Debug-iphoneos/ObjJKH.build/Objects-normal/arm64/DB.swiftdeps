@@ -1,0 +1,1052 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "DB"
+provides-nominal:
+- "6ObjJKH2DBC"
+provides-member:
+- ["6ObjJKH2DBC", ""]
+provides-dynamic-lookup:
+- "parser"
+depends-top-level:
+- !private "!="
+- !private "+"
+- !private "-"
+- !private "..."
+- !private "<"
+- !private "=="
+- !private ">"
+- !private "AnyObject"
+- "AssignmentPrecedence"
+- !private "Bool"
+- "CastingPrecedence"
+- !private "CoreDataManager"
+- !private "Counters"
+- "DB"
+- !private "Date"
+- !private "Double"
+- !private "Int"
+- !private "JSONSerialization"
+- !private "NSCalendar"
+- !private "NSCharacterSet"
+- !private "NSDate"
+- !private "NSError"
+- !private "NSFetchRequest"
+- !private "NSFetchRequestResult"
+- !private "NSManagedObject"
+- !private "NSMutableURLRequest"
+- !private "NSNumber"
+- "NSObject"
+- !private "NSPredicate"
+- !private "NSString"
+- !private "NSURL"
+- !private "Saldo"
+- !private "Server"
+- "String"
+- "StringLiteralType"
+- !private "URL"
+- !private "URLRequest"
+- !private "URLSession"
+- !private "UserDefaults"
+- "XMLParser"
+- "XMLParserDelegate"
+- !private "print"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "addingPercentEncoding"]
+- ["s23BidirectionalCollectionP", "init"]
+- !private ["s19BinaryFloatingPointP", "init"]
+- !private ["s13BinaryIntegerP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "CoreDataManager"]
+- !private ["s7CVarArgP", "Counters"]
+- !private ["s7CVarArgP", "Double"]
+- !private ["s7CVarArgP", "Int"]
+- !private ["s7CVarArgP", "JSONSerialization"]
+- !private ["s7CVarArgP", "NSCalendar"]
+- !private ["s7CVarArgP", "NSCharacterSet"]
+- !private ["s7CVarArgP", "NSDate"]
+- !private ["s7CVarArgP", "NSFetchRequest"]
+- !private ["s7CVarArgP", "NSMutableURLRequest"]
+- !private ["s7CVarArgP", "NSPredicate"]
+- !private ["s7CVarArgP", "NSURL"]
+- !private ["s7CVarArgP", "Saldo"]
+- !private ["s7CVarArgP", "Server"]
+- !private ["s7CVarArgP", "String"]
+- !private ["s7CVarArgP", "URLSession"]
+- !private ["s7CVarArgP", "UserDefaults"]
+- ["s7CVarArgP", "XMLParser"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "add_data_saldo"]
+- !private ["s7CVarArgP", "addingPercentEncoding"]
+- !private ["s7CVarArgP", "count_ed_izm"]
+- !private ["s7CVarArgP", "count_name"]
+- !private ["s7CVarArgP", "currMonth"]
+- !private ["s7CVarArgP", "currYear"]
+- !private ["s7CVarArgP", "current"]
+- !private ["s7CVarArgP", "dataTask"]
+- !private ["s7CVarArgP", "del_db"]
+- !private ["s7CVarArgP", "delegate"]
+- !private ["s7CVarArgP", "delete"]
+- !private ["s7CVarArgP", "diff"]
+- !private ["s7CVarArgP", "end"]
+- !private ["s7CVarArgP", "fetch"]
+- !private ["s7CVarArgP", "floatValue"]
+- !private ["s7CVarArgP", "httpMethod"]
+- !private ["s7CVarArgP", "id"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "jsonObject"]
+- !private ["s7CVarArgP", "minus"]
+- !private ["s7CVarArgP", "num_month"]
+- !private ["s7CVarArgP", "owner"]
+- !private ["s7CVarArgP", "parse"]
+- !private ["s7CVarArgP", "parse_Countrers"]
+- !private ["s7CVarArgP", "parse_OSV"]
+- ["s7CVarArgP", "parser"]
+- ["s7CVarArgP", "parserDidEndDocument"]
+- ["s7CVarArgP", "parserDidStartDocument"]
+- !private ["s7CVarArgP", "plus"]
+- !private ["s7CVarArgP", "predicate"]
+- !private ["s7CVarArgP", "prev_value"]
+- !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "resume"]
+- !private ["s7CVarArgP", "save_month_year"]
+- !private ["s7CVarArgP", "setValue"]
+- !private ["s7CVarArgP", "shared"]
+- !private ["s7CVarArgP", "standard"]
+- !private ["s7CVarArgP", "start"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["s7CVarArgP", "synchronize"]
+- !private ["s7CVarArgP", "uniq_num"]
+- !private ["s7CVarArgP", "urlPathAllowed"]
+- !private ["s7CVarArgP", "usluga"]
+- !private ["s7CVarArgP", "value"]
+- !private ["s7CVarArgP", "year"]
+- !private ["10Foundation8CalendarV", "component"]
+- !private ["s10CollectionP", "addingPercentEncoding"]
+- ["s10CollectionP", "init"]
+- !private ["s10CollectionP", "subscript"]
+- !private ["s10ComparableP", "addingPercentEncoding"]
+- ["s10ComparableP", "init"]
+- !private ["10Foundation8CalendarV9ComponentO", "month"]
+- !private ["10Foundation8CalendarV9ComponentO", "year"]
+- !private ["6ObjJKH15CoreDataManagerC", "instance"]
+- !private ["6ObjJKH15CoreDataManagerC", "managedObjectContext"]
+- !private ["6ObjJKH15CoreDataManagerC", "saveContext"]
+- !private ["6ObjJKH8CountersC", "count_ed_izm"]
+- !private ["6ObjJKH8CountersC", "count_name"]
+- !private ["6ObjJKH8CountersC", "diff"]
+- !private ["6ObjJKH8CountersC", "id"]
+- !private ["6ObjJKH8CountersC", "init"]
+- !private ["6ObjJKH8CountersC", "num_month"]
+- !private ["6ObjJKH8CountersC", "owner"]
+- !private ["6ObjJKH8CountersC", "prev_value"]
+- !private ["6ObjJKH8CountersC", "uniq_num"]
+- !private ["6ObjJKH8CountersC", "value"]
+- !private ["6ObjJKH8CountersC", "year"]
+- !private ["s28CustomDebugStringConvertibleP", "CoreDataManager"]
+- !private ["s28CustomDebugStringConvertibleP", "Counters"]
+- !private ["s28CustomDebugStringConvertibleP", "Double"]
+- !private ["s28CustomDebugStringConvertibleP", "Int"]
+- !private ["s28CustomDebugStringConvertibleP", "JSONSerialization"]
+- !private ["s28CustomDebugStringConvertibleP", "NSCalendar"]
+- !private ["s28CustomDebugStringConvertibleP", "NSCharacterSet"]
+- !private ["s28CustomDebugStringConvertibleP", "NSDate"]
+- !private ["s28CustomDebugStringConvertibleP", "NSFetchRequest"]
+- !private ["s28CustomDebugStringConvertibleP", "NSMutableURLRequest"]
+- !private ["s28CustomDebugStringConvertibleP", "NSPredicate"]
+- !private ["s28CustomDebugStringConvertibleP", "NSURL"]
+- !private ["s28CustomDebugStringConvertibleP", "Saldo"]
+- !private ["s28CustomDebugStringConvertibleP", "Server"]
+- !private ["s28CustomDebugStringConvertibleP", "String"]
+- !private ["s28CustomDebugStringConvertibleP", "URLSession"]
+- !private ["s28CustomDebugStringConvertibleP", "UserDefaults"]
+- ["s28CustomDebugStringConvertibleP", "XMLParser"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "add_data_saldo"]
+- !private ["s28CustomDebugStringConvertibleP", "addingPercentEncoding"]
+- !private ["s28CustomDebugStringConvertibleP", "component"]
+- !private ["s28CustomDebugStringConvertibleP", "count_ed_izm"]
+- !private ["s28CustomDebugStringConvertibleP", "count_name"]
+- !private ["s28CustomDebugStringConvertibleP", "currMonth"]
+- !private ["s28CustomDebugStringConvertibleP", "currYear"]
+- !private ["s28CustomDebugStringConvertibleP", "current"]
+- !private ["s28CustomDebugStringConvertibleP", "dataTask"]
+- !private ["s28CustomDebugStringConvertibleP", "del_db"]
+- !private ["s28CustomDebugStringConvertibleP", "delegate"]
+- !private ["s28CustomDebugStringConvertibleP", "delete"]
+- !private ["s28CustomDebugStringConvertibleP", "diff"]
+- !private ["s28CustomDebugStringConvertibleP", "end"]
+- !private ["s28CustomDebugStringConvertibleP", "fetch"]
+- !private ["s28CustomDebugStringConvertibleP", "floatValue"]
+- !private ["s28CustomDebugStringConvertibleP", "httpMethod"]
+- !private ["s28CustomDebugStringConvertibleP", "id"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "jsonObject"]
+- !private ["s28CustomDebugStringConvertibleP", "minus"]
+- !private ["s28CustomDebugStringConvertibleP", "num_month"]
+- !private ["s28CustomDebugStringConvertibleP", "owner"]
+- !private ["s28CustomDebugStringConvertibleP", "parse"]
+- !private ["s28CustomDebugStringConvertibleP", "parse_Countrers"]
+- !private ["s28CustomDebugStringConvertibleP", "parse_OSV"]
+- ["s28CustomDebugStringConvertibleP", "parser"]
+- ["s28CustomDebugStringConvertibleP", "parserDidEndDocument"]
+- ["s28CustomDebugStringConvertibleP", "parserDidStartDocument"]
+- !private ["s28CustomDebugStringConvertibleP", "plus"]
+- !private ["s28CustomDebugStringConvertibleP", "predicate"]
+- !private ["s28CustomDebugStringConvertibleP", "prev_value"]
+- !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "resume"]
+- !private ["s28CustomDebugStringConvertibleP", "save_month_year"]
+- !private ["s28CustomDebugStringConvertibleP", "setValue"]
+- !private ["s28CustomDebugStringConvertibleP", "shared"]
+- !private ["s28CustomDebugStringConvertibleP", "standard"]
+- !private ["s28CustomDebugStringConvertibleP", "start"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "synchronize"]
+- !private ["s28CustomDebugStringConvertibleP", "uniq_num"]
+- !private ["s28CustomDebugStringConvertibleP", "urlPathAllowed"]
+- !private ["s28CustomDebugStringConvertibleP", "usluga"]
+- !private ["s28CustomDebugStringConvertibleP", "value"]
+- !private ["s28CustomDebugStringConvertibleP", "year"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "addingPercentEncoding"]
+- !private ["s29CustomPlaygroundQuickLookableP", "floatValue"]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "addingPercentEncoding"]
+- !private ["s17CustomReflectableP", "component"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "CoreDataManager"]
+- !private ["s23CustomStringConvertibleP", "Counters"]
+- !private ["s23CustomStringConvertibleP", "Double"]
+- !private ["s23CustomStringConvertibleP", "Int"]
+- !private ["s23CustomStringConvertibleP", "JSONSerialization"]
+- !private ["s23CustomStringConvertibleP", "NSCalendar"]
+- !private ["s23CustomStringConvertibleP", "NSCharacterSet"]
+- !private ["s23CustomStringConvertibleP", "NSDate"]
+- !private ["s23CustomStringConvertibleP", "NSFetchRequest"]
+- !private ["s23CustomStringConvertibleP", "NSMutableURLRequest"]
+- !private ["s23CustomStringConvertibleP", "NSPredicate"]
+- !private ["s23CustomStringConvertibleP", "NSURL"]
+- !private ["s23CustomStringConvertibleP", "Saldo"]
+- !private ["s23CustomStringConvertibleP", "Server"]
+- !private ["s23CustomStringConvertibleP", "String"]
+- !private ["s23CustomStringConvertibleP", "URLSession"]
+- !private ["s23CustomStringConvertibleP", "UserDefaults"]
+- ["s23CustomStringConvertibleP", "XMLParser"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "add_data_saldo"]
+- !private ["s23CustomStringConvertibleP", "addingPercentEncoding"]
+- !private ["s23CustomStringConvertibleP", "component"]
+- !private ["s23CustomStringConvertibleP", "count_ed_izm"]
+- !private ["s23CustomStringConvertibleP", "count_name"]
+- !private ["s23CustomStringConvertibleP", "currMonth"]
+- !private ["s23CustomStringConvertibleP", "currYear"]
+- !private ["s23CustomStringConvertibleP", "current"]
+- !private ["s23CustomStringConvertibleP", "dataTask"]
+- !private ["s23CustomStringConvertibleP", "del_db"]
+- !private ["s23CustomStringConvertibleP", "delegate"]
+- !private ["s23CustomStringConvertibleP", "delete"]
+- !private ["s23CustomStringConvertibleP", "diff"]
+- !private ["s23CustomStringConvertibleP", "end"]
+- !private ["s23CustomStringConvertibleP", "fetch"]
+- !private ["s23CustomStringConvertibleP", "floatValue"]
+- !private ["s23CustomStringConvertibleP", "httpMethod"]
+- !private ["s23CustomStringConvertibleP", "id"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "jsonObject"]
+- !private ["s23CustomStringConvertibleP", "minus"]
+- !private ["s23CustomStringConvertibleP", "num_month"]
+- !private ["s23CustomStringConvertibleP", "owner"]
+- !private ["s23CustomStringConvertibleP", "parse"]
+- !private ["s23CustomStringConvertibleP", "parse_Countrers"]
+- !private ["s23CustomStringConvertibleP", "parse_OSV"]
+- ["s23CustomStringConvertibleP", "parser"]
+- ["s23CustomStringConvertibleP", "parserDidEndDocument"]
+- ["s23CustomStringConvertibleP", "parserDidStartDocument"]
+- !private ["s23CustomStringConvertibleP", "plus"]
+- !private ["s23CustomStringConvertibleP", "predicate"]
+- !private ["s23CustomStringConvertibleP", "prev_value"]
+- !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "resume"]
+- !private ["s23CustomStringConvertibleP", "save_month_year"]
+- !private ["s23CustomStringConvertibleP", "setValue"]
+- !private ["s23CustomStringConvertibleP", "shared"]
+- !private ["s23CustomStringConvertibleP", "standard"]
+- !private ["s23CustomStringConvertibleP", "start"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "synchronize"]
+- !private ["s23CustomStringConvertibleP", "uniq_num"]
+- !private ["s23CustomStringConvertibleP", "urlPathAllowed"]
+- !private ["s23CustomStringConvertibleP", "usluga"]
+- !private ["s23CustomStringConvertibleP", "value"]
+- !private ["s23CustomStringConvertibleP", "year"]
+- !private ["6ObjJKH2DBC", "AnyObject"]
+- !private ["6ObjJKH2DBC", "Bool"]
+- !private ["6ObjJKH2DBC", "CoreDataManager"]
+- !private ["6ObjJKH2DBC", "Counters"]
+- !private ["6ObjJKH2DBC", "Date"]
+- !private ["6ObjJKH2DBC", "Double"]
+- !private ["6ObjJKH2DBC", "Int"]
+- !private ["6ObjJKH2DBC", "JSONSerialization"]
+- !private ["6ObjJKH2DBC", "NSCalendar"]
+- !private ["6ObjJKH2DBC", "NSCharacterSet"]
+- !private ["6ObjJKH2DBC", "NSDate"]
+- !private ["6ObjJKH2DBC", "NSError"]
+- !private ["6ObjJKH2DBC", "NSFetchRequest"]
+- !private ["6ObjJKH2DBC", "NSFetchRequestResult"]
+- !private ["6ObjJKH2DBC", "NSManagedObject"]
+- !private ["6ObjJKH2DBC", "NSMutableURLRequest"]
+- !private ["6ObjJKH2DBC", "NSNumber"]
+- !private ["6ObjJKH2DBC", "NSPredicate"]
+- !private ["6ObjJKH2DBC", "NSString"]
+- !private ["6ObjJKH2DBC", "NSURL"]
+- !private ["6ObjJKH2DBC", "Saldo"]
+- !private ["6ObjJKH2DBC", "Server"]
+- ["6ObjJKH2DBC", "String"]
+- !private ["6ObjJKH2DBC", "URL"]
+- !private ["6ObjJKH2DBC", "URLRequest"]
+- !private ["6ObjJKH2DBC", "URLSession"]
+- !private ["6ObjJKH2DBC", "UserDefaults"]
+- ["6ObjJKH2DBC", "XMLParser"]
+- ["6ObjJKH2DBC", "add_data_saldo"]
+- ["6ObjJKH2DBC", "currMonth"]
+- ["6ObjJKH2DBC", "currYear"]
+- ["6ObjJKH2DBC", "deinit"]
+- ["6ObjJKH2DBC", "del_db"]
+- ["6ObjJKH2DBC", "getDataByEnter"]
+- ["6ObjJKH2DBC", "init"]
+- ["6ObjJKH2DBC", "login"]
+- ["6ObjJKH2DBC", "parse_Countrers"]
+- ["6ObjJKH2DBC", "parse_OSV"]
+- ["6ObjJKH2DBC", "parser"]
+- ["6ObjJKH2DBC", "parserDidEndDocument"]
+- ["6ObjJKH2DBC", "parserDidStartDocument"]
+- !private ["6ObjJKH2DBC", "print"]
+- ["6ObjJKH2DBC", "save_month_year"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "addingPercentEncoding"]
+- !private ["s9DecodableP", "component"]
+- ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "subscript"]
+- !private ["s10DictionaryV", "subscript"]
+- !private ["Sd", "init"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "addingPercentEncoding"]
+- !private ["s9EncodableP", "component"]
+- ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "subscript"]
+- !private ["s9EquatableP", "CoreDataManager"]
+- !private ["s9EquatableP", "Counters"]
+- !private ["s9EquatableP", "Double"]
+- !private ["s9EquatableP", "Int"]
+- !private ["s9EquatableP", "JSONSerialization"]
+- !private ["s9EquatableP", "NSCalendar"]
+- !private ["s9EquatableP", "NSCharacterSet"]
+- !private ["s9EquatableP", "NSDate"]
+- !private ["s9EquatableP", "NSFetchRequest"]
+- !private ["s9EquatableP", "NSMutableURLRequest"]
+- !private ["s9EquatableP", "NSPredicate"]
+- !private ["s9EquatableP", "NSURL"]
+- !private ["s9EquatableP", "Saldo"]
+- !private ["s9EquatableP", "Server"]
+- !private ["s9EquatableP", "String"]
+- !private ["s9EquatableP", "URLSession"]
+- !private ["s9EquatableP", "UserDefaults"]
+- ["s9EquatableP", "XMLParser"]
+- ["s9EquatableP", ""]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "add_data_saldo"]
+- !private ["s9EquatableP", "addingPercentEncoding"]
+- !private ["s9EquatableP", "allowFragments"]
+- !private ["s9EquatableP", "component"]
+- !private ["s9EquatableP", "count_ed_izm"]
+- !private ["s9EquatableP", "count_name"]
+- !private ["s9EquatableP", "currMonth"]
+- !private ["s9EquatableP", "currYear"]
+- !private ["s9EquatableP", "current"]
+- !private ["s9EquatableP", "dataTask"]
+- !private ["s9EquatableP", "del_db"]
+- !private ["s9EquatableP", "delegate"]
+- !private ["s9EquatableP", "delete"]
+- !private ["s9EquatableP", "diff"]
+- !private ["s9EquatableP", "end"]
+- !private ["s9EquatableP", "fetch"]
+- !private ["s9EquatableP", "floatValue"]
+- !private ["s9EquatableP", "httpMethod"]
+- !private ["s9EquatableP", "id"]
+- ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "jsonObject"]
+- !private ["s9EquatableP", "minus"]
+- !private ["s9EquatableP", "month"]
+- !private ["s9EquatableP", "num_month"]
+- !private ["s9EquatableP", "owner"]
+- !private ["s9EquatableP", "parse"]
+- !private ["s9EquatableP", "parse_Countrers"]
+- !private ["s9EquatableP", "parse_OSV"]
+- ["s9EquatableP", "parser"]
+- ["s9EquatableP", "parserDidEndDocument"]
+- ["s9EquatableP", "parserDidStartDocument"]
+- !private ["s9EquatableP", "plus"]
+- !private ["s9EquatableP", "predicate"]
+- !private ["s9EquatableP", "prev_value"]
+- !private ["s9EquatableP", "print"]
+- !private ["s9EquatableP", "resume"]
+- !private ["s9EquatableP", "save_month_year"]
+- !private ["s9EquatableP", "setValue"]
+- !private ["s9EquatableP", "shared"]
+- !private ["s9EquatableP", "standard"]
+- !private ["s9EquatableP", "start"]
+- !private ["s9EquatableP", "subscript"]
+- !private ["s9EquatableP", "synchronize"]
+- !private ["s9EquatableP", "uniq_num"]
+- !private ["s9EquatableP", "urlPathAllowed"]
+- !private ["s9EquatableP", "usluga"]
+- !private ["s9EquatableP", "value"]
+- !private ["s9EquatableP", "year"]
+- !private ["s25ExpressibleByArrayLiteralP", "allowFragments"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "addingPercentEncoding"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "floatValue"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s25ExpressibleByFloatLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "addingPercentEncoding"]
+- !private ["s26ExpressibleByStringLiteralP", "floatValue"]
+- ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "addingPercentEncoding"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "floatValue"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s17FixedWidthIntegerP", "init"]
+- !private ["s13FloatingPointP", "init"]
+- !private ["s8HashableP", "CoreDataManager"]
+- !private ["s8HashableP", "Counters"]
+- !private ["s8HashableP", "Double"]
+- !private ["s8HashableP", "Int"]
+- !private ["s8HashableP", "JSONSerialization"]
+- !private ["s8HashableP", "NSCalendar"]
+- !private ["s8HashableP", "NSCharacterSet"]
+- !private ["s8HashableP", "NSDate"]
+- !private ["s8HashableP", "NSFetchRequest"]
+- !private ["s8HashableP", "NSMutableURLRequest"]
+- !private ["s8HashableP", "NSPredicate"]
+- !private ["s8HashableP", "NSURL"]
+- !private ["s8HashableP", "Saldo"]
+- !private ["s8HashableP", "Server"]
+- !private ["s8HashableP", "String"]
+- !private ["s8HashableP", "URLSession"]
+- !private ["s8HashableP", "UserDefaults"]
+- ["s8HashableP", "XMLParser"]
+- ["s8HashableP", ""]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "add_data_saldo"]
+- !private ["s8HashableP", "addingPercentEncoding"]
+- !private ["s8HashableP", "component"]
+- !private ["s8HashableP", "count_ed_izm"]
+- !private ["s8HashableP", "count_name"]
+- !private ["s8HashableP", "currMonth"]
+- !private ["s8HashableP", "currYear"]
+- !private ["s8HashableP", "current"]
+- !private ["s8HashableP", "dataTask"]
+- !private ["s8HashableP", "del_db"]
+- !private ["s8HashableP", "delegate"]
+- !private ["s8HashableP", "delete"]
+- !private ["s8HashableP", "diff"]
+- !private ["s8HashableP", "end"]
+- !private ["s8HashableP", "fetch"]
+- !private ["s8HashableP", "floatValue"]
+- !private ["s8HashableP", "httpMethod"]
+- !private ["s8HashableP", "id"]
+- ["s8HashableP", "init"]
+- !private ["s8HashableP", "jsonObject"]
+- !private ["s8HashableP", "minus"]
+- !private ["s8HashableP", "month"]
+- !private ["s8HashableP", "num_month"]
+- !private ["s8HashableP", "owner"]
+- !private ["s8HashableP", "parse"]
+- !private ["s8HashableP", "parse_Countrers"]
+- !private ["s8HashableP", "parse_OSV"]
+- ["s8HashableP", "parser"]
+- ["s8HashableP", "parserDidEndDocument"]
+- ["s8HashableP", "parserDidStartDocument"]
+- !private ["s8HashableP", "plus"]
+- !private ["s8HashableP", "predicate"]
+- !private ["s8HashableP", "prev_value"]
+- !private ["s8HashableP", "print"]
+- !private ["s8HashableP", "resume"]
+- !private ["s8HashableP", "save_month_year"]
+- !private ["s8HashableP", "setValue"]
+- !private ["s8HashableP", "shared"]
+- !private ["s8HashableP", "standard"]
+- !private ["s8HashableP", "start"]
+- !private ["s8HashableP", "synchronize"]
+- !private ["s8HashableP", "uniq_num"]
+- !private ["s8HashableP", "urlPathAllowed"]
+- !private ["s8HashableP", "usluga"]
+- !private ["s8HashableP", "value"]
+- !private ["s8HashableP", "year"]
+- !private ["Si", "init"]
+- !private ["So17JSONSerializationC", "jsonObject"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "addingPercentEncoding"]
+- ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "addingPercentEncoding"]
+- ["s10MirrorPathP", "init"]
+- !private ["So10NSCalendarC", "current"]
+- !private ["So14NSCharacterSetC", "urlPathAllowed"]
+- !private ["So8NSCodingP", "addingPercentEncoding"]
+- !private ["So8NSCodingP", "current"]
+- !private ["So8NSCodingP", "delete"]
+- !private ["So8NSCodingP", "fetch"]
+- !private ["So8NSCodingP", "floatValue"]
+- !private ["So8NSCodingP", "httpMethod"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "predicate"]
+- !private ["So8NSCodingP", "urlPathAllowed"]
+- !private ["So9NSCopyingP", "addingPercentEncoding"]
+- !private ["So9NSCopyingP", "current"]
+- !private ["So9NSCopyingP", "floatValue"]
+- !private ["So9NSCopyingP", "httpMethod"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "predicate"]
+- !private ["So9NSCopyingP", "resume"]
+- !private ["So9NSCopyingP", "urlPathAllowed"]
+- !private ["So6NSDateC", "init"]
+- !private ["So14NSFetchRequestC", "init"]
+- !private ["So14NSFetchRequestC", "predicate"]
+- !private ["So20NSFetchRequestResultP", "count_ed_izm"]
+- !private ["So20NSFetchRequestResultP", "count_name"]
+- !private ["So20NSFetchRequestResultP", "diff"]
+- !private ["So20NSFetchRequestResultP", "end"]
+- !private ["So20NSFetchRequestResultP", "id"]
+- !private ["So20NSFetchRequestResultP", "init"]
+- !private ["So20NSFetchRequestResultP", "minus"]
+- !private ["So20NSFetchRequestResultP", "num_month"]
+- !private ["So20NSFetchRequestResultP", "owner"]
+- !private ["So20NSFetchRequestResultP", "plus"]
+- !private ["So20NSFetchRequestResultP", "prev_value"]
+- !private ["So20NSFetchRequestResultP", "start"]
+- !private ["So20NSFetchRequestResultP", "uniq_num"]
+- !private ["So20NSFetchRequestResultP", "usluga"]
+- !private ["So20NSFetchRequestResultP", "value"]
+- !private ["So20NSFetchRequestResultP", "year"]
+- !private ["So21NSItemProviderReadingP", "addingPercentEncoding"]
+- !private ["So21NSItemProviderReadingP", "floatValue"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "addingPercentEncoding"]
+- !private ["So21NSItemProviderWritingP", "floatValue"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So9NSLockingP", "delete"]
+- !private ["So9NSLockingP", "fetch"]
+- !private ["So15NSManagedObjectC", "count_ed_izm"]
+- !private ["So15NSManagedObjectC", "count_name"]
+- !private ["So15NSManagedObjectC", "diff"]
+- !private ["So15NSManagedObjectC", "end"]
+- !private ["So15NSManagedObjectC", "id"]
+- !private ["So15NSManagedObjectC", "init"]
+- !private ["So15NSManagedObjectC", "minus"]
+- !private ["So15NSManagedObjectC", "num_month"]
+- !private ["So15NSManagedObjectC", "owner"]
+- !private ["So15NSManagedObjectC", "plus"]
+- !private ["So15NSManagedObjectC", "prev_value"]
+- !private ["So15NSManagedObjectC", "start"]
+- !private ["So15NSManagedObjectC", "uniq_num"]
+- !private ["So15NSManagedObjectC", "usluga"]
+- !private ["So15NSManagedObjectC", "value"]
+- !private ["So15NSManagedObjectC", "year"]
+- !private ["So22NSManagedObjectContextC", "delete"]
+- !private ["So22NSManagedObjectContextC", "fetch"]
+- !private ["So16NSMutableCopyingP", "addingPercentEncoding"]
+- !private ["So16NSMutableCopyingP", "floatValue"]
+- !private ["So16NSMutableCopyingP", "httpMethod"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSMutableCopyingP", "urlPathAllowed"]
+- !private ["So19NSMutableURLRequestC", "httpMethod"]
+- !private ["So19NSMutableURLRequestC", "init"]
+- !private ["So8NSObjectC", "AnyObject"]
+- !private ["So8NSObjectC", "Bool"]
+- !private ["So8NSObjectC", "CoreDataManager"]
+- !private ["So8NSObjectC", "Counters"]
+- !private ["So8NSObjectC", "Date"]
+- !private ["So8NSObjectC", "Double"]
+- !private ["So8NSObjectC", "Int"]
+- !private ["So8NSObjectC", "JSONSerialization"]
+- !private ["So8NSObjectC", "NSCalendar"]
+- !private ["So8NSObjectC", "NSCharacterSet"]
+- !private ["So8NSObjectC", "NSDate"]
+- !private ["So8NSObjectC", "NSError"]
+- !private ["So8NSObjectC", "NSFetchRequest"]
+- !private ["So8NSObjectC", "NSFetchRequestResult"]
+- !private ["So8NSObjectC", "NSManagedObject"]
+- !private ["So8NSObjectC", "NSMutableURLRequest"]
+- !private ["So8NSObjectC", "NSNumber"]
+- !private ["So8NSObjectC", "NSPredicate"]
+- !private ["So8NSObjectC", "NSString"]
+- !private ["So8NSObjectC", "NSURL"]
+- !private ["So8NSObjectC", "Saldo"]
+- !private ["So8NSObjectC", "Server"]
+- ["So8NSObjectC", "String"]
+- !private ["So8NSObjectC", "URL"]
+- !private ["So8NSObjectC", "URLRequest"]
+- !private ["So8NSObjectC", "URLSession"]
+- !private ["So8NSObjectC", "UserDefaults"]
+- ["So8NSObjectC", "XMLParser"]
+- ["So8NSObjectC", ""]
+- ["So8NSObjectC", "add_data_saldo"]
+- !private ["So8NSObjectC", "addingPercentEncoding"]
+- !private ["So8NSObjectC", "count_ed_izm"]
+- !private ["So8NSObjectC", "count_name"]
+- ["So8NSObjectC", "currMonth"]
+- ["So8NSObjectC", "currYear"]
+- !private ["So8NSObjectC", "current"]
+- !private ["So8NSObjectC", "dataTask"]
+- ["So8NSObjectC", "del_db"]
+- !private ["So8NSObjectC", "delegate"]
+- !private ["So8NSObjectC", "delete"]
+- !private ["So8NSObjectC", "diff"]
+- !private ["So8NSObjectC", "end"]
+- !private ["So8NSObjectC", "fetch"]
+- !private ["So8NSObjectC", "floatValue"]
+- ["So8NSObjectC", "getDataByEnter"]
+- !private ["So8NSObjectC", "httpMethod"]
+- !private ["So8NSObjectC", "id"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "jsonObject"]
+- ["So8NSObjectC", "login"]
+- !private ["So8NSObjectC", "minus"]
+- !private ["So8NSObjectC", "num_month"]
+- !private ["So8NSObjectC", "owner"]
+- !private ["So8NSObjectC", "parse"]
+- ["So8NSObjectC", "parse_Countrers"]
+- ["So8NSObjectC", "parse_OSV"]
+- ["So8NSObjectC", "parser"]
+- ["So8NSObjectC", "parserDidEndDocument"]
+- ["So8NSObjectC", "parserDidStartDocument"]
+- !private ["So8NSObjectC", "plus"]
+- !private ["So8NSObjectC", "predicate"]
+- !private ["So8NSObjectC", "prev_value"]
+- !private ["So8NSObjectC", "print"]
+- !private ["So8NSObjectC", "resume"]
+- ["So8NSObjectC", "save_month_year"]
+- !private ["So8NSObjectC", "setValue"]
+- !private ["So8NSObjectC", "shared"]
+- !private ["So8NSObjectC", "standard"]
+- !private ["So8NSObjectC", "start"]
+- !private ["So8NSObjectC", "synchronize"]
+- !private ["So8NSObjectC", "uniq_num"]
+- !private ["So8NSObjectC", "urlPathAllowed"]
+- !private ["So8NSObjectC", "usluga"]
+- !private ["So8NSObjectC", "value"]
+- !private ["So8NSObjectC", "year"]
+- !private ["So16NSObjectProtocolP", "CoreDataManager"]
+- !private ["So16NSObjectProtocolP", "Counters"]
+- !private ["So16NSObjectProtocolP", "Double"]
+- !private ["So16NSObjectProtocolP", "Int"]
+- !private ["So16NSObjectProtocolP", "JSONSerialization"]
+- !private ["So16NSObjectProtocolP", "NSCalendar"]
+- !private ["So16NSObjectProtocolP", "NSCharacterSet"]
+- !private ["So16NSObjectProtocolP", "NSDate"]
+- !private ["So16NSObjectProtocolP", "NSFetchRequest"]
+- !private ["So16NSObjectProtocolP", "NSMutableURLRequest"]
+- !private ["So16NSObjectProtocolP", "NSPredicate"]
+- !private ["So16NSObjectProtocolP", "NSURL"]
+- !private ["So16NSObjectProtocolP", "Saldo"]
+- !private ["So16NSObjectProtocolP", "Server"]
+- !private ["So16NSObjectProtocolP", "String"]
+- !private ["So16NSObjectProtocolP", "URLSession"]
+- !private ["So16NSObjectProtocolP", "UserDefaults"]
+- ["So16NSObjectProtocolP", "XMLParser"]
+- ["So16NSObjectProtocolP", ""]
+- !private ["So16NSObjectProtocolP", "add_data_saldo"]
+- !private ["So16NSObjectProtocolP", "addingPercentEncoding"]
+- !private ["So16NSObjectProtocolP", "count_ed_izm"]
+- !private ["So16NSObjectProtocolP", "count_name"]
+- !private ["So16NSObjectProtocolP", "currMonth"]
+- !private ["So16NSObjectProtocolP", "currYear"]
+- !private ["So16NSObjectProtocolP", "current"]
+- !private ["So16NSObjectProtocolP", "dataTask"]
+- !private ["So16NSObjectProtocolP", "del_db"]
+- !private ["So16NSObjectProtocolP", "delegate"]
+- !private ["So16NSObjectProtocolP", "delete"]
+- !private ["So16NSObjectProtocolP", "diff"]
+- !private ["So16NSObjectProtocolP", "end"]
+- !private ["So16NSObjectProtocolP", "fetch"]
+- !private ["So16NSObjectProtocolP", "floatValue"]
+- !private ["So16NSObjectProtocolP", "httpMethod"]
+- !private ["So16NSObjectProtocolP", "id"]
+- ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "jsonObject"]
+- !private ["So16NSObjectProtocolP", "minus"]
+- !private ["So16NSObjectProtocolP", "num_month"]
+- !private ["So16NSObjectProtocolP", "owner"]
+- !private ["So16NSObjectProtocolP", "parse"]
+- !private ["So16NSObjectProtocolP", "parse_Countrers"]
+- !private ["So16NSObjectProtocolP", "parse_OSV"]
+- ["So16NSObjectProtocolP", "parser"]
+- ["So16NSObjectProtocolP", "parserDidEndDocument"]
+- ["So16NSObjectProtocolP", "parserDidStartDocument"]
+- !private ["So16NSObjectProtocolP", "plus"]
+- !private ["So16NSObjectProtocolP", "predicate"]
+- !private ["So16NSObjectProtocolP", "prev_value"]
+- !private ["So16NSObjectProtocolP", "print"]
+- !private ["So16NSObjectProtocolP", "resume"]
+- !private ["So16NSObjectProtocolP", "save_month_year"]
+- !private ["So16NSObjectProtocolP", "setValue"]
+- !private ["So16NSObjectProtocolP", "shared"]
+- !private ["So16NSObjectProtocolP", "standard"]
+- !private ["So16NSObjectProtocolP", "start"]
+- !private ["So16NSObjectProtocolP", "synchronize"]
+- !private ["So16NSObjectProtocolP", "uniq_num"]
+- !private ["So16NSObjectProtocolP", "urlPathAllowed"]
+- !private ["So16NSObjectProtocolP", "usluga"]
+- !private ["So16NSObjectProtocolP", "value"]
+- !private ["So16NSObjectProtocolP", "year"]
+- !private ["So24NSPersistentStoreRequestC", "predicate"]
+- !private ["So11NSPredicateC", "init"]
+- !private ["So14NSSecureCodingP", "addingPercentEncoding"]
+- !private ["So14NSSecureCodingP", "current"]
+- !private ["So14NSSecureCodingP", "floatValue"]
+- !private ["So14NSSecureCodingP", "httpMethod"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So14NSSecureCodingP", "urlPathAllowed"]
+- !private ["So8NSStringC", "addingPercentEncoding"]
+- !private ["So8NSStringC", "floatValue"]
+- !private ["So5NSURLC", "init"]
+- !private ["So12NSURLRequestC", "httpMethod"]
+- !private ["So12NSURLRequestC", "init"]
+- !private ["s7NumericP", "init"]
+- !private ["s9OptionSetP", "allowFragments"]
+- !private ["So17ProgressReportingP", "resume"]
+- !private ["s26RangeReplaceableCollectionP", "addingPercentEncoding"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s16RawRepresentableP", "allowFragments"]
+- !private ["So17JSONSerializationC14ReadingOptionsV", "allowFragments"]
+- !private ["10Foundation20ReferenceConvertibleP", "component"]
+- !private ["6ObjJKH5SaldoC", "end"]
+- !private ["6ObjJKH5SaldoC", "id"]
+- !private ["6ObjJKH5SaldoC", "init"]
+- !private ["6ObjJKH5SaldoC", "minus"]
+- !private ["6ObjJKH5SaldoC", "num_month"]
+- !private ["6ObjJKH5SaldoC", "plus"]
+- !private ["6ObjJKH5SaldoC", "start"]
+- !private ["6ObjJKH5SaldoC", "usluga"]
+- !private ["6ObjJKH5SaldoC", "year"]
+- !private ["s8SequenceP", "addingPercentEncoding"]
+- ["s8SequenceP", "init"]
+- !private ["s8SequenceP", "subscript"]
+- !private ["6ObjJKH6ServerC", "GET_BILLS_SERVICES"]
+- !private ["6ObjJKH6ServerC", "GET_METERS"]
+- !private ["6ObjJKH6ServerC", "SERVER"]
+- !private ["s10SetAlgebraP", "allowFragments"]
+- !private ["s13SignedIntegerP", "init"]
+- !private ["s13SignedNumericP", "init"]
+- !private ["s10StrideableP", "init"]
+- !private ["SS", "addingPercentEncoding"]
+- ["SS", "init"]
+- !private ["s14StringProtocolP", "addingPercentEncoding"]
+- ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "addingPercentEncoding"]
+- ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "addingPercentEncoding"]
+- ["s20TextOutputStreamableP", "init"]
+- !private ["9Alamofire14URLConvertibleP", "addingPercentEncoding"]
+- ["9Alamofire14URLConvertibleP", "init"]
+- !private ["So10URLSessionC", "dataTask"]
+- !private ["So10URLSessionC", "shared"]
+- !private ["So18URLSessionDataTaskC", "resume"]
+- !private ["So14URLSessionTaskC", "resume"]
+- !private ["So12UserDefaultsC", "setValue"]
+- !private ["So12UserDefaultsC", "standard"]
+- !private ["So12UserDefaultsC", "synchronize"]
+- !private ["So9XMLParserC", "delegate"]
+- ["So9XMLParserC", "init"]
+- !private ["So9XMLParserC", "parse"]
+- !private ["So17XMLParserDelegateP", "CoreDataManager"]
+- !private ["So17XMLParserDelegateP", "Counters"]
+- !private ["So17XMLParserDelegateP", "Double"]
+- !private ["So17XMLParserDelegateP", "Int"]
+- !private ["So17XMLParserDelegateP", "JSONSerialization"]
+- !private ["So17XMLParserDelegateP", "NSCalendar"]
+- !private ["So17XMLParserDelegateP", "NSCharacterSet"]
+- !private ["So17XMLParserDelegateP", "NSDate"]
+- !private ["So17XMLParserDelegateP", "NSFetchRequest"]
+- !private ["So17XMLParserDelegateP", "NSMutableURLRequest"]
+- !private ["So17XMLParserDelegateP", "NSPredicate"]
+- !private ["So17XMLParserDelegateP", "NSURL"]
+- !private ["So17XMLParserDelegateP", "Saldo"]
+- !private ["So17XMLParserDelegateP", "Server"]
+- !private ["So17XMLParserDelegateP", "String"]
+- !private ["So17XMLParserDelegateP", "URLSession"]
+- !private ["So17XMLParserDelegateP", "UserDefaults"]
+- ["So17XMLParserDelegateP", "XMLParser"]
+- ["So17XMLParserDelegateP", ""]
+- !private ["So17XMLParserDelegateP", "add_data_saldo"]
+- !private ["So17XMLParserDelegateP", "currMonth"]
+- !private ["So17XMLParserDelegateP", "currYear"]
+- !private ["So17XMLParserDelegateP", "del_db"]
+- !private ["So17XMLParserDelegateP", "parse_Countrers"]
+- !private ["So17XMLParserDelegateP", "parse_OSV"]
+- ["So17XMLParserDelegateP", "parser"]
+- ["So17XMLParserDelegateP", "parserDidEndDocument"]
+- ["So17XMLParserDelegateP", "parserDidStartDocument"]
+- !private ["So17XMLParserDelegateP", "print"]
+- !private ["So17XMLParserDelegateP", "save_month_year"]
+- !private ["s18_BitwiseOperationsP", "init"]
+- !private ["s15_CVarArgAlignedP", "init"]
+- !private ["s22_CVarArgPassedAsDoubleP", "init"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "addingPercentEncoding"]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s33_ExpressibleByBuiltinFloatLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "addingPercentEncoding"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "addingPercentEncoding"]
+- ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "addingPercentEncoding"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "addingPercentEncoding"]
+- ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "addingPercentEncoding"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "current"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "floatValue"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "httpMethod"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "urlPathAllowed"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CoreDataManager"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Counters"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Double"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Int"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "JSONSerialization"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSCalendar"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSCharacterSet"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSDate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSFetchRequest"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSMutableURLRequest"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSPredicate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSURL"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Saldo"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Server"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "String"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "URLSession"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UserDefaults"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "XMLParser"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "add_data_saldo"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "addingPercentEncoding"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "count_ed_izm"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "count_name"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "currMonth"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "currYear"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "current"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dataTask"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "del_db"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "delegate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "delete"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "diff"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "end"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "fetch"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "floatValue"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "httpMethod"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "id"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "jsonObject"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "minus"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "num_month"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "owner"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "parse"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "parse_Countrers"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "parse_OSV"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "parser"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "parserDidEndDocument"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "parserDidStartDocument"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "plus"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "predicate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "prev_value"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "resume"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "save_month_year"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "setValue"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "shared"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "standard"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "start"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "synchronize"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "uniq_num"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "urlPathAllowed"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "usluga"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "value"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "year"]
+- !private ["10Foundation14_MutableBoxingP", "component"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "addingPercentEncoding"]
+- !private ["s21_ObjectiveCBridgeableP", "component"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["s16_SwiftStringViewP", "addingPercentEncoding"]
+- ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- "s23BidirectionalCollectionP"
+- !private "s19BinaryFloatingPointP"
+- !private "s13BinaryIntegerP"
+- !private "Sb"
+- "s7CVarArgP"
+- !private "10Foundation8CalendarV"
+- "s10CollectionP"
+- "s10ComparableP"
+- !private "10Foundation8CalendarV9ComponentO"
+- !private "6ObjJKH15CoreDataManagerC"
+- !private "6ObjJKH8CountersC"
+- "s28CustomDebugStringConvertibleP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "6ObjJKH2DBC"
+- "s9DecodableP"
+- !private "s10DictionaryV"
+- !private "Sd"
+- "s9EncodableP"
+- "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s25ExpressibleByFloatLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s17FixedWidthIntegerP"
+- !private "s13FloatingPointP"
+- "s8HashableP"
+- !private "Si"
+- !private "So17JSONSerializationC"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
+- !private "So10NSCalendarC"
+- !private "So14NSCharacterSetC"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So6NSDateC"
+- !private "So14NSFetchRequestC"
+- !private "So20NSFetchRequestResultP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So9NSLockingP"
+- !private "So15NSManagedObjectC"
+- !private "So22NSManagedObjectContextC"
+- !private "So16NSMutableCopyingP"
+- !private "So19NSMutableURLRequestC"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- !private "So24NSPersistentStoreRequestC"
+- !private "So11NSPredicateC"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "So5NSURLC"
+- !private "So12NSURLRequestC"
+- !private "s7NumericP"
+- !private "s9OptionSetP"
+- !private "So17ProgressReportingP"
+- "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- !private "So17JSONSerializationC14ReadingOptionsV"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "6ObjJKH5SaldoC"
+- "s8SequenceP"
+- !private "6ObjJKH6ServerC"
+- !private "s10SetAlgebraP"
+- !private "s13SignedIntegerP"
+- !private "s13SignedNumericP"
+- !private "s10StrideableP"
+- "SS"
+- "s14StringProtocolP"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- "9Alamofire14URLConvertibleP"
+- !private "So10URLSessionC"
+- !private "So18URLSessionDataTaskC"
+- !private "So14URLSessionTaskC"
+- !private "So12UserDefaultsC"
+- "So9XMLParserC"
+- "So17XMLParserDelegateP"
+- !private "s18_BitwiseOperationsP"
+- !private "s15_CVarArgAlignedP"
+- !private "s22_CVarArgPassedAsDoubleP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s33_ExpressibleByBuiltinFloatLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "10Foundation14_MutableBoxingP"
+- "s21_ObjectiveCBridgeableP"
+- "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+- !private "count"
+- !private "object"
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.apinotesc"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Modules/Alamofire.swiftmodule/arm64.swiftmodule"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Gloss/Gloss.framework/Modules/Gloss.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Headers/FIRInstanceID.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Headers/FirebaseInstanceID.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Headers/Alamofire-umbrella.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore-umbrella.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseMessaging/FirebaseMessaging.framework/Headers/FirebaseMessaging-umbrella.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Gloss/Gloss.framework/Headers/Gloss-umbrella.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/Firebase/CoreOnly/Sources/Firebase.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRAnalytics+AppDelegate.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseMessaging/FirebaseMessaging.framework/Headers/FIRMessaging.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseMessaging/FirebaseMessaging.framework/Headers/FirebaseMessaging.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIRLoggerLevel.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIRConfiguration.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIRAnalyticsConfiguration.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIRApp.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRAnalytics.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FirebaseAnalytics.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRParameterNames.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIREventNames.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRUserPropertyNames.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIROptions.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Gloss/Gloss.framework/Headers/Gloss-Swift.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/Firebase/CoreOnly/Sources/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseMessaging/FirebaseMessaging.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Gloss/Gloss.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "0a978e86f43e65fe7ee6f6a120fc9b7e"

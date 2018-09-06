@@ -1,0 +1,518 @@
+BCSymbolMap Version: 2.0
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/Target Support Files/GoogleUtilities/GoogleUtilities-dummy.m
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods
+-[GULZeroingWeakContainer object]
+-[GULZeroingWeakContainer setObject:]
+-[GULZeroingWeakContainer .cxx_destruct]
++[GULAppDelegateObserver sharedInstance]
+___40+[GULAppDelegateObserver sharedInstance]_block_invoke
+-[GULAppDelegateObserver observeUIApplication]
+-[GULAppDelegateObserver observeValueForKeyPath:ofObject:change:context:]
++[GULAppDelegateSwizzler isAppDelegateProxyEnabled]
++[GULAppDelegateSwizzler registerAppDelegateInterceptor:]
++[GULAppDelegateSwizzler unregisterAppDelegateInterceptorWithID:]
++[GULAppDelegateSwizzler proxyOriginalDelegate]
+___47+[GULAppDelegateSwizzler proxyOriginalDelegate]_block_invoke
++[GULAppDelegateSwizzler sharedApplication]
++[GULAppDelegateSwizzler createSubclassWithObject:]
++[GULAppDelegateSwizzler interceptors]
+___38+[GULAppDelegateSwizzler interceptors]_block_invoke
++[GULAppDelegateSwizzler addInstanceMethodWithSelector:fromClass:toClass:]
++[GULAppDelegateSwizzler addInstanceMethodWithDestinationSelector:withImplementationFromSourceSelector:fromClass:toClass:]
++[GULAppDelegateSwizzler implementationOfMethodSelector:fromClass:]
++[GULAppDelegateSwizzler notifyInterceptorsWithMethodSelector:callback:]
+___72+[GULAppDelegateSwizzler notifyInterceptorsWithMethodSelector:callback:]_block_invoke
+___copy_helper_block_
+___destroy_helper_block_
+-[GULAppDelegateSwizzler fakeDescription]
+-[GULAppDelegateSwizzler application:openURL:options:]
+___54-[GULAppDelegateSwizzler application:openURL:options:]_block_invoke
+___copy_helper_block_.291
+___destroy_helper_block_.292
+-[GULAppDelegateSwizzler application:openURL:sourceApplication:annotation:]
+___75-[GULAppDelegateSwizzler application:openURL:sourceApplication:annotation:]_block_invoke
+___copy_helper_block_.297
+___destroy_helper_block_.298
+-[GULAppDelegateSwizzler application:handleEventsForBackgroundURLSession:completionHandler:]
+___92-[GULAppDelegateSwizzler application:handleEventsForBackgroundURLSession:completionHandler:]_block_invoke
+___copy_helper_block_.300
+___destroy_helper_block_.301
+-[GULAppDelegateSwizzler application:continueUserActivity:restorationHandler:]
+___78-[GULAppDelegateSwizzler application:continueUserActivity:restorationHandler:]_block_invoke
+___copy_helper_block_.303
+___destroy_helper_block_.304
++[GULAppDelegateSwizzler proxyAppDelegate:]
++[GULAppDelegateSwizzler correctAppDelegateProxyKey]
++[GULAppDelegateSwizzler correctAlternativeWhenAppDelegateProxyNotCreated]
+_OBJC_IVAR_$_GULZeroingWeakContainer._object
+_sharedInstance.instance
+_sharedInstance.once
+___block_descriptor_tmp
+___block_literal_global
+_OBJC_IVAR_$_GULAppDelegateObserver._isObserving
+_gOriginalAppDelegate
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_UIApplicationDelegate
+l_OBJC_LABEL_PROTOCOL_$_UIApplicationDelegate
+l_OBJC_PROTOCOL_REFERENCE_$_UIApplicationDelegate
+_sProxyAppDelegateOnceToken
+___block_descriptor_tmp.219
+___block_literal_global.220
+_kGULContinueUserActivityIMPKey
+_kGULHandleBackgroundSessionIMPKey
+_kGULOpenURLOptionsIMPKey
+_kGULOpenURLOptionsSourceAnnotationsIMPKey
+_kGULRealClassKey
+_interceptors.onceToken
+_interceptors.sInterceptors
+___block_descriptor_tmp.274
+___block_literal_global.275
+___block_descriptor_tmp.284
+___block_descriptor_tmp.294
+___block_descriptor_tmp.299
+___block_descriptor_tmp.302
+___block_descriptor_tmp.305
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/GULAppDelegateSwizzler.m
+__destroy_helper_block_
+__copy_helper_block_
+__78-[GULAppDelegateSwizzler application:continueUserActivity:restorationHandler:]_block_invoke
+__92-[GULAppDelegateSwizzler application:handleEventsForBackgroundURLSession:completionHandler:]_block_invoke
+__75-[GULAppDelegateSwizzler application:openURL:sourceApplication:annotation:]_block_invoke
+__54-[GULAppDelegateSwizzler application:openURL:options:]_block_invoke
+__72+[GULAppDelegateSwizzler notifyInterceptorsWithMethodSelector:callback:]_block_invoke
+__38+[GULAppDelegateSwizzler interceptors]_block_invoke
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/usr/include/dispatch/once.h
+__47+[GULAppDelegateSwizzler proxyOriginalDelegate]_block_invoke
+__40+[GULAppDelegateObserver sharedInstance]_block_invoke
++[GULAppEnvironmentUtil isFromAppStore]
+___39+[GULAppEnvironmentUtil isFromAppStore]_block_invoke
++[GULAppEnvironmentUtil isAppStoreReceiptSandbox]
++[GULAppEnvironmentUtil isSimulator]
++[GULAppEnvironmentUtil deviceModel]
+___36+[GULAppEnvironmentUtil deviceModel]_block_invoke
++[GULAppEnvironmentUtil systemVersion]
++[GULAppEnvironmentUtil isAppExtension]
+_isFromAppStore.isEncryptedOnce
+_isFromAppStore.isEncrypted
+_deviceModel.once
+_deviceModel.deviceModel
+___block_descriptor_tmp.32
+___block_literal_global.33
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.m
+__36+[GULAppEnvironmentUtil deviceModel]_block_invoke
+__39+[GULAppEnvironmentUtil isFromAppStore]_block_invoke
+IsAppEncrypted
+HasEmbeddedMobileProvision
+HasSCInfoFolder
+___GULLoggerInitializeASL_block_invoke
+___GULSetLoggerLevel_block_invoke
+___GULLogBasic_block_invoke
++[GULLoggerWrapper logWithLevel:withService:withCode:withMessage:withArgs:]
+_sGULLoggerOnceToken
+_sGULLoggerClient
+_sGULLoggerMaximumLevel
+_sGULClientQueue
+_sGULLoggerDebugMode
+___block_descriptor_tmp.12
+_sVersion
+___block_descriptor_tmp.25
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Logger/GULLogger.m
+GULLogDebug
+GULLogInfo
+GULLogNotice
+GULLogWarning
+__GULLogBasic_block_invoke
+GULLogBasic
+GULLoggerInitializeASL
+GULLoggerRegisterVersion
+GULIsLoggableLevel
+__GULSetLoggerLevel_block_invoke
+GULLogError
+GULSetLoggerLevel
+GULLoggerForceDebug
+GULLoggerEnableSTDERR
+__GULLoggerInitializeASL_block_invoke
+-[GULMutableDictionary init]
+-[GULMutableDictionary description]
+___Block_byref_object_copy_
+___Block_byref_object_dispose_
+___35-[GULMutableDictionary description]_block_invoke
+-[GULMutableDictionary objectForKey:]
+___37-[GULMutableDictionary objectForKey:]_block_invoke
+___copy_helper_block_.8
+___destroy_helper_block_.9
+-[GULMutableDictionary setObject:forKey:]
+___41-[GULMutableDictionary setObject:forKey:]_block_invoke
+___copy_helper_block_.13
+___destroy_helper_block_.14
+-[GULMutableDictionary removeObjectForKey:]
+___43-[GULMutableDictionary removeObjectForKey:]_block_invoke
+___copy_helper_block_.18
+___destroy_helper_block_.19
+-[GULMutableDictionary removeAllObjects]
+___40-[GULMutableDictionary removeAllObjects]_block_invoke
+___copy_helper_block_.23
+___destroy_helper_block_.24
+-[GULMutableDictionary count]
+___29-[GULMutableDictionary count]_block_invoke
+___copy_helper_block_.28
+___destroy_helper_block_.29
+-[GULMutableDictionary objectForKeyedSubscript:]
+-[GULMutableDictionary setObject:forKeyedSubscript:]
+-[GULMutableDictionary dictionary]
+___34-[GULMutableDictionary dictionary]_block_invoke
+___copy_helper_block_.37
+___destroy_helper_block_.38
+-[GULMutableDictionary .cxx_destruct]
+_OBJC_IVAR_$_GULMutableDictionary._objects
+_OBJC_IVAR_$_GULMutableDictionary._queue
+___block_descriptor_tmp.10
+___block_descriptor_tmp.15
+___block_descriptor_tmp.20
+___block_descriptor_tmp.30
+___block_descriptor_tmp.39
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Network/GULMutableDictionary.m
+__34-[GULMutableDictionary dictionary]_block_invoke
+__29-[GULMutableDictionary count]_block_invoke
+__40-[GULMutableDictionary removeAllObjects]_block_invoke
+__43-[GULMutableDictionary removeObjectForKey:]_block_invoke
+__41-[GULMutableDictionary setObject:forKey:]_block_invoke
+__37-[GULMutableDictionary objectForKey:]_block_invoke
+__35-[GULMutableDictionary description]_block_invoke
+__Block_byref_object_dispose_
+__Block_byref_object_copy_
+-[GULNetwork init]
+-[GULNetwork initWithReachabilityHost:]
+-[GULNetwork dealloc]
++[GULNetwork handleEventsForBackgroundURLSessionID:completionHandler:]
+-[GULNetwork postURL:payload:queue:usingBackgroundSession:completionHandler:]
+___77-[GULNetwork postURL:payload:queue:usingBackgroundSession:completionHandler:]_block_invoke
+___77-[GULNetwork postURL:payload:queue:usingBackgroundSession:completionHandler:]_block_invoke_2
+___copy_helper_block_.63
+___destroy_helper_block_.64
+-[GULNetwork getURL:headers:queue:usingBackgroundSession:completionHandler:]
+___76-[GULNetwork getURL:headers:queue:usingBackgroundSession:completionHandler:]_block_invoke
+___76-[GULNetwork getURL:headers:queue:usingBackgroundSession:completionHandler:]_block_invoke_2
+___copy_helper_block_.77
+___destroy_helper_block_.78
+___copy_helper_block_.80
+___destroy_helper_block_.81
+-[GULNetwork hasUploadInProgress]
+-[GULNetwork reachability:statusChanged:]
+-[GULNetwork setLoggerDelegate:]
+-[GULNetwork handleErrorWithCode:queue:withHandler:]
+___52-[GULNetwork handleErrorWithCode:queue:withHandler:]_block_invoke
+___copy_helper_block_.119
+___destroy_helper_block_.120
+-[GULNetwork GULNetwork_logWithLevel:messageCode:message:contexts:]
+-[GULNetwork GULNetwork_logWithLevel:messageCode:message:context:]
+-[GULNetwork GULNetwork_logWithLevel:messageCode:message:]
+-[GULNetwork isNetworkConnected]
+-[GULNetwork reachabilityDelegate]
+-[GULNetwork setReachabilityDelegate:]
+-[GULNetwork loggerDelegate]
+-[GULNetwork isDebugModeEnabled]
+-[GULNetwork setIsDebugModeEnabled:]
+-[GULNetwork timeoutInterval]
+-[GULNetwork setTimeoutInterval:]
+-[GULNetwork .cxx_destruct]
+___GULLogLevelDescriptionFromLogLevel_block_invoke
+_OBJC_IVAR_$_GULNetwork._reachability
+_OBJC_IVAR_$_GULNetwork._requests
+_OBJC_IVAR_$_GULNetwork._timeoutInterval
+___block_descriptor_tmp.66
+___block_descriptor_tmp.79
+___block_descriptor_tmp.82
+_OBJC_IVAR_$_GULNetwork._networkConnected
+_OBJC_IVAR_$_GULNetwork._reachabilityDelegate
+_OBJC_IVAR_$_GULNetwork._loggerDelegate
+___block_descriptor_tmp.121
+_OBJC_IVAR_$_GULNetwork._isDebugModeEnabled
+l_OBJC_PROTOCOL_$_GULReachabilityDelegate
+l_OBJC_LABEL_PROTOCOL_$_GULReachabilityDelegate
+l_OBJC_PROTOCOL_$_GULNetworkLoggerDelegate
+l_OBJC_LABEL_PROTOCOL_$_GULNetworkLoggerDelegate
+_GULLogLevelDescriptionFromLogLevel.levelNames
+_GULLogLevelDescriptionFromLogLevel.onceToken
+___block_descriptor_tmp.248
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Network/GULNetwork.m
+__GULLogLevelDescriptionFromLogLevel_block_invoke
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Network/Private/GULNetwork.h
+GULStringWithLogMessage
+GULLogLevelDescriptionFromLogLevel
+__52-[GULNetwork handleErrorWithCode:queue:withHandler:]_block_invoke
+__76-[GULNetwork getURL:headers:queue:usingBackgroundSession:completionHandler:]_block_invoke_2
+__76-[GULNetwork getURL:headers:queue:usingBackgroundSession:completionHandler:]_block_invoke
+__77-[GULNetwork postURL:payload:queue:usingBackgroundSession:completionHandler:]_block_invoke_2
+__77-[GULNetwork postURL:payload:queue:usingBackgroundSession:completionHandler:]_block_invoke
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Network/GULNetworkConstants.m
+-[GULNetworkURLSession initWithNetworkLoggerDelegate:]
++[GULNetworkURLSession handleEventsForBackgroundURLSessionID:completionHandler:]
+-[GULNetworkURLSession sessionIDFromAsyncPOSTRequest:completionHandler:]
+-[GULNetworkURLSession sessionIDFromAsyncGETRequest:completionHandler:]
+-[GULNetworkURLSession URLSession:downloadTask:didFinishDownloadingToURL:]
+-[GULNetworkURLSession URLSessionDidFinishEventsForBackgroundURLSession:]
+-[GULNetworkURLSession URLSession:task:didCompleteWithError:]
+-[GULNetworkURLSession URLSession:task:didReceiveChallenge:completionHandler:]
+___78-[GULNetworkURLSession URLSession:task:didReceiveChallenge:completionHandler:]_block_invoke
+___78-[GULNetworkURLSession URLSession:task:didReceiveChallenge:completionHandler:]_block_invoke.132
+___copy_helper_block_.141
+___destroy_helper_block_.142
+-[GULNetworkURLSession addSystemCompletionHandler:forSession:]
+-[GULNetworkURLSession callSystemCompletionHandler:]
+___52-[GULNetworkURLSession callSystemCompletionHandler:]_block_invoke
+___copy_helper_block_.163
+___destroy_helper_block_.164
+-[GULNetworkURLSession setSessionID:]
+-[GULNetworkURLSession backgroundSessionConfigWithSessionID:]
+-[GULNetworkURLSession maybeRemoveTempFilesAtURL:expiringTime:]
+-[GULNetworkURLSession removeTempItemAtURL:]
++[GULNetworkURLSession fetcherWithSessionIdentifier:]
++[GULNetworkURLSession sessionIDToFetcherMap]
+___45+[GULNetworkURLSession sessionIDToFetcherMap]_block_invoke
++[GULNetworkURLSession sessionIDToSystemCompletionHandlerDictionary]
+___68+[GULNetworkURLSession sessionIDToSystemCompletionHandlerDictionary]_block_invoke
+-[GULNetworkURLSession temporaryFilePathWithSessionID:]
+-[GULNetworkURLSession ensureTemporaryDirectoryExists]
+-[GULNetworkURLSession excludeFromBackupForURL:]
+-[GULNetworkURLSession URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:]
+-[GULNetworkURLSession callCompletionHandler:withResponse:data:error:]
+___70-[GULNetworkURLSession callCompletionHandler:withResponse:data:error:]_block_invoke
+___copy_helper_block_.233
+___destroy_helper_block_.234
+-[GULNetworkURLSession populateSessionConfig:withRequest:]
+-[GULNetworkURLSession isBackgroundNetworkEnabled]
+-[GULNetworkURLSession setBackgroundNetworkEnabled:]
+-[GULNetworkURLSession loggerDelegate]
+-[GULNetworkURLSession setLoggerDelegate:]
+-[GULNetworkURLSession .cxx_destruct]
+_OBJC_IVAR_$_GULNetworkURLSession._networkDirectoryURL
+_OBJC_IVAR_$_GULNetworkURLSession._sessionID
+_OBJC_IVAR_$_GULNetworkURLSession._loggerDelegate
+_OBJC_IVAR_$_GULNetworkURLSession._uploadingFileURL
+_OBJC_IVAR_$_GULNetworkURLSession._backgroundNetworkEnabled
+_OBJC_IVAR_$_GULNetworkURLSession._sessionConfig
+_OBJC_IVAR_$_GULNetworkURLSession._request
+_OBJC_IVAR_$_GULNetworkURLSession._completionHandler
+_OBJC_IVAR_$_GULNetworkURLSession._downloadedData
+___block_descriptor_tmp.144
+___block_descriptor_tmp.165
+_sessionIDToFetcherMap.sessionIDToFetcherMap
+_sessionIDToFetcherMap.sessionMapOnceToken
+___block_descriptor_tmp.200
+_sessionIDToSystemCompletionHandlerDictionary.systemCompletionHandlers
+_sessionIDToSystemCompletionHandlerDictionary.systemCompletionHandlerOnceToken
+___block_descriptor_tmp.204
+___block_literal_global.205
+___block_descriptor_tmp.235
+l_OBJC_PROTOCOL_$_NSURLSessionDelegate
+l_OBJC_LABEL_PROTOCOL_$_NSURLSessionDelegate
+l_OBJC_PROTOCOL_$_NSURLSessionTaskDelegate
+l_OBJC_LABEL_PROTOCOL_$_NSURLSessionTaskDelegate
+l_OBJC_PROTOCOL_$_NSURLSessionDownloadDelegate
+l_OBJC_LABEL_PROTOCOL_$_NSURLSessionDownloadDelegate
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Network/GULNetworkURLSession.m
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Network/Private/GULNetworkURLSession.h
+__70-[GULNetworkURLSession callCompletionHandler:withResponse:data:error:]_block_invoke
+__68+[GULNetworkURLSession sessionIDToSystemCompletionHandlerDictionary]_block_invoke
+__45+[GULNetworkURLSession sessionIDToFetcherMap]_block_invoke
+__52-[GULNetworkURLSession callSystemCompletionHandler:]_block_invoke
+__78-[GULNetworkURLSession URLSession:task:didReceiveChallenge:completionHandler:]_block_invoke.132
+__78-[GULNetworkURLSession URLSession:task:didReceiveChallenge:completionHandler:]_block_invoke
++[NSData(GULGzip) gul_dataByInflatingGzippedData:error:]
++[NSData(GULGzip) gul_dataByGzippingData:error:]
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/NSData+zlib/GULNSData+zlib.m
+-[GULReachabilityChecker reachabilityApi]
+-[GULReachabilityChecker setReachabilityApi:]
+-[GULReachabilityChecker isActive]
+-[GULReachabilityChecker setReachabilityDelegate:]
+-[GULReachabilityChecker initWithReachabilityDelegate:withHost:]
+-[GULReachabilityChecker dealloc]
+-[GULReachabilityChecker start]
+_ReachabilityCallback
+-[GULReachabilityChecker stop]
+-[GULReachabilityChecker statusForFlags:]
+-[GULReachabilityChecker reachabilityFlagsChanged:]
+-[GULReachabilityChecker reachability]
+-[GULReachabilityChecker setReachability:]
+-[GULReachabilityChecker reachabilityStatus]
+-[GULReachabilityChecker setReachabilityStatus:]
+-[GULReachabilityChecker host]
+-[GULReachabilityChecker setHost:]
+-[GULReachabilityChecker reachabilityDelegate]
+-[GULReachabilityChecker .cxx_destruct]
+_OBJC_IVAR_$_GULReachabilityChecker.reachabilityApi_
+_OBJC_IVAR_$_GULReachabilityChecker.reachability_
+l_OBJC_PROTOCOL_REFERENCE_$_GULReachabilityDelegate
+_OBJC_IVAR_$_GULReachabilityChecker.reachabilityDelegate_
+_kGULDefaultReachabilityApi
+_OBJC_IVAR_$_GULReachabilityChecker.reachabilityStatus_
+_OBJC_IVAR_$_GULReachabilityChecker.host_
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Reachability/GULReachabilityChecker.m
+GULReachabilityStatusString
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/Reachability/Private/GULReachabilityChecker.h
+ReachabilityCallback
+___GetGULSwizzlingQueue_block_invoke
++[GULSwizzler swizzleClass:selector:isClassSelector:withBlock:]
+___63+[GULSwizzler swizzleClass:selector:isClassSelector:withBlock:]_block_invoke
++[GULSwizzler unswizzleClass:selector:isClassSelector:]
++[GULSwizzler originalImplementationForClass:selector:isClassSelector:]
++[GULSwizzler currentImplementationForClass:selector:isClassSelector:]
+___70+[GULSwizzler currentImplementationForClass:selector:isClassSelector:]_block_invoke
+___copy_helper_block_.4
+___destroy_helper_block_.5
++[GULSwizzler selector:existsInClass:isClassSelector:]
++[GULSwizzler ivarObjectsForObject:]
+_GetGULSwizzlingQueue.queue
+_GetGULSwizzlingQueue.onceToken
+___block_descriptor_tmp.3
+___block_descriptor_tmp.7
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Pods/GoogleUtilities/GoogleUtilities/MethodSwizzler/GULSwizzler.m
+__70+[GULSwizzler currentImplementationForClass:selector:isClassSelector:]_block_invoke
+__63+[GULSwizzler swizzleClass:selector:isClassSelector:withBlock:]_block_invoke
+__GetGULSwizzlingQueue_block_invoke
+GetGULSwizzlingQueue
+/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Build/Intermediates/ArchiveIntermediates/ObjJKH/IntermediateBuildFilesPath/Pods.build/Release-iphoneos/GoogleUtilities.build/DerivedSources/GoogleUtilities_vers.c
+__ZL15__ARCLite__loadv
+__ZL58__arclite_NSMutableDictionary__setObject_forKeyedSubscriptP19NSMutableDictionaryP13objc_selectorP11objc_objectS4_
+__ZL22add_image_hook_swiftV1PK11mach_headerl
+__ZL42__arclite_NSUndoManagerProxy_isKindOfClassP11objc_objectP13objc_selectorP10objc_class
+__ZL30__arclite_NSManagedObject_initP11objc_objectP13objc_selector
+__ZL41__arclite_NSManagedObject_allocWithEntityP11objc_objectP13objc_selectorS0_
+__ZL36__arclite_NSManagedObject_allocBatchP11objc_objectP13objc_selectorPS0_S0_j
+__ZL37__arclite_NSKKMS_fastIndexForKnownKeyP11objc_objectP13objc_selectorS0_
+__ZL28__arclite_NSKKMS_indexForKeyP11objc_objectP13objc_selectorS0_
+__ZL29__arclite_NSKKsD_objectForKeyP11objc_objectP13objc_selectorS0_
+__ZL35__arclite_NSKKsD_removeObjectForKeyP11objc_objectP13objc_selectorS0_
+__ZL33__arclite_NSKKsD_setObject_forKeyP11objc_objectP13objc_selectorS0_S0_
+__ZL41__arclite_NSKKsD_addEntriesFromDictionaryP11objc_objectP13objc_selectorP12NSDictionary
+__ZL28__arclite_objc_readClassPairP10objc_classPK15objc_image_info
+__ZL32__arclite_objc_allocateClassPairP10objc_classPKcm
+__ZL32__arclite_object_getIndexedIvarsP11objc_object
+__ZL23__arclite_objc_getClassPKc
+__ZL27__arclite_objc_getMetaClassPKc
+__ZL31__arclite_objc_getRequiredClassPKc
+__ZL26__arclite_objc_lookUpClassPKc
+__ZL26__arclite_objc_getProtocolPKc
+__ZL23__arclite_class_getNameP10objc_class
+__ZL26__arclite_protocol_getNameP8Protocol
+__ZL37__arclite_objc_copyClassNamesForImagePKcPj
+__ZL17transcribeMethodsP10objc_classP15glue_class_ro_t
+__ZL19transcribeProtocolsP10objc_classP15glue_class_ro_t
+__ZL20transcribePropertiesP10objc_classP15glue_class_ro_t
+__ZL14initialize_impP11objc_objectP13objc_selector
+__ZL18allocateMaybeSwiftP18glue_swift_class_tm
+__ZL22copySwiftV1MangledNamePKcb
+__ZL13demangledNamePKcb
+__ZL16scanMangledFieldRPKcS0_S1_Ri
+__ZL30arclite_uninitialized_functionv
+__ZL12cxxConstructP11objc_object
+__ZL20fixStringForCoreDataP11objc_object
+_OBJC_METACLASS_$___ARCLite__
+__ZL24OBJC_CLASS_$___ARCLite__
+__ZL31OBJC_METACLASS_RO_$___ARCLite__
+__non_lazy_classes
+__ZL27OBJC_CLASS_RO_$___ARCLite__
+__ZL11_class_name
+__ZL32OBJC_$_CLASS_METHODS___ARCLite__
+__ZL17_load_method_name
+__ZL17_load_method_type
+l_OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteKeyedSubscripting__
+__ZL30NSUndoManagerProxy_targetClass
+__ZL29original_NSManagedObject_init
+__ZL40original_NSManagedObject_allocWithEntity
+__ZL35original_NSManagedObject_allocBatch
+__ZL25NSMutableDictionary_class
+__ZL22NSConstantString_class
+__ZL14NSString_class
+__ZL36original_NSKKMS_fastIndexForKnownKey
+__ZL27original_NSKKMS_indexForKey
+__ZL28original_NSKKsD_objectForKey
+__ZL34original_NSKKsD_removeObjectForKey
+__ZL32original_NSKKsD_setObject_forKey
+__ZL40original_NSKKsD_addEntriesFromDictionary
+__ZZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+__ZGVZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+__ZL31original_objc_allocateClassPair
+__ZL31original_object_getIndexedIvars
+__ZL22original_objc_getClass
+__ZL26original_objc_getMetaClass
+__ZL30original_objc_getRequiredClass
+__ZL25original_objc_lookUpClass
+__ZL25original_objc_getProtocol
+__ZL22original_class_getName
+__ZL25original_protocol_getName
+__ZL36original_objc_copyClassNamesForImage
+__ZL12demangleLock
+__ZL9Demangled
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -fno-sanitize=vptr -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -D OBJC_OLD_DISPATCH_PROTOTYPES=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -Wno-infinite-recursion -Wno-move -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -Wno-range-loop-analysis -fembed-bitcode=all -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/arm64 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-67/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.o -mlinker-version=351.8
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-67/source/arclite.mm
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-67
+fixStringForCoreData
+cxxConstruct
+arclite_uninitialized_function
+scanMangledField
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.Internal.sdk/usr/include/_ctype.h
+__isctype
+demangledName
+copySwiftV1DemangledName
+copySwiftV1MangledName
+allocateMaybeSwift
+word_align
+isSwift
+initialize_imp
+transcribeProperties
+property_list_nth
+transcribeProtocols
+transcribeMethods
+data
+method_list_nth
+__arclite_objc_copyClassNamesForImage
+__arclite_protocol_getName
+__arclite_class_getName
+__arclite_objc_getProtocol
+__arclite_objc_lookUpClass
+__arclite_objc_getRequiredClass
+__arclite_objc_getMetaClass
+__arclite_objc_getClass
+__arclite_object_getIndexedIvars
+__arclite_objc_allocateClassPair
+metaclass
+__arclite_objc_readClassPair
+transcribeIvars
+ivar_list_nth
+max
+alignment
+ro
+fastFlags
+__arclite_NSKKsD_addEntriesFromDictionary
+__arclite_NSKKsD_setObject_forKey
+__arclite_NSKKsD_removeObjectForKey
+__arclite_NSKKsD_objectForKey
+__arclite_NSKKMS_indexForKey
+__arclite_NSKKMS_fastIndexForKnownKey
+__arclite_NSManagedObject_allocBatch
+__arclite_NSManagedObject_allocWithEntity
+__arclite_NSManagedObject_init
+__arclite_NSUndoManagerProxy_isKindOfClass
+add_image_hook_swiftV1
+patch_lazy_pointers
+patch_t<const char **(const char *, unsigned int *)>
+patch_t<const char *(Protocol *)>
+patch_t<const char *(Class)>
+patch_t<Protocol *(const char *)>
+patch_t<Class (const char *)>
+patch_t<void *(id)>
+patch_t<Class (Class, const char *, unsigned long)>
+patch_t<Class (Class, const objc_image_info *)>
+__arclite_NSMutableDictionary__setObject_forKeyedSubscript
+__ARCLite__load
+install_swiftV1
+replaceMethod
+install_dict_nil_value
+addOrReplaceMethod
+keyedGetter

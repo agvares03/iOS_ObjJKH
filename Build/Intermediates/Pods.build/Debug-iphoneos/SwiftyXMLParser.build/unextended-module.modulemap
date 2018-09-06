@@ -1,0 +1,10 @@
+framework module SwiftyXMLParser {
+  umbrella header "SwiftyXMLParser-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftyXMLParser.__Swift {
+    exclude header "SwiftyXMLParser-Swift.h"
+}

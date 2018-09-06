@@ -1,0 +1,10 @@
+framework module Dropper {
+  umbrella header "Dropper-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Dropper.__Swift {
+    exclude header "Dropper-Swift.h"
+}

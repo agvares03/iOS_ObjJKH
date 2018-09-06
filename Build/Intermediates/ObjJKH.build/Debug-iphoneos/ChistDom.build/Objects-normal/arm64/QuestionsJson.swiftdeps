@@ -1,0 +1,209 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "QuestionsJson"
+- "QuestionDataJson"
+- "QuestionJson"
+- "QuestionsTextJson"
+provides-nominal:
+- "8ChistDom13QuestionsJsonV"
+- "8ChistDom16QuestionDataJsonV"
+- "8ChistDom12QuestionJsonV"
+- "8ChistDom17QuestionsTextJsonV"
+provides-member:
+- ["8ChistDom13QuestionsJsonV", ""]
+- ["8ChistDom16QuestionDataJsonV", ""]
+- ["8ChistDom12QuestionJsonV", ""]
+- ["8ChistDom17QuestionsTextJsonV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "<~~"
+- "AssignmentPrecedence"
+- "Bool"
+- "Int"
+- "JSON"
+- "JSONDecodable"
+- "QuestionDataJson"
+- "QuestionJson"
+- "QuestionsJson"
+- "QuestionsTextJson"
+- "String"
+- !private "StringLiteralType"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s8HashableP", "init"]
+- ["5Gloss13JSONDecodableP", ""]
+- !private ["5Gloss13JSONDecodableP", "answers"]
+- !private ["5Gloss13JSONDecodableP", "comment"]
+- !private ["5Gloss13JSONDecodableP", "data"]
+- !private ["5Gloss13JSONDecodableP", "groupId"]
+- !private ["5Gloss13JSONDecodableP", "id"]
+- ["5Gloss13JSONDecodableP", "init"]
+- !private ["5Gloss13JSONDecodableP", "isAcceptSomeAnswers"]
+- !private ["5Gloss13JSONDecodableP", "isCompleteByUser"]
+- !private ["5Gloss13JSONDecodableP", "isUserAnswer"]
+- !private ["5Gloss13JSONDecodableP", "name"]
+- !private ["5Gloss13JSONDecodableP", "question"]
+- !private ["5Gloss13JSONDecodableP", "questions"]
+- !private ["5Gloss13JSONDecodableP", "text"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- ["8ChistDom16QuestionDataJsonV", "Int"]
+- ["8ChistDom16QuestionDataJsonV", "JSON"]
+- ["8ChistDom16QuestionDataJsonV", "QuestionJson"]
+- ["8ChistDom16QuestionDataJsonV", "String"]
+- ["8ChistDom16QuestionDataJsonV", "deinit"]
+- ["8ChistDom16QuestionDataJsonV", "id"]
+- ["8ChistDom16QuestionDataJsonV", "init"]
+- ["8ChistDom16QuestionDataJsonV", "name"]
+- ["8ChistDom16QuestionDataJsonV", "questions"]
+- ["8ChistDom12QuestionJsonV", "Bool"]
+- ["8ChistDom12QuestionJsonV", "Int"]
+- ["8ChistDom12QuestionJsonV", "JSON"]
+- ["8ChistDom12QuestionJsonV", "QuestionsTextJson"]
+- ["8ChistDom12QuestionJsonV", "String"]
+- ["8ChistDom12QuestionJsonV", "answers"]
+- ["8ChistDom12QuestionJsonV", "deinit"]
+- ["8ChistDom12QuestionJsonV", "groupId"]
+- ["8ChistDom12QuestionJsonV", "id"]
+- ["8ChistDom12QuestionJsonV", "init"]
+- ["8ChistDom12QuestionJsonV", "isAcceptSomeAnswers"]
+- ["8ChistDom12QuestionJsonV", "isCompleteByUser"]
+- ["8ChistDom12QuestionJsonV", "question"]
+- ["8ChistDom13QuestionsJsonV", "JSON"]
+- ["8ChistDom13QuestionsJsonV", "QuestionDataJson"]
+- ["8ChistDom13QuestionsJsonV", "data"]
+- ["8ChistDom13QuestionsJsonV", "deinit"]
+- ["8ChistDom13QuestionsJsonV", "init"]
+- ["8ChistDom17QuestionsTextJsonV", "Bool"]
+- ["8ChistDom17QuestionsTextJsonV", "Int"]
+- ["8ChistDom17QuestionsTextJsonV", "JSON"]
+- ["8ChistDom17QuestionsTextJsonV", "String"]
+- ["8ChistDom17QuestionsTextJsonV", "comment"]
+- ["8ChistDom17QuestionsTextJsonV", "deinit"]
+- ["8ChistDom17QuestionsTextJsonV", "id"]
+- ["8ChistDom17QuestionsTextJsonV", "init"]
+- ["8ChistDom17QuestionsTextJsonV", "isUserAnswer"]
+- ["8ChistDom17QuestionsTextJsonV", "text"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s8SequenceP", "init"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["9Alamofire14URLConvertibleP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s8HashableP"
+- "5Gloss13JSONDecodableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- "8ChistDom16QuestionDataJsonV"
+- "8ChistDom12QuestionJsonV"
+- "8ChistDom13QuestionsJsonV"
+- "8ChistDom17QuestionsTextJsonV"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s8SequenceP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "9Alamofire14URLConvertibleP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.apinotesc"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Modules/Alamofire.swiftmodule/arm64.swiftmodule"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Gloss/Gloss.framework/Modules/Gloss.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Headers/FIRInstanceID.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Headers/FirebaseInstanceID.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Headers/Alamofire-umbrella.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore-umbrella.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseMessaging/FirebaseMessaging.framework/Headers/FirebaseMessaging-umbrella.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Gloss/Gloss.framework/Headers/Gloss-umbrella.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/Firebase/CoreOnly/Sources/Firebase.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRAnalytics+AppDelegate.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseMessaging/FirebaseMessaging.framework/Headers/FIRMessaging.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseMessaging/FirebaseMessaging.framework/Headers/FirebaseMessaging.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIRLoggerLevel.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIRConfiguration.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIRAnalyticsConfiguration.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIRApp.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRAnalytics.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FirebaseAnalytics.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRParameterNames.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIREventNames.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRUserPropertyNames.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Headers/FIROptions.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Gloss/Gloss.framework/Headers/Gloss-Swift.h"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/Firebase/CoreOnly/Sources/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseCore/FirebaseCore.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/FirebaseMessaging/FirebaseMessaging.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Modules/module.modulemap"
+- "/Users/tuzinroman/Documents/\u0420\u0430\u0431\u043E\u0442\u0430 - \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430/iOS/ObjJKH/Build/Products/Debug-iphoneos/Gloss/Gloss.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "e374e7a7bf64dde959bb5533ccde92ee"
