@@ -102,6 +102,10 @@ class FirstController: UIViewController {
         separator2.backgroundColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         
+        // Картинки для разных Таргетов
+        new_face.image = myImages.person_image
+        new_zamoc.image = myImages.lock_image
+        
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {

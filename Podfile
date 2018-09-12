@@ -56,3 +56,17 @@ target 'MupRCMytishi' do
     pod 'Dropper'
     
 end
+
+target 'UK_Komfort' do
+    
+    use_frameworks!
+    
+    # Pods for Наш Общий Дом
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
+    pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+    pod 'Gloss'
+    pod 'Dropper'
+    
+end

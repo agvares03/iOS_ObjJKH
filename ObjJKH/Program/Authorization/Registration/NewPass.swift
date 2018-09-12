@@ -27,6 +27,8 @@ class NewPass: UIViewController {
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!    
+    @IBOutlet weak var lock1: UIImageView!
+    @IBOutlet weak var lock2: UIImageView!
     
     @IBAction func btnSaveGo(_ sender: UIButton) {
         if (self.edPass.text == "") {
@@ -124,6 +126,9 @@ class NewPass: UIViewController {
         separator2.backgroundColor = myColors.labelColor.uiColor()
         labelEnter.textColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        
+        lock1.image = myImages.lock_image
+        lock2.image = myImages.lock_image
     }
     
     func getServerUrlNewPass(phone PhoneText:String, pass txtPass:String) -> String {

@@ -20,6 +20,7 @@ class SendSMSCod: UIViewController {
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var sendSMS: UIButton!
+    @IBOutlet weak var phone_img: UIImageView!
     
     @IBAction func sendSMSAgain(_ sender: UIButton) {
         send_sms(itsAgain: true)
@@ -156,6 +157,9 @@ class SendSMSCod: UIViewController {
         sendSMS.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         separator1.backgroundColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        
+        phone_img.image = myImages.phone_image
+        
     }
 
     func getServerUrlSendSMSAgain(phone PhoneText:String) -> String {

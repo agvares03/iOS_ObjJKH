@@ -26,6 +26,16 @@ class MainMenu: UIViewController {
     @IBOutlet weak var Questions_arrow: UIImageView!
     @IBOutlet weak var heigth_view: NSLayoutConstraint!
     
+    // Картинки - для разных Таргетов
+    @IBOutlet weak var notice: UIImageView!
+    @IBOutlet weak var application: UIImageView!
+    @IBOutlet weak var poll: UIImageView!
+    @IBOutlet weak var meters: UIImageView!
+    @IBOutlet weak var saldo: UIImageView!
+    @IBOutlet weak var payment: UIImageView!
+    @IBOutlet weak var webs_img: UIImageView!
+    @IBOutlet weak var exit_img: UIImageView!
+    
     var phone: String?
     
     @IBAction func AddLS(_ sender: UIButton) {
@@ -93,6 +103,17 @@ class MainMenu: UIViewController {
         #elseif isUKKomfort
             fon_top.image = UIImage(named: "logo_UK_Komfort_white")
         #endif
+        
+        // Картинки для разных Таргетов
+        notice.image = myImages.notice_image
+        application.image = myImages.application_image
+        poll.image = myImages.poll_image
+        meters.image = myImages.meters_image
+        saldo.image = myImages.saldo_image
+        payment.image = myImages.payment_image
+        webs_img.image = myImages.webs_image
+        exit_img.image = myImages.exit_image
+        
     }
     
     // Звонок оператору

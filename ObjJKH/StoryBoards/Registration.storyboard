@@ -172,6 +172,8 @@
                         <outlet property="edFIO" destination="Ctn-aF-W4n" id="8Ne-yU-06J"/>
                         <outlet property="edPhone" destination="Qfs-M4-5Jo" id="Hvg-dr-24E"/>
                         <outlet property="indicator" destination="Lnh-xc-ko1" id="Nyv-l7-iSH"/>
+                        <outlet property="person" destination="wiu-zY-IaF" id="RpE-b5-p5t"/>
+                        <outlet property="phone" destination="Vyg-Lx-rMU" id="mWH-61-05f"/>
                         <outlet property="separator1" destination="2nR-Gi-Rq2" id="za0-96-YKa"/>
                         <outlet property="separator2" destination="EmV-63-soZ" id="LXp-FR-hTF"/>
                         <outlet property="switch_can" destination="cuN-h3-BPa" id="fOS-wa-jBx"/>
@@ -290,6 +292,7 @@
                         <outlet property="edSMS" destination="YRF-nD-boi" id="HNx-hB-Zf8"/>
                         <outlet property="edSMSInfo" destination="WmY-F0-Ke8" id="ONc-0W-H25"/>
                         <outlet property="indicator" destination="Eoz-IW-gwj" id="CFS-Sj-884"/>
+                        <outlet property="phone_img" destination="X8U-Q8-N80" id="q1I-US-NzC"/>
                         <outlet property="sendSMS" destination="o1g-Th-Tok" id="wV1-kp-DKQ"/>
                         <outlet property="separator1" destination="ujo-8b-qvK" id="lzn-ua-FPk"/>
                         <segue destination="RFk-ku-hT4" kind="show" identifier="SendNewPass" id="QsT-I0-IRy"/>
@@ -436,6 +439,8 @@
                         <outlet property="edPassAgain" destination="MqY-Uw-AJN" id="3nI-H6-VfO"/>
                         <outlet property="indicator" destination="37T-sY-gHy" id="MED-cA-aRS"/>
                         <outlet property="labelEnter" destination="czd-bR-cZP" id="kxj-pw-prL"/>
+                        <outlet property="lock1" destination="B31-dS-qJm" id="rvi-iq-49d"/>
+                        <outlet property="lock2" destination="MRG-fT-UYo" id="q0s-iS-A66"/>
                         <outlet property="separator1" destination="Tbm-P8-gSj" id="Ej7-nU-tQe"/>
                         <outlet property="separator2" destination="g2R-eC-ay3" id="zWw-lA-Ndc"/>
                         <segue destination="OFk-58-7H5" kind="show" identifier="GoToApp" id="gc6-Oy-WC7"/>

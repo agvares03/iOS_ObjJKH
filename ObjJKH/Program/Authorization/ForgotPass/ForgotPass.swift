@@ -18,6 +18,8 @@ class ForgotPass: UIViewController {
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var separator1: UIView!
+    @IBOutlet weak var person: UIImageView!
+    
     
     @IBAction func btnCancelGo(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -108,6 +110,8 @@ class ForgotPass: UIViewController {
         btnCancel.setTitleColor(myColors.btnColor.uiColor(), for: .normal) 
         separator1.backgroundColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        
+        person.image = myImages.person_image
         
     }
 

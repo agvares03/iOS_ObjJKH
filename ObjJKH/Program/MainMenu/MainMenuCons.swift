@@ -13,6 +13,10 @@ class MainMenuCons: UIViewController {
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var LabelTime: UILabel!
     @IBOutlet weak var LabelName: UILabel!
+    @IBOutlet weak var notice: UIImageView!
+    @IBOutlet weak var application: UIImageView!
+    @IBOutlet weak var webs_img: UIImageView!
+    @IBOutlet weak var exit_img: UIImageView!
     
     @IBAction func goExit(_ sender: UIButton)
     {
@@ -27,6 +31,12 @@ class MainMenuCons: UIViewController {
         // Приветствие
         LabelTime.text = "Здравствуйте,"
         LabelName.text = defaults.string(forKey: "name")
+        
+        notice.image = myImages.notice_image
+        application.image = myImages.application_image
+        webs_img.image = myImages.application_image
+        exit_img.image = myImages.application_image
+        
     }
 
     override func didReceiveMemoryWarning() {

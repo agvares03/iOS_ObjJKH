@@ -18,6 +18,8 @@ class Registration: UIViewController {
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!    
+    @IBOutlet weak var phone: UIImageView!
+    @IBOutlet weak var person: UIImageView!
     
     @IBOutlet weak var switch_can: UISwitch!
     var responseString: String = ""
@@ -74,6 +76,9 @@ class Registration: UIViewController {
         separator1.backgroundColor = myColors.labelColor.uiColor()
         separator2.backgroundColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        
+        phone.image = myImages.phone_image
+        person.image = myImages.person_image
         
     }
     
