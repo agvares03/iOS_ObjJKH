@@ -10,6 +10,7 @@ import UIKit
 
 class Web_Camera: UIViewController {
 
+    @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var webView: UIWebView!
     open var web_camera: Web_Camera_json?
@@ -24,6 +25,10 @@ class Web_Camera: UIViewController {
         let url = NSURL(string: (web_camera?.link)!)
         let requestObj = NSURLRequest(url: url! as URL)
         webView.loadRequest(requestObj as URLRequest)
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
     }
 
     override func didReceiveMemoryWarning() {

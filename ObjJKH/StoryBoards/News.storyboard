@@ -112,6 +112,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="back" destination="oLQ-ms-a0E" id="gg9-5s-T32"/>
                         <outlet property="indicator" destination="5kJ-lz-W62" id="7Xv-Yt-xys"/>
                         <outlet property="tableView" destination="IGm-eg-swf" id="I4V-53-JC1"/>
                     </connections>
@@ -172,6 +173,7 @@
                         <outlet property="NewsData" destination="3sO-3N-O6m" id="ka0-hE-FTa"/>
                         <outlet property="NewsText" destination="GKW-aA-I9y" id="d9w-Mk-kgr"/>
                         <outlet property="NewsTitle" destination="vT9-Mm-r0N" id="Ngq-yJ-KIg"/>
+                        <outlet property="back" destination="Bqp-ET-6dV" id="hwl-SV-7AN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znZ-e9-dHE" userLabel="First Responder" sceneMemberID="firstResponder"/>

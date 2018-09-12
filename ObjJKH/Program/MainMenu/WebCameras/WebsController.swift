@@ -15,6 +15,8 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return web_cameras?.count ?? 0
     }
@@ -51,6 +53,10 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
         indicator.isHidden = false
         indicator.startAnimating()
         getWebs()
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        
     }
 
     override func didReceiveMemoryWarning() {

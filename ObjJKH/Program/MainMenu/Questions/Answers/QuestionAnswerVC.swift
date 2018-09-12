@@ -16,6 +16,7 @@ var selectedAnswers: [Int] = []
 
 class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var collection: UICollectionView!
@@ -179,6 +180,11 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         view.addGestureRecognizer(edgePan)
         
         tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        loader.color = myColors.indicatorColor.uiColor()
+        
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {

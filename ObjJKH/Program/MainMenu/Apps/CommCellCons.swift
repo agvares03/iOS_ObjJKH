@@ -17,6 +17,9 @@ class CommCellCons: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        author.textColor = myColors.labelColor.uiColor()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

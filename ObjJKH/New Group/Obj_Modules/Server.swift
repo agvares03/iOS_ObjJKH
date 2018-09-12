@@ -20,6 +20,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/muprcmytishi/"
     #elseif isDJ
         static let SERVER          = "http://uk-gkh.org/dgservicnew/"
+    #elseif isUKKomfort
+        static let SERVER          = "http://uk-gkh.org/komfortnew/"
     #else
         static let SERVER          = "http://uk-gkh.org/newjkh/"
     #endif

@@ -25,6 +25,9 @@ class NewPass: UIViewController {
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var labelEnter: UILabel!
     
+    @IBOutlet weak var separator1: UIView!
+    @IBOutlet weak var separator2: UIView!    
+    
     @IBAction func btnSaveGo(_ sender: UIButton) {
         if (self.edPass.text == "") {
             let alert = UIAlertController(title: "Ошибка", message: "Укажите пароль для входа", preferredStyle: .alert)
@@ -114,6 +117,13 @@ class NewPass: UIViewController {
         
         self.StopIndicator()
         self.labelEnter.isHidden = true
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnSave.backgroundColor = myColors.btnColor.uiColor()
+        separator1.backgroundColor = myColors.labelColor.uiColor()
+        separator2.backgroundColor = myColors.labelColor.uiColor()
+        labelEnter.textColor = myColors.labelColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
     }
     
     func getServerUrlNewPass(phone PhoneText:String, pass txtPass:String) -> String {

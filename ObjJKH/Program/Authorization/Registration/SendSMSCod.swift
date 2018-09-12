@@ -18,6 +18,9 @@ class SendSMSCod: UIViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var btnGo: UIButton!
     
+    @IBOutlet weak var separator1: UIView!
+    @IBOutlet weak var sendSMS: UIButton!
+    
     @IBAction func sendSMSAgain(_ sender: UIButton) {
         send_sms(itsAgain: true)
     }
@@ -147,6 +150,12 @@ class SendSMSCod: UIViewController {
         edSMSInfo.text = "отправлен на телефон " + self.phone! + " (действует в течение 10 минут)"
         
         send_sms(itsAgain: false)
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnGo.backgroundColor = myColors.btnColor.uiColor()
+        sendSMS.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        separator1.backgroundColor = myColors.labelColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
     }
 
     func getServerUrlSendSMSAgain(phone PhoneText:String) -> String {

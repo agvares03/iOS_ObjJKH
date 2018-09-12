@@ -30,6 +30,9 @@ class FirstController: UIViewController {
     @IBOutlet weak var btnForgot: UIButton!
     @IBOutlet weak var btnReg: UIButton!
     
+    @IBOutlet weak var separator1: UIView!
+    @IBOutlet weak var separator2: UIView!
+    
     @IBAction func Enter(_ sender: UIButton) {
         // Проверка на заполнение
         var ret: Bool = false;
@@ -89,7 +92,15 @@ class FirstController: UIViewController {
             fon_top.image = UIImage(named: "logo_MupRCMytishi")
         #elseif isDJ
             fon_top.image = UIImage(named: "logo_DJ")
+        #elseif isUKKomfort
+            fon_top.image = UIImage(named: "logo_UK_Komfort")
         #endif
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnEnter.backgroundColor = myColors.btnColor.uiColor()
+        separator1.backgroundColor = myColors.labelColor.uiColor()
+        separator2.backgroundColor = myColors.labelColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
         
     }
     

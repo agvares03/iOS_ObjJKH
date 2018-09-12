@@ -11,6 +11,11 @@ import UIKit
 
 class AddLS: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var separator1: UILabel!
+    @IBOutlet weak var separator2: UILabel!
+    @IBOutlet weak var separator3: UILabel!
+    @IBOutlet weak var separator4: UILabel!
+    
     // Массивы для хранения данных
     var streets_names: [String] = []
     var streets_ids: [String] = []
@@ -25,10 +30,18 @@ class AddLS: UIViewController, UITextFieldDelegate {
     var flats_ids: [String] = []
     var teck_flat: Int = -1
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    @IBAction func backClick(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    @IBOutlet weak var btnAdd: UIButton!
+    
     // Телефон, который регистрируется
     var phone: String = ""
     var response_add_ident: String?
 
+    @IBOutlet weak var txtNumberLS: UILabel!
+    
     @IBOutlet weak var txtStreet: UILabel!
     @IBOutlet weak var edStreet: UITextField!
     @IBOutlet weak var indicator_street: UIActivityIndicatorView!
@@ -136,6 +149,18 @@ class AddLS: UIViewController, UITextFieldDelegate {
         getStreets()
         
         edLS.delegate = self
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnAdd.backgroundColor = myColors.btnColor.uiColor()
+        back.tintColor = myColors.btnColor.uiColor()
+        separator1.backgroundColor = myColors.labelColor.uiColor()
+        separator2.backgroundColor = myColors.labelColor.uiColor()
+        separator3.backgroundColor = myColors.labelColor.uiColor()
+        separator4.backgroundColor = myColors.labelColor.uiColor()
+        
+        #if isOur_Obj_Home
+            txtNumberLS.text = "Номер лицевого счета Сбербанка"
+        #endif
         
     }
     

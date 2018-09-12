@@ -18,6 +18,8 @@ class NewsView: UIViewController {
     @IBOutlet weak var NewsData: UILabel!
     @IBOutlet weak var NewsText: UILabel!
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
 //        navigationController?.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
@@ -29,6 +31,10 @@ class NewsView: UIViewController {
         NewsTitle.text = newsTitle
         NewsData.text = newsData
         NewsText.text = newsText
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        
     }
 
     override func didReceiveMemoryWarning() {

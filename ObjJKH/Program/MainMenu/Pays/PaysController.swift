@@ -16,6 +16,9 @@ class PaysController: UIViewController, DropperDelegate {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    @IBOutlet weak var btnPay: UIButton!
+    
     var fetchedResultsController: NSFetchedResultsController<Saldo>?
     var iterYear: String = "0"
     var iterMonth: String = "0"
@@ -90,6 +93,11 @@ class PaysController: UIViewController, DropperDelegate {
         dropper.hideWithAnimation(0.001)
         
         getSum(login: login!, pass: pass!)
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        btnPay.backgroundColor = myColors.btnColor.uiColor()
+        
     }
 
     override func didReceiveMemoryWarning() {

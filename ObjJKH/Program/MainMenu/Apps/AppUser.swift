@@ -16,6 +16,11 @@ protocol ShowAppDelegate : class {
 
 class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, CloseAppDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    @IBAction func back_btn(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBOutlet weak var date_txt: UILabel!
     @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var table_comments: UITableView!
@@ -157,6 +162,11 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         } else {
             self.table_comments.addSubview(refreshControl!)
         }
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
+        
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {

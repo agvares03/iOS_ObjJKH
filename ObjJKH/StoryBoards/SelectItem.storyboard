@@ -13,7 +13,7 @@
         <!--Выбор-->
         <scene sceneID="3Vb-VL-MzI">
             <objects>
-                <tableViewController id="hIr-Er-Goc" customClass="SelectItemController" customModule="ObjJKH" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hIr-Er-Goc" customClass="SelectItemController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7dj-No-cwI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,6 +53,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="back" destination="YUP-qn-hdF" id="2xh-qE-Tt1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDW-Aw-VrL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +64,6 @@
         <!--Navigation Controller-->
         <scene sceneID="hVx-do-fw0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HiD-Ur-cCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RBF-H7-HI1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jj5-jb-WWK">
@@ -73,6 +75,7 @@
                         <segue destination="hIr-Er-Goc" kind="relationship" relationship="rootViewController" id="WVG-4Y-145"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HiD-Ur-cCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064.8" y="101.19940029985008"/>
         </scene>

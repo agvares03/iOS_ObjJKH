@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="width" constant="21" id="dpV-XT-RUH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGk-d7-rFY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0,00 р." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGk-d7-rFY">
                                 <rect key="frame" x="265" y="146" width="94" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="94" id="Wbj-xI-0a6"/>
@@ -65,8 +65,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNK-QH-C65">
-                                <rect key="frame" x="316" y="191" width="43" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,00 р." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNK-QH-C65">
+                                <rect key="frame" x="304" y="191" width="55" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -130,6 +130,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="back" destination="kW2-w1-UZu" id="jC2-jW-1ZA"/>
+                        <outlet property="btnPay" destination="LfQ-ey-Qii" id="YL5-eX-9fs"/>
                         <outlet property="ls_button" destination="Czu-pi-hVZ" id="VPr-7t-qFU"/>
                         <outlet property="txt_sum_jkh" destination="BGk-d7-rFY" id="PBC-Kh-bp6"/>
                         <outlet property="txt_sum_obj" destination="uNK-QH-C65" id="vPd-xu-9pS"/>

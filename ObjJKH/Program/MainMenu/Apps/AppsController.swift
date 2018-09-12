@@ -19,6 +19,9 @@ protocol AppsConsUpdateDelegate {
 
 class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddAppDelegate, AddAppConsDelegate, ShowAppDelegate, AppsUserUpdateDelegate, AppsConsUpdateDelegate {
     
+    @IBOutlet weak var btnAdd: UIButton!
+    @IBOutlet weak var back: UIBarButtonItem!
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -57,6 +60,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             self.tableApps.addSubview(refreshControl!)
         }
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnAdd.backgroundColor = myColors.btnColor.uiColor()
+        back.tintColor = myColors.btnColor.uiColor()
+        
     }
 
     override func didReceiveMemoryWarning() {

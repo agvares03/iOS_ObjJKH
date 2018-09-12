@@ -16,7 +16,21 @@ class Registration: UIViewController {
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var separator1: UIView!
+    @IBOutlet weak var separator2: UIView!    
+    
+    @IBOutlet weak var switch_can: UISwitch!
     var responseString: String = ""
+    
+    @IBAction func canRegistration(_ sender: UISwitch) {
+        if (switch_can.isOn) {
+            btnReg.isEnabled = true
+            btnReg.isHidden = false
+        } else {
+            btnReg.isEnabled = false
+            btnReg.isHidden = true
+        }
+    }
     
     @IBAction func btnCancelGo(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -53,6 +67,13 @@ class Registration: UIViewController {
         
         StopIndicator()
         edPhone.text = "+7"
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnReg.backgroundColor = myColors.btnColor.uiColor()
+        btnCancel.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        separator1.backgroundColor = myColors.labelColor.uiColor()
+        separator2.backgroundColor = myColors.labelColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
         
     }
     

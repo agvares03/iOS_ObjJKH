@@ -179,6 +179,9 @@
                                 <state key="normal" title="Добавить заявку">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnAddApp:" destination="60p-cV-5Uu" eventType="touchUpInside" id="fQC-CE-i5V"/>
                                 </connections>
@@ -207,6 +210,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="back" destination="lfj-oo-VGl" id="3UZ-ar-KJV"/>
+                        <outlet property="btnAdd" destination="whj-2p-mZl" id="r5i-si-EAU"/>
                         <outlet property="switchCloseApps" destination="4rX-06-8QQ" id="6rB-9B-OLe"/>
                         <outlet property="tableApps" destination="woV-n9-mQe" id="Afa-Cj-q7v"/>
                         <segue destination="bOu-DP-0Qr" kind="show" identifier="show_app" id="cE0-Ts-8T9"/>
@@ -379,6 +384,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="back" destination="vc4-GL-MIp" id="RHm-ix-1Po"/>
                         <outlet property="btnAdd" destination="2GH-1b-A6F" id="kFA-mR-fPD"/>
                         <outlet property="imgScroll" destination="azT-Iy-A5J" id="yZI-a4-4RW"/>
                         <outlet property="indicator" destination="7pG-fU-sml" id="fcX-NR-1dN"/>
@@ -1282,8 +1288,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qEb-Jh-jXS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="fGV-gN-Y5J"/>
+                    <navigationItem key="navigationItem" title="Title" id="AiG-As-U02">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="rIN-2d-75l">
+                            <connections>
+                                <action selector="back_btn:" destination="bOu-DP-0Qr" id="hYF-Mf-FP3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="back" destination="rIN-2d-75l" id="uJy-s9-uGE"/>
                         <outlet property="btn2" destination="3pn-Ci-dHr" id="zuu-1J-KX7"/>
                         <outlet property="btn3" destination="9b7-C4-Vzu" id="yhZ-1H-qQC"/>
                         <outlet property="date_txt" destination="SIo-bT-vIL" id="GAh-Uf-Kg5"/>
@@ -1648,9 +1661,9 @@
         <image name="ic_send_app.png" width="96" height="96"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="J7Z-so-Sh8"/>
+        <segue reference="mMc-hD-jgf"/>
         <segue reference="M7G-ag-hjx"/>
         <segue reference="x4h-mP-Bcg"/>
-        <segue reference="deB-u2-yJl"/>
+        <segue reference="chi-GF-50Z"/>
     </inferredMetricsTieBreakers>
 </document>

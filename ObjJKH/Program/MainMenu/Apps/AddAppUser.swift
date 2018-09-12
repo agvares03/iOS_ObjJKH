@@ -17,6 +17,8 @@ protocol AddAppDelegate : class {
 
 class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    
     var responseString: String = ""
     // id аккаунта текущего
     var id_author: String = ""
@@ -80,10 +82,13 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
         if (txtText == "") {
             itsOk = false
         }
+        if (text_App.text! == "Описание...") {
+            itsOk = false
+        }
         if ((self.appType + 1) <= 0) {
             itsOk = false
         }
-        if ((self.appLS + 1) <= 0) {
+        if (appLsString() == "") {
             itsOk = false
         }
         if (!itsOk) {
@@ -91,6 +96,12 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
             var textError: String = "Не заполнены параметры: "
             var firstPar: Bool = true
             if (txtText == "") {
+                if (firstPar) {
+                    textError = textError + "текст"
+                    firstPar = false
+                }
+            }
+            if (text_App.text! == "Описание...") {
                 if (firstPar) {
                     textError = textError + "текст"
                     firstPar = false
@@ -104,7 +115,7 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
                     textError = textError + ", тип"
                 }
             }
-            if ((self.appLS + 1) <= 0) {
+            if (appLsString() == "") {
                 if (firstPar) {
                     textError = textError + "лиц. счет"
                     firstPar = false
@@ -248,6 +259,11 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
         text_App.delegate = self
         text_App.text = appText
         text_App.textColor = UIColor.lightGray
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnAdd.backgroundColor = myColors.btnColor.uiColor()
+        back.tintColor = myColors.btnColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
 
     }
     

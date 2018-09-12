@@ -112,6 +112,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="back" destination="RH7-Qc-d4m" id="kbr-oN-ELO"/>
                         <outlet property="collection" destination="OAu-KI-Czf" id="Hsd-fk-9q0"/>
                         <outlet property="emptyLabel" destination="OEI-vW-9bQ" id="dfW-tZ-Ube"/>
                         <outlet property="loader" destination="pP7-xG-epR" id="alK-SX-7zV"/>
@@ -302,6 +303,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="back" destination="al7-l6-ySg" id="kCC-B5-pC5"/>
                         <outlet property="collection" destination="Hfw-Hx-mtt" id="A7F-zy-85I"/>
                         <outlet property="goButton" destination="hWa-xU-LVh" id="Ur9-0i-PXS"/>
                         <outlet property="loader" destination="KlL-fZ-VuX" id="Vy9-4M-s2w"/>
@@ -369,6 +371,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnOk" destination="xQu-x8-J9o" id="r4g-lQ-hmU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5QD-2z-Qoj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

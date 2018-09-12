@@ -10,6 +10,8 @@ import UIKit
 
 class QuestionFinal: UIViewController {
 
+    @IBOutlet weak var btnOk: UIButton!
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
     }
     
@@ -20,6 +22,10 @@ class QuestionFinal: UIViewController {
         super.viewDidLoad()
 
         automaticallyAdjustsScrollViewInsets = false
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnOk.backgroundColor = myColors.btnColor.uiColor()
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -17,7 +17,8 @@ class ForgotPass: UIViewController {
     @IBOutlet weak var btnForgot: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-
+    @IBOutlet weak var separator1: UIView!
+    
     @IBAction func btnCancelGo(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
@@ -101,6 +102,13 @@ class ForgotPass: UIViewController {
 
         hideKeyboard_byTap()
         StopIndicator()
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnForgot.backgroundColor = myColors.btnColor.uiColor()
+        btnCancel.setTitleColor(myColors.btnColor.uiColor(), for: .normal) 
+        separator1.backgroundColor = myColors.labelColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
+        
     }
 
     override func didReceiveMemoryWarning() {

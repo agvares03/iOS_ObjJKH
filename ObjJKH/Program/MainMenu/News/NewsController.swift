@@ -13,6 +13,8 @@ class NewsController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    
     private var refreshControl: UIRefreshControl?
     
     override func viewDidLoad() {
@@ -36,6 +38,10 @@ class NewsController: UIViewController, UITableViewDelegate {
         } else {
             tableView.addSubview(refreshControl!)
         }
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        
     }
     
     @objc private func refresh(_ sender: UIRefreshControl?) {

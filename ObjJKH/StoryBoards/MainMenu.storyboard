@@ -422,7 +422,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="go_counters:" destination="TNm-eq-Yvo" eventType="touchUpInside" id="cSI-Qa-09b"/>
-                                                    <segue destination="snL-LP-kh5" kind="show" id="lCk-Mc-Oez"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFu-G7-WhH">
@@ -498,6 +497,7 @@
                                             <constraint firstItem="JDK-s6-S3W" firstAttribute="leading" secondItem="IFu-G7-WhH" secondAttribute="trailing" constant="4" id="aDC-yZ-Crj"/>
                                             <constraint firstAttribute="trailing" secondItem="FXI-Qe-IF5" secondAttribute="trailing" constant="8" id="aFr-HQ-SN8"/>
                                             <constraint firstItem="OS3-dL-Bx8" firstAttribute="leading" secondItem="ahM-ft-Bfm" secondAttribute="trailing" constant="4" id="akl-mV-cxS"/>
+                                            <constraint firstItem="CD3-wG-k0a" firstAttribute="top" secondItem="VUL-h1-Eqx" secondAttribute="bottom" constant="43" id="bSV-lC-SNq"/>
                                             <constraint firstAttribute="trailing" secondItem="uki-bU-FRB" secondAttribute="trailing" id="c0L-9k-piP"/>
                                             <constraint firstItem="FXI-Qe-IF5" firstAttribute="leading" secondItem="2VX-TV-3K8" secondAttribute="trailing" constant="4" id="cZa-sz-whF"/>
                                             <constraint firstItem="HUL-KI-lAC" firstAttribute="top" secondItem="89r-4H-5yd" secondAttribute="bottom" constant="8" id="dds-EJ-Idj"/>
@@ -528,6 +528,7 @@
                                             <constraint firstItem="TNG-ry-K2v" firstAttribute="leading" secondItem="Urd-MO-2Rw" secondAttribute="leading" constant="8" id="vxP-aK-QtL"/>
                                             <constraint firstItem="JDK-s6-S3W" firstAttribute="top" secondItem="Axg-hO-Aaa" secondAttribute="bottom" constant="10" id="w83-Zh-dXw"/>
                                             <constraint firstAttribute="height" constant="367" id="wdV-VW-Lm9"/>
+                                            <constraint firstItem="Yru-Mc-bWy" firstAttribute="top" secondItem="zuN-PO-14W" secondAttribute="bottom" constant="40" id="zAj-k0-bKW"/>
                                             <constraint firstItem="OjF-nl-wyH" firstAttribute="top" secondItem="3LV-Nz-m3c" secondAttribute="bottom" constant="2" id="zcp-ZA-VGy"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -568,13 +569,21 @@
                     <navigationItem key="navigationItem" id="sw8-yq-7Sh"/>
                     <connections>
                         <outlet property="PageView" destination="Bew-oo-ptP" id="cgd-cU-b6f"/>
+                        <outlet property="Questions_arrow" destination="5Ph-EF-Mmu" id="0dK-PS-4Ya"/>
                         <outlet property="ViewInfoLS" destination="AVN-Cu-POo" id="ymI-cf-wTK"/>
+                        <outlet property="btn_Pays" destination="3MZ-Uc-zFU" id="8Jv-Gm-8Ad"/>
+                        <outlet property="btn_Questions" destination="3LV-Nz-m3c" id="mdL-Jh-GLE"/>
                         <outlet property="fon_top" destination="Z9d-Yc-TcP" id="B7T-Ra-Ftq"/>
+                        <outlet property="height_Pays" destination="bSV-lC-SNq" id="Y2e-ZQ-6ux"/>
+                        <outlet property="heigth_Questions" destination="zAj-k0-bKW" id="9J5-n6-9ja"/>
+                        <outlet property="heigth_view" destination="wdV-VW-Lm9" id="RdI-aE-4j0"/>
                         <outlet property="labelName" destination="tMW-7Q-TKe" id="HCO-tr-R9y"/>
                         <outlet property="labelTime" destination="2fI-55-WWu" id="74A-C6-s35"/>
                         <outlet property="ls1" destination="fiT-1F-d0f" id="BKU-o1-GGI"/>
                         <outlet property="ls2" destination="fZ6-id-icL" id="OUn-e4-YBp"/>
                         <outlet property="ls3" destination="Os2-i8-HL4" id="96w-nV-Pvw"/>
+                        <segue destination="snL-LP-kh5" kind="show" identifier="mainCounters" id="vSq-hd-TD0"/>
+                        <segue destination="56m-Rb-2II" kind="show" identifier="noCounters" id="49z-nK-HtX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uvK-jD-nzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -619,7 +628,7 @@
                 <viewControllerPlaceholder storyboardName="Saldo" id="nTh-Ho-JCo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q51-qh-57T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1805" y="-603"/>
+            <point key="canvasLocation" x="1806" y="-546"/>
         </scene>
         <!--Pays-->
         <scene sceneID="fWp-Tr-R7f">
@@ -627,7 +636,7 @@
                 <viewControllerPlaceholder storyboardName="Pays" id="X0D-p6-MF7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vnp-bR-U5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="-562"/>
+            <point key="canvasLocation" x="1809" y="-508"/>
         </scene>
         <!--WebCameras-->
         <scene sceneID="bgq-1A-Uw8">
@@ -635,7 +644,15 @@
                 <viewControllerPlaceholder storyboardName="WebCameras" id="ecM-lF-Ych" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOM-4Z-Xxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1768" y="-518"/>
+            <point key="canvasLocation" x="1768" y="-460"/>
+        </scene>
+        <!--NoCounters-->
+        <scene sceneID="8M4-NP-JBF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NoCounters" id="56m-Rb-2II" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X9e-In-EjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1724" y="-596"/>
         </scene>
         <!--Добавить лицевой счет-->
         <scene sceneID="fdW-fl-ReN">
@@ -846,7 +863,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XeI-PY-BwD"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Добавить лицевой счет" id="BXU-Wz-3Md">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="dPZ-4q-Qbi">
+                            <connections>
+                                <action selector="backClick:" destination="7zn-gb-rMF" id="uaG-mX-t6v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="back" destination="dPZ-4q-Qbi" id="PUQ-lM-oTO"/>
+                        <outlet property="btnAdd" destination="MEs-xC-fcq" id="xmr-7D-U8g"/>
                         <outlet property="edFlat" destination="gjN-cD-67d" id="DfS-vg-ny5"/>
                         <outlet property="edLS" destination="UQV-lj-JfR" id="FMu-33-pJJ"/>
                         <outlet property="edNumber" destination="4H5-ae-zhS" id="qwn-v7-pdF"/>
@@ -857,8 +883,13 @@
                         <outlet property="indicatorFlat" destination="Qr3-9d-Y7X" id="Wge-cL-WbN"/>
                         <outlet property="indicatorNumber" destination="QOq-vW-5mW" id="zcD-lF-EvD"/>
                         <outlet property="indicator_street" destination="k0p-1O-lIv" id="lyw-Gp-I4i"/>
+                        <outlet property="separator1" destination="DhS-yO-XCC" id="doB-Yo-VRq"/>
+                        <outlet property="separator2" destination="yz4-7F-ds6" id="oQ5-lv-g4L"/>
+                        <outlet property="separator3" destination="UMO-hX-8Jp" id="qXT-3n-nSJ"/>
+                        <outlet property="separator4" destination="VT0-o7-zh1" id="5FP-Nl-3hk"/>
                         <outlet property="txtFlat" destination="xet-a4-aFf" id="L5O-Xr-Wig"/>
                         <outlet property="txtNumber" destination="T5E-dH-hWc" id="9lz-vs-i3z"/>
+                        <outlet property="txtNumberLS" destination="LZ7-oM-6C4" id="gqa-U6-iZZ"/>
                         <outlet property="txtStreet" destination="CuN-Oq-Zek" id="i9J-E1-4qb"/>
                         <segue destination="R2C-cY-s5z" kind="show" identifier="get_street_new" id="Nyg-uY-Zur"/>
                         <segue destination="R2C-cY-s5z" kind="show" identifier="get_number_new" id="1r7-Tp-COC"/>
@@ -909,6 +940,7 @@
         <image name="Logo_DemoUC_White.png" width="120" height="120"/>
         <image name="application" width="60" height="60"/>
         <image name="arrow_rigth.png" width="1024" height="1024"/>
+        <image name="back" width="17" height="17"/>
         <image name="main_background.png" width="643" height="1093"/>
         <image name="meters" width="60" height="60"/>
         <image name="notice" width="60" height="60"/>

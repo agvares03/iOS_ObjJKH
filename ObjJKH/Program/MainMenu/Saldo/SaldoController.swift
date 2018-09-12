@@ -12,6 +12,9 @@ import Dropper
 
 class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var back: UIBarButtonItem!
+    @IBOutlet weak var btnPay: UIButton!
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -157,6 +160,11 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         updateArrowsEnabled()
         
         getData(login: login!, pass: pass!)
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        btnPay.backgroundColor = myColors.btnColor.uiColor()
+        
     }
     
     func updateBorderDates() {

@@ -15,6 +15,8 @@ class SelectItemController: UITableViewController {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    
     var selectedIndex: Int = -1
     var strings = [String]()
     var selectHandler:((Int)->Void)?
@@ -26,6 +28,10 @@ class SelectItemController: UITableViewController {
             let path = NSIndexPath(row: selectedIndex, section: 0)
             tableView.selectRow(at: path as IndexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
         }
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        
     }
 
     override func didReceiveMemoryWarning() {

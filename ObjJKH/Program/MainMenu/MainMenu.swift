@@ -19,6 +19,13 @@ class MainMenu: UIViewController {
     @IBOutlet weak var PageView: UIView!
     @IBOutlet weak var ViewInfoLS: UIView!
     
+    @IBOutlet weak var height_Pays: NSLayoutConstraint!
+    @IBOutlet weak var btn_Pays: UIButton!
+    @IBOutlet weak var heigth_Questions: NSLayoutConstraint!
+    @IBOutlet weak var btn_Questions: UIButton!
+    @IBOutlet weak var Questions_arrow: UIImageView!
+    @IBOutlet weak var heigth_view: NSLayoutConstraint!
+    
     var phone: String?
     
     @IBAction func AddLS(_ sender: UIButton) {
@@ -67,12 +74,24 @@ class MainMenu: UIViewController {
         // Картинка в зависимости от Таргета
         #if isOur_Obj_Home
             fon_top.image = UIImage(named: "logo_Our_Obj_Home_white")
+            height_Pays.constant = 3
+            btn_Pays.isHidden = true
+            btn_Pays.isEnabled = false
+        
+            heigth_Questions.constant = 0
+            btn_Questions.isHidden = true
+            btn_Questions.isEnabled = false
+            Questions_arrow.isHidden = true
+        
+            heigth_view.constant = 287
         #elseif isChist_Dom
             fon_top.image = UIImage(named: "Logo_Chist_Dom_White")
         #elseif isMupRCMytishi
             fon_top.image = UIImage(named: "logo_MupRCMytishi_White")
         #elseif isDJ
             fon_top.image = UIImage(named: "logo_DJ_White")
+        #elseif isUKKomfort
+            fon_top.image = UIImage(named: "logo_UK_Komfort_white")
         #endif
     }
     
@@ -98,6 +117,12 @@ class MainMenu: UIViewController {
     
     // Показания счетчиков
     @IBAction func go_counters(_ sender: UIButton) {
+        #if isOur_Obj_Home
+            self.performSegue(withIdentifier: "noCounters", sender: self)
+        #else
+            self.performSegue(withIdentifier: "mainCounters", sender: self)
+        #endif
+        
     }
     
     // Ведомости
@@ -114,7 +139,8 @@ class MainMenu: UIViewController {
     
     // Выход
     @IBAction func go_exit(_ sender: UIButton) {
-        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
+        exit(0)
+//        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
     }
     
     @objc func timerEndedUp(_ timer : Timer) {

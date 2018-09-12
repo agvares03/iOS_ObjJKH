@@ -14,7 +14,10 @@ class MainMenuCons: UIViewController {
     @IBOutlet weak var LabelTime: UILabel!
     @IBOutlet weak var LabelName: UILabel!
     
-    @IBAction func goExit(_ sender: UIButton) {        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
+    @IBAction func goExit(_ sender: UIButton)
+    {
+        exit(0)
+        //UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
     }    
     
     override func viewDidLoad() {

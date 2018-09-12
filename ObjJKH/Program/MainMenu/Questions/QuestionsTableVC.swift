@@ -25,6 +25,8 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     private var questions: [QuestionDataJson]? = []
     private var index = 0
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
 //        navigationController?.popViewController(animated: true)
         navigationController?.dismiss(animated: true, completion: nil)
@@ -48,6 +50,11 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         loader.isHidden = false
         loader.startAnimating()
         getQuestions()
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        loader.color = myColors.indicatorColor.uiColor()
+        
     }
     
     @objc private func refresh(_ sender: UIRefreshControl?) {

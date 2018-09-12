@@ -13,6 +13,8 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
     
     var Count: Counters? = nil
     
+    @IBOutlet weak var back: UIBarButtonItem!
+    
     var edLogin: String = ""
     var edPass: String = ""
     
@@ -131,6 +133,11 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
         updateTable()
         updateArrowsEnabled()
         updateEditInfoLabel()
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        back.tintColor = myColors.btnColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
+        
     }
     
     func updateBorderDates() {
