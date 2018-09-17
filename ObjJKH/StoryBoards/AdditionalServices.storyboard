@@ -14,7 +14,7 @@
         <!--Доп. услуги-->
         <scene sceneID="da1-uP-Ot2">
             <objects>
-                <viewController id="yWf-Im-OL3" customClass="AdditionalServicesController" customModule="ObjJKH" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yWf-Im-OL3" customClass="AdditionalServicesController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Cf-v0-fLM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,13 +23,12 @@
                                 <rect key="frame" x="169" y="347.5" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-xL-9hC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-xL-9hC">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServiceTableCell" rowHeight="102" id="sBe-H7-37X" customClass="ServiceTableCell" customModule="ObjJKH" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServiceTableCell" rowHeight="102" id="sBe-H7-37X" customClass="ServiceTableCell" customModule="ChistDom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sBe-H7-37X" id="sgA-Ya-ofY">
@@ -67,11 +66,11 @@
                                             <constraints>
                                                 <constraint firstItem="vwt-SG-7aa" firstAttribute="top" secondItem="twn-gB-gPP" secondAttribute="bottom" constant="8" id="0fh-MF-pmw"/>
                                                 <constraint firstItem="Uc8-Ht-igg" firstAttribute="leading" secondItem="vwt-SG-7aa" secondAttribute="trailing" constant="8" id="15O-z0-G0a"/>
-                                                <constraint firstAttribute="trailing" secondItem="Uc8-Ht-igg" secondAttribute="trailing" constant="20" id="5sE-Ge-hZv"/>
                                                 <constraint firstItem="vwt-SG-7aa" firstAttribute="leading" secondItem="sgA-Ya-ofY" secondAttribute="leadingMargin" constant="5" id="6dM-pF-BfO"/>
                                                 <constraint firstItem="Uc8-Ht-igg" firstAttribute="top" secondItem="sgA-Ya-ofY" secondAttribute="top" constant="10" id="EPd-Vr-mRN"/>
                                                 <constraint firstItem="twn-gB-gPP" firstAttribute="top" secondItem="sgA-Ya-ofY" secondAttribute="top" constant="10" id="JvY-DZ-WyF"/>
                                                 <constraint firstItem="Uc8-Ht-igg" firstAttribute="leading" secondItem="twn-gB-gPP" secondAttribute="trailing" constant="8" id="LbN-ev-tUI"/>
+                                                <constraint firstAttribute="trailing" secondItem="Uc8-Ht-igg" secondAttribute="trailing" constant="20" id="Msn-KW-iZG"/>
                                                 <constraint firstItem="3ov-zF-t5t" firstAttribute="top" secondItem="vwt-SG-7aa" secondAttribute="bottom" constant="5" id="NpB-nI-NU0"/>
                                                 <constraint firstItem="twn-gB-gPP" firstAttribute="leading" secondItem="sgA-Ya-ofY" secondAttribute="leading" constant="20" id="gWa-5O-zaa"/>
                                                 <constraint firstItem="3ov-zF-t5t" firstAttribute="leading" secondItem="sgA-Ya-ofY" secondAttribute="leading" constant="20" id="xTR-uv-pEz"/>
@@ -95,7 +94,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dhx-Xd-GFn" firstAttribute="centerY" secondItem="Je2-15-Kcz" secondAttribute="centerY" id="Iei-de-8rp"/>
+                            <constraint firstItem="8Vu-xL-9hC" firstAttribute="trailing" secondItem="Je2-15-Kcz" secondAttribute="trailing" id="Nd2-xr-sL5"/>
+                            <constraint firstItem="8Vu-xL-9hC" firstAttribute="bottom" secondItem="Je2-15-Kcz" secondAttribute="bottom" id="QzF-rX-1R7"/>
+                            <constraint firstItem="8Vu-xL-9hC" firstAttribute="leading" secondItem="Je2-15-Kcz" secondAttribute="leading" id="arX-ND-Rl1"/>
                             <constraint firstItem="dhx-Xd-GFn" firstAttribute="centerX" secondItem="Je2-15-Kcz" secondAttribute="centerX" id="gzJ-Vj-VT6"/>
+                            <constraint firstItem="8Vu-xL-9hC" firstAttribute="top" secondItem="Je2-15-Kcz" secondAttribute="top" id="oJj-Tb-pjY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Je2-15-Kcz"/>
                         <variation key="default">

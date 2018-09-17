@@ -47,7 +47,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     var teck_id: Int64 = 1
     
     @IBAction func add_foto(_ sender: UIButton) {
-        let action = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         action.addAction(UIAlertAction(title: "Выбрать из галереи", style: .default, handler: { (_) in
             
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {

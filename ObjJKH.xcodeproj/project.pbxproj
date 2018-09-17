@@ -414,6 +414,16 @@
 		41E8F02B2147C61300FE0473 /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		41E8F02C2147C61300FE0473 /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		41E8F0322147DF2900FE0473 /* no_counters.html in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0312147DF2900FE0473 /* no_counters.html */; };
+		41E8F0332149E96300FE0473 /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		41E8F0342149E96300FE0473 /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		41E8F0352149E96400FE0473 /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		41E8F0362149E96400FE0473 /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		41E8F0372149E96500FE0473 /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		41E8F0382149EC3F00FE0473 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		41E8F0392149EC4000FE0473 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		41E8F03A2149EC4000FE0473 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		41E8F03B2149EC4000FE0473 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		41E8F03C2149EC4100FE0473 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
 		41EF59D82137A1DD00789370 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
 		41EF59D92137A1DD00789370 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
 		41EF59DA2137A1DD00789370 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
@@ -621,9 +631,11 @@
 		71AB700C5BDD4BA5E0AC271D /* Pods_UK_Komfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D311D74664F688358E4AC9 /* Pods_UK_Komfort.framework */; };
 		9A3BC9EC7EEC7406F4FA0266 /* Pods_OurObjHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E2F2C71A0A7B6526A4B631 /* Pods_OurObjHome.framework */; };
 		E2403EF3D485F9958D387645 /* Pods_ChistDom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A3A30AE4D5EA3B9ED5DCDF /* Pods_ChistDom.framework */; };
+		F4BF5236E4E597BA989540BC /* Pods_DJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51482778F2B4CD3B908634CF /* Pods_DJ.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1805A037B4EC16ECADAFA218 /* Pods-DJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJ/Pods-DJ.release.xcconfig"; sourceTree = "<group>"; };
 		1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesController.swift; sourceTree = "<group>"; };
 		1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdditionalServices.storyboard; sourceTree = "<group>"; };
 		32E2F2C71A0A7B6526A4B631 /* Pods_OurObjHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurObjHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -748,12 +760,14 @@
 		41FDA2B521422BA0003D8110 /* logo_UK_Komfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_UK_Komfort.png; sourceTree = "<group>"; };
 		41FDA2B721422BAE003D8110 /* logo_UK_Komfort_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_UK_Komfort_white.png; sourceTree = "<group>"; };
 		4C801D0F22BA3D1E3E7E7610 /* Pods-MupRCMytishi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MupRCMytishi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi.debug.xcconfig"; sourceTree = "<group>"; };
+		51482778F2B4CD3B908634CF /* Pods_DJ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB5DEA94D7C36C0B0FE97EB /* Pods-UK_Komfort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Komfort.release.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort.release.xcconfig"; sourceTree = "<group>"; };
 		5B96FE423D4F0D441602B2AD /* Pods-ObjJKH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.release.xcconfig"; sourceTree = "<group>"; };
 		6DE153C0E7B454DBD8A945D2 /* Pods-ChistDom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChistDom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom.debug.xcconfig"; sourceTree = "<group>"; };
 		6E7AD4DD11AB893510C17B6A /* Pods_MupRCMytishi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MupRCMytishi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89807DB5E8A6F0B99939588D /* Pods-ChistDom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChistDom.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom.release.xcconfig"; sourceTree = "<group>"; };
 		A4575A342EF8511B7C29F97C /* Pods-OurObjHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurObjHome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome.debug.xcconfig"; sourceTree = "<group>"; };
+		C0E87586FCAA09E8049F224C /* Pods-DJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJ/Pods-DJ.debug.xcconfig"; sourceTree = "<group>"; };
 		C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjJKH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81FE29E6E49BF0E6BD8DE9A /* Pods-ObjJKH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.debug.xcconfig"; sourceTree = "<group>"; };
 		E0D311D74664F688358E4AC9 /* Pods_UK_Komfort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UK_Komfort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -801,6 +815,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BF5236E4E597BA989540BC /* Pods_DJ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,6 +1213,8 @@
 				5B96FE423D4F0D441602B2AD /* Pods-ObjJKH.release.xcconfig */,
 				F6CD5D400C1D0F58E85A91E7 /* Pods-UK_Komfort.debug.xcconfig */,
 				5AB5DEA94D7C36C0B0FE97EB /* Pods-UK_Komfort.release.xcconfig */,
+				C0E87586FCAA09E8049F224C /* Pods-DJ.debug.xcconfig */,
+				1805A037B4EC16ECADAFA218 /* Pods-DJ.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1210,6 +1227,7 @@
 				6E7AD4DD11AB893510C17B6A /* Pods_MupRCMytishi.framework */,
 				33A3A30AE4D5EA3B9ED5DCDF /* Pods_ChistDom.framework */,
 				E0D311D74664F688358E4AC9 /* Pods_UK_Komfort.framework */,
+				51482778F2B4CD3B908634CF /* Pods_DJ.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1297,9 +1315,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41DFC43E213D206C002CEB62 /* Build configuration list for PBXNativeTarget "DJ" */;
 			buildPhases = (
+				77B0D4793C552F5C52ACC487 /* [CP] Check Pods Manifest.lock */,
 				41DFC3E3213D206C002CEB62 /* Sources */,
 				41DFC41D213D206C002CEB62 /* Frameworks */,
 				41DFC41F213D206C002CEB62 /* Resources */,
+				1F0CD9C846AEEE3FF777ACFE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1419,6 +1439,7 @@
 				418ABF83213539DA004DB75C /* News.storyboard in Resources */,
 				418ABF592134CF1A004DB75C /* (null) in Resources */,
 				418ABF5A2134CF1A004DB75C /* Registration.storyboard in Resources */,
+				41E8F0382149EC3F00FE0473 /* AdditionalServices.storyboard in Resources */,
 				41ACA2152140CB0200921C82 /* ic_get_app.png in Resources */,
 				41DFC449213F5ABE002CEB62 /* Info - OurObjHome.plist in Resources */,
 				418ABF5B2134CF1A004DB75C /* ForgotPass.storyboard in Resources */,
@@ -1485,6 +1506,7 @@
 				41DFC451213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
 				418ABFE621361949004DB75C /* Counters.storyboard in Resources */,
 				41EF59FB2138D14700789370 /* app_open.png in Resources */,
+				41E8F0392149EC4000FE0473 /* AdditionalServices.storyboard in Resources */,
 				41EF59DE2137A20300789370 /* Saldo.storyboard in Resources */,
 				418ABFD221357DA5004DB75C /* MainMenu.storyboard in Resources */,
 				418ABFD321357DA5004DB75C /* SelectItem.storyboard in Resources */,
@@ -1529,6 +1551,7 @@
 				41DFC452213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
 				41DFC3CB213CF4E9002CEB62 /* ic_action_files_grey.png in Resources */,
 				41DFC3CC213CF4E9002CEB62 /* arrow_rigth.png in Resources */,
+				41E8F03A2149EC4000FE0473 /* AdditionalServices.storyboard in Resources */,
 				41DFC3CD213CF4E9002CEB62 /* MainMenu.storyboard in Resources */,
 				41DFC3CE213CF4E9002CEB62 /* SelectItem.storyboard in Resources */,
 				41DFC3CF213CF4E9002CEB62 /* Questions.storyboard in Resources */,
@@ -1573,6 +1596,7 @@
 				41DFC453213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
 				41DFC432213D206C002CEB62 /* ic_action_files_grey.png in Resources */,
 				41DFC433213D206C002CEB62 /* arrow_rigth.png in Resources */,
+				41E8F03B2149EC4000FE0473 /* AdditionalServices.storyboard in Resources */,
 				41DFC434213D206C002CEB62 /* MainMenu.storyboard in Resources */,
 				41DFC435213D206C002CEB62 /* SelectItem.storyboard in Resources */,
 				41DFC436213D206C002CEB62 /* Questions.storyboard in Resources */,
@@ -1617,6 +1641,7 @@
 				41FDA2A0214229A0003D8110 /* Logo_DemoUC_White.png in Resources */,
 				41FDA2A1214229A0003D8110 /* ic_action_files_grey.png in Resources */,
 				41FDA2A2214229A0003D8110 /* arrow_rigth.png in Resources */,
+				41E8F03C2149EC4100FE0473 /* AdditionalServices.storyboard in Resources */,
 				41FDA2A3214229A0003D8110 /* MainMenu.storyboard in Resources */,
 				41FDA2A4214229A0003D8110 /* ic_send_app.png in Resources */,
 				41FDA2A5214229A0003D8110 /* SelectItem.storyboard in Resources */,
@@ -1681,6 +1706,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F0CD9C846AEEE3FF777ACFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
+				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2257B7A2FF3F102486C70E8C /* [CP] Check Pods Manifest.lock */ = {
@@ -1813,6 +1868,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		77B0D4793C552F5C52ACC487 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DJ-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B48EA1E3A6918D2141C39645 /* [CP] Embed Pods Frameworks */ = {
@@ -1998,6 +2071,7 @@
 				41EF5A6D213BAF9600789370 /* FloatRatingView.swift in Sources */,
 				41DFC457213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				418AC039213634CC004DB75C /* Saldo+CoreDataClass.swift in Sources */,
+				41E8F0332149E96300FE0473 /* AdditionalServicesController.swift in Sources */,
 				41EF5A1B2138E12100789370 /* AppUser.swift in Sources */,
 				418ABF512134CF1A004DB75C /* Extensions.swift in Sources */,
 				41EF59D92137A1DD00789370 /* SaldoController.swift in Sources */,
@@ -2069,6 +2143,7 @@
 				41EF5A6E213BAF9600789370 /* FloatRatingView.swift in Sources */,
 				41DFC458213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				418AC03A213634CC004DB75C /* Saldo+CoreDataClass.swift in Sources */,
+				41E8F0342149E96300FE0473 /* AdditionalServicesController.swift in Sources */,
 				41EF5A1C2138E12100789370 /* AppUser.swift in Sources */,
 				418ABFBB21357DA5004DB75C /* Extensions.swift in Sources */,
 				41EF59DA2137A1DD00789370 /* SaldoController.swift in Sources */,
@@ -2140,6 +2215,7 @@
 				41DFC3A2213CF4E9002CEB62 /* FloatRatingView.swift in Sources */,
 				41DFC459213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				41DFC3A3213CF4E9002CEB62 /* Saldo+CoreDataClass.swift in Sources */,
+				41E8F0352149E96400FE0473 /* AdditionalServicesController.swift in Sources */,
 				41DFC3A4213CF4E9002CEB62 /* AppUser.swift in Sources */,
 				41DFC3A5213CF4E9002CEB62 /* Extensions.swift in Sources */,
 				41DFC3A6213CF4E9002CEB62 /* SaldoController.swift in Sources */,
@@ -2211,6 +2287,7 @@
 				41DFC409213D206C002CEB62 /* FloatRatingView.swift in Sources */,
 				41DFC45A213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				41DFC40A213D206C002CEB62 /* Saldo+CoreDataClass.swift in Sources */,
+				41E8F0362149E96400FE0473 /* AdditionalServicesController.swift in Sources */,
 				41DFC40B213D206C002CEB62 /* AppUser.swift in Sources */,
 				41DFC40C213D206C002CEB62 /* Extensions.swift in Sources */,
 				41DFC40D213D206C002CEB62 /* SaldoController.swift in Sources */,
@@ -2282,6 +2359,7 @@
 				41FDA272214229A0003D8110 /* FloatRatingView.swift in Sources */,
 				41FDA273214229A0003D8110 /* MainMenuCons.swift in Sources */,
 				41FDA274214229A0003D8110 /* Saldo+CoreDataClass.swift in Sources */,
+				41E8F0372149E96500FE0473 /* AdditionalServicesController.swift in Sources */,
 				41FDA275214229A0003D8110 /* AppUser.swift in Sources */,
 				41FDA276214229A0003D8110 /* Extensions.swift in Sources */,
 				41FDA277214229A0003D8110 /* SaldoController.swift in Sources */,
@@ -2619,6 +2697,7 @@
 		};
 		41DFC43F213D206C002CEB62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0E87586FCAA09E8049F224C /* Pods-DJ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(DJ)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2640,6 +2719,7 @@
 		};
 		41DFC440213D206C002CEB62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1805A037B4EC16ECADAFA218 /* Pods-DJ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(DJ)";
 				CODE_SIGN_STYLE = Automatic;

@@ -140,19 +140,24 @@ class FirstController: UIViewController {
     
     // РАБОТА С СЕРВЕРОМ
     func getServerUrlBy(login loginText:String ,password txtPass:String) -> String {
-        if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass
-        } else {
-            return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
-        }
+        #if isDJ
+            return Server.SERVER + Server.ENTER_DJ + "phone=" + loginText + "&pwd=" + txtPass
+        #else
+            if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
+                return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass
+            } else {
+                return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
+            }
+        #endif
+        
     }
     
     func getServerUrlByIdent(login loginText:String) -> String {
-        if loginText.isPhoneNumber , let _ = loginText.asPhoneNumberWithoutPlus  {
+//        if loginText.isPhoneNumber , let _ = loginText.asPhoneNumberWithoutPlus  {
             return Server.SERVER + Server.MOBILE_API_PATH + Server.GET_IDENTS_ACC + "phone=" + loginText
-        } else {
-            return "xxx"
-        }
+//        } else {
+//            return "xxx"
+//        }
     }
     
     // Подтянем лиц. счета для указанного логина

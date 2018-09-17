@@ -26,6 +26,7 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/newjkh/"
     #endif
     
+    static let ENTER_DJ            = "MobileAPI/AuthenticateAccountDJ.ashx?"   // Авторизация пользователя (ДомЖилСервис)
     static let ENTER               = "AutenticateUserAndroid.ashx?"  // Авторизация пользователя
     static let ENTER_MOBILE        = "MobileAPI/AuthenticateAccount.ashx?"  // Авторизация пользователя
     static let SEND_ID_GOOGLE      = "RegisterClientDevice.ashx?"    // Передача ид устройства для уведомлений
@@ -64,6 +65,9 @@ class Server {
     static let GET_HOUSE_DATA      = "GetHouseData.ashx?"            // Подтянуть квартиры по дому
     static let ADD_IDENT_TO_ACCOUNT = "AddIdentToAccount.ashx?"      // Добавить лицевой счет в аккаунт
     static let GET_IDENTS_ACC      = "GetAccountIdents.ashx?"        // Получить лиц. счета по аккаунту
+    static let DEL_IDENT_ACC       = "DeleteIdentFromAccount.ashx?"  // Удалить лиц. счет из аккаунта
+    
+    static let GET_ADDITIONAL_SERVICES = "GetAdditionalServices.ashx?" // Получить дополнительные услуги
 
     static let MOBILE_API_PATH     = "MobileAPI/"
     
