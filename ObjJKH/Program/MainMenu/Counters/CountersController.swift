@@ -240,9 +240,9 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
             return 0
         }
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 154.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 154.0
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let counter = (fetchedResultsController?.object(at: indexPath))! as Counters

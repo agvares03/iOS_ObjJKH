@@ -289,12 +289,12 @@ class DB: NSObject, XMLParserDelegate {
                                                                     
                                                                     self.add_data_saldo(usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
                                                                     
-                                                                    if (Int(bill_month)! > i_month) {
+//                                                                    if (Int(bill_month)! > i_month) {
                                                                         i_month = Int(bill_month)!
-                                                                    }
-                                                                    if (Int(bill_year)! > i_year) {
+//                                                                    }
+//                                                                    if (Int(bill_year)! > i_year) {
                                                                         i_year = Int(bill_year)!
-                                                                    }
+//                                                                    }
                                                                     
                                                                 }
                                                             }

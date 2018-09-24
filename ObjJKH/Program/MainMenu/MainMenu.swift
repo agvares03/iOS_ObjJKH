@@ -251,6 +251,8 @@ class MainMenu: UIViewController {
             heigth_view.constant = 322
         #elseif isDJ
             fon_top.image = UIImage(named: "logo_DJ_White")
+        #elseif isStolitsa
+            fon_top.image = UIImage(named: "logo_Stolitsa_white")
         #elseif isUKKomfort
             fon_top.image = UIImage(named: "logo_UK_Komfort_white")
         #endif

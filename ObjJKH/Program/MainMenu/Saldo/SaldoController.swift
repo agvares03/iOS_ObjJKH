@@ -60,7 +60,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         if dropper.status == .hidden {
             
             dropper.theme = Dropper.Themes.white
-            dropper.cornerRadius = 3
+//            dropper.cornerRadius = 3
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.center, button: ls_button)
             view.addSubview(dropper)
         } else {
@@ -159,7 +159,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         updateTable()
         updateArrowsEnabled()
         
-        getData(login: login!, pass: pass!)
+//        getData(login: login!, pass: pass!)
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
@@ -325,9 +325,9 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 138
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 138
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (selectedRow == -5)   //значит сейчас не выбрана никакая ячейка
@@ -424,11 +424,11 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                                             bill_year = String(describing: obj.value as! NSNumber)
                                                                         }
                                                                     }
-                                                                    if (Int(bill_month)! > i_month) {
+                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month) == 1) && (i_month == 12)) {
                                                                         if (itsFirst) {
                                                                             itsFirst = false
                                                                         } else {
-                                                                            self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
+                                                                            self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
                                                                             
                                                                             obj_start = 0.00
                                                                             obj_plus  = 0.00
@@ -538,4 +538,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         })
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        getData(login: login!, pass: pass!)
+    }
+    
 }

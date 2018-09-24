@@ -38,7 +38,7 @@ class PaysController: UIViewController, DropperDelegate {
         if dropper.status == .hidden {
             
             dropper.theme = Dropper.Themes.white
-            dropper.cornerRadius = 3
+//            dropper.cornerRadius = 3
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.center, button: ls_button)
             view.addSubview(dropper)
         } else {
@@ -251,6 +251,5 @@ class PaysController: UIViewController, DropperDelegate {
         } catch {
             print(error)
         }
-    }
-
+    }    
 }
