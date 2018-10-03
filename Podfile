@@ -84,3 +84,33 @@ target 'DJ' do
     pod 'Dropper'
     
 end
+
+
+target 'Stolitsa' do
+    
+    use_frameworks!
+    
+    # Pods for Наш Общий Дом
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
+    pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+    pod 'Gloss'
+    pod 'Dropper'
+    
+end
+
+target 'Komeks' do
+    
+    use_frameworks!
+    
+    # Pods for Наш Общий Дом
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
+    pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+    pod 'Gloss'
+    pod 'Dropper'
+#    pod 'MobileVLCKit'
+
+end

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bN5-W8-3oO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bN5-W8-3oO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4vC-NC-e10">
-                                <rect key="frame" x="169" y="347.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="347" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NUI-uP-Rzp">
@@ -46,15 +45,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zoQ-CK-9ys">
-                                                    <rect key="frame" x="16" y="12" width="65" height="65"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="65" id="GOp-vH-Zvd"/>
-                                                        <constraint firstAttribute="width" constant="65" id="pHf-i5-6vn"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOu-lN-PyE">
-                                                    <rect key="frame" x="89" y="20" width="262" height="18"/>
+                                                    <rect key="frame" x="89" y="40" width="262" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -69,17 +61,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_icon" translatesAutoresizingMaskIntoConstraints="NO" id="zoQ-CK-9ys">
+                                                    <rect key="frame" x="20" y="21" width="65" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="46" id="GOp-vH-Zvd"/>
+                                                        <constraint firstAttribute="width" constant="65" id="pHf-i5-6vn"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="sOu-lN-PyE" firstAttribute="top" secondItem="bfE-4y-rvM" secondAttribute="topMargin" constant="12" id="3fx-D0-VOi"/>
                                             <constraint firstAttribute="trailing" secondItem="vUe-aW-Mrt" secondAttribute="trailing" id="8g7-1w-1G8"/>
                                             <constraint firstItem="vUe-aW-Mrt" firstAttribute="leading" secondItem="bfE-4y-rvM" secondAttribute="leading" constant="16" id="DWk-cI-R60"/>
-                                            <constraint firstItem="sOu-lN-PyE" firstAttribute="leading" secondItem="zoQ-CK-9ys" secondAttribute="trailing" constant="8" id="F0c-vh-xTU"/>
-                                            <constraint firstItem="zoQ-CK-9ys" firstAttribute="leading" secondItem="bfE-4y-rvM" secondAttribute="leading" constant="16" id="M4a-iG-92I"/>
+                                            <constraint firstItem="sOu-lN-PyE" firstAttribute="leading" secondItem="zoQ-CK-9ys" secondAttribute="trailing" constant="4" id="F0c-vh-xTU"/>
+                                            <constraint firstItem="zoQ-CK-9ys" firstAttribute="leading" secondItem="bfE-4y-rvM" secondAttribute="leading" constant="20" id="M4a-iG-92I"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="sOu-lN-PyE" secondAttribute="trailing" constant="16" id="TdI-td-mhu"/>
                                             <constraint firstAttribute="bottom" secondItem="vUe-aW-Mrt" secondAttribute="bottom" id="Xar-iT-TiO"/>
-                                            <constraint firstItem="zoQ-CK-9ys" firstAttribute="top" secondItem="bfE-4y-rvM" secondAttribute="top" constant="12" id="kYJ-Na-rU7"/>
+                                            <constraint firstItem="zoQ-CK-9ys" firstAttribute="top" secondItem="bfE-4y-rvM" secondAttribute="top" constant="21" id="kYJ-Na-rU7"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="name" destination="sOu-lN-PyE" id="sIe-tc-NJI"/>
@@ -119,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFU-Ry-5t8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="139"/>
+            <point key="canvasLocation" x="1101.5999999999999" y="138.98050974512745"/>
         </scene>
         <!--Title-->
         <scene sceneID="gc6-vq-BTZ">
@@ -134,7 +133,7 @@
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cdO-Ui-rY4">
-                                <rect key="frame" x="169" y="347.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="347" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -187,5 +186,6 @@
     </scenes>
     <resources>
         <image name="back" width="17" height="17"/>
+        <image name="camera_icon" width="145" height="110"/>
     </resources>
 </document>

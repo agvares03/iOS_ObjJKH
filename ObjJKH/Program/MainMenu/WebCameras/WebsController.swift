@@ -33,7 +33,18 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         index = indexPath.row
-        performSegue(withIdentifier: "go_web_camera", sender: self)
+        if ((web_cameras?[index].link?.contains("rtsp"))!) {
+            guard let url = URL(string: (web_cameras?[index].link)!) else {
+                return //be safe
+            }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
+                    print("success!") // do what you want
+                })
+            }
+        } else {
+            performSegue(withIdentifier: "go_web_camera", sender: self)
+        }
     }
     
     @IBOutlet weak var emptyLabel: UILabel!
@@ -118,12 +129,14 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "go_web_camera" {
+            
             let vc = segue.destination as! Web_Camera
             vc.title = web_cameras?[index].name
             vc.web_camera = web_cameras?[index]
             //            //            vc.delegate = delegate
             //            vc.questionDelegate = self
             //            performName_ = ""
+    
         }
     }
 

@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17C49227E0E438EACAE2FDA6 /* Pods_Stolitsa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C30202AA143265557CC7756 /* Pods_Stolitsa.framework */; };
 		1C009E4521494A65004E8BFD /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
 		1C009E4721494AC4004E8BFD /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
 		2BA6430A5373E25736C0D4BE /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
+		41160E76216209B0000A4041 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41160E75216209B0000A4041 /* GoogleService-Info.plist */; };
+		411AD1CA2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
+		411AD1CB2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
+		411AD1CC2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
+		411AD1CD2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
+		411AD1CE2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
+		411AD1CF2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
+		411AD1D02161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
+		411AD1D12161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
 		4120922E2158CB2D001E713E /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
 		4120922F2158CB2D001E713E /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
 		412092302158CB2D001E713E /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
@@ -107,12 +117,118 @@
 		4120928E2158CB2D001E713E /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		4120928F2158CB2D001E713E /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
 		412092902158CB2D001E713E /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
-		412092912158CB2D001E713E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		412092922158CB2D001E713E /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		412092932158CB2D001E713E /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		412092942158CB2D001E713E /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		4120929D2158D116001E713E /* logo_Stolitsa_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4120929C2158D116001E713E /* logo_Stolitsa_white.png */; };
 		4120929F2158D126001E713E /* logo_Stolitsa.png in Resources */ = {isa = PBXBuildFile; fileRef = 4120929E2158D126001E713E /* logo_Stolitsa.png */; };
+		412092A52159E603001E713E /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
+		412092A62159E603001E713E /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		412092A72159E603001E713E /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		412092A82159E603001E713E /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		412092A92159E603001E713E /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		412092AA2159E603001E713E /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		412092AB2159E603001E713E /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		412092AC2159E603001E713E /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		412092AD2159E603001E713E /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		412092AE2159E603001E713E /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		412092AF2159E603001E713E /* ShemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F017214765B500FE0473 /* ShemeColor.swift */; };
+		412092B02159E603001E713E /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02F213634CC004DB75C /* Counters+CoreDataProperties.swift */; };
+		412092B12159E603001E713E /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		412092B22159E603001E713E /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		412092B32159E603001E713E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		412092B42159E603001E713E /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		412092B52159E603001E713E /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		412092B62159E603001E713E /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F00F2147605E00FE0473 /* ImageConstant.swift */; };
+		412092B72159E603001E713E /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		412092B82159E603001E713E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		412092B92159E603001E713E /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		412092BA2159E603001E713E /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		412092BB2159E603001E713E /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		412092BC2159E603001E713E /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		412092BD2159E603001E713E /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		412092BE2159E603001E713E /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		412092BF2159E603001E713E /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		412092C02159E603001E713E /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		412092C12159E603001E713E /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		412092C22159E603001E713E /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		412092C32159E603001E713E /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0C2138D92E00789370 /* Applications+CoreDataProperties.swift */; };
+		412092C42159E603001E713E /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		412092C52159E603001E713E /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0B2138D92E00789370 /* Applications+CoreDataClass.swift */; };
+		412092C62159E603001E713E /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		412092C72159E603001E713E /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		412092C82159E603001E713E /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		412092C92159E603001E713E /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		412092CA2159E603001E713E /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		412092CB2159E603001E713E /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02E213634CC004DB75C /* Counters+CoreDataClass.swift */; };
+		412092CC2159E603001E713E /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		412092CD2159E603001E713E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		412092CE2159E603001E713E /* ColorsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F0092147604400FE0473 /* ColorsConstant.swift */; };
+		412092CF2159E603001E713E /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		412092D02159E603001E713E /* MainMenuCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC455213FCA99002CEB62 /* MainMenuCons.swift */; };
+		412092D12159E603001E713E /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		412092D22159E603001E713E /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		412092D32159E603001E713E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		412092D42159E603001E713E /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		412092D52159E603001E713E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		412092D62159E603001E713E /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		412092D72159E603001E713E /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		412092D82159E603001E713E /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		412092D92159E603001E713E /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		412092DA2159E603001E713E /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		412092DB2159E603001E713E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		412092DC2159E603001E713E /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		412092DD2159E603001E713E /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		412092DE2159E603001E713E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		412092DF2159E603001E713E /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		412092E02159E603001E713E /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		412092E12159E603001E713E /* NoCounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F01F2147C28D00FE0473 /* NoCounters.swift */; };
+		412092E22159E603001E713E /* AppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC4682140B0D4002CEB62 /* AppCons.swift */; };
+		412092E32159E603001E713E /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		412092E42159E603001E713E /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		412092E52159E603001E713E /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		412092E72159E603001E713E /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
+		412092E92159E603001E713E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		412092EA2159E603001E713E /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		412092EB2159E603001E713E /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		412092EC2159E603001E713E /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		412092ED2159E603001E713E /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		412092EE2159E603001E713E /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
+		412092EF2159E603001E713E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		412092F02159E603001E713E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		412092F12159E603001E713E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		412092F22159E603001E713E /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		412092F32159E603001E713E /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		412092F42159E603001E713E /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		412092F52159E603001E713E /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		412092F62159E603001E713E /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		412092F72159E603001E713E /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		412092F82159E603001E713E /* MainMenuCons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */; };
+		412092F92159E603001E713E /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		412092FA2159E603001E713E /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		412092FB2159E603001E713E /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		412092FC2159E603001E713E /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		412092FD2159E603001E713E /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		412092FE2159E603001E713E /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		412092FF2159E603001E713E /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		412093002159E603001E713E /* ic_send_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA20D2140CA9600921C82 /* ic_send_app.png */; };
+		412093012159E603001E713E /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		412093022159E603001E713E /* logo_Stolitsa.png in Resources */ = {isa = PBXBuildFile; fileRef = 4120929E2158D126001E713E /* logo_Stolitsa.png */; };
+		412093032159E603001E713E /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		412093042159E603001E713E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		412093052159E603001E713E /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
+		412093062159E603001E713E /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		412093072159E603001E713E /* logo_Stolitsa_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4120929C2158D116001E713E /* logo_Stolitsa_white.png */; };
+		412093082159E603001E713E /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		412093092159E603001E713E /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		4120930B2159E603001E713E /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		4120930C2159E603001E713E /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
+		4120930D2159E603001E713E /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		412093162159EB16001E713E /* Logo_Komeks_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 412093152159EB15001E713E /* Logo_Komeks_White.png */; };
+		412093182159EB1F001E713E /* Logo_Komeks.png in Resources */ = {isa = PBXBuildFile; fileRef = 412093172159EB1E001E713E /* Logo_Komeks.png */; };
+		4120931F215BE7D8001E713E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4120931E215BE7D8001E713E /* GoogleService-Info.plist */; };
+		41209321215C105F001E713E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41209320215C105F001E713E /* GoogleService-Info.plist */; };
+		41209323215CBB86001E713E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41209322215CBB86001E713E /* GoogleService-Info.plist */; };
 		418ABF0B2133CC7B004DB75C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
 		418ABF0D2133CC7B004DB75C /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
 		418ABF102133CC7B004DB75C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
@@ -155,7 +271,6 @@
 		418ABF612134CF1A004DB75C /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		418ABF622134CF1A004DB75C /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
 		418ABF632134CF1A004DB75C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
-		418ABF642134CF1A004DB75C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		418ABF652134CF1A004DB75C /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		418ABF6E2134D291004DB75C /* logo_Our_Obj_Home_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF6D2134D291004DB75C /* logo_Our_Obj_Home_white.png */; };
 		418ABF702134D29B004DB75C /* logo_Our_Obj_Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF6F2134D29B004DB75C /* logo_Our_Obj_Home.png */; };
@@ -230,7 +345,6 @@
 		418ABFD321357DA5004DB75C /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
 		418ABFD421357DA5004DB75C /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
 		418ABFD521357DA5004DB75C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
-		418ABFD621357DA5004DB75C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		418ABFD721357DA5004DB75C /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		418ABFE0213580F3004DB75C /* Logo_Chist_Dom_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFDF213580F3004DB75C /* Logo_Chist_Dom_White.png */; };
 		418ABFE221358101004DB75C /* Logo_Chist_Dom.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE121358101004DB75C /* Logo_Chist_Dom.png */; };
@@ -368,7 +482,6 @@
 		41DFC3D0213CF4E9002CEB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
 		41DFC3D1213CF4E9002CEB62 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		41DFC3D2213CF4E9002CEB62 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
-		41DFC3D3213CF4E9002CEB62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		41DFC3D4213CF4E9002CEB62 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		41DFC3D5213CF4E9002CEB62 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		41DFC3DE213CFD60002CEB62 /* logo_MupRCMytishi_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */; };
@@ -456,7 +569,6 @@
 		41DFC437213D206C002CEB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
 		41DFC438213D206C002CEB62 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		41DFC439213D206C002CEB62 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
-		41DFC43A213D206C002CEB62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		41DFC43B213D206C002CEB62 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		41DFC43C213D206C002CEB62 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		41DFC445213D2740002CEB62 /* logo_DJ_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC444213D2740002CEB62 /* logo_DJ_White.png */; };
@@ -718,13 +830,13 @@
 		41FDA2A8214229A0003D8110 /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
 		41FDA2A9214229A0003D8110 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		41FDA2AA214229A0003D8110 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
-		41FDA2AB214229A0003D8110 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		41FDA2AC214229A0003D8110 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		41FDA2AD214229A0003D8110 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		41FDA2B621422BA1003D8110 /* logo_UK_Komfort.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FDA2B521422BA0003D8110 /* logo_UK_Komfort.png */; };
 		41FDA2B821422BAE003D8110 /* logo_UK_Komfort_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FDA2B721422BAE003D8110 /* logo_UK_Komfort_white.png */; };
 		5518D58461607A15A9D22AE6 /* Pods_MupRCMytishi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7AD4DD11AB893510C17B6A /* Pods_MupRCMytishi.framework */; };
 		71AB700C5BDD4BA5E0AC271D /* Pods_UK_Komfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D311D74664F688358E4AC9 /* Pods_UK_Komfort.framework */; };
+		800038D9EEFA2437D5E625F7 /* Pods_Komeks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D244462D5218B88F87AACCF /* Pods_Komeks.framework */; };
 		9A3BC9EC7EEC7406F4FA0266 /* Pods_OurObjHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E2F2C71A0A7B6526A4B631 /* Pods_OurObjHome.framework */; };
 		E2403EF3D485F9958D387645 /* Pods_ChistDom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A3A30AE4D5EA3B9ED5DCDF /* Pods_ChistDom.framework */; };
 		F4BF5236E4E597BA989540BC /* Pods_DJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51482778F2B4CD3B908634CF /* Pods_DJ.framework */; };
@@ -734,12 +846,27 @@
 		1805A037B4EC16ECADAFA218 /* Pods-DJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ.release.xcconfig"; path = "Pods/Target Support Files/Pods-DJ/Pods-DJ.release.xcconfig"; sourceTree = "<group>"; };
 		1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesController.swift; sourceTree = "<group>"; };
 		1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdditionalServices.storyboard; sourceTree = "<group>"; };
+		250FEBB4EE1C56123B148327 /* Pods-Komeks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komeks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Komeks/Pods-Komeks.debug.xcconfig"; sourceTree = "<group>"; };
 		32E2F2C71A0A7B6526A4B631 /* Pods_OurObjHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurObjHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A3A30AE4D5EA3B9ED5DCDF /* Pods_ChistDom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChistDom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B1D02E929C2F9CF087B5AAD /* Pods-Stolitsa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stolitsa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa.release.xcconfig"; sourceTree = "<group>"; };
+		3C30202AA143265557CC7756 /* Pods_Stolitsa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stolitsa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D244462D5218B88F87AACCF /* Pods_Komeks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Komeks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41160E75216209B0000A4041 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Komeks/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		411AD1C12161E17D004FD1B5 /* Komeks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Komeks-Bridging-Header.h"; sourceTree = "<group>"; };
+		411AD1C82161E17E004FD1B5 /* empty.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = empty.cpp; sourceTree = "<group>"; };
+		411AD1C92161E17E004FD1B5 /* empty.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = empty.hpp; sourceTree = "<group>"; };
 		412092992158CB2D001E713E /* Stolitsa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stolitsa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4120929A2158CB36001E713E /* Info - Stolitsa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - Stolitsa.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - Stolitsa.plist"; sourceTree = "<absolute>"; };
 		4120929C2158D116001E713E /* logo_Stolitsa_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa_white.png; sourceTree = "<group>"; };
 		4120929E2158D126001E713E /* logo_Stolitsa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa.png; sourceTree = "<group>"; };
+		412093122159E603001E713E /* Komeks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komeks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		412093132159E619001E713E /* Info - Komeks.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - Komeks.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - Komeks.plist"; sourceTree = "<absolute>"; };
+		412093152159EB15001E713E /* Logo_Komeks_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Komeks_White.png; sourceTree = "<group>"; };
+		412093172159EB1E001E713E /* Logo_Komeks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Komeks.png; sourceTree = "<group>"; };
+		4120931E215BE7D8001E713E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Chist_Dom_Google/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		41209320215C105F001E713E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "OurObjHome/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		41209322215CBB86001E713E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Stolitsa/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		413752F32152954B00D2C7DE /* OurObjHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OurObjHome.entitlements; sourceTree = "<group>"; };
 		413752F42152955800D2C7DE /* ObjJKH.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ObjJKH.entitlements; sourceTree = "<group>"; };
 		413752F52152955E00D2C7DE /* ChistDom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChistDom.entitlements; sourceTree = "<group>"; };
@@ -871,10 +998,12 @@
 		5B96FE423D4F0D441602B2AD /* Pods-ObjJKH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.release.xcconfig"; sourceTree = "<group>"; };
 		6DE153C0E7B454DBD8A945D2 /* Pods-ChistDom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChistDom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom.debug.xcconfig"; sourceTree = "<group>"; };
 		6E7AD4DD11AB893510C17B6A /* Pods_MupRCMytishi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MupRCMytishi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7060DE6F820CAB007B3DEF28 /* Pods-Stolitsa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stolitsa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa.debug.xcconfig"; sourceTree = "<group>"; };
 		89807DB5E8A6F0B99939588D /* Pods-ChistDom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChistDom.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom.release.xcconfig"; sourceTree = "<group>"; };
 		A4575A342EF8511B7C29F97C /* Pods-OurObjHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurObjHome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome.debug.xcconfig"; sourceTree = "<group>"; };
 		C0E87586FCAA09E8049F224C /* Pods-DJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJ/Pods-DJ.debug.xcconfig"; sourceTree = "<group>"; };
 		C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjJKH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2BF7A6BC267D1C1F504FE5F /* Pods-Komeks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komeks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Komeks/Pods-Komeks.release.xcconfig"; sourceTree = "<group>"; };
 		D81FE29E6E49BF0E6BD8DE9A /* Pods-ObjJKH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.debug.xcconfig"; sourceTree = "<group>"; };
 		E0D311D74664F688358E4AC9 /* Pods_UK_Komfort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UK_Komfort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFD4DA8A5D4EF2763425506 /* Pods-MupRCMytishi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MupRCMytishi.release.xcconfig"; path = "Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi.release.xcconfig"; sourceTree = "<group>"; };
@@ -888,6 +1017,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				412092702158CB2D001E713E /* Pods_ObjJKH.framework in Frameworks */,
+				17C49227E0E438EACAE2FDA6 /* Pods_Stolitsa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		412092E62159E603001E713E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				412092E72159E603001E713E /* Pods_ObjJKH.framework in Frameworks */,
+				800038D9EEFA2437D5E625F7 /* Pods_Komeks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +1089,16 @@
 			path = AdditionalServices;
 			sourceTree = "<group>";
 		};
+		411AD1BC2161E02F004FD1B5 /* Bridges */ = {
+			isa = PBXGroup;
+			children = (
+				411AD1C82161E17E004FD1B5 /* empty.cpp */,
+				411AD1C92161E17E004FD1B5 /* empty.hpp */,
+				411AD1C12161E17D004FD1B5 /* Komeks-Bridging-Header.h */,
+			);
+			path = Bridges;
+			sourceTree = "<group>";
+		};
 		4120929B2158CF41001E713E /* Stolica */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +1106,15 @@
 				4120929E2158D126001E713E /* logo_Stolitsa.png */,
 			);
 			path = Stolica;
+			sourceTree = "<group>";
+		};
+		412093142159EAFD001E713E /* Komeks */ = {
+			isa = PBXGroup;
+			children = (
+				412093152159EB15001E713E /* Logo_Komeks_White.png */,
+				412093172159EB1E001E713E /* Logo_Komeks.png */,
+			);
+			path = Komeks;
 			sourceTree = "<group>";
 		};
 		418ABEFE2133CC7B004DB75C = {
@@ -986,6 +1144,7 @@
 				41DFC441213D206D002CEB62 /* DJ.app */,
 				41FDA2B2214229A0003D8110 /* UK_Komfort.app */,
 				412092992158CB2D001E713E /* Stolitsa.app */,
+				412093122159E603001E713E /* Komeks.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1001,7 +1160,12 @@
 				41DFC442213D2083002CEB62 /* Info - DJService.plist */,
 				41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */,
 				4120929A2158CB36001E713E /* Info - Stolitsa.plist */,
+				412093132159E619001E713E /* Info - Komeks.plist */,
+				41209320215C105F001E713E /* GoogleService-Info.plist */,
 				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
+				4120931E215BE7D8001E713E /* GoogleService-Info.plist */,
+				41209322215CBB86001E713E /* GoogleService-Info.plist */,
+				41160E75216209B0000A4041 /* GoogleService-Info.plist */,
 				418ABF1D2133CDD3004DB75C /* Program */,
 				418ABF1C2133CCAA004DB75C /* StoryBoards */,
 				418ABF202133CF52004DB75C /* images */,
@@ -1035,6 +1199,7 @@
 		418ABF1D2133CDD3004DB75C /* Program */ = {
 			isa = PBXGroup;
 			children = (
+				411AD1BC2161E02F004FD1B5 /* Bridges */,
 				418ABF7A2134FA32004DB75C /* SelectItem */,
 				418ABF1E2133CDDF004DB75C /* Obj_Modules */,
 				418ABF1F2133CE0D004DB75C /* Authorization */,
@@ -1070,6 +1235,7 @@
 		418ABF202133CF52004DB75C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				412093142159EAFD001E713E /* Komeks */,
 				4120929B2158CF41001E713E /* Stolica */,
 				41FDA2B421422B86003D8110 /* UK_Komfort */,
 				41DFC443213D2673002CEB62 /* DJ */,
@@ -1345,6 +1511,10 @@
 				5AB5DEA94D7C36C0B0FE97EB /* Pods-UK_Komfort.release.xcconfig */,
 				C0E87586FCAA09E8049F224C /* Pods-DJ.debug.xcconfig */,
 				1805A037B4EC16ECADAFA218 /* Pods-DJ.release.xcconfig */,
+				250FEBB4EE1C56123B148327 /* Pods-Komeks.debug.xcconfig */,
+				C2BF7A6BC267D1C1F504FE5F /* Pods-Komeks.release.xcconfig */,
+				7060DE6F820CAB007B3DEF28 /* Pods-Stolitsa.debug.xcconfig */,
+				3B1D02E929C2F9CF087B5AAD /* Pods-Stolitsa.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1358,6 +1528,8 @@
 				33A3A30AE4D5EA3B9ED5DCDF /* Pods_ChistDom.framework */,
 				E0D311D74664F688358E4AC9 /* Pods_UK_Komfort.framework */,
 				51482778F2B4CD3B908634CF /* Pods_DJ.framework */,
+				3D244462D5218B88F87AACCF /* Pods_Komeks.framework */,
+				3C30202AA143265557CC7756 /* Pods_Stolitsa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1382,6 +1554,25 @@
 			name = Stolitsa;
 			productName = ObjJKH;
 			productReference = 412092992158CB2D001E713E /* Stolitsa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		412092A22159E603001E713E /* Komeks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4120930F2159E603001E713E /* Build configuration list for PBXNativeTarget "Komeks" */;
+			buildPhases = (
+				412092A32159E603001E713E /* [CP] Check Pods Manifest.lock */,
+				412092A42159E603001E713E /* Sources */,
+				412092E62159E603001E713E /* Frameworks */,
+				412092E82159E603001E713E /* Resources */,
+				4120930E2159E603001E713E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Komeks;
+			productName = ObjJKH;
+			productReference = 412093122159E603001E713E /* Komeks.app */;
 			productType = "com.apple.product-type.application";
 		};
 		418ABF062133CC7B004DB75C /* ObjJKH */ = {
@@ -1508,29 +1699,56 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "The Best";
 				TargetAttributes = {
+					4120922B2158CB2D001E713E = {
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					412092A22159E603001E713E = {
+						LastSwiftMigration = 1000;
+					};
 					418ABF062133CC7B004DB75C = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
 						};
 					};
 					418ABF4A2134CF1A004DB75C = {
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
 						};
 					};
 					418ABFAA21357DA5004DB75C = {
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
 						};
 					};
 					41DFC37A213CF4E9002CEB62 = {
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1538,6 +1756,7 @@
 						};
 					};
 					41DFC3E1213D206C002CEB62 = {
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1545,6 +1764,7 @@
 						};
 					};
 					41FDA249214229A0003D8110 = {
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1573,6 +1793,7 @@
 				41DFC3E1213D206C002CEB62 /* DJ */,
 				41FDA249214229A0003D8110 /* UK_Komfort */,
 				4120922B2158CB2D001E713E /* Stolitsa */,
+				412092A22159E603001E713E /* Komeks */,
 			);
 		};
 /* End PBXProject section */
@@ -1588,6 +1809,7 @@
 				412092752158CB2D001E713E /* Registration.storyboard in Resources */,
 				412092762158CB2D001E713E /* ForgotPass.storyboard in Resources */,
 				412092772158CB2D001E713E /* ic_ok_app.png in Resources */,
+				41209323215CBB86001E713E /* GoogleService-Info.plist in Resources */,
 				412092782158CB2D001E713E /* (null) in Resources */,
 				412092792158CB2D001E713E /* LaunchScreen.storyboard in Resources */,
 				4120927A2158CB2D001E713E /* Assets.xcassets in Resources */,
@@ -1615,10 +1837,55 @@
 				4120929D2158D116001E713E /* logo_Stolitsa_white.png in Resources */,
 				4120928F2158CB2D001E713E /* Pays.storyboard in Resources */,
 				412092902158CB2D001E713E /* AdditionalServices.storyboard in Resources */,
-				412092912158CB2D001E713E /* GoogleService-Info.plist in Resources */,
 				412092922158CB2D001E713E /* Logo_DemoUC.png in Resources */,
 				412092932158CB2D001E713E /* NoCounters.storyboard in Resources */,
 				412092942158CB2D001E713E /* account_icon_user.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		412092E82159E603001E713E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				412092E92159E603001E713E /* (null) in Resources */,
+				412092EA2159E603001E713E /* WebCameras.storyboard in Resources */,
+				412092EB2159E603001E713E /* app_open.png in Resources */,
+				412092EC2159E603001E713E /* Registration.storyboard in Resources */,
+				412092ED2159E603001E713E /* ForgotPass.storyboard in Resources */,
+				412092EE2159E603001E713E /* ic_ok_app.png in Resources */,
+				412092EF2159E603001E713E /* (null) in Resources */,
+				412092F02159E603001E713E /* LaunchScreen.storyboard in Resources */,
+				412092F12159E603001E713E /* Assets.xcassets in Resources */,
+				412092F22159E603001E713E /* logo_SM.png in Resources */,
+				412092F32159E603001E713E /* app_close.png in Resources */,
+				412092F42159E603001E713E /* ic_close_action.png in Resources */,
+				412092F52159E603001E713E /* spin.png in Resources */,
+				412092F62159E603001E713E /* Counters.storyboard in Resources */,
+				412092F72159E603001E713E /* News.storyboard in Resources */,
+				412093182159EB1F001E713E /* Logo_Komeks.png in Resources */,
+				412092F82159E603001E713E /* MainMenuCons.storyboard in Resources */,
+				412092F92159E603001E713E /* Saldo.storyboard in Resources */,
+				412092FA2159E603001E713E /* main_background.png in Resources */,
+				412092FB2159E603001E713E /* account_icon_cons.jpg in Resources */,
+				412092FC2159E603001E713E /* Logo_DemoUC_White.png in Resources */,
+				412092FD2159E603001E713E /* ic_action_files_grey.png in Resources */,
+				412092FE2159E603001E713E /* arrow_rigth.png in Resources */,
+				412093162159EB16001E713E /* Logo_Komeks_White.png in Resources */,
+				412092FF2159E603001E713E /* MainMenu.storyboard in Resources */,
+				412093002159E603001E713E /* ic_send_app.png in Resources */,
+				41160E76216209B0000A4041 /* GoogleService-Info.plist in Resources */,
+				412093012159E603001E713E /* SelectItem.storyboard in Resources */,
+				412093022159E603001E713E /* logo_Stolitsa.png in Resources */,
+				412093032159E603001E713E /* Questions.storyboard in Resources */,
+				412093042159E603001E713E /* Main.storyboard in Resources */,
+				412093052159E603001E713E /* ic_get_app.png in Resources */,
+				412093062159E603001E713E /* Apps.storyboard in Resources */,
+				412093072159E603001E713E /* logo_Stolitsa_white.png in Resources */,
+				412093082159E603001E713E /* Pays.storyboard in Resources */,
+				412093092159E603001E713E /* AdditionalServices.storyboard in Resources */,
+				4120930B2159E603001E713E /* Logo_DemoUC.png in Resources */,
+				4120930C2159E603001E713E /* NoCounters.storyboard in Resources */,
+				4120930D2159E603001E713E /* account_icon_user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1693,11 +1960,11 @@
 				418ABF612134CF1A004DB75C /* Logo_DemoUC_White.png in Resources */,
 				41DFC450213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
 				418ABFE521361949004DB75C /* Counters.storyboard in Resources */,
+				41209321215C105F001E713E /* GoogleService-Info.plist in Resources */,
 				41EF59FA2138D14700789370 /* app_open.png in Resources */,
 				41EF59DD2137A20300789370 /* Saldo.storyboard in Resources */,
 				418ABF622134CF1A004DB75C /* MainMenu.storyboard in Resources */,
 				418ABF632134CF1A004DB75C /* Main.storyboard in Resources */,
-				418ABF642134CF1A004DB75C /* GoogleService-Info.plist in Resources */,
 				41ACA2092140CA4700921C82 /* ic_ok_app.png in Resources */,
 				418ABF8021352BB3004DB75C /* arrow_rigth.png in Resources */,
 				418ABF792134FA15004DB75C /* SelectItem.storyboard in Resources */,
@@ -1723,6 +1990,7 @@
 				41EF5A242138E50E00789370 /* ic_close_action.png in Resources */,
 				418ABFC921357DA5004DB75C /* (null) in Resources */,
 				418ABFCA21357DA5004DB75C /* LaunchScreen.storyboard in Resources */,
+				4120931F215BE7D8001E713E /* GoogleService-Info.plist in Resources */,
 				418ABFCB21357DA5004DB75C /* Assets.xcassets in Resources */,
 				418ABFCC21357DA5004DB75C /* logo_SM.png in Resources */,
 				418ABFCD21357DA5004DB75C /* spin.png in Resources */,
@@ -1745,7 +2013,6 @@
 				41ACA20A2140CA4700921C82 /* ic_ok_app.png in Resources */,
 				418ABFD421357DA5004DB75C /* Questions.storyboard in Resources */,
 				418ABFD521357DA5004DB75C /* Main.storyboard in Resources */,
-				418ABFD621357DA5004DB75C /* GoogleService-Info.plist in Resources */,
 				41EF59E62137ECDD00789370 /* Pays.storyboard in Resources */,
 				418ABFD721357DA5004DB75C /* Logo_DemoUC.png in Resources */,
 				41ACA2102140CA9800921C82 /* ic_send_app.png in Resources */,
@@ -1790,7 +2057,6 @@
 				41ACA20B2140CA4700921C82 /* ic_ok_app.png in Resources */,
 				41DFC3D1213CF4E9002CEB62 /* Apps.storyboard in Resources */,
 				41DFC3D2213CF4E9002CEB62 /* Pays.storyboard in Resources */,
-				41DFC3D3213CF4E9002CEB62 /* GoogleService-Info.plist in Resources */,
 				41DFC3D4213CF4E9002CEB62 /* Logo_DemoUC.png in Resources */,
 				41ACA2112140CA9800921C82 /* ic_send_app.png in Resources */,
 				41DFC3D5213CF4E9002CEB62 /* account_icon_user.png in Resources */,
@@ -1834,7 +2100,6 @@
 				41DFC445213D2740002CEB62 /* logo_DJ_White.png in Resources */,
 				41DFC438213D206C002CEB62 /* Apps.storyboard in Resources */,
 				41DFC439213D206C002CEB62 /* Pays.storyboard in Resources */,
-				41DFC43A213D206C002CEB62 /* GoogleService-Info.plist in Resources */,
 				41DFC43B213D206C002CEB62 /* Logo_DemoUC.png in Resources */,
 				41ACA2122140CA9800921C82 /* ic_send_app.png in Resources */,
 				41DFC43C213D206C002CEB62 /* account_icon_user.png in Resources */,
@@ -1880,7 +2145,6 @@
 				41FDA2A9214229A0003D8110 /* Apps.storyboard in Resources */,
 				41FDA2B621422BA1003D8110 /* logo_UK_Komfort.png in Resources */,
 				41FDA2AA214229A0003D8110 /* Pays.storyboard in Resources */,
-				41FDA2AB214229A0003D8110 /* GoogleService-Info.plist in Resources */,
 				41FDA2AC214229A0003D8110 /* Logo_DemoUC.png in Resources */,
 				41FDA2AD214229A0003D8110 /* account_icon_user.png in Resources */,
 			);
@@ -2032,7 +2296,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ObjJKH-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Stolitsa-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2045,7 +2309,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2066,7 +2330,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		412092A32159E603001E713E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Komeks-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4120930E2159E603001E713E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
+				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4961F529DE6134E5E3E2DD50 /* [CP] Check Pods Manifest.lock */ = {
@@ -2249,6 +2561,7 @@
 				4120923C2158CB2D001E713E /* News.swift in Sources */,
 				4120923D2158CB2D001E713E /* AddAppUser.swift in Sources */,
 				4120923E2158CB2D001E713E /* Comments+CoreDataClass.swift in Sources */,
+				411AD1D02161E17E004FD1B5 /* empty.cpp in Sources */,
 				4120923F2158CB2D001E713E /* ImageConstant.swift in Sources */,
 				412092402158CB2D001E713E /* PaysController.swift in Sources */,
 				412092412158CB2D001E713E /* CoreDataManager.swift in Sources */,
@@ -2300,6 +2613,79 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		412092A42159E603001E713E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				412092A52159E603001E713E /* AddAppCons.swift in Sources */,
+				412092A62159E603001E713E /* QuestionAnswerVC.swift in Sources */,
+				412092A72159E603001E713E /* NewsController.swift in Sources */,
+				412092A82159E603001E713E /* AppsCell.swift in Sources */,
+				412092A92159E603001E713E /* QuestionsTableVC.swift in Sources */,
+				412092AA2159E603001E713E /* Pay.swift in Sources */,
+				412092AB2159E603001E713E /* AdditionalServicesController.swift in Sources */,
+				412092AC2159E603001E713E /* AddLS.swift in Sources */,
+				412092AD2159E603001E713E /* WebsController.swift in Sources */,
+				412092AE2159E603001E713E /* CommCell.swift in Sources */,
+				412092AF2159E603001E713E /* ShemeColor.swift in Sources */,
+				412092B02159E603001E713E /* Counters+CoreDataProperties.swift in Sources */,
+				412092B12159E603001E713E /* SendSMSCod.swift in Sources */,
+				412092B22159E603001E713E /* NewPass.swift in Sources */,
+				412092B32159E603001E713E /* News.swift in Sources */,
+				412092B42159E603001E713E /* AddAppUser.swift in Sources */,
+				412092B52159E603001E713E /* Comments+CoreDataClass.swift in Sources */,
+				411AD1D12161E17E004FD1B5 /* empty.cpp in Sources */,
+				412092B62159E603001E713E /* ImageConstant.swift in Sources */,
+				412092B72159E603001E713E /* PaysController.swift in Sources */,
+				412092B82159E603001E713E /* CoreDataManager.swift in Sources */,
+				412092B92159E603001E713E /* News+UITableViewDataSource.swift in Sources */,
+				412092BA2159E603001E713E /* Web_JSON.swift in Sources */,
+				412092BB2159E603001E713E /* Fotos+CoreDataProperties.swift in Sources */,
+				412092BC2159E603001E713E /* SelectItemController.swift in Sources */,
+				412092BD2159E603001E713E /* NewsView.swift in Sources */,
+				412092BE2159E603001E713E /* CounterCell.swift in Sources */,
+				412092BF2159E603001E713E /* CommCellCons.swift in Sources */,
+				412092C02159E603001E713E /* FirstController.swift in Sources */,
+				412092C12159E603001E713E /* CountersController.swift in Sources */,
+				412092C22159E603001E713E /* Saldo+CoreDataProperties.swift in Sources */,
+				412092C32159E603001E713E /* Applications+CoreDataProperties.swift in Sources */,
+				412092C42159E603001E713E /* QuestionsTableCell.swift in Sources */,
+				412092C52159E603001E713E /* Applications+CoreDataClass.swift in Sources */,
+				412092C62159E603001E713E /* Fotos+CoreDataClass.swift in Sources */,
+				412092C72159E603001E713E /* Comments+CoreDataProperties.swift in Sources */,
+				412092C82159E603001E713E /* OnOffButton.swift in Sources */,
+				412092C92159E603001E713E /* NewsClient.swift in Sources */,
+				412092CA2159E603001E713E /* NewsManager.swift in Sources */,
+				412092CB2159E603001E713E /* Counters+CoreDataClass.swift in Sources */,
+				412092CC2159E603001E713E /* WebsCell.swift in Sources */,
+				412092CD2159E603001E713E /* MainMenu.swift in Sources */,
+				412092CE2159E603001E713E /* ColorsConstant.swift in Sources */,
+				412092CF2159E603001E713E /* FloatRatingView.swift in Sources */,
+				412092D02159E603001E713E /* MainMenuCons.swift in Sources */,
+				412092D12159E603001E713E /* Saldo+CoreDataClass.swift in Sources */,
+				412092D22159E603001E713E /* AppUser.swift in Sources */,
+				412092D32159E603001E713E /* Extensions.swift in Sources */,
+				412092D42159E603001E713E /* SaldoController.swift in Sources */,
+				412092D52159E603001E713E /* Server.swift in Sources */,
+				412092D62159E603001E713E /* AppsCellClose.swift in Sources */,
+				412092D72159E603001E713E /* DB.swift in Sources */,
+				412092D82159E603001E713E /* FilesController.swift in Sources */,
+				412092D92159E603001E713E /* ObjJKH.xcdatamodeld in Sources */,
+				412092DA2159E603001E713E /* ForgotPass.swift in Sources */,
+				412092DB2159E603001E713E /* Registration.swift in Sources */,
+				412092DC2159E603001E713E /* NewsCell.swift in Sources */,
+				412092DD2159E603001E713E /* SaldoCell.swift in Sources */,
+				412092DE2159E603001E713E /* AppDelegate.swift in Sources */,
+				412092DF2159E603001E713E /* CloseAppAlert.swift in Sources */,
+				412092E02159E603001E713E /* QuestionFinal.swift in Sources */,
+				412092E12159E603001E713E /* NoCounters.swift in Sources */,
+				412092E22159E603001E713E /* AppCons.swift in Sources */,
+				412092E32159E603001E713E /* Web_Camera.swift in Sources */,
+				412092E42159E603001E713E /* AppsController.swift in Sources */,
+				412092E52159E603001E713E /* QuestionsJson.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		418ABF032133CC7B004DB75C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2321,6 +2707,7 @@
 				418ABF8C21354274004DB75C /* News.swift in Sources */,
 				41EF5A1E2138E23000789370 /* AddAppUser.swift in Sources */,
 				41EF5A0D2138D92E00789370 /* Comments+CoreDataClass.swift in Sources */,
+				411AD1CA2161E17E004FD1B5 /* empty.cpp in Sources */,
 				41E8F0102147605E00FE0473 /* ImageConstant.swift in Sources */,
 				41EF59E92137EFBE00789370 /* PaysController.swift in Sources */,
 				418ABFF621362B81004DB75C /* CoreDataManager.swift in Sources */,
@@ -2393,6 +2780,7 @@
 				41EF5A1F2138E23000789370 /* AddAppUser.swift in Sources */,
 				41EF5A0E2138D92E00789370 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0112147605E00FE0473 /* ImageConstant.swift in Sources */,
+				411AD1CB2161E17E004FD1B5 /* empty.cpp in Sources */,
 				41EF59EA2137EFBE00789370 /* PaysController.swift in Sources */,
 				418ABFF721362B81004DB75C /* CoreDataManager.swift in Sources */,
 				418ABF992135452F004DB75C /* News+UITableViewDataSource.swift in Sources */,
@@ -2465,6 +2853,7 @@
 				41EF5A202138E23000789370 /* AddAppUser.swift in Sources */,
 				41EF5A0F2138D92E00789370 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0122147605E00FE0473 /* ImageConstant.swift in Sources */,
+				411AD1CC2161E17E004FD1B5 /* empty.cpp in Sources */,
 				41EF59EB2137EFBE00789370 /* PaysController.swift in Sources */,
 				418ABFF821362B81004DB75C /* CoreDataManager.swift in Sources */,
 				418ABFB321357DA5004DB75C /* News+UITableViewDataSource.swift in Sources */,
@@ -2537,6 +2926,7 @@
 				41DFC389213CF4E9002CEB62 /* AddAppUser.swift in Sources */,
 				41DFC38A213CF4E9002CEB62 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0132147605E00FE0473 /* ImageConstant.swift in Sources */,
+				411AD1CD2161E17E004FD1B5 /* empty.cpp in Sources */,
 				41DFC38B213CF4E9002CEB62 /* PaysController.swift in Sources */,
 				41DFC38C213CF4E9002CEB62 /* CoreDataManager.swift in Sources */,
 				41DFC38D213CF4E9002CEB62 /* News+UITableViewDataSource.swift in Sources */,
@@ -2609,6 +2999,7 @@
 				41DFC3F0213D206C002CEB62 /* AddAppUser.swift in Sources */,
 				41DFC3F1213D206C002CEB62 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0142147605E00FE0473 /* ImageConstant.swift in Sources */,
+				411AD1CE2161E17E004FD1B5 /* empty.cpp in Sources */,
 				41DFC3F2213D206C002CEB62 /* PaysController.swift in Sources */,
 				41DFC3F3213D206C002CEB62 /* CoreDataManager.swift in Sources */,
 				41DFC3F4213D206C002CEB62 /* News+UITableViewDataSource.swift in Sources */,
@@ -2681,6 +3072,7 @@
 				41FDA259214229A0003D8110 /* AddAppUser.swift in Sources */,
 				41FDA25A214229A0003D8110 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0162147642900FE0473 /* ImageConstant.swift in Sources */,
+				411AD1CF2161E17E004FD1B5 /* empty.cpp in Sources */,
 				41FDA25B214229A0003D8110 /* PaysController.swift in Sources */,
 				41FDA25C214229A0003D8110 /* CoreDataManager.swift in Sources */,
 				41FDA25D214229A0003D8110 /* News+UITableViewDataSource.swift in Sources */,
@@ -2756,9 +3148,10 @@
 /* Begin XCBuildConfiguration section */
 		412092972158CB2D001E713E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D81FE29E6E49BF0E6BD8DE9A /* Pods-ObjJKH.debug.xcconfig */;
+			baseConfigurationReference = 7060DE6F820CAB007B3DEF28 /* Pods-Stolitsa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Stolitsa;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -2772,6 +3165,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.stolitsa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isStolitsa DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Stolitsa-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2779,9 +3174,10 @@
 		};
 		412092982158CB2D001E713E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B96FE423D4F0D441602B2AD /* Pods-ObjJKH.release.xcconfig */;
+			baseConfigurationReference = 3B1D02E929C2F9CF087B5AAD /* Pods-Stolitsa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Stolitsa;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -2795,6 +3191,58 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.stolitsa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isStolitsa;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Stolitsa-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		412093102159E603001E713E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 250FEBB4EE1C56123B148327 /* Pods-Komeks.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Komeks;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/Info - Komeks.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-DisKomeks";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Komeks;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isKomeks DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Komeks-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		412093112159E603001E713E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2BF7A6BC267D1C1F504FE5F /* Pods-Komeks.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Komeks;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/Info - Komeks.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-DisKomeks";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Komeks;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isKomeks;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Komeks-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2919,6 +3367,7 @@
 			baseConfigurationReference = D81FE29E6E49BF0E6BD8DE9A /* Pods-ObjJKH.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -2932,6 +3381,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.DemoUC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isDemoUC DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ObjJKH-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2942,6 +3393,7 @@
 			baseConfigurationReference = 5B96FE423D4F0D441602B2AD /* Pods-ObjJKH.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -2955,6 +3407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.DemoUC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isDemoUC;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ObjJKH-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2965,6 +3418,7 @@
 			baseConfigurationReference = A4575A342EF8511B7C29F97C /* Pods-OurObjHome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_OurObjHome;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OurObjHome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -2978,6 +3432,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.OurObjHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isOur_Obj_Home DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/OurObjHome-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2988,6 +3444,7 @@
 			baseConfigurationReference = F837BF37EC44AC031468DF9D /* Pods-OurObjHome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_OurObjHome;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OurObjHome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -3001,6 +3458,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.OurObjHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isOur_Obj_Home;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/OurObjHome-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3011,7 +3469,9 @@
 			baseConfigurationReference = 6DE153C0E7B454DBD8A945D2 /* Pods-ChistDom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_ChistDom;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ChistDom.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/Info - ChistDom.plist";
@@ -3023,7 +3483,10 @@
 				OTHER_SWIFT_FLAGS = "-DisChist_Dom";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.ChistDom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isChist_Dom DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ChistDom-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3034,7 +3497,9 @@
 			baseConfigurationReference = 89807DB5E8A6F0B99939588D /* Pods-ChistDom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_ChistDom;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ChistDom.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/Info - ChistDom.plist";
@@ -3046,7 +3511,9 @@
 				OTHER_SWIFT_FLAGS = "-DisChist_Dom";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.ChistDom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isChist_Dom;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ChistDom-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3057,6 +3524,7 @@
 			baseConfigurationReference = 4C801D0F22BA3D1E3E7E7610 /* Pods-MupRCMytishi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(МУП РЦ Мытищи)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MupRCMytishi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -3070,6 +3538,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isMupRCMytishi DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/MupRCMytishi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3080,6 +3550,7 @@
 			baseConfigurationReference = ECFD4DA8A5D4EF2763425506 /* Pods-MupRCMytishi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(МУП РЦ Мытищи)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MupRCMytishi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -3093,6 +3564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isMupRCMytishi;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/MupRCMytishi-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3103,6 +3575,7 @@
 			baseConfigurationReference = C0E87586FCAA09E8049F224C /* Pods-DJ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(DJ)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DJ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -3116,6 +3589,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.dj-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isDJ DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/DJ-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3126,6 +3601,7 @@
 			baseConfigurationReference = 1805A037B4EC16ECADAFA218 /* Pods-DJ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(DJ)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DJ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -3139,6 +3615,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.dj-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isDJ;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/DJ-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3149,6 +3626,7 @@
 			baseConfigurationReference = F6CD5D400C1D0F58E85A91E7 /* Pods-UK_Komfort.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(УК Комфорт)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -3162,6 +3640,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.UkComfort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isUKKomfort DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Komfort-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3172,6 +3652,7 @@
 			baseConfigurationReference = 5AB5DEA94D7C36C0B0FE97EB /* Pods-UK_Komfort.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(УК Комфорт)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -3185,6 +3666,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.UkComfort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isUKKomfort;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Komfort-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3198,6 +3680,15 @@
 			buildConfigurations = (
 				412092972158CB2D001E713E /* Debug */,
 				412092982158CB2D001E713E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4120930F2159E603001E713E /* Build configuration list for PBXNativeTarget "Komeks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				412093102159E603001E713E /* Debug */,
+				412093112159E603001E713E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

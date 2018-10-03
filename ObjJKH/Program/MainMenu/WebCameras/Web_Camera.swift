@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class Web_Camera: UIViewController {
 
@@ -22,9 +23,36 @@ class Web_Camera: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = NSURL(string: (web_camera?.link)!)
-        let requestObj = NSURLRequest(url: url! as URL)
-        webView.loadRequest(requestObj as URLRequest)
+//        let web_link: String = web_camera?.link ?? ""
+//        if (web_link.contains("rtsp")) {
+//
+//            guard let url = URL(string: "https://ya.ru") else { //URL(string: web_link) else {
+//                return //be safe
+//            }
+//            if #available(iOS 10.0, *) {
+//                UIApplication.shared.openURL(url)
+////                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            } else {
+//                UIApplication.shared.openURL(url)
+//            }
+//
+////            webView.isHidden = true
+////
+////            let mediaPlayer = VLCMediaPlayer()
+////            func playURI(uri: String) {
+////                mediaPlayer.drawable = self.movieView
+////                let url = URL(string: uri)
+////                let media = VLCMedia(url: url)
+////                mediaPlayer.media = media
+////
+////                mediaPlayer.play()
+////            }
+//
+//        } else {
+            let url = NSURL(string: (web_camera?.link)!)
+            let requestObj = NSURLRequest(url: url! as URL)
+            webView.loadRequest(requestObj as URLRequest)
+//        }
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()

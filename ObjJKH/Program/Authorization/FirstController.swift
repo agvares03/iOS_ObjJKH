@@ -94,6 +94,8 @@ class FirstController: UIViewController {
             fon_top.image = UIImage(named: "logo_DJ")
         #elseif isStolitsa
             fon_top.image = UIImage(named: "logo_Stolitsa")
+        #elseif isKomeks
+            fon_top.image = UIImage(named: "Logo_Komeks")
         #elseif isUKKomfort
             fon_top.image = UIImage(named: "logo_UK_Komfort")
         #endif

@@ -253,6 +253,8 @@ class MainMenu: UIViewController {
             fon_top.image = UIImage(named: "logo_DJ_White")
         #elseif isStolitsa
             fon_top.image = UIImage(named: "logo_Stolitsa_white")
+        #elseif isKomeks
+            fon_top.image = UIImage(named: "Logo_Komeks_White")
         #elseif isUKKomfort
             fon_top.image = UIImage(named: "logo_UK_Komfort_white")
         #endif
