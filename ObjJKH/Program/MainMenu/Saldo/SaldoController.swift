@@ -165,6 +165,9 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         
+        let titles = Titles()
+        self.title = titles.getTitle(numb: "5")
+        
     }
     
     func updateBorderDates() {
@@ -205,7 +208,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         var monthStr = "<" + get_name_month(number_month: String(month))
         
         let attributes = [NSAttributedStringKey.font : UIFont.systemFont(ofSize:17.0),
-                          NSAttributedStringKey.foregroundColor : UIColor.colorWithHex("22A6E6"),
+                          NSAttributedStringKey.foregroundColor : myColors.btnColor.uiColor(),
                           NSAttributedStringKey.underlineStyle : 1] as [NSAttributedStringKey : Any]
         
         var attributedtext = NSAttributedString.init(string: monthStr.uppercased(), attributes: attributes)

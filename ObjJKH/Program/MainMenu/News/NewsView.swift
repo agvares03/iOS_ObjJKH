@@ -18,6 +18,7 @@ class NewsView: UIViewController {
     @IBOutlet weak var NewsData: UILabel!
     @IBOutlet weak var NewsText: UILabel!
     
+    @IBOutlet weak var nav_bottom: UINavigationItem!
     @IBOutlet weak var back: UIBarButtonItem!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {

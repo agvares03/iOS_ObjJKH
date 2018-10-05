@@ -42,6 +42,9 @@ class NewsController: UIViewController, UITableViewDelegate {
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         
+        let titles = Titles()
+        self.title = titles.getTitle(numb: "0")
+        
     }
     
     @objc private func refresh(_ sender: UIRefreshControl?) {

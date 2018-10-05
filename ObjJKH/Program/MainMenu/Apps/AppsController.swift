@@ -65,6 +65,9 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         btnAdd.backgroundColor = myColors.btnColor.uiColor()
         back.tintColor = myColors.btnColor.uiColor()
         
+        let titles = Titles()
+        self.title = titles.getTitle(numb: "2")
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -229,6 +229,14 @@
 		4120931F215BE7D8001E713E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4120931E215BE7D8001E713E /* GoogleService-Info.plist */; };
 		41209321215C105F001E713E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41209320215C105F001E713E /* GoogleService-Info.plist */; };
 		41209323215CBB86001E713E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41209322215CBB86001E713E /* GoogleService-Info.plist */; };
+		41645B57216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		41645B58216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		41645B59216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		41645B5A216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		41645B5B216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		41645B5C216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		41645B5D216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		41645B5E216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
 		418ABF0B2133CC7B004DB75C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
 		418ABF0D2133CC7B004DB75C /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
 		418ABF102133CC7B004DB75C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
@@ -393,6 +401,14 @@
 		41ACA2162140CB0200921C82 /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
 		41ACA2172140CB0200921C82 /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
 		41ACA2182140CB0200921C82 /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
+		41B5BC3621666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		41B5BC3721666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		41B5BC3821666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		41B5BC3921666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		41B5BC3A21666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		41B5BC3B21666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		41B5BC3C21666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		41B5BC3D21666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
 		41DFC36F213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
 		41DFC370213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
 		41DFC371213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
@@ -873,6 +889,7 @@
 		413752F62152956400D2C7DE /* MupRCMytishi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MupRCMytishi.entitlements; sourceTree = "<group>"; };
 		413752F72152956D00D2C7DE /* DJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DJ.entitlements; sourceTree = "<group>"; };
 		413752F82152957500D2C7DE /* UK_Komfort.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UK_Komfort.entitlements; sourceTree = "<group>"; };
+		41645B56216492A300C61AF9 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		418ABF072133CC7B004DB75C /* ObjJKH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjJKH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		418ABF0A2133CC7B004DB75C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		418ABF0C2133CC7B004DB75C /* FirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstController.swift; sourceTree = "<group>"; };
@@ -933,6 +950,7 @@
 		41ACA2072140CA4400921C82 /* ic_ok_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_ok_app.png; sourceTree = "<group>"; };
 		41ACA20D2140CA9600921C82 /* ic_send_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_send_app.png; sourceTree = "<group>"; };
 		41ACA2132140CB0000921C82 /* ic_get_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_get_app.png; sourceTree = "<group>"; };
+		41B5BC3521666D11003F4868 /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		41DFC36E213C0B5B002CEB62 /* FilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesController.swift; sourceTree = "<group>"; };
 		41DFC376213CF14A002CEB62 /* QuestionFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFinal.swift; sourceTree = "<group>"; };
 		41DFC3DA213CF4E9002CEB62 /* MupRCMytishi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MupRCMytishi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -953,6 +971,8 @@
 		41E8F01F2147C28D00FE0473 /* NoCounters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCounters.swift; sourceTree = "<group>"; };
 		41E8F0262147C61300FE0473 /* NoCounters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoCounters.storyboard; sourceTree = "<group>"; };
 		41E8F0312147DF2900FE0473 /* no_counters.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = no_counters.html; sourceTree = "<group>"; };
+		41EA8E2B216631800050B4DE /* ObjJKH-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjJKH-Bridging-Header.h"; sourceTree = "<group>"; };
+		41EA8E2C216635410050B4DE /* OurObjHome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OurObjHome-Bridging-Header.h"; sourceTree = "<group>"; };
 		41EF59D72137A1DD00789370 /* SaldoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaldoController.swift; sourceTree = "<group>"; };
 		41EF59DB2137A20300789370 /* Saldo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Saldo.storyboard; sourceTree = "<group>"; };
 		41EF59DF2137B6BA00789370 /* SaldoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaldoCell.swift; sourceTree = "<group>"; };
@@ -1095,6 +1115,8 @@
 				411AD1C82161E17E004FD1B5 /* empty.cpp */,
 				411AD1C92161E17E004FD1B5 /* empty.hpp */,
 				411AD1C12161E17D004FD1B5 /* Komeks-Bridging-Header.h */,
+				41EA8E2B216631800050B4DE /* ObjJKH-Bridging-Header.h */,
+				41EA8E2C216635410050B4DE /* OurObjHome-Bridging-Header.h */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -1217,6 +1239,7 @@
 				418ABF2F2133E0D7004DB75C /* Extensions.swift */,
 				418ABF332133F6DB004DB75C /* Server.swift */,
 				41EF5A6B213BAF9600789370 /* FloatRatingView.swift */,
+				41645B56216492A300C61AF9 /* StartController.swift */,
 			);
 			name = Obj_Modules;
 			path = "../New Group/Obj_Modules";
@@ -1421,6 +1444,7 @@
 				41E8F0092147604400FE0473 /* ColorsConstant.swift */,
 				41E8F00F2147605E00FE0473 /* ImageConstant.swift */,
 				41E8F017214765B500FE0473 /* ShemeColor.swift */,
+				41B5BC3521666D11003F4868 /* Titles.swift */,
 			);
 			path = DifferentColors;
 			sourceTree = "<group>";
@@ -2577,6 +2601,7 @@
 				4120924B2158CB2D001E713E /* Saldo+CoreDataProperties.swift in Sources */,
 				4120924C2158CB2D001E713E /* Applications+CoreDataProperties.swift in Sources */,
 				4120924D2158CB2D001E713E /* QuestionsTableCell.swift in Sources */,
+				41645B5D216492A300C61AF9 /* StartController.swift in Sources */,
 				4120924E2158CB2D001E713E /* Applications+CoreDataClass.swift in Sources */,
 				4120924F2158CB2D001E713E /* Fotos+CoreDataClass.swift in Sources */,
 				412092502158CB2D001E713E /* Comments+CoreDataProperties.swift in Sources */,
@@ -2587,6 +2612,7 @@
 				412092552158CB2D001E713E /* WebsCell.swift in Sources */,
 				412092562158CB2D001E713E /* MainMenu.swift in Sources */,
 				412092572158CB2D001E713E /* ColorsConstant.swift in Sources */,
+				41B5BC3C21666D11003F4868 /* Titles.swift in Sources */,
 				412092582158CB2D001E713E /* FloatRatingView.swift in Sources */,
 				412092592158CB2D001E713E /* MainMenuCons.swift in Sources */,
 				4120925A2158CB2D001E713E /* Saldo+CoreDataClass.swift in Sources */,
@@ -2650,6 +2676,7 @@
 				412092C22159E603001E713E /* Saldo+CoreDataProperties.swift in Sources */,
 				412092C32159E603001E713E /* Applications+CoreDataProperties.swift in Sources */,
 				412092C42159E603001E713E /* QuestionsTableCell.swift in Sources */,
+				41645B5E216492A300C61AF9 /* StartController.swift in Sources */,
 				412092C52159E603001E713E /* Applications+CoreDataClass.swift in Sources */,
 				412092C62159E603001E713E /* Fotos+CoreDataClass.swift in Sources */,
 				412092C72159E603001E713E /* Comments+CoreDataProperties.swift in Sources */,
@@ -2660,6 +2687,7 @@
 				412092CC2159E603001E713E /* WebsCell.swift in Sources */,
 				412092CD2159E603001E713E /* MainMenu.swift in Sources */,
 				412092CE2159E603001E713E /* ColorsConstant.swift in Sources */,
+				41B5BC3D21666D11003F4868 /* Titles.swift in Sources */,
 				412092CF2159E603001E713E /* FloatRatingView.swift in Sources */,
 				412092D02159E603001E713E /* MainMenuCons.swift in Sources */,
 				412092D12159E603001E713E /* Saldo+CoreDataClass.swift in Sources */,
@@ -2723,6 +2751,7 @@
 				418AC03B213634CC004DB75C /* Saldo+CoreDataProperties.swift in Sources */,
 				41EF5A162138D92E00789370 /* Applications+CoreDataProperties.swift in Sources */,
 				418ABFA821357B6C004DB75C /* QuestionsTableCell.swift in Sources */,
+				41645B57216492A300C61AF9 /* StartController.swift in Sources */,
 				41EF5A132138D92E00789370 /* Applications+CoreDataClass.swift in Sources */,
 				41EF5A3F213917C900789370 /* Fotos+CoreDataClass.swift in Sources */,
 				41EF5A102138D92E00789370 /* Comments+CoreDataProperties.swift in Sources */,
@@ -2733,6 +2762,7 @@
 				41EF5A4F213A825000789370 /* WebsCell.swift in Sources */,
 				418ABF4521341BF5004DB75C /* MainMenu.swift in Sources */,
 				41E8F00A2147604400FE0473 /* ColorsConstant.swift in Sources */,
+				41B5BC3621666D11003F4868 /* Titles.swift in Sources */,
 				41EF5A6C213BAF9600789370 /* FloatRatingView.swift in Sources */,
 				41DFC456213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				418AC038213634CC004DB75C /* Saldo+CoreDataClass.swift in Sources */,
@@ -2796,6 +2826,7 @@
 				41EF5A172138D92E00789370 /* Applications+CoreDataProperties.swift in Sources */,
 				418ABFA921357B6C004DB75C /* QuestionsTableCell.swift in Sources */,
 				41EF5A142138D92E00789370 /* Applications+CoreDataClass.swift in Sources */,
+				41645B58216492A300C61AF9 /* StartController.swift in Sources */,
 				41EF5A40213917C900789370 /* Fotos+CoreDataClass.swift in Sources */,
 				41EF5A112138D92E00789370 /* Comments+CoreDataProperties.swift in Sources */,
 				41EF5A5C213A8F0D00789370 /* OnOffButton.swift in Sources */,
@@ -2806,6 +2837,7 @@
 				418ABF502134CF1A004DB75C /* MainMenu.swift in Sources */,
 				41E8F00B2147604400FE0473 /* ColorsConstant.swift in Sources */,
 				41EF5A6D213BAF9600789370 /* FloatRatingView.swift in Sources */,
+				41B5BC3721666D11003F4868 /* Titles.swift in Sources */,
 				41DFC457213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				418AC039213634CC004DB75C /* Saldo+CoreDataClass.swift in Sources */,
 				41E8F0332149E96300FE0473 /* AdditionalServicesController.swift in Sources */,
@@ -2869,6 +2901,7 @@
 				41EF5A182138D92E00789370 /* Applications+CoreDataProperties.swift in Sources */,
 				418ABFB721357DA5004DB75C /* QuestionsTableCell.swift in Sources */,
 				41EF5A152138D92E00789370 /* Applications+CoreDataClass.swift in Sources */,
+				41645B59216492A300C61AF9 /* StartController.swift in Sources */,
 				41EF5A41213917C900789370 /* Fotos+CoreDataClass.swift in Sources */,
 				41EF5A122138D92E00789370 /* Comments+CoreDataProperties.swift in Sources */,
 				41EF5A5D213A8F0D00789370 /* OnOffButton.swift in Sources */,
@@ -2879,6 +2912,7 @@
 				418ABFBA21357DA5004DB75C /* MainMenu.swift in Sources */,
 				41E8F00C2147604400FE0473 /* ColorsConstant.swift in Sources */,
 				41EF5A6E213BAF9600789370 /* FloatRatingView.swift in Sources */,
+				41B5BC3821666D11003F4868 /* Titles.swift in Sources */,
 				41DFC458213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				418AC03A213634CC004DB75C /* Saldo+CoreDataClass.swift in Sources */,
 				41E8F0342149E96300FE0473 /* AdditionalServicesController.swift in Sources */,
@@ -2942,6 +2976,7 @@
 				41DFC397213CF4E9002CEB62 /* Applications+CoreDataProperties.swift in Sources */,
 				41DFC398213CF4E9002CEB62 /* QuestionsTableCell.swift in Sources */,
 				41DFC399213CF4E9002CEB62 /* Applications+CoreDataClass.swift in Sources */,
+				41645B5A216492A300C61AF9 /* StartController.swift in Sources */,
 				41DFC39A213CF4E9002CEB62 /* Fotos+CoreDataClass.swift in Sources */,
 				41DFC39B213CF4E9002CEB62 /* Comments+CoreDataProperties.swift in Sources */,
 				41DFC39C213CF4E9002CEB62 /* OnOffButton.swift in Sources */,
@@ -2952,6 +2987,7 @@
 				41DFC3A1213CF4E9002CEB62 /* MainMenu.swift in Sources */,
 				41E8F00D2147604400FE0473 /* ColorsConstant.swift in Sources */,
 				41DFC3A2213CF4E9002CEB62 /* FloatRatingView.swift in Sources */,
+				41B5BC3921666D11003F4868 /* Titles.swift in Sources */,
 				41DFC459213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				41DFC3A3213CF4E9002CEB62 /* Saldo+CoreDataClass.swift in Sources */,
 				41E8F0352149E96400FE0473 /* AdditionalServicesController.swift in Sources */,
@@ -3015,6 +3051,7 @@
 				41DFC3FE213D206C002CEB62 /* Applications+CoreDataProperties.swift in Sources */,
 				41DFC3FF213D206C002CEB62 /* QuestionsTableCell.swift in Sources */,
 				41DFC400213D206C002CEB62 /* Applications+CoreDataClass.swift in Sources */,
+				41645B5B216492A300C61AF9 /* StartController.swift in Sources */,
 				41DFC401213D206C002CEB62 /* Fotos+CoreDataClass.swift in Sources */,
 				41DFC402213D206C002CEB62 /* Comments+CoreDataProperties.swift in Sources */,
 				41DFC403213D206C002CEB62 /* OnOffButton.swift in Sources */,
@@ -3025,6 +3062,7 @@
 				41DFC408213D206C002CEB62 /* MainMenu.swift in Sources */,
 				41E8F00E2147604400FE0473 /* ColorsConstant.swift in Sources */,
 				41DFC409213D206C002CEB62 /* FloatRatingView.swift in Sources */,
+				41B5BC3A21666D11003F4868 /* Titles.swift in Sources */,
 				41DFC45A213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
 				41DFC40A213D206C002CEB62 /* Saldo+CoreDataClass.swift in Sources */,
 				41E8F0362149E96400FE0473 /* AdditionalServicesController.swift in Sources */,
@@ -3088,6 +3126,7 @@
 				41FDA267214229A0003D8110 /* Applications+CoreDataProperties.swift in Sources */,
 				41FDA268214229A0003D8110 /* QuestionsTableCell.swift in Sources */,
 				41FDA269214229A0003D8110 /* Applications+CoreDataClass.swift in Sources */,
+				41645B5C216492A300C61AF9 /* StartController.swift in Sources */,
 				41FDA26A214229A0003D8110 /* Fotos+CoreDataClass.swift in Sources */,
 				41FDA26B214229A0003D8110 /* Comments+CoreDataProperties.swift in Sources */,
 				41FDA26C214229A0003D8110 /* OnOffButton.swift in Sources */,
@@ -3098,6 +3137,7 @@
 				41FDA271214229A0003D8110 /* MainMenu.swift in Sources */,
 				41E8F0152147642600FE0473 /* ColorsConstant.swift in Sources */,
 				41FDA272214229A0003D8110 /* FloatRatingView.swift in Sources */,
+				41B5BC3B21666D11003F4868 /* Titles.swift in Sources */,
 				41FDA273214229A0003D8110 /* MainMenuCons.swift in Sources */,
 				41FDA274214229A0003D8110 /* Saldo+CoreDataClass.swift in Sources */,
 				41E8F0372149E96500FE0473 /* AdditionalServicesController.swift in Sources */,

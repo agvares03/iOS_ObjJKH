@@ -30,6 +30,7 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/newjkh/"
     #endif
     
+    static let GET_MOBILE_MENU     = "GetMobileMenu.ashx?"            // Получение настроек для приложения
     static let ENTER_DJ            = "MobileAPI/AuthenticateAccountDJ.ashx?"   // Авторизация пользователя (ДомЖилСервис)
     static let ENTER               = "AutenticateUserAndroid.ashx?"  // Авторизация пользователя
     static let ENTER_MOBILE        = "MobileAPI/AuthenticateAccount.ashx?"  // Авторизация пользователя

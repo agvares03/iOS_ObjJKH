@@ -68,6 +68,9 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         
+        let titles = Titles()
+        self.title = titles.getTitle(numb: "7")
+        
     }
 
     override func didReceiveMemoryWarning() {

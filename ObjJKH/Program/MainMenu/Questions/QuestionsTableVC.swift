@@ -55,6 +55,9 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         back.tintColor = myColors.btnColor.uiColor()
         loader.color = myColors.indicatorColor.uiColor()
         
+        let titles = Titles()
+        self.title = titles.getTitle(numb: "3")
+        
     }
     
     @objc private func refresh(_ sender: UIRefreshControl?) {

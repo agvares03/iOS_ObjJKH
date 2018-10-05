@@ -19,8 +19,52 @@ class MainMenu: UIViewController {
     @IBOutlet weak var PageView: UIView!
     @IBOutlet weak var ViewInfoLS: UIView!
     
-    @IBOutlet weak var height_Pays: NSLayoutConstraint!
-    @IBOutlet weak var btn_Pays: UIButton!
+    // Размеры для настройки меню
+    // Уведомления - Новости
+    @IBOutlet weak var menu_0_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_0: UIButton!
+    @IBOutlet weak var line_bottom_0: UILabel!
+    @IBOutlet weak var btn_arr_0: UIImageView!
+    // Звонок диспетчеру
+    @IBOutlet weak var menu_1_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_1: UIButton!
+    @IBOutlet weak var line_bottom_1: NSLayoutConstraint!
+    // Заявки
+    @IBOutlet weak var menu_2_heigth: NSLayoutConstraint!
+    @IBOutlet weak var line_bottom_2: UILabel!
+    @IBOutlet weak var btn_arr_2: UIImageView!
+    @IBOutlet weak var btn_name_2: UIButton!
+    // Опросы - было реализовано ранее для Мытищ
+    @IBOutlet weak var line_bottom_3: NSLayoutConstraint!
+    // Показания счетчиков
+    @IBOutlet weak var menu_4_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_4: UIButton!
+    @IBOutlet weak var btn_arr_4: UIImageView!
+    @IBOutlet weak var line_bottom_4: UILabel!
+    // Ведомости
+    @IBOutlet weak var menu_5_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btm_name_5: UIButton!
+    @IBOutlet weak var btn_arr_5: UIImageView!
+    @IBOutlet weak var line_bottom_5: UILabel!
+    // Оплата ЖКУ
+    @IBOutlet weak var menu_6_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_6: UIButton!
+    @IBOutlet weak var btn_arr_6: UIImageView!
+    @IBOutlet weak var line_bottom_6: UILabel!
+    // Web-камеры
+    @IBOutlet weak var menu_7_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_7: UIButton!
+    @IBOutlet weak var btn_arr_7: UIImageView!
+    @IBOutlet weak var line_bottom_7: UILabel!
+    // Дополнительные настройки
+    @IBOutlet weak var menu_8_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_8: UIButton!
+    @IBOutlet weak var btn_arr_8: UIImageView!
+    @IBOutlet weak var line_bottom_8: UILabel!
+    // Выход - только название
+    @IBOutlet weak var btn_name_9: UIButton!
+    
+
     @IBOutlet weak var heigth_Questions: NSLayoutConstraint!
     @IBOutlet weak var btn_Questions: UIButton!
     @IBOutlet weak var Questions_arrow: UIImageView!
@@ -223,32 +267,10 @@ class MainMenu: UIViewController {
         // Картинка в зависимости от Таргета
         #if isOur_Obj_Home
             fon_top.image = UIImage(named: "logo_Our_Obj_Home_white")
-            height_Pays.constant = 3
-            btn_Pays.isHidden = true
-            btn_Pays.isEnabled = false
-        
-            heigth_Questions.constant = 0
-            btn_Questions.isHidden = true
-            btn_Questions.isEnabled = false
-            Questions_arrow.isHidden = true
-        
-            heigth_view.constant = 320
         #elseif isChist_Dom
             fon_top.image = UIImage(named: "Logo_Chist_Dom_White")
         #elseif isMupRCMytishi
             fon_top.image = UIImage(named: "logo_MupRCMytishi_White")
-            btn_Questions.isEnabled = false
-            btn_Questions.isHidden = true
-            heigth_Questions.constant = 0
-            Questions_arrow.isHidden = true
-            poll.isHidden = true
-        
-            payment.isHidden = true
-            btn_Pays.isEnabled = false
-            btn_Pays.isHidden = true
-            height_Pays.constant = 0
-        
-            heigth_view.constant = 322
         #elseif isDJ
             fon_top.image = UIImage(named: "logo_DJ_White")
         #elseif isStolitsa
@@ -261,15 +283,170 @@ class MainMenu: UIViewController {
         
         // Картинки для разных Таргетов
         notice.image = myImages.notice_image
+        notice.setImageColor(color: myColors.btnColor.uiColor())
         application.image = myImages.application_image
+        application.setImageColor(color: myColors.btnColor.uiColor())
         poll.image = myImages.poll_image
+        poll.setImageColor(color: myColors.btnColor.uiColor())
         meters.image = myImages.meters_image
+        meters.setImageColor(color: myColors.btnColor.uiColor())
         saldo.image = myImages.saldo_image
+        saldo.setImageColor(color: myColors.btnColor.uiColor())
         payment.image = myImages.payment_image
+        payment.setImageColor(color: myColors.btnColor.uiColor())
         webs_img.image = myImages.webs_image
+        webs_img.setImageColor(color: myColors.btnColor.uiColor())
         services.image = myImages.application_image
+        services.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
+        exit_img.setImageColor(color: myColors.btnColor.uiColor())
         
+        
+        // Настройки для меню
+        settings_for_menu()
+        
+    }
+    
+    func settings_for_menu() {
+        let defaults = UserDefaults.standard
+        // Уведомления - Новости
+        let str_menu_0 = defaults.string(forKey: "menu_0") ?? ""
+        if (str_menu_0 != "") {
+            var answer = str_menu_0.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                menu_0_heigth.constant   = 0
+                btn_name_0.isHidden      = true
+                btn_arr_0.isHidden       = true
+                line_bottom_0.isHidden   = true
+                notice.isHidden          = true
+                heigth_view.constant     = heigth_view.constant - 41
+            } else {
+                btn_name_0.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Звонок диспетчеру
+        let str_menu_1 = defaults.string(forKey: "menu_1") ?? ""
+        if (str_menu_1 != "") {
+            var answer = str_menu_1.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                menu_1_heigth.constant   = 0
+                btn_name_1.isHidden      = true
+                line_bottom_1.constant   = 0
+                heigth_view.constant     = heigth_view.constant - 35
+            } else {
+                btn_name_1.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Заявки
+        let str_menu_2 = defaults.string(forKey: "menu_2") ?? ""
+        if (str_menu_2 != "") {
+            var answer = str_menu_2.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                menu_2_heigth.constant   = 0
+                application.isHidden     = true
+                btn_name_2.isHidden      = true
+                line_bottom_2.isHidden   = true
+                heigth_view.constant     = heigth_view.constant - 40
+            } else {
+                btn_name_2.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Опросы
+        let str_menu_3 = defaults.string(forKey: "menu_3") ?? ""
+        if (str_menu_3 != "") {
+            var answer = str_menu_3.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                btn_Questions.isHidden    = true
+                heigth_Questions.constant = 0
+                Questions_arrow.isHidden  = true
+                poll.isHidden             = true
+                line_bottom_3.constant    = 0
+                heigth_view.constant      = heigth_view.constant - 40
+            } else {
+                btn_Questions.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Показания счетчиков
+        let str_menu_4 = defaults.string(forKey: "menu_4") ?? ""
+        if (str_menu_4 != "") {
+            var answer = str_menu_4.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                menu_4_heigth.constant   = 0
+                btn_name_4.isHidden      = true
+                btn_arr_4.isHidden       = true
+                line_bottom_4.isHidden   = true
+                meters.isHidden          = true
+                heigth_view.constant     = heigth_view.constant - 39
+            } else {
+                btn_name_4.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Взаиморасчеты
+        let str_menu_5 = defaults.string(forKey: "menu_5") ?? ""
+        if (str_menu_5 != "") {
+            var answer = str_menu_5.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                menu_5_heigth.constant   = 0
+                btm_name_5.isHidden      = true
+                btn_arr_5.isHidden       = true
+                line_bottom_5.isHidden   = true
+                saldo.isHidden           = true
+                heigth_view.constant     = heigth_view.constant - 40
+            } else {
+                btm_name_5.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Оплата ЖКУ
+        let str_menu_6 = defaults.string(forKey: "menu_6") ?? ""
+        if (str_menu_6 != "") {
+            var answer = str_menu_6.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                menu_6_heigth.constant   = 0
+                btn_name_6.isHidden      = true
+                btn_arr_6.isHidden       = true
+                line_bottom_6.isHidden   = true
+                payment.isHidden         = true
+                heigth_view.constant     = heigth_view.constant - 39
+            } else {
+                btn_name_6.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Web-камеры
+        let str_menu_7 = defaults.string(forKey: "menu_7") ?? ""
+        if (str_menu_7 != "") {
+            var answer = str_menu_7.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                menu_7_heigth.constant   = 0
+                btn_name_7.isHidden      = true
+                btn_arr_7.isHidden       = true
+                line_bottom_7.isHidden   = true
+                webs_img.isHidden        = true
+                heigth_view.constant     = heigth_view.constant - 39
+            } else {
+                btn_name_7.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Дополнительные услуги
+        let str_menu_8 = defaults.string(forKey: "menu_8") ?? ""
+        if (str_menu_8 != "") {
+            var answer = str_menu_8.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                menu_8_heigth.constant   = 0
+                btn_name_8.isHidden      = true
+                btn_arr_8.isHidden       = true
+                line_bottom_8.isHidden   = true
+                services.isHidden        = true
+                heigth_view.constant     = heigth_view.constant - 40
+            } else {
+                btn_name_8.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Выход - только название
+        let str_menu_9 = defaults.string(forKey: "menu_9") ?? ""
+        if (str_menu_9 != "") {
+            var answer = str_menu_9.components(separatedBy: ";")
+            btn_name_9.setTitle(answer[1], for: .normal)
+        }
     }
     
     // Звонок оператору

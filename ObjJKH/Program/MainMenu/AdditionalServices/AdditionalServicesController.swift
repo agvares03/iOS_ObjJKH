@@ -68,6 +68,9 @@ class AdditionalServicesController: UIViewController{
         }
         self.get_Services(login: self.login!, pass: self.pass!)
         startAnimation()
+        
+        let titles = Titles()
+        self.title = titles.getTitle(numb: "8")
     }
     
     private func startAnimation() {

@@ -138,6 +138,9 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
         back.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         
+        let titles = Titles()
+        self.title = titles.getTitle(numb: "4")
+        
     }
     
     func updateBorderDates() {
@@ -213,7 +216,7 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         let attributes = [NSAttributedStringKey.font : UIFont.systemFont(ofSize:17.0),
-                          NSAttributedStringKey.foregroundColor : UIColor.colorWithHex("22A6E6"),
+                          NSAttributedStringKey.foregroundColor : myColors.btnColor.uiColor(),
                           NSAttributedStringKey.underlineStyle : 1] as [NSAttributedStringKey : Any]
         
         var attributedtext = NSAttributedString.init(string: monthStr.uppercased(), attributes: attributes)

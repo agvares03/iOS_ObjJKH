@@ -108,7 +108,9 @@ class FirstController: UIViewController {
         
         // Картинки для разных Таргетов
         new_face.image = myImages.person_image
+        new_face.setImageColor(color: myColors.btnColor.uiColor())
         new_zamoc.image = myImages.lock_image
+        new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
         
     }
     
