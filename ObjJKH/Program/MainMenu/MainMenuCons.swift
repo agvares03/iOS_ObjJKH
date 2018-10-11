@@ -33,9 +33,13 @@ class MainMenuCons: UIViewController {
         LabelName.text = defaults.string(forKey: "name")
         
         notice.image = myImages.notice_image
+        notice.setImageColor(color: myColors.btnColor.uiColor())
         application.image = myImages.application_image
-        webs_img.image = myImages.application_image
-        exit_img.image = myImages.application_image
+        application.setImageColor(color: myColors.btnColor.uiColor())
+        webs_img.image = myImages.webs_image
+        webs_img.setImageColor(color: myColors.btnColor.uiColor())
+        exit_img.image = myImages.exit_image
+        exit_img.setImageColor(color: myColors.btnColor.uiColor())
         
     }
 

@@ -168,6 +168,10 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         let titles = Titles()
         self.title = titles.getTitle(numb: "5")
         
+        #if isOur_Obj_Home
+            btnPay.isHidden = true
+        #endif
+        
     }
     
     func updateBorderDates() {

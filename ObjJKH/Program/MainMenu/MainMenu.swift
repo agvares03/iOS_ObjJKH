@@ -10,6 +10,15 @@ import UIKit
 
 class MainMenu: UIViewController {
     
+    // Запись на прием - Наш Общий Дом
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    var responseString: String = ""
+    var name_account: String = ""
+    var login: String = ""
+    var pass: String = ""
+    var txt_name: String = "Запись на прием к специалисту"
+    
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var ls1: UILabel!
     @IBOutlet weak var ls2: UILabel!
@@ -18,6 +27,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var PageView: UIView!
     @IBOutlet weak var ViewInfoLS: UIView!
+    @IBOutlet weak var btn_Add_LS: UIButton!
     
     // Размеры для настройки меню
     // Уведомления - Новости
@@ -64,6 +74,12 @@ class MainMenu: UIViewController {
     // Выход - только название
     @IBOutlet weak var btn_name_9: UIButton!
     
+    // Запись на прием - только для Нашего общего дома
+    @IBOutlet weak var menu_record_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_record: UIButton!
+    @IBOutlet weak var btn_arr_record: UIImageView!
+    @IBOutlet weak var line_bottom: UILabel!
+    
 
     @IBOutlet weak var heigth_Questions: NSLayoutConstraint!
     @IBOutlet weak var btn_Questions: UIButton!
@@ -72,6 +88,7 @@ class MainMenu: UIViewController {
     
     // Картинки - для разных Таргетов
     @IBOutlet weak var notice: UIImageView!
+    @IBOutlet weak var call: UIImageView!
     @IBOutlet weak var application: UIImageView!
     @IBOutlet weak var poll: UIImageView!
     @IBOutlet weak var meters: UIImageView!
@@ -80,6 +97,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var webs_img: UIImageView!
     @IBOutlet weak var services: UIImageView!
     @IBOutlet weak var exit_img: UIImageView!
+    @IBOutlet weak var record_img: UIImageView!
     
     var phone: String?
     
@@ -211,6 +229,8 @@ class MainMenu: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.StopIndicator()
+        
         let defaults = UserDefaults.standard
         // Телефон диспетчера
         phone = defaults.string(forKey: "phone_operator")
@@ -284,6 +304,8 @@ class MainMenu: UIViewController {
         // Картинки для разных Таргетов
         notice.image = myImages.notice_image
         notice.setImageColor(color: myColors.btnColor.uiColor())
+        call.image = myImages.call_image
+        call.setImageColor(color: myColors.btnColor.uiColor())
         application.image = myImages.application_image
         application.setImageColor(color: myColors.btnColor.uiColor())
         poll.image = myImages.poll_image
@@ -296,11 +318,14 @@ class MainMenu: UIViewController {
         payment.setImageColor(color: myColors.btnColor.uiColor())
         webs_img.image = myImages.webs_image
         webs_img.setImageColor(color: myColors.btnColor.uiColor())
-        services.image = myImages.application_image
+        services.image = myImages.services
         services.setImageColor(color: myColors.btnColor.uiColor())
+        record_img.image = myImages.record_image
+        record_img.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
         
+        btn_Add_LS.tintColor = myColors.btnColor.uiColor()
         
         // Настройки для меню
         settings_for_menu()
@@ -331,6 +356,7 @@ class MainMenu: UIViewController {
             if (answer[2] == "0") {
                 menu_1_heigth.constant   = 0
                 btn_name_1.isHidden      = true
+                call.isHidden            = true
                 line_bottom_1.constant   = 0
                 heigth_view.constant     = heigth_view.constant - 35
             } else {
@@ -441,6 +467,17 @@ class MainMenu: UIViewController {
                 btn_name_8.setTitle(answer[1], for: .normal)
             }
         }
+        
+        // Запись на прием - показывать только для Нашего Общего Дома
+        #if isOur_Obj_Home
+        #else
+            menu_record_heigth.constant  = 0
+            record_img.isHidden          = true
+            btn_name_record.isHidden     = true
+            btn_arr_record.isHidden      = true
+            heigth_view.constant         = heigth_view.constant - 39
+        #endif
+        
         // Выход - только название
         let str_menu_9 = defaults.string(forKey: "menu_9") ?? ""
         if (str_menu_9 != "") {
@@ -491,6 +528,28 @@ class MainMenu: UIViewController {
     @IBAction func go_web(_ sender: UIButton) {
     }
     
+    // Запись на прием
+    @IBAction func go_record(_ sender: UIButton) {
+        let actionSheet = UIAlertController(title: "Запись на прием", message: nil, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        let do_it1 = UIAlertAction(title: "К руководителю", style: .default) { action in
+            self.StartIndicator()
+            self.add_record(numb: 1)
+        }
+        let do_it2 = UIAlertAction(title: "К специалисту", style: .default) { action in
+            self.StartIndicator()
+            self.add_record(numb: 2)
+        }
+        
+        actionSheet.addAction(do_it1)
+        actionSheet.addAction(do_it2)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true, completion: nil)
+        
+    }    
+    
     // Выход
     @IBAction func go_exit(_ sender: UIButton) {
         exit(0)
@@ -530,4 +589,136 @@ class MainMenu: UIViewController {
         self.navigationController?.isNavigationBarHidden = false;
     }
 
+    func add_record(numb: Int) {
+        
+        if (numb == 1) {
+            txt_name = "Запись на прием к руководителю"
+        }
+        
+        let defaults = UserDefaults.standard
+        let str_ls = defaults.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        
+        if ((str_ls_arr?.count)! > 0) {
+            login = str_ls_arr?[0] ?? ""
+        }
+        
+        pass = defaults.string(forKey: "pass") ?? ""
+        name_account = defaults.string(forKey: "name") ?? ""
+        
+        if (login == "") {
+            // Сообщение об ошибке
+            let alert = UIAlertController(title: "Ошибка", message: "Не привязан ни один лицевой счет к аккаунту", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        let urlPath = Server.SERVER + Server.ADD_APP +
+            "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
+            "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
+            "&name=" + txt_name.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
+            "&text=" + txt_name.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
+            "&type=" + "11" +
+            "&priority=" + "2"
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        //            print(request.url)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(self.responseString)")
+                                                
+                                                self.choice()
+        })
+        task.resume()
+    }
+    
+    func choice() {
+        if (responseString == "1") {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Не переданы обязательные параметры", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if (responseString == "2") {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if (responseString == "xxx") {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Не удалось. Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else {
+            DispatchQueue.main.async(execute: {
+                
+                // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
+                // Запишем заявку в БД
+                let db = DB()
+                db.add_app(id: 1, number: self.responseString, text: self.txt_name, tema: self.txt_name, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1)
+                db.getComByID(login: self.login, pass: self.pass, number: self.responseString)
+                
+                self.StopIndicator()
+                
+                let alert = UIAlertController(title: "Успешно", message: "Создана запись на прием (см. в Заявках)" , preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+                
+            })
+        }
+        
+    }
+    
+    func date_teck() -> (String)? {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        let dateString = dateFormatter.string(from: date as Date)
+        return dateString
+        
+    }
+    
+    func StartIndicator() {
+//        self.mainView.isHidden = true
+        
+        self.indicator.startAnimating()
+        self.indicator.isHidden = false
+    }
+    
+    func StopIndicator() {
+//        self.mainView.isHidden = false
+        
+        self.indicator.stopAnimating()
+        self.indicator.isHidden = true
+    }
+    
 }

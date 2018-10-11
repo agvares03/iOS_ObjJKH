@@ -243,8 +243,6 @@
 		418ABF122133CC8C004DB75C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		418ABF152133CC8C004DB75C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		418ABF232133CF96004DB75C /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
-		418ABF242133D53C004DB75C /* (null) in Resources */ = {isa = PBXBuildFile; };
-		418ABF252133D53F004DB75C /* (null) in Resources */ = {isa = PBXBuildFile; };
 		418ABF272133D5D0004DB75C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		418ABF2A2133D835004DB75C /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		418ABF2C2133D83C004DB75C /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
@@ -409,6 +407,14 @@
 		41B5BC3B21666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
 		41B5BC3C21666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
 		41B5BC3D21666D11003F4868 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		41B5BC40216B32D0003F4868 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41B5BC3F216B32D0003F4868 /* GoogleService-Info.plist */; };
+		41B5BC42216B3405003F4868 /* Info - UK_Komfort.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */; };
+		41B5BC44216B37DE003F4868 /* Info - OurObjHome.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF6B2134CF1C004DB75C /* Info - OurObjHome.plist */; };
+		41B5BC45216B37E3003F4868 /* Info - ChistDom.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */; };
+		41B5BC46216B37E7003F4868 /* Info - MupRCMytishi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */; };
+		41B5BC47216B37EA003F4868 /* Info - DJService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC442213D2083002CEB62 /* Info - DJService.plist */; };
+		41B5BC48216B37F1003F4868 /* Info - Stolitsa.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4120929A2158CB36001E713E /* Info - Stolitsa.plist */; };
+		41B5BC49216B37F3003F4868 /* Info - Komeks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 412093132159E619001E713E /* Info - Komeks.plist */; };
 		41DFC36F213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
 		41DFC370213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
 		41DFC371213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
@@ -824,7 +830,6 @@
 		41FDA292214229A0003D8110 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		41FDA293214229A0003D8110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		41FDA294214229A0003D8110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
-		41FDA295214229A0003D8110 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF162133CC8C004DB75C /* Info.plist */; };
 		41FDA296214229A0003D8110 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		41FDA297214229A0003D8110 /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
 		41FDA298214229A0003D8110 /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
@@ -951,6 +956,9 @@
 		41ACA20D2140CA9600921C82 /* ic_send_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_send_app.png; sourceTree = "<group>"; };
 		41ACA2132140CB0000921C82 /* ic_get_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_get_app.png; sourceTree = "<group>"; };
 		41B5BC3521666D11003F4868 /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
+		41B5BC3E216746D9003F4868 /* Stolitsa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stolitsa-Bridging-Header.h"; sourceTree = "<group>"; };
+		41B5BC3F216B32D0003F4868 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "UKKomfort/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		41B5BC43216B348A003F4868 /* UK_Komfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Komfort-Bridging-Header.h"; sourceTree = "<group>"; };
 		41DFC36E213C0B5B002CEB62 /* FilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesController.swift; sourceTree = "<group>"; };
 		41DFC376213CF14A002CEB62 /* QuestionFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFinal.swift; sourceTree = "<group>"; };
 		41DFC3DA213CF4E9002CEB62 /* MupRCMytishi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MupRCMytishi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1117,6 +1125,8 @@
 				411AD1C12161E17D004FD1B5 /* Komeks-Bridging-Header.h */,
 				41EA8E2B216631800050B4DE /* ObjJKH-Bridging-Header.h */,
 				41EA8E2C216635410050B4DE /* OurObjHome-Bridging-Header.h */,
+				41B5BC3E216746D9003F4868 /* Stolitsa-Bridging-Header.h */,
+				41B5BC43216B348A003F4868 /* UK_Komfort-Bridging-Header.h */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -1184,10 +1194,11 @@
 				4120929A2158CB36001E713E /* Info - Stolitsa.plist */,
 				412093132159E619001E713E /* Info - Komeks.plist */,
 				41209320215C105F001E713E /* GoogleService-Info.plist */,
-				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
 				4120931E215BE7D8001E713E /* GoogleService-Info.plist */,
 				41209322215CBB86001E713E /* GoogleService-Info.plist */,
 				41160E75216209B0000A4041 /* GoogleService-Info.plist */,
+				41B5BC3F216B32D0003F4868 /* GoogleService-Info.plist */,
+				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
 				418ABF1D2133CDD3004DB75C /* Program */,
 				418ABF1C2133CCAA004DB75C /* StoryBoards */,
 				418ABF202133CF52004DB75C /* images */,
@@ -1790,6 +1801,9 @@
 					41FDA249214229A0003D8110 = {
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -1864,6 +1878,7 @@
 				412092922158CB2D001E713E /* Logo_DemoUC.png in Resources */,
 				412092932158CB2D001E713E /* NoCounters.storyboard in Resources */,
 				412092942158CB2D001E713E /* account_icon_user.png in Resources */,
+				41B5BC48216B37F1003F4868 /* Info - Stolitsa.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1887,6 +1902,7 @@
 				412092F62159E603001E713E /* Counters.storyboard in Resources */,
 				412092F72159E603001E713E /* News.storyboard in Resources */,
 				412093182159EB1F001E713E /* Logo_Komeks.png in Resources */,
+				41B5BC49216B37F3003F4868 /* Info - Komeks.plist in Resources */,
 				412092F82159E603001E713E /* MainMenuCons.storyboard in Resources */,
 				412092F92159E603001E713E /* Saldo.storyboard in Resources */,
 				412092FA2159E603001E713E /* main_background.png in Resources */,
@@ -1917,13 +1933,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				418ABF242133D53C004DB75C /* (null) in Resources */,
 				41EF5A46213A80D600789370 /* WebCameras.storyboard in Resources */,
 				41EF59F92138D14700789370 /* app_open.png in Resources */,
 				418ABF362133FC5D004DB75C /* Registration.storyboard in Resources */,
 				418ABF3921340003004DB75C /* ForgotPass.storyboard in Resources */,
 				41ACA2082140CA4700921C82 /* ic_ok_app.png in Resources */,
-				418ABF252133D53F004DB75C /* (null) in Resources */,
 				418ABF152133CC8C004DB75C /* LaunchScreen.storyboard in Resources */,
 				418ABF122133CC8C004DB75C /* Assets.xcassets in Resources */,
 				418ABF232133CF96004DB75C /* logo_SM.png in Resources */,
@@ -1965,6 +1979,7 @@
 				418ABF5A2134CF1A004DB75C /* Registration.storyboard in Resources */,
 				41E8F0382149EC3F00FE0473 /* AdditionalServices.storyboard in Resources */,
 				41ACA2152140CB0200921C82 /* ic_get_app.png in Resources */,
+				41B5BC44216B37DE003F4868 /* Info - OurObjHome.plist in Resources */,
 				418ABF5B2134CF1A004DB75C /* ForgotPass.storyboard in Resources */,
 				41E8F0282147C61300FE0473 /* NoCounters.storyboard in Resources */,
 				41EF5A232138E50E00789370 /* ic_close_action.png in Resources */,
@@ -2013,6 +2028,7 @@
 				41E8F0292147C61300FE0473 /* NoCounters.storyboard in Resources */,
 				41EF5A242138E50E00789370 /* ic_close_action.png in Resources */,
 				418ABFC921357DA5004DB75C /* (null) in Resources */,
+				41B5BC45216B37E3003F4868 /* Info - ChistDom.plist in Resources */,
 				418ABFCA21357DA5004DB75C /* LaunchScreen.storyboard in Resources */,
 				4120931F215BE7D8001E713E /* GoogleService-Info.plist in Resources */,
 				418ABFCB21357DA5004DB75C /* Assets.xcassets in Resources */,
@@ -2067,6 +2083,7 @@
 				41DFC3C5213CF4E9002CEB62 /* Counters.storyboard in Resources */,
 				41DFC3C6213CF4E9002CEB62 /* News.storyboard in Resources */,
 				41DFC3C7213CF4E9002CEB62 /* Saldo.storyboard in Resources */,
+				41B5BC46216B37E7003F4868 /* Info - MupRCMytishi.plist in Resources */,
 				41DFC3C8213CF4E9002CEB62 /* main_background.png in Resources */,
 				41DFC3C9213CF4E9002CEB62 /* account_icon_cons.jpg in Resources */,
 				41DFC3CA213CF4E9002CEB62 /* Logo_DemoUC_White.png in Resources */,
@@ -2113,6 +2130,7 @@
 				41DFC430213D206C002CEB62 /* account_icon_cons.jpg in Resources */,
 				41DFC431213D206C002CEB62 /* Logo_DemoUC_White.png in Resources */,
 				41DFC453213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
+				41B5BC47216B37EA003F4868 /* Info - DJService.plist in Resources */,
 				41DFC432213D206C002CEB62 /* ic_action_files_grey.png in Resources */,
 				41DFC433213D206C002CEB62 /* arrow_rigth.png in Resources */,
 				41E8F03B2149EC4000FE0473 /* AdditionalServices.storyboard in Resources */,
@@ -2144,7 +2162,8 @@
 				41E8F02C2147C61300FE0473 /* NoCounters.storyboard in Resources */,
 				41FDA293214229A0003D8110 /* LaunchScreen.storyboard in Resources */,
 				41FDA294214229A0003D8110 /* Assets.xcassets in Resources */,
-				41FDA295214229A0003D8110 /* Info.plist in Resources */,
+				41B5BC40216B32D0003F4868 /* GoogleService-Info.plist in Resources */,
+				41B5BC42216B3405003F4868 /* Info - UK_Komfort.plist in Resources */,
 				41FDA296214229A0003D8110 /* logo_SM.png in Resources */,
 				41FDA297214229A0003D8110 /* app_close.png in Resources */,
 				41FDA298214229A0003D8110 /* ic_close_action.png in Resources */,
@@ -3668,6 +3687,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(УК Комфорт)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/Info - UK_Komfort.plist";
@@ -3679,6 +3699,7 @@
 				OTHER_SWIFT_FLAGS = "-DisUKKomfort";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.UkComfort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isUKKomfort DEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Komfort-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3694,6 +3715,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(УК Комфорт)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/Info - UK_Komfort.plist";
@@ -3705,6 +3727,7 @@
 				OTHER_SWIFT_FLAGS = "-DisUKKomfort";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.UkComfort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isUKKomfort;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Komfort-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

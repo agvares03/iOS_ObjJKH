@@ -184,6 +184,10 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         loader.color = myColors.indicatorColor.uiColor()
+        goButton.backgroundColor = myColors.btnColor.uiColor()
+        
+        let titles = Titles()
+        self.title = titles.getSimpleTitle(numb: "3")
         
     }
     

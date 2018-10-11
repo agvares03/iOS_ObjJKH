@@ -29,6 +29,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     var delegate:ShowAppDelegate?
     var updDelegt: AppsUserUpdateDelegate?
     var App: Applications? = nil
+    @IBOutlet weak var fot_img: UIButton!
     
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
@@ -166,6 +167,10 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        fot_img.imageView?.setImageColor(color: myColors.btnColor.uiColor())
+        
+        let titles = Titles()
+        self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
         
     }
     

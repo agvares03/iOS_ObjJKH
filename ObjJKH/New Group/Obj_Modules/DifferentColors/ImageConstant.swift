@@ -16,6 +16,8 @@ struct myImages {
 //        static let notice_image = UIImage(named: "notice_Mup")
 //    #endif
     
+    static let call_image = UIImage(named: "call_menu")
+    
     // application
 //    #if isMupRCMytishi
         static let application_image = UIImage(named: "application_Mup")
@@ -39,7 +41,7 @@ struct myImages {
     
     // saldo
 //    #if isMupRCMytishi
-        static let saldo_image = UIImage(named: "application_Mup")
+        static let saldo_image = UIImage(named: "osv_menu")
 //    #else
 //        static let saldo_image = UIImage(named: "application")
 //    #endif
@@ -53,14 +55,17 @@ struct myImages {
     
     // webs_img
 //    #if isMupRCMytishi
-        static let webs_image = UIImage(named: "application_Mup")
+        static let webs_image = UIImage(named: "webs_menu")
 //    #else
 //        static let webs_image = UIImage(named: "application")
 //    #endif
     
+    // services
+    static let services = UIImage(named: "services_menu")
+    
     // exit_img
 //    #if isMupRCMytishi
-        static let exit_image = UIImage(named: "application_Mup")
+        static let exit_image = UIImage(named: "exit_menu")
 //    #else
 //        static let exit_image = UIImage(named: "application")
 //    #endif
@@ -85,5 +90,9 @@ struct myImages {
 //    #else
 //        static let phone_image = UIImage(named: "phone")
 //    #endif
+    
+    
+    // record
+    static let record_image = UIImage(named: "record_visit")
     
 }

@@ -57,6 +57,9 @@ class Web_Camera: UIViewController {
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        
+        let titles = Titles()
+        self.title = titles.getSimpleTitle(numb: "7")
     }
 
     override func didReceiveMemoryWarning() {

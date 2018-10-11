@@ -35,6 +35,8 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
         
         collection.dataSource = self
         collection.delegate   = self
+        
+        navigationController?.navigationBar.tintColor = myColors.btnColor.uiColor()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

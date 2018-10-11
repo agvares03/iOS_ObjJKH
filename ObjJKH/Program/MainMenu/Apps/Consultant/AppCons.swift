@@ -22,7 +22,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     @IBOutlet weak var table_comments: UITableView!
     
     var delegate:ShowAppConsDelegate?
-    var updDelegt: AppsUserUpdateDelegate?
+    var updDelegt: AppsConsUpdateDelegate?
     var App: Applications? = nil
     
     private var refreshControl: UIRefreshControl?
@@ -143,6 +143,10 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         } else {
             self.table_comments.addSubview(refreshControl!)
         }
+        
+        let titles = Titles()
+        self.title = titles.getSimpleTitle(numb: "2")
+        
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {

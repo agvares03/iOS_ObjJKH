@@ -246,6 +246,7 @@ class PaysController: UIViewController, DropperDelegate {
                     self.txt_sum_jkh.text = "0,00 р."
                     self.txt_sum_obj.text = "0,00 р."
                 }
+                
             })
             
         } catch {

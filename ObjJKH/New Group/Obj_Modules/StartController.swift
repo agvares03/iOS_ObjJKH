@@ -86,7 +86,7 @@ class StartController: UIViewController {
         defaults.setValue(color, forKey: "hex_color")
         var numb: Int = 0
         statMenu.forEach {
-            defaults.setValue(String($0.id) + ";" + $0.name_app + ";" + String($0.visible), forKey: "menu_" + String(numb))
+            defaults.setValue(String($0.id) + ";" + $0.name_app + ";" + String($0.visible)  + ";" + $0.simple_name, forKey: "menu_" + String(numb))
             numb = numb + 1
         }
         defaults.synchronize()
@@ -109,6 +109,7 @@ class StartController: UIViewController {
         let id: Int
         let name_app: String
         let visible: Int
+        let simple_name: String
     }
     
 }

@@ -36,6 +36,9 @@ class NewsView: UIViewController {
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         
+        let titles = Titles()
+        self.title = titles.getSimpleTitle(numb: "0")
+        
     }
 
     override func didReceiveMemoryWarning() {
