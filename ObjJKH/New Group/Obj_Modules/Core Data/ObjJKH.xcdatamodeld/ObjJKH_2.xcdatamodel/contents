@@ -14,6 +14,7 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tema" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_app" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Comments" representedClassName=".Comments" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,7 +56,7 @@
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Applications" positionX="333" positionY="81" width="128" height="240"/>
+        <element name="Applications" positionX="333" positionY="81" width="128" height="255"/>
         <element name="Comments" positionX="324" positionY="54" width="128" height="150"/>
         <element name="Counters" positionX="394" positionY="-18" width="128" height="195"/>
         <element name="Fotos" positionX="342" positionY="144" width="128" height="135"/>

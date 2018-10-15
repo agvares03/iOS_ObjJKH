@@ -33,13 +33,13 @@ class Pay: UIViewController {
         pass  = defaults.string(forKey: "pass")!
         sum  = defaults.string(forKey: "sum")!
         
-        #if isStolitsa
-            let url = NSURL(string: Server.SERVER + Server.GET_LINK_STOLITSA + "login=" + self.login + "&pwd=" + self.pass + "&sum=" + self.sum)
-            let requestObj = NSURLRequest(url: url! as URL)
-            self.webView.loadRequest(requestObj as URLRequest)
-        #else
+//        #if isStolitsa
+//            let url = NSURL(string: Server.SERVER + Server.GET_LINK_STOLITSA + "login=" + self.login + "&pwd=" + self.pass + "&sum=" + self.sum)
+//            let requestObj = NSURLRequest(url: url! as URL)
+//            self.webView.loadRequest(requestObj as URLRequest)
+//        #else
             get_link()
-        #endif
+//        #endif
         
     }
 

@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseMessaging
 import Gloss
+import SwiftyXMLParser
 
 class FirstController: UIViewController {
     
@@ -291,6 +292,7 @@ class FirstController: UIViewController {
                 
                 let db = DB()
                 db.getDataByEnter(login: self.edLogin.text!, pass: self.edPass.text!)
+                self.getTypesApps()
                 
                 if (answer[5] == "0") {
                     self.performSegue(withIdentifier: "MainMenu", sender: self)
@@ -362,6 +364,34 @@ class FirstController: UIViewController {
         init?(json: JSON) {
             data = "data" <~~ json
         }
+    }
+    
+    // Получить типы заявок
+    func getTypesApps() {
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_REQUEST_TYPES + "table=Support_RequestTypes")!)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            
+            defer {
+                DispatchQueue.main.async {
+                }
+            }
+            
+            guard data != nil else { return }
+            
+            let defaults = UserDefaults.standard
+            let xml = XML.parse(data!)
+            xml["Table"]["Row"].forEach {
+                defaults.setValue($0.attributes["name"], forKey: $0.attributes["id"]! + "_type")
+            }
+            defaults.synchronize()
+            #if DEBUG
+            print(String(data: data!, encoding: .utf8) ?? "")
+            #endif
+            
+            }.resume()
     }
     
 }

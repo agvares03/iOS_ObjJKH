@@ -326,6 +326,7 @@ class MainMenu: UIViewController {
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
         
         btn_Add_LS.tintColor = myColors.btnColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
         
         // Настройки для меню
         settings_for_menu()
@@ -530,6 +531,74 @@ class MainMenu: UIViewController {
     
     // Запись на прием
     @IBAction func go_record(_ sender: UIButton) {
+        
+        // Если нет лицевых счетов - сообщим об этом
+        let defaults = UserDefaults.standard
+        let str_ls = defaults.string(forKey: "str_ls")
+        var str_ls_arr = str_ls?.components(separatedBy: ",")
+        
+        if ((str_ls_arr?.count)! > 0) {
+            
+            if ((str_ls_arr?.count)! > 1) {
+                let actionSheet = UIAlertController(title: "Лицевые счета", message: nil, preferredStyle: .actionSheet)
+                
+                let cancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+                
+                if ((str_ls_arr?.count)! > 3) {
+                    let do_it0 = UIAlertAction(title: str_ls_arr?[0], style: .default) { action in
+                        self.login = (str_ls_arr?[0])!
+                    }
+                    actionSheet.addAction(do_it0)
+                    
+                    let do_it1 = UIAlertAction(title: str_ls_arr?[1], style: .default) { action in
+                        self.login = (str_ls_arr?[1])!
+                        self.set_add_record()
+                    }
+                    actionSheet.addAction(do_it1)
+                    
+                    let do_it2 = UIAlertAction(title: str_ls_arr?[2], style: .default) { action in
+                        self.login = (str_ls_arr?[2])!
+                        self.set_add_record()
+                    }
+                    actionSheet.addAction(do_it2)
+                } else if ((str_ls_arr?.count)! == 2) {
+                    let do_it0 = UIAlertAction(title: str_ls_arr?[0], style: .default) { action in
+                        self.login = (str_ls_arr?[0])!
+                        self.set_add_record()
+                    }
+                    actionSheet.addAction(do_it0)
+                    
+                    let do_it1 = UIAlertAction(title: str_ls_arr?[1], style: .default) { action in
+                        self.login = (str_ls_arr?[1])!
+                        self.set_add_record()
+                    }
+                    actionSheet.addAction(do_it1)
+                } else if ((str_ls_arr?.count)! == 1) {
+                    let do_it0 = UIAlertAction(title: str_ls_arr?[0], style: .default) { action in
+                        self.login = (str_ls_arr?[0])!
+                        self.set_add_record()
+                    }
+                    actionSheet.addAction(do_it0)
+                }
+
+                actionSheet.addAction(cancel)
+                
+                present(actionSheet, animated: true, completion: nil)
+            } else {
+                login = str_ls_arr?[0] ?? ""
+                set_add_record()
+            }
+            
+        } else {
+            let alert = UIAlertController(title: "Ошибка", message: "Не привязан лицевой счет", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func set_add_record() {
         let actionSheet = UIAlertController(title: "Запись на прием", message: nil, preferredStyle: .actionSheet)
         
         let cancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
@@ -547,8 +616,7 @@ class MainMenu: UIViewController {
         actionSheet.addAction(cancel)
         
         present(actionSheet, animated: true, completion: nil)
-        
-    }    
+    }
     
     // Выход
     @IBAction func go_exit(_ sender: UIButton) {
@@ -596,12 +664,6 @@ class MainMenu: UIViewController {
         }
         
         let defaults = UserDefaults.standard
-        let str_ls = defaults.string(forKey: "str_ls")
-        let str_ls_arr = str_ls?.components(separatedBy: ",")
-        
-        if ((str_ls_arr?.count)! > 0) {
-            login = str_ls_arr?[0] ?? ""
-        }
         
         pass = defaults.string(forKey: "pass") ?? ""
         name_account = defaults.string(forKey: "name") ?? ""
@@ -682,7 +744,7 @@ class MainMenu: UIViewController {
                 // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
                 // Запишем заявку в БД
                 let db = DB()
-                db.add_app(id: 1, number: self.responseString, text: self.txt_name, tema: self.txt_name, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1)
+                db.add_app(id: 1, number: self.responseString, text: self.txt_name, tema: self.txt_name, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1, type_app: "11")
                 db.getComByID(login: self.login, pass: self.pass, number: self.responseString)
                 
                 self.StopIndicator()
@@ -708,14 +770,14 @@ class MainMenu: UIViewController {
     }
     
     func StartIndicator() {
-//        self.mainView.isHidden = true
+        self.mainView.isHidden = true
         
         self.indicator.startAnimating()
         self.indicator.isHidden = false
     }
     
     func StopIndicator() {
-//        self.mainView.isHidden = false
+        self.mainView.isHidden = false
         
         self.indicator.stopAnimating()
         self.indicator.isHidden = true

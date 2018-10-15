@@ -182,6 +182,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let AppUser             = segue.destination as! AppUser
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
+            AppUser.str_type_app = app.type_app!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -195,6 +196,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let AppUser             = segue.destination as! AppUser
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
+            AppUser.str_type_app = app.type_app!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -208,6 +210,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let AppUser             = segue.destination as! AppCons
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
+            AppUser.str_type_app = app.type_app!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -221,6 +224,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let AppUser             = segue.destination as! AppCons
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
+            AppUser.str_type_app = app.type_app!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -288,6 +292,13 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.load_data()
+        self.tableApps.reloadData()
     }
     
 }
