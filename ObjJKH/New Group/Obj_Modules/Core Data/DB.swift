@@ -199,6 +199,7 @@ class DB: NSObject, XMLParserDelegate {
             } else {
                 managedObject.is_answered = 0
             }
+            managedObject.type_app        = attributeDict["id_type"]
             CoreDataManager.instance.saveContext()
             id_app                        = attributeDict["ID"]!
             
@@ -376,7 +377,7 @@ class DB: NSObject, XMLParserDelegate {
     }
     
     // Добавить заявку
-    func add_app(id: Int64, number: String, text: String, tema: String, date: String, adress: String, flat: String, phone: String, owner: String, is_close: Int64, is_read: Int64, is_answered: Int64) {
+    func add_app(id: Int64, number: String, text: String, tema: String, date: String, adress: String, flat: String, phone: String, owner: String, is_close: Int64, is_read: Int64, is_answered: Int64, type_app: String) {
         
         let managedObject = Applications()
         managedObject.id              = 1
@@ -391,6 +392,7 @@ class DB: NSObject, XMLParserDelegate {
         managedObject.is_close        = is_close
         managedObject.is_read         = is_read
         managedObject.is_answered     = is_answered
+        managedObject.type_app        = type_app
         
         CoreDataManager.instance.saveContext()
     }

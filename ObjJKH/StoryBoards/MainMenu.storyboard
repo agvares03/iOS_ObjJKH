@@ -21,11 +21,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCc-xD-1uN">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EeZ-7i-brq">
-                                        <rect key="frame" x="169" y="283" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    </activityIndicatorView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-ha-d6A">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     </imageView>
@@ -671,6 +666,10 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EeZ-7i-brq">
+                                        <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                        <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Bew-oo-ptP" secondAttribute="trailing" constant="8" id="96Y-Bm-MJA"/>
@@ -683,9 +682,11 @@
                                     <constraint firstItem="Bew-oo-ptP" firstAttribute="leading" secondItem="Z9d-Yc-TcP" secondAttribute="trailing" constant="8" id="SjU-ZF-njc"/>
                                     <constraint firstItem="yxa-ha-d6A" firstAttribute="top" secondItem="mCc-xD-1uN" secondAttribute="top" id="SmM-z0-sxf"/>
                                     <constraint firstItem="Z9d-Yc-TcP" firstAttribute="top" secondItem="mCc-xD-1uN" secondAttribute="top" constant="18" id="T0M-CT-ne0"/>
+                                    <constraint firstItem="EeZ-7i-brq" firstAttribute="centerX" secondItem="mCc-xD-1uN" secondAttribute="centerX" id="XPE-DK-93D"/>
                                     <constraint firstItem="Urd-MO-2Rw" firstAttribute="leading" secondItem="mCc-xD-1uN" secondAttribute="leading" constant="8" id="Zcs-Hh-EYJ"/>
                                     <constraint firstItem="yxa-ha-d6A" firstAttribute="centerY" secondItem="mCc-xD-1uN" secondAttribute="centerY" id="hE7-fl-jyw"/>
                                     <constraint firstAttribute="trailing" secondItem="yxa-ha-d6A" secondAttribute="trailing" id="jqn-3h-wg1"/>
+                                    <constraint firstItem="EeZ-7i-brq" firstAttribute="centerY" secondItem="mCc-xD-1uN" secondAttribute="centerY" id="jsS-cT-MeT"/>
                                     <constraint firstAttribute="trailing" secondItem="Urd-MO-2Rw" secondAttribute="trailing" constant="8" id="lcn-6Y-BLR"/>
                                     <constraint firstItem="Z9d-Yc-TcP" firstAttribute="leading" secondItem="mCc-xD-1uN" secondAttribute="leading" constant="8" id="omC-TJ-GSs"/>
                                     <constraint firstItem="Bew-oo-ptP" firstAttribute="top" secondItem="mCc-xD-1uN" secondAttribute="top" constant="8" id="qIm-ol-B8U"/>

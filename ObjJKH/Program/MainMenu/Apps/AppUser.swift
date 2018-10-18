@@ -25,6 +25,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var table_comments: UITableView!
     @IBOutlet weak var ed_comment: UITextField!
+    @IBOutlet weak var type_app: UILabel!
     
     var delegate:ShowAppDelegate?
     var updDelegt: AppsUserUpdateDelegate?
@@ -49,6 +50,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     var id_account: String = ""
     var id_app: String = ""
     var teck_id: Int64 = 1
+    var str_type_app: String = ""
 
     @IBAction func add_foto(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -171,6 +173,8 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
+        
+        self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         
     }
     

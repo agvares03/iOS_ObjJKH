@@ -3,42 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "QuestionAnswerVC.sendAnswer():QuestionAnswerVC.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "&quot;\(Server.SERVER)\(Server.SAVE_ANSWER)accID=\(id)&amp;groupID=\(groupId)&quot;">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MainMenu.settings_for_menu():MainMenu.swift">
-      </ContextState>
-      <ContextState
-         contextName = "AddLS.AddLS(_:):AddLS.swift">
-      </ContextState>
-      <ContextState
-         contextName = "Pay.viewDidLoad():Pay.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "Server.SERVER + Server.GET_LINK_STOLITSA + &quot;login=&quot; + self.login + &quot;&amp;pwd=&quot; + self.pass + &quot;&amp;sum=&quot; + self.sum">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "NewsController.tableView(_:didSelectRowAt:):News+UITableViewDelegate.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "vc.NewsTitle">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in FirstController.choice_LS():FirstController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in FirstController.get_LS():FirstController.swift">
-      </ContextState>
-      <ContextState
          contextName = "closure #1 in NewsClient.getNews(completedBlock:):NewsClient.swift">
       </ContextState>
       <ContextState
@@ -53,10 +17,65 @@
          contextName = "closure #1 in FirstController.enter():FirstController.swift">
       </ContextState>
       <ContextState
+         contextName = "closure #1 in Pay.get_link():Pay.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Server.SERVER + Server.GET_LINK + &quot;login=&quot; + self.login + &quot;&amp;pwd=&quot; + self.pass + &quot;&amp;sum=&quot; + self.sum">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in FirstController.choice_LS():FirstController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddLS.AddLS(_:):AddLS.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in FirstController.get_LS():FirstController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Pay.viewDidLoad():Pay.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Server.SERVER + Server.GET_LINK_STOLITSA + &quot;login=&quot; + self.login + &quot;&amp;pwd=&quot; + self.pass + &quot;&amp;sum=&quot; + self.sum">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "QuestionAnswerVC.sendAnswer():QuestionAnswerVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;\(Server.SERVER)\(Server.SAVE_ANSWER)accID=\(id)&amp;groupID=\(groupId)&quot;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainMenu.settings_for_menu():MainMenu.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MainMenu.add_record(numb:):MainMenu.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AppCons.viewDidLoad():AppCons.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "defaults.string(forKey: self.str_type_app + &quot;_type&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in StartController.set_settings(color:statMenu:):StartController.swift">
          <PersistentStrings>
             <PersistentString
                value = "String($0.id) + &quot;;&quot; + $0.name_app + &quot;;&quot; + String($0.visible)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsController.tableView(_:didSelectRowAt:):News+UITableViewDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "vc.NewsTitle">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

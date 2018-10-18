@@ -26,6 +26,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     var App: Applications? = nil
     
     private var refreshControl: UIRefreshControl?
+    @IBOutlet weak var type_app: UILabel!
     
     // массивы для перевода на консультантов (один массив - имена, другой - коды)
     var names_cons: [String] = []
@@ -45,6 +46,8 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     var id_account: String = ""
     var id_app: String = ""
     var teck_id: Int64 = 1
+    
+    var str_type_app: String = ""
     
     @IBAction func add_foto(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -146,6 +149,8 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2")
+        
+        self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         
     }
     
@@ -715,6 +720,10 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             })
         } else{
             DispatchQueue.main.async(execute: {
+                // Успешно - обновим значение в БД
+                self.App?.is_close = 0
+                CoreDataManager.instance.saveContext()
+                
                 self.load_new_data()
 //                // Экземпляр класса DB
 //                let db = DB()
