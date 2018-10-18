@@ -123,7 +123,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        #else
         let img = UIImage(named: "app_close")
 //        #endif
-        
+        print(app.tema!, app.is_close)
         if (app.is_close == 1) {
             let cell = self.tableApps.dequeueReusableCell(withIdentifier: "AppCell") as! AppsCell
             cell.Number.text    = app.number
