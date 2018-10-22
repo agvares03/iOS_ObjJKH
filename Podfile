@@ -8,6 +8,7 @@ target 'ObjJKH' do
   # Pods for Мобильное ЖКХ
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+pod 'Firebase/Database'
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
   pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
   pod 'Gloss'
@@ -21,6 +22,7 @@ target 'OurObjHome' do
 
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
+pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
@@ -35,6 +37,7 @@ target 'ChistDom' do
 
     # Pods for Чистый Дом
     pod 'Firebase/Core'
+pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
@@ -49,6 +52,7 @@ target 'MupRCMytishi' do
     
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
+pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
@@ -63,6 +67,7 @@ target 'UK_Komfort' do
     
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
+pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
@@ -77,6 +82,7 @@ target 'DJ' do
     
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
+pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
@@ -92,6 +98,7 @@ target 'Stolitsa' do
     
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
+pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
@@ -106,6 +113,7 @@ target 'Komeks' do
     
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
+pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'

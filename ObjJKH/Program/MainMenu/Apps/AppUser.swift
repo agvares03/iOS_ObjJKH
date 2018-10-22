@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import Alamofire
+import UserNotifications
+import Firebase
 
 protocol ShowAppDelegate : class {
     func showAppDone(showApp: AppUser)
@@ -26,6 +28,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     @IBOutlet weak var table_comments: UITableView!
     @IBOutlet weak var ed_comment: UITextField!
     @IBOutlet weak var type_app: UILabel!
+    @IBOutlet weak var ls_adress: UILabel!
     
     var delegate:ShowAppDelegate?
     var updDelegt: AppsUserUpdateDelegate?
@@ -46,11 +49,16 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     
     // id аккаунта текущего
     var id_author: String = ""
+    var adress: String = ""
     var name_account: String = ""
     var id_account: String = ""
     var id_app: String = ""
     var teck_id: Int64 = 1
     var str_type_app: String = ""
+    
+    var ref: DatabaseReference!
+    var databaseHandle:DatabaseHandle?
+    var postData = [String]()
 
     @IBAction func add_foto(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -173,9 +181,33 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
-        
+        print(self.adress)
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
-        
+        self.ls_adress.text = self.adress
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
+        })
+        ref = Database.database().reference()
+        // Do any additional setup after loading the view, typically from a nib.
+        databaseHandle = ref.child("Posts").observe(.childAdded) { (snapshot) in
+            
+            let post = snapshot.value as? String
+            
+            if let actualPost = post {
+                
+                self.postData.append(actualPost)
+                
+                self.reload(completion: {
+                    //local notification here
+                })
+                
+            }
+        }
+    }
+    
+    func reload(completion:() -> Void) {
+        load_data()
+        updateTable()
+        completion()
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
