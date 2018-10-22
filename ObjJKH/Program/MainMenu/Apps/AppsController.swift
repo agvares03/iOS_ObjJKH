@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import UserNotifications
+import Firebase
 
 protocol AppsUserUpdateDelegate {
     func updateList()
@@ -44,6 +46,10 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private var refreshControl: UIRefreshControl?
     var fetchedResultsController: NSFetchedResultsController<Applications>?
+    
+    var ref: DatabaseReference!
+    var databaseHandle:DatabaseHandle?
+    var postData = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +66,24 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             self.tableApps.addSubview(refreshControl!)
         }
-        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
+        })
+        ref = Database.database().reference()
+        // Do any additional setup after loading the view, typically from a nib.
+        databaseHandle = ref.child("Posts").observe(.childAdded) { (snapshot) in
+            
+            let post = snapshot.value as? String
+            
+            if let actualPost = post {
+                
+                self.postData.append(actualPost)
+                
+                self.reload(completion: {
+                    //local notification here
+                })
+                
+            }
+        }
         // Установим цвета для элементов в зависимости от Таргета
         btnAdd.backgroundColor = myColors.btnColor.uiColor()
         back.tintColor = myColors.btnColor.uiColor()
@@ -68,6 +91,12 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let titles = Titles()
         self.title = titles.getTitle(numb: "2")
         
+    }
+    
+    func reload(completion:() -> Void) {
+        load_data()
+        updateTable()
+        completion()
     }
 
     override func didReceiveMemoryWarning() {
@@ -183,6 +212,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
+            AppUser.adress = app.adress!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -197,6 +227,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
+            AppUser.adress = app.adress!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -211,6 +242,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
+            AppUser.adress = app.adress!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -225,6 +257,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
+            AppUser.adress = app.adress!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!

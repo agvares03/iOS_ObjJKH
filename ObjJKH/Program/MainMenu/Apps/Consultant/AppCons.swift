@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 import Alamofire
+import UserNotifications
+import Firebase
+
 
 protocol ShowAppConsDelegate : class {
     func showAppDoneCons(showApp: AppCons)
@@ -27,6 +30,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     
     private var refreshControl: UIRefreshControl?
     @IBOutlet weak var type_app: UILabel!
+    @IBOutlet weak var ls_adress: UILabel!
     
     // массивы для перевода на консультантов (один массив - имена, другой - коды)
     var names_cons: [String] = []
@@ -46,6 +50,11 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     var id_account: String = ""
     var id_app: String = ""
     var teck_id: Int64 = 1
+    var adress: String = ""
+    
+    var ref: DatabaseReference!
+    var databaseHandle:DatabaseHandle?
+    var postData = [String]()
     
     var str_type_app: String = ""
     
@@ -151,7 +160,32 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         self.title = titles.getSimpleTitle(numb: "2")
         
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
+        self.ls_adress.text = self.adress
         
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
+        })
+        ref = Database.database().reference()
+        // Do any additional setup after loading the view, typically from a nib.
+        databaseHandle = ref.child("Posts").observe(.childAdded) { (snapshot) in
+            
+            let post = snapshot.value as? String
+            
+            if let actualPost = post {
+                
+                self.postData.append(actualPost)
+                
+                self.reload(completion: {
+                    //local notification here
+                })
+                
+            }
+        }
+    }
+    
+    func reload(completion:() -> Void) {
+        load_data()
+        updateTable()
+        completion()
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
