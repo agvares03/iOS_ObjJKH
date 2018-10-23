@@ -453,6 +453,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             }
         }
     }
+    
     func load_new_data() {
         // Экземпляр класса DB
         let db = DB()

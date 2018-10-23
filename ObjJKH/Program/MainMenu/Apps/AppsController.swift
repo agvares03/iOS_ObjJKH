@@ -24,6 +24,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var back: UIBarButtonItem!
     
+    var timer: Timer? = nil
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -73,24 +75,25 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "2")
-        self.reload()
+        
+        timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
+        RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
+        
     }
     
-    func reload() {
+    @objc func reload() {
         DispatchQueue.global(qos: .userInteractive).async {
-            while !UserDefaults.standard.bool(forKey: "notification"){
-                if UserDefaults.standard.bool(forKey: "notification"){
-                    self.load_data()
-                    self.updateTable()
-                    UserDefaults.standard.setValue(false, forKey: "notification")
-                    self.repeat_reload()
-                }
+            let db = DB()
+            if (db.isNotification()) {
+                self.load_notification()
             }
         }
     }
     
-    func repeat_reload(){
-        self.reload()
+    func load_notification() {
+        DispatchQueue.main.async(execute: {
+            self.load_new_data()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -292,6 +295,43 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc private func refresh(_ sender: UIRefreshControl) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.global(qos: .background).async {
+                sleep(2)
+                DispatchQueue.main.sync {
+                    // Экземпляр класса DB
+                    let db = DB()
+                    let defaults = UserDefaults.standard
+                    let login = defaults.object(forKey: "login")
+                    let pass = defaults.object(forKey: "pass")
+                    let isCons = defaults.string(forKey: "isCons")
+                    // ЗАЯВКИ С КОММЕНТАРИЯМИ
+                    db.del_db(table_name: "Comments")
+                    db.del_db(table_name: "Applications")
+                    db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!)
+                    
+                    self.load_data()
+                    self.tableApps.reloadData()
+                    if #available(iOS 10.0, *) {
+                        self.tableApps.refreshControl?.endRefreshing()
+                    } else {
+                        self.refreshControl?.endRefreshing()
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        if (timer != nil) {
+            timer?.invalidate()
+        }
+    }
+    
+    func load_new_data() {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.global(qos: .background).async {
                 sleep(2)
