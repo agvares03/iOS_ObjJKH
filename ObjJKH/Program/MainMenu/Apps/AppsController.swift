@@ -43,14 +43,13 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.performSegue(withIdentifier: "add_app_cons", sender: self)
         }
     }
+    var ref: DatabaseReference!
+    var databaseHandle:DatabaseHandle?
+    var postData = [String]()
     
     private var refreshControl: UIRefreshControl?
     var fetchedResultsController: NSFetchedResultsController<Applications>?
     
-    var ref: DatabaseReference!
-    var databaseHandle:DatabaseHandle?
-    var postData = [String]()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,35 +67,30 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
         })
-        ref = Database.database().reference()
-        // Do any additional setup after loading the view, typically from a nib.
-        databaseHandle = ref.child("Posts").observe(.childAdded) { (snapshot) in
-            
-            let post = snapshot.value as? String
-            
-            if let actualPost = post {
-                
-                self.postData.append(actualPost)
-                
-                self.reload(completion: {
-                    //local notification here
-                })
-                
-            }
-        }
         // Установим цвета для элементов в зависимости от Таргета
         btnAdd.backgroundColor = myColors.btnColor.uiColor()
         back.tintColor = myColors.btnColor.uiColor()
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "2")
-        
+        self.reload()
     }
     
-    func reload(completion:() -> Void) {
-        load_data()
-        updateTable()
-        completion()
+    func reload() {
+        DispatchQueue.global(qos: .userInteractive).async {
+            while !UserDefaults.standard.bool(forKey: "notification"){
+                if UserDefaults.standard.bool(forKey: "notification"){
+                    self.load_data()
+                    self.updateTable()
+                    UserDefaults.standard.setValue(false, forKey: "notification")
+                    self.repeat_reload()
+                }
+            }
+        }
+    }
+    
+    func repeat_reload(){
+        self.reload()
     }
 
     override func didReceiveMemoryWarning() {
@@ -152,7 +146,6 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        #else
         let img = UIImage(named: "app_close")
 //        #endif
-        print(app.tema!, app.is_close)
         if (app.is_close == 1) {
             let cell = self.tableApps.dequeueReusableCell(withIdentifier: "AppCell") as! AppsCell
             cell.Number.text    = app.number

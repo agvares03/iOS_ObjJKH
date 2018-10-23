@@ -164,28 +164,24 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
         })
-        ref = Database.database().reference()
-        // Do any additional setup after loading the view, typically from a nib.
-        databaseHandle = ref.child("Posts").observe(.childAdded) { (snapshot) in
-            
-            let post = snapshot.value as? String
-            
-            if let actualPost = post {
-                
-                self.postData.append(actualPost)
-                
-                self.reload(completion: {
-                    //local notification here
-                })
-                
+        self.reload()
+    }
+    
+    func reload() {
+        DispatchQueue.global(qos: .userInteractive).async {
+            while !UserDefaults.standard.bool(forKey: "notification"){
+                if UserDefaults.standard.bool(forKey: "notification"){
+                    self.load_data()
+                    self.updateTable()
+                    UserDefaults.standard.setValue(false, forKey: "notification")
+                    self.repeat_reload()
+                }
             }
         }
     }
     
-    func reload(completion:() -> Void) {
-        load_data()
-        updateTable()
-        completion()
+    func repeat_reload(){
+        self.reload()
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
