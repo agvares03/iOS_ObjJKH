@@ -10,7 +10,6 @@
 		17C49227E0E438EACAE2FDA6 /* Pods_Stolitsa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C30202AA143265557CC7756 /* Pods_Stolitsa.framework */; };
 		1C009E4521494A65004E8BFD /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
 		1C009E4721494AC4004E8BFD /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
-		1CE094F6216F295C001FF018 /* Info - OurObjHome.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF6B2134CF1C004DB75C /* Info - OurObjHome.plist */; };
 		2BA6430A5373E25736C0D4BE /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
 		41160E76216209B0000A4041 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41160E75216209B0000A4041 /* GoogleService-Info.plist */; };
 		411AD1CA2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
@@ -234,6 +233,7 @@
 		41645B5C216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
 		41645B5D216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
 		41645B5E216492A300C61AF9 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		4179E914217DCC10007A395D /* Info - OurObjHome.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4179E913217DCC10007A395D /* Info - OurObjHome.plist */; };
 		418ABF0B2133CC7B004DB75C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
 		418ABF0D2133CC7B004DB75C /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
 		418ABF102133CC7B004DB75C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
@@ -895,6 +895,7 @@
 		413752F72152956D00D2C7DE /* DJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DJ.entitlements; sourceTree = "<group>"; };
 		413752F82152957500D2C7DE /* UK_Komfort.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UK_Komfort.entitlements; sourceTree = "<group>"; };
 		41645B56216492A300C61AF9 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
+		4179E913217DCC10007A395D /* Info - OurObjHome.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info - OurObjHome.plist"; sourceTree = SOURCE_ROOT; };
 		418ABF072133CC7B004DB75C /* ObjJKH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjJKH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		418ABF0A2133CC7B004DB75C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		418ABF0C2133CC7B004DB75C /* FirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstController.swift; sourceTree = "<group>"; };
@@ -918,7 +919,6 @@
 		418ABF4621341F71004DB75C /* ForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPass.swift; sourceTree = "<group>"; };
 		418ABF482134C156004DB75C /* main_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_background.png; sourceTree = "<group>"; };
 		418ABF6A2134CF1B004DB75C /* OurObjHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurObjHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		418ABF6B2134CF1C004DB75C /* Info - OurObjHome.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - OurObjHome.plist"; path = "/Users/sergeyivanov/Documents/ios_objjkh/Info - OurObjHome.plist"; sourceTree = "<absolute>"; };
 		418ABF6D2134D291004DB75C /* logo_Our_Obj_Home_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Our_Obj_Home_white.png; sourceTree = "<group>"; };
 		418ABF6F2134D29B004DB75C /* logo_Our_Obj_Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Our_Obj_Home.png; sourceTree = "<group>"; };
 		418ABF712134F07F004DB75C /* AddLS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLS.swift; sourceTree = "<group>"; };
@@ -1187,7 +1187,7 @@
 			children = (
 				413752F42152955800D2C7DE /* ObjJKH.entitlements */,
 				418ABF162133CC8C004DB75C /* Info.plist */,
-				418ABF6B2134CF1C004DB75C /* Info - OurObjHome.plist */,
+				4179E913217DCC10007A395D /* Info - OurObjHome.plist */,
 				418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */,
 				41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */,
 				41DFC442213D2083002CEB62 /* Info - DJService.plist */,
@@ -1982,7 +1982,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CE094F6216F295C001FF018 /* Info - OurObjHome.plist in Resources */,
 				41EF5A272138E52D00789370 /* ic_action_files_grey.png in Resources */,
 				418ABF83213539DA004DB75C /* News.storyboard in Resources */,
 				418ABF592134CF1A004DB75C /* (null) in Resources */,
@@ -2010,6 +2009,7 @@
 				418ABFE521361949004DB75C /* Counters.storyboard in Resources */,
 				41209321215C105F001E713E /* GoogleService-Info.plist in Resources */,
 				41EF59FA2138D14700789370 /* app_open.png in Resources */,
+				4179E914217DCC10007A395D /* Info - OurObjHome.plist in Resources */,
 				41EF59DD2137A20300789370 /* Saldo.storyboard in Resources */,
 				418ABF622134CF1A004DB75C /* MainMenu.storyboard in Resources */,
 				418ABF632134CF1A004DB75C /* Main.storyboard in Resources */,
