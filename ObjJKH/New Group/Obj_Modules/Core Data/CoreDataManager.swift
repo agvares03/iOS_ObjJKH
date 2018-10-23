@@ -17,6 +17,24 @@ class CoreDataManager {
         return NSEntityDescription.entity(forEntityName: entityName, in: self.managedObjectContext)!
     }
     
+    func fetchedResultsSettings(entityName: String, keysForSort: [String], predicateFormat: String? = nil) -> NSFetchedResultsController<Settings> {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        
+        var sortDescriptors = [NSSortDescriptor]()
+        for key in keysForSort {
+            let sortDescriptor = NSSortDescriptor(key: key, ascending: true)
+            sortDescriptors.append(sortDescriptor)
+        }
+        fetchRequest.sortDescriptors = sortDescriptors
+        
+        if predicateFormat != nil {
+            fetchRequest.predicate = NSPredicate(format: predicateFormat!)
+        }
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController as! NSFetchedResultsController<Settings>
+    }
+    
     func fetchedResultsController(entityName: String, keysForSort: [String], predicateFormat: String? = nil) -> NSFetchedResultsController<Counters> {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         

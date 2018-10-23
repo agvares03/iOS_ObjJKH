@@ -119,7 +119,13 @@ extension AppDelegate : MessagingDelegate {
     // iOS9, called when presenting notification in foreground
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
-        UserDefaults.standard.setValue(true, forKey: "notification")
+//        let defaults = UserDefaults.standard
+//        defaults.setValue(true, forKey: "notification")
+//        defaults.synchronize()
+        
+        let db = DB()
+        db.addSettings(id: 1, name: "notification", diff: "true")
+        
         if UIApplication.shared.applicationState == .active {
             //TODO: Handle foreground notification
         } else {
