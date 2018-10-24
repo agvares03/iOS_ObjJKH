@@ -59,6 +59,8 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
     var postData = [String]()
+    
+    var timer: Timer? = nil
 
     @IBAction func add_foto(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -185,25 +187,46 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         self.ls_adress.text = self.adress
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
-        })
-        self.reload()
+        })        
+        
+        timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
+        RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
+        
     }
     
-    func reload() {
+    @objc func reload() {
         DispatchQueue.global(qos: .userInteractive).async {
-            while !UserDefaults.standard.bool(forKey: "notification"){
-                if UserDefaults.standard.bool(forKey: "notification"){
-                    self.load_data()
-                    self.updateTable()
-                    UserDefaults.standard.setValue(false, forKey: "notification")
-                    self.repeat_reload()
-                }
+            let db = DB()
+            if (db.isNotification()) {
+                self.load_notification()
             }
         }
     }
     
-    func repeat_reload(){
-        self.reload()
+    func load_notification() {
+        DispatchQueue.main.async(execute: {
+            self.load_new_data()
+        })
+    }
+    
+    func load_new_data() {
+        // Экземпляр класса DB
+        let db = DB()
+        let defaults = UserDefaults.standard
+        let login = defaults.object(forKey: "login")
+        let pass = defaults.object(forKey: "pass")
+        
+        // КОММЕНТАРИИ ПО УКАЗАННОЙ ЗАЯВКЕ
+        db.del_comms_by_app(number_app: self.id_app)
+        db.getComByID(login: login as! String, pass: pass as! String, number: self.id_app)
+        
+        self.load_data()
+        self.table_comments.reloadData()
+        if #available(iOS 10.0, *) {
+            self.table_comments.refreshControl?.endRefreshing()
+        } else {
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
@@ -397,6 +420,14 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         }
         group.wait()
         return
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        if (timer != nil) {
+            timer?.invalidate()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

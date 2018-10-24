@@ -17,6 +17,39 @@ class DB: NSObject, XMLParserDelegate {
     var currMonth: String = "";
     var login: String = ""
     
+    // Вставить в Settings
+    public func addSettings(id: Int64, name: String, diff: String) {
+        let managedObject  = Settings()
+        managedObject.id   = id
+        managedObject.name = name
+        managedObject.diff = diff
+        CoreDataManager.instance.saveContext()
+    }
+    
+    public func isNotification() -> Bool {
+        var rezult: Bool = false
+        var fetchedResultsSettings: NSFetchedResultsController<Settings>?
+        let predicateFormat = String(format: "id = %@", "1")
+        fetchedResultsSettings = CoreDataManager.instance.fetchedResultsSettings(entityName: "Settings", keysForSort: ["name"], predicateFormat: predicateFormat)
+        do {
+            try fetchedResultsSettings?.performFetch()
+            
+            fetchedResultsSettings?.fetchedObjects?.forEach({ (n) in
+                if (n.diff == "true") {
+                    rezult = true;
+                }
+            })
+        } catch {
+            print(error)
+        }
+        
+        if (rezult) {
+            del_db(table_name: "Settings")
+        }
+        
+        return rezult;
+    }
+    
     public func getDataByEnter(login: String, pass: String) {
         
         // ПОКАЗАНИЯ СЧЕТЧИКОВ

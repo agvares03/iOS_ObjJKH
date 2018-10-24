@@ -58,6 +58,8 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     
     var str_type_app: String = ""
     
+    var timer: Timer? = nil
+    
     @IBAction func add_foto(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         action.addAction(UIAlertAction(title: "Выбрать из галереи", style: .default, handler: { (_) in
@@ -164,24 +166,19 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
         })
-        self.reload()
+        
+        timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
+        RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
+
     }
     
-    func reload() {
+    @objc func reload() {
         DispatchQueue.global(qos: .userInteractive).async {
-            while !UserDefaults.standard.bool(forKey: "notification"){
-                if UserDefaults.standard.bool(forKey: "notification"){
-                    self.load_data()
-                    self.updateTable()
-                    UserDefaults.standard.setValue(false, forKey: "notification")
-                    self.repeat_reload()
-                }
+            let db = DB()
+            if (db.isNotification()) {
+                self.load_notification()                
             }
         }
-    }
-    
-    func repeat_reload(){
-        self.reload()
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
@@ -190,6 +187,12 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     
     @objc func keyboardWillHide(notification:NSNotification) {
         view.frame.origin.y = 0
+    }
+    
+    func load_notification() {
+        DispatchQueue.main.async(execute: {
+            self.load_new_data()
+        })
     }
     
     func choice() {
@@ -296,6 +299,14 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        if (timer != nil) {
+            timer?.invalidate()
+        }
     }
     
     func get_cons(id_acc: String) {
@@ -442,6 +453,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             }
         }
     }
+    
     func load_new_data() {
         // Экземпляр класса DB
         let db = DB()
