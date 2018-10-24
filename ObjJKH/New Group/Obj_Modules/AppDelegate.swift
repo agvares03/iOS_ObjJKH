@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         requestNotificationAuthorization(application: application)
-        
         return true
     }
     

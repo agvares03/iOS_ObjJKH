@@ -95,7 +95,6 @@ class DB: NSObject, XMLParserDelegate {
             "&login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
             "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         let url: NSURL = NSURL(string: urlPath)!
-        
         parser = XMLParser(contentsOf: url as URL)!
         parser.delegate = self
         let success:Bool = parser.parse()
@@ -140,7 +139,6 @@ class DB: NSObject, XMLParserDelegate {
         // Получим данные из xml
         let urlPath = Server.SERVER + Server.GET_METERS + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let url: NSURL = NSURL(string: urlPath)!
-        
         parser = XMLParser(contentsOf: url as URL)!
         parser.delegate = self
         let success:Bool = parser.parse()
@@ -269,7 +267,6 @@ class DB: NSObject, XMLParserDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -395,7 +392,6 @@ class DB: NSObject, XMLParserDelegate {
         }
         let urlPath = Server.SERVER + Server.GET_APPS_COMM + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + TextCons;
         let url: NSURL = NSURL(string: urlPath)!
-        
         parser = XMLParser(contentsOf: url as URL)!
         parser.delegate = self
         let success:Bool = parser.parse()

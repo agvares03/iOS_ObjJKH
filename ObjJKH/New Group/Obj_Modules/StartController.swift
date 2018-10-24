@@ -49,7 +49,6 @@ class StartController: UIViewController {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -59,8 +58,7 @@ class StartController: UIViewController {
                                                 }
                                                 
                                                 self.responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                print(self.responseLS)
-                                                
+//                                                print("Response: \(self.responseLS!)")
                                                 self.setSettings()
                                                 
         })

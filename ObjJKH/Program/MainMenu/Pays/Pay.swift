@@ -83,7 +83,7 @@ class Pay: UIViewController {
     func choice() {
         DispatchQueue.main.async(execute: {
             if (self.responseString.contains("Ошибка")) {
-                let alert = UIAlertController(title: "Ошибка", message: "Ну удалось подключиться к серверу оплаты", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                     self.navigationController?.dismiss(animated: true, completion: nil)
                 }
@@ -94,7 +94,7 @@ class Pay: UIViewController {
                 let requestObj = NSURLRequest(url: url! as URL)
                 self.webView.loadRequest(requestObj as URLRequest)
             } else {
-                let alert = UIAlertController(title: "Ошибка", message: "Ну удалось подключиться к серверу оплаты", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                     self.navigationController?.dismiss(animated: true, completion: nil)
                 }

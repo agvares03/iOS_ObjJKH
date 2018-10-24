@@ -28,6 +28,9 @@ class MainMenu: UIViewController {
     @IBOutlet weak var PageView: UIView!
     @IBOutlet weak var ViewInfoLS: UIView!
     @IBOutlet weak var btn_Add_LS: UIButton!
+    @IBOutlet weak var news_indicator: UILabel!
+    @IBOutlet weak var request_indicator: UILabel!
+    @IBOutlet weak var question_indicator: UILabel!
     
     // Размеры для настройки меню
     // Уведомления - Новости
@@ -230,6 +233,11 @@ class MainMenu: UIViewController {
         super.viewDidLoad()
         
         self.StopIndicator()
+        let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+        let updatedBadgeNumber = currentBadgeNumber + 3
+        if (updatedBadgeNumber > -1) {
+            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+        }
         
         let defaults = UserDefaults.standard
         // Телефон диспетчера
@@ -327,6 +335,9 @@ class MainMenu: UIViewController {
         
         btn_Add_LS.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        request_indicator.backgroundColor = myColors.indicatorColor.uiColor()
+        question_indicator.backgroundColor = myColors.indicatorColor.uiColor()
+        news_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         
         // Настройки для меню
         settings_for_menu()

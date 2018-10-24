@@ -89,8 +89,7 @@ class AddLS: UIViewController, UITextFieldDelegate {
                                                 }
                                                 
                                                 self.response_add_ident = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                //                                                print("responseString = \(self.responseString)")
-                                                
+                                               // print("responseString = \(String(describing: self.response_add_ident))")
                                                 self.choice_add_ident()
                                                 
         })
@@ -260,8 +259,7 @@ class AddLS: UIViewController, UITextFieldDelegate {
                                                 }
                                                 
                                                 self.streetString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                //                                                print("token (add) = \(String(describing: self.regionString))")
-                                                
+                                                //print("token (add) = \(String(describing: self.streetString))")
                                                 do {
                                                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
                                                     

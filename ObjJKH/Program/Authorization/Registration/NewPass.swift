@@ -66,8 +66,7 @@ class NewPass: UIViewController {
                                                     }
                                                     
                                                     self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    //                                                    print("responseString = \(self.responseString)")
-                                                    
+                                          //          print("responseString = \(String(describing: self.responseString))")
                                                     self.choice()
             })
             task.resume()

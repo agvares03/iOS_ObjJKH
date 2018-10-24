@@ -68,7 +68,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         
         var json: [[String:Any]] = []
         
-        print(answers)
+//        print(answers)
         
 //        var isManyValue = false
         var index = 0
@@ -100,7 +100,6 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
             data, error, responce in
             
             guard data != nil else { return }
-//            print(String(data: data!, encoding: .utf8))
             if String(data: data!, encoding: .utf8)?.contains("error") ?? false {
                 let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
                 alert.addAction( UIAlertAction(title: "ОК", style: .default, handler: { (_) in } ) )
