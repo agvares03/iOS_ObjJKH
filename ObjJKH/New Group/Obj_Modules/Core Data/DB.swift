@@ -16,7 +16,7 @@ class DB: NSObject, XMLParserDelegate {
     var currYear: String = "";
     var currMonth: String = "";
     var login: String = ""
-    
+    private var request_read = 0
     // Вставить в Settings
     public func addSettings(id: Int64, name: String, diff: String) {
         let managedObject  = Settings()
@@ -204,6 +204,7 @@ class DB: NSObject, XMLParserDelegate {
         // Заявки с комментариями (xml)
         var id_app: String = ""
         if (elementName == "Row") {
+            print(attributeDict)
             // Запишем заявку в БД
             let managedObject = Applications()
             managedObject.id              = 1
@@ -219,6 +220,15 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.is_close    = 1
             } else {
                 managedObject.is_close    = 0
+            }
+            if (attributeDict["IsReadedByClient"] == "1") {
+                managedObject.is_read_client     = 1
+            } else {
+                managedObject.is_read_client     = 0
+//                request_read = UserDefaults.standard.integer(forKey: "request_read")
+                request_read += 1
+                UserDefaults.standard.setValue(request_read, forKey: "request_read")
+                UserDefaults.standard.synchronize()
             }
             if (attributeDict["IsReaded"] == "1") {
                 managedObject.is_read     = 1
@@ -440,5 +450,6 @@ class DB: NSObject, XMLParserDelegate {
         }
         CoreDataManager.instance.saveContext()
     }
+    
     
 }

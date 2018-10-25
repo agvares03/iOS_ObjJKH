@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Gloss
 
 class MainMenu: UIViewController {
     
@@ -18,6 +19,9 @@ class MainMenu: UIViewController {
     var login: String = ""
     var pass: String = ""
     var txt_name: String = "Запись на прием к специалисту"
+    private var question_read = 0
+    private var request_read = 0
+    private var news_read = 0
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var ls1: UILabel!
@@ -233,11 +237,12 @@ class MainMenu: UIViewController {
         super.viewDidLoad()
         
         self.StopIndicator()
-        let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-        let updatedBadgeNumber = currentBadgeNumber + 3
-        if (updatedBadgeNumber > -1) {
-            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-        }
+        self.getQuestions()
+//        let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+//        let updatedBadgeNumber = currentBadgeNumber + 3
+//        if (updatedBadgeNumber > -1) {
+//            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+//        }
         
         let defaults = UserDefaults.standard
         // Телефон диспетчера
@@ -657,7 +662,25 @@ class MainMenu: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print(UserDefaults.standard.integer(forKey: "request_read"))
+        if UserDefaults.standard.integer(forKey: "question_read") > 0{
+            question_indicator.text = String(UserDefaults.standard.integer(forKey: "question_read"))
+            question_indicator.isHidden = false
+        }else{
+            question_indicator.isHidden = true
+        }
+        if UserDefaults.standard.integer(forKey: "news_read") > 0{
+            news_indicator.text = String(UserDefaults.standard.integer(forKey: "news_read"))
+            news_indicator.isHidden = false
+        }else{
+            news_indicator.isHidden = true
+        }
+        if UserDefaults.standard.integer(forKey: "request_read") > 0{
+            request_indicator.text = String(UserDefaults.standard.integer(forKey: "request_read"))
+            request_indicator.isHidden = false
+        }else{
+            request_indicator.isHidden = true
+        }
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -768,6 +791,41 @@ class MainMenu: UIViewController {
                 
             })
         }
+        
+    }
+    
+    func getQuestions() {
+        question_read = 0
+        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + phone)!)
+        request.httpMethod = "GET"
+        print(request)
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            
+            guard data != nil else { return }
+            let json = try? JSONSerialization.jsonObject(with: data!,
+                                                         options: .allowFragments)
+            let unfilteredData = QuestionsJson(json: json! as! JSON)?.data
+            unfilteredData?.forEach { json in
+                if !json.readed!{
+                    self.question_read += 1
+                }
+            }
+            print(self.question_read)
+            DispatchQueue.main.async {
+                UserDefaults.standard.setValue(self.question_read, forKey: "question_read")
+                UserDefaults.standard.synchronize()
+                if self.question_read > 0{
+                    self.question_indicator.text = String(self.question_read)
+                }else{
+                    self.question_indicator.isHidden = true
+                }
+                
+            }
+            
+            }.resume()
         
     }
     

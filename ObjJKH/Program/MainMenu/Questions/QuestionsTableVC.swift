@@ -110,9 +110,11 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     func getQuestions() {
         
         let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
-        
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
+        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+//        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + phone)!)
         request.httpMethod = "GET"
+        print(request)
         
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
@@ -145,6 +147,9 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
                     
                 }
             }
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            print("responseString = \(responseString)")
+            
             guard data != nil else { return }
             let json = try? JSONSerialization.jsonObject(with: data!,
                                                          options: .allowFragments)

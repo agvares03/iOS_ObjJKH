@@ -23,11 +23,13 @@ struct QuestionDataJson: JSONDecodable {
     let questions:  [QuestionJson]?
     let name:       String?
     let id:         Int?
+    let readed:     Bool?
     
     init?(json: JSON) {
         questions   = "Questions"   <~~ json
         name        = "Name"        <~~ json
         id          = "ID"          <~~ json
+        readed      = "IsReaded"    <~~ json
     }
 }
 

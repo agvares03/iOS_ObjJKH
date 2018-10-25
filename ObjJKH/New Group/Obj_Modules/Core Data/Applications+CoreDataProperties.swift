@@ -24,6 +24,7 @@ extension Applications {
     @NSManaged public var id: Int64
     @NSManaged public var is_answered: Int64
     @NSManaged public var is_close: Int64
+    @NSManaged public var is_read_client: Int64
     @NSManaged public var is_read: Int64
     @NSManaged public var number: String?
     @NSManaged public var owner: String?

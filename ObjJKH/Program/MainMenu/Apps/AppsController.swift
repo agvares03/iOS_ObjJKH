@@ -48,12 +48,13 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
     var postData = [String]()
-    
+    var question_read = 0
     private var refreshControl: UIRefreshControl?
     var fetchedResultsController: NSFetchedResultsController<Applications>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        question_read = UserDefaults.standard.integer(forKey: "request_read")
 
         tableApps.delegate = self
         load_data()
@@ -151,6 +152,17 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        #endif
         if (app.is_close == 1) {
             let cell = self.tableApps.dequeueReusableCell(withIdentifier: "AppCell") as! AppsCell
+            if app.is_read_client == 0{
+                cell.Number.font = UIFont.boldSystemFont(ofSize: 16.0)
+                cell.Number.textColor = .black
+                cell.tema.font = UIFont.boldSystemFont(ofSize: 16.0)
+                cell.tema.textColor = .black
+            }else{
+                cell.Number.font = UIFont.systemFont(ofSize: 16.0)
+                cell.Number.textColor = .lightGray
+                cell.tema.font = UIFont.systemFont(ofSize: 16.0)
+                cell.tema.textColor = .lightGray
+            }
             cell.Number.text    = app.number
             cell.tema.text      = app.tema
             //            cell.text_app.text  = app.text
@@ -167,6 +179,17 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return cell
         } else {
             let cell = self.tableApps.dequeueReusableCell(withIdentifier: "AppCellClose") as! AppsCellClose
+            if app.is_read_client == 0{
+                cell.Number.font = UIFont.boldSystemFont(ofSize: 16.0)
+                cell.Number.textColor = .black
+                cell.tema.font = UIFont.boldSystemFont(ofSize: 16.0)
+                cell.tema.textColor = .black
+            }else{
+                cell.Number.font = UIFont.systemFont(ofSize: 16.0)
+                cell.Number.textColor = .lightGray
+                cell.tema.font = UIFont.systemFont(ofSize: 16.0)
+                cell.tema.textColor = .lightGray
+            }
             cell.Number.text    = app.number
             cell.tema.text      = app.tema
             //            cell.text_app.text  = app.text
@@ -208,6 +231,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
+            AppUser.read = app.is_read_client
             AppUser.adress = app.adress!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
@@ -362,7 +386,9 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        if UserDefaults.standard.integer(forKey: "request_read") < question_read{
+            self.load_new_data()
+        }
         self.load_data()
         self.tableApps.reloadData()
     }

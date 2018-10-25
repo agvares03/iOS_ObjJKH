@@ -159,7 +159,9 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         super.viewDidLoad()
         stopAnimation()
         navigationItem.title    = question_?.name
-        
+        if !(question_?.readed)!{
+            self.read_question()
+        }
         let decoded = UserDefaults.standard.object(forKey: String(question_?.id ?? 0))
         if decoded != nil {
             answers = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as! [Int:[Int]]
@@ -188,6 +190,25 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "3")
         
+    }
+    
+    func read_question(){
+        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        let question_id = String(self.question_!.id!)
+        
+        var request = URLRequest(url: URL(string: Server.SERVER + "SetQuestionGroupReadedState.ashx?" + "phone=" + phone + "&groupID=" + question_id)!)
+        request.httpMethod = "GET"
+        print(request)
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+//            print(String(data: data!, encoding: .utf8) ?? "")
+            guard data != nil else { return }
+            var question_read = UserDefaults.standard.integer(forKey: "question_read")
+            question_read -= 1
+            UserDefaults.standard.setValue(question_read, forKey: "question_read")
+            UserDefaults.standard.synchronize()
+            
+            }.resume()
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {

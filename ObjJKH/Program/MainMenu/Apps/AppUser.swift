@@ -55,6 +55,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     var id_app: String = ""
     var teck_id: Int64 = 1
     var str_type_app: String = ""
+    var read: Int64 = 0
     
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
@@ -147,7 +148,9 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         super.viewDidLoad()
 
         self.StopIndicator()
-        
+        if read == 0{
+            self.read_request()
+        }
         // получим id текущего аккаунта
         let defaults = UserDefaults.standard
         id_author    = defaults.string(forKey: "id_account")!
@@ -192,6 +195,26 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
         
+    }
+    
+    func read_request(){
+        let request_id = String(self.id_app)
+        
+        var request = URLRequest(url: URL(string: Server.SERVER + "SetRequestReadedByClientState.ashx?" + "reqID=" + request_id)!)
+        request.httpMethod = "GET"
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            print(String(data: data!, encoding: .utf8) ?? "")
+            
+            guard data != nil else { return }
+            var question_read = UserDefaults.standard.integer(forKey: "request_read")
+            question_read -= 1
+            UserDefaults.standard.setValue(question_read, forKey: "request_read")
+            UserDefaults.standard.synchronize()
+            
+            }.resume()
     }
     
     @objc func reload() {
