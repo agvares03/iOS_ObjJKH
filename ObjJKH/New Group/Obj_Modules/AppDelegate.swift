@@ -77,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return "inactive"
         }
     }
-    
     func requestNotificationAuthorization(application: UIApplication) {
         Messaging.messaging().delegate = self
         if #available(iOS 10.0, *) {

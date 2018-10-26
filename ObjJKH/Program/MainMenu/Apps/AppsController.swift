@@ -157,11 +157,15 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.Number.textColor = .black
                 cell.tema.font = UIFont.boldSystemFont(ofSize: 16.0)
                 cell.tema.textColor = .black
+                cell.date_app.font = UIFont.boldSystemFont(ofSize: 13.0)
+                cell.date_app.textColor = .black
             }else{
                 cell.Number.font = UIFont.systemFont(ofSize: 16.0)
                 cell.Number.textColor = .lightGray
                 cell.tema.font = UIFont.systemFont(ofSize: 16.0)
                 cell.tema.textColor = .lightGray
+                cell.date_app.font = UIFont.systemFont(ofSize: 13.0)
+                cell.date_app.textColor = .black
             }
             cell.Number.text    = app.number
             cell.tema.text      = app.tema
@@ -184,11 +188,15 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.Number.textColor = .black
                 cell.tema.font = UIFont.boldSystemFont(ofSize: 16.0)
                 cell.tema.textColor = .black
+                cell.date_app.font = UIFont.boldSystemFont(ofSize: 13.0)
+                cell.date_app.textColor = .black
             }else{
                 cell.Number.font = UIFont.systemFont(ofSize: 16.0)
                 cell.Number.textColor = .lightGray
                 cell.tema.font = UIFont.systemFont(ofSize: 16.0)
                 cell.tema.textColor = .lightGray
+                cell.date_app.font = UIFont.systemFont(ofSize: 13.0)
+                cell.date_app.textColor = .black
             }
             cell.Number.text    = app.number
             cell.tema.text      = app.tema

@@ -17,13 +17,9 @@ class NewsManager {
     private var newsList:[News] = [News]()
     
     func loadNewsIfNeed() {
-        if newsList.count == 0 {
-            newsClient.getNews { [weak self] (list) in
-                self?.newsList = list
-                self?.completionLoaded?()
-            }
-        } else {
-            self.completionLoaded?()
+        newsClient.getNews { [weak self] (list) in
+            self?.newsList = list
+            self?.completionLoaded?()
         }
     }
     

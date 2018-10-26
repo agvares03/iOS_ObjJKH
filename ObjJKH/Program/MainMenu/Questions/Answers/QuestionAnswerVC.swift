@@ -193,7 +193,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func read_question(){
-        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "id_account") ?? ""
         let question_id = String(self.question_!.id!)
         
         var request = URLRequest(url: URL(string: Server.SERVER + "SetQuestionGroupReadedState.ashx?" + "phone=" + phone + "&groupID=" + question_id)!)
@@ -205,6 +205,13 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
             guard data != nil else { return }
             var question_read = UserDefaults.standard.integer(forKey: "question_read")
             question_read -= 1
+            DispatchQueue.main.async {
+                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+                let updatedBadgeNumber = currentBadgeNumber - 1
+                if (updatedBadgeNumber > -1) {
+                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                }
+            }
             UserDefaults.standard.setValue(question_read, forKey: "question_read")
             UserDefaults.standard.synchronize()
             

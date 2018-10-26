@@ -235,15 +235,10 @@ class MainMenu: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UIApplication.shared.applicationIconBadgeNumber = 0
         self.StopIndicator()
         self.getQuestions()
-//        let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-//        let updatedBadgeNumber = currentBadgeNumber + 3
-//        if (updatedBadgeNumber > -1) {
-//            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-//        }
-        
+        self.getNews()
         let defaults = UserDefaults.standard
         // Телефон диспетчера
         phone = defaults.string(forKey: "phone_operator")
@@ -681,6 +676,10 @@ class MainMenu: UIViewController {
         }else{
             request_indicator.isHidden = true
         }
+        let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "question_read") + UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read")
+        if (updatedBadgeNumber > -1) {
+            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+        }
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -813,7 +812,6 @@ class MainMenu: UIViewController {
                     self.question_read += 1
                 }
             }
-            print(self.question_read)
             DispatchQueue.main.async {
                 UserDefaults.standard.setValue(self.question_read, forKey: "question_read")
                 UserDefaults.standard.synchronize()
@@ -827,6 +825,33 @@ class MainMenu: UIViewController {
             
             }.resume()
         
+    }
+    
+    func getNews(){
+        news_read = 0
+        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
+        request.httpMethod = "GET"
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            
+//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//            print("responseString = \(responseString)")
+            
+            guard data != nil else { return }
+            let json = try? JSONSerialization.jsonObject(with: data!,
+                                                         options: .allowFragments)
+            let unfilteredData = NewsJson(json: json! as! JSON)?.data
+            unfilteredData?.forEach { json in
+                if !json.readed! {
+                    self.news_read += 1
+                    UserDefaults.standard.setValue(self.news_read, forKey: "news_read")
+                    UserDefaults.standard.synchronize()
+                }
+            }
+            }.resume()
     }
     
     func date_teck() -> (String)? {
