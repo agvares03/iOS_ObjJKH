@@ -204,6 +204,7 @@ class DB: NSObject, XMLParserDelegate {
         // Заявки с комментариями (xml)
         var id_app: String = ""
         if (elementName == "Row") {
+            print(attributeDict)
             // Запишем заявку в БД
             let managedObject = Applications()
             managedObject.id              = 1
@@ -213,7 +214,7 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.date            = attributeDict["added"]
             managedObject.adress          = attributeDict["HouseAddress"]
             managedObject.flat            = attributeDict["FlatNumber"]
-            managedObject.phone           = attributeDict["PhoneNum"]
+            managedObject.phone           = attributeDict["Phone"]
             managedObject.owner           = login
             if (attributeDict["isActive"] == "1") {
                 managedObject.is_close    = 1

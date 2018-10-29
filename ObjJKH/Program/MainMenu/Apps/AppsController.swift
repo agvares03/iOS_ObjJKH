@@ -256,6 +256,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
+            AppUser.read = app.is_read_client
             AppUser.adress = app.adress!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
@@ -272,6 +273,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
+            AppUser.read = app.is_read_client
             AppUser.adress = app.adress!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
@@ -288,6 +290,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
+            AppUser.read = app.is_read_client
             AppUser.adress = app.adress!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Gloss
 
 class MainMenuCons: UIViewController {
 
@@ -26,7 +27,7 @@ class MainMenuCons: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.getNews()
         let defaults = UserDefaults.standard
         // Приветствие
         LabelTime.text = "Здравствуйте,"
@@ -40,7 +41,36 @@ class MainMenuCons: UIViewController {
         webs_img.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
+        print(UserDefaults.standard.integer(forKey: "request_read"))
+    }
+    
+    var news_read = 0
+    
+    func getNews(){
+        news_read = 0
+        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
+        request.httpMethod = "GET"
+        print(request)
         
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            
+            //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            //            print("responseString = \(responseString)")
+            
+            guard data != nil else { return }
+            let json = try? JSONSerialization.jsonObject(with: data!,
+                                                         options: .allowFragments)
+            let unfilteredData = NewsJson(json: json! as! JSON)?.data
+            unfilteredData?.forEach { json in
+                if !json.readed! {
+                    self.news_read += 1
+                    UserDefaults.standard.setValue(self.news_read, forKey: "news_read")
+                    UserDefaults.standard.synchronize()
+                }
+            }
+            }.resume()
     }
 
     override func didReceiveMemoryWarning() {

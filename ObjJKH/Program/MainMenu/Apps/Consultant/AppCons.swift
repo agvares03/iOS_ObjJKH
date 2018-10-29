@@ -53,6 +53,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     var teck_id: Int64 = 1
     var adress: String = ""
     var phone: String = ""
+    var read: Int64 = 0
     
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
@@ -129,7 +130,9 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         super.viewDidLoad()
 
         self.StopIndicator()
-        
+        if read == 0{
+            self.read_request()
+        }
         // получим id текущего аккаунта
         let defaults = UserDefaults.standard
         id_author    = defaults.string(forKey: "id_account")!
@@ -173,6 +176,34 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
 
+    }
+    
+    func read_request(){
+        let request_id = String(self.id_app)
+        
+        var request = URLRequest(url: URL(string: Server.SERVER + "SetRequestReadedByClientState.ashx?" + "reqID=" + request_id)!)
+        request.httpMethod = "GET"
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            print(String(data: data!, encoding: .utf8) ?? "")
+            
+            guard data != nil else { return }
+            var question_read = UserDefaults.standard.integer(forKey: "request_read")
+            question_read -= 1
+            DispatchQueue.main.async {
+                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+                let updatedBadgeNumber = currentBadgeNumber - 1
+                if (updatedBadgeNumber > -1) {
+                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                }
+            }
+            
+            UserDefaults.standard.setValue(question_read, forKey: "request_read")
+            UserDefaults.standard.synchronize()
+            
+            }.resume()
     }
     
     @objc func reload() {

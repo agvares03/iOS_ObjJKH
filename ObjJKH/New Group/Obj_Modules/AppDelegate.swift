@@ -140,9 +140,7 @@ extension AppDelegate : MessagingDelegate {
             msgURL = alert1
         }
         
-        print(body)
-        print(title)
-        print(msgURL)
+        print("Body:", body, "Title:", title, "msgURL:", msgURL)
         
         let db = DB()
         db.addSettings(id: 1, name: "notification", diff: "true")
