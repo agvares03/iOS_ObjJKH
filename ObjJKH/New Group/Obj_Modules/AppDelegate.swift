@@ -128,22 +128,22 @@ extension AppDelegate : MessagingDelegate {
             return
         }
         print(aps)
-        guard let requests = userInfo["requestsCount"] as? Int64 else {
+        guard let requests = userInfo["requestsCount"] as? String else {
             print("Error parsing request")
             return
         }
         print(requests)
-        guard let news = userInfo["unreadedAnnouncements"] as? Int64 else {
+        guard let news = userInfo["unreadedAnnouncements"] as? AnyObject else {
             print("Error parsing news")
             return
         }
         print(news)
-        guard let survays = userInfo["survaysCount"] as? Int64 else {
+        guard let survays = userInfo["survaysCount"] as? String else {
             print("Error parsing survays")
             return
         }
         print(survays)
-        UIApplication.shared.applicationIconBadgeNumber = Int(requests + news + survays)
+//        UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
         if let alert = aps["alert"] as? String {
             body = alert
         } else if let alert = aps["alert"] as? [String : String] {
