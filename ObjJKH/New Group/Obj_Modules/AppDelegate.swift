@@ -133,7 +133,7 @@ extension AppDelegate : MessagingDelegate {
             return
         }
         print(requests)
-        guard let news = userInfo["unreadedAnnouncements"] as? AnyObject else {
+        guard let news = userInfo["unreadedAnnouncements"] as? String else {
             print("Error parsing news")
             return
         }
@@ -143,7 +143,7 @@ extension AppDelegate : MessagingDelegate {
             return
         }
         print(survays)
-//        UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
+        UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
         if let alert = aps["alert"] as? String {
             body = alert
         } else if let alert = aps["alert"] as? [String : String] {

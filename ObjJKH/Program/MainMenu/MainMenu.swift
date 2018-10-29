@@ -235,7 +235,7 @@ class MainMenu: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         self.StopIndicator()
         self.getQuestions()
         self.getNews()
@@ -676,10 +676,10 @@ class MainMenu: UIViewController {
         }else{
             request_indicator.isHidden = true
         }
-        let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "question_read") + UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read")
-        if (updatedBadgeNumber > -1) {
-            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-        }
+//        let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "question_read") + UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read")
+//        if (updatedBadgeNumber > -1) {
+//            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+//        }
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }

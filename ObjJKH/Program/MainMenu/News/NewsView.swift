@@ -59,13 +59,13 @@ class NewsView: UIViewController {
             guard data != nil else { return }
             var news_read = UserDefaults.standard.integer(forKey: "news_read")
             news_read -= 1
-            DispatchQueue.main.async {
-                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-                let updatedBadgeNumber = currentBadgeNumber - 1
-                if (updatedBadgeNumber > -1) {
-                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-                }
-            }
+//            DispatchQueue.main.async {
+//                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+//                let updatedBadgeNumber = currentBadgeNumber - 1
+//                if (updatedBadgeNumber > -1) {
+//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+//                }
+//            }
             UserDefaults.standard.setValue(news_read, forKey: "news_read")
             UserDefaults.standard.synchronize()
             
