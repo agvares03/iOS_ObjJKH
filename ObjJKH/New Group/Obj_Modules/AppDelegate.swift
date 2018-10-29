@@ -17,7 +17,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var request1 = ""
+    var survays1 = ""
+    var news1    = ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -117,10 +119,6 @@ extension AppDelegate : MessagingDelegate {
     // iOS9, called when presenting notification in foreground
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
-        
-        var request1 = ""
-        var survays1 = ""
-        var news1    = ""
         print("==============")
         
         guard let aps = userInfo["aps"] as? [String : AnyObject] else {
