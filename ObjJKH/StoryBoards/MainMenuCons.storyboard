@@ -196,7 +196,7 @@
                                             <constraint firstAttribute="height" constant="24" id="RXY-6C-VUF"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="150" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRK-4F-NLP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRK-4F-NLP">
                                         <rect key="frame" x="246" y="52" width="20" height="20"/>
                                         <color key="backgroundColor" red="0.112088047" green="0.55121535060000004" blue="0.82454127070000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -234,6 +234,7 @@
                                     <constraint firstItem="gcY-E1-Kss" firstAttribute="top" secondItem="54z-Ho-s8C" secondAttribute="bottom" constant="8" id="Sm1-Wb-25H"/>
                                     <constraint firstAttribute="trailing" secondItem="JrP-2R-yfW" secondAttribute="trailing" constant="8" id="TxJ-2c-TK9"/>
                                     <constraint firstItem="jcN-98-Cb8" firstAttribute="top" secondItem="MZb-Ee-E3X" secondAttribute="bottom" constant="9" id="Uh0-hP-ptd"/>
+                                    <constraint firstItem="jcN-98-Cb8" firstAttribute="leading" secondItem="FRK-4F-NLP" secondAttribute="trailing" constant="8" id="W7A-mk-O1o"/>
                                     <constraint firstAttribute="trailing" secondItem="MZb-Ee-E3X" secondAttribute="trailing" id="WdA-tg-xTK"/>
                                     <constraint firstItem="54z-Ho-s8C" firstAttribute="top" secondItem="xqc-wz-gwO" secondAttribute="bottom" constant="2" id="adw-Pw-2VA"/>
                                     <constraint firstItem="yti-nn-Zoi" firstAttribute="top" secondItem="gGu-8z-SFW" secondAttribute="top" constant="11" id="bQm-D2-MKX"/>
@@ -253,6 +254,7 @@
                                     <constraint firstItem="xqc-wz-gwO" firstAttribute="top" secondItem="MZb-Ee-E3X" secondAttribute="bottom" constant="4" id="s8A-wS-dc0"/>
                                     <constraint firstAttribute="trailing" secondItem="jcN-98-Cb8" secondAttribute="trailing" constant="8" id="wfg-KT-06o"/>
                                     <constraint firstAttribute="bottom" secondItem="JPZ-vy-0Xj" secondAttribute="bottom" constant="4" id="ySJ-PY-Ts0"/>
+                                    <constraint firstItem="FRK-4F-NLP" firstAttribute="top" secondItem="MZb-Ee-E3X" secondAttribute="bottom" constant="11" id="ztN-kR-LJb"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
@@ -279,7 +281,9 @@
                         <outlet property="application" destination="SFv-Gt-j6z" id="Tg5-gY-CFi"/>
                         <outlet property="exit_img" destination="SLY-Aj-71C" id="r5Q-6T-gB6"/>
                         <outlet property="fon_top" destination="veq-ET-6Az" id="8fD-Cu-ZyL"/>
+                        <outlet property="news_indicator" destination="yti-nn-Zoi" id="uvl-61-AJI"/>
                         <outlet property="notice" destination="qRW-Lh-rvl" id="k80-lY-XCZ"/>
+                        <outlet property="request_indicator" destination="FRK-4F-NLP" id="2Ge-Zz-SPt"/>
                         <outlet property="webs_img" destination="gcY-E1-Kss" id="fik-dS-OAl"/>
                     </connections>
                 </viewController>

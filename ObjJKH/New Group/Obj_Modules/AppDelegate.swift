@@ -128,18 +128,18 @@ extension AppDelegate : MessagingDelegate {
             return
         }
         print(aps)
-        guard let requests = userInfo["requestsCount"] as? Int else {
-            print("Error parsing aps")
+        guard let requests = userInfo["requestsCount"] as? Int64 else {
+            print("Error parsing request")
             return
         }
         print(requests)
-        guard let news = userInfo["unreadedAnnouncements"] as? Int else {
-            print("Error parsing aps")
+        guard let news = userInfo["unreadedAnnouncements"] as? Int64 else {
+            print("Error parsing news")
             return
         }
         print(news)
-        guard let survays = userInfo["survaysCount"] as? Int else {
-            print("Error parsing aps")
+        guard let survays = userInfo["survaysCount"] as? Int64 else {
+            print("Error parsing survays")
             return
         }
         print(survays)

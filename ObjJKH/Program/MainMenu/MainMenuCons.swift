@@ -18,6 +18,8 @@ class MainMenuCons: UIViewController {
     @IBOutlet weak var application: UIImageView!
     @IBOutlet weak var webs_img: UIImageView!
     @IBOutlet weak var exit_img: UIImageView!
+    @IBOutlet weak var news_indicator: UILabel!
+    @IBOutlet weak var request_indicator: UILabel!
     
     @IBAction func goExit(_ sender: UIButton)
     {
@@ -80,7 +82,18 @@ class MainMenuCons: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        if UserDefaults.standard.integer(forKey: "news_read") > 0{
+            news_indicator.text = String(UserDefaults.standard.integer(forKey: "news_read"))
+            news_indicator.isHidden = false
+        }else{
+            news_indicator.isHidden = true
+        }
+        if UserDefaults.standard.integer(forKey: "request_read") > 0{
+            request_indicator.text = String(UserDefaults.standard.integer(forKey: "request_read"))
+            request_indicator.isHidden = false
+        }else{
+            request_indicator.isHidden = true
+        }
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
