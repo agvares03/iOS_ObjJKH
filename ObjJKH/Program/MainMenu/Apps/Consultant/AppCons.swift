@@ -170,7 +170,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         self.ls_adress.text = self.adress
         self.ls_phone.text = self.phone
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })
         
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
@@ -191,8 +191,8 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             
             guard data != nil else { return }
             
-            var question_read = UserDefaults.standard.integer(forKey: "request_read_cons")
-            question_read -= 1
+            var request_read = UserDefaults.standard.integer(forKey: "request_read_cons")
+            request_read -= 1
             DispatchQueue.main.async {
                 let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
                 let updatedBadgeNumber = currentBadgeNumber - 1
@@ -200,7 +200,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
                     UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
                 }
             }
-            UserDefaults.standard.setValue(question_read, forKey: "request_read_cons")
+            UserDefaults.standard.setValue(request_read, forKey: "request_read_cons")
             UserDefaults.standard.synchronize()
             
             }.resume()

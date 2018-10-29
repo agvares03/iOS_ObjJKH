@@ -192,7 +192,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         self.ls_adress.text = self.adress
         self.ls_phone.text = self.phone
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })        
         
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
@@ -213,8 +213,8 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
             
             guard data != nil else { return }
             
-            var question_read = UserDefaults.standard.integer(forKey: "request_read")
-            question_read -= 1
+            var request_read = UserDefaults.standard.integer(forKey: "request_read")
+            request_read -= 1
             DispatchQueue.main.async {
                 let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
                 let updatedBadgeNumber = currentBadgeNumber - 1
@@ -223,7 +223,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                 }
             }
             
-            UserDefaults.standard.setValue(question_read, forKey: "request_read")
+            UserDefaults.standard.setValue(request_read, forKey: "request_read")
             UserDefaults.standard.synchronize()
             
             }.resume()

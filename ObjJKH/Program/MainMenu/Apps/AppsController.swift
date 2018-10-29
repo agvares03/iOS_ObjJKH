@@ -70,7 +70,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             self.tableApps.addSubview(refreshControl!)
         }
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })
         // Установим цвета для элементов в зависимости от Таргета
         btnAdd.backgroundColor = myColors.btnColor.uiColor()
