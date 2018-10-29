@@ -181,7 +181,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     func read_request(){
         let request_id = String(self.id_app)
         
-        var request = URLRequest(url: URL(string: Server.SERVER + "SetRequestReadedByClientState.ashx?" + "reqID=" + request_id)!)
+        var request = URLRequest(url: URL(string: Server.SERVER + "SetRequestReadedState.ashx?" + "reqID=" + request_id)!)
         request.httpMethod = "GET"
         print(request)
         
@@ -190,17 +190,17 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             print(String(data: data!, encoding: .utf8) ?? "")
             
             guard data != nil else { return }
-            var question_read = UserDefaults.standard.integer(forKey: "request_read")
-            question_read -= 1
-//            DispatchQueue.main.async {
-//                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-//                let updatedBadgeNumber = currentBadgeNumber - 1
-//                if (updatedBadgeNumber > -1) {
-//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-//                }
-//            }
             
-            UserDefaults.standard.setValue(question_read, forKey: "request_read")
+            var question_read = UserDefaults.standard.integer(forKey: "request_read_cons")
+            question_read -= 1
+            DispatchQueue.main.async {
+                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+                let updatedBadgeNumber = currentBadgeNumber - 1
+                if (updatedBadgeNumber > -1) {
+                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                }
+            }
+            UserDefaults.standard.setValue(question_read, forKey: "request_read_cons")
             UserDefaults.standard.synchronize()
             
             }.resume()

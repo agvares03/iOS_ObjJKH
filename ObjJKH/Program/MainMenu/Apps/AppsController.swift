@@ -49,13 +49,15 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var databaseHandle:DatabaseHandle?
     var postData = [String]()
     var question_read = 0
+    var question_read_cons = 0
     private var refreshControl: UIRefreshControl?
     var fetchedResultsController: NSFetchedResultsController<Applications>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         question_read = UserDefaults.standard.integer(forKey: "request_read")
-
+        question_read_cons = UserDefaults.standard.integer(forKey: "request_read_cons")
+        
         tableApps.delegate = self
         load_data()
         updateTable()
@@ -143,7 +145,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let app = (fetchedResultsController?.object(at: indexPath))! as Applications
-        
+        let isCons = UserDefaults.standard.string(forKey: "isCons")
         // Определим интерфейс для разных ук
 //        #if isGKRZS
 //        let img = UIImage(named: "ic_comm_list_white")
@@ -152,7 +154,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        #endif
         if (app.is_close == 1){
             let cell = self.tableApps.dequeueReusableCell(withIdentifier: "AppCell") as! AppsCell
-            if app.is_read_client == 0{
+            if (app.is_read_client == 0 && isCons == "0") || (app.is_read == 0 && isCons == "1"){
                 cell.Number.font = UIFont.boldSystemFont(ofSize: 16.0)
                 cell.Number.textColor = .black
                 cell.tema.font = UIFont.boldSystemFont(ofSize: 16.0)
@@ -183,7 +185,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return cell
         } else {
             let cell = self.tableApps.dequeueReusableCell(withIdentifier: "AppCellClose") as! AppsCellClose
-            if app.is_read_client == 0{
+            if (app.is_read_client == 0 && isCons == "0") || (app.is_read == 0 && isCons == "1"){
                 cell.Number.font = UIFont.boldSystemFont(ofSize: 16.0)
                 cell.Number.textColor = .black
                 cell.tema.font = UIFont.boldSystemFont(ofSize: 16.0)
@@ -273,7 +275,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
-            AppUser.read = app.is_read_client
+            AppUser.read = app.is_read
             AppUser.adress = app.adress!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
@@ -290,7 +292,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
-            AppUser.read = app.is_read_client
+            AppUser.read = app.is_read
             AppUser.adress = app.adress!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
@@ -401,7 +403,10 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.integer(forKey: "request_read") < question_read{
+        if (UserDefaults.standard.integer(forKey: "request_read") < question_read){
+            self.load_new_data()
+        }
+        if (UserDefaults.standard.integer(forKey: "request_read_cons") < question_read_cons){
             self.load_new_data()
         }
         self.load_data()

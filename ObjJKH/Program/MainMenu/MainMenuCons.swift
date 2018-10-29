@@ -43,7 +43,6 @@ class MainMenuCons: UIViewController {
         webs_img.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
-        print(UserDefaults.standard.integer(forKey: "request_read"))
     }
     
     var news_read = 0
@@ -88,8 +87,8 @@ class MainMenuCons: UIViewController {
         }else{
             news_indicator.isHidden = true
         }
-        if UserDefaults.standard.integer(forKey: "request_read") > 0{
-            request_indicator.text = String(UserDefaults.standard.integer(forKey: "request_read"))
+        if UserDefaults.standard.integer(forKey: "request_read_cons") > 0{
+            request_indicator.text = String(UserDefaults.standard.integer(forKey: "request_read_cons"))
             request_indicator.isHidden = false
         }else{
             request_indicator.isHidden = true

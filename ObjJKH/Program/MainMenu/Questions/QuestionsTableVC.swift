@@ -76,6 +76,8 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(questions?.count)
+        
         return questions?.count ?? 0
     }
     

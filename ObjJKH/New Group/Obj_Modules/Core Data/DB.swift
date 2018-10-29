@@ -17,6 +17,7 @@ class DB: NSObject, XMLParserDelegate {
     var currMonth: String = "";
     var login: String = ""
     private var request_read = 0
+    private var request_read_cons = 0
     // Вставить в Settings
     public func addSettings(id: Int64, name: String, diff: String) {
         let managedObject  = Settings()
@@ -224,7 +225,6 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.is_read_client     = 1
             } else {
                 managedObject.is_read_client     = 0
-//                request_read = UserDefaults.standard.integer(forKey: "request_read")
                 request_read += 1
                 UserDefaults.standard.setValue(request_read, forKey: "request_read")
                 UserDefaults.standard.synchronize()
@@ -233,6 +233,9 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.is_read     = 1
             } else {
                 managedObject.is_read     = 0
+                request_read_cons += 1
+                UserDefaults.standard.setValue(request_read_cons, forKey: "request_read_cons")
+                UserDefaults.standard.synchronize()
             }
             if (attributeDict["IsAnswered"] == "1") {
                 managedObject.is_answered = 1
