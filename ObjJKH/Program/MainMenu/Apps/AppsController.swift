@@ -150,7 +150,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        #else
         let img = UIImage(named: "app_close")
 //        #endif
-        if (app.is_close == 1) {
+        if (app.is_close == 1){
             let cell = self.tableApps.dequeueReusableCell(withIdentifier: "AppCell") as! AppsCell
             if app.is_read_client == 0{
                 cell.Number.font = UIFont.boldSystemFont(ofSize: 16.0)
@@ -241,6 +241,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read_client
             AppUser.adress = app.adress!
+            AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -256,6 +257,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.adress = app.adress!
+            AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -271,6 +273,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.adress = app.adress!
+            AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -286,6 +289,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.adress = app.adress!
+            AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!

@@ -31,6 +31,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     private var refreshControl: UIRefreshControl?
     @IBOutlet weak var type_app: UILabel!
     @IBOutlet weak var ls_adress: UILabel!
+    @IBOutlet weak var ls_phone: UILabel!
     
     // массивы для перевода на консультантов (один массив - имена, другой - коды)
     var names_cons: [String] = []
@@ -51,6 +52,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     var id_app: String = ""
     var teck_id: Int64 = 1
     var adress: String = ""
+    var phone: String = ""
     
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
@@ -163,6 +165,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         self.ls_adress.text = self.adress
+        self.ls_phone.text = self.phone
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
         })

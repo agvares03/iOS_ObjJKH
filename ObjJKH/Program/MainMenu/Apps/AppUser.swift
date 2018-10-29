@@ -29,6 +29,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     @IBOutlet weak var ed_comment: UITextField!
     @IBOutlet weak var type_app: UILabel!
     @IBOutlet weak var ls_adress: UILabel!
+    @IBOutlet weak var ls_phone: UILabel!
     
     var delegate:ShowAppDelegate?
     var updDelegt: AppsUserUpdateDelegate?
@@ -50,6 +51,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     // id аккаунта текущего
     var id_author: String = ""
     var adress: String = ""
+    var phone: String = ""
     var name_account: String = ""
     var id_account: String = ""
     var id_app: String = ""
@@ -186,9 +188,10 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
-        print(self.adress)
+        print(self.adress, self.phone)
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         self.ls_adress.text = self.adress
+        self.ls_phone.text = self.phone
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in
         })        
         
