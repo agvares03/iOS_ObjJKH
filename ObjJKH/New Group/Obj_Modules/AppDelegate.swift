@@ -142,7 +142,7 @@ extension AppDelegate : MessagingDelegate {
         print(survays)
         if (requests != request1) || (news != news1) || (survays != survays1){
             UIApplication.shared.applicationIconBadgeNumber = 0
-            UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
+//            UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
             request1 = requests
             news1 = news
             survays1 = survays
