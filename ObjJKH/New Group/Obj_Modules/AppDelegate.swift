@@ -128,7 +128,22 @@ extension AppDelegate : MessagingDelegate {
             return
         }
         print(aps)
-        
+        guard let requests = userInfo["requestsCount"] as? Int else {
+            print("Error parsing aps")
+            return
+        }
+        print(requests)
+        guard let news = userInfo["unreadedAnnouncements"] as? Int else {
+            print("Error parsing aps")
+            return
+        }
+        print(news)
+        guard let survays = userInfo["survaysCount"] as? Int else {
+            print("Error parsing aps")
+            return
+        }
+        print(survays)
+        UIApplication.shared.applicationIconBadgeNumber = Int(requests + news + survays)
         if let alert = aps["alert"] as? String {
             body = alert
         } else if let alert = aps["alert"] as? [String : String] {
@@ -140,7 +155,7 @@ extension AppDelegate : MessagingDelegate {
             msgURL = alert1
         }
         
-        print("Body:", body, "Title:", title, "msgURL:", msgURL)
+//        print("Body:", body, "Title:", title, "msgURL:", msgURL)
         
         let db = DB()
         db.addSettings(id: 1, name: "notification", diff: "true")

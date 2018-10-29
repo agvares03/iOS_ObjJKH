@@ -192,13 +192,13 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             guard data != nil else { return }
             var question_read = UserDefaults.standard.integer(forKey: "request_read")
             question_read -= 1
-            DispatchQueue.main.async {
-                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-                let updatedBadgeNumber = currentBadgeNumber - 1
-                if (updatedBadgeNumber > -1) {
-                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-                }
-            }
+//            DispatchQueue.main.async {
+//                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+//                let updatedBadgeNumber = currentBadgeNumber - 1
+//                if (updatedBadgeNumber > -1) {
+//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+//                }
+//            }
             
             UserDefaults.standard.setValue(question_read, forKey: "request_read")
             UserDefaults.standard.synchronize()
