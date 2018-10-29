@@ -118,9 +118,9 @@ extension AppDelegate : MessagingDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
         
-        var body = ""
-        var title = ""
-        var msgURL = ""
+        var request1 = ""
+        var survays1 = ""
+        var news1    = ""
         print("==============")
         
         guard let aps = userInfo["aps"] as? [String : AnyObject] else {
@@ -143,17 +143,23 @@ extension AppDelegate : MessagingDelegate {
             return
         }
         print(survays)
-        UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
-        if let alert = aps["alert"] as? String {
-            body = alert
-        } else if let alert = aps["alert"] as? [String : String] {
-            body = alert["body"]!
-            title = alert["title"]!
+        if (requests != request1) || (news != news1) || (survays != survays1){
+            UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
+            request1 = requests
+            news1 = news
+            survays1 = survays
         }
         
-        if let alert1 = aps["category"] as? String {
-            msgURL = alert1
-        }
+//        if let alert = aps["alert"] as? String {
+//            body = alert
+//        } else if let alert = aps["alert"] as? [String : String] {
+//            body = alert["body"]!
+//            title = alert["title"]!
+//        }
+//
+//        if let alert1 = aps["category"] as? String {
+//            msgURL = alert1
+//        }
         
 //        print("Body:", body, "Title:", title, "msgURL:", msgURL)
         

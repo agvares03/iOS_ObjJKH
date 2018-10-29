@@ -93,6 +93,7 @@ class MainMenuCons: UIViewController {
         }else{
             request_indicator.isHidden = true
         }
+        
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
