@@ -657,7 +657,6 @@ class MainMenu: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(UserDefaults.standard.integer(forKey: "request_read"))
         if UserDefaults.standard.integer(forKey: "question_read") > 0{
             question_indicator.text = String(UserDefaults.standard.integer(forKey: "question_read"))
             question_indicator.isHidden = false
