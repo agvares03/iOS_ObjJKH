@@ -43,6 +43,9 @@ class MainMenuCons: UIViewController {
         webs_img.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
+        
+        request_indicator.backgroundColor = myColors.indicatorColor.uiColor()
+        news_indicator.backgroundColor = myColors.indicatorColor.uiColor()
     }
     
     var news_read = 0

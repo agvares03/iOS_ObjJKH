@@ -83,10 +83,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
-            let authOptions: UNAuthorizationOptions = [.alert, .sound]
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
         } else {
-            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
+            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
     }
@@ -142,10 +142,11 @@ extension AppDelegate : MessagingDelegate {
         print(survays)
         if (requests != request1) || (news != news1) || (survays != survays1){
             UIApplication.shared.applicationIconBadgeNumber = 0
-//            UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
+            UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
             request1 = requests
             news1 = news
             survays1 = survays
+            print("Уведомления: ", UIApplication.shared.applicationIconBadgeNumber)
         }
         
 //        if let alert = aps["alert"] as? String {
