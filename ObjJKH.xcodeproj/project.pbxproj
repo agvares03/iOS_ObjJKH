@@ -1205,12 +1205,12 @@
 				418ABF162133CC8C004DB75C /* Info.plist */,
 				4179E913217DCC10007A395D /* Info - OurObjHome.plist */,
 				418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */,
-				4180400A21871C840004267A /* GoogleService-Info.plist */,
 				41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */,
 				41DFC442213D2083002CEB62 /* Info - DJService.plist */,
 				41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */,
 				4120929A2158CB36001E713E /* Info - Stolitsa.plist */,
 				412093132159E619001E713E /* Info - Komeks.plist */,
+				4180400A21871C840004267A /* GoogleService-Info.plist */,
 				41209320215C105F001E713E /* GoogleService-Info.plist */,
 				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
 				418ABF1D2133CDD3004DB75C /* Program */,
@@ -3386,6 +3386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Stolitsa;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/Info - Stolitsa.plist";
@@ -3397,6 +3398,7 @@
 				OTHER_SWIFT_FLAGS = "-DisStolitsa";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.stolitsa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isStolitsa DEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Stolitsa-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3412,6 +3414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Stolitsa;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/Info - Stolitsa.plist";
@@ -3423,6 +3426,7 @@
 				OTHER_SWIFT_FLAGS = "-DisStolitsa";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.stolitsa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isStolitsa;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Stolitsa-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
