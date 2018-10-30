@@ -19,6 +19,7 @@ class MainMenu: UIViewController {
     var login: String = ""
     var pass: String = ""
     var txt_name: String = "Запись на прием к специалисту"
+    var load = false
     private var question_read = 0
     private var request_read = 0
     private var news_read = 0
@@ -341,7 +342,6 @@ class MainMenu: UIViewController {
         
         // Настройки для меню
         settings_for_menu()
-        
     }
     
     func settings_for_menu() {
@@ -675,10 +675,14 @@ class MainMenu: UIViewController {
         }else{
             request_indicator.isHidden = true
         }
-//        let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "question_read") + UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read")
-//        if (updatedBadgeNumber > -1) {
-//            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-//        }
+        if !load{
+            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "question_read") + UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read")
+            if (updatedBadgeNumber > -1) {
+                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+            }
+            load = true
+        }
+        
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }

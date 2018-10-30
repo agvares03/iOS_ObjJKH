@@ -49,7 +49,7 @@ class MainMenuCons: UIViewController {
     }
     
     var news_read = 0
-    
+    var load = false
     func getNews(){
         news_read = 0
         let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
@@ -96,7 +96,13 @@ class MainMenuCons: UIViewController {
         }else{
             request_indicator.isHidden = true
         }
-        
+        if !load{
+            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read_cons")
+            if (updatedBadgeNumber > -1) {
+                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+            }
+            load = true
+        }
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
