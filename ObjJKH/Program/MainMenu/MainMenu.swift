@@ -820,6 +820,7 @@ class MainMenu: UIViewController {
                 UserDefaults.standard.synchronize()
                 if self.question_read > 0{
                     self.question_indicator.text = String(self.question_read)
+                    self.question_indicator.isHidden = false
                 }else{
                     self.question_indicator.isHidden = true
                 }
@@ -835,7 +836,6 @@ class MainMenu: UIViewController {
         let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
         request.httpMethod = "GET"
-        print(request)
         
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
@@ -850,9 +850,18 @@ class MainMenu: UIViewController {
             unfilteredData?.forEach { json in
                 if !json.readed! {
                     self.news_read += 1
-                    UserDefaults.standard.setValue(self.news_read, forKey: "news_read")
-                    UserDefaults.standard.synchronize()
                 }
+            }
+            DispatchQueue.main.async {
+                UserDefaults.standard.setValue(self.news_read, forKey: "news_read")
+                UserDefaults.standard.synchronize()
+                if self.news_read > 0{
+                    self.news_indicator.text = String(self.news_read)
+                    self.news_indicator.isHidden = false
+                }else{
+                    self.news_indicator.isHidden = true
+                }
+                
             }
             }.resume()
     }

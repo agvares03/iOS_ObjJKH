@@ -70,9 +70,18 @@ class MainMenuCons: UIViewController {
             unfilteredData?.forEach { json in
                 if !json.readed! {
                     self.news_read += 1
-                    UserDefaults.standard.setValue(self.news_read, forKey: "news_read")
-                    UserDefaults.standard.synchronize()
                 }
+            }
+            DispatchQueue.main.async {
+                UserDefaults.standard.setValue(self.news_read, forKey: "news_read")
+                UserDefaults.standard.synchronize()
+                if self.news_read > 0{
+                    self.news_indicator.text = String(self.news_read)
+                    self.news_indicator.isHidden = false
+                }else{
+                    self.news_indicator.isHidden = true
+                }
+                
             }
             }.resume()
     }

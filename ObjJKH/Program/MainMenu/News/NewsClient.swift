@@ -61,6 +61,7 @@ class NewsClient {
 //    }
     
     func getNews(completedBlock: @escaping (_ list:[News]) -> ()) {
+        var news_read = 0
         let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
@@ -79,7 +80,11 @@ class NewsClient {
             let unfilteredData = NewsJson(json: json! as! JSON)?.data
             var newsList: [News] = []
             unfilteredData?.forEach { json in
-                
+                if !json.readed! {
+                    news_read += 1
+                    UserDefaults.standard.setValue(news_read, forKey: "news_read")
+                    UserDefaults.standard.synchronize()
+                }
                 let idNews = json.idNews
                 let Created = json.created
                 let Header = json.header

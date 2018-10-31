@@ -186,6 +186,7 @@ class DB: NSObject, XMLParserDelegate {
             self.currYear = attributeDict["Year"]!
             self.currMonth = attributeDict["NumMonth"]!
         } else if (elementName == "MeterValue") {
+            
             // Запишем показание прибора
             let managedObject = Counters()
             managedObject.id            = 1
@@ -224,18 +225,22 @@ class DB: NSObject, XMLParserDelegate {
             if (attributeDict["IsReadedByClient"] == "1") {
                 managedObject.is_read_client     = 1
             } else {
-                managedObject.is_read_client     = 0
-                request_read += 1
-                UserDefaults.standard.setValue(request_read, forKey: "request_read")
-                UserDefaults.standard.synchronize()
+                if (attributeDict["isActive"] == "1"){
+                    managedObject.is_read_client     = 0
+                    request_read += 1
+                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+                    UserDefaults.standard.synchronize()
+                }
             }
             if (attributeDict["IsReaded"] == "1") {
                 managedObject.is_read     = 1
             } else {
-                managedObject.is_read     = 0
-                request_read_cons += 1
-                UserDefaults.standard.setValue(request_read_cons, forKey: "request_read_cons")
-                UserDefaults.standard.synchronize()
+                if (attributeDict["isActive"] == "1"){
+                    managedObject.is_read     = 0
+                    request_read_cons += 1
+                    UserDefaults.standard.setValue(request_read_cons, forKey: "request_read_cons")
+                    UserDefaults.standard.synchronize()
+                }
             }
             if (attributeDict["IsAnswered"] == "1") {
                 managedObject.is_answered = 1

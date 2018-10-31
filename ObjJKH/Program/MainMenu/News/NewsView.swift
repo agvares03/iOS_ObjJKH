@@ -55,7 +55,7 @@ class NewsView: UIViewController {
         print(request)
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
-                         print(String(data: data!, encoding: .utf8) ?? "")
+            print(String(data: data!, encoding: .utf8) ?? "")
             guard data != nil else { return }
             var news_read = UserDefaults.standard.integer(forKey: "news_read")
             news_read -= 1
