@@ -1346,6 +1346,7 @@
                         <outlet property="separator2" destination="Hw6-Db-xQE" id="maz-fc-MZR"/>
                         <outlet property="txtNumberLS" destination="82J-Tp-FWq" id="ESY-5g-r2R"/>
                         <outlet property="txtPassword" destination="ahf-Qx-zT8" id="VMc-xY-LoK"/>
+                        <segue destination="cTS-Mv-jcb" kind="show" identifier="go_to_app" id="jFb-5t-A8g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMh-en-hin" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1369,5 +1370,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nyg-uY-Zur"/>
+        <segue reference="jFb-5t-A8g"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -62,7 +62,7 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
                                                 }
                                                 
                                                 self.response_add_ident = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                // print("responseString = \(String(describing: self.response_add_ident))")
+                                                 print("responseString = \(String(describing: self.response_add_ident))")
                                                 self.choice_add_ident()
                                                 
         })
@@ -70,7 +70,7 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
     }
     
     func choice_add_ident() {
-        if (self.response_add_ident == "ok") {
+        if ((self.response_add_ident?.contains("ok"))!) {
             DispatchQueue.main.async(execute: {
                 let alert = UIAlertController(title: "Успешно", message: "Лицевой счет - " + (self.edLS.text)! + " привязан к аккаунту " + self.phone, preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
