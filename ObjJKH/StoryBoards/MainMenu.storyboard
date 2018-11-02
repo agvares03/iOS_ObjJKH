@@ -1288,7 +1288,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Siv-xq-Sij">
                                 <rect key="frame" x="16" y="282" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Зарегистрировать">
+                                <state key="normal" title="ЗАРЕГИСТРИРОВАТЬ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1339,6 +1339,7 @@
                     <connections>
                         <outlet property="back" destination="cbf-fB-uWC" id="7BX-1Z-kST"/>
                         <outlet property="btnAdd" destination="oOi-QO-IT5" id="6BH-z9-gRd"/>
+                        <outlet property="btnReg" destination="Siv-xq-Sij" id="9c1-fK-swS"/>
                         <outlet property="edLS" destination="VO7-Z2-VoC" id="lhW-YJ-G0h"/>
                         <outlet property="edPass" destination="XEw-h7-VCp" id="5Kb-zi-Uk4"/>
                         <outlet property="separator1" destination="lrT-VN-sql" id="Ktd-kc-q2v"/>
