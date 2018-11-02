@@ -657,21 +657,49 @@ class MainMenu: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
         if UserDefaults.standard.integer(forKey: "question_read") > 0{
             question_indicator.text = String(UserDefaults.standard.integer(forKey: "question_read"))
-            question_indicator.isHidden = false
+            // Опросы
+            let str_menu_3 = defaults.string(forKey: "menu_3") ?? ""
+            if (str_menu_3 != "") {
+                var answer = str_menu_3.components(separatedBy: ";")
+                if (answer[2] == "0") {
+                    question_indicator.isHidden = true
+                } else {
+                    question_indicator.isHidden = false
+                }
+            }
         }else{
             question_indicator.isHidden = true
         }
         if UserDefaults.standard.integer(forKey: "news_read") > 0{
             news_indicator.text = String(UserDefaults.standard.integer(forKey: "news_read"))
-            news_indicator.isHidden = false
+            // Уведомления - Новости
+            let str_menu_0 = defaults.string(forKey: "menu_0") ?? ""
+            if (str_menu_0 != "") {
+                var answer = str_menu_0.components(separatedBy: ";")
+                if (answer[2] == "0") {
+                    news_indicator.isHidden = true
+                } else {
+                    news_indicator.isHidden = false
+                }
+            }
         }else{
             news_indicator.isHidden = true
         }
         if UserDefaults.standard.integer(forKey: "request_read") > 0{
             request_indicator.text = String(UserDefaults.standard.integer(forKey: "request_read"))
-            request_indicator.isHidden = false
+            // Заявки
+            let str_menu_2 = defaults.string(forKey: "menu_2") ?? ""
+            if (str_menu_2 != "") {
+                var answer = str_menu_2.components(separatedBy: ";")
+                if (answer[2] == "0") {
+                    request_indicator.isHidden = true
+                } else {
+                    request_indicator.isHidden = false
+                }
+            }
         }else{
             request_indicator.isHidden = true
         }
