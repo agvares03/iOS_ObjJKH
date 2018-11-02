@@ -60,6 +60,13 @@ class AddLS: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edLS: UITextField!
     
     @IBAction func AddLS(_ sender: UIButton) {
+        if edLS.text == "" {
+            let alert = UIAlertController(title: "Заполните все поля", message: "", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         // Регистрация лицевого счета
         var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_IDENT_TO_ACCOUNT
         urlPath = urlPath + "phone=" + phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!

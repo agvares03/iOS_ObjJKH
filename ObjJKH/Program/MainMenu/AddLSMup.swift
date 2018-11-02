@@ -38,6 +38,13 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edPass: UITextField!
     
     @IBAction func AddLS(_ sender: UIButton) {
+        if edPass.text == "" || edLS.text == "" {
+            let alert = UIAlertController(title: "Заполните все поля", message: "", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         // Регистрация лицевого счета
         var urlPath = "http://uk-gkh.org/muprcmytishi_admin/api/muprkcdatasync/startsync?"
         urlPath = urlPath + "ident=" + (edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
