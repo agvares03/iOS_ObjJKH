@@ -111,6 +111,11 @@ class MainMenu: UIViewController {
     
     @IBAction func AddLS(_ sender: UIButton) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        #if isMupRCMytishi
+            self.performSegue(withIdentifier: "addLS_Mup", sender: self)
+        #else
+            self.performSegue(withIdentifier: "addLS", sender: self)
+        #endif
     }
     
     // Отвяжать лицевые счета от аккаунта
