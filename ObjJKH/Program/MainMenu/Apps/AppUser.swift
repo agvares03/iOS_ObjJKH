@@ -23,6 +23,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         navigationController?.popViewController(animated: true)
     }
     
+    @IBOutlet weak var table_Const: NSLayoutConstraint!
     @IBOutlet weak var date_txt: UILabel!
     @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var table_comments: UITableView!
@@ -30,6 +31,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     @IBOutlet weak var type_app: UILabel!
     @IBOutlet weak var ls_adress: UILabel!
     @IBOutlet weak var ls_phone: UILabel!
+    @IBOutlet weak var headerView: UIView!
     
     var delegate:ShowAppDelegate?
     var updDelegt: AppsUserUpdateDelegate?
@@ -89,6 +91,20 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         }))
         action.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
         present(action, animated: true, completion: nil)
+    }
+    var isHidden = false
+    
+    @IBAction func hiddHeader(_ sender: UIButton) {
+        print(isHidden, headerView.frame.origin.y)
+        if !isHidden{
+            headerView.isHidden = true
+            table_Const.constant = table_Const.constant - headerView.frame.size.height
+            isHidden = true
+        }else{
+            headerView.isHidden = false
+            table_Const.constant = table_Const.constant + headerView.frame.size.height
+            isHidden = false
+        }
     }
     
     @IBAction func add_comm(_ sender: UIButton) {
