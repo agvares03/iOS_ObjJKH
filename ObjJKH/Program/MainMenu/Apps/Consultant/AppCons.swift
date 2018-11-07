@@ -19,6 +19,13 @@ protocol ShowAppConsDelegate : class {
 
 class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var hidden_Header: UIBarButtonItem!
+    @IBOutlet weak var back: UIBarButtonItem!
+    @IBAction func back_btn(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBOutlet weak var table_Const: NSLayoutConstraint!
     @IBOutlet weak var date_txt: UILabel!
     @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var ed_comment: UITextField!
@@ -32,6 +39,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     @IBOutlet weak var type_app: UILabel!
     @IBOutlet weak var ls_adress: UILabel!
     @IBOutlet weak var ls_phone: UILabel!
+    @IBOutlet weak var headerView: UIView!
     
     // массивы для перевода на консультантов (один массив - имена, другой - коды)
     var names_cons: [String] = []
@@ -62,6 +70,23 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     var str_type_app: String = ""
     
     var timer: Timer? = nil
+    
+    var isHidden = true
+    
+    @IBAction func hiddHeader(_ sender: UIButton) {
+        print(isHidden, headerView.frame.origin.y)
+        if !isHidden{
+            hidden_Header.title = "▽"
+            headerView.isHidden = true
+            table_Const.constant = table_Const.constant - headerView.frame.size.height
+            isHidden = true
+        }else{
+            hidden_Header.title = "△"
+            headerView.isHidden = false
+            table_Const.constant = table_Const.constant + headerView.frame.size.height
+            isHidden = false
+        }
+    }
     
     @IBAction func add_foto(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -175,7 +200,9 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
-
+        back.tintColor = myColors.btnColor.uiColor()
+        headerView.isHidden = true
+        table_Const.constant = table_Const.constant - headerView.frame.size.height
     }
     
     func read_request(){

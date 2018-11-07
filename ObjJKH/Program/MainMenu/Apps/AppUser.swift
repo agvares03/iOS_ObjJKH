@@ -18,6 +18,7 @@ protocol ShowAppDelegate : class {
 
 class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, CloseAppDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var hidden_Header: UIBarButtonItem!
     @IBOutlet weak var back: UIBarButtonItem!
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
@@ -92,15 +93,17 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         action.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
         present(action, animated: true, completion: nil)
     }
-    var isHidden = false
+    var isHidden = true
     
     @IBAction func hiddHeader(_ sender: UIButton) {
         print(isHidden, headerView.frame.origin.y)
         if !isHidden{
+            hidden_Header.title = "▽"
             headerView.isHidden = true
             table_Const.constant = table_Const.constant - headerView.frame.size.height
             isHidden = true
         }else{
+            hidden_Header.title = "△"
             headerView.isHidden = false
             table_Const.constant = table_Const.constant + headerView.frame.size.height
             isHidden = false
@@ -213,7 +216,8 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
-        
+        headerView.isHidden = true
+        table_Const.constant = table_Const.constant - headerView.frame.size.height
     }
     
     func read_request(){
