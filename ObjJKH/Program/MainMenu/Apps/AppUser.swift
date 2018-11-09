@@ -204,6 +204,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         back.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         fot_img.imageView?.setImageColor(color: myColors.btnColor.uiColor())
+        hidden_Header.tintColor = myColors.indicatorColor.uiColor()
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
