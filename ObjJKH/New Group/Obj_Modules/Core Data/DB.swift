@@ -68,6 +68,7 @@ class DB: NSObject, XMLParserDelegate {
         // ЗАЯВКИ С КОММЕНТАРИЯМИ
         del_db(table_name: "Applications")
         del_db(table_name: "Comments")
+        del_db(table_name: "Fotos")
         let isCons = UserDefaults.standard.string(forKey: "isCons")
         parse_Apps(login: login, pass: pass, isCons: isCons!)
         

@@ -448,14 +448,12 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         let group = DispatchGroup()
         let reqID = id_app.stringByAddingPercentEncodingForRFC3986() ?? ""
         let id = UserDefaults.standard.string(forKey: "id_account")?.stringByAddingPercentEncodingForRFC3986() ?? ""
-        
-        print(reqID)
-        
+        let phone = UserDefaults.standard.string(forKey: "phone")?.stringByAddingPercentEncodingForRFC3986() ?? ""
         group.enter()
         let uid = UUID().uuidString
         Alamofire.upload(multipartFormData: { multipartFromdata in
             multipartFromdata.append(UIImageJPEGRepresentation(img, 0.5)!, withName: uid, fileName: "\(uid).jpg", mimeType: "image/jpeg")
-        }, to: Server.SERVER + Server.ADD_FILE + "reqID=" + reqID + "&accID=" + id) { (result) in
+        }, to: Server.SERVER + Server.ADD_FILE + "reqID=" + reqID + "&phone=" + phone) { (result) in
             
             switch result {
             case .success(let upload, _, _):

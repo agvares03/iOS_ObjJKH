@@ -110,6 +110,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             db.del_app(number: $0.number ?? "")
         }
         db.del_db(table_name: "Comments")
+        db.del_db(table_name: "Fotos")
         db.parse_Apps(login: UserDefaults.standard.string(forKey: "login") ?? "", pass: UserDefaults.standard.string(forKey: "pass") ?? "", isCons: UserDefaults.standard.string(forKey: "isCons")!)
         load_data()
         updateTable()
@@ -348,6 +349,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let isCons = defaults.string(forKey: "isCons")
                     // ЗАЯВКИ С КОММЕНТАРИЯМИ
                     db.del_db(table_name: "Comments")
+                    db.del_db(table_name: "Fotos")
                     db.del_db(table_name: "Applications")
                     db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!)
                     
@@ -385,6 +387,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let isCons = defaults.string(forKey: "isCons")
                     // ЗАЯВКИ С КОММЕНТАРИЯМИ
                     db.del_db(table_name: "Comments")
+                    db.del_db(table_name: "Fotos")
                     db.del_db(table_name: "Applications")
                     db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!)
                     
