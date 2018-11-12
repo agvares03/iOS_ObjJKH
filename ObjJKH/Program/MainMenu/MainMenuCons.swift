@@ -25,7 +25,7 @@ class MainMenuCons: UIViewController {
     {
         exit(0)
         //UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
-    }    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
