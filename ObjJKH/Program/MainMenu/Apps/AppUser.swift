@@ -204,6 +204,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         back.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         fot_img.imageView?.setImageColor(color: myColors.btnColor.uiColor())
+        hidden_Header.tintColor = myColors.indicatorColor.uiColor()
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
@@ -447,14 +448,12 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         let group = DispatchGroup()
         let reqID = id_app.stringByAddingPercentEncodingForRFC3986() ?? ""
         let id = UserDefaults.standard.string(forKey: "id_account")?.stringByAddingPercentEncodingForRFC3986() ?? ""
-        
-        print(reqID)
-        
+        let phone = UserDefaults.standard.string(forKey: "phone")?.stringByAddingPercentEncodingForRFC3986() ?? ""
         group.enter()
         let uid = UUID().uuidString
         Alamofire.upload(multipartFormData: { multipartFromdata in
             multipartFromdata.append(UIImageJPEGRepresentation(img, 0.5)!, withName: uid, fileName: "\(uid).jpg", mimeType: "image/jpeg")
-        }, to: Server.SERVER + Server.ADD_FILE + "reqID=" + reqID + "&accID=" + id) { (result) in
+        }, to: Server.SERVER + Server.ADD_FILE + "reqID=" + reqID + "&phone=" + phone) { (result) in
             
             switch result {
             case .success(let upload, _, _):

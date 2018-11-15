@@ -39,6 +39,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     @IBOutlet weak var type_app: UILabel!
     @IBOutlet weak var ls_adress: UILabel!
     @IBOutlet weak var ls_phone: UILabel!
+    @IBOutlet weak var ls_call: UIButton!
     @IBOutlet weak var headerView: UIView!
     
     // массивы для перевода на консультантов (один массив - имена, другой - коды)
@@ -85,6 +86,17 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             headerView.isHidden = false
             table_Const.constant = table_Const.constant + headerView.frame.size.height
             isHidden = false
+        }
+    }
+    
+    @IBAction func call(_ sender: UIButton) {
+        let newPhone = phone.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+        if let url = URL(string: "tel://" + newPhone) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
         }
     }
     
@@ -201,6 +213,8 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
         back.tintColor = myColors.btnColor.uiColor()
+        ls_call.tintColor = myColors.btnColor.uiColor()
+        hidden_Header.tintColor = myColors.indicatorColor.uiColor()
         headerView.isHidden = true
         table_Const.constant = table_Const.constant - headerView.frame.size.height
     }
