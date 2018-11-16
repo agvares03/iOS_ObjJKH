@@ -11,7 +11,6 @@
 		1C009E4521494A65004E8BFD /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
 		1C009E4721494AC4004E8BFD /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
 		1C3A4C72218C090700A5C50E /* AddLSMup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A4C70218C08BE00A5C50E /* AddLSMup.swift */; };
-		1C3A4C73218C114300A5C50E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		1C7B2DFC219BFEFC00787507 /* RegLSMup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B2DFA219BFA4900787507 /* RegLSMup.swift */; };
 		1C7B34CF21992DE100E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		1C7B34D0219939FF00E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
@@ -451,7 +450,7 @@
 		41B5BC47216B37EA003F4868 /* Info - DJService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC442213D2083002CEB62 /* Info - DJService.plist */; };
 		41B5BC48216B37F1003F4868 /* Info - Stolitsa.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4120929A2158CB36001E713E /* Info - Stolitsa.plist */; };
 		41B5BC49216B37F3003F4868 /* Info - Komeks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 412093132159E619001E713E /* Info - Komeks.plist */; };
-		41BCCDA221897A44005F9287 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41BCCDA121897A43005F9287 /* GoogleService-Info.plist */; };
+		41CBEBB7219D34FE00B1BD6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */; };
 		41DFC36F213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
 		41DFC370213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
 		41DFC371213C0B5B002CEB62 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
@@ -991,7 +990,7 @@
 		41B5BC3521666D11003F4868 /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		41B5BC3E216746D9003F4868 /* Stolitsa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stolitsa-Bridging-Header.h"; sourceTree = "<group>"; };
 		41B5BC43216B348A003F4868 /* UK_Komfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Komfort-Bridging-Header.h"; sourceTree = "<group>"; };
-		41BCCDA121897A43005F9287 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/UK_Komfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Mitischi/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41DFC36E213C0B5B002CEB62 /* FilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesController.swift; sourceTree = "<group>"; };
 		41DFC376213CF14A002CEB62 /* QuestionFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFinal.swift; sourceTree = "<group>"; };
 		41DFC3DA213CF4E9002CEB62 /* MupRCMytishi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MupRCMytishi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1232,7 +1231,7 @@
 				41DFC442213D2083002CEB62 /* Info - DJService.plist */,
 				41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */,
 				4120929A2158CB36001E713E /* Info - Stolitsa.plist */,
-				41BCCDA121897A43005F9287 /* GoogleService-Info.plist */,
+				41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */,
 				412093132159E619001E713E /* Info - Komeks.plist */,
 				4180400A21871C840004267A /* GoogleService-Info.plist */,
 				41209320215C105F001E713E /* GoogleService-Info.plist */,
@@ -1836,6 +1835,9 @@
 					41DFC37A213CF4E9002CEB62 = {
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -2124,7 +2126,6 @@
 				41DFC3BE213CF4E9002CEB62 /* (null) in Resources */,
 				41DFC3BF213CF4E9002CEB62 /* LaunchScreen.storyboard in Resources */,
 				41DFC3C0213CF4E9002CEB62 /* Assets.xcassets in Resources */,
-				1C3A4C73218C114300A5C50E /* GoogleService-Info.plist in Resources */,
 				41DFC3E0213CFE05002CEB62 /* logo_MupRCMytishi.png in Resources */,
 				41DFC3C1213CF4E9002CEB62 /* logo_SM.png in Resources */,
 				41DFC3C2213CF4E9002CEB62 /* app_close.png in Resources */,
@@ -2139,6 +2140,7 @@
 				41DFC3CA213CF4E9002CEB62 /* Logo_DemoUC_White.png in Resources */,
 				41DFC452213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
 				41DFC3CB213CF4E9002CEB62 /* ic_action_files_grey.png in Resources */,
+				41CBEBB7219D34FE00B1BD6C /* GoogleService-Info.plist in Resources */,
 				41DFC3CC213CF4E9002CEB62 /* arrow_rigth.png in Resources */,
 				41E8F03A2149EC4000FE0473 /* AdditionalServices.storyboard in Resources */,
 				41DFC3CD213CF4E9002CEB62 /* MainMenu.storyboard in Resources */,
@@ -2213,7 +2215,6 @@
 				41FDA293214229A0003D8110 /* LaunchScreen.storyboard in Resources */,
 				41FDA294214229A0003D8110 /* Assets.xcassets in Resources */,
 				41B5BC42216B3405003F4868 /* Info - UK_Komfort.plist in Resources */,
-				41BCCDA221897A44005F9287 /* GoogleService-Info.plist in Resources */,
 				41FDA296214229A0003D8110 /* logo_SM.png in Resources */,
 				41FDA297214229A0003D8110 /* app_close.png in Resources */,
 				41FDA298214229A0003D8110 /* ic_close_action.png in Resources */,
@@ -3636,6 +3637,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = ObjJKH/Info.plist;
@@ -3647,6 +3649,7 @@
 				OTHER_SWIFT_FLAGS = "-DisDemoUC";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.DemoUC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isDemoUC DEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ObjJKH-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3662,6 +3665,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = ObjJKH/Info.plist;
@@ -3673,6 +3677,7 @@
 				OTHER_SWIFT_FLAGS = "-DisDemoUC";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.DemoUC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isDemoUC;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ObjJKH-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -3793,6 +3798,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(МУП РЦ Мытищи)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MupRCMytishi.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "Info - MupRCMytishi.plist";
@@ -3804,6 +3810,7 @@
 				OTHER_SWIFT_FLAGS = "-DisMupRCMytishi";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isMupRCMytishi DEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/MupRCMytishi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3819,6 +3826,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon(МУП РЦ Мытищи)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MupRCMytishi.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "Info - MupRCMytishi.plist";
@@ -3830,6 +3838,7 @@
 				OTHER_SWIFT_FLAGS = "-DisMupRCMytishi";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isMupRCMytishi;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/MupRCMytishi-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
