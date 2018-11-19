@@ -220,7 +220,11 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             if ls_1_end == "0"{
                 self.flat.remove(at: self.flat.startIndex)
             }
-            self.ls_adress.text = self.adress + ", " + self.flat
+            if ls_12_end == "кв"{
+                self.ls_adress.text = self.adress + ", " + self.flat
+            }else{
+               self.ls_adress.text = self.adress + ", кв. " + self.flat
+            }
         }else{
             self.ls_adress.text = self.adress
         }
