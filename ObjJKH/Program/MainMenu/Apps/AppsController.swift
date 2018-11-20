@@ -244,6 +244,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read_client
             AppUser.adress = app.adress!
+            AppUser.flat = app.flat!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
@@ -261,6 +262,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read_client
             AppUser.adress = app.adress!
+            AppUser.flat = app.flat!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
@@ -278,6 +280,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read
             AppUser.adress = app.adress!
+            AppUser.flat = app.flat!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
@@ -295,6 +298,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read
             AppUser.adress = app.adress!
+            AppUser.flat = app.flat!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!

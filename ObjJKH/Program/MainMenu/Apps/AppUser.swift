@@ -54,6 +54,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     // id аккаунта текущего
     var id_author: String = ""
     var adress: String = ""
+    var flat: String = ""
     var phone: String = ""
     var name_account: String = ""
     var id_account: String = ""
@@ -208,9 +209,31 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
-        print(self.adress, self.phone)
+        print(self.adress, self.flat, self.phone)
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
-        self.ls_adress.text = self.adress
+        if self.flat.count > 0{
+            var ls_12_end = ""
+            if self.flat.count > 2{
+                let ls_12 = self.flat.index(self.flat.startIndex, offsetBy: 2)
+                ls_12_end = self.flat.substring(to: ls_12)
+            }
+            if ls_12_end == "00"{
+                self.flat.remove(at: self.flat.startIndex)
+            }
+            var ls_1_end = ""
+            let ls_1 = self.flat.index(self.flat.startIndex, offsetBy: 1)
+            ls_1_end = self.flat.substring(to: ls_1)
+            if ls_1_end == "0"{
+                self.flat.remove(at: self.flat.startIndex)
+            }
+            if ls_12_end == "кв"{
+                self.ls_adress.text = self.adress + ", " + self.flat
+            }else{
+                self.ls_adress.text = self.adress + ", кв. " + self.flat
+            }
+        }else{
+            self.ls_adress.text = self.adress
+        }
         self.ls_phone.text = self.phone
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })        
