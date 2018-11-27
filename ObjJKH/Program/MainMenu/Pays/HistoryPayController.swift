@@ -48,7 +48,8 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
-                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
                                                 if error != nil {
                                                     return
                                                 } else {
@@ -59,7 +60,7 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
                                                         var bill_period      = ""
                                                         var bill_sum    = ""
                                                         var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                        print(json)
+//                                                        print(json)
                                                         if let json_bills = json["data"] {
                                                             let int_end = (json_bills.count)!-1
                                                             if (int_end < 0) {
