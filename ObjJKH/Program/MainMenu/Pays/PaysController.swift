@@ -18,6 +18,7 @@ class PaysController: UIViewController, DropperDelegate {
     
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var btnPay: UIButton!
+    @IBOutlet weak var historyPay: UIButton!
     
     var fetchedResultsController: NSFetchedResultsController<Saldo>?
     var iterYear: String = "0"
@@ -97,6 +98,7 @@ class PaysController: UIViewController, DropperDelegate {
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
+        historyPay.backgroundColor = myColors.btnColor.uiColor()
         
     }
 
