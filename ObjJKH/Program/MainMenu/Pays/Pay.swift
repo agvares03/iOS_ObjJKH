@@ -49,7 +49,7 @@ class Pay: UIViewController {
     }
     
     func getServerUrlByIdent() -> String {
-        return Server.SERVER + Server.GET_LINK + "login=" + self.login + "&pwd=" + self.pass + "&sum=" + self.sum
+        return Server.SERVER + Server.GET_LINK + "login=" + self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + self.pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&sum=" + self.sum
     }
     
     func get_link() {
