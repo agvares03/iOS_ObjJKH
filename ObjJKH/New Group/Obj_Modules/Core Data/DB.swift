@@ -141,6 +141,8 @@ class DB: NSObject, XMLParserDelegate {
         // Получим данные из xml
         let urlPath = Server.SERVER + Server.GET_METERS + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let url: NSURL = NSURL(string: urlPath)!
+        print(url)
+        
         parser = XMLParser(contentsOf: url as URL)!
         parser.delegate = self
         let success:Bool = parser.parse()
@@ -187,6 +189,7 @@ class DB: NSObject, XMLParserDelegate {
             self.currYear = attributeDict["Year"]!
             self.currMonth = attributeDict["NumMonth"]!
         } else if (elementName == "MeterValue") {
+            print(attributeDict)
             
             // Запишем показание прибора
             let managedObject = Counters()
@@ -195,6 +198,7 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.owner         = "Иванов И.И."
             managedObject.num_month     = self.currMonth
             managedObject.year          = self.currYear
+            managedObject.ident         = attributeDict["Ident"]
             managedObject.count_name    = attributeDict["Name"]
             managedObject.count_ed_izm  = attributeDict["Units"]
             managedObject.prev_value    = (attributeDict["PreviousValue"]! as NSString).floatValue

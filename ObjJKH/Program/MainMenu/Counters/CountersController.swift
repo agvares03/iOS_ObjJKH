@@ -251,6 +251,7 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
         let counter = (fetchedResultsController?.object(at: indexPath))! as Counters
         self.Count = counter
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "CounterCell") as! CounterCell
+        cell.ident.text       = counter.ident
         cell.name.text        = counter.count_name
         cell.number.text      = counter.uniq_num
         cell.pred.text        = counter.prev_value.description

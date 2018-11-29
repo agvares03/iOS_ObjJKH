@@ -14,6 +14,7 @@ class CounterCell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
+    @IBOutlet weak var ident: UILabel!
     
     @IBOutlet weak var pred: UILabel!
     @IBOutlet weak var teck: UILabel!

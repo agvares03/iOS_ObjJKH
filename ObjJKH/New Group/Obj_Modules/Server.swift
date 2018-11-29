@@ -44,6 +44,7 @@ class Server {
     static let GET_BILLS_SERVICES  = "GetBillServices.ashx?"         // Получить данные ОСВ (взаиморасчеты)
     static let GET_LINK_STOLITSA   = "common/pay/EplatPay.aspx?"     // Ссылка на платеж (Столица)
     static let GET_LINK            = "PayOnline.ashx?"               // Ссылка на платеж
+    static let GET_PAYMENTS        = "GetPayments.ashx?"             // Получить историю платежей
     static let GET_COMM_ID         = "GetMessages.ashx?"             // Получение комментариев по одной заявке
     static let SEND_COMM           = "chatAddMessage.ashx?"          // Добавить комментарий по заявке
     static let ADD_FILE            = "AddFileToRequest.ashx?"        // Загрузка файла на сервер
