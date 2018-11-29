@@ -14,6 +14,10 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var dateConst2: NSLayoutConstraint!
+    @IBOutlet weak var dateConst: NSLayoutConstraint!
+    @IBOutlet weak var sumConst2: NSLayoutConstraint!
+    @IBOutlet weak var sumConst: NSLayoutConstraint!
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet private weak var tableView:       UITableView!
     @IBOutlet private weak var headerView:      UIView!
@@ -36,6 +40,12 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         back.tintColor = myColors.btnColor.uiColor()
         headerView.backgroundColor = myColors.btnColor.uiColor()
+        if self.view.frame.size.width < 375{
+            dateConst.constant = dateConst.constant - 6
+            sumConst.constant = sumConst.constant - 6
+            dateConst2.constant = dateConst2.constant - 6
+            sumConst2.constant = sumConst2.constant - 6
+        }
     }
     
     func parse_OSV(login: String, pass: String) {
@@ -86,7 +96,11 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
                                                                             bill_sum = String(describing: obj.value as! NSNumber)
                                                                         }
                                                                     }
-                                                                    self.values.append(HistoryPayCellData(date: bill_date, id: bill_id, ident: bill_ident, period: bill_period, sum: bill_sum))
+                                                                    var width: CGFloat = 0
+                                                                    DispatchQueue.main.async{
+                                                                        width = self.view.frame.size.width
+                                                                    }
+                                                                    self.values.append(HistoryPayCellData(date: bill_date, id: bill_id, ident: bill_ident, period: bill_period, sum: bill_sum, width: width))
                                                                 }
                                                             }
                                                             
@@ -115,12 +129,18 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.display(values[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, layout tableViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: 44.0)
+    }
 }
 
 class HistoryPayCell: UITableViewCell {
     
     var delegate: UIViewController?
     
+    @IBOutlet weak var dateConst: NSLayoutConstraint!
+    @IBOutlet weak var sumConst: NSLayoutConstraint!
     @IBOutlet weak var datePay: UILabel!
     @IBOutlet weak var period: UILabel!
     @IBOutlet weak var summ: UILabel!
@@ -133,8 +153,11 @@ class HistoryPayCell: UITableViewCell {
             self.summ.text = item.sum
         }
         self.period.text = item.period
-        
         self.datePay.text = date1
+        if item.width < 375{
+            dateConst.constant = dateConst.constant - 12
+            sumConst.constant = sumConst.constant - 12
+        }
     }
     
     
@@ -148,13 +171,15 @@ private final class HistoryPayCellData {
     let ident:          String
     let period:         String
     let sum:            String
+    let width:          CGFloat
     
-    init(date: String?, id: String?, ident: String?, period: String?, sum: String?) {
+    init(date: String?, id: String?, ident: String?, period: String?, sum: String?, width: CGFloat) {
         
         self.date   = date   ?? ""
         self.id     = id     ?? ""
         self.ident  = ident  ?? ""
         self.period = period ?? ""
         self.sum    = sum    ?? ""
+        self.width  = width
     }
 }
