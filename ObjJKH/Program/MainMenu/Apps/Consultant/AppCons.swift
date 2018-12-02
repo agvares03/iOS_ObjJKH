@@ -26,6 +26,8 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     }
     
     @IBOutlet weak var table_Const: NSLayoutConstraint!
+    @IBOutlet weak var view1: NSLayoutConstraint!
+    @IBOutlet weak var view2: NSLayoutConstraint!
     @IBOutlet weak var date_txt: UILabel!
     @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var ed_comment: UITextField!
@@ -166,7 +168,10 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if view.frame.width == 320{
+            view1.constant = 60.75
+            view2.constant = 60.75
+        }
         self.StopIndicator()
         if read == 0{
             self.read_request()
