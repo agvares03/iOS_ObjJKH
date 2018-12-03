@@ -313,6 +313,8 @@ class MainMenu: UIViewController {
             fon_top.image = UIImage(named: "Logo_Komeks_White")
         #elseif isUKKomfort
             fon_top.image = UIImage(named: "logo_UK_Komfort_white")
+        #elseif isKlimovsk12
+            fon_top.image = UIImage(named: "logo_Klimovsk12_White")
         #endif
         
         // Картинки для разных Таргетов
