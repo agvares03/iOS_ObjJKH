@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         application.registerForRemoteNotifications()
         
         requestNotificationAuthorization(application: application)
-        locationNotificationAuthorization(application: application)
+//        locationNotificationAuthorization(application: application)
         return true
     }
     
@@ -95,45 +95,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func locationNotificationAuthorization(application: UIApplication) {
         
-        if CLLocationManager.locationServicesEnabled() == true {
-            
-            if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||  CLLocationManager.authorizationStatus() == .notDetermined {
-                locationManager.requestWhenInUseAuthorization()
-            }
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.delegate = self
-            locationManager.startUpdatingLocation()
-        } else {
-            print("PLease turn on location services or GPS")
-        }
+//        if CLLocationManager.locationServicesEnabled() == true {
+//
+//            if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||  CLLocationManager.authorizationStatus() == .notDetermined {
+//                locationManager.requestWhenInUseAuthorization()
+//            }
+//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            locationManager.delegate = self
+//            locationManager.startUpdatingLocation()
+//        } else {
+//            print("PLease turn on location services or GPS")
+//        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.locationManager.stopUpdatingLocation()
-        var location : [String:String] = [:]
-        let userLocation :CLLocation = locations[0] as CLLocation
-        location["latitude"] = String(userLocation.coordinate.latitude)
-        location["longitude"] = String(userLocation.coordinate.longitude)
-        
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
-            if (error != nil){
-                print("error in reverseGeocode")
-            }
-            let placemark = placemarks! as [CLPlacemark]
-            if placemark.count>0{
-                let placemark = placemarks![0]
-                location["locality"] = placemark.locality!
-                location["administrativeArea"] = placemark.administrativeArea!
-                location["country"] = placemark.country!
-                print(location)
-                UserDefaults.standard.setValue(location, forKey: "locationData") //Сохранение геопозиции пользователя
-            }
-        }
+//        self.locationManager.stopUpdatingLocation()
+//        var location : [String:String] = [:]
+//        let userLocation :CLLocation = locations[0] as CLLocation
+//        location["latitude"] = String(userLocation.coordinate.latitude)
+//        location["longitude"] = String(userLocation.coordinate.longitude)
+//
+//        let geocoder = CLGeocoder()
+//        geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+//            if (error != nil){
+//                print("error in reverseGeocode")
+//            }
+//            let placemark = placemarks! as [CLPlacemark]
+//            if placemark.count>0{
+//                let placemark = placemarks![0]
+//                location["locality"] = placemark.locality!
+//                location["administrativeArea"] = placemark.administrativeArea!
+//                location["country"] = placemark.country!
+//                print(location)
+//                UserDefaults.standard.setValue(location, forKey: "locationData") //Сохранение геопозиции пользователя
+//            }
+//        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Unable to access your current location")
+//        print("Unable to access your current location")
     }
 }
 
