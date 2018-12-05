@@ -25,6 +25,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     }
     
     @IBOutlet weak var table_Const: NSLayoutConstraint!
+    @IBOutlet weak var headerHeight: NSLayoutConstraint!
     @IBOutlet weak var date_txt: UILabel!
     @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var table_comments: UITableView!
@@ -240,6 +241,9 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
+        let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
+        let count = tema_txt.frame.size.height * numberLine
+        headerHeight.constant = headerHeight.constant + count
         headerView.isHidden = true
         table_Const.constant = table_Const.constant - headerView.frame.size.height
     }

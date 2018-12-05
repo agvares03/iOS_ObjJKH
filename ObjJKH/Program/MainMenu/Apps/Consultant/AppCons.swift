@@ -28,6 +28,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     @IBOutlet weak var table_Const: NSLayoutConstraint!
     @IBOutlet weak var view1: NSLayoutConstraint!
     @IBOutlet weak var view2: NSLayoutConstraint!
+    @IBOutlet weak var headerHeight: NSLayoutConstraint!
     @IBOutlet weak var date_txt: UILabel!
     @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var ed_comment: UITextField!
@@ -78,7 +79,6 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     var isHidden = true
     
     @IBAction func hiddHeader(_ sender: UIButton) {
-        print(isHidden, headerView.frame.origin.y)
         if !isHidden{
             hidden_Header.title = "▽"
             headerView.isHidden = true
@@ -244,6 +244,9 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         back.tintColor = myColors.btnColor.uiColor()
         ls_call.tintColor = myColors.btnColor.uiColor()
         hidden_Header.tintColor = myColors.indicatorColor.uiColor()
+        let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
+        let count = tema_txt.frame.size.height * numberLine
+        headerHeight.constant = headerHeight.constant + count
         headerView.isHidden = true
         table_Const.constant = table_Const.constant - headerView.frame.size.height
     }
@@ -884,4 +887,13 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     }
     
     
+}
+
+extension UILabel {
+    var numberOfVisibleLines: Int {
+        let textSize = CGSize(width: CGFloat(self.frame.size.width), height: CGFloat(MAXFLOAT))
+        let rHeight: Int = lroundf(Float(self.sizeThatFits(textSize).height))
+        let charSize: Int = lroundf(Float(self.font.pointSize))
+        return rHeight / charSize
+    }
 }
