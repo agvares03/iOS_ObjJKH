@@ -29,6 +29,17 @@
 		1C7B34D521993A4400E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		1C7B34D621993A4D00E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		2BA6430A5373E25736C0D4BE /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
+		410D51F221B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51F321B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51F421B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51F521B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51F621B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51F721B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51F821B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51F921B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51FA21B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		410D51FC21B787F400C21455 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 410D51FB21B787F400C21455 /* GoogleService-Info.plist */; };
+		410D51FE21B79D6B00C21455 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 410D51FD21B79D6A00C21455 /* GoogleService-Info.plist */; };
 		411AD1CA2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
 		411AD1CB2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
 		411AD1CC2161E17E004FD1B5 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
@@ -1017,6 +1028,9 @@
 		3B1D02E929C2F9CF087B5AAD /* Pods-Stolitsa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stolitsa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa.release.xcconfig"; sourceTree = "<group>"; };
 		3C30202AA143265557CC7756 /* Pods_Stolitsa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stolitsa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D244462D5218B88F87AACCF /* Pods_Komeks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Komeks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tinkoff_Pay_Decides.m; sourceTree = "<group>"; };
+		410D51FB21B787F400C21455 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Chist_Dom/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		410D51FD21B79D6A00C21455 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/DJService/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		411AD1C12161E17D004FD1B5 /* Komeks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Komeks-Bridging-Header.h"; sourceTree = "<group>"; };
 		411AD1C82161E17E004FD1B5 /* empty.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = empty.cpp; sourceTree = "<group>"; };
 		411AD1C92161E17E004FD1B5 /* empty.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = empty.hpp; sourceTree = "<group>"; };
@@ -1286,9 +1300,18 @@
 			path = AdditionalServices;
 			sourceTree = "<group>";
 		};
+		410D51F021B6870D00C21455 /* Tinkoff_Pay */ = {
+			isa = PBXGroup;
+			children = (
+				410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */,
+			);
+			path = Tinkoff_Pay;
+			sourceTree = "<group>";
+		};
 		411AD1BC2161E02F004FD1B5 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
+				410D51F021B6870D00C21455 /* Tinkoff_Pay */,
 				411AD1C82161E17E004FD1B5 /* empty.cpp */,
 				411AD1C92161E17E004FD1B5 /* empty.hpp */,
 				411AD1C12161E17D004FD1B5 /* Komeks-Bridging-Header.h */,
@@ -1370,6 +1393,8 @@
 				41209320215C105F001E713E /* GoogleService-Info.plist */,
 				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
 				41BD716C21B4EDC7006E78FC /* GoogleService-Info.plist */,
+				410D51FB21B787F400C21455 /* GoogleService-Info.plist */,
+				410D51FD21B79D6A00C21455 /* GoogleService-Info.plist */,
 				418ABF1D2133CDD3004DB75C /* Program */,
 				418ABF1C2133CCAA004DB75C /* StoryBoards */,
 				418ABF202133CF52004DB75C /* images */,
@@ -2002,6 +2027,9 @@
 					41DFC3E1213D206C002CEB62 = {
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -2239,6 +2267,7 @@
 				418ABFC921357DA5004DB75C /* (null) in Resources */,
 				41B5BC45216B37E3003F4868 /* Info - ChistDom.plist in Resources */,
 				418ABFCA21357DA5004DB75C /* LaunchScreen.storyboard in Resources */,
+				410D51FC21B787F400C21455 /* GoogleService-Info.plist in Resources */,
 				418ABFCB21357DA5004DB75C /* Assets.xcassets in Resources */,
 				418ABFCC21357DA5004DB75C /* logo_SM.png in Resources */,
 				418ABFCD21357DA5004DB75C /* spin.png in Resources */,
@@ -2370,6 +2399,7 @@
 				41DFC425213D206C002CEB62 /* (null) in Resources */,
 				41DFC426213D206C002CEB62 /* LaunchScreen.storyboard in Resources */,
 				41DFC427213D206C002CEB62 /* Assets.xcassets in Resources */,
+				410D51FE21B79D6B00C21455 /* GoogleService-Info.plist in Resources */,
 				41DFC428213D206C002CEB62 /* logo_SM.png in Resources */,
 				41DFC429213D206C002CEB62 /* app_close.png in Resources */,
 				41DFC42A213D206C002CEB62 /* ic_close_action.png in Resources */,
@@ -2925,6 +2955,7 @@
 				4120923D2158CB2D001E713E /* AddAppUser.swift in Sources */,
 				4120923E2158CB2D001E713E /* Comments+CoreDataClass.swift in Sources */,
 				411AD1D02161E17E004FD1B5 /* empty.cpp in Sources */,
+				410D51F821B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				4120923F2158CB2D001E713E /* ImageConstant.swift in Sources */,
 				412092402158CB2D001E713E /* PaysController.swift in Sources */,
 				412092412158CB2D001E713E /* CoreDataManager.swift in Sources */,
@@ -3003,6 +3034,7 @@
 				412092B42159E603001E713E /* AddAppUser.swift in Sources */,
 				412092B52159E603001E713E /* Comments+CoreDataClass.swift in Sources */,
 				411AD1D12161E17E004FD1B5 /* empty.cpp in Sources */,
+				410D51F921B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				412092B62159E603001E713E /* ImageConstant.swift in Sources */,
 				412092B72159E603001E713E /* PaysController.swift in Sources */,
 				412092B82159E603001E713E /* CoreDataManager.swift in Sources */,
@@ -3081,6 +3113,7 @@
 				41EF5A1E2138E23000789370 /* AddAppUser.swift in Sources */,
 				41EF5A0D2138D92E00789370 /* Comments+CoreDataClass.swift in Sources */,
 				411AD1CA2161E17E004FD1B5 /* empty.cpp in Sources */,
+				410D51F221B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				41E8F0102147605E00FE0473 /* ImageConstant.swift in Sources */,
 				41EF59E92137EFBE00789370 /* PaysController.swift in Sources */,
 				418ABFF621362B81004DB75C /* CoreDataManager.swift in Sources */,
@@ -3159,6 +3192,7 @@
 				41EF5A0E2138D92E00789370 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0112147605E00FE0473 /* ImageConstant.swift in Sources */,
 				411AD1CB2161E17E004FD1B5 /* empty.cpp in Sources */,
+				410D51F321B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				41EF59EA2137EFBE00789370 /* PaysController.swift in Sources */,
 				418ABFF721362B81004DB75C /* CoreDataManager.swift in Sources */,
 				418ABF992135452F004DB75C /* News+UITableViewDataSource.swift in Sources */,
@@ -3237,6 +3271,7 @@
 				41EF5A0F2138D92E00789370 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0122147605E00FE0473 /* ImageConstant.swift in Sources */,
 				411AD1CC2161E17E004FD1B5 /* empty.cpp in Sources */,
+				410D51F421B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				41EF59EB2137EFBE00789370 /* PaysController.swift in Sources */,
 				418ABFF821362B81004DB75C /* CoreDataManager.swift in Sources */,
 				418ABFB321357DA5004DB75C /* News+UITableViewDataSource.swift in Sources */,
@@ -3315,6 +3350,7 @@
 				41BD710921B4E869006E78FC /* AddAppUser.swift in Sources */,
 				41BD710A21B4E869006E78FC /* Comments+CoreDataClass.swift in Sources */,
 				41BD710B21B4E869006E78FC /* empty.cpp in Sources */,
+				410D51FA21B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				41BD710C21B4E869006E78FC /* ImageConstant.swift in Sources */,
 				41BD710D21B4E869006E78FC /* PaysController.swift in Sources */,
 				41BD710E21B4E869006E78FC /* CoreDataManager.swift in Sources */,
@@ -3389,6 +3425,7 @@
 				41DFC386213CF4E9002CEB62 /* SendSMSCod.swift in Sources */,
 				41DFC387213CF4E9002CEB62 /* NewPass.swift in Sources */,
 				41DFC388213CF4E9002CEB62 /* News.swift in Sources */,
+				410D51F521B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				41DFC389213CF4E9002CEB62 /* AddAppUser.swift in Sources */,
 				41DFC38A213CF4E9002CEB62 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0132147605E00FE0473 /* ImageConstant.swift in Sources */,
@@ -3473,6 +3510,7 @@
 				41DFC3F1213D206C002CEB62 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0142147605E00FE0473 /* ImageConstant.swift in Sources */,
 				411AD1CE2161E17E004FD1B5 /* empty.cpp in Sources */,
+				410D51F621B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				41DFC3F2213D206C002CEB62 /* PaysController.swift in Sources */,
 				41DFC3F3213D206C002CEB62 /* CoreDataManager.swift in Sources */,
 				41DFC3F4213D206C002CEB62 /* News+UITableViewDataSource.swift in Sources */,
@@ -3551,6 +3589,7 @@
 				41FDA25A214229A0003D8110 /* Comments+CoreDataClass.swift in Sources */,
 				41E8F0162147642900FE0473 /* ImageConstant.swift in Sources */,
 				411AD1CF2161E17E004FD1B5 /* empty.cpp in Sources */,
+				410D51F721B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				41FDA25B214229A0003D8110 /* PaysController.swift in Sources */,
 				41FDA25C214229A0003D8110 /* CoreDataManager.swift in Sources */,
 				41FDA25D214229A0003D8110 /* News+UITableViewDataSource.swift in Sources */,
@@ -3976,7 +4015,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isChist_Dom DEBUG";
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ChistDom-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4004,7 +4043,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isChist_Dom;
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ChistDom-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4139,7 +4178,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.dj-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isDJ DEBUG";
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/DJ-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4165,7 +4204,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.dj-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isDJ;
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/DJ-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

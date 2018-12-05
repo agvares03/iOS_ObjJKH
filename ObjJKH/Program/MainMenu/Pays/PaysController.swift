@@ -9,6 +9,7 @@
 import UIKit
 import Dropper
 import CoreData
+//import ASDKUI
 
 class PaysController: UIViewController, DropperDelegate {
     
@@ -49,16 +50,24 @@ class PaysController: UIViewController, DropperDelegate {
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
-        if (self.sum == 0) {
+        if (self.sum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            let defaults = UserDefaults.standard
-            defaults.setValue(String(describing: self.sum), forKey: "sum")
-            defaults.synchronize()
-            self.performSegue(withIdentifier: "CostPay_New", sender: self)
+            #if isMupRCMytishi
+        
+//                let vc = ASDKPaymentFormViewController.init(amount: 123, orderId: "123", title: "Название", description: "Текст", cardId: "123", email: "tra-ss@mail.ru", customerKey: "123", recurrent: false, makeCharge: true, additionalPaymentData: nil, receiptData: nil, success: nil, cancelled: nil, error: nil)
+//                navigationController?.present(vc!, animated: true, completion: nil)
+        
+            #else
+                let defaults = UserDefaults.standard
+                defaults.setValue(String(describing: self.sum), forKey: "sum")
+                defaults.synchronize()
+                self.performSegue(withIdentifier: "CostPay_New", sender: self)
+            #endif
+
         }
     }
     
