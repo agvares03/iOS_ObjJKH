@@ -58,8 +58,8 @@ class PaysController: UIViewController, DropperDelegate {
         } else {
             #if isMupRCMytishi
         
-//                let vc = ASDKPaymentFormViewController.init(amount: 123, orderId: "123", title: "Название", description: "Текст", cardId: "123", email: "tra-ss@mail.ru", customerKey: "123", recurrent: false, makeCharge: true, additionalPaymentData: nil, receiptData: nil, success: nil, cancelled: nil, error: nil)
-//                navigationController?.present(vc!, animated: true, completion: nil)
+            // Вот здесь вот нужен переход на страницу оплаты
+            
         
             #else
                 let defaults = UserDefaults.standard
