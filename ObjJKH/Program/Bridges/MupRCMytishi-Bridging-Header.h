@@ -6,8 +6,6 @@
 //  Copyright © 2018 The Best. All rights reserved.
 //
 
-#import «Tinkoff_Pay_Decides.m»
-
 #ifndef MupRCMytishi_Bridging_Header_h
 #define MupRCMytishi_Bridging_Header_h
 
