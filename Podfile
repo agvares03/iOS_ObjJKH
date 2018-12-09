@@ -48,6 +48,11 @@ end
 
 target 'MupRCMytishi' do
 
+	# Оплата - Тинькофф
+    pod 'CardIO'
+	pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
+	pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
+
     use_frameworks!
 
     # Pods for Наш Общий Дом
@@ -58,11 +63,6 @@ target 'MupRCMytishi' do
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
-    
-    # Оплата - Тинькофф
-    pod 'CardIO'
-    pod 'ASDKCore', :podspec => 'https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec'
-    pod 'ASDKUI', :podspec => 'https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec'
 
 end
 

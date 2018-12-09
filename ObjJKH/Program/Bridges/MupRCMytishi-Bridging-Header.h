@@ -9,5 +9,6 @@
 #ifndef MupRCMytishi_Bridging_Header_h
 #define MupRCMytishi_Bridging_Header_h
 
+#import "PayController.h"
 
 #endif /* MupRCMytishi_Bridging_Header_h */

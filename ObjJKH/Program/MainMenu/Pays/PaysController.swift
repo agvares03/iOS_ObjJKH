@@ -9,7 +9,6 @@
 import UIKit
 import Dropper
 import CoreData
-//import ASDKUI
 
 class PaysController: UIViewController, DropperDelegate {
     
@@ -57,9 +56,22 @@ class PaysController: UIViewController, DropperDelegate {
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
-        
-            // Вот здесь вот нужен переход на страницу оплаты
-            
+
+            PayController.buyItem(withName: "Жилищно-коммунальные услуги",
+                                  description: "",
+                                  amount: NSNumber(floatLiteral: self.sum),
+                                  recurrent: false,
+                                  makeCharge: false,
+                                  additionalPaymentData: [:],
+                                  receiptData: [:],
+                                  from: self,
+                                  success: { (paymentInfo) in
+                
+            }, cancelled: {
+                
+            }) { (error) in
+                
+            }
         
             #else
                 let defaults = UserDefaults.standard
@@ -67,7 +79,6 @@ class PaysController: UIViewController, DropperDelegate {
                 defaults.synchronize()
                 self.performSegue(withIdentifier: "CostPay_New", sender: self)
             #endif
-
         }
     }
     
