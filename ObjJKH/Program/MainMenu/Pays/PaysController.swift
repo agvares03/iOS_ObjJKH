@@ -49,17 +49,17 @@ class PaysController: UIViewController, DropperDelegate {
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
-        if (self.sum <= 0) {
-            let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
-        } else {
+//        if (self.sum <= 0) {
+//            let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
+//            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//            alert.addAction(cancelAction)
+//            self.present(alert, animated: true, completion: nil)
+//        } else {
             #if isMupRCMytishi
 
-            PayController.buyItem(withName: "Жилищно-коммунальные услуги",
+            PayController.buyItem(withName: "Оплата услуг ЖКХ ",
                                   description: "",
-                                  amount: NSNumber(floatLiteral: self.sum),
+                                  amount: NSNumber(floatLiteral: 1000),
                                   recurrent: false,
                                   makeCharge: false,
                                   additionalPaymentData: [:],
@@ -79,7 +79,7 @@ class PaysController: UIViewController, DropperDelegate {
                 defaults.synchronize()
                 self.performSegue(withIdentifier: "CostPay_New", sender: self)
             #endif
-        }
+//        }
     }
     
     override func viewDidLoad() {
