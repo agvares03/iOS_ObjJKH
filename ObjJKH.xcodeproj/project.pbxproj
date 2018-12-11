@@ -1220,6 +1220,8 @@
 		F43655B721BD66AF001225DA /* ASDKCardIOScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDKCardIOScanner.h; sourceTree = "<group>"; };
 		F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDKCardIOScanner.m; sourceTree = "<group>"; };
 		F43655B921BD66AF001225DA /* ASDKTestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDKTestSettings.h; sourceTree = "<group>"; };
+		F47D570121BFFD9400A81882 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		F47D570221BFFD9400A81882 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F6CD5D400C1D0F58E85A91E7 /* Pods-UK_Komfort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Komfort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort.debug.xcconfig"; sourceTree = "<group>"; };
 		F837BF37EC44AC031468DF9D /* Pods-OurObjHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurObjHome.release.xcconfig"; path = "Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3647,6 +3649,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				418ABF0F2133CC7B004DB75C /* Base */,
+				F47D570121BFFD9400A81882 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3655,6 +3658,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				418ABF142133CC8C004DB75C /* Base */,
+				F47D570221BFFD9400A81882 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -3772,6 +3776,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -3832,6 +3837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

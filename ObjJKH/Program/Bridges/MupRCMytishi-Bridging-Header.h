@@ -10,5 +10,6 @@
 #define MupRCMytishi_Bridging_Header_h
 
 #import "PayController.h"
+#import "ASDKTestSettings.h"
 
 #endif /* MupRCMytishi_Bridging_Header_h */

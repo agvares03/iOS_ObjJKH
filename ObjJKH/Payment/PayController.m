@@ -17,18 +17,20 @@
 #import "TransactionHistoryModelController.h"
 #import "ASDKCardsListDataController.h"
 
+#define kCustomerKey @"CustomerKey"
+
 @implementation PayController
 
 + (ASDKAcquiringSdk *)acquiringSdk
 {
 	ASDKStringKeyCreator *stringKeyCreator = [[ASDKStringKeyCreator alloc] initWithPublicKeyString:[ASDKTestSettings testPublicKey]];
 	ASDKAcquiringSdk *acquiringSdk = [ASDKAcquiringSdk acquiringSdkWithTerminalKey:[ASDKTestSettings testActiveTerminal]
-																		   payType:nil//@"O"//@"T"
+																		   payType:nil
 																		  password:[ASDKTestSettings testTerminalPassword]
 															   publicKeyDataSource:stringKeyCreator];
 	
-	[acquiringSdk setDebug:YES];
-	[acquiringSdk setTestDomain:YES];
+	[acquiringSdk setDebug:NO];
+	[acquiringSdk setTestDomain:NO];
 	[acquiringSdk setLogger:nil];
 	
 	return acquiringSdk;
@@ -41,9 +43,15 @@
 
 + (NSString *)customerKey
 {
-//	return @"testRegress5";
-//	return @"testMerchantApplePay";
-	return @"testCustomerKey1@gmail.com";
+    NSString* ck = [[NSUserDefaults standardUserDefaults] stringForKey:kCustomerKey];
+    if (ck == nil)
+    {
+        ck = [NSUUID UUID].UUIDString;
+        [[NSUserDefaults standardUserDefaults] setObject:ck forKey:kCustomerKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    return ck;
 }
 
 + (UIAlertController *)alertWithError:(ASDKAcquringSdkError *)error
@@ -53,7 +61,7 @@
 	
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertDetails preferredStyle:UIAlertControllerStyleAlert];
 	
-	[alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Close", @"Закрыть") style:UIAlertActionStyleCancel
+	[alertController addAction:[UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleCancel
 													  handler:^(UIAlertAction *action) {
 														  [alertController dismissViewControllerAnimated:YES completion:nil];
 													  }]];
@@ -62,10 +70,10 @@
 
 + (UIAlertController *)alertForCancel
 {
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Cancel", @"Оплата") message:nil preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Оплата" message:nil preferredStyle:UIAlertControllerStyleAlert];
 	
 	UIAlertAction *cancelAction = [UIAlertAction
-								   actionWithTitle:NSLocalizedString(@"Close", @"Закрыть")
+								   actionWithTitle:@"Закрыть"
 								   style:UIAlertActionStyleCancel
 								   handler:^(UIAlertAction *action)
 								   {
@@ -79,10 +87,10 @@
 
 + (UIAlertController *)alertAttachCardSuccessfull:(NSString *)cardId
 {
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"AttachCard.successfull", @"Карта успешно привязана") message:[NSString stringWithFormat:@"card id = %@", cardId] preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Карта успешно привязана" message:[NSString stringWithFormat:@"card id = %@", cardId] preferredStyle:UIAlertControllerStyleAlert];
 	
 	UIAlertAction *cancelAction = [UIAlertAction
-								   actionWithTitle:NSLocalizedString(@"Close", @"Закрыть")
+								   actionWithTitle:@"Закрыть"
 								   style:UIAlertActionStyleCancel
 								   handler:^(UIAlertAction *action)
 								   {
@@ -101,6 +109,7 @@
 			 makeCharge:(BOOL)makeCharge
   additionalPaymentData:(NSDictionary *)data
 			receiptData:(NSDictionary *)receiptData
+                  email:(NSString*)email
      fromViewController:(UIViewController *)viewController
                 success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
               cancelled:(void (^)(void))onCancelled
@@ -134,7 +143,7 @@
 	[designConfiguration setPayFormItems:@[@(CellEmpty20px),
 										   @(CellProductTitle),
 										   //@(CellProductDescription),
-										   //@(CellAmount),
+                                           @(CellAmount),
 										   //@(CellEmptyFlexibleSpace),
 										   @(CellPaymentCardRequisites),
 										   @(CellEmail),
@@ -175,8 +184,8 @@
                                                       amount:amount
                                                        title:name
                                                  description:description
-													  cardId:[ASDKTestSettings makeNewCard] ? nil:@""// nil - новая нужно вводить реквизиты карты, @"" - последняя сохраненная, @"836252" - карта по CardId
-                                                       email:@"test@gmail.com"
+													  cardId:@""
+                                                       email:email
                                                  customerKey:[PayController customerKey]
 												   recurrent:recurrent
 												  makeCharge:makeCharge
@@ -196,7 +205,6 @@
      }
                                                    cancelled:^
      {
-         [viewController presentViewController:[PayController alertForCancel] animated:YES completion:nil];
          onCancelled();
      }
                                                        error:^(ASDKAcquringSdkError *error)
@@ -328,7 +336,7 @@
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle message:error.errorDetails preferredStyle:UIAlertControllerStyleAlert];
 		
 		UIAlertAction *cancelAction = [UIAlertAction
-									   actionWithTitle:NSLocalizedString(@"Close", @"Закрыть")
+									   actionWithTitle:@"Закрыть"
 									   style:UIAlertActionStyleCancel
 									   handler:^(UIAlertAction *action)
 									   {
@@ -400,7 +408,7 @@
 												  formTitle:@"Новая карта"
 												 formHeader:@"Сохраните данные карты"
 												description:@"и оплачивайте, не вводя реквизиты"
-													  email:@"test@gmail.com"
+													  email:@""
 											  cardCheckType:cardCheckType
 												customerKey:[PayController customerKey]
 											 additionalData:data

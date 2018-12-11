@@ -19,7 +19,8 @@
 			  recurrent:(BOOL)recurrent
 			 makeCharge:(BOOL)makeCharge
   additionalPaymentData:(NSDictionary *)data
-			receiptData:(NSDictionary *)receiptData
+            receiptData:(NSDictionary *)receiptData
+                  email:(NSString*)email
      fromViewController:(UIViewController *)viewController
                 success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
               cancelled:(void (^)(void))onCancelled

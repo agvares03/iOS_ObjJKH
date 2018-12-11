@@ -49,21 +49,25 @@ class PaysController: UIViewController, DropperDelegate {
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
-//        if (self.sum <= 0) {
-//            let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
-//            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-//            alert.addAction(cancelAction)
-//            self.present(alert, animated: true, completion: nil)
-//        } else {
+        if (self.sum <= 0) {
+            let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
             #if isMupRCMytishi
 
-            PayController.buyItem(withName: "Оплата услуг ЖКХ ",
+            let name = "Оплата услуг ЖКХ"
+            let amount = NSNumber(floatLiteral: self.sum)
+        
+            PayController.buyItem(withName: name,
                                   description: "",
-                                  amount: NSNumber(floatLiteral: 1000),
+                                  amount: amount,
                                   recurrent: false,
                                   makeCharge: false,
-                                  additionalPaymentData: [:],
-                                  receiptData: [:],
+                                  additionalPaymentData: nil,
+                                  receiptData: nil,
+                                  email:"", // надо из настроек сюда передать емейл
                                   from: self,
                                   success: { (paymentInfo) in
                 
@@ -79,7 +83,7 @@ class PaysController: UIViewController, DropperDelegate {
                 defaults.synchronize()
                 self.performSegue(withIdentifier: "CostPay_New", sender: self)
             #endif
-//        }
+        }
     }
     
     override func viewDidLoad() {
