@@ -56,8 +56,25 @@
 
 + (UIAlertController *)alertWithError:(ASDKAcquringSdkError *)error
 {
-	NSString *alertTitle = error.errorMessage ? error.errorMessage : @"Ошибка";
-	NSString *alertDetails = error.errorDetails ? error.errorDetails : error.userInfo[kASDKStatus];
+	NSString *alertTitle = @"Ошибка";
+    
+    NSString *alertDetails = nil;
+    
+    if (error.errorDetails)
+    {
+        if ([error.errorDetails containsString:@"AUTH_FAIL"])
+        {
+            alertDetails = @"Неверно указан срок действия или CVV-код";
+        }
+        else
+        {
+            alertTitle = error.errorDetails;
+        }
+    }
+    else
+    {
+        alertDetails = error.userInfo[kASDKStatus];
+    }
 	
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertDetails preferredStyle:UIAlertControllerStyleAlert];
 	
