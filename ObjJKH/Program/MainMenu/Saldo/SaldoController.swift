@@ -132,16 +132,13 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         dropper.delegate = self
         dropper.items.append("Все")
-        if ((str_ls_arr?.count)! > 3) {
-            dropper.items.append((str_ls_arr?[0])!)
-            dropper.items.append((str_ls_arr?[1])!)
-            dropper.items.append((str_ls_arr?[2])!)
-        } else if ((str_ls_arr?.count)! == 2) {
-            dropper.items.append((str_ls_arr?[0])!)
-            dropper.items.append((str_ls_arr?[1])!)
-        } else if ((str_ls_arr?.count)! == 1) {
-            dropper.items.append((str_ls_arr?[0])!)
+        
+        if ((str_ls_arr?.count)! > 0) {
+            for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
+                dropper.items.append((str_ls_arr?[i])!)
+            }
         }
+        
         dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_button)
         dropper.hideWithAnimation(0.001)
         

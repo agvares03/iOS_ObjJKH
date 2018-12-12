@@ -257,7 +257,7 @@ class MainMenu: UIViewController {
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         
-        if ((str_ls_arr?.count)! > 3) {
+        if ((str_ls_arr?.count)! >= 3) {
             ls1.text = str_ls_arr?[0]
             btn_ls1.isHidden = false
             btn_ls1.isEnabled = true
