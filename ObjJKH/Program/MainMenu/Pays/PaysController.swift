@@ -60,6 +60,8 @@ class PaysController: UIViewController, DropperDelegate {
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.sum)
         
+            let defaults = UserDefaults.standard
+        
             PayController.buyItem(withName: name,
                                   description: "",
                                   amount: amount,
@@ -67,7 +69,7 @@ class PaysController: UIViewController, DropperDelegate {
                                   makeCharge: false,
                                   additionalPaymentData: nil,
                                   receiptData: nil,
-                                  email:"", // надо из настроек сюда передать емейл
+                                  email: defaults.object(forKey: "mail")! as! String, // надо из настроек сюда передать емейл
                                   from: self,
                                   success: { (paymentInfo) in
                 
