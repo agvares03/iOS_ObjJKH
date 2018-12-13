@@ -28,6 +28,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var ls1: UILabel!
     @IBOutlet weak var ls2: UILabel!
     @IBOutlet weak var ls3: UILabel!
+    @IBOutlet weak var btnAllLS: UIButton!    
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var PageView: UIView!
@@ -254,36 +255,7 @@ class MainMenu: UIViewController {
         labelName.text = defaults.string(forKey: "name")
         
         // Выведем подключенные лицевые счета
-        let str_ls = defaults.string(forKey: "str_ls")
-        let str_ls_arr = str_ls?.components(separatedBy: ",")
-        
-        if ((str_ls_arr?.count)! >= 3) {
-            ls1.text = str_ls_arr?[0]
-            btn_ls1.isHidden = false
-            btn_ls1.isEnabled = true
-            
-            ls2.text = str_ls_arr?[1]
-            btn_ls2.isHidden = false
-            btn_ls2.isEnabled = true
-            
-            ls3.text = str_ls_arr?[2]
-            btn_ls3.isHidden = false
-            btn_ls3.isEnabled = true
-        } else if ((str_ls_arr?.count)! == 2) {
-            ls1.text = str_ls_arr?[0]
-            btn_ls1.isHidden = false
-            btn_ls1.isEnabled = true
-            
-            ls2.text = str_ls_arr?[1]
-            btn_ls2.isHidden = false
-            btn_ls2.isEnabled = true
-        } else if ((str_ls_arr?.count)! == 1) {
-            ls1.text = str_ls_arr?[0]
-            if (ls1.text != "") {
-                btn_ls1.isHidden = false
-                btn_ls1.isEnabled = true
-            }
-        }
+        show_ls(defaults: defaults)
         
         // Подключим счетчик секунд
         if (defaults.bool(forKey: "NeedHello")) {
@@ -661,6 +633,62 @@ class MainMenu: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func show_ls(defaults: UserDefaults) {
+        let str_ls = defaults.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        
+        ls1.text = ""
+        btn_ls1.isHidden = true
+        btn_ls1.isEnabled = false
+        
+        ls2.text = ""
+        btn_ls2.isHidden = true
+        btn_ls2.isEnabled = false
+        
+        ls3.text = ""
+        btn_ls3.isHidden = true
+        btn_ls3.isEnabled = false
+        
+        btnAllLS.isHidden = true
+        btnAllLS.isEnabled = false
+        
+        if ((str_ls_arr?.count)! >= 3) {
+            ls1.text = str_ls_arr?[0]
+            btn_ls1.isHidden = false
+            btn_ls1.isEnabled = true
+            
+            ls2.text = str_ls_arr?[1]
+            btn_ls2.isHidden = false
+            btn_ls2.isEnabled = true
+            
+            ls3.text = str_ls_arr?[2]
+            btn_ls3.isHidden = false
+            btn_ls3.isEnabled = true
+            
+            btnAllLS.isHidden = false
+            btnAllLS.isEnabled = true
+        } else if ((str_ls_arr?.count)! == 2) {
+            ls1.text = str_ls_arr?[0]
+            btn_ls1.isHidden = false
+            btn_ls1.isEnabled = true
+            
+            ls2.text = str_ls_arr?[1]
+            btn_ls2.isHidden = false
+            btn_ls2.isEnabled = true
+            
+            btnAllLS.isHidden = true
+            btnAllLS.isEnabled = false
+        } else if ((str_ls_arr?.count)! == 1) {
+            ls1.text = str_ls_arr?[0]
+            if (ls1.text != "") {
+                btn_ls1.isHidden = false
+                btn_ls1.isEnabled = true
+            }
+            
+            btnAllLS.isHidden = true
+            btnAllLS.isEnabled = false
+        }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -717,6 +745,8 @@ class MainMenu: UIViewController {
             }
             load = true
         }
+        
+        show_ls(defaults: defaults)
         
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)

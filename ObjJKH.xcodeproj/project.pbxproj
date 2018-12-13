@@ -29,6 +29,15 @@
 		1C7B34D521993A4400E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		1C7B34D621993A4D00E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		2BA6430A5373E25736C0D4BE /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F6BD1BCFBBF87AE8F9D38 /* Pods_ObjJKH.framework */; };
+		410004B521C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		410004B621C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		410004B721C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		410004B821C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		410004B921C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		410004BA21C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		410004BB21C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		410004BC21C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		410004BD21C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
 		410D51F221B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
 		410D51F321B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
 		410D51F421B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
@@ -1035,6 +1044,7 @@
 		3C30202AA143265557CC7756 /* Pods_Stolitsa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stolitsa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D244462D5218B88F87AACCF /* Pods_Komeks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Komeks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40DF3309385DFF3BF2BCA555 /* Pods-ObjJKH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.debug.xcconfig"; sourceTree = "<group>"; };
+		410004B421C1EB200040D703 /* AllLS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLS.swift; sourceTree = "<group>"; };
 		410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tinkoff_Pay_Decides.m; sourceTree = "<group>"; };
 		410D51FB21B787F400C21455 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Chist_Dom/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		410D51FD21B79D6A00C21455 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/DJService/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1556,6 +1566,7 @@
 				41DFC455213FCA99002CEB62 /* MainMenuCons.swift */,
 				1C3A4C70218C08BE00A5C50E /* AddLSMup.swift */,
 				1C7B2DFA219BFA4900787507 /* RegLSMup.swift */,
+				410004B421C1EB200040D703 /* AllLS.swift */,
 			);
 			path = MainMenu;
 			sourceTree = "<group>";
@@ -2930,6 +2941,7 @@
 			files = (
 				4120922E2158CB2D001E713E /* AddAppCons.swift in Sources */,
 				4120922F2158CB2D001E713E /* QuestionAnswerVC.swift in Sources */,
+				410004BB21C1EB200040D703 /* AllLS.swift in Sources */,
 				412092302158CB2D001E713E /* NewsController.swift in Sources */,
 				412092312158CB2D001E713E /* AppsCell.swift in Sources */,
 				412092322158CB2D001E713E /* QuestionsTableVC.swift in Sources */,
@@ -3009,6 +3021,7 @@
 			files = (
 				412092A52159E603001E713E /* AddAppCons.swift in Sources */,
 				412092A62159E603001E713E /* QuestionAnswerVC.swift in Sources */,
+				410004BC21C1EB200040D703 /* AllLS.swift in Sources */,
 				412092A72159E603001E713E /* NewsController.swift in Sources */,
 				412092A82159E603001E713E /* AppsCell.swift in Sources */,
 				412092A92159E603001E713E /* QuestionsTableVC.swift in Sources */,
@@ -3088,6 +3101,7 @@
 			files = (
 				41DFC463213FFFF5002CEB62 /* AddAppCons.swift in Sources */,
 				41EF5A60213A906600789370 /* QuestionAnswerVC.swift in Sources */,
+				410004B521C1EB200040D703 /* AllLS.swift in Sources */,
 				418ABF8621353DF8004DB75C /* NewsController.swift in Sources */,
 				41EF5A022138D40800789370 /* AppsCell.swift in Sources */,
 				418ABFA221357773004DB75C /* QuestionsTableVC.swift in Sources */,
@@ -3167,6 +3181,7 @@
 			files = (
 				41DFC464213FFFF5002CEB62 /* AddAppCons.swift in Sources */,
 				41EF5A61213A906600789370 /* QuestionAnswerVC.swift in Sources */,
+				410004B621C1EB200040D703 /* AllLS.swift in Sources */,
 				418ABF8721353DF8004DB75C /* NewsController.swift in Sources */,
 				41EF5A032138D40800789370 /* AppsCell.swift in Sources */,
 				418ABFA321357773004DB75C /* QuestionsTableVC.swift in Sources */,
@@ -3246,6 +3261,7 @@
 			files = (
 				41DFC465213FFFF5002CEB62 /* AddAppCons.swift in Sources */,
 				41EF5A62213A906600789370 /* QuestionAnswerVC.swift in Sources */,
+				410004B721C1EB200040D703 /* AllLS.swift in Sources */,
 				418ABFAD21357DA5004DB75C /* NewsController.swift in Sources */,
 				41EF5A042138D40800789370 /* AppsCell.swift in Sources */,
 				418ABFAE21357DA5004DB75C /* QuestionsTableVC.swift in Sources */,
@@ -3325,6 +3341,7 @@
 			files = (
 				41BD70FA21B4E869006E78FC /* AddAppCons.swift in Sources */,
 				41BD70FB21B4E869006E78FC /* QuestionAnswerVC.swift in Sources */,
+				410004BD21C1EB200040D703 /* AllLS.swift in Sources */,
 				41BD70FC21B4E869006E78FC /* NewsController.swift in Sources */,
 				41BD70FD21B4E869006E78FC /* AppsCell.swift in Sources */,
 				41BD70FE21B4E869006E78FC /* QuestionsTableVC.swift in Sources */,
@@ -3464,6 +3481,7 @@
 				41DFC3A7213CF4E9002CEB62 /* Server.swift in Sources */,
 				41DFC3A8213CF4E9002CEB62 /* AppsCellClose.swift in Sources */,
 				41DFC3A9213CF4E9002CEB62 /* DB.swift in Sources */,
+				410004B821C1EB200040D703 /* AllLS.swift in Sources */,
 				41DFC3AA213CF4E9002CEB62 /* FilesController.swift in Sources */,
 				F43655B421BD6510001225DA /* PaymentSuccessViewController.m in Sources */,
 				41DFC3AB213CF4E9002CEB62 /* ObjJKH.xcdatamodeld in Sources */,
@@ -3490,6 +3508,7 @@
 			files = (
 				41DFC467213FFFF5002CEB62 /* AddAppCons.swift in Sources */,
 				41DFC3E4213D206C002CEB62 /* QuestionAnswerVC.swift in Sources */,
+				410004B921C1EB200040D703 /* AllLS.swift in Sources */,
 				41DFC3E5213D206C002CEB62 /* NewsController.swift in Sources */,
 				41DFC3E6213D206C002CEB62 /* AppsCell.swift in Sources */,
 				41DFC3E7213D206C002CEB62 /* QuestionsTableVC.swift in Sources */,
@@ -3569,6 +3588,7 @@
 			files = (
 				41FDA24C214229A0003D8110 /* AddAppCons.swift in Sources */,
 				41FDA24D214229A0003D8110 /* QuestionAnswerVC.swift in Sources */,
+				410004BA21C1EB200040D703 /* AllLS.swift in Sources */,
 				41FDA24E214229A0003D8110 /* NewsController.swift in Sources */,
 				41FDA24F214229A0003D8110 /* AppsCell.swift in Sources */,
 				41FDA250214229A0003D8110 /* QuestionsTableVC.swift in Sources */,
