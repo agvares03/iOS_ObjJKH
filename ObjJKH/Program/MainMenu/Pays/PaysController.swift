@@ -55,7 +55,7 @@ class PaysController: UIViewController, DropperDelegate {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            #if isMupRCMytishi
+            #if isStolitsa
 
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.sum)

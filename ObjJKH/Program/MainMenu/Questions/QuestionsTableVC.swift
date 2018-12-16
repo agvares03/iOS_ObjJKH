@@ -76,7 +76,7 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(questions?.count)
+        print(questions?.count ?? 0)
         
         return questions?.count ?? 0
     }
@@ -158,7 +158,7 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
             let unfilteredData = QuestionsJson(json: json! as! JSON)?.data
             var filtered: [QuestionDataJson] = []
             unfilteredData?.forEach { json in
-                
+
                 var isContains = true
                 json.questions?.forEach {
                     if !($0.isCompleteByUser ?? false) {

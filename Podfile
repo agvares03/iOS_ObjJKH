@@ -99,11 +99,16 @@ end
 
 target 'Stolitsa' do
 
+    # Оплата - Тинькофф
+    pod 'CardIO'
+    pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
+    pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
+    
     use_frameworks!
 
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
-pod 'Firebase/Database'
+    pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
