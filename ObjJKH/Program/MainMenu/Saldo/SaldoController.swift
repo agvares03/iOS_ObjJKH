@@ -396,6 +396,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
                                                     do {
+                                                        DB().del_db(table_name: "Saldo")
                                                         var bill_month    = ""
                                                         var bill_year     = ""
                                                         var bill_service  = ""
