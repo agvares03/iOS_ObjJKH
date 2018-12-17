@@ -129,8 +129,8 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
             self.present(alert, animated: true, completion: nil)
         } else {
             let urlPath = Server.SERVER + Server.ADD_APP +
-                "login=" + txtLogin +
-                "&pwd=" + txtPass +
+                "ident=" + txtLogin +
+//                "&pwd=" + txtPass +
                 "&name=" + txtText +
                 "&text=" + txtText +
                 "&type=" + String(self.appType + 1) +
