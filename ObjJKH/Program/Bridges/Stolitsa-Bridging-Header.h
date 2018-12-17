@@ -9,5 +9,6 @@
 #ifndef Stolitsa_Bridging_Header_h
 #define Stolitsa_Bridging_Header_h
 
+#import "PayController.h"
 
 #endif /* Stolitsa_Bridging_Header_h */
