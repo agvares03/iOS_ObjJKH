@@ -10,30 +10,37 @@ import UIKit
 import Dropper
 import CoreData
 
-class PaysController: UIViewController, DropperDelegate {
+class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBOutlet weak var viewTop: NSLayoutConstraint!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var btnPay: UIButton!
     @IBOutlet weak var historyPay: UIButton!
+    @IBOutlet weak var sendView: UIView!
     
     var fetchedResultsController: NSFetchedResultsController<Saldo>?
     var iterYear: String = "0"
     var iterMonth: String = "0"
     
     var sum: Double = 0
+    var selectedRow = 0
+    var checkBox:[Bool] = []
+    var sumOSV:[Double] = []
     
     var login: String?
     var pass: String?
-    
+    var currPoint = CGFloat()
     let dropper = Dropper(width: 150, height: 400)
 
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
-    @IBOutlet weak var txt_sum_obj: UILabel!
+    @IBOutlet weak var txt_sum_obj: UITextField!
     
     @IBAction func choice_ls_button(_ sender: UIButton) {
         if dropper.status == .hidden {
@@ -90,7 +97,7 @@ class PaysController: UIViewController, DropperDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        currPoint = sendView.frame.origin.y
         let defaults     = UserDefaults.standard
         // Логин и пароль
         login = defaults.string(forKey: "login")
@@ -103,7 +110,9 @@ class PaysController: UIViewController, DropperDelegate {
         // Заполним лиц. счетами отбор
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
-        
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 70
+        tableView.rowHeight = UITableViewAutomaticDimension
         dropper.delegate = self
         dropper.items.append("Все")
         if ((str_ls_arr?.count)! > 0) {
@@ -120,7 +129,11 @@ class PaysController: UIViewController, DropperDelegate {
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         historyPay.backgroundColor = myColors.btnColor.uiColor()
+        viewTop.constant = getPoint()
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        sendView.isUserInteractionEnabled = true
+        sendView.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,10 +161,9 @@ class PaysController: UIViewController, DropperDelegate {
         
     }
     
-    
-    // Дубль - получение ведомостей по лиц. счетам
-    // Ведомость
     func parse_OSV(login: String, pass: String) {
+        
+        var sum:Double = 0
         
         let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
@@ -169,6 +181,7 @@ class PaysController: UIViewController, DropperDelegate {
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
                                                     do {
+                                                        DB().del_db(table_name: "Saldo")
                                                         var bill_month    = ""
                                                         var bill_year     = ""
                                                         var bill_service  = ""
@@ -178,14 +191,48 @@ class PaysController: UIViewController, DropperDelegate {
                                                         var bill_total    = ""
                                                         var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
                                                         print(json)
+                                                        
+                                                        // Общие итоговые значения
+                                                        var obj_start: Double = 0
+                                                        var obj_plus: Double = 0
+                                                        var obj_minus: Double = 0
+                                                        var obj_end: Double = 0
+                                                        
                                                         if let json_bills = json["data"] {
                                                             let int_end = (json_bills.count)!-1
                                                             if (int_end < 0) {
                                                                 
                                                             } else {
-                                                                
+                                                                var itsFirst: Bool = true
                                                                 for index in 0...int_end {
                                                                     let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                                                    for obj in json_bill {
+                                                                        if obj.key == "Month" {
+                                                                            bill_month = String(describing: obj.value as! NSNumber)
+                                                                        }
+                                                                        if obj.key == "Year" {
+                                                                            bill_year = String(describing: obj.value as! NSNumber)
+                                                                        }
+                                                                    }
+                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month) == 1) && (i_month == 12)) {
+                                                                        if (itsFirst) {
+                                                                            itsFirst = false
+                                                                        } else {
+                                                                            self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
+                                                                            
+                                                                            obj_start = 0.00
+                                                                            obj_plus  = 0.00
+                                                                            obj_minus = 0.00
+                                                                            obj_end   = 0.00
+                                                                        }
+                                                                        
+                                                                        i_month = Int(bill_month)!
+                                                                        
+                                                                    }
+                                                                    if (Int(bill_year)! > i_year) {
+                                                                        i_year = Int(bill_year)!
+                                                                    }
+                                                                    
                                                                     for obj in json_bill {
                                                                         if obj.key == "Month" {
                                                                             bill_month = String(describing: obj.value as! NSNumber)
@@ -197,37 +244,55 @@ class PaysController: UIViewController, DropperDelegate {
                                                                             bill_service = obj.value as! String
                                                                         }
                                                                         if obj.key == "Accured" {
-                                                                            bill_acc = String(describing: obj.value as! NSNumber)
+                                                                            bill_acc = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                            obj_plus += (obj.value as! Double)
                                                                         }
                                                                         if obj.key == "Debt" {
-                                                                            bill_debt = String(describing: obj.value as! NSNumber)
+                                                                            bill_debt = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                            obj_start += (obj.value as! Double)
                                                                         }
                                                                         if obj.key == "Payed" {
-                                                                            bill_pay = String(describing: obj.value as! NSNumber)
+                                                                            bill_pay = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                            obj_minus += (obj.value as! Double)
                                                                         }
                                                                         if obj.key == "Total" {
-                                                                            bill_total = String(describing: obj.value as! NSNumber)
+                                                                            bill_total = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                            obj_end += (obj.value as! Double)
                                                                         }
                                                                     }
                                                                     
                                                                     self.add_data_saldo(usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
                                                                     
-                                                                    if (Int(bill_month)! > i_month) {
-                                                                        i_month = Int(bill_month)!
-                                                                    }
-                                                                    if (Int(bill_year)! > i_year) {
-                                                                        i_year = Int(bill_year)!
-                                                                    }
-                                                                    
                                                                 }
                                                             }
                                                         }
+                                                        
+                                                        self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
                                                         
                                                         self.end_osv()
                                                         
                                                     } catch let error as NSError {
                                                         print(error)
                                                     }
+                                                    
+                                                    // Выборка из БД последней ведомости - посчитаем сумму к оплате
+                                                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
+                                                    fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(i_month), String(i_year))
+                                                    do {
+                                                        let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+                                                        for result in results {
+                                                            let object = result as! NSManagedObject
+                                                            sum = sum + Double(object.value(forKey: "end") as! String)!
+                                                        }
+                                                    } catch {
+                                                        print(error)
+                                                    }
+                                                    
+                                                    let defaults = UserDefaults.standard
+                                                    defaults.setValue(String(i_month), forKey: "month_osv")
+                                                    defaults.setValue(String(i_year), forKey: "year_osv")
+                                                    defaults.setValue(String(describing: sum), forKey: "sum")
+                                                    defaults.synchronize()
                                                     
                                                 }
                                                 
@@ -251,6 +316,7 @@ class PaysController: UIViewController, DropperDelegate {
     }
     
     func end_osv() {
+        var endSum = 0.00
         // Выборка из БД последней ведомости - посчитаем сумму к оплате
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
@@ -259,21 +325,183 @@ class PaysController: UIViewController, DropperDelegate {
             for result in results {
                 let object = result as! NSManagedObject
                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                endSum = Double(object.value(forKey: "end") as! String)!
             }
-            
+            self.sum = self.sum - endSum
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
-                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-                    self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " р."
+//                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
+                    self.txt_sum_obj.text = String(format:"%.2f", self.sum)
                 } else {
-                    self.txt_sum_jkh.text = "0,00 р."
-                    self.txt_sum_obj.text = "0,00 р."
+//                    self.txt_sum_jkh.text = "0,00 р."
+                    self.txt_sum_obj.text = "0,00"
                 }
-                
+                self.updateFetchedResultsController()
+                self.updateTable()
+
             })
             
         } catch {
             print(error)
         }
-    }    
+    }
+    
+    func updateFetchedResultsController() {
+        let predicateFormat = String(format: "num_month = %@ AND year = %@", iterMonth, iterYear)
+        fetchedResultsController = CoreDataManager.instance.fetchedResultsControllerSaldo(entityName: "Saldo", keysForSort: ["usluga"], predicateFormat: predicateFormat) as NSFetchedResultsController<Saldo>
+        do {
+            try fetchedResultsController?.performFetch()
+        } catch {
+            print(error)
+        }
+    }
+    
+    func updateTable() {
+        self.tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = fetchedResultsController?.sections {
+            return sections[section].numberOfObjects - 1
+        } else {
+            return 0
+        }
+    }
+    
+    var select = false
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
+        let osv = fetchedResultsController!.object(at: indexPath)
+        if select == false{
+            cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+        }else{
+            if checkBox[selectedRow]{
+                cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
+                checkBox[selectedRow] = false
+            }else{
+                cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+                checkBox[selectedRow] = true
+            }
+        }
+        
+        cell.check.tintColor = myColors.btnColor.uiColor()
+        cell.check.backgroundColor = .white
+        if select == false{
+            let sum:String = osv.end!
+            checkBox.append(true)
+            sumOSV.append(Double(sum)!)
+        }
+        
+        if (osv.usluga == "Я") {
+            cell.usluga.text = "ИТОГО"
+        } else {
+            cell.usluga.text = osv.usluga
+        }
+        cell.end.text    = osv.end
+        
+        cell.delegate = self
+        select = false
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath.row
+        select = true
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        setSumm()
+    }
+    
+    func setSumm(){
+        var sum = 0.00
+        for i in 0 ... sumOSV.count - 1 {
+            if checkBox[i] == true{
+                sum = sum + sumOSV[i]
+            }
+        }
+        self.sum = sum
+        self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification?) {
+        let viewHeight = view.frame.size.height
+        if viewHeight == 667{
+            viewTop.constant = getPoint() - 210
+            return
+
+        }else if viewHeight == 736{
+            viewTop.constant = getPoint() - 220
+            return
+        }else if viewHeight == 568{
+            viewTop.constant = getPoint() - 210
+        }else{
+            viewTop.constant = getPoint() - 240
+        }
+    }
+    
+    // И вниз при исчезновении
+    @objc func keyboardWillHide(sender: NSNotification?) {
+        viewTop.constant = getPoint()
+    }
+    
+    @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    private func getPoint() -> CGFloat {
+        let viewHeight = view.frame.size.height
+        if viewHeight == 568{
+            return currPoint - 100
+        }else if viewHeight == 736{
+            return currPoint + 70
+        } else if viewHeight == 667{
+            return currPoint
+        }else {
+            return currPoint + 90
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Подхватываем показ клавиатуры
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+}
+
+class PaySaldoCell: UITableViewCell {
+    
+    var delegate: UIViewController?
+    
+    @IBOutlet weak var check: UIButton!
+    @IBOutlet weak var usluga: UILabel!
+    @IBOutlet weak var end: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.end.adjustsFontSizeToFitWidth = true
+    }
+    
+    func display(_ item: Web_Camera_json) {
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.end.text = nil
+        self.usluga.text = nil
+    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
 }
