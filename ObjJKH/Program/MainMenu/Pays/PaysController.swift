@@ -316,6 +316,10 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     func end_osv() {
+        self.sum = 0
+        select = false
+        checkBox.removeAll()
+        sumOSV.removeAll()
         var endSum = 0.00
         // Выборка из БД последней ведомости - посчитаем сумму к оплате
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
