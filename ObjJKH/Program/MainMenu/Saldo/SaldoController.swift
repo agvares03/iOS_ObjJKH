@@ -324,7 +324,6 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         cell.plus.text   = osv.start
         cell.minus.text  = osv.minus
         cell.end.text    = osv.end
-        
         cell.delegate = self
         return cell
     }
@@ -434,7 +433,6 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                                             itsFirst = false
                                                                         } else {
                                                                             self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
-                                                                            
                                                                             obj_start = 0.00
                                                                             obj_plus  = 0.00
                                                                             obj_minus = 0.00
@@ -475,9 +473,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                                             obj_end += (obj.value as! Double)
                                                                         }
                                                                     }
-                                                                    
                                                                     self.add_data_saldo(usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
-                                                                    
                                                                 }
                                                             }
                                                         }
@@ -517,6 +513,20 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     }
     
     func add_data_saldo(usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
+        #if isMupRCMytishi
+        if usluga == "Услуги ЖКУ"{
+            let managedObject = Saldo()
+            managedObject.id               = 1
+            managedObject.usluga           = usluga
+            managedObject.num_month        = num_month
+            managedObject.year             = year
+            managedObject.start            = start
+            managedObject.plus             = plus
+            managedObject.minus            = minus
+            managedObject.end              = end
+        }
+        
+        #else
         let managedObject = Saldo()
         managedObject.id               = 1
         managedObject.usluga           = usluga
@@ -526,7 +536,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         managedObject.plus             = plus
         managedObject.minus            = minus
         managedObject.end              = end
-        
+        #endif
         CoreDataManager.instance.saveContext()
     }
     
