@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import Dropper
 
-class CountersController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CountersController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var Count: Counters? = nil
     
@@ -17,6 +18,8 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
     
     var edLogin: String = ""
     var edPass: String = ""
+    
+    let dropper = Dropper(width: 150, height: 400)
     
     var currYear: String = ""
     var currMonth: String = ""
@@ -29,6 +32,8 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
     var minMonth: String = ""
     var maxYear: String = ""
     var maxMonth: String = ""
+    var choiceIdent = ""
+    
     
     var responseString:NSString = ""
     
@@ -37,6 +42,7 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
     
     var fetchedResultsController: NSFetchedResultsController<Counters>?
 
+    @IBOutlet weak var ls_Button: UIButton!
     @IBOutlet weak var tableCounters: UITableView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var can_count_label: UILabel!
@@ -48,6 +54,18 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func ls_button_choice(_ sender: UIButton) {
+        if dropper.status == .hidden {
+            
+            dropper.theme = Dropper.Themes.white
+            //            dropper.cornerRadius = 3
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.center, button: ls_Button)
+            view.addSubview(dropper)
+        } else {
+            dropper.hideWithAnimation(0.1)
+        }
     }
     
     @IBAction func leftButtonDidPress(_ sender: Any) {
@@ -65,11 +83,18 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
         iterMonth = String(m)
         iterYear = String(y)
         
-        updateFetchedResultsController()
-        updateMonthLabel()
-        updateTable()
-        updateArrowsEnabled()
-        updateEditInfoLabel()
+        if choiceIdent == ""{
+            updateFetchedResultsController()
+            updateMonthLabel()
+            updateTable()
+            updateArrowsEnabled()
+            updateEditInfoLabel()
+        }else{
+            let ident = identArr[0]
+            updateMonthLabel()
+            getData(ident: ident)
+            updateArrowsEnabled()
+        }
     }
     
     @IBAction func rightButtonDidPress(_ sender: Any) {
@@ -87,11 +112,19 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
         iterMonth = String(m)
         iterYear = String(y)
         
-        updateFetchedResultsController()
-        updateMonthLabel()
-        updateTable()
-        updateArrowsEnabled()
-        updateEditInfoLabel()
+        if choiceIdent == ""{
+            updateFetchedResultsController()
+            updateMonthLabel()
+            updateTable()
+            updateArrowsEnabled()
+            updateEditInfoLabel()
+        }else{
+            let ident = identArr[0]
+            updateMonthLabel()
+            getData(ident: ident)
+            updateArrowsEnabled()
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -122,6 +155,21 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             can_count_label.text = "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!"
         }
+        
+        let str_ls = defaults.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        
+        dropper.delegate = self
+        dropper.items.append("Все")
+        
+        if ((str_ls_arr?.count)! > 0) {
+            for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
+                dropper.items.append((str_ls_arr?[i])!)
+            }
+        }
+        
+        dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_Button)
+        dropper.hideWithAnimation(0.001)
         
         tableCounters.delegate = self
         
@@ -161,6 +209,45 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
                 maxMonth = rightCounter.num_month!
                 maxYear = rightCounter.year!
             }
+        }
+    }
+    var identArr    :[String] = []
+    var nameArr     :[String] = []
+    var numberArr   :[String] = []
+    var predArr     :[Float] = []
+    var teckArr     :[Float] = []
+    var diffArr     :[Float] = []
+    
+    func getData(ident: String){
+        identArr.removeAll()
+        nameArr.removeAll()
+        numberArr.removeAll()
+        predArr.removeAll()
+        teckArr.removeAll()
+        diffArr.removeAll()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
+        fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
+        do {
+            let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+            for result in results {
+                let object = result as! NSManagedObject
+                if ident != "Все"{
+                    if (object.value(forKey: "ident") as! String) == ident{
+                        identArr.append(object.value(forKey: "ident") as! String)
+                        nameArr.append(object.value(forKey: "count_name") as! String)
+                        numberArr.append(object.value(forKey: "uniq_num") as! String)
+                        predArr.append(object.value(forKey: "prev_value") as! Float)
+                        teckArr.append(object.value(forKey: "value") as! Float)
+                        diffArr.append(object.value(forKey: "diff") as! Float)
+                    }
+                }
+            }
+            DispatchQueue.main.async(execute: {
+                self.updateTable()
+            })
+            
+        } catch {
+            print(error)
         }
     }
     
@@ -237,10 +324,18 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController?.sections {
-            return sections[section].numberOfObjects
-        } else {
-            return 0
+        if choiceIdent == ""{
+            if let sections = fetchedResultsController?.sections {
+                return sections[section].numberOfObjects
+            } else {
+                return 0
+            }
+        }else{
+            if nameArr.count != 0 {
+                return nameArr.count
+            } else {
+                return 0
+            }
         }
     }
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -248,15 +343,26 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
 //    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let counter = (fetchedResultsController?.object(at: indexPath))! as Counters
-        self.Count = counter
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "CounterCell") as! CounterCell
-        cell.ident.text       = counter.ident
-        cell.name.text        = counter.count_name
-        cell.number.text      = counter.uniq_num
-        cell.pred.text        = counter.prev_value.description
-        cell.teck.text        = counter.value.description
-        cell.diff.text        = counter.diff.description
+        if choiceIdent == ""{
+            let counter = (fetchedResultsController?.object(at: indexPath))! as Counters
+            self.Count = counter
+            
+            cell.ident.text       = counter.ident
+            cell.name.text        = counter.count_name
+            cell.number.text      = counter.uniq_num
+            cell.pred.text        = counter.prev_value.description
+            cell.teck.text        = counter.value.description
+            cell.diff.text        = counter.diff.description
+        }else{
+            cell.ident.text       = identArr[indexPath.row]
+            cell.name.text        = nameArr[indexPath.row]
+            cell.number.text      = numberArr[indexPath.row]
+            cell.pred.text        = predArr[indexPath.row].description
+            cell.teck.text        = teckArr[indexPath.row].description
+            cell.diff.text        = diffArr[indexPath.row].description
+        }
+        
         
         cell.delegate = self
         return cell
@@ -281,6 +387,17 @@ class CountersController: UIViewController, UITableViewDelegate, UITableViewData
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func DropperSelectedRow(_ path: IndexPath, contents: String) {
+        ls_Button.setTitle(contents, for: UIControlState.normal)
+        if (contents == "Все") {
+            choiceIdent = ""
+            updateTable()
+        } else {
+            choiceIdent = contents
+            getData(ident: contents)
         }
     }
     

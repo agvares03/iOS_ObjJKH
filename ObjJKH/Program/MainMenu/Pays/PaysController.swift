@@ -32,12 +32,13 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     var selectedRow = 0
     var checkBox:[Bool] = []
     var sumOSV:[Double] = []
+    var osvc:[String] = []
     
     var login: String?
     var pass: String?
     var currPoint = CGFloat()
     let dropper = Dropper(width: 150, height: 400)
-
+    
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
     @IBOutlet weak var txt_sum_obj: UITextField!
@@ -46,7 +47,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         if dropper.status == .hidden {
             
             dropper.theme = Dropper.Themes.white
-//            dropper.cornerRadius = 3
+            //            dropper.cornerRadius = 3
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.center, button: ls_button)
             view.addSubview(dropper)
         } else {
@@ -56,6 +57,8 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
+        let k:String = txt_sum_obj.text!
+        self.sum = Double(k)!
         if (self.sum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -63,12 +66,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
-
+            
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.sum)
-        
+            
             let defaults = UserDefaults.standard
-        
+            
             PayController.buyItem(withName: name,
                                   description: "",
                                   amount: amount,
@@ -77,20 +80,20 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                                   additionalPaymentData: nil,
                                   receiptData: nil,
                                   email: defaults.object(forKey: "mail")! as! String, // надо из настроек сюда передать емейл
-                                  from: self,
-                                  success: { (paymentInfo) in
-                
+                from: self,
+                success: { (paymentInfo) in
+                    
             }, cancelled: {
                 
             }) { (error) in
                 
             }
-        
+            
             #else
-                let defaults = UserDefaults.standard
-                defaults.setValue(String(describing: self.sum), forKey: "sum")
-                defaults.synchronize()
-                self.performSegue(withIdentifier: "CostPay_New", sender: self)
+            let defaults = UserDefaults.standard
+            defaults.setValue(String(describing: self.sum), forKey: "sum")
+            defaults.synchronize()
+            self.performSegue(withIdentifier: "CostPay_New", sender: self)
             #endif
         }
     }
@@ -135,7 +138,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         sendView.isUserInteractionEnabled = true
         sendView.addGestureRecognizer(tap)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -302,6 +305,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     func add_data_saldo(usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
+        
         let managedObject = Saldo()
         managedObject.id               = 1
         managedObject.usluga           = usluga
@@ -311,7 +315,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         managedObject.plus             = plus
         managedObject.minus            = minus
         managedObject.end              = end
-        
         CoreDataManager.instance.saveContext()
     }
     
@@ -320,6 +323,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         select = false
         checkBox.removeAll()
         sumOSV.removeAll()
+        osvc.removeAll()
         var endSum = 0.00
         // Выборка из БД последней ведомости - посчитаем сумму к оплате
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
@@ -328,21 +332,29 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
+                #if isMupRCMytishi
+                if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
+                    osvc.append(object.value(forKey: "usluga") as! String)
+                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                }
+                #else
                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                 endSum = Double(object.value(forKey: "end") as! String)!
+                #endif
             }
             self.sum = self.sum - endSum
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
-//                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
+                    //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum)
                 } else {
-//                    self.txt_sum_jkh.text = "0,00 р."
+                    //                    self.txt_sum_jkh.text = "0,00 р."
                     self.txt_sum_obj.text = "0,00"
                 }
                 self.updateFetchedResultsController()
                 self.updateTable()
-
+                
             })
             
         } catch {
@@ -365,15 +377,43 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        #if isMupRCMytishi
+        return osvc.count
+        #else
         if let sections = fetchedResultsController?.sections {
             return sections[section].numberOfObjects - 1
         } else {
             return 0
         }
+        #endif
     }
     
     var select = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        #if isMupRCMytishi
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
+        if select == false{
+            cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+        }else{
+            if checkBox[selectedRow]{
+                cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
+                checkBox[selectedRow] = false
+            }else{
+                cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+                checkBox[selectedRow] = true
+            }
+        }
+        cell.check.tintColor = myColors.btnColor.uiColor()
+        cell.check.backgroundColor = .white
+        if select == false{
+            checkBox.append(true)
+        }
+        cell.usluga.text = osvc[0]
+        cell.end.text    = String(sumOSV[0])
+        
+        cell.delegate = self
+        select = false
+        #else
         let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
         let osv = fetchedResultsController!.object(at: indexPath)
         if select == false{
@@ -387,7 +427,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 checkBox[selectedRow] = true
             }
         }
-        
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
         if select == false{
@@ -405,6 +444,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         
         cell.delegate = self
         select = false
+        #endif
         return cell
     }
     
@@ -431,7 +471,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         if viewHeight == 667{
             viewTop.constant = getPoint() - 210
             return
-
+            
         }else if viewHeight == 736{
             viewTop.constant = getPoint() - 220
             return
