@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7d6-rP-08f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7d6-rP-08f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,6 +27,13 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spin.png" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-eJ-IBd">
+                                <rect key="frame" x="338" y="71" width="21" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="60F-39-Ybf"/>
+                                    <constraint firstAttribute="height" constant="26" id="DZk-hQ-kaz"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gu-cw-qiJ">
                                 <rect key="frame" x="146" y="69" width="229" height="30"/>
                                 <state key="normal" title="Все">
@@ -36,13 +43,6 @@
                                     <action selector="ls_button_choice:" destination="zKW-ao-E5V" eventType="touchUpInside" id="uPk-I7-Zhg"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spin.png" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-eJ-IBd">
-                                <rect key="frame" x="338" y="71" width="21" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="21" id="60F-39-Ybf"/>
-                                    <constraint firstAttribute="height" constant="26" id="DZk-hQ-kaz"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Январь 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYz-dI-ZUh">
                                 <rect key="frame" x="16" y="109" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -316,7 +316,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="17" height="17"/>
+        <image name="back" width="58.285713195800781" height="58.285713195800781"/>
         <image name="spin.png" width="840" height="840"/>
     </resources>
 </document>

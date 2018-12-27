@@ -57,6 +57,8 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
+        let k:String = txt_sum_obj.text!
+        self.sum = Double(k)!
         if (self.sum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -64,7 +66,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
-
+            
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.sum)
             

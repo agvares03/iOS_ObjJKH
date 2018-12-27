@@ -514,6 +514,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     
     func add_data_saldo(usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
         #if isMupRCMytishi
+//        print(usluga)
         if usluga == "Услуги ЖКУ"{
             let managedObject = Saldo()
             managedObject.id               = 1
