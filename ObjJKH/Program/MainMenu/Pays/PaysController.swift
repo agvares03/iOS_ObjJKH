@@ -66,27 +66,20 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
-            
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.sum)
             
             let defaults = UserDefaults.standard
-            
-            PayController.buyItem(withName: name,
-                                  description: "",
-                                  amount: amount,
-                                  recurrent: false,
-                                  makeCharge: false,
-                                  additionalPaymentData: nil,
-                                  receiptData: nil,
-                                  email: defaults.object(forKey: "mail")! as! String, // надо из настроек сюда передать емейл
-                from: self,
-                success: { (paymentInfo) in
+            defaults.setValue("", forKeyPath: "mail")
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: nil, receiptData: nil, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                     
             }, cancelled: {
                 
             }) { (error) in
-                
+                let alert = UIAlertController(title: "Ошибка", message: "Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
             }
             
             #else
