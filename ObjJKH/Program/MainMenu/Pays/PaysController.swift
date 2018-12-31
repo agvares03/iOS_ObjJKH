@@ -17,6 +17,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     
+    @IBOutlet weak var servicePay: UILabel!
     @IBOutlet weak var viewTop: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var back: UIBarButtonItem!
@@ -29,6 +30,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     var iterMonth: String = "0"
     
     var sum: Double = 0
+    var totalSum: Double = 0
     var selectedRow = 0
     var checkBox:[Bool] = []
     var sumOSV:[Double] = []
@@ -38,6 +40,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     var pass: String?
     var currPoint = CGFloat()
     let dropper = Dropper(width: 150, height: 400)
+    
     
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
@@ -57,36 +60,29 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
-        let k:String = txt_sum_obj.text!
-        self.sum = Double(k)!
-        if (self.sum <= 0) {
+        let k:String = txt_sum_jkh.text!
+        print(k)
+        self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
+        if (self.totalSum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
-            
             let name = "Оплата услуг ЖКХ"
-            let amount = NSNumber(floatLiteral: self.sum)
+            let amount = NSNumber(floatLiteral: self.totalSum)
             
             let defaults = UserDefaults.standard
-            
-            PayController.buyItem(withName: name,
-                                  description: "",
-                                  amount: amount,
-                                  recurrent: false,
-                                  makeCharge: false,
-                                  additionalPaymentData: nil,
-                                  receiptData: nil,
-                                  email: defaults.object(forKey: "mail")! as! String, // надо из настроек сюда передать емейл
-                from: self,
-                success: { (paymentInfo) in
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: nil, receiptData: nil, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                     
             }, cancelled: {
                 
             }) { (error) in
-                
+                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
             }
             
             #else
@@ -347,10 +343,15 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
                     //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
+                    self.totalSum = self.sum / 0.92
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+                    self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
+                    self.servicePay.text  = String(format:"%.2f", self.totalSum - self.sum) + " .руб"
                 } else {
                     //                    self.txt_sum_jkh.text = "0,00 р."
                     self.txt_sum_obj.text = "0,00"
+                    self.txt_sum_jkh.text = "0,00 .руб"
+                    self.servicePay.text  = "0,00 .руб"
                 }
                 self.updateFetchedResultsController()
                 self.updateTable()
@@ -463,7 +464,26 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
         }
         self.sum = sum
+        self.totalSum = self.sum / 0.92
         self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+        self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
+        self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let str: String = textField.text!
+        if str != ""{
+            self.sum = Double(str)!
+            self.totalSum = self.sum / 0.92
+            self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
+            self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+        }else{
+            self.sum = 0.00
+            self.totalSum = self.sum / 0.92
+            self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
+            self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+        }
+        
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {
@@ -510,6 +530,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         // Подхватываем показ клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        txt_sum_obj.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

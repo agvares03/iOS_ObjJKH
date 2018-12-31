@@ -269,7 +269,7 @@ class FirstController: UIViewController {
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
-        } else if (responseString == "2") {
+        } else if (responseString == "2") || (responseString.contains("еверный логин")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
