@@ -59,7 +59,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             dropper.hideWithAnimation(0.1)
         }
     }
-    var items:[ItemsData] = []
+    var items:[Any] = []
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
@@ -72,34 +72,38 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
-            var i = 0
             var sum = 0.00
             sumOSV.forEach{
                 sum = sum + $0
             }
-            if sum != self.totalSum{
-                for i in 0...sumOSV.count - 1{
-                    sumOSV[i] = sumOSV[i] * (sumOSV[i] / self.totalSum)
-                }
-            }
+//            if sum != self.totalSum{
+//                for i in 0...sumOSV.count - 1{
+//                    sumOSV[i] = sumOSV[i] * (sumOSV[i] / self.totalSum)
+//                }
+//            }
+            var i = 0
             osvc.forEach{
-                items.append(ItemsData(name: $0, price: sumOSV[i], quantity: 1, amount: sumOSV[i], tax: "none"))
+                let ItemsData = ["Name": $0, "Price": sumOSV[i], "Quantity": 1, "Amount": sumOSV[i], "Tax": "none"] as [String : Any]
+                items.append(ItemsData)
                 i += 1
             }
-            print(items)
-            var description = ""
+            var Data:[String:String] = [:]
             if selectLS == "Все"{
-                description = UserDefaults.standard.string(forKey: "str_ls")!
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+                let str_ls_arr = str_ls.components(separatedBy: ",")
+                for i in 0...str_ls_arr.count - 1{
+                    Data["ls\(i + 1)"] = str_ls_arr[0]
+                }
             }else{
-                description = selectLS
+                Data["ls1"] = selectLS
             }
-            let receiptData:NSDictionary = ["Items" : items, "Email" : UserDefaults.standard.object(forKey: "mail")! as! String, "Phone" : UserDefaults.standard.object(forKey: "login")! as! String, "Taxation" : ""]
+            let receiptData:NSDictionary = ["Items" : items, "Email" : UserDefaults.standard.object(forKey: "mail")! as! String, "Phone" : UserDefaults.standard.object(forKey: "login")! as! String, "Taxation" : "osn"]
             print(receiptData)
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
             
             let defaults = UserDefaults.standard
-            PayController.buyItem(withName: name, description: description, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: nil, receiptData: receiptData as? [AnyHashable : Any], email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData as? [AnyHashable : Any], email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                     
             }, cancelled: {
                 
@@ -600,21 +604,4 @@ class PaySaldoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-}
-
-final class ItemsData: MainDataProtocol {
-    
-    let Name    :   String
-    let Price   :   Double
-    let Quantity:   Int
-    let Amount  :   Double
-    let Tax     :   String
-    
-    init(name: String, price: Double, quantity: Int, amount: Double, tax: String) {
-        self.Name       = name
-        self.Price      = price
-        self.Quantity   = quantity
-        self.Amount     = amount
-        self.Tax        = tax
-    }
 }
