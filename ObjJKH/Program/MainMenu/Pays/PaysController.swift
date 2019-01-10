@@ -10,6 +10,8 @@ import UIKit
 import Dropper
 import CoreData
 
+private protocol MainDataProtocol:  class {}
+
 class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
@@ -57,11 +59,11 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             dropper.hideWithAnimation(0.1)
         }
     }
+    var items:[ItemsData] = []
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
         let k:String = txt_sum_jkh.text!
-        print(k)
         self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
         if (self.totalSum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
@@ -70,11 +72,34 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
+            var i = 0
+            var sum = 0.00
+            sumOSV.forEach{
+                sum = sum + $0
+            }
+            if sum != self.totalSum{
+                for i in 0...sumOSV.count - 1{
+                    sumOSV[i] = sumOSV[i] * (sumOSV[i] / self.totalSum)
+                }
+            }
+            osvc.forEach{
+                items.append(ItemsData(name: $0, price: sumOSV[i], quantity: 1, amount: sumOSV[i], tax: "none"))
+                i += 1
+            }
+            print(items)
+            var description = ""
+            if selectLS == "Все"{
+                description = UserDefaults.standard.string(forKey: "str_ls")!
+            }else{
+                description = selectLS
+            }
+            let receiptData:NSDictionary = ["Items" : items, "Email" : UserDefaults.standard.object(forKey: "mail")! as! String, "Phone" : UserDefaults.standard.object(forKey: "login")! as! String, "Taxation" : ""]
+            print(receiptData)
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
             
             let defaults = UserDefaults.standard
-            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: nil, receiptData: nil, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+            PayController.buyItem(withName: name, description: description, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: nil, receiptData: receiptData as? [AnyHashable : Any], email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                     
             }, cancelled: {
                 
@@ -119,6 +144,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 dropper.items.append((str_ls_arr?[i])!)
             }
         }
+        selectLS = "Все"
         dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_button)
         dropper.hideWithAnimation(0.001)
         
@@ -140,12 +166,16 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         // Dispose of any resources that can be recreated.
     }
     
+    var selectLS = ""
+    
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_button.setTitle(contents, for: UIControlState.normal)
         self.sum = 0
         if (contents == "Все") {
+            selectLS = "Все"
             getSum(login: login!, pass: pass!)
         } else {
+            selectLS = contents
             getSum(login: contents, pass: pass!)
         }
     }
@@ -328,16 +358,16 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
-                #if isMupRCMytishi
-                if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
-                    osvc.append(object.value(forKey: "usluga") as! String)
-                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
-                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
-                }
-                #else
+//                #if isMupRCMytishi
+//                if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
+//                    osvc.append(object.value(forKey: "usluga") as! String)
+//                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+//                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+//                }
+//                #else
                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                 endSum = Double(object.value(forKey: "end") as! String)!
-                #endif
+//                #endif
             }
             self.sum = self.sum - endSum
             DispatchQueue.main.async(execute: {
@@ -378,43 +408,43 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        #if isMupRCMytishi
-        return osvc.count
-        #else
+//        #if isMupRCMytishi
+//        return osvc.count
+//        #else
         if let sections = fetchedResultsController?.sections {
             return sections[section].numberOfObjects - 1
         } else {
             return 0
         }
-        #endif
+//        #endif
     }
     
     var select = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        #if isMupRCMytishi
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
-        if select == false{
-            cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
-        }else{
-            if checkBox[selectedRow]{
-                cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
-                checkBox[selectedRow] = false
-            }else{
-                cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
-                checkBox[selectedRow] = true
-            }
-        }
-        cell.check.tintColor = myColors.btnColor.uiColor()
-        cell.check.backgroundColor = .white
-        if select == false{
-            checkBox.append(true)
-        }
-        cell.usluga.text = osvc[0]
-        cell.end.text    = String(sumOSV[0])
-        
-        cell.delegate = self
-        select = false
-        #else
+//        #if isMupRCMytishi
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
+//        if select == false{
+//            cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+//        }else{
+//            if checkBox[selectedRow]{
+//                cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
+//                checkBox[selectedRow] = false
+//            }else{
+//                cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+//                checkBox[selectedRow] = true
+//            }
+//        }
+//        cell.check.tintColor = myColors.btnColor.uiColor()
+//        cell.check.backgroundColor = .white
+//        if select == false{
+//            checkBox.append(true)
+//        }
+//        cell.usluga.text = osvc[0]
+//        cell.end.text    = String(sumOSV[0])
+//
+//        cell.delegate = self
+//        select = false
+//        #else
         let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
         let osv = fetchedResultsController!.object(at: indexPath)
         if select == false{
@@ -432,6 +462,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         cell.check.backgroundColor = .white
         if select == false{
             let sum:String = osv.end!
+            osvc.append(osv.usluga!)
             checkBox.append(true)
             sumOSV.append(Double(sum)!)
         }
@@ -445,7 +476,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         
         cell.delegate = self
         select = false
-        #endif
+//        #endif
         return cell
     }
     
@@ -569,4 +600,21 @@ class PaySaldoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+final class ItemsData: MainDataProtocol {
+    
+    let Name    :   String
+    let Price   :   Double
+    let Quantity:   Int
+    let Amount  :   Double
+    let Tax     :   String
+    
+    init(name: String, price: Double, quantity: Int, amount: Double, tax: String) {
+        self.Name       = name
+        self.Price      = price
+        self.Quantity   = quantity
+        self.Amount     = amount
+        self.Tax        = tax
+    }
 }
