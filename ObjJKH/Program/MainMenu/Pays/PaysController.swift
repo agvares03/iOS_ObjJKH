@@ -373,7 +373,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
                     //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-                    self.totalSum = self.sum / 0.092
+                    self.totalSum = self.sum / 0.92
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum)
                     self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
                     self.servicePay.text  = String(format:"%.2f", self.totalSum - self.sum) + " .руб"
@@ -495,7 +495,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
         }
         self.sum = sum
-        self.totalSum = self.sum / 0.092
+        self.totalSum = self.sum / 0.92
         self.txt_sum_obj.text = String(format:"%.2f", self.sum)
         self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
         self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
@@ -505,12 +505,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         let str: String = textField.text!
         if str != ""{
             self.sum = Double(str)!
-            self.totalSum = self.sum / 0.092
+            self.totalSum = self.sum / 0.92
             self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
             self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
         }else{
             self.sum = 0.00
-            self.totalSum = self.sum / 0.092
+            self.totalSum = self.sum / 0.92
             self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
             self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
         }
