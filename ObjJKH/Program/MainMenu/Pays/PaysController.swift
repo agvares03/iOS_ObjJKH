@@ -72,21 +72,28 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
+            items.removeAll()
             var sum = 0.00
             sumOSV.forEach{
                 sum = sum + $0
             }
-//            if sum != self.totalSum{
-//                for i in 0...sumOSV.count - 1{
-//                    sumOSV[i] = sumOSV[i] * (sumOSV[i] / self.totalSum)
-//                }
+            let servicePay = totalSum - self.sum
+//            if sum + servicePay != self.totalSum{
+                for i in 0...sumOSV.count - 1{
+                    let p = sumOSV[i] * 100 / (sum)
+                    sumOSV[i] = self.sum * p / 100
+                }
 //            }
             var i = 0
-            osvc.forEach{
-                let ItemsData = ["Name": $0, "Price": sumOSV[i], "Quantity": 1, "Amount": sumOSV[i], "Tax": "none"] as [String : Any]
-                items.append(ItemsData)
+            checkBox.forEach{
+                if $0 == true{
+                    let ItemsData = ["Name" : osvc[i], "Price" : Int(sumOSV[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumOSV[i] * 100), "Tax" : "none"] as [String : Any]
+                    items.append(ItemsData)
+                }
                 i += 1
             }
+            let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePay * 100), "Quantity" : Double(1.00), "Amount" : Int(servicePay * 100), "Tax" : "none"] as [String : Any]
+            items.append(ItemsData)
             var Data:[String:String] = [:]
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
@@ -97,13 +104,13 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }else{
                 Data["ls1"] = selectLS
             }
-            let receiptData:NSDictionary = ["Items" : items, "Email" : UserDefaults.standard.object(forKey: "mail")! as! String, "Phone" : UserDefaults.standard.object(forKey: "login")! as! String, "Taxation" : "osn"]
-            print(receiptData)
+            let defaults = UserDefaults.standard
+            let receiptData = ["Items" : items, "Email" : defaults.object(forKey: "mail")! as? String ?? "", "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
             
-            let defaults = UserDefaults.standard
-            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData as? [AnyHashable : Any], email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+            print(receiptData)
+            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                     
             }, cancelled: {
                 
@@ -113,7 +120,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             }
-            
             #else
             let defaults = UserDefaults.standard
             defaults.setValue(String(describing: self.sum), forKey: "sum")
@@ -377,10 +383,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
                     //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-                    self.totalSum = self.sum / 0.92
+                    let serviceP = self.sum / 0.992 - self.sum
+                    self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+                    self.totalSum = self.sum + serviceP
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum)
                     self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
-                    self.servicePay.text  = String(format:"%.2f", self.totalSum - self.sum) + " .руб"
+                    
                 } else {
                     //                    self.txt_sum_jkh.text = "0,00 р."
                     self.txt_sum_obj.text = "0,00"
@@ -499,24 +507,27 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
         }
         self.sum = sum
-        self.totalSum = self.sum / 0.92
+        let serviceP = self.sum / 0.992 - self.sum
+        self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+        self.totalSum = self.sum + serviceP
         self.txt_sum_obj.text = String(format:"%.2f", self.sum)
-        self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
-        self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         let str: String = textField.text!
         if str != ""{
             self.sum = Double(str)!
-            self.totalSum = self.sum / 0.92
-            self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
-            self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+            let serviceP = self.sum / 0.992 - self.sum
+            self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+            self.totalSum = self.sum + serviceP
+            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
         }else{
             self.sum = 0.00
-            self.totalSum = self.sum / 0.92
-            self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
-            self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+            let serviceP = self.sum / 0.992 - self.sum
+            self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+            self.totalSum = self.sum + serviceP
+            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
         }
         
     }
