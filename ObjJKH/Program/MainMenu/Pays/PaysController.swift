@@ -63,6 +63,37 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
+            let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
+            alert.addTextField { (textField) in
+                textField.placeholder = "e-mail..."
+            }
+            let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
+                let textField = alert.textFields![0]
+                let str = textField.text
+                if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
+                    UserDefaults.standard.set(str, forKey: "mail")
+                    self.payed()
+                }else{
+                    textField.text = ""
+                    textField.placeholder = "e-mail..."
+                    let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+            }
+            
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            payed()
+        }
+    }
+    
+    func payed(){
         let k:String = txt_sum_jkh.text!
         self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
         if (self.totalSum <= 0) {
@@ -79,12 +110,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
             var sumO:[Double] = []
             let servicePay = totalSum - self.sum
-//            if sum + servicePay != self.totalSum{
-                for i in 0...sumOSV.count - 1{
-                    let p = sumOSV[i] * 100 / (sum)
-                    sumO.append(self.sum * p / 100)
-                }
-//            }
+            //            if sum + servicePay != self.totalSum{
+            for i in 0...sumOSV.count - 1{
+                let p = sumOSV[i] * 100 / (sum)
+                sumO.append(self.sum * p / 100)
+            }
+            //            }
             var i = 0
             checkBox.forEach{
                 if $0 == true && sumO[i] > 0.00{
@@ -107,37 +138,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
             let defaults = UserDefaults.standard
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
-                let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
-                alert.addTextField { (textField) in
-                    textField.placeholder = "e-mail..."
-                }
-                let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
-                    let textField = alert.textFields![0]
-                    let str = textField.text
-                    if !(str?.contains("@"))!{
-                        textField.text = ""
-                        textField.placeholder = "e-mail..."
-                        let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
-                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                        alert.addAction(cancelAction)
-                        self.present(alert, animated: true, completion: nil)
-                    }else{
-                        defaults.set(str, forKey: "mail")
-                    }
-                }
-                
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
             
             print(receiptData)
             PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
-                    
+                
             }, cancelled: {
                 
             }) { (error) in
@@ -598,7 +604,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Подхватываем показ клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -610,6 +615,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        txt_sum_obj.removeTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
 }
 

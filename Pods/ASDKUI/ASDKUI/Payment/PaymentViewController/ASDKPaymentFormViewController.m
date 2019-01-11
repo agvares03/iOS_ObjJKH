@@ -1165,6 +1165,9 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
              {
                  if (strongSelf.onSuccess)
                  {
+                     NSString *valueToSave = @"YES";
+                     [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"payment"];
+                     [[NSUserDefaults standardUserDefaults] synchronize];
                      strongSelf.onSuccess(paymentInfo);
                  }
              }];
