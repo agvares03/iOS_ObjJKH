@@ -87,7 +87,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
 //            }
             var i = 0
             checkBox.forEach{
-                if $0 == true{
+                if $0 == true && sumO[i] > 0.00{
                     let ItemsData = ["Name" : osvc[i], "Price" : Int(sumO[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumO[i] * 100), "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
                 }
