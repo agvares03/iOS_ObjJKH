@@ -77,17 +77,18 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             sumOSV.forEach{
                 sum = sum + $0
             }
+            var sumO:[Double] = []
             let servicePay = totalSum - self.sum
 //            if sum + servicePay != self.totalSum{
                 for i in 0...sumOSV.count - 1{
                     let p = sumOSV[i] * 100 / (sum)
-                    sumOSV[i] = self.sum * p / 100
+                    sumO.append(self.sum * p / 100)
                 }
 //            }
             var i = 0
             checkBox.forEach{
                 if $0 == true{
-                    let ItemsData = ["Name" : osvc[i], "Price" : Int(sumOSV[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumOSV[i] * 100), "Tax" : "none"] as [String : Any]
+                    let ItemsData = ["Name" : osvc[i], "Price" : Int(sumO[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumO[i] * 100), "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
                 }
                 i += 1
@@ -105,7 +106,32 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 Data["ls1"] = selectLS
             }
             let defaults = UserDefaults.standard
-            let receiptData = ["Items" : items, "Email" : defaults.object(forKey: "mail")! as? String ?? "", "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
+                let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
+                alert.addTextField { (textField) in
+                    textField.placeholder = "e-mail..."
+                }
+                let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
+                    let textField = alert.textFields![0]
+                    let str = textField.text
+                    if !(str?.contains("@"))!{
+                        textField.text = ""
+                        textField.placeholder = "e-mail..."
+                        let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                        alert.addAction(cancelAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }else{
+                        defaults.set(str, forKey: "mail")
+                    }
+                }
+                
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
             
