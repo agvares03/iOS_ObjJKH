@@ -52,6 +52,7 @@ NSString *const kCurrencyRubSymbol = @"₽";
 
 - (void)updateAmountLabel
 {
+    printf("%f", self.amount.doubleValue);
     NSString *amountWithCurrency = [NSString stringWithFormat:@"%.2f %@", self.amount.doubleValue, kCurrencyRubSymbol];
     NSString *amountFull = [NSString stringWithFormat:@"Сумма %@ оплачена успешно", amountWithCurrency];
     

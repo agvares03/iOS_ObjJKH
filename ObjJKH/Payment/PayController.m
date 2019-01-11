@@ -210,7 +210,6 @@
 												 receiptData:receiptData
                                                      success:^(ASDKPaymentInfo *paymentInfo)
      {
-         printf("%s", paymentInfo);
 		 [[TransactionHistoryModelController sharedInstance] addTransaction:@{@"paymentId":paymentInfo.paymentId, @"paymentInfo":paymentInfo.dictionary, @"summ":amount, @"description":description, kASDKStatus:paymentInfo.status}];
 
          PaymentSuccessViewController *vc = [[PaymentSuccessViewController alloc] init];
