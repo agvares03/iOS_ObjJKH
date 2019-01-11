@@ -81,7 +81,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
 //            if sum + servicePay != self.totalSum{
                 for i in 0...sumOSV.count - 1{
                     let p = sumOSV[i] * 100 / (sum)
-                    sumOSV[i] = self.totalSum * p / 100
+                    sumOSV[i] = self.sum * p / 100
                 }
 //            }
             var i = 0
@@ -92,6 +92,8 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 }
                 i += 1
             }
+            let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePay * 100), "Quantity" : Double(1.00), "Amount" : Int(servicePay * 100), "Tax" : "none"] as [String : Any]
+            items.append(ItemsData)
             var Data:[String:String] = [:]
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
@@ -102,12 +104,13 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }else{
                 Data["ls1"] = selectLS
             }
-            let receiptData = ["Items" : items, "Email" : "uuserg98@yandex.ru", "Phone" : "+79247512110", "Taxation" : "osn"] as [String : Any]
+            let defaults = UserDefaults.standard
+            let receiptData = ["Items" : items, "Email" : defaults.object(forKey: "mail")! as? String ?? "", "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
-            let defaults = UserDefaults.standard
-            print(receiptData)//defaults.object(forKey: "mail")! as? String
-            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: "uuserg98@yandex.ru", from: self, success: { (paymentInfo) in
+            
+            print(receiptData)
+            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                     
             }, cancelled: {
                 
@@ -380,10 +383,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
                     //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-                    self.totalSum = self.sum / 0.92
+                    let serviceP = self.sum / 0.992 - self.sum
+                    self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+                    self.totalSum = self.sum + serviceP
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum)
                     self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
-                    self.servicePay.text  = String(format:"%.2f", self.totalSum - self.sum) + " .руб"
+                    
                 } else {
                     //                    self.txt_sum_jkh.text = "0,00 р."
                     self.txt_sum_obj.text = "0,00"
@@ -502,24 +507,27 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
         }
         self.sum = sum
-        self.totalSum = self.sum / 0.92
+        let serviceP = self.sum / 0.992 - self.sum
+        self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+        self.totalSum = self.sum + serviceP
         self.txt_sum_obj.text = String(format:"%.2f", self.sum)
-        self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
-        self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         let str: String = textField.text!
         if str != ""{
             self.sum = Double(str)!
-            self.totalSum = self.sum / 0.92
-            self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
-            self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+            let serviceP = self.sum / 0.992 - self.sum
+            self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+            self.totalSum = self.sum + serviceP
+            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
         }else{
             self.sum = 0.00
-            self.totalSum = self.sum / 0.92
-            self.txt_sum_jkh.text = String(format:"%.2f", totalSum) + " .руб"
-            self.servicePay.text  = String(format:"%.2f", totalSum - self.sum) + " .руб"
+            let serviceP = self.sum / 0.992 - self.sum
+            self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+            self.totalSum = self.sum + serviceP
+            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
         }
         
     }
