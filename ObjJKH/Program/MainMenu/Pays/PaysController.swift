@@ -72,19 +72,24 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
         } else {
             #if isMupRCMytishi
+            items.removeAll()
             var sum = 0.00
             sumOSV.forEach{
                 sum = sum + $0
             }
-//            if sum != self.totalSum{
-//                for i in 0...sumOSV.count - 1{
-//                    sumOSV[i] = sumOSV[i] * (sumOSV[i] / self.totalSum)
-//                }
+            let servicePay = totalSum - self.sum
+//            if sum + servicePay != self.totalSum{
+                for i in 0...sumOSV.count - 1{
+                    let p = sumOSV[i] * 100 / (sum)
+                    sumOSV[i] = self.totalSum * p / 100
+                }
 //            }
             var i = 0
-            osvc.forEach{
-                let ItemsData = ["Name": $0, "Price": sumOSV[i], "Quantity": 1, "Amount": sumOSV[i], "Tax": "none"] as [String : Any]
-                items.append(ItemsData)
+            checkBox.forEach{
+                if $0 == true{
+                    let ItemsData = ["Name" : osvc[i], "Price" : Int(sumOSV[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumOSV[i] * 100), "Tax" : "none"] as [String : Any]
+                    items.append(ItemsData)
+                }
                 i += 1
             }
             var Data:[String:String] = [:]
@@ -97,13 +102,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }else{
                 Data["ls1"] = selectLS
             }
-            let receiptData:NSDictionary = ["Items" : items, "Email" : UserDefaults.standard.object(forKey: "mail")! as! String, "Phone" : UserDefaults.standard.object(forKey: "login")! as! String, "Taxation" : "osn"]
-            print(receiptData)
+            let receiptData = ["Items" : items, "Email" : "uuserg98@yandex.ru", "Phone" : "+79247512110", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
-            
             let defaults = UserDefaults.standard
-            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData as? [AnyHashable : Any], email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+            print(receiptData)//defaults.object(forKey: "mail")! as? String
+            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: "uuserg98@yandex.ru", from: self, success: { (paymentInfo) in
                     
             }, cancelled: {
                 
@@ -113,7 +117,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             }
-            
             #else
             let defaults = UserDefaults.standard
             defaults.setValue(String(describing: self.sum), forKey: "sum")
