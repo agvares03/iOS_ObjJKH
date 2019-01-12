@@ -142,7 +142,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let amount = NSNumber(floatLiteral: self.totalSum)
             
             print(receiptData)
-            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                 
             }, cancelled: {
                 
