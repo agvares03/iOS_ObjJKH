@@ -63,41 +63,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
-        #if isMupRCMytishi
-        let defaults = UserDefaults.standard
-        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
-            let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
-            alert.addTextField { (textField) in
-                textField.placeholder = "e-mail..."
-            }
-            let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
-                let textField = alert.textFields![0]
-                let str = textField.text
-                if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
-                    UserDefaults.standard.set(str, forKey: "mail")
-                    self.payed()
-                }else{
-                    textField.text = ""
-                    textField.placeholder = "e-mail..."
-                    let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                    return
-                }
-            }
-            
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
-        }else{
-            payed()
-        }
-        #else
-        payed()
-        #endif
-    }
-    
-    func payed(){
         let k:String = txt_sum_jkh.text!
         self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
         if (self.totalSum <= 0) {
@@ -106,62 +71,10 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            #if isMupRCMytishi
-            items.removeAll()
-            var sum = 0.00
-            sumOSV.forEach{
-                sum = sum + $0
-            }
-            var sumO:[Double] = []
-            let servicePay = totalSum - self.sum
-            //            if sum + servicePay != self.totalSum{
-            for i in 0...sumOSV.count - 1{
-                let p = sumOSV[i] * 100 / (sum)
-                sumO.append(self.sum * p / 100)
-            }
-            //            }
-            var i = 0
-            checkBox.forEach{
-                if $0 == true && sumO[i] > 0.00{
-                    let ItemsData = ["Name" : osvc[i], "Price" : Int(sumO[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumO[i] * 100), "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                }
-                i += 1
-            }
-            let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePay * 100), "Quantity" : Double(1.00), "Amount" : Int(servicePay * 100), "Tax" : "none"] as [String : Any]
-            items.append(ItemsData)
-            var Data:[String:String] = [:]
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                for i in 0...str_ls_arr.count - 1{
-                    Data["ls\(i + 1)"] = str_ls_arr[0]
-                }
-            }else{
-                Data["ls1"] = selectLS
-            }
-            let defaults = UserDefaults.standard
-            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            
-            print(receiptData)
-            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
-                
-            }, cancelled: {
-                
-            }) { (error) in
-                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-            }
-            #else
             let defaults = UserDefaults.standard
             defaults.setValue(String(describing: self.sum), forKey: "sum")
             defaults.synchronize()
             self.performSegue(withIdentifier: "CostPay_New", sender: self)
-            #endif
         }
     }
     
@@ -404,16 +317,8 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
-//                #if isMupRCMytishi
-//                if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
-//                    osvc.append(object.value(forKey: "usluga") as! String)
-//                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
-//                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
-//                }
-//                #else
                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                 endSum = Double(object.value(forKey: "end") as! String)!
-//                #endif
             }
             self.sum = self.sum - endSum
             DispatchQueue.main.async(execute: {

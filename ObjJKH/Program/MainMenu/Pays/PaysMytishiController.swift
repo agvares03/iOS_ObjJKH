@@ -127,9 +127,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
-            
-            print(receiptData)
-            print(amount)
             PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                 
             }, cancelled: {
@@ -382,16 +379,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
-                //                #if isMupRCMytishi
-                //                if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
-                //                    osvc.append(object.value(forKey: "usluga") as! String)
-                //                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
-                //                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
-                //                }
-                //                #else
                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                 endSum = Double(object.value(forKey: "end") as! String)!
-                //                #endif
             }
             self.sum = self.sum - endSum
             DispatchQueue.main.async(execute: {
@@ -434,43 +423,15 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        #if isMupRCMytishi
-        //        return osvc.count
-        //        #else
         if let sections = fetchedResultsController?.sections {
             return sections[section].numberOfObjects - 1
         } else {
             return 0
         }
-        //        #endif
     }
     
     var select = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        #if isMupRCMytishi
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
-        //        if select == false{
-        //            cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
-        //        }else{
-        //            if checkBox[selectedRow]{
-        //                cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
-        //                checkBox[selectedRow] = false
-        //            }else{
-        //                cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
-        //                checkBox[selectedRow] = true
-        //            }
-        //        }
-        //        cell.check.tintColor = myColors.btnColor.uiColor()
-        //        cell.check.backgroundColor = .white
-        //        if select == false{
-        //            checkBox.append(true)
-        //        }
-        //        cell.usluga.text = osvc[0]
-        //        cell.end.text    = String(sumOSV[0])
-        //
-        //        cell.delegate = self
-        //        select = false
-        //        #else
         let cell = tableView.dequeueReusableCell(withIdentifier: "PayMupCell") as! PayMupSaldoCell
         let osv = fetchedResultsController!.object(at: indexPath)
         if select == false{
