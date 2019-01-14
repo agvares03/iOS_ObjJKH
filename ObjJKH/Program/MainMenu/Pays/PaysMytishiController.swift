@@ -102,22 +102,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.present(alert, animated: true, completion: nil)
         } else {
             items.removeAll()
-            var sum = 0.00
-            sumOSV.forEach{
-                sum = sum + $0
-            }
-            var sumO:[Double] = []
             let servicePay = totalSum - self.sum
-            //            if sum + servicePay != self.totalSum{
-            for i in 0...sumOSV.count - 1{
-                let p = sumOSV[i] * 100 / (sum)
-                sumO.append(self.sum * p / 100)
-            }
-            //            }
             var i = 0
             checkBox.forEach{
-                if $0 == true && sumO[i] > 0.00{
-                    let ItemsData = ["Name" : osvc[i], "Price" : Int(sumO[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumO[i] * 100), "Tax" : "none"] as [String : Any]
+                if $0 == true && sumOSV[i] > 0.00{
+                    let ItemsData = ["Name" : osvc[i], "Price" : Int(sumOSV[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumOSV[i] * 100), "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
                 }
                 i += 1
@@ -140,6 +129,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let amount = NSNumber(floatLiteral: self.totalSum)
             
             print(receiptData)
+            print(amount)
             PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                 
             }, cancelled: {
