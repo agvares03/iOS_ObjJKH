@@ -513,6 +513,11 @@ class MainMenu: UIViewController {
     
     // Оплаты
     @IBAction func go_pays(_ sender: UIButton) {
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #else
+        self.performSegue(withIdentifier: "pays", sender: self)
+        #endif
     }
     
     // Web-камеры

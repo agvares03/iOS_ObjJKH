@@ -1,9 +1,9 @@
 //
-//  PaysController.swift
+//  PaysMytishiController.swift
 //  ObjJKH
 //
-//  Created by Роман Тузин on 30.08.2018.
-//  Copyright © 2018 The Best. All rights reserved.
+//  Created by Sergey Ivanov on 14/01/2019.
+//  Copyright © 2019 The Best. All rights reserved.
 //
 
 import UIKit
@@ -12,12 +12,11 @@ import CoreData
 
 private protocol MainDataProtocol:  class {}
 
-class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
+class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    @IBAction func backClick(_ sender: UIBarButtonItem) {
+    @IBAction func backClick(_ sender: UIBarButtonItem){
         navigationController?.dismiss(animated: true, completion: nil)
     }
-    
     
     @IBOutlet weak var servicePay: UILabel!
     @IBOutlet weak var viewTop: NSLayoutConstraint!
@@ -46,7 +45,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
-    @IBOutlet weak var txt_sum_obj: UITextField!
+    @IBOutlet weak var txt_sum_obj: UILabel!
     
     @IBAction func choice_ls_button(_ sender: UIButton) {
         if dropper.status == .hidden {
@@ -63,7 +62,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
-        #if isMupRCMytishi
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
@@ -92,9 +90,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         }else{
             payed()
         }
-        #else
-        payed()
-        #endif
     }
     
     func payed(){
@@ -106,7 +101,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            #if isMupRCMytishi
             items.removeAll()
             var sum = 0.00
             sumOSV.forEach{
@@ -156,12 +150,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             }
-            #else
-            let defaults = UserDefaults.standard
-            defaults.setValue(String(describing: self.sum), forKey: "sum")
-            defaults.synchronize()
-            self.performSegue(withIdentifier: "CostPay_New", sender: self)
-            #endif
         }
     }
     
@@ -200,7 +188,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         historyPay.backgroundColor = myColors.btnColor.uiColor()
-        viewTop.constant = getPoint()
+        viewTop.constant = self.getPoint()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         sendView.isUserInteractionEnabled = true
@@ -404,16 +392,16 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
-//                #if isMupRCMytishi
-//                if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
-//                    osvc.append(object.value(forKey: "usluga") as! String)
-//                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
-//                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
-//                }
-//                #else
+                //                #if isMupRCMytishi
+                //                if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
+                //                    osvc.append(object.value(forKey: "usluga") as! String)
+                //                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                //                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                //                }
+                //                #else
                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                 endSum = Double(object.value(forKey: "end") as! String)!
-//                #endif
+                //                #endif
             }
             self.sum = self.sum - endSum
             DispatchQueue.main.async(execute: {
@@ -422,7 +410,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                     let serviceP = self.sum / 0.992 - self.sum
                     self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
                     self.totalSum = self.sum + serviceP
-                    self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+                    self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " .руб"
                     self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
                     
                 } else {
@@ -456,16 +444,44 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //        #if isMupRCMytishi
+        //        return osvc.count
+        //        #else
         if let sections = fetchedResultsController?.sections {
             return sections[section].numberOfObjects - 1
         } else {
             return 0
         }
+        //        #endif
     }
     
     var select = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
+        //        #if isMupRCMytishi
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
+        //        if select == false{
+        //            cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+        //        }else{
+        //            if checkBox[selectedRow]{
+        //                cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
+        //                checkBox[selectedRow] = false
+        //            }else{
+        //                cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+        //                checkBox[selectedRow] = true
+        //            }
+        //        }
+        //        cell.check.tintColor = myColors.btnColor.uiColor()
+        //        cell.check.backgroundColor = .white
+        //        if select == false{
+        //            checkBox.append(true)
+        //        }
+        //        cell.usluga.text = osvc[0]
+        //        cell.end.text    = String(sumOSV[0])
+        //
+        //        cell.delegate = self
+        //        select = false
+        //        #else
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PayMupCell") as! PayMupSaldoCell
         let osv = fetchedResultsController!.object(at: indexPath)
         if select == false{
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
@@ -493,9 +509,31 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             cell.usluga.text = osv.usluga
         }
         cell.end.text    = osv.end
-        
+        let sub: String = osv.usluga!
+        cell.end.accessibilityIdentifier = sub.substring(to:sub.index(sub.startIndex, offsetBy: 4))
+        if osv.usluga == "Газ" || osv.usluga == "Страховка"{
+            cell.end.isUserInteractionEnabled = false
+            cell.end.isHidden = true
+            cell.endL.isHidden = false
+            cell.endL.text = osv.end
+        }else{
+            cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+            cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+            cell.endL.isHidden = true
+            cell.end.isHidden = false
+            cell.end.text = osv.end
+            if osvc.count != 0{
+                for i in 0...osvc.count - 1{
+                    let code:String = osvc[i]
+                    if cell.end.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)) && sumOSV[i] != 0.00{
+                        cell.end.text = String(sumOSV[i])
+                    }
+                }
+            }
+        }
         cell.delegate = self
         select = false
+        //        #endif
         return cell
     }
     
@@ -517,26 +555,55 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         let serviceP = self.sum / 0.992 - self.sum
         self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
         self.totalSum = self.sum + serviceP
-        self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " .руб"
         self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
+    }
+    
+    @objc func textFieldEditingDidEnd(_ textField: UITextField) {
+        let str:String = textField.text!
+        if !str.contains("."){
+            textField.text = str + ".00"
+        }
+        if str.suffix(1) == "." || str.suffix(1) == ","{
+            textField.text = str + "00"
+        }
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         let str: String = textField.text!
         if str != ""{
-            self.sum = Double(str)!
+            for i in 0...osvc.count - 1{
+                let code:String = osvc[i]
+                if textField.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)){
+                    sumOSV[i] = Double(str)!
+                }
+            }
+            self.sum = 0.00
+            sumOSV.forEach{
+                self.sum = self.sum + $0
+            }
             let serviceP = self.sum / 0.992 - self.sum
             self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
             self.totalSum = self.sum + serviceP
+            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " .руб"
             self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
         }else{
+            for i in 0...osvc.count - 1{
+                let code:String = osvc[i]
+                if textField.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)){
+                    sumOSV[i] = 0.00
+                }
+            }
             self.sum = 0.00
+            sumOSV.forEach{
+                self.sum = self.sum + $0
+            }
             let serviceP = self.sum / 0.992 - self.sum
             self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
             self.totalSum = self.sum + serviceP
+            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " .руб"
             self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
         }
-        
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {
@@ -582,7 +649,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         // Подхватываем показ клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        txt_sum_obj.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -590,21 +656,20 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        txt_sum_obj.removeTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
 }
 
-class PaySaldoCell: UITableViewCell {
+class PayMupSaldoCell: UITableViewCell {
     
     var delegate: UIViewController?
     
     @IBOutlet weak var check: UIButton!
     @IBOutlet weak var usluga: UILabel!
-    @IBOutlet weak var end: UILabel!
+    @IBOutlet weak var endL: UILabel!
+    @IBOutlet weak var end: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.end.adjustsFontSizeToFitWidth = true
     }
     
     override func prepareForReuse() {

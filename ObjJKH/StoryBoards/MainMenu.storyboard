@@ -402,7 +402,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="go_pays:" destination="TNm-eq-Yvo" eventType="touchUpInside" id="zgB-7g-Y1C"/>
-                                                    <segue destination="X0D-p6-MF7" kind="show" id="q2w-Hn-7ch"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_rigth.png" translatesAutoresizingMaskIntoConstraints="NO" id="7gB-UG-N92">
@@ -845,6 +844,8 @@
                         <segue destination="56m-Rb-2II" kind="show" identifier="noCounters" id="49z-nK-HtX"/>
                         <segue destination="7zn-gb-rMF" kind="show" identifier="addLS" id="qdB-BT-p6t"/>
                         <segue destination="5Oc-7u-RIU" kind="show" identifier="addLS_Mup" id="kAy-gD-oDS"/>
+                        <segue destination="X0D-p6-MF7" kind="show" identifier="pays" id="DAS-iS-fdj"/>
+                        <segue destination="TTA-pg-K07" kind="show" identifier="paysMytishi" id="3g5-7J-9Dw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uvK-jD-nzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -936,7 +937,7 @@
                 <viewControllerPlaceholder storyboardName="Saldo" id="nTh-Ho-JCo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q51-qh-57T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808" y="-565"/>
+            <point key="canvasLocation" x="1746" y="-569"/>
         </scene>
         <!--Pays-->
         <scene sceneID="fWp-Tr-R7f">
@@ -944,7 +945,7 @@
                 <viewControllerPlaceholder storyboardName="Pays" id="X0D-p6-MF7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vnp-bR-U5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="-516"/>
+            <point key="canvasLocation" x="1868" y="-527"/>
         </scene>
         <!--WebCameras-->
         <scene sceneID="bgq-1A-Uw8">
@@ -1624,6 +1625,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMr-nf-ThE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1844" y="-1156"/>
+        </scene>
+        <!--PaysMytishi-->
+        <scene sceneID="zUB-bx-xu8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PaysMytishi" id="TTA-pg-K07" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g5c-7G-1cd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1903" y="-491"/>
         </scene>
     </scenes>
     <resources>
