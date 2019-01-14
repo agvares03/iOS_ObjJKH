@@ -567,7 +567,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             viewTop.constant = getPoint() - 220
             return
         }else if viewHeight == 568{
-            viewTop.constant = getPoint() - 210
+            viewTop.constant = getPoint()
         }else{
             viewTop.constant = getPoint() - 240
         }
