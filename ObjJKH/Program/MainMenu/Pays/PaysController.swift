@@ -63,6 +63,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
+        #if isMupRCMytishi
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
@@ -91,6 +92,9 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         }else{
             payed()
         }
+        #else
+        payed()
+        #endif
     }
     
     func payed(){
@@ -142,7 +146,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let amount = NSNumber(floatLiteral: self.totalSum)
             
             print(receiptData)
-            PayController.buyItem(withName: name, description: nil, amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                 
             }, cancelled: {
                 
