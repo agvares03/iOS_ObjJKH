@@ -40,6 +40,71 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func AddLS(_ sender: UIButton) {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "addLSMup", sender: self)
+        #else
+        self.performSegue(withIdentifier: "addLS", sender: self)
+        #endif
+    }
+    
+    @IBAction func SaveInfo(_ sender: UIButton) {
+        let email:String = emailText.text!
+        if ((email.contains("@")) && (email.contains(".ru"))) || ((email.contains("@")) && (email.contains(".com"))){
+            UserDefaults.standard.set(email, forKey: "mail")
+            
+            let defaults = UserDefaults.standard
+            let phone:String = defaults.string(forKey: "phone")!
+            var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.SET_EMAIL_ACC
+            urlPath = urlPath + "phone=" + phone + "&email=" + email
+            let url: NSURL = NSURL(string: urlPath)!
+            let request = NSMutableURLRequest(url: url as URL)
+            request.httpMethod = "GET"
+            print(request)
+            let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                  completionHandler: {
+                                                    data, response, error in
+                                                    
+                                                    if error != nil {
+                                                        DispatchQueue.main.async(execute: {
+                                                            let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            alert.addAction(cancelAction)
+                                                            self.present(alert, animated: true, completion: nil)
+                                                        })
+                                                        return
+                                                    }
+                                                    
+                                                    let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                    print("responseString = \(responseString)")
+                                                    if responseString == "ok"{
+                                                        DispatchQueue.main.async(execute: {
+                                                            let alert = UIAlertController(title: "", message: "Данные успешно сохранены", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            alert.addAction(cancelAction)
+                                                            self.present(alert, animated: true, completion: nil)
+                                                        })
+                                                    }else{
+                                                        DispatchQueue.main.async(execute: {
+                                                            let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            alert.addAction(cancelAction)
+                                                            self.present(alert, animated: true, completion: nil)
+                                                        })
+                                                    }
+                                                    
+            })
+            task.resume()
+        }else{
+            let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
+    
     var data = [String]()
     var isModified = false
     
@@ -57,7 +122,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         if UserDefaults.standard.string(forKey: "mail") != ""{
             emailText.text = UserDefaults.standard.string(forKey: "mail")
         }
-        if UserDefaults.standard.string(forKey: "mail") != "-"{
+        if UserDefaults.standard.string(forKey: "mail") == "-"{
             emailText.text = ""
         }
         if data.count < 5{
@@ -101,7 +166,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
             // Delete the row from the data source
             
             // Удалим лицевой счет на сервере
-//            try_del_ls_from_acc(ls: data[indexPath.row], row: indexPath)
+            try_del_ls_from_acc(ls: data[indexPath.row], row: indexPath)
             
             //            data.remove(at: indexPath.row)
             //            isModified = true
@@ -109,6 +174,57 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+    }
+    
+    func try_del_ls_from_acc(ls: String, row: IndexPath) {
+        
+        let defaults = UserDefaults.standard
+        let phone = defaults.string(forKey: "phone")
+        let ident =  ls
+        
+        if (phone == ident) {
+            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Невозможно отвязать лицевой счет " + ls + ". Вы зашли, используя этот лицевой счет.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + ls + " от аккаунта?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
+                
+                var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
+                urlPath = urlPath + "phone=" + phone! + "&ident=" + ident
+                let url: NSURL = NSURL(string: urlPath)!
+                let request = NSMutableURLRequest(url: url as URL)
+                request.httpMethod = "GET"
+                
+                let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                      completionHandler: {
+                                                        data, response, error in
+                                                        
+                                                        if error != nil {
+                                                            DispatchQueue.main.async(execute: {
+                                                                let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                                alert.addAction(cancelAction)
+                                                                self.present(alert, animated: true, completion: nil)
+                                                            })
+                                                            return
+                                                        }
+                                                        
+                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                        print("responseString = \(responseString)")
+                                                        
+                                                        self.del_ls_from_acc(indexPath: row)
+                })
+                task.resume()
+                
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func del_ls_from_acc(indexPath: IndexPath) {
