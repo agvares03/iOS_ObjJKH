@@ -106,12 +106,15 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             var i = 0
             checkBox.forEach{
                 if $0 == true && sumOSV[i] > 0.00{
-                    let ItemsData = ["Name" : osvc[i], "Price" : Int(sumOSV[i] * 100), "Quantity" : Double(1.00), "Amount" : Int(sumOSV[i] * 100), "Tax" : "none"] as [String : Any]
+                    let price = String(sumOSV[i]).replacingOccurrences(of: ".", with: "")
+                    let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
                 }
                 i += 1
             }
-            let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePay * 100), "Quantity" : Double(1.00), "Amount" : Int(servicePay * 100), "Tax" : "none"] as [String : Any]
+            print(servicePay, String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: ""))
+            let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
+            let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
             items.append(ItemsData)
             var Data:[String:String] = [:]
             if selectLS == "Все"{
@@ -127,6 +130,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
+            print(receiptData)
             PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                 
             }, cancelled: {
@@ -511,17 +515,20 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     
     @objc func textFieldEditingDidEnd(_ textField: UITextField) {
-        let str:String = textField.text!
+        var str:String = textField.text!
+        str = str.replacingOccurrences(of: ",", with: ".")
         if !str.contains("."){
-            textField.text = str + ".00"
+            str = str + ".00"
         }
-        if str.suffix(1) == "." || str.suffix(1) == ","{
-            textField.text = str + "00"
+        if str.suffix(1) == "."{
+            str = str + "00"
         }
+        textField.text = str
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        let str: String = textField.text!
+        var str: String = textField.text!
+        str = str.replacingOccurrences(of: ",", with: ".")
         if str != ""{
             for i in 0...osvc.count - 1{
                 let code:String = osvc[i]
@@ -530,8 +537,12 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
             self.sum = 0.00
+            var i = 0
             sumOSV.forEach{
-                self.sum = self.sum + $0
+                if checkBox[i] == true{
+                    self.sum = self.sum + $0
+                }
+                i += 1
             }
             let serviceP = self.sum / 0.992 - self.sum
             self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
@@ -546,8 +557,12 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
             self.sum = 0.00
+            var i = 0
             sumOSV.forEach{
-                self.sum = self.sum + $0
+                if checkBox[i] == true{
+                    self.sum = self.sum + $0
+                }
+                i += 1
             }
             let serviceP = self.sum / 0.992 - self.sum
             self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"

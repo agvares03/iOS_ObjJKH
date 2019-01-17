@@ -89,7 +89,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var btn_arr_record: UIImageView!
     @IBOutlet weak var line_bottom: UILabel!
     
-
+    @IBOutlet weak var acc_Line: UILabel!
     @IBOutlet weak var heigth_Questions: NSLayoutConstraint!
     @IBOutlet weak var btn_Questions: UIButton!
     @IBOutlet weak var Questions_arrow: UIImageView!
@@ -107,6 +107,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var services: UIImageView!
     @IBOutlet weak var exit_img: UIImageView!
     @IBOutlet weak var record_img: UIImageView!
+    @IBOutlet weak var acc_img: UIImageView!
     
     var phone: String?
     
@@ -119,7 +120,7 @@ class MainMenu: UIViewController {
         #endif
     }
     
-    // Отвяжать лицевые счета от аккаунта
+    // Отвязать лицевые счета от аккаунта
     @IBOutlet weak var btn_ls1: UIButton!
     @IBOutlet weak var btn_ls2: UIButton!
     @IBOutlet weak var btn_ls3: UIButton!
@@ -312,6 +313,8 @@ class MainMenu: UIViewController {
         record_img.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
+        acc_img.image = myImages.acc_image
+        acc_img.setImageColor(color: myColors.btnColor.uiColor())
         
         btn_Add_LS.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()

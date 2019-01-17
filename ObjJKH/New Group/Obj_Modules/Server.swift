@@ -75,6 +75,7 @@ class Server {
     static let ADD_IDENT_TO_ACCOUNT = "AddIdentToAccount.ashx?"      // Добавить лицевой счет в аккаунт
     static let GET_IDENTS_ACC      = "GetAccountIdents.ashx?"        // Получить лиц. счета по аккаунту
     static let DEL_IDENT_ACC       = "DeleteIdentFromAccount.ashx?"  // Удалить лиц. счет из аккаунта
+    static let SET_EMAIL_ACC       = "SetAccountEmail.ashx?"         // Сохранить e-mail 
     
     static let GET_ADDITIONAL_SERVICES = "GetAdditionalServices.ashx?" // Получить дополнительные услуги
 
