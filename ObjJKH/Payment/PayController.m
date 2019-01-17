@@ -73,9 +73,8 @@
     }
     else
     {
-        alertDetails = error.userInfo[kASDKStatus];
+        alertDetails = @"Ошибка на платежном шлюзе. Попробуйте позже";
     }
-	
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertDetails preferredStyle:UIAlertControllerStyleAlert];
 	
 	[alertController addAction:[UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleCancel
