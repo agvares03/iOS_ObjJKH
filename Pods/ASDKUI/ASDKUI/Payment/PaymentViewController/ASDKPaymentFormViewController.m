@@ -1199,7 +1199,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     }
     else
     {
-		NSString *alertTitle = error.errorMessage ? error.errorMessage : @"Ошибка на платежном шлюзе. Попробуйте позже";
+		NSString *alertTitle = error.errorMessage ? error.errorMessage : @"Ошибка";
 		NSString *alertDetails = error.errorDetails ? error.errorDetails : error.userInfo[kASDKStatus];
 		
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertDetails preferredStyle:UIAlertControllerStyleAlert];
