@@ -2,17 +2,22 @@
 platform :ios, '10.0'
 
 target 'ObjJKH' do
+    
+    # Оплата - Тинькофф
+    pod 'CardIO'
+    pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
+    pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
 
     use_frameworks!
 
-  # Pods for Мобильное ЖКХ
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Database'
-pod 'Alamofire', '~> 4.0'
-  pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
-  pod 'Gloss'
-  pod 'Dropper'
+    # Pods for Мобильное ЖКХ
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'Firebase/Database'
+    pod 'Alamofire', '~> 4.0'
+    pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+    pod 'Gloss'
+    pod 'Dropper'
 
 end
 
@@ -24,7 +29,7 @@ target 'OurObjHome' do
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
-pod 'Alamofire', '~> 4.0'
+    pod 'Alamofire', '~> 4.0'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
@@ -39,7 +44,7 @@ target 'ChistDom' do
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
-pod 'Alamofire', '~> 4.0'
+    pod 'Alamofire', '~> 4.0'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
@@ -59,7 +64,7 @@ target 'MupRCMytishi' do
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
-pod 'Alamofire', '~> 4.0'
+    pod 'Alamofire', '~> 4.0'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
@@ -72,9 +77,9 @@ target 'UK_Komfort' do
 
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
-pod 'Firebase/Database'
+    pod 'Firebase/Database'
     pod 'Firebase/Messaging'
-pod 'Alamofire', '~> 4.0'
+    pod 'Alamofire', '~> 4.0'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
@@ -87,9 +92,9 @@ target 'DJ' do
 
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
-pod 'Firebase/Database'
+    pod 'Firebase/Database'
     pod 'Firebase/Messaging'
-pod 'Alamofire', '~> 4.0'
+    pod 'Alamofire', '~> 4.0'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
@@ -110,7 +115,7 @@ target 'Stolitsa' do
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
-pod 'Alamofire', '~> 4.0'
+    pod 'Alamofire', '~> 4.0'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
@@ -123,9 +128,9 @@ target 'Komeks' do
 
     # Pods for Наш Общий Дом
     pod 'Firebase/Core'
-pod 'Firebase/Database'
+    pod 'Firebase/Database'
     pod 'Firebase/Messaging'
-pod 'Alamofire', '~> 4.0'
+    pod 'Alamofire', '~> 4.0'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
