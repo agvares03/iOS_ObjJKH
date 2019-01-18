@@ -61,14 +61,13 @@
 		1C8513B821EC74610003D587 /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
 		1C8513B921EC74610003D587 /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
 		1C8513BA21EC74610003D587 /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
-		1C8513BC21EC74690003D587 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
-		1C8513BD21EC74690003D587 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
-		1C8513BE21EC746A0003D587 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
-		1C8513BF21EC746A0003D587 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
-		1C8513C021EC746A0003D587 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
-		1C8513C121EC746B0003D587 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
-		1C8513C221EC746B0003D587 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
 		1CE43D0021C76549001B42B6 /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
+		1CEFC88021F1C42900A042AA /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		1CEFC88121F1C43600A042AA /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
+		1CEFC88221F1C45100A042AA /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		1CEFC88321F1C45600A042AA /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		1CEFC88421F1C45A00A042AA /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		1CEFC88621F1C79A00A042AA /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		410004B521C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
 		410004B621C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
 		410004B721C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
@@ -178,7 +177,6 @@
 		412092822158CB2D001E713E /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
 		412092832158CB2D001E713E /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
 		412092842158CB2D001E713E /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
-		412092852158CB2D001E713E /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		412092862158CB2D001E713E /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
 		412092872158CB2D001E713E /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
 		412092882158CB2D001E713E /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
@@ -190,7 +188,6 @@
 		4120928E2158CB2D001E713E /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		4120928F2158CB2D001E713E /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
 		412092902158CB2D001E713E /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
-		412092922158CB2D001E713E /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		412092932158CB2D001E713E /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		412092942158CB2D001E713E /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		4120929D2158D116001E713E /* logo_Stolitsa_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4120929C2158D116001E713E /* logo_Stolitsa_white.png */; };
@@ -277,7 +274,6 @@
 		412092F92159E603001E713E /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
 		412092FA2159E603001E713E /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
 		412092FB2159E603001E713E /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
-		412092FC2159E603001E713E /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		412092FD2159E603001E713E /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
 		412092FE2159E603001E713E /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
 		412092FF2159E603001E713E /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
@@ -291,7 +287,6 @@
 		412093072159E603001E713E /* logo_Stolitsa_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4120929C2158D116001E713E /* logo_Stolitsa_white.png */; };
 		412093082159E603001E713E /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
 		412093092159E603001E713E /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
-		4120930B2159E603001E713E /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		4120930C2159E603001E713E /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		4120930D2159E603001E713E /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		412093162159EB16001E713E /* Logo_Komeks_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 412093152159EB15001E713E /* Logo_Komeks_White.png */; };
@@ -334,7 +329,6 @@
 		418ABF152133CC8C004DB75C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		418ABF232133CF96004DB75C /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		418ABF272133D5D0004DB75C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
-		418ABF2A2133D835004DB75C /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		418ABF2C2133D83C004DB75C /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		418ABF302133E0D7004DB75C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
 		418ABF342133F6DB004DB75C /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
@@ -363,9 +357,7 @@
 		418ABF5E2134CF1A004DB75C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		418ABF5F2134CF1A004DB75C /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		418ABF602134CF1A004DB75C /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
-		418ABF612134CF1A004DB75C /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		418ABF632134CF1A004DB75C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
-		418ABF652134CF1A004DB75C /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		418ABF6E2134D291004DB75C /* logo_Our_Obj_Home_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF6D2134D291004DB75C /* logo_Our_Obj_Home_white.png */; };
 		418ABF702134D29B004DB75C /* logo_Our_Obj_Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF6F2134D29B004DB75C /* logo_Our_Obj_Home.png */; };
 		418ABF722134F07F004DB75C /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
@@ -433,12 +425,10 @@
 		418ABFCD21357DA5004DB75C /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
 		418ABFCE21357DA5004DB75C /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
 		418ABFCF21357DA5004DB75C /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
-		418ABFD021357DA5004DB75C /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		418ABFD121357DA5004DB75C /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
 		418ABFD321357DA5004DB75C /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
 		418ABFD421357DA5004DB75C /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
 		418ABFD521357DA5004DB75C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
-		418ABFD721357DA5004DB75C /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		418ABFE0213580F3004DB75C /* Logo_Chist_Dom_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFDF213580F3004DB75C /* Logo_Chist_Dom_White.png */; };
 		418ABFE221358101004DB75C /* Logo_Chist_Dom.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE121358101004DB75C /* Logo_Chist_Dom.png */; };
 		418ABFE421361949004DB75C /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
@@ -599,7 +589,6 @@
 		41BD715321B4E869006E78FC /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
 		41BD715421B4E869006E78FC /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
 		41BD715521B4E869006E78FC /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
-		41BD715621B4E869006E78FC /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		41BD715721B4E869006E78FC /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
 		41BD715821B4E869006E78FC /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
 		41BD715921B4E869006E78FC /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
@@ -611,7 +600,6 @@
 		41BD715F21B4E869006E78FC /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		41BD716021B4E869006E78FC /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
 		41BD716121B4E869006E78FC /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
-		41BD716321B4E869006E78FC /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		41BD716421B4E869006E78FC /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		41BD716521B4E869006E78FC /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		41BD716D21B4EDC7006E78FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41BD716C21B4EDC7006E78FC /* GoogleService-Info.plist */; };
@@ -698,7 +686,6 @@
 		41DFC3C7213CF4E9002CEB62 /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
 		41DFC3C8213CF4E9002CEB62 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
 		41DFC3C9213CF4E9002CEB62 /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
-		41DFC3CA213CF4E9002CEB62 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		41DFC3CB213CF4E9002CEB62 /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
 		41DFC3CC213CF4E9002CEB62 /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
 		41DFC3CD213CF4E9002CEB62 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
@@ -707,7 +694,6 @@
 		41DFC3D0213CF4E9002CEB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
 		41DFC3D1213CF4E9002CEB62 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		41DFC3D2213CF4E9002CEB62 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
-		41DFC3D4213CF4E9002CEB62 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		41DFC3D5213CF4E9002CEB62 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		41DFC3DE213CFD60002CEB62 /* logo_MupRCMytishi_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */; };
 		41DFC3E0213CFE05002CEB62 /* logo_MupRCMytishi.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */; };
@@ -783,7 +769,6 @@
 		41DFC42E213D206C002CEB62 /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
 		41DFC42F213D206C002CEB62 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
 		41DFC430213D206C002CEB62 /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
-		41DFC431213D206C002CEB62 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		41DFC432213D206C002CEB62 /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
 		41DFC433213D206C002CEB62 /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
 		41DFC435213D206C002CEB62 /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
@@ -791,7 +776,6 @@
 		41DFC437213D206C002CEB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
 		41DFC438213D206C002CEB62 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		41DFC439213D206C002CEB62 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
-		41DFC43B213D206C002CEB62 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		41DFC43C213D206C002CEB62 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		41DFC445213D2740002CEB62 /* logo_DJ_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC444213D2740002CEB62 /* logo_DJ_White.png */; };
 		41DFC447213D2758002CEB62 /* logo_DJ.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC446213D2758002CEB62 /* logo_DJ.png */; };
@@ -1032,7 +1016,6 @@
 		41FDA29D214229A0003D8110 /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
 		41FDA29E214229A0003D8110 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
 		41FDA29F214229A0003D8110 /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
-		41FDA2A0214229A0003D8110 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		41FDA2A1214229A0003D8110 /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
 		41FDA2A2214229A0003D8110 /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
 		41FDA2A4214229A0003D8110 /* ic_send_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA20D2140CA9600921C82 /* ic_send_app.png */; };
@@ -1042,10 +1025,10 @@
 		41FDA2A8214229A0003D8110 /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
 		41FDA2A9214229A0003D8110 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
 		41FDA2AA214229A0003D8110 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
-		41FDA2AC214229A0003D8110 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		41FDA2AD214229A0003D8110 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		41FDA2B621422BA1003D8110 /* logo_UK_Komfort.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FDA2B521422BA0003D8110 /* logo_UK_Komfort.png */; };
 		41FDA2B821422BAE003D8110 /* logo_UK_Komfort_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FDA2B721422BAE003D8110 /* logo_UK_Komfort_white.png */; };
+		59AB60C74EA69B056978218C /* Pods_Klimovsk12.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */; };
 		807B3CD237EA6541C63CBD05 /* Pods_Stolitsa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0B17C963363C8850F6A8BA /* Pods_Stolitsa.framework */; };
 		80D9F109D4256C34D1726522 /* Pods_ChistDom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBA0E90ADE2FAE50B12C336 /* Pods_ChistDom.framework */; };
 		89A87CAAFB699F0CAA446730 /* Pods_MupRCMytishi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCD050238E8B50AFE307C08 /* Pods_MupRCMytishi.framework */; };
@@ -1075,6 +1058,8 @@
 		1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaysMytishi.storyboard; sourceTree = "<group>"; };
 		1C85139721EC4E940003D587 /* PaysMytishiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaysMytishiController.swift; sourceTree = "<group>"; };
+		207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klimovsk12.release.xcconfig"; path = "Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12.release.xcconfig"; sourceTree = "<group>"; };
+		296AEE95442ECF4E01E51D6F /* Pods-Klimovsk12.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klimovsk12.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12.debug.xcconfig"; sourceTree = "<group>"; };
 		2B09A7C6DA427C96ACCD0100 /* Pods-ChistDom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChistDom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom.debug.xcconfig"; sourceTree = "<group>"; };
 		34641B081E377E8D82EE8373 /* Pods-MupRCMytishi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MupRCMytishi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi.debug.xcconfig"; sourceTree = "<group>"; };
 		410004B421C1EB200040D703 /* AllLS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLS.swift; sourceTree = "<group>"; };
@@ -1244,6 +1229,7 @@
 		7B0B17C963363C8850F6A8BA /* Pods_Stolitsa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stolitsa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81B7EA4A0A2CB233BB4A6F85 /* Pods_DJ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		964492CA0DB9008F249F3AD8 /* Pods-DJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJ/Pods-DJ.debug.xcconfig"; sourceTree = "<group>"; };
+		9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Klimovsk12.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A61F08B2D8F71592242095 /* Pods-UK_Komfort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Komfort.release.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort.release.xcconfig"; sourceTree = "<group>"; };
 		C7B2309B6ABE1586A66F5145 /* Pods-UK_Komfort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Komfort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort.debug.xcconfig"; sourceTree = "<group>"; };
 		D4E90038DF15E20075586543 /* Pods-Komeks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komeks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Komeks/Pods-Komeks.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1321,6 +1307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41BD714221B4E869006E78FC /* CoreLocation.framework in Frameworks */,
+				59AB60C74EA69B056978218C /* Pods_Klimovsk12.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1828,6 +1815,8 @@
 				F5FFC9FCBFA15CAD8E14C420 /* Pods-Stolitsa.release.xcconfig */,
 				C7B2309B6ABE1586A66F5145 /* Pods-UK_Komfort.debug.xcconfig */,
 				B8A61F08B2D8F71592242095 /* Pods-UK_Komfort.release.xcconfig */,
+				296AEE95442ECF4E01E51D6F /* Pods-Klimovsk12.debug.xcconfig */,
+				207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1844,6 +1833,7 @@
 				D6E18311FD916634DB235975 /* Pods_OurObjHome.framework */,
 				7B0B17C963363C8850F6A8BA /* Pods_Stolitsa.framework */,
 				126F73D4F5E7682528FFF4D1 /* Pods_UK_Komfort.framework */,
+				9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1880,6 +1870,7 @@
 				4120926F2158CB2D001E713E /* Frameworks */,
 				412092712158CB2D001E713E /* Resources */,
 				E70277479D792D5A6F9682D8 /* [CP] Embed Pods Frameworks */,
+				30CDA0CE1B6187EFD7A6CCCB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1899,6 +1890,7 @@
 				412092E62159E603001E713E /* Frameworks */,
 				412092E82159E603001E713E /* Resources */,
 				1B3A940C89898C53FF90DEC6 /* [CP] Embed Pods Frameworks */,
+				76B6FBA7E94920733B804D7C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1918,6 +1910,7 @@
 				418ABF042133CC7B004DB75C /* Frameworks */,
 				418ABF052133CC7B004DB75C /* Resources */,
 				A89B75DCBE4D9BE69D15AB77 /* [CP] Embed Pods Frameworks */,
+				C01BC89E2E351763D59EFDEC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1937,6 +1930,7 @@
 				418ABF562134CF1A004DB75C /* Frameworks */,
 				418ABF582134CF1A004DB75C /* Resources */,
 				F761DE226ED679AD5E910BD2 /* [CP] Embed Pods Frameworks */,
+				2AA3C4CA0FFC2664E32649A0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1956,6 +1950,7 @@
 				418ABFC221357DA5004DB75C /* Frameworks */,
 				418ABFC521357DA5004DB75C /* Resources */,
 				4097A4F56B835F0ED708B2A3 /* [CP] Embed Pods Frameworks */,
+				E2CD25B82236388F08B3C317 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1970,9 +1965,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41BD716721B4E869006E78FC /* Build configuration list for PBXNativeTarget "Klimovsk12" */;
 			buildPhases = (
+				34C9797503A213CE7D51D862 /* [CP] Check Pods Manifest.lock */,
 				41BD70F921B4E869006E78FC /* Sources */,
 				41BD714121B4E869006E78FC /* Frameworks */,
 				41BD714421B4E869006E78FC /* Resources */,
+				74401DC3223827340470717B /* [CP] Embed Pods Frameworks */,
+				3FABB802BB21E6D8CEF1CF22 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1992,6 +1990,7 @@
 				41DFC37C213CF4E9002CEB62 /* Sources */,
 				41DFC3B6213CF4E9002CEB62 /* Frameworks */,
 				872075B42BF3ADC07B981923 /* [CP] Embed Pods Frameworks */,
+				6D170BBED90C2D0537C485D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2011,6 +2010,7 @@
 				41DFC41D213D206C002CEB62 /* Frameworks */,
 				41DFC41F213D206C002CEB62 /* Resources */,
 				7601267CBC7341725DB5507D /* [CP] Embed Pods Frameworks */,
+				AD6F8E8669175ACE11A47267 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2030,6 +2030,7 @@
 				41FDA288214229A0003D8110 /* Frameworks */,
 				41FDA28B214229A0003D8110 /* Resources */,
 				1E454B06D4E87353F784FC68 /* [CP] Embed Pods Frameworks */,
+				69E19591601ADED2C278FABE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2184,7 +2185,6 @@
 				412092822158CB2D001E713E /* Saldo.storyboard in Resources */,
 				412092832158CB2D001E713E /* main_background.png in Resources */,
 				412092842158CB2D001E713E /* account_icon_cons.jpg in Resources */,
-				412092852158CB2D001E713E /* Logo_DemoUC_White.png in Resources */,
 				412092862158CB2D001E713E /* ic_action_files_grey.png in Resources */,
 				1C5153D721EF10C900DE36D9 /* Account.storyboard in Resources */,
 				412092872158CB2D001E713E /* arrow_rigth.png in Resources */,
@@ -2201,7 +2201,6 @@
 				4120929D2158D116001E713E /* logo_Stolitsa_white.png in Resources */,
 				4120928F2158CB2D001E713E /* Pays.storyboard in Resources */,
 				412092902158CB2D001E713E /* AdditionalServices.storyboard in Resources */,
-				412092922158CB2D001E713E /* Logo_DemoUC.png in Resources */,
 				412092932158CB2D001E713E /* NoCounters.storyboard in Resources */,
 				412092942158CB2D001E713E /* account_icon_user.png in Resources */,
 			);
@@ -2231,7 +2230,6 @@
 				412092F92159E603001E713E /* Saldo.storyboard in Resources */,
 				412092FA2159E603001E713E /* main_background.png in Resources */,
 				412092FB2159E603001E713E /* account_icon_cons.jpg in Resources */,
-				412092FC2159E603001E713E /* Logo_DemoUC_White.png in Resources */,
 				412092FD2159E603001E713E /* ic_action_files_grey.png in Resources */,
 				1C5153D821EF10CA00DE36D9 /* Account.storyboard in Resources */,
 				412092FE2159E603001E713E /* arrow_rigth.png in Resources */,
@@ -2248,7 +2246,6 @@
 				412093072159E603001E713E /* logo_Stolitsa_white.png in Resources */,
 				412093082159E603001E713E /* Pays.storyboard in Resources */,
 				412093092159E603001E713E /* AdditionalServices.storyboard in Resources */,
-				4120930B2159E603001E713E /* Logo_DemoUC.png in Resources */,
 				4120930C2159E603001E713E /* NoCounters.storyboard in Resources */,
 				4120930D2159E603001E713E /* account_icon_user.png in Resources */,
 			);
@@ -2276,10 +2273,10 @@
 				41EF59DC2137A20300789370 /* Saldo.storyboard in Resources */,
 				418ABF492134C156004DB75C /* main_background.png in Resources */,
 				41EF5A2E2138EC8E00789370 /* account_icon_cons.jpg in Resources */,
-				418ABF2A2133D835004DB75C /* Logo_DemoUC_White.png in Resources */,
 				41EF5A262138E52D00789370 /* ic_action_files_grey.png in Resources */,
 				418ABF7F21352BB3004DB75C /* arrow_rigth.png in Resources */,
 				41ACA20E2140CA9800921C82 /* ic_send_app.png in Resources */,
+				1CEFC88121F1C43600A042AA /* PaymentSuccessViewController.xib in Resources */,
 				418ABF782134FA15004DB75C /* SelectItem.storyboard in Resources */,
 				418ABF9F213576FF004DB75C /* Questions.storyboard in Resources */,
 				1C8513A021EC74100003D587 /* MainMenu.storyboard in Resources */,
@@ -2287,6 +2284,7 @@
 				41ACA2142140CB0200921C82 /* ic_get_app.png in Resources */,
 				1C5153CF21EEFE9800DE36D9 /* Account.storyboard in Resources */,
 				41EF59F12138CF3D00789370 /* Apps.storyboard in Resources */,
+				1CEFC88621F1C79A00A042AA /* Logo_DemoUC_White.png in Resources */,
 				41EF59E42137ECDD00789370 /* Pays.storyboard in Resources */,
 				1C009E4721494AC4004E8BFD /* AdditionalServices.storyboard in Resources */,
 				418ABF272133D5D0004DB75C /* GoogleService-Info.plist in Resources */,
@@ -2324,7 +2322,6 @@
 				41EF5A2B2138EC8000789370 /* account_icon_user.png in Resources */,
 				1C5153D221EF10C500DE36D9 /* Account.storyboard in Resources */,
 				1C8513A121EC74110003D587 /* MainMenu.storyboard in Resources */,
-				418ABF612134CF1A004DB75C /* Logo_DemoUC_White.png in Resources */,
 				41DFC450213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
 				418ABFE521361949004DB75C /* Counters.storyboard in Resources */,
 				41209321215C105F001E713E /* GoogleService-Info.plist in Resources */,
@@ -2337,7 +2334,6 @@
 				418ABF792134FA15004DB75C /* SelectItem.storyboard in Resources */,
 				418ABF6E2134D291004DB75C /* logo_Our_Obj_Home_white.png in Resources */,
 				41EF59E52137ECDD00789370 /* Pays.storyboard in Resources */,
-				418ABF652134CF1A004DB75C /* Logo_DemoUC.png in Resources */,
 				41ACA20F2140CA9800921C82 /* ic_send_app.png in Resources */,
 				41EF59F62138D13E00789370 /* app_close.png in Resources */,
 			);
@@ -2365,7 +2361,6 @@
 				41EF5A48213A80D600789370 /* WebCameras.storyboard in Resources */,
 				1C5153D321EF10C700DE36D9 /* Account.storyboard in Resources */,
 				418ABFCF21357DA5004DB75C /* main_background.png in Resources */,
-				418ABFD021357DA5004DB75C /* Logo_DemoUC_White.png in Resources */,
 				41EF5A302138EC8E00789370 /* account_icon_cons.jpg in Resources */,
 				41EF5A2C2138EC8000789370 /* account_icon_user.png in Resources */,
 				418ABFD121357DA5004DB75C /* arrow_rigth.png in Resources */,
@@ -2382,7 +2377,6 @@
 				418ABFD521357DA5004DB75C /* Main.storyboard in Resources */,
 				41EF59E62137ECDD00789370 /* Pays.storyboard in Resources */,
 				1C8513A221EC74110003D587 /* MainMenu.storyboard in Resources */,
-				418ABFD721357DA5004DB75C /* Logo_DemoUC.png in Resources */,
 				41ACA2102140CA9800921C82 /* ic_send_app.png in Resources */,
 				41EF59F72138D13E00789370 /* app_close.png in Resources */,
 			);
@@ -2412,7 +2406,6 @@
 				41BD715321B4E869006E78FC /* Saldo.storyboard in Resources */,
 				41BD715421B4E869006E78FC /* main_background.png in Resources */,
 				41BD715521B4E869006E78FC /* account_icon_cons.jpg in Resources */,
-				41BD715621B4E869006E78FC /* Logo_DemoUC_White.png in Resources */,
 				41BD715721B4E869006E78FC /* ic_action_files_grey.png in Resources */,
 				41BD715821B4E869006E78FC /* arrow_rigth.png in Resources */,
 				41BD715921B4E869006E78FC /* MainMenu.storyboard in Resources */,
@@ -2426,7 +2419,6 @@
 				41BD716021B4E869006E78FC /* Pays.storyboard in Resources */,
 				41BD717221B4F2B6006E78FC /* logo_Klimovsk12.png in Resources */,
 				41BD716121B4E869006E78FC /* AdditionalServices.storyboard in Resources */,
-				41BD716321B4E869006E78FC /* Logo_DemoUC.png in Resources */,
 				41BD716421B4E869006E78FC /* NoCounters.storyboard in Resources */,
 				41BD716521B4E869006E78FC /* account_icon_user.png in Resources */,
 			);
@@ -2459,7 +2451,6 @@
 				41DFC3C8213CF4E9002CEB62 /* main_background.png in Resources */,
 				41DFC3C9213CF4E9002CEB62 /* account_icon_cons.jpg in Resources */,
 				1C5153D421EF10C700DE36D9 /* Account.storyboard in Resources */,
-				41DFC3CA213CF4E9002CEB62 /* Logo_DemoUC_White.png in Resources */,
 				41DFC452213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
 				41DFC3CB213CF4E9002CEB62 /* ic_action_files_grey.png in Resources */,
 				41CBEBB7219D34FE00B1BD6C /* GoogleService-Info.plist in Resources */,
@@ -2473,7 +2464,6 @@
 				41ACA20B2140CA4700921C82 /* ic_ok_app.png in Resources */,
 				41DFC3D1213CF4E9002CEB62 /* Apps.storyboard in Resources */,
 				41DFC3D2213CF4E9002CEB62 /* Pays.storyboard in Resources */,
-				41DFC3D4213CF4E9002CEB62 /* Logo_DemoUC.png in Resources */,
 				41ACA2112140CA9800921C82 /* ic_send_app.png in Resources */,
 				41DFC3D5213CF4E9002CEB62 /* account_icon_user.png in Resources */,
 			);
@@ -2504,7 +2494,6 @@
 				41DFC42E213D206C002CEB62 /* Saldo.storyboard in Resources */,
 				41DFC42F213D206C002CEB62 /* main_background.png in Resources */,
 				41DFC430213D206C002CEB62 /* account_icon_cons.jpg in Resources */,
-				41DFC431213D206C002CEB62 /* Logo_DemoUC_White.png in Resources */,
 				41DFC453213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
 				41DFC432213D206C002CEB62 /* ic_action_files_grey.png in Resources */,
 				41DFC433213D206C002CEB62 /* arrow_rigth.png in Resources */,
@@ -2518,7 +2507,6 @@
 				41DFC438213D206C002CEB62 /* Apps.storyboard in Resources */,
 				41DFC439213D206C002CEB62 /* Pays.storyboard in Resources */,
 				1C85139C21EC740A0003D587 /* MainMenu.storyboard in Resources */,
-				41DFC43B213D206C002CEB62 /* Logo_DemoUC.png in Resources */,
 				41ACA2122140CA9800921C82 /* ic_send_app.png in Resources */,
 				41DFC43C213D206C002CEB62 /* account_icon_user.png in Resources */,
 			);
@@ -2553,7 +2541,6 @@
 				41FDA29D214229A0003D8110 /* Saldo.storyboard in Resources */,
 				41FDA29E214229A0003D8110 /* main_background.png in Resources */,
 				41FDA29F214229A0003D8110 /* account_icon_cons.jpg in Resources */,
-				41FDA2A0214229A0003D8110 /* Logo_DemoUC_White.png in Resources */,
 				41FDA2A1214229A0003D8110 /* ic_action_files_grey.png in Resources */,
 				41FDA2A2214229A0003D8110 /* arrow_rigth.png in Resources */,
 				41E8F03C2149EC4100FE0473 /* AdditionalServices.storyboard in Resources */,
@@ -2565,7 +2552,6 @@
 				41FDA2A9214229A0003D8110 /* Apps.storyboard in Resources */,
 				41FDA2B621422BA1003D8110 /* logo_UK_Komfort.png in Resources */,
 				41FDA2AA214229A0003D8110 /* Pays.storyboard in Resources */,
-				41FDA2AC214229A0003D8110 /* Logo_DemoUC.png in Resources */,
 				41FDA2AD214229A0003D8110 /* account_icon_user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2615,7 +2601,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2638,7 +2624,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1E454B06D4E87353F784FC68 /* [CP] Embed Pods Frameworks */ = {
@@ -2647,7 +2633,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2670,7 +2656,70 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2AA3C4CA0FFC2664E32649A0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30CDA0CE1B6187EFD7A6CCCB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34C9797503A213CE7D51D862 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Klimovsk12-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3FABB802BB21E6D8CEF1CF22 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4097A4F56B835F0ED708B2A3 /* [CP] Embed Pods Frameworks */ = {
@@ -2679,7 +2728,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChistDom/Pods-ChistDom-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2702,7 +2751,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChistDom/Pods-ChistDom-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		47234D9928B17E1A759D8042 /* [CP] Check Pods Manifest.lock */ = {
@@ -2759,13 +2808,58 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		69E19591601ADED2C278FABE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D170BBED90C2D0537C485D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74401DC3223827340470717B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7601267CBC7341725DB5507D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2788,7 +2882,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76B6FBA7E94920733B804D7C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Komeks/Pods-Komeks-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		872075B42BF3ADC07B981923 /* [CP] Embed Pods Frameworks */ = {
@@ -2797,9 +2906,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework",
-				"${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2808,11 +2915,11 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
@@ -2821,10 +2928,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A89B75DCBE4D9BE69D15AB77 /* [CP] Embed Pods Frameworks */ = {
@@ -2833,9 +2942,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework",
-				"${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2844,11 +2951,11 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
@@ -2857,10 +2964,42 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD6F8E8669175ACE11A47267 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DJ/Pods-DJ-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C01BC89E2E351763D59EFDEC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C31DD010EA804822F472637A /* [CP] Check Pods Manifest.lock */ = {
@@ -2899,15 +3038,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E2CD25B82236388F08B3C317 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E70277479D792D5A6F9682D8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework",
-				"${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2916,11 +3068,11 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
@@ -2929,10 +3081,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F761DE226ED679AD5E910BD2 /* [CP] Embed Pods Frameworks */ = {
@@ -2941,7 +3095,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2964,7 +3118,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FEDD0C72E890937EB07E933B /* [CP] Check Pods Manifest.lock */ = {
@@ -3045,7 +3199,6 @@
 				41B5BC3C21666D11003F4868 /* Titles.swift in Sources */,
 				412092582158CB2D001E713E /* FloatRatingView.swift in Sources */,
 				412092592158CB2D001E713E /* MainMenuCons.swift in Sources */,
-				1C8513C021EC746A0003D587 /* PaysMytishiController.swift in Sources */,
 				4120925A2158CB2D001E713E /* Saldo+CoreDataClass.swift in Sources */,
 				4120925B2158CB2D001E713E /* AppUser.swift in Sources */,
 				4120925C2158CB2D001E713E /* Extensions.swift in Sources */,
@@ -3136,7 +3289,6 @@
 				412092D42159E603001E713E /* SaldoController.swift in Sources */,
 				412092D52159E603001E713E /* Server.swift in Sources */,
 				412092D62159E603001E713E /* AppsCellClose.swift in Sources */,
-				1C8513C121EC746B0003D587 /* PaysMytishiController.swift in Sources */,
 				1C54D61021ACECEB00A82C71 /* HistoryPayController.swift in Sources */,
 				412092D72159E603001E713E /* DB.swift in Sources */,
 				412092D82159E603001E713E /* FilesController.swift in Sources */,
@@ -3164,6 +3316,7 @@
 				41DFC463213FFFF5002CEB62 /* AddAppCons.swift in Sources */,
 				41EF5A60213A906600789370 /* QuestionAnswerVC.swift in Sources */,
 				410004B521C1EB200040D703 /* AllLS.swift in Sources */,
+				1CEFC88021F1C42900A042AA /* TransactionHistoryModelController.m in Sources */,
 				418ABF8621353DF8004DB75C /* NewsController.swift in Sources */,
 				41EF5A022138D40800789370 /* AppsCell.swift in Sources */,
 				418ABFA221357773004DB75C /* QuestionsTableVC.swift in Sources */,
@@ -3175,6 +3328,7 @@
 				41E8F018214765B500FE0473 /* ShemeColor.swift in Sources */,
 				418AC035213634CC004DB75C /* Counters+CoreDataProperties.swift in Sources */,
 				418ABF3E2134109D004DB75C /* SendSMSCod.swift in Sources */,
+				1CEFC88321F1C45600A042AA /* ASDKTestSettings.m in Sources */,
 				418ABF4021341941004DB75C /* NewPass.swift in Sources */,
 				418ABF8C21354274004DB75C /* News.swift in Sources */,
 				41EF5A1E2138E23000789370 /* AddAppUser.swift in Sources */,
@@ -3189,6 +3343,7 @@
 				417FCFEA217EF143009CDBB8 /* Settings+CoreDataProperties.swift in Sources */,
 				41EF5A53213A853900789370 /* Web_JSON.swift in Sources */,
 				41EF5A42213917C900789370 /* Fotos+CoreDataProperties.swift in Sources */,
+				1CEFC88421F1C45A00A042AA /* ASDKCardIOScanner.m in Sources */,
 				418ABF7C2134FA4D004DB75C /* SelectItemController.swift in Sources */,
 				418ABF9B21355F1E004DB75C /* NewsView.swift in Sources */,
 				418ABFED21361F70004DB75C /* CounterCell.swift in Sources */,
@@ -3221,6 +3376,7 @@
 				1C54D60921ACECEB00A82C71 /* HistoryPayController.swift in Sources */,
 				418AC03F21363957004DB75C /* DB.swift in Sources */,
 				41DFC36F213C0B5B002CEB62 /* FilesController.swift in Sources */,
+				1CEFC88221F1C45100A042AA /* PaymentSuccessViewController.m in Sources */,
 				418ABFFB21362CBB004DB75C /* ObjJKH.xcdatamodeld in Sources */,
 				418ABF4721341F71004DB75C /* ForgotPass.swift in Sources */,
 				418ABF3C2134019E004DB75C /* Registration.swift in Sources */,
@@ -3300,7 +3456,6 @@
 				41EF59D92137A1DD00789370 /* SaldoController.swift in Sources */,
 				418ABF522134CF1A004DB75C /* Server.swift in Sources */,
 				41EF5A072138D41C00789370 /* AppsCellClose.swift in Sources */,
-				1C8513BC21EC74690003D587 /* PaysMytishiController.swift in Sources */,
 				1C54D60A21ACECEB00A82C71 /* HistoryPayController.swift in Sources */,
 				418AC04021363957004DB75C /* DB.swift in Sources */,
 				41DFC370213C0B5B002CEB62 /* FilesController.swift in Sources */,
@@ -3382,7 +3537,6 @@
 				41EF59DA2137A1DD00789370 /* SaldoController.swift in Sources */,
 				418ABFBC21357DA5004DB75C /* Server.swift in Sources */,
 				41EF5A082138D41C00789370 /* AppsCellClose.swift in Sources */,
-				1C8513BD21EC74690003D587 /* PaysMytishiController.swift in Sources */,
 				1C54D60B21ACECEB00A82C71 /* HistoryPayController.swift in Sources */,
 				418AC04121363957004DB75C /* DB.swift in Sources */,
 				41DFC371213C0B5B002CEB62 /* FilesController.swift in Sources */,
@@ -3464,7 +3618,6 @@
 				41BD712D21B4E869006E78FC /* SaldoController.swift in Sources */,
 				41BD712E21B4E869006E78FC /* Server.swift in Sources */,
 				41BD712F21B4E869006E78FC /* AppsCellClose.swift in Sources */,
-				1C8513C221EC746B0003D587 /* PaysMytishiController.swift in Sources */,
 				41BD713021B4E869006E78FC /* HistoryPayController.swift in Sources */,
 				41BD713121B4E869006E78FC /* DB.swift in Sources */,
 				41BD713221B4E869006E78FC /* FilesController.swift in Sources */,
@@ -3635,7 +3788,6 @@
 				41DFC40D213D206C002CEB62 /* SaldoController.swift in Sources */,
 				41DFC40E213D206C002CEB62 /* Server.swift in Sources */,
 				41DFC40F213D206C002CEB62 /* AppsCellClose.swift in Sources */,
-				1C8513BE21EC746A0003D587 /* PaysMytishiController.swift in Sources */,
 				1C54D60D21ACECEB00A82C71 /* HistoryPayController.swift in Sources */,
 				41DFC410213D206C002CEB62 /* DB.swift in Sources */,
 				41DFC411213D206C002CEB62 /* FilesController.swift in Sources */,
@@ -3717,7 +3869,6 @@
 				41FDA277214229A0003D8110 /* SaldoController.swift in Sources */,
 				41FDA278214229A0003D8110 /* Server.swift in Sources */,
 				41FDA279214229A0003D8110 /* AppsCellClose.swift in Sources */,
-				1C8513BF21EC746A0003D587 /* PaysMytishiController.swift in Sources */,
 				1C54D60E21ACECEB00A82C71 /* HistoryPayController.swift in Sources */,
 				41FDA27A214229A0003D8110 /* DB.swift in Sources */,
 				41FDA27B214229A0003D8110 /* FilesController.swift in Sources */,
@@ -3923,6 +4074,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3977,6 +4129,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -3988,6 +4142,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 07B9B77709F9BE5A8650BB94 /* Pods-ObjJKH.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
@@ -4009,6 +4164,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -4016,6 +4172,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF4B2258B07AE32069299AC1 /* Pods-ObjJKH.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
@@ -4036,6 +4193,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ObjJKH-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -4147,6 +4305,7 @@
 		};
 		41BD716821B4E869006E78FC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 296AEE95442ECF4E01E51D6F /* Pods-Klimovsk12.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Klimovsk12;
 				CLANG_ENABLE_MODULES = YES;
@@ -4174,6 +4333,7 @@
 		};
 		41BD716921B4E869006E78FC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Klimovsk12;
 				CLANG_ENABLE_MODULES = YES;

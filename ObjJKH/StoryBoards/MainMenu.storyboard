@@ -596,7 +596,10 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDY-PO-fVi">
-                                                <rect key="frame" x="34" y="410" width="141" height="34"/>
+                                                <rect key="frame" x="34" y="410" width="73" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="73" id="SHt-iX-utb"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Профиль">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -606,14 +609,14 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="application" translatesAutoresizingMaskIntoConstraints="NO" id="CrS-K2-zqk">
-                                                <rect key="frame" x="188" y="414" width="24" height="24"/>
+                                                <rect key="frame" x="116" y="414" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="2t8-Bi-bw3"/>
                                                     <constraint firstAttribute="width" constant="24" id="ptc-XA-h0r"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xA3-yV-CoQ">
-                                                <rect key="frame" x="216" y="410" width="135" height="34"/>
+                                                <rect key="frame" x="144" y="410" width="215" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Выход">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -623,7 +626,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSp-db-EkP">
-                                                <rect key="frame" x="179" y="407" width="1" height="40"/>
+                                                <rect key="frame" x="109" y="407" width="1" height="40"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="KbR-jz-qfn"/>
@@ -635,7 +638,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="BSp-db-EkP" firstAttribute="leading" secondItem="eDY-PO-fVi" secondAttribute="trailing" constant="4" id="04H-pf-HW8"/>
+                                            <constraint firstItem="BSp-db-EkP" firstAttribute="leading" secondItem="eDY-PO-fVi" secondAttribute="trailing" constant="2" id="04H-pf-HW8"/>
                                             <constraint firstItem="5bS-eQ-Jpq" firstAttribute="leading" secondItem="Urd-MO-2Rw" secondAttribute="leading" id="0Qd-Tr-fxE"/>
                                             <constraint firstItem="v1x-q4-9Ic" firstAttribute="leading" secondItem="Urd-MO-2Rw" secondAttribute="leading" constant="8" id="0jc-du-Yvv"/>
                                             <constraint firstItem="zuN-PO-14W" firstAttribute="leading" secondItem="Urd-MO-2Rw" secondAttribute="leading" constant="8" id="0vm-0Z-am0"/>
@@ -660,6 +663,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Yru-Mc-bWy" secondAttribute="trailing" id="BBD-Q0-okq"/>
                                             <constraint firstItem="3MZ-Uc-zFU" firstAttribute="top" secondItem="d5e-V7-aj6" secondAttribute="bottom" constant="4" id="CLz-kT-t7P"/>
                                             <constraint firstItem="CD3-wG-k0a" firstAttribute="leading" secondItem="Urd-MO-2Rw" secondAttribute="leading" constant="8" id="CZz-kH-7fz"/>
+                                            <constraint firstAttribute="trailing" secondItem="xA3-yV-CoQ" secondAttribute="trailing" id="Cv6-aj-Y4r"/>
                                             <constraint firstItem="eDY-PO-fVi" firstAttribute="top" secondItem="JpW-Gl-kVM" secondAttribute="bottom" constant="2" id="DMn-NV-gIZ"/>
                                             <constraint firstAttribute="trailing" secondItem="d5e-V7-aj6" secondAttribute="trailing" id="DSL-Y6-KMe"/>
                                             <constraint firstAttribute="trailing" secondItem="1jh-d2-Yhd" secondAttribute="trailing" constant="8" id="DVm-pE-EAg"/>
@@ -747,11 +751,11 @@
                                             <constraint firstItem="89r-4H-5yd" firstAttribute="top" secondItem="ahM-ft-Bfm" secondAttribute="bottom" constant="2" id="obg-6D-8Jc"/>
                                             <constraint firstItem="RG9-mO-qkg" firstAttribute="top" secondItem="d5e-V7-aj6" secondAttribute="bottom" constant="8" id="peA-VO-Udl"/>
                                             <constraint firstItem="2VX-TV-3K8" firstAttribute="leading" secondItem="TNG-ry-K2v" secondAttribute="trailing" constant="4" id="phS-j8-3g5"/>
-                                            <constraint firstAttribute="trailing" secondItem="xA3-yV-CoQ" secondAttribute="trailing" constant="8" id="plr-dJ-bP3"/>
                                             <constraint firstItem="5bS-eQ-Jpq" firstAttribute="top" secondItem="uki-bU-FRB" secondAttribute="bottom" constant="35" id="sTF-Xq-8LH"/>
                                             <constraint firstItem="5Ph-EF-Mmu" firstAttribute="top" secondItem="zuN-PO-14W" secondAttribute="bottom" constant="10" id="sWN-NX-rl2"/>
                                             <constraint firstItem="m6S-lz-d2r" firstAttribute="leading" secondItem="MKm-A8-rmV" secondAttribute="trailing" constant="4" id="scr-IL-Ri4"/>
                                             <constraint firstItem="89r-4H-5yd" firstAttribute="top" secondItem="Yru-Mc-bWy" secondAttribute="bottom" constant="39" id="ssM-ca-Ep2"/>
+                                            <constraint firstItem="CrS-K2-zqk" firstAttribute="leading" secondItem="BSp-db-EkP" secondAttribute="trailing" constant="6" id="tDc-La-w5I"/>
                                             <constraint firstItem="MKm-A8-rmV" firstAttribute="leading" secondItem="r8x-Cp-fm6" secondAttribute="trailing" constant="4" id="tbO-pO-ugy"/>
                                             <constraint firstAttribute="bottom" secondItem="BSp-db-EkP" secondAttribute="bottom" constant="1" id="uqo-39-e5A"/>
                                             <constraint firstItem="VUL-h1-Eqx" firstAttribute="leading" secondItem="HUL-KI-lAC" secondAttribute="trailing" constant="4" id="vEE-Pv-oFk"/>
@@ -764,11 +768,9 @@
                                             <constraint firstAttribute="height" constant="448" id="wdV-VW-Lm9"/>
                                             <constraint firstItem="ebz-RD-Gl8" firstAttribute="top" secondItem="JpW-Gl-kVM" secondAttribute="bottom" constant="8" id="xZn-8s-uRS"/>
                                             <constraint firstAttribute="bottom" secondItem="xA3-yV-CoQ" secondAttribute="bottom" constant="4" id="xtm-FS-Vbv"/>
-                                            <constraint firstItem="CrS-K2-zqk" firstAttribute="leading" secondItem="BSp-db-EkP" secondAttribute="trailing" constant="8" id="xxo-3F-XNv"/>
                                             <constraint firstItem="d5e-V7-aj6" firstAttribute="top" secondItem="89r-4H-5yd" secondAttribute="bottom" constant="40" id="ybs-Fo-bGd"/>
                                             <constraint firstItem="Yru-Mc-bWy" firstAttribute="top" secondItem="zuN-PO-14W" secondAttribute="bottom" constant="40" id="zAj-k0-bKW"/>
                                             <constraint firstItem="OjF-nl-wyH" firstAttribute="top" secondItem="3LV-Nz-m3c" secondAttribute="bottom" constant="2" id="zcp-ZA-VGy"/>
-                                            <constraint firstItem="BSp-db-EkP" firstAttribute="centerX" secondItem="Urd-MO-2Rw" secondAttribute="centerX" id="zxg-ij-Cj4"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
