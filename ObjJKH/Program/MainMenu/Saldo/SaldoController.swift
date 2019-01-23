@@ -390,6 +390,12 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                 data, response, error in
                                                 
                                                 if error != nil {
+//                                                    DispatchQueue.main.async(execute: {
+//                                                        let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+//                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                                                        alert.addAction(cancelAction)
+//                                                        self.present(alert, animated: true, completion: nil)
+//                                                    })
                                                     return
                                                 } else {
                                                     var i_month: Int = 0

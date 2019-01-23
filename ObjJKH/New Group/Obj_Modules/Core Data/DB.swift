@@ -151,6 +151,7 @@ class DB: NSObject, XMLParserDelegate {
             print("parse success!")
         } else {
             print("parse failure!")
+            UserDefaults.standard.set(true, forKey: "error")
         }
         
         // сохраним последние значения Месяц-Год в глобальных переменных
@@ -294,6 +295,7 @@ class DB: NSObject, XMLParserDelegate {
                                                 data, response, error in
                                                 
                                                 if error != nil {
+                                                    UserDefaults.standard.set(true, forKey: "error")
                                                     return
                                                 } else {
                                                     var i_month: Int = 0
