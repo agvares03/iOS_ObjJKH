@@ -269,10 +269,18 @@ class FirstController: UIViewController {
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
-        } else if (responseString == "2") || (responseString.contains("еверный логин")){
+        }else if (responseString == "2") || (responseString.contains("еверный логин")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if (responseString.contains("error")){
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
@@ -297,12 +305,19 @@ class FirstController: UIViewController {
                 let db = DB()
                 db.getDataByEnter(login: self.edLogin.text!, pass: self.edPass.text!)
                 self.getTypesApps()
-                
-                if (answer[5] == "0") {
-                    self.performSegue(withIdentifier: "MainMenu", sender: self)
-                } else {
-                    self.performSegue(withIdentifier: "MainMenuCons", sender: self)
+                if !UserDefaults.standard.bool(forKey: "error"){
+                    if (answer[5] == "0") {
+                        self.performSegue(withIdentifier: "MainMenu", sender: self)
+                    } else {
+                        self.performSegue(withIdentifier: "MainMenuCons", sender: self)
+                    }
+                }else{
+                    let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
                 }
+                
                 
                 self.StopIndicator()
             })

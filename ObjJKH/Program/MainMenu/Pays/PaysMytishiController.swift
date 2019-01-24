@@ -33,9 +33,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var sum: Double = 0
     var totalSum: Double = 0
     var selectedRow = 0
-    var checkBox:[Bool] = []
-    var sumOSV:[Double] = []
-    var osvc:[String] = []
+    var checkBox:[Bool]   = []
+    var idOSV   :[Int]    = []
+    var sumOSV  :[Double] = []
+    var osvc    :[String] = []
     
     var login: String?
     var pass: String?
@@ -106,30 +107,44 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             var i = 0
             checkBox.forEach{
                 if $0 == true && sumOSV[i] > 0.00{
-                    let price = String(sumOSV[i]).replacingOccurrences(of: ".", with: "")
+                    let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
                     let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
                 }
                 i += 1
             }
-            print(servicePay, String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: ""))
             let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
             let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
             items.append(ItemsData)
             var Data:[String:String] = [:]
+            var DataStr: String = ""
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
                 for i in 0...str_ls_arr.count - 1{
-                    Data["ls\(i + 1)"] = str_ls_arr[0]
+                    DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0])|"
                 }
             }else{
-                Data["ls1"] = selectLS
+                DataStr = "ls1-\(selectLS)|"
             }
+            DataStr = DataStr + "|"
+            i = 0
+            checkBox.forEach{
+                if $0 == true && sumOSV[i] > 0.00{
+                    DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                }
+                i += 1
+            }
+            DataStr = DataStr + "serv-\(String(format:"%.2f", servicePay))"
+            Data["name"] = DataStr
+            print(Data)
+            
             let defaults = UserDefaults.standard
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
             print(receiptData)
             PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                 
@@ -236,6 +251,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                     var i_year: Int = 0
                                                     do {
                                                         DB().del_db(table_name: "Saldo")
+                                                        var bill_id       = 0
                                                         var bill_month    = ""
                                                         var bill_year     = ""
                                                         var bill_service  = ""
@@ -272,7 +288,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                                         if (itsFirst) {
                                                                             itsFirst = false
                                                                         } else {
-                                                                            self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
+                                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
                                                                             
                                                                             obj_start = 0.00
                                                                             obj_plus  = 0.00
@@ -293,6 +309,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                                         }
                                                                         if obj.key == "Year" {
                                                                             bill_year = String(describing: obj.value as! NSNumber)
+                                                                        }
+                                                                        if obj.key == "ID" {
+                                                                            bill_id = Int(truncating: obj.value as! NSNumber)
                                                                         }
                                                                         if obj.key == "Service" {
                                                                             bill_service = obj.value as! String
@@ -315,13 +334,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                                         }
                                                                     }
                                                                     
-                                                                    self.add_data_saldo(usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
+                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
                                                                     
                                                                 }
                                                             }
                                                         }
                                                         
-                                                        self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
+                                                        self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
                                                         
                                                         self.end_osv()
                                                         
@@ -355,10 +374,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         
     }
     
-    func add_data_saldo(usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
+    func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
         
         let managedObject = Saldo()
-        managedObject.id               = 1
+        managedObject.id               = id
         managedObject.usluga           = usluga
         managedObject.num_month        = num_month
         managedObject.year             = year
@@ -456,6 +475,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             osvc.append(osv.usluga!)
             checkBox.append(true)
             sumOSV.append(Double(sum)!)
+            idOSV.append(Int(osv.id))
         }
         
         if (osv.usluga == "Я") {

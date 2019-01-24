@@ -151,6 +151,7 @@ class DB: NSObject, XMLParserDelegate {
             print("parse success!")
         } else {
             print("parse failure!")
+            UserDefaults.standard.set(true, forKey: "error")
         }
         
         // сохраним последние значения Месяц-Год в глобальных переменных
@@ -294,6 +295,7 @@ class DB: NSObject, XMLParserDelegate {
                                                 data, response, error in
                                                 
                                                 if error != nil {
+                                                    UserDefaults.standard.set(true, forKey: "error")
                                                     return
                                                 } else {
                                                     var i_month: Int = 0
@@ -306,6 +308,7 @@ class DB: NSObject, XMLParserDelegate {
                                                         var bill_debt     = ""
                                                         var bill_pay      = ""
                                                         var bill_total    = ""
+                                                        var bill_id       = 0
                                                         var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
                                                         print(json)
                                                         if let json_bills = json["data"] {
@@ -322,6 +325,9 @@ class DB: NSObject, XMLParserDelegate {
                                                                         }
                                                                         if obj.key == "Year" {
                                                                             bill_year = String(describing: obj.value as! NSNumber)
+                                                                        }
+                                                                        if obj.key == "ID" {
+                                                                            bill_id = Int(truncating: obj.value as! NSNumber)
                                                                         }
                                                                         if obj.key == "Service" {
                                                                             bill_service = obj.value as! String
@@ -340,7 +346,7 @@ class DB: NSObject, XMLParserDelegate {
                                                                         }
                                                                     }
                                                                     
-                                                                    self.add_data_saldo(usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
+                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
                                                                     
 //                                                                    if (Int(bill_month)! > i_month) {
                                                                         i_month = Int(bill_month)!
@@ -382,9 +388,9 @@ class DB: NSObject, XMLParserDelegate {
         task.resume()
     }
     
-    func add_data_saldo(usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
+    func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
         let managedObject = Saldo()
-        managedObject.id               = 1
+        managedObject.id               = id
         managedObject.usluga           = usluga
         managedObject.num_month        = num_month
         managedObject.year             = year
