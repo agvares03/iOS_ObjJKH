@@ -409,6 +409,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                         var bill_debt     = ""
                                                         var bill_pay      = ""
                                                         var bill_total    = ""
+                                                        var bill_id       = 0
                                                         var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
                                                         print(json)
                                                         
@@ -438,7 +439,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                                         if (itsFirst) {
                                                                             itsFirst = false
                                                                         } else {
-                                                                            self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
+                                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
                                                                             obj_start = 0.00
                                                                             obj_plus  = 0.00
                                                                             obj_minus = 0.00
@@ -458,6 +459,9 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                                         }
                                                                         if obj.key == "Year" {
                                                                             bill_year = String(describing: obj.value as! NSNumber)
+                                                                        }
+                                                                        if obj.key == "ID" {
+                                                                            bill_id = Int(truncating: obj.value as! NSNumber)
                                                                         }
                                                                         if obj.key == "Service" {
                                                                             bill_service = obj.value as! String
@@ -479,12 +483,12 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                                             obj_end += (obj.value as! Double)
                                                                         }
                                                                     }
-                                                                    self.add_data_saldo(usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
+                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
                                                                 }
                                                             }
                                                         }
                                                         
-                                                        self.add_data_saldo(usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
+                                                        self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
                                                         
                                                         self.end_osv()
                                                         
@@ -518,12 +522,12 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
     }
     
-    func add_data_saldo(usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
+    func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
         #if isMupRCMytishi
 //        print(usluga)
         if usluga == "Услуги ЖКУ"{
             let managedObject = Saldo()
-            managedObject.id               = 1
+            managedObject.id               = id
             managedObject.usluga           = usluga
             managedObject.num_month        = num_month
             managedObject.year             = year
@@ -535,7 +539,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         #else
         let managedObject = Saldo()
-        managedObject.id               = 1
+        managedObject.id               = id
         managedObject.usluga           = usluga
         managedObject.num_month        = num_month
         managedObject.year             = year
