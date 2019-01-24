@@ -143,6 +143,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
             print(receiptData)
             PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                 
