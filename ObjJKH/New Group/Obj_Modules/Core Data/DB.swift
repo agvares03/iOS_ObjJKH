@@ -151,7 +151,6 @@ class DB: NSObject, XMLParserDelegate {
             print("parse success!")
         } else {
             print("parse failure!")
-            UserDefaults.standard.set(true, forKey: "error")
         }
         
         // сохраним последние значения Месяц-Год в глобальных переменных
@@ -282,7 +281,7 @@ class DB: NSObject, XMLParserDelegate {
     
     // Ведомость
     func parse_OSV(login: String, pass: String) {
-        
+        UserDefaults.standard.set(false, forKey: "error")
         var sum:Double = 0
         
         let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
@@ -295,7 +294,6 @@ class DB: NSObject, XMLParserDelegate {
                                                 data, response, error in
                                                 
                                                 if error != nil {
-                                                    UserDefaults.standard.set(true, forKey: "error")
                                                     return
                                                 } else {
                                                     var i_month: Int = 0
@@ -310,7 +308,7 @@ class DB: NSObject, XMLParserDelegate {
                                                         var bill_total    = ""
                                                         var bill_id       = 0
                                                         var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                        print(json)
+//                                                        print(json)
                                                         if let json_bills = json["data"] {
                                                             let int_end = (json_bills.count)!-1
                                                             if (int_end < 0) {
