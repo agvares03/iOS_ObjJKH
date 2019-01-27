@@ -118,6 +118,26 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         sendView.isUserInteractionEnabled = true
         sendView.addGestureRecognizer(tap)
+        #if isDJ
+        DispatchQueue.main.async(execute: {
+            let sumDebt = UserDefaults.standard.double(forKey: "sumDebt")
+            if sumDebt > 0 && sumDebt < 10000{
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
+                vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                self.addChildViewController(vc)
+                self.view.addSubview(vc.view)
+            }else if sumDebt > 10000{
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
+                vc.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+                self.addChildViewController(vc)
+                let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "TwoPageController") as! TwoPageController
+                vc1.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                self.addChildViewController(vc1)
+                self.view.addSubview(vc1.view)
+                self.view.addSubview(vc.view)
+            }
+        })
+        #endif        
     }
     
     override func didReceiveMemoryWarning() {

@@ -44,6 +44,7 @@ class Server {
     static let GET_METERS          = "GetMeterValues.ashx?"          // Получить показания по счетчикам
     static let ADD_METER           = "AddMeterValue.ashx?"           // Добавить показание по счетчику
     static let GET_BILLS_SERVICES  = "GetBillServices.ashx?"         // Получить данные ОСВ (взаиморасчеты)
+    static let GET_DEBT_ACCOUNT    = "GetDebtByAccount.ashx?"        // Получить задолженности для ДомЖилСервис
     static let GET_LINK_STOLITSA   = "common/pay/EplatPay.aspx?"     // Ссылка на платеж (Столица)
     static let GET_LINK            = "PayOnline.ashx?"               // Ссылка на платеж
     static let GET_PAYMENTS        = "GetPayments.ashx?"             // Получить историю платежей

@@ -321,7 +321,9 @@ class MainMenu: UIViewController {
         request_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         question_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         news_indicator.backgroundColor = myColors.indicatorColor.uiColor()
-        
+        #if isDJ
+            getDebt()
+        #endif
         // Настройки для меню
         settings_for_menu()
     }
@@ -525,6 +527,64 @@ class MainMenu: UIViewController {
     
     // Web-камеры
     @IBAction func go_web(_ sender: UIButton) {
+    }
+    
+    func getDebt() {
+        let defaults = UserDefaults.standard
+        let str_ls = defaults.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        var sumObj = 0.00
+        if (str_ls_arr?.count)! > 0{
+            str_ls_arr?.forEach{
+                let ls = $0
+                let urlPath = Server.SERVER + Server.GET_DEBT_ACCOUNT + "ident=" + ls.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+                
+                let url: NSURL = NSURL(string: urlPath)!
+                let request = NSMutableURLRequest(url: url as URL)
+                request.httpMethod = "GET"
+                print(request)
+                
+                let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                      completionHandler: {
+                                                        data, response, error in
+                                                        
+                                                        if error != nil {
+                                                            return
+                                                        } else {
+                                                            do {
+                                                                var date        = ""
+                                                                var sum         = ""
+                                                                var sumFine     = ""
+                                                                var sumOver     = ""
+                                                                var sumFineOver = ""
+                                                                var sumAll      = ""
+                                                                var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                                print(json)
+                                                                if let json_bills = json["data"] {
+                                                                    let int_end = (json_bills.count)!-1
+                                                                    if (int_end < 0) {
+                                                                        
+                                                                    } else {
+                                                                        sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
+                                                                        date = json_bills["Date"] as! String
+                                                                        defaults.set(date, forKey: "dateDebt")
+                                                                        if Double(sumAll) != 0.00{
+                                                                            sumObj = sumObj + Double(sumAll)!
+                                                                        }
+                                                                    }
+                                                                }
+                                                                defaults.set(sumObj, forKey: "sumDebt")
+                                                                defaults.synchronize()
+                                                            } catch let error as NSError {
+                                                                print(error)
+                                                            }
+                                                            
+                                                        }
+                                                        
+                })
+                task.resume()
+            }
+        }
     }
     
     // Запись на прием
