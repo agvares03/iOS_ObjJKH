@@ -80,7 +80,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currPoint = sendView.frame.origin.y
+        currPoint = 515
         let defaults     = UserDefaults.standard
         // Логин и пароль
         login = defaults.string(forKey: "login")
