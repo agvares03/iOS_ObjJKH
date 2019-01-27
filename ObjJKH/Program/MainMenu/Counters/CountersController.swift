@@ -350,7 +350,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             
             cell.ident.text       = counter.ident
             cell.name.text        = counter.count_name
-            cell.number.text      = counter.uniq_num
+            cell.number.text      = counter.owner
             cell.pred.text        = counter.prev_value.description
             cell.teck.text        = counter.value.description
             cell.diff.text        = counter.diff.description
@@ -531,6 +531,14 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
                     self.updateEditInfoLabel()
                     
                 }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: self.responseString as String, preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
