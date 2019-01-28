@@ -310,7 +310,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                                         if obj.key == "Year" {
                                                                             bill_year = String(describing: obj.value as! NSNumber)
                                                                         }
-                                                                        if obj.key == "ID" {
+                                                                        if obj.key == "ServiceTypeId" {
                                                                             bill_id = Int(truncating: obj.value as! NSNumber)
                                                                         }
                                                                         if obj.key == "Service" {
