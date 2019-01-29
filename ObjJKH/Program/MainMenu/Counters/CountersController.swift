@@ -354,16 +354,16 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             cell.ident.text       = counter.ident
             cell.name.text        = String(counter.count_name! + ", " + counter.unit_name!)
             cell.number.text      = counter.owner
-            cell.pred.text        = String(format:"%.2f", counter.prev_value.description)
-            cell.teck.text        = String(format:"%.2f", counter.value.description)
-            cell.diff.text        = String(format:"%.2f", counter.diff.description)
+            cell.pred.text        = String(format:"%.2f", counter.prev_value)
+            cell.teck.text        = String(format:"%.2f", counter.value)
+            cell.diff.text        = String(format:"%.2f", counter.diff)
         }else{
             cell.ident.text       = identArr[indexPath.row]
             cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.number.text      = numberArr[indexPath.row]
-            cell.pred.text        = String(format:"%.2f", predArr[indexPath.row].description)
-            cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row].description)
-            cell.diff.text        = String(format:"%.2f", diffArr[indexPath.row].description)
+            cell.pred.text        = String(format:"%.2f", predArr[indexPath.row])
+            cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
+            cell.diff.text        = String(format:"%.2f", diffArr[indexPath.row])
         }
         
         
