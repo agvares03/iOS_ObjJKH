@@ -64,9 +64,7 @@ class StartController: UIViewController {
                                                 self.responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("Response: \(self.responseLS!)")
                                                 if (self.responseLS?.contains("обновить"))!{
-                                                    DispatchQueue.main.sync {
-                                                        self.update_app()
-                                                    }
+                                                    self.update_app()
                                                 }else{
                                                    self.setSettings()
                                                 }
@@ -100,10 +98,12 @@ class StartController: UIViewController {
     }
     
     @objc func update_app() {
-        if progressValue < 1.0 {
-            self.perform(#selector(update_app), with: nil, afterDelay: 0.1)
-        } else {
-            self.performSegue(withIdentifier: "update_app", sender: self)
+        DispatchQueue.main.sync {
+            if progressValue < 1.0 {
+                self.perform(#selector(update_app), with: nil, afterDelay: 0.1)
+            } else {
+                self.performSegue(withIdentifier: "update_app", sender: self)
+            }
         }
     }
     
