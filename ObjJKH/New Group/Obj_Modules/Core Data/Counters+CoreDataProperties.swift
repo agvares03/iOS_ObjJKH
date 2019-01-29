@@ -22,6 +22,7 @@ extension Counters {
     @NSManaged public var diff: Float
     @NSManaged public var id: Int64
     @NSManaged public var num_month: String?
+    @NSManaged public var unit_name: String?
     @NSManaged public var owner: String?
     @NSManaged public var prev_value: Float
     @NSManaged public var uniq_num: String?

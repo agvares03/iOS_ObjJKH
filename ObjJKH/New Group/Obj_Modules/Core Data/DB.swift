@@ -197,6 +197,7 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.uniq_num      = attributeDict["MeterUniqueNum"]!
             managedObject.owner         = attributeDict["FactoryNumber"]!
             managedObject.num_month     = self.currMonth
+            managedObject.unit_name     = "кв/ч"
             managedObject.year          = self.currYear
             managedObject.ident         = attributeDict["Ident"]
             managedObject.count_name    = attributeDict["Name"]
