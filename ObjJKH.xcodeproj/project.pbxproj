@@ -38,6 +38,13 @@
 		1C54D60E21ACECEB00A82C71 /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
 		1C54D60F21ACECEB00A82C71 /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
 		1C54D61021ACECEB00A82C71 /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
+		1C6A38A8220059C000774DED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF162133CC8C004DB75C /* Info.plist */; };
+		1C6A38A9220059C500774DED /* Info - OurObjHome.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4179E913217DCC10007A395D /* Info - OurObjHome.plist */; };
+		1C6A38AA220059C800774DED /* Info - ChistDom.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */; };
+		1C6A38AB220059CB00774DED /* Info - MupRCMytishi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */; };
+		1C6A38AC220059CF00774DED /* Info - DJService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC442213D2083002CEB62 /* Info - DJService.plist */; };
+		1C6A38AD220059D200774DED /* Info - UK_Komfort.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */; };
+		1C6A38AE220059D500774DED /* Info - Stolitsa.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4120929A2158CB36001E713E /* Info - Stolitsa.plist */; };
 		1C7B2DFC219BFEFC00787507 /* RegLSMup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B2DFA219BFA4900787507 /* RegLSMup.swift */; };
 		1C7B34CF21992DE100E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		1C7B34D0219939FF00E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
@@ -1087,7 +1094,7 @@
 		1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaysMytishi.storyboard; sourceTree = "<group>"; };
 		1C85139721EC4E940003D587 /* PaysMytishiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaysMytishiController.swift; sourceTree = "<group>"; };
-		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/DJ/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/DJ/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C953D6421FAC9D500313221 /* OnePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePageController.swift; sourceTree = "<group>"; };
 		1C953D6721FAC9F100313221 /* TwoPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageController.swift; sourceTree = "<group>"; };
 		207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klimovsk12.release.xcconfig"; path = "Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12.release.xcconfig"; sourceTree = "<group>"; };
@@ -1100,14 +1107,14 @@
 		411AD1C82161E17E004FD1B5 /* empty.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = empty.cpp; sourceTree = "<group>"; };
 		411AD1C92161E17E004FD1B5 /* empty.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = empty.hpp; sourceTree = "<group>"; };
 		412092992158CB2D001E713E /* Stolitsa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stolitsa.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4120929A2158CB36001E713E /* Info - Stolitsa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - Stolitsa.plist"; sourceTree = SOURCE_ROOT; };
+		4120929A2158CB36001E713E /* Info - Stolitsa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - Stolitsa.plist"; path = "../Info - Stolitsa.plist"; sourceTree = "<group>"; };
 		4120929C2158D116001E713E /* logo_Stolitsa_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa_white.png; sourceTree = "<group>"; };
 		4120929E2158D126001E713E /* logo_Stolitsa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa.png; sourceTree = "<group>"; };
 		412093122159E603001E713E /* Komeks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komeks.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		412093132159E619001E713E /* Info - Komeks.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - Komeks.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - Komeks.plist"; sourceTree = "<absolute>"; };
+		412093132159E619001E713E /* Info - Komeks.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Info - Komeks.plist"; path = "../../../../tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - Komeks.plist"; sourceTree = "<group>"; };
 		412093152159EB15001E713E /* Logo_Komeks_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Komeks_White.png; sourceTree = "<group>"; };
 		412093172159EB1E001E713E /* Logo_Komeks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Komeks.png; sourceTree = "<group>"; };
-		41209320215C105F001E713E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		41209320215C105F001E713E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		413752F32152954B00D2C7DE /* OurObjHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OurObjHome.entitlements; sourceTree = "<group>"; };
 		413752F42152955800D2C7DE /* ObjJKH.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ObjJKH.entitlements; sourceTree = "<group>"; };
 		413752F52152955E00D2C7DE /* ChistDom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChistDom.entitlements; sourceTree = "<group>"; };
@@ -1115,12 +1122,12 @@
 		413752F72152956D00D2C7DE /* DJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DJ.entitlements; sourceTree = "<group>"; };
 		413752F82152957500D2C7DE /* UK_Komfort.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UK_Komfort.entitlements; sourceTree = "<group>"; };
 		41645B56216492A300C61AF9 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
-		4179E913217DCC10007A395D /* Info - OurObjHome.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info - OurObjHome.plist"; sourceTree = SOURCE_ROOT; };
+		4179E913217DCC10007A395D /* Info - OurObjHome.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info - OurObjHome.plist"; path = "../Info - OurObjHome.plist"; sourceTree = "<group>"; };
 		417FCFDE217ED35F009CDBB8 /* MupRCMytishi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MupRCMytishi-Bridging-Header.h"; sourceTree = "<group>"; };
 		417FCFDF217EF074009CDBB8 /* ObjJKH_3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ObjJKH_3.xcdatamodel; sourceTree = "<group>"; };
 		417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataClass.swift"; sourceTree = "<group>"; };
 		417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4180400A21871C840004267A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		4180400A21871C840004267A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		418ABF072133CC7B004DB75C /* ObjJKH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjJKH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		418ABF0A2133CC7B004DB75C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		418ABF0C2133CC7B004DB75C /* FirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstController.swift; sourceTree = "<group>"; };
@@ -1129,7 +1136,7 @@
 		418ABF142133CC8C004DB75C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		418ABF162133CC8C004DB75C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		418ABF222133CF96004DB75C /* logo_SM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_SM.png; sourceTree = "<group>"; };
-		418ABF262133D5CF004DB75C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		418ABF262133D5CF004DB75C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		418ABF292133D834004DB75C /* Logo_DemoUC_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_DemoUC_White.png; sourceTree = "<group>"; };
 		418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_DemoUC.png; sourceTree = "<group>"; };
 		418ABF2F2133E0D7004DB75C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -1164,7 +1171,7 @@
 		418ABFA421357B14004DB75C /* QuestionsJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsJson.swift; sourceTree = "<group>"; };
 		418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableCell.swift; sourceTree = "<group>"; };
 		418ABFDC21357DA5004DB75C /* ChistDom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChistDom.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - ChistDom.plist"; sourceTree = SOURCE_ROOT; };
+		418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - ChistDom.plist"; path = "../Info - ChistDom.plist"; sourceTree = "<group>"; };
 		418ABFDF213580F3004DB75C /* Logo_Chist_Dom_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Chist_Dom_White.png; sourceTree = "<group>"; };
 		418ABFE121358101004DB75C /* Logo_Chist_Dom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Chist_Dom.png; sourceTree = "<group>"; };
 		418ABFE321361949004DB75C /* Counters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Counters.storyboard; sourceTree = "<group>"; };
@@ -1187,20 +1194,20 @@
 		41B5BC3E216746D9003F4868 /* Stolitsa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stolitsa-Bridging-Header.h"; sourceTree = "<group>"; };
 		41B5BC43216B348A003F4868 /* UK_Komfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Komfort-Bridging-Header.h"; sourceTree = "<group>"; };
 		41BD716A21B4E869006E78FC /* Klimovsk12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klimovsk12.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41BD716B21B4E86E006E78FC /* Info - Klimovsk12.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - Klimovsk12.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - Klimovsk12.plist"; sourceTree = "<absolute>"; };
-		41BD716C21B4EDC7006E78FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/Klimovsk12/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		41BD716B21B4E86E006E78FC /* Info - Klimovsk12.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Info - Klimovsk12.plist"; path = "../../../../tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - Klimovsk12.plist"; sourceTree = "<group>"; };
+		41BD716C21B4EDC7006E78FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Klimovsk12/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41BD716F21B4F2AA006E78FC /* logo_Klimovsk12_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Klimovsk12_White.png; sourceTree = "<group>"; };
 		41BD717121B4F2B6006E78FC /* logo_Klimovsk12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Klimovsk12.png; sourceTree = "<group>"; };
-		41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/Mitischi/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Mitischi/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41D486E521EB245F0012BDB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/UK_Comfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41DFC36E213C0B5B002CEB62 /* FilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesController.swift; sourceTree = "<group>"; };
 		41DFC376213CF14A002CEB62 /* QuestionFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFinal.swift; sourceTree = "<group>"; };
 		41DFC3DA213CF4E9002CEB62 /* MupRCMytishi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MupRCMytishi.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - MupRCMytishi.plist"; sourceTree = SOURCE_ROOT; };
+		41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - MupRCMytishi.plist"; path = "../Info - MupRCMytishi.plist"; sourceTree = "<group>"; };
 		41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_MupRCMytishi_White.png; sourceTree = "<group>"; };
 		41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_MupRCMytishi.png; sourceTree = "<group>"; };
 		41DFC441213D206D002CEB62 /* DJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41DFC442213D2083002CEB62 /* Info - DJService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - DJService.plist"; sourceTree = SOURCE_ROOT; };
+		41DFC442213D2083002CEB62 /* Info - DJService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - DJService.plist"; path = "../Info - DJService.plist"; sourceTree = "<group>"; };
 		41DFC444213D2740002CEB62 /* logo_DJ_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_DJ_White.png; sourceTree = "<group>"; };
 		41DFC446213D2758002CEB62 /* logo_DJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_DJ.png; sourceTree = "<group>"; };
 		41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainMenuCons.storyboard; sourceTree = "<group>"; };
@@ -1249,7 +1256,7 @@
 		41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerVC.swift; sourceTree = "<group>"; };
 		41EF5A6B213BAF9600789370 /* FloatRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		41FDA2B2214229A0003D8110 /* UK_Komfort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Komfort.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - UK_Komfort.plist"; sourceTree = SOURCE_ROOT; };
+		41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - UK_Komfort.plist"; path = "../Info - UK_Komfort.plist"; sourceTree = "<group>"; };
 		41FDA2B521422BA0003D8110 /* logo_UK_Komfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_UK_Komfort.png; sourceTree = "<group>"; };
 		41FDA2B721422BAE003D8110 /* logo_UK_Komfort_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_UK_Komfort_white.png; sourceTree = "<group>"; };
 		4BBF34895412B82A851AA58D /* Pods-Stolitsa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stolitsa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2226,6 +2233,7 @@
 				412092872158CB2D001E713E /* arrow_rigth.png in Resources */,
 				412092882158CB2D001E713E /* MainMenu.storyboard in Resources */,
 				412092892158CB2D001E713E /* ic_send_app.png in Resources */,
+				1C6A38AE220059D500774DED /* Info - Stolitsa.plist in Resources */,
 				4120928A2158CB2D001E713E /* SelectItem.storyboard in Resources */,
 				1CF8FD7B21FB1A4B0058D852 /* Logo_DemoUC_White.png in Resources */,
 				4180400B21871C840004267A /* GoogleService-Info.plist in Resources */,
@@ -2315,6 +2323,7 @@
 				41EF5A2E2138EC8E00789370 /* account_icon_cons.jpg in Resources */,
 				41EF5A262138E52D00789370 /* ic_action_files_grey.png in Resources */,
 				418ABF7F21352BB3004DB75C /* arrow_rigth.png in Resources */,
+				1C6A38A8220059C000774DED /* Info.plist in Resources */,
 				41ACA20E2140CA9800921C82 /* ic_send_app.png in Resources */,
 				1CEFC88121F1C43600A042AA /* PaymentSuccessViewController.xib in Resources */,
 				418ABF782134FA15004DB75C /* SelectItem.storyboard in Resources */,
@@ -2352,6 +2361,7 @@
 				418ABF5D2134CF1A004DB75C /* LaunchScreen.storyboard in Resources */,
 				418ABFA0213576FF004DB75C /* Questions.storyboard in Resources */,
 				418ABF762134F322004DB75C /* spin.png in Resources */,
+				1C6A38A9220059C500774DED /* Info - OurObjHome.plist in Resources */,
 				418ABF5E2134CF1A004DB75C /* Assets.xcassets in Resources */,
 				418ABF5F2134CF1A004DB75C /* logo_SM.png in Resources */,
 				41EF59F22138CF3D00789370 /* Apps.storyboard in Resources */,
@@ -2422,6 +2432,7 @@
 				41EF59E62137ECDD00789370 /* Pays.storyboard in Resources */,
 				1C8513A221EC74110003D587 /* MainMenu.storyboard in Resources */,
 				41ACA2102140CA9800921C82 /* ic_send_app.png in Resources */,
+				1C6A38AA220059C800774DED /* Info - ChistDom.plist in Resources */,
 				41EF59F72138D13E00789370 /* app_close.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2495,6 +2506,7 @@
 				41DFC3C6213CF4E9002CEB62 /* News.storyboard in Resources */,
 				41DFC3C7213CF4E9002CEB62 /* Saldo.storyboard in Resources */,
 				41DFC3C8213CF4E9002CEB62 /* main_background.png in Resources */,
+				1C6A38AB220059CB00774DED /* Info - MupRCMytishi.plist in Resources */,
 				41DFC3C9213CF4E9002CEB62 /* account_icon_cons.jpg in Resources */,
 				1C5153D421EF10C700DE36D9 /* Account.storyboard in Resources */,
 				41DFC452213FC4DD002CEB62 /* MainMenuCons.storyboard in Resources */,
@@ -2537,6 +2549,7 @@
 				41DFC429213D206C002CEB62 /* app_close.png in Resources */,
 				41DFC42A213D206C002CEB62 /* ic_close_action.png in Resources */,
 				41DFC42B213D206C002CEB62 /* spin.png in Resources */,
+				1C6A38AC220059CF00774DED /* Info - DJService.plist in Resources */,
 				41DFC42C213D206C002CEB62 /* Counters.storyboard in Resources */,
 				1C5153D521EF10C800DE36D9 /* Account.storyboard in Resources */,
 				41DFC42D213D206C002CEB62 /* News.storyboard in Resources */,
@@ -2586,6 +2599,7 @@
 				1C85139B21EC74090003D587 /* MainMenu.storyboard in Resources */,
 				41FDA299214229A0003D8110 /* spin.png in Resources */,
 				1C8513B721EC74600003D587 /* PaysMytishi.storyboard in Resources */,
+				1C6A38AD220059D200774DED /* Info - UK_Komfort.plist in Resources */,
 				41FDA29A214229A0003D8110 /* Counters.storyboard in Resources */,
 				41FDA29B214229A0003D8110 /* News.storyboard in Resources */,
 				41FDA29C214229A0003D8110 /* MainMenuCons.storyboard in Resources */,

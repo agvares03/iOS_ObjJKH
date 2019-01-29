@@ -217,6 +217,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     var predArr     :[Float] = []
     var teckArr     :[Float] = []
     var diffArr     :[Float] = []
+    var unitArr     :[String] = []
     
     func getData(ident: String){
         identArr.removeAll()
@@ -225,6 +226,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         predArr.removeAll()
         teckArr.removeAll()
         diffArr.removeAll()
+        unitArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         do {
@@ -239,6 +241,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
                         predArr.append(object.value(forKey: "prev_value") as! Float)
                         teckArr.append(object.value(forKey: "value") as! Float)
                         diffArr.append(object.value(forKey: "diff") as! Float)
+                        unitArr.append(object.value(forKey: "unit_name") as! String)
                     }
                 }
             }
@@ -349,18 +352,18 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             self.Count = counter
             
             cell.ident.text       = counter.ident
-            cell.name.text        = counter.count_name
+            cell.name.text        = String(counter.count_name! + ", " + counter.unit_name!)
             cell.number.text      = counter.owner
-            cell.pred.text        = counter.prev_value.description
-            cell.teck.text        = counter.value.description
-            cell.diff.text        = counter.diff.description
+            cell.pred.text        = String(format:"%.2f", counter.prev_value)
+            cell.teck.text        = String(format:"%.2f", counter.value)
+            cell.diff.text        = String(format:"%.2f", counter.diff)
         }else{
             cell.ident.text       = identArr[indexPath.row]
-            cell.name.text        = nameArr[indexPath.row]
+            cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.number.text      = numberArr[indexPath.row]
-            cell.pred.text        = predArr[indexPath.row].description
-            cell.teck.text        = teckArr[indexPath.row].description
-            cell.diff.text        = diffArr[indexPath.row].description
+            cell.pred.text        = String(format:"%.2f", predArr[indexPath.row])
+            cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
+            cell.diff.text        = String(format:"%.2f", diffArr[indexPath.row])
         }
         
         
