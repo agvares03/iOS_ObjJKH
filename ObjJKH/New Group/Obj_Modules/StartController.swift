@@ -46,7 +46,11 @@ class StartController: UIViewController {
     func getSettings() {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
+        #if DEBUG
+        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU
+        #else
         let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
+        #endif
         
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
