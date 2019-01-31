@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GGx-a3-SIH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GGx-a3-SIH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -178,11 +177,12 @@
                         <outlet property="separator2" destination="EmV-63-soZ" id="LXp-FR-hTF"/>
                         <outlet property="switch_can" destination="cuN-h3-BPa" id="fOS-wa-jBx"/>
                         <segue destination="MvW-De-vpp" kind="show" identifier="GetSMS" id="EkP-dE-7U2"/>
+                        <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="BRR-sj-Z8H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBe-KJ-jg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309.60000000000002" y="26.53673163418291"/>
+            <point key="canvasLocation" x="334" y="27"/>
         </scene>
         <!--SendSMS Cod-->
         <scene sceneID="3dc-bS-FiK">
@@ -254,7 +254,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Eoz-IW-gwj">
-                                <rect key="frame" x="174" y="213" width="37" height="37"/>
+                                <rect key="frame" x="173.5" y="212.5" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1g-Th-Tok">
@@ -296,11 +296,20 @@
                         <outlet property="sendSMS" destination="o1g-Th-Tok" id="wV1-kp-DKQ"/>
                         <outlet property="separator1" destination="ujo-8b-qvK" id="lzn-ua-FPk"/>
                         <segue destination="RFk-ku-hT4" kind="show" identifier="SendNewPass" id="QsT-I0-IRy"/>
+                        <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="79Z-3o-APL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6e-Aq-4Rr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1040.8" y="28.335832083958024"/>
+        </scene>
+        <!--supportView-->
+        <scene sceneID="D6C-LV-hoV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="supportView" id="Ex5-hw-ZEJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ka2-LI-05i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1041" y="470"/>
         </scene>
         <!--New Pass-->
         <scene sceneID="3Md-zF-3TZ">
@@ -404,11 +413,11 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="37T-sY-gHy">
-                                <rect key="frame" x="169" y="214" width="37" height="37"/>
+                                <rect key="frame" x="169" y="213.5" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выполняем вход в приложение..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czd-bR-cZP">
-                                <rect key="frame" x="16" y="267" width="343" height="21"/>
+                                <rect key="frame" x="16" y="266.5" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -444,6 +453,7 @@
                         <outlet property="separator1" destination="Tbm-P8-gSj" id="Ej7-nU-tQe"/>
                         <outlet property="separator2" destination="g2R-eC-ay3" id="zWw-lA-Ndc"/>
                         <segue destination="OFk-58-7H5" kind="show" identifier="GoToApp" id="gc6-Oy-WC7"/>
+                        <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="MfD-33-Bqq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdA-qh-MHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -460,8 +470,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="lock" width="60" height="60"/>
-        <image name="person" width="60" height="60"/>
-        <image name="phone" width="60" height="60"/>
+        <image name="lock" width="28.799999237060547" height="28.799999237060547"/>
+        <image name="person" width="28.799999237060547" height="28.799999237060547"/>
+        <image name="phone" width="28.799999237060547" height="28.799999237060547"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MfD-33-Bqq"/>
+    </inferredMetricsTieBreakers>
 </document>

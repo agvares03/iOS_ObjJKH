@@ -112,6 +112,38 @@
                                     <action selector="AddLS:" destination="PEh-cM-6Rz" eventType="touchUpInside" id="VaS-XX-S7R"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AH8-nd-ajf">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQd-n9-SJF">
+                                        <rect key="frame" x="67.5" y="1" width="240" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="YVI-jD-tJC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Написать в техподдержку"/>
+                                        <connections>
+                                            <segue destination="LbT-5V-JBp" kind="show" id="dzS-qo-45t"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poll_Mup" translatesAutoresizingMaskIntoConstraints="NO" id="CiH-2I-CRf">
+                                        <rect key="frame" x="37.5" y="7.5" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="5f7-vR-2sL"/>
+                                            <constraint firstAttribute="width" constant="28" id="BGa-2E-cbt"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92220896480000003" green="0.92299562690000003" blue="0.92167395350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="XQd-n9-SJF" firstAttribute="top" secondItem="AH8-nd-ajf" secondAttribute="top" constant="1" id="9FQ-nD-1Ub"/>
+                                    <constraint firstAttribute="bottom" secondItem="XQd-n9-SJF" secondAttribute="bottom" id="A57-2o-zoB"/>
+                                    <constraint firstItem="XQd-n9-SJF" firstAttribute="centerX" secondItem="AH8-nd-ajf" secondAttribute="centerX" id="CyY-1h-qrQ"/>
+                                    <constraint firstItem="CiH-2I-CRf" firstAttribute="centerY" secondItem="AH8-nd-ajf" secondAttribute="centerY" constant="1.5" id="IXW-jK-1GH"/>
+                                    <constraint firstAttribute="height" constant="40" id="Q2O-Xm-0Tn"/>
+                                    <constraint firstItem="XQd-n9-SJF" firstAttribute="leading" secondItem="CiH-2I-CRf" secondAttribute="trailing" constant="2" id="ZU9-iD-CgX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -119,14 +151,17 @@
                             <constraint firstItem="7Bx-bB-1rO" firstAttribute="trailing" secondItem="agU-2S-MNg" secondAttribute="trailing" constant="16" id="8Dv-HN-RAQ"/>
                             <constraint firstItem="ob9-w1-KJV" firstAttribute="leading" secondItem="7Bx-bB-1rO" secondAttribute="leading" constant="16" id="BcG-gU-gOh"/>
                             <constraint firstItem="7Bx-bB-1rO" firstAttribute="trailing" secondItem="wsa-57-hvb" secondAttribute="trailing" constant="16" id="IPu-R0-Kdq"/>
+                            <constraint firstAttribute="trailing" secondItem="AH8-nd-ajf" secondAttribute="trailing" id="Occ-JJ-7kP"/>
                             <constraint firstItem="7Bx-bB-1rO" firstAttribute="bottom" secondItem="agU-2S-MNg" secondAttribute="bottom" priority="999" constant="276" id="Ox8-JC-xdc"/>
                             <constraint firstItem="DAQ-jY-CjE" firstAttribute="top" secondItem="7Bx-bB-1rO" secondAttribute="top" constant="10" id="XHN-OQ-xX3"/>
                             <constraint firstItem="FF9-rh-FgU" firstAttribute="leading" secondItem="7Bx-bB-1rO" secondAttribute="leading" constant="16" id="Yb4-Or-hCY"/>
                             <constraint firstItem="gE7-ke-hof" firstAttribute="top" secondItem="ob9-w1-KJV" secondAttribute="bottom" constant="11" id="a0y-D2-iRF"/>
                             <constraint firstItem="4zI-m2-ytd" firstAttribute="top" secondItem="FF9-rh-FgU" secondAttribute="bottom" constant="1" id="c4w-ho-q05"/>
                             <constraint firstItem="4zI-m2-ytd" firstAttribute="leading" secondItem="M22-Ww-33o" secondAttribute="leadingMargin" id="d9m-Hn-Lv7"/>
+                            <constraint firstItem="AH8-nd-ajf" firstAttribute="leading" secondItem="7Bx-bB-1rO" secondAttribute="leading" id="dO5-My-fMM"/>
                             <constraint firstItem="ob9-w1-KJV" firstAttribute="top" secondItem="4zI-m2-ytd" secondAttribute="bottom" constant="8" id="fvG-H8-8PC"/>
                             <constraint firstItem="agU-2S-MNg" firstAttribute="leading" secondItem="7Bx-bB-1rO" secondAttribute="leading" constant="16" id="ilt-JG-CWr"/>
+                            <constraint firstItem="7Bx-bB-1rO" firstAttribute="bottom" secondItem="AH8-nd-ajf" secondAttribute="bottom" id="joa-px-QCt"/>
                             <constraint firstItem="FF9-rh-FgU" firstAttribute="top" secondItem="DAQ-jY-CjE" secondAttribute="bottom" id="qZh-st-yy8"/>
                             <constraint firstItem="DAQ-jY-CjE" firstAttribute="leading" secondItem="7Bx-bB-1rO" secondAttribute="leading" constant="16" id="rIX-IU-rQM"/>
                             <constraint firstItem="7Bx-bB-1rO" firstAttribute="trailing" secondItem="gE7-ke-hof" secondAttribute="trailing" constant="16" id="sg0-HW-V39"/>
@@ -150,15 +185,26 @@
                         <outlet property="emailText" destination="FF9-rh-FgU" id="RMb-7i-31q"/>
                         <outlet property="saveBtn" destination="agU-2S-MNg" id="qEW-GC-J7v"/>
                         <outlet property="separator" destination="4zI-m2-ytd" id="RJS-Ee-JTr"/>
+                        <outlet property="support" destination="CiH-2I-CRf" id="wCU-9z-lor"/>
+                        <outlet property="supportBtn" destination="XQd-n9-SJF" id="cmr-mH-oyJ"/>
                         <outlet property="tableHeight" destination="zqG-px-IuO" id="YWV-YA-b0G"/>
                         <outlet property="tableView" destination="gE7-ke-hof" id="GCi-zZ-atT"/>
                         <segue destination="aFJ-j8-1Zy" kind="show" identifier="addLSMup" id="O8R-0l-fMI"/>
                         <segue destination="5Ul-G2-5rV" kind="show" identifier="addLS" id="8Kz-a1-CvY"/>
+                        <segue destination="LbT-5V-JBp" kind="show" identifier="support" id="2nK-1R-W2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="He2-tQ-nso" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2932" y="-1494.6026986506747"/>
+        </scene>
+        <!--supportView-->
+        <scene sceneID="WVx-Cl-6Zg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="supportView" id="LbT-5V-JBp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iwu-Fs-Tmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2518" y="-1067"/>
         </scene>
         <!--addLS-->
         <scene sceneID="OP7-GM-kkb">
@@ -197,5 +243,9 @@
     </scenes>
     <resources>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="poll_Mup" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2nK-1R-W2x"/>
+    </inferredMetricsTieBreakers>
 </document>

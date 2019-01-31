@@ -57,9 +57,13 @@ class NewPass: UIViewController {
                                                     if error != nil {
                                                         DispatchQueue.main.async(execute: {
                                                             self.StopIndicator()
-                                                            let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                            let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
                                                             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                self.performSegue(withIdentifier: "support", sender: self)
+                                                            }
                                                             alert.addAction(cancelAction)
+                                                            alert.addAction(supportAction)
                                                             self.present(alert, animated: true, completion: nil)
                                                         })
                                                         return
@@ -101,9 +105,13 @@ class NewPass: UIViewController {
         } else {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
                 alert.addAction(cancelAction)
+                alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             })
         }
@@ -222,9 +230,13 @@ class NewPass: UIViewController {
                                                 if error != nil {
                                                     DispatchQueue.main.async(execute: {
                                                         self.StopIndicator()
-                                                        let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                        let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
                                                         let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
                                                         alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
                                                         self.present(alert, animated: true, completion: nil)
                                                     })
                                                     return

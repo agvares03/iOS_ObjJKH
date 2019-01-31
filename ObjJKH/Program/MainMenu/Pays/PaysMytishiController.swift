@@ -25,6 +25,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var btnPay: UIButton!
     @IBOutlet weak var historyPay: UIButton!
     @IBOutlet weak var sendView: UIView!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     var fetchedResultsController: NSFetchedResultsController<Saldo>?
     var iterYear: String = "0"
@@ -161,7 +163,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currPoint = 515
+        currPoint = 475
         let defaults     = UserDefaults.standard
         // Логин и пароль
         login = defaults.string(forKey: "login")
@@ -194,6 +196,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         historyPay.backgroundColor = myColors.btnColor.uiColor()
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         viewTop.constant = self.getPoint()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
@@ -595,16 +599,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @objc func keyboardWillShow(sender: NSNotification?) {
         let viewHeight = view.frame.size.height
         if viewHeight == 667{
-            viewTop.constant = getPoint() - 210
+            viewTop.constant = getPoint() - 210 + 40
             return
             
         }else if viewHeight == 736{
-            viewTop.constant = getPoint() - 220
+            viewTop.constant = getPoint() - 220 + 40
             return
         }else if viewHeight == 568{
-            viewTop.constant = getPoint()
+            viewTop.constant = getPoint() + 40
         }else{
-            viewTop.constant = getPoint() - 240
+            viewTop.constant = getPoint() - 240 + 40
         }
     }
     

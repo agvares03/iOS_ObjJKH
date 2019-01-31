@@ -46,6 +46,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     @IBOutlet weak var nextMonthLabel: UILabel!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rigthButton: UIButton!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     var fetchedResultsController: NSFetchedResultsController<Saldo>?
     
@@ -161,6 +163,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "5")

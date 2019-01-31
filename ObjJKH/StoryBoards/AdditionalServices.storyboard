@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ffY-RS-abI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ffY-RS-abI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +23,7 @@
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-xL-9hC">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="563"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -90,12 +89,47 @@
                                     <outlet property="delegate" destination="yWf-Im-OL3" id="BfE-Sx-IxF"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Sn-fd-TwF">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ax-uv-LqO">
+                                        <rect key="frame" x="67.5" y="1" width="240" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="iFg-D7-dLX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Написать в техподдержку"/>
+                                        <connections>
+                                            <segue destination="sto-H4-LNe" kind="show" id="xdZ-Nx-fn3"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poll_Mup" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-Fl-VEc">
+                                        <rect key="frame" x="37.5" y="7.5" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="5f8-2H-tKf"/>
+                                            <constraint firstAttribute="height" constant="28" id="lC5-1A-M2W"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92220896480000003" green="0.92299562690000003" blue="0.92167395350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="hFR-Fl-VEc" firstAttribute="centerY" secondItem="3Sn-fd-TwF" secondAttribute="centerY" constant="1.5" id="GJs-Iv-ZeU"/>
+                                    <constraint firstItem="4ax-uv-LqO" firstAttribute="top" secondItem="3Sn-fd-TwF" secondAttribute="top" constant="1" id="ice-MP-NEO"/>
+                                    <constraint firstAttribute="bottom" secondItem="4ax-uv-LqO" secondAttribute="bottom" id="oIh-Du-XBa"/>
+                                    <constraint firstItem="4ax-uv-LqO" firstAttribute="leading" secondItem="hFR-Fl-VEc" secondAttribute="trailing" constant="2" id="qOa-wM-8Ns"/>
+                                    <constraint firstAttribute="height" constant="40" id="tG1-SE-AqE"/>
+                                    <constraint firstItem="4ax-uv-LqO" firstAttribute="centerX" secondItem="3Sn-fd-TwF" secondAttribute="centerX" id="uBC-Ha-Cbd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="3Sn-fd-TwF" secondAttribute="trailing" id="AUV-bh-hti"/>
                             <constraint firstItem="dhx-Xd-GFn" firstAttribute="centerY" secondItem="Je2-15-Kcz" secondAttribute="centerY" id="Iei-de-8rp"/>
+                            <constraint firstItem="Je2-15-Kcz" firstAttribute="bottom" secondItem="3Sn-fd-TwF" secondAttribute="bottom" id="KdG-fi-dTM"/>
+                            <constraint firstItem="3Sn-fd-TwF" firstAttribute="leading" secondItem="Je2-15-Kcz" secondAttribute="leading" id="LaM-gt-Tgx"/>
                             <constraint firstItem="8Vu-xL-9hC" firstAttribute="trailing" secondItem="Je2-15-Kcz" secondAttribute="trailing" id="Nd2-xr-sL5"/>
-                            <constraint firstItem="8Vu-xL-9hC" firstAttribute="bottom" secondItem="Je2-15-Kcz" secondAttribute="bottom" id="QzF-rX-1R7"/>
+                            <constraint firstItem="3Sn-fd-TwF" firstAttribute="top" secondItem="8Vu-xL-9hC" secondAttribute="bottom" id="aCB-0o-1o6"/>
                             <constraint firstItem="8Vu-xL-9hC" firstAttribute="leading" secondItem="Je2-15-Kcz" secondAttribute="leading" id="arX-ND-Rl1"/>
                             <constraint firstItem="dhx-Xd-GFn" firstAttribute="centerX" secondItem="Je2-15-Kcz" secondAttribute="centerX" id="gzJ-Vj-VT6"/>
                             <constraint firstItem="8Vu-xL-9hC" firstAttribute="top" secondItem="Je2-15-Kcz" secondAttribute="top" id="oJj-Tb-pjY"/>
@@ -116,12 +150,22 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loader" destination="dhx-Xd-GFn" id="VQJ-UK-9nW"/>
+                        <outlet property="support" destination="hFR-Fl-VEc" id="G98-QI-ReT"/>
+                        <outlet property="supportBtn" destination="4ax-uv-LqO" id="gUC-lh-Sr3"/>
                         <outlet property="tableView" destination="8Vu-xL-9hC" id="7dt-So-iI3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdP-Sy-IDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1101.5999999999999" y="138.98050974512745"/>
+        </scene>
+        <!--supportView-->
+        <scene sceneID="KEh-uS-ON8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="supportView" id="sto-H4-LNe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q5G-2U-Wdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1252" y="555"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IFs-me-0Rk">
@@ -144,6 +188,7 @@
     </scenes>
     <resources>
         <image name="Logo_DemoUC.png" width="120" height="120"/>
-        <image name="back" width="17" height="17"/>
+        <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="poll_Mup" width="60" height="60"/>
     </resources>
 </document>

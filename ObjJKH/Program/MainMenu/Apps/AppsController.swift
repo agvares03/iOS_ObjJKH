@@ -32,6 +32,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableApps: UITableView!
     @IBOutlet weak var switchCloseApps: UISwitch!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     @IBAction func switch_Go(_ sender: UISwitch) {
         updateCloseApps()
     }
@@ -75,6 +77,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Установим цвета для элементов в зависимости от Таргета
         btnAdd.backgroundColor = myColors.btnColor.uiColor()
         back.tintColor = myColors.btnColor.uiColor()
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "2")

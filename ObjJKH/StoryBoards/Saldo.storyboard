@@ -109,7 +109,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kJt-aT-8gS">
-                                <rect key="frame" x="0.0" y="179" width="375" height="423"/>
+                                <rect key="frame" x="0.0" y="179" width="375" height="383"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="149" id="T0d-2h-Rfa" customClass="SaldoCell" customModule="ChistDom" customModuleProvider="target">
@@ -223,7 +223,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mK7-KA-yNE">
-                                <rect key="frame" x="20" y="610" width="335" height="47"/>
+                                <rect key="frame" x="20" y="570" width="335" height="47"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="w4E-tl-gFZ"/>
@@ -239,11 +239,46 @@
                                     <segue destination="fLo-ZS-oPd" kind="show" id="gL2-l9-QjY"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRr-pH-09o">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sc-v2-kSE">
+                                        <rect key="frame" x="67.5" y="1" width="240" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="qkJ-Rn-7Gx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Написать в техподдержку"/>
+                                        <connections>
+                                            <segue destination="Tbt-Gd-biY" kind="show" id="Z7T-ws-bjN"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poll_Mup" translatesAutoresizingMaskIntoConstraints="NO" id="ohZ-rX-km0">
+                                        <rect key="frame" x="37.5" y="7.5" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="t4G-Hl-ful"/>
+                                            <constraint firstAttribute="width" constant="28" id="vNj-a9-faJ"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92220896480000003" green="0.92299562690000003" blue="0.92167395350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0Sc-v2-kSE" secondAttribute="bottom" id="2rx-08-fyR"/>
+                                    <constraint firstItem="0Sc-v2-kSE" firstAttribute="centerX" secondItem="HRr-pH-09o" secondAttribute="centerX" id="V76-Zg-8H2"/>
+                                    <constraint firstAttribute="height" constant="40" id="d6D-gn-ciU"/>
+                                    <constraint firstItem="0Sc-v2-kSE" firstAttribute="leading" secondItem="ohZ-rX-km0" secondAttribute="trailing" constant="2" id="dc4-UB-PSa"/>
+                                    <constraint firstItem="ohZ-rX-km0" firstAttribute="centerY" secondItem="HRr-pH-09o" secondAttribute="centerY" constant="1.5" id="l54-Ve-MyQ"/>
+                                    <constraint firstItem="0Sc-v2-kSE" firstAttribute="top" secondItem="HRr-pH-09o" secondAttribute="top" constant="1" id="rbC-Wq-1xo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.85355199744858723" green="0.85355199744858723" blue="0.85355199744858723" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2gu-cw-qiJ" firstAttribute="leading" secondItem="1Ah-qc-F7y" secondAttribute="trailing" constant="16" id="6sq-3e-fLY"/>
+                            <constraint firstItem="e3f-PC-fAU" firstAttribute="bottom" secondItem="HRr-pH-09o" secondAttribute="bottom" id="8Sh-pE-M5a"/>
+                            <constraint firstItem="HRr-pH-09o" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" id="AFF-Ic-BYH"/>
                             <constraint firstItem="XoG-MX-OkY" firstAttribute="top" secondItem="CYz-dI-ZUh" secondAttribute="bottom" constant="11" id="B7Z-db-8Il"/>
+                            <constraint firstAttribute="trailing" secondItem="HRr-pH-09o" secondAttribute="trailing" id="C05-xK-lC9"/>
                             <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="XoG-MX-OkY" secondAttribute="trailing" id="E49-h8-IXP"/>
                             <constraint firstItem="CYz-dI-ZUh" firstAttribute="top" secondItem="1Ah-qc-F7y" secondAttribute="bottom" constant="5" id="Fmt-MM-SZA"/>
                             <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="2jz-eJ-IBd" secondAttribute="trailing" constant="16" id="HKi-1q-YTD"/>
@@ -261,7 +296,7 @@
                             <constraint firstItem="mK7-KA-yNE" firstAttribute="top" secondItem="kJt-aT-8gS" secondAttribute="bottom" constant="8" id="hjb-cc-KiD"/>
                             <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="mK7-KA-yNE" secondAttribute="trailing" constant="20" id="jwN-tO-wQC"/>
                             <constraint firstItem="XoG-MX-OkY" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" id="qFb-rR-hPv"/>
-                            <constraint firstItem="e3f-PC-fAU" firstAttribute="bottom" secondItem="mK7-KA-yNE" secondAttribute="bottom" constant="10" id="wIf-yf-utY"/>
+                            <constraint firstItem="HRr-pH-09o" firstAttribute="top" secondItem="mK7-KA-yNE" secondAttribute="bottom" constant="10" id="sOS-f8-rdo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e3f-PC-fAU"/>
                     </view>
@@ -281,12 +316,23 @@
                         <outlet property="nextMonthLabel" destination="l0G-Yp-0Ov" id="k64-AC-0sg"/>
                         <outlet property="prevMonthLabel" destination="SWL-PG-Qqn" id="4pZ-ne-xCe"/>
                         <outlet property="rigthButton" destination="1Wd-io-0Sa" id="WKV-m8-Xhx"/>
+                        <outlet property="support" destination="ohZ-rX-km0" id="USk-TL-fj6"/>
+                        <outlet property="supportBtn" destination="0Sc-v2-kSE" id="Fw8-14-4k9"/>
                         <outlet property="tableOSV" destination="kJt-aT-8gS" id="xYl-Iz-y53"/>
+                        <segue destination="Tbt-Gd-biY" kind="show" identifier="support" id="6fO-jL-683"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uz2-jd-bDI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1208.8" y="128.18590704647679"/>
+        </scene>
+        <!--supportView-->
+        <scene sceneID="rIL-nE-1wI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="supportView" id="Tbt-Gd-biY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NP9-Hw-NlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="581"/>
         </scene>
         <!--Pays-->
         <scene sceneID="r6e-hM-y8T">
@@ -317,6 +363,10 @@
     </scenes>
     <resources>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="poll_Mup" width="60" height="60"/>
         <image name="spin.png" width="840" height="840"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6fO-jL-683"/>
+    </inferredMetricsTieBreakers>
 </document>

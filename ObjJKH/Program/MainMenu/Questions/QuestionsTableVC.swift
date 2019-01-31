@@ -18,6 +18,8 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     open var performName_ = ""
     
@@ -54,6 +56,8 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         loader.color = myColors.indicatorColor.uiColor()
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "3")

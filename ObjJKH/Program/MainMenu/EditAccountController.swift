@@ -17,6 +17,8 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var addLSBtn: UIButton!
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         if (isModified) {
@@ -68,9 +70,13 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
                                                     
                                                     if error != nil {
                                                         DispatchQueue.main.async(execute: {
-                                                            let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                            let alert = UIAlertController(title: "Произошла непредвиденная ошибка", message: "", preferredStyle: .alert)
                                                             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                self.performSegue(withIdentifier: "support", sender: self)
+                                                            }
                                                             alert.addAction(cancelAction)
+                                                            alert.addAction(supportAction)
                                                             self.present(alert, animated: true, completion: nil)
                                                         })
                                                         return
@@ -87,9 +93,13 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
                                                         })
                                                     }else{
                                                         DispatchQueue.main.async(execute: {
-                                                            let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                            let alert = UIAlertController(title: "Произошла непредвиденная ошибка", message: "", preferredStyle: .alert)
                                                             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                self.performSegue(withIdentifier: "support", sender: self)
+                                                            }
                                                             alert.addAction(cancelAction)
+                                                            alert.addAction(supportAction)
                                                             self.present(alert, animated: true, completion: nil)
                                                         })
                                                     }
@@ -135,7 +145,13 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         saveBtn.backgroundColor = myColors.btnColor.uiColor()
         addLSBtn.backgroundColor = myColors.btnColor.uiColor()
         separator.backgroundColor = myColors.btnColor.uiColor()
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         tableView.setEditing(true, animated: true)
+        // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
     
@@ -205,9 +221,13 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
                                                         
                                                         if error != nil {
                                                             DispatchQueue.main.async(execute: {
-                                                                let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                                let alert = UIAlertController(title: "Произошла непредвиденная ошибка", message: "", preferredStyle: .alert)
                                                                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                    self.performSegue(withIdentifier: "support", sender: self)
+                                                                }
                                                                 alert.addAction(cancelAction)
+                                                                alert.addAction(supportAction)
                                                                 self.present(alert, animated: true, completion: nil)
                                                             })
                                                             return

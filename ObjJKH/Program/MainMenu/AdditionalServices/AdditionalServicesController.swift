@@ -39,6 +39,8 @@ class AdditionalServicesController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -71,6 +73,8 @@ class AdditionalServicesController: UIViewController{
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "8")
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
     }
     
     private func startAnimation() {

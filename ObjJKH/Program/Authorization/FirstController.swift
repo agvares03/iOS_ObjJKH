@@ -20,6 +20,8 @@ class FirstController: UIViewController {
     private var data_ls: [String] = []
     var str_ls: String = ""
 
+    @IBOutlet weak var questionBtn: UIButton!
+    @IBOutlet weak var questionImg: UIImageView!
     @IBOutlet weak var heigt_image: NSLayoutConstraint!
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var new_face: UIImageView!
@@ -62,7 +64,7 @@ class FirstController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UserDefaults.standard.set(false, forKey: "fromMenu")
         StopIndicator()
         loadUsersDefaults()
         
@@ -114,7 +116,8 @@ class FirstController: UIViewController {
         new_face.setImageColor(color: myColors.btnColor.uiColor())
         new_zamoc.image = myImages.lock_image
         new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
-        
+        questionImg.setImageColor(color: myColors.btnColor.uiColor())
+        questionBtn.titleLabel?.textColor = myColors.btnColor.uiColor()
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
@@ -244,9 +247,13 @@ class FirstController: UIViewController {
                                                 if error != nil {
                                                     DispatchQueue.main.async(execute: {
                                                         self.StopIndicator()
-                                                        let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                        let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
                                                         let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
                                                         alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
                                                         self.present(alert, animated: true, completion: nil)
                                                     })
                                                     return
@@ -280,9 +287,13 @@ class FirstController: UIViewController {
         } else if (responseString.contains("error")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
                 alert.addAction(cancelAction)
+                alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             })
         } else {
@@ -312,9 +323,13 @@ class FirstController: UIViewController {
                         self.performSegue(withIdentifier: "MainMenuCons", sender: self)
                     }
                 }else{
-                    let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                        self.performSegue(withIdentifier: "support", sender: self)
+                    }
                     alert.addAction(cancelAction)
+                    alert.addAction(supportAction)
                     self.present(alert, animated: true, completion: nil)
                 }
                 

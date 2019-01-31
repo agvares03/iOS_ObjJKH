@@ -50,6 +50,8 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     private var web_cameras: [Web_Camera_json]? = []
     private var index = 0
@@ -70,6 +72,8 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "7")
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
     }
 

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ds5-Ye-OVv">
-                                <rect key="frame" x="0.0" y="110" width="375" height="402"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="363"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PayMupCell" rowHeight="55" id="YUA-0f-fvR" customClass="PayMupSaldoCell" customModule="ChistDom" customModuleProvider="target">
@@ -119,7 +119,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCU-rr-B6M">
-                                <rect key="frame" x="0.0" y="515" width="375" height="152"/>
+                                <rect key="frame" x="0.0" y="475" width="375" height="152"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKC-tj-BjP">
                                         <rect key="frame" x="16" y="0.0" width="343" height="1"/>
@@ -218,10 +218,45 @@
                                     <constraint firstItem="DaL-sh-I0s" firstAttribute="top" secondItem="i3q-GE-1Ot" secondAttribute="bottom" constant="77" id="z3N-G3-c4B"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enP-cC-omN">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSt-8I-KNw">
+                                        <rect key="frame" x="67.5" y="1" width="240" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="ILS-Sh-DwQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Написать в техподдержку"/>
+                                        <connections>
+                                            <segue destination="1Wa-Am-5fg" kind="show" id="5sy-fS-rsL"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poll_Mup" translatesAutoresizingMaskIntoConstraints="NO" id="ewl-4A-dUc">
+                                        <rect key="frame" x="37.5" y="7.5" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="ETA-yV-RCy"/>
+                                            <constraint firstAttribute="width" constant="28" id="qlP-TI-Z2S"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92220896480000003" green="0.92299562690000003" blue="0.92167395350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="mSt-8I-KNw" firstAttribute="centerX" secondItem="enP-cC-omN" secondAttribute="centerX" id="FfT-68-hMa"/>
+                                    <constraint firstAttribute="bottom" secondItem="mSt-8I-KNw" secondAttribute="bottom" id="Q6e-Bl-rDx"/>
+                                    <constraint firstItem="mSt-8I-KNw" firstAttribute="top" secondItem="enP-cC-omN" secondAttribute="top" constant="1" id="QO3-P6-d0M"/>
+                                    <constraint firstItem="ewl-4A-dUc" firstAttribute="centerY" secondItem="enP-cC-omN" secondAttribute="centerY" constant="1.5" id="cM7-re-vmd"/>
+                                    <constraint firstAttribute="height" constant="40" id="fTI-lq-hnM"/>
+                                    <constraint firstItem="mSt-8I-KNw" firstAttribute="leading" secondItem="ewl-4A-dUc" secondAttribute="trailing" constant="2" id="zrG-NN-djI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="enP-cC-omN" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="1aE-jz-ljR"/>
                             <constraint firstItem="NqZ-RR-9oV" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="16" id="2L6-ax-yxy"/>
+                            <constraint firstAttribute="trailing" secondItem="enP-cC-omN" secondAttribute="trailing" id="C3h-CT-89c"/>
+                            <constraint firstItem="enP-cC-omN" firstAttribute="top" secondItem="GCU-rr-B6M" secondAttribute="bottom" id="DOB-P9-DhE"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="eJY-xZ-v4L" secondAttribute="trailing" id="FKt-vO-zFP"/>
                             <constraint firstItem="tCL-un-6ER" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="16" id="Hec-2V-Yy4"/>
                             <constraint firstItem="tCL-un-6ER" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="16" id="Jjq-P9-HaA"/>
@@ -229,13 +264,13 @@
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="trailing" secondItem="MkC-gE-W0P" secondAttribute="trailing" id="Osw-K0-AM2"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="trailing" secondItem="MkC-gE-W0P" secondAttribute="trailing" id="Sf4-h5-ZRu"/>
                             <constraint firstItem="eJY-xZ-v4L" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="12" id="UZ7-4g-ZgU"/>
+                            <constraint firstItem="MkC-gE-W0P" firstAttribute="bottom" secondItem="enP-cC-omN" secondAttribute="bottom" id="YhJ-mf-ybL"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="110" id="ZXi-fS-SkV"/>
-                            <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="515" id="a8l-2v-bU6"/>
+                            <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="475" id="a8l-2v-bU6"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="NqZ-RR-9oV" secondAttribute="trailing" constant="16" id="bVh-S1-TLN"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="eAR-0d-ZC2"/>
-                            <constraint firstItem="MkC-gE-W0P" firstAttribute="bottom" secondItem="ds5-Ye-OVv" secondAttribute="bottom" constant="155" id="eJD-lg-ptd"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="gFD-zk-WjN"/>
-                            <constraint firstItem="GCU-rr-B6M" firstAttribute="bottom" secondItem="MkC-gE-W0P" secondAttribute="bottom" id="xjk-jk-Oyf"/>
+                            <constraint firstAttribute="bottom" secondItem="ds5-Ye-OVv" secondAttribute="bottom" constant="194" id="gcz-X2-OIH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MkC-gE-W0P"/>
                     </view>
@@ -253,6 +288,8 @@
                         <outlet property="ls_button" destination="eJY-xZ-v4L" id="eg5-K7-onF"/>
                         <outlet property="sendView" destination="GCU-rr-B6M" id="dcr-Zn-hcW"/>
                         <outlet property="servicePay" destination="P1i-V2-bje" id="QII-Xo-TSi"/>
+                        <outlet property="support" destination="ewl-4A-dUc" id="SiD-uc-WoL"/>
+                        <outlet property="supportBtn" destination="mSt-8I-KNw" id="N8Z-PD-4P6"/>
                         <outlet property="tableView" destination="ds5-Ye-OVv" id="Cvh-s6-0iX"/>
                         <outlet property="txt_sum_jkh" destination="RnR-er-GSR" id="38q-1y-RBp"/>
                         <outlet property="txt_sum_obj" destination="i3q-GE-1Ot" id="OIs-Zq-fGl"/>
@@ -262,6 +299,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="px2-wU-oxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1336.8" y="135.38230884557723"/>
+        </scene>
+        <!--supportView-->
+        <scene sceneID="ntO-cc-CdO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="supportView" id="1Wa-Am-5fg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e11-N0-Ist" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1944" y="352"/>
         </scene>
         <!--История платежей-->
         <scene sceneID="vGW-Nn-oMf">
@@ -479,6 +524,7 @@
     </scenes>
     <resources>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="poll_Mup" width="60" height="60"/>
         <image name="spin.png" width="840" height="840"/>
         <image name="unCheck" width="37.5" height="37.5"/>
     </resources>

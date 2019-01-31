@@ -12,6 +12,8 @@ class NewsController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     @IBOutlet weak var back: UIBarButtonItem!
     
@@ -44,6 +46,8 @@ class NewsController: UIViewController, UITableViewDelegate {
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "0")

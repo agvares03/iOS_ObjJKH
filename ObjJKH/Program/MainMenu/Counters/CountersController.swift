@@ -15,6 +15,8 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     var Count: Counters? = nil
     
     @IBOutlet weak var back: UIBarButtonItem!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     var edLogin: String = ""
     var edPass: String = ""
@@ -185,6 +187,8 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "4")
@@ -462,9 +466,13 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
                                                     
                                                     if error != nil {
                                                         DispatchQueue.main.async(execute: {
-                                                            let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+                                                            let alert = UIAlertController(title: "Произошла непредвиденная ошибка", message: "", preferredStyle: .alert)
                                                             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                self.performSegue(withIdentifier: "support", sender: self)
+                                                            }
                                                             alert.addAction(cancelAction)
+                                                            alert.addAction(supportAction)
                                                             self.present(alert, animated: true, completion: nil)
                                                         })
                                                         return

@@ -101,8 +101,13 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
             
             guard data != nil else { return }
             if String(data: data!, encoding: .utf8)?.contains("error") ?? false {
-                let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
-                alert.addAction( UIAlertAction(title: "ОК", style: .default, handler: { (_) in } ) )
+                let alert = UIAlertController(title: "Произошла непредвиденная ошибка", message: "", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
+                alert.addAction(cancelAction)
+                alert.addAction(supportAction)
                 DispatchQueue.main.sync {
                     self.present(alert, animated: true, completion: nil)
                     self.stopAnimation()
