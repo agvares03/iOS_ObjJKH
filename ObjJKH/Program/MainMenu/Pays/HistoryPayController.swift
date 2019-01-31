@@ -139,8 +139,6 @@ class HistoryPayCell: UITableViewCell {
     
     var delegate: UIViewController?
     
-    @IBOutlet weak var dateConst: NSLayoutConstraint!
-    @IBOutlet weak var sumConst: NSLayoutConstraint!
     @IBOutlet weak var datePay: UILabel!
     @IBOutlet weak var period: UILabel!
     @IBOutlet weak var summ: UILabel!
@@ -154,10 +152,6 @@ class HistoryPayCell: UITableViewCell {
         }
         self.period.text = item.period
         self.datePay.text = date1
-        if item.width < 375{
-            dateConst.constant = dateConst.constant - 12
-            sumConst.constant = sumConst.constant - 12
-        }
     }
     
     

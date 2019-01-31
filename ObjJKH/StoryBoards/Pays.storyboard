@@ -360,47 +360,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOS-V0-7jb">
-                                                    <rect key="frame" x="118" y="1" width="1" height="41"/>
-                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="41" id="eQm-zi-FD7"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="1" id="fca-Qm-5ke"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haP-ky-dih">
-                                                    <rect key="frame" x="254" y="1" width="1" height="41"/>
-                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="1" id="ZEu-TC-hjw"/>
-                                                        <constraint firstAttribute="height" constant="41" id="wfh-mh-HM4"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="FVg-R9-Uw5" firstAttribute="centerX" secondItem="lZA-CG-qYy" secondAttribute="centerX" id="0aG-lM-pgq"/>
                                                 <constraint firstItem="YE1-Gb-dwy" firstAttribute="leading" secondItem="lZA-CG-qYy" secondAttribute="leadingMargin" id="16c-vg-gUq"/>
-                                                <constraint firstItem="zOS-V0-7jb" firstAttribute="leading" secondItem="YE1-Gb-dwy" secondAttribute="trailing" constant="22" id="ISe-gZ-8Ze"/>
                                                 <constraint firstAttribute="trailing" secondItem="d5B-W0-xlS" secondAttribute="trailing" constant="25" id="UNq-yf-muG"/>
-                                                <constraint firstItem="zOS-V0-7jb" firstAttribute="top" secondItem="lZA-CG-qYy" secondAttribute="top" constant="1" id="frd-bk-TcF"/>
                                                 <constraint firstItem="FVg-R9-Uw5" firstAttribute="top" secondItem="lZA-CG-qYy" secondAttribute="topMargin" constant="5" id="frf-CH-G4T"/>
                                                 <constraint firstItem="d5B-W0-xlS" firstAttribute="top" secondItem="lZA-CG-qYy" secondAttribute="topMargin" constant="5" id="lzz-t0-Ns0"/>
                                                 <constraint firstItem="YE1-Gb-dwy" firstAttribute="top" secondItem="lZA-CG-qYy" secondAttribute="topMargin" constant="5" id="m3g-cT-jo2"/>
-                                                <constraint firstItem="d5B-W0-xlS" firstAttribute="leading" secondItem="haP-ky-dih" secondAttribute="trailing" constant="21" id="pp9-Kb-CER"/>
-                                                <constraint firstItem="haP-ky-dih" firstAttribute="top" secondItem="lZA-CG-qYy" secondAttribute="top" constant="1" id="uIC-uM-6Lo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dateConst" destination="ISe-gZ-8Ze" id="G1O-uJ-dQS"/>
                                             <outlet property="datePay" destination="YE1-Gb-dwy" id="G89-iU-4fz"/>
                                             <outlet property="period" destination="FVg-R9-Uw5" id="T8K-G3-q8v"/>
-                                            <outlet property="sumConst" destination="pp9-Kb-CER" id="65m-ZR-0To"/>
                                             <outlet property="summ" destination="d5B-W0-xlS" id="h2B-tW-rMr"/>
                                         </connections>
                                     </tableViewCell>

@@ -131,8 +131,8 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                                                     if error != nil {
                                                         DispatchQueue.main.async(execute: {
                                                             self.StopIndicator()
-                                                            let alert = UIAlertController(title: "Произошла непредвиденная ошибка", message: "", preferredStyle: .alert)
-                                                            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                                                             let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                                                                 self.performSegue(withIdentifier: "support", sender: self)
                                                             }
@@ -328,8 +328,8 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         if (responseString == "xxx") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Произошла непредвиденная ошибка", message: "", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                     self.performSegue(withIdentifier: "support", sender: self)
                 }

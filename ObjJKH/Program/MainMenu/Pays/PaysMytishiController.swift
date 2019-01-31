@@ -490,7 +490,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         cell.end.text    = osv.end
         let sub: String = osv.usluga!
         cell.end.accessibilityIdentifier = sub.substring(to:sub.index(sub.startIndex, offsetBy: 4))
-        if osv.usluga == "Газ" || osv.usluga == "Страховка"{
+        if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
             cell.end.isUserInteractionEnabled = false
             cell.end.isHidden = true
             cell.endL.isHidden = false
