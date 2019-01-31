@@ -117,7 +117,7 @@ class FirstController: UIViewController {
         new_zamoc.image = myImages.lock_image
         new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
         questionImg.setImageColor(color: myColors.btnColor.uiColor())
-        questionBtn.titleLabel?.textColor = myColors.btnColor.uiColor()
+        questionBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
