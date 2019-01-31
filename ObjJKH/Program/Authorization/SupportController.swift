@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SupportController: UIViewController {
+class SupportController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var phoneTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -77,6 +77,9 @@ class SupportController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        problemTxt.delegate = self
+        problemTxt.text = "Описание проблемы"
+        problemTxt.textColor = UIColor.lightGray
         if UserDefaults.standard.bool(forKey: "fromMenu"){
             phoneTxt.text = UserDefaults.standard.string(forKey: "login")
             emailTxt.text = UserDefaults.standard.string(forKey: "mail")
@@ -101,6 +104,20 @@ class SupportController: UIViewController {
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if problemTxt.textColor == UIColor.lightGray {
+            problemTxt.text = nil
+            problemTxt.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if problemTxt.text.isEmpty {
+            problemTxt.text = "Описание проблемы"
+            problemTxt.textColor = UIColor.lightGray
+        }
     }
 
     /*
