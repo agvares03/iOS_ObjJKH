@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siF-Ea-Oa1">
-                                <rect key="frame" x="8" y="90" width="359" height="44"/>
+                                <rect key="frame" x="8" y="89" width="359" height="44"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="hMx-sF-Aqh">
                                         <rect key="frame" x="24" y="18" width="16" height="16"/>
@@ -88,13 +88,22 @@
                                 <rect key="frame" x="169" y="217" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Восстановление пароля" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhe-LP-bP8">
+                                <rect key="frame" x="16" y="36" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="siF-Ea-Oa1" firstAttribute="top" secondItem="U3R-tj-1lH" secondAttribute="top" constant="70" id="1cE-mw-p97"/>
+                            <constraint firstItem="fhe-LP-bP8" firstAttribute="leading" secondItem="U3R-tj-1lH" secondAttribute="leading" constant="16" id="1sD-2Z-Dsb"/>
                             <constraint firstItem="LHn-Tj-mZa" firstAttribute="leading" secondItem="iL0-Jl-57r" secondAttribute="trailing" constant="30" id="8BJ-GA-95U"/>
                             <constraint firstItem="U3R-tj-1lH" firstAttribute="trailing" secondItem="siF-Ea-Oa1" secondAttribute="trailing" constant="8" id="D47-dt-1eE"/>
                             <constraint firstItem="gkp-Q0-MhD" firstAttribute="top" secondItem="U3R-tj-1lH" secondAttribute="top" constant="197" id="E3F-e2-I05"/>
+                            <constraint firstItem="fhe-LP-bP8" firstAttribute="top" secondItem="U3R-tj-1lH" secondAttribute="top" constant="16" id="ETS-Y2-FEc"/>
+                            <constraint firstItem="U3R-tj-1lH" firstAttribute="trailing" secondItem="fhe-LP-bP8" secondAttribute="trailing" constant="16" id="ImR-en-NZ2"/>
+                            <constraint firstItem="siF-Ea-Oa1" firstAttribute="top" secondItem="fhe-LP-bP8" secondAttribute="bottom" constant="32" id="QkB-kJ-Hvg"/>
                             <constraint firstItem="iL0-Jl-57r" firstAttribute="top" secondItem="U3R-tj-1lH" secondAttribute="top" constant="200" id="Vxt-kx-Ny7"/>
                             <constraint firstItem="siF-Ea-Oa1" firstAttribute="leading" secondItem="U3R-tj-1lH" secondAttribute="leading" constant="8" id="kA8-2P-O7o"/>
                             <constraint firstItem="LHn-Tj-mZa" firstAttribute="top" secondItem="U3R-tj-1lH" secondAttribute="top" constant="200" id="n75-Pn-caF"/>
