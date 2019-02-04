@@ -41,8 +41,8 @@ class SendSMSCod: UIViewController {
                                                 if error != nil {
                                                     DispatchQueue.main.async(execute: {
                                                         self.StopIndicator()
-                                                        let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
-                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                                                         let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                                                             self.performSegue(withIdentifier: "support", sender: self)
                                                         }
@@ -111,8 +111,8 @@ class SendSMSCod: UIViewController {
                                                     if error != nil {
                                                         DispatchQueue.main.async(execute: {
                                                             self.StopIndicator()
-                                                            let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
-                                                            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                                                             let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                                                                 self.performSegue(withIdentifier: "support", sender: self)
                                                             }
@@ -124,7 +124,7 @@ class SendSMSCod: UIViewController {
                                                     }
                                                     
                                                     self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                  //  print("responseString = \(String(describing: self.responseString))")
+                                                    print("responseString = \(String(describing: self.responseString))")
                                                     
                                                     self.choice()
             })
@@ -139,11 +139,19 @@ class SendSMSCod: UIViewController {
                 self.StopIndicator()
                 self.performSegue(withIdentifier: "SendNewPass", sender: self)
             })
-        } else {
+        } else if (responseString?.contains("неверный проверочный код"))!{
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Неверный код SMS", message: "", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }else{
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                     self.performSegue(withIdentifier: "support", sender: self)
                 }
