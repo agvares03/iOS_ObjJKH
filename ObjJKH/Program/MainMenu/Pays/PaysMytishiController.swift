@@ -70,6 +70,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.placeholder = "e-mail..."
+                textField.keyboardType = .emailAddress
             }
             let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
                 let textField = alert.textFields![0]
@@ -91,13 +92,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }else{
-            payed()
+           payed()
         }
     }
     
     func payed(){
         let k:String = txt_sum_jkh.text!
-        self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
+        self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         if (self.totalSum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -414,16 +415,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 if (self.sum != 0) {
                     //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
                     let serviceP = self.sum / 0.992 - self.sum
-                    self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+                    self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                     self.totalSum = self.sum + serviceP
-                    self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " .руб"
-                    self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
+                    self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                    self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
                     
                 } else {
                     //                    self.txt_sum_jkh.text = "0,00 р."
                     self.txt_sum_obj.text = "0,00"
-                    self.txt_sum_jkh.text = "0,00 .руб"
-                    self.servicePay.text  = "0,00 .руб"
+                    self.txt_sum_jkh.text = "0,00 руб."
+                    self.servicePay.text  = "0,00 руб."
                 }
                 self.updateFetchedResultsController()
                 self.updateTable()
@@ -532,10 +533,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         self.sum = sum
         let serviceP = self.sum / 0.992 - self.sum
-        self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+        self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
         self.totalSum = self.sum + serviceP
-        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " .руб"
-        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
+        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
     }
     
     @objc func textFieldEditingDidEnd(_ textField: UITextField) {
@@ -569,10 +570,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 i += 1
             }
             let serviceP = self.sum / 0.992 - self.sum
-            self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
-            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " .руб"
-            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
+            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
         }else{
             for i in 0...osvc.count - 1{
                 let code:String = osvc[i]
@@ -589,10 +590,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 i += 1
             }
             let serviceP = self.sum / 0.992 - self.sum
-            self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
+            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
-            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " .руб"
-            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
+            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
         }
     }
     
