@@ -61,6 +61,9 @@ target 'MupRCMytishi' do
 	pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
 	pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
 
+    pod 'Fabric'
+    pod 'Crashlytics'
+    
     use_frameworks!
 
     # Pods for Наш Общий Дом
@@ -79,6 +82,9 @@ target 'ObjJKH' do
     pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
     pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
 
+    pod 'Fabric'
+    pod 'Crashlytics'
+    
     use_frameworks!
 
     # Pods for Мобильное ЖКХ

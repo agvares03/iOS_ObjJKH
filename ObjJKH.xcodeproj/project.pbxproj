@@ -1917,7 +1917,6 @@
 				4120926F2158CB2D001E713E /* Frameworks */,
 				412092712158CB2D001E713E /* Resources */,
 				E70277479D792D5A6F9682D8 /* [CP] Embed Pods Frameworks */,
-				30CDA0CE1B6187EFD7A6CCCB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1937,7 +1936,6 @@
 				412092E62159E603001E713E /* Frameworks */,
 				412092E82159E603001E713E /* Resources */,
 				1B3A940C89898C53FF90DEC6 /* [CP] Embed Pods Frameworks */,
-				76B6FBA7E94920733B804D7C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1957,7 +1955,7 @@
 				418ABF042133CC7B004DB75C /* Frameworks */,
 				418ABF052133CC7B004DB75C /* Resources */,
 				A89B75DCBE4D9BE69D15AB77 /* [CP] Embed Pods Frameworks */,
-				C01BC89E2E351763D59EFDEC /* [CP] Copy Pods Resources */,
+				417A86932203F64F00306455 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1977,7 +1975,6 @@
 				418ABF562134CF1A004DB75C /* Frameworks */,
 				418ABF582134CF1A004DB75C /* Resources */,
 				F761DE226ED679AD5E910BD2 /* [CP] Embed Pods Frameworks */,
-				2AA3C4CA0FFC2664E32649A0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1997,7 +1994,6 @@
 				418ABFC221357DA5004DB75C /* Frameworks */,
 				418ABFC521357DA5004DB75C /* Resources */,
 				4097A4F56B835F0ED708B2A3 /* [CP] Embed Pods Frameworks */,
-				E2CD25B82236388F08B3C317 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2016,8 +2012,6 @@
 				41BD70F921B4E869006E78FC /* Sources */,
 				41BD714121B4E869006E78FC /* Frameworks */,
 				41BD714421B4E869006E78FC /* Resources */,
-				74401DC3223827340470717B /* [CP] Embed Pods Frameworks */,
-				3FABB802BB21E6D8CEF1CF22 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2037,7 +2031,6 @@
 				41DFC37C213CF4E9002CEB62 /* Sources */,
 				41DFC3B6213CF4E9002CEB62 /* Frameworks */,
 				872075B42BF3ADC07B981923 /* [CP] Embed Pods Frameworks */,
-				6D170BBED90C2D0537C485D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2057,7 +2050,6 @@
 				41DFC41D213D206C002CEB62 /* Frameworks */,
 				41DFC41F213D206C002CEB62 /* Resources */,
 				7601267CBC7341725DB5507D /* [CP] Embed Pods Frameworks */,
-				AD6F8E8669175ACE11A47267 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2077,7 +2069,6 @@
 				41FDA288214229A0003D8110 /* Frameworks */,
 				41FDA28B214229A0003D8110 /* Resources */,
 				1E454B06D4E87353F784FC68 /* [CP] Embed Pods Frameworks */,
-				69E19591601ADED2C278FABE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2665,7 +2656,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2688,7 +2679,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1E454B06D4E87353F784FC68 /* [CP] Embed Pods Frameworks */ = {
@@ -2697,7 +2688,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2720,37 +2711,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2AA3C4CA0FFC2664E32649A0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		30CDA0CE1B6187EFD7A6CCCB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		34C9797503A213CE7D51D862 /* [CP] Check Pods Manifest.lock */ = {
@@ -2771,28 +2732,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3FABB802BB21E6D8CEF1CF22 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4097A4F56B835F0ED708B2A3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ChistDom/Pods-ChistDom-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2815,8 +2761,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChistDom/Pods-ChistDom-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		417A86932203F64F00306455 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		47234D9928B17E1A759D8042 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2872,58 +2836,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		69E19591601ADED2C278FABE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6D170BBED90C2D0537C485D6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		74401DC3223827340470717B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7601267CBC7341725DB5507D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2946,22 +2865,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		76B6FBA7E94920733B804D7C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Komeks/Pods-Komeks-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DJ/Pods-DJ-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		872075B42BF3ADC07B981923 /* [CP] Embed Pods Frameworks */ = {
@@ -2970,7 +2874,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -2997,7 +2901,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A89B75DCBE4D9BE69D15AB77 /* [CP] Embed Pods Frameworks */ = {
@@ -3006,7 +2910,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -3033,37 +2937,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AD6F8E8669175ACE11A47267 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DJ/Pods-DJ-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C01BC89E2E351763D59EFDEC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C31DD010EA804822F472637A /* [CP] Check Pods Manifest.lock */ = {
@@ -3102,28 +2976,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E2CD25B82236388F08B3C317 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E70277479D792D5A6F9682D8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -3150,7 +3009,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stolitsa/Pods-Stolitsa-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F761DE226ED679AD5E910BD2 /* [CP] Embed Pods Frameworks */ = {
@@ -3159,7 +3018,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
@@ -3182,7 +3041,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OurObjHome/Pods-OurObjHome-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FEDD0C72E890937EB07E933B /* [CP] Check Pods Manifest.lock */ = {

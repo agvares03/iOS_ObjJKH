@@ -14,6 +14,9 @@ import FirebaseMessaging
 import CoreData
 import CoreLocation
 
+import Fabric
+import Crashlytics
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
@@ -28,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         FirebaseApp.configure()
         
         application.registerForRemoteNotifications()
+        
+        Fabric.with([Crashlytics.self])
         
         requestNotificationAuthorization(application: application)
 //        locationNotificationAuthorization(application: application)

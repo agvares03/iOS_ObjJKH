@@ -4,7 +4,10 @@ PODS:
   - ASDKUI (1.3.14):
     - ASDKCore
   - CardIO (5.4.1)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
   - Dropper (2.7.6)
+  - Fabric (1.9.0)
   - Firebase/Core (5.15.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.4.0)
@@ -23,7 +26,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
-    - GoogleUtilities/NSData+zlib (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.1.0)
   - FirebaseAuthInterop (1.0.0)
@@ -49,7 +52,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
-    - GoogleUtilities/NSData+zlib (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - GoogleUtilities/AppDelegateSwizzler (5.3.6):
     - GoogleUtilities/Environment
@@ -62,9 +65,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/Network (5.3.6):
     - GoogleUtilities/Logger
-    - GoogleUtilities/NSData+zlib
+    - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - GoogleUtilities/NSData+zlib (5.3.6)
+  - "GoogleUtilities/NSData+zlib (5.3.6)"
   - GoogleUtilities/Reachability (5.3.6):
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.6):
@@ -83,12 +86,36 @@ DEPENDENCIES:
   - ASDKCore (from `https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec`)
   - ASDKUI (from `https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec`)
   - CardIO
+  - Crashlytics
   - Dropper
+  - Fabric
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
   - Gloss
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CardIO
+    - Crashlytics
+    - Dropper
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseAuthInterop
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - Gloss
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - leveldb-library
+    - nanopb
+    - Protobuf
 
 EXTERNAL SOURCES:
   ASDKCore:
@@ -108,7 +135,9 @@ SPEC CHECKSUMS:
   ASDKCore: 8e8925b6f0cf35102503aa6dd52b440d481e055c
   ASDKUI: bbb28ae564d03a232184b7e64fe3165b0a1cd625
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Dropper: 52a020beb6fef2e4b1d55447f17099e5776954ef
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
   FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
   FirebaseAnalyticsInterop: e5f21be9af6548372e2f0815834ff909bff395a2
@@ -125,6 +154,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftyXMLParser: b2e0b0dd0e0fb1ac39869dd4a0c6181847af2945
 
-PODFILE CHECKSUM: 41c1f00fa7e6b5eb550acabf760a675bb3af8cab
+PODFILE CHECKSUM: e5198fe6fc9503b65ed4abe48a162e4a0f37a72c
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.0.beta.1
