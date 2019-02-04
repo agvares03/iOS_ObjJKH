@@ -76,7 +76,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
                                                 print("responseString = \(responseString)")
                                                 if responseString == "0"{
                                                     DispatchQueue.main.async(execute: {
-                                                        let alert = UIAlertController(title: "Ваше сообщение успешно отправленно!", message: "", preferredStyle: .alert)
+                                                        let alert = UIAlertController(title: "Ваше сообщение успешно отправлено!", message: "", preferredStyle: .alert)
                                                         let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                                                             self.navigationController?.popViewController(animated: true)
                                                         }
