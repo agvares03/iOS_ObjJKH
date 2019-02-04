@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SupportController: UIViewController, UITextViewDelegate {
-
+class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+    
     @IBOutlet weak var phoneTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var problemTxt: UITextView!
@@ -29,6 +29,29 @@ class SupportController: UIViewController, UITextViewDelegate {
         let login: String = phoneTxt.text!
         let email: String = emailTxt.text!
         let text: String  = problemTxt.text!
+        if (!(login.contains("+7")) || (login.count < 12)){
+            let alert = UIAlertController(title: "Ошибка", message: "Введите номер в формате +7хххххххххх", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if ((email.contains("@")) && (email.contains(".ru"))) || ((email.contains("@")) && (email.contains(".com"))){
+            
+        }else{
+            let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if text == "" || text == "Описание проблемы"{
+            let alert = UIAlertController(title: "Ошибка", message: "Опишите проблему", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         let urlPath = Server.SERVER + Server.SEND_SUPPORT + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&text=" + text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&mail=" + email.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -78,10 +101,18 @@ class SupportController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         problemTxt.delegate = self
+        phoneTxt.delegate = self
         problemTxt.text = "Описание проблемы"
         problemTxt.textColor = UIColor.lightGray
         if UserDefaults.standard.bool(forKey: "fromMenu"){
             phoneTxt.text = UserDefaults.standard.string(forKey: "login")
+            var login: String = UserDefaults.standard.string(forKey: "login")!
+            if login.first == "7"{
+                phoneTxt.text = "+" + login
+            }else if login.first == "8"{
+                login = "+" + login
+                phoneTxt.text = login.replacingOccurrences(of: "+8", with: "+7")
+            }
             emailTxt.text = UserDefaults.standard.string(forKey: "mail")
         }
         sendBtn.backgroundColor = myColors.btnColor.uiColor()
@@ -119,15 +150,26 @@ class SupportController: UIViewController, UITextViewDelegate {
             problemTxt.textColor = UIColor.lightGray
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.placeholder == "Номер телефона" && textField.text == ""{
+            textField.text = "+7"
+        }
     }
-    */
-
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text == "+7"{
+            textField.text = ""
+        }
+    }
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

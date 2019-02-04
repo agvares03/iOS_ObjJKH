@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForgotPass: UIViewController {
+class ForgotPass: UIViewController, UITextFieldDelegate {
     
     var letter: String = ""
     var responseString:NSString = ""
@@ -77,8 +77,8 @@ class ForgotPass: UIViewController {
         } else if (responseString.length > 150) {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Произошла непредивиденная ошибка", message: "", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                     self.performSegue(withIdentifier: "support", sender: self)
                 }
@@ -95,7 +95,7 @@ class ForgotPass: UIViewController {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Успешно", message: "Пароль отправлен в смс на указанный номер", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
@@ -105,7 +105,7 @@ class ForgotPass: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        FogLogin.delegate = self
         hideKeyboard_byTap()
         StopIndicator()
         
@@ -122,6 +122,18 @@ class ForgotPass: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == ""{
+            textField.text = "+7"
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text == "+7"{
+            textField.text = ""
+        }
     }
 
     func StartIndicator(){

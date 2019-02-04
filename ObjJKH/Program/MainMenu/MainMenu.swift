@@ -28,7 +28,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var ls1: UILabel!
     @IBOutlet weak var ls2: UILabel!
     @IBOutlet weak var ls3: UILabel!
-    @IBOutlet weak var btnAllLS: UIButton!    
+    @IBOutlet weak var btnAllLS: UIButton!
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var PageView: UIView!
@@ -117,9 +117,9 @@ class MainMenu: UIViewController {
     @IBAction func AddLS(_ sender: UIButton) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         #if isMupRCMytishi
-            self.performSegue(withIdentifier: "addLS_Mup", sender: self)
+        self.performSegue(withIdentifier: "addLS_Mup", sender: self)
         #else
-            self.performSegue(withIdentifier: "addLS", sender: self)
+        self.performSegue(withIdentifier: "addLS", sender: self)
         #endif
     }
     
@@ -127,7 +127,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var btn_ls1: UIButton!
     @IBOutlet weak var btn_ls2: UIButton!
     @IBOutlet weak var btn_ls3: UIButton!
-
+    
     @IBAction func ls1_del(_ sender: UIButton) {
         try_del_ls_from_acc(ls: ls1)
     }
@@ -199,8 +199,8 @@ class MainMenu: UIViewController {
             let defaults = UserDefaults.standard
             let str_ls = defaults.string(forKey: "str_ls")
             var newStr_ls = str_ls?.replacingOccurrences(of: ls.text! + ",", with: "")
+            newStr_ls = newStr_ls?.replacingOccurrences(of: "," + ls.text!, with: "")
             newStr_ls = newStr_ls?.replacingOccurrences(of: ls.text!, with: "")
-            
             self.ls1.text = ""
             self.btn_ls1.isHidden = true
             self.btn_ls1.isEnabled = false
@@ -214,8 +214,9 @@ class MainMenu: UIViewController {
             self.btn_ls3.isEnabled = false
             
             let str_ls_arr = newStr_ls?.components(separatedBy: ",")
-            
-            if ((str_ls_arr?.count)! > 3) {
+            defaults.set(newStr_ls, forKey: "str_ls")
+            defaults.synchronize()
+            if ((str_ls_arr?.count)! >= 3) {
                 self.ls1.text = str_ls_arr?[0]
                 self.btn_ls1.isHidden = false
                 self.btn_ls1.isEnabled = true
@@ -235,16 +236,24 @@ class MainMenu: UIViewController {
                 self.ls2.text = str_ls_arr?[1]
                 self.btn_ls2.isHidden = false
                 self.btn_ls2.isEnabled = true
+                
+                self.ls3.text = ""
+                self.btn_ls3.isHidden = true
+                self.btn_ls3.isEnabled = false
             } else if ((str_ls_arr?.count)! == 1) {
                 self.ls1.text = str_ls_arr?[0]
                 if (self.ls1.text != "") {
                     self.btn_ls1.isHidden = false
                     self.btn_ls1.isEnabled = true
                 }
+                self.ls2.text = ""
+                self.btn_ls2.isHidden = true
+                self.btn_ls2.isEnabled = false
+                
+                self.ls3.text = ""
+                self.btn_ls3.isHidden = true
+                self.btn_ls3.isEnabled = false
             }
-            
-            defaults.set(newStr_ls, forKey: "str_ls")
-            defaults.synchronize()
         })
     }
     
@@ -277,24 +286,24 @@ class MainMenu: UIViewController {
             self.PageView.isHidden = true
             self.ViewInfoLS.isHidden = false
         }
-
+        
         // Картинка в зависимости от Таргета
         #if isOur_Obj_Home
-            fon_top.image = UIImage(named: "logo_Our_Obj_Home_white")
+        fon_top.image = UIImage(named: "logo_Our_Obj_Home_white")
         #elseif isChist_Dom
-            fon_top.image = UIImage(named: "Logo_Chist_Dom_White")
+        fon_top.image = UIImage(named: "Logo_Chist_Dom_White")
         #elseif isMupRCMytishi
-            fon_top.image = UIImage(named: "logo_MupRCMytishi_White")
+        fon_top.image = UIImage(named: "logo_MupRCMytishi_White")
         #elseif isDJ
-            fon_top.image = UIImage(named: "logo_DJ_White")
+        fon_top.image = UIImage(named: "logo_DJ_White")
         #elseif isStolitsa
-            fon_top.image = UIImage(named: "logo_Stolitsa_white")
+        fon_top.image = UIImage(named: "logo_Stolitsa_white")
         #elseif isKomeks
-            fon_top.image = UIImage(named: "Logo_Komeks_White")
+        fon_top.image = UIImage(named: "Logo_Komeks_White")
         #elseif isUKKomfort
-            fon_top.image = UIImage(named: "logo_UK_Komfort_white")
+        fon_top.image = UIImage(named: "logo_UK_Komfort_white")
         #elseif isKlimovsk12
-            fon_top.image = UIImage(named: "logo_Klimovsk12_White")
+        fon_top.image = UIImage(named: "logo_Klimovsk12_White")
         #endif
         
         // Картинки для разных Таргетов
@@ -330,7 +339,7 @@ class MainMenu: UIViewController {
         question_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         news_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         #if isDJ
-            getDebt()
+        getDebt()
         #endif
         // Настройки для меню
         settings_for_menu()
@@ -475,11 +484,11 @@ class MainMenu: UIViewController {
         // Запись на прием - показывать только для Нашего Общего Дома
         #if isOur_Obj_Home
         #else
-            menu_record_heigth.constant  = 0
-            record_img.isHidden          = true
-            btn_name_record.isHidden     = true
-            btn_arr_record.isHidden      = true
-            heigth_view.constant         = heigth_view.constant - 39
+        menu_record_heigth.constant  = 0
+        record_img.isHidden          = true
+        btn_name_record.isHidden     = true
+        btn_arr_record.isHidden      = true
+        heigth_view.constant         = heigth_view.constant - 39
         #endif
         
         // Выход - только название
@@ -513,9 +522,9 @@ class MainMenu: UIViewController {
     // Показания счетчиков
     @IBAction func go_counters(_ sender: UIButton) {
         #if isOur_Obj_Home
-            self.performSegue(withIdentifier: "noCounters", sender: self)
+        self.performSegue(withIdentifier: "noCounters", sender: self)
         #else
-            self.performSegue(withIdentifier: "mainCounters", sender: self)
+        self.performSegue(withIdentifier: "mainCounters", sender: self)
         #endif
         
     }
@@ -646,7 +655,7 @@ class MainMenu: UIViewController {
                     }
                     actionSheet.addAction(do_it0)
                 }
-
+                
                 actionSheet.addAction(cancel)
                 
                 present(actionSheet, animated: true, completion: nil)
@@ -687,7 +696,7 @@ class MainMenu: UIViewController {
     // Выход
     @IBAction func go_exit(_ sender: UIButton) {
         exit(0)
-//        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
+        //        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
     }
     
     @objc func timerEndedUp(_ timer : Timer) {
@@ -703,7 +712,7 @@ class MainMenu: UIViewController {
                           completion: { finished in
         })
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -765,7 +774,7 @@ class MainMenu: UIViewController {
             btnAllLS.isEnabled = false
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let defaults = UserDefaults.standard
@@ -833,7 +842,7 @@ class MainMenu: UIViewController {
         // Show the navigation bar on other view controllers
         self.navigationController?.isNavigationBarHidden = false;
     }
-
+    
     func add_record(numb: Int) {
         
         if (numb == 1) {
@@ -985,8 +994,8 @@ class MainMenu: UIViewController {
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
             
-//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//            print("responseString = \(responseString)")
+            //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            //            print("responseString = \(responseString)")
             
             guard data != nil else { return }
             let json = try? JSONSerialization.jsonObject(with: data!,
