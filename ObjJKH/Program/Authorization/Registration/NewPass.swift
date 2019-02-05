@@ -24,11 +24,23 @@ class NewPass: UIViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var labelEnter: UILabel!
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!    
     @IBOutlet weak var lock1: UIImageView!
     @IBOutlet weak var lock2: UIImageView!
+    
+    @IBAction func backClick(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "", message: "Вы действительно хотите прервать регистрацию?", preferredStyle: .alert)
+        let exitAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Нет", style: .default) { (_) -> Void in        }
+        alert.addAction(exitAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     @IBAction func btnSaveGo(_ sender: UIButton) {
         if (self.edPass.text == "") {
@@ -136,6 +148,7 @@ class NewPass: UIViewController {
         
         lock1.image = myImages.lock_image
         lock2.image = myImages.lock_image
+        backBtn.tintColor = myColors.btnColor.uiColor()
     }
     
     func getServerUrlNewPass(phone PhoneText:String, pass txtPass:String) -> String {

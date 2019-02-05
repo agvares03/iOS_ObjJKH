@@ -15,6 +15,7 @@ class Registration: UIViewController {
     @IBOutlet weak var btnReg: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!    
@@ -24,18 +25,38 @@ class Registration: UIViewController {
     @IBOutlet weak var switch_can: UISwitch!
     var responseString: String = ""
     
+    @IBAction func backClick(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "", message: "Вы действительно хотите прервать регистрацию?", preferredStyle: .alert)
+        let exitAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Нет", style: .default) { (_) -> Void in        }
+        alert.addAction(exitAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func canRegistration(_ sender: UISwitch) {
         if (switch_can.isOn) {
             btnReg.isEnabled = true
-            btnReg.isHidden = false
+            btnReg.backgroundColor = btnReg.backgroundColor?.withAlphaComponent(1)
+//            btnReg.isHidden = false
         } else {
             btnReg.isEnabled = false
-            btnReg.isHidden = true
+            btnReg.backgroundColor = btnReg.backgroundColor?.withAlphaComponent(0.5)
+//            btnReg.isHidden = true
         }
     }
     
     @IBAction func btnCancelGo(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(title: "", message: "Вы действительно хотите прервать регистрацию?", preferredStyle: .alert)
+        let exitAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Нет", style: .default) { (_) -> Void in        }
+        alert.addAction(exitAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func btnRegGo(_ sender: UIButton) {
@@ -79,7 +100,15 @@ class Registration: UIViewController {
         
         phone.image = myImages.phone_image
         person.image = myImages.person_image
+        backBtn.tintColor = myColors.btnColor.uiColor()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func getServerUrlBy(phone PhoneText:String, fio txtFIO:String) -> String {
