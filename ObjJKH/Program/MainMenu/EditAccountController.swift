@@ -124,6 +124,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         tableView.delegate = self
+        tableView.dataSource = self
         let str_ls = UserDefaults.standard.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         if ((str_ls_arr?.count)! > 0) {
@@ -152,11 +153,6 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         tableView.setEditing(true, animated: true)
-        // Do any additional setup after loading the view.
-        let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
-        self.view.isUserInteractionEnabled = true
-        self.view.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -164,6 +160,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         if data.count == 0{
             self.tableView.isHidden = true
             privLS1.isHidden = true
@@ -179,7 +176,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
                 tableHeight.constant = CGFloat(44 * 4)
             }
         }
-        // #warning Incomplete implementation, return the number of rows
+
         return data.count
     }
     
@@ -198,14 +195,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
     // Override to support editing the table view.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            
-            // Удалим лицевой счет на сервере
             try_del_ls_from_acc(ls: data[indexPath.row], row: indexPath)
-            
-            //            data.remove(at: indexPath.row)
-            //            isModified = true
-            //            tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
