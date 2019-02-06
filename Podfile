@@ -3,6 +3,8 @@
 
 target 'ChistDom' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+pod 'Fabric'
+    pod 'Crashlytics'
   use_frameworks!
 
   # Pods for ChistDom
@@ -17,6 +19,8 @@ end
 
 target 'DJ' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+pod 'Fabric'
+    pod 'Crashlytics'
   use_frameworks!
 
   # Pods for DJ
@@ -32,6 +36,8 @@ end
 
 target 'Klimovsk12' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+pod 'Fabric'
+    pod 'Crashlytics'
   use_frameworks!
 
   # Pods for Klimovsk12
@@ -40,6 +46,8 @@ end
 
 target 'Komeks' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+pod 'Fabric'
+    pod 'Crashlytics'
   use_frameworks!
 
   # Pods for Komeks
@@ -99,6 +107,9 @@ end
 
 target 'OurObjHome' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+
+pod 'Fabric'
+    pod 'Crashlytics'
   use_frameworks!
 
   # Pods for OurObjHome
@@ -117,7 +128,8 @@ target 'Stolitsa' do
     pod 'CardIO'
     pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
     pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
-    
+    pod 'Fabric'
+    pod 'Crashlytics'
     use_frameworks!
 
     # Pods for Наш Общий Дом
@@ -132,6 +144,8 @@ end
 
 target 'UK_Komfort' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+pod 'Fabric'
+    pod 'Crashlytics'
   use_frameworks!
 
   # Pods for UK_Komfort

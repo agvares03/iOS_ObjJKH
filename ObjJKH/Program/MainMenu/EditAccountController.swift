@@ -10,6 +10,8 @@ import UIKit
 
 class EditAccountController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var noPrivLS: UILabel!
+    @IBOutlet weak var privLS1: UILabel!
     @IBOutlet weak var backBtn: UIBarButtonItem!
     @IBOutlet weak var separator: UILabel!
     @IBOutlet weak var emailText: UITextField!
@@ -125,8 +127,10 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         let str_ls = UserDefaults.standard.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         if ((str_ls_arr?.count)! > 0) {
-            for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
-                data.append((str_ls_arr?[i])!)
+            if str_ls_arr?[0] != ""{
+                for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
+                    data.append((str_ls_arr?[i])!)
+                }
             }
         }
         if UserDefaults.standard.string(forKey: "mail") != ""{
@@ -140,7 +144,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         }else{
             tableHeight.constant = CGFloat(44 * 4)
         }
-        
+        noPrivLS.isHidden = true
         backBtn.tintColor = myColors.btnColor.uiColor()
         saveBtn.backgroundColor = myColors.btnColor.uiColor()
         addLSBtn.backgroundColor = myColors.btnColor.uiColor()
@@ -160,6 +164,21 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if data.count == 0{
+            self.tableView.isHidden = true
+            privLS1.isHidden = true
+            noPrivLS.isHidden = false
+            tableHeight.constant = 44
+        }else{
+            self.tableView.isHidden = false
+            privLS1.isHidden = false
+            noPrivLS.isHidden = true
+            if data.count < 5{
+                tableHeight.constant = CGFloat(44 * data.count)
+            }else{
+                tableHeight.constant = CGFloat(44 * 4)
+            }
+        }
         // #warning Incomplete implementation, return the number of rows
         return data.count
     }
@@ -254,5 +273,19 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             self.tableView.reloadData()
         })
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        data.removeAll()
+        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        if ((str_ls_arr?.count)! > 0) {
+            if str_ls_arr?[0] != ""{
+                for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
+                    data.append((str_ls_arr?[i])!)
+                }
+            }
+        }
+        self.tableView.reloadData()
     }
 }

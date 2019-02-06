@@ -280,7 +280,12 @@ class FirstController: UIViewController {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "ОK", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
@@ -371,7 +376,12 @@ class FirstController: UIViewController {
         let defaults = UserDefaults.standard
         let login = defaults.string(forKey: "login")
         let pass = defaults.string(forKey: "pass")
-        
+        if login == "" || login == nil{
+            let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
         edLogin.text = login
         edPass.text = pass
     }
