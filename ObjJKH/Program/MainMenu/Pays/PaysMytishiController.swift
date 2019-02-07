@@ -549,6 +549,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @objc func textFieldEditingDidEnd(_ textField: UITextField) {
         var str:String = textField.text!
         str = str.replacingOccurrences(of: ",", with: ".")
+        if str == ""{
+            str = "0.00"
+        }
         if !str.contains("."){
             str = str + ".00"
         }
@@ -561,7 +564,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @objc func textFieldDidChange(_ textField: UITextField) {
         var str: String = textField.text!
         str = str.replacingOccurrences(of: ",", with: ".")
-        print(str)
         if str != "" && str != "-"{
             for i in 0...osvc.count - 1{
                 let code:String = osvc[i]
