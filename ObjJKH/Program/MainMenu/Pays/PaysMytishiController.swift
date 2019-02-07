@@ -66,6 +66,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
         let defaults = UserDefaults.standard
+        if ls_button.titleLabel?.text == "Все"{
+            let alert = UIAlertController(title: "", message: "Для совершения оплаты укажите лицевой счет", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
             alert.addTextField { (textField) in

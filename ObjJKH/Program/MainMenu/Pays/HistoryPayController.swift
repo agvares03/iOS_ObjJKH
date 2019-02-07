@@ -148,7 +148,8 @@ class HistoryPayCell: UITableViewCell {
         if !item.sum.contains("."){
             self.summ.text = item.sum + ".00"
         }else{
-            self.summ.text = item.sum
+            let sum: Double = Double(item.sum)!
+            self.summ.text = String(format:"%.2f", sum)
         }
         self.period.text = item.period
         self.datePay.text = date1
