@@ -561,7 +561,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @objc func textFieldDidChange(_ textField: UITextField) {
         var str: String = textField.text!
         str = str.replacingOccurrences(of: ",", with: ".")
-        if str != ""{
+        print(str)
+        if str != "" && str != "-"{
             for i in 0...osvc.count - 1{
                 let code:String = osvc[i]
                 if textField.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)){
