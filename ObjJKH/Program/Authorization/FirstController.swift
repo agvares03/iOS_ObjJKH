@@ -281,7 +281,7 @@ class FirstController: UIViewController {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. Номер телефона укажите в формате +7xxxxxxxxxx \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "ОK", style: .default) { (_) -> Void in }
                     alert.addAction(cancelAction)
                     self.present(alert, animated: true, completion: nil)
