@@ -111,6 +111,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var exit_img: UIImageView!
     @IBOutlet weak var record_img: UIImageView!
     @IBOutlet weak var acc_img: UIImageView!
+    @IBOutlet weak var main_background: UIImageView!
     
     var phone: String?
     
@@ -293,6 +294,7 @@ class MainMenu: UIViewController {
         #elseif isChist_Dom
         fon_top.image = UIImage(named: "Logo_Chist_Dom_White")
         #elseif isMupRCMytishi
+        main_background.image = UIImage(named: "main_Background_MupRCMytishi")
         fon_top.image = UIImage(named: "logo_MupRCMytishi_White")
         #elseif isDJ
         fon_top.image = UIImage(named: "logo_DJ_White")
