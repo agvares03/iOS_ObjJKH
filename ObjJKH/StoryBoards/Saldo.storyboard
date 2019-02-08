@@ -236,7 +236,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="fLo-ZS-oPd" kind="show" id="gL2-l9-QjY"/>
+                                    <action selector="PayBtnAction:" destination="zKW-ao-E5V" eventType="touchUpInside" id="XaD-cT-G2o"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRr-pH-09o">
@@ -320,6 +320,8 @@
                         <outlet property="supportBtn" destination="0Sc-v2-kSE" id="Fw8-14-4k9"/>
                         <outlet property="tableOSV" destination="kJt-aT-8gS" id="xYl-Iz-y53"/>
                         <segue destination="Tbt-Gd-biY" kind="show" identifier="support" id="6fO-jL-683"/>
+                        <segue destination="fLo-ZS-oPd" kind="show" identifier="pays" id="kZR-x7-aCT"/>
+                        <segue destination="N69-Al-fTF" kind="show" identifier="paysMytishi" id="uob-b6-BnT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uz2-jd-bDI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -333,6 +335,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NP9-Hw-NlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1300" y="581"/>
+        </scene>
+        <!--PaysMytishi-->
+        <scene sceneID="m3B-ZZ-yQx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PaysMytishi" id="N69-Al-fTF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vBU-fj-JZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1876" y="346"/>
         </scene>
         <!--Pays-->
         <scene sceneID="r6e-hM-y8T">

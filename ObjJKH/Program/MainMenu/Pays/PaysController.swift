@@ -65,7 +65,10 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     // Нажатие в оплату
     @IBAction func Payed(_ sender: UIButton) {
-        if ls_button.titleLabel?.text == "Все"{
+        let defaults = UserDefaults.standard
+        let str_ls = defaults.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        if (ls_button.titleLabel?.text == "Все") && ((str_ls_arr?.count)! > 1){
             let alert = UIAlertController(title: "", message: "Для совершения оплаты укажите лицевой счет", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)

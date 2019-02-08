@@ -91,6 +91,14 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         updateArrowsEnabled()
     }
     
+    @IBAction func PayBtnAction(_ sender: UIButton) {
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #else
+        self.performSegue(withIdentifier: "pays", sender: self)
+        #endif
+    }
+    
     @IBAction func rigthButtonDidPressed(_ sender: UIButton) {
         var m = Int(iterMonth)!
         var y = Int(iterYear)!
@@ -388,6 +396,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
+        print(request)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
