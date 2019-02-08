@@ -201,8 +201,8 @@ class ServiceTableCell: UITableViewCell {
     @IBOutlet weak var urlBtn: UIButton!
     @IBOutlet weak var imgService: UIImageView!
     @IBAction func urlBtnPressed(_ sender: UIButton) {
-        let url = urlBtn.titleLabel?.text
-        UIApplication.shared.openURL(NSURL(string: url!)! as URL)
+        let url = URL(string: (urlBtn.titleLabel?.text)!)
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
     
     func configure(item: Services?) {
@@ -212,7 +212,11 @@ class ServiceTableCell: UITableViewCell {
         
         name.text = item.name
         substring.text = item.description
-        urlBtn.titleLabel?.text = item.address
+        var str:String = item.address!
+        if !str.contains("http"){
+            str = "http://" + str
+        }
+        urlBtn.setTitle(str, for: .normal)
         imgService.image = UIImage(data: data!)
     }
     
