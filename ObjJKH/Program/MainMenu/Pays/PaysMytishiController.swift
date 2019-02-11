@@ -474,12 +474,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         if select == false{
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
         }else{
-            if checkBox[selectedRow]{
-                cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
-                checkBox[selectedRow] = false
-            }else{
-                cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
-                checkBox[selectedRow] = true
+            if selectedRow >= 0{
+                if checkBox[selectedRow]{
+                    cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
+                    checkBox[selectedRow] = false
+                }else{
+                    cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+                    checkBox[selectedRow] = true
+                }
             }
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
@@ -522,6 +524,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         cell.delegate = self
         select = false
+        selectedRow = -1
         //        #endif
         return cell
     }

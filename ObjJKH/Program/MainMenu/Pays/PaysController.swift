@@ -19,7 +19,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     
-    @IBOutlet weak var servicePay: UILabel!
     @IBOutlet weak var viewTop: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var back: UIBarButtonItem!
@@ -47,7 +46,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     
     @IBOutlet weak var ls_button: UIButton!
-    @IBOutlet weak var txt_sum_jkh: UILabel!
     @IBOutlet weak var txt_sum_obj: UITextField!
     
     @IBAction func choice_ls_button(_ sender: UIButton) {
@@ -92,7 +90,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currPoint = 475
+        currPoint = 537
         let defaults     = UserDefaults.standard
         // Логин и пароль
         login = defaults.string(forKey: "login")
@@ -184,9 +182,9 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     func parse_OSV(login: String, pass: String) {
-        
+        DB().del_db(table_name: "Saldo")
         var sum:Double = 0
-        
+        update = false
         let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -203,7 +201,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
                                                     do {
-                                                        DB().del_db(table_name: "Saldo")
                                                         var bill_month    = ""
                                                         var bill_year     = ""
                                                         var bill_service  = ""
@@ -363,16 +360,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 if (self.sum != 0) {
                     //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
                     let serviceP = self.sum / 0.992 - self.sum
-                    self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
                     self.totalSum = self.sum + serviceP
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum)
-                    self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
                     
                 } else {
                     //                    self.txt_sum_jkh.text = "0,00 р."
                     self.txt_sum_obj.text = "0,00"
-                    self.txt_sum_jkh.text = "0,00 .руб"
-                    self.servicePay.text  = "0,00 .руб"
                 }
                 self.updateFetchedResultsController()
                 self.updateTable()
@@ -407,23 +400,26 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     var select = false
+    var update = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
         let osv = fetchedResultsController!.object(at: indexPath)
-        if select == false{
+        if select == false && update == false{
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
         }else{
-            if checkBox[selectedRow]{
-                cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
-                checkBox[selectedRow] = false
-            }else{
-                cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
-                checkBox[selectedRow] = true
+            if selectedRow >= 0{
+                if checkBox[selectedRow]{
+                    cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
+                    checkBox[selectedRow] = false
+                }else{
+                    cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+                    checkBox[selectedRow] = true
+                }
             }
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
-        if select == false{
+        if update == false{
             let sum:String = osv.end!
             osvc.append(osv.usluga!)
             checkBox.append(true)
@@ -439,10 +435,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         
         cell.delegate = self
         select = false
+        selectedRow = -1
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        update = true
         selectedRow = indexPath.row
         select = true
         tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -457,27 +455,15 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
         }
         self.sum = sum
-        let serviceP = self.sum / 0.992 - self.sum
-        self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
-        self.totalSum = self.sum + serviceP
         self.txt_sum_obj.text = String(format:"%.2f", self.sum)
-        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         let str: String = textField.text!
         if str != ""{
             self.sum = Double(str)!
-            let serviceP = self.sum / 0.992 - self.sum
-            self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
-            self.totalSum = self.sum + serviceP
-            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
         }else{
             self.sum = 0.00
-            let serviceP = self.sum / 0.992 - self.sum
-            self.servicePay.text  = String(format:"%.2f", serviceP) + " .руб"
-            self.totalSum = self.sum + serviceP
-            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " .руб"
         }
         
     }
