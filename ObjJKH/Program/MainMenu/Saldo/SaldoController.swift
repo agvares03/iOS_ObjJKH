@@ -388,7 +388,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     // Дубль - получение ведомостей по лиц. счетам
     // Ведомость
     func parse_OSV(login: String, pass: String) {
-        
+        DB().del_db(table_name: "Saldo")
         var sum:Double = 0
         
         let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
@@ -414,7 +414,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
                                                     do {
-                                                        DB().del_db(table_name: "Saldo")
+                                                        
                                                         var bill_month    = ""
                                                         var bill_year     = ""
                                                         var bill_service  = ""
