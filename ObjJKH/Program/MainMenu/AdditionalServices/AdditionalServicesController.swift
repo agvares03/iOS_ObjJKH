@@ -17,6 +17,7 @@ struct Services {
     let address:       String?
     let description:   String?
     let logo:          String?
+    let phone:         String?
     
     init(row: XML.Accessor) {
         id          = row.attributes["id"]
@@ -24,6 +25,7 @@ struct Services {
         address     = row.attributes["address"]
         description = row.attributes["description"]
         logo        = row.attributes["logo"]
+        phone       = row.attributes["phone"]
     }
 }
 
@@ -195,14 +197,26 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
 class ServiceTableCell: UITableViewCell {
     
     // MARK: Outlets
-    
+    @IBOutlet weak var phoneHeight: NSLayoutConstraint!
+    @IBOutlet weak var imgWidth: NSLayoutConstraint!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var substring: UILabel!
     @IBOutlet weak var urlBtn: UIButton!
+    @IBOutlet weak var phoneBtn: UIButton!
     @IBOutlet weak var imgService: UIImageView!
     @IBAction func urlBtnPressed(_ sender: UIButton) {
         let url = URL(string: (urlBtn.titleLabel?.text)!)
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    @IBAction func phoneBtnPressed(_ sender: UIButton) {
+        let newPhone = phoneBtn.titleLabel?.text?.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+        if let url = URL(string: "tel://" + newPhone!) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
     
     func configure(item: Services?) {
@@ -216,8 +230,15 @@ class ServiceTableCell: UITableViewCell {
         if !str.contains("http"){
             str = "http://" + str
         }
+        if item.phone == ""{
+            phoneHeight.constant = 0
+        }
+        phoneBtn.setTitle(item.phone, for: .normal)
         urlBtn.setTitle(str, for: .normal)
         imgService.image = UIImage(data: data!)
+        if imgService.image == nil{
+            imgWidth.constant = 0
+        }
     }
     
 }

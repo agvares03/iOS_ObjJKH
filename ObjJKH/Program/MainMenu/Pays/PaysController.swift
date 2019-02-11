@@ -75,7 +75,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let k:String = txt_sum_jkh.text!
+        let k:String = txt_sum_obj.text!
         self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
         if (self.totalSum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
