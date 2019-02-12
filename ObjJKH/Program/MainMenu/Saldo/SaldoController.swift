@@ -14,6 +14,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
 
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var btnPay: UIButton!
+    @IBOutlet weak var can_btn_pay: NSLayoutConstraint!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -179,6 +180,12 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         #if isOur_Obj_Home
             btnPay.isHidden = true
+            can_btn_pay.constant = 0
+        #endif
+        
+        #if isUKKomfort
+            btnPay.isHidden = true
+            can_btn_pay.constant = 0
         #endif
         
     }
