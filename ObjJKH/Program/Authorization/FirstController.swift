@@ -20,6 +20,7 @@ class FirstController: UIViewController {
     private var data_ls: [String] = []
     var str_ls: String = ""
 
+    @IBOutlet weak var ver_Lbl: UILabel!
     @IBOutlet weak var questionBtn: UIButton!
     @IBOutlet weak var questionImg: UIImageView!
     @IBOutlet weak var heigt_image: NSLayoutConstraint!
@@ -67,7 +68,8 @@ class FirstController: UIViewController {
         UserDefaults.standard.set(false, forKey: "fromMenu")
         StopIndicator()
         loadUsersDefaults()
-        
+        let version = targetSettings().getVersion()
+        ver_Lbl.text = "ver. " + version
         let defaults = UserDefaults.standard
         // Сохраним параметр, который сигнализирует о том, что надо показать приветствие в Главном окне ("Привет, г-н Иванов")
         defaults.setValue(true, forKey: "NeedHello")
@@ -118,6 +120,7 @@ class FirstController: UIViewController {
         new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
         questionImg.setImageColor(color: myColors.btnColor.uiColor())
         questionBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        ver_Lbl.textColor = myColors.btnColor.uiColor()
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
