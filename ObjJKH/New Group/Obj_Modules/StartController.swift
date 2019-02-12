@@ -46,11 +46,11 @@ class StartController: UIViewController {
     func getSettings() {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
-        #if DEBUG
+//        #if DEBUG
         let urlPath = Server.SERVER + Server.GET_MOBILE_MENU
-        #else
-        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
-        #endif
+//        #else
+//        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
+//        #endif
         
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
@@ -131,4 +131,13 @@ class StartController: UIViewController {
         let simple_name: String
     }
     
+}
+
+public class targetSettings{
+    var version = ""
+    func getVersion() -> String{
+        let dictionary = Bundle.main.infoDictionary!
+        version = dictionary["CFBundleShortVersionString"] as! String
+        return version
+    }
 }

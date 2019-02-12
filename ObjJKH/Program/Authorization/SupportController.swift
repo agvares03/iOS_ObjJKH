@@ -13,6 +13,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var phoneTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var problemTxt: UITextView!
+    @IBOutlet weak var ver_Lbl: UILabel!
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!
@@ -100,6 +101,8 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let version = targetSettings().getVersion()
+        ver_Lbl.text = "ver. " + version
         problemTxt.delegate = self
         phoneTxt.delegate = self
         problemTxt.text = "Описание проблемы"
@@ -119,6 +122,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         separator1.backgroundColor = myColors.labelColor.uiColor()
         separator2.backgroundColor = myColors.labelColor.uiColor()
         separator3.backgroundColor = myColors.labelColor.uiColor()
+        ver_Lbl.textColor = myColors.labelColor.uiColor()
         backBtn.tintColor = myColors.btnColor.uiColor()
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         self.view.isUserInteractionEnabled = true
