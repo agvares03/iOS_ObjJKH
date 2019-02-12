@@ -295,6 +295,7 @@
                             <constraint firstItem="CYz-dI-ZUh" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" constant="16" id="elE-xI-sCP"/>
                             <constraint firstItem="mK7-KA-yNE" firstAttribute="top" secondItem="kJt-aT-8gS" secondAttribute="bottom" constant="8" id="hjb-cc-KiD"/>
                             <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="mK7-KA-yNE" secondAttribute="trailing" constant="20" id="jwN-tO-wQC"/>
+                            <constraint firstItem="HRr-pH-09o" firstAttribute="top" secondItem="kJt-aT-8gS" secondAttribute="bottom" constant="65" id="keF-cO-bRG"/>
                             <constraint firstItem="XoG-MX-OkY" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" id="qFb-rR-hPv"/>
                             <constraint firstItem="HRr-pH-09o" firstAttribute="top" secondItem="mK7-KA-yNE" secondAttribute="bottom" constant="10" id="sOS-f8-rdo"/>
                         </constraints>
@@ -310,6 +311,7 @@
                     <connections>
                         <outlet property="back" destination="5Ww-DK-GpF" id="Toi-ie-v9r"/>
                         <outlet property="btnPay" destination="mK7-KA-yNE" id="j0k-2q-m0C"/>
+                        <outlet property="can_btn_pay" destination="keF-cO-bRG" id="FoJ-3K-AOY"/>
                         <outlet property="leftButton" destination="dYB-q3-rCY" id="Tcc-fI-clr"/>
                         <outlet property="ls_button" destination="2gu-cw-qiJ" id="oDw-k4-XnZ"/>
                         <outlet property="monthLabel" destination="CYz-dI-ZUh" id="wpx-bD-d3T"/>
