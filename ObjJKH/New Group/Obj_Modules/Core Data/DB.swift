@@ -63,7 +63,7 @@ class DB: NSObject, XMLParserDelegate {
         // Удалим данные из базы данных
         del_db(table_name: "Saldo")
         // Получим данные в базу данных
-//        parse_OSV(login: login, pass: pass)
+        parse_OSV(login: login, pass: pass)
         
         // ЗАЯВКИ С КОММЕНТАРИЯМИ
         del_db(table_name: "Applications")
