@@ -95,12 +95,24 @@
                                     <action selector="BtnAction:" destination="Tf2-V8-fll" eventType="touchUpInside" id="JDN-ED-3Ni"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПРОДОЛЖИТЬ РАБОТУ В ТЕКУЩЕЙ ВЕРСИИ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpK-QM-9vp">
+                                <rect key="frame" x="87.5" y="490" width="200" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="WCb-WX-4s4"/>
+                                    <constraint firstAttribute="height" constant="58" id="q6e-bf-NWn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LJh-V4-yPd" firstAttribute="top" secondItem="ZGT-Ll-Rxs" secondAttribute="top" constant="160" id="7r8-kG-RLo"/>
                             <constraint firstItem="PKP-nN-CBs" firstAttribute="centerX" secondItem="ZGT-Ll-Rxs" secondAttribute="centerX" id="9sC-Og-dKi"/>
                             <constraint firstItem="HdV-hP-t2a" firstAttribute="leading" secondItem="dMM-zw-fJh" secondAttribute="leading" constant="24" id="C0H-8b-mmt"/>
+                            <constraint firstItem="GpK-QM-9vp" firstAttribute="centerX" secondItem="ZGT-Ll-Rxs" secondAttribute="centerX" id="CCp-kd-mqc"/>
+                            <constraint firstItem="GpK-QM-9vp" firstAttribute="top" secondItem="PKP-nN-CBs" secondAttribute="bottom" constant="15" id="CUS-ei-XxA"/>
                             <constraint firstItem="PKP-nN-CBs" firstAttribute="top" secondItem="SSD-yo-IEa" secondAttribute="bottom" constant="17" id="NeA-ER-dht"/>
                             <constraint firstItem="HdV-hP-t2a" firstAttribute="top" secondItem="dMM-zw-fJh" secondAttribute="top" constant="40" id="NyC-dE-5lI"/>
                             <constraint firstItem="dMM-zw-fJh" firstAttribute="trailing" secondItem="HdV-hP-t2a" secondAttribute="trailing" constant="23.5" id="Sqc-jD-c7j"/>
@@ -111,13 +123,15 @@
                         <viewLayoutGuide key="safeArea" id="dMM-zw-fJh"/>
                     </view>
                     <connections>
+                        <outlet property="goLbl" destination="GpK-QM-9vp" id="3Qf-vB-sjk"/>
                         <outlet property="imageApp" destination="LJh-V4-yPd" id="ETS-GE-mL8"/>
                         <outlet property="updateBtn" destination="PKP-nN-CBs" id="zKv-fa-aLC"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="start_app" id="k1G-pj-6pb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cx2-6e-ut4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="607.5" y="-597.88732394366195"/>
+            <point key="canvasLocation" x="607.20000000000005" y="-598.65067466266873"/>
         </scene>
         <!--First Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -547,5 +561,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DlV-Ao-OzX"/>
+        <segue reference="k1G-pj-6pb"/>
     </inferredMetricsTieBreakers>
 </document>

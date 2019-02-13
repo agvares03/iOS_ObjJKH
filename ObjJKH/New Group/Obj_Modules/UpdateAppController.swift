@@ -12,6 +12,8 @@ class UpdateAppController: UIViewController {
 
     @IBOutlet weak var imageApp: UIImageView!
     @IBOutlet weak var updateBtn: UIButton!
+    
+    @IBOutlet weak var goLbl: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         #if isOur_Obj_Home
@@ -32,8 +34,20 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "logo_Klimovsk12_White")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
+        goLbl.textColor = myColors.indicatorColor.uiColor()
+        let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+        let underlineAttributedString = NSAttributedString(string: "ПРОДОЛЖИТЬ РАБОТУ В ТЕКУЩЕЙ ВЕРСИИ", attributes: underlineAttribute)
+        goLbl.attributedText = underlineAttributedString
+        let tap = UITapGestureRecognizer(target: self, action: #selector(lblTapped(_:)))
+        goLbl.isUserInteractionEnabled = true
+        goLbl.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
+    
+    @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "start_app", sender: self)
+    }
+    
     @IBAction func BtnAction(_ sender: UIButton) {
         var str = "itms-apps://itunes.apple.com/ru/app/id1244651746"
         

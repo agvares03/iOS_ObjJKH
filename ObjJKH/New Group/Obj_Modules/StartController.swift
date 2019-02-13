@@ -46,11 +46,8 @@ class StartController: UIViewController {
     func getSettings() {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
-//        #if DEBUG
-        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU
-//        #else
-//        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
-//        #endif
+//        let version = "1.0"
+        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
         
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
@@ -68,15 +65,41 @@ class StartController: UIViewController {
                                                 self.responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("Response: \(self.responseLS!)")
                                                 if (self.responseLS?.contains("обновить"))!{
-                                                    self.update_app()
+                                                    self.updateApp = true
+                                                    self.getSettings2()
                                                 }else{
-                                                   self.setSettings()
+                                                    self.setSettings()
                                                 }
         })
         task.resume()
         
     }
     
+    func getSettings2() {
+        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        //        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    return
+                                                }
+                                                
+                                                self.responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("Response: \(self.responseLS!)")
+                                                self.setSettings()
+        })
+        task.resume()
+        
+    }
+    
+    var updateApp = false
     func setSettings() {
         DispatchQueue.main.sync {
             
@@ -85,8 +108,11 @@ class StartController: UIViewController {
             let stat = try! decoder.decode(MenuData.self, from: inputData!)
             
             self.set_settings(color: stat.color, statMenu: stat.menu)
-            
-            self.start_app()
+            if updateApp{
+                self.update_app()
+            }else{
+               self.start_app()
+            }
         }
     }
     
@@ -102,12 +128,10 @@ class StartController: UIViewController {
     }
     
     @objc func update_app() {
-        DispatchQueue.main.sync {
-            if progressValue < 1.0 {
-                self.perform(#selector(update_app), with: nil, afterDelay: 0.1)
-            } else {
-                self.performSegue(withIdentifier: "update_app", sender: self)
-            }
+        if progressValue < 1.0 {
+            self.perform(#selector(update_app), with: nil, afterDelay: 0.1)
+        } else {
+            self.performSegue(withIdentifier: "update_app", sender: self)
         }
     }
     
