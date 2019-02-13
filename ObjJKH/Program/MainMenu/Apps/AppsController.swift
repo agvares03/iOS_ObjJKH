@@ -30,12 +30,23 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var addLS: UIButton!
+    @IBOutlet weak var lsView: UIView!
+    @IBOutlet weak var hiddenAppsView: UIView!
     @IBOutlet weak var tableApps: UITableView!
     @IBOutlet weak var switchCloseApps: UISwitch!
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     @IBAction func switch_Go(_ sender: UISwitch) {
         updateCloseApps()
+    }
+    
+    @IBAction func addLSAction(_ sender: UIButton) {
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "addLSMup", sender: self)
+        #else
+        self.performSegue(withIdentifier: "addLS", sender: self)
+        #endif
     }
     
     @IBAction func btnAddApp(_ sender: UIButton) {
@@ -63,6 +74,19 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableApps.delegate = self
         load_data()
         updateTable()
+        
+        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        
+        if ((str_ls_arr?.count)! > 0) && str_ls_arr![0] != ""{
+            lsView.isHidden = true
+        }else{
+            addLS.backgroundColor = myColors.btnColor.uiColor()
+            lsView.isHidden = false
+            btnAdd.isHidden = true
+            tableApps.isHidden = true
+            hiddenAppsView.isHidden = true
+        }
         
         // Обновление списка заявок
         refreshControl = UIRefreshControl()

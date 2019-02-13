@@ -271,6 +271,39 @@
                                     <constraint firstItem="0Sc-v2-kSE" firstAttribute="top" secondItem="HRr-pH-09o" secondAttribute="top" constant="1" id="rbC-Wq-1xo"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqx-UO-CiJ">
+                                <rect key="frame" x="30" y="278.5" width="315" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет подключённых лицевых счетов" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECk-1K-eXs">
+                                        <rect key="frame" x="15" y="20" width="284" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AH4-jK-sIf">
+                                        <rect key="frame" x="72.5" y="65.5" width="170" height="30"/>
+                                        <color key="backgroundColor" red="0.21895414590000001" green="0.71306502819999995" blue="0.9233877063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="170" id="2BS-os-OXd"/>
+                                            <constraint firstAttribute="height" constant="30" id="HTt-0h-aOb"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Подключить лиц. счет"/>
+                                        <connections>
+                                            <action selector="addLSAction:" destination="zKW-ao-E5V" eventType="touchUpInside" id="vQS-fa-dlg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85530024766921997" green="0.85649722814559937" blue="0.85453575849533081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="AH4-jK-sIf" firstAttribute="centerX" secondItem="vqx-UO-CiJ" secondAttribute="centerX" id="AYV-Vl-ZrN"/>
+                                    <constraint firstItem="ECk-1K-eXs" firstAttribute="top" secondItem="vqx-UO-CiJ" secondAttribute="top" constant="20" id="Iue-me-EL8"/>
+                                    <constraint firstAttribute="height" constant="110" id="LR2-8D-Iq6"/>
+                                    <constraint firstAttribute="trailing" secondItem="ECk-1K-eXs" secondAttribute="trailing" constant="16" id="YyR-DT-rTn"/>
+                                    <constraint firstItem="AH4-jK-sIf" firstAttribute="top" secondItem="ECk-1K-eXs" secondAttribute="bottom" constant="25" id="beF-05-3Qc"/>
+                                    <constraint firstItem="ECk-1K-eXs" firstAttribute="leading" secondItem="vqx-UO-CiJ" secondAttribute="leading" constant="15" id="rmY-z3-6GV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.85355199744858723" green="0.85355199744858723" blue="0.85355199744858723" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -287,8 +320,10 @@
                             <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="CYz-dI-ZUh" secondAttribute="trailing" constant="16" id="QHU-A5-WKW"/>
                             <constraint firstItem="1Ah-qc-F7y" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" constant="16" id="RgF-Bf-TwT"/>
                             <constraint firstItem="kJt-aT-8gS" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" id="Rpx-HP-9hx"/>
+                            <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="vqx-UO-CiJ" secondAttribute="trailing" constant="30" id="SFl-Y7-Y0n"/>
                             <constraint firstItem="2jz-eJ-IBd" firstAttribute="top" secondItem="e3f-PC-fAU" secondAttribute="top" constant="7" id="VQw-7a-Fzn"/>
                             <constraint firstItem="kJt-aT-8gS" firstAttribute="top" secondItem="XoG-MX-OkY" secondAttribute="bottom" constant="2" id="VpO-U7-HtG"/>
+                            <constraint firstItem="vqx-UO-CiJ" firstAttribute="centerY" secondItem="lUE-GL-TjV" secondAttribute="centerY" id="Z5G-lQ-7Pg"/>
                             <constraint firstItem="mK7-KA-yNE" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" constant="20" id="axZ-TB-YSW"/>
                             <constraint firstItem="2gu-cw-qiJ" firstAttribute="top" secondItem="e3f-PC-fAU" secondAttribute="top" constant="5" id="b1K-sg-gBb"/>
                             <constraint firstItem="2gu-cw-qiJ" firstAttribute="trailing" secondItem="e3f-PC-fAU" secondAttribute="trailing" id="e9H-tG-A2h"/>
@@ -296,6 +331,7 @@
                             <constraint firstItem="mK7-KA-yNE" firstAttribute="top" secondItem="kJt-aT-8gS" secondAttribute="bottom" constant="8" id="hjb-cc-KiD"/>
                             <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="mK7-KA-yNE" secondAttribute="trailing" constant="20" id="jwN-tO-wQC"/>
                             <constraint firstItem="HRr-pH-09o" firstAttribute="top" secondItem="kJt-aT-8gS" secondAttribute="bottom" constant="65" id="keF-cO-bRG"/>
+                            <constraint firstItem="vqx-UO-CiJ" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" constant="30" id="mrf-oT-n9l"/>
                             <constraint firstItem="XoG-MX-OkY" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" id="qFb-rR-hPv"/>
                             <constraint firstItem="HRr-pH-09o" firstAttribute="top" secondItem="mK7-KA-yNE" secondAttribute="bottom" constant="10" id="sOS-f8-rdo"/>
                         </constraints>
@@ -309,21 +345,28 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="LsLbl" destination="1Ah-qc-F7y" id="13h-em-5uH"/>
+                        <outlet property="addLs" destination="AH4-jK-sIf" id="GJn-H2-d6D"/>
                         <outlet property="back" destination="5Ww-DK-GpF" id="Toi-ie-v9r"/>
                         <outlet property="btnPay" destination="mK7-KA-yNE" id="j0k-2q-m0C"/>
                         <outlet property="can_btn_pay" destination="keF-cO-bRG" id="FoJ-3K-AOY"/>
                         <outlet property="leftButton" destination="dYB-q3-rCY" id="Tcc-fI-clr"/>
+                        <outlet property="lsView" destination="vqx-UO-CiJ" id="JwU-Dy-4Na"/>
                         <outlet property="ls_button" destination="2gu-cw-qiJ" id="oDw-k4-XnZ"/>
                         <outlet property="monthLabel" destination="CYz-dI-ZUh" id="wpx-bD-d3T"/>
+                        <outlet property="monthView" destination="XoG-MX-OkY" id="z67-pK-gMl"/>
                         <outlet property="nextMonthLabel" destination="l0G-Yp-0Ov" id="k64-AC-0sg"/>
                         <outlet property="prevMonthLabel" destination="SWL-PG-Qqn" id="4pZ-ne-xCe"/>
                         <outlet property="rigthButton" destination="1Wd-io-0Sa" id="WKV-m8-Xhx"/>
+                        <outlet property="spinImg" destination="2jz-eJ-IBd" id="og8-Su-Epo"/>
                         <outlet property="support" destination="ohZ-rX-km0" id="USk-TL-fj6"/>
                         <outlet property="supportBtn" destination="0Sc-v2-kSE" id="Fw8-14-4k9"/>
                         <outlet property="tableOSV" destination="kJt-aT-8gS" id="xYl-Iz-y53"/>
                         <segue destination="Tbt-Gd-biY" kind="show" identifier="support" id="6fO-jL-683"/>
                         <segue destination="fLo-ZS-oPd" kind="show" identifier="pays" id="kZR-x7-aCT"/>
                         <segue destination="N69-Al-fTF" kind="show" identifier="paysMytishi" id="uob-b6-BnT"/>
+                        <segue destination="w7B-jE-bXy" kind="show" identifier="addLSMup" id="s6Y-hz-IMY"/>
+                        <segue destination="2lM-ci-Lhd" kind="show" identifier="addLS" id="YWJ-QU-YYN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uz2-jd-bDI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -371,6 +414,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bE8-UY-Gz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="269.60000000000002" y="128.18590704647679"/>
+        </scene>
+        <!--addLSMup-->
+        <scene sceneID="ccF-YL-9Of">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainMenu" referencedIdentifier="addLSMup" id="w7B-jE-bXy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h44-w6-B5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1865" y="89"/>
+        </scene>
+        <!--addLS-->
+        <scene sceneID="To8-ZA-FfJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainMenu" referencedIdentifier="addLS" id="2lM-ci-Lhd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UdM-bS-E5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1863" y="142"/>
         </scene>
     </scenes>
     <resources>

@@ -18,6 +18,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var lsView: UIView!
+    @IBOutlet weak var addLS: UIButton!
+    
+    @IBOutlet weak var lsLbl: UILabel!
+    @IBOutlet weak var spinImg: UIImageView!
     @IBOutlet weak var servicePay: UILabel!
     @IBOutlet weak var viewTop: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -49,6 +54,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
     @IBOutlet weak var txt_sum_obj: UILabel!
+    
+    @IBAction func addLSAction(_ sender: UIButton) {
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "addLSMup", sender: self)
+        #else
+        self.performSegue(withIdentifier: "addLS", sender: self)
+        #endif
+    }
     
     @IBAction func choice_ls_button(_ sender: UIButton) {
         if dropper.status == .hidden {
@@ -191,10 +204,19 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         tableView.rowHeight = UITableViewAutomaticDimension
         dropper.delegate = self
         dropper.items.append("Все")
-        if ((str_ls_arr?.count)! > 0) {
+        if ((str_ls_arr?.count)! > 0) && str_ls_arr![0] != ""{
             for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
                 dropper.items.append((str_ls_arr?[i])!)
             }
+            lsView.isHidden = true
+        }else{
+            addLS.backgroundColor = myColors.btnColor.uiColor()
+            lsView.isHidden = false
+            lsLbl.isHidden = true
+            ls_button.isHidden = true
+            tableView.isHidden = true
+            spinImg.isHidden = true
+            sendView.isHidden = true
         }
         selectLS = "Все"
         dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_button)

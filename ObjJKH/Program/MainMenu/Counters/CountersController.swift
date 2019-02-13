@@ -18,6 +18,8 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     
+    @IBOutlet weak var addLS: UIButton!
+    @IBOutlet weak var lsView: UIView!
     var edLogin: String = ""
     var edPass: String = ""
     
@@ -44,6 +46,9 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     
     var fetchedResultsController: NSFetchedResultsController<Counters>?
 
+    @IBOutlet weak var spinImg: UIImageView!
+    @IBOutlet weak var monthView: UIView!
+    @IBOutlet weak var ls_lbl: UILabel!
     @IBOutlet weak var ls_Button: UIButton!
     @IBOutlet weak var tableCounters: UITableView!
     @IBOutlet weak var monthLabel: UILabel!
@@ -56,6 +61,14 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addLSAction(_ sender: UIButton) {
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "addLSMup", sender: self)
+        #else
+        self.performSegue(withIdentifier: "addLS", sender: self)
+        #endif
     }
     
     @IBAction func ls_button_choice(_ sender: UIButton) {
@@ -163,11 +176,21 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         
         dropper.delegate = self
         dropper.items.append("Все")
-        
-        if ((str_ls_arr?.count)! > 0) {
+        if ((str_ls_arr?.count)! > 0) && str_ls_arr![0] != ""{
             for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
                 dropper.items.append((str_ls_arr?[i])!)
             }
+            lsView.isHidden = true
+        }else{
+            addLS.backgroundColor = myColors.btnColor.uiColor()
+            lsView.isHidden = false
+            ls_lbl.isHidden = true
+            ls_Button.isHidden = true
+            monthLabel.isHidden = true
+            monthView.isHidden = true
+            can_count_label.isHidden = true
+            tableCounters.isHidden = true
+            spinImg.isHidden = true
         }
         
         dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_Button)

@@ -15,7 +15,11 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var btnPay: UIButton!
     @IBOutlet weak var can_btn_pay: NSLayoutConstraint!
+    @IBOutlet weak var LsLbl: UILabel!
+    @IBOutlet weak var spinImg: UIImageView!
     
+    @IBOutlet weak var addLs: UIButton!
+    @IBOutlet weak var lsView: UIView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -40,6 +44,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     // Индекс сроки для группировки
     var selectedRow = -5;
     
+    @IBOutlet weak var monthView: UIView!
     @IBOutlet weak var tableOSV: UITableView!
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var monthLabel: UILabel!
@@ -58,6 +63,14 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     var obj_plus: Double = 0
     var obj_minus: Double = 0
     var obj_end: Double = 0
+    
+    @IBAction func addLSAction(_ sender: UIButton) {
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "addLSMup", sender: self)
+        #else
+        self.performSegue(withIdentifier: "addLS", sender: self)
+        #endif
+    }
     
     @IBAction func ls_button_choice(_ sender: UIButton) {
         if dropper.status == .hidden {
@@ -144,10 +157,21 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         dropper.delegate = self
         dropper.items.append("Все")
         
-        if ((str_ls_arr?.count)! > 0) {
+        if ((str_ls_arr?.count)! > 0) && str_ls_arr![0] != ""{
             for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
                 dropper.items.append((str_ls_arr?[i])!)
             }
+            lsView.isHidden = true
+        }else{
+            addLs.backgroundColor = myColors.btnColor.uiColor()
+            lsView.isHidden = false
+            LsLbl.isHidden = true
+            ls_button.isHidden = true
+            monthLabel.isHidden = true
+            monthView.isHidden = true
+            tableOSV.isHidden = true
+            spinImg.isHidden = true
+            btnPay.isHidden = true
         }
         
         dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_button)

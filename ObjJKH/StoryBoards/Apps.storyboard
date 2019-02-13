@@ -217,14 +217,47 @@
                                     <constraint firstItem="ACx-wG-ddY" firstAttribute="top" secondItem="AI5-2C-qjX" secondAttribute="top" constant="1" id="qiq-Ti-eoW"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1G-Gt-dz5">
+                                <rect key="frame" x="30" y="278.5" width="315" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет подключённых лицевых счетов" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azf-2k-LEi">
+                                        <rect key="frame" x="15" y="20" width="284" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHB-MG-jsE">
+                                        <rect key="frame" x="72.5" y="65.5" width="170" height="30"/>
+                                        <color key="backgroundColor" red="0.21895414590000001" green="0.71306502819999995" blue="0.9233877063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="170" id="5Bd-xa-vfg"/>
+                                            <constraint firstAttribute="height" constant="30" id="kbv-rz-Hb8"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Подключить лиц. счет"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="EHB-MG-jsE" firstAttribute="top" secondItem="azf-2k-LEi" secondAttribute="bottom" constant="25" id="Hnd-I7-g3q"/>
+                                    <constraint firstAttribute="trailing" secondItem="azf-2k-LEi" secondAttribute="trailing" constant="16" id="MTT-R3-ASE"/>
+                                    <constraint firstAttribute="height" constant="110" id="NtZ-35-9iG"/>
+                                    <constraint firstItem="EHB-MG-jsE" firstAttribute="centerX" secondItem="V1G-Gt-dz5" secondAttribute="centerX" id="Y2F-Hi-kHM"/>
+                                    <constraint firstItem="azf-2k-LEi" firstAttribute="top" secondItem="V1G-Gt-dz5" secondAttribute="top" constant="20" id="ch8-lX-kNR"/>
+                                    <constraint firstItem="azf-2k-LEi" firstAttribute="leading" secondItem="V1G-Gt-dz5" secondAttribute="leading" constant="15" id="tIW-TZ-GFd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="V1G-Gt-dz5" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" constant="30" id="0Ev-Rf-p8q"/>
                             <constraint firstItem="h0P-vy-YeW" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" id="4Re-xd-n4J"/>
                             <constraint firstItem="LN9-gp-7Vx" firstAttribute="trailing" secondItem="h0P-vy-YeW" secondAttribute="trailing" id="9c7-gd-Z6q"/>
                             <constraint firstItem="woV-n9-mQe" firstAttribute="top" secondItem="LN9-gp-7Vx" secondAttribute="top" id="DfN-Yo-0I1"/>
                             <constraint firstItem="whj-2p-mZl" firstAttribute="top" secondItem="woV-n9-mQe" secondAttribute="bottom" constant="8" id="KxX-qJ-CbA"/>
                             <constraint firstItem="h0P-vy-YeW" firstAttribute="top" secondItem="whj-2p-mZl" secondAttribute="bottom" constant="8" symbolic="YES" id="LSF-qC-WM3"/>
+                            <constraint firstItem="LN9-gp-7Vx" firstAttribute="trailing" secondItem="V1G-Gt-dz5" secondAttribute="trailing" constant="30" id="ShP-Ie-s1F"/>
+                            <constraint firstItem="V1G-Gt-dz5" firstAttribute="centerY" secondItem="vuI-SL-bHF" secondAttribute="centerY" id="Uat-Pg-74A"/>
                             <constraint firstItem="LN9-gp-7Vx" firstAttribute="trailing" secondItem="whj-2p-mZl" secondAttribute="trailing" constant="16" id="fFy-Xq-dVC"/>
                             <constraint firstItem="woV-n9-mQe" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" id="k97-eJ-3Q7"/>
                             <constraint firstItem="whj-2p-mZl" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" constant="16" id="muM-1L-K0D"/>
@@ -244,8 +277,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addLS" destination="EHB-MG-jsE" id="2ya-at-nj9"/>
                         <outlet property="back" destination="lfj-oo-VGl" id="3UZ-ar-KJV"/>
                         <outlet property="btnAdd" destination="whj-2p-mZl" id="r5i-si-EAU"/>
+                        <outlet property="hiddenAppsView" destination="h0P-vy-YeW" id="EoR-jM-Kyu"/>
+                        <outlet property="lsView" destination="V1G-Gt-dz5" id="cB2-R7-0c3"/>
                         <outlet property="support" destination="s9q-s9-VpS" id="PMj-9S-pml"/>
                         <outlet property="supportBtn" destination="ACx-wG-ddY" id="CC1-LA-Ekp"/>
                         <outlet property="switchCloseApps" destination="4rX-06-8QQ" id="6rB-9B-OLe"/>
@@ -256,6 +292,8 @@
                         <segue destination="u5u-8K-6DU" kind="show" identifier="show_app_close_cons" id="x4h-mP-Bcg"/>
                         <segue destination="qJg-UE-wwg" kind="show" identifier="add_app" id="36O-zO-u0m"/>
                         <segue destination="b20-aw-L1T" kind="show" identifier="add_app_cons" id="h4t-Z8-wdF"/>
+                        <segue destination="faK-qC-gzb" kind="show" identifier="addLSMup" id="PNe-1w-dBl"/>
+                        <segue destination="C4f-NX-JpH" kind="show" identifier="addLS" id="5Mg-CX-Tqc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKg-xP-qp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1923,6 +1961,22 @@
             </objects>
             <point key="canvasLocation" x="2566" y="-877"/>
         </scene>
+        <!--addLSMup-->
+        <scene sceneID="bmY-lK-iqu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainMenu" referencedIdentifier="addLSMup" id="faK-qC-gzb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="geE-Ne-BOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1708" y="-333"/>
+        </scene>
+        <!--addLS-->
+        <scene sceneID="R8n-O4-cya">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainMenu" referencedIdentifier="addLS" id="C4f-NX-JpH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N74-SZ-Kqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1707" y="-280"/>
+        </scene>
     </scenes>
     <resources>
         <image name="StarEmpty" width="22" height="22"/>
@@ -1943,7 +1997,7 @@
         <image name="poll_Mup" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VNT-bQ-6nH"/>
+        <segue reference="pW3-Zd-2nm"/>
         <segue reference="3a9-cV-fC3"/>
         <segue reference="M7G-ag-hjx"/>
         <segue reference="x4h-mP-Bcg"/>
