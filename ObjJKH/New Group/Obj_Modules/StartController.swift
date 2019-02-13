@@ -45,8 +45,8 @@ class StartController: UIViewController {
     // ЗАГРУЗИМ НАСТРОЙКИ С СЕРВЕРА
     func getSettings() {
         let dictionary = Bundle.main.infoDictionary!
-        let version = dictionary["CFBundleShortVersionString"] as! String
-//        let version = "1.0"
+//        let version = dictionary["CFBundleShortVersionString"] as! String
+        let version = "1.0"
         let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
         
         let url: NSURL = NSURL(string: urlPath)!
