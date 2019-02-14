@@ -233,6 +233,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                 maxYear = rightCounter.year!
             }
         }
+        self.updateFetchedResultsController()
     }
     
     func updateFetchedResultsController() {
@@ -243,6 +244,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         } catch {
             print(error)
         }
+        self.updateMonthLabel()
     }
     
     func updateMonthLabel() {
@@ -266,10 +268,12 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
+        self.updateTable()
     }
     
     func updateTable() {
         tableOSV.reloadData()
+        self.updateArrowsEnabled()
     }
     
     typealias curentMonthAndYear = (month:Int, year:Int)
@@ -419,7 +423,6 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     // Дубль - получение ведомостей по лиц. счетам
     // Ведомость
     func parse_OSV(login: String, pass: String) {
-        DB().del_db(table_name: "Saldo")
         var sum:Double = 0
         
         let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
@@ -466,8 +469,9 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                         if let json_bills = json["data"] {
                                                             let int_end = (json_bills.count)!-1
                                                             if (int_end < 0) {
-                                                                
+                                                                print("Error")
                                                             } else {
+                                                                DB().del_db(table_name: "Saldo")
                                                                 var itsFirst: Bool = true
                                                                 for index in 0...int_end {
                                                                     let json_bill = json_bills.object(at: index) as! [String:AnyObject]
@@ -533,9 +537,6 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                         }
                                                         
                                                         self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
-                                                        
-                                                        self.end_osv()
-                                                        
                                                     } catch let error as NSError {
                                                         print(error)
                                                     }
@@ -558,7 +559,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                     defaults.setValue(String(i_year), forKey: "year_osv")
                                                     defaults.setValue(String(describing: sum), forKey: "sum")
                                                     defaults.synchronize()
-                                                    
+                                                    self.end_osv()
                                                 }
                                                 
         })
@@ -566,31 +567,30 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
     }
     
-    func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
+    func add_data_saldo(id: Int64?, usluga: String?, num_month: String?, year: String?, start: String?, plus: String?, minus: String?, end: String?) {
         #if isMupRCMytishi
-//        print(usluga)
         if usluga == "Услуги ЖКУ"{
             let managedObject = Saldo()
-            managedObject.id               = id
-            managedObject.usluga           = usluga
-            managedObject.num_month        = num_month
-            managedObject.year             = year
-            managedObject.start            = start
-            managedObject.plus             = plus
-            managedObject.minus            = minus
-            managedObject.end              = end
+            managedObject.id               = id!
+            managedObject.usluga           = usluga!
+            managedObject.num_month        = num_month!
+            managedObject.year             = year!
+            managedObject.start            = start!
+            managedObject.plus             = plus!
+            managedObject.minus            = minus!
+            managedObject.end              = end!
         }
         
         #else
         let managedObject = Saldo()
-        managedObject.id               = id
-        managedObject.usluga           = usluga
-        managedObject.num_month        = num_month
-        managedObject.year             = year
-        managedObject.start            = start
-        managedObject.plus             = plus
-        managedObject.minus            = minus
-        managedObject.end              = end
+        managedObject.id               = id!
+        managedObject.usluga           = usluga!
+        managedObject.num_month        = num_month!
+        managedObject.year             = year!
+        managedObject.start            = start!
+        managedObject.plus             = plus!
+        managedObject.minus            = minus!
+        managedObject.end              = end!
         #endif
         CoreDataManager.instance.saveContext()
     }
@@ -601,10 +601,10 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         DispatchQueue.main.async(execute: {
             self.updateBorderDates()
-            self.updateFetchedResultsController()
-            self.updateMonthLabel()
-            self.updateTable()
-            self.updateArrowsEnabled()
+//            self.updateFetchedResultsController()
+//            self.updateMonthLabel()
+//            self.updateTable()
+//            self.updateArrowsEnabled()
         })
     }
 

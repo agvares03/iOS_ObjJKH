@@ -201,11 +201,11 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         StopIndicator()
         
         updateBorderDates()
-        updateFetchedResultsController()
-        updateMonthLabel()
-        updateTable()
-        updateArrowsEnabled()
-        updateEditInfoLabel()
+//        updateFetchedResultsController()
+//        updateMonthLabel()
+//        updateTable()
+//        updateArrowsEnabled()
+//        updateEditInfoLabel()
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
@@ -237,6 +237,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
                 maxYear = rightCounter.year!
             }
         }
+        updateFetchedResultsController()
     }
     var identArr    :[String] = []
     var nameArr     :[String] = []
@@ -290,6 +291,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         } catch {
             print(error)
         }
+        updateMonthLabel()
     }
     
     typealias curentMonthAndYear = (month:Int, year:Int)
@@ -318,6 +320,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         
         leftButton.isEnabled = self.isValidPrevMonth()
         rightButton.isEnabled = self.isValidNextMonth()
+        updateEditInfoLabel()
     }
 
     override func didReceiveMemoryWarning() {
@@ -347,6 +350,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
+        updateTable()
     }
     
     func isEditable() -> Bool {
@@ -433,6 +437,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     
     func updateTable() {
         tableCounters.reloadData()
+        updateArrowsEnabled()
     }
     
     func get_name_month(number_month: String) -> String {

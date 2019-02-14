@@ -286,7 +286,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
                                                     do {
-                                                        DB().del_db(table_name: "Saldo")
                                                         var bill_id       = 0
                                                         var bill_month    = ""
                                                         var bill_year     = ""
@@ -377,9 +376,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                         }
                                                         
                                                         self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
-                                                        
-                                                        self.end_osv()
-                                                        
                                                     } catch let error as NSError {
                                                         print(error)
                                                     }
@@ -402,7 +398,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                     defaults.setValue(String(i_year), forKey: "year_osv")
                                                     defaults.setValue(String(describing: sum), forKey: "sum")
                                                     defaults.synchronize()
-                                                    
+                                                    self.end_osv()
                                                 }
                                                 
         })
@@ -458,7 +454,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     self.servicePay.text  = "0,00 руб."
                 }
                 self.updateFetchedResultsController()
-                self.updateTable()
+                
                 
             })
             
@@ -475,6 +471,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         } catch {
             print(error)
         }
+        self.updateTable()
     }
     
     func updateTable() {
