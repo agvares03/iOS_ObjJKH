@@ -406,17 +406,17 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         
     }
     
-    func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
+    func add_data_saldo(id: Int64?, usluga: String?, num_month: String?, year: String?, start: String?, plus: String?, minus: String?, end: String?) {
         
         let managedObject = Saldo()
-        managedObject.id               = id
-        managedObject.usluga           = usluga
-        managedObject.num_month        = num_month
-        managedObject.year             = year
-        managedObject.start            = start
-        managedObject.plus             = plus
-        managedObject.minus            = minus
-        managedObject.end              = end
+        managedObject.id               = id!
+        managedObject.usluga           = usluga!
+        managedObject.num_month        = num_month!
+        managedObject.year             = year!
+        managedObject.start            = start!
+        managedObject.plus             = plus!
+        managedObject.minus            = minus!
+        managedObject.end              = end!
         CoreDataManager.instance.saveContext()
     }
     

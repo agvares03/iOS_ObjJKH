@@ -471,7 +471,6 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                             if (int_end < 0) {
                                                                 print("Error")
                                                             } else {
-                                                                DB().del_db(table_name: "Saldo")
                                                                 var itsFirst: Bool = true
                                                                 for index in 0...int_end {
                                                                     let json_bill = json_bills.object(at: index) as! [String:AnyObject]
