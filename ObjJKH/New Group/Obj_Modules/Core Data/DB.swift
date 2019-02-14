@@ -345,7 +345,7 @@ class DB: NSObject, XMLParserDelegate {
                                                                         }
                                                                     }
                                                                     
-                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
+//                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
                                                                     
 //                                                                    if (Int(bill_month)! > i_month) {
                                                                         i_month = Int(bill_month)!
@@ -363,17 +363,17 @@ class DB: NSObject, XMLParserDelegate {
                                                     }
                                                     
                                                     // Выборка из БД последней ведомости - посчитаем сумму к оплате
-                                                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
-                                                    fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(i_month), String(i_year))
-                                                    do {
-                                                        let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-                                                        for result in results {
-                                                            let object = result as! NSManagedObject
-                                                            sum = sum + Double(object.value(forKey: "end") as! String)!
-                                                        }
-                                                    } catch {
-                                                        print(error)
-                                                    }
+//                                                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
+//                                                    fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(i_month), String(i_year))
+//                                                    do {
+//                                                        let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+//                                                        for result in results {
+//                                                            let object = result as! NSManagedObject
+//                                                            sum = sum + Double(object.value(forKey: "end") as! String)!
+//                                                        }
+//                                                    } catch {
+//                                                        print(error)
+//                                                    }
                                                     
                                                     let defaults = UserDefaults.standard
                                                     defaults.setValue(String(i_month), forKey: "month_osv")
