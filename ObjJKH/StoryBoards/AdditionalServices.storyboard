@@ -141,6 +141,12 @@
                                     <constraint firstItem="4ax-uv-LqO" firstAttribute="centerX" secondItem="3Sn-fd-TwF" secondAttribute="centerX" id="uBC-Ha-Cbd"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет данных" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQZ-cH-kBr">
+                                <rect key="frame" x="141" y="323" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -152,7 +158,9 @@
                             <constraint firstItem="3Sn-fd-TwF" firstAttribute="top" secondItem="8Vu-xL-9hC" secondAttribute="bottom" id="aCB-0o-1o6"/>
                             <constraint firstItem="8Vu-xL-9hC" firstAttribute="leading" secondItem="Je2-15-Kcz" secondAttribute="leading" id="arX-ND-Rl1"/>
                             <constraint firstItem="dhx-Xd-GFn" firstAttribute="centerX" secondItem="Je2-15-Kcz" secondAttribute="centerX" id="gzJ-Vj-VT6"/>
+                            <constraint firstItem="QQZ-cH-kBr" firstAttribute="centerY" secondItem="7Cf-v0-fLM" secondAttribute="centerY" id="iyw-jN-9YQ"/>
                             <constraint firstItem="8Vu-xL-9hC" firstAttribute="top" secondItem="Je2-15-Kcz" secondAttribute="top" id="oJj-Tb-pjY"/>
+                            <constraint firstItem="QQZ-cH-kBr" firstAttribute="centerX" secondItem="7Cf-v0-fLM" secondAttribute="centerX" id="rUX-iO-zle"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Je2-15-Kcz"/>
                         <variation key="default">
@@ -170,6 +178,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loader" destination="dhx-Xd-GFn" id="VQJ-UK-9nW"/>
+                        <outlet property="noDataLbl" destination="QQZ-cH-kBr" id="LkH-kD-mzO"/>
                         <outlet property="support" destination="hFR-Fl-VEc" id="G98-QI-ReT"/>
                         <outlet property="supportBtn" destination="4ax-uv-LqO" id="gUC-lh-Sr3"/>
                         <outlet property="tableView" destination="8Vu-xL-9hC" id="7dt-So-iI3"/>

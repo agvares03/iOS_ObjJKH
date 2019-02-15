@@ -18,7 +18,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     @IBOutlet weak var LsLbl: UILabel!
     @IBOutlet weak var spinImg: UIImageView!
     
-    @IBOutlet weak var addLs: UIButton!
+    @IBOutlet weak var addLs: UILabel!
     @IBOutlet weak var lsView: UIView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -64,7 +64,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     var obj_minus: Double = 0
     var obj_end: Double = 0
     
-    @IBAction func addLSAction(_ sender: UIButton) {
+    @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
         #if isMupRCMytishi
         self.performSegue(withIdentifier: "addLSMup", sender: self)
         #else
@@ -163,7 +163,13 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             }
             lsView.isHidden = true
         }else{
-            addLs.backgroundColor = myColors.btnColor.uiColor()
+            addLs.textColor = myColors.btnColor.uiColor()
+            let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+            let underlineAttributedString = NSAttributedString(string: "Подключить лицевой счет", attributes: underlineAttribute)
+            addLs.attributedText = underlineAttributedString
+            let tap = UITapGestureRecognizer(target: self, action: #selector(lblTapped(_:)))
+            addLs.isUserInteractionEnabled = true
+            addLs.addGestureRecognizer(tap)
             lsView.isHidden = false
             LsLbl.isHidden = true
             ls_button.isHidden = true

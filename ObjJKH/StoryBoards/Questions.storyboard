@@ -82,10 +82,9 @@
                                 <rect key="frame" x="169" y="347" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Опросов пока нет" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEI-vW-9bQ">
-                                <rect key="frame" x="32" y="96" width="311" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет данных" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEI-vW-9bQ">
+                                <rect key="frame" x="141" y="323" width="93" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BP5-X4-Gbm">
@@ -127,13 +126,12 @@
                             <constraint firstItem="pP7-xG-epR" firstAttribute="centerY" secondItem="nkb-LL-xVK" secondAttribute="centerY" id="2o9-Wy-f2p"/>
                             <constraint firstItem="BP5-X4-Gbm" firstAttribute="top" secondItem="OAu-KI-Czf" secondAttribute="bottom" id="2p9-iK-OLi"/>
                             <constraint firstItem="pP7-xG-epR" firstAttribute="centerX" secondItem="nkb-LL-xVK" secondAttribute="centerX" id="8PP-Og-5PG"/>
-                            <constraint firstItem="OEI-vW-9bQ" firstAttribute="leading" secondItem="nkb-LL-xVK" secondAttribute="leading" constant="32" id="Fky-Da-z3I"/>
-                            <constraint firstItem="OEI-vW-9bQ" firstAttribute="top" secondItem="nkb-LL-xVK" secondAttribute="top" constant="32" id="NMo-rZ-8FO"/>
+                            <constraint firstItem="OEI-vW-9bQ" firstAttribute="centerY" secondItem="XHi-Pl-rke" secondAttribute="centerY" id="EDf-Le-zrv"/>
                             <constraint firstItem="BP5-X4-Gbm" firstAttribute="leading" secondItem="XHi-Pl-rke" secondAttribute="leading" id="Udc-sO-2hh"/>
                             <constraint firstItem="nkb-LL-xVK" firstAttribute="bottom" secondItem="BP5-X4-Gbm" secondAttribute="bottom" id="XDs-kf-Ikb"/>
                             <constraint firstItem="OAu-KI-Czf" firstAttribute="trailing" secondItem="nkb-LL-xVK" secondAttribute="trailing" id="Zuk-2K-9PJ"/>
                             <constraint firstItem="OAu-KI-Czf" firstAttribute="leading" secondItem="nkb-LL-xVK" secondAttribute="leading" id="ieW-i5-ySG"/>
-                            <constraint firstItem="nkb-LL-xVK" firstAttribute="trailing" secondItem="OEI-vW-9bQ" secondAttribute="trailing" constant="32" id="wIp-hR-PZ6"/>
+                            <constraint firstItem="OEI-vW-9bQ" firstAttribute="centerX" secondItem="XHi-Pl-rke" secondAttribute="centerX" id="kd7-jb-qGj"/>
                             <constraint firstItem="nkb-LL-xVK" firstAttribute="trailing" secondItem="BP5-X4-Gbm" secondAttribute="trailing" id="z8J-rv-2jC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nkb-LL-xVK"/>
@@ -283,20 +281,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Какой вариант использования лобби-бара является для Вас предпочтительным" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-uF-LPC">
-                                            <rect key="frame" x="20" y="5" width="280" height="57"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Какой вариант использования лобби-бара является для Вас предпочтительным" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-uF-LPC">
+                                            <rect key="frame" x="20" y="5" width="335" height="57"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 из 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXm-6y-iBS">
-                                            <rect key="frame" x="30" y="70" width="262" height="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3 из 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXm-6y-iBS">
+                                            <rect key="frame" x="30" y="70" width="317" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTu-QT-7TU">
-                                            <rect key="frame" x="0.0" y="88" width="320" height="2"/>
+                                            <rect key="frame" x="0.0" y="88" width="375" height="2"/>
                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="2" id="HyR-X0-TzL"/>
@@ -448,6 +446,6 @@
         <image name="poll_Mup" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dec-of-5a4"/>
+        <segue reference="Bbj-qA-yuH"/>
     </inferredMetricsTieBreakers>
 </document>

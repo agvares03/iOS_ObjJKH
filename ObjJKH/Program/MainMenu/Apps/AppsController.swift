@@ -30,7 +30,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBOutlet weak var addLS: UIButton!
+    @IBOutlet weak var addLS: UILabel!
     @IBOutlet weak var lsView: UIView!
     @IBOutlet weak var hiddenAppsView: UIView!
     @IBOutlet weak var tableApps: UITableView!
@@ -41,7 +41,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         updateCloseApps()
     }
     
-    @IBAction func addLSAction(_ sender: UIButton) {
+    @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
         #if isMupRCMytishi
         self.performSegue(withIdentifier: "addLSMup", sender: self)
         #else
@@ -81,7 +81,13 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if ((str_ls_arr?.count)! > 0) && str_ls_arr![0] != ""{
             lsView.isHidden = true
         }else{
-            addLS.backgroundColor = myColors.btnColor.uiColor()
+            addLS.textColor = myColors.btnColor.uiColor()
+            let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+            let underlineAttributedString = NSAttributedString(string: "Подключить лицевой счет", attributes: underlineAttribute)
+            addLS.attributedText = underlineAttributedString
+            let tap = UITapGestureRecognizer(target: self, action: #selector(lblTapped(_:)))
+            addLS.isUserInteractionEnabled = true
+            addLS.addGestureRecognizer(tap)
             lsView.isHidden = false
             btnAdd.isHidden = true
             tableApps.isHidden = true

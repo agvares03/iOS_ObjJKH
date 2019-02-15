@@ -14,6 +14,7 @@ class NewsController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
+    @IBOutlet weak var noDataLbl: UILabel!
     
     @IBOutlet weak var back: UIBarButtonItem!
     
@@ -21,6 +22,7 @@ class NewsController: UIViewController, UITableViewDelegate {
     var news_read = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        noDataLbl.isHidden = true
         news_read = UserDefaults.standard.integer(forKey: "request_read")
         self.tableView.estimatedRowHeight = 71
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -56,6 +58,13 @@ class NewsController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let newsList = NewsManager.instance.getNewsList()
+        if newsList.count == 0{
+            DispatchQueue.main.async {
+                self.noDataLbl.isHidden = false
+                self.tableView.isHidden = true
+            }
+        }
         if UserDefaults.standard.integer(forKey: "news_read") < news_read{
             NewsManager.instance.loadNews()
             self.tableView.reloadData()

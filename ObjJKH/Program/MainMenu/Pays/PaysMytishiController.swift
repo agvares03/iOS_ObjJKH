@@ -19,7 +19,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     
     @IBOutlet weak var lsView: UIView!
-    @IBOutlet weak var addLS: UIButton!
+    @IBOutlet weak var addLS: UILabel!
     
     @IBOutlet weak var lsLbl: UILabel!
     @IBOutlet weak var spinImg: UIImageView!
@@ -55,7 +55,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var txt_sum_jkh: UILabel!
     @IBOutlet weak var txt_sum_obj: UILabel!
     
-    @IBAction func addLSAction(_ sender: UIButton) {
+    @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
         #if isMupRCMytishi
         self.performSegue(withIdentifier: "addLSMup", sender: self)
         #else
@@ -210,7 +210,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             lsView.isHidden = true
         }else{
-            addLS.backgroundColor = myColors.btnColor.uiColor()
+            addLS.textColor = myColors.btnColor.uiColor()
+            let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+            let underlineAttributedString = NSAttributedString(string: "Подключить лицевой счет", attributes: underlineAttribute)
+            addLS.attributedText = underlineAttributedString
+            let tap = UITapGestureRecognizer(target: self, action: #selector(lblTapped(_:)))
+            addLS.isUserInteractionEnabled = true
+            addLS.addGestureRecognizer(tap)
             lsView.isHidden = false
             lsLbl.isHidden = true
             ls_button.isHidden = true

@@ -43,6 +43,7 @@ class AdditionalServicesController: UIViewController{
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
+    @IBOutlet weak var noDataLbl: UILabel!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -59,7 +60,7 @@ class AdditionalServicesController: UIViewController{
         let defaults     = UserDefaults.standard
         login = defaults.string(forKey: "login")
         pass  = defaults.string(forKey: "pass")
-        
+        noDataLbl.isHidden = true
         automaticallyAdjustsScrollViewInsets = false
         
         refreshControl = UIRefreshControl()
@@ -149,15 +150,23 @@ class AdditionalServicesController: UIViewController{
                         objectArray.append(Objects(sectionName: key, sectionObjects: value))
                     }
                 }
-                DispatchQueue.main.sync {
-                    if #available(iOS 10.0, *) {
-                        self.tableView.refreshControl?.endRefreshing()
-                    } else {
-                        self.refreshControl?.endRefreshing()
+                if objectArray.count == 0{
+                    DispatchQueue.main.async{
+                        self.noDataLbl.isHidden = false
+                        self.tableView.isHidden = true
                     }
-                    self.tableView.reloadData()
-                    self.stopAnimation()
+                }else{
+                    DispatchQueue.main.sync {
+                        if #available(iOS 10.0, *) {
+                            self.tableView.refreshControl?.endRefreshing()
+                        } else {
+                            self.refreshControl?.endRefreshing()
+                        }
+                        self.tableView.reloadData()
+                        self.stopAnimation()
+                    }
                 }
+                
                 }.resume()
         }
     }
