@@ -189,6 +189,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     var choiceIdent = ""
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_button.setTitle(contents, for: UIControlState.normal)
+        update = false
         if (contents == "Все") || dropper.items.count == 2{
             choiceIdent = ""
             end_osv()
@@ -207,7 +208,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         checkBox.removeAll()
         sumOSV.removeAll()
         osvc.removeAll()
-        var endSum = 0.00
         uslugaArr.removeAll()
         endArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
@@ -220,10 +220,10 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                     if (object.value(forKey: "ident") as! String) == ident{
                         uslugaArr.append(object.value(forKey: "usluga") as! String)
                         endArr.append(object.value(forKey: "end") as! String)
-                        self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
-                        endSum = Double(object.value(forKey: "end") as! String)!
+                        if (object.value(forKey: "usluga") as! String) != "Я"{
+                            self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                        }
                     }
-                    self.sum = self.sum - endSum
                     DispatchQueue.main.async(execute: {
                         if (self.sum != 0) {
                             //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
@@ -235,9 +235,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                             //                    self.txt_sum_jkh.text = "0,00 р."
                             self.txt_sum_obj.text = "0,00"
                         }
-                        self.updateFetchedResultsController()
-                        self.updateTable()
-                        
                     })
                 }
             }
@@ -306,6 +303,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if choiceIdent == ""{
             if let sections = fetchedResultsController?.sections {
+                kol = sections[section].numberOfObjects - 1
                 return sections[section].numberOfObjects - 1
             } else {
                 return 0
@@ -318,7 +316,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
         }
     }
-    
+    var kol = 0
     var select = false
     var update = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -327,7 +325,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         if select == false && update == false{
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
         }else{
-            if selectedRow >= 0{
+            if selectedRow >= 0 && select{
                 if checkBox[selectedRow]{
                     cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
                     checkBox[selectedRow] = false
@@ -339,7 +337,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
-        if update == false{
+        if update == false  && sumOSV.count != kol{
             if choiceIdent == ""{
                 let sum:String = osv.end!
                 osvc.append(osv.usluga!)
@@ -352,6 +350,11 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 sumOSV.append(Double(sum)!)
             }
             
+        }
+        if checkBox[indexPath.row]{
+            cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+        }else{
+            cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
         }
         if choiceIdent == ""{
             if (osv.usluga == "Я") {

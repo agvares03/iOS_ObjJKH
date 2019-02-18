@@ -296,7 +296,7 @@ class DB: NSObject, XMLParserDelegate {
     func parse_OSV(login: String, pass: String) {
         var sum:Double = 0
         
-        let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+        let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES_FULL + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
@@ -401,8 +401,10 @@ class DB: NSObject, XMLParserDelegate {
                                                                             obj_end += (obj.value as! Double)
                                                                         }
                                                                     }
+                                                                    if bill_ident != "Все"{
+                                                                        self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total, ident: bill_ident)
+                                                                    }
                                                                     
-                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total, ident: bill_ident)
                                                                     
                                                                 }
                                                             }

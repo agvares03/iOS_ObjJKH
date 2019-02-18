@@ -44,6 +44,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var idOSV   :[Int]    = []
     var sumOSV  :[Double] = []
     var osvc    :[String] = []
+    var identOSV:[String] = []
     
     var login: String?
     var pass: String?
@@ -252,6 +253,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     var choiceIdent = ""
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
+        update = false
         ls_button.setTitle(contents, for: UIControlState.normal)
         if (contents == "Все") || dropper.items.count == 2{
             selectLS = "Все"
@@ -274,10 +276,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         checkBox.removeAll()
         sumOSV.removeAll()
         osvc.removeAll()
-        var endSum = 0.00
         uslugaArr.removeAll()
         endArr.removeAll()
         idArr.removeAll()
+        identOSV.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         do {
@@ -289,24 +291,26 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         uslugaArr.append(object.value(forKey: "usluga") as! String)
                         endArr.append(object.value(forKey: "end") as! String)
                         idArr.append(Int(object.value(forKey: "id") as! Int64))
-                        self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
-                        endSum = Double(object.value(forKey: "end") as! String)!
+                        identOSV.append(object.value(forKey: "ident") as! String)
+                        if (object.value(forKey: "usluga") as! String) != "Я"{
+                            self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                        }
                     }
-                    self.sum = self.sum - endSum
                     DispatchQueue.main.async(execute: {
                         if (self.sum != 0) {
                             //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
                             let serviceP = self.sum / 0.992 - self.sum
+                            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                             self.totalSum = self.sum + serviceP
-                            self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+                            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
                             
                         } else {
                             //                    self.txt_sum_jkh.text = "0,00 р."
                             self.txt_sum_obj.text = "0,00"
+                            self.txt_sum_jkh.text = "0,00 руб."
+                            self.servicePay.text  = "0,00 руб."
                         }
-                        self.updateFetchedResultsController()
-                        self.updateTable()
-                        
                     })
                 }
             }
@@ -325,7 +329,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         checkBox.removeAll()
         sumOSV.removeAll()
         osvc.removeAll()
-        var endSum = 0.00
         // Выборка из БД последней ведомости - посчитаем сумму к оплате
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
@@ -333,10 +336,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
-                self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
-                endSum = Double(object.value(forKey: "end") as! String)!
+                if (object.value(forKey: "usluga") as! String) != "Я"{
+                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                }
             }
-            self.sum = self.sum - endSum
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
                     //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
@@ -353,8 +356,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     self.servicePay.text  = "0,00 руб."
                 }
                 self.updateFetchedResultsController()
-                
-                
             })
             
         } catch {
@@ -377,9 +378,12 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         self.tableView.reloadData()
     }
     
+    var kol = 0
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if choiceIdent == ""{
             if let sections = fetchedResultsController?.sections {
+                kol = sections[section].numberOfObjects - 1
                 return sections[section].numberOfObjects - 1
             } else {
                 return 0
@@ -392,12 +396,12 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
     }
-    
+    var update = false
     var select = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PayMupCell") as! PayMupSaldoCell
         let osv = fetchedResultsController!.object(at: indexPath)
-        if select == false{
+        if select == false && update == false{
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
         }else{
             if selectedRow >= 0{
@@ -412,13 +416,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
-        if select == false{
+        if update == false && sumOSV.count != kol{
             if choiceIdent == ""{
                 let sum:String = osv.end!
                 osvc.append(osv.usluga!)
                 checkBox.append(true)
                 sumOSV.append(Double(sum)!)
                 idOSV.append(Int(osv.id))
+                identOSV.append(osv.ident!)
             }else{
                 let sum:String = endArr[indexPath.row]
                 osvc.append(uslugaArr[indexPath.row])
@@ -437,19 +442,22 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             cell.end.text    = osv.end
             sub = osv.usluga!
-            print(sub)
-            cell.end.accessibilityIdentifier = sub.substring(to:sub.index(sub.startIndex, offsetBy: 4))
+            cell.end.accessibilityIdentifier = sub + osv.ident!
         }else{
-            if (osv.usluga == "Я") {
+            if (uslugaArr[indexPath.row] == "Я") {
                 cell.usluga.text = "ИТОГО"
             } else {
                 cell.usluga.text = uslugaArr[indexPath.row]
             }
             cell.end.text    = endArr[indexPath.row]
             sub = uslugaArr[indexPath.row]
-            cell.end.accessibilityIdentifier = sub.substring(to:sub.index(sub.startIndex, offsetBy: 4))
+            cell.end.accessibilityIdentifier = sub
         }
-        
+        if checkBox[indexPath.row]{
+            cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
+        }else{
+            cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
+        }
         if choiceIdent == ""{
             if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
                 cell.end.isUserInteractionEnabled = false
@@ -461,11 +469,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
                 cell.endL.isHidden = true
                 cell.end.isHidden = false
+//                print(osv.end)
                 cell.end.text = osv.end
                 if osvc.count != 0{
                     for i in 0...osvc.count - 1{
-                        let code:String = osvc[i]
-                        if cell.end.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)) && sumOSV[i] != 0.00{
+                        let code:String = osvc[i] + identOSV[i]
+                        if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
+                            print(code, sumOSV[i])
                             cell.end.text = String(sumOSV[i])
                         }
                     }
@@ -486,7 +496,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 if osvc.count != 0{
                     for i in 0...osvc.count - 1{
                         let code:String = osvc[i]
-                        if cell.end.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)) && sumOSV[i] != 0.00{
+                        if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
                             cell.end.text = String(sumOSV[i])
                         }
                     }
@@ -494,26 +504,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         
-        if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
-            cell.end.isUserInteractionEnabled = false
-            cell.end.isHidden = true
-            cell.endL.isHidden = false
-            cell.endL.text = osv.end
-        }else{
-            cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-            cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
-            cell.endL.isHidden = true
-            cell.end.isHidden = false
-            cell.end.text = osv.end
-            if osvc.count != 0{
-                for i in 0...osvc.count - 1{
-                    let code:String = osvc[i]
-                    if cell.end.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)) && sumOSV[i] != 0.00{
-                        cell.end.text = String(sumOSV[i])
-                    }
-                }
-            }
-        }
         cell.delegate = self
         select = false
         selectedRow = -1
@@ -523,6 +513,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
+        update = true
         select = true
         tableView.reloadRows(at: [indexPath], with: .automatic)
         setSumm()
@@ -563,8 +554,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         str = str.replacingOccurrences(of: ",", with: ".")
         if str != "" && str != "-"{
             for i in 0...osvc.count - 1{
-                let code:String = osvc[i]
-                if textField.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)){
+                var code:String = osvc[i]
+                if choiceIdent == ""{
+                    code = code + identOSV[i]
+                }
+                if (textField.accessibilityIdentifier == code){
                     sumOSV[i] = Double(str)!
                 }
             }
@@ -583,8 +577,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
         }else{
             for i in 0...osvc.count - 1{
-                let code:String = osvc[i]
-                if textField.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)){
+                var code:String = osvc[i]
+                if choiceIdent == ""{
+                    code = code + identOSV[i]
+                }
+                if textField.accessibilityIdentifier == code{
                     sumOSV[i] = 0.00
                 }
             }
