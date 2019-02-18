@@ -355,6 +355,16 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         self.nextMonthLabel.attributedText = attributedtext
         
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
+        if self.nextMonthLabel.isHidden{
+            if (date1 == "0") && (date2 == "0") {
+                can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+            } else {
+                can_count_label.text = "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!"
+            }
+        }else{
+            let monthYear:String = monthLabel.text!
+            can_count_label.text = "За \(monthYear) передавать показания уже нельзя, перейдите в \(get_name_month(number_month: maxMonth)) для передачи текущих показаний"
+        }
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
         updateTable()
     }
