@@ -228,7 +228,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_button)
         dropper.hideWithAnimation(0.001)
         
-        getSum(login: login!, pass: pass!)
+        end_osv()
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
@@ -250,180 +250,73 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     var selectLS = ""
     
+    var choiceIdent = ""
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_button.setTitle(contents, for: UIControlState.normal)
-        self.sum = 0
-        if (contents == "Все") {
+        if (contents == "Все") || dropper.items.count == 2{
             selectLS = "Все"
-            getSum(login: login!, pass: pass!)
+            choiceIdent = ""
+            end_osv()
         } else {
             selectLS = contents
-            getSum(login: contents, pass: pass!)
+            choiceIdent = contents
+            getData(ident: contents)
         }
     }
     
-    func getSum(login: String, pass: String) {
-        // Экземпляр класса DB
-        let db = DB()
-        // Удалим данные из базы данных
-        db.del_db(table_name: "Saldo")
-        // Получим данные в базу данных
-        parse_OSV(login: login, pass: pass)
-        
-    }
+    var uslugaArr  :[String] = []
+    var endArr     :[String] = []
+    var idArr      :[Int] = []
     
-    func parse_OSV(login: String, pass: String) {
-        
-        var sum:Double = 0
-        
-        let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-        
-        let url: NSURL = NSURL(string: urlPath)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, response, error in
-                                                
-                                                if error != nil {
-                                                    return
-                                                } else {
-                                                    var i_month: Int = 0
-                                                    var i_year: Int = 0
-                                                    do {
-                                                        var bill_id       = 0
-                                                        var bill_month    = ""
-                                                        var bill_year     = ""
-                                                        var bill_service  = ""
-                                                        var bill_acc      = ""
-                                                        var bill_debt     = ""
-                                                        var bill_pay      = ""
-                                                        var bill_total    = ""
-                                                        var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                        print(json)
-                                                        
-                                                        // Общие итоговые значения
-                                                        var obj_start: Double = 0
-                                                        var obj_plus: Double = 0
-                                                        var obj_minus: Double = 0
-                                                        var obj_end: Double = 0
-                                                        
-                                                        if let json_bills = json["data"] {
-                                                            let int_end = (json_bills.count)!-1
-                                                            if (int_end < 0) {
-                                                                
-                                                            } else {
-                                                                var itsFirst: Bool = true
-                                                                for index in 0...int_end {
-                                                                    let json_bill = json_bills.object(at: index) as! [String:AnyObject]
-                                                                    for obj in json_bill {
-                                                                        if obj.key == "Month" {
-                                                                            bill_month = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "Year" {
-                                                                            bill_year = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                    }
-                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month) == 1) && (i_month == 12)) {
-                                                                        if (itsFirst) {
-                                                                            itsFirst = false
-                                                                        } else {
-                                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
-                                                                            
-                                                                            obj_start = 0.00
-                                                                            obj_plus  = 0.00
-                                                                            obj_minus = 0.00
-                                                                            obj_end   = 0.00
-                                                                        }
-                                                                        
-                                                                        i_month = Int(bill_month)!
-                                                                        
-                                                                    }
-                                                                    if (Int(bill_year)! > i_year) {
-                                                                        i_year = Int(bill_year)!
-                                                                    }
-                                                                    
-                                                                    for obj in json_bill {
-                                                                        if obj.key == "Month" {
-                                                                            bill_month = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "Year" {
-                                                                            bill_year = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "ServiceTypeId" {
-                                                                            bill_id = Int(truncating: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "Service" {
-                                                                            bill_service = obj.value as! String
-                                                                        }
-                                                                        if obj.key == "Accured" {
-                                                                            bill_acc = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_plus += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Debt" {
-                                                                            bill_debt = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_start += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Payed" {
-                                                                            bill_pay = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_minus += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Total" {
-                                                                            bill_total = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_end += (obj.value as! Double)
-                                                                        }
-                                                                    }
-                                                                    
-                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
-                                                                    
-                                                                }
-                                                            }
-                                                        }
-                                                        
-                                                        self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
-                                                    } catch let error as NSError {
-                                                        print(error)
-                                                    }
-                                                    
-                                                    // Выборка из БД последней ведомости - посчитаем сумму к оплате
-                                                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
-                                                    fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(i_month), String(i_year))
-                                                    do {
-                                                        let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-                                                        for result in results {
-                                                            let object = result as! NSManagedObject
-                                                            sum = sum + Double(object.value(forKey: "end") as! String)!
-                                                        }
-                                                    } catch {
-                                                        print(error)
-                                                    }
-                                                    
-                                                    let defaults = UserDefaults.standard
-                                                    defaults.setValue(String(i_month), forKey: "month_osv")
-                                                    defaults.setValue(String(i_year), forKey: "year_osv")
-                                                    defaults.setValue(String(describing: sum), forKey: "sum")
-                                                    defaults.synchronize()
-                                                    self.end_osv()
-                                                }
-                                                
-        })
-        task.resume()
-        
-    }
-    
-    func add_data_saldo(id: Int64?, usluga: String?, num_month: String?, year: String?, start: String?, plus: String?, minus: String?, end: String?) {
-        
-        let managedObject = Saldo()
-        managedObject.id               = id!
-        managedObject.usluga           = usluga!
-        managedObject.num_month        = num_month!
-        managedObject.year             = year!
-        managedObject.start            = start!
-        managedObject.plus             = plus!
-        managedObject.minus            = minus!
-        managedObject.end              = end!
-        CoreDataManager.instance.saveContext()
+    func getData(ident: String){
+        self.sum = 0
+        select = false
+        checkBox.removeAll()
+        sumOSV.removeAll()
+        osvc.removeAll()
+        var endSum = 0.00
+        uslugaArr.removeAll()
+        endArr.removeAll()
+        idArr.removeAll()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
+        fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
+        do {
+            let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+            for result in results {
+                let object = result as! NSManagedObject
+                if ident != "Все"{
+                    if (object.value(forKey: "ident") as! String) == ident{
+                        uslugaArr.append(object.value(forKey: "usluga") as! String)
+                        endArr.append(object.value(forKey: "end") as! String)
+                        idArr.append(Int(object.value(forKey: "id") as! Int64))
+                        self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                        endSum = Double(object.value(forKey: "end") as! String)!
+                    }
+                    self.sum = self.sum - endSum
+                    DispatchQueue.main.async(execute: {
+                        if (self.sum != 0) {
+                            //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
+                            let serviceP = self.sum / 0.992 - self.sum
+                            self.totalSum = self.sum + serviceP
+                            self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+                            
+                        } else {
+                            //                    self.txt_sum_jkh.text = "0,00 р."
+                            self.txt_sum_obj.text = "0,00"
+                        }
+                        self.updateFetchedResultsController()
+                        self.updateTable()
+                        
+                    })
+                }
+            }
+            DispatchQueue.main.async(execute: {
+                self.updateTable()
+            })
+            
+        } catch {
+            print(error)
+        }
     }
     
     func end_osv() {
@@ -485,10 +378,18 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController?.sections {
-            return sections[section].numberOfObjects - 1
-        } else {
-            return 0
+        if choiceIdent == ""{
+            if let sections = fetchedResultsController?.sections {
+                return sections[section].numberOfObjects - 1
+            } else {
+                return 0
+            }
+        }else{
+            if uslugaArr.count != 0 {
+                return uslugaArr.count
+            } else {
+                return 0
+            }
         }
     }
     
@@ -512,21 +413,87 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
         if select == false{
-            let sum:String = osv.end!
-            osvc.append(osv.usluga!)
-            checkBox.append(true)
-            sumOSV.append(Double(sum)!)
-            idOSV.append(Int(osv.id))
+            if choiceIdent == ""{
+                let sum:String = osv.end!
+                osvc.append(osv.usluga!)
+                checkBox.append(true)
+                sumOSV.append(Double(sum)!)
+                idOSV.append(Int(osv.id))
+            }else{
+                let sum:String = endArr[indexPath.row]
+                osvc.append(uslugaArr[indexPath.row])
+                checkBox.append(true)
+                sumOSV.append(Double(sum)!)
+                idOSV.append(Int(idArr[indexPath.row]))
+            }
+            
+        }
+        var sub: String = ""
+        if choiceIdent == ""{
+            if (osv.usluga == "Я") {
+                cell.usluga.text = "ИТОГО"
+            } else {
+                cell.usluga.text = osv.usluga
+            }
+            cell.end.text    = osv.end
+            sub = osv.usluga!
+            print(sub)
+            cell.end.accessibilityIdentifier = sub.substring(to:sub.index(sub.startIndex, offsetBy: 4))
+        }else{
+            if (osv.usluga == "Я") {
+                cell.usluga.text = "ИТОГО"
+            } else {
+                cell.usluga.text = uslugaArr[indexPath.row]
+            }
+            cell.end.text    = endArr[indexPath.row]
+            sub = uslugaArr[indexPath.row]
+            cell.end.accessibilityIdentifier = sub.substring(to:sub.index(sub.startIndex, offsetBy: 4))
         }
         
-        if (osv.usluga == "Я") {
-            cell.usluga.text = "ИТОГО"
-        } else {
-            cell.usluga.text = osv.usluga
+        if choiceIdent == ""{
+            if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
+                cell.end.isUserInteractionEnabled = false
+                cell.end.isHidden = true
+                cell.endL.isHidden = false
+                cell.endL.text = osv.end
+            }else{
+                cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+                cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+                cell.endL.isHidden = true
+                cell.end.isHidden = false
+                cell.end.text = osv.end
+                if osvc.count != 0{
+                    for i in 0...osvc.count - 1{
+                        let code:String = osvc[i]
+                        if cell.end.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)) && sumOSV[i] != 0.00{
+                            cell.end.text = String(sumOSV[i])
+                        }
+                    }
+                }
+            }
+        }else{
+            if (uslugaArr[indexPath.row].contains("газ")) || uslugaArr[indexPath.row] == "Страховка"{
+                cell.end.isUserInteractionEnabled = false
+                cell.end.isHidden = true
+                cell.endL.isHidden = false
+                cell.endL.text = endArr[indexPath.row]
+            }else{
+                cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+                cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+                cell.endL.isHidden = true
+                cell.end.isHidden = false
+                cell.end.text = endArr[indexPath.row]
+                if osvc.count != 0{
+                    for i in 0...osvc.count - 1{
+                        let code:String = osvc[i]
+                        if cell.end.accessibilityIdentifier == code.substring(to:code.index(code.startIndex, offsetBy: 4)) && sumOSV[i] != 0.00{
+                            cell.end.text = String(sumOSV[i])
+                        }
+                    }
+                }
+            }
         }
-        cell.end.text    = osv.end
-        let sub: String = osv.usluga!
-        cell.end.accessibilityIdentifier = sub.substring(to:sub.index(sub.startIndex, offsetBy: 4))
+        
         if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
             cell.end.isUserInteractionEnabled = false
             cell.end.isHidden = true

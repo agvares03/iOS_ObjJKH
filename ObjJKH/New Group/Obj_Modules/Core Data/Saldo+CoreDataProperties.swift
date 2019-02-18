@@ -25,5 +25,5 @@ extension Saldo {
     @NSManaged public var minus: String?
     @NSManaged public var id: Int64
     @NSManaged public var end: String?
-
+    @NSManaged public var ident: String?
 }

@@ -242,6 +242,66 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         self.updateFetchedResultsController()
     }
     
+    var uslugaArr  :[String] = []
+    var plusArr    :[String] = []
+    var startArr   :[String] = []
+    var minusArr   :[String] = []
+    var endArr     :[String] = []
+    
+    func getData(ident: String){
+        uslugaArr.removeAll()
+        plusArr.removeAll()
+        startArr.removeAll()
+        minusArr.removeAll()
+        endArr.removeAll()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
+        fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
+        do {
+            let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+            for result in results {
+                let object = result as! NSManagedObject
+                #if isMupRCMytishi
+                if ident != "Все"{
+                    print("=\(object.value(forKey: "ident") as! String)", " =\(object.value(forKey: "usluga") as! String)")
+                    if (object.value(forKey: "ident") as! String) == ident{
+                        if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
+                            uslugaArr.append(object.value(forKey: "usluga") as! String)
+                            plusArr.append(object.value(forKey: "plus") as! String)
+                            startArr.append(object.value(forKey: "start") as! String)
+                            minusArr.append(object.value(forKey: "minus") as! String)
+                            endArr.append(object.value(forKey: "end") as! String)
+                        }
+                    }
+                }else{
+                    if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
+                        uslugaArr.append(object.value(forKey: "usluga") as! String)
+                        plusArr.append(object.value(forKey: "plus") as! String)
+                        startArr.append(object.value(forKey: "start") as! String)
+                        minusArr.append(object.value(forKey: "minus") as! String)
+                        endArr.append(object.value(forKey: "end") as! String)
+                    }
+                }
+                #else
+                if ident != "Все"{
+                    if (object.value(forKey: "ident") as! String) == ident{
+                        uslugaArr.append(object.value(forKey: "usluga") as! String)
+                        plusArr.append(object.value(forKey: "plus") as! String)
+                        startArr.append(object.value(forKey: "start") as! String)
+                        minusArr.append(object.value(forKey: "minus") as! String)
+                        endArr.append(object.value(forKey: "end") as! String)
+                    }
+                }
+                #endif
+            }
+            DispatchQueue.main.async(execute: {
+                self.updateTable()
+            })
+            
+        } catch {
+            print(error)
+        }
+    }
+    
     func updateFetchedResultsController() {
         let predicateFormat = String(format: "num_month = %@ AND year = %@", iterMonth, iterYear)
         fetchedResultsController = CoreDataManager.instance.fetchedResultsControllerSaldo(entityName: "Saldo", keysForSort: ["usluga"], predicateFormat: predicateFormat) as NSFetchedResultsController<Saldo>
@@ -274,7 +334,11 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
+        #if isMupRCMytishi
+        getData(ident: "Все")
+        #else
         self.updateTable()
+        #endif
     }
     
     func updateTable() {
@@ -358,25 +422,66 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController?.sections {
-            return sections[section].numberOfObjects
-        } else {
-            return 0
+        if choiceIdent == ""{
+            #if isMupRCMytishi
+            if uslugaArr.count != 0 {
+                return uslugaArr.count
+            } else {
+                return 0
+            }
+            #else
+            if let sections = fetchedResultsController?.sections {
+                return sections[section].numberOfObjects
+            } else {
+                return 0
+            }
+            #endif
+        }else{
+            if uslugaArr.count != 0 {
+                return uslugaArr.count
+            } else {
+                return 0
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableOSV.dequeueReusableCell(withIdentifier: "Cell") as! SaldoCell
-        let osv = fetchedResultsController!.object(at: indexPath)
-        if (osv.usluga == "Я") {
-            cell.usluga.text = "ИТОГО"
-        } else {
-            cell.usluga.text = osv.usluga
+        if choiceIdent == ""{
+            #if isMupRCMytishi
+            if (uslugaArr[indexPath.row] == "Я") {
+                cell.usluga.text = "ИТОГО"
+            } else {
+                cell.usluga.text = uslugaArr[indexPath.row]
+            }
+            cell.start.text  = plusArr[indexPath.row]
+            cell.plus.text   = startArr[indexPath.row]
+            cell.minus.text  = minusArr[indexPath.row]
+            cell.end.text    = endArr[indexPath.row]
+            #else
+            let osv = fetchedResultsController!.object(at: indexPath)
+            if (osv.usluga == "Я") {
+                cell.usluga.text = "ИТОГО"
+            } else {
+                cell.usluga.text = osv.usluga
+            }
+            cell.start.text  = osv.plus
+            cell.plus.text   = osv.start
+            cell.minus.text  = osv.minus
+            cell.end.text    = osv.end
+            #endif
+        }else{
+            if (uslugaArr[indexPath.row] == "Я") {
+                cell.usluga.text = "ИТОГО"
+            } else {
+                cell.usluga.text = uslugaArr[indexPath.row]
+            }
+            cell.start.text  = plusArr[indexPath.row]
+            cell.plus.text   = startArr[indexPath.row]
+            cell.minus.text  = minusArr[indexPath.row]
+            cell.end.text    = endArr[indexPath.row]
         }
-        cell.start.text  = osv.plus
-        cell.plus.text   = osv.start
-        cell.minus.text  = osv.minus
-        cell.end.text    = osv.end
+        
         cell.delegate = self
         return cell
     }
@@ -407,214 +512,25 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    var choiceIdent = ""
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_button.setTitle(contents, for: UIControlState.normal)
-        if (contents == "Все") {
-            getData(login: login!, pass: pass!)
+        if (contents == "Все")  || dropper.items.count == 2{
+            choiceIdent = ""
+            #if isMupRCMytishi
+            choiceIdent = "Все"
+            getData(ident: contents)
+            #else
+            updateTable()
+            #endif
         } else {
-            getData(login: contents, pass: pass!)
+            choiceIdent = contents
+            getData(ident: contents)
         }
-    }
-    
-    func getData(login: String, pass: String) {
-        // Экземпляр класса DB
-        let db = DB()
-        // Удалим данные из базы данных
-        db.del_db(table_name: "Saldo")
-        // Получим данные в базу данных
-        parse_OSV(login: login, pass: pass)
-    }
-    
-    // Дубль - получение ведомостей по лиц. счетам
-    // Ведомость
-    func parse_OSV(login: String, pass: String) {
-        var sum:Double = 0
-        
-        let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-        
-        let url: NSURL = NSURL(string: urlPath)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "GET"
-        print(request)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, response, error in
-                                                
-                                                if error != nil {
-//                                                    DispatchQueue.main.async(execute: {
-//                                                        let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
-//                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-//                                                        alert.addAction(cancelAction)
-//                                                        self.present(alert, animated: true, completion: nil)
-//                                                    })
-                                                    return
-                                                } else {
-                                                    var i_month: Int = 0
-                                                    var i_year: Int = 0
-                                                    do {
-                                                        
-                                                        var bill_month    = ""
-                                                        var bill_year     = ""
-                                                        var bill_service  = ""
-                                                        var bill_acc      = ""
-                                                        var bill_debt     = ""
-                                                        var bill_pay      = ""
-                                                        var bill_total    = ""
-                                                        var bill_id       = 0
-                                                        var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                        print(json)
-                                                        
-                                                        // Общие итоговые значения
-                                                        var obj_start: Double = 0
-                                                        var obj_plus: Double = 0
-                                                        var obj_minus: Double = 0
-                                                        var obj_end: Double = 0
-                                                        
-                                                        if let json_bills = json["data"] {
-                                                            let int_end = (json_bills.count)!-1
-                                                            if (int_end < 0) {
-                                                                print("Error")
-                                                            } else {
-                                                                var itsFirst: Bool = true
-                                                                for index in 0...int_end {
-                                                                    let json_bill = json_bills.object(at: index) as! [String:AnyObject]
-                                                                    for obj in json_bill {
-                                                                        if obj.key == "Month" {
-                                                                            bill_month = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "Year" {
-                                                                            bill_year = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                    }
-                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month) == 1) && (i_month == 12)) {
-                                                                        if (itsFirst) {
-                                                                            itsFirst = false
-                                                                        } else {
-                                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
-                                                                            obj_start = 0.00
-                                                                            obj_plus  = 0.00
-                                                                            obj_minus = 0.00
-                                                                            obj_end   = 0.00
-                                                                        }
-                                                                        
-                                                                        i_month = Int(bill_month)!
-                                                                        
-                                                                    }
-                                                                    if (Int(bill_year)! > i_year) {
-                                                                        i_year = Int(bill_year)!
-                                                                    }
-                                                                    
-                                                                    for obj in json_bill {
-                                                                        if obj.key == "Month" {
-                                                                            bill_month = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "Year" {
-                                                                            bill_year = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "ID" {
-                                                                            bill_id = Int(truncating: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "Service" {
-                                                                            bill_service = obj.value as! String
-                                                                        }
-                                                                        if obj.key == "Accured" {
-                                                                            bill_acc = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_plus += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Debt" {
-                                                                            bill_debt = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_start += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Payed" {
-                                                                            bill_pay = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_minus += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Total" {
-                                                                            bill_total = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_end += (obj.value as! Double)
-                                                                        }
-                                                                    }
-                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
-                                                                }
-                                                            }
-                                                        }
-                                                        
-                                                        self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end))
-                                                    } catch let error as NSError {
-                                                        print(error)
-                                                    }
-                                                    
-                                                    // Выборка из БД последней ведомости - посчитаем сумму к оплате
-                                                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
-                                                    fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(i_month), String(i_year))
-                                                    do {
-                                                        let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-                                                        for result in results {
-                                                            let object = result as! NSManagedObject
-                                                            sum = sum + Double(object.value(forKey: "end") as! String)!
-                                                        }
-                                                    } catch {
-                                                        print(error)
-                                                    }
-                                                    
-                                                    let defaults = UserDefaults.standard
-                                                    defaults.setValue(String(i_month), forKey: "month_osv")
-                                                    defaults.setValue(String(i_year), forKey: "year_osv")
-                                                    defaults.setValue(String(describing: sum), forKey: "sum")
-                                                    defaults.synchronize()
-                                                    self.end_osv()
-                                                }
-                                                
-        })
-        task.resume()
-        
-    }
-    
-    func add_data_saldo(id: Int64?, usluga: String?, num_month: String?, year: String?, start: String?, plus: String?, minus: String?, end: String?) {
-        #if isMupRCMytishi
-        if usluga == "Услуги ЖКУ"{
-            let managedObject = Saldo()
-            managedObject.id               = id!
-            managedObject.usluga           = usluga!
-            managedObject.num_month        = num_month!
-            managedObject.year             = year!
-            managedObject.start            = start!
-            managedObject.plus             = plus!
-            managedObject.minus            = minus!
-            managedObject.end              = end!
-        }
-        
-        #else
-        let managedObject = Saldo()
-        managedObject.id               = id!
-        managedObject.usluga           = usluga!
-        managedObject.num_month        = num_month!
-        managedObject.year             = year!
-        managedObject.start            = start!
-        managedObject.plus             = plus!
-        managedObject.minus            = minus!
-        managedObject.end              = end!
-        #endif
-        CoreDataManager.instance.saveContext()
-    }
-    
-    func end_osv() {
-        // Выборка из БД последней ведомости - посчитаем сумму к оплате
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
-        fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
-        DispatchQueue.main.async(execute: {
-            self.updateBorderDates()
-//            self.updateFetchedResultsController()
-//            self.updateMonthLabel()
-//            self.updateTable()
-//            self.updateArrowsEnabled()
-        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        getData(login: login!, pass: pass!)
+//        getData(login: login!, pass: pass!)
     }
     
 }

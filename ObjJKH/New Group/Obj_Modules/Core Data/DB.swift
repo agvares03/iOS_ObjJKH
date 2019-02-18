@@ -52,6 +52,7 @@ class DB: NSObject, XMLParserDelegate {
     }
     
     public func getDataByEnter(login: String, pass: String) {
+        var data:[String] = []
         
         // ПОКАЗАНИЯ СЧЕТЧИКОВ
         // Удалим данные из базы данных
@@ -63,7 +64,18 @@ class DB: NSObject, XMLParserDelegate {
         // Удалим данные из базы данных
         del_db(table_name: "Saldo")
         // Получим данные в базу данных
-        parse_OSV(login: login, pass: pass)
+//        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+//        let str_ls_arr = str_ls?.components(separatedBy: ",")
+//        if ((str_ls_arr?.count)! > 0) {
+//            if str_ls_arr?[0] != ""{
+//                for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
+//                    data.append((str_ls_arr?[i])!)
+//                }
+//            }
+//        }
+//        data.forEach{
+            parse_OSV(login: login, pass: pass)
+//        }
         
         // ЗАЯВКИ С КОММЕНТАРИЯМИ
         del_db(table_name: "Applications")
@@ -282,7 +294,6 @@ class DB: NSObject, XMLParserDelegate {
     
     // Ведомость
     func parse_OSV(login: String, pass: String) {
-        UserDefaults.standard.set(false, forKey: "error")
         var sum:Double = 0
         
         let urlPath = Server.SERVER + Server.GET_BILLS_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
@@ -290,6 +301,8 @@ class DB: NSObject, XMLParserDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
+        print(request)
+        
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -300,6 +313,7 @@ class DB: NSObject, XMLParserDelegate {
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
                                                     do {
+                                                        var bill_id       = 0
                                                         var bill_month    = ""
                                                         var bill_year     = ""
                                                         var bill_service  = ""
@@ -307,15 +321,22 @@ class DB: NSObject, XMLParserDelegate {
                                                         var bill_debt     = ""
                                                         var bill_pay      = ""
                                                         var bill_total    = ""
-                                                        var bill_id       = 0
+                                                        var bill_ident    = ""
                                                         var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
 //                                                        print(json)
+                                                        
+                                                        // Общие итоговые значения
+                                                        var obj_start: Double = 0
+                                                        var obj_plus: Double = 0
+                                                        var obj_minus: Double = 0
+                                                        var obj_end: Double = 0
+                                                        
                                                         if let json_bills = json["data"] {
                                                             let int_end = (json_bills.count)!-1
                                                             if (int_end < 0) {
                                                                 
                                                             } else {
-                                                                
+                                                                var itsFirst: Bool = true
                                                                 for index in 0...int_end {
                                                                     let json_bill = json_bills.object(at: index) as! [String:AnyObject]
                                                                     for obj in json_bill {
@@ -325,69 +346,98 @@ class DB: NSObject, XMLParserDelegate {
                                                                         if obj.key == "Year" {
                                                                             bill_year = String(describing: obj.value as! NSNumber)
                                                                         }
-                                                                        if obj.key == "ID" {
-                                                                            bill_id = Int(truncating: obj.value as! NSNumber)
+                                                                    }
+                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month) == 1) && (i_month == 12)) {
+                                                                        if (itsFirst) {
+                                                                            itsFirst = false
+                                                                        } else {
+                                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: bill_ident)
+                                                                            
+                                                                            obj_start = 0.00
+                                                                            obj_plus  = 0.00
+                                                                            obj_minus = 0.00
+                                                                            obj_end   = 0.00
+                                                                        }
+                                                                        
+                                                                        i_month = Int(bill_month)!
+                                                                        
+                                                                    }
+                                                                    if (Int(bill_year)! > i_year) {
+                                                                        i_year = Int(bill_year)!
+                                                                    }
+                                                                    
+                                                                    for obj in json_bill {
+                                                                        if obj.key == "Month" {
+                                                                            bill_month = String(describing: obj.value as! NSNumber)
+                                                                        }
+                                                                        if obj.key == "Year" {
+                                                                            bill_year = String(describing: obj.value as! NSNumber)
+                                                                        }
+                                                                        if obj.key == "ServiceTypeId" {
+                                                                            if let latestValue = obj.value as? NSNumber {
+                                                                                bill_id = Int(truncating: obj.value as! NSNumber)
+                                                                            }
+                                                                        }
+                                                                        if obj.key == "Ident" {
+                                                                            bill_ident = obj.value as! String
                                                                         }
                                                                         if obj.key == "Service" {
                                                                             bill_service = obj.value as! String
                                                                         }
                                                                         if obj.key == "Accured" {
-                                                                            bill_acc = String(describing: obj.value as! NSNumber)
+                                                                            bill_acc = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                            obj_plus += (obj.value as! Double)
                                                                         }
                                                                         if obj.key == "Debt" {
-                                                                            bill_debt = String(describing: obj.value as! NSNumber)
+                                                                            bill_debt = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                            obj_start += (obj.value as! Double)
                                                                         }
                                                                         if obj.key == "Payed" {
-                                                                            bill_pay = String(describing: obj.value as! NSNumber)
+                                                                            bill_pay = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                            obj_minus += (obj.value as! Double)
                                                                         }
                                                                         if obj.key == "Total" {
-                                                                            bill_total = String(describing: obj.value as! NSNumber)
+                                                                            bill_total = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                            obj_end += (obj.value as! Double)
                                                                         }
                                                                     }
                                                                     
-//                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total)
-                                                                    
-//                                                                    if (Int(bill_month)! > i_month) {
-                                                                        i_month = Int(bill_month)!
-//                                                                    }
-//                                                                    if (Int(bill_year)! > i_year) {
-                                                                        i_year = Int(bill_year)!
-//                                                                    }
+                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total, ident: bill_ident)
                                                                     
                                                                 }
                                                             }
                                                         }
                                                         
+                                                        self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: bill_ident)
                                                     } catch let error as NSError {
                                                         print(error)
                                                     }
                                                     
                                                     // Выборка из БД последней ведомости - посчитаем сумму к оплате
-//                                                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
-//                                                    fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(i_month), String(i_year))
-//                                                    do {
-//                                                        let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-//                                                        for result in results {
-//                                                            let object = result as! NSManagedObject
-//                                                            sum = sum + Double(object.value(forKey: "end") as! String)!
-//                                                        }
-//                                                    } catch {
-//                                                        print(error)
-//                                                    }
+                                                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
+                                                    fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(i_month), String(i_year))
+                                                    do {
+                                                        let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+                                                        for result in results {
+                                                            let object = result as! NSManagedObject
+                                                            sum = sum + Double(object.value(forKey: "end") as! String)!
+                                                        }
+                                                    } catch {
+                                                        print(error)
+                                                    }
                                                     
                                                     let defaults = UserDefaults.standard
                                                     defaults.setValue(String(i_month), forKey: "month_osv")
                                                     defaults.setValue(String(i_year), forKey: "year_osv")
                                                     defaults.setValue(String(describing: sum), forKey: "sum")
                                                     defaults.synchronize()
-                                                    
                                                 }
                                                 
         })
         task.resume()
     }
     
-    func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String) {
+    func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String, ident: String) {
         let managedObject = Saldo()
         managedObject.id               = id
         managedObject.usluga           = usluga
@@ -397,6 +447,7 @@ class DB: NSObject, XMLParserDelegate {
         managedObject.plus             = plus
         managedObject.minus            = minus
         managedObject.end              = end
+        managedObject.ident            = ident
         
         CoreDataManager.instance.saveContext()
     }
