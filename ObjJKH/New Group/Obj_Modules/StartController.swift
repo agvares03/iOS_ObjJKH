@@ -46,7 +46,6 @@ class StartController: UIViewController {
     func getSettings() {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
-//        let version = "1.0"
         let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -102,16 +101,29 @@ class StartController: UIViewController {
     var updateApp = false
     func setSettings() {
         DispatchQueue.main.sync {
-            
-            let inputData = self.responseLS?.data(using: .utf8)!
-            let decoder = JSONDecoder()
-            let stat = try! decoder.decode(MenuData.self, from: inputData!)
-            
-            self.set_settings(color: stat.color, statMenu: stat.menu)
+            if (self.responseLS?.contains("color"))!{
+                let inputData = self.responseLS?.data(using: .utf8)!
+                let decoder = JSONDecoder()
+                let stat = try! decoder.decode(MenuData.self, from: inputData!)
+                self.set_settings(color: stat.color, statMenu: stat.menu)
+            }else{
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) ->
+                    Void in
+                    self.getSettings()
+                }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
+                alert.addAction(cancelAction)
+                alert.addAction(supportAction)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             if updateApp{
                 self.update_app()
             }else{
-               self.start_app()
+                self.start_app()
             }
         }
     }
@@ -129,7 +141,7 @@ class StartController: UIViewController {
     
     @objc func update_app() {
         if progressValue < 1.0 {
-            self.perform(#selector(update_app), with: nil, afterDelay: 0.1)
+            self.perform(#selector(update_app), with: nil, afterDelay: 0.01)
         } else {
             self.performSegue(withIdentifier: "update_app", sender: self)
         }
