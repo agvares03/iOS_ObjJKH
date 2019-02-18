@@ -217,6 +217,44 @@
                                     <constraint firstItem="ACx-wG-ddY" firstAttribute="top" secondItem="AI5-2C-qjX" secondAttribute="top" constant="1" id="qiq-Ti-eoW"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0h-LB-nC8">
+                                <rect key="frame" x="67.5" y="223.5" width="240" height="220"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonConect" translatesAutoresizingMaskIntoConstraints="NO" id="KhA-Sa-3bo">
+                                        <rect key="frame" x="80" y="5" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Bwd-hZ-W4n"/>
+                                            <constraint firstAttribute="height" constant="80" id="Fwb-Pj-GkB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка загрузки данных, проверьте соединение с интернетом" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxE-gF-xJ2">
+                                        <rect key="frame" x="5" y="95" width="230" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOk-7B-3Rr">
+                                        <rect key="frame" x="78.5" y="171" width="83" height="30"/>
+                                        <state key="normal" title="ОБНОВИТЬ"/>
+                                        <connections>
+                                            <action selector="updateConect:" destination="60p-cV-5Uu" eventType="touchUpInside" id="MnX-bV-G2h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="YOk-7B-3Rr" firstAttribute="top" secondItem="JxE-gF-xJ2" secondAttribute="bottom" constant="15" id="Kvl-qb-blb"/>
+                                    <constraint firstItem="JxE-gF-xJ2" firstAttribute="leading" secondItem="Y0h-LB-nC8" secondAttribute="leading" constant="5" id="Pdh-NZ-sjg"/>
+                                    <constraint firstItem="KhA-Sa-3bo" firstAttribute="top" secondItem="Y0h-LB-nC8" secondAttribute="top" constant="5" id="TY5-qX-mLs"/>
+                                    <constraint firstItem="JxE-gF-xJ2" firstAttribute="top" secondItem="KhA-Sa-3bo" secondAttribute="bottom" constant="10" id="e1y-MI-kLM"/>
+                                    <constraint firstItem="YOk-7B-3Rr" firstAttribute="centerX" secondItem="Y0h-LB-nC8" secondAttribute="centerX" id="l5k-Gz-ghG"/>
+                                    <constraint firstAttribute="trailing" secondItem="JxE-gF-xJ2" secondAttribute="trailing" constant="5" id="lGk-sW-lr6"/>
+                                    <constraint firstAttribute="width" constant="240" id="tdR-p3-jkg"/>
+                                    <constraint firstItem="JxE-gF-xJ2" firstAttribute="centerX" secondItem="Y0h-LB-nC8" secondAttribute="centerX" id="vo1-10-AHK"/>
+                                    <constraint firstAttribute="height" constant="220" id="vr5-1U-Mf7"/>
+                                    <constraint firstItem="KhA-Sa-3bo" firstAttribute="centerX" secondItem="Y0h-LB-nC8" secondAttribute="centerX" id="xWw-wG-Keo"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1G-Gt-dz5">
                                 <rect key="frame" x="30" y="278.5" width="315" height="110"/>
                                 <subviews>
@@ -247,6 +285,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="V1G-Gt-dz5" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" constant="30" id="0Ev-Rf-p8q"/>
+                            <constraint firstItem="Y0h-LB-nC8" firstAttribute="centerY" secondItem="vuI-SL-bHF" secondAttribute="centerY" id="18s-4f-5dS"/>
                             <constraint firstItem="h0P-vy-YeW" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" id="4Re-xd-n4J"/>
                             <constraint firstItem="LN9-gp-7Vx" firstAttribute="trailing" secondItem="h0P-vy-YeW" secondAttribute="trailing" id="9c7-gd-Z6q"/>
                             <constraint firstItem="woV-n9-mQe" firstAttribute="top" secondItem="LN9-gp-7Vx" secondAttribute="top" id="DfN-Yo-0I1"/>
@@ -257,6 +296,7 @@
                             <constraint firstItem="LN9-gp-7Vx" firstAttribute="trailing" secondItem="whj-2p-mZl" secondAttribute="trailing" constant="16" id="fFy-Xq-dVC"/>
                             <constraint firstItem="woV-n9-mQe" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" id="k97-eJ-3Q7"/>
                             <constraint firstItem="whj-2p-mZl" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" constant="16" id="muM-1L-K0D"/>
+                            <constraint firstItem="Y0h-LB-nC8" firstAttribute="centerX" secondItem="vuI-SL-bHF" secondAttribute="centerX" id="oVB-iB-gM0"/>
                             <constraint firstItem="AI5-2C-qjX" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" id="pYe-NQ-MTa"/>
                             <constraint firstItem="AI5-2C-qjX" firstAttribute="top" secondItem="h0P-vy-YeW" secondAttribute="bottom" id="pZI-zd-z0c"/>
                             <constraint firstAttribute="trailing" secondItem="AI5-2C-qjX" secondAttribute="trailing" id="rg9-pT-4b2"/>
@@ -278,10 +318,12 @@
                         <outlet property="btnAdd" destination="whj-2p-mZl" id="r5i-si-EAU"/>
                         <outlet property="hiddenAppsView" destination="h0P-vy-YeW" id="EoR-jM-Kyu"/>
                         <outlet property="lsView" destination="V1G-Gt-dz5" id="cB2-R7-0c3"/>
+                        <outlet property="nonConectView" destination="Y0h-LB-nC8" id="Bzc-Fe-l6O"/>
                         <outlet property="support" destination="s9q-s9-VpS" id="PMj-9S-pml"/>
                         <outlet property="supportBtn" destination="ACx-wG-ddY" id="CC1-LA-Ekp"/>
                         <outlet property="switchCloseApps" destination="4rX-06-8QQ" id="6rB-9B-OLe"/>
                         <outlet property="tableApps" destination="woV-n9-mQe" id="Afa-Cj-q7v"/>
+                        <outlet property="updateConectBtn" destination="YOk-7B-3Rr" id="8Vs-fI-7Ip"/>
                         <segue destination="bOu-DP-0Qr" kind="show" identifier="show_app" id="cE0-Ts-8T9"/>
                         <segue destination="bOu-DP-0Qr" kind="show" identifier="show_app_close" id="M7G-ag-hjx"/>
                         <segue destination="u5u-8K-6DU" kind="show" identifier="show_app_cons" id="g2E-Sg-SXp"/>
@@ -1990,6 +2032,7 @@
         <image name="ic_get_app.png" width="96" height="96"/>
         <image name="ic_ok_app.png" width="96" height="96"/>
         <image name="ic_send_app.png" width="96" height="96"/>
+        <image name="nonConect" width="180" height="180"/>
         <image name="poll_Mup" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>

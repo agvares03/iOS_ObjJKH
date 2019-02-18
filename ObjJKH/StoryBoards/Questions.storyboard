@@ -119,12 +119,51 @@
                                     <constraint firstItem="pJ0-aI-vXq" firstAttribute="leading" secondItem="nhb-YO-bPd" secondAttribute="trailing" constant="2" id="rY8-NK-te2"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5n-IB-3ws">
+                                <rect key="frame" x="67.5" y="223.5" width="240" height="220"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonConect" translatesAutoresizingMaskIntoConstraints="NO" id="XR2-ST-lQk">
+                                        <rect key="frame" x="80" y="5" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="ThU-hF-gM6"/>
+                                            <constraint firstAttribute="height" constant="80" id="lNi-dB-5tD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка загрузки данных, проверьте соединение с интернетом" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zH6-yS-SVu">
+                                        <rect key="frame" x="5" y="95" width="230" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9b-EA-cxE">
+                                        <rect key="frame" x="78.5" y="171" width="83" height="30"/>
+                                        <state key="normal" title="ОБНОВИТЬ"/>
+                                        <connections>
+                                            <action selector="updateConect:" destination="u6p-wC-ZDM" eventType="touchUpInside" id="D8L-WX-DiR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="zH6-yS-SVu" firstAttribute="top" secondItem="XR2-ST-lQk" secondAttribute="bottom" constant="10" id="06x-vC-3Zj"/>
+                                    <constraint firstItem="d9b-EA-cxE" firstAttribute="centerX" secondItem="u5n-IB-3ws" secondAttribute="centerX" id="8jL-I0-7Kx"/>
+                                    <constraint firstItem="zH6-yS-SVu" firstAttribute="leading" secondItem="u5n-IB-3ws" secondAttribute="leading" constant="5" id="9Wi-q1-amc"/>
+                                    <constraint firstItem="d9b-EA-cxE" firstAttribute="top" secondItem="zH6-yS-SVu" secondAttribute="bottom" constant="15" id="FMg-M8-UWZ"/>
+                                    <constraint firstItem="zH6-yS-SVu" firstAttribute="centerX" secondItem="u5n-IB-3ws" secondAttribute="centerX" id="PRf-XJ-8jc"/>
+                                    <constraint firstItem="XR2-ST-lQk" firstAttribute="centerX" secondItem="u5n-IB-3ws" secondAttribute="centerX" id="XNB-sq-EBf"/>
+                                    <constraint firstItem="XR2-ST-lQk" firstAttribute="top" secondItem="u5n-IB-3ws" secondAttribute="top" constant="5" id="cfK-AO-Qow"/>
+                                    <constraint firstAttribute="width" constant="240" id="hmU-jJ-dXL"/>
+                                    <constraint firstAttribute="trailing" secondItem="zH6-yS-SVu" secondAttribute="trailing" constant="5" id="lgm-JA-J1m"/>
+                                    <constraint firstAttribute="height" constant="220" id="qqP-Ix-ERc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OAu-KI-Czf" firstAttribute="top" secondItem="nkb-LL-xVK" secondAttribute="top" id="1hV-6P-YUj"/>
                             <constraint firstItem="pP7-xG-epR" firstAttribute="centerY" secondItem="nkb-LL-xVK" secondAttribute="centerY" id="2o9-Wy-f2p"/>
                             <constraint firstItem="BP5-X4-Gbm" firstAttribute="top" secondItem="OAu-KI-Czf" secondAttribute="bottom" id="2p9-iK-OLi"/>
+                            <constraint firstItem="u5n-IB-3ws" firstAttribute="centerX" secondItem="XHi-Pl-rke" secondAttribute="centerX" id="3wu-a8-9l9"/>
                             <constraint firstItem="pP7-xG-epR" firstAttribute="centerX" secondItem="nkb-LL-xVK" secondAttribute="centerX" id="8PP-Og-5PG"/>
                             <constraint firstItem="OEI-vW-9bQ" firstAttribute="centerY" secondItem="XHi-Pl-rke" secondAttribute="centerY" id="EDf-Le-zrv"/>
                             <constraint firstItem="BP5-X4-Gbm" firstAttribute="leading" secondItem="XHi-Pl-rke" secondAttribute="leading" id="Udc-sO-2hh"/>
@@ -132,6 +171,7 @@
                             <constraint firstItem="OAu-KI-Czf" firstAttribute="trailing" secondItem="nkb-LL-xVK" secondAttribute="trailing" id="Zuk-2K-9PJ"/>
                             <constraint firstItem="OAu-KI-Czf" firstAttribute="leading" secondItem="nkb-LL-xVK" secondAttribute="leading" id="ieW-i5-ySG"/>
                             <constraint firstItem="OEI-vW-9bQ" firstAttribute="centerX" secondItem="XHi-Pl-rke" secondAttribute="centerX" id="kd7-jb-qGj"/>
+                            <constraint firstItem="u5n-IB-3ws" firstAttribute="centerY" secondItem="XHi-Pl-rke" secondAttribute="centerY" id="kkH-ua-RJl"/>
                             <constraint firstItem="nkb-LL-xVK" firstAttribute="trailing" secondItem="BP5-X4-Gbm" secondAttribute="trailing" id="z8J-rv-2jC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nkb-LL-xVK"/>
@@ -148,8 +188,10 @@
                         <outlet property="collection" destination="OAu-KI-Czf" id="Hsd-fk-9q0"/>
                         <outlet property="emptyLabel" destination="OEI-vW-9bQ" id="dfW-tZ-Ube"/>
                         <outlet property="loader" destination="pP7-xG-epR" id="alK-SX-7zV"/>
+                        <outlet property="nonConectView" destination="u5n-IB-3ws" id="50T-6e-ARk"/>
                         <outlet property="support" destination="nhb-YO-bPd" id="yWW-hO-SxI"/>
                         <outlet property="supportBtn" destination="pJ0-aI-vXq" id="ITR-mr-jP5"/>
+                        <outlet property="updateConectBtn" destination="d9b-EA-cxE" id="qe7-jk-Kfd"/>
                         <segue destination="BYY-xY-VhV" kind="show" identifier="go_answers" id="nqR-7d-FrR"/>
                     </connections>
                 </viewController>
@@ -443,6 +485,7 @@
     </scenes>
     <resources>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="nonConect" width="180" height="180"/>
         <image name="poll_Mup" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>

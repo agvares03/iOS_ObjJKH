@@ -147,16 +147,56 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfU-Hl-hsb">
+                                <rect key="frame" x="67.5" y="223.5" width="240" height="220"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonConect" translatesAutoresizingMaskIntoConstraints="NO" id="6Mh-C3-an9">
+                                        <rect key="frame" x="80" y="5" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="83O-qV-doO"/>
+                                            <constraint firstAttribute="width" constant="80" id="Im4-PX-UJu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка загрузки данных, проверьте соединение с интернетом" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bML-NN-7pw">
+                                        <rect key="frame" x="5" y="95" width="230" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ff-Np-Cfx">
+                                        <rect key="frame" x="78.5" y="171" width="83" height="30"/>
+                                        <state key="normal" title="ОБНОВИТЬ"/>
+                                        <connections>
+                                            <action selector="updateConect:" destination="yWf-Im-OL3" eventType="touchUpInside" id="9bi-sp-LlX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7Ff-Np-Cfx" firstAttribute="top" secondItem="bML-NN-7pw" secondAttribute="bottom" constant="15" id="3uV-UA-bqE"/>
+                                    <constraint firstItem="bML-NN-7pw" firstAttribute="top" secondItem="6Mh-C3-an9" secondAttribute="bottom" constant="10" id="AWW-hL-K1Z"/>
+                                    <constraint firstItem="7Ff-Np-Cfx" firstAttribute="centerX" secondItem="GfU-Hl-hsb" secondAttribute="centerX" id="GGt-4M-KyZ"/>
+                                    <constraint firstAttribute="width" constant="240" id="Lj6-0h-rfQ"/>
+                                    <constraint firstItem="6Mh-C3-an9" firstAttribute="centerX" secondItem="GfU-Hl-hsb" secondAttribute="centerX" id="Rt4-H7-yG5"/>
+                                    <constraint firstItem="bML-NN-7pw" firstAttribute="centerX" secondItem="GfU-Hl-hsb" secondAttribute="centerX" id="Zwc-Jq-gX9"/>
+                                    <constraint firstItem="bML-NN-7pw" firstAttribute="leading" secondItem="GfU-Hl-hsb" secondAttribute="leading" constant="5" id="eXg-S5-pli"/>
+                                    <constraint firstItem="6Mh-C3-an9" firstAttribute="top" secondItem="GfU-Hl-hsb" secondAttribute="top" constant="5" id="jGj-HK-fgl"/>
+                                    <constraint firstAttribute="trailing" secondItem="bML-NN-7pw" secondAttribute="trailing" constant="5" id="oS3-Ks-aDF"/>
+                                    <constraint firstAttribute="height" constant="220" id="u3t-R3-tkq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="3Sn-fd-TwF" secondAttribute="trailing" id="AUV-bh-hti"/>
+                            <constraint firstItem="GfU-Hl-hsb" firstAttribute="centerX" secondItem="7Cf-v0-fLM" secondAttribute="centerX" id="DnK-8N-e9V"/>
                             <constraint firstItem="dhx-Xd-GFn" firstAttribute="centerY" secondItem="Je2-15-Kcz" secondAttribute="centerY" id="Iei-de-8rp"/>
                             <constraint firstItem="Je2-15-Kcz" firstAttribute="bottom" secondItem="3Sn-fd-TwF" secondAttribute="bottom" id="KdG-fi-dTM"/>
                             <constraint firstItem="3Sn-fd-TwF" firstAttribute="leading" secondItem="Je2-15-Kcz" secondAttribute="leading" id="LaM-gt-Tgx"/>
                             <constraint firstItem="8Vu-xL-9hC" firstAttribute="trailing" secondItem="Je2-15-Kcz" secondAttribute="trailing" id="Nd2-xr-sL5"/>
                             <constraint firstItem="3Sn-fd-TwF" firstAttribute="top" secondItem="8Vu-xL-9hC" secondAttribute="bottom" id="aCB-0o-1o6"/>
                             <constraint firstItem="8Vu-xL-9hC" firstAttribute="leading" secondItem="Je2-15-Kcz" secondAttribute="leading" id="arX-ND-Rl1"/>
+                            <constraint firstItem="GfU-Hl-hsb" firstAttribute="centerY" secondItem="7Cf-v0-fLM" secondAttribute="centerY" id="cPb-pF-TRc"/>
                             <constraint firstItem="dhx-Xd-GFn" firstAttribute="centerX" secondItem="Je2-15-Kcz" secondAttribute="centerX" id="gzJ-Vj-VT6"/>
                             <constraint firstItem="QQZ-cH-kBr" firstAttribute="centerY" secondItem="7Cf-v0-fLM" secondAttribute="centerY" id="iyw-jN-9YQ"/>
                             <constraint firstItem="8Vu-xL-9hC" firstAttribute="top" secondItem="Je2-15-Kcz" secondAttribute="top" id="oJj-Tb-pjY"/>
@@ -179,9 +219,11 @@
                     <connections>
                         <outlet property="loader" destination="dhx-Xd-GFn" id="VQJ-UK-9nW"/>
                         <outlet property="noDataLbl" destination="QQZ-cH-kBr" id="LkH-kD-mzO"/>
+                        <outlet property="nonConectView" destination="GfU-Hl-hsb" id="JyF-Mw-G4L"/>
                         <outlet property="support" destination="hFR-Fl-VEc" id="G98-QI-ReT"/>
                         <outlet property="supportBtn" destination="4ax-uv-LqO" id="gUC-lh-Sr3"/>
                         <outlet property="tableView" destination="8Vu-xL-9hC" id="7dt-So-iI3"/>
+                        <outlet property="updateConectBtn" destination="7Ff-Np-Cfx" id="NvS-Lz-WZ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdP-Sy-IDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,6 +260,7 @@
     <resources>
         <image name="Logo_DemoUC.png" width="120" height="120"/>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="nonConect" width="180" height="180"/>
         <image name="poll_Mup" width="60" height="60"/>
     </resources>
 </document>

@@ -471,10 +471,49 @@
                                 <color key="textColor" red="0.21895414590000001" green="0.71306502819999995" blue="0.9233877063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Tg-uX-UHf">
+                                <rect key="frame" x="67.5" y="223.5" width="240" height="220"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonConect" translatesAutoresizingMaskIntoConstraints="NO" id="8UN-3Z-HlF">
+                                        <rect key="frame" x="80" y="5" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="GFV-gZ-wTM"/>
+                                            <constraint firstAttribute="height" constant="80" id="VkD-Yp-YWL"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка загрузки данных, проверьте соединение с интернетом" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4w-hU-ETh">
+                                        <rect key="frame" x="5" y="95" width="230" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaZ-JB-zQa">
+                                        <rect key="frame" x="78.5" y="171" width="83" height="30"/>
+                                        <state key="normal" title="ОБНОВИТЬ"/>
+                                        <connections>
+                                            <action selector="updateConect:" destination="76N-oe-n0n" eventType="touchUpInside" id="e0Y-qd-aIM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="f4w-hU-ETh" firstAttribute="centerX" secondItem="7Tg-uX-UHf" secondAttribute="centerX" id="57J-DU-dv2"/>
+                                    <constraint firstAttribute="trailing" secondItem="f4w-hU-ETh" secondAttribute="trailing" constant="5" id="LVo-4s-Vns"/>
+                                    <constraint firstAttribute="height" constant="220" id="SEK-hB-f4y"/>
+                                    <constraint firstItem="f4w-hU-ETh" firstAttribute="leading" secondItem="7Tg-uX-UHf" secondAttribute="leading" constant="5" id="Scd-MF-9y0"/>
+                                    <constraint firstItem="f4w-hU-ETh" firstAttribute="top" secondItem="8UN-3Z-HlF" secondAttribute="bottom" constant="10" id="Wl1-bM-HhB"/>
+                                    <constraint firstItem="OaZ-JB-zQa" firstAttribute="top" secondItem="f4w-hU-ETh" secondAttribute="bottom" constant="15" id="fDL-8n-BBj"/>
+                                    <constraint firstItem="OaZ-JB-zQa" firstAttribute="centerX" secondItem="7Tg-uX-UHf" secondAttribute="centerX" id="fGY-yU-Zye"/>
+                                    <constraint firstAttribute="width" constant="240" id="qYc-Tx-Yub"/>
+                                    <constraint firstItem="8UN-3Z-HlF" firstAttribute="top" secondItem="7Tg-uX-UHf" secondAttribute="top" constant="5" id="qbJ-ZU-tD7"/>
+                                    <constraint firstItem="8UN-3Z-HlF" firstAttribute="centerX" secondItem="7Tg-uX-UHf" secondAttribute="centerX" id="xL5-W8-zxH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jdf-Nz-nJR" secondAttribute="trailing" constant="10" id="2Nw-gd-ljp"/>
+                            <constraint firstItem="7Tg-uX-UHf" firstAttribute="centerX" secondItem="HZc-mn-bYY" secondAttribute="centerX" id="556-tS-7Rb"/>
                             <constraint firstItem="cT6-3M-qth" firstAttribute="trailing" secondItem="sqR-oM-cNZ" secondAttribute="trailing" constant="16" id="6Cn-u5-EVa"/>
                             <constraint firstItem="Afh-e0-FeO" firstAttribute="top" secondItem="Xqu-Qg-GBS" secondAttribute="bottom" constant="25" id="7UG-IV-5uS"/>
                             <constraint firstItem="pGB-M8-LY0" firstAttribute="leading" secondItem="HZc-mn-bYY" secondAttribute="leadingMargin" constant="4" id="7jW-eQ-81f"/>
@@ -494,6 +533,7 @@
                             <constraint firstItem="cT6-3M-qth" firstAttribute="trailing" secondItem="KCv-MI-guV" secondAttribute="trailing" constant="22" id="mtA-1Y-B3a"/>
                             <constraint firstItem="pGB-M8-LY0" firstAttribute="top" secondItem="sqR-oM-cNZ" secondAttribute="bottom" constant="10" id="oIJ-Hl-xY3"/>
                             <constraint firstItem="Xqu-Qg-GBS" firstAttribute="top" secondItem="KCv-MI-guV" secondAttribute="bottom" constant="7.5" id="otc-PS-Zpo"/>
+                            <constraint firstItem="7Tg-uX-UHf" firstAttribute="centerY" secondItem="HZc-mn-bYY" secondAttribute="centerY" id="pIg-Pj-HvT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xqu-Qg-GBS" secondAttribute="trailing" constant="4" id="rbP-AI-qnJ"/>
                             <constraint firstItem="cT6-3M-qth" firstAttribute="trailing" secondItem="reL-Uo-CYH" secondAttribute="trailing" constant="16" id="s0j-iF-HVn"/>
                             <constraint firstItem="sqR-oM-cNZ" firstAttribute="top" secondItem="Gzk-Pc-mag" secondAttribute="bottom" constant="20" id="shY-KY-dzi"/>
@@ -512,12 +552,15 @@
                     <connections>
                         <outlet property="backBtn" destination="pvX-Ih-OLM" id="zFc-Tr-DK7"/>
                         <outlet property="emailTxt" destination="Afh-e0-FeO" id="SOm-o4-Q68"/>
+                        <outlet property="nonConectView" destination="7Tg-uX-UHf" id="15l-oe-0tS"/>
                         <outlet property="phoneTxt" destination="KCv-MI-guV" id="UvN-32-Ox5"/>
                         <outlet property="problemTxt" destination="sqR-oM-cNZ" id="ZK0-n8-qzc"/>
+                        <outlet property="questionLbl" destination="jdf-Nz-nJR" id="1I7-gV-X5h"/>
                         <outlet property="sendBtn" destination="d9y-gL-9hd" id="8u3-qo-fur"/>
                         <outlet property="separator1" destination="Xqu-Qg-GBS" id="vBs-4u-z7Q"/>
                         <outlet property="separator2" destination="Gzk-Pc-mag" id="Ijb-tc-Q3n"/>
                         <outlet property="separator3" destination="pGB-M8-LY0" id="Rcw-rj-gWv"/>
+                        <outlet property="updateConectBtn" destination="OaZ-JB-zQa" id="no7-DC-cV5"/>
                         <outlet property="ver_Lbl" destination="reL-Uo-CYH" id="gw0-WN-WXa"/>
                     </connections>
                 </viewController>
@@ -549,6 +592,7 @@
         <image name="Logo_DemoUC_White.png" width="120" height="120"/>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
         <image name="lock" width="28.799999237060547" height="28.799999237060547"/>
+        <image name="nonConect" width="180" height="180"/>
         <image name="person" width="28.799999237060547" height="28.799999237060547"/>
         <image name="question" width="75" height="75"/>
     </resources>

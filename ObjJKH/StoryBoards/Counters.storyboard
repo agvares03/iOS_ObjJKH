@@ -369,6 +369,44 @@
                                     <constraint firstAttribute="trailing" secondItem="4H5-OC-KWg" secondAttribute="trailing" constant="16" id="goO-u1-sU7"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6H-g4-dtd">
+                                <rect key="frame" x="67.5" y="223.5" width="240" height="220"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonConect" translatesAutoresizingMaskIntoConstraints="NO" id="6F3-zB-UIX">
+                                        <rect key="frame" x="80" y="5" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="CuE-qe-DoS"/>
+                                            <constraint firstAttribute="width" constant="80" id="u3F-MH-NgX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка загрузки данных, проверьте соединение с интернетом" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQO-Tk-cAG">
+                                        <rect key="frame" x="5" y="95" width="230" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjA-0J-vmc">
+                                        <rect key="frame" x="78.5" y="171" width="83" height="30"/>
+                                        <state key="normal" title="ОБНОВИТЬ"/>
+                                        <connections>
+                                            <action selector="updateConect:" destination="hql-eH-RGM" eventType="touchUpInside" id="cQi-S9-kAp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92220896482467651" green="0.92299562692642212" blue="0.92167395353317261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="6F3-zB-UIX" firstAttribute="centerX" secondItem="Z6H-g4-dtd" secondAttribute="centerX" id="1jc-u1-duX"/>
+                                    <constraint firstItem="LQO-Tk-cAG" firstAttribute="leading" secondItem="Z6H-g4-dtd" secondAttribute="leading" constant="5" id="3gJ-NF-KgW"/>
+                                    <constraint firstItem="LQO-Tk-cAG" firstAttribute="centerX" secondItem="Z6H-g4-dtd" secondAttribute="centerX" id="Evh-mR-eTW"/>
+                                    <constraint firstItem="RjA-0J-vmc" firstAttribute="centerX" secondItem="Z6H-g4-dtd" secondAttribute="centerX" id="HiE-Vz-FOE"/>
+                                    <constraint firstItem="LQO-Tk-cAG" firstAttribute="top" secondItem="6F3-zB-UIX" secondAttribute="bottom" constant="10" id="UcF-wo-ehx"/>
+                                    <constraint firstAttribute="trailing" secondItem="LQO-Tk-cAG" secondAttribute="trailing" constant="5" id="Y4V-Yu-w59"/>
+                                    <constraint firstAttribute="width" constant="240" id="g5o-an-PE0"/>
+                                    <constraint firstItem="6F3-zB-UIX" firstAttribute="top" secondItem="Z6H-g4-dtd" secondAttribute="top" constant="5" id="mmZ-fS-gNd"/>
+                                    <constraint firstAttribute="height" constant="220" id="y53-3x-3PA"/>
+                                    <constraint firstItem="RjA-0J-vmc" firstAttribute="top" secondItem="LQO-Tk-cAG" secondAttribute="bottom" constant="15" id="yg5-21-van"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -380,6 +418,7 @@
                             <constraint firstItem="532-NN-r8g" firstAttribute="trailing" secondItem="CEU-rP-9hp" secondAttribute="trailing" id="8H3-jR-wII"/>
                             <constraint firstItem="a9R-4a-8PI" firstAttribute="leading" secondItem="532-NN-r8g" secondAttribute="leading" id="BeI-4u-aRi"/>
                             <constraint firstItem="1Du-Ic-Lof" firstAttribute="centerX" secondItem="532-NN-r8g" secondAttribute="centerX" id="FKB-DS-wWr"/>
+                            <constraint firstItem="Z6H-g4-dtd" firstAttribute="centerX" secondItem="Dby-de-Qo4" secondAttribute="centerX" id="OxU-nL-BbF"/>
                             <constraint firstItem="Bxq-8I-XEG" firstAttribute="trailing" secondItem="532-NN-r8g" secondAttribute="trailing" id="P7g-B8-FbW"/>
                             <constraint firstItem="532-NN-r8g" firstAttribute="trailing" secondItem="xhi-v8-q9y" secondAttribute="trailing" constant="30" id="Qds-cm-O0J"/>
                             <constraint firstItem="U49-zm-Wdu" firstAttribute="leading" secondItem="532-NN-r8g" secondAttribute="leading" constant="32" id="Rva-gF-HjX"/>
@@ -399,6 +438,7 @@
                             <constraint firstItem="Bxq-8I-XEG" firstAttribute="top" secondItem="U49-zm-Wdu" secondAttribute="bottom" constant="5" id="mat-g0-Tbb"/>
                             <constraint firstItem="w69-zD-fqx" firstAttribute="top" secondItem="Bxq-8I-XEG" secondAttribute="bottom" id="mgf-mb-dyj"/>
                             <constraint firstItem="CEU-rP-9hp" firstAttribute="leading" secondItem="Yot-G9-YJQ" secondAttribute="trailing" constant="16" id="mzz-ld-JEH"/>
+                            <constraint firstItem="Z6H-g4-dtd" firstAttribute="centerY" secondItem="Dby-de-Qo4" secondAttribute="centerY" id="pCh-jK-V1z"/>
                             <constraint firstItem="532-NN-r8g" firstAttribute="trailing" secondItem="myX-pI-X0y" secondAttribute="trailing" constant="12" id="rMx-lc-M1G"/>
                             <constraint firstItem="532-NN-r8g" firstAttribute="trailing" secondItem="U49-zm-Wdu" secondAttribute="trailing" constant="16" id="raq-f5-Ia7"/>
                             <constraint firstItem="sVk-ch-tQo" firstAttribute="top" secondItem="Yot-G9-YJQ" secondAttribute="bottom" constant="1" id="s7D-Hd-8p6"/>
@@ -425,12 +465,14 @@
                         <outlet property="monthLabel" destination="sVk-ch-tQo" id="ezM-Uy-iJO"/>
                         <outlet property="monthView" destination="Bxq-8I-XEG" id="voj-aS-MUj"/>
                         <outlet property="nextMonthLabel" destination="Rix-oX-waH" id="M6g-q2-AcS"/>
+                        <outlet property="nonConectView" destination="Z6H-g4-dtd" id="grf-x2-Neo"/>
                         <outlet property="prevMonthLabel" destination="8hC-MU-ShH" id="4cP-dw-tFG"/>
                         <outlet property="rightButton" destination="aGq-JC-a7I" id="cpF-Ui-uYo"/>
                         <outlet property="spinImg" destination="myX-pI-X0y" id="crv-8K-l18"/>
                         <outlet property="support" destination="NvV-sA-b17" id="hBP-HD-H0N"/>
                         <outlet property="supportBtn" destination="YWp-sI-yzl" id="Xlq-CA-9Md"/>
                         <outlet property="tableCounters" destination="w69-zD-fqx" id="pdO-3O-7Ep"/>
+                        <outlet property="updateConectBtn" destination="RjA-0J-vmc" id="ke9-gI-ahU"/>
                         <segue destination="1Cu-k1-ZW5" kind="show" identifier="support" id="LLX-uE-BUY"/>
                         <segue destination="7ty-SY-RPj" kind="show" identifier="addLSMup" id="Tdu-Ia-3Zi"/>
                         <segue destination="DJm-na-37W" kind="show" identifier="addLS" id="HNY-tx-oZc"/>
@@ -485,6 +527,7 @@
     </scenes>
     <resources>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="nonConect" width="180" height="180"/>
         <image name="poll_Mup" width="60" height="60"/>
         <image name="spin.png" width="840" height="840"/>
     </resources>

@@ -18,6 +18,12 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
+    
     @IBOutlet weak var addLS: UILabel!
     @IBOutlet weak var lsView: UIView!
     var edLogin: String = ""
@@ -144,7 +150,15 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nonConectView.isHidden = true
+        lsView.isHidden = false
+        ls_lbl.isHidden = false
+        ls_Button.isHidden = false
+        monthLabel.isHidden = false
+        monthView.isHidden = false
+        can_count_label.isHidden = false
+        tableCounters.isHidden = false
+        spinImg.isHidden = false
         // Получим данные из глобальных сохраненных
         let defaults     = UserDefaults.standard
         edLogin          = defaults.string(forKey: "login")!
@@ -218,10 +232,37 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         indicator.color = myColors.indicatorColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let titles = Titles()
         self.title = titles.getTitle(numb: "4")
-        
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            lsView.isHidden = true
+            ls_lbl.isHidden = true
+            ls_Button.isHidden = true
+            monthLabel.isHidden = true
+            monthView.isHidden = true
+            can_count_label.isHidden = true
+            tableCounters.isHidden = true
+            spinImg.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
     
     func updateBorderDates() {

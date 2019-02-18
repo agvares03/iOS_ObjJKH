@@ -129,12 +129,52 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkZ-Yv-2ss">
+                                <rect key="frame" x="67.5" y="223.5" width="240" height="220"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonConect" translatesAutoresizingMaskIntoConstraints="NO" id="eDJ-pu-GJU">
+                                        <rect key="frame" x="80" y="5" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="J1u-0D-5bq"/>
+                                            <constraint firstAttribute="width" constant="80" id="p9F-vT-8QE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка загрузки данных, проверьте соединение с интернетом" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8w-YD-lbT">
+                                        <rect key="frame" x="5" y="95" width="230" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4J-mD-bJW">
+                                        <rect key="frame" x="78.5" y="171" width="83" height="30"/>
+                                        <state key="normal" title="ОБНОВИТЬ"/>
+                                        <connections>
+                                            <action selector="updateConect:" destination="U2b-iv-QkZ" eventType="touchUpInside" id="duL-pe-0oJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="22b-g7-hJt"/>
+                                    <constraint firstItem="F4J-mD-bJW" firstAttribute="centerX" secondItem="MkZ-Yv-2ss" secondAttribute="centerX" id="4jp-5b-WcZ"/>
+                                    <constraint firstItem="V8w-YD-lbT" firstAttribute="leading" secondItem="MkZ-Yv-2ss" secondAttribute="leading" constant="5" id="Eqy-sT-egr"/>
+                                    <constraint firstItem="V8w-YD-lbT" firstAttribute="top" secondItem="eDJ-pu-GJU" secondAttribute="bottom" constant="10" id="GWz-4m-Z4B"/>
+                                    <constraint firstItem="eDJ-pu-GJU" firstAttribute="centerX" secondItem="MkZ-Yv-2ss" secondAttribute="centerX" id="Mua-TP-Z3m"/>
+                                    <constraint firstItem="F4J-mD-bJW" firstAttribute="top" secondItem="V8w-YD-lbT" secondAttribute="bottom" constant="15" id="N72-8b-Fzk"/>
+                                    <constraint firstItem="V8w-YD-lbT" firstAttribute="centerX" secondItem="MkZ-Yv-2ss" secondAttribute="centerX" id="Sj6-qj-oLo"/>
+                                    <constraint firstAttribute="trailing" secondItem="V8w-YD-lbT" secondAttribute="trailing" constant="5" id="ULx-tG-0k5"/>
+                                    <constraint firstItem="eDJ-pu-GJU" firstAttribute="top" secondItem="MkZ-Yv-2ss" secondAttribute="top" constant="5" id="orY-4o-l4M"/>
+                                    <constraint firstAttribute="height" constant="220" id="wcb-Rp-hTh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5kJ-lz-W62" firstAttribute="centerX" secondItem="IGm-eg-swf" secondAttribute="centerX" id="818-mu-HNF"/>
                             <constraint firstItem="X4O-1i-9wd" firstAttribute="top" secondItem="IGm-eg-swf" secondAttribute="bottom" id="Bf7-Ms-vjM"/>
                             <constraint firstItem="IGm-eg-swf" firstAttribute="trailing" secondItem="XEK-Uf-q23" secondAttribute="trailing" id="Cn8-01-71W"/>
+                            <constraint firstItem="MkZ-Yv-2ss" firstAttribute="centerY" secondItem="Wbc-EY-iOD" secondAttribute="centerY" id="GGJ-Po-0Aa"/>
+                            <constraint firstItem="MkZ-Yv-2ss" firstAttribute="centerX" secondItem="Wbc-EY-iOD" secondAttribute="centerX" id="Jre-4S-LZg"/>
                             <constraint firstItem="X4O-1i-9wd" firstAttribute="trailing" secondItem="XEK-Uf-q23" secondAttribute="trailing" id="aZM-GR-a3g"/>
                             <constraint firstItem="5kJ-lz-W62" firstAttribute="centerY" secondItem="IGm-eg-swf" secondAttribute="centerY" id="d5O-xq-nxF"/>
                             <constraint firstItem="TGF-f7-VJe" firstAttribute="centerX" secondItem="Wbc-EY-iOD" secondAttribute="centerX" id="eNu-aZ-Cdp"/>
@@ -157,9 +197,11 @@
                         <outlet property="back" destination="oLQ-ms-a0E" id="gg9-5s-T32"/>
                         <outlet property="indicator" destination="5kJ-lz-W62" id="7Xv-Yt-xys"/>
                         <outlet property="noDataLbl" destination="TGF-f7-VJe" id="LIs-oL-sqd"/>
+                        <outlet property="nonConectView" destination="MkZ-Yv-2ss" id="n0x-Ix-vLq"/>
                         <outlet property="support" destination="h0f-Yy-qns" id="AuM-Pu-tXZ"/>
                         <outlet property="supportBtn" destination="DwZ-9h-nvG" id="zmz-HC-PSa"/>
                         <outlet property="tableView" destination="IGm-eg-swf" id="I4V-53-JC1"/>
+                        <outlet property="updateConectBtn" destination="F4J-mD-bJW" id="rdb-yi-WpI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hsz-tz-iMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -255,6 +297,7 @@
     </scenes>
     <resources>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="nonConect" width="180" height="180"/>
         <image name="poll_Mup" width="60" height="60"/>
     </resources>
 </document>

@@ -10,33 +10,49 @@ import UIKit
 
 class NewsController: UIViewController, UITableViewDelegate {
 
+    
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     @IBOutlet weak var noDataLbl: UILabel!
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
     @IBOutlet weak var back: UIBarButtonItem!
     
     private var refreshControl: UIRefreshControl?
     var news_read = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        let error = updateUserInterface()
         noDataLbl.isHidden = true
         news_read = UserDefaults.standard.integer(forKey: "request_read")
         self.tableView.estimatedRowHeight = 71
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        
+        nonConectView.isHidden = true
         self.indicator.startAnimating()
-        NewsManager.instance.completionLoaded = { [weak self] in
-            DispatchQueue.main.async {
-                self?.indicator.stopAnimating()
-                self?.tableView.reloadData()
+        if !error{
+            NewsManager.instance.completionLoaded = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.indicator.stopAnimating()
+                    self?.tableView.reloadData()
+                }
+                
             }
             
+            NewsManager.instance.loadNewsIfNeed()
+        }else{
+            let _ = updateUserInterface()
         }
-        
-        NewsManager.instance.loadNewsIfNeed()
         
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
@@ -50,10 +66,26 @@ class NewsController: UIViewController, UITableViewDelegate {
         back.tintColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let titles = Titles()
         self.title = titles.getTitle(numb: "0")
-        
+    }
+    
+    func updateUserInterface() -> Bool {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            tableView.isHidden = true
+            return true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+        return false
+    }
+    @objc func statusManager(_ notification: Notification) {
+        let _ = updateUserInterface()
     }
     
     override func viewWillAppear(_ animated: Bool) {

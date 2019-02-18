@@ -45,6 +45,12 @@ class AdditionalServicesController: UIViewController{
     @IBOutlet weak var supportBtn: UIButton!
     @IBOutlet weak var noDataLbl: UILabel!
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -58,6 +64,8 @@ class AdditionalServicesController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults     = UserDefaults.standard
+        nonConectView.isHidden = true
+        tableView.isHidden = false
         login = defaults.string(forKey: "login")
         pass  = defaults.string(forKey: "pass")
         noDataLbl.isHidden = true
@@ -78,6 +86,28 @@ class AdditionalServicesController: UIViewController{
         self.title = titles.getTitle(numb: "8")
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            tableView.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
     
     private func startAnimation() {

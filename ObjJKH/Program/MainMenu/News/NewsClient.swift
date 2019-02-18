@@ -68,8 +68,14 @@ class NewsClient {
         request.httpMethod = "GET"
         print(request)
         
-        URLSession.shared.dataTask(with: request) {
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
             data, error, responce in
+            
+            if error != nil {
+                print("ERROR")
+                return
+            }
             
             let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
             print("responseString = \(responseString)")
@@ -95,7 +101,8 @@ class NewsClient {
             }
             
             completedBlock(newsList)
-            }.resume()
+        })
+        task.resume()
     }
     
 }

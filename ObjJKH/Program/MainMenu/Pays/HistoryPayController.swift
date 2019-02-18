@@ -14,6 +14,12 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
+    
     @IBOutlet weak var dateConst2: NSLayoutConstraint!
     @IBOutlet weak var dateConst: NSLayoutConstraint!
     @IBOutlet weak var sumConst2: NSLayoutConstraint!
@@ -31,7 +37,9 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
     var pass  = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nonConectView.isHidden = true
+        tableView.isHidden = false
+        headerView.isHidden = false
         login = UserDefaults.standard.string(forKey: "login")!
         pass  = UserDefaults.standard.string(forKey: "pass")!
         parse_OSV(login: login, pass: pass)
@@ -40,12 +48,35 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         back.tintColor = myColors.btnColor.uiColor()
         headerView.backgroundColor = myColors.btnColor.uiColor()
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         if self.view.frame.size.width < 375{
             dateConst.constant = dateConst.constant - 6
             sumConst.constant = sumConst.constant - 6
             dateConst2.constant = dateConst2.constant - 6
             sumConst2.constant = sumConst2.constant - 6
         }
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            tableView.isHidden = true
+            headerView.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
     
     func parse_OSV(login: String, pass: String) {

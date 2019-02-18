@@ -30,6 +30,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
     @IBOutlet weak var addLS: UILabel!
     @IBOutlet weak var lsView: UIView!
     @IBOutlet weak var hiddenAppsView: UIView!
@@ -37,6 +42,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var switchCloseApps: UISwitch!
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
+    
     @IBAction func switch_Go(_ sender: UISwitch) {
         updateCloseApps()
     }
@@ -93,7 +99,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableApps.isHidden = true
             hiddenAppsView.isHidden = true
         }
-        
+        nonConectView.isHidden = true
+        lsView.isHidden = false
+        btnAdd.isHidden = false
+        tableApps.isHidden = false
+        hiddenAppsView.isHidden = false
         // Обновление списка заявок
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
@@ -109,13 +119,37 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         back.tintColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "2")
         
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
-        
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            lsView.isHidden = true
+            btnAdd.isHidden = true
+            tableApps.isHidden = true
+            hiddenAppsView.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
     
     @objc func reload() {

@@ -21,6 +21,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     @IBOutlet weak var lsView: UIView!
     @IBOutlet weak var addLS: UILabel!
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
+    
     @IBOutlet weak var lsLbl: UILabel!
     @IBOutlet weak var spinImg: UIImageView!
     @IBOutlet weak var viewTop: NSLayoutConstraint!
@@ -107,7 +113,12 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         // Логин и пароль
         login = defaults.string(forKey: "login")
         pass  = defaults.string(forKey: "pass")
-        
+        nonConectView.isHidden = true
+        lsLbl.isHidden = false
+        ls_button.isHidden = false
+        tableView.isHidden = false
+        spinImg.isHidden = false
+        sendView.isHidden = false
         // Заполним тек. год и тек. месяц
         iterYear         = defaults.string(forKey: "year_osv")!
         iterMonth        = defaults.string(forKey: "month_osv")!
@@ -153,7 +164,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         viewTop.constant = getPoint()
-        
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         sendView.isUserInteractionEnabled = true
         sendView.addGestureRecognizer(tap)
@@ -176,7 +187,33 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 self.view.addSubview(vc.view)
             }
         })
-        #endif        
+        #endif
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            lsView.isHidden = true
+            lsLbl.isHidden = true
+            ls_button.isHidden = true
+            tableView.isHidden = true
+            spinImg.isHidden = true
+            sendView.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
     
     override func didReceiveMemoryWarning() {

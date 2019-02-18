@@ -23,6 +23,12 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     
     open var performName_ = ""
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
+    
     private var refreshControl: UIRefreshControl?
     private var questions: [QuestionDataJson]? = []
     private var index = 0
@@ -40,7 +46,8 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         automaticallyAdjustsScrollViewInsets = false
         collection.delegate     = self
         collection.dataSource   = self
-        
+        nonConectView.isHidden = true
+        collection.isHidden = false
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         if #available(iOS 10.0, *) {
@@ -58,10 +65,30 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         loader.color = myColors.indicatorColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let titles = Titles()
         self.title = titles.getTitle(numb: "3")
-        
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            collection.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
     
     @objc private func refresh(_ sender: UIRefreshControl?) {

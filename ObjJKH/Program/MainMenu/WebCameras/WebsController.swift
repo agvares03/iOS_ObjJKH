@@ -15,6 +15,12 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
+    
     @IBOutlet weak var back: UIBarButtonItem!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,7 +64,8 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nonConectView.isHidden = true
+        collection.isHidden = false
         automaticallyAdjustsScrollViewInsets = false
         collection.delegate     = self
         collection.dataSource   = self
@@ -74,7 +81,28 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.title = titles.getTitle(numb: "7")
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            collection.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
 
     override func didReceiveMemoryWarning() {

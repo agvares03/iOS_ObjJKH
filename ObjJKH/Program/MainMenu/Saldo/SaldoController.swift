@@ -24,6 +24,12 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
+    
     let dropper = Dropper(width: 150, height: 400)
     
     var login: String?
@@ -142,7 +148,15 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         let defaults     = UserDefaults.standard
         currYear         = defaults.string(forKey: "year_osv")!
         currMonth        = defaults.string(forKey: "month_osv")!
-        
+        nonConectView.isHidden = true
+        lsView.isHidden = true
+        LsLbl.isHidden = false
+        ls_button.isHidden = false
+        monthLabel.isHidden = false
+        monthView.isHidden = false
+        tableOSV.isHidden = false
+        spinImg.isHidden = false
+        btnPay.isHidden = false
         iterMonth = currMonth
         iterYear = currYear
         
@@ -204,7 +218,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let titles = Titles()
         self.title = titles.getTitle(numb: "5")
         
@@ -217,7 +231,34 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             btnPay.isHidden = true
             can_btn_pay.constant = 0
         #endif
-        
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            lsView.isHidden = true
+            LsLbl.isHidden = true
+            ls_button.isHidden = true
+            monthLabel.isHidden = true
+            monthView.isHidden = true
+            tableOSV.isHidden = true
+            spinImg.isHidden = true
+            btnPay.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
     
     func updateBorderDates() {

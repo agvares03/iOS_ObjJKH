@@ -15,6 +15,13 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var problemTxt: UITextView!
     @IBOutlet weak var ver_Lbl: UILabel!
     
+    @IBAction func updateConect(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
+    @IBOutlet weak var updateConectBtn: UIButton!
+    @IBOutlet weak var nonConectView: UIView!
+    
+    @IBOutlet weak var questionLbl: UILabel!
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!
     @IBOutlet weak var separator3: UIView!
@@ -101,6 +108,15 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nonConectView.isHidden = true
+        questionLbl.isHidden = false
+        phoneTxt.isHidden = false
+        separator1.isHidden = false
+        separator2.isHidden = false
+        separator3.isHidden = false
+        sendBtn.isHidden = false
+        problemTxt.isHidden = false
+        emailTxt.isHidden = false
         let version = targetSettings().getVersion()
         ver_Lbl.text = "ver. " + version
         problemTxt.delegate = self
@@ -124,10 +140,39 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         separator3.backgroundColor = myColors.labelColor.uiColor()
         ver_Lbl.textColor = myColors.labelColor.uiColor()
         backBtn.tintColor = myColors.btnColor.uiColor()
+        updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(statusManager),
+                         name: .flagsChanged,
+                         object: Network.reachability)
+        updateUserInterface()
+    }
+    
+    func updateUserInterface() {
+        switch Network.reachability.status {
+        case .unreachable:
+            nonConectView.isHidden = false
+            questionLbl.isHidden = true
+            phoneTxt.isHidden = true
+            separator1.isHidden = true
+            separator2.isHidden = true
+            separator3.isHidden = true
+            sendBtn.isHidden = true
+            problemTxt.isHidden = true
+            emailTxt.isHidden = true
+        case .wifi: break
+            
+        case .wwan: break
+            
+        }
+    }
+    @objc func statusManager(_ notification: Notification) {
+        updateUserInterface()
     }
     
     override func viewWillAppear(_ animated: Bool) {
