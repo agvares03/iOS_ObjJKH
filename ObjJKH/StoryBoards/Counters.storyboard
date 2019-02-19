@@ -216,6 +216,9 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показания не переданы" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykn-uJ-a9O">
                                                     <rect key="frame" x="38" y="84" width="179" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="Kjy-Wy-X8z"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -224,6 +227,7 @@
                                                     <rect key="frame" x="217" y="83" width="143" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="143" id="9C4-uX-OUD"/>
+                                                        <constraint firstAttribute="height" constant="17" id="sPB-Sr-Ekt"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -290,10 +294,10 @@
                                             <outlet property="diffLbl" destination="oy2-1x-ZWy" id="JCv-vK-SlA"/>
                                             <outlet property="ident" destination="cXz-4l-Db0" id="wx5-Re-qG9"/>
                                             <outlet property="imgCounter" destination="CYr-78-S1z" id="mun-HT-Cmd"/>
-                                            <outlet property="lblHeight1" destination="mfs-gY-awe" id="G4f-6C-Dbi"/>
+                                            <outlet property="lblHeight1" destination="Kjy-Wy-X8z" id="SjU-04-Vid"/>
                                             <outlet property="lblHeight2" destination="Bal-gH-sZw" id="g3H-ST-baU"/>
                                             <outlet property="lblHeight3" destination="fuv-Ry-3cm" id="EJ0-Gl-vsH"/>
-                                            <outlet property="lblHeight4" destination="UNc-2D-3Va" id="h3L-7h-wAd"/>
+                                            <outlet property="lblHeight4" destination="sPB-Sr-Ekt" id="Yf0-4n-kjY"/>
                                             <outlet property="lblHeight5" destination="mAo-iV-jVr" id="yV7-na-4Bq"/>
                                             <outlet property="lblHeight6" destination="0MF-wG-Dmc" id="JpF-xk-rLa"/>
                                             <outlet property="name" destination="AH2-gF-XLe" id="zp7-5s-xte"/>

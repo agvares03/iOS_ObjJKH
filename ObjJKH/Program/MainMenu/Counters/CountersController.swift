@@ -477,10 +477,8 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             cell.predLbl.isHidden = false
             cell.teckLbl.isHidden = false
             cell.diffLbl.isHidden = false
-            cell.lblHeight1.constant = 16
             cell.lblHeight2.constant = 16
             cell.lblHeight3.constant = 16
-            cell.lblHeight4.constant = 16
             cell.lblHeight5.constant = 16
             cell.lblHeight6.constant = 16
         }else{
@@ -516,6 +514,17 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         if (countName.lowercased().range(of: "элект") != nil){
             cell.imgCounter.image = UIImage(named: "lamp")
             cell.viewImgCounter.backgroundColor = .yellow
+        }
+        if self.nextMonthLabel.isHidden == true{
+            cell.sendCounter.isHidden = false
+            cell.nonCounter.isHidden = false
+            cell.lblHeight1.constant = 17
+            cell.lblHeight4.constant = 17
+        }else{
+            cell.sendCounter.isHidden = true
+            cell.nonCounter.isHidden = true
+            cell.lblHeight1.constant = 0
+            cell.lblHeight4.constant = 0
         }
         cell.delegate = self
         return cell
