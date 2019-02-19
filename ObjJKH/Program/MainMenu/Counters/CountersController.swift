@@ -489,16 +489,12 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
             let underlineAttributedString = NSAttributedString(string: "Передать показания", attributes: underlineAttribute)
             cell.sendCounter.attributedText = underlineAttributedString
-            cell.pred.isHidden = true
             cell.teck.isHidden = true
             cell.diff.isHidden = true
-            cell.predLbl.isHidden = true
             cell.teckLbl.isHidden = true
             cell.diffLbl.isHidden = true
-            cell.lblHeight1.constant = 0
             cell.lblHeight2.constant = 0
             cell.lblHeight3.constant = 0
-            cell.lblHeight4.constant = 0
             cell.lblHeight5.constant = 0
             cell.lblHeight6.constant = 0
         }
