@@ -517,14 +517,8 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         }
         if self.nextMonthLabel.isHidden == true{
             cell.sendCounter.isHidden = false
-            cell.nonCounter.isHidden = false
-            cell.lblHeight1.constant = 17
-            cell.lblHeight4.constant = 17
         }else{
             cell.sendCounter.isHidden = true
-            cell.nonCounter.isHidden = true
-            cell.lblHeight1.constant = 0
-            cell.lblHeight4.constant = 0
         }
         cell.delegate = self
         return cell
