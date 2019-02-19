@@ -64,18 +64,7 @@ class DB: NSObject, XMLParserDelegate {
         // Удалим данные из базы данных
         del_db(table_name: "Saldo")
         // Получим данные в базу данных
-//        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
-//        let str_ls_arr = str_ls?.components(separatedBy: ",")
-//        if ((str_ls_arr?.count)! > 0) {
-//            if str_ls_arr?[0] != ""{
-//                for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
-//                    data.append((str_ls_arr?[i])!)
-//                }
-//            }
-//        }
-//        data.forEach{
-            parse_OSV(login: login, pass: pass)
-//        }
+        parse_OSV(login: login, pass: pass)
         
         // ЗАЯВКИ С КОММЕНТАРИЯМИ
         del_db(table_name: "Applications")
@@ -217,6 +206,12 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.prev_value    = (attributeDict["PreviousValue"]! as NSString).floatValue
             managedObject.value         = (attributeDict["Value"]! as NSString).floatValue
             managedObject.diff          = (attributeDict["Difference"]! as NSString).floatValue
+            if attributeDict["IsSended"] == "1"{
+                managedObject.sended    = true
+            }else{
+                managedObject.sended    = false
+            }
+            
             CoreDataManager.instance.saveContext()
         }
         

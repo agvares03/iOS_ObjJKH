@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,6 +31,12 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оплата обрабатывается 2-3 рабочих дня" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7d-d8-l1A">
+                            <rect key="frame" x="5" y="163.5" width="240" height="41"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ok" translatesAutoresizingMaskIntoConstraints="NO" id="mPF-Zx-fck">
                             <rect key="frame" x="65" y="0.0" width="120" height="120"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -48,7 +54,11 @@
                         <constraint firstAttribute="width" constant="250" id="O0V-cq-aOb"/>
                         <constraint firstItem="mPF-Zx-fck" firstAttribute="centerX" secondItem="yXV-du-yk7" secondAttribute="centerX" id="UQG-Ir-eIQ"/>
                         <constraint firstAttribute="trailing" secondItem="TRl-K3-Klo" secondAttribute="trailing" constant="16" id="dLH-df-g4b"/>
+                        <constraint firstItem="L7d-d8-l1A" firstAttribute="centerX" secondItem="yXV-du-yk7" secondAttribute="centerX" id="hgF-Uk-c8b"/>
+                        <constraint firstItem="L7d-d8-l1A" firstAttribute="top" secondItem="TRl-K3-Klo" secondAttribute="bottom" constant="8" id="kas-h5-QCF"/>
                         <constraint firstItem="TRl-K3-Klo" firstAttribute="top" secondItem="mPF-Zx-fck" secondAttribute="bottom" constant="15" id="oq2-bg-nQ7"/>
+                        <constraint firstAttribute="trailing" secondItem="L7d-d8-l1A" secondAttribute="trailing" constant="5" id="tMS-gg-8bP"/>
+                        <constraint firstItem="L7d-d8-l1A" firstAttribute="leading" secondItem="yXV-du-yk7" secondAttribute="leading" constant="5" id="tVr-Yv-nR8"/>
                         <constraint firstItem="TRl-K3-Klo" firstAttribute="leading" secondItem="yXV-du-yk7" secondAttribute="leading" constant="16" id="yq0-Pu-Sj9"/>
                     </constraints>
                 </view>

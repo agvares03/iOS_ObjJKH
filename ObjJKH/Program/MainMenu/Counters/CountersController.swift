@@ -111,7 +111,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             updateArrowsEnabled()
             updateEditInfoLabel()
         }else{
-            let ident = identArr[0]
+            let ident = choiceIdent
             updateMonthLabel()
             getData(ident: ident)
             updateArrowsEnabled()
@@ -140,7 +140,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             updateArrowsEnabled()
             updateEditInfoLabel()
         }else{
-            let ident = identArr[0]
+            let ident = choiceIdent
             updateMonthLabel()
             getData(ident: ident)
             updateArrowsEnabled()
@@ -302,6 +302,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         teckArr.removeAll()
         diffArr.removeAll()
         unitArr.removeAll()
+        sendedArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         do {
@@ -317,6 +318,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
                         teckArr.append(object.value(forKey: "value") as! Float)
                         diffArr.append(object.value(forKey: "diff") as! Float)
                         unitArr.append(object.value(forKey: "unit_name") as! String)
+                        sendedArr.append(object.value(forKey: "sended") as! Bool)
                     }
                 }
             }
@@ -411,6 +413,9 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     }
     
     func isEditable() -> Bool {
+        if self.nextMonthLabel.isHidden == false{
+            return false
+        }
         return iterYear == currYear && iterMonth == currMonth && can_edit == "1"
     }
     
@@ -429,32 +434,93 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             }
         }
     }
+    
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 154.0
+//        return 170.0
 //    }
     
+    var sendedArr:[Bool] = []
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "CounterCell") as! CounterCell
+        var send = false
+        var countName = ""
         if choiceIdent == ""{
             let counter = (fetchedResultsController?.object(at: indexPath))! as Counters
             self.Count = counter
-            
             cell.ident.text       = counter.ident
             cell.name.text        = String(counter.count_name! + ", " + counter.unit_name!)
+            countName             = counter.count_name!
             cell.number.text      = counter.owner
             cell.pred.text        = String(format:"%.2f", counter.prev_value)
             cell.teck.text        = String(format:"%.2f", counter.value)
             cell.diff.text        = String(format:"%.2f", counter.diff)
+            send = counter.sended
         }else{
             cell.ident.text       = identArr[indexPath.row]
             cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.number.text      = numberArr[indexPath.row]
+            countName             = nameArr[indexPath.row]
             cell.pred.text        = String(format:"%.2f", predArr[indexPath.row])
             cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
             cell.diff.text        = String(format:"%.2f", diffArr[indexPath.row])
+            send = sendedArr[indexPath.row]
         }
-        
-        
+        if send{
+            cell.nonCounter.text = "Показания переданы"
+            cell.sendCounter.textColor = myColors.indicatorColor.uiColor()
+            let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+            let underlineAttributedString = NSAttributedString(string: "Изменить показания", attributes: underlineAttribute)
+            cell.sendCounter.attributedText = underlineAttributedString
+            cell.pred.isHidden = false
+            cell.teck.isHidden = false
+            cell.diff.isHidden = false
+            cell.predLbl.isHidden = false
+            cell.teckLbl.isHidden = false
+            cell.diffLbl.isHidden = false
+            cell.lblHeight1.constant = 16
+            cell.lblHeight2.constant = 16
+            cell.lblHeight3.constant = 16
+            cell.lblHeight4.constant = 16
+            cell.lblHeight5.constant = 16
+            cell.lblHeight6.constant = 16
+        }else{
+            cell.nonCounter.text = "Показания не переданы"
+            cell.sendCounter.textColor = myColors.indicatorColor.uiColor()
+            let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+            let underlineAttributedString = NSAttributedString(string: "Передать показания", attributes: underlineAttribute)
+            cell.sendCounter.attributedText = underlineAttributedString
+            cell.pred.isHidden = true
+            cell.teck.isHidden = true
+            cell.diff.isHidden = true
+            cell.predLbl.isHidden = true
+            cell.teckLbl.isHidden = true
+            cell.diffLbl.isHidden = true
+            cell.lblHeight1.constant = 0
+            cell.lblHeight2.constant = 0
+            cell.lblHeight3.constant = 0
+            cell.lblHeight4.constant = 0
+            cell.lblHeight5.constant = 0
+            cell.lblHeight6.constant = 0
+        }
+        cell.imgCounter.image = UIImage(named: "water")
+        if (countName.lowercased().range(of: "гвс") != nil){
+            cell.viewImgCounter.backgroundColor = .red
+        }
+        if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil){
+            cell.viewImgCounter.backgroundColor = .blue
+        }
+        if (countName.lowercased().range(of: "газ") != nil){
+            cell.imgCounter.image = UIImage(named: "fire")
+            cell.viewImgCounter.backgroundColor = .yellow
+        }
+        if (countName.lowercased().range(of: "тепло") != nil){
+            cell.imgCounter.image = UIImage(named: "fire")
+            cell.viewImgCounter.backgroundColor = .red
+        }
+        if (countName.lowercased().range(of: "элект") != nil){
+            cell.imgCounter.image = UIImage(named: "lamp")
+            cell.viewImgCounter.backgroundColor = .yellow
+        }
         cell.delegate = self
         return cell
 
@@ -485,6 +551,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         ls_Button.setTitle(contents, for: UIControlState.normal)
         if (contents == "Все") {
             choiceIdent = ""
+            sendedArr.removeAll()
             updateTable()
         } else {
             choiceIdent = contents

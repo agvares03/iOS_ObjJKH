@@ -54,6 +54,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     var currPoint = CGFloat()
     let dropper = Dropper(width: 150, height: 400)
     
+    public var saldoIdent = "Все"
     
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_obj: UITextField!
@@ -155,7 +156,14 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_button)
         dropper.hideWithAnimation(0.001)
         
-        end_osv()
+        if saldoIdent == "Все"{
+            end_osv()
+        }else{
+            ls_button.setTitle(saldoIdent, for: UIControlState.normal)
+            selectLS = saldoIdent
+            choiceIdent = saldoIdent
+            getData(ident: saldoIdent)
+        }
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
@@ -290,6 +298,8 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         checkBox.removeAll()
         sumOSV.removeAll()
         osvc.removeAll()
+        uslugaArr.removeAll()
+        endArr.removeAll()
         var endSum = 0.00
         // Выборка из БД последней ведомости - посчитаем сумму к оплате
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
@@ -313,9 +323,9 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                     //                    self.txt_sum_jkh.text = "0,00 р."
                     self.txt_sum_obj.text = "0,00"
                 }
-                self.updateFetchedResultsController()
-                self.updateTable()
-                
+                if self.saldoIdent == "Все"{
+                    self.updateFetchedResultsController()
+                }
             })
             
         } catch {
@@ -331,6 +341,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         } catch {
             print(error)
         }
+        self.updateTable()
     }
     
     func updateTable() {
@@ -347,6 +358,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
         }else{
             if uslugaArr.count != 0 {
+                kol = uslugaArr.count
                 return uslugaArr.count
             } else {
                 return 0
@@ -358,7 +370,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     var update = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PayCell") as! PaySaldoCell
-        let osv = fetchedResultsController!.object(at: indexPath)
         if select == false && update == false{
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
         }else{
@@ -376,6 +387,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         cell.check.backgroundColor = .white
         if update == false  && sumOSV.count != kol{
             if choiceIdent == ""{
+                let osv = fetchedResultsController!.object(at: indexPath)
                 let sum:String = osv.end!
                 osvc.append(osv.usluga!)
                 checkBox.append(true)
@@ -394,6 +406,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
         }
         if choiceIdent == ""{
+            let osv = fetchedResultsController!.object(at: indexPath)
             if (osv.usluga == "Я") {
                 cell.usluga.text = "ИТОГО"
             } else {

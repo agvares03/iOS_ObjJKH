@@ -105,10 +105,17 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         iterMonth = String(m)
         iterYear = String(y)
         
-        updateFetchedResultsController()
-        updateMonthLabel()
-        updateTable()
-        updateArrowsEnabled()
+        if choiceIdent == ""{
+            updateFetchedResultsController()
+            updateMonthLabel()
+            updateTable()
+            updateArrowsEnabled()
+        }else{
+            let ident = choiceIdent
+            updateMonthLabel()
+            getData(ident: ident)
+            updateArrowsEnabled()
+        }
     }
     
     @IBAction func PayBtnAction(_ sender: UIButton) {
@@ -116,6 +123,30 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #else
         self.performSegue(withIdentifier: "pays", sender: self)
+        #endif
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        #if isMupRCMytishi
+        if segue.identifier == "paysMytishi" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! PaysMytishiController
+            if choiceIdent == ""{
+                payController.saldoIdent = "Все"
+            }else{
+                payController.saldoIdent = choiceIdent
+            }
+        }
+        #else
+        if segue.identifier == "pays" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! PaysController
+            if choiceIdent == ""{
+                payController.saldoIdent = "Все"
+            }else{
+                payController.saldoIdent = choiceIdent
+            }
+        }
         #endif
     }
     
@@ -133,11 +164,17 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         iterMonth = String(m)
         iterYear = String(y)
-        
-        updateFetchedResultsController()
-        updateMonthLabel()
-        updateTable()
-        updateArrowsEnabled()
+        if choiceIdent == ""{
+            updateFetchedResultsController()
+            updateMonthLabel()
+            updateTable()
+            updateArrowsEnabled()
+        }else{
+            let ident = choiceIdent
+            updateMonthLabel()
+            getData(ident: ident)
+            updateArrowsEnabled()
+        }
     }
     
     

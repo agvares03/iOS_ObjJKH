@@ -57,6 +57,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var currPoint = CGFloat()
     let dropper = Dropper(width: 150, height: 400)
     
+    public var saldoIdent = "Все"
     
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
@@ -240,7 +241,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_button)
         dropper.hideWithAnimation(0.001)
         
-        end_osv()
+        if saldoIdent == "Все"{
+            end_osv()
+        }else{
+            ls_button.setTitle(saldoIdent, for: UIControlState.normal)
+            selectLS = saldoIdent
+            choiceIdent = saldoIdent
+            getData(ident: saldoIdent)
+        }
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
@@ -366,6 +374,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         checkBox.removeAll()
         sumOSV.removeAll()
         osvc.removeAll()
+        uslugaArr.removeAll()
+        endArr.removeAll()
+        idArr.removeAll()
+        identOSV.removeAll()
         // Выборка из БД последней ведомости - посчитаем сумму к оплате
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
@@ -427,6 +439,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }else{
             if uslugaArr.count != 0 {
+                kol = uslugaArr.count
                 return uslugaArr.count
             } else {
                 return 0
@@ -437,7 +450,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var select = false
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PayMupCell") as! PayMupSaldoCell
-        let osv = fetchedResultsController!.object(at: indexPath)
         if select == false && update == false{
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
         }else{
@@ -455,6 +467,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         cell.check.backgroundColor = .white
         if update == false && sumOSV.count != kol{
             if choiceIdent == ""{
+                let osv = fetchedResultsController!.object(at: indexPath)
                 let sum:String = osv.end!
                 osvc.append(osv.usluga!)
                 checkBox.append(true)
@@ -472,6 +485,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         var sub: String = ""
         if choiceIdent == ""{
+            let osv = fetchedResultsController!.object(at: indexPath)
             if (osv.usluga == "Я") {
                 cell.usluga.text = "ИТОГО"
             } else {
@@ -496,6 +510,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
         }
         if choiceIdent == ""{
+            let osv = fetchedResultsController!.object(at: indexPath)
             if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
                 cell.end.isUserInteractionEnabled = false
                 cell.end.isHidden = true
@@ -504,6 +519,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }else{
                 cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
                 cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+                cell.end.isUserInteractionEnabled = true
                 cell.endL.isHidden = true
                 cell.end.isHidden = false
 //                print(osv.end)
@@ -512,7 +528,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     for i in 0...osvc.count - 1{
                         let code:String = osvc[i] + identOSV[i]
                         if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
-                            print(code, sumOSV[i])
+//                            print(code, sumOSV[i])
                             cell.end.text = String(sumOSV[i])
                         }
                     }
@@ -527,6 +543,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }else{
                 cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
                 cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+                cell.end.isUserInteractionEnabled = true
                 cell.endL.isHidden = true
                 cell.end.isHidden = false
                 cell.end.text = endArr[indexPath.row]
