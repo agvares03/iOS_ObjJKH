@@ -81,6 +81,12 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         load_data()
         updateTable()
         
+        nonConectView.isHidden = true
+        lsView.isHidden = true
+        btnAdd.isHidden = false
+        tableApps.isHidden = false
+        hiddenAppsView.isHidden = false
+        
         let str_ls = UserDefaults.standard.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         
@@ -99,11 +105,6 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableApps.isHidden = true
             hiddenAppsView.isHidden = true
         }
-        nonConectView.isHidden = true
-        lsView.isHidden = false
-        btnAdd.isHidden = false
-        tableApps.isHidden = false
-        hiddenAppsView.isHidden = false
         // Обновление списка заявок
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
