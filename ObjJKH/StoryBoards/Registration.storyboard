@@ -144,6 +144,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Если Вы уже регистрировались" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ql8-G4-Jbl">
+                                <rect key="frame" x="16" y="359" width="343" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwB-J1-WA5">
+                                <rect key="frame" x="142.5" y="382" width="90" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="92A-e4-00z"/>
+                                    <constraint firstAttribute="height" constant="40" id="uFV-P2-5iE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="ВОЙТИ"/>
+                                <connections>
+                                    <action selector="authAction:" destination="GGx-a3-SIH" eventType="touchUpInside" id="m62-4p-bam"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration">
@@ -154,6 +172,7 @@
                             <constraint firstItem="hYj-WW-NbP" firstAttribute="leading" secondItem="HWf-Gf-t2n" secondAttribute="leading" constant="16" id="3Yk-Kc-1s4"/>
                             <constraint firstItem="Uee-vE-JzD" firstAttribute="leading" secondItem="HWf-Gf-t2n" secondAttribute="leading" constant="8" id="5wa-NV-qAc"/>
                             <constraint firstItem="HWQ-uE-0ye" firstAttribute="leading" secondItem="cuN-h3-BPa" secondAttribute="trailing" constant="8" id="9C0-Fx-IxP"/>
+                            <constraint firstItem="Ql8-G4-Jbl" firstAttribute="top" secondItem="fwj-mk-VbZ" secondAttribute="bottom" constant="24" id="BFJ-on-wT7"/>
                             <constraint firstItem="cuN-h3-BPa" firstAttribute="top" secondItem="M3r-h6-fRh" secondAttribute="bottom" constant="23" id="CeO-KR-07Z"/>
                             <constraint firstItem="hYj-WW-NbP" firstAttribute="top" secondItem="HWf-Gf-t2n" secondAttribute="top" constant="16" id="DZa-zW-Lva"/>
                             <constraint firstItem="EmV-63-soZ" firstAttribute="top" secondItem="Ctn-aF-W4n" secondAttribute="bottom" constant="-2" id="FTw-KY-l8f"/>
@@ -164,11 +183,16 @@
                             <constraint firstItem="DHU-zY-yzc" firstAttribute="top" secondItem="M3r-h6-fRh" secondAttribute="bottom" constant="76" id="MDw-bf-pyG"/>
                             <constraint firstItem="HWf-Gf-t2n" firstAttribute="trailing" secondItem="Uee-vE-JzD" secondAttribute="trailing" constant="8" id="RGU-E6-LXh"/>
                             <constraint firstItem="EmV-63-soZ" firstAttribute="trailing" secondItem="t1c-oT-wBe" secondAttribute="trailingMargin" id="bdy-2r-FJL"/>
+                            <constraint firstItem="DwB-J1-WA5" firstAttribute="top" secondItem="Ql8-G4-Jbl" secondAttribute="bottom" constant="5" id="eHx-eB-30w"/>
+                            <constraint firstItem="DwB-J1-WA5" firstAttribute="centerX" secondItem="t1c-oT-wBe" secondAttribute="centerX" id="hxi-g2-GDA"/>
+                            <constraint firstItem="Ql8-G4-Jbl" firstAttribute="leading" secondItem="HWf-Gf-t2n" secondAttribute="leading" constant="16" id="jus-Bf-x8m"/>
                             <constraint firstItem="fwj-mk-VbZ" firstAttribute="leading" secondItem="DHU-zY-yzc" secondAttribute="trailing" constant="30" id="kH7-cb-XGD"/>
+                            <constraint firstItem="Ql8-G4-Jbl" firstAttribute="centerX" secondItem="t1c-oT-wBe" secondAttribute="centerX" id="kk9-YK-ae4"/>
                             <constraint firstItem="M3r-h6-fRh" firstAttribute="top" secondItem="Uee-vE-JzD" secondAttribute="bottom" constant="8" id="kqu-UU-3I2"/>
                             <constraint firstItem="M3r-h6-fRh" firstAttribute="leading" secondItem="HWf-Gf-t2n" secondAttribute="leading" constant="8" id="ljf-so-us4"/>
                             <constraint firstItem="HWf-Gf-t2n" firstAttribute="trailing" secondItem="M3r-h6-fRh" secondAttribute="trailing" constant="8" id="mlG-Dp-2ne"/>
                             <constraint firstItem="HWf-Gf-t2n" firstAttribute="trailing" secondItem="fwj-mk-VbZ" secondAttribute="trailing" constant="16" id="oUl-C3-gfC"/>
+                            <constraint firstItem="HWf-Gf-t2n" firstAttribute="trailing" secondItem="Ql8-G4-Jbl" secondAttribute="trailing" constant="16" id="ok6-ga-5hG"/>
                             <constraint firstItem="fwj-mk-VbZ" firstAttribute="top" secondItem="M3r-h6-fRh" secondAttribute="bottom" constant="76" id="vX7-6c-MeH"/>
                             <constraint firstItem="HWQ-uE-0ye" firstAttribute="top" secondItem="M3r-h6-fRh" secondAttribute="bottom" constant="23" id="y06-KC-DbW"/>
                         </constraints>
@@ -182,6 +206,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="authBtn" destination="DwB-J1-WA5" id="AyH-Gw-GZK"/>
+                        <outlet property="authLbl" destination="Ql8-G4-Jbl" id="NEK-DI-zXu"/>
                         <outlet property="backBtn" destination="KpA-LE-TPi" id="Iqt-BK-UXW"/>
                         <outlet property="btnCancel" destination="DHU-zY-yzc" id="0fF-DH-kca"/>
                         <outlet property="btnReg" destination="fwj-mk-VbZ" id="luM-Bn-e3G"/>
@@ -190,11 +216,13 @@
                         <outlet property="indicator" destination="Lnh-xc-ko1" id="Nyv-l7-iSH"/>
                         <outlet property="person" destination="wiu-zY-IaF" id="RpE-b5-p5t"/>
                         <outlet property="phone" destination="Vyg-Lx-rMU" id="mWH-61-05f"/>
+                        <outlet property="regBtnWidth" destination="x3U-PH-gl3" id="mHF-v1-NJZ"/>
                         <outlet property="separator1" destination="2nR-Gi-Rq2" id="za0-96-YKa"/>
                         <outlet property="separator2" destination="EmV-63-soZ" id="LXp-FR-hTF"/>
                         <outlet property="switch_can" destination="cuN-h3-BPa" id="fOS-wa-jBx"/>
                         <segue destination="MvW-De-vpp" kind="show" identifier="GetSMS" id="EkP-dE-7U2"/>
                         <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="BRR-sj-Z8H"/>
+                        <segue destination="dSs-8F-Ong" kind="show" identifier="start_app" id="8NC-1r-Q06"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBe-KJ-jg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -331,6 +359,7 @@
                         <outlet property="separator1" destination="ujo-8b-qvK" id="lzn-ua-FPk"/>
                         <segue destination="RFk-ku-hT4" kind="show" identifier="SendNewPass" id="QsT-I0-IRy"/>
                         <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="79Z-3o-APL"/>
+                        <segue destination="dSs-8F-Ong" kind="show" identifier="start_app" id="qca-ii-V6F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6e-Aq-4Rr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -344,6 +373,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ka2-LI-05i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1041" y="470"/>
+        </scene>
+        <!--authView-->
+        <scene sceneID="IAu-lb-Gm6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="authView" id="dSs-8F-Ong" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ka-K1-Rwh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="463"/>
         </scene>
         <!--Введите пароль-->
         <scene sceneID="3Md-zF-3TZ">
@@ -505,6 +542,7 @@
                         <outlet property="separator2" destination="g2R-eC-ay3" id="zWw-lA-Ndc"/>
                         <segue destination="OFk-58-7H5" kind="show" identifier="GoToApp" id="gc6-Oy-WC7"/>
                         <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="MfD-33-Bqq"/>
+                        <segue destination="dSs-8F-Ong" kind="show" identifier="start_app" id="WB9-fi-g7m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdA-qh-MHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -545,6 +583,7 @@
         <image name="phone" width="28.799999237060547" height="28.799999237060547"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BRR-sj-Z8H"/>
+        <segue reference="WB9-fi-g7m"/>
+        <segue reference="MfD-33-Bqq"/>
     </inferredMetricsTieBreakers>
 </document>

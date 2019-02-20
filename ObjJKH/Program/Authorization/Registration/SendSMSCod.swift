@@ -27,10 +27,16 @@ class SendSMSCod: UIViewController {
         send_sms(itsAgain: true)
     }
     
+    public var firstEnter = false
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "", message: "Вы действительно хотите прервать регистрацию?", preferredStyle: .alert)
         let exitAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            if self.firstEnter == false{
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }else{
+                self.performSegue(withIdentifier: "start_app", sender: self)
+            }
         }
         let cancelAction = UIAlertAction(title: "Нет", style: .default) { (_) -> Void in        }
         alert.addAction(exitAction)
@@ -174,6 +180,25 @@ class SendSMSCod: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SendNewPass"{
+            let defaults = UserDefaults.standard
+            let login = defaults.string(forKey: "login")
+            if login == "" || login == nil{
+                let payController             = segue.destination as! NewPass
+                payController.firstEnter = true
+            }
+        }
+        if segue.identifier == "start_app"{
+            let defaults = UserDefaults.standard
+            let login = defaults.string(forKey: "login")
+            if login == "" || login == nil{
+                let payController             = segue.destination as! FirstController
+                payController.firstEnter = true
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -194,6 +219,11 @@ class SendSMSCod: UIViewController {
         backBtn.tintColor = myColors.btnColor.uiColor()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     func getServerUrlSendSMSAgain(phone PhoneText:String) -> String {
         return Server.SERVER + Server.MOBILE_API_PATH + Server.SEND_CHECK_PASS + "phone=" + PhoneText.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
     }

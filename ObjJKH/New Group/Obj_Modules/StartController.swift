@@ -180,7 +180,21 @@ class StartController: UIViewController {
         if progressValue < 1.0 {
             self.perform(#selector(start_app), with: nil, afterDelay: 0.01)
         } else {
-            self.performSegue(withIdentifier: "start_app", sender: self)
+            let defaults = UserDefaults.standard
+            let login = defaults.string(forKey: "login")
+            if login == "" || login == nil{
+                self.performSegue(withIdentifier: "reg_app", sender: self)
+            }else{
+                self.performSegue(withIdentifier: "start_app", sender: self)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "reg_app" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! Registration
+            payController.firstEnter = true
         }
     }
     

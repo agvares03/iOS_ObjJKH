@@ -18,6 +18,7 @@ class NewPass: UIViewController {
     
     var phone: String? = ""
     var responseString: String? = ""
+    public var firstEnter = false
 
     @IBOutlet weak var edPass: UITextField!
     @IBOutlet weak var edPassAgain: UITextField!
@@ -34,7 +35,11 @@ class NewPass: UIViewController {
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "", message: "Вы действительно хотите прервать регистрацию?", preferredStyle: .alert)
         let exitAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            if self.firstEnter == false{
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }else{
+                self.performSegue(withIdentifier: "start_app", sender: self)
+            }
         }
         let cancelAction = UIAlertAction(title: "Нет", style: .default) { (_) -> Void in        }
         alert.addAction(exitAction)
@@ -208,6 +213,17 @@ class NewPass: UIViewController {
                                                     
             })
             task.resume()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "start_app"{
+            let defaults = UserDefaults.standard
+            let login = defaults.string(forKey: "login")
+            if login == "" || login == nil{
+                let payController             = segue.destination as! FirstController
+                payController.firstEnter = true
+            }
         }
     }
     

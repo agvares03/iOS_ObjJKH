@@ -10,21 +10,29 @@ import UIKit
 
 class Registration: UIViewController {
     
+    @IBOutlet weak var authBtn: UIButton!
+    @IBOutlet weak var authLbl: UILabel!
     @IBOutlet weak var edPhone: UITextField!
     @IBOutlet weak var edFIO: UITextField!
     @IBOutlet weak var btnReg: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var backBtn: UIBarButtonItem!
+    @IBOutlet weak var regBtnWidth: NSLayoutConstraint!
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!    
     @IBOutlet weak var phone: UIImageView!
     @IBOutlet weak var person: UIImageView!
     
+    public var firstEnter = false
+    
     @IBOutlet weak var switch_can: UISwitch!
     var responseString: String = ""
     
+    @IBAction func authAction(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "start_app", sender: self)
+    }
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "", message: "Вы действительно хотите прервать регистрацию?", preferredStyle: .alert)
         let exitAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
@@ -97,18 +105,51 @@ class Registration: UIViewController {
         separator1.backgroundColor = myColors.labelColor.uiColor()
         separator2.backgroundColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
+        btnCancel.isHidden = false
+        authLbl.isHidden = true
+        authBtn.isHidden = true
         
         phone.image = myImages.phone_image
         person.image = myImages.person_image
         backBtn.tintColor = myColors.btnColor.uiColor()
+        if firstEnter{
+            btnCancel.isHidden = true
+            authLbl.isHidden = false
+            authBtn.isHidden = false
+            regBtnWidth.constant = self.view.frame.width - 32
+            authBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        }
+        // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "start_app"{
+            let defaults = UserDefaults.standard
+            let login = defaults.string(forKey: "login")
+            if login == "" || login == nil{
+                let payController             = segue.destination as! FirstController
+                payController.firstEnter = true
+            }
+        }
+        if segue.identifier == "GetSMS"{
+            let defaults = UserDefaults.standard
+            let login = defaults.string(forKey: "login")
+            if login == "" || login == nil{
+                let payController             = segue.destination as! SendSMSCod
+                payController.firstEnter = true
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        if firstEnter == true{
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        }else{
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
     }
     
     func getServerUrlBy(phone PhoneText:String, fio txtFIO:String) -> String {

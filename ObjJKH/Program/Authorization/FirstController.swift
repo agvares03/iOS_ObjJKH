@@ -36,6 +36,7 @@ class FirstController: UIViewController {
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!
+    public var firstEnter = false
     
     @IBAction func Enter(_ sender: UIButton) {
         // Проверка на заполнение
@@ -382,7 +383,7 @@ class FirstController: UIViewController {
         let defaults = UserDefaults.standard
         let login = defaults.string(forKey: "login")
         let pass = defaults.string(forKey: "pass")
-        if login == "" || login == nil{
+        if (login == "" || login == nil) && firstEnter == false{
             let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)

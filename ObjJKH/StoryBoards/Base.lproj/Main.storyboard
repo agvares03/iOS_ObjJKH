@@ -48,6 +48,7 @@
                         <outlet property="progress" destination="Mgc-O1-vYb" id="3xP-H0-Tyx"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="start_app" id="Fda-SR-7H1"/>
                         <segue destination="Tf2-V8-fll" kind="show" identifier="update_app" id="G1S-nJ-umK"/>
+                        <segue destination="CSW-ZA-Agb" kind="show" identifier="reg_app" id="pL0-7K-IfN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF5-e1-U8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,7 +130,7 @@
         <!--First Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FirstController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authView" id="BYZ-38-t0r" customClass="FirstController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -598,6 +599,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DlV-Ao-OzX"/>
-        <segue reference="k1G-pj-6pb"/>
+        <segue reference="fZT-TL-lKn"/>
+        <segue reference="Fda-SR-7H1"/>
     </inferredMetricsTieBreakers>
 </document>
