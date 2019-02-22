@@ -26,6 +26,21 @@
               cancelled:(void (^)(void))onCancelled
                   error:(void (^)(ASDKAcquringSdkError *error))onError;
 
++ (void)buyItemWithName:(NSString *)name
+            description:(NSString *)description
+                 amount:(NSNumber *)amount
+              recurrent:(BOOL)recurrent
+             makeCharge:(BOOL)makeCharge
+  additionalPaymentData:(NSDictionary *)data
+            receiptData:(NSDictionary *)receiptData
+                  email:(NSString*)email
+              shopsData:(NSArray *)shopsData
+      shopsReceiptsData:(NSArray *)shopsReceiptsData
+     fromViewController:(UIViewController *)viewController
+                success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+              cancelled:(void (^)(void))onCancelled
+                  error:(void (^)(ASDKAcquringSdkError *error))onError;
+
 + (void)chargeWithRebillId:(NSNumber *)rebillId
 					amount:(NSNumber *)amount
 			   description:(NSString *)description

@@ -21,6 +21,7 @@
 #import <UIKit/UIKit.h>
 #import <ASDKCore/ASDKCore.h>
 #import "ASDKDesignConfiguration.h"
+#import "ASDKLocalized.h"
 #import <PassKit/PassKit.h>
 
 @protocol ASDKAcquiringSdkCardRequisites <NSObject>
@@ -64,6 +65,21 @@
  */
 + (instancetype)paymentFormStarterWithAcquiringSdk:(ASDKAcquiringSdk *)acquiringSdk;
 
+- (void)presentPaymentFormFromViewController:(UIViewController *)presentingViewController
+									 orderId:(NSString *)orderId
+									  amount:(NSNumber *)amount
+									   title:(NSString *)title
+								 description:(NSString *)description
+									  cardId:(NSString *)cardId
+									   email:(NSString *)email
+								 customerKey:(NSString *)customerKey
+								   recurrent:(BOOL)recurrent
+								  makeCharge:(BOOL)makeCharge
+					   additionalPaymentData:(NSDictionary *)data
+								 receiptData:(NSDictionary *)receiptData
+									 success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+								   cancelled:(void (^)(void))onCancelled
+									   error:(void (^)(ASDKAcquringSdkError *error))onError;
 
 - (void)presentPaymentFormFromViewController:(UIViewController *)presentingViewController
                                      orderId:(NSString *)orderId
@@ -77,6 +93,8 @@
 								  makeCharge:(BOOL)makeCharge
 					   additionalPaymentData:(NSDictionary *)data
 								 receiptData:(NSDictionary *)receiptData
+								   shopsData:(NSArray *)shopsData
+						   shopsReceiptsData:(NSArray *)shopsReceiptsData
                                      success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
                                    cancelled:(void (^)(void))onCancelled
                                        error:(void (^)(ASDKAcquringSdkError *error))onError;
@@ -88,7 +106,10 @@
 			   customerKey:(NSString *)customerKey
 	 additionalPaymentData:(NSDictionary *)data
 			   receiptData:(NSDictionary *)receiptData
+				 shopsData:(NSArray *)shopsData
+		 shopsReceiptsData:(NSArray *)shopsReceiptsData
 				   success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+		   needShowConfirm:(void (^)(UIViewController *vc))paymentConfirm
 					 error:(void (^)(ASDKAcquringSdkError *error))onError;
 
 + (BOOL)isPayWithAppleAvailable NS_AVAILABLE_IOS(9_0);
@@ -127,6 +148,8 @@
  *
  * @param receiptData - JSON объект с данными чека, https://oplata.tinkoff.ru/landing/develop/documentation/Init "Структура объекта Receipt"
  *
+ * @param shopsData - массив объектов Shop с данными Маркетплейса
+ * @param shopsReceiptsData - массив объектов с чеками для каждого ShopCode из объекта Shops
  * @param onSuccess блок в случае успеха
  * @param onCancelled блок в случае сканирования с ошибкой
  * @param onError блок при отмене сканирования
@@ -146,6 +169,8 @@
 								recurrent:(BOOL)recurrent
 					additionalPaymentData:(NSDictionary *)additionalPaymentData //JSON объект содержащий дополнительные параметры, например @{@"Email" : @"a@test.ru"}
 							  receiptData:(NSDictionary *)receiptData // JSON объект с данными чека, обязательно должен быть объект Items в который вложены позиции чека Email и Taxation - Система налогообложения, значения: osn, usn_income, usn_income_outcome, envd, esn, или patent
+								shopsData:(NSArray *)shopsData
+						shopsReceiptsData:(NSArray *)shopsReceiptsData
 								  success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
 								cancelled:(void (^)(void))onCancelled
 									error:(void (^)(ASDKAcquringSdkError *error))onError NS_AVAILABLE_IOS(9_0);

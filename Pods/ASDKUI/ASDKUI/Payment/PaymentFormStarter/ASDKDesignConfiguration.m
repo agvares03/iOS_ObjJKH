@@ -43,6 +43,8 @@
 @property (nonatomic, strong) NSString *_attachCardButtonTitle;
 @property (nonatomic, assign) UIModalPresentationStyle _presentStyleModal;
 
+@property (nonatomic, strong) NSString *payViewControllerTitle;
+
 @end
 
 @implementation ASDKDesignConfiguration
@@ -275,6 +277,16 @@
 - (void)setModalPresentationStyle:(UIModalPresentationStyle)value
 {
 	self._presentStyleModal = value;
+}
+
+- (void)setPayViewTitle:(NSString *)title
+{
+	self.payViewControllerTitle = title;
+}
+
+- (NSString *)payViewTitle
+{
+	return self.payViewControllerTitle;
 }
 
 @end

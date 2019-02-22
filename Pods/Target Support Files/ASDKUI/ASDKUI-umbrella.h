@@ -29,6 +29,7 @@
 #import "ASDKCardsListViewController.h"
 #import "ASDKCardCell.h"
 #import "ASDKDesignConfiguration.h"
+#import "ASDKLocalized.h"
 #import "ASDKPaymentFormStarter.h"
 #import "ASDKEmptyTableViewCell.h"
 #import "ASDKExternalCardsCell.h"

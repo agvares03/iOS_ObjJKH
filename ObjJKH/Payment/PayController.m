@@ -103,36 +103,67 @@
 
 + (UIAlertController *)alertAttachCardSuccessfull:(NSString *)cardId
 {
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Карта успешно привязана" message:[NSString stringWithFormat:@"card id = %@", cardId] preferredStyle:UIAlertControllerStyleAlert];
-	
-	UIAlertAction *cancelAction = [UIAlertAction
-								   actionWithTitle:@"Закрыть"
-								   style:UIAlertActionStyleCancel
-								   handler:^(UIAlertAction *action)
-								   {
-									   [alertController dismissViewControllerAnimated:YES completion:nil];
-								   }];
-	
-	[alertController addAction:cancelAction];
-	
-	return alertController;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Карта успешно привязана" message:[NSString stringWithFormat:@"card id = %@", cardId] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Закрыть"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       [alertController dismissViewControllerAnimated:YES completion:nil];
+                                   }];
+    
+    [alertController addAction:cancelAction];
+    
+    return alertController;
 }
 
 + (void)buyItemWithName:(NSString *)name
             description:(NSString *)description
                  amount:(NSNumber *)amount
-			  recurrent:(BOOL)recurrent
-			 makeCharge:(BOOL)makeCharge
+              recurrent:(BOOL)recurrent
+             makeCharge:(BOOL)makeCharge
   additionalPaymentData:(NSDictionary *)data
-			receiptData:(NSDictionary *)receiptData
+            receiptData:(NSDictionary *)receiptData
                   email:(NSString*)email
      fromViewController:(UIViewController *)viewController
                 success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
               cancelled:(void (^)(void))onCancelled
                   error:(void (^)(ASDKAcquringSdkError *error))onError
 {
-	ASDKPaymentFormStarter *paymentFormStarter = [PayController paymentFormStarter];
+    [PayController buyItemWithName:name
+                       description:description
+                            amount:amount
+                         recurrent:recurrent
+                        makeCharge:makeCharge
+             additionalPaymentData:data
+                       receiptData:receiptData
+                             email:email
+                         shopsData:nil
+                 shopsReceiptsData:nil
+                fromViewController:viewController
+                           success:onSuccess
+                         cancelled:onCancelled
+                             error:onError];
+}
 
++ (void)buyItemWithName:(NSString *)name
+            description:(NSString *)description
+                 amount:(NSNumber *)amount
+              recurrent:(BOOL)recurrent
+             makeCharge:(BOOL)makeCharge
+  additionalPaymentData:(NSDictionary *)data
+            receiptData:(NSDictionary *)receiptData
+                  email:(NSString*)email
+              shopsData:(NSArray *)shopsData
+      shopsReceiptsData:(NSArray *)shopsReceiptsData
+     fromViewController:(UIViewController *)viewController
+                success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+              cancelled:(void (^)(void))onCancelled
+                  error:(void (^)(ASDKAcquringSdkError *error))onError
+{
+    ASDKPaymentFormStarter *paymentFormStarter = [PayController paymentFormStarter];
+    
     double randomOrderId = arc4random()%10000000;
 	
 	//Настройка дизайна
@@ -203,10 +234,12 @@
 													  cardId:@""
                                                        email:email
                                                  customerKey:[PayController customerKey]
-												   recurrent:recurrent
-												  makeCharge:makeCharge
-									   additionalPaymentData:data
-												 receiptData:receiptData
+                                                   recurrent:recurrent
+                                                  makeCharge:makeCharge
+                                       additionalPaymentData:data
+                                                 receiptData:receiptData
+                                                   shopsData:shopsData
+                                           shopsReceiptsData:shopsReceiptsData
                                                      success:^(ASDKPaymentInfo *paymentInfo)
      {
 		 [[TransactionHistoryModelController sharedInstance] addTransaction:@{@"paymentId":paymentInfo.paymentId, @"paymentInfo":paymentInfo.dictionary, @"summ":amount, @"description":description, kASDKStatus:paymentInfo.status}];
@@ -231,96 +264,185 @@
 }
 
 + (void)chargeWithRebillId:(NSNumber *)rebillId
-					amount:(NSNumber *)amount
-			   description:(NSString *)description
-	 additionalPaymentData:(NSDictionary *)data
-			   receiptData:(NSDictionary *)receiptData
-		fromViewController:(UIViewController *)viewController
-				   success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
-					 error:(void (^)(ASDKAcquringSdkError *error))onError
+                    amount:(NSNumber *)amount
+               description:(NSString *)description
+     additionalPaymentData:(NSDictionary *)data
+               receiptData:(NSDictionary *)receiptData
+        fromViewController:(UIViewController *)viewController
+                   success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+                     error:(void (^)(ASDKAcquringSdkError *error))onError
 {
-	ASDKPaymentFormStarter *paymentFormStarter = [PayController paymentFormStarter];
+    [PayController chargeWithRebillId:rebillId
+                               amount:amount
+                          description:description
+                additionalPaymentData:data
+                          receiptData:receiptData
+                            shopsData:nil
+                    shopsReceiptsData:nil
+                   fromViewController:viewController
+                              success:onSuccess
+                                error:onError];
+}
 
-	double randomOrderId = arc4random()%10000000;
-
-	paymentFormStarter.cardScanner = [ASDKCardIOScanner scanner];
-
-	[paymentFormStarter chargeWithRebillId:rebillId amount:amount orderId:[NSNumber numberWithDouble:randomOrderId].stringValue description:description customerKey:[PayController customerKey] additionalPaymentData:data receiptData:receiptData
-		success:^(ASDKPaymentInfo *paymentInfo) {
-			[[TransactionHistoryModelController sharedInstance] addTransaction:@{@"paymentId":paymentInfo.paymentId, @"paymentInfo":paymentInfo.dictionary, @"summ":amount, @"description":([description length] > 0 ? description: @""), kASDKStatus:paymentInfo.status}];
-
-			PaymentSuccessViewController *vc = [[PaymentSuccessViewController alloc] init];
-			vc.amount = amount;
-
-			UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
-
-			[viewController presentViewController:nc animated:YES completion:nil];
-
-			onSuccess(paymentInfo);
-		} error:^(ASDKAcquringSdkError *error) {
-			[viewController presentViewController:[PayController alertWithError:error] animated:YES completion:nil];
-			onError(error);
-		}];
++ (void)chargeWithRebillId:(NSNumber *)rebillId
+                    amount:(NSNumber *)amount
+               description:(NSString *)description
+     additionalPaymentData:(NSDictionary *)data
+               receiptData:(NSDictionary *)receiptData
+                 shopsData:(NSArray *)shopsData
+         shopsReceiptsData:(NSArray *)shopsReceiptsData
+        fromViewController:(UIViewController *)viewController
+                   success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+                     error:(void (^)(ASDKAcquringSdkError *error))onError
+{
+    ASDKPaymentFormStarter *paymentFormStarter = [PayController paymentFormStarter];
+    
+    double randomOrderId = arc4random()%10000000;
+    
+    ASDKLocalized *loc = [ASDKLocalized sharedInstance];
+    [loc setLocalizedBundle:[NSBundle mainBundle]];
+    [loc setLocalizedTable:@"ASDKlocalizableRu"];
+    
+    paymentFormStarter.cardScanner = [ASDKCardIOScanner scanner];
+    
+    [paymentFormStarter chargeWithRebillId:rebillId
+                                    amount:amount
+                                   orderId:[NSNumber numberWithDouble:randomOrderId].stringValue
+                               description:description
+                               customerKey:[PayController customerKey]
+                     additionalPaymentData:data
+                               receiptData:receiptData
+                                 shopsData:shopsData
+                         shopsReceiptsData:shopsReceiptsData
+                                   success:^(ASDKPaymentInfo *paymentInfo) {
+                                       [[TransactionHistoryModelController sharedInstance] addTransaction:@{@"paymentId":paymentInfo.paymentId, @"paymentInfo":paymentInfo.dictionary, @"summ":amount, @"description":([description length] > 0 ? description: @""), kASDKStatus:paymentInfo.status}];
+                                       
+                                       PaymentSuccessViewController *vc = [[PaymentSuccessViewController alloc] init];
+                                       vc.amount = amount;
+                                       
+                                       UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+                                       
+                                       [viewController presentViewController:nc animated:YES completion:nil];
+                                       
+                                       onSuccess(paymentInfo);
+                                   }
+                           needShowConfirm:^(UIViewController *vc) {
+                               //Настройка дизайна
+                               ASDKDesignConfiguration *designConfiguration = paymentFormStarter.designConfiguration;
+                               //
+                               [designConfiguration setPayFormItems:@[@(CellEmpty20px),
+                                                                      @(CellAmount),
+                                                                      @(CellPaymentCardRequisites),
+                                                                      @(CellEmptyFlexibleSpace),
+                                                                      @(CellPayButton),
+                                                                      @(CellSecureLogos),
+                                                                      @(CellEmpty20px),
+                                                                      ]];
+                               
+                               UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+                               [viewController presentViewController:nc animated:YES completion:nil];
+                           }
+                                     error:^(ASDKAcquringSdkError *error) {
+                                         [viewController presentViewController:[PayController alertWithError:error] animated:YES completion:nil];
+                                         onError(error);
+                                     }];
 }
 
 + (BOOL)isPayWithAppleAvailable
 {
-	return [ASDKPaymentFormStarter isPayWithAppleAvailable];
+    return [ASDKPaymentFormStarter isPayWithAppleAvailable];
 }
 
 + (void)buyWithApplePayAmount:(NSNumber *)amount
-				  description:(NSString *)description
-						email:(NSString *)email
-			  appleMerchantId:(NSString *)appleMerchantId
-			  shippingMethods:(NSArray<PKShippingMethod *> *)shippingMethods
-			  shippingContact:(PKContact *)shippingContact
-	   shippingEditableFields:(PKAddressField)shippingEditableFields
-					recurrent:(BOOL)recurrent
-		additionalPaymentData:(NSDictionary *)data
-				  receiptData:(NSDictionary *)receiptData
-		   fromViewController:(UIViewController *)viewController
-					  success:(void (^)(ASDKPaymentInfo *paymentIfo))onSuccess
-					cancelled:(void (^)(void))onCancelled
-						error:(void (^)(ASDKAcquringSdkError *error))onError
+                  description:(NSString *)description
+                        email:(NSString *)email
+              appleMerchantId:(NSString *)appleMerchantId
+              shippingMethods:(NSArray<PKShippingMethod *> *)shippingMethods
+              shippingContact:(PKContact *)shippingContact
+       shippingEditableFields:(PKAddressField)shippingEditableFields
+                    recurrent:(BOOL)recurrent
+        additionalPaymentData:(NSDictionary *)data
+                  receiptData:(NSDictionary *)receiptData
+           fromViewController:(UIViewController *)viewController
+                      success:(void (^)(ASDKPaymentInfo *paymentIfo))onSuccess
+                    cancelled:(void (^)(void))onCancelled
+                        error:(void (^)(ASDKAcquringSdkError *error))onError
 {
-	ASDKPaymentFormStarter *paymentFormStarter = [PayController paymentFormStarter];
-	[paymentFormStarter payWithApplePayFromViewController:viewController
-												   amount:amount
-												  orderId:[NSNumber numberWithDouble:(arc4random()%10000000)].stringValue
-											  description:description
-											  customerKey:[PayController customerKey]
-												sendEmail:([email length] > 0)
-													email:email
-										  appleMerchantId:appleMerchantId
-										  shippingMethods:shippingMethods
-										  shippingContact:shippingContact
-								   shippingEditableFields:shippingEditableFields
-												recurrent:YES
-									additionalPaymentData:data
-											  receiptData:receiptData
-												  success:^(ASDKPaymentInfo *paymentInfo) {
-													  [[TransactionHistoryModelController sharedInstance] addTransaction:@{@"paymentId":paymentInfo.paymentId, @"paymentInfo":paymentInfo.dictionary, @"summ":amount, @"description":description, kASDKStatus:paymentInfo.status}];
-													  PaymentSuccessViewController *vc = [[PaymentSuccessViewController alloc] init];
-													  vc.amount = amount;
-													  UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
-													  
-													  [viewController presentViewController:nc animated:YES completion:nil];
-													  
-													  onSuccess(paymentInfo);
-												  }
-												cancelled:^{
-													  [viewController presentViewController:[PayController alertForCancel] animated:YES completion:nil];
-													  onCancelled();
-												  }
-													error:^(ASDKAcquringSdkError *error) {
-														if (error)
-														{
-															[viewController presentViewController:[PayController alertWithError:error] animated:YES completion:nil];
-														}
+    [PayController buyWithApplePayAmount:amount
+                             description:description
+                                   email:email
+                         appleMerchantId:appleMerchantId
+                         shippingMethods:shippingMethods
+                         shippingContact:shippingContact
+                  shippingEditableFields:shippingEditableFields
+                               recurrent:recurrent
+                   additionalPaymentData:data
+                             receiptData:receiptData
+                               shopsData:nil
+                       shopsReceiptsData:nil
+                      fromViewController:viewController
+                                 success:onSuccess
+                               cancelled:onCancelled
+                                   error:onError];
+}
 
-													  onError(error);
-												  }];
-	//
++ (void)buyWithApplePayAmount:(NSNumber *)amount
+                  description:(NSString *)description
+                        email:(NSString *)email
+              appleMerchantId:(NSString *)appleMerchantId
+              shippingMethods:(NSArray<PKShippingMethod *> *)shippingMethods
+              shippingContact:(PKContact *)shippingContact
+       shippingEditableFields:(PKAddressField)shippingEditableFields
+                    recurrent:(BOOL)recurrent
+        additionalPaymentData:(NSDictionary *)data
+                  receiptData:(NSDictionary *)receiptData
+                    shopsData:(NSArray *)shopsData
+            shopsReceiptsData:(NSArray *)shopsReceiptsData
+           fromViewController:(UIViewController *)viewController
+                      success:(void (^)(ASDKPaymentInfo *paymentIfo))onSuccess
+                    cancelled:(void (^)(void))onCancelled
+                        error:(void (^)(ASDKAcquringSdkError *error))onError
+{
+    ASDKPaymentFormStarter *paymentFormStarter = [PayController paymentFormStarter];
+    [paymentFormStarter payWithApplePayFromViewController:viewController
+                                                   amount:amount
+                                                  orderId:[NSNumber numberWithDouble:(arc4random()%10000000)].stringValue
+                                              description:description
+                                              customerKey:[PayController customerKey]
+                                                sendEmail:([email length] > 0)
+                                                    email:email
+                                          appleMerchantId:appleMerchantId
+                                          shippingMethods:shippingMethods
+                                          shippingContact:shippingContact
+                                   shippingEditableFields:shippingEditableFields
+                                                recurrent:YES
+                                    additionalPaymentData:data
+                                              receiptData:receiptData
+                                                shopsData:shopsData
+                                        shopsReceiptsData:shopsReceiptsData
+                                                  success:^(ASDKPaymentInfo *paymentInfo) {
+                                                      [[TransactionHistoryModelController sharedInstance] addTransaction:@{@"paymentId":paymentInfo.paymentId, @"paymentInfo":paymentInfo.dictionary, @"summ":amount, @"description":description, kASDKStatus:paymentInfo.status}];
+                                                      PaymentSuccessViewController *vc = [[PaymentSuccessViewController alloc] init];
+                                                      vc.amount = amount;
+                                                      UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+                                                      
+                                                      [viewController presentViewController:nc animated:YES completion:nil];
+                                                      
+                                                      onSuccess(paymentInfo);
+                                                  }
+                                                cancelled:^{
+                                                    [viewController presentViewController:[PayController alertForCancel] animated:YES completion:nil];
+                                                    onCancelled();
+                                                }
+                                                    error:^(ASDKAcquringSdkError *error) {
+                                                        if (error)
+                                                        {
+                                                            [viewController presentViewController:[PayController alertWithError:error] animated:YES completion:nil];
+                                                        }
+                                                        
+                                                        onError(error);
+                                                    }];
+    //
 }
 
 + (void)checkStatusTransaction:(NSString *)paymentId
@@ -438,7 +560,7 @@
 													} error:^(ASDKAcquringSdkError *error) {
 														[viewController presentViewController:[PayController alertWithError:error] animated:YES completion:nil];
 														onError(error);
-													}];	
+													}];
 }
 
 @end

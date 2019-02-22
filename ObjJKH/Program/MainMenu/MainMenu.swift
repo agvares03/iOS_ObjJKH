@@ -294,6 +294,8 @@ class MainMenu: UIViewController {
         #elseif isChist_Dom
         fon_top.image = UIImage(named: "Logo_Chist_Dom_White")
         #elseif isMupRCMytishi
+        UserDefaults.standard.set("MupRCMytishi", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         main_background.image = UIImage(named: "main_Background_MupRCMytishi")
         fon_top.image = UIImage(named: "logo_MupRCMytishi_White")
         #elseif isDJ
@@ -305,6 +307,8 @@ class MainMenu: UIViewController {
         #elseif isUKKomfort
         fon_top.image = UIImage(named: "logo_UK_Komfort_white")
         #elseif isKlimovsk12
+        UserDefaults.standard.set("Klimovsk12", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "logo_Klimovsk12_White")
         #elseif isPocket
         fon_top.image = UIImage(named: "Logo_Pocket_White")

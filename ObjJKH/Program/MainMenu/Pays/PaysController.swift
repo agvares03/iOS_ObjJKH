@@ -153,7 +153,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             checkBox.forEach{
                 if $0 == true && sumOSV[i] > 0.00{
                     let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
-                    let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
+                    let ItemsData = ["ShopCode" : "66950", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                     items.append(ItemsData)
                 }
                 i += 1
@@ -181,28 +181,27 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             
             let defaults = UserDefaults.standard
             let shopCode = "66950"
-            var shops:[String:Any] = [:]
-            shops["ShopCode"] = shopCode
-            shops["Amount"] = NSNumber(floatLiteral: self.totalSum)
-            shops["Name"] = "УслугиЖКУ"
-            Data["Shops"] = shops
-            print(Data)
+            var shops:[Any] = []
+            let ItemsData = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
+            shops.append(ItemsData)
+            print(shops)
+            print(items)
             let receiptData = ["ShopCode" : shopCode, "Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
             print(receiptData)
-            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
                 
-            }, cancelled: {
+            }, cancelled:  {
                 
-            }) { (error) in
+            }, error: { (error) in
                 let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
-            }
+            })
             #else
             defaults.setValue(String(describing: self.sum), forKey: "sum")
             defaults.synchronize()
