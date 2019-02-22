@@ -45,9 +45,10 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     var sum: Double = 0
     var totalSum: Double = 0
     var selectedRow = 0
-    var checkBox:[Bool] = []
-    var sumOSV:[Double] = []
-    var osvc:[String] = []
+    var checkBox:[Bool]   = []
+    var sumOSV  :[Double] = []
+    var osvc    :[String] = []
+    var idOSV   :[Int]    = []
     
     var login: String?
     var pass: String?
@@ -92,6 +93,52 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
             return
         }
+        #if isKlimovsk12
+        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
+            let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
+            alert.addTextField { (textField) in
+                textField.placeholder = "e-mail..."
+                textField.keyboardType = .emailAddress
+            }
+            let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
+                let textField = alert.textFields![0]
+                let str = textField.text
+                if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
+                    UserDefaults.standard.set(str, forKey: "mail")
+                    self.payed()
+                }else{
+                    textField.text = ""
+                    textField.placeholder = "e-mail..."
+                    let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+            }
+            
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            payed()
+        }
+        #else
+        payed()
+        #endif
+    }
+    
+    private func payed() {
+        let defaults = UserDefaults.standard
+        let str_ls = defaults.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        if (ls_button.titleLabel?.text == "Все") && ((str_ls_arr?.count)! > 1){
+            let alert = UIAlertController(title: "", message: "Для совершения оплаты укажите лицевой счет", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         let k:String = txt_sum_obj.text!
         self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
         if (self.totalSum <= 0) {
@@ -100,10 +147,67 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
+            #if isKlimovsk12
+            items.removeAll()
+            var i = 0
+            checkBox.forEach{
+                if $0 == true && sumOSV[i] > 0.00{
+                    let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
+                    let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
+                    items.append(ItemsData)
+                }
+                i += 1
+            }
+            var Data:[String:Any] = [:]
+            var DataStr: String = ""
+            if selectLS == "Все"{
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+                let str_ls_arr = str_ls.components(separatedBy: ",")
+                for i in 0...str_ls_arr.count - 1{
+                    DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0])|"
+                }
+            }else{
+                DataStr = "ls1-\(selectLS)|"
+            }
+            DataStr = DataStr + "|"
+            i = 0
+            checkBox.forEach{
+                if $0 == true && sumOSV[i] > 0.00{
+                    DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                }
+                i += 1
+            }
+            Data["name"] = DataStr
+            
             let defaults = UserDefaults.standard
+            let shopCode = "66950"
+            var shops:[String:Any] = [:]
+            shops["ShopCode"] = shopCode
+            shops["Amount"] = NSNumber(floatLiteral: self.totalSum)
+            shops["Name"] = "УслугиЖКУ"
+            Data["Shops"] = shops
+            print(Data)
+            let receiptData = ["ShopCode" : shopCode, "Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            let name = "Оплата услуг ЖКХ"
+            let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
+            print(receiptData)
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+                
+            }, cancelled: {
+                
+            }) { (error) in
+                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+            #else
             defaults.setValue(String(describing: self.sum), forKey: "sum")
             defaults.synchronize()
             self.performSegue(withIdentifier: "CostPay_New", sender: self)
+            #endif
         }
     }
     
@@ -246,6 +350,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     var uslugaArr  :[String] = []
     var endArr     :[String] = []
+    var idArr      :[Int] = []
     
     func getData(ident: String){
         self.sum = 0
@@ -255,6 +360,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         osvc.removeAll()
         uslugaArr.removeAll()
         endArr.removeAll()
+        idArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         do {
@@ -265,6 +371,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                     if (object.value(forKey: "ident") as! String) == ident{
                         uslugaArr.append(object.value(forKey: "usluga") as! String)
                         endArr.append(object.value(forKey: "end") as! String)
+                        idArr.append(Int(object.value(forKey: "id") as! Int64))
                         if (object.value(forKey: "usluga") as! String) != "Я"{
                             self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                         }
@@ -300,6 +407,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         osvc.removeAll()
         uslugaArr.removeAll()
         endArr.removeAll()
+        idArr.removeAll()
         var endSum = 0.00
         // Выборка из БД последней ведомости - посчитаем сумму к оплате
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
@@ -392,11 +500,13 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 osvc.append(osv.usluga!)
                 checkBox.append(true)
                 sumOSV.append(Double(sum)!)
+                idOSV.append(Int(osv.id))
             }else{
                 let sum:String = endArr[indexPath.row]
                 osvc.append(uslugaArr[indexPath.row])
                 checkBox.append(true)
                 sumOSV.append(Double(sum)!)
+                idOSV.append(Int(idArr[indexPath.row]))
             }
             
         }
@@ -405,6 +515,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         }else{
             cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
         }
+        
         if choiceIdent == ""{
             let osv = fetchedResultsController!.object(at: indexPath)
             if (osv.usluga == "Я") {
@@ -430,6 +541,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(checkBox)
         update = true
         selectedRow = indexPath.row
         select = true

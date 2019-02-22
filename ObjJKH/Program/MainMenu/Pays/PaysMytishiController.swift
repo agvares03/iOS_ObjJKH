@@ -107,7 +107,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 let str = textField.text
                 if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
                     UserDefaults.standard.set(str, forKey: "mail")
-                    self.payed()
+                    self.payedM()
                 }else{
                     textField.text = ""
                     textField.placeholder = "e-mail..."
@@ -122,11 +122,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }else{
-           payed()
+            payedM()
         }
     }
     
-    func payed(){
+    private func payedM(){
         let k:String = txt_sum_jkh.text!
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         if (self.totalSum <= 0) {
@@ -325,6 +325,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         endArr.removeAll()
         idArr.removeAll()
         identOSV.removeAll()
+        idOSV.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         do {
@@ -378,6 +379,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         endArr.removeAll()
         idArr.removeAll()
         identOSV.removeAll()
+        idOSV.removeAll()
         // Выборка из БД последней ведомости - посчитаем сумму к оплате
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
@@ -522,13 +524,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 cell.end.isUserInteractionEnabled = true
                 cell.endL.isHidden = true
                 cell.end.isHidden = false
-//                print(osv.end)
+                //                print(osv.end)
                 cell.end.text = osv.end
                 if osvc.count != 0{
                     for i in 0...osvc.count - 1{
                         let code:String = osvc[i] + identOSV[i]
                         if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
-//                            print(code, sumOSV[i])
+                            //                            print(code, sumOSV[i])
                             cell.end.text = String(sumOSV[i])
                         }
                     }

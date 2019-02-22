@@ -60,7 +60,17 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let urlPath = Server.SERVER + Server.SEND_SUPPORT + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&text=" + text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&mail=" + email.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+        let version = targetSettings().getVersion()
+        var str_ls:String = ""
+        if UserDefaults.standard.string(forKey: "str_ls") != nil{
+            str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+        }
+        //        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        var info = "Аккаунт - \(login)"
+        if UserDefaults.standard.bool(forKey: "fromMenu"){
+            info = "Аккаунт - \(login) лиц. счета - \(str_ls)"
+        }
+        let urlPath = Server.SERVER + Server.SEND_SUPPORT + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&text=" + text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&mail=" + email.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&os=iOS" + "&appVersion=" + version.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&info=" + info.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
