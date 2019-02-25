@@ -312,6 +312,8 @@ class MainMenu: UIViewController {
         fon_top.image = UIImage(named: "logo_Klimovsk12_White")
         #elseif isPocket
         fon_top.image = UIImage(named: "Logo_Pocket_White")
+        #elseif isReutKomfort
+        fon_top.image = UIImage(named: "Logo_ReutKomfort_White")
         #endif
         
         // Картинки для разных Таргетов

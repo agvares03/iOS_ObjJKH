@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		125428DFEB43912C20A73DD7 /* Pods_DJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B7EA4A0A2CB233BB4A6F85 /* Pods_DJ.framework */; };
+		138D2D293EB28FCE3C08F02E /* Pods_ReutKomfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C013E2565DE1FCF26BA3706A /* Pods_ReutKomfort.framework */; };
 		1C009E4521494A65004E8BFD /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
 		1C009E4721494AC4004E8BFD /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
 		1C13B8BB221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
@@ -179,7 +180,6 @@
 		411F9ACF22238A0E00C5F697 /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */; };
 		411F9AD022238A0E00C5F697 /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
 		411F9AD122238A0E00C5F697 /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
-		411F9AD222238A0E00C5F697 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
 		411F9AD322238A0E00C5F697 /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
 		411F9AD422238A0E00C5F697 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		411F9AD522238A0E00C5F697 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
@@ -223,7 +223,6 @@
 		411F9AFB22238A0E00C5F697 /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */; };
 		411F9AFC22238A0E00C5F697 /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
 		411F9AFD22238A0E00C5F697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
-		411F9AFE22238A0E00C5F697 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		411F9AFF22238A0E00C5F697 /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
 		411F9B0022238A0E00C5F697 /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
 		411F9B0122238A0E00C5F697 /* NoCounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F01F2147C28D00FE0473 /* NoCounters.swift */; };
@@ -265,11 +264,16 @@
 		411F9B2722238A0E00C5F697 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		411F9B2822238A0E00C5F697 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
 		411F9B2922238A0E00C5F697 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
-		411F9B2A22238A0E00C5F697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		411F9B2B22238A0E00C5F697 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		411F9B2C22238A0E00C5F697 /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		411F9B2D22238A0E00C5F697 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		411F9B38222390B300C5F697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B37222390B200C5F697 /* GoogleService-Info.plist */; };
+		411F9B3922239A8F00C5F697 /* Info - ReutKomfort.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */; };
+		411F9B4622239D9D00C5F697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
+		411F9B4722239F4500C5F697 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
+		411F9B4822239F4800C5F697 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		411F9B4D2223A7DC00C5F697 /* Logo_ReutKomfort_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */; };
+		411F9B4F2223A7E700C5F697 /* Logo_ReutKomfort.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */; };
 		4120922E2158CB2D001E713E /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
 		4120922F2158CB2D001E713E /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
 		412092302158CB2D001E713E /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
@@ -586,7 +590,6 @@
 		4137E28622128AE6009C6A7F /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		4137E28722128AE6009C6A7F /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
 		4137E28822128AE6009C6A7F /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
-		4137E28922128AE6009C6A7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		4137E28A22128AE6009C6A7F /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		4137E28B22128AE6009C6A7F /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		4137E28C22128AE6009C6A7F /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
@@ -1371,8 +1374,10 @@
 		411AD1C82161E17E004FD1B5 /* empty.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = empty.cpp; sourceTree = "<group>"; };
 		411AD1C92161E17E004FD1B5 /* empty.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = empty.hpp; sourceTree = "<group>"; };
 		411F9B3322238A0E00C5F697 /* ReutKomfort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReutKomfort.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		411F9B3422238A0F00C5F697 /* ObjJKH copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ObjJKH copy2-Info.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/ObjJKH copy2-Info.plist"; sourceTree = "<absolute>"; };
+		411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - ReutKomfort.plist"; path = "/Users/tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - ReutKomfort.plist"; sourceTree = "<absolute>"; };
 		411F9B37222390B200C5F697 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/ReutKomfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_ReutKomfort_White.png; path = ObjJKH/images/ReutKomfort/Logo_ReutKomfort_White.png; sourceTree = SOURCE_ROOT; };
+		411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_ReutKomfort.png; path = ObjJKH/images/ReutKomfort/Logo_ReutKomfort.png; sourceTree = SOURCE_ROOT; };
 		412092992158CB2D001E713E /* Stolitsa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stolitsa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4120929A2158CB36001E713E /* Info - Stolitsa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - Stolitsa.plist"; path = "../Info - Stolitsa.plist"; sourceTree = "<group>"; };
 		4120929C2158D116001E713E /* logo_Stolitsa_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa_white.png; sourceTree = "<group>"; };
@@ -1541,7 +1546,10 @@
 		964492CA0DB9008F249F3AD8 /* Pods-DJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJ/Pods-DJ.debug.xcconfig"; sourceTree = "<group>"; };
 		9CC813AF3B67E2529AD80684 /* Pods-ObjJKH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.release.xcconfig"; sourceTree = "<group>"; };
 		9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Klimovsk12.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B47F1FBDBDC59BB1F02B7905 /* Pods-ReutKomfort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReutKomfort.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReutKomfort/Pods-ReutKomfort.release.xcconfig"; sourceTree = "<group>"; };
 		B8A61F08B2D8F71592242095 /* Pods-UK_Komfort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Komfort.release.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort.release.xcconfig"; sourceTree = "<group>"; };
+		C013E2565DE1FCF26BA3706A /* Pods_ReutKomfort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReutKomfort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5B024543C6208DEC75197C4 /* Pods-ReutKomfort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReutKomfort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReutKomfort/Pods-ReutKomfort.debug.xcconfig"; sourceTree = "<group>"; };
 		C7B2309B6ABE1586A66F5145 /* Pods-UK_Komfort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Komfort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort.debug.xcconfig"; sourceTree = "<group>"; };
 		D4E90038DF15E20075586543 /* Pods-Komeks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Komeks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Komeks/Pods-Komeks.debug.xcconfig"; sourceTree = "<group>"; };
 		D6E18311FD916634DB235975 /* Pods_OurObjHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurObjHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1573,6 +1581,7 @@
 			files = (
 				411F9B0722238A0E00C5F697 /* CoreLocation.framework in Frameworks */,
 				411F9B0822238A0E00C5F697 /* Pods_ObjJKH.framework in Frameworks */,
+				138D2D293EB28FCE3C08F02E /* Pods_ReutKomfort.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1701,6 +1710,16 @@
 			path = Bridges;
 			sourceTree = "<group>";
 		};
+		411F9B492223A79500C5F697 /* ReutKomfort */ = {
+			isa = PBXGroup;
+			children = (
+				411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */,
+				411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */,
+			);
+			name = ReutKomfort;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		4120929B2158CF41001E713E /* Stolica */ = {
 			isa = PBXGroup;
 			children = (
@@ -1743,7 +1762,6 @@
 				F0BAD5FABF0F698BF24700C4 /* Frameworks */,
 				6EED220D6D9D4CDBD7DD198D /* Pods */,
 				4137E29422128B04009C6A7F /* ObjJKH copy-Info.plist */,
-				411F9B3422238A0F00C5F697 /* ObjJKH copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1778,6 +1796,7 @@
 				41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */,
 				4120929A2158CB36001E713E /* Info - Stolitsa.plist */,
 				412093132159E619001E713E /* Info - Komeks.plist */,
+				411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */,
 				41BD716B21B4E86E006E78FC /* Info - Klimovsk12.plist */,
 				41EF7E80220D779B0041D53B /* GoogleService-Info.plist */,
 				41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */,
@@ -1862,6 +1881,7 @@
 		418ABF202133CF52004DB75C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				411F9B492223A79500C5F697 /* ReutKomfort */,
 				4137E2952212951E009C6A7F /* JKH_Pocket */,
 				41BD716E21B4F20F006E78FC /* Klimovsk12 */,
 				412093142159EAFD001E713E /* Komeks */,
@@ -2167,6 +2187,8 @@
 				207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */,
 				1E7B655A63C375E7709122DB /* Pods-ObjJKH.debug.xcconfig */,
 				9CC813AF3B67E2529AD80684 /* Pods-ObjJKH.release.xcconfig */,
+				C5B024543C6208DEC75197C4 /* Pods-ReutKomfort.debug.xcconfig */,
+				B47F1FBDBDC59BB1F02B7905 /* Pods-ReutKomfort.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2184,6 +2206,7 @@
 				7B0B17C963363C8850F6A8BA /* Pods_Stolitsa.framework */,
 				126F73D4F5E7682528FFF4D1 /* Pods_UK_Komfort.framework */,
 				9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */,
+				C013E2565DE1FCF26BA3706A /* Pods_ReutKomfort.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2219,7 +2242,6 @@
 				411F9AB322238A0E00C5F697 /* Sources */,
 				411F9B0622238A0E00C5F697 /* Frameworks */,
 				411F9B0922238A0E00C5F697 /* Resources */,
-				411F9B2E22238A0E00C5F697 /* [CP] Embed Pods Frameworks */,
 				411F9B2F22238A0E00C5F697 /* ShellScript */,
 			);
 			buildRules = (
@@ -2549,6 +2571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				411F9B0A22238A0E00C5F697 /* WebCameras.storyboard in Resources */,
+				411F9B4D2223A7DC00C5F697 /* Logo_ReutKomfort_White.png in Resources */,
 				411F9B0B22238A0E00C5F697 /* app_open.png in Resources */,
 				411F9B0C22238A0E00C5F697 /* Registration.storyboard in Resources */,
 				411F9B0D22238A0E00C5F697 /* ForgotPass.storyboard in Resources */,
@@ -2573,15 +2596,16 @@
 				411F9B1F22238A0E00C5F697 /* PaymentSuccessViewController.xib in Resources */,
 				411F9B2022238A0E00C5F697 /* SelectItem.storyboard in Resources */,
 				411F9B2122238A0E00C5F697 /* Questions.storyboard in Resources */,
+				411F9B4F2223A7E700C5F697 /* Logo_ReutKomfort.png in Resources */,
 				411F9B2222238A0E00C5F697 /* MainMenu.storyboard in Resources */,
 				411F9B2322238A0E00C5F697 /* Main.storyboard in Resources */,
 				411F9B2422238A0E00C5F697 /* ic_get_app.png in Resources */,
 				411F9B2522238A0E00C5F697 /* Account.storyboard in Resources */,
+				411F9B3922239A8F00C5F697 /* Info - ReutKomfort.plist in Resources */,
 				411F9B2622238A0E00C5F697 /* Apps.storyboard in Resources */,
 				411F9B2722238A0E00C5F697 /* Logo_DemoUC_White.png in Resources */,
 				411F9B2822238A0E00C5F697 /* Pays.storyboard in Resources */,
 				411F9B2922238A0E00C5F697 /* AdditionalServices.storyboard in Resources */,
-				411F9B2A22238A0E00C5F697 /* GoogleService-Info.plist in Resources */,
 				411F9B2B22238A0E00C5F697 /* Logo_DemoUC.png in Resources */,
 				411F9B2C22238A0E00C5F697 /* NoCounters.storyboard in Resources */,
 				411F9B2D22238A0E00C5F697 /* account_icon_user.png in Resources */,
@@ -2711,6 +2735,7 @@
 				4137E27D22128AE6009C6A7F /* ic_send_app.png in Resources */,
 				4137E27E22128AE6009C6A7F /* PaymentSuccessViewController.xib in Resources */,
 				4137E27F22128AE6009C6A7F /* SelectItem.storyboard in Resources */,
+				411F9B4622239D9D00C5F697 /* GoogleService-Info.plist in Resources */,
 				4137E28022128AE6009C6A7F /* Questions.storyboard in Resources */,
 				4137E28122128AE6009C6A7F /* MainMenu.storyboard in Resources */,
 				4137E28222128AE6009C6A7F /* Main.storyboard in Resources */,
@@ -2720,7 +2745,6 @@
 				4137E28622128AE6009C6A7F /* Logo_DemoUC_White.png in Resources */,
 				4137E28722128AE6009C6A7F /* Pays.storyboard in Resources */,
 				4137E28822128AE6009C6A7F /* AdditionalServices.storyboard in Resources */,
-				4137E28922128AE6009C6A7F /* GoogleService-Info.plist in Resources */,
 				4137E28A22128AE6009C6A7F /* Logo_DemoUC.png in Resources */,
 				4137E28B22128AE6009C6A7F /* NoCounters.storyboard in Resources */,
 				4137E28C22128AE6009C6A7F /* account_icon_user.png in Resources */,
@@ -3215,47 +3239,11 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ObjJKH-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ReutKomfort-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		411F9B2E22238A0E00C5F697 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
-				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework",
-				"${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKUI.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjJKH/Pods-ObjJKH-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		411F9B2F22238A0E00C5F697 /* ShellScript */ = {
@@ -3684,10 +3672,10 @@
 				411F9ACC22238A0E00C5F697 /* PaysController.swift in Sources */,
 				411F9ACD22238A0E00C5F697 /* CoreDataManager.swift in Sources */,
 				411F9ACE22238A0E00C5F697 /* News+UITableViewDataSource.swift in Sources */,
+				411F9B4722239F4500C5F697 /* PayController.m in Sources */,
 				411F9ACF22238A0E00C5F697 /* Settings+CoreDataProperties.swift in Sources */,
 				411F9AD022238A0E00C5F697 /* Web_JSON.swift in Sources */,
 				411F9AD122238A0E00C5F697 /* Fotos+CoreDataProperties.swift in Sources */,
-				411F9AD222238A0E00C5F697 /* ASDKCardIOScanner.m in Sources */,
 				411F9AD322238A0E00C5F697 /* SelectItemController.swift in Sources */,
 				411F9AD422238A0E00C5F697 /* Reachability.swift in Sources */,
 				411F9AD522238A0E00C5F697 /* SupportController.swift in Sources */,
@@ -3704,6 +3692,7 @@
 				411F9AE022238A0E00C5F697 /* Comments+CoreDataProperties.swift in Sources */,
 				411F9AE122238A0E00C5F697 /* OnOffButton.swift in Sources */,
 				411F9AE222238A0E00C5F697 /* UpdateAppController.swift in Sources */,
+				411F9B4822239F4800C5F697 /* ASDKCardIOScanner.m in Sources */,
 				411F9AE322238A0E00C5F697 /* NewsClient.swift in Sources */,
 				411F9AE422238A0E00C5F697 /* NewsManager.swift in Sources */,
 				411F9AE522238A0E00C5F697 /* Counters+CoreDataClass.swift in Sources */,
@@ -3731,7 +3720,6 @@
 				411F9AFB22238A0E00C5F697 /* Settings+CoreDataClass.swift in Sources */,
 				411F9AFC22238A0E00C5F697 /* SaldoCell.swift in Sources */,
 				411F9AFD22238A0E00C5F697 /* AppDelegate.swift in Sources */,
-				411F9AFE22238A0E00C5F697 /* PayController.m in Sources */,
 				411F9AFF22238A0E00C5F697 /* CloseAppAlert.swift in Sources */,
 				411F9B0022238A0E00C5F697 /* QuestionFinal.swift in Sources */,
 				411F9B0122238A0E00C5F697 /* NoCounters.swift in Sources */,
@@ -4638,7 +4626,7 @@
 /* Begin XCBuildConfiguration section */
 		411F9B3122238A0E00C5F697 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E7B655A63C375E7709122DB /* Pods-ObjJKH.debug.xcconfig */;
+			baseConfigurationReference = C5B024543C6208DEC75197C4 /* Pods-ReutKomfort.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon (РеутКомфорт)";
 				CLANG_ENABLE_MODULES = YES;
@@ -4646,7 +4634,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "ObjJKH copy2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info - ReutKomfort.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4657,7 +4645,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isReutKomfort DEBUG";
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ObjJKH-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4667,7 +4655,7 @@
 		};
 		411F9B3222238A0E00C5F697 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CC813AF3B67E2529AD80684 /* Pods-ObjJKH.release.xcconfig */;
+			baseConfigurationReference = B47F1FBDBDC59BB1F02B7905 /* Pods-ReutKomfort.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon (РеутКомфорт)";
 				CLANG_ENABLE_MODULES = YES;
@@ -4675,7 +4663,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "ObjJKH copy2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info - ReutKomfort.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4686,7 +4674,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isReutKomfort;
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ObjJKH-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
