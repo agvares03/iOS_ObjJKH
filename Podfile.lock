@@ -26,7 +26,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - GoogleUtilities/NSData+zlib (~> 5.2)
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.2.0)
   - FirebaseAuthInterop (1.0.0)
@@ -52,7 +52,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - GoogleUtilities/NSData+zlib (~> 5.2)
     - nanopb (~> 0.3)
   - GoogleUtilities/AppDelegateSwizzler (5.3.7):
     - GoogleUtilities/Environment
@@ -65,9 +65,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/Network (5.3.7):
     - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/NSData+zlib
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.3.7)"
+  - GoogleUtilities/NSData+zlib (5.3.7)
   - GoogleUtilities/Reachability (5.3.7):
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.7):
@@ -94,28 +94,6 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Gloss
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - CardIO
-    - Crashlytics
-    - Dropper
-    - Fabric
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseAnalyticsInterop
-    - FirebaseAuthInterop
-    - FirebaseCore
-    - FirebaseDatabase
-    - FirebaseInstanceID
-    - FirebaseMessaging
-    - Gloss
-    - GoogleAppMeasurement
-    - GoogleUtilities
-    - leveldb-library
-    - nanopb
-    - Protobuf
 
 EXTERNAL SOURCES:
   ASDKCore:
@@ -154,6 +132,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftyXMLParser: b2e0b0dd0e0fb1ac39869dd4a0c6181847af2945
 
-PODFILE CHECKSUM: 8ad5e21379bfef705db71d86580b57788a53f6c9
+PODFILE CHECKSUM: 439abb4ca9c871da22e402055652a71a13e1caa7
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.4.0
