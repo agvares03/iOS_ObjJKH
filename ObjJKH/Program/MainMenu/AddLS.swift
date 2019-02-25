@@ -16,6 +16,9 @@ class AddLS: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var separator3: UILabel!
     @IBOutlet weak var separator4: UILabel!
     
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
+    
     // Массивы для хранения данных
     var streets_names: [String] = []
     var streets_ids: [String] = []
@@ -142,6 +145,10 @@ class AddLS: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func supportBtn(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "support", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -167,6 +174,9 @@ class AddLS: UIViewController, UITextFieldDelegate {
         separator2.backgroundColor = myColors.labelColor.uiColor()
         separator3.backgroundColor = myColors.labelColor.uiColor()
         separator4.backgroundColor = myColors.labelColor.uiColor()
+        
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
         #if isOur_Obj_Home
             txtNumberLS.text = "Номер лицевого счета Сбербанка"

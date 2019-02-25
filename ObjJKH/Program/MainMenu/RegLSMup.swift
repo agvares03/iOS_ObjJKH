@@ -15,10 +15,18 @@ class RegLSMup: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var separator3: UILabel!
     @IBOutlet weak var separator4: UILabel!
     
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
+    
     @IBOutlet weak var back: UIBarButtonItem!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func supportBtn(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "support", sender: self)
+    }
+    
     @IBOutlet weak var btnReg: UIButton!
     
     // Телефон, который регистрируется
@@ -181,6 +189,9 @@ class RegLSMup: UIViewController, UITextFieldDelegate {
         separator2.backgroundColor = myColors.labelColor.uiColor()
         separator3.backgroundColor = myColors.labelColor.uiColor()
         separator4.backgroundColor = myColors.labelColor.uiColor()
+        
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

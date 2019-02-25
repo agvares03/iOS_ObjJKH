@@ -20,6 +20,11 @@
 
 + (NSArray *)testTerminals
 {
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"targetName"];
+    if ([savedValue  isEqual: @"Klimovsk12"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
 	return @[kASDKTestTerminalKey];
 }
 
@@ -28,7 +33,12 @@
 	NSString *result = [ASDKTestSettings valueForKey:kActiveTerminal];
 	if (result == nil)
 	{
-		result = kASDKTestTerminalKey;
+        result = kASDKTestTerminalKey;
+        NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                                stringForKey:@"targetName"];
+        if ([savedValue  isEqual: @"Klimovsk12"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
 	}
 	
 	return result;
@@ -41,12 +51,22 @@
 
 + (NSString *)testTerminalPassword
 {
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"targetName"];
+    if ([savedValue  isEqual: @"Klimovsk12"]){
+        return kASDKTestPasswordKlimovsk;
+    }
 	return kASDKTestPassword;
 }
 
 + (NSString *)testPublicKey
 {
-	return kASDKTestPublicKey;
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"targetName"];
+    if ([savedValue  isEqual: @"Klimovsk12"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    return kASDKTestPublicKey;
 }
 
 + (void)setCustomButtonCancel:(BOOL)value
