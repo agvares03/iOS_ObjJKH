@@ -30,6 +30,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/klimovsk12/"
     #elseif isPocket
         static let SERVER          = "http://uk-gkh.org/otherUK/"
+    #elseif isReutKomfort
+        static let SERVER          = "http://uk-gkh.org/ukrk/"
     #else
         static let SERVER          = "http://uk-gkh.org/newjkh/"
     #endif

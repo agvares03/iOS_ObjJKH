@@ -159,8 +159,9 @@ end
 
 target 'UK_Komfort' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-pod 'Fabric'
-    pod 'Crashlytics'
+  pod 'Fabric'
+  pod 'Crashlytics'
+  
   use_frameworks!
 
   # Pods for UK_Komfort
@@ -173,3 +174,22 @@ pod 'Fabric'
     pod 'Dropper'
 
 end
+
+target 'ReutKomfort' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    pod 'Fabric'
+    pod 'Crashlytics'
+    
+    use_frameworks!
+    
+    # Pods for UK_Komfort
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Messaging'
+    pod 'Alamofire', '~> 4.0'
+    pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+    pod 'Gloss'
+    pod 'Dropper'
+    
+end
+
