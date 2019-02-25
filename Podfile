@@ -177,6 +177,11 @@ end
 
 target 'ReutKomfort' do
     # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    # Оплата - Тинькофф
+    pod 'CardIO'
+    pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
+    pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
+    
     pod 'Fabric'
     pod 'Crashlytics'
     

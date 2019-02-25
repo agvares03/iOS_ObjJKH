@@ -108,6 +108,8 @@ class FirstController: UIViewController {
             fon_top.image = UIImage(named: "logo_Klimovsk12")
         #elseif isPocket
             fon_top.image = UIImage(named: "Logo_Pocket")
+        #elseif isReutKomfort
+            fon_top.image = UIImage(named: "Logo_ReutKomfort")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
