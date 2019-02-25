@@ -14,7 +14,9 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var privLS1: UILabel!
     @IBOutlet weak var backBtn: UIBarButtonItem!
     @IBOutlet weak var separator: UILabel!
+    @IBOutlet weak var separator1: UILabel!
     @IBOutlet weak var emailText: UITextField!
+    @IBOutlet weak var fioText: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var addLSBtn: UIButton!
@@ -60,8 +62,9 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
             
             let defaults = UserDefaults.standard
             let phone:String = defaults.string(forKey: "phone")!
+            let fio:String = fioText.text!
             var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.SET_EMAIL_ACC
-            urlPath = urlPath + "phone=" + phone + "&email=" + email
+            urlPath = urlPath + "phone=" + phone + "&email=" + email + "&fio" + fio.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
@@ -140,6 +143,9 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         if UserDefaults.standard.string(forKey: "mail") == "-"{
             emailText.text = ""
         }
+        if UserDefaults.standard.string(forKey: "name") != ""{
+            fioText.text = UserDefaults.standard.string(forKey: "name")
+        }
         if data.count < 5{
             tableHeight.constant = CGFloat(44 * data.count)
         }else{
@@ -150,6 +156,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
         saveBtn.backgroundColor = myColors.btnColor.uiColor()
         addLSBtn.backgroundColor = myColors.btnColor.uiColor()
         separator.backgroundColor = myColors.btnColor.uiColor()
+        separator1.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         tableView.setEditing(true, animated: true)

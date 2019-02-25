@@ -36,6 +36,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Pocket_White")
         #elseif isReutKomfort
         imageApp.image = UIImage(named: "Logo_ReutKomfort_White")
+        #elseif isUKGarant
+        imageApp.image = UIImage(named: "Logo_UK_Garant_White")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -70,6 +72,8 @@ class UpdateAppController: UIViewController {
         #elseif isUKKomfort
         str = "itms-apps://itunes.apple.com/ru/app/id1369729534"
         #elseif isKlimovsk12
+        str = "itms-apps://itunes.apple.com/ru/app/id1420424696"
+        #elseif isUKGarant
         str = "itms-apps://itunes.apple.com/ru/app/id1420424696"
         #endif
         let url  = NSURL(string: str)
