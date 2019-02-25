@@ -6,6 +6,9 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var separator1: UILabel!
     @IBOutlet weak var separator2: UILabel!
     
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
+    
     // Массивы для хранения данных
     var streets_names: [String] = []
     var streets_ids: [String] = []
@@ -36,6 +39,10 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var edLS: UITextField!
     @IBOutlet weak var edPass: UITextField!
+    
+    @IBAction func supportBtn(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "support", sender: self)
+    }
     
     @IBAction func AddLS(_ sender: UIButton) {
         if edPass.text == "" || edLS.text == "" {
@@ -130,6 +137,9 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
         back.tintColor = myColors.btnColor.uiColor()
         separator1.backgroundColor = myColors.labelColor.uiColor()
         separator2.backgroundColor = myColors.labelColor.uiColor()
+        
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
