@@ -121,6 +121,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     @IBAction func PayBtnAction(_ sender: UIButton) {
         #if isMupRCMytishi
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #elseif isKlimovsk12
+        self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #else
         self.performSegue(withIdentifier: "pays", sender: self)
         #endif

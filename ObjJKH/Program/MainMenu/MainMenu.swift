@@ -549,6 +549,8 @@ class MainMenu: UIViewController {
     @IBAction func go_pays(_ sender: UIButton) {
         #if isMupRCMytishi
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #elseif isKlimovsk12
+        self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #else
         self.performSegue(withIdentifier: "pays", sender: self)
         #endif

@@ -45,7 +45,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     var sum: Double = 0
     var totalSum: Double = 0
-    var selectedRow = 0
+    var selectedRow = -1
     var checkBox:[Bool]   = []
     var idOSV   :[Int]    = []
     var sumOSV  :[Double] = []
@@ -141,13 +141,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             checkBox.forEach{
                 if $0 == true && sumOSV[i] > 0.00{
                     let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
+                    #if isKlimovsk12
+                    let ItemsData = ["ShopCode" : "214842", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                    #else
                     let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
+                    #endif
                     items.append(ItemsData)
                 }
                 i += 1
             }
             let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
+            #if isKlimovsk12
+            let ItemsData = ["ShopCode" : "214842", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+            #else
             let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+            #endif
             items.append(ItemsData)
             var Data:[String:String] = [:]
             var DataStr: String = ""
@@ -170,9 +178,31 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             DataStr = DataStr + "serv-\(String(format:"%.2f", servicePay))"
             Data["name"] = DataStr
-            print(Data)
             
             let defaults = UserDefaults.standard
+            #if isKlimovsk12
+            Data["chargeFlag"] = "false"
+            let shopCode = "214842"
+            var shops:[Any] = []
+            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
+            shops.append(shopItem)
+            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            let name = "Оплата услуг ЖКХ (Фе"
+            let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
+            print(receiptData)
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                
+            }, cancelled:  {
+                
+            }, error: { (error) in
+                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+            #else
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
@@ -189,6 +219,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             }
+            #endif
         }
     }
     
@@ -345,7 +376,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     DispatchQueue.main.async(execute: {
                         if (self.sum != 0) {
                             //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
+                            #if isKlimovsk12
+                            let serviceP = self.sum / 100 * 1.5
+                            #else
                             let serviceP = self.sum / 0.992 - self.sum
+                            #endif
                             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                             self.totalSum = self.sum + serviceP
                             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
@@ -394,7 +429,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
                     //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
+                    #if isKlimovsk12
+                    let serviceP = self.sum / 100 * 1.5
+                    #else
                     let serviceP = self.sum / 0.992 - self.sum
+                    #endif
                     self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                     self.totalSum = self.sum + serviceP
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
@@ -467,7 +506,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
-        if update == false && sumOSV.count != kol{
+        if sumOSV.count != kol && selectedRow == -1{
             if choiceIdent == ""{
                 let osv = fetchedResultsController!.object(at: indexPath)
                 let sum:String = osv.end!
@@ -559,7 +598,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
         }
-        
         cell.delegate = self
         select = false
         selectedRow = -1
@@ -567,8 +605,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         return cell
     }
     
+    var editRow = IndexPath()
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
+        editRow = indexPath
         update = true
         select = true
         tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -583,7 +623,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         self.sum = sum
+        #if isKlimovsk12
+        let serviceP = self.sum / 100 * 1.5
+        #else
         let serviceP = self.sum / 0.992 - self.sum
+        #endif
         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
         self.totalSum = self.sum + serviceP
         self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
@@ -626,7 +670,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 i += 1
             }
+            #if isKlimovsk12
+            let serviceP = self.sum / 100 * 1.5
+            #else
             let serviceP = self.sum / 0.992 - self.sum
+            #endif
             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
@@ -649,7 +697,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 i += 1
             }
+            #if isKlimovsk12
+            let serviceP = self.sum / 100 * 1.5
+            #else
             let serviceP = self.sum / 0.992 - self.sum
+            #endif
             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
@@ -658,14 +710,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {
-        let viewHeight = view.frame.size.height
+        let viewHeight = view.frame.size.height        
         if viewHeight == 667{
             viewTop.constant = getPoint() - 210 + 40
-            return
-            
         }else if viewHeight == 736{
             viewTop.constant = getPoint() - 220 + 40
-            return
         }else if viewHeight == 568{
             viewTop.constant = getPoint() + 40
         }else{

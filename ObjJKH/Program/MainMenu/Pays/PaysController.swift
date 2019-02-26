@@ -44,7 +44,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     var sum: Double = 0
     var totalSum: Double = 0
-    var selectedRow = 0
+    var selectedRow = -1
     var checkBox:[Bool]   = []
     var sumOSV  :[Double] = []
     var osvc    :[String] = []
@@ -492,7 +492,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
-        if update == false  && sumOSV.count != kol{
+        if sumOSV.count != kol && selectedRow == -1{
             if choiceIdent == ""{
                 let osv = fetchedResultsController!.object(at: indexPath)
                 let sum:String = osv.end!
