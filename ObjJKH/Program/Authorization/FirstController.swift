@@ -271,7 +271,7 @@ class FirstController: UIViewController {
                                                 }
                                                 
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-//                                                self.responseString = "смена пароля"
+//                                                self.responseString = "error: смена пароля: 987487632"
                                                 print("responseString = \(self.responseString)")
                                                 
                                                 self.choice()
@@ -304,7 +304,20 @@ class FirstController: UIViewController {
         } else if (responseString.contains("смена пароля")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                self.nonPass()
+                let str = self.responseString.replacingOccurrences(of: "error: смена пароля: ", with: "")
+                var ls: [String] = []
+                if str.contains(";"){
+                    ls = str.components(separatedBy: ";")
+                }else{
+                    ls.append(str)
+                }
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "nonPassController") as! nonPassController
+                vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                vc.ls = ls[0]
+                vc.login = self.edLogin.text!
+                vc.lsLbl.text = "У лицевого счета \(ls[0]) был изменён пароль"
+                self.addChildViewController(vc)
+                self.view.addSubview(vc.view)
             })
         }else if (responseString.contains("error")){
             DispatchQueue.main.async(execute: {
@@ -359,156 +372,6 @@ class FirstController: UIViewController {
                 self.StopIndicator()
             })
         }
-    }
-    
-    func nonPass(){
-        let str = self.responseString.replacingOccurrences(of: "error: смена пароля: ", with: "")
-        var ls: [String] = []
-        if str.contains(";"){
-            ls = str.components(separatedBy: ";")
-        }else{
-            ls.append(str)
-        }
-        let alert = UIAlertController(title: "Ошибка", message: "У лицевого счёта \(ls[0]) был изменён пароль", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-        let passAction = UIAlertAction(title: "Сменить пароль", style: .default) { (_) -> Void in
-            self.editPass(ls: ls[0])
-        }
-        let delAction = UIAlertAction(title: "Отвязать лиц. счет", style: .default) { (_) -> Void in
-            self.delLS(ls: ls[0])
-        }
-        alert.addAction(passAction)
-        alert.addAction(delAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-
-    func editPass(ls: String){
-        let alert = UIAlertController(title: "Сменить пароль", message: "Введите тот пароль для \(ls), который Вы установили на сайте", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите пароль..."; textField.keyboardType = .numberPad })
-        let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
-            self.nonPass()
-        }
-        let passAction = UIAlertAction(title: "Сменить", style: .default) { (_) -> Void in
-            let textField = alert.textFields![0]
-            let str = textField.text
-            if str != ""{
-                self.sendNewPass(ls: ls, pass: str!)
-            }else{
-                textField.text = ""
-                textField.placeholder = "Введите пароль..."
-                let alert = UIAlertController(title: "Ошибка", message: "Укажите пароль!", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    self.editPass(ls: ls)
-                }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-        }
-        alert.addAction(cancelAction)
-        alert.addAction(passAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func delLS(ls: String){
-        let phone = edLogin.text!
-        let ident =  ls
-        let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + ls + " от аккаунта?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
-            self.nonPass()
-        }
-        alert.addAction(cancelAction)
-        let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
-            
-            var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
-            urlPath = urlPath + "phone=" + phone + "&ident=" + ident
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        DispatchQueue.main.async(execute: {
-                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
-                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                                                                self.performSegue(withIdentifier: "support", sender: self)
-                                                            }
-                                                            alert.addAction(cancelAction)
-                                                            alert.addAction(supportAction)
-                                                            self.present(alert, animated: true, completion: nil)
-                                                        })
-                                                        return
-                                                    }
-                                                    
-                                                    let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    print("responseString = \(responseString)")
-                                                    
-            })
-            task.resume()
-            
-        }
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func sendNewPass(ls: String, pass: String){
-        let txtLogin: String = edLogin.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        let txtPass: String = pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        let ident: String = ls.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        
-        let urlPath = Server.SERVER + Server.NEW_PASS_LS + "phone=" + txtLogin + "&ident=" + ident + "&pwd=" + txtPass
-        let url: NSURL = NSURL(string: urlPath)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "GET"
-        print(request)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, response, error in
-                                                
-                                                if error != nil {
-                                                    DispatchQueue.main.async(execute: {
-                                                        self.StopIndicator()
-                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
-                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                                                            self.performSegue(withIdentifier: "support", sender: self)
-                                                        }
-                                                        alert.addAction(cancelAction)
-                                                        alert.addAction(supportAction)
-                                                        self.present(alert, animated: true, completion: nil)
-                                                    })
-                                                    return
-                                                }
-                                                
-                                                self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                                                print("responseString = \(self.responseString)")
-                                                if self.responseString == "ok"{
-                                                    DispatchQueue.main.async(execute: {
-                                                        self.StopIndicator()
-                                                        let alert = UIAlertController(title: "Пароль для \(ls) успешно изменён!", message: "", preferredStyle: .alert)
-                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                                                        alert.addAction(cancelAction)
-                                                        self.present(alert, animated: true, completion: nil)
-                                                    })
-                                                }else{
-                                                    DispatchQueue.main.async(execute: {
-                                                        self.StopIndicator()
-                                                        let alert = UIAlertController(title: "Неверный пароль", message: "", preferredStyle: .alert)
-                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                                                            self.editPass(ls: ls)
-                                                        }
-                                                        alert.addAction(cancelAction)
-                                                        self.present(alert, animated: true, completion: nil)
-                                                    })
-                                                }
-        })
-        task.resume()
     }
     
     // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
