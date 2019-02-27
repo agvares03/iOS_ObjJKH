@@ -23,10 +23,6 @@
 		1C13B8C3221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		1C13B8C4221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		1C19ADF4222527D400C51656 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
-		1C19ADF622265F0600C51656 /* LsPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19ADF522265F0600C51656 /* LsPassController.swift */; };
-		1C19ADF722265F0600C51656 /* LsPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19ADF522265F0600C51656 /* LsPassController.swift */; };
-		1C19ADF922265FE400C51656 /* editPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19ADF822265FE400C51656 /* editPassController.swift */; };
-		1C19ADFA22265FE400C51656 /* editPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19ADF822265FE400C51656 /* editPassController.swift */; };
 		1C1C6B2C21F7106900DD6938 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		1C3A4C72218C090700A5C50E /* AddLSMup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A4C70218C08BE00A5C50E /* AddLSMup.swift */; };
 		1C5153CF21EEFE9800DE36D9 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
@@ -1476,8 +1472,6 @@
 		1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesController.swift; sourceTree = "<group>"; };
 		1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdditionalServices.storyboard; sourceTree = "<group>"; };
 		1C13B8BA221ACDCC0011D343 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		1C19ADF522265F0600C51656 /* LsPassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LsPassController.swift; sourceTree = "<group>"; };
-		1C19ADF822265FE400C51656 /* editPassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editPassController.swift; sourceTree = "<group>"; };
 		1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppController.swift; sourceTree = "<group>"; };
 		1C3A4C70218C08BE00A5C50E /* AddLSMup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLSMup.swift; sourceTree = "<group>"; };
 		1C5153CE21EEFE9800DE36D9 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
@@ -2036,8 +2030,6 @@
 				418ABF372133FD85004DB75C /* Registration */,
 				418ABF3A2134003F004DB75C /* ForgotPass */,
 				1C6A38AF22029FFE00774DED /* SupportController.swift */,
-				1C19ADF522265F0600C51656 /* LsPassController.swift */,
-				1C19ADF822265FE400C51656 /* editPassController.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -4673,10 +4665,8 @@
 				418ABF8C21354274004DB75C /* News.swift in Sources */,
 				41EF5A1E2138E23000789370 /* AddAppUser.swift in Sources */,
 				1C5153D121EF04A600DE36D9 /* EditAccountController.swift in Sources */,
-				1C19ADF922265FE400C51656 /* editPassController.swift in Sources */,
 				41EF5A0D2138D92E00789370 /* Comments+CoreDataClass.swift in Sources */,
 				411AD1CA2161E17E004FD1B5 /* empty.cpp in Sources */,
-				1C19ADF622265F0600C51656 /* LsPassController.swift in Sources */,
 				410D51F221B6876700C21455 /* Tinkoff_Pay_Decides.m in Sources */,
 				41E8F0102147605E00FE0473 /* ImageConstant.swift in Sources */,
 				41EF59E92137EFBE00789370 /* PaysController.swift in Sources */,
@@ -5027,7 +5017,6 @@
 				41DFC38C213CF4E9002CEB62 /* CoreDataManager.swift in Sources */,
 				1C13B8BE221ACDCC0011D343 /* Reachability.swift in Sources */,
 				41DFC38D213CF4E9002CEB62 /* News+UITableViewDataSource.swift in Sources */,
-				1C19ADF722265F0600C51656 /* LsPassController.swift in Sources */,
 				41DFC38E213CF4E9002CEB62 /* Web_JSON.swift in Sources */,
 				417FCFED217EF143009CDBB8 /* Settings+CoreDataProperties.swift in Sources */,
 				41DFC38F213CF4E9002CEB62 /* Fotos+CoreDataProperties.swift in Sources */,
@@ -5088,7 +5077,6 @@
 				41DFC3B4213CF4E9002CEB62 /* AppsController.swift in Sources */,
 				41DFC3B5213CF4E9002CEB62 /* QuestionsJson.swift in Sources */,
 				1C6A38B322029FFE00774DED /* SupportController.swift in Sources */,
-				1C19ADFA22265FE400C51656 /* editPassController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
