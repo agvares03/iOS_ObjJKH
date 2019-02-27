@@ -412,8 +412,7 @@ class FirstController: UIViewController {
     }
     
     func delLS(ls: String){
-        let defaults = UserDefaults.standard
-        let phone = defaults.string(forKey: "phone")
+        let phone = edLogin.text!
         let ident =  ls
         let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + ls + " от аккаунта?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
@@ -423,7 +422,7 @@ class FirstController: UIViewController {
         let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
             
             var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
-            urlPath = urlPath + "phone=" + phone! + "&ident=" + ident
+            urlPath = urlPath + "phone=" + phone + "&ident=" + ident
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
