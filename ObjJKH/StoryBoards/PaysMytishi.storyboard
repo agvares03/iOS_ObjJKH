@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ds5-Ye-OVv">
-                                <rect key="frame" x="0.0" y="110" width="375" height="363"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="364"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PayMupCell" rowHeight="55" id="YUA-0f-fvR" customClass="PayMupSaldoCell" customModule="ChistDom" customModuleProvider="target">
@@ -38,7 +38,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuS-JS-1UH">
-                                                    <rect key="frame" x="50" y="22" width="33" height="16"/>
+                                                    <rect key="frame" x="50" y="22" width="221" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -78,6 +78,7 @@
                                                 <constraint firstItem="YfG-Fe-Qo9" firstAttribute="top" secondItem="IEY-YR-4Wm" secondAttribute="topMargin" constant="11" id="OgJ-hx-MY7"/>
                                                 <constraint firstItem="F9J-G7-QTY" firstAttribute="top" secondItem="IEY-YR-4Wm" secondAttribute="top" constant="10" id="QqX-K6-T7R"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="IuS-JS-1UH" secondAttribute="bottom" constant="6" id="UVN-TU-i2R"/>
+                                                <constraint firstItem="PJc-GV-vIk" firstAttribute="leading" secondItem="IuS-JS-1UH" secondAttribute="trailing" constant="10" id="gAq-1Z-2re"/>
                                                 <constraint firstItem="92H-aq-iHX" firstAttribute="leading" secondItem="IEY-YR-4Wm" secondAttribute="leadingMargin" id="jyD-wa-MsF"/>
                                                 <constraint firstItem="92H-aq-iHX" firstAttribute="top" secondItem="IEY-YR-4Wm" secondAttribute="topMargin" constant="11" id="uqB-bv-jgv"/>
                                                 <constraint firstItem="92H-aq-iHX" firstAttribute="leading" secondItem="IEY-YR-4Wm" secondAttribute="leadingMargin" id="uqH-TJ-d10"/>
@@ -338,7 +339,7 @@
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="NqZ-RR-9oV" secondAttribute="trailing" constant="16" id="bVh-S1-TLN"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="eAR-0d-ZC2"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="gFD-zk-WjN"/>
-                            <constraint firstAttribute="bottom" secondItem="ds5-Ye-OVv" secondAttribute="bottom" constant="194" id="gcz-X2-OIH"/>
+                            <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ds5-Ye-OVv" secondAttribute="bottom" constant="1" id="gcz-X2-OIH"/>
                             <constraint firstItem="aPA-3J-M3o" firstAttribute="centerX" secondItem="ABp-Jo-kEA" secondAttribute="centerX" id="rq3-ss-sGa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MkC-gE-W0P"/>
