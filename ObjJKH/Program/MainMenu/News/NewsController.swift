@@ -50,6 +50,7 @@ class NewsController: UIViewController, UITableViewDelegate {
             }
             
             NewsManager.instance.loadNewsIfNeed()
+            self.indicator.stopAnimating()
         }else{
             let _ = updateUserInterface()
         }

@@ -497,6 +497,16 @@ class FirstController: UIViewController {
                                                         alert.addAction(cancelAction)
                                                         self.present(alert, animated: true, completion: nil)
                                                     })
+                                                }else{
+                                                    DispatchQueue.main.async(execute: {
+                                                        self.StopIndicator()
+                                                        let alert = UIAlertController(title: "Неверный пароль", message: "", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                                                            self.editPass(ls: ls)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
                                                 }
         })
         task.resume()
