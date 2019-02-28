@@ -23,6 +23,12 @@
 		1C13B8C3221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		1C13B8C4221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		1C19ADF4222527D400C51656 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
+		1C19ADFC2226845400C51656 /* MupCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C19ADFB2226845400C51656 /* MupCounters.storyboard */; };
+		1C19ADFD2226845400C51656 /* MupCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C19ADFB2226845400C51656 /* MupCounters.storyboard */; };
+		1C19ADFF222690BA00C51656 /* nonPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19ADFE222690BA00C51656 /* nonPassController.swift */; };
+		1C19AE00222690BA00C51656 /* nonPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19ADFE222690BA00C51656 /* nonPassController.swift */; };
+		1C19AE022226B31600C51656 /* MupCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE012226B31600C51656 /* MupCounterController.swift */; };
+		1C19AE032226B31600C51656 /* MupCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE012226B31600C51656 /* MupCounterController.swift */; };
 		1C1C6B2C21F7106900DD6938 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		1C3A4C72218C090700A5C50E /* AddLSMup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A4C70218C08BE00A5C50E /* AddLSMup.swift */; };
 		1C5153CF21EEFE9800DE36D9 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
@@ -1472,6 +1478,9 @@
 		1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesController.swift; sourceTree = "<group>"; };
 		1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdditionalServices.storyboard; sourceTree = "<group>"; };
 		1C13B8BA221ACDCC0011D343 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		1C19ADFB2226845400C51656 /* MupCounters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MupCounters.storyboard; sourceTree = "<group>"; };
+		1C19ADFE222690BA00C51656 /* nonPassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nonPassController.swift; sourceTree = "<group>"; };
+		1C19AE012226B31600C51656 /* MupCounterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MupCounterController.swift; sourceTree = "<group>"; };
 		1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppController.swift; sourceTree = "<group>"; };
 		1C3A4C70218C08BE00A5C50E /* AddLSMup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLSMup.swift; sourceTree = "<group>"; };
 		1C5153CE21EEFE9800DE36D9 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
@@ -1983,6 +1992,7 @@
 				418ABF81213539DA004DB75C /* News.storyboard */,
 				418ABF9E213576FF004DB75C /* Questions.storyboard */,
 				418ABFE321361949004DB75C /* Counters.storyboard */,
+				1C19ADFB2226845400C51656 /* MupCounters.storyboard */,
 				41E8F0262147C61300FE0473 /* NoCounters.storyboard */,
 				41EF59DB2137A20300789370 /* Saldo.storyboard */,
 				41EF59E32137ECDD00789370 /* Pays.storyboard */,
@@ -2027,6 +2037,7 @@
 			isa = PBXGroup;
 			children = (
 				418ABF0C2133CC7B004DB75C /* FirstController.swift */,
+				1C19ADFE222690BA00C51656 /* nonPassController.swift */,
 				418ABF372133FD85004DB75C /* Registration */,
 				418ABF3A2134003F004DB75C /* ForgotPass */,
 				1C6A38AF22029FFE00774DED /* SupportController.swift */,
@@ -2173,6 +2184,7 @@
 			children = (
 				41E8F01E2147C26B00FE0473 /* OurObjHome */,
 				418ABFE821361F56004DB75C /* CountersController.swift */,
+				1C19AE012226B31600C51656 /* MupCounterController.swift */,
 				418ABFEC21361F70004DB75C /* CounterCell.swift */,
 			);
 			path = Counters;
@@ -3029,6 +3041,7 @@
 				418ABF9F213576FF004DB75C /* Questions.storyboard in Resources */,
 				1C8513A021EC74100003D587 /* MainMenu.storyboard in Resources */,
 				418ABF102133CC7B004DB75C /* Main.storyboard in Resources */,
+				1C19ADFC2226845400C51656 /* MupCounters.storyboard in Resources */,
 				41ACA2142140CB0200921C82 /* ic_get_app.png in Resources */,
 				1C5153CF21EEFE9800DE36D9 /* Account.storyboard in Resources */,
 				1CF8B8AE2223CF3200B1D289 /* Logo_UK_Garant_White.png in Resources */,
@@ -3205,6 +3218,7 @@
 				41DFC3C5213CF4E9002CEB62 /* Counters.storyboard in Resources */,
 				41DFC3C6213CF4E9002CEB62 /* News.storyboard in Resources */,
 				41DFC3C7213CF4E9002CEB62 /* Saldo.storyboard in Resources */,
+				1C19ADFD2226845400C51656 /* MupCounters.storyboard in Resources */,
 				41DFC3C8213CF4E9002CEB62 /* main_background.png in Resources */,
 				41DFC3C9213CF4E9002CEB62 /* account_icon_cons.jpg in Resources */,
 				1C5153D421EF10C700DE36D9 /* Account.storyboard in Resources */,
@@ -4686,6 +4700,7 @@
 				418ABFE921361F56004DB75C /* CountersController.swift in Sources */,
 				4193AED121708CB600857D4D /* Applications+CoreDataProperties.swift in Sources */,
 				418AC03B213634CC004DB75C /* Saldo+CoreDataProperties.swift in Sources */,
+				1C19ADFF222690BA00C51656 /* nonPassController.swift in Sources */,
 				418ABFA821357B6C004DB75C /* QuestionsTableCell.swift in Sources */,
 				41645B57216492A300C61AF9 /* StartController.swift in Sources */,
 				41EF5A3F213917C900789370 /* Fotos+CoreDataClass.swift in Sources */,
@@ -4699,6 +4714,7 @@
 				418ABF4521341BF5004DB75C /* MainMenu.swift in Sources */,
 				4193AEC921708CB600857D4D /* Applications+CoreDataClass.swift in Sources */,
 				41E8F00A2147604400FE0473 /* ColorsConstant.swift in Sources */,
+				1C19AE022226B31600C51656 /* MupCounterController.swift in Sources */,
 				41B5BC3621666D11003F4868 /* Titles.swift in Sources */,
 				41EF5A6C213BAF9600789370 /* FloatRatingView.swift in Sources */,
 				41DFC456213FCA99002CEB62 /* MainMenuCons.swift in Sources */,
@@ -4992,6 +5008,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C19AE00222690BA00C51656 /* nonPassController.swift in Sources */,
 				41DFC466213FFFF5002CEB62 /* AddAppCons.swift in Sources */,
 				41DFC37D213CF4E9002CEB62 /* QuestionAnswerVC.swift in Sources */,
 				41DFC37E213CF4E9002CEB62 /* NewsController.swift in Sources */,
@@ -5001,6 +5018,7 @@
 				41DFC381213CF4E9002CEB62 /* Pay.swift in Sources */,
 				41DFC382213CF4E9002CEB62 /* AddLS.swift in Sources */,
 				41DFC383213CF4E9002CEB62 /* WebsController.swift in Sources */,
+				1C19AE032226B31600C51656 /* MupCounterController.swift in Sources */,
 				41DFC384213CF4E9002CEB62 /* CommCell.swift in Sources */,
 				41E8F01B214765B500FE0473 /* ShemeColor.swift in Sources */,
 				41DFC385213CF4E9002CEB62 /* Counters+CoreDataProperties.swift in Sources */,
