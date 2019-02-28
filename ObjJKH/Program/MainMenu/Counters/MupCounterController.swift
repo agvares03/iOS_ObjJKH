@@ -237,9 +237,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var dateOneArr     :[String] = []
     var dateTwoArr     :[String] = []
     var dateThreeArr   :[String] = []
+    var ownerArr    :[String] = []
     
     func getData(ident: String){
-        choiceIdent = "Все"
         identArr.removeAll()
         nameArr.removeAll()
         numberArr.removeAll()
@@ -251,6 +251,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         dateOneArr.removeAll()
         dateTwoArr.removeAll()
         dateThreeArr.removeAll()
+        ownerArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.iterYear))
         do {
@@ -282,6 +283,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             identArr.append(object.value(forKey: "ident") as! String)
                             nameArr.append(object.value(forKey: "count_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
+                            ownerArr.append(object.value(forKey: "owner") as! String)
                             predArr.append(valueOne)
                             teckArr.append(valueTwo)
                             diffArr.append(valueThree)
@@ -309,6 +311,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         identArr.append(object.value(forKey: "ident") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
+                        ownerArr.append(object.value(forKey: "owner") as! String)
                         predArr.append(valueOne)
                         teckArr.append(valueTwo)
                         diffArr.append(valueThree)
@@ -366,19 +369,12 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if choiceIdent == ""{
-            if let sections = fetchedResultsController?.sections {
-                return sections[section].numberOfObjects
-            } else {
-                return 0
-            }
-        }else{
+        
             if nameArr.count != 0 {
                 return nameArr.count
             } else {
                 return 0
             }
-        }
     }
     
     //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -390,30 +386,17 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "MupCounterCell") as! MupCounterCell
         var send = false
         var countName = ""
-        if choiceIdent == ""{
-            let counter = (fetchedResultsController?.object(at: indexPath))! as Counters
-            self.Count = counter
-            cell.ident.text       = counter.ident
-            cell.name.text        = String(counter.count_name! + ", " + counter.unit_name!)
-            countName             = counter.count_name!
-            cell.number.text      = counter.owner
-            cell.pred.text        = String(format:"%.2f", counter.prev_value)
-            cell.teck.text        = String(format:"%.2f", counter.value)
-            cell.diff.text        = String(format:"%.2f", counter.diff)
-            send = counter.sended
-        }else{
-            cell.ident.text       = identArr[indexPath.row]
-            cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
-            cell.number.text      = numberArr[indexPath.row]
-            countName             = nameArr[indexPath.row]
-            cell.pred.text        = String(format:"%.2f", predArr[indexPath.row])
-            cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
-            cell.diff.text        = String(format:"%.2f", diffArr[indexPath.row])
-            cell.predLbl.text     = dateOneArr[indexPath.row]
-            cell.teckLbl.text     = dateTwoArr[indexPath.row]
-            cell.diffLbl.text     = dateThreeArr[indexPath.row]
-            send = sendedArr[indexPath.row]
-        }
+        cell.ident.text       = identArr[indexPath.row]
+        cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        cell.number.text      = ownerArr[indexPath.row]
+        countName             = nameArr[indexPath.row]
+        cell.pred.text        = String(format:"%.2f", predArr[indexPath.row])
+        cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
+        cell.diff.text        = String(format:"%.2f", diffArr[indexPath.row])
+        cell.predLbl.text     = dateOneArr[indexPath.row]
+        cell.teckLbl.text     = dateTwoArr[indexPath.row]
+        cell.diffLbl.text     = dateThreeArr[indexPath.row]
+        send = sendedArr[indexPath.row]
         cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
         cell.imgCounter.image = UIImage(named: "water")
         if (countName.lowercased().range(of: "гвс") != nil){
@@ -443,17 +426,20 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         selectedUniq = numberArr[indexPath.row]
         selectedUniqName = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        selectedOwner = ownerArr[indexPath.row]
         self.performSegue(withIdentifier: "uniqCounters", sender: self)
     }
     
     var selectedUniq = ""
     var selectedUniqName = ""
+    var selectedOwner = ""
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "uniqCounters" {
             let payController             = segue.destination as! UniqCountersController
             payController.uniq_num = selectedUniq
             payController.uniq_name = selectedUniqName
+            payController.owner = selectedOwner
             payController.ls = choiceIdent
         }
     }
@@ -461,6 +447,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_Button.setTitle(contents, for: UIControlState.normal)
         choiceIdent = contents
+        print(contents)
         getData(ident: contents)
     }
     
@@ -470,22 +457,28 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        ls_Button.setTitle("Все", for: UIControlState.normal)
+        choiceIdent = "Все"
         DB().del_db(table_name: "Counters")
         parse_Countrers(login: edLogin, pass: edPass)
     }
     
     func sendPressed(uniq_num: String, count_name: String) {
-        if (isEditable()) {
             let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .numberPad })
             let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: uniq_num, count: (alert.textFields?[0].text!)!)
+                var metrID = ""
+                for i in 0...self.numberArr.count - 1{
+                    if uniq_num == self.ownerArr[i]{
+                        metrID = self.numberArr[i]
+                    }
+                }
+                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!)!)
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
-        }
     }
     
     func get_name_month(number_month: String) -> String {
@@ -493,7 +486,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         var rezult: String = ""
         let date = NSDate()
         let calendar = NSCalendar.current
-        let resultDate = calendar.component(.year, from: date as Date)
         let resultMonth = calendar.component(.month, from: date as Date)
         number_month = String(resultMonth)
         if number_month.first == "0"{
