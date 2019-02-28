@@ -538,6 +538,11 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             cell.plus.text   = startArr[indexPath.row]
             cell.minus.text  = minusArr[indexPath.row]
             cell.end.text    = endArr[indexPath.row]
+            cell.totalSum.text = "Итого к оплате"
+            cell.pays.isHidden = true
+            cell.minus.isHidden = true
+            cell.lblHeight1.constant = 8
+            cell.lblHeight2.constant = 8
             #else
             let osv = fetchedResultsController!.object(at: indexPath)
             if (osv.usluga == "Я") {
