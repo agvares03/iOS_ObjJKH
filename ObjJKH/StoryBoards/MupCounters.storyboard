@@ -516,7 +516,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Водомер по ХВС" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz1-c2-Khp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Водомер по ХВС" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz1-c2-Khp">
                                 <rect key="frame" x="16" y="76" width="192" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -598,7 +598,7 @@
                             <constraint firstItem="Vlw-eA-eni" firstAttribute="trailing" secondItem="kyw-Se-55P" secondAttribute="trailing" id="ie7-O3-gPE"/>
                             <constraint firstItem="dE7-5m-31N" firstAttribute="leading" secondItem="Vlw-eA-eni" secondAttribute="leading" constant="15" id="jsa-Tn-tFz"/>
                             <constraint firstItem="fDQ-JA-AYn" firstAttribute="top" secondItem="dE7-5m-31N" secondAttribute="bottom" constant="8" id="mps-S1-nJP"/>
-                            <constraint firstItem="wVC-F6-bkK" firstAttribute="top" secondItem="AfL-Mf-E4V" secondAttribute="bottom" constant="8" id="ojW-va-cyH"/>
+                            <constraint firstItem="wVC-F6-bkK" firstAttribute="top" secondItem="dz1-c2-Khp" secondAttribute="bottom" constant="10" id="ojW-va-cyH"/>
                             <constraint firstItem="AfL-Mf-E4V" firstAttribute="leading" secondItem="dz1-c2-Khp" secondAttribute="trailing" constant="5" id="pw7-LR-x67"/>
                             <constraint firstItem="kyw-Se-55P" firstAttribute="top" secondItem="fDQ-JA-AYn" secondAttribute="bottom" constant="8" id="qdr-f9-aPG"/>
                             <constraint firstItem="fDQ-JA-AYn" firstAttribute="leading" secondItem="Vlw-eA-eni" secondAttribute="leading" id="uiW-U4-QbI"/>

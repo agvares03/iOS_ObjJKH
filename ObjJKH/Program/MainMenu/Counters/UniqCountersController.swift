@@ -18,6 +18,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     public var uniq_num = ""
     public var uniq_name = ""
     public var ls = ""
+    public var owner = ""
     
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var tableCounters: UITableView!
@@ -34,7 +35,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     }
     
     @IBAction func sendAction(_ sender: UIButton){
-        let alert = UIAlertController(title: uniq_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
+        let alert = UIAlertController(title: uniq_name + "(" + owner + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
         alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .numberPad })
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
         alert.addAction(cancelAction)
@@ -61,7 +62,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         tableCounters.delegate = self
         lsLbl.text = "Л/с: " + ls
         
-        uniqNum.text = uniq_num
+        uniqNum.text = owner
         uniqName.text = uniq_name
         StartIndicator()
         let defaults     = UserDefaults.standard
@@ -72,6 +73,11 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         if ls == "Все"{
             ls = defaults.string(forKey: "login")!
             choiceIdent = "Все"
+            let str_ls = defaults.string(forKey: "str_ls")
+            let str_ls_arr = str_ls?.components(separatedBy: ",")
+            if str_ls_arr?.count == 1{
+                lsLbl.text = "Л/с: " + str_ls_arr![0]
+            }
         }else{
             choiceIdent = ls
         }

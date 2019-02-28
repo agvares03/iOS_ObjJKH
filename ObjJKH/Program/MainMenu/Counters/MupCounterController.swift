@@ -240,7 +240,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var ownerArr    :[String] = []
     
     func getData(ident: String){
-        choiceIdent = "Все"
         identArr.removeAll()
         nameArr.removeAll()
         numberArr.removeAll()
@@ -427,17 +426,20 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         selectedUniq = numberArr[indexPath.row]
         selectedUniqName = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        selectedOwner = ownerArr[indexPath.row]
         self.performSegue(withIdentifier: "uniqCounters", sender: self)
     }
     
     var selectedUniq = ""
     var selectedUniqName = ""
+    var selectedOwner = ""
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "uniqCounters" {
             let payController             = segue.destination as! UniqCountersController
             payController.uniq_num = selectedUniq
             payController.uniq_name = selectedUniqName
+            payController.owner = selectedOwner
             payController.ls = choiceIdent
         }
     }
@@ -445,6 +447,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_Button.setTitle(contents, for: UIControlState.normal)
         choiceIdent = contents
+        print(contents)
         getData(ident: contents)
     }
     
@@ -454,6 +457,8 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        ls_Button.setTitle("Все", for: UIControlState.normal)
+        choiceIdent = "Все"
         DB().del_db(table_name: "Counters")
         parse_Countrers(login: edLogin, pass: edPass)
     }
