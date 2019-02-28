@@ -571,6 +571,9 @@
                                 <state key="normal" title="Передать показания">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendAction:" destination="BvK-wk-1lS" eventType="touchUpInside" id="LiG-qb-bvq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="513275627" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVC-F6-bkK">
                                 <rect key="frame" x="290" y="104" width="77.5" height="18"/>

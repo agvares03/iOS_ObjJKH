@@ -17,6 +17,10 @@ class SaldoCell: UITableViewCell {
     @IBOutlet weak var plus: UILabel!
     @IBOutlet weak var minus: UILabel!
     @IBOutlet weak var end: UILabel!
+    @IBOutlet weak var pays: UILabel!
+    @IBOutlet weak var totalSum: UILabel!
+    @IBOutlet weak var lblHeight1: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight2: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

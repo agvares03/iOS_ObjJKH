@@ -189,11 +189,11 @@
                                                 <constraint firstItem="tPl-9X-3FI" firstAttribute="top" secondItem="mj0-bC-eIi" secondAttribute="bottom" constant="8" id="Fii-EX-ahh"/>
                                                 <constraint firstItem="TIH-n4-14t" firstAttribute="leading" secondItem="vWM-d4-eVO" secondAttribute="leadingMargin" constant="30" id="HnS-iG-7Bl"/>
                                                 <constraint firstItem="DBC-07-duU" firstAttribute="leading" secondItem="vWM-d4-eVO" secondAttribute="leadingMargin" constant="15" id="K7J-1w-ejw"/>
-                                                <constraint firstItem="h8b-tJ-xTk" firstAttribute="top" secondItem="GgQ-gL-Zcj" secondAttribute="bottom" constant="8" id="PV5-9j-gQ4"/>
+                                                <constraint firstItem="h8b-tJ-xTk" firstAttribute="top" secondItem="tPl-9X-3FI" secondAttribute="bottom" constant="32" id="PV5-9j-gQ4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="GgQ-gL-Zcj" secondAttribute="trailing" constant="8" id="Phz-sB-zB5"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="h8b-tJ-xTk" secondAttribute="bottom" constant="2" id="Q2g-h8-pTt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="DBC-07-duU" secondAttribute="trailing" constant="8" id="ZOW-MH-M2g"/>
-                                                <constraint firstItem="XI4-wj-46z" firstAttribute="top" secondItem="pTp-Mb-BkK" secondAttribute="bottom" constant="8" id="Zjf-bl-3yt"/>
+                                                <constraint firstItem="XI4-wj-46z" firstAttribute="top" secondItem="TIH-n4-14t" secondAttribute="bottom" constant="32" id="Zjf-bl-3yt"/>
                                                 <constraint firstItem="mj0-bC-eIi" firstAttribute="top" secondItem="DBC-07-duU" secondAttribute="bottom" constant="8" id="bh2-QJ-WJS"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mj0-bC-eIi" secondAttribute="trailing" constant="8" id="bh8-8Z-fk1"/>
                                                 <constraint firstItem="Rd4-Nd-fT0" firstAttribute="leading" secondItem="vWM-d4-eVO" secondAttribute="leadingMargin" constant="30" id="d3d-NK-bhe"/>
@@ -210,9 +210,13 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="end" destination="h8b-tJ-xTk" id="v3h-jQ-7ix"/>
+                                            <outlet property="lblHeight1" destination="Zjf-bl-3yt" id="bxi-hg-8wz"/>
+                                            <outlet property="lblHeight2" destination="PV5-9j-gQ4" id="oVL-JT-ato"/>
                                             <outlet property="minus" destination="GgQ-gL-Zcj" id="dGc-OT-26h"/>
+                                            <outlet property="pays" destination="pTp-Mb-BkK" id="Wen-Ej-Ywv"/>
                                             <outlet property="plus" destination="tPl-9X-3FI" id="UNH-q0-Jws"/>
                                             <outlet property="start" destination="mj0-bC-eIi" id="Jc6-Zy-bYD"/>
+                                            <outlet property="totalSum" destination="XI4-wj-46z" id="Dq5-cC-Vxu"/>
                                             <outlet property="usluga" destination="DBC-07-duU" id="DmC-7z-CkA"/>
                                         </connections>
                                     </tableViewCell>
@@ -369,6 +373,12 @@
                             <constraint firstItem="HRr-pH-09o" firstAttribute="top" secondItem="mK7-KA-yNE" secondAttribute="bottom" constant="10" id="sOS-f8-rdo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e3f-PC-fAU"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="vqx-UO-CiJ"/>
+                                <exclude reference="VUL-Y3-bQl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Ведомость" id="0Xr-Dp-q8T">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="5Ww-DK-GpF">
