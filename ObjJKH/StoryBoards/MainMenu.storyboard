@@ -938,6 +938,7 @@
                         <segue destination="X0D-p6-MF7" kind="show" identifier="pays" id="DAS-iS-fdj"/>
                         <segue destination="TTA-pg-K07" kind="show" identifier="paysMytishi" id="3g5-7J-9Dw"/>
                         <segue destination="gf6-HI-rSp" kind="show" identifier="support" id="XiI-wW-Baf"/>
+                        <segue destination="MFu-ZS-8Sf" kind="show" identifier="mupCounters" id="eCh-Zg-AFw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uvK-jD-nzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1900,6 +1901,14 @@
             </objects>
             <point key="canvasLocation" x="1903" y="-491"/>
         </scene>
+        <!--MupCounters-->
+        <scene sceneID="lEq-8v-YWm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MupCounters" id="MFu-ZS-8Sf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o5p-FN-okX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1989" y="-697"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Logo_DemoUC_White.png" width="120" height="120"/>
@@ -1919,6 +1928,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="1r7-Tp-COC"/>
         <segue reference="O8G-gk-NZn"/>
-        <segue reference="Gyp-6g-I7J"/>
+        <segue reference="N5X-gF-COf"/>
     </inferredMetricsTieBreakers>
 </document>

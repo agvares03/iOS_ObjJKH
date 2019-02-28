@@ -535,6 +535,8 @@ class MainMenu: UIViewController {
     @IBAction func go_counters(_ sender: UIButton) {
         #if isOur_Obj_Home
         self.performSegue(withIdentifier: "noCounters", sender: self)
+        #elseif isMupRCMytishi
+        self.performSegue(withIdentifier: "mupCounters", sender: self)
         #else
         self.performSegue(withIdentifier: "mainCounters", sender: self)
         #endif

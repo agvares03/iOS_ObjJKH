@@ -51,6 +51,7 @@ class Server {
     static let GET_NEWS            = "GetAnnouncements.ashx?"        // Новости
     static let GET_QUESTIONS       = "GetQuestions.ashx?"            // Получение списка опросов
     static let GET_METERS          = "GetMeterValues.ashx?"          // Получить показания по счетчикам
+    static let GET_METERS_MUP      = "GetMeterValuesEverydayMode.ashx?" // Получить показания для Мытищ
     static let ADD_METER           = "AddMeterValue.ashx?"           // Добавить показание по счетчику
     static let GET_BILLS_SERVICES  = "GetBillServices.ashx?"         // Получить данные ОСВ (взаиморасчеты)
     static let GET_BILLS_SERVICES_FULL  = "GetBillServicesFull.ashx?"         // Получить данные ОСВ (взаиморасчеты)

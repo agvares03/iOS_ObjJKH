@@ -10,7 +10,15 @@ import UIKit
 import CoreData
 import Dropper
 
-class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
+protocol CountersCellDelegate: class {
+    func sendPressed(uniq_num: String, count_name: String)
+}
+
+class MupCounterController:UIViewController, DropperDelegate, CountersCellDelegate, UITableViewDelegate, UITableViewDataSource, XMLParserDelegate {
+    
+    // Глобальные переменные для парсинга
+    var parser = XMLParser()
+    
     
     var Count: Counters? = nil
     
@@ -43,8 +51,7 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
     var minMonth: String = ""
     var maxYear: String = ""
     var maxMonth: String = ""
-    var choiceIdent = ""
-    
+    var choiceIdent = "Все"
     
     var responseString:NSString = ""
     
@@ -97,7 +104,6 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         ls_lbl.isHidden = false
         ls_Button.isHidden = false
         monthLabel.isHidden = false
-        monthView.isHidden = false
         can_count_label.isHidden = false
         tableCounters.isHidden = false
         spinImg.isHidden = false
@@ -159,9 +165,11 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         dropper.hideWithAnimation(0.001)
         
         tableCounters.delegate = self
-        
+        monthLabel.text = get_name_month(number_month: iterMonth) + " " + iterYear
         StopIndicator()
-        
+//        DB().del_db(table_name: "Counters")
+//        // Получим данные в базу данных
+//        parse_Countrers(login: edLogin, pass: edPass)
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
@@ -200,6 +208,25 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         updateUserInterface()
     }
     
+    func parse_Countrers(login: String, pass: String) {
+        // Получим данные из xml
+        self.StartIndicator()
+        let urlPath:String = Server.SERVER + Server.GET_METERS_MUP + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let url: NSURL = NSURL(string: urlPath)!
+        print(url)
+        
+        parser = XMLParser(contentsOf: url as URL)!
+        parser.delegate = self
+        let success:Bool = parser.parse()
+        
+        if success {
+            print("parse success!")
+        } else {
+            print("parse failure!")
+        }
+        
+    }
+    
     var identArr    :[String] = []
     var nameArr     :[String] = []
     var numberArr   :[String] = []
@@ -207,8 +234,12 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
     var teckArr     :[Float] = []
     var diffArr     :[Float] = []
     var unitArr     :[String] = []
+    var dateOneArr     :[String] = []
+    var dateTwoArr     :[String] = []
+    var dateThreeArr   :[String] = []
     
     func getData(ident: String){
+        choiceIdent = "Все"
         identArr.removeAll()
         nameArr.removeAll()
         numberArr.removeAll()
@@ -217,24 +248,79 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         diffArr.removeAll()
         unitArr.removeAll()
         sendedArr.removeAll()
+        dateOneArr.removeAll()
+        dateTwoArr.removeAll()
+        dateThreeArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
-        fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
+        fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.iterYear))
         do {
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+            var uniq_num = ""
+            var dateOne = ""
+            var valueOne:Float = 0.00
+            var dateTwo = ""
+            var valueTwo:Float = 0.00
+            var dateThree = ""
+            var valueThree:Float = 0.00
+            var i = 0
             for result in results {
                 let object = result as! NSManagedObject
                 if ident != "Все"{
                     if (object.value(forKey: "ident") as! String) == ident{
+                        uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        if i == 0{
+                            dateOne = (object.value(forKey: "num_month") as! String)
+                            valueOne = (object.value(forKey: "value") as! Float)
+                            i = 1
+                        }else if i == 1{
+                            dateTwo = (object.value(forKey: "num_month") as! String)
+                            valueTwo = (object.value(forKey: "value") as! Float)
+                            i = 2
+                        }else if i == 2{
+                            dateThree = (object.value(forKey: "num_month") as! String)
+                            valueThree = (object.value(forKey: "value") as! Float)
+                            identArr.append(object.value(forKey: "ident") as! String)
+                            nameArr.append(object.value(forKey: "count_name") as! String)
+                            numberArr.append(object.value(forKey: "uniq_num") as! String)
+                            predArr.append(valueOne)
+                            teckArr.append(valueTwo)
+                            diffArr.append(valueThree)
+                            dateOneArr.append(dateOne)
+                            dateTwoArr.append(dateTwo)
+                            dateThreeArr.append(dateThree)
+                            unitArr.append(object.value(forKey: "unit_name") as! String)
+                            sendedArr.append(object.value(forKey: "sended") as! Bool)
+                            i = 0
+                        }
+                    }
+                }else{
+                    uniq_num = (object.value(forKey: "uniq_num") as! String)
+                    if i == 0{
+                        dateOne = (object.value(forKey: "num_month") as! String)
+                        valueOne = (object.value(forKey: "value") as! Float)
+                        i = 1
+                    }else if i == 1{
+                        dateTwo = (object.value(forKey: "num_month") as! String)
+                        valueTwo = (object.value(forKey: "value") as! Float)
+                        i = 2
+                    }else if i == 2{
+                        dateThree = (object.value(forKey: "num_month") as! String)
+                        valueThree = (object.value(forKey: "value") as! Float)
                         identArr.append(object.value(forKey: "ident") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
-                        predArr.append(object.value(forKey: "prev_value") as! Float)
-                        teckArr.append(object.value(forKey: "value") as! Float)
-                        diffArr.append(object.value(forKey: "diff") as! Float)
+                        predArr.append(valueOne)
+                        teckArr.append(valueTwo)
+                        diffArr.append(valueThree)
+                        dateOneArr.append(dateOne)
+                        dateTwoArr.append(dateTwo)
+                        dateThreeArr.append(dateThree)
                         unitArr.append(object.value(forKey: "unit_name") as! String)
                         sendedArr.append(object.value(forKey: "sended") as! Bool)
+                        i = 0
                     }
                 }
+                
             }
             DispatchQueue.main.async(execute: {
                 self.updateTable()
@@ -245,47 +331,37 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         }
     }
     
+    typealias curentMonthAndYear = (month:Int, year:Int)
+    
+    func getCurentMonthAndYear () -> curentMonthAndYear {
+        let m = Int(iterMonth)!
+        let y = Int(iterYear)!
+        return (m , y)
+    }
+    
+    func isValidNextMonth() -> Bool {
+        let curentMonthAndYear = self.getCurentMonthAndYear()
+        let maxM = Int(maxMonth)!
+        let maxY = Int(maxYear)!
+        return !(curentMonthAndYear.month >= maxM && curentMonthAndYear.year >= maxY);
+    }
+    
+    func isValidPrevMonth() -> Bool {
+        let curentMonthAndYear = self.getCurentMonthAndYear()
+        let minM = Int(minMonth)!
+        let minY = Int(minYear)!
+        return !(curentMonthAndYear.month <= minM && curentMonthAndYear.year <= minY);
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func updateMonthLabel() {
-        monthLabel.text = get_name_month(number_month: iterMonth) + " " + iterYear
-        
-        var month = Int(iterMonth)! - 1 < 1 ? 12 : Int(iterMonth)! - 1
-        var monthStr = "<" + get_name_month(number_month: String(month))
-        
-        
-        let attributes = [NSAttributedStringKey.font : UIFont.systemFont(ofSize:17.0),
-                          NSAttributedStringKey.foregroundColor : myColors.btnColor.uiColor(),
-                          NSAttributedStringKey.underlineStyle : 1] as [NSAttributedStringKey : Any]
-        
-        var attributedtext = NSAttributedString.init(string: monthStr.uppercased(), attributes: attributes)
-        self.prevMonthLabel.attributedText = attributedtext
-        
-        month = Int(iterMonth)! + 1 > 12 ? 1 : Int(iterMonth)! + 1
-        monthStr = get_name_month(number_month: String(month)) + ">"
-        
-        attributedtext = NSAttributedString.init(string: monthStr.uppercased(), attributes: attributes)
-        
-        if self.nextMonthLabel.isHidden{
-            if (date1 == "0") && (date2 == "0") {
-                can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
-            } else {
-                can_count_label.text = "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!"
-            }
-        }else{
-            let monthYear:String = monthLabel.text!
-            can_count_label.text = "За \(monthYear) передавать показания уже нельзя, перейдите в \(get_name_month(number_month: maxMonth)) для передачи текущих показаний"
-        }
-        updateTable()
-    }
-    
     func isEditable() -> Bool {
-        if self.nextMonthLabel.isHidden == false{
-            return false
-        }
+//        if self.nextMonthLabel.isHidden == false{
+//            return false
+//        }
         return iterYear == currYear && iterMonth == currMonth && can_edit == "1"
     }
     
@@ -305,9 +381,13 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         }
     }
     
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return 170.0
+    //    }
+    
     var sendedArr:[Bool] = []
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "CounterCell") as! CounterCell
+        let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "MupCounterCell") as! MupCounterCell
         var send = false
         var countName = ""
         if choiceIdent == ""{
@@ -329,39 +409,12 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
             cell.pred.text        = String(format:"%.2f", predArr[indexPath.row])
             cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
             cell.diff.text        = String(format:"%.2f", diffArr[indexPath.row])
+            cell.predLbl.text     = dateOneArr[indexPath.row]
+            cell.teckLbl.text     = dateTwoArr[indexPath.row]
+            cell.diffLbl.text     = dateThreeArr[indexPath.row]
             send = sendedArr[indexPath.row]
         }
-        if send{
-            cell.nonCounter.text = "Показания переданы"
-            cell.sendCounter.textColor = myColors.indicatorColor.uiColor()
-            let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
-            let underlineAttributedString = NSAttributedString(string: "Изменить показания", attributes: underlineAttribute)
-            cell.sendCounter.attributedText = underlineAttributedString
-            cell.pred.isHidden = false
-            cell.teck.isHidden = false
-            cell.diff.isHidden = false
-            cell.predLbl.isHidden = false
-            cell.teckLbl.isHidden = false
-            cell.diffLbl.isHidden = false
-            cell.lblHeight2.constant = 16
-            cell.lblHeight3.constant = 16
-            cell.lblHeight5.constant = 16
-            cell.lblHeight6.constant = 16
-        }else{
-            cell.nonCounter.text = "Показания не переданы"
-            cell.sendCounter.textColor = myColors.indicatorColor.uiColor()
-            let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
-            let underlineAttributedString = NSAttributedString(string: "Передать показания", attributes: underlineAttribute)
-            cell.sendCounter.attributedText = underlineAttributedString
-            cell.teck.isHidden = true
-            cell.diff.isHidden = true
-            cell.teckLbl.isHidden = true
-            cell.diffLbl.isHidden = true
-            cell.lblHeight2.constant = 0
-            cell.lblHeight3.constant = 0
-            cell.lblHeight5.constant = 0
-            cell.lblHeight6.constant = 0
-        }
+        cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
         cell.imgCounter.image = UIImage(named: "water")
         if (countName.lowercased().range(of: "гвс") != nil){
             cell.viewImgCounter.backgroundColor = .red
@@ -381,56 +434,71 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
             cell.imgCounter.image = UIImage(named: "lamp")
             cell.viewImgCounter.backgroundColor = .yellow
         }
-        if self.nextMonthLabel.isHidden == true{
-            cell.sendCounter.isHidden = false
-        }else{
-            cell.sendCounter.isHidden = true
-        }
         cell.delegate = self
         return cell
         
     }
     
-    func updateEditInfoLabel() {
-        // Возможно пригодится функция для изменения чего-нибудь еще
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-        
+        selectedUniq = numberArr[indexPath.row]
+        selectedUniqName = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        self.performSegue(withIdentifier: "uniqCounters", sender: self)
+    }
+    
+    var selectedUniq = ""
+    var selectedUniqName = ""
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "uniqCounters" {
+            let payController             = segue.destination as! UniqCountersController
+            payController.uniq_num = selectedUniq
+            payController.uniq_name = selectedUniqName
+            payController.ls = choiceIdent
+        }
+    }
+    
+    func DropperSelectedRow(_ path: IndexPath, contents: String) {
+        ls_Button.setTitle(contents, for: UIControlState.normal)
+        choiceIdent = contents
+        getData(ident: contents)
+    }
+    
+    func updateTable() {
+        StopIndicator()
+        tableCounters.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DB().del_db(table_name: "Counters")
+        parse_Countrers(login: edLogin, pass: edPass)
+    }
+    
+    func sendPressed(uniq_num: String, count_name: String) {
         if (isEditable()) {
-            let counter = (fetchedResultsController?.object(at: indexPath))! as Counters
-            let alert = UIAlertController(title: counter.count_name! + "(" + counter.uniq_num! + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
+            let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .numberPad })
             let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                self.send_count(edLogin: self.edLogin, edPass: self.edPass, counter: counter, count: (alert.textFields?[0].text!)!)
+                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: uniq_num, count: (alert.textFields?[0].text!)!)
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func DropperSelectedRow(_ path: IndexPath, contents: String) {
-        ls_Button.setTitle(contents, for: UIControlState.normal)
-        if (contents == "Все") {
-            choiceIdent = ""
-            sendedArr.removeAll()
-            updateTable()
-        } else {
-            choiceIdent = contents
-            getData(ident: contents)
-        }
-    }
-    
-    func updateTable() {
-        tableCounters.reloadData()
-    }
-    
     func get_name_month(number_month: String) -> String {
+        var number_month = number_month
         var rezult: String = ""
-        
+        let date = NSDate()
+        let calendar = NSCalendar.current
+        let resultDate = calendar.component(.year, from: date as Date)
+        let resultMonth = calendar.component(.month, from: date as Date)
+        number_month = String(resultMonth)
+        if number_month.first == "0"{
+            number_month = number_month.replacingOccurrences(of: "0", with: "")
+        }
         if (number_month == "1") {
             rezult = "Январь"
         } else if (number_month == "2") {
@@ -461,13 +529,13 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
     }
     
     // Передача показаний
-    func send_count(edLogin: String, edPass: String, counter: Counters, count: String) {
+    func send_count(edLogin: String, edPass: String, uniq_num: String, count: String) {
         if (count != "") {
             StartIndicator()
             
-            let strNumber: String = counter.uniq_num!
+            let strNumber: String = uniq_num
             
-            let urlPath = Server.SERVER + Server.ADD_METER
+            let urlPath = Server.SERVER + "AddMeterValueEverydayMode.ashx?"
                 + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
@@ -497,7 +565,7 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
                                                     self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
                                                     print("responseString = \(self.responseString)")
                                                     
-                                                    self.choice(counter: counter, prev: counter.prev_value, teck: Float(count)!)
+                                                    self.choice()
                                                     
             })
             
@@ -506,7 +574,7 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         }
     }
     
-    func choice(counter: Counters, prev: Float, teck: Float) {
+    func choice() {
         if (responseString == "0") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
@@ -542,19 +610,11 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         } else if (responseString == "5") {
             DispatchQueue.main.async(execute: {
                 // Успешно - обновим значения в БД
-                counter.value = teck
-                counter.diff = teck - prev
-                counter.prev_value = teck - (teck - prev)
-                CoreDataManager.instance.saveContext()
                 
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Успешно", message: "Показания переданы", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    
-                    self.updateMonthLabel()
-                    self.updateTable()
-                    self.updateEditInfoLabel()
-                    
+                    self.parse_Countrers(login: self.edLogin, pass: self.edPass)
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
@@ -570,6 +630,50 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         }
     }
     
+    var ident = ""
+    var units = ""
+    var name = ""
+    var meterUniqueNum = ""
+    var factoryNumber = ""
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        if (elementName == "Meter") {
+            print(attributeDict)
+            ident = attributeDict["Ident"]!
+            units = attributeDict["Units"]!
+            name = attributeDict["Name"]!
+            meterUniqueNum = attributeDict["MeterUniqueNum"]!
+            factoryNumber = attributeDict["FactoryNumber"]!
+            // Запишем показание прибора
+        }
+        if (elementName == "MeterValue"){
+            print(attributeDict)
+            let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
+            self.currYear = date[2]
+            let managedObject = Counters()
+            managedObject.id            = 1
+            managedObject.uniq_num      = meterUniqueNum
+            managedObject.owner         = factoryNumber
+            managedObject.num_month     = attributeDict["PeriodDate"]!
+            managedObject.unit_name     = units
+            managedObject.year          = self.currYear
+            managedObject.ident         = ident
+            managedObject.count_name    = name
+            managedObject.count_ed_izm  = units
+            managedObject.prev_value    = 123.53
+            managedObject.value         = (attributeDict["Value"]! as NSString).floatValue
+            managedObject.diff          = 6757.43
+            if attributeDict["IsSended"] == "1"{
+                managedObject.sended    = true
+            }else{
+                managedObject.sended    = false
+            }
+            
+            CoreDataManager.instance.saveContext()
+        }
+        getData(ident: choiceIdent)
+    }
+    
     func StartIndicator(){
         self.indicator.startAnimating()
         self.indicator.isHidden = false
@@ -580,4 +684,51 @@ class MupCounterController:UIViewController, DropperDelegate, UITableViewDelegat
         self.indicator.isHidden = true
     }
 
+}
+
+class MupCounterCell: UITableViewCell {
+    
+    var delegate: CountersCellDelegate?
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var number: UILabel!
+    @IBOutlet weak var ident: UILabel!
+    @IBOutlet weak var imgCounter: UIImageView!
+    @IBOutlet weak var viewImgCounter: UIView!
+    @IBOutlet weak var sendButton: UIButton!
+    
+    @IBOutlet weak var pred: UILabel!
+    @IBOutlet weak var teck: UILabel!
+    @IBOutlet weak var diff: UILabel!
+    
+    @IBOutlet weak var predLbl: UILabel!
+    @IBOutlet weak var teckLbl: UILabel!
+    @IBOutlet weak var diffLbl: UILabel!
+    
+    @IBOutlet weak var nonCounter: UILabel!
+    @IBOutlet weak var sendCounter: UILabel!
+    
+    @IBOutlet weak var lblHeight1: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight2: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight3: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight4: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight5: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight6: NSLayoutConstraint!
+    
+    @IBAction func sendAction(_ sender: UIButton) {
+        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!)
+        print("SEND")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
 }
