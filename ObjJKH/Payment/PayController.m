@@ -65,15 +65,21 @@
         if ([error.errorDetails containsString:@"AUTH_FAIL"])
         {
             alertDetails = @"Неверно указан срок действия или CVV-код";
+            [[NSUserDefaults standardUserDefaults] setObject:alertDetails forKey:@"PaysError"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
         else
         {
             alertTitle = error.errorDetails;
+            [[NSUserDefaults standardUserDefaults] setObject:alertTitle forKey:@"PaysError"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }
     else
     {
         alertDetails = @"Ошибка на платежном шлюзе. Попробуйте позже";
+        [[NSUserDefaults standardUserDefaults] setObject:alertDetails forKey:@"PaysError"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertDetails preferredStyle:UIAlertControllerStyleAlert];
 	
@@ -243,7 +249,9 @@
                                                      success:^(ASDKPaymentInfo *paymentInfo)
      {
 		 [[TransactionHistoryModelController sharedInstance] addTransaction:@{@"paymentId":paymentInfo.paymentId, @"paymentInfo":paymentInfo.dictionary, @"summ":amount, @"description":description, kASDKStatus:paymentInfo.status}];
-
+         NSLog(@"paymentId=%@",paymentInfo.paymentId);
+         [[NSUserDefaults standardUserDefaults] setObject:paymentInfo.paymentId forKey:@"PaymentID"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
          PaymentSuccessViewController *vc = [[PaymentSuccessViewController alloc] init];
          vc.amount = amount;
          UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
