@@ -516,7 +516,11 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             cell.viewImgCounter.backgroundColor = .yellow
         }
         if self.nextMonthLabel.isHidden == true{
-            cell.sendCounter.isHidden = false
+            if isEditable(){
+                cell.sendCounter.isHidden = false
+            }else{
+                cell.sendCounter.isHidden = true
+            }
         }else{
             cell.sendCounter.isHidden = true
         }
