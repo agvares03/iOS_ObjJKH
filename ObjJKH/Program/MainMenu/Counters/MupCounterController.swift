@@ -417,9 +417,15 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             cell.imgCounter.image = UIImage(named: "lamp")
             cell.viewImgCounter.backgroundColor = .yellow
         }
+        if isEditable(){
+            cell.sendButton.isEnabled = true
+            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(1.0)
+        }else{
+            cell.sendButton.isEnabled = false
+            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(0.5)
+        }
         cell.delegate = self
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -464,6 +470,8 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     func sendPressed(uniq_num: String, count_name: String) {
+        print(isEditable())
+        if isEditable(){
             let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .numberPad })
             let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
@@ -479,6 +487,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func get_name_month(number_month: String) -> String {

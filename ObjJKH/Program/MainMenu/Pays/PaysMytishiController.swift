@@ -142,7 +142,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 if $0 == true && sumOSV[i] > 0.00{
                     let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
                     #if isKlimovsk12
-                    let ItemsData = ["ShopCode" : "214842", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                    let ItemsData = ["ShopCode" : "215944", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                     #else
                     let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                     #endif
@@ -152,7 +152,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
             #if isKlimovsk12
-            let ItemsData = ["ShopCode" : "214842", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+            let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
             #else
             let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
             #endif
@@ -182,7 +182,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let defaults = UserDefaults.standard
             #if isKlimovsk12
             Data["chargeFlag"] = "false"
-            let shopCode = "214842"
+            let shopCode = "215944"
             var shops:[Any] = []
             let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
             shops.append(shopItem)

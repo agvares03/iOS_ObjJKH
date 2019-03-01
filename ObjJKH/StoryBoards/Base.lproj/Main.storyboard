@@ -208,15 +208,28 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="hl3-gj-74K"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSk-HO-iWq">
+                                        <rect key="frame" x="331" y="17" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="9MR-Ll-hsW"/>
+                                            <constraint firstAttribute="height" constant="20" id="dt2-17-Pth"/>
+                                        </constraints>
+                                        <state key="normal" image="eye"/>
+                                        <connections>
+                                            <action selector="showPassAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YiZ-TY-aRJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="OZB-QB-5Cf" firstAttribute="leading" secondItem="8eX-Yq-rI8" secondAttribute="leading" constant="23" id="4q7-ea-e17"/>
+                                    <constraint firstItem="LSk-HO-iWq" firstAttribute="top" secondItem="8eX-Yq-rI8" secondAttribute="top" constant="17" id="8Ym-M1-1z3"/>
                                     <constraint firstItem="OZB-QB-5Cf" firstAttribute="top" secondItem="8eX-Yq-rI8" secondAttribute="top" constant="14" id="9M7-5r-h3F"/>
                                     <constraint firstAttribute="height" constant="44" id="9MJ-OP-Tut"/>
                                     <constraint firstAttribute="trailing" secondItem="kjj-CF-dkm" secondAttribute="trailing" constant="30" id="QQo-iF-4Of"/>
                                     <constraint firstItem="Tpu-XD-BFA" firstAttribute="trailing" secondItem="8eX-Yq-rI8" secondAttribute="trailingMargin" id="QgY-a9-pp7"/>
                                     <constraint firstItem="Tpu-XD-BFA" firstAttribute="top" secondItem="kjj-CF-dkm" secondAttribute="bottom" id="RVZ-i2-owh"/>
+                                    <constraint firstAttribute="trailing" secondItem="LSk-HO-iWq" secondAttribute="trailing" constant="8" id="TUV-93-qNE"/>
                                     <constraint firstItem="Tpu-XD-BFA" firstAttribute="leading" secondItem="8eX-Yq-rI8" secondAttribute="leading" constant="16" id="bK2-iN-D8W"/>
                                     <constraint firstItem="kjj-CF-dkm" firstAttribute="top" secondItem="8eX-Yq-rI8" secondAttribute="top" constant="10" id="jmh-q0-LbK"/>
                                     <constraint firstItem="OZB-QB-5Cf" firstAttribute="top" secondItem="8eX-Yq-rI8" secondAttribute="top" constant="14" id="kfJ-Fc-ZK2"/>
@@ -353,6 +366,7 @@
                         <outlet property="questionImg" destination="gpC-d4-SzM" id="ere-7f-JWC"/>
                         <outlet property="separator1" destination="yCd-zV-fPH" id="j2r-2i-E8F"/>
                         <outlet property="separator2" destination="Tpu-XD-BFA" id="wJg-ZH-qHb"/>
+                        <outlet property="showPass" destination="LSk-HO-iWq" id="nb7-lR-CIJ"/>
                         <outlet property="ver_Lbl" destination="zVX-SO-eGE" id="dNq-oW-t1v"/>
                         <segue destination="62W-f1-6cX" kind="show" identifier="MainMenu" id="bsE-0I-EYW"/>
                         <segue destination="cxN-jU-vJl" kind="show" identifier="MainMenuCons" id="4fX-lc-XiI"/>
@@ -811,6 +825,7 @@
         <image name="Logo_DemoUC.png" width="120" height="120"/>
         <image name="Logo_DemoUC_White.png" width="120" height="120"/>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
+        <image name="eye" width="37.5" height="37.5"/>
         <image name="lock" width="28.799999237060547" height="28.799999237060547"/>
         <image name="nonConect" width="180" height="180"/>
         <image name="person" width="28.799999237060547" height="28.799999237060547"/>

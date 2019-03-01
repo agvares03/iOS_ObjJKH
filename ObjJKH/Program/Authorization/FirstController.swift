@@ -33,10 +33,17 @@ class FirstController: UIViewController {
     @IBOutlet weak var btnEnter: UIButton!
     @IBOutlet weak var btnForgot: UIButton!
     @IBOutlet weak var btnReg: UIButton!
+    @IBOutlet weak var showPass: UIButton!
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!
     public var firstEnter = false
+    
+    var iconClick = false
+    
+    @IBAction func showPassAction(_ sender: UIButton) {
+            edPass.isSecureTextEntry.toggle()
+    }
     
     @IBAction func Enter(_ sender: UIButton) {
         // Проверка на заполнение
@@ -127,6 +134,7 @@ class FirstController: UIViewController {
         new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
         questionImg.setImageColor(color: myColors.btnColor.uiColor())
         questionBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        showPass.tintColor = myColors.btnColor.uiColor()
         ver_Lbl.textColor = myColors.btnColor.uiColor()
     }
     
@@ -311,6 +319,7 @@ class FirstController: UIViewController {
                 }else{
                     ls.append(str)
                 }
+                #if isMupRCMytishi
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "nonPassController") as! nonPassController
                 vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
                 vc.ls = ls[0]
@@ -318,6 +327,7 @@ class FirstController: UIViewController {
                 vc.lsLbl.text = "У лицевого счета \(ls[0]) был изменён пароль"
                 self.addChildViewController(vc)
                 self.view.addSubview(vc.view)
+                #endif
             })
         }else if (responseString.contains("error")){
             DispatchQueue.main.async(execute: {
