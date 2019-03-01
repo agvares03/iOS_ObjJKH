@@ -35,6 +35,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var btnPay: UIButton!
     @IBOutlet weak var historyPay: UIButton!
+    @IBOutlet weak var mobilePay: UIButton!
     @IBOutlet weak var sendView: UIView!
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
@@ -239,7 +240,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         // Заполним тек. год и тек. месяц
         iterYear         = defaults.string(forKey: "year_osv")!
         iterMonth        = defaults.string(forKey: "month_osv")!
-        
+        defaults.set("", forKey: "PaymentID")
+        defaults.set("", forKey: "PaysError")
         // Заполним лиц. счетами отбор
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
@@ -285,6 +287,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         historyPay.backgroundColor = myColors.btnColor.uiColor()
+        mobilePay.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         viewTop.constant = self.getPoint()
@@ -746,14 +749,94 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        k = 0
+        UserDefaults.standard.addObserver(self, forKeyPath: "PaysError", options:NSKeyValueObservingOptions.new, context: nil)
+        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentID", options:NSKeyValueObservingOptions.new, context: nil)
         // Подхватываем показ клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    var k = 0
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (UserDefaults.standard.string(forKey: "PaysError") != "" || UserDefaults.standard.string(forKey: "PaymentID") != "") && k == 0{
+            addMobilePay()
+            k = 1
+        }
+    }
+    
+    func addMobilePay() {
+        var ident: String = ""
+        var idPay: String = UserDefaults.standard.string(forKey: "PaymentID")!
+        if UserDefaults.standard.string(forKey: "PaymentID") == ""{
+            idPay = "12345"
+        }
+        var status = ""
+        if UserDefaults.standard.string(forKey: "PaysError") == ""{
+            status = "Обработан"
+        }else{
+            status = UserDefaults.standard.string(forKey: "PaysError")!
+        }
+        let sum = self.totalSum
+        if selectLS == "Все"{
+            let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+            let str_ls_arr = str_ls.components(separatedBy: ",")
+            for i in 0...str_ls_arr.count - 1{
+                ident = str_ls_arr[0]
+            }
+        }else{
+            ident = selectLS
+        }
+        let urlPath = Server.SERVER + "MobileAPI/AddPay.ashx?"
+            + "idpay=" + idPay.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&status=" + status.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&desc=&sum=" + String(sum).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
+                                                print("responseString = \(responseString)")
+                                                
+                                                if responseString != "ok"{
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Ошибка", message: responseString as String, preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ok", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }
+                                                
+        })
+        
+        task.resume()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        UserDefaults.standard.removeObserver(self, forKeyPath: "PaymentID")
+        UserDefaults.standard.removeObserver(self, forKeyPath: "PaysError")
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
