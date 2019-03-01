@@ -8,6 +8,7 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
+    @IBOutlet weak var showPass: UIButton!
     
     // Массивы для хранения данных
     var streets_names: [String] = []
@@ -26,6 +27,10 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var back: UIBarButtonItem!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func showPassAction(_ sender: UIBarButtonItem) {
+        edPass.isSecureTextEntry.toggle()
     }
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnReg: UIButton!
@@ -140,6 +145,7 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
         
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        showPass.tintColor = myColors.btnColor.uiColor()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

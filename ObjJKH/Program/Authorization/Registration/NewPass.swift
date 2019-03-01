@@ -24,6 +24,8 @@ class NewPass: UIViewController {
     @IBOutlet weak var edPassAgain: UITextField!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var showPass1: UIButton!
+    @IBOutlet weak var showPass2: UIButton!
     @IBOutlet weak var labelEnter: UILabel!
     @IBOutlet weak var backBtn: UIBarButtonItem!
     
@@ -45,6 +47,14 @@ class NewPass: UIViewController {
         alert.addAction(exitAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func showPassAction1(_ sender: UIBarButtonItem) {
+        edPass.isSecureTextEntry.toggle()
+    }
+    
+    @IBAction func showPassAction2(_ sender: UIBarButtonItem) {
+        edPassAgain.isSecureTextEntry.toggle()
     }
     
     @IBAction func btnSaveGo(_ sender: UIButton) {
@@ -154,6 +164,8 @@ class NewPass: UIViewController {
         lock1.image = myImages.lock_image
         lock2.image = myImages.lock_image
         backBtn.tintColor = myColors.btnColor.uiColor()
+        showPass1.tintColor = myColors.btnColor.uiColor()
+        showPass2.tintColor = myColors.btnColor.uiColor()
     }
     
     func getServerUrlNewPass(phone PhoneText:String, pass txtPass:String) -> String {

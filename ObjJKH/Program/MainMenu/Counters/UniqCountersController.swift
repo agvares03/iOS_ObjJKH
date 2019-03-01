@@ -53,6 +53,9 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     var responseString:NSString = ""
     var iterYear: String = "0"
     var currYear: String = ""
+    var iterMonth: String = "0"
+    var currMonth: String = ""
+    var can_edit:String = ""
     
     var login: String = ""
     var pass: String = ""
@@ -69,6 +72,10 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         login          = defaults.string(forKey: "login")!
         pass           = defaults.string(forKey: "pass")!
         currYear         = defaults.string(forKey: "year")!
+        currMonth        = defaults.string(forKey: "month")!
+        can_edit         = defaults.string(forKey: "can_count")!
+        
+        iterMonth = currMonth
         iterYear = currYear
         if ls == "Все"{
             ls = defaults.string(forKey: "login")!
@@ -92,7 +99,10 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         }else{
             parse_Countrers(login: ls, pass: pass)
         }
-        
+        if !isEditable(){
+            sendButton.isEnabled = false
+            sendButton.backgroundColor = sendButton.backgroundColor?.withAlphaComponent(0.5)
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -176,6 +186,13 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         } catch {
             print(error)
         }
+    }
+    
+    func isEditable() -> Bool {
+        //        if self.nextMonthLabel.isHidden == false{
+        //            return false
+        //        }
+        return iterYear == currYear && iterMonth == currMonth && can_edit == "1"
     }
     
     override func didReceiveMemoryWarning() {
