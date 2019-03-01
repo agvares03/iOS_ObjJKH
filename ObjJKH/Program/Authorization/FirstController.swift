@@ -319,6 +319,7 @@ class FirstController: UIViewController {
                 }else{
                     ls.append(str)
                 }
+                #if isMupRCMytishi
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "nonPassController") as! nonPassController
                 vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
                 vc.ls = ls[0]
@@ -326,6 +327,7 @@ class FirstController: UIViewController {
                 vc.lsLbl.text = "У лицевого счета \(ls[0]) был изменён пароль"
                 self.addChildViewController(vc)
                 self.view.addSubview(vc.view)
+                #endif
             })
         }else if (responseString.contains("error")){
             DispatchQueue.main.async(execute: {
