@@ -9,6 +9,7 @@
 import UIKit
 import Dropper
 import CoreData
+import StoreKit
 
 private protocol MainDataProtocol:  class {}
 
@@ -242,6 +243,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         iterMonth        = defaults.string(forKey: "month_osv")!
         defaults.set("", forKey: "PaymentID")
         defaults.set("", forKey: "PaysError")
+        defaults.set(false, forKey: "PaymentSucces")
         // Заполним лиц. счетами отбор
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
@@ -752,6 +754,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         k = 0
         UserDefaults.standard.addObserver(self, forKeyPath: "PaysError", options:NSKeyValueObservingOptions.new, context: nil)
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentID", options:NSKeyValueObservingOptions.new, context: nil)
+        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
         // Подхватываем показ клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -760,7 +763,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var k = 0
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if (UserDefaults.standard.string(forKey: "PaysError") != "" || UserDefaults.standard.string(forKey: "PaymentID") != "") && k == 0{
+        if UserDefaults.standard.bool(forKey: "PaymentSucces"){
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && k == 0{
             addMobilePay()
             k = 1
         }
