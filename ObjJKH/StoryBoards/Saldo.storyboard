@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Январь 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYz-dI-ZUh">
-                                <rect key="frame" x="16" y="109" width="343" height="24"/>
+                                <rect key="frame" x="16" y="109" width="303" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -275,6 +275,17 @@
                                     <constraint firstItem="0Sc-v2-kSE" firstAttribute="top" secondItem="HRr-pH-09o" secondAttribute="top" constant="1" id="rbC-Wq-1xo"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsR-kd-rUR">
+                                <rect key="frame" x="329" y="106" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="nRL-W7-gvZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="w3h-DZ-i5C"/>
+                                </constraints>
+                                <state key="normal" image="pdfIcon"/>
+                                <connections>
+                                    <action selector="pdfClick:" destination="zKW-ao-E5V" eventType="touchUpInside" id="UF2-SP-6I1"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqx-UO-CiJ">
                                 <rect key="frame" x="30" y="278.5" width="315" height="110"/>
                                 <subviews>
@@ -353,7 +364,7 @@
                             <constraint firstItem="kJt-aT-8gS" firstAttribute="trailing" secondItem="e3f-PC-fAU" secondAttribute="trailing" id="HMV-CT-PPO"/>
                             <constraint firstItem="VUL-Y3-bQl" firstAttribute="centerY" secondItem="lUE-GL-TjV" secondAttribute="centerY" id="IAk-LT-Ki9"/>
                             <constraint firstItem="1Ah-qc-F7y" firstAttribute="top" secondItem="e3f-PC-fAU" secondAttribute="top" id="IFL-Ce-2HW"/>
-                            <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="CYz-dI-ZUh" secondAttribute="trailing" constant="16" id="QHU-A5-WKW"/>
+                            <constraint firstItem="hsR-kd-rUR" firstAttribute="top" secondItem="2gu-cw-qiJ" secondAttribute="bottom" constant="7" id="PtM-2t-h5F"/>
                             <constraint firstItem="1Ah-qc-F7y" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" constant="16" id="RgF-Bf-TwT"/>
                             <constraint firstItem="kJt-aT-8gS" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" id="Rpx-HP-9hx"/>
                             <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="vqx-UO-CiJ" secondAttribute="trailing" constant="30" id="SFl-Y7-Y0n"/>
@@ -362,6 +373,7 @@
                             <constraint firstItem="vqx-UO-CiJ" firstAttribute="centerY" secondItem="lUE-GL-TjV" secondAttribute="centerY" id="Z5G-lQ-7Pg"/>
                             <constraint firstItem="mK7-KA-yNE" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" constant="20" id="axZ-TB-YSW"/>
                             <constraint firstItem="2gu-cw-qiJ" firstAttribute="top" secondItem="e3f-PC-fAU" secondAttribute="top" constant="5" id="b1K-sg-gBb"/>
+                            <constraint firstItem="e3f-PC-fAU" firstAttribute="trailing" secondItem="hsR-kd-rUR" secondAttribute="trailing" constant="16" id="btW-pK-no4"/>
                             <constraint firstItem="2gu-cw-qiJ" firstAttribute="trailing" secondItem="e3f-PC-fAU" secondAttribute="trailing" id="e9H-tG-A2h"/>
                             <constraint firstItem="CYz-dI-ZUh" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" constant="16" id="elE-xI-sCP"/>
                             <constraint firstItem="mK7-KA-yNE" firstAttribute="top" secondItem="kJt-aT-8gS" secondAttribute="bottom" constant="8" id="hjb-cc-KiD"/>
@@ -371,6 +383,7 @@
                             <constraint firstItem="vqx-UO-CiJ" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" constant="30" id="mrf-oT-n9l"/>
                             <constraint firstItem="XoG-MX-OkY" firstAttribute="leading" secondItem="e3f-PC-fAU" secondAttribute="leading" id="qFb-rR-hPv"/>
                             <constraint firstItem="HRr-pH-09o" firstAttribute="top" secondItem="mK7-KA-yNE" secondAttribute="bottom" constant="10" id="sOS-f8-rdo"/>
+                            <constraint firstItem="hsR-kd-rUR" firstAttribute="leading" secondItem="CYz-dI-ZUh" secondAttribute="trailing" constant="10" id="wAE-mM-i2o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e3f-PC-fAU"/>
                         <variation key="default">
@@ -392,6 +405,7 @@
                         <outlet property="addLs" destination="uX4-Kr-f8e" id="3bf-YP-y4p"/>
                         <outlet property="back" destination="5Ww-DK-GpF" id="Toi-ie-v9r"/>
                         <outlet property="btnPay" destination="mK7-KA-yNE" id="j0k-2q-m0C"/>
+                        <outlet property="btnPdf" destination="hsR-kd-rUR" id="vTe-j4-CaM"/>
                         <outlet property="can_btn_pay" destination="keF-cO-bRG" id="FoJ-3K-AOY"/>
                         <outlet property="leftButton" destination="dYB-q3-rCY" id="Tcc-fI-clr"/>
                         <outlet property="lsView" destination="vqx-UO-CiJ" id="JwU-Dy-4Na"/>
@@ -412,6 +426,7 @@
                         <segue destination="N69-Al-fTF" kind="show" identifier="paysMytishi" id="uob-b6-BnT"/>
                         <segue destination="w7B-jE-bXy" kind="show" identifier="addLSMup" id="s6Y-hz-IMY"/>
                         <segue destination="2lM-ci-Lhd" kind="show" identifier="addLS" id="YWJ-QU-YYN"/>
+                        <segue destination="DM5-8b-5gY" kind="show" identifier="openURL" id="Wwy-Bw-3mb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uz2-jd-bDI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -460,6 +475,44 @@
             </objects>
             <point key="canvasLocation" x="269.60000000000002" y="128.18590704647679"/>
         </scene>
+        <!--Open Saldo Controller-->
+        <scene sceneID="Xkj-Wq-ht0">
+            <objects>
+                <viewController id="DM5-8b-5gY" customClass="openSaldoController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e5P-gr-ziE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ltF-hw-SWU">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ltF-hw-SWU" firstAttribute="leading" secondItem="IjO-VX-BCf" secondAttribute="leading" id="BCq-Qf-6bu"/>
+                            <constraint firstItem="ltF-hw-SWU" firstAttribute="top" secondItem="IjO-VX-BCf" secondAttribute="top" id="EoZ-O1-oJX"/>
+                            <constraint firstItem="IjO-VX-BCf" firstAttribute="bottom" secondItem="ltF-hw-SWU" secondAttribute="bottom" id="pEA-G2-WIb"/>
+                            <constraint firstItem="IjO-VX-BCf" firstAttribute="trailing" secondItem="ltF-hw-SWU" secondAttribute="trailing" id="yM5-oC-LCa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IjO-VX-BCf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RdA-eB-FY1">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="tUD-HB-udy">
+                            <connections>
+                                <action selector="backClick:" destination="DM5-8b-5gY" id="PHt-Lx-Ayl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="back" destination="tUD-HB-udy" id="1rb-oB-sh6"/>
+                        <outlet property="webView" destination="ltF-hw-SWU" id="joY-aT-6Gs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J9g-78-LHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2170" y="56"/>
+        </scene>
         <!--addLSMup-->
         <scene sceneID="ccF-YL-9Of">
             <objects>
@@ -480,6 +533,7 @@
     <resources>
         <image name="back" width="58.285713195800781" height="58.285713195800781"/>
         <image name="nonConect" width="180" height="180"/>
+        <image name="pdfIcon" width="37.5" height="37.5"/>
         <image name="poll_Mup" width="60" height="60"/>
         <image name="spin.png" width="840" height="840"/>
     </resources>

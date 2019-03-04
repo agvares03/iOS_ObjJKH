@@ -26,6 +26,7 @@ class NewsController: UIViewController, UITableViewDelegate {
     
     private var refreshControl: UIRefreshControl?
     var news_read = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default
@@ -48,9 +49,8 @@ class NewsController: UIViewController, UITableViewDelegate {
                 }
                 
             }
-            
+//            self.indicator.stopAnimating()
             NewsManager.instance.loadNewsIfNeed()
-            self.indicator.stopAnimating()
         }else{
             let _ = updateUserInterface()
         }

@@ -841,29 +841,3 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 }
-
-class PayMupSaldoCell: UITableViewCell {
-    
-    var delegate: UIViewController?
-    
-    @IBOutlet weak var check: UIButton!
-    @IBOutlet weak var usluga: UILabel!
-    @IBOutlet weak var endL: UILabel!
-    @IBOutlet weak var end: UITextField!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.end.text = nil
-        self.usluga.text = nil
-    }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-}
