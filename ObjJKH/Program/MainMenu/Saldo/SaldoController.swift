@@ -27,6 +27,15 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     }
     
     @IBAction func pdfClick(_ sender: UIButton) {
+        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        if ls_button.titleLabel?.text == "Все" && (str_ls_arr?.count)! > 1{
+            let alert = UIAlertController(title: "", message: "Выберите лицевой счёт", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         self.performSegue(withIdentifier: "openURL", sender: self)
     }
     
@@ -432,9 +441,16 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
         #if isMupRCMytishi
+        var i = 0
         fileList.forEach{
             if String($0.month) == iterMonth && String($0.year) == iterYear{
                 self.link = $0.link
+                self.btnPdf.isHidden = false
+                i = 1
+            }else{
+                if i == 0{
+                    self.btnPdf.isHidden = true
+                }
             }
         }
         getData(ident: "Все")
@@ -632,6 +648,20 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             #endif
         } else {
             choiceIdent = contents
+            #if isMupRCMytishi
+            var k = 0
+            fileList.forEach{
+                if String($0.month) == iterMonth && String($0.year) == iterYear && $0.ident == choiceIdent{
+                    self.link = $0.link
+                    self.btnPdf.isHidden = false
+                    k = 1
+                }else{
+                    if k == 0{
+                        self.btnPdf.isHidden = true
+                    }
+                }
+            }
+            #endif
             getData(ident: contents)
         }
     }
@@ -664,9 +694,20 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                     let year = json.year
                                                     let month = json.month
                                                     let link = json.link
+                                                    var i = 0
                                                     if self.currYear == String(json.year!) && self.currMonth == String(json.month!){
+                                                        print(String(json.year!), String(json.month!))
                                                         self.link = json.link!
-                                                    }
+                                                        DispatchQueue.main.async {
+                                                            self.btnPdf.isHidden = false
+                                                        }
+                                                        i = 1
+                                                    }else{
+                                                        if i == 0{
+                                                            DispatchQueue.main.async {
+                                                                self.btnPdf.isHidden = true
+                                                            }
+                                                        }                                                    }
                                                     let fileObj = File(month: month!, year: year!, ident: ident!, link: link!)
                                                     self.fileList.append(fileObj)
                                                 }
