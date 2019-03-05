@@ -183,6 +183,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             
             let defaults = UserDefaults.standard
             #if isKlimovsk12
+            if selectLS == "Все"{
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+                let str_ls_arr = str_ls.components(separatedBy: ",")
+                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
+                
+            }else{
+                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
+            }
+            UserDefaults.standard.synchronize()
+            print(UserDefaults.standard.string(forKey: "payIdent"))
             Data["chargeFlag"] = "false"
             let shopCode = "215944"
             var shops:[Any] = []
@@ -227,6 +237,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if isMupRCMytishi
+        #else
+        mobilePay.isHidden = true
+        #endif
+        UserDefaults.standard.set("", forKey: "payIdent")
         currPoint = 475
         let defaults     = UserDefaults.standard
         // Логин и пароль
@@ -781,7 +796,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && k == 0{
+            #if isMupRCMytishi
             addMobilePay()
+            #endif
             k = 1
         }
     }

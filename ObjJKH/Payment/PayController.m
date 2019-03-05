@@ -231,9 +231,11 @@
 
 //Настройка сканнера карт
     paymentFormStarter.cardScanner = [ASDKCardIOScanner scanner];
-
+    NSString *payIdent = [[NSUserDefaults standardUserDefaults] stringForKey:@"payIdent"];
+    NSLog(@"%@", payIdent);
+    
 	[paymentFormStarter presentPaymentFormFromViewController:viewController
-                                                     orderId:[NSNumber numberWithDouble:randomOrderId].stringValue
+                                                     orderId:[[NSNumber numberWithDouble:randomOrderId].stringValue stringByAppendingString:payIdent]
                                                       amount:amount
                                                        title:name
                                                  description:description
