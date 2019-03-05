@@ -288,7 +288,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             can_btn_pay.constant = 0
         #endif
         #if isMupRCMytishi
-        getPaysFile()
+        //получение файлов
+//        getPaysFile()
         #else
         btnPdf.isHidden = true
         #endif
@@ -441,18 +442,19 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
         #if isMupRCMytishi
-        var i = 0
-        fileList.forEach{
-            if String($0.month) == iterMonth && String($0.year) == iterYear && $0.link.contains(".pdf"){
-                self.link = $0.link
-                self.btnPdf.isHidden = false
-                i = 1
-            }else{
-                if i == 0{
-                    self.btnPdf.isHidden = true
-                }
-            }
-        }
+        //получение файлов
+//        var i = 0
+//        fileList.forEach{
+//            if String($0.month) == iterMonth && String($0.year) == iterYear && $0.link.contains(".pdf"){
+//                self.link = $0.link
+//                self.btnPdf.isHidden = false
+//                i = 1
+//            }else{
+//                if i == 0{
+//                    self.btnPdf.isHidden = true
+//                }
+//            }
+//        }
         getData(ident: "Все")
         #else
         self.updateTable()
@@ -648,20 +650,22 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             #endif
         } else {
             choiceIdent = contents
-            #if isMupRCMytishi
-            var k = 0
-            fileList.forEach{
-                if String($0.month) == iterMonth && String($0.year) == iterYear && $0.ident == choiceIdent && $0.link.contains(".pdf"){
-                    self.link = $0.link
-                    self.btnPdf.isHidden = false
-                    k = 1
-                }else{
-                    if k == 0{
-                        self.btnPdf.isHidden = true
-                    }
-                }
-            }
-            #endif
+            
+            //получение файлов
+//            #if isMupRCMytishi
+//            var k = 0
+//            fileList.forEach{
+//                if String($0.month) == iterMonth && String($0.year) == iterYear && $0.ident == choiceIdent && $0.link.contains(".pdf"){
+//                    self.link = $0.link
+//                    self.btnPdf.isHidden = false
+//                    k = 1
+//                }else{
+//                    if k == 0{
+//                        self.btnPdf.isHidden = true
+//                    }
+//                }
+//            }
+//            #endif
             getData(ident: contents)
         }
     }

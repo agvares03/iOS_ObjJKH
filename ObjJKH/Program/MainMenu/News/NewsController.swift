@@ -53,12 +53,14 @@ class NewsController: UIViewController, UITableViewDelegate {
                             self?.tableView.isHidden = true
                         }
                     }else{
+                        self?.noDataLbl.isHidden = true
+                        self?.tableView.isHidden = false
                         self?.tableView.reloadData()
                     }
                 }                
             }
 //            self.indicator.stopAnimating()
-//            NewsManager.instance.loadNewsIfNeed()
+            NewsManager.instance.loadNewsIfNeed()
         }else{
             let _ = updateUserInterface()
         }
