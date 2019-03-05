@@ -219,6 +219,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         btnPay.isHidden = false
         iterMonth = currMonth
         iterYear = currYear
+        btnPdf.isHidden = true
         
         // Заполним лиц. счетами отбор
         let str_ls = defaults.string(forKey: "str_ls")
@@ -282,7 +283,6 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let titles = Titles()
         self.title = titles.getTitle(numb: "5")
-        
         #if isOur_Obj_Home
             btnPay.isHidden = true
             can_btn_pay.constant = 0
@@ -683,34 +683,37 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, error, responce in
-//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                print("responseString = \(responseString)")
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
                                                 
                                                 guard data != nil else { return }
                                                 let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                                                let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
-                                                unfilteredData?.forEach { json in
-                                                    let ident = json.ident
-                                                    let year = json.year
-                                                    let month = json.month
-                                                    let link = json.link
-                                                    var i = 0
-                                                    if self.currYear == String(json.year!) && self.currMonth == String(json.month!){
-                                                        print(String(json.year!), String(json.month!))
-                                                        self.link = json.link!
-                                                        DispatchQueue.main.async {
-                                                            self.btnPdf.isHidden = false
-                                                        }
-                                                        i = 1
-                                                    }else{
-                                                        if i == 0{
+                                                if json != nil{
+                                                    let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
+                                                    unfilteredData?.forEach { json in
+                                                        let ident = json.ident
+                                                        let year = json.year
+                                                        let month = json.month
+                                                        let link = json.link
+                                                        var i = 0
+                                                        if self.currYear == String(json.year!) && self.currMonth == String(json.month!){
+                                                            print(String(json.year!), String(json.month!))
+                                                            self.link = json.link!
                                                             DispatchQueue.main.async {
-                                                                self.btnPdf.isHidden = true
+                                                                self.btnPdf.isHidden = false
                                                             }
-                                                        }                                                    }
-                                                    let fileObj = File(month: month!, year: year!, ident: ident!, link: link!)
-                                                    self.fileList.append(fileObj)
+                                                            i = 1
+                                                        }else{
+                                                            if i == 0{
+                                                                DispatchQueue.main.async {
+                                                                    self.btnPdf.isHidden = true
+                                                                }
+                                                            }                                                    }
+                                                        let fileObj = File(month: month!, year: year!, ident: ident!, link: link!)
+                                                        self.fileList.append(fileObj)
+                                                    }
                                                 }
+                                                
         })
         task.resume()
     }
