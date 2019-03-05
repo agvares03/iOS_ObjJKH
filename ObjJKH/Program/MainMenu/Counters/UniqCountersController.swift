@@ -63,6 +63,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         tableCounters.delegate = self
+        tableCounters.dataSource = self
         lsLbl.text = "Л/с: " + ls
         
         uniqNum.text = owner

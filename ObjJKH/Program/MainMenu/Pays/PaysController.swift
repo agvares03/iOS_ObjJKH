@@ -231,6 +231,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         tableView.delegate = self
+        tableView.dataSource = self
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
         dropper.delegate = self

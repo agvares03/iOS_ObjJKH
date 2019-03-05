@@ -159,6 +159,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         dropper.hideWithAnimation(0.001)
         
         tableCounters.delegate = self
+        tableCounters.dataSource = self
         monthLabel.text = get_name_month(number_month: iterMonth) + " " + iterYear
         StopIndicator()
 //        DB().del_db(table_name: "Counters")

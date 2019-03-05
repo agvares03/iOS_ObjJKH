@@ -217,6 +217,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
         dropper.hideWithAnimation(0.001)
         
         tableCounters.delegate = self
+        tableCounters.dataSource = self
         
         StopIndicator()
         

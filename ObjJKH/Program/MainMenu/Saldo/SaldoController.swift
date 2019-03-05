@@ -265,6 +265,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         maxYear = iterYear
         
         tableOSV.delegate = self
+        tableOSV.dataSource = self
         
         updateBorderDates()
         updateFetchedResultsController()
