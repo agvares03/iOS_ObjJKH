@@ -60,25 +60,22 @@ class NewsClient {
 //        }
 //    }
     
-    func getNews(completedBlock: @escaping (_ list:[News]) -> ()) {
+    func getNews(completedBlock: @escaping (_ list:[News]) -> ()){
         var news_read = 0
         let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
         request.httpMethod = "GET"
         print(request)
-        
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
             data, error, responce in
-            
-            if error != nil {
-                print("ERROR")
-                return
-            }
-            
             let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
             print("responseString = \(responseString)")
+//            if error != nil {
+//                print("ERROR")
+//                return
+//            }
             
             guard data != nil else { return }
             let json = try? JSONSerialization.jsonObject(with: data!,

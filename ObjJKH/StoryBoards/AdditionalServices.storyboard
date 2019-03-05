@@ -22,13 +22,51 @@
                                 <rect key="frame" x="169" y="347.5" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-xL-9hC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-xL-9hC">
                                 <rect key="frame" x="0.0" y="64" width="375" height="563"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServiceTableHeader" id="CQ1-Ou-Q0t" customClass="ServiceTableHeader" customModule="ChistDom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CQ1-Ou-Q0t" id="uCu-Pj-sqH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wm-sp-RI4">
+                                                    <rect key="frame" x="15" y="11" width="315" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▶︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFc-R6-fnr">
+                                                    <rect key="frame" x="340" y="11" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Qft-qr-fq4"/>
+                                                        <constraint firstAttribute="width" constant="20" id="cxm-ce-NBm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4Wm-sp-RI4" secondAttribute="bottom" id="1eP-39-daw"/>
+                                                <constraint firstItem="TFc-R6-fnr" firstAttribute="leading" secondItem="4Wm-sp-RI4" secondAttribute="trailing" constant="10" id="Avp-TN-w7b"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TFc-R6-fnr" secondAttribute="trailing" id="VGr-y8-pDi"/>
+                                                <constraint firstItem="TFc-R6-fnr" firstAttribute="top" secondItem="uCu-Pj-sqH" secondAttribute="topMargin" id="cOG-OP-Ws3"/>
+                                                <constraint firstItem="4Wm-sp-RI4" firstAttribute="top" secondItem="uCu-Pj-sqH" secondAttribute="topMargin" id="eoz-Av-nug"/>
+                                                <constraint firstItem="4Wm-sp-RI4" firstAttribute="leading" secondItem="uCu-Pj-sqH" secondAttribute="leadingMargin" id="mG7-Vp-Pax"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="substring" destination="TFc-R6-fnr" id="e9U-Gb-Eco"/>
+                                            <outlet property="title" destination="4Wm-sp-RI4" id="7YX-B0-f84"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServiceTableCell" rowHeight="142" id="sBe-H7-37X" customClass="ServiceTableCell" customModule="ChistDom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="142"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sBe-H7-37X" id="sgA-Ya-ofY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="141.5"/>
@@ -41,13 +79,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Парикмахерская в шаговой доступности" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwt-SG-7aa">
-                                                    <rect key="frame" x="20" y="38.5" width="250" height="18.5"/>
+                                                    <rect key="frame" x="20" y="38.5" width="250" height="23.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ov-zF-t5t">
-                                                    <rect key="frame" x="20" y="62" width="340" height="34.5"/>
+                                                    <rect key="frame" x="20" y="67" width="340" height="34.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34.5" id="gPn-VY-2Hi"/>
                                                     </constraints>
@@ -65,9 +103,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5i-a1-4sj">
-                                                    <rect key="frame" x="20" y="101.5" width="335" height="35"/>
+                                                    <rect key="frame" x="20" y="106.5" width="335" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="qxf-Ct-YBu"/>
+                                                        <constraint firstAttribute="height" constant="30" id="qxf-Ct-YBu"/>
                                                     </constraints>
                                                     <state key="normal" title="+7 (924) 751 21 10"/>
                                                     <connections>

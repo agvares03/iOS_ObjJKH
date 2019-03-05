@@ -40,6 +40,8 @@ NSString *const kCurrencyRubSymbol = @"₽";
 
 - (void)closeSelf
 {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"PaymentSucces"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

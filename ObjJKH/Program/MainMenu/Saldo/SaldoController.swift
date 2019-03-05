@@ -9,11 +9,13 @@
 import UIKit
 import CoreData
 import Dropper
+import Gloss
 
 class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var btnPay: UIButton!
+    @IBOutlet weak var btnPdf: UIButton!
     @IBOutlet weak var can_btn_pay: NSLayoutConstraint!
     @IBOutlet weak var LsLbl: UILabel!
     @IBOutlet weak var spinImg: UIImageView!
@@ -22,6 +24,19 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     @IBOutlet weak var lsView: UIView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func pdfClick(_ sender: UIButton) {
+        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        if ls_button.titleLabel?.text == "Все" && (str_ls_arr?.count)! > 1{
+            let alert = UIAlertController(title: "", message: "Выберите лицевой счёт", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        self.performSegue(withIdentifier: "openURL", sender: self)
     }
     
     @IBAction func updateConect(_ sender: UIButton) {
@@ -43,6 +58,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     var minMonth: String = ""
     var maxYear: String = ""
     var maxMonth: String = ""
+    var fileList: [File] = []
+    var link: String = ""
     
     // название месяца для вывода в шапку
     var name_month: String = "";
@@ -138,6 +155,10 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             }else{
                 payController.saldoIdent = choiceIdent
             }
+        }
+        if segue.identifier == "openURL" {
+            let payController             = segue.destination as! openSaldoController
+            payController.urlLink = self.link
         }
         #else
         if segue.identifier == "pays" {
@@ -254,6 +275,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
+        btnPdf.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
@@ -265,7 +287,11 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             btnPay.isHidden = true
             can_btn_pay.constant = 0
         #endif
-        
+        #if isMupRCMytishi
+        getPaysFile()
+        #else
+        btnPdf.isHidden = true
+        #endif
         #if isUKKomfort
             btnPay.isHidden = true
             can_btn_pay.constant = 0
@@ -415,6 +441,18 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
         #if isMupRCMytishi
+        var i = 0
+        fileList.forEach{
+            if String($0.month) == iterMonth && String($0.year) == iterYear{
+                self.link = $0.link
+                self.btnPdf.isHidden = false
+                i = 1
+            }else{
+                if i == 0{
+                    self.btnPdf.isHidden = true
+                }
+            }
+        }
         getData(ident: "Все")
         #else
         self.updateTable()
@@ -610,6 +648,20 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             #endif
         } else {
             choiceIdent = contents
+            #if isMupRCMytishi
+            var k = 0
+            fileList.forEach{
+                if String($0.month) == iterMonth && String($0.year) == iterYear && $0.ident == choiceIdent{
+                    self.link = $0.link
+                    self.btnPdf.isHidden = false
+                    k = 1
+                }else{
+                    if k == 0{
+                        self.btnPdf.isHidden = true
+                    }
+                }
+            }
+            #endif
             getData(ident: contents)
         }
     }
@@ -618,4 +670,113 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
 //        getData(login: login!, pass: pass!)
     }
     
+    func getPaysFile() {
+        let login = self.login
+        let pass = self.pass
+        let urlPath = Server.SERVER + Server.GET_BILLS_FILE + "login=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, error, responce in
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(responseString)")
+                                                
+                                                guard data != nil else { return }
+                                                let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                                                let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
+                                                unfilteredData?.forEach { json in
+                                                    let ident = json.ident
+                                                    let year = json.year
+                                                    let month = json.month
+                                                    let link = json.link
+                                                    var i = 0
+                                                    if self.currYear == String(json.year!) && self.currMonth == String(json.month!){
+                                                        print(String(json.year!), String(json.month!))
+                                                        self.link = json.link!
+                                                        DispatchQueue.main.async {
+                                                            self.btnPdf.isHidden = false
+                                                        }
+                                                        i = 1
+                                                    }else{
+                                                        if i == 0{
+                                                            DispatchQueue.main.async {
+                                                                self.btnPdf.isHidden = true
+                                                            }
+                                                        }                                                    }
+                                                    let fileObj = File(month: month!, year: year!, ident: ident!, link: link!)
+                                                    self.fileList.append(fileObj)
+                                                }
+        })
+        task.resume()
+    }
+}
+
+class PayMupSaldoCell: UITableViewCell {
+    
+    var delegate: UIViewController?
+    
+    @IBOutlet weak var check: UIButton!
+    @IBOutlet weak var usluga: UILabel!
+    @IBOutlet weak var endL: UILabel!
+    @IBOutlet weak var end: UITextField!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.end.text = nil
+        self.usluga.text = nil
+    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+}
+
+struct PaysFileJson: JSONDecodable {
+    
+    let data: [PaysFileJsonData]?
+    
+    init?(json: JSON) {
+        data = "data" <~~ json
+    }
+    
+}
+
+struct PaysFileJsonData: JSONDecodable {
+    
+    let month:Int?
+    let year:Int?
+    let ident:String?
+    let link:String?
+    
+    init?(json: JSON) {
+        month    = "Month"   <~~ json
+        year     = "Year"    <~~ json
+        ident    = "Ident"   <~~ json
+        link     = "Link"    <~~ json
+    }
+}
+
+class File {
+    let month:Int
+    let year:Int
+    let ident:String
+    let link:String
+    
+    init(month:Int,year:Int,ident:String,link:String) {
+        self.month = month
+        self.year = year
+        self.ident = ident
+        self.link = link
+    }
 }

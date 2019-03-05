@@ -419,7 +419,7 @@ class DB: NSObject, XMLParserDelegate {
                                                                             bill_year = String(describing: obj.value as! NSNumber)
                                                                         }
                                                                         if obj.key == "ServiceTypeId" {
-                                                                            if let latestValue = obj.value as? NSNumber {
+                                                                            if (obj.value is NSNumber) {
                                                                                 bill_id = Int(truncating: obj.value as! NSNumber)
                                                                             }
                                                                         }

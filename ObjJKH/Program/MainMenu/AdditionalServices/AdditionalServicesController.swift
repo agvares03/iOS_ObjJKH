@@ -60,6 +60,8 @@ class AdditionalServicesController: UIViewController{
     
     var login: String?
     var pass: String?
+    var sectionNum = IndexPath()
+    var openedSection: [Int: Bool] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,9 +202,26 @@ class AdditionalServicesController: UIViewController{
                 }.resume()
         }
     }
+    
+    func isSectionOpened(_ section: Int) -> Bool{
+        if let status = openedSection[section]{
+            return status
+        }
+//        openedSection[section] = true
+        return false
+    }
+    
+    func changeSectionStatus(_ section: Int){
+        if let status = openedSection[section]{
+            openedSection[section] = !status
+        }else{
+            openedSection[section] = true
+        }
+        tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+    }
 }
 
-extension AdditionalServicesController: UITableViewDataSource, UITableViewDelegate {
+extension AdditionalServicesController: UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -212,22 +231,35 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
     
     // Получим количество строк для конкретной секции
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objectArray[section].sectionObjects.count
+        if isSectionOpened(section){
+            return objectArray[section].sectionObjects.count + 1
+        }
+        return 1
     }
-    
-    
-    // Получим заголовок для секции
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return objectArray[section].sectionName
-    }
-    
     
     // Получим данные для использования в ячейке
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceTableHeader", for: indexPath) as! ServiceTableHeader
+            cell.title.text = objectArray[indexPath.section].sectionName
+            cell.substring.textColor = myColors.btnColor.uiColor()
+            if isSectionOpened(indexPath.section){
+                cell.substring.text = "▼"
+            }else{
+                cell.substring.text = "▶︎"
+            }
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceTableCell", for: indexPath) as! ServiceTableCell
-        let service = objectArray[indexPath.section].sectionObjects[indexPath.row]
+        let service = objectArray[indexPath.section].sectionObjects[indexPath.row - 1]
         cell.configure(item: service)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0{
+            changeSectionStatus(indexPath.section)
+        }
     }
     
     // MARK: UITableViewDelegate
@@ -280,4 +312,11 @@ class ServiceTableCell: UITableViewCell {
         }
     }
     
+}
+
+class ServiceTableHeader: UITableViewCell {
+    
+    // MARK: Outlets
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var substring: UILabel!
 }
