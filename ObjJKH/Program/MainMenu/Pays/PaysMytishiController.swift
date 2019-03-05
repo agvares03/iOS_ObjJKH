@@ -370,6 +370,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 let object = result as! NSManagedObject
                 if ident != "Все"{
                     if (object.value(forKey: "ident") as! String) == ident{
+                        sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                        checkBox.append(true)
+                        osvc.append(object.value(forKey: "usluga") as! String)
+                        idOSV.append(Int(object.value(forKey: "id") as! Int64))
+                        
                         uslugaArr.append(object.value(forKey: "usluga") as! String)
                         endArr.append(object.value(forKey: "end") as! String)
                         idArr.append(Int(object.value(forKey: "id") as! Int64))
@@ -428,6 +433,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             for result in results {
                 let object = result as! NSManagedObject
                 if (object.value(forKey: "usluga") as! String) != "Я"{
+                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                    checkBox.append(true)
+                    osvc.append(object.value(forKey: "usluga") as! String)
+                    idOSV.append(Int(object.value(forKey: "id") as! Int64))
+                    identOSV.append(object.value(forKey: "ident") as! String)
                     self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                 }
             }
@@ -511,24 +521,24 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
-        if sumOSV.count != kol && selectedRow == -1{
-            if choiceIdent == ""{
-                let osv = fetchedResultsController!.object(at: indexPath)
-                let sum:String = osv.end!
-                osvc.append(osv.usluga!)
-                checkBox.append(true)
-                sumOSV.append(Double(sum)!)
-                idOSV.append(Int(osv.id))
-                identOSV.append(osv.ident!)
-            }else{
-                let sum:String = endArr[indexPath.row]
-                osvc.append(uslugaArr[indexPath.row])
-                checkBox.append(true)
-                sumOSV.append(Double(sum)!)
-                idOSV.append(Int(idArr[indexPath.row]))
-            }
-            
-        }
+//        if sumOSV.count != kol && selectedRow == -1{
+//            if choiceIdent == ""{
+//                let osv = fetchedResultsController!.object(at: indexPath)
+//                let sum:String = osv.end!
+//                osvc.append(osv.usluga!)
+//                checkBox.append(true)
+//                sumOSV.append(Double(sum)!)
+//                idOSV.append(Int(osv.id))
+//                identOSV.append(osv.ident!)
+//            }else{
+//                let sum:String = endArr[indexPath.row]
+//                osvc.append(uslugaArr[indexPath.row])
+//                checkBox.append(true)
+//                sumOSV.append(Double(sum)!)
+//                idOSV.append(Int(idArr[indexPath.row]))
+//            }
+//            
+//        }
         var sub: String = ""
         if choiceIdent == ""{
             let osv = fetchedResultsController!.object(at: indexPath)

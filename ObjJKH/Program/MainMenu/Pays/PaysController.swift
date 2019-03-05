@@ -368,6 +368,11 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 let object = result as! NSManagedObject
                 if ident != "Все"{
                     if (object.value(forKey: "ident") as! String) == ident{
+                        sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                        checkBox.append(true)
+                        osvc.append(object.value(forKey: "usluga") as! String)
+                        idOSV.append(Int(object.value(forKey: "id") as! Int64))
+                        
                         uslugaArr.append(object.value(forKey: "usluga") as! String)
                         endArr.append(object.value(forKey: "end") as! String)
                         idArr.append(Int(object.value(forKey: "id") as! Int64))
@@ -415,9 +420,17 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
+                sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                checkBox.append(true)
+                osvc.append(object.value(forKey: "usluga") as! String)
+                idOSV.append(Int(object.value(forKey: "id") as! Int64))
                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                 endSum = Double(object.value(forKey: "end") as! String)!
             }
+            sumOSV.removeLast()
+            checkBox.removeLast()
+            osvc.removeLast()
+            idOSV.removeLast()
             self.sum = self.sum - endSum
             DispatchQueue.main.async(execute: {
                 if (self.sum != 0) {
@@ -492,23 +505,23 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
-        if sumOSV.count != kol && selectedRow == -1{
-            if choiceIdent == ""{
-                let osv = fetchedResultsController!.object(at: indexPath)
-                let sum:String = osv.end!
-                osvc.append(osv.usluga!)
-                checkBox.append(true)
-                sumOSV.append(Double(sum)!)
-                idOSV.append(Int(osv.id))
-            }else{
-                let sum:String = endArr[indexPath.row]
-                osvc.append(uslugaArr[indexPath.row])
-                checkBox.append(true)
-                sumOSV.append(Double(sum)!)
-                idOSV.append(Int(idArr[indexPath.row]))
-            }
-            
-        }
+//        if sumOSV.count != kol && selectedRow == -1{
+//            if choiceIdent == ""{
+//                let osv = fetchedResultsController!.object(at: indexPath)
+//                let sum:String = osv.end!
+//                osvc.append(osv.usluga!)
+//                checkBox.append(true)
+//                sumOSV.append(Double(sum)!)
+//                idOSV.append(Int(osv.id))
+//            }else{
+//                let sum:String = endArr[indexPath.row]
+//                osvc.append(uslugaArr[indexPath.row])
+//                checkBox.append(true)
+//                sumOSV.append(Double(sum)!)
+//                idOSV.append(Int(idArr[indexPath.row]))
+//            }
+//
+//        }
         if checkBox[indexPath.row]{
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
         }else{
