@@ -443,7 +443,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         #if isMupRCMytishi
         var i = 0
         fileList.forEach{
-            if String($0.month) == iterMonth && String($0.year) == iterYear{
+            if String($0.month) == iterMonth && String($0.year) == iterYear && $0.link.contains(".pdf"){
                 self.link = $0.link
                 self.btnPdf.isHidden = false
                 i = 1
@@ -651,7 +651,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             #if isMupRCMytishi
             var k = 0
             fileList.forEach{
-                if String($0.month) == iterMonth && String($0.year) == iterYear && $0.ident == choiceIdent{
+                if String($0.month) == iterMonth && String($0.year) == iterYear && $0.ident == choiceIdent && $0.link.contains(".pdf"){
                     self.link = $0.link
                     self.btnPdf.isHidden = false
                     k = 1
@@ -683,8 +683,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, error, responce in
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("responseString = \(responseString)")
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(responseString)")
                                                 
                                                 guard data != nil else { return }
                                                 let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
@@ -696,7 +696,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                         let month = json.month
                                                         let link = json.link
                                                         var i = 0
-                                                        if self.currYear == String(json.year!) && self.currMonth == String(json.month!){
+                                                        if self.currYear == String(json.year!) && self.currMonth == String(json.month!) && (json.link?.contains(".pdf"))!{
                                                             print(String(json.year!), String(json.month!))
                                                             self.link = json.link!
                                                             DispatchQueue.main.async {

@@ -61,17 +61,12 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var fetchedResultsController: NSFetchedResultsController<Counters>?
     
     @IBOutlet weak var spinImg: UIImageView!
-    @IBOutlet weak var monthView: UIView!
     @IBOutlet weak var ls_lbl: UILabel!
     @IBOutlet weak var ls_Button: UIButton!
     @IBOutlet weak var tableCounters: UITableView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var can_count_label: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var leftButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
-    @IBOutlet weak var prevMonthLabel: UILabel!
-    @IBOutlet weak var nextMonthLabel: UILabel!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -155,7 +150,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             ls_lbl.isHidden = true
             ls_Button.isHidden = true
             monthLabel.isHidden = true
-            monthView.isHidden = true
             can_count_label.isHidden = true
             tableCounters.isHidden = true
             spinImg.isHidden = true
@@ -194,7 +188,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             ls_lbl.isHidden = true
             ls_Button.isHidden = true
             monthLabel.isHidden = true
-            monthView.isHidden = true
             can_count_label.isHidden = true
             tableCounters.isHidden = true
             spinImg.isHidden = true

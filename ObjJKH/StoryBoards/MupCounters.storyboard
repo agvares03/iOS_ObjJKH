@@ -13,7 +13,7 @@
         <!--Показания приборов-->
         <scene sceneID="L4q-LZ-Xsy">
             <objects>
-                <viewController id="ydz-rR-Nyk" customClass="MupCounterController" customModule="MupRCMytishi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ydz-rR-Nyk" customClass="MupCounterController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wio-eB-1qy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="199.5" width="375" height="427.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MupCounterCell" rowHeight="174" id="pMl-oe-c33" customClass="MupCounterCell" customModule="MupRCMytishi" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MupCounterCell" rowHeight="174" id="pMl-oe-c33" customClass="MupCounterCell" customModule="ChistDom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="174"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pMl-oe-c33" id="QfI-Ze-YYv">
@@ -372,12 +372,6 @@
                             <constraint firstItem="c7l-V3-B30" firstAttribute="top" secondItem="hGu-0T-icN" secondAttribute="top" id="yeT-pg-ID9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hGu-0T-icN"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="HBl-2i-w8T"/>
-                                <exclude reference="MAg-Es-LKV"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Показания приборов" id="xn4-3Q-AT0">
                         <barButtonItem key="leftBarButtonItem" image="back" id="wi0-hZ-4Kg">
@@ -422,7 +416,7 @@
         <!--Показания приборов-->
         <scene sceneID="5XN-Wf-S8D">
             <objects>
-                <viewController id="BvK-wk-1lS" customClass="UniqCountersController" customModule="MupRCMytishi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BvK-wk-1lS" customClass="UniqCountersController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jSZ-dh-a9H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -431,7 +425,7 @@
                                 <rect key="frame" x="0.0" y="178" width="375" height="489"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="uniqCounterCell" id="AhR-So-Cb8" customClass="UniqCounterCell" customModule="MupRCMytishi" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="uniqCounterCell" id="AhR-So-Cb8" customClass="UniqCounterCell" customModule="ChistDom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AhR-So-Cb8" id="c6m-DW-dYa">
