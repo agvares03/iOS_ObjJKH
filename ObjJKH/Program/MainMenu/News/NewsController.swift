@@ -45,12 +45,20 @@ class NewsController: UIViewController, UITableViewDelegate {
             NewsManager.instance.completionLoaded = { [weak self] in
                 DispatchQueue.main.async {
                     self?.indicator.stopAnimating()
-                    self?.tableView.reloadData()
-                }
-                
+                    let newsList = NewsManager.instance.getNewsList()
+                    print(newsList)
+                    if newsList.count == 0{
+                        DispatchQueue.main.async {
+                            self?.noDataLbl.isHidden = false
+                            self?.tableView.isHidden = true
+                        }
+                    }else{
+                        self?.tableView.reloadData()
+                    }
+                }                
             }
 //            self.indicator.stopAnimating()
-            NewsManager.instance.loadNewsIfNeed()
+//            NewsManager.instance.loadNewsIfNeed()
         }else{
             let _ = updateUserInterface()
         }
@@ -91,13 +99,7 @@ class NewsController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let newsList = NewsManager.instance.getNewsList()
-        if newsList.count == 0{
-            DispatchQueue.main.async {
-                self.noDataLbl.isHidden = false
-                self.tableView.isHidden = true
-            }
-        }
+        
         if UserDefaults.standard.integer(forKey: "news_read") < news_read{
             NewsManager.instance.loadNews()
             self.tableView.reloadData()

@@ -44,6 +44,7 @@ class AdditionalServicesController: UIViewController{
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     @IBOutlet weak var noDataLbl: UILabel!
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     
     @IBAction func updateConect(_ sender: UIButton) {
         self.viewDidLoad()
@@ -86,6 +87,7 @@ class AdditionalServicesController: UIViewController{
         
         let titles = Titles()
         self.title = titles.getTitle(numb: "8")
+        backBtn.tintColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)

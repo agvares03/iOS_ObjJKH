@@ -19,6 +19,7 @@ class NewsView: UIViewController {
     @IBOutlet weak var NewsTitle: UILabel!
     @IBOutlet weak var NewsData: UILabel!
     @IBOutlet weak var NewsText: UILabel!
+    @IBOutlet weak var newsHeight: NSLayoutConstraint!
     
     @IBOutlet weak var nav_bottom: UINavigationItem!
     @IBOutlet weak var back: UIBarButtonItem!
@@ -41,10 +42,18 @@ class NewsView: UIViewController {
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
-        
+        newsHeight.constant = estimatedHeight(text: NewsText.text!, width: view.frame.width, font: UIFont.systemFont(ofSize: 17)) + 50
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "0")
         
+    }
+    
+    func estimatedHeight(text: String, width: CGFloat, font: UIFont) -> CGFloat{
+        let size = CGSize(width: width, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let attributes = [NSAttributedStringKey.font: font]
+        let rectangleHeight = String(text).boundingRect(with: size, options: options, attributes: attributes, context: nil).height
+        return rectangleHeight
     }
     
     func read_news(){
