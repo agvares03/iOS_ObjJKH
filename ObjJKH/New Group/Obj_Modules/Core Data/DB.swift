@@ -368,7 +368,7 @@ class DB: NSObject, XMLParserDelegate {
                                                         var bill_total    = ""
                                                         var bill_ident    = ""
                                                         var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-//                                                        print(json)
+                                                        print(json)
                                                         
                                                         // Общие итоговые значения
                                                         var obj_start: Double = 0
@@ -412,39 +412,41 @@ class DB: NSObject, XMLParserDelegate {
                                                                     }
                                                                     
                                                                     for obj in json_bill {
-                                                                        if obj.key == "Month" {
-                                                                            bill_month = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "Year" {
-                                                                            bill_year = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "ServiceTypeId" {
-                                                                            if (obj.value is NSNumber) {
-                                                                                bill_id = Int(truncating: obj.value as! NSNumber)
-                                                                            }
-                                                                        }
                                                                         if obj.key == "Ident" {
                                                                             bill_ident = obj.value as! String
                                                                         }
-                                                                        if obj.key == "Service" {
-                                                                            bill_service = obj.value as! String
-                                                                        }
-                                                                        if obj.key == "Accured" {
-                                                                            bill_acc = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_plus += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Debt" {
-                                                                            bill_debt = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_start += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Payed" {
-                                                                            bill_pay = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_minus += (obj.value as! Double)
-                                                                        }
-                                                                        if obj.key == "Total" {
-                                                                            bill_total = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                            obj_end += (obj.value as! Double)
-                                                                        }
+                                                                        if bill_ident != "Все"{
+                                                                            if obj.key == "Month" {
+                                                                                bill_month = String(describing: obj.value as! NSNumber)
+                                                                            }
+                                                                            if obj.key == "Year" {
+                                                                                bill_year = String(describing: obj.value as! NSNumber)
+                                                                            }
+                                                                            if obj.key == "ServiceTypeId" {
+                                                                                if (obj.value is NSNumber) {
+                                                                                    bill_id = Int(truncating: obj.value as! NSNumber)
+                                                                                }
+                                                                            }
+                                                                            if obj.key == "Service" {
+                                                                                bill_service = obj.value as! String
+                                                                            }
+                                                                            if obj.key == "Accured" {
+                                                                                bill_acc = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                                obj_plus += (obj.value as! Double)
+                                                                            }
+                                                                            if obj.key == "Debt" {
+                                                                                bill_debt = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                                obj_start += (obj.value as! Double)
+                                                                            }
+                                                                            if obj.key == "Payed" {
+                                                                                bill_pay = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                                obj_minus += (obj.value as! Double)
+                                                                            }
+                                                                            if obj.key == "Total" {
+                                                                                bill_total = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                                obj_end += (obj.value as! Double)
+                                                                            }
+                                                                        }                                                                        
                                                                     }
                                                                     if bill_ident != "Все"{
                                                                         self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total, ident: bill_ident)
