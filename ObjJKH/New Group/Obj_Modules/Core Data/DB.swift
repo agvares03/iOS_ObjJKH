@@ -115,7 +115,9 @@ class DB: NSObject, XMLParserDelegate {
         managedObject.id              = ID
         managedObject.id_app          = id_request
         managedObject.text            = text
-        managedObject.date            = added
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        managedObject.dateK           = dateFormatter.date(from: added)
         managedObject.id_author       = id_Author
         managedObject.author          = name
         managedObject.id_account      = id_account
@@ -320,7 +322,9 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.id              = Int64(attributeDict["ID"]!)!
             managedObject.id_app          = Int64(attributeDict["id_request"]!)!
             managedObject.text            = attributeDict["text"]
-            managedObject.date            = attributeDict["added"]
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+            managedObject.dateK           = dateFormatter.date(from: attributeDict["added"]!)
             managedObject.id_author       = attributeDict["id_Author"]
             managedObject.author          = attributeDict["Name"]
             managedObject.id_account      = attributeDict["id_account"]

@@ -374,7 +374,9 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         if (comm.id_author != comm.id_account) {
             let cell = self.table_comments.dequeueReusableCell(withIdentifier: "CommCell") as! CommCell
             cell.author.text     = comm.author
-            cell.date.text       = comm.date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+            cell.date.text       = dateFormatter.string(from: comm.dateK!)
             cell.text_comm.text  = comm.text
             self.teck_id = comm.id + 1
             
@@ -388,7 +390,9 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         } else {
             let cell = self.table_comments.dequeueReusableCell(withIdentifier: "CommCellCons") as! CommCellCons
             cell.author.text     = comm.author
-            cell.date.text       = comm.date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+            cell.date.text       = dateFormatter.string(from: comm.dateK!)
             cell.text_comm.text  = comm.text
             self.teck_id = comm.id + 1
             

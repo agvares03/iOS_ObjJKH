@@ -20,6 +20,7 @@
     <entity name="Comments" representedClassName=".Comments" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateK" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id_account" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id_app" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -67,7 +68,7 @@
     </entity>
     <elements>
         <element name="Applications" positionX="333" positionY="81" width="128" height="270"/>
-        <element name="Comments" positionX="324" positionY="54" width="128" height="150"/>
+        <element name="Comments" positionX="324" positionY="54" width="128" height="165"/>
         <element name="Counters" positionX="394" positionY="-18" width="128" height="240"/>
         <element name="Fotos" positionX="342" positionY="144" width="128" height="135"/>
         <element name="Saldo" positionX="250" positionY="-18" width="128" height="180"/>

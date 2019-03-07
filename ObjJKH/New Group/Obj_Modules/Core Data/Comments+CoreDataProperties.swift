@@ -22,6 +22,7 @@ extension Comments {
     @NSManaged public var id_app: Int64
     @NSManaged public var id_account: String?
     @NSManaged public var id: Int64
+    @NSManaged public var dateK: Date?
     @NSManaged public var date: String?
     @NSManaged public var author: String?
 
