@@ -25,6 +25,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var back: UIBarButtonItem!
     
     var timer: Timer? = nil
+    var isCons: String = "0"
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -77,6 +78,9 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         question_read = UserDefaults.standard.integer(forKey: "request_read")
         question_read_cons = UserDefaults.standard.integer(forKey: "request_read_cons")
         
+        // Проверим является ли пользователем консультантом, потому что консультант должен видеть заявки
+        isCons = UserDefaults.standard.string(forKey: "isCons") ?? "0"
+        
         tableApps.delegate = self
         load_data()
         updateTable()
@@ -90,21 +94,28 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let str_ls = UserDefaults.standard.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         
-        if ((str_ls_arr?.count)! > 0) && str_ls_arr![0] != ""{
+        if (isCons == "1") {
             lsView.isHidden = true
-        }else{
-            addLS.textColor = myColors.btnColor.uiColor()
-            let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
-            let underlineAttributedString = NSAttributedString(string: "Подключить лицевой счет", attributes: underlineAttribute)
-            addLS.attributedText = underlineAttributedString
-            let tap = UITapGestureRecognizer(target: self, action: #selector(lblTapped(_:)))
-            addLS.isUserInteractionEnabled = true
-            addLS.addGestureRecognizer(tap)
-            lsView.isHidden = false
-            btnAdd.isHidden = true
-            tableApps.isHidden = true
-            hiddenAppsView.isHidden = true
+        } else {
+            
+            if ((str_ls_arr?.count)! > 0) && str_ls_arr![0] != ""{
+                lsView.isHidden = true
+            } else {
+                addLS.textColor = myColors.btnColor.uiColor()
+                let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+                let underlineAttributedString = NSAttributedString(string: "Подключить лицевой счет", attributes: underlineAttribute)
+                addLS.attributedText = underlineAttributedString
+                let tap = UITapGestureRecognizer(target: self, action: #selector(lblTapped(_:)))
+                addLS.isUserInteractionEnabled = true
+                addLS.addGestureRecognizer(tap)
+                lsView.isHidden = false
+                btnAdd.isHidden = true
+                tableApps.isHidden = true
+                hiddenAppsView.isHidden = true
+            }
+            
         }
+        
         // Обновление списка заявок
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
