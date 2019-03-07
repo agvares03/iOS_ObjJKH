@@ -356,9 +356,9 @@ class DB: NSObject, XMLParserDelegate {
                                               completionHandler: {
                                                 data, response, error in
                                                 
-                                                if error != nil {
-                                                    return
-                                                } else {
+//                                                if error != nil {
+//                                                    return
+//                                                } else {
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
                                                     var i_ident: String = ""
@@ -484,7 +484,7 @@ class DB: NSObject, XMLParserDelegate {
                                                     defaults.setValue(String(i_year), forKey: "year_osv")
                                                     defaults.setValue(String(describing: sum), forKey: "sum")
                                                     defaults.synchronize()
-                                                }
+//                                                }
                                                 
         })
         task.resume()
