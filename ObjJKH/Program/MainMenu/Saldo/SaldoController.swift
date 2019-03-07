@@ -369,8 +369,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             for result in results {
                 let object = result as! NSManagedObject
                 #if isMupRCMytishi
-                if ident != "Все"{
-                    print("=\(object.value(forKey: "ident") as! String)", " =\(object.value(forKey: "usluga") as! String)")
+//                if ident != "Все"{
+//                    print("=\(object.value(forKey: "ident") as! String)", " =\(object.value(forKey: "usluga") as! String)")
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
                             uslugaArr.append(object.value(forKey: "usluga") as! String)
@@ -380,17 +380,17 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                             endArr.append(object.value(forKey: "end") as! String)
                         }
                     }
-                }else{
-                    if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
-                        uslugaArr.append(object.value(forKey: "usluga") as! String)
-                        plusArr.append(object.value(forKey: "plus") as! String)
-                        startArr.append(object.value(forKey: "start") as! String)
-                        minusArr.append(object.value(forKey: "minus") as! String)
-                        endArr.append(object.value(forKey: "end") as! String)
-                    }
-                }
+//                }else{
+//                    if (object.value(forKey: "usluga") as! String) == "Услуги ЖКУ"{
+//                        uslugaArr.append(object.value(forKey: "usluga") as! String)
+//                        plusArr.append(object.value(forKey: "plus") as! String)
+//                        startArr.append(object.value(forKey: "start") as! String)
+//                        minusArr.append(object.value(forKey: "minus") as! String)
+//                        endArr.append(object.value(forKey: "end") as! String)
+//                    }
+//                }
                 #else
-                if ident != "Все"{
+//                if ident != "Все"{
                     if (object.value(forKey: "ident") as! String) == ident{
                         uslugaArr.append(object.value(forKey: "usluga") as! String)
                         plusArr.append(object.value(forKey: "plus") as! String)
@@ -398,7 +398,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                         minusArr.append(object.value(forKey: "minus") as! String)
                         endArr.append(object.value(forKey: "end") as! String)
                     }
-                }
+//                }
                 #endif
             }
             DispatchQueue.main.async(execute: {
@@ -442,7 +442,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
-        #if isMupRCMytishi
+//        #if isMupRCMytishi
         //получение файлов
 //        var i = 0
 //        fileList.forEach{
@@ -456,10 +456,10 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
 //                }
 //            }
 //        }
-        getData(ident: "Все")
-        #else
-        self.updateTable()
-        #endif
+        getData(ident: choiceIdent)
+//        #else
+//        self.updateTable()
+//        #endif
     }
     
     func updateTable() {
@@ -543,20 +543,20 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if choiceIdent == ""{
-            #if isMupRCMytishi
+        if choiceIdent == "Все"{
+//            #if isMupRCMytishi
             if uslugaArr.count != 0 {
                 return uslugaArr.count
             } else {
                 return 0
             }
-            #else
-            if let sections = fetchedResultsController?.sections {
-                return sections[section].numberOfObjects
-            } else {
-                return 0
-            }
-            #endif
+//            #else
+//            if let sections = fetchedResultsController?.sections {
+//                return sections[section].numberOfObjects
+//            } else {
+//                return 0
+//            }
+//            #endif
         }else{
             if uslugaArr.count != 0 {
                 return uslugaArr.count
@@ -568,7 +568,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableOSV.dequeueReusableCell(withIdentifier: "Cell") as! SaldoCell
-        if choiceIdent == ""{
+//        if choiceIdent == "Все"{
             #if isMupRCMytishi
             if (uslugaArr[indexPath.row] == "Я") {
                 cell.usluga.text = "ИТОГО"
@@ -585,18 +585,6 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             cell.lblHeight1.constant = 8
             cell.lblHeight2.constant = 8
             #else
-            let osv = fetchedResultsController!.object(at: indexPath)
-            if (osv.usluga == "Я") {
-                cell.usluga.text = "ИТОГО"
-            } else {
-                cell.usluga.text = osv.usluga
-            }
-            cell.start.text  = osv.plus
-            cell.plus.text   = osv.start
-            cell.minus.text  = osv.minus
-            cell.end.text    = osv.end
-            #endif
-        }else{
             if (uslugaArr[indexPath.row] == "Я") {
                 cell.usluga.text = "ИТОГО"
             } else {
@@ -606,7 +594,18 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             cell.plus.text   = startArr[indexPath.row]
             cell.minus.text  = minusArr[indexPath.row]
             cell.end.text    = endArr[indexPath.row]
-        }
+            #endif
+//        }else{
+//            if (uslugaArr[indexPath.row] == "Я") {
+//                cell.usluga.text = "ИТОГО"
+//            } else {
+//                cell.usluga.text = uslugaArr[indexPath.row]
+//            }
+//            cell.start.text  = plusArr[indexPath.row]
+//            cell.plus.text   = startArr[indexPath.row]
+//            cell.minus.text  = minusArr[indexPath.row]
+//            cell.end.text    = endArr[indexPath.row]
+//        }
         
         cell.delegate = self
         return cell
@@ -638,17 +637,17 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    var choiceIdent = ""
+    var choiceIdent = "Все"
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_button.setTitle(contents, for: UIControlState.normal)
         if (contents == "Все")  || dropper.items.count == 2{
-            choiceIdent = ""
-            #if isMupRCMytishi
+//            choiceIdent = "Все"
+//            #if isMupRCMytishi
             choiceIdent = "Все"
             getData(ident: contents)
-            #else
-            updateTable()
-            #endif
+//            #else
+//            updateTable()
+//            #endif
         } else {
             choiceIdent = contents
             

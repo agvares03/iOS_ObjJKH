@@ -293,7 +293,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         dropper.hideWithAnimation(0.001)
         
         if saldoIdent == "Все"{
-            end_osv()
+            getData(ident: saldoIdent)
+//            end_osv()
         }else{
             ls_button.setTitle(saldoIdent, for: UIControlState.normal)
             selectLS = saldoIdent
@@ -348,14 +349,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     var selectLS = ""
     
-    var choiceIdent = ""
+    var choiceIdent = "Все"
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         update = false
         ls_button.setTitle(contents, for: UIControlState.normal)
         if (contents == "Все") || dropper.items.count == 2{
             selectLS = "Все"
-            choiceIdent = ""
-            end_osv()
+            choiceIdent = "Все"
+            getData(ident: contents)
         } else {
             selectLS = contents
             choiceIdent = contents
@@ -384,19 +385,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
-                if ident != "Все"{
+//                if ident != "Все"{
                     if (object.value(forKey: "ident") as! String) == ident{
-                        sumOSV.append(Double(object.value(forKey: "end") as! String)!)
-                        checkBox.append(true)
-                        osvc.append(object.value(forKey: "usluga") as! String)
-                        idOSV.append(Int(object.value(forKey: "id") as! Int64))
-                        
-                        uslugaArr.append(object.value(forKey: "usluga") as! String)
-                        endArr.append(object.value(forKey: "end") as! String)
-                        idArr.append(Int(object.value(forKey: "id") as! Int64))
-                        identOSV.append(object.value(forKey: "ident") as! String)
                         if (object.value(forKey: "usluga") as! String) != "Я"{
-                            self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                            sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                            checkBox.append(true)
+                            osvc.append(object.value(forKey: "usluga") as! String)
+                            idOSV.append(Int(object.value(forKey: "id") as! Int64))
+                            
+                            uslugaArr.append(object.value(forKey: "usluga") as! String)
+                            endArr.append(object.value(forKey: "end") as! String)
+                            idArr.append(Int(object.value(forKey: "id") as! Int64))
+                            identOSV.append(object.value(forKey: "ident") as! String)
+                            if (object.value(forKey: "usluga") as! String) != "Я"{
+                                self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                            }
                         }
                     }
                     DispatchQueue.main.async(execute: {
@@ -419,7 +422,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                             self.servicePay.text  = "0,00 руб."
                         }
                     })
-                }
+//                }
             }
             DispatchQueue.main.async(execute: {
                 self.updateTable()
@@ -502,21 +505,23 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var kol = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if choiceIdent == ""{
-            if let sections = fetchedResultsController?.sections {
-                kol = sections[section].numberOfObjects - 1
-                return sections[section].numberOfObjects - 1
-            } else {
-                return 0
-            }
-        }else{
+//        if choiceIdent == ""{
+//            if let sections = fetchedResultsController?.sections {
+//                let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+//                let str_ls_arr = str_ls?.components(separatedBy: ",")
+//                kol = sections[section].numberOfObjects - 1 - (str_ls_arr?.count)!
+//                return sections[section].numberOfObjects - 1 - (str_ls_arr?.count)!
+//            } else {
+//                return 0
+//            }
+//        }else{
             if uslugaArr.count != 0 {
                 kol = uslugaArr.count
                 return uslugaArr.count
             } else {
                 return 0
             }
-        }
+//        }
     }
     var update = false
     var select = false
@@ -686,9 +691,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         if str != "" && str != "-"{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]
-                if choiceIdent == ""{
-                    code = code + identOSV[i]
-                }
+//                if choiceIdent == "Все"{
+//                    code = code + identOSV[i]
+//                }
                 if (textField.accessibilityIdentifier == code){
                     sumOSV[i] = Double(str)!
                 }
@@ -713,9 +718,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }else{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]
-                if choiceIdent == ""{
-                    code = code + identOSV[i]
-                }
+//                if choiceIdent == "Все"{
+//                    code = code + identOSV[i]
+//                }
                 if textField.accessibilityIdentifier == code{
                     sumOSV[i] = 0.00
                 }

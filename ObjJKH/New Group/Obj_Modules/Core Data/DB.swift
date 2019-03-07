@@ -357,6 +357,7 @@ class DB: NSObject, XMLParserDelegate {
                                                 } else {
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
+                                                    var i_ident: String = ""
                                                     do {
                                                         var bill_id       = 0
                                                         var bill_month    = ""
@@ -391,31 +392,33 @@ class DB: NSObject, XMLParserDelegate {
                                                                         if obj.key == "Year" {
                                                                             bill_year = String(describing: obj.value as! NSNumber)
                                                                         }
+                                                                        if obj.key == "Ident" {
+                                                                            bill_ident = obj.value as! String
+                                                                        }
                                                                     }
-                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month) == 1) && (i_month == 12)) {
+                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month)! == i_month) && (bill_ident != i_ident)) || ((Int(bill_month) == 1) && (i_month == 12)) {
                                                                         if (itsFirst) {
                                                                             itsFirst = false
                                                                         } else {
-                                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: bill_ident)
+                                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: i_ident)
                                                                             
                                                                             obj_start = 0.00
                                                                             obj_plus  = 0.00
                                                                             obj_minus = 0.00
                                                                             obj_end   = 0.00
                                                                         }
-                                                                        
+                                                                        i_ident = bill_ident
                                                                         i_month = Int(bill_month)!
                                                                         
                                                                     }
                                                                     if (Int(bill_year)! > i_year) {
                                                                         i_year = Int(bill_year)!
                                                                     }
-                                                                    
                                                                     for obj in json_bill {
                                                                         if obj.key == "Ident" {
                                                                             bill_ident = obj.value as! String
                                                                         }
-                                                                        if bill_ident != "Все"{
+//                                                                        if bill_ident != "Все"{
                                                                             if obj.key == "Month" {
                                                                                 bill_month = String(describing: obj.value as! NSNumber)
                                                                             }
@@ -423,7 +426,7 @@ class DB: NSObject, XMLParserDelegate {
                                                                                 bill_year = String(describing: obj.value as! NSNumber)
                                                                             }
                                                                             if obj.key == "ServiceTypeId" {
-                                                                                if (obj.value is NSNumber) {
+                                                                                if ((obj.value as? NSNull) == nil) {
                                                                                     bill_id = Int(truncating: obj.value as! NSNumber)
                                                                                 }
                                                                             }
@@ -447,16 +450,13 @@ class DB: NSObject, XMLParserDelegate {
                                                                                 obj_end += (obj.value as! Double)
                                                                             }
                                                                         }                                                                        
-                                                                    }
-                                                                    if bill_ident != "Все"{
-                                                                        self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total, ident: bill_ident)
-                                                                    }
-                                                                    
-                                                                    
+//                                                                    }
+//                                                                    if bill_ident != "Все"{
+                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total, ident: bill_ident)
+//                                                                    }
                                                                 }
                                                             }
                                                         }
-                                                        
                                                         self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: bill_ident)
                                                     } catch let error as NSError {
                                                         print(error)

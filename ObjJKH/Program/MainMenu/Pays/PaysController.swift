@@ -261,7 +261,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         dropper.hideWithAnimation(0.001)
         
         if saldoIdent == "Все"{
-            end_osv()
+            getData(ident: "Все")
         }else{
             ls_button.setTitle(saldoIdent, for: UIControlState.normal)
             selectLS = saldoIdent
@@ -335,13 +335,13 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     var selectLS = ""
     
-    var choiceIdent = ""
+    var choiceIdent = "Все"
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_button.setTitle(contents, for: UIControlState.normal)
         update = false
         if (contents == "Все") || dropper.items.count == 2{
-            choiceIdent = ""
-            end_osv()
+            choiceIdent = "Все"
+            getData(ident: "Все")
         } else {
             choiceIdent = contents
             getData(ident: contents)
@@ -367,18 +367,20 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
-                if ident != "Все"{
+//                if ident != "Все"{
                     if (object.value(forKey: "ident") as! String) == ident{
-                        sumOSV.append(Double(object.value(forKey: "end") as! String)!)
-                        checkBox.append(true)
-                        osvc.append(object.value(forKey: "usluga") as! String)
-                        idOSV.append(Int(object.value(forKey: "id") as! Int64))
-                        
-                        uslugaArr.append(object.value(forKey: "usluga") as! String)
-                        endArr.append(object.value(forKey: "end") as! String)
-                        idArr.append(Int(object.value(forKey: "id") as! Int64))
                         if (object.value(forKey: "usluga") as! String) != "Я"{
-                            self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                            sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                            checkBox.append(true)
+                            osvc.append(object.value(forKey: "usluga") as! String)
+                            idOSV.append(Int(object.value(forKey: "id") as! Int64))
+                            
+                            uslugaArr.append(object.value(forKey: "usluga") as! String)
+                            endArr.append(object.value(forKey: "end") as! String)
+                            idArr.append(Int(object.value(forKey: "id") as! Int64))
+                            if (object.value(forKey: "usluga") as! String) != "Я"{
+                                self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                            }
                         }
                     }
                     DispatchQueue.main.async(execute: {
@@ -393,7 +395,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                             self.txt_sum_obj.text = "0,00"
                         }
                     })
-                }
+//                }
             }
             DispatchQueue.main.async(execute: {
                 self.updateTable()
@@ -470,21 +472,21 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if choiceIdent == ""{
-            if let sections = fetchedResultsController?.sections {
-                kol = sections[section].numberOfObjects - 1
-                return sections[section].numberOfObjects - 1
-            } else {
-                return 0
-            }
-        }else{
+//        if choiceIdent == ""{
+//            if let sections = fetchedResultsController?.sections {
+//                kol = sections[section].numberOfObjects - 1
+//                return sections[section].numberOfObjects - 1
+//            } else {
+//                return 0
+//            }
+//        }else{
             if uslugaArr.count != 0 {
                 kol = uslugaArr.count
                 return uslugaArr.count
             } else {
                 return 0
             }
-        }
+//        }
     }
     var kol = 0
     var select = false

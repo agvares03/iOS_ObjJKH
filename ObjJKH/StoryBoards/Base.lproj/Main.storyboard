@@ -486,6 +486,10 @@
                                 <color key="textColor" red="0.21895414590000001" green="0.71306502819999995" blue="0.9233877063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="YFZ-fj-2Eo">
+                                <rect key="frame" x="169" y="425" width="37" height="37"/>
+                                <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Tg-uX-UHf">
                                 <rect key="frame" x="67.5" y="223.5" width="240" height="220"/>
                                 <subviews>
@@ -532,10 +536,12 @@
                             <constraint firstItem="cT6-3M-qth" firstAttribute="trailing" secondItem="sqR-oM-cNZ" secondAttribute="trailing" constant="16" id="6Cn-u5-EVa"/>
                             <constraint firstItem="Afh-e0-FeO" firstAttribute="top" secondItem="Xqu-Qg-GBS" secondAttribute="bottom" constant="25" id="7UG-IV-5uS"/>
                             <constraint firstItem="pGB-M8-LY0" firstAttribute="leading" secondItem="HZc-mn-bYY" secondAttribute="leadingMargin" constant="4" id="7jW-eQ-81f"/>
+                            <constraint firstItem="YFZ-fj-2Eo" firstAttribute="top" secondItem="pGB-M8-LY0" secondAttribute="bottom" constant="26.5" id="8Uv-DE-pbN"/>
                             <constraint firstItem="KCv-MI-guV" firstAttribute="leading" secondItem="cT6-3M-qth" secondAttribute="leading" constant="22" id="KEM-wR-aaa"/>
                             <constraint firstItem="d9y-gL-9hd" firstAttribute="centerX" secondItem="HZc-mn-bYY" secondAttribute="centerX" id="L0Y-cp-PdK"/>
                             <constraint firstItem="cT6-3M-qth" firstAttribute="trailing" secondItem="Afh-e0-FeO" secondAttribute="trailing" constant="22" id="L6z-g6-sLQ"/>
                             <constraint firstItem="jdf-Nz-nJR" firstAttribute="top" secondItem="cT6-3M-qth" secondAttribute="top" constant="40" id="L74-hy-fXT"/>
+                            <constraint firstItem="YFZ-fj-2Eo" firstAttribute="centerX" secondItem="HZc-mn-bYY" secondAttribute="centerX" id="P62-cK-px7"/>
                             <constraint firstItem="Gzk-Pc-mag" firstAttribute="leading" secondItem="HZc-mn-bYY" secondAttribute="leadingMargin" constant="4" id="VDO-8A-Cf7"/>
                             <constraint firstItem="Xqu-Qg-GBS" firstAttribute="leading" secondItem="HZc-mn-bYY" secondAttribute="leadingMargin" constant="4" id="Vj6-NP-Poi"/>
                             <constraint firstItem="jdf-Nz-nJR" firstAttribute="leading" secondItem="cT6-3M-qth" secondAttribute="leading" constant="10" id="aCO-Pv-kmc"/>
@@ -556,6 +562,11 @@
                             <constraint firstItem="Afh-e0-FeO" firstAttribute="leading" secondItem="cT6-3M-qth" secondAttribute="leading" constant="22" id="yvw-ur-IkV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cT6-3M-qth"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="7Tg-uX-UHf"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Обращение в тех.поддержку" id="SbP-uW-25W">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="pvX-Ih-OLM">
@@ -567,6 +578,7 @@
                     <connections>
                         <outlet property="backBtn" destination="pvX-Ih-OLM" id="zFc-Tr-DK7"/>
                         <outlet property="emailTxt" destination="Afh-e0-FeO" id="SOm-o4-Q68"/>
+                        <outlet property="indicator" destination="YFZ-fj-2Eo" id="h6c-aQ-1yO"/>
                         <outlet property="nonConectView" destination="7Tg-uX-UHf" id="15l-oe-0tS"/>
                         <outlet property="phoneTxt" destination="KCv-MI-guV" id="UvN-32-Ox5"/>
                         <outlet property="problemTxt" destination="sqR-oM-cNZ" id="ZK0-n8-qzc"/>

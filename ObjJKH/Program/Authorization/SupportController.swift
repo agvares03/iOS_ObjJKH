@@ -13,6 +13,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var phoneTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var problemTxt: UITextView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var ver_Lbl: UILabel!
     
     @IBAction func updateConect(_ sender: UIButton) {
@@ -60,6 +61,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
             self.present(alert, animated: true, completion: nil)
             return
         }
+        self.StartIndicator()
         let version = targetSettings().getVersion()
         var str_ls:String = ""
         if UserDefaults.standard.string(forKey: "str_ls") != nil{
@@ -94,6 +96,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
                                                 print("responseString = \(responseString)")
                                                 if responseString == "0"{
                                                     DispatchQueue.main.async(execute: {
+                                                        self.StopIndicator()
                                                         let alert = UIAlertController(title: "Ваше сообщение успешно отправлено!", message: "", preferredStyle: .alert)
                                                         let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                                                             self.navigationController?.popViewController(animated: true)
@@ -103,6 +106,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
                                                     })
                                                 }else{
                                                     DispatchQueue.main.async(execute: {
+                                                        self.StopIndicator()
                                                         let alert = UIAlertController(title: "Ошибка!", message: responseString.replacingOccurrences(of: "error:", with: ""), preferredStyle: .alert)
                                                         let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                                                         alert.addAction(cancelAction)
@@ -118,6 +122,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicator.isHidden = true
         nonConectView.isHidden = true
         questionLbl.isHidden = false
         phoneTxt.isHidden = false
@@ -150,6 +155,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         separator3.backgroundColor = myColors.labelColor.uiColor()
         ver_Lbl.textColor = myColors.labelColor.uiColor()
         backBtn.tintColor = myColors.btnColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         self.view.isUserInteractionEnabled = true
@@ -220,6 +226,20 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         if textField.text == "+7"{
             textField.text = ""
         }
+    }
+    
+    func StartIndicator(){
+        self.sendBtn.isHidden = true
+        
+        self.indicator.startAnimating()
+        self.indicator.isHidden = false
+    }
+    
+    func StopIndicator(){
+        self.sendBtn.isHidden = false
+        
+        self.indicator.stopAnimating()
+        self.indicator.isHidden = true
     }
     /*
      // MARK: - Navigation
