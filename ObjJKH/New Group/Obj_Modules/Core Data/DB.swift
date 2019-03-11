@@ -125,7 +125,7 @@ class DB: NSObject, XMLParserDelegate {
         
     }
     
-    // Удалить записи из таблиц
+    // Удалить записи из таблиц	
     public func del_db(table_name: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: table_name)
         do {
