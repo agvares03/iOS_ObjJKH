@@ -353,7 +353,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         update = false
         ls_button.setTitle(contents, for: UIControlState.normal)
-        if (contents == "Все") || dropper.items.count == 2{
+        if (contents == "Все"){
             selectLS = "Все"
             choiceIdent = "Все"
             getData(ident: contents)

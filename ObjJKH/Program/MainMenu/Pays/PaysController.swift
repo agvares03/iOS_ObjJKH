@@ -339,7 +339,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_button.setTitle(contents, for: UIControlState.normal)
         update = false
-        if (contents == "Все") || dropper.items.count == 2{
+        if (contents == "Все"){
             choiceIdent = "Все"
             getData(ident: "Все")
         } else {

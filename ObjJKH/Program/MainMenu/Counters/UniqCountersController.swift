@@ -35,15 +35,25 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     }
     
     @IBAction func sendAction(_ sender: UIButton){
-        let alert = UIAlertController(title: uniq_name + "(" + owner + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .numberPad })
-        let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-        alert.addAction(cancelAction)
-        let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-            self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!)!)
+        if isEditable(){
+            let alert = UIAlertController(title: uniq_name + "(" + owner + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .numberPad })
+            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!)!)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let date1            = UserDefaults.standard.string(forKey: "date1")!
+            let date2            = UserDefaults.standard.string(forKey: "date2")!
+            let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
         }
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
+        
     }
     
     let dropper = Dropper(width: 150, height: 400)
@@ -100,10 +110,10 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         }else{
             parse_Countrers(login: ls, pass: pass)
         }
-        if !isEditable(){
-            sendButton.isEnabled = false
-            sendButton.backgroundColor = sendButton.backgroundColor?.withAlphaComponent(0.5)
-        }
+//        if !isEditable(){
+//            sendButton.isEnabled = false
+//            sendButton.backgroundColor = sendButton.backgroundColor?.withAlphaComponent(0.5)
+//        }
         // Do any additional setup after loading the view.
     }
     
@@ -310,14 +320,14 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         if (elementName == "MeterValue"){
             print(attributeDict)
             let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
-            self.currYear = date[2]
+//            self.currYear = date[2]
             let managedObject = Counters()
             managedObject.id            = 1
             managedObject.uniq_num      = meterUniqueNum
             managedObject.owner         = factoryNumber
             managedObject.num_month     = attributeDict["PeriodDate"]!
             managedObject.unit_name     = units
-            managedObject.year          = self.currYear
+            managedObject.year          = date[2]
             managedObject.ident         = ident
             managedObject.count_name    = name
             managedObject.count_ed_izm  = units

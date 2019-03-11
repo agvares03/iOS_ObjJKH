@@ -517,11 +517,11 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             cell.viewImgCounter.backgroundColor = .yellow
         }
         if self.nextMonthLabel.isHidden == true{
-            if isEditable(){
+//            if isEditable(){
                 cell.sendCounter.isHidden = false
-            }else{
-                cell.sendCounter.isHidden = true
-            }
+//            }else{
+//                cell.sendCounter.isHidden = true
+//            }
         }else{
             cell.sendCounter.isHidden = true
         }
@@ -547,6 +547,11 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
                 self.send_count(edLogin: self.edLogin, edPass: self.edPass, counter: counter, count: (alert.textFields?[0].text!)!)
             }
             alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
     }

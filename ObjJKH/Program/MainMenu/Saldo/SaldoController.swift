@@ -543,7 +543,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if choiceIdent == "Все"{
+//        if choiceIdent == "Все"{
 //            #if isMupRCMytishi
             if uslugaArr.count != 0 {
                 return uslugaArr.count
@@ -557,13 +557,13 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
 //                return 0
 //            }
 //            #endif
-        }else{
-            if uslugaArr.count != 0 {
-                return uslugaArr.count
-            } else {
-                return 0
-            }
-        }
+//        }else{
+//            if uslugaArr.count != 0 {
+//                return uslugaArr.count
+//            } else {
+//                return 0
+//            }
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -640,7 +640,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     var choiceIdent = "Все"
     func DropperSelectedRow(_ path: IndexPath, contents: String) {
         ls_button.setTitle(contents, for: UIControlState.normal)
-        if (contents == "Все")  || dropper.items.count == 2{
+        if (contents == "Все"){
 //            choiceIdent = "Все"
 //            #if isMupRCMytishi
             choiceIdent = "Все"

@@ -373,6 +373,12 @@
                             <constraint firstItem="c7l-V3-B30" firstAttribute="top" secondItem="hGu-0T-icN" secondAttribute="top" id="yeT-pg-ID9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hGu-0T-icN"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="HBl-2i-w8T"/>
+                                <exclude reference="MAg-Es-LKV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Показания приборов" id="xn4-3Q-AT0">
                         <barButtonItem key="leftBarButtonItem" image="back" id="wi0-hZ-4Kg">

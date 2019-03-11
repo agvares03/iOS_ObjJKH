@@ -183,12 +183,16 @@ class DB: NSObject, XMLParserDelegate {
         } else {
             defaults.setValue(month, forKey: "month")
         }
+        #if isMupRCMytishi
+        defaults.setValue(resultMonth, forKey: "month")
+        defaults.setValue(resultDate, forKey: "year")
+        #else
         if (year == "") {
             defaults.setValue(resultDate, forKey: "year")
         } else {
             defaults.setValue(year, forKey: "year")
         }
-        
+        #endif
         defaults.synchronize()
     }
     
@@ -213,15 +217,14 @@ class DB: NSObject, XMLParserDelegate {
         if (elementName == "MeterValue"){
             print(attributeDict)
             let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
-            self.currYear = date[2]
-            self.currMonth = date[1]
+            
             let managedObject = Counters()
             managedObject.id            = 1
             managedObject.uniq_num      = meterUniqueNum
             managedObject.owner         = factoryNumber
             managedObject.num_month     = attributeDict["PeriodDate"]!
             managedObject.unit_name     = units
-            managedObject.year          = self.currYear
+            managedObject.year          = date[2]
             managedObject.ident         = ident
             managedObject.count_name    = name
             managedObject.count_ed_izm  = units
