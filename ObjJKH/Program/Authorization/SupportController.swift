@@ -15,6 +15,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var problemTxt: UITextView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var ver_Lbl: UILabel!
+    @IBOutlet weak var heigth_text_tech: NSLayoutConstraint!
     
     @IBAction func updateConect(_ sender: UIButton) {
         self.viewDidLoad()
@@ -97,12 +98,20 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
                                                 if responseString == "0"{
                                                     DispatchQueue.main.async(execute: {
                                                         self.StopIndicator()
+                                                        // Переменная - контроль одного факта обращения за сессию (пока не зайдешь снова, обращение отправить будет нельзя)
+                                                        let defaults = UserDefaults.standard
+                                                        defaults.set(false, forKey: "can_tech")
+                                                        defaults.set(self.problemTxt.text, forKey: "txt_tech")
+                                                        defaults.synchronize()
+                                                        
                                                         let alert = UIAlertController(title: "Ваше сообщение успешно отправлено!", message: "", preferredStyle: .alert)
                                                         let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                                                             self.navigationController?.popViewController(animated: true)
                                                         }
                                                         alert.addAction(cancelAction)
                                                         self.present(alert, animated: true, completion: nil)
+                                                        
+                                                        self.enable_btn_send()
                                                     })
                                                 }else{
                                                     DispatchQueue.main.async(execute: {
@@ -167,6 +176,34 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
+        
+        // Доступность и видимость кнопки отправки
+        enable_btn_send()
+        
+    }
+    
+    func enable_btn_send() {
+        
+        // Переменная - контроль одного факта обращения за сессию (пока не зайдешь снова, обращение отправить будет нельзя)
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "can_tech") {
+            
+            sendBtn.isHidden = false
+            phoneTxt.isEnabled = true
+            emailTxt.isEnabled = true
+            heigth_text_tech.constant = 130
+            questionLbl.text = "Задайте вопрос здесь, опишите проблему. Мы обязательно Вам поможем."
+            
+        } else {
+            
+            sendBtn.isHidden = true
+            phoneTxt.isEnabled = false
+            emailTxt.isEnabled = false
+            heigth_text_tech.constant = -2
+            let txt_tech: String = defaults.string(forKey: "txt_tech") ?? ""
+            questionLbl.text = "Ваше обращение отправлено. " + txt_tech
+            
+        }
     }
     
     func updateUserInterface() {

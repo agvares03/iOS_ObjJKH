@@ -249,6 +249,11 @@ class FirstController: UIViewController {
     func enter() {
         StartIndicator()
         
+        // Переменная - контроль одного факта обращения за сессию (пока не зайдешь снова, обращение отправить будет нельзя)
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "can_tech")
+        defaults.synchronize()
+        
         // Авторизация пользователя
         let txtLogin: String = edLogin.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let txtPass: String = edPass.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!

@@ -467,11 +467,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9y-gL-9hd">
-                                <rect key="frame" x="117.5" y="428.5" width="140" height="30"/>
+                                <rect key="frame" x="43" y="428.5" width="289" height="30"/>
                                 <color key="backgroundColor" red="0.1143948659" green="0.57143443819999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6OR-57-OcG"/>
-                                    <constraint firstAttribute="width" constant="140" id="RUg-UG-BsC"/>
+                                    <constraint firstAttribute="width" constant="289" id="RUg-UG-BsC"/>
                                 </constraints>
                                 <state key="normal" title="Отправить">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -547,6 +547,7 @@
                             <constraint firstItem="jdf-Nz-nJR" firstAttribute="leading" secondItem="cT6-3M-qth" secondAttribute="leading" constant="10" id="aCO-Pv-kmc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gzk-Pc-mag" secondAttribute="trailing" constant="4" id="c87-Oq-OJp"/>
                             <constraint firstItem="Gzk-Pc-mag" firstAttribute="top" secondItem="Afh-e0-FeO" secondAttribute="bottom" constant="7.5" id="gE0-cS-z8a"/>
+                            <constraint firstItem="pGB-M8-LY0" firstAttribute="top" secondItem="Gzk-Pc-mag" secondAttribute="bottom" constant="130" id="gdb-eR-yJi"/>
                             <constraint firstItem="d9y-gL-9hd" firstAttribute="top" secondItem="pGB-M8-LY0" secondAttribute="bottom" constant="30" id="h5d-kn-YzJ"/>
                             <constraint firstItem="sqR-oM-cNZ" firstAttribute="leading" secondItem="cT6-3M-qth" secondAttribute="leading" constant="16" id="lMV-kx-FpD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pGB-M8-LY0" secondAttribute="trailing" constant="4" id="lb3-dc-vpq"/>
@@ -578,6 +579,7 @@
                     <connections>
                         <outlet property="backBtn" destination="pvX-Ih-OLM" id="zFc-Tr-DK7"/>
                         <outlet property="emailTxt" destination="Afh-e0-FeO" id="SOm-o4-Q68"/>
+                        <outlet property="heigth_text_tech" destination="gdb-eR-yJi" id="NEd-KL-nqg"/>
                         <outlet property="indicator" destination="YFZ-fj-2Eo" id="h6c-aQ-1yO"/>
                         <outlet property="nonConectView" destination="7Tg-uX-UHf" id="15l-oe-0tS"/>
                         <outlet property="phoneTxt" destination="KCv-MI-guV" id="UvN-32-Ox5"/>
@@ -593,7 +595,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LxK-VT-oUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="721" y="821"/>
+            <point key="canvasLocation" x="720.79999999999995" y="820.83958020989508"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LYF-Qv-BQQ">
