@@ -288,7 +288,6 @@ class FirstController: UIViewController {
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
 //                                                self.responseString = "error: смена пароля: 987487632"
                                                 print("responseString = \(self.responseString)")
-                                                self.responseString = "error: Тестовая ошикбка"
                                                 self.choice()
         })
         task.resume()
