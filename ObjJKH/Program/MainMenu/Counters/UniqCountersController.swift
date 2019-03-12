@@ -368,6 +368,8 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                                                     
                                                     if error != nil {
                                                         DispatchQueue.main.async(execute: {
+                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                            UserDefaults.standard.synchronize()
                                                             let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
                                                             let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                                                             let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in

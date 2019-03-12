@@ -75,6 +75,8 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
                                                     
                                                     if error != nil {
                                                         DispatchQueue.main.async(execute: {
+                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                            UserDefaults.standard.synchronize()
                                                             let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
                                                             let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                                                             let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
@@ -98,6 +100,8 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
                                                         })
                                                     }else{
                                                         DispatchQueue.main.async(execute: {
+                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                            UserDefaults.standard.synchronize()
                                                             let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
                                                             let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                                                             let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
@@ -236,6 +240,8 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
                                                         data, response, error in
                                                         
                                                         if error != nil {
+                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                            UserDefaults.standard.synchronize()
                                                             DispatchQueue.main.async(execute: {
                                                                 let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
                                                                 let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }

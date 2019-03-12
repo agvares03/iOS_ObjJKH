@@ -73,12 +73,17 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         if UserDefaults.standard.bool(forKey: "fromMenu"){
             info = "Аккаунт - \(login) лиц. счета - \(str_ls)"
         }
+        if UserDefaults.standard.string(forKey: "errorStringSupport") != ""{
+            let error: String = UserDefaults.standard.string(forKey: "errorStringSupport")!
+            info = info + " Текст ошибки :" + error + ""
+        }
         let urlPath = Server.SERVER + Server.SEND_SUPPORT + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&text=" + text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&mail=" + email.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&os=iOS" + "&appVersion=" + version.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&info=" + info.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "POST"
         print(request)
+        
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in

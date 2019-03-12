@@ -18,7 +18,8 @@ class StartController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UserDefaults.standard.set("", forKey: "errorStringSupport")
+        UserDefaults.standard.synchronize()
         self.perform(#selector(updateProgress), with: nil, afterDelay: 0.01)
         
         // Запустим подгрузку настроек
@@ -136,7 +137,9 @@ class StartController: UIViewController {
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)
                 self.set_settings(color: stat.color, statMenu: stat.menu)
             }else{
-                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                UserDefaults.standard.set(self.responseLS, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseLS! + ">", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) ->
                     Void in
                     self.getSettings()

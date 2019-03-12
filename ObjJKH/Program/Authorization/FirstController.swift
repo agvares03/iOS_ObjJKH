@@ -271,6 +271,8 @@ class FirstController: UIViewController {
                                                 if error != nil {
                                                     DispatchQueue.main.async(execute: {
                                                         self.StopIndicator()
+                                                        UserDefaults.standard.set("Ошибка соединения сервера", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
                                                         let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
                                                         let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                                                         let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
@@ -286,7 +288,7 @@ class FirstController: UIViewController {
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
 //                                                self.responseString = "error: смена пароля: 987487632"
                                                 print("responseString = \(self.responseString)")
-                                                
+                                                self.responseString = "error: Тестовая ошикбка"
                                                 self.choice()
         })
         task.resume()
@@ -337,7 +339,9 @@ class FirstController: UIViewController {
         }else if (responseString.contains("error")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                     self.performSegue(withIdentifier: "support", sender: self)
@@ -367,13 +371,17 @@ class FirstController: UIViewController {
                 db.getDataByEnter(login: self.edLogin.text!, pass: self.edPass.text!)
                 self.getTypesApps()
                 if !UserDefaults.standard.bool(forKey: "error"){
+                    UserDefaults.standard.set("", forKey: "errorStringSupport")
+                    UserDefaults.standard.synchronize()
                     if (answer[5] == "0") {
                         self.performSegue(withIdentifier: "MainMenu", sender: self)
                     } else {
                         self.performSegue(withIdentifier: "MainMenuCons", sender: self)
                     }
                 }else{
-                    let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                    UserDefaults.standard.set("Ошибка сохранения данных", forKey: "errorStringSupport")
+                    UserDefaults.standard.synchronize()
+                    let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + "Ошибка сохранения данных" + ">", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                     let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                         self.performSegue(withIdentifier: "support", sender: self)
