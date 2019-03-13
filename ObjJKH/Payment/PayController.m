@@ -443,7 +443,7 @@
                                                       onSuccess(paymentInfo);
                                                   }
                                                 cancelled:^{
-                                                    [viewController presentViewController:[PayController alertForCancel] animated:YES completion:nil];
+//                                                    [viewController presentViewController:[PayController alertForCancel] animated:YES completion:nil];
                                                     onCancelled();
                                                 }
                                                     error:^(ASDKAcquringSdkError *error) {
