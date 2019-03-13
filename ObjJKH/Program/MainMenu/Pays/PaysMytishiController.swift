@@ -268,7 +268,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             defaults.synchronize()
             print(receiptData)
             if payType == 1{
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: nil, shippingEditableFields: PKAddressField(), recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
+                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: nil, shippingEditableFields: PKAddressField(), recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
                     
                 }, cancelled:  {
                     
@@ -917,7 +917,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                 
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
                                                 print("responseString = \(responseString)")
-                                                
+                                                UserDefaults.standard.setValue("", forKey: "PaysError")
+                                                UserDefaults.standard.setValue("", forKey: "PaymentID")
+                                                UserDefaults.standard.set(false, forKey: "PaymentSucces")
                                                 if responseString != "ok"{
                                                     DispatchQueue.main.async(execute: {
                                                         let alert = UIAlertController(title: "Ошибка", message: responseString as String, preferredStyle: .alert)
