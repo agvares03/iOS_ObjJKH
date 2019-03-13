@@ -109,6 +109,9 @@
 		1C953D6321FAAE7200313221 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C953D6221FAAE7100313221 /* GoogleService-Info.plist */; };
 		1C953D6621FAC9DD00313221 /* OnePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6421FAC9D500313221 /* OnePageController.swift */; };
 		1C953D6821FAC9F100313221 /* TwoPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6721FAC9F100313221 /* TwoPageController.swift */; };
+		1CC3FF222237EB2600FDBA82 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC3FF212237EB2600FDBA82 /* PassKit.framework */; };
+		1CC3FF232238C28A00FDBA82 /* MobilePaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C51CEBF22291F27003EFD8C /* MobilePaysController.swift */; };
+		1CC3FF242238D4D700FDBA82 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC3FF212237EB2600FDBA82 /* PassKit.framework */; };
 		1CE43D0021C76549001B42B6 /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
 		1CE57D22220D520500B647C0 /* main_Background_MupRCMytishi.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CE57D21220D520500B647C0 /* main_Background_MupRCMytishi.png */; };
 		1CEFC88021F1C42900A042AA /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
@@ -1513,6 +1516,7 @@
 		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/DJ/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C953D6421FAC9D500313221 /* OnePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePageController.swift; sourceTree = "<group>"; };
 		1C953D6721FAC9F100313221 /* TwoPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageController.swift; sourceTree = "<group>"; };
+		1CC3FF212237EB2600FDBA82 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		1CE57D21220D520500B647C0 /* main_Background_MupRCMytishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_Background_MupRCMytishi.png; sourceTree = "<group>"; };
 		1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klimovsk12-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UK_Garant_White.png; sourceTree = "<group>"; };
@@ -1813,6 +1817,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC3FF222237EB2600FDBA82 /* PassKit.framework in Frameworks */,
 				41BD714221B4E869006E78FC /* CoreLocation.framework in Frameworks */,
 				59AB60C74EA69B056978218C /* Pods_Klimovsk12.framework in Frameworks */,
 			);
@@ -1822,6 +1827,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC3FF242238D4D700FDBA82 /* PassKit.framework in Frameworks */,
 				1C7B34D121993A0C00E6BAA3 /* CoreLocation.framework in Frameworks */,
 				89A87CAAFB699F0CAA446730 /* Pods_MupRCMytishi.framework in Frameworks */,
 			);
@@ -2389,6 +2395,7 @@
 		F0BAD5FABF0F698BF24700C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CC3FF212237EB2600FDBA82 /* PassKit.framework */,
 				1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */,
 				0FBA0E90ADE2FAE50B12C336 /* Pods_ChistDom.framework */,
 				81B7EA4A0A2CB233BB4A6F85 /* Pods_DJ.framework */,
@@ -2738,13 +2745,29 @@
 							};
 						};
 					};
+					41BD70F721B4E869006E78FC = {
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
+							com.apple.Wallet = {
+								enabled = 1;
+							};
+						};
+					};
 					41DFC37A213CF4E9002CEB62 = {
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.Wallet = {
 								enabled = 1;
 							};
 						};
@@ -5007,6 +5030,7 @@
 				41BD712521B4E869006E78FC /* Applications+CoreDataClass.swift in Sources */,
 				41BD712621B4E869006E78FC /* ColorsConstant.swift in Sources */,
 				1CF8B8A1221FD05D00B1D289 /* ASDKTestSettings.m in Sources */,
+				1CC3FF232238C28A00FDBA82 /* MobilePaysController.swift in Sources */,
 				41BD712721B4E869006E78FC /* Titles.swift in Sources */,
 				41BD712821B4E869006E78FC /* FloatRatingView.swift in Sources */,
 				41BD712921B4E869006E78FC /* MainMenuCons.swift in Sources */,

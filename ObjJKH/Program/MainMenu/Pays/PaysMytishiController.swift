@@ -10,6 +10,7 @@ import UIKit
 import Dropper
 import CoreData
 import StoreKit
+import PassKit
 
 private protocol MainDataProtocol:  class {}
 
@@ -109,7 +110,24 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 let str = textField.text
                 if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
                     UserDefaults.standard.set(str, forKey: "mail")
-                    self.payedM()
+//                    self.payedM()
+                    let alert = UIAlertController(title: nil, message: "Выберите способ оплаты", preferredStyle: .actionSheet)
+                    let cardImage = UIImage(named: "cardIcon")
+                    let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
+                        self.payType = 0
+                        self.payedM()
+                    })
+                    actionCard.setValue(cardImage, forKey: "image")
+                    let appleImage = UIImage(named: "apple")
+                    let actionApple = UIAlertAction(title: "Оплата ApplePay", style: .default, handler: { (_) in
+                        self.payType = 1
+                        self.payedM()
+                    })
+                    actionApple.setValue(appleImage, forKey: "image")
+                    alert.addAction(actionCard)
+                    alert.addAction(actionApple)
+                    alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
+                    self.present(alert, animated: true, completion: nil)
                 }else{
                     textField.text = ""
                     textField.placeholder = "e-mail..."
@@ -124,10 +142,26 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }else{
-            payedM()
+            let alert = UIAlertController(title: nil, message: "Выберите привязанный лицевой счет", preferredStyle: .actionSheet)
+            let cardImage = UIImage(named: "cardIcon")
+            let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
+                self.payType = 0
+                self.payedM()
+            })
+            actionCard.setValue(cardImage, forKey: "image")
+            let appleImage = UIImage(named: "apple")
+            let actionApple = UIAlertAction(title: "Оплата ApplePay", style: .default, handler: { (_) in
+                self.payType = 1
+                self.payedM()
+            })
+            actionApple.setValue(appleImage, forKey: "image")
+            alert.addAction(actionCard)
+            alert.addAction(actionApple)
+            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
+            present(alert, animated: true, completion: nil)
         }
     }
-    
+    var payType = 0
     private func payedM(){
         let k:String = txt_sum_jkh.text!
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
@@ -192,28 +226,40 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
             }
             UserDefaults.standard.synchronize()
-            print(UserDefaults.standard.string(forKey: "payIdent"))
             Data["chargeFlag"] = "false"
             let shopCode = "215944"
             var shops:[Any] = []
             let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
             shops.append(shopItem)
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ (Фе"
+            let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
             print(receiptData)
-            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                
-            }, cancelled:  {
-                
-            }, error: { (error) in
-                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-            })
+            if payType == 1{
+                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: nil, shippingEditableFields: PKAddressField(), recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }else{
+                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
             #else
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
@@ -221,26 +267,36 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
             print(receiptData)
-            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
-                
-            }, cancelled: {
-                
-            }) { (error) in
-                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
+            if payType == 1{
+                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: nil, shippingEditableFields: PKAddressField(), recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }else{
+                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled: {
+                    
+                }) { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
+            
             #endif
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        #if isMupRCMytishi
-        #else
-        mobilePay.isHidden = true
-        #endif
         UserDefaults.standard.set("", forKey: "payIdent")
         currPoint = 475
         let defaults     = UserDefaults.standard
@@ -802,9 +858,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && k == 0{
-            #if isMupRCMytishi
             addMobilePay()
-            #endif
             k = 1
         }
     }

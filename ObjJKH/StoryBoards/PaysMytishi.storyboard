@@ -647,7 +647,7 @@
         <!--Мобильные платежи-->
         <scene sceneID="n1M-kJ-j9u">
             <objects>
-                <viewController id="Iqn-cT-p8h" customClass="MobilePaysController" customModule="MupRCMytishi" sceneMemberID="viewController">
+                <viewController id="Iqn-cT-p8h" customClass="MobilePaysController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y5b-40-98D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -656,7 +656,7 @@
                                 <rect key="frame" x="0.0" y="103" width="375" height="564"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MobilePayCell" id="Md2-BH-1AF" customClass="MobilePayCell" customModule="MupRCMytishi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MobilePayCell" id="Md2-BH-1AF" customClass="MobilePayCell" customModule="ChistDom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Md2-BH-1AF" id="GZB-JH-1nc">

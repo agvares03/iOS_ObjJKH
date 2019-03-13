@@ -434,6 +434,8 @@
                                                       [[TransactionHistoryModelController sharedInstance] addTransaction:@{@"paymentId":paymentInfo.paymentId, @"paymentInfo":paymentInfo.dictionary, @"summ":amount, @"description":description, kASDKStatus:paymentInfo.status}];
                                                       PaymentSuccessViewController *vc = [[PaymentSuccessViewController alloc] init];
                                                       vc.amount = amount;
+                                                      [[NSUserDefaults standardUserDefaults] setObject:paymentInfo.paymentId forKey:@"PaymentID"];
+                                                      [[NSUserDefaults standardUserDefaults] synchronize];
                                                       UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
                                                       
                                                       [viewController presentViewController:nc animated:YES completion:nil];

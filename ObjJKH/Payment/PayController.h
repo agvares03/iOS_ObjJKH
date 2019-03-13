@@ -66,6 +66,23 @@
 					cancelled:(void (^)(void))onCancelled
 						error:(void (^)(ASDKAcquringSdkError *error))onError;
 
++ (void)buyWithApplePayAmount:(NSNumber *)amount
+                  description:(NSString *)description
+                        email:(NSString *)email
+              appleMerchantId:(NSString *)appleMerchantId
+              shippingMethods:(NSArray<PKShippingMethod *> *)shippingMethods
+              shippingContact:(PKContact *)shippingContact
+       shippingEditableFields:(PKAddressField)shippingEditableFields
+                    recurrent:(BOOL)recurrent
+        additionalPaymentData:(NSDictionary *)data
+                  receiptData:(NSDictionary *)receiptData
+                    shopsData:(NSArray *)shopsData
+            shopsReceiptsData:(NSArray *)shopsReceiptsData
+           fromViewController:(UIViewController *)viewController
+                      success:(void (^)(ASDKPaymentInfo *paymentIfo))onSuccess
+                    cancelled:(void (^)(void))onCancelled
+                        error:(void (^)(ASDKAcquringSdkError *error))onError;
+
 + (void)checkStatusTransaction:(NSString *)paymentId
 	   fromViewController:(UIViewController *)viewController
 				  success:(void (^)(ASDKPaymentStatus status))onSuccess
