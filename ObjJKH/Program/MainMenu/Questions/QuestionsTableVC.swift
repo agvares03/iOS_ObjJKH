@@ -58,7 +58,7 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         
         loader.isHidden = false
         loader.startAnimating()
-        getQuestions()
+//        getQuestions()
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
@@ -190,7 +190,7 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
             var filtered: [QuestionDataJson] = []
             unfilteredData?.forEach { json in
 
-                var isContains = true
+                var isContains = false
                 json.questions?.forEach {
                     if !($0.isCompleteByUser ?? false) {
                         isContains = false

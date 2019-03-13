@@ -178,17 +178,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 if $0 == true && sumOSV[i] > 0.00{
                     let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
                     #if isKlimovsk12
-                    let ItemsData = ["ShopCode" : "215944", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                    var ItemsData: [String : Any] = [:]
+                    if i == 0{
+                        ItemsData = ["ShopCode" : "215944", "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                        items.append(ItemsData)
+                    }
                     #else
                     let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
-                    #endif
                     items.append(ItemsData)
+                    #endif
                 }
                 i += 1
             }
             let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
             #if isKlimovsk12
-            let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+            let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
             #else
             let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
             #endif
@@ -206,15 +210,23 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             DataStr = DataStr + "|"
             i = 0
-            checkBox.forEach{
-                if $0 == true && sumOSV[i] > 0.00{
-                    DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+            if items.count > 8{
+                DataStr = DataStr + "Кол - Превышено|"
+            }else{
+                #if isKlimovsk12
+                DataStr = DataStr + "1-\(String(format:"%.2f", self.sum))|"
+                #else
+                checkBox.forEach{
+                    if $0 == true && sumOSV[i] > 0.00{
+                        DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                    }
+                    i += 1
                 }
-                i += 1
+                #endif
             }
             DataStr = DataStr + "serv-\(String(format:"%.2f", servicePay))"
             Data["name"] = DataStr
-            
+            print(Data)
             let defaults = UserDefaults.standard
             #if isKlimovsk12
             if selectLS == "Все"{

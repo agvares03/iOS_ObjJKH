@@ -16,6 +16,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var ver_Lbl: UILabel!
     @IBOutlet weak var heigth_text_tech: NSLayoutConstraint!
+    @IBOutlet weak var heightTextView: NSLayoutConstraint!
     
     @IBAction func updateConect(_ sender: UIButton) {
         self.viewDidLoad()
@@ -197,6 +198,10 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
             phoneTxt.isEnabled = true
             emailTxt.isEnabled = true
             heigth_text_tech.constant = 130
+            if view.frame.size.height <= 568{
+                heightTextView.constant = 70
+                heigth_text_tech.constant = 100
+            }
             questionLbl.text = "Задайте вопрос здесь, опишите проблему. Мы обязательно Вам поможем."
             
         } else {
