@@ -168,7 +168,9 @@ class AddLS: UIViewController, UITextFieldDelegate {
         getStreets()
         
         edLS.delegate = self
-        
+        edFlat.delegate = self
+        edNumber.delegate = self
+        edStreet.delegate = self
         // Установим цвета для элементов в зависимости от Таргета
         btnAdd.backgroundColor = myColors.btnColor.uiColor()
         back.tintColor = myColors.btnColor.uiColor()
@@ -176,7 +178,6 @@ class AddLS: UIViewController, UITextFieldDelegate {
         separator2.backgroundColor = myColors.labelColor.uiColor()
         separator3.backgroundColor = myColors.labelColor.uiColor()
         separator4.backgroundColor = myColors.labelColor.uiColor()
-        
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
@@ -184,6 +185,13 @@ class AddLS: UIViewController, UITextFieldDelegate {
             txtNumberLS.text = "Номер лицевого счета Сбербанка"
         #endif
         
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == edFlat || textField == edNumber || textField == edStreet {
+            return false; //do not show keyboard nor cursor
+        }
+        return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
