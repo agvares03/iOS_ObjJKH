@@ -373,6 +373,7 @@ class FirstController: UIViewController {
                     UserDefaults.standard.set("", forKey: "errorStringSupport")
                     UserDefaults.standard.synchronize()
                     if (answer[5] == "0") {
+//                        self.performSegue(withIdentifier: "NewMainMenu", sender: self)
                         self.performSegue(withIdentifier: "MainMenu", sender: self)
                     } else {
                         self.performSegue(withIdentifier: "MainMenuCons", sender: self)
