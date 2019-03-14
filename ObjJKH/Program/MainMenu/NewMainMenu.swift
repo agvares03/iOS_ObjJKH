@@ -9,18 +9,6 @@
 import UIKit
 
 class NewMainMenu: UIViewController {
-
-    @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
-    var responseString: String = ""
-    var name_account: String = ""
-    var login: String = ""
-    var pass: String = ""
-    var txt_name: String = "Запись на прием к специалисту"
-    var load = false
-    private var question_read = 0
-    private var request_read = 0
-    private var news_read = 0
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var ls1: UILabel!
@@ -285,12 +273,14 @@ class NewMainMenu: UIViewController {
         #elseif isUKGarant
         fon_top.image = UIImage(named: "Logo_UK_Garant")
         #endif
+        btn_name_0.imageView?.contentMode = .scaleAspectFit
+        btn_name_1.imageView?.contentMode = .scaleAspectFit
         news_View.layer.borderWidth = 1
-        news_View.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
+        news_View.layer.borderColor = UIColor.lightGray.cgColor
         ls_View.layer.borderWidth = 1
-        ls_View.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
+        ls_View.layer.borderColor = UIColor.lightGray.cgColor
         counters_View.layer.borderWidth = 1
-        counters_View.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
+        counters_View.layer.borderColor = UIColor.lightGray.cgColor
         // Do any additional setup after loading the view.
     }
     

@@ -757,6 +757,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Успешно", message: "Показания переданы", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    DB().del_db(table_name: "Counters")
                     self.parse_Countrers(login: self.edLogin, pass: self.edPass)
                 }
                 alert.addAction(cancelAction)
