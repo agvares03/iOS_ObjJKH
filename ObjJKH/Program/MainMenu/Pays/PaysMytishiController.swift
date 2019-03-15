@@ -228,6 +228,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             Data["name"] = DataStr
             print(Data)
             let defaults = UserDefaults.standard
+            self.k = 0
             #if isKlimovsk12
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
@@ -850,7 +851,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        k = 0
+//        k = 0
         UserDefaults.standard.addObserver(self, forKeyPath: "PaysError", options:NSKeyValueObservingOptions.new, context: nil)
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentID", options:NSKeyValueObservingOptions.new, context: nil)
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
@@ -862,7 +863,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var k = 0
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if UserDefaults.standard.bool(forKey: "PaymentSucces"){
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && k == 0{
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             } else {
@@ -870,8 +871,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && k == 0{
-            addMobilePay()
             k = 1
+            addMobilePay()
         }
     }
     
