@@ -127,7 +127,10 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })
         // Установим цвета для элементов в зависимости от Таргета
-        btnAdd.backgroundColor = myColors.btnColor.uiColor()
+//        btnAdd.backgroundColor = myColors.btnColor.uiColor()
+        btnAdd.tintColor = myColors.btnColor.uiColor()
+        switchCloseApps.tintColor = myColors.btnColor.uiColor()
+        switchCloseApps.onTintColor = myColors.btnColor.uiColor()
         back.tintColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
@@ -250,12 +253,13 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.date_app.font = UIFont.systemFont(ofSize: 13.0)
                 cell.date_app.textColor = .black
             }
+            
             cell.Number.text    = app.number
             cell.tema.text      = app.tema
             //            cell.text_app.text  = app.text
             cell.date_app.text  = app.date
             cell.image_app.image = img
-            
+            cell.image_app.tintColor = myColors.btnColor.uiColor()
 //            #if isGKRZS
 //            let server = Server()
 //            cell.Number.textColor = server.hexStringToUIColor(hex: "#1f287f")

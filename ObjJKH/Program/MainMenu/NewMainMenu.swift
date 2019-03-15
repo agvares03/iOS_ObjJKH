@@ -13,8 +13,7 @@ class NewMainMenu: UIViewController {
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var ls1: UILabel!
     @IBOutlet weak var ls2: UILabel!
-    @IBOutlet weak var ls3: UILabel!
-    @IBOutlet weak var btnAllLS: UILabel!
+    
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var ls_View: UIView!
@@ -27,79 +26,26 @@ class NewMainMenu: UIViewController {
     @IBOutlet weak var question_indicator: UILabel!
     
     // Размеры для настройки меню
-    // Уведомления - Новости
-    @IBOutlet weak var menu_0_heigth: NSLayoutConstraint!
-    @IBOutlet weak var btn_name_0: UIButton!
-    @IBOutlet weak var line_bottom_0: UILabel!
-    @IBOutlet weak var btn_arr_0: UIImageView!
     // Звонок диспетчеру
-    @IBOutlet weak var menu_1_heigth: NSLayoutConstraint!
-    @IBOutlet weak var btn_name_1: UIButton!
-    @IBOutlet weak var line_bottom_1: NSLayoutConstraint!
-    @IBOutlet weak var supportBtn: UIButton!
-    // Заявки
-    @IBOutlet weak var menu_2_heigth: NSLayoutConstraint!
-    @IBOutlet weak var line_bottom_2: UILabel!
-    @IBOutlet weak var btn_arr_2: UIImageView!
-    @IBOutlet weak var btn_name_2: UIButton!
-    // Опросы - было реализовано ранее для Мытищ
-    @IBOutlet weak var line_bottom_3: NSLayoutConstraint!
-    // Показания счетчиков
-    @IBOutlet weak var menu_4_heigth: NSLayoutConstraint!
-    @IBOutlet weak var btn_name_4: UIButton!
-    @IBOutlet weak var btn_arr_4: UIImageView!
-    @IBOutlet weak var line_bottom_4: UILabel!
-    // Ведомости
-    @IBOutlet weak var menu_5_heigth: NSLayoutConstraint!
-    @IBOutlet weak var btm_name_5: UIButton!
-    @IBOutlet weak var btn_arr_5: UIImageView!
-    @IBOutlet weak var line_bottom_5: UILabel!
-    // Оплата ЖКУ
-    @IBOutlet weak var menu_6_heigth: NSLayoutConstraint!
-    @IBOutlet weak var btn_name_6: UIButton!
-    @IBOutlet weak var btn_arr_6: UIImageView!
-    @IBOutlet weak var line_bottom_6: UILabel!
-    // Web-камеры
-    @IBOutlet weak var menu_7_heigth: NSLayoutConstraint!
-    @IBOutlet weak var btn_name_7: UIButton!
-    @IBOutlet weak var btn_arr_7: UIImageView!
-    @IBOutlet weak var line_bottom_7: UILabel!
-    // Дополнительные настройки
-    @IBOutlet weak var menu_8_heigth: NSLayoutConstraint!
-    @IBOutlet weak var btn_name_8: UIButton!
-    @IBOutlet weak var btn_arr_8: UIImageView!
-    @IBOutlet weak var line_bottom_8: UILabel!
-    // Выход - только название
-    @IBOutlet weak var btn_name_9: UIButton!
+    @IBOutlet weak var callBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var callBtn: UIButton!
+    @IBOutlet weak var callBtnImg: UIImageView!
+    // Письмо в техподдержку
+    @IBOutlet weak var suppBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var suppBtn: UIButton!
+    @IBOutlet weak var suppBtnImg: UIImageView!
     
-    // Запись на прием - только для Нашего общего дома
-    @IBOutlet weak var menu_record_heigth: NSLayoutConstraint!
-    @IBOutlet weak var btn_name_record: UIButton!
-    @IBOutlet weak var btn_arr_record: UIImageView!
-    @IBOutlet weak var line_bottom: UILabel!
+    @IBOutlet weak var targetName: UILabel!
     
-    @IBOutlet weak var supp_Line: UILabel!
-    @IBOutlet weak var acc_Line: UILabel!
-    @IBOutlet weak var heigth_Questions: NSLayoutConstraint!
-    @IBOutlet weak var btn_Questions: UIButton!
-    @IBOutlet weak var Questions_arrow: UIImageView!
-    @IBOutlet weak var heigth_view: NSLayoutConstraint!
+    @IBOutlet weak var allNewsBtn: UILabel!
+    @IBOutlet weak var allLSBtn: UILabel!
+    @IBOutlet weak var allCountersBtn: UILabel!
     
-    // Картинки - для разных Таргетов
-    @IBOutlet weak var notice: UIImageView!
-    @IBOutlet weak var call: UIImageView!
-    @IBOutlet weak var support: UIImageView!
-    @IBOutlet weak var application: UIImageView!
-    @IBOutlet weak var poll: UIImageView!
-    @IBOutlet weak var meters: UIImageView!
-    @IBOutlet weak var saldo: UIImageView!
-    @IBOutlet weak var payment: UIImageView!
-    @IBOutlet weak var webs_img: UIImageView!
-    @IBOutlet weak var services: UIImageView!
-    @IBOutlet weak var exit_img: UIImageView!
-    @IBOutlet weak var record_img: UIImageView!
-    @IBOutlet weak var acc_img: UIImageView!
-    @IBOutlet weak var main_background: UIImageView!
+    @IBOutlet weak var one_LS_Pay: UILabel!
+    @IBOutlet weak var two_LS_Pay: UILabel!
+    
+    @IBOutlet weak var one_Counters_Set: UILabel!
+    @IBOutlet weak var two_Counters_Set: UILabel!
     
     var phone: String?
     
@@ -122,9 +68,6 @@ class NewMainMenu: UIViewController {
     }
     @IBAction func ls2_del(_ sender: UIButton) {
         try_del_ls_from_acc(ls: ls2)
-    }
-    @IBAction func ls3_del(_ sender: UIButton) {
-        try_del_ls_from_acc(ls: ls3)
     }
     
     func try_del_ls_from_acc(ls: UILabel) {
@@ -200,10 +143,6 @@ class NewMainMenu: UIViewController {
             self.btn_ls2.isHidden = true
             self.btn_ls2.isEnabled = false
             
-            self.ls3.text = ""
-            self.btn_ls3.isHidden = true
-            self.btn_ls3.isEnabled = false
-            
             let str_ls_arr = newStr_ls?.components(separatedBy: ",")
             defaults.set(newStr_ls, forKey: "str_ls")
             defaults.synchronize()
@@ -215,10 +154,6 @@ class NewMainMenu: UIViewController {
                 self.ls2.text = str_ls_arr?[1]
                 self.btn_ls2.isHidden = false
                 self.btn_ls2.isEnabled = true
-                
-                self.ls3.text = str_ls_arr?[2]
-                self.btn_ls3.isHidden = false
-                self.btn_ls3.isEnabled = true
             } else if ((str_ls_arr?.count)! == 2) {
                 self.ls1.text = str_ls_arr?[0]
                 self.btn_ls1.isHidden = false
@@ -227,10 +162,6 @@ class NewMainMenu: UIViewController {
                 self.ls2.text = str_ls_arr?[1]
                 self.btn_ls2.isHidden = false
                 self.btn_ls2.isEnabled = true
-                
-                self.ls3.text = ""
-                self.btn_ls3.isHidden = true
-                self.btn_ls3.isEnabled = false
             } else if ((str_ls_arr?.count)! == 1) {
                 self.ls1.text = str_ls_arr?[0]
                 if (self.ls1.text != "") {
@@ -240,47 +171,86 @@ class NewMainMenu: UIViewController {
                 self.ls2.text = ""
                 self.btn_ls2.isHidden = true
                 self.btn_ls2.isEnabled = false
-                
-                self.ls3.text = ""
-                self.btn_ls3.isHidden = true
-                self.btn_ls3.isEnabled = false
             }
         })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        targetName.text = "Мобильное ЖКХ"
         #if isOur_Obj_Home
+        targetName.text = "Наш Общий Дом"
         fon_top.image = UIImage(named: "logo_Our_Obj_Home")
         #elseif isChist_Dom
         fon_top.image = UIImage(named: "Logo_Chist_Dom")
         #elseif isMupRCMytishi
+        targetName.text = "МУП РЦ Мытищи"
         fon_top.image = UIImage(named: "logo_MupRCMytishi")
         #elseif isDJ
         fon_top.image = UIImage(named: "logo_DJ")
         #elseif isStolitsa
+        targetName.text = "УК Жилищник Столица"
         fon_top.image = UIImage(named: "logo_Stolitsa")
         #elseif isKomeks
         fon_top.image = UIImage(named: "Logo_Komeks")
         #elseif isUKKomfort
+        targetName.text = "УК Комфорт"
         fon_top.image = UIImage(named: "logo_UK_Komfort")
         #elseif isKlimovsk12
+        targetName.text = "ТСЖ Климовск 12"
         fon_top.image = UIImage(named: "logo_Klimovsk12")
         #elseif isPocket
         fon_top.image = UIImage(named: "Logo_Pocket")
         #elseif isReutKomfort
+        targetName.text = "УК Реут Комфорт"
         fon_top.image = UIImage(named: "Logo_ReutKomfort")
         #elseif isUKGarant
         fon_top.image = UIImage(named: "Logo_UK_Garant")
         #endif
-        btn_name_0.imageView?.contentMode = .scaleAspectFit
-        btn_name_1.imageView?.contentMode = .scaleAspectFit
+        UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
+        callBtnImg.setImageColor(color: myColors.btnColor.uiColor())
+        suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
+        callBtn.tintColor = myColors.btnColor.uiColor()
+        suppBtn.tintColor = myColors.btnColor.uiColor()
+        if view.frame.size.width > 320{
+            callBtnWidth.constant = callBtnWidth.constant + 20
+            suppBtnWidth.constant = suppBtnWidth.constant + 20
+        }
         news_View.layer.borderWidth = 1
         news_View.layer.borderColor = UIColor.lightGray.cgColor
         ls_View.layer.borderWidth = 1
         ls_View.layer.borderColor = UIColor.lightGray.cgColor
         counters_View.layer.borderWidth = 1
         counters_View.layer.borderColor = UIColor.lightGray.cgColor
+        
+        let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+        let lsUnderline = NSAttributedString(string: "ВСЕ ЛИЦЕВЫЕ СЧЕТА", attributes: underlineAttribute)
+        let oneLsUnderline = NSAttributedString(string: "Оплатить", attributes: underlineAttribute)
+        let twoLsUnderline = NSAttributedString(string: "Оплатить", attributes: underlineAttribute)
+        let addLsUnderline = NSAttributedString(string: "Подключить лицевой счет", attributes: underlineAttribute)
+        let newsUnderline = NSAttributedString(string: "ВСЕ НОВОСТИ", attributes: underlineAttribute)
+        let countersUnderline = NSAttributedString(string: "СПИСОК ПРИБОРОВ", attributes: underlineAttribute)
+        let oneCountersUnderline = NSAttributedString(string: "Передать показания", attributes: underlineAttribute)
+        let twoCountersUnderline = NSAttributedString(string: "Изменить показания", attributes: underlineAttribute)
+        
+        allLSBtn.attributedText = lsUnderline
+        one_LS_Pay.attributedText = oneLsUnderline
+        two_LS_Pay.attributedText = twoLsUnderline
+        lbl_Add_LS.attributedText = addLsUnderline
+        allNewsBtn.attributedText = newsUnderline
+        allCountersBtn.attributedText = countersUnderline
+        one_Counters_Set.attributedText = oneCountersUnderline
+        two_Counters_Set.attributedText = twoCountersUnderline
+        
+        allLSBtn.textColor = myColors.btnColor.uiColor()
+        one_LS_Pay.textColor = myColors.btnColor.uiColor()
+        two_LS_Pay.textColor = myColors.btnColor.uiColor()
+        lbl_Add_LS.textColor = myColors.btnColor.uiColor()
+        allNewsBtn.textColor = myColors.btnColor.uiColor()
+        allCountersBtn.textColor = myColors.btnColor.uiColor()
+        one_Counters_Set.textColor = myColors.btnColor.uiColor()
+        two_Counters_Set.textColor = myColors.btnColor.uiColor()
+        targetName.textColor = myColors.btnColor.uiColor()
         // Do any additional setup after loading the view.
     }
     
