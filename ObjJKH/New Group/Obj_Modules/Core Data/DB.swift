@@ -56,9 +56,9 @@ class DB: NSObject, XMLParserDelegate {
         
         // ПОКАЗАНИЯ СЧЕТЧИКОВ
         // Удалим данные из базы данных
-        del_db(table_name: "Counters")
+//        del_db(table_name: "Counters")
         // Получим данные в базу данных
-        parse_Countrers(login: login, pass: pass)
+//        parse_Countrers(login: login, pass: pass)
         
         // ВЕДОМОСТЬ
         // Удалим данные из базы данных
@@ -143,11 +143,13 @@ class DB: NSObject, XMLParserDelegate {
     func parse_Countrers(login: String, pass: String) {
         // Получим данные из xml
         var urlPath:String = ""
-        #if isMupRCMytishi
+//        #if isMupRCMytishi
         urlPath = Server.SERVER + Server.GET_METERS_MUP + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        #else
-        urlPath = Server.SERVER + Server.GET_METERS + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        #endif
+//        #elseif isUKKomfort
+//        urlPath = Server.SERVER + Server.GET_METERS_MUP + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+//        #else
+//        urlPath = Server.SERVER + Server.GET_METERS + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+//        #endif
         let url: NSURL = NSURL(string: urlPath)!
         print(url)
         
@@ -183,16 +185,19 @@ class DB: NSObject, XMLParserDelegate {
         } else {
             defaults.setValue(month, forKey: "month")
         }
-        #if isMupRCMytishi
+//        #if isMupRCMytishi
         defaults.setValue(resultMonth, forKey: "month")
         defaults.setValue(resultDate, forKey: "year")
-        #else
-        if (year == "") {
-            defaults.setValue(resultDate, forKey: "year")
-        } else {
-            defaults.setValue(year, forKey: "year")
-        }
-        #endif
+//        #elseif isUKKomfort
+//        defaults.setValue(resultMonth, forKey: "month")
+//        defaults.setValue(resultDate, forKey: "year")
+//        #else
+//        if (year == "") {
+//            defaults.setValue(resultDate, forKey: "year")
+//        } else {
+//            defaults.setValue(year, forKey: "year")
+//        }
+//        #endif
         defaults.synchronize()
     }
     
@@ -203,73 +208,84 @@ class DB: NSObject, XMLParserDelegate {
     var factoryNumber = ""
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+//        var k = 0
+//        #if isMupRCMytishi
+//        k = 1
+//        #elseif isUKKomfort
+//        k = 1
+//        #else
+//        k = 0
+//        #endif
+//        if k == 1{
+            if (elementName == "Meter") {
+                print(attributeDict)
+                ident = attributeDict["Ident"]!
+                units = attributeDict["Units"]!
+                name = attributeDict["Name"]!
+                meterUniqueNum = attributeDict["MeterUniqueNum"]!
+                factoryNumber = attributeDict["FactoryNumber"]!
+                // Запишем показание прибора
+            }
+            if (elementName == "MeterValue"){
+                print(attributeDict)
+                let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
+                
+                let managedObject = Counters()
+                managedObject.id            = 1
+                managedObject.uniq_num      = meterUniqueNum
+                managedObject.owner         = factoryNumber
+                managedObject.num_month     = attributeDict["PeriodDate"]!
+                managedObject.unit_name     = units
+                managedObject.year          = date[2]
+                managedObject.ident         = ident
+                managedObject.count_name    = name
+                managedObject.count_ed_izm  = units
+                managedObject.prev_value    = 123.53
+                managedObject.value         = (attributeDict["Value"]! as NSString).floatValue
+                managedObject.diff          = 6757.43
+                if attributeDict["IsSended"] == "1"{
+                    managedObject.sended    = true
+                }else{
+                    managedObject.sended    = false
+                }
+                
+                CoreDataManager.instance.saveContext()
+            }
+//        }else{
+//            // ПОКАЗАНИЯ ПРИБОРОВ
+//            if (elementName == "Period") {
+//                self.currYear = attributeDict["Year"]!
+//                self.currMonth = attributeDict["NumMonth"]!
+//            } else if (elementName == "MeterValue") {
+//                print(attributeDict)
+//
+//                // Запишем показание прибора
+//                let managedObject = Counters()
+//                managedObject.id            = 1
+//                managedObject.uniq_num      = attributeDict["MeterUniqueNum"]!
+//                managedObject.owner         = attributeDict["FactoryNumber"]!
+//                managedObject.num_month     = self.currMonth
+//                managedObject.unit_name     = attributeDict["Units"]
+//                managedObject.year          = self.currYear
+//                managedObject.ident         = attributeDict["Ident"]
+//                managedObject.count_name    = attributeDict["Name"]
+//                managedObject.count_ed_izm  = attributeDict["Units"]
+//                managedObject.prev_value    = (attributeDict["PreviousValue"]! as NSString).floatValue
+//                managedObject.value         = (attributeDict["Value"]! as NSString).floatValue
+//                managedObject.diff          = (attributeDict["Difference"]! as NSString).floatValue
+//                if attributeDict["IsSended"] == "1"{
+//                    managedObject.sended    = true
+//                }else{
+//                    managedObject.sended    = false
+//                }
+//
+//                CoreDataManager.instance.saveContext()
+//            }
+//        }
         
-        #if isMupRCMytishi
-        if (elementName == "Meter") {
-            print(attributeDict)
-            ident = attributeDict["Ident"]!
-            units = attributeDict["Units"]!
-            name = attributeDict["Name"]!
-            meterUniqueNum = attributeDict["MeterUniqueNum"]!
-            factoryNumber = attributeDict["FactoryNumber"]!
-            // Запишем показание прибора
-        }
-        if (elementName == "MeterValue"){
-            print(attributeDict)
-            let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
-            
-            let managedObject = Counters()
-            managedObject.id            = 1
-            managedObject.uniq_num      = meterUniqueNum
-            managedObject.owner         = factoryNumber
-            managedObject.num_month     = attributeDict["PeriodDate"]!
-            managedObject.unit_name     = units
-            managedObject.year          = date[2]
-            managedObject.ident         = ident
-            managedObject.count_name    = name
-            managedObject.count_ed_izm  = units
-            managedObject.prev_value    = 123.53
-            managedObject.value         = (attributeDict["Value"]! as NSString).floatValue
-            managedObject.diff          = 6757.43
-            if attributeDict["IsSended"] == "1"{
-                managedObject.sended    = true
-            }else{
-                managedObject.sended    = false
-            }
-            
-            CoreDataManager.instance.saveContext()
-        }
-        #else
-        // ПОКАЗАНИЯ ПРИБОРОВ
-        if (elementName == "Period") {
-            self.currYear = attributeDict["Year"]!
-            self.currMonth = attributeDict["NumMonth"]!
-        } else if (elementName == "MeterValue") {
-            print(attributeDict)
-            
-            // Запишем показание прибора
-            let managedObject = Counters()
-            managedObject.id            = 1
-            managedObject.uniq_num      = attributeDict["MeterUniqueNum"]!
-            managedObject.owner         = attributeDict["FactoryNumber"]!
-            managedObject.num_month     = self.currMonth
-            managedObject.unit_name     = attributeDict["Units"]
-            managedObject.year          = self.currYear
-            managedObject.ident         = attributeDict["Ident"]
-            managedObject.count_name    = attributeDict["Name"]
-            managedObject.count_ed_izm  = attributeDict["Units"]
-            managedObject.prev_value    = (attributeDict["PreviousValue"]! as NSString).floatValue
-            managedObject.value         = (attributeDict["Value"]! as NSString).floatValue
-            managedObject.diff          = (attributeDict["Difference"]! as NSString).floatValue
-            if attributeDict["IsSended"] == "1"{
-                managedObject.sended    = true
-            }else{
-                managedObject.sended    = false
-            }
-            
-            CoreDataManager.instance.saveContext()
-        }
-        #endif
+        
+        
+        
         
         // Заявки с комментариями (xml)
         var id_app: String = ""
@@ -376,7 +392,7 @@ class DB: NSObject, XMLParserDelegate {
                                                         var bill_total    = ""
                                                         var bill_ident    = ""
                                                         var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                        print(json)
+//                                                        print(json)
                                                         
                                                         // Общие итоговые значения
                                                         var obj_start: Double = 0
@@ -435,6 +451,8 @@ class DB: NSObject, XMLParserDelegate {
                                                                             if obj.key == "ServiceTypeId" {
                                                                                 if ((obj.value as? NSNull) == nil) {
                                                                                     bill_id = Int(truncating: obj.value as! NSNumber)
+                                                                                }else{
+                                                                                    bill_id = 0
                                                                                 }
                                                                             }
                                                                             if obj.key == "Service" {
@@ -494,6 +512,7 @@ class DB: NSObject, XMLParserDelegate {
     }
     
     func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String, ident: String) {
+//        print(id, usluga, num_month, year, start, plus, minus, end, ident)
         let managedObject = Saldo()
         managedObject.id               = id
         managedObject.usluga           = usluga

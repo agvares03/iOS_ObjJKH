@@ -102,7 +102,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         back.tintColor = myColors.indicatorColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         sendButton.backgroundColor = myColors.indicatorColor.uiColor()
-        
+        headerView.backgroundColor = myColors.indicatorColor.uiColor()
         DB().del_db(table_name: "Counters")
         // Получим данные в базу данных
         if ls == "Все"{
