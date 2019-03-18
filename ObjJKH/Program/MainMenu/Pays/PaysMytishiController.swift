@@ -118,8 +118,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         self.payedM()
                     })
                     actionCard.setValue(cardImage, forKey: "image")
-                    let appleImage = UIImage(named: "apple")
-                    let actionApple = UIAlertAction(title: "Оплата ApplePay", style: .default, handler: { (_) in
+                    let appleImage = UIImage(named: "applePayIcon")
+                    let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
                         self.payType = 1
                         self.payedM()
                     })
@@ -149,8 +149,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.payedM()
             })
             actionCard.setValue(cardImage, forKey: "image")
-            let appleImage = UIImage(named: "apple")
-            let actionApple = UIAlertAction(title: "Оплата ApplePay", style: .default, handler: { (_) in
+            let appleImage = UIImage(named: "applePayIcon")
+            let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
                 self.payType = 1
                 self.payedM()
             })
@@ -251,7 +251,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             defaults.synchronize()
             print(receiptData)
             if payType == 1{
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: nil, shippingEditableFields: PKAddressField(), recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                let address = PKContact()
+                address.emailAddress = defaults.object(forKey: "mail")! as? String
+                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
                     
                 }, cancelled:  {
                     
@@ -281,7 +284,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             defaults.synchronize()
             print(receiptData)
             if payType == 1{
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: nil, shippingEditableFields: PKAddressField(), recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
+                let address = PKContact()
+                address.emailAddress = defaults.object(forKey: "mail")! as? String
+                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
                     
                 }, cancelled:  {
                     
