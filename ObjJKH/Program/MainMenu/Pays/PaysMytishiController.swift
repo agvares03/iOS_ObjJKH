@@ -37,7 +37,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var btnPay: UIButton!
     @IBOutlet weak var historyPay: UIButton!
-    @IBOutlet weak var mobilePay: UIButton!
     @IBOutlet weak var sendView: UIView!
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
@@ -317,7 +316,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set("", forKey: "payIdent")
-        currPoint = 475
+        currPoint = 502
         let defaults     = UserDefaults.standard
         // Логин и пароль
         login = defaults.string(forKey: "login")
@@ -381,7 +380,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         historyPay.backgroundColor = myColors.btnColor.uiColor()
-        mobilePay.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         viewTop.constant = self.getPoint()
