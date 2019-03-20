@@ -59,20 +59,6 @@ class DB: NSObject, XMLParserDelegate {
         del_db(table_name: "Counters")
         // Получим данные в базу данных
         parse_Countrers(login: login, pass: pass)
-        
-        // ВЕДОМОСТЬ
-        // Удалим данные из базы данных
-        del_db(table_name: "Saldo")
-        // Получим данные в базу данных
-        parse_OSV(login: login, pass: pass)
-        
-        // ЗАЯВКИ С КОММЕНТАРИЯМИ
-        del_db(table_name: "Applications")
-        del_db(table_name: "Comments")
-        del_db(table_name: "Fotos")
-        let isCons = UserDefaults.standard.string(forKey: "isCons")
-        parse_Apps(login: login, pass: pass, isCons: isCons!)
-        
     }
     
     // Удалить комментарии по заявке
@@ -162,7 +148,12 @@ class DB: NSObject, XMLParserDelegate {
         } else {
             print("parse failure!")
         }
-        
+        // ЗАЯВКИ С КОММЕНТАРИЯМИ
+        del_db(table_name: "Applications")
+        del_db(table_name: "Comments")
+        del_db(table_name: "Fotos")
+        let isCons = UserDefaults.standard.string(forKey: "isCons")
+        parse_Apps(login: login, pass: pass, isCons: isCons!)
         // сохраним последние значения Месяц-Год в глобальных переменных
         save_month_year(month: self.currMonth, year: self.currYear)
         
@@ -500,7 +491,7 @@ class DB: NSObject, XMLParserDelegate {
                                                     } catch {
                                                         print(error)
                                                     }
-                                                    
+                                                    UserDefaults.standard.set(true, forKey: "successParse")
                                                     let defaults = UserDefaults.standard
                                                     defaults.setValue(String(i_month), forKey: "month_osv")
                                                     defaults.setValue(String(i_year), forKey: "year_osv")
@@ -510,9 +501,10 @@ class DB: NSObject, XMLParserDelegate {
                                                 
         })
         task.resume()
+        
     }
     
-    func add_data_saldo(id: Int64, usluga: String, num_month: String, year: String, start: String, plus: String, minus: String, end: String, ident: String) {
+    func add_data_saldo(id: Int64, usluga: String?, num_month: String?, year: String?, start: String?, plus: String?, minus: String?, end: String?, ident: String?) {
 //        print(id, usluga, num_month, year, start, plus, minus, end, ident)
         let managedObject = Saldo()
         managedObject.id               = id
@@ -555,7 +547,11 @@ class DB: NSObject, XMLParserDelegate {
         } else {
             print("parse failure!")
         }
-        
+        // ВЕДОМОСТЬ
+        // Удалим данные из базы данных
+        del_db(table_name: "Saldo")
+        // Получим данные в базу данных
+        parse_OSV(login: login, pass: pass)
         //        }
     }
     
@@ -576,7 +572,6 @@ class DB: NSObject, XMLParserDelegate {
         managedObject.is_read         = is_read
         managedObject.is_answered     = is_answered
         managedObject.type_app        = type_app
-        
         CoreDataManager.instance.saveContext()
     }
     
