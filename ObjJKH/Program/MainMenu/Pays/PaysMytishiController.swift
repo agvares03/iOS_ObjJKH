@@ -110,54 +110,54 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
                     UserDefaults.standard.set(str, forKey: "mail")
 //                    self.payedM()
-                    let alert = UIAlertController(title: nil, message: "Выберите способ оплаты", preferredStyle: .actionSheet)
-                    let cardImage = UIImage(named: "cardIcon")
-                    let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
+//                    let alert = UIAlertController(title: nil, message: "Выберите способ оплаты", preferredStyle: .actionSheet)
+//                    let cardImage = UIImage(named: "cardIcon")
+//                    let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
                         self.payType = 0
                         self.payedM()
-                    })
-                    actionCard.setValue(cardImage, forKey: "image")
-                    let appleImage = UIImage(named: "applePayIcon")
-                    let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
-                        self.payType = 1
-                        self.payedM()
-                    })
-                    actionApple.setValue(appleImage, forKey: "image")
-                    alert.addAction(actionCard)
-                    alert.addAction(actionApple)
-                    alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
-                    self.present(alert, animated: true, completion: nil)
-                }else{
-                    textField.text = ""
-                    textField.placeholder = "e-mail..."
-                    let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                    return
+//                    })
+//                    actionCard.setValue(cardImage, forKey: "image")
+//                    let appleImage = UIImage(named: "applePayIcon")
+//                    let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
+//                        self.payType = 1
+//                        self.payedM()
+//                    })
+//                    actionApple.setValue(appleImage, forKey: "image")
+//                    alert.addAction(actionCard)
+//                    alert.addAction(actionApple)
+//                    alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
+//                    self.present(alert, animated: true, completion: nil)
+//                }else{
+//                    textField.text = ""
+//                    textField.placeholder = "e-mail..."
+//                    let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
+//                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                    alert.addAction(cancelAction)
+//                    self.present(alert, animated: true, completion: nil)
+//                    return
                 }
             }
-            
+//
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-        }else{
-            let alert = UIAlertController(title: nil, message: "Выберите привязанный лицевой счет", preferredStyle: .actionSheet)
-            let cardImage = UIImage(named: "cardIcon")
-            let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
+        } else {
+//            let alert = UIAlertController(title: nil, message: "Выберите привязанный лицевой счет", preferredStyle: .actionSheet)
+//            let cardImage = UIImage(named: "cardIcon")
+//            let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
                 self.payType = 0
                 self.payedM()
-            })
-            actionCard.setValue(cardImage, forKey: "image")
-            let appleImage = UIImage(named: "applePayIcon")
-            let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
-                self.payType = 1
-                self.payedM()
-            })
-            actionApple.setValue(appleImage, forKey: "image")
-            alert.addAction(actionCard)
-            alert.addAction(actionApple)
-            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
-            present(alert, animated: true, completion: nil)
+//            })
+//            actionCard.setValue(cardImage, forKey: "image")
+//            let appleImage = UIImage(named: "applePayIcon")
+//            let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
+//                self.payType = 1
+//                self.payedM()
+//            })
+//            actionApple.setValue(appleImage, forKey: "image")
+//            alert.addAction(actionCard)
+//            alert.addAction(actionApple)
+//            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
+//            present(alert, animated: true, completion: nil)
         }
     }
     var payType = 0
