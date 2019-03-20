@@ -56,9 +56,9 @@ class DB: NSObject, XMLParserDelegate {
         
         // ПОКАЗАНИЯ СЧЕТЧИКОВ
         // Удалим данные из базы данных
-//        del_db(table_name: "Counters")
+        del_db(table_name: "Counters")
         // Получим данные в базу данных
-//        parse_Countrers(login: login, pass: pass)
+        parse_Countrers(login: login, pass: pass)
         
         // ВЕДОМОСТЬ
         // Удалим данные из базы данных

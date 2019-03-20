@@ -69,8 +69,10 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
         } else if (responseString == "2") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка", message: "Некорректные данные", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                let alert = UIAlertController(title: "Ошибка", message: "Аккаунт не обнаружен, пройдите процедуру регистрации", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "reg", sender: self)
+                }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })

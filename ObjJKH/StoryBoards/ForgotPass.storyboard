@@ -120,6 +120,7 @@
                         <outlet property="person" destination="hMx-sF-Aqh" id="qfq-fx-ahK"/>
                         <outlet property="separator1" destination="W45-ou-0YC" id="JmQ-ae-hmI"/>
                         <segue destination="3Tg-bO-kwW" kind="show" identifier="support" id="soM-uI-hSj"/>
+                        <segue destination="l0C-bd-037" kind="show" identifier="reg" id="IY1-h9-lqC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJK-Kb-Yba" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -133,6 +134,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXh-eL-Nj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="933" y="28"/>
+        </scene>
+        <!--Registration-->
+        <scene sceneID="PL8-et-vHS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Registration" id="l0C-bd-037" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Sm-YM-OF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817" y="170"/>
         </scene>
     </scenes>
     <resources>
