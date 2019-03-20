@@ -241,7 +241,7 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.count_name    = name
                 managedObject.count_ed_izm  = units
                 managedObject.prev_value    = 123.53
-                managedObject.value         = (attributeDict["Value"]! as NSString).floatValue
+                managedObject.value         = (attributeDict["Value"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
                 managedObject.diff          = 6757.43
                 if attributeDict["IsSended"] == "1"{
                     managedObject.sended    = true

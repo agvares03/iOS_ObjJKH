@@ -37,7 +37,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     @IBAction func sendAction(_ sender: UIButton){
         if isEditable(){
             let alert = UIAlertController(title: uniq_name + "(" + owner + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
-            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .numberPad })
+            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
             let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
@@ -332,7 +332,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             managedObject.count_name    = name
             managedObject.count_ed_izm  = units
             managedObject.prev_value    = 123.53
-            managedObject.value         = (attributeDict["Value"]! as NSString).floatValue
+            managedObject.value         = (attributeDict["Value"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
             managedObject.diff          = 6757.43
             if attributeDict["IsSended"] == "1"{
                 managedObject.sended    = true
