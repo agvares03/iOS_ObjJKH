@@ -390,7 +390,7 @@ class FirstController: UIViewController {
                     self.StopIndicator()
                 }
                 if (self.isCons == "0") {
-                    //                        self.performSegue(withIdentifier: "NewMainMenu", sender: self)
+                    //self.performSegue(withIdentifier: "NewMainMenu", sender: self)
                     self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)
