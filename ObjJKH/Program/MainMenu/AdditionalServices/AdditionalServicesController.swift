@@ -270,6 +270,7 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
 class ServiceTableCell: UITableViewCell {
     
     // MARK: Outlets
+    @IBOutlet weak var urlHeight: NSLayoutConstraint!
     @IBOutlet weak var phoneHeight: NSLayoutConstraint!
     @IBOutlet weak var imgWidth: NSLayoutConstraint!
     @IBOutlet weak var name: UILabel!
@@ -300,14 +301,21 @@ class ServiceTableCell: UITableViewCell {
         name.text = item.name
         substring.text = item.description
         var str:String = item.address!
-        if !str.contains("http"){
-            str = "http://" + str
+        if str == ""{
+            urlBtn.isHidden = true
+            urlHeight.constant = 0
+        }else{
+            if !str.contains("http"){
+                str = "http://" + str
+            }
+            urlBtn.setTitle(str, for: .normal)
         }
         if item.phone == ""{
+            phoneBtn.isHidden = true
             phoneHeight.constant = 0
-        }
-        phoneBtn.setTitle(item.phone, for: .normal)
-        urlBtn.setTitle(str, for: .normal)
+        }else{
+            phoneBtn.setTitle(item.phone, for: .normal)
+        }        
         imgService.image = UIImage(data: data!)
         if imgService.image == nil{
             imgWidth.constant = 0

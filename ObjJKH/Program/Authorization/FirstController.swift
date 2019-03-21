@@ -158,7 +158,7 @@ class FirstController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -369,32 +369,49 @@ class FirstController: UIViewController {
                 let db = DB()
                 db.getDataByEnter(login: self.edLogin.text!, pass: self.edPass.text!)
                 self.getTypesApps()
-                if !UserDefaults.standard.bool(forKey: "error"){
-                    UserDefaults.standard.set("", forKey: "errorStringSupport")
-                    UserDefaults.standard.synchronize()
-                    if (answer[5] == "0") {
-//                        self.performSegue(withIdentifier: "NewMainMenu", sender: self)
-                        self.performSegue(withIdentifier: "MainMenu", sender: self)
-                    } else {
-                        self.performSegue(withIdentifier: "MainMenuCons", sender: self)
-                    }
-                }else{
-                    UserDefaults.standard.set("Ошибка сохранения данных", forKey: "errorStringSupport")
-                    UserDefaults.standard.synchronize()
-                    let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + "Ошибка сохранения данных" + ">", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-                    let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                        self.performSegue(withIdentifier: "support", sender: self)
-                    }
-                    alert.addAction(cancelAction)
-                    alert.addAction(supportAction)
-                    self.present(alert, animated: true, completion: nil)
-                }
-                
-                
-                self.StopIndicator()
+                self.isCons = answer[5]
             })
         }
+    }
+    var isCons = ""
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if UserDefaults.standard.bool(forKey: "successParse"){
+            self.startApp()
+        }
+    }
+    
+    func startApp(){
+        DispatchQueue.main.sync {
+            if !UserDefaults.standard.bool(forKey: "error"){
+                UserDefaults.standard.set("", forKey: "errorStringSupport")
+                UserDefaults.standard.set(false, forKey: "successParse")
+                UserDefaults.standard.synchronize()
+                DispatchQueue.main.async {
+                    self.StopIndicator()
+                }
+                if (self.isCons == "0") {
+                    //                        self.performSegue(withIdentifier: "NewMainMenu", sender: self)
+                    self.performSegue(withIdentifier: "MainMenu", sender: self)
+                } else {
+                    self.performSegue(withIdentifier: "MainMenuCons", sender: self)
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.StopIndicator()
+                }
+                UserDefaults.standard.set("Ошибка сохранения данных", forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + "Ошибка сохранения данных" + ">", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
+                alert.addAction(cancelAction)
+                alert.addAction(supportAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    
     }
     
     // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
