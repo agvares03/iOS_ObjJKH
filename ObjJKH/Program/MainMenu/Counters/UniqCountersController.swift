@@ -29,6 +29,8 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     @IBOutlet weak var lsLbl: UILabel!
     @IBOutlet weak var uniqName: UILabel!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var nonCounter: UILabel!
+    @IBOutlet weak var nonCounterHeight: NSLayoutConstraint!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
@@ -159,6 +161,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         dateOneArr.removeAll()
         dateTwoArr.removeAll()
         dateThreeArr.removeAll()
+        sendError.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.iterYear))
         do {
@@ -175,6 +178,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                             dateOneArr.append(object.value(forKey: "num_month") as! String)
                             unitArr.append(object.value(forKey: "unit_name") as! String)
                             sendedArr.append(object.value(forKey: "sended") as! Bool)
+                            sendError.append(object.value(forKey: "sendError") as! Bool)
                         }
                     }
                 }else{
@@ -186,6 +190,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                         dateOneArr.append(object.value(forKey: "num_month") as! String)
                         unitArr.append(object.value(forKey: "unit_name") as! String)
                         sendedArr.append(object.value(forKey: "sended") as! Bool)
+                        sendError.append(object.value(forKey: "sendError") as! Bool)
                     }
                 }
                 
@@ -225,12 +230,31 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     //    }
     
     var sendedArr:[Bool] = []
+    var sendError:[Bool] = []
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "uniqCounterCell") as! UniqCounterCell
         var send = false
         cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
         cell.teckLbl.text     = dateOneArr[indexPath.row]
         send = sendedArr[indexPath.row]
+        if sendError[0]{
+            nonCounter.isHidden = false
+            cell.nonCounter.isHidden = false
+            nonCounterHeight.constant = 16
+            cell.nonCounter.setImageColor(color: .red)
+            sendButton.setTitle("Передать ещё раз", for: .normal)
+        }else if !sendError[0]{
+            nonCounter.isHidden = true
+            cell.nonCounter.isHidden = true
+            nonCounterHeight.constant = 0
+            sendButton.setTitle("Передать показания", for: .normal)
+        }
+        if sendError[indexPath.row]{
+            cell.nonCounter.isHidden = false
+            cell.nonCounter.setImageColor(color: .red)
+        }else if !sendError[indexPath.row]{
+            cell.nonCounter.isHidden = true
+        }
         //        if self.nextMonthLabel.isHidden == true{
         //            cell.sendCounter.isHidden = false
         //        }else{
@@ -338,6 +362,11 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                 managedObject.sended    = true
             }else{
                 managedObject.sended    = false
+            }
+            if attributeDict["SendError"] == "1"{
+                managedObject.sendError = true
+            }else{
+                managedObject.sendError = false
             }
             
             CoreDataManager.instance.saveContext()
@@ -458,6 +487,7 @@ class UniqCounterCell: UITableViewCell {
     
     @IBOutlet weak var teck: UILabel!
     @IBOutlet weak var teckLbl: UILabel!
+    @IBOutlet weak var nonCounter: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
