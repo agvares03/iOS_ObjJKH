@@ -228,7 +228,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             Data["name"] = DataStr
             print(Data)
             let defaults = UserDefaults.standard
-            self.k = 0
+            self.onePay = 0
+            self.oneCheck = 0
             #if isKlimovsk12
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
@@ -865,18 +866,20 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    var k = 0
+    var onePay = 0
+    var oneCheck = 0
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if UserDefaults.standard.bool(forKey: "PaymentSucces") && k == 0{
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
+            oneCheck = 1
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             } else {
                 // Fallback on earlier versions
             }
         }
-        if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && k == 0{
-            k = 1
+        if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && onePay == 0{
+            onePay = 1
             addMobilePay()
         }
     }
@@ -889,7 +892,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         var status = ""
         if UserDefaults.standard.string(forKey: "PaysError") == ""{
-            status = "Обработан"
+            status = "Оплачен"
         }else{
             status = UserDefaults.standard.string(forKey: "PaysError")!
         }

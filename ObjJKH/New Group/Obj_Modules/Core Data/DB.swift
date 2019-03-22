@@ -239,6 +239,11 @@ class DB: NSObject, XMLParserDelegate {
                 }else{
                     managedObject.sended    = false
                 }
+                if attributeDict["SendError"] == "1"{
+                    managedObject.sendError = true
+                }else{
+                    managedObject.sendError = false
+                }
                 
                 CoreDataManager.instance.saveContext()
             }

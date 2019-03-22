@@ -37,6 +37,7 @@
         <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prev_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sended" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sendError" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="uniq_num" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unit_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -69,7 +70,7 @@
     <elements>
         <element name="Applications" positionX="333" positionY="81" width="128" height="270"/>
         <element name="Comments" positionX="324" positionY="54" width="128" height="165"/>
-        <element name="Counters" positionX="394" positionY="-18" width="128" height="240"/>
+        <element name="Counters" positionX="394" positionY="-18" width="128" height="255"/>
         <element name="Fotos" positionX="342" positionY="144" width="128" height="135"/>
         <element name="Saldo" positionX="250" positionY="-18" width="128" height="180"/>
         <element name="Settings" positionX="324" positionY="135" width="128" height="90"/>

@@ -228,10 +228,13 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var teckArr     :[Float] = []
     var diffArr     :[Float] = []
     var unitArr     :[String] = []
-    var dateOneArr     :[String] = []
-    var dateTwoArr     :[String] = []
-    var dateThreeArr   :[String] = []
+    var dateOneArr  :[String] = []
+    var dateTwoArr  :[String] = []
+    var dateThreeArr:[String] = []
     var ownerArr    :[String] = []
+    var errorOneArr:[Bool] = []
+    var errorTwoArr:[Bool] = []
+    var errorThreeArr:[Bool] = []
     
     func getData(ident: String){
         identArr.removeAll()
@@ -246,6 +249,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         dateTwoArr.removeAll()
         dateThreeArr.removeAll()
         ownerArr.removeAll()
+        errorOneArr.removeAll()
+        errorTwoArr.removeAll()
+        errorThreeArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.iterYear))
         do {
@@ -257,6 +263,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             var valueTwo:Float = 0.00
             var dateThree = ""
             var valueThree:Float = 0.00
+            var sendOne = false
+            var sendTwo = false
+            var sendThree = false
             var count_name = ""
             var owner = ""
             var unit_name = ""
@@ -277,6 +286,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
                             sended = (object.value(forKey: "sended") as! Bool)
+                            sendOne = (object.value(forKey: "sendError") as! Bool)
                             i = 1
                         }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateTwo = (object.value(forKey: "num_month") as! String)
@@ -287,10 +297,12 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
                             sended = (object.value(forKey: "sended") as! Bool)
+                            sendTwo = (object.value(forKey: "sendError") as! Bool)
                             i = 2
                         }else if i == 2 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateThree = (object.value(forKey: "num_month") as! String)
                             valueThree = (object.value(forKey: "value") as! Float)
+                            sendThree = (object.value(forKey: "sendError") as! Bool)
                             identArr.append(object.value(forKey: "ident") as! String)
                             nameArr.append(object.value(forKey: "count_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
@@ -303,6 +315,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             dateThreeArr.append(dateThree)
                             unitArr.append(object.value(forKey: "unit_name") as! String)
                             sendedArr.append(object.value(forKey: "sended") as! Bool)
+                            errorOneArr.append(sendOne)
+                            errorTwoArr.append(sendTwo)
+                            errorThreeArr.append(sendThree)
                             uniq_num = ""
                             dateOne = ""
                             valueOne = 0.00
@@ -314,6 +329,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             owner = ""
                             unit_name = ""
                             sended = true
+                            sendOne = false
+                            sendTwo = false
+                            sendThree = false
                             identk = ""
                             i = 0
                         }else if uniq_num != (object.value(forKey: "uniq_num") as! String){
@@ -330,6 +348,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             dateThreeArr.append(dateThree)
                             unitArr.append(unit_name)
                             sendedArr.append(sended)
+                            errorOneArr.append(sendOne)
+                            errorTwoArr.append(sendTwo)
+                            errorThreeArr.append(sendThree)
                             
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
@@ -340,11 +361,14 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
                             sended = (object.value(forKey: "sended") as! Bool)
+                            sendOne = (object.value(forKey: "sendError") as! Bool)
                             
                             dateTwo = ""
                             valueTwo = 0.00
+                            sendTwo = false
                             dateThree = ""
                             valueThree = 0.00
+                            sendThree = false
                         }
                     }
                 }else{
@@ -358,6 +382,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
                         sended = (object.value(forKey: "sended") as! Bool)
+                        sendOne = (object.value(forKey: "sendError") as! Bool)
                         i = 1
                     }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                         dateTwo = (object.value(forKey: "num_month") as! String)
@@ -368,10 +393,12 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
                         sended = (object.value(forKey: "sended") as! Bool)
+                        sendTwo = (object.value(forKey: "sendError") as! Bool)
                         i = 2
                     }else if i == 2 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                         dateThree = (object.value(forKey: "num_month") as! String)
                         valueThree = (object.value(forKey: "value") as! Float)
+                        sendThree = (object.value(forKey: "sendError") as! Bool)
                         identArr.append(object.value(forKey: "ident") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
@@ -384,6 +411,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         dateThreeArr.append(dateThree)
                         unitArr.append(object.value(forKey: "unit_name") as! String)
                         sendedArr.append(object.value(forKey: "sended") as! Bool)
+                        errorOneArr.append(sendOne)
+                        errorTwoArr.append(sendTwo)
+                        errorThreeArr.append(sendThree)
                         uniq_num = ""
                         dateOne = ""
                         valueOne = 0.00
@@ -396,6 +426,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         unit_name = ""
                         sended = true
                         identk = ""
+                        sendOne = false
+                        sendThree = false
+                        sendTwo = false
                         i = 0
                     }else if uniq_num != (object.value(forKey: "uniq_num") as! String){
                         i = 1
@@ -411,6 +444,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         dateThreeArr.append(dateThree)
                         unitArr.append(unit_name)
                         sendedArr.append(sended)
+                        errorOneArr.append(sendOne)
+                        errorTwoArr.append(sendTwo)
+                        errorThreeArr.append(sendThree)
                         
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
@@ -421,11 +457,14 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
                         sended = (object.value(forKey: "sended") as! Bool)
+                        sendOne = (object.value(forKey: "sendError") as! Bool)
                         
                         dateTwo = ""
                         valueTwo = 0.00
                         dateThree = ""
                         valueThree = 0.00
+                        sendTwo = false
+                        sendThree = false
                     }
                 }
                 
@@ -443,6 +482,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                 dateThreeArr.append(dateThree)
                 unitArr.append(unit_name)
                 sendedArr.append(sended)
+                errorOneArr.append(sendOne)
+                errorTwoArr.append(sendTwo)
+                errorThreeArr.append(sendThree)
             }
             DispatchQueue.main.async(execute: {
                 self.updateTable()
@@ -549,6 +591,30 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         }else{
             cell.lblHeight3.constant = 16
             cell.lblHeight6.constant = 16
+        }
+        if errorOneArr[indexPath.row]{
+            cell.nonCounterOne.isHidden = false
+            cell.nonCounter.isHidden = false
+            cell.nonCounterHeight.constant = 16
+            cell.nonCounterOne.setImageColor(color: .red)
+            cell.sendButton.setTitle("Передать ещё раз", for: .normal)
+        }else{
+            cell.nonCounterOne.isHidden = true
+            cell.nonCounter.isHidden = true
+            cell.nonCounterHeight.constant = 0
+            cell.sendButton.setTitle("Передать показания", for: .normal)
+        }
+        if errorTwoArr[indexPath.row]{
+            cell.nonCounterTwo.isHidden = false
+            cell.nonCounterTwo.setImageColor(color: .red)
+        }else{
+            cell.nonCounterTwo.isHidden = true
+        }
+        if errorThreeArr[indexPath.row]{
+            cell.nonCounterThree.isHidden = false
+            cell.nonCounterThree.setImageColor(color: .red)
+        }else{
+            cell.nonCounterThree.isHidden = true
         }
 //        if isEditable(){
             cell.sendButton.isEnabled = true
@@ -812,6 +878,11 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             }else{
                 managedObject.sended    = false
             }
+            if attributeDict["SendError"] == "1"{
+                managedObject.sendError = true
+            }else{
+                managedObject.sendError = false
+            }
 //            print(managedObject.uniq_num!, managedObject.owner!, managedObject.num_month!, managedObject.unit_name!, managedObject.year!, managedObject.ident!, managedObject.count_name!, managedObject.count_ed_izm!, managedObject.prev_value, managedObject.value, managedObject.diff)
             CoreDataManager.instance.saveContext()
         }
@@ -852,7 +923,12 @@ class MupCounterCell: UITableViewCell {
     @IBOutlet weak var nonCounter: UILabel!
     @IBOutlet weak var sendCounter: UILabel!
     
-    @IBOutlet weak var lblHeight1: NSLayoutConstraint!
+    @IBOutlet weak var nonCounterOne: UIImageView!
+    @IBOutlet weak var nonCounterTwo: UIImageView!
+    @IBOutlet weak var nonCounterThree: UIImageView!
+    
+    
+    @IBOutlet weak var nonCounterHeight: NSLayoutConstraint!
     @IBOutlet weak var lblHeight2: NSLayoutConstraint!
     @IBOutlet weak var lblHeight3: NSLayoutConstraint!
     @IBOutlet weak var lblHeight4: NSLayoutConstraint!

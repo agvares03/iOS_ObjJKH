@@ -324,8 +324,11 @@ class HistoryPayCell: UITableViewCell {
                 let sum: Double = Double(item.sum)!
                 self.summ.text = String(format:"%.2f", sum)
             }
-            self.period.text = item.period
-            if item.period != "Обработан"{
+            if item.period == "Обработан"{
+                self.period.text = "Оплачен"
+            }else if item.period == "Оплачен"{
+                self.period.text = item.period
+            }else if item.period != "Обработан" || item.period != "Оплачен"{
                 self.period.text = "Не обработан"
             }
             self.period.textAlignment = .center
