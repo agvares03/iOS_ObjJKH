@@ -662,8 +662,8 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        ls_Button.setTitle("Все", for: UIControlState.normal)
-        choiceIdent = "Все"
+//        ls_Button.setTitle("Все", for: UIControlState.normal)
+//        choiceIdent = "Все"
         DB().del_db(table_name: "Counters")
         parse_Countrers(login: edLogin, pass: edPass)
     }
@@ -682,7 +682,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         metrID = self.numberArr[i]
                     }
                 }
-                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!)!)
+                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!.replacingOccurrences(of: ",", with: "."))!)
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)

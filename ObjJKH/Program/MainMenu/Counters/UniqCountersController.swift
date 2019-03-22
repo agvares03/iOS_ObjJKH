@@ -107,11 +107,11 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         headerView.backgroundColor = myColors.indicatorColor.uiColor()
         DB().del_db(table_name: "Counters")
         // Получим данные в базу данных
-        if ls == "Все"{
+//        if ls == "Все"{
             parse_Countrers(login: login, pass: pass)
-        }else{
-            parse_Countrers(login: ls, pass: pass)
-        }
+//        }else{
+//            parse_Countrers(login: ls, pass: pass)
+//        }
 //        if !isEditable(){
 //            sendButton.isEnabled = false
 //            sendButton.backgroundColor = sendButton.backgroundColor?.withAlphaComponent(0.5)
@@ -384,7 +384,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                 + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&val=" + count.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                + "&val=" + count.replacingOccurrences(of: ",", with: ".").addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
