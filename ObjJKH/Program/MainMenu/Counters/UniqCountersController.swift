@@ -43,7 +43,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!)!)
+                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
@@ -384,7 +384,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                 + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&val=" + count.replacingOccurrences(of: ",", with: ".").addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                + "&val=" + count.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)

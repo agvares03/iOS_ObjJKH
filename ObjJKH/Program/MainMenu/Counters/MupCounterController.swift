@@ -682,7 +682,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         metrID = self.numberArr[i]
                     }
                 }
-                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!.replacingOccurrences(of: ",", with: "."))!)
+                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
