@@ -43,7 +43,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!)!)
+                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
@@ -107,11 +107,11 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         headerView.backgroundColor = myColors.indicatorColor.uiColor()
         DB().del_db(table_name: "Counters")
         // Получим данные в базу данных
-        if ls == "Все"{
+//        if ls == "Все"{
             parse_Countrers(login: login, pass: pass)
-        }else{
-            parse_Countrers(login: ls, pass: pass)
-        }
+//        }else{
+//            parse_Countrers(login: ls, pass: pass)
+//        }
 //        if !isEditable(){
 //            sendButton.isEnabled = false
 //            sendButton.backgroundColor = sendButton.backgroundColor?.withAlphaComponent(0.5)

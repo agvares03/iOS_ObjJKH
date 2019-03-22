@@ -212,7 +212,8 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
                                                 data, response, error in
 //                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
 //                                                print("responseString = \(responseString)")
-                                                
+                                                var idPay = ""
+                                                var idSum = ""
                                                 if error != nil {
                                                     return
                                                 } else {
@@ -261,7 +262,18 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
                                                                     DispatchQueue.main.async{
                                                                         width = self.view.frame.size.width
                                                                     }
-                                                                    self.values.append(HistoryPayCellData(date: bill_date, id: bill_id, ident: bill_ident, period: bill_status, sum: bill_sum, width: width, payType: 1))
+                                                                    if bill_idPay != idPay{
+                                                                        self.values.append(HistoryPayCellData(date: bill_date, id: bill_id, ident: bill_ident, period: bill_status, sum: bill_sum, width: width, payType: 1))
+                                                                        idPay = bill_idPay
+                                                                        idSum = bill_sum
+                                                                    }else{
+                                                                        if bill_sum < idSum{
+                                                                            self.values.removeLast()
+                                                                            self.values.append(HistoryPayCellData(date: bill_date, id: bill_id, ident: bill_ident, period: bill_status, sum: bill_sum, width: width, payType: 1))
+                                                                            idPay = bill_id
+                                                                            idSum = bill_sum
+                                                                        }
+                                                                    }
                                                                 }
                                                             }
                                                             
