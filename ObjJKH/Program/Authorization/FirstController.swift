@@ -381,14 +381,14 @@ class FirstController: UIViewController {
     }
     
     func startApp(){
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
             if !UserDefaults.standard.bool(forKey: "error"){
                 UserDefaults.standard.set("", forKey: "errorStringSupport")
                 UserDefaults.standard.set(false, forKey: "successParse")
                 UserDefaults.standard.synchronize()
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.StopIndicator()
-                }
+//                }
                 if (self.isCons == "0") {
                     //self.performSegue(withIdentifier: "NewMainMenu", sender: self)
                     self.performSegue(withIdentifier: "MainMenu", sender: self)
@@ -396,9 +396,9 @@ class FirstController: UIViewController {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)
                 }
             }else{
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.StopIndicator()
-                }
+//                }
                 UserDefaults.standard.set("Ошибка сохранения данных", forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
                 let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + "Ошибка сохранения данных" + ">", preferredStyle: .alert)

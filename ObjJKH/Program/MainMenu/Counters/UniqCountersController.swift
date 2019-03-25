@@ -265,19 +265,6 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-        selectedUniq = numberArr[indexPath.row]
-        self.performSegue(withIdentifier: "uniqCounters", sender: self)
-    }
-    var selectedUniq = ""
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "uniqCounters" {
-            let payController             = segue.destination as! UniqCountersController
-            payController.uniq_num = selectedUniq
-        }
-    }
-    
     func updateTable() {
         StopIndicator()
         tableCounters.reloadData()
