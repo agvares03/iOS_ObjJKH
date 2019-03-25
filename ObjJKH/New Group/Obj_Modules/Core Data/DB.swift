@@ -148,6 +148,7 @@ class DB: NSObject, XMLParserDelegate {
         } else {
             print("parse failure!")
         }
+        save_month_year(month: self.currMonth, year: self.currYear)
         // ЗАЯВКИ С КОММЕНТАРИЯМИ
         del_db(table_name: "Applications")
         del_db(table_name: "Comments")
@@ -155,8 +156,6 @@ class DB: NSObject, XMLParserDelegate {
         let isCons = UserDefaults.standard.string(forKey: "isCons")
         parse_Apps(login: login, pass: pass, isCons: isCons!)
         // сохраним последние значения Месяц-Год в глобальных переменных
-        save_month_year(month: self.currMonth, year: self.currYear)
-        
     }
     
     // СОХРАНЕНИЕ ЗНАЧЕНИЙ ДЛЯ ПЕРЕДАЧИ В КОНТРОЛЛЕРЫ

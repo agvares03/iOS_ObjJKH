@@ -106,11 +106,26 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         let defaults     = UserDefaults.standard
         edLogin          = defaults.string(forKey: "login")!
         edPass           = defaults.string(forKey: "pass")!
-        currYear         = defaults.string(forKey: "year")!
-        currMonth        = defaults.string(forKey: "month")!
-        date1            = defaults.string(forKey: "date1")!
-        date2            = defaults.string(forKey: "date2")!
-        can_edit         = defaults.string(forKey: "can_count")!
+        if defaults.object(forKey: "year") != nil && defaults.object(forKey: "month") != nil{
+            currYear         = defaults.string(forKey: "year")!
+            currMonth        = defaults.string(forKey: "month")!
+        }else{
+            let date = NSDate()
+            let calendar = NSCalendar.current
+            let resultDate = calendar.component(.year, from: date as Date)
+            let resultMonth = calendar.component(.month, from: date as Date)
+            defaults.setValue(resultMonth, forKey: "month")
+            defaults.setValue(resultDate, forKey: "year")
+            currYear = String(resultDate)
+            currMonth = String(resultMonth)
+        }
+        if defaults.object(forKey: "date1") != nil && defaults.object(forKey: "date2") != nil{
+            date1            = defaults.string(forKey: "date1")!
+            date2            = defaults.string(forKey: "date2")!
+        }
+        if defaults.object(forKey: "can_count") != nil{
+            can_edit         = defaults.string(forKey: "can_count")!
+        }
         
         iterMonth = currMonth
         iterYear = currYear
@@ -216,6 +231,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         if success {
             print("parse success!")
         } else {
+            self.StopIndicator()
             print("parse failure!")
         }
         
