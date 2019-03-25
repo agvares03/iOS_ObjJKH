@@ -22,6 +22,7 @@ class nonPassController: UIViewController {
     @IBOutlet weak var topView: NSLayoutConstraint!
     @IBOutlet weak var lsPass: UITextField!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var separator1: UILabel!
     
     
     @IBAction func cancelAction(_ sender: UIButton) {
@@ -34,8 +35,8 @@ class nonPassController: UIViewController {
             editPass = false
             let str = lsPass.text
             if str != ""{
-                self.sendNewPass(ls: ls, pass: str!)
                 self.StartIndicator()
+                self.sendNewPass(ls: ls, pass: str!)
             }else{
                 lsPass.text = ""
                 let alert = UIAlertController(title: "Ошибка", message: "Укажите пароль!", preferredStyle: .alert)
@@ -49,6 +50,7 @@ class nonPassController: UIViewController {
             DispatchQueue.main.async {
                 self.widthBtn.constant = (self.view.frame.width - 80) / 2 - 1
                 self.heightPass.constant = 65
+                self.separator1.isHidden = false
                 self.viewBottom.constant = 0
                 self.cancelBtn.isHidden = true
                 self.delLsBtn.isHidden = true
@@ -63,11 +65,12 @@ class nonPassController: UIViewController {
         DispatchQueue.main.async {
             self.editPass = false
             self.widthBtn.constant = 0
-            self.heightPass.constant = -1
+            self.heightPass.constant = 0
             self.viewBottom.constant = 82
             self.cancelBtn.isHidden = false
             self.delLsBtn.isHidden = false
             self.hLbl.isHidden = true
+            self.separator1.isHidden = true
             self.editPassBtn.setTitle("Сменить пароль", for: .normal)
         }
     }
@@ -85,6 +88,7 @@ class nonPassController: UIViewController {
         super.viewDidLoad()
         StopIndicator()
         hLbl.isHidden = true
+        self.separator1.isHidden = true
         self.topView.constant = getPoint()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -167,7 +171,7 @@ class nonPassController: UIViewController {
         }
         alert.addAction(cancelAction)
         let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
-            
+            self.StartIndicator()
             var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
             urlPath = urlPath + "phone=" + phone + "&ident=" + ident
             let url: NSURL = NSURL(string: urlPath)!

@@ -149,12 +149,24 @@ class DB: NSObject, XMLParserDelegate {
             print("parse failure!")
         }
         save_month_year(month: self.currMonth, year: self.currYear)
-        // ЗАЯВКИ С КОММЕНТАРИЯМИ
-        del_db(table_name: "Applications")
-        del_db(table_name: "Comments")
-        del_db(table_name: "Fotos")
-        let isCons = UserDefaults.standard.string(forKey: "isCons")
-        parse_Apps(login: login, pass: pass, isCons: isCons!)
+        let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+        if (str_menu_2 != "") {
+            var answer = str_menu_2.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                // ВЕДОМОСТЬ
+                // Удалим данные из базы данных
+                del_db(table_name: "Saldo")
+                // Получим данные в базу данных
+                parse_OSV(login: login, pass: pass)
+            }else{
+                // ЗАЯВКИ С КОММЕНТАРИЯМИ
+                del_db(table_name: "Applications")
+                del_db(table_name: "Comments")
+                del_db(table_name: "Fotos")
+                let isCons = UserDefaults.standard.string(forKey: "isCons")
+                parse_Apps(login: login, pass: pass, isCons: isCons!, isLoad: true)
+            }
+        }
         // сохраним последние значения Месяц-Год в глобальных переменных
     }
     
@@ -208,7 +220,7 @@ class DB: NSObject, XMLParserDelegate {
 //        #endif
 //        if k == 1{
             if (elementName == "Meter") {
-//                print(attributeDict)
+                print(attributeDict)
                 ident = attributeDict["Ident"]!
                 units = attributeDict["Units"]!
                 name = attributeDict["Name"]!
@@ -217,7 +229,7 @@ class DB: NSObject, XMLParserDelegate {
                 // Запишем показание прибора
             }
             if (elementName == "MeterValue"){
-//                print(attributeDict)
+                print(attributeDict)
                 let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
                 
                 let managedObject = Counters()
@@ -406,13 +418,19 @@ class DB: NSObject, XMLParserDelegate {
                                                                     let json_bill = json_bills.object(at: index) as! [String:AnyObject]
                                                                     for obj in json_bill {
                                                                         if obj.key == "Month" {
-                                                                            bill_month = String(describing: obj.value as! NSNumber)
+                                                                            if ((obj.value as? NSNull) == nil){
+                                                                                bill_month = String(describing: obj.value as! NSNumber)
+                                                                            }
                                                                         }
                                                                         if obj.key == "Year" {
-                                                                            bill_year = String(describing: obj.value as! NSNumber)
+                                                                            if ((obj.value as? NSNull) == nil) {
+                                                                                bill_year = String(describing: obj.value as! NSNumber)
+                                                                            }
                                                                         }
                                                                         if obj.key == "Ident" {
-                                                                            bill_ident = obj.value as! String
+                                                                            if ((obj.value as? NSNull) == nil) {
+                                                                                bill_ident = obj.value as! String
+                                                                            }
                                                                         }
                                                                     }
                                                                     if (Int(bill_month)! > i_month) || ((Int(bill_month)! == i_month) && (bill_ident != i_ident)) || ((Int(bill_month) == 1) && (i_month == 12)) {
@@ -439,10 +457,14 @@ class DB: NSObject, XMLParserDelegate {
                                                                         }
 //                                                                        if bill_ident != "Все"{
                                                                             if obj.key == "Month" {
-                                                                                bill_month = String(describing: obj.value as! NSNumber)
+                                                                                if ((obj.value as? NSNull) == nil) {
+                                                                                    bill_month = String(describing: obj.value as! NSNumber)
+                                                                                }
                                                                             }
                                                                             if obj.key == "Year" {
-                                                                                bill_year = String(describing: obj.value as! NSNumber)
+                                                                                if ((obj.value as? NSNull) == nil) {
+                                                                                    bill_year = String(describing: obj.value as! NSNumber)
+                                                                                }
                                                                             }
                                                                             if obj.key == "ServiceTypeId" {
                                                                                 if ((obj.value as? NSNull) == nil) {
@@ -452,23 +474,36 @@ class DB: NSObject, XMLParserDelegate {
                                                                                 }
                                                                             }
                                                                             if obj.key == "Service" {
-                                                                                bill_service = obj.value as! String
+                                                                                if ((obj.value as? NSNull) == nil) {
+                                                                                    bill_service = obj.value as! String
+                                                                                }
                                                                             }
                                                                             if obj.key == "Accured" {
-                                                                                bill_acc = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                                obj_plus += (obj.value as! Double)
+                                                                                if ((obj.value as? NSNull) == nil) {
+                                                                                    bill_acc = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                                    obj_plus += (obj.value as! Double)
+                                                                                }
+                                                                                
                                                                             }
                                                                             if obj.key == "Debt" {
-                                                                                bill_debt = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                                obj_start += (obj.value as! Double)
+                                                                                if ((obj.value as? NSNull) == nil) {
+                                                                                    bill_debt = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                                    obj_start += (obj.value as! Double)
+                                                                                }
+                                                                                
                                                                             }
                                                                             if obj.key == "Payed" {
-                                                                                bill_pay = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                                obj_minus += (obj.value as! Double)
+                                                                                if ((obj.value as? NSNull) == nil) {
+                                                                                    bill_pay = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                                    obj_minus += (obj.value as! Double)
+                                                                                }
+                                                                                
                                                                             }
                                                                             if obj.key == "Total" {
-                                                                                bill_total = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
-                                                                                obj_end += (obj.value as! Double)
+                                                                                if ((obj.value as? NSNull) == nil) {
+                                                                                    bill_total = String(format: "%.2f", (obj.value as! Double))//String(describing: obj.value as! NSNumber)
+                                                                                    obj_end += (obj.value as! Double)
+                                                                                }
                                                                             }
                                                                         }                                                                        
 //                                                                    }
@@ -525,7 +560,7 @@ class DB: NSObject, XMLParserDelegate {
     }
 
     // Заявки с комментариями
-    func parse_Apps(login: String, pass: String, isCons: String) {
+    func parse_Apps(login: String, pass: String, isCons: String, isLoad: Bool) {
         
         // Если в БД нет заявок - получаем все заявки
         //        let fetchedResultsController: NSFetchedResultsController<Applications>?
@@ -551,11 +586,13 @@ class DB: NSObject, XMLParserDelegate {
         } else {
             print("parse failure!")
         }
-        // ВЕДОМОСТЬ
-        // Удалим данные из базы данных
-        del_db(table_name: "Saldo")
-        // Получим данные в базу данных
-        parse_OSV(login: login, pass: pass)
+        if isLoad{
+            // ВЕДОМОСТЬ
+            // Удалим данные из базы данных
+            del_db(table_name: "Saldo")
+            // Получим данные в базу данных
+            parse_OSV(login: login, pass: pass)
+        }
         //        }
     }
     

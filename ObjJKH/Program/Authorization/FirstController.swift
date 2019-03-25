@@ -158,9 +158,14 @@ class FirstController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
+//        UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -286,7 +291,7 @@ class FirstController: UIViewController {
                                                 }
                                                 
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-//                                                self.responseString = "error: смена пароля: 987487632"
+//                                                self.responseString = "error: смена пароля: 12345678"
                                                 print("responseString = \(self.responseString)")
                                                 self.choice()
         })
@@ -328,11 +333,38 @@ class FirstController: UIViewController {
                 #if isMupRCMytishi
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "nonPassController") as! nonPassController
                 vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-                vc.ls = ls[0]
-                vc.login = self.edLogin.text!
-                vc.lsLbl.text = "У лицевого счета \(ls[0]) был изменён пароль"
-                self.addChildViewController(vc)
-                self.view.addSubview(vc.view)
+                if ls.count != 0{
+                    if ls[0] != "" && ls[0] != " "{
+                        vc.ls = ls[0]
+                        vc.lsLbl.text = "У лицевого счета \(ls[0]) был изменён пароль"
+                        vc.login = self.edLogin.text!
+                        self.addChildViewController(vc)
+                        self.view.addSubview(vc.view)
+                    }else{
+                        UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                        UserDefaults.standard.synchronize()
+                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                            self.performSegue(withIdentifier: "support", sender: self)
+                        }
+                        alert.addAction(cancelAction)
+                        alert.addAction(supportAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }else{
+                    UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                    UserDefaults.standard.synchronize()
+                    let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                    let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                        self.performSegue(withIdentifier: "support", sender: self)
+                    }
+                    alert.addAction(cancelAction)
+                    alert.addAction(supportAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
                 #endif
             })
         }else if (responseString.contains("error")){
@@ -350,7 +382,7 @@ class FirstController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             })
         } else {
-            
+            UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
             DispatchQueue.main.async(execute: {
                 
                 // авторизация на сервере - получение данных пользователя

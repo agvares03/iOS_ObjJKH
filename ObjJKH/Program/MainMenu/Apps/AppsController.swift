@@ -194,7 +194,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         db.del_db(table_name: "Comments")
         db.del_db(table_name: "Fotos")
-        db.parse_Apps(login: UserDefaults.standard.string(forKey: "login") ?? "", pass: UserDefaults.standard.string(forKey: "pass") ?? "", isCons: UserDefaults.standard.string(forKey: "isCons")!)
+        db.parse_Apps(login: UserDefaults.standard.string(forKey: "login") ?? "", pass: UserDefaults.standard.string(forKey: "pass") ?? "", isCons: UserDefaults.standard.string(forKey: "isCons")!, isLoad: false)
         load_data()
         updateTable()
     }
@@ -439,7 +439,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     db.del_db(table_name: "Comments")
                     db.del_db(table_name: "Fotos")
                     db.del_db(table_name: "Applications")
-                    db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!)
+                    db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!, isLoad: false)
                     
                     self.load_data()
                     self.tableApps.reloadData()
@@ -477,7 +477,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     db.del_db(table_name: "Comments")
                     db.del_db(table_name: "Fotos")
                     db.del_db(table_name: "Applications")
-                    db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!)
+                    db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!, isLoad: false)
                     
                     self.load_data()
                     self.tableApps.reloadData()
