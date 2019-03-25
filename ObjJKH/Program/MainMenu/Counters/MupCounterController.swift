@@ -11,7 +11,7 @@ import CoreData
 import Dropper
 
 protocol CountersCellDelegate: class {
-    func sendPressed(uniq_num: String, count_name: String)
+    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String)
 }
 
 class MupCounterController:UIViewController, DropperDelegate, CountersCellDelegate, UITableViewDelegate, UITableViewDataSource, XMLParserDelegate {
@@ -567,9 +567,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
         cell.number.text      = ownerArr[indexPath.row]
         countName             = nameArr[indexPath.row]
-        cell.pred.text        = String(format:"%.2f", predArr[indexPath.row])
-        cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
-        cell.diff.text        = String(format:"%.2f", diffArr[indexPath.row])
+        cell.pred.text        = String(format:"%.3f", predArr[indexPath.row])
+        cell.teck.text        = String(format:"%.3f", teckArr[indexPath.row])
+        cell.diff.text        = String(format:"%.3f", diffArr[indexPath.row])
         cell.predLbl.text     = dateOneArr[indexPath.row]
         cell.teckLbl.text     = dateTwoArr[indexPath.row]
         cell.diffLbl.text     = dateThreeArr[indexPath.row]
@@ -654,6 +654,8 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var selectedUniq = ""
     var selectedUniqName = ""
     var selectedOwner = ""
+    var countIdent = ""
+    var predVal = ""
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "uniqCounters" {
@@ -662,6 +664,13 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             payController.uniq_name = selectedUniqName
             payController.owner = selectedOwner
             payController.ls = choiceIdent
+        }
+        if segue.identifier == "addCounters"{
+            let payController             = segue.destination as! AddCountersController
+            payController.counterNumber = selectedUniq
+            payController.counterName = selectedUniqName
+            payController.ident = countIdent
+            payController.predValue = predVal
         }
     }
     
@@ -684,24 +693,29 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         parse_Countrers(login: edLogin, pass: edPass)
     }
     
-    func sendPressed(uniq_num: String, count_name: String) {
+    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String) {
         print(isEditable())
         if isEditable(){
-            let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
-            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
-            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-            alert.addAction(cancelAction)
-            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                var metrID = ""
-                for i in 0...self.numberArr.count - 1{
-                    if uniq_num == self.ownerArr[i]{
-                        metrID = self.numberArr[i]
-                    }
-                }
-                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
-            }
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
+//            let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
+//            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
+//            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+//            alert.addAction(cancelAction)
+//            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+//                var metrID = ""
+//                for i in 0...self.numberArr.count - 1{
+//                    if uniq_num == self.ownerArr[i]{
+//                        metrID = self.numberArr[i]
+//                    }
+//                }
+//                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
+//            }
+//            alert.addAction(okAction)
+//            self.present(alert, animated: true, completion: nil)
+            selectedUniq = uniq_num
+            selectedUniqName = count_name
+            countIdent = ident
+            predVal = predValue
+            self.performSegue(withIdentifier: "addCounters", sender: self)
         }else{
             let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -952,8 +966,7 @@ class MupCounterCell: UITableViewCell {
     @IBOutlet weak var lblHeight6: NSLayoutConstraint!
     
     @IBAction func sendAction(_ sender: UIButton) {
-        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!)
-        print("SEND")
+        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
     }
     
     override func awakeFromNib() {

@@ -234,7 +234,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "uniqCounterCell") as! UniqCounterCell
         var send = false
-        cell.teck.text        = String(format:"%.2f", teckArr[indexPath.row])
+        cell.teck.text        = String(format:"%.3f", teckArr[indexPath.row])
         cell.teckLbl.text     = dateOneArr[indexPath.row]
         send = sendedArr[indexPath.row]
         if sendError[0]{
