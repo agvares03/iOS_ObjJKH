@@ -189,8 +189,8 @@ class AddCountersController: UIViewController {
             }
         }
         if self.view.frame.size.height <= 568{
-            sendBtnTop.constant = 15
-            cancelBtnTop.constant = 15
+            sendBtnTop.constant = 7
+            cancelBtnTop.constant = 7
         }
     }
     // И вниз при исчезновении
