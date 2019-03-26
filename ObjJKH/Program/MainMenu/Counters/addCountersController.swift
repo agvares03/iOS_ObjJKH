@@ -74,7 +74,8 @@ class AddCountersController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: counterNumber, count: count.replacingOccurrences(of: ".", with: ","))
+//            print(count.replacingOccurrences(of: ".", with: ","))
+            self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: metrId, count: count.replacingOccurrences(of: ".", with: ","))
         }else{
             let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
@@ -90,6 +91,7 @@ class AddCountersController: UIViewController {
     private var count:[UITextField] = []
     private var pred:[UILabel] = []
     
+    public var metrId = ""
     public var counterName = ""
     public var counterNumber = ""
     public var ident = ""

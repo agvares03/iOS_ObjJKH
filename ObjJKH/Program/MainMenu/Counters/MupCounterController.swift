@@ -656,6 +656,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var selectedOwner = ""
     var countIdent = ""
     var predVal = ""
+    var metrID = ""
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "uniqCounters" {
@@ -664,6 +665,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             payController.uniq_name = selectedUniqName
             payController.owner = selectedOwner
             payController.ls = choiceIdent
+            payController.countIdent = countIdent
         }
         if segue.identifier == "addCounters"{
             let payController             = segue.destination as! AddCountersController
@@ -671,6 +673,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             payController.counterName = selectedUniqName
             payController.ident = countIdent
             payController.predValue = predVal
+            payController.metrId = metrID
         }
     }
     
@@ -711,10 +714,17 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
 //            }
 //            alert.addAction(okAction)
 //            self.present(alert, animated: true, completion: nil)
+            var metrId = ""
+            for i in 0...self.numberArr.count - 1{
+                if uniq_num == self.ownerArr[i]{
+                    metrId = self.numberArr[i]
+                }
+            }
             selectedUniq = uniq_num
             selectedUniqName = count_name
             countIdent = ident
             predVal = predValue
+            self.metrID = metrId
             self.performSegue(withIdentifier: "addCounters", sender: self)
         }else{
             let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)

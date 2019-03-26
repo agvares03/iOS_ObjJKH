@@ -662,6 +662,7 @@
                         <outlet property="tableCounters" destination="kyw-Se-55P" id="7p9-pG-oay"/>
                         <outlet property="uniqName" destination="dz1-c2-Khp" id="fFi-3S-uNQ"/>
                         <outlet property="uniqNum" destination="wVC-F6-bkK" id="MV8-0i-pkD"/>
+                        <segue destination="Wwf-NL-cKm" kind="show" identifier="addCounters" id="nPm-iE-IOA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkf-ps-Rwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1186,6 +1187,7 @@
         <image name="water" width="36" height="54"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="nPm-iE-IOA"/>
         <segue reference="d7h-Fz-fUI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,17 +36,38 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         navigationController?.popViewController(animated: true)
     }
     
+    var selectedUniq = ""
+    var selectedUniqName = ""
+    var selectedOwner = ""
+    var countIdent = ""
+    var predVal = ""
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addCounters"{
+            let payController             = segue.destination as! AddCountersController
+            payController.counterNumber = selectedUniq
+            payController.counterName = selectedUniqName
+            payController.ident = countIdent
+            payController.predValue = predVal
+            payController.metrId = uniq_num
+        }
+    }
+    
     @IBAction func sendAction(_ sender: UIButton){
         if isEditable(){
-            let alert = UIAlertController(title: uniq_name + "(" + owner + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
-            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
-            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-            alert.addAction(cancelAction)
-            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
-            }
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
+//            let alert = UIAlertController(title: uniq_name + "(" + owner + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
+//            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
+//            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+//            alert.addAction(cancelAction)
+//            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+//                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
+//            }
+//            alert.addAction(okAction)
+//            self.present(alert, animated: true, completion: nil)
+            selectedUniq = owner
+            selectedUniqName = uniq_name
+            predVal = String(format:"%.3f", teckArr[0])
+            self.performSegue(withIdentifier: "addCounters", sender: self)
         }else{
             let date1            = UserDefaults.standard.string(forKey: "date1")!
             let date2            = UserDefaults.standard.string(forKey: "date2")!
@@ -76,7 +97,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         super.viewDidLoad()
         tableCounters.delegate = self
         tableCounters.dataSource = self
-        lsLbl.text = "Л/с: " + ls
+        lsLbl.text = "Л/с: " + countIdent
         
         uniqNum.text = owner
         uniqName.text = uniq_name
@@ -95,9 +116,9 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             choiceIdent = "Все"
             let str_ls = defaults.string(forKey: "str_ls")
             let str_ls_arr = str_ls?.components(separatedBy: ",")
-            if str_ls_arr?.count == 1{
-                lsLbl.text = "Л/с: " + str_ls_arr![0]
-            }
+//            if str_ls_arr?.count == 1{
+//                lsLbl.text = "Л/с: " + str_ls_arr![0]
+//            }
         }else{
             choiceIdent = ls
         }
@@ -105,10 +126,10 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         indicator.color = myColors.indicatorColor.uiColor()
         sendButton.backgroundColor = myColors.indicatorColor.uiColor()
         headerView.backgroundColor = myColors.indicatorColor.uiColor()
-        DB().del_db(table_name: "Counters")
-        // Получим данные в базу данных
+//        DB().del_db(table_name: "Counters")
+//        // Получим данные в базу данных
 //        if ls == "Все"{
-            parse_Countrers(login: login, pass: pass)
+//        parse_Countrers(login: login, pass: pass)
 //        }else{
 //            parse_Countrers(login: ls, pass: pass)
 //        }
@@ -117,6 +138,17 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
 //            sendButton.backgroundColor = sendButton.backgroundColor?.withAlphaComponent(0.5)
 //        }
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults     = UserDefaults.standard
+        login          = defaults.string(forKey: "login")!
+        pass           = defaults.string(forKey: "pass")!
+        DB().del_db(table_name: "Counters")
+        // Получим данные в базу данных
+        //        if ls == "Все"{
+        parse_Countrers(login: login, pass: pass)
     }
     
     var identArr    :[String] = []
@@ -171,6 +203,8 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                 if ident != "Все"{
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "uniq_num") as! String) == self.uniq_num{
+                            countIdent = String(object.value(forKey: "ident") as! String)
+                            lsLbl.text = "Л/с: " + String(object.value(forKey: "ident") as! String)
                             identArr.append(object.value(forKey: "ident") as! String)
                             nameArr.append(object.value(forKey: "count_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
@@ -183,6 +217,8 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                     }
                 }else{
                     if (object.value(forKey: "uniq_num") as! String) == self.uniq_num{
+                        countIdent = String(object.value(forKey: "ident") as! String)
+                        lsLbl.text = "Л/с: " + String(object.value(forKey: "ident") as! String)
                         identArr.append(object.value(forKey: "ident") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
