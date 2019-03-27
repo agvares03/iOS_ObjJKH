@@ -9,7 +9,7 @@
 import UIKit
 import Gloss
 
-class MainMenu: UIViewController {
+class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Запись на прием - Наш Общий Дом
     @IBOutlet weak var mainView: UIView!
@@ -23,6 +23,11 @@ class MainMenu: UIViewController {
     private var question_read = 0
     private var request_read = 0
     private var news_read = 0
+    
+    @IBOutlet weak var debtLbl: UILabel!
+    @IBOutlet weak var debtTable: UITableView!
+    @IBOutlet weak var debtHeight: NSLayoutConstraint!
+    @IBOutlet weak var debtLblHeight: NSLayoutConstraint!
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var ls1: UILabel!
@@ -320,6 +325,9 @@ class MainMenu: UIViewController {
         fon_top.image = UIImage(named: "Logo_UK_Garant_White")
         #endif
         
+        debtTable.delegate = self
+        debtTable.dataSource = self
+        
         // Картинки для разных Таргетов
         notice.image = myImages.notice_image
         notice.setImageColor(color: myColors.btnColor.uiColor())
@@ -352,9 +360,9 @@ class MainMenu: UIViewController {
         request_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         question_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         news_indicator.backgroundColor = myColors.indicatorColor.uiColor()
-        #if isDJ
+        
         getDebt()
-        #endif
+        
         // Настройки для меню
         settings_for_menu()
     }
@@ -459,7 +467,11 @@ class MainMenu: UIViewController {
                 btn_arr_6.isHidden       = true
                 line_bottom_6.isHidden   = true
                 payment.isHidden         = true
-                heigth_view.constant     = heigth_view.constant - 39
+                heigth_view.constant     = heigth_view.constant - 90
+                debtLbl.isHidden = true
+                debtTable.isHidden = true
+                debtHeight.constant       = 0
+                debtLblHeight.constant    = 0
             } else {
                 btn_name_6.setTitle(answer[1], for: .normal)
             }
@@ -475,7 +487,9 @@ class MainMenu: UIViewController {
                 line_bottom_7.isHidden   = true
                 webs_img.isHidden        = true
                 heigth_view.constant     = heigth_view.constant - 39
+                line_bottom_6.isHidden   = true
             } else {
+                line_bottom_6.isHidden   = false
                 btn_name_7.setTitle(answer[1], for: .normal)
             }
         }
@@ -490,7 +504,9 @@ class MainMenu: UIViewController {
                 line_bottom_8.isHidden   = true
                 services.isHidden        = true
                 heigth_view.constant     = heigth_view.constant - 40
+                line_bottom_6.isHidden   = true
             } else {
+                line_bottom_6.isHidden   = false
                 btn_name_8.setTitle(answer[1], for: .normal)
             }
         }
@@ -565,7 +581,7 @@ class MainMenu: UIViewController {
     // Web-камеры
     @IBAction func go_web(_ sender: UIButton) {
     }
-    
+    var dateOld = "01.01"
     func getDebt() {
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
@@ -575,51 +591,101 @@ class MainMenu: UIViewController {
             str_ls_arr?.forEach{
                 let ls = $0
                 let urlPath = Server.SERVER + Server.GET_DEBT_ACCOUNT + "ident=" + ls.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-                
                 let url: NSURL = NSURL(string: urlPath)!
                 let request = NSMutableURLRequest(url: url as URL)
                 request.httpMethod = "GET"
                 print(request)
-                
                 let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                       completionHandler: {
                                                         data, response, error in
-                                                        
+
                                                         if error != nil {
                                                             return
                                                         } else {
                                                             do {
-                                                                var date        = ""
-                                                                var sum         = ""
-                                                                var sumFine     = ""
-                                                                var sumOver     = ""
-                                                                var sumFineOver = ""
-                                                                var sumAll      = ""
-                                                                var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                                print(json)
-                                                                if let json_bills = json["data"] {
-                                                                    let int_end = (json_bills.count)!-1
-                                                                    if (int_end < 0) {
-                                                                        
-                                                                    } else {
-                                                                        sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
-                                                                        date = json_bills["Date"] as! String
-                                                                        defaults.set(date, forKey: "dateDebt")
-                                                                        if Double(sumAll) != 0.00{
-                                                                            sumObj = sumObj + Double(sumAll)!
+                                                                let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                                if !responseStr.contains("error"){
+                                                                    var date        = ""
+                                                                    var sum         = ""
+                                                                    var sumFine     = ""
+                                                                    //                                                                var sumOver     = ""
+                                                                    //                                                                var sumFineOver = ""
+                                                                    var sumAll      = ""
+                                                                    var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+//                                                                    print(json)
+                                                                    
+                                                                    if let json_bills = json["data"] {
+                                                                        let int_end = (json_bills.count)!-1
+                                                                        if (int_end < 0) {
+                                                                            
+                                                                        } else {
+                                                                            sum = String(format:"%.2f", json_bills["Sum"] as! Double)
+                                                                            let s = json_bills["Sum"] as! Double
+                                                                            sumFine = String(format:"%.2f", json_bills["SumFine"] as! Double)
+                                                                            if s > 0{
+                                                                                self.debtIdent.append(ls)
+                                                                                self.debtSum.append(sum)
+                                                                                self.debtSumFine.append(sumFine)
+                                                                            }
+                                                                            sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
+                                                                            date = json_bills["Date"] as! String
+                                                                            let d = date.components(separatedBy: ".")
+                                                                            let d1 = self.dateOld.components(separatedBy: ".")
+                                                                            if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                                                                                DispatchQueue.main.async {
+                                                                                    self.debtLbl.text = "Задолженность на " + date + " г."
+                                                                                    self.debtLbl.textColor = .red
+                                                                                    self.dateOld = date
+                                                                                }
+                                                                            }
+                                                                            
+                                                                            defaults.set(date, forKey: "dateDebt")
+                                                                            if Double(sumAll) != 0.00{
+                                                                                sumObj = sumObj + Double(sumAll)!
+                                                                            }
                                                                         }
                                                                     }
+                                                                    defaults.set(sumObj, forKey: "sumDebt")
+                                                                    defaults.synchronize()
                                                                 }
-                                                                defaults.set(sumObj, forKey: "sumDebt")
-                                                                defaults.synchronize()
+                                                                
                                                             } catch let error as NSError {
                                                                 print(error)
                                                             }
-                                                            
+
                                                         }
-                                                        
+                                                        let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
+                                                        if (str_menu_6 != "") {
+                                                            var answer = str_menu_6.components(separatedBy: ";")
+                                                            if (answer[2] == "0") {
+                                                            }else{
+                                                                DispatchQueue.main.async {
+                                                                    if self.debtSum.count == 0{
+                                                                        self.menu_6_heigth.constant = 63
+                                                                        self.heigth_view.constant = self.heigth_view.constant - 30
+                                                                    }
+                                                                    self.debtTable.reloadData()
+                                                                }
+                                                            }
+                                                        }
                 })
                 task.resume()
+            }
+        }else{
+            let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
+            if (str_menu_6 != "") {
+                var answer = str_menu_6.components(separatedBy: ";")
+                if (answer[2] == "0") {
+                }else{
+                    DispatchQueue.main.async {
+                        self.debtLbl.isHidden = true
+                        self.debtTable.isHidden = true
+                        self.menu_6_heigth.constant    = 39
+                        self.heigth_view.constant      = self.heigth_view.constant - 51
+                        self.debtHeight.constant       = 0
+                        self.debtLblHeight.constant    = 0
+                    }
+                }
             }
         }
     }
@@ -1063,6 +1129,53 @@ class MainMenu: UIViewController {
         
         self.indicator.stopAnimating()
         self.indicator.isHidden = true
+    }
+    
+    var debtIdent:[String] = []
+    var debtSum:[String] = []
+    var debtSumFine:[String] = []
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
+        if (str_menu_6 != "") {
+            var answer = str_menu_6.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                return 0
+            }else{
+                if debtSum.count != 0 {
+                    debtHeight.constant = CGFloat(debtSum.count * 30)
+                    heigth_view.constant = heigth_view.constant + CGFloat((debtSum.count - 1) * 30)
+                    menu_6_heigth.constant   = 60 + CGFloat(debtSum.count * 30)
+                    return debtSum.count
+                } else {
+                    self.debtLbl.text = self.debtLbl.text! + " отсутствует"
+                    self.debtLbl.textColor = .green
+                    debtHeight.constant = 3
+                    return 0
+                }
+            }
+        }
+        return 0
+    }
+
+    var sendedArr:[Bool] = []
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.debtTable.dequeueReusableCell(withIdentifier: "DebtMenuCell") as! DebtMenuCell
+        cell.dataLbl.text = debtSum[indexPath.row] + " р., пеня " + debtSumFine[indexPath.row] + " р. (л/сч " + debtIdent[indexPath.row] + ")"
+//        cell.delegate = self
+        return cell
+    }
+    
+}
+
+class DebtMenuCell: UITableViewCell {
+    
+    @IBOutlet weak var dataLbl: UILabel!
+    @IBOutlet weak var lblHeight6: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
     
 }
