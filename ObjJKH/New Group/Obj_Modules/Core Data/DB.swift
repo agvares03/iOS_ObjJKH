@@ -437,7 +437,9 @@ class DB: NSObject, XMLParserDelegate {
                                                                         if (itsFirst) {
                                                                             itsFirst = false
                                                                         } else {
-                                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: i_ident)
+                                                                            DispatchQueue.main.sync {
+                                                                                self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: String(i_year), start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: i_ident)
+                                                                            }
                                                                             
                                                                             obj_start = 0.00
                                                                             obj_plus  = 0.00
@@ -508,16 +510,21 @@ class DB: NSObject, XMLParserDelegate {
                                                                         }                                                                        
 //                                                                    }
 //                                                                    if bill_ident != "Все"{
-                                                                    self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total, ident: bill_ident)
+                                                                    DispatchQueue.main.sync {
+                                                                        self.add_data_saldo(id: Int64(bill_id), usluga: bill_service, num_month: bill_month, year: bill_year, start: bill_acc, plus: bill_debt, minus: bill_pay, end: bill_total, ident: bill_ident)
+                                                                    }
+                                                                    
 //                                                                    }
                                                                 }
                                                             }
                                                         }
-                                                        self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: bill_ident)
+                                                        DispatchQueue.main.sync {
+                                                            self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: bill_ident)
+                                                        }                                                        
                                                     } catch let error as NSError {
                                                         print(error)
                                                     }
-                                                    
+                                                DispatchQueue.main.sync {
                                                     // Выборка из БД последней ведомости - посчитаем сумму к оплате
                                                     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
                                                     fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(i_month), String(i_year))
@@ -536,6 +543,8 @@ class DB: NSObject, XMLParserDelegate {
                                                     defaults.setValue(String(i_year), forKey: "year_osv")
                                                     defaults.setValue(String(describing: sum), forKey: "sum")
                                                     defaults.synchronize()
+                                                }
+                                                
 //                                                }
                                                 
         })
