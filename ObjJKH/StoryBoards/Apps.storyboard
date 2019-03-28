@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JRv-6a-mre">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JRv-6a-mre">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -341,7 +341,7 @@
         <!--Создание заявки-->
         <scene sceneID="bAD-87-9yg">
             <objects>
-                <tableViewController id="hjA-m1-HIp" customClass="AddAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addAppUser" id="hjA-m1-HIp" customClass="AddAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dWN-To-lmq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -638,7 +638,7 @@
         <!--Title-->
         <scene sceneID="Xu9-47-DMS">
             <objects>
-                <viewController id="u5u-8K-6DU" customClass="AppCons" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appCons" id="u5u-8K-6DU" customClass="AppCons" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zEr-0d-gl4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1227,7 +1227,7 @@
         <!--Title-->
         <scene sceneID="A7i-4c-b46">
             <objects>
-                <viewController id="bOu-DP-0Qr" customClass="AppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appUser" id="bOu-DP-0Qr" customClass="AppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dah-YE-ujU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1786,7 +1786,7 @@
         <!--Создание заявки (конс.)-->
         <scene sceneID="nR8-uv-ifb">
             <objects>
-                <tableViewController id="pqo-rN-GPZ" customClass="AddAppCons" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addAppCons" id="pqo-rN-GPZ" customClass="AddAppCons" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RnR-G2-Ll6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2019,27 +2019,27 @@
     <resources>
         <image name="StarEmpty" width="22" height="22"/>
         <image name="StarFull" width="22" height="22"/>
-        <image name="account_icon_cons.jpg" width="800" height="800"/>
+        <image name="account_icon_cons.jpg" width="384" height="384"/>
         <image name="account_icon_user.png" width="1280" height="1280"/>
         <image name="app_close.png" width="36" height="36"/>
         <image name="app_open.png" width="36" height="36"/>
         <image name="arrow_rigth.png" width="1024" height="1024"/>
-        <image name="back" width="58.285713195800781" height="58.285713195800781"/>
-        <image name="call" width="37.5" height="37.5"/>
-        <image name="camera_icon" width="29" height="22"/>
+        <image name="back" width="17" height="17"/>
+        <image name="call" width="25" height="25"/>
+        <image name="camera_icon" width="145" height="110"/>
         <image name="ic_action_files_grey.png" width="96" height="96"/>
         <image name="ic_close_action.png" width="96" height="96"/>
         <image name="ic_get_app.png" width="96" height="96"/>
         <image name="ic_ok_app.png" width="96" height="96"/>
         <image name="ic_send_app.png" width="96" height="96"/>
-        <image name="nonConect" width="180" height="180"/>
+        <image name="nonConect" width="100" height="100"/>
         <image name="poll_Mup" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VNT-bQ-6nH"/>
+        <segue reference="YD9-Qs-hQS"/>
         <segue reference="3a9-cV-fC3"/>
         <segue reference="M7G-ag-hjx"/>
         <segue reference="x4h-mP-Bcg"/>
-        <segue reference="chi-GF-50Z"/>
+        <segue reference="vWf-Wc-E11"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -223,6 +223,13 @@ class AddLS: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+    }
+    
     // Функции подгрузки информации
     func initListeners() {
         // УЛИЦА

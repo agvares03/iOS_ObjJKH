@@ -22,6 +22,7 @@ class StartController: UIViewController {
         UserDefaults.standard.synchronize()
         self.perform(#selector(updateProgress), with: nil, afterDelay: 0.01)
         UserDefaults.standard.set(false, forKey: "successParse")
+        UserDefaults.standard.set(false, forKey: "NewMain")
         // Запустим подгрузку настроек
         getSettings()
         NotificationCenter.default

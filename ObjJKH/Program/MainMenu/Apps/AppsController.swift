@@ -500,6 +500,9 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (UserDefaults.standard.integer(forKey: "request_read_cons") < question_read_cons){
             self.load_new_data()
         }
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        }
         self.load_data()
         self.tableApps.reloadData()
     }

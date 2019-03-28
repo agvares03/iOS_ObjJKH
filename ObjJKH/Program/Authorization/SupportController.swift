@@ -288,6 +288,13 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         self.indicator.stopAnimating()
         self.indicator.isHidden = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+    }
     /*
      // MARK: - Navigation
      

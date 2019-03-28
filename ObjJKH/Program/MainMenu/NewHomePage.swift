@@ -251,6 +251,21 @@ class NewHomePage: UIViewController {
         one_Counters_Set.textColor = myColors.btnColor.uiColor()
         two_Counters_Set.textColor = myColors.btnColor.uiColor()
         targetName.textColor = myColors.btnColor.uiColor()
+        
+        let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+        if (str_menu_2 != "") {
+            var answer = str_menu_2.components(separatedBy: ";")
+            if (answer[2] == "0") {
+                if let tabBarController = self.tabBarController {
+                    let indexToRemove = 1
+                    if indexToRemove < tabBarController.viewControllers!.count {
+                        var viewControllers = tabBarController.viewControllers
+                        viewControllers?.remove(at: indexToRemove)
+                        tabBarController.viewControllers = viewControllers
+                    }
+                }
+            }
+        }
         // Do any additional setup after loading the view.
     }
     

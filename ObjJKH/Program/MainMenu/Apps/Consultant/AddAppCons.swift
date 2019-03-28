@@ -235,6 +235,12 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

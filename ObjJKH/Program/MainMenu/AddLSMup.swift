@@ -181,6 +181,13 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
         teck_flat = -1
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+    }
+    
     // Процедура отображения названий
     func appString(teck: Int, names: [String]) -> String {
         if teck == -1 {

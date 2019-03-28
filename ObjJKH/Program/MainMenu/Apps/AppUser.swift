@@ -363,6 +363,12 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

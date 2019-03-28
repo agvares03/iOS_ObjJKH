@@ -160,6 +160,7 @@ class FirstController: UIViewController {
         super.viewWillAppear(animated)
 //        UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
         // Hide the navigation bar on the this view controller
+        UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -382,7 +383,6 @@ class FirstController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             })
         } else {
-            UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
             DispatchQueue.main.async(execute: {
                 
                 // авторизация на сервере - получение данных пользователя
@@ -407,11 +407,12 @@ class FirstController: UIViewController {
     }
     var isCons = ""
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if UserDefaults.standard.bool(forKey: "successParse"){
+        if UserDefaults.standard.bool(forKey: "successParse") && !one{
+            one = true
             self.startApp()
         }
     }
-    
+    var one = false
     func startApp(){
         DispatchQueue.main.async {
             if !UserDefaults.standard.bool(forKey: "error"){
@@ -421,8 +422,10 @@ class FirstController: UIViewController {
 //                DispatchQueue.main.async {
                     self.StopIndicator()
 //                }
+                self.one = false
                 if (self.isCons == "0") {
-                    //self.performSegue(withIdentifier: "NewMainMenu", sender: self)
+//                    UserDefaults.standard.set(true, forKey: "NewMain")
+//                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)
                     self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)
@@ -433,6 +436,7 @@ class FirstController: UIViewController {
 //                }
                 UserDefaults.standard.set("Ошибка сохранения данных", forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
+                self.one = false
                 let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + "Ошибка сохранения данных" + ">", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in

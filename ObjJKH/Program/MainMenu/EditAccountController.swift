@@ -279,6 +279,9 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        }
         data.removeAll()
         let str_ls = UserDefaults.standard.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
