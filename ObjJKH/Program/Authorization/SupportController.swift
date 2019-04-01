@@ -11,6 +11,12 @@ import AKMaskField
 
 class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
+    // Navigation
+    @IBOutlet weak var cancelItem: UIBarButtonItem!
+    @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBOutlet weak var phoneTxt: AKMaskField!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var problemTxt: UITextView!
@@ -181,6 +187,8 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         indicator.color = myColors.indicatorColor.uiColor()
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         btnCancel.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        
+        cancelItem.tintColor = myColors.btnColor.uiColor()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         self.view.isUserInteractionEnabled = true

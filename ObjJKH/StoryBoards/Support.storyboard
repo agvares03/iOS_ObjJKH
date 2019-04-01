@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Support Controller-->
+        <!--Обращение в техподдержку-->
         <scene sceneID="Rq5-2a-wmB">
             <objects>
                 <viewController storyboardIdentifier="supportView" id="LSD-rN-4y5" customClass="SupportController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
@@ -190,8 +190,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rzp-do-AZC"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Обращение в техподдержку" id="fo7-Ls-XFx">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="9u7-fB-6dm">
+                            <connections>
+                                <action selector="cancelBtn:" destination="LSD-rN-4y5" id="sko-EP-Jro"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btnCancel" destination="OsC-Tx-X2j" id="EQj-Ro-fi4"/>
+                        <outlet property="cancelItem" destination="9u7-fB-6dm" id="8p2-q6-ztd"/>
                         <outlet property="emailTxt" destination="hW2-qa-mk4" id="cVE-Sz-Gl9"/>
                         <outlet property="heightTextView" destination="j37-KS-99q" id="MrW-8O-hsQ"/>
                         <outlet property="heigth_text_tech" destination="mht-UJ-Ir3" id="hWk-3Q-7bZ"/>
@@ -211,10 +219,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9N-3d-1R2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49.275362318840585" y="83.967391304347828"/>
+            <point key="canvasLocation" x="857.97101449275374" y="83.967391304347828"/>
         </scene>
     </scenes>
     <resources>
+        <image name="back" width="17" height="17"/>
         <image name="nonConect" width="100" height="100"/>
     </resources>
 </document>
