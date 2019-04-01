@@ -187,7 +187,7 @@ class FirstController: UIViewController {
         UserDefaults.standard.synchronize()
         UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
         
-        self.navigationController?.isNavigationBarHidden = false;
+//        self.navigationController?.isNavigationBarHidden = false;
     }
     
     override func didReceiveMemoryWarning() {

@@ -309,7 +309,7 @@ class FirstControllerCons: UIViewController {
         super.viewWillDisappear(animated)
         UserDefaults.standard.set(true, forKey: "firstConst")
         UserDefaults.standard.synchronize()
-        self.navigationController?.isNavigationBarHidden = false;
+//        self.navigationController?.isNavigationBarHidden = false;
     }
     
     // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ

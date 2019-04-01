@@ -129,6 +129,11 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         #endif
     }
     
+    @IBAction func SupportBtnAction(_ sender: UIButton) {
+        supK = true
+        self.performSegue(withIdentifier: "support", sender: self)
+    }
+    var supK = false
     //    // Отвязать лицевые счета от аккаунта
     //    @IBOutlet weak var btn_ls1: UIButton!
     //    @IBOutlet weak var btn_ls2: UIButton!
@@ -926,7 +931,9 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Show the navigation bar on other view controllers
-        self.navigationController?.isNavigationBarHidden = false;
+        if !supK{
+            self.navigationController?.isNavigationBarHidden = false;
+        }        
     }
     
     func add_record(numb: Int) {
