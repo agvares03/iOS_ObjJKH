@@ -3,18 +3,19 @@
 
 target 'ChistDom' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-pod 'Fabric'
+    pod 'Fabric'
     pod 'Crashlytics'
-  use_frameworks!
+    use_frameworks!
 
   # Pods for ChistDom
-pod 'Firebase/Core'
+    pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 end
 
 target 'DJ' do
@@ -31,6 +32,7 @@ pod 'Fabric'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 
 end
 
@@ -51,6 +53,7 @@ pod 'Firebase/Core'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 
 end
 
@@ -73,6 +76,7 @@ target 'Komeks' do
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 #    pod 'MobileVLCKit'
 
 end
@@ -97,6 +101,7 @@ target 'MupRCMytishi' do
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 end
 
 target 'ObjJKH' do
@@ -118,6 +123,7 @@ target 'ObjJKH' do
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 end
 
 target 'OurObjHome' do
@@ -135,6 +141,7 @@ pod 'Fabric'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 
 end
 
@@ -155,6 +162,7 @@ target 'Stolitsa' do
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 end
 
 target 'UK_Komfort' do
@@ -172,6 +180,7 @@ target 'UK_Komfort' do
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 
 end
 
@@ -195,6 +204,7 @@ target 'ReutKomfort' do
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
     
 end
 
@@ -215,6 +225,7 @@ pod 'Firebase/Core'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Gloss'
     pod 'Dropper'
+    pod 'AKMaskField'
 
 end
 

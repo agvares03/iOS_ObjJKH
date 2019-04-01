@@ -129,141 +129,141 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         #endif
     }
     
-//    // Отвязать лицевые счета от аккаунта
-//    @IBOutlet weak var btn_ls1: UIButton!
-//    @IBOutlet weak var btn_ls2: UIButton!
-//    @IBOutlet weak var btn_ls3: UIButton!
-//
-//    @IBAction func ls1_del(_ sender: UIButton) {
-//        try_del_ls_from_acc(ls: ls1)
-//    }
-//    @IBAction func ls2_del(_ sender: UIButton) {
-//        try_del_ls_from_acc(ls: ls2)
-//    }
-//    @IBAction func ls3_del(_ sender: UIButton) {
-//        try_del_ls_from_acc(ls: ls3)
-//    }
+    //    // Отвязать лицевые счета от аккаунта
+    //    @IBOutlet weak var btn_ls1: UIButton!
+    //    @IBOutlet weak var btn_ls2: UIButton!
+    //    @IBOutlet weak var btn_ls3: UIButton!
+    //
+    //    @IBAction func ls1_del(_ sender: UIButton) {
+    //        try_del_ls_from_acc(ls: ls1)
+    //    }
+    //    @IBAction func ls2_del(_ sender: UIButton) {
+    //        try_del_ls_from_acc(ls: ls2)
+    //    }
+    //    @IBAction func ls3_del(_ sender: UIButton) {
+    //        try_del_ls_from_acc(ls: ls3)
+    //    }
     
-//    func try_del_ls_from_acc(ls: UILabel) {
-//
-//        let defaults = UserDefaults.standard
-//        let phone = defaults.string(forKey: "phone")
-//        let ident =  ls.text
-//
-//        if (phone == ident) {
-//            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Невозможно отвязать лицевой счет " + ls.text! + ". Вы зашли, используя этот лицевой счет.", preferredStyle: .alert)
-//            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-//            alert.addAction(okAction)
-//            self.present(alert, animated: true, completion: nil)
-//        } else {
-//            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + ls.text! + " от аккаунта?", preferredStyle: .alert)
-//            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-//            alert.addAction(cancelAction)
-//            let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
-//
-//                var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
-//                urlPath = urlPath + "phone=" + phone! + "&ident=" + ident!
-//                let url: NSURL = NSURL(string: urlPath)!
-//                let request = NSMutableURLRequest(url: url as URL)
-//                request.httpMethod = "GET"
-//
-//                let task = URLSession.shared.dataTask(with: request as URLRequest,
-//                                                      completionHandler: {
-//                                                        data, response, error in
-//
-//                                                        if error != nil {
-//                                                            DispatchQueue.main.async(execute: {
-//                                                                UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
-//                                                                UserDefaults.standard.synchronize()
-//                                                                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
-//                                                                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-//                                                                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-//                                                                    self.performSegue(withIdentifier: "support", sender: self)
-//                                                                }
-//                                                                alert.addAction(cancelAction)
-//                                                                alert.addAction(supportAction)
-//                                                                self.present(alert, animated: true, completion: nil)
-//                                                            })
-//                                                            return
-//                                                        }
-//
-//                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                        print("responseString = \(responseString)")
-//
-//                                                        self.del_ls_from_acc(ls: ls)
-//                })
-//                task.resume()
-//
-//            }
-//            alert.addAction(okAction)
-//            self.present(alert, animated: true, completion: nil)
-//        }
-//
-//    }
+    //    func try_del_ls_from_acc(ls: UILabel) {
+    //
+    //        let defaults = UserDefaults.standard
+    //        let phone = defaults.string(forKey: "phone")
+    //        let ident =  ls.text
+    //
+    //        if (phone == ident) {
+    //            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Невозможно отвязать лицевой счет " + ls.text! + ". Вы зашли, используя этот лицевой счет.", preferredStyle: .alert)
+    //            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+    //            alert.addAction(okAction)
+    //            self.present(alert, animated: true, completion: nil)
+    //        } else {
+    //            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + ls.text! + " от аккаунта?", preferredStyle: .alert)
+    //            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+    //            alert.addAction(cancelAction)
+    //            let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
+    //
+    //                var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
+    //                urlPath = urlPath + "phone=" + phone! + "&ident=" + ident!
+    //                let url: NSURL = NSURL(string: urlPath)!
+    //                let request = NSMutableURLRequest(url: url as URL)
+    //                request.httpMethod = "GET"
+    //
+    //                let task = URLSession.shared.dataTask(with: request as URLRequest,
+    //                                                      completionHandler: {
+    //                                                        data, response, error in
+    //
+    //                                                        if error != nil {
+    //                                                            DispatchQueue.main.async(execute: {
+    //                                                                UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+    //                                                                UserDefaults.standard.synchronize()
+    //                                                                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+    //                                                                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+    //                                                                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+    //                                                                    self.performSegue(withIdentifier: "support", sender: self)
+    //                                                                }
+    //                                                                alert.addAction(cancelAction)
+    //                                                                alert.addAction(supportAction)
+    //                                                                self.present(alert, animated: true, completion: nil)
+    //                                                            })
+    //                                                            return
+    //                                                        }
+    //
+    //                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+    //                                                        print("responseString = \(responseString)")
+    //
+    //                                                        self.del_ls_from_acc(ls: ls)
+    //                })
+    //                task.resume()
+    //
+    //            }
+    //            alert.addAction(okAction)
+    //            self.present(alert, animated: true, completion: nil)
+    //        }
+    //
+    //    }
     
-//    func del_ls_from_acc(ls: UILabel) {
-//        DispatchQueue.main.async(execute: {
-//            // Выведем подключенные лицевые счета
-//            let defaults = UserDefaults.standard
-//            let str_ls = defaults.string(forKey: "str_ls")
-//            var newStr_ls = str_ls?.replacingOccurrences(of: ls.text! + ",", with: "")
-//            newStr_ls = newStr_ls?.replacingOccurrences(of: "," + ls.text!, with: "")
-//            newStr_ls = newStr_ls?.replacingOccurrences(of: ls.text!, with: "")
-//            self.ls1.text = ""
-//            self.btn_ls1.isHidden = true
-//            self.btn_ls1.isEnabled = false
-//
-//            self.ls2.text = ""
-//            self.btn_ls2.isHidden = true
-//            self.btn_ls2.isEnabled = false
-//
-//            self.ls3.text = ""
-//            self.btn_ls3.isHidden = true
-//            self.btn_ls3.isEnabled = false
-//
-//            let str_ls_arr = newStr_ls?.components(separatedBy: ",")
-//            defaults.set(newStr_ls, forKey: "str_ls")
-//            defaults.synchronize()
-//            if ((str_ls_arr?.count)! >= 3) {
-//                self.ls1.text = str_ls_arr?[0]
-//                self.btn_ls1.isHidden = false
-//                self.btn_ls1.isEnabled = true
-//
-//                self.ls2.text = str_ls_arr?[1]
-//                self.btn_ls2.isHidden = false
-//                self.btn_ls2.isEnabled = true
-//
-//                self.ls3.text = str_ls_arr?[2]
-//                self.btn_ls3.isHidden = false
-//                self.btn_ls3.isEnabled = true
-//            } else if ((str_ls_arr?.count)! == 2) {
-//                self.ls1.text = str_ls_arr?[0]
-//                self.btn_ls1.isHidden = false
-//                self.btn_ls1.isEnabled = true
-//
-//                self.ls2.text = str_ls_arr?[1]
-//                self.btn_ls2.isHidden = false
-//                self.btn_ls2.isEnabled = true
-//
-//                self.ls3.text = ""
-//                self.btn_ls3.isHidden = true
-//                self.btn_ls3.isEnabled = false
-//            } else if ((str_ls_arr?.count)! == 1) {
-//                self.ls1.text = str_ls_arr?[0]
-//                if (self.ls1.text != "") {
-//                    self.btn_ls1.isHidden = false
-//                    self.btn_ls1.isEnabled = true
-//                }
-//                self.ls2.text = ""
-//                self.btn_ls2.isHidden = true
-//                self.btn_ls2.isEnabled = false
-//
-//                self.ls3.text = ""
-//                self.btn_ls3.isHidden = true
-//                self.btn_ls3.isEnabled = false
-//            }
-//        })
-//    }
+    //    func del_ls_from_acc(ls: UILabel) {
+    //        DispatchQueue.main.async(execute: {
+    //            // Выведем подключенные лицевые счета
+    //            let defaults = UserDefaults.standard
+    //            let str_ls = defaults.string(forKey: "str_ls")
+    //            var newStr_ls = str_ls?.replacingOccurrences(of: ls.text! + ",", with: "")
+    //            newStr_ls = newStr_ls?.replacingOccurrences(of: "," + ls.text!, with: "")
+    //            newStr_ls = newStr_ls?.replacingOccurrences(of: ls.text!, with: "")
+    //            self.ls1.text = ""
+    //            self.btn_ls1.isHidden = true
+    //            self.btn_ls1.isEnabled = false
+    //
+    //            self.ls2.text = ""
+    //            self.btn_ls2.isHidden = true
+    //            self.btn_ls2.isEnabled = false
+    //
+    //            self.ls3.text = ""
+    //            self.btn_ls3.isHidden = true
+    //            self.btn_ls3.isEnabled = false
+    //
+    //            let str_ls_arr = newStr_ls?.components(separatedBy: ",")
+    //            defaults.set(newStr_ls, forKey: "str_ls")
+    //            defaults.synchronize()
+    //            if ((str_ls_arr?.count)! >= 3) {
+    //                self.ls1.text = str_ls_arr?[0]
+    //                self.btn_ls1.isHidden = false
+    //                self.btn_ls1.isEnabled = true
+    //
+    //                self.ls2.text = str_ls_arr?[1]
+    //                self.btn_ls2.isHidden = false
+    //                self.btn_ls2.isEnabled = true
+    //
+    //                self.ls3.text = str_ls_arr?[2]
+    //                self.btn_ls3.isHidden = false
+    //                self.btn_ls3.isEnabled = true
+    //            } else if ((str_ls_arr?.count)! == 2) {
+    //                self.ls1.text = str_ls_arr?[0]
+    //                self.btn_ls1.isHidden = false
+    //                self.btn_ls1.isEnabled = true
+    //
+    //                self.ls2.text = str_ls_arr?[1]
+    //                self.btn_ls2.isHidden = false
+    //                self.btn_ls2.isEnabled = true
+    //
+    //                self.ls3.text = ""
+    //                self.btn_ls3.isHidden = true
+    //                self.btn_ls3.isEnabled = false
+    //            } else if ((str_ls_arr?.count)! == 1) {
+    //                self.ls1.text = str_ls_arr?[0]
+    //                if (self.ls1.text != "") {
+    //                    self.btn_ls1.isHidden = false
+    //                    self.btn_ls1.isEnabled = true
+    //                }
+    //                self.ls2.text = ""
+    //                self.btn_ls2.isHidden = true
+    //                self.btn_ls2.isEnabled = false
+    //
+    //                self.ls3.text = ""
+    //                self.btn_ls3.isHidden = true
+    //                self.btn_ls3.isEnabled = false
+    //            }
+    //        })
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -555,10 +555,10 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.performSegue(withIdentifier: "noCounters", sender: self)
         #else
         self.performSegue(withIdentifier: "mupCounters", sender: self)
-//        #elseif isUKKomfort
-//        self.performSegue(withIdentifier: "mupCounters", sender: self)
-//        #else
-//        self.performSegue(withIdentifier: "mainCounters", sender: self)
+        //        #elseif isUKKomfort
+        //        self.performSegue(withIdentifier: "mupCounters", sender: self)
+        //        #else
+        //        self.performSegue(withIdentifier: "mainCounters", sender: self)
         #endif
         
     }
@@ -598,7 +598,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                       completionHandler: {
                                                         data, response, error in
-
+                                                        
                                                         if error != nil {
                                                             return
                                                         } else {
@@ -612,7 +612,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                                     //                                                                var sumFineOver = ""
                                                                     var sumAll      = ""
                                                                     var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-//                                                                    print(json)
+                                                                    //                                                                    print(json)
                                                                     
                                                                     if let json_bills = json["data"] {
                                                                         let int_end = (json_bills.count)!-1
@@ -652,7 +652,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                             } catch let error as NSError {
                                                                 print(error)
                                                             }
-
+                                                            
                                                         }
                                                         let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
                                                         if (str_menu_6 != "") {
@@ -809,51 +809,51 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         
         ls1.text = ""
-//        btn_ls1.isHidden = true
-//        btn_ls1.isEnabled = false
+        //        btn_ls1.isHidden = true
+        //        btn_ls1.isEnabled = false
         
         ls2.text = ""
-//        btn_ls2.isHidden = true
-//        btn_ls2.isEnabled = false
+        //        btn_ls2.isHidden = true
+        //        btn_ls2.isEnabled = false
         
         ls3.text = ""
-//        btn_ls3.isHidden = true
-//        btn_ls3.isEnabled = false
+        //        btn_ls3.isHidden = true
+        //        btn_ls3.isEnabled = false
         
         btnAllLS.isHidden = true
         btnAllLS.isEnabled = false
         
         if ((str_ls_arr?.count)! >= 3) {
             ls1.text = str_ls_arr?[0]
-//            btn_ls1.isHidden = false
-//            btn_ls1.isEnabled = true
+            //            btn_ls1.isHidden = false
+            //            btn_ls1.isEnabled = true
             
             ls2.text = str_ls_arr?[1]
-//            btn_ls2.isHidden = false
-//            btn_ls2.isEnabled = true
+            //            btn_ls2.isHidden = false
+            //            btn_ls2.isEnabled = true
             
             ls3.text = str_ls_arr?[2]
-//            btn_ls3.isHidden = false
-//            btn_ls3.isEnabled = true
+            //            btn_ls3.isHidden = false
+            //            btn_ls3.isEnabled = true
             
             btnAllLS.isHidden = false
             btnAllLS.isEnabled = true
         } else if ((str_ls_arr?.count)! == 2) {
             ls1.text = str_ls_arr?[0]
-//            btn_ls1.isHidden = false
-//            btn_ls1.isEnabled = true
+            //            btn_ls1.isHidden = false
+            //            btn_ls1.isEnabled = true
             
             ls2.text = str_ls_arr?[1]
-//            btn_ls2.isHidden = false
-//            btn_ls2.isEnabled = true
+            //            btn_ls2.isHidden = false
+            //            btn_ls2.isEnabled = true
             
             btnAllLS.isHidden = true
             btnAllLS.isEnabled = false
         } else if ((str_ls_arr?.count)! == 1) {
             ls1.text = str_ls_arr?[0]
             if (ls1.text != "") {
-//                btn_ls1.isHidden = false
-//                btn_ls1.isEnabled = true
+                //                btn_ls1.isHidden = false
+                //                btn_ls1.isEnabled = true
             }
             
             btnAllLS.isHidden = true
@@ -1157,12 +1157,12 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         return 0
     }
-
+    
     var sendedArr:[Bool] = []
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.debtTable.dequeueReusableCell(withIdentifier: "DebtMenuCell") as! DebtMenuCell
         cell.dataLbl.text = debtSum[indexPath.row] + " р., пеня " + debtSumFine[indexPath.row] + " р. (л/сч " + debtIdent[indexPath.row] + ")"
-//        cell.delegate = self
+        //        cell.delegate = self
         return cell
     }
     

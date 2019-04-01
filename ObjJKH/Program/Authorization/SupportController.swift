@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import AKMaskField
 
 class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
-    @IBOutlet weak var phoneTxt: UITextField!
+    @IBOutlet weak var phoneTxt: AKMaskField!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var problemTxt: UITextView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var ver_Lbl: UILabel!
     @IBOutlet weak var heigth_text_tech: NSLayoutConstraint!
     @IBOutlet weak var heightTextView: NSLayoutConstraint!
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBAction func btnCancelGo(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func updateConect(_ sender: UIButton) {
         self.viewDidLoad()
@@ -153,6 +158,10 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         phoneTxt.delegate = self
         problemTxt.text = "Описание проблемы"
         problemTxt.textColor = UIColor.lightGray
+        
+        // Маска для ввода - телефон
+        phoneTxt.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+        
         if UserDefaults.standard.bool(forKey: "fromMenu"){
             phoneTxt.text = UserDefaults.standard.string(forKey: "login")
             var login: String = UserDefaults.standard.string(forKey: "login")!
@@ -172,6 +181,8 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         backBtn.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        btnCancel.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tap)
@@ -242,7 +253,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         super.viewWillAppear(animated)
         
         // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {

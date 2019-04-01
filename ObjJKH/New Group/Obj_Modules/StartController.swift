@@ -19,6 +19,7 @@ class StartController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set("", forKey: "errorStringSupport")
+        UserDefaults.standard.set(true, forKey: "can_tech")
         UserDefaults.standard.synchronize()
         self.perform(#selector(updateProgress), with: nil, afterDelay: 0.01)
         UserDefaults.standard.set(false, forKey: "successParse")
@@ -136,7 +137,7 @@ class StartController: UIViewController {
                 let inputData = self.responseLS?.data(using: .utf8)!
                 let decoder = JSONDecoder()
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)
-                self.set_settings(color: stat.color, statMenu: stat.menu)
+                self.set_settings(color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth)
             }else{
                 UserDefaults.standard.set(self.responseLS, forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
@@ -161,7 +162,7 @@ class StartController: UIViewController {
         }
     }
     
-    func set_settings(color: String, statMenu: [Menu]) {
+    func set_settings(color: String, statMenu: [Menu], useDispatcherAuth: Bool) {
         let defaults = UserDefaults.standard
         defaults.setValue(color, forKey: "hex_color")
         var numb: Int = 0
@@ -169,6 +170,7 @@ class StartController: UIViewController {
             defaults.setValue(String($0.id) + ";" + $0.name_app + ";" + String($0.visible)  + ";" + $0.simple_name, forKey: "menu_" + String(numb))
             numb = numb + 1
         }
+        defaults.setValue(useDispatcherAuth, forKey: "useDispatcherAuth")
         defaults.synchronize()
     }
     
@@ -189,7 +191,11 @@ class StartController: UIViewController {
             if login == "" || login == nil{
                 self.performSegue(withIdentifier: "reg_app", sender: self)
             }else{
-                self.performSegue(withIdentifier: "start_app", sender: self)
+                if (defaults.bool(forKey: "windowCons")) {
+                    self.performSegue(withIdentifier: "start_app_cons", sender: self)
+                } else {
+                    self.performSegue(withIdentifier: "start_app", sender: self)
+                }
             }
         }
     }
@@ -205,6 +211,7 @@ class StartController: UIViewController {
     struct MenuData: Decodable {
         let color: String
         let menu: [Menu]
+        let useDispatcherAuth: Bool
     }
     
     struct Menu: Decodable {

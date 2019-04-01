@@ -1,47 +1,35 @@
 //
-//  ViewController.swift
+//  FirstControllerCons.swift
 //  ObjJKH
 //
-//  Created by Роман Тузин on 27.08.2018.
-//  Copyright © 2018 The Best. All rights reserved.
+//  Created by Роман Тузин on 29/03/2019.
+//  Copyright © 2019 The Best. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import FirebaseMessaging
-import Gloss
 import SwiftyXMLParser
-import AKMaskField
 
-class FirstController: UIViewController {
+class FirstControllerCons: UIViewController {
     
     // Вспомогальные переменные для взаимодействия с севрером
-    var responseLS: String = ""
     var responseString: String = ""
-    // Для получения, хранения лиц. счетов
-    private var data_ls: [String] = []
-    var str_ls: String = ""
-    
+
     @IBOutlet weak var ver_Lbl: UILabel!
-    @IBOutlet weak var questionBtn: UIButton!
-    @IBOutlet weak var questionImg: UIImageView!
-    @IBOutlet weak var heigt_image: NSLayoutConstraint!
-    @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var new_face: UIImageView!
-    @IBOutlet weak var edLogin: AKMaskField!
-    @IBOutlet weak var edPass: UITextField!
     @IBOutlet weak var new_zamoc: UIImageView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var btnEnter: UIButton!
-    @IBOutlet weak var btnForgot: UIButton!
-    @IBOutlet weak var btnReg: UIButton!
-    @IBOutlet weak var showPass: UIButton!
-    
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!
-    public var firstEnter = false
-    @IBOutlet weak var btnConsEnter: UIButton!
+    @IBOutlet weak var edLogin: UITextField!
+    @IBOutlet weak var edPass: UITextField!
+    @IBOutlet weak var showPass: UIButton!
+    @IBOutlet weak var btnUserEnter: UIButton!
+    @IBOutlet weak var btnEnter: UIButton!
     
-    var iconClick = false
+    @IBOutlet weak var questionBtn: UIButton!
+    @IBOutlet weak var questionImg: UIImageView!
     
     @IBAction func showPassAction(_ sender: UIButton) {
         edPass.isSecureTextEntry.toggle()
@@ -69,211 +57,8 @@ class FirstController: UIViewController {
         // Сохраним значения
         saveUsersDefaults()
         
-        // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-        get_LS()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UserDefaults.standard.set(false, forKey: "fromMenu")
-        StopIndicator()
-        
-        // Маска для ввода - телефон
-        edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-        
-        loadUsersDefaults()
-        let version = targetSettings().getVersion()
-        ver_Lbl.text = "ver. " + version
-        let defaults = UserDefaults.standard
-        // Сохраним параметр, который сигнализирует о том, что надо показать приветствие в Главном окне ("Привет, г-н Иванов")
-        defaults.setValue(true, forKey: "NeedHello")
-        
-        // Если значение из настроек - go_to_app в значении true, запустим вход в приложение сразу
-        if (defaults.bool(forKey: "go_to_app")) {
-            
-            defaults.set(false, forKey: "go_to_app")
-            defaults.synchronize()
-            
-            self.get_LS()
-            
-        }
-        
-        // Кнопка - Вход для сотрудников
-        btnConsEnter.layer.cornerRadius = 3
-        btnConsEnter.layer.borderWidth = 1.0
-        btnConsEnter.layer.borderColor = myColors.btnColor.uiColor().cgColor
-        btnConsEnter.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        btnConsEnter.clipsToBounds = true
-        // Если используется вход для консультантов - покажем кнопку
-        if !defaults.bool(forKey: "useDispatcherAuth") {
-            btnConsEnter.isHidden = true
-        }
-        
-        hideKeyboard_byTap()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        // Картинка в зависимости от Таргета
-        #if isOur_Obj_Home
-        fon_top.image = UIImage(named: "logo_Our_Obj_Home")
-        #elseif isChist_Dom
-        fon_top.image = UIImage(named: "Logo_Chist_Dom")
-        #elseif isMupRCMytishi
-        fon_top.image = UIImage(named: "logo_MupRCMytishi")
-        #elseif isDJ
-        fon_top.image = UIImage(named: "logo_DJ")
-        #elseif isStolitsa
-        fon_top.image = UIImage(named: "logo_Stolitsa")
-        #elseif isKomeks
-        fon_top.image = UIImage(named: "Logo_Komeks")
-        #elseif isUKKomfort
-        fon_top.image = UIImage(named: "logo_UK_Komfort")
-        #elseif isKlimovsk12
-        fon_top.image = UIImage(named: "logo_Klimovsk12")
-        #elseif isPocket
-        fon_top.image = UIImage(named: "Logo_Pocket")
-        #elseif isReutKomfort
-        fon_top.image = UIImage(named: "Logo_ReutKomfort")
-        #elseif isUKGarant
-        fon_top.image = UIImage(named: "Logo_UK_Garant")
-        #endif
-        
-        // Установим цвета для элементов в зависимости от Таргета
-        btnEnter.backgroundColor = myColors.btnColor.uiColor()
-        separator1.backgroundColor = myColors.labelColor.uiColor()
-        separator2.backgroundColor = myColors.labelColor.uiColor()
-        indicator.color = myColors.indicatorColor.uiColor()
-        
-        // Картинки для разных Таргетов
-        new_face.image = myImages.person_image
-        new_face.setImageColor(color: myColors.btnColor.uiColor())
-        new_zamoc.image = myImages.lock_image
-        new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
-        questionImg.setImageColor(color: myColors.btnColor.uiColor())
-        questionBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        showPass.tintColor = myColors.btnColor.uiColor()
-        ver_Lbl.textColor = myColors.btnColor.uiColor()
-    }
-    
-    @objc func keyboardWillShow(notification:NSNotification) {
-        adjustingHeight(show: true, notification: notification)
-    }
-    
-    @objc func keyboardWillHide(notification:NSNotification) {
-        adjustingHeight(show: false, notification: notification)
-    }
-    
-    func adjustingHeight(show:Bool, notification:NSNotification) {
-        var userInfo = notification.userInfo!
-        let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-        let changeInHeight = show ? 0 : 95
-        UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
-            self.heigt_image.constant = CGFloat(changeInHeight)
-        })
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //        UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
-        // Hide the navigation bar on the this view controller
-        UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
-        
-        self.navigationController?.isNavigationBarHidden = false;
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // РАБОТА С СЕРВЕРОМ
-    func getServerUrlBy(login loginText:String ,password txtPass:String) -> String {
-        #if isDJ
-        return Server.SERVER + Server.ENTER_DJ + "phone=" + loginText + "&pwd=" + txtPass
-        #else
-        if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass
-        } else if loginText == "test" {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass
-        } else {
-            return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
-        }
-        #endif
-        
-    }
-    
-    func getServerUrlByIdent(login loginText:String) -> String {
-        //        if loginText.isPhoneNumber , let _ = loginText.asPhoneNumberWithoutPlus  {
-        return Server.SERVER + Server.MOBILE_API_PATH + Server.GET_IDENTS_ACC + "phone=" + loginText
-        //        } else {
-        //            return "xxx"
-        //        }
-    }
-    
-    // Подтянем лиц. счета для указанного логина
-    func get_LS() {
-        StartIndicator()
-        // Авторизация пользователя
-        var strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        
-        let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        
-        let urlPath = self.getServerUrlByIdent(login: txtLogin)
-        if (urlPath == "xxx") {
-            self.choice_LS()
-        } else {
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        return
-                                                    }
-                                                    
-                                                    self.responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    
-                                                    if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
-                                                        self.data_ls = Services_ls_json(json: json!)?.data ?? []
-                                                    }
-                                                    
-                                                    self.choice_LS()
-                                                    
-            })
-            task.resume()
-        }
-    }
-    
-    func choice_LS() {
-        DispatchQueue.main.async(execute: {
-            var itsFirst: Bool = true
-            for item in self.data_ls {
-                if (itsFirst) {
-                    self.str_ls = item
-                    itsFirst = false
-                } else {
-                    self.str_ls = self.str_ls + "," + item
-                }
-            }
-            let defaults = UserDefaults.standard
-            defaults.set(self.str_ls, forKey: "str_ls")
-            defaults.synchronize()
-            
-            self.enter()
-        })
+        self.enter()
+
     }
     
     func enter() {
@@ -285,12 +70,7 @@ class FirstController: UIViewController {
         defaults.synchronize()
         
         // Авторизация пользователя
-        var strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        
-        let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let txtLogin: String = edLogin.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let txtPass: String = edPass.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         
         let urlPath = self.getServerUrlBy(login: txtLogin, password: txtPass)
@@ -328,6 +108,22 @@ class FirstController: UIViewController {
         task.resume()
     }
     
+    // РАБОТА С СЕРВЕРОМ
+    func getServerUrlBy(login loginText:String ,password txtPass:String) -> String {
+        #if isDJ
+        return Server.SERVER + Server.ENTER_DJ + "phone=" + loginText + "&pwd=" + txtPass
+        #else
+        if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
+            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass
+        } else if loginText == "test" {
+            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass
+        } else {
+            return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
+        }
+        #endif
+        
+    }
+    
     func choice() {
         if (responseString == "1") {
             DispatchQueue.main.async(execute: {
@@ -341,12 +137,7 @@ class FirstController: UIViewController {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. Номер телефона укажите в формате +7xxxxxxxxxx \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "ОK", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                }
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
@@ -376,7 +167,7 @@ class FirstController: UIViewController {
                         let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
                         let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                         let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                            self.performSegue(withIdentifier: "support", sender: self)
+                            self.performSegue(withIdentifier: "support_cons", sender: self)
                         }
                         alert.addAction(cancelAction)
                         alert.addAction(supportAction)
@@ -388,7 +179,7 @@ class FirstController: UIViewController {
                     let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                     let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                        self.performSegue(withIdentifier: "support", sender: self)
+                        self.performSegue(withIdentifier: "support_cons", sender: self)
                     }
                     alert.addAction(cancelAction)
                     alert.addAction(supportAction)
@@ -405,7 +196,7 @@ class FirstController: UIViewController {
                 let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                    self.performSegue(withIdentifier: "support", sender: self)
+                    self.performSegue(withIdentifier: "support_cons", sender: self)
                 }
                 alert.addAction(cancelAction)
                 alert.addAction(supportAction)
@@ -431,17 +222,14 @@ class FirstController: UIViewController {
                 db.getDataByEnter(login: self.edLogin.text!, pass: self.edPass.text!)
                 self.getTypesApps()
                 self.isCons = answer[5]
+                self.startApp()
+                
             })
         }
     }
-    var isCons = ""
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if UserDefaults.standard.bool(forKey: "successParse") && !one{
-            one = true
-            self.startApp()
-        }
-    }
-    var one = false
+    
+    var isCons: String = ""
+    
     func startApp(){
         DispatchQueue.main.async {
             if !UserDefaults.standard.bool(forKey: "error"){
@@ -451,13 +239,12 @@ class FirstController: UIViewController {
                 //                DispatchQueue.main.async {
                 self.StopIndicator()
                 //                }
-                self.one = false
                 if (self.isCons == "0") {
                     //                    UserDefaults.standard.set(true, forKey: "NewMain")
                     //                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)
                     self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
-                    self.performSegue(withIdentifier: "MainMenuCons", sender: self)
+                    self.performSegue(withIdentifier: "MainMenuCons_", sender: self)
                 }
             }else{
                 //                DispatchQueue.main.async {
@@ -465,11 +252,10 @@ class FirstController: UIViewController {
                 //                }
                 UserDefaults.standard.set("Ошибка сохранения данных", forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
-                self.one = false
                 let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + "Ошибка сохранения данных" + ">", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                    self.performSegue(withIdentifier: "support", sender: self)
+                    self.performSegue(withIdentifier: "support_cons", sender: self)
                 }
                 alert.addAction(cancelAction)
                 alert.addAction(supportAction)
@@ -479,11 +265,54 @@ class FirstController: UIViewController {
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        StopIndicator()
+        loadUsersDefaults()
+        let version = targetSettings().getVersion()
+        ver_Lbl.text = "ver. " + version
+
+        hideKeyboard_byTap()
+        
+        // Кнопка - Вход для сотрудников
+        btnUserEnter.layer.cornerRadius = 3
+        btnUserEnter.layer.borderWidth = 1.0
+        btnUserEnter.layer.borderColor = myColors.btnColor.uiColor().cgColor
+        btnUserEnter.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        btnUserEnter.clipsToBounds = true
+        
+        // Установим цвета для элементов в зависимости от Таргета
+        btnEnter.backgroundColor = myColors.btnColor.uiColor()
+        separator1.backgroundColor = myColors.labelColor.uiColor()
+        separator2.backgroundColor = myColors.labelColor.uiColor()
+        indicator.color = myColors.indicatorColor.uiColor()
+        
+        // Картинки для разных Таргетов
+        new_face.image = myImages.person_image
+        new_face.setImageColor(color: myColors.btnColor.uiColor())
+        new_zamoc.image = myImages.lock_image
+        new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
+        showPass.tintColor = myColors.btnColor.uiColor()
+        ver_Lbl.textColor = myColors.btnColor.uiColor()
+        questionImg.setImageColor(color: myColors.btnColor.uiColor())
+        questionBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false;
+    }
+    
     // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
     func StartIndicator(){
         self.btnEnter.isHidden = true
-        self.btnForgot.isHidden = true
-        self.btnReg.isHidden = true
         
         self.indicator.startAnimating()
         self.indicator.isHidden = false
@@ -491,45 +320,24 @@ class FirstController: UIViewController {
     
     func StopIndicator(){
         self.btnEnter.isHidden = false
-        self.btnForgot.isHidden = false
-        self.btnReg.isHidden = false
         
         self.indicator.stopAnimating()
         self.indicator.isHidden = true
     }
     
-    // UsersDefaults
     func saveUsersDefaults() {
         let defaults = UserDefaults.standard
-        
-        var strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        
-        defaults.setValue(strLogin, forKey: "login")
-        defaults.setValue(strLogin, forKey: "phone")
-        defaults.setValue(edPass.text!, forKey: "pass")
-        defaults.setValue(false, forKey: "windowCons")
+        defaults.setValue(edLogin.text!, forKey: "login_cons")
+        defaults.setValue(edPass.text!, forKey: "pass_cons")
+        defaults.setValue(true, forKey: "windowCons")
         defaults.synchronize()
     }
     
     func loadUsersDefaults() {
         let defaults = UserDefaults.standard
-        let login = defaults.string(forKey: "login")
-        let pass = defaults.string(forKey: "pass")
-        if (login == "" || login == nil) && firstEnter == false{
-            let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in }
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
-        }
-        if (login == "") {
-            edLogin.text = "+7"
-        } else {
-            edLogin.text = login
-            
-        }
+        let login = defaults.string(forKey: "login_cons")
+        let pass = defaults.string(forKey: "pass_cons")
+        edLogin.text = login
         edPass.text = pass
     }
     
@@ -548,14 +356,6 @@ class FirstController: UIViewController {
         defaults.setValue(phone_operator, forKey: "phone_operator")
         defaults.setValue(encoding_Pays, forKey: "encoding_Pays")
         defaults.synchronize()
-    }
-    
-    // ВСЕ ОСТАЛЬНОЕ
-    struct Services_ls_json: JSONDecodable {
-        let data: [String]?
-        init?(json: JSON) {
-            data = "data" <~~ json
-        }
     }
     
     // Получить типы заявок
@@ -587,4 +387,3 @@ class FirstController: UIViewController {
     }
     
 }
-

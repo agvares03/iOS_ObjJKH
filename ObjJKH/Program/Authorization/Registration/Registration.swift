@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import AKMaskField
 
 class Registration: UIViewController {
     
     @IBOutlet weak var authBtn: UIButton!
     @IBOutlet weak var authLbl: UILabel!
-    @IBOutlet weak var edPhone: UITextField!
+    @IBOutlet weak var edPhone: AKMaskField!
     @IBOutlet weak var edFIO: UITextField!
     @IBOutlet weak var btnReg: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
@@ -95,6 +96,9 @@ class Registration: UIViewController {
         super.viewDidLoad()
         
         hideKeyboard_byTap()
+        
+        // Маска для ввода - телефон
+        edPhone.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
         
         StopIndicator()
         edPhone.text = "+7"

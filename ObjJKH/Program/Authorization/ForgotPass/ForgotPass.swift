@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import AKMaskField
 
 class ForgotPass: UIViewController, UITextFieldDelegate {
     
     var letter: String = ""
     var responseString:NSString = ""
 
-    @IBOutlet weak var FogLogin: UITextField!
+    @IBOutlet weak var FogLogin: AKMaskField!
     @IBOutlet weak var btnForgot: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -110,6 +111,10 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         FogLogin.delegate = self
+        
+        // Маска для ввода - телефон
+        FogLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+        
         hideKeyboard_byTap()
         StopIndicator()
         

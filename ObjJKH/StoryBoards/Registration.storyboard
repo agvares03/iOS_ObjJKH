@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fOI-yF-tHF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fOI-yF-tHF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,14 +28,14 @@
                                             <constraint firstAttribute="width" constant="16" id="bOK-iL-9f7"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Телефон" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfs-M4-5Jo">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Телефон" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfs-M4-5Jo" customClass="AKMaskField" customModule="AKMaskField">
                                         <rect key="frame" x="48" y="10" width="281" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="GXp-UE-BgL"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nR-Gi-Rq2" userLabel="separateView">
                                         <rect key="frame" x="16" y="44" width="335" height="2"/>
@@ -591,6 +591,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fOI-yF-tHF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6fs-ll-5hz">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -604,14 +605,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="58.285713195800781" height="58.285713195800781"/>
-        <image name="eye" width="37.5" height="37.5"/>
-        <image name="lock" width="28.799999237060547" height="28.799999237060547"/>
-        <image name="person" width="28.799999237060547" height="28.799999237060547"/>
-        <image name="phone" width="28.799999237060547" height="28.799999237060547"/>
+        <image name="back" width="17" height="17"/>
+        <image name="eye" width="25" height="25"/>
+        <image name="lock" width="60" height="60"/>
+        <image name="person" width="60" height="60"/>
+        <image name="phone" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WB9-fi-g7m"/>
-        <segue reference="MfD-33-Bqq"/>
+        <segue reference="8NC-1r-Q06"/>
+        <segue reference="BRR-sj-Z8H"/>
     </inferredMetricsTieBreakers>
 </document>

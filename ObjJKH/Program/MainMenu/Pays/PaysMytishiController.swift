@@ -110,23 +110,23 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
                     UserDefaults.standard.set(str, forKey: "mail")
                     self.payedM()
-//                    let alert = UIAlertController(title: nil, message: "Выберите способ оплаты", preferredStyle: .actionSheet)
-//                    let cardImage = UIImage(named: "cardIcon")
-//                    let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
-//                        self.payType = 0
-//                        self.payedM()
-//                    })
-//                    actionCard.setValue(cardImage, forKey: "image")
-//                    let appleImage = UIImage(named: "applePayIcon")
-//                    let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
-//                        self.payType = 1
-//                        self.payedM()
-//                    })
-//                    actionApple.setValue(appleImage, forKey: "image")
-//                    alert.addAction(actionCard)
-//                    alert.addAction(actionApple)
-//                    alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
-//                    self.present(alert, animated: true, completion: nil)
+                    //                    let alert = UIAlertController(title: nil, message: "Выберите способ оплаты", preferredStyle: .actionSheet)
+                    //                    let cardImage = UIImage(named: "cardIcon")
+                    //                    let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
+                    //                        self.payType = 0
+                    //                        self.payedM()
+                    //                    })
+                    //                    actionCard.setValue(cardImage, forKey: "image")
+                    //                    let appleImage = UIImage(named: "applePayIcon")
+                    //                    let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
+                    //                        self.payType = 1
+                    //                        self.payedM()
+                    //                    })
+                    //                    actionApple.setValue(appleImage, forKey: "image")
+                    //                    alert.addAction(actionCard)
+                    //                    alert.addAction(actionApple)
+                    //                    alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
+                    //                    self.present(alert, animated: true, completion: nil)
                 }else{
                     textField.text = ""
                     textField.placeholder = "e-mail..."
@@ -137,28 +137,28 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     return
                 }
             }
-//
+            //
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
             self.payedM()
-//            let alert = UIAlertController(title: nil, message: "Выберите привязанный лицевой счет", preferredStyle: .actionSheet)
-//            let cardImage = UIImage(named: "cardIcon")
-//            let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
-//                self.payType = 0
-//                self.payedM()
-//            })
-//            actionCard.setValue(cardImage, forKey: "image")
-//            let appleImage = UIImage(named: "applePayIcon")
-//            let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
-//                self.payType = 1
-//                self.payedM()
-//            })
-//            actionApple.setValue(appleImage, forKey: "image")
-//            alert.addAction(actionCard)
-//            alert.addAction(actionApple)
-//            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
-//            present(alert, animated: true, completion: nil)
+            //            let alert = UIAlertController(title: nil, message: "Выберите привязанный лицевой счет", preferredStyle: .actionSheet)
+            //            let cardImage = UIImage(named: "cardIcon")
+            //            let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
+            //                self.payType = 0
+            //                self.payedM()
+            //            })
+            //            actionCard.setValue(cardImage, forKey: "image")
+            //            let appleImage = UIImage(named: "applePayIcon")
+            //            let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
+            //                self.payType = 1
+            //                self.payedM()
+            //            })
+            //            actionApple.setValue(appleImage, forKey: "image")
+            //            alert.addAction(actionCard)
+            //            alert.addAction(actionApple)
+            //            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
+            //            present(alert, animated: true, completion: nil)
         }
     }
     var payType = 0
@@ -370,7 +370,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         
         if saldoIdent == "Все"{
             getData(ident: saldoIdent)
-//            end_osv()
+            //            end_osv()
         }else{
             ls_button.setTitle(saldoIdent, for: UIControlState.normal)
             selectLS = saldoIdent
@@ -454,13 +454,15 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         idArr.removeAll()
         identOSV.removeAll()
         idOSV.removeAll()
+        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         do {
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {
                 let object = result as! NSManagedObject
-//                if ident != "Все"{
+                //                if ident != "Все"{
+                if UserDefaults.standard.string(forKey: "encoding_Pays") == "1"{
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "usluga") as! String) != "Я"{
                             sumOSV.append(Double(object.value(forKey: "end") as! String)!)
@@ -477,27 +479,51 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                             }
                         }
                     }
-                    DispatchQueue.main.async(execute: {
-                        if (self.sum != 0) {
-                            //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-                            #if isKlimovsk12
-                            let serviceP = self.sum / 100 * 1.5
-                            #else
-                            let serviceP = self.sum / 0.992 - self.sum
-                            #endif
-                            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
-                            self.totalSum = self.sum + serviceP
-                            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
-                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                            
-                        } else {
-                            //                    self.txt_sum_jkh.text = "0,00 р."
-                            self.txt_sum_obj.text = "0,00"
-                            self.txt_sum_jkh.text = "0,00 руб."
-                            self.servicePay.text  = "0,00 руб."
+                }else{
+                    if (object.value(forKey: "ident") as! String) == ident{
+                        if (object.value(forKey: "usluga") as! String) != "Я"{
+                            if (object.value(forKey: "usluga") as! String) != "Я"{
+                                self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                            }
+                            if sumOSV.count == 0{
+                                sumOSV.append(self.sum)
+                                checkBox.append(true)
+                                osvc.append("Услуги ЖКУ")
+                                idOSV.append(Int(object.value(forKey: "id") as! Int64))
+                                
+                                uslugaArr.append("Услуги ЖКУ")
+                                endArr.append(String(self.sum))
+                                idArr.append(Int(object.value(forKey: "id") as! Int64))
+                                identOSV.append(object.value(forKey: "ident") as! String)
+                            }else{
+                                sumOSV[0] = self.sum
+                                endArr[0] = String(self.sum)
+                            }
                         }
-                    })
-//                }
+                    }
+                }
+                
+                DispatchQueue.main.async(execute: {
+                    if (self.sum != 0) {
+                        //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
+                        #if isKlimovsk12
+                        let serviceP = self.sum / 100 * 1.5
+                        #else
+                        let serviceP = self.sum / 0.992 - self.sum
+                        #endif
+                        self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+                        self.totalSum = self.sum + serviceP
+                        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                        
+                    } else {
+                        //                    self.txt_sum_jkh.text = "0,00 р."
+                        self.txt_sum_obj.text = "0,00"
+                        self.txt_sum_jkh.text = "0,00 руб."
+                        self.servicePay.text  = "0,00 руб."
+                    }
+                })
+                //                }
             }
             DispatchQueue.main.async(execute: {
                 self.updateTable()
@@ -580,23 +606,23 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var kol = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if choiceIdent == ""{
-//            if let sections = fetchedResultsController?.sections {
-//                let str_ls = UserDefaults.standard.string(forKey: "str_ls")
-//                let str_ls_arr = str_ls?.components(separatedBy: ",")
-//                kol = sections[section].numberOfObjects - 1 - (str_ls_arr?.count)!
-//                return sections[section].numberOfObjects - 1 - (str_ls_arr?.count)!
-//            } else {
-//                return 0
-//            }
-//        }else{
-            if uslugaArr.count != 0 {
-                kol = uslugaArr.count
-                return uslugaArr.count
-            } else {
-                return 0
-            }
-//        }
+        //        if choiceIdent == ""{
+        //            if let sections = fetchedResultsController?.sections {
+        //                let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+        //                let str_ls_arr = str_ls?.components(separatedBy: ",")
+        //                kol = sections[section].numberOfObjects - 1 - (str_ls_arr?.count)!
+        //                return sections[section].numberOfObjects - 1 - (str_ls_arr?.count)!
+        //            } else {
+        //                return 0
+        //            }
+        //        }else{
+        if uslugaArr.count != 0 {
+            kol = uslugaArr.count
+            return uslugaArr.count
+        } else {
+            return 0
+        }
+        //        }
     }
     var update = false
     var select = false
@@ -617,24 +643,24 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         cell.check.tintColor = myColors.btnColor.uiColor()
         cell.check.backgroundColor = .white
-//        if sumOSV.count != kol && selectedRow == -1{
-//            if choiceIdent == ""{
-//                let osv = fetchedResultsController!.object(at: indexPath)
-//                let sum:String = osv.end!
-//                osvc.append(osv.usluga!)
-//                checkBox.append(true)
-//                sumOSV.append(Double(sum)!)
-//                idOSV.append(Int(osv.id))
-//                identOSV.append(osv.ident!)
-//            }else{
-//                let sum:String = endArr[indexPath.row]
-//                osvc.append(uslugaArr[indexPath.row])
-//                checkBox.append(true)
-//                sumOSV.append(Double(sum)!)
-//                idOSV.append(Int(idArr[indexPath.row]))
-//            }
-//            
-//        }
+        //        if sumOSV.count != kol && selectedRow == -1{
+        //            if choiceIdent == ""{
+        //                let osv = fetchedResultsController!.object(at: indexPath)
+        //                let sum:String = osv.end!
+        //                osvc.append(osv.usluga!)
+        //                checkBox.append(true)
+        //                sumOSV.append(Double(sum)!)
+        //                idOSV.append(Int(osv.id))
+        //                identOSV.append(osv.ident!)
+        //            }else{
+        //                let sum:String = endArr[indexPath.row]
+        //                osvc.append(uslugaArr[indexPath.row])
+        //                checkBox.append(true)
+        //                sumOSV.append(Double(sum)!)
+        //                idOSV.append(Int(idArr[indexPath.row]))
+        //            }
+        //
+        //        }
         var sub: String = ""
         if choiceIdent == ""{
             let osv = fetchedResultsController!.object(at: indexPath)
@@ -766,9 +792,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         if str != "" && str != "-"{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]
-//                if choiceIdent == "Все"{
-//                    code = code + identOSV[i]
-//                }
+                //                if choiceIdent == "Все"{
+                //                    code = code + identOSV[i]
+                //                }
                 if (textField.accessibilityIdentifier == code){
                     sumOSV[i] = Double(str)!
                 }
@@ -793,9 +819,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }else{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]
-//                if choiceIdent == "Все"{
-//                    code = code + identOSV[i]
-//                }
+                //                if choiceIdent == "Все"{
+                //                    code = code + identOSV[i]
+                //                }
                 if textField.accessibilityIdentifier == code{
                     sumOSV[i] = 0.00
                 }
@@ -821,7 +847,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {
-        let viewHeight = view.frame.size.height        
+        let viewHeight = view.frame.size.height
         if viewHeight == 667{
             viewTop.constant = getPoint() - 210 + 40
         }else if viewHeight == 736{
@@ -857,7 +883,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        k = 0
+        //        k = 0
         UserDefaults.standard.addObserver(self, forKeyPath: "PaysError", options:NSKeyValueObservingOptions.new, context: nil)
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentID", options:NSKeyValueObservingOptions.new, context: nil)
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
