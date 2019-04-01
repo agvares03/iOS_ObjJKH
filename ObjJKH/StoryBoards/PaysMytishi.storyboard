@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eq-yJ-VH4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eq-yJ-VH4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26245.56" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJc-GV-vIk">
-                                                    <rect key="frame" x="226" y="22" width="65" height="16"/>
+                                                    <rect key="frame" x="281" y="22" width="65" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="Cj4-jq-J4h"/>
                                                     </constraints>
@@ -38,7 +38,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuS-JS-1UH">
-                                                    <rect key="frame" x="50" y="22" width="166" height="16"/>
+                                                    <rect key="frame" x="50" y="22" width="221" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F9J-G7-QTY">
-                                                    <rect key="frame" x="248.5" y="10" width="48.5" height="30"/>
+                                                    <rect key="frame" x="303.5" y="10" width="48.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardType="decimalPad"/>
@@ -381,7 +381,7 @@
         <!--supportView-->
         <scene sceneID="ntO-cc-CdO">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="supportView" id="1Wa-Am-5fg" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Support" referencedIdentifier="supportView" id="1Wa-Am-5fg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e11-N0-Ist" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1944" y="352"/>
@@ -415,7 +415,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сентябрь 2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbA-0u-WGt">
-                                                    <rect key="frame" x="110" y="16" width="100" height="16"/>
+                                                    <rect key="frame" x="137.5" y="16" width="100" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="ulo-qo-W1P"/>
                                                     </constraints>
@@ -424,7 +424,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10572,14" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9p-Em-a8w">
-                                                    <rect key="frame" x="221" y="16" width="74" height="16"/>
+                                                    <rect key="frame" x="276" y="16" width="74" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="zMS-Fu-tkf"/>
                                                     </constraints>
@@ -727,7 +727,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оплачено" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIU-6e-aSL">
-                                                    <rect key="frame" x="110" y="16" width="100" height="16"/>
+                                                    <rect key="frame" x="137.5" y="16" width="100" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="NiW-K3-u1D"/>
                                                     </constraints>
@@ -736,7 +736,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10572,14" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4G-8d-bP3">
-                                                    <rect key="frame" x="221" y="16" width="74" height="16"/>
+                                                    <rect key="frame" x="276" y="16" width="74" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="9Gf-PR-rul"/>
                                                     </constraints>
@@ -909,10 +909,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="58.285713195800781" height="58.285713195800781"/>
-        <image name="nonConect" width="180" height="180"/>
+        <image name="back" width="17" height="17"/>
+        <image name="nonConect" width="100" height="100"/>
         <image name="poll_Mup" width="60" height="60"/>
         <image name="spin.png" width="840" height="840"/>
-        <image name="unCheck" width="45" height="45"/>
+        <image name="unCheck" width="60" height="60"/>
     </resources>
 </document>

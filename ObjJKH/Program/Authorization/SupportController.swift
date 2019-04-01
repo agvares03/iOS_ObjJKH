@@ -20,12 +20,12 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var heightTextView: NSLayoutConstraint!
     @IBOutlet weak var btnCancel: UIButton!
     @IBAction func btnCancelGo(_ sender: UIButton) {
-        if UserDefaults.standard.bool(forKey: "firstConst"){
-            self.performSegue(withIdentifier: "backFirstConst", sender: self)
-        }else{
-            self.performSegue(withIdentifier: "backFirst", sender: self)
-        }
-//        navigationController?.popViewController(animated: true)
+//        if UserDefaults.standard.bool(forKey: "firstConst"){
+//            self.performSegue(withIdentifier: "backFirstConst", sender: self)
+//        }else{
+//            self.performSegue(withIdentifier: "backFirst", sender: self)
+//        }
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func updateConect(_ sender: UIButton) {
@@ -40,11 +40,6 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var separator3: UIView!
     
     @IBOutlet weak var sendBtn: UIButton!
-    @IBOutlet weak var backBtn: UIBarButtonItem!
-    
-    @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
-    }
     
     @IBAction func sendClick(_ sender: UIButton) {
         let login: String = phoneTxt.text!
@@ -183,7 +178,6 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         separator2.backgroundColor = myColors.labelColor.uiColor()
         separator3.backgroundColor = myColors.labelColor.uiColor()
         ver_Lbl.textColor = myColors.labelColor.uiColor()
-        backBtn.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         btnCancel.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
@@ -258,7 +252,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         super.viewWillAppear(animated)
         
         // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -307,9 +301,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserDefaults.standard.bool(forKey: "NewMain"){
-            self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        }
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     /*
      // MARK: - Navigation
