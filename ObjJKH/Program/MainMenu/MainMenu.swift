@@ -28,6 +28,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var debtTable: UITableView!
     @IBOutlet weak var debtHeight: NSLayoutConstraint!
     @IBOutlet weak var debtLblHeight: NSLayoutConstraint!
+    @IBOutlet weak var backgroundHeight: NSLayoutConstraint!
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var ls1: UILabel!
@@ -279,7 +280,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let defaults = UserDefaults.standard
         // Телефон диспетчера
         phone = defaults.string(forKey: "phone_operator")
-        
+        self.backgroundHeight.constant = self.view.frame.size.height
         // Приветствие
         labelTime.text = "Здравствуйте,"
         labelName.text = defaults.string(forKey: "name")
@@ -365,7 +366,6 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         request_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         question_indicator.backgroundColor = myColors.indicatorColor.uiColor()
         news_indicator.backgroundColor = myColors.indicatorColor.uiColor()
-        
         getDebt()
         
         // Настройки для меню
@@ -592,6 +592,9 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         var sumObj = 0.00
+        var u = 0
+        let viewHeight = self.heigth_view.constant
+        let backHeight = self.backgroundHeight.constant
         if (str_ls_arr?.count)! > 0{
             str_ls_arr?.forEach{
                 let ls = $0
@@ -608,6 +611,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                             return
                                                         } else {
                                                             do {
+                                                                u += 1
                                                                 let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                                 if !responseStr.contains("error"){
                                                                     var date        = ""
@@ -617,7 +621,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                                     //                                                                var sumFineOver = ""
                                                                     var sumAll      = ""
                                                                     var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                                    //                                                                    print(json)
+//                                                                                                                                        print(json)
                                                                     
                                                                     if let json_bills = json["data"] {
                                                                         let int_end = (json_bills.count)!-1
@@ -634,44 +638,60 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                                             }
                                                                             sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
                                                                             date = json_bills["Date"] as! String
-                                                                            let d = date.components(separatedBy: ".")
-                                                                            let d1 = self.dateOld.components(separatedBy: ".")
-                                                                            if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
-                                                                                DispatchQueue.main.async {
-                                                                                    self.debtLbl.text = "Задолженность на " + date + " г."
-                                                                                    self.debtLbl.textColor = .red
-                                                                                    self.dateOld = date
-                                                                                }
-                                                                            }
                                                                             
                                                                             defaults.set(date, forKey: "dateDebt")
                                                                             if Double(sumAll) != 0.00{
+                                                                                let d = date.components(separatedBy: ".")
+                                                                                let d1 = self.dateOld.components(separatedBy: ".")
+                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                                                                                    DispatchQueue.main.async {
+                                                                                        self.debtLbl.text = "Задолженность на " + date + " г."
+                                                                                        self.debtLbl.textColor = .red
+                                                                                        self.dateOld = date
+                                                                                    }
+                                                                                }
                                                                                 sumObj = sumObj + Double(sumAll)!
                                                                             }
                                                                         }
                                                                     }
                                                                     defaults.set(sumObj, forKey: "sumDebt")
                                                                     defaults.synchronize()
+                                                                    
+                                                                    let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
+                                                                    if (str_menu_6 != "") {
+                                                                        var answer = str_menu_6.components(separatedBy: ";")
+                                                                        if (answer[2] == "0") {
+                                                                        }else{
+                                                                            DispatchQueue.main.async {
+                                                                                let tht: String = self.debtLbl.text!
+                                                                                print(tht)
+                                                                                
+                                                                                if self.debtSum.count == 0 && tht.contains("отсутствует") == false{
+                                                                                    self.debtLbl.text = self.debtLbl.text! + " отсутствует"
+                                                                                    self.debtLbl.textColor = .green
+                                                                                    self.debtHeight.constant = 3
+                                                                                    self.menu_6_heigth.constant = 63
+                                                                                    self.heigth_view.constant = viewHeight - 60
+                                                                                    if self.view.frame.size.width <= 320{
+                                                                                        self.debtLblHeight.constant = 36
+                                                                                        self.menu_6_heigth.constant = 80
+                                                                                        self.heigth_view.constant = viewHeight - 40
+                                                                                    }
+                                                                                    if (self.heigth_view.constant + 115) > self.view.frame.size.height{
+                                                                                        self.backgroundHeight.constant = backHeight + ((self.heigth_view.constant + 115) - self.view.frame.size.height) + 40
+                                                                                    }
+                                                                                    u += 1
+                                                                                }
+                                                                                self.debtTable.reloadData()
+                                                                            }
+                                                                        }
+                                                                    }
                                                                 }
                                                                 
                                                             } catch let error as NSError {
                                                                 print(error)
                                                             }
                                                             
-                                                        }
-                                                        let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
-                                                        if (str_menu_6 != "") {
-                                                            var answer = str_menu_6.components(separatedBy: ";")
-                                                            if (answer[2] == "0") {
-                                                            }else{
-                                                                DispatchQueue.main.async {
-                                                                    if self.debtSum.count == 0{
-                                                                        self.menu_6_heigth.constant = 63
-                                                                        self.heigth_view.constant = self.heigth_view.constant - 30
-                                                                    }
-                                                                    self.debtTable.reloadData()
-                                                                }
-                                                            }
                                                         }
                 })
                 task.resume()
@@ -1152,11 +1172,14 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 if debtSum.count != 0 {
                     debtHeight.constant = CGFloat(debtSum.count * 30)
                     heigth_view.constant = heigth_view.constant + CGFloat((debtSum.count - 1) * 30)
+                    if (self.heigth_view.constant + 115) > self.view.frame.size.height{
+                        self.backgroundHeight.constant = self.backgroundHeight.constant + ((self.heigth_view.constant + 115) - self.view.frame.size.height) + 20
+                    }
                     menu_6_heigth.constant   = 60 + CGFloat(debtSum.count * 30)
                     return debtSum.count
                 } else {
-                    self.debtLbl.text = self.debtLbl.text! + " отсутствует"
-                    self.debtLbl.textColor = .green
+//                    self.debtLbl.text = self.debtLbl.text! + " отсутствует"
+//                    self.debtLbl.textColor = .green
                     debtHeight.constant = 3
                     return 0
                 }
