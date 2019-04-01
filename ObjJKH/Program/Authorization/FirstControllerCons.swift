@@ -189,7 +189,7 @@ class FirstControllerCons: UIViewController {
                 #endif
             })
         }else if (responseString.contains("error")){
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async(execute: {UserDefaults.standard.set(true, forKey: "firstConst")
                 self.StopIndicator()
                 UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
@@ -307,6 +307,8 @@ class FirstControllerCons: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UserDefaults.standard.set(true, forKey: "firstConst")
+        UserDefaults.standard.synchronize()
         self.navigationController?.isNavigationBarHidden = false;
     }
     

@@ -105,9 +105,9 @@ class FirstController: UIViewController {
         btnConsEnter.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         btnConsEnter.clipsToBounds = true
         // Если используется вход для консультантов - покажем кнопку
-        if !defaults.bool(forKey: "useDispatcherAuth") {
-            btnConsEnter.isHidden = true
-        }
+//        if !defaults.bool(forKey: "useDispatcherAuth") {
+//            btnConsEnter.isHidden = true
+//        }
         
         hideKeyboard_byTap()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -183,6 +183,8 @@ class FirstController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UserDefaults.standard.set(false, forKey: "firstConst")
+        UserDefaults.standard.synchronize()
         UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
         
         self.navigationController?.isNavigationBarHidden = false;

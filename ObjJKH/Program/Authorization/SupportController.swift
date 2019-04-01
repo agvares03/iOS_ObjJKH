@@ -20,7 +20,12 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var heightTextView: NSLayoutConstraint!
     @IBOutlet weak var btnCancel: UIButton!
     @IBAction func btnCancelGo(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        if UserDefaults.standard.bool(forKey: "firstConst"){
+            self.performSegue(withIdentifier: "backFirstConst", sender: self)
+        }else{
+            self.performSegue(withIdentifier: "backFirst", sender: self)
+        }
+//        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func updateConect(_ sender: UIButton) {
