@@ -183,7 +183,7 @@ class FirstController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UserDefaults.standard.set(false, forKey: "firstConst")
+        UserDefaults.standard.set(false, forKey: "firstPerson")
         UserDefaults.standard.synchronize()
         UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
         

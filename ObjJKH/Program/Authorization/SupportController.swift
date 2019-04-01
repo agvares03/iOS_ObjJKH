@@ -20,12 +20,11 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var heightTextView: NSLayoutConstraint!
     @IBOutlet weak var btnCancel: UIButton!
     @IBAction func btnCancelGo(_ sender: UIButton) {
-//        if UserDefaults.standard.bool(forKey: "firstConst"){
-//            self.performSegue(withIdentifier: "backFirstConst", sender: self)
-//        }else{
-//            self.performSegue(withIdentifier: "backFirst", sender: self)
-//        }
-        navigationController?.popViewController(animated: true)
+        if UserDefaults.standard.bool(forKey: "fromMenu"){
+            navigationController?.popViewController(animated: true)
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func updateConect(_ sender: UIButton) {
@@ -250,9 +249,13 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Hide the navigation bar on the this view controller
-//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false;
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -301,7 +304,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     /*
      // MARK: - Navigation
