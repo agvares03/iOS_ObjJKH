@@ -1069,7 +1069,13 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         question_read = 0
         let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + phone)!)
+        
+        var strLogin = phone.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + strLogin)!)
         request.httpMethod = "GET"
         print(request)
         URLSession.shared.dataTask(with: request) {
@@ -1103,7 +1109,13 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func getNews(){
         news_read = 0
         let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
+        
+        var strLogin = phone.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + strLogin)!)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) {

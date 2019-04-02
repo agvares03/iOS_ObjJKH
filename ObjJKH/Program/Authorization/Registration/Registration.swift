@@ -157,11 +157,17 @@ class Registration: UIViewController {
     }
     
     func getServerUrlBy(phone PhoneText:String, fio txtFIO:String) -> String {
-        if PhoneText.isPhoneNumber , let phone = PhoneText.asPhoneNumberWithoutPlus  {
-            return Server.SERVER + Server.MOBILE_API_PATH + Server.REGISTRATION_NEW + "phone=" + phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&fio=" + txtFIO.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        } else {
-            return "xxx"
-        }
+//        if PhoneText.isPhoneNumber , let phone = PhoneText.asPhoneNumberWithoutPlus  {
+        
+        var strLogin = edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        
+        return Server.SERVER + Server.MOBILE_API_PATH + Server.REGISTRATION_NEW + "phone=" + strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&fio=" + txtFIO.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+//        } else {
+//            return "xxx"
+//        }
     }
     
     func get_registration() {
