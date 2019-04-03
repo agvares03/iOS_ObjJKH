@@ -314,7 +314,6 @@
 		1CF8B95D2223D96C00B1D289 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
 		1CF8B95F2223DA2600B1D289 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B95E2223DA2600B1D289 /* GoogleService-Info.plist */; };
 		1CF8B9612223DE2000B1D289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
-		1CF8B9622223DF6900B1D289 /* Logo_UK_Garant_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */; };
 		1CF8B9632223DF6B00B1D289 /* Logo_UK_Garant.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */; };
 		1CF8FD7621FB1A2A0058D852 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
 		1CF8FD7721FB1A490058D852 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
@@ -340,6 +339,141 @@
 		1CF8FD8B21FB1AD30058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		1CF8FD8C21FB1AD30058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		1CF8FD8D21FB1AD40058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
+		302EF5FC225443AF0080B482 /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
+		302EF5FD225443AF0080B482 /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		302EF5FE225443AF0080B482 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		302EF5FF225443AF0080B482 /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		302EF600225443AF0080B482 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		302EF601225443AF0080B482 /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		302EF602225443AF0080B482 /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
+		302EF603225443AF0080B482 /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		302EF604225443AF0080B482 /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		302EF605225443AF0080B482 /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		302EF606225443AF0080B482 /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		302EF607225443AF0080B482 /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		302EF608225443AF0080B482 /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		302EF609225443AF0080B482 /* ShemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F017214765B500FE0473 /* ShemeColor.swift */; };
+		302EF60A225443AF0080B482 /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02F213634CC004DB75C /* Counters+CoreDataProperties.swift */; };
+		302EF60B225443AF0080B482 /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		302EF60C225443AF0080B482 /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		302EF60D225443AF0080B482 /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		302EF60E225443AF0080B482 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		302EF60F225443AF0080B482 /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		302EF610225443B00080B482 /* EditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5153D021EF04A600DE36D9 /* EditAccountController.swift */; };
+		302EF611225443B00080B482 /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		302EF612225443B00080B482 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 411AD1C82161E17E004FD1B5 /* empty.cpp */; };
+		302EF613225443B00080B482 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		302EF614225443B00080B482 /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F00F2147605E00FE0473 /* ImageConstant.swift */; };
+		302EF615225443B00080B482 /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		302EF616225443B00080B482 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		302EF617225443B00080B482 /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		302EF618225443B00080B482 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
+		302EF619225443B00080B482 /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */; };
+		302EF61A225443B00080B482 /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		302EF61B225443B00080B482 /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		302EF61C225443B00080B482 /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		302EF61D225443B00080B482 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
+		302EF61E225443B00080B482 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
+		302EF61F225443B00080B482 /* FirstControllerCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */; };
+		302EF620225443B00080B482 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		302EF621225443B00080B482 /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		302EF622225443B00080B482 /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		302EF623225443B00080B482 /* NewHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC3FF32223A3E2500FDBA82 /* NewHomePage.swift */; };
+		302EF624225443B00080B482 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		302EF625225443B00080B482 /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		302EF626225443B00080B482 /* NewMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A1E132243548B0040E7F7 /* NewMainMenu.swift */; };
+		302EF627225443B00080B482 /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC821708CB600857D4D /* Applications+CoreDataProperties.swift */; };
+		302EF628225443B00080B482 /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		302EF629225443B00080B482 /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		302EF62A225443B00080B482 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		302EF62B225443B00080B482 /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		302EF62C225443B00080B482 /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		302EF62D225443B00080B482 /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		302EF62E225443B00080B482 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
+		302EF62F225443B00080B482 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		302EF630225443B00080B482 /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		302EF631225443B00080B482 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		302EF632225443B00080B482 /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02E213634CC004DB75C /* Counters+CoreDataClass.swift */; };
+		302EF633225443B00080B482 /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		302EF634225443B00080B482 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		302EF635225443B00080B482 /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC721708CB600857D4D /* Applications+CoreDataClass.swift */; };
+		302EF636225443B00080B482 /* MupCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE012226B31600C51656 /* MupCounterController.swift */; };
+		302EF637225443B00080B482 /* ColorsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F0092147604400FE0473 /* ColorsConstant.swift */; };
+		302EF638225443B00080B482 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		302EF639225443B00080B482 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		302EF63A225443B00080B482 /* UniqCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE0A222799F600C51656 /* UniqCountersController.swift */; };
+		302EF63B225443B00080B482 /* MainMenuCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC455213FCA99002CEB62 /* MainMenuCons.swift */; };
+		302EF63C225443B00080B482 /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		302EF63D225443B00080B482 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		302EF63E225443B00080B482 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		302EF63F225443B00080B482 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		302EF640225443B00080B482 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		302EF641225443B00080B482 /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		302EF642225443B00080B482 /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
+		302EF643225443B00080B482 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		302EF644225443B00080B482 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		302EF645225443B00080B482 /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		302EF646225443B00080B482 /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		302EF647225443B00080B482 /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		302EF648225443B00080B482 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		302EF649225443B00080B482 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		302EF64A225443B00080B482 /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */; };
+		302EF64B225443B00080B482 /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		302EF64C225443B00080B482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		302EF64D225443B00080B482 /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		302EF64E225443B00080B482 /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		302EF64F225443B00080B482 /* NoCounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F01F2147C28D00FE0473 /* NoCounters.swift */; };
+		302EF650225443B00080B482 /* AppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC4682140B0D4002CEB62 /* AppCons.swift */; };
+		302EF651225443B00080B482 /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		302EF652225443B00080B482 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		302EF653225443B00080B482 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		302EF655225443B00080B482 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		302EF656225443B00080B482 /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3ACDEDE784BC0A106B03A6 /* Pods_ObjJKH.framework */; };
+		302EF657225443B00080B482 /* Pods_ReutKomfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C013E2565DE1FCF26BA3706A /* Pods_ReutKomfort.framework */; };
+		302EF659225443B00080B482 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		302EF65A225443B00080B482 /* Logo_ReutKomfort_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */; };
+		302EF65B225443B00080B482 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		302EF65C225443B00080B482 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		302EF65D225443B00080B482 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		302EF65E225443B00080B482 /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
+		302EF65F225443B00080B482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		302EF660225443B00080B482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B37222390B200C5F697 /* GoogleService-Info.plist */; };
+		302EF661225443B00080B482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		302EF662225443B00080B482 /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
+		302EF663225443B00080B482 /* MupCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C19ADFB2226845400C51656 /* MupCounters.storyboard */; };
+		302EF664225443B00080B482 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		302EF665225443B00080B482 /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		302EF666225443B00080B482 /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		302EF667225443B00080B482 /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		302EF668225443B00080B482 /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		302EF669225443B00080B482 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		302EF66A225443B00080B482 /* MainMenuCons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */; };
+		302EF66B225443B00080B482 /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		302EF66C225443B00080B482 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		302EF66D225443B00080B482 /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		302EF66E225443B00080B482 /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		302EF66F225443B00080B482 /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		302EF670225443B00080B482 /* ic_send_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA20D2140CA9600921C82 /* ic_send_app.png */; };
+		302EF671225443B00080B482 /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
+		302EF672225443B00080B482 /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		302EF673225443B00080B482 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
+		302EF674225443B00080B482 /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		302EF675225443B00080B482 /* Logo_ReutKomfort.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */; };
+		302EF676225443B00080B482 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		302EF677225443B00080B482 /* NewMainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */; };
+		302EF678225443B00080B482 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		302EF679225443B00080B482 /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
+		302EF67A225443B00080B482 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
+		302EF67B225443B00080B482 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		302EF67C225443B00080B482 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		302EF67D225443B00080B482 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		302EF67E225443B00080B482 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		302EF67F225443B00080B482 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		302EF680225443B00080B482 /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
+		302EF681225443B00080B482 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		302EF68F225450190080B482 /* Logo_UK_Garant_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */; };
+		302EF692225450400080B482 /* Logo_Soldatova1.png in Resources */ = {isa = PBXBuildFile; fileRef = 302EF690225450400080B482 /* Logo_Soldatova1.png */; };
+		302EF693225450400080B482 /* Logo_Soldatova_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 302EF691225450400080B482 /* Logo_Soldatova_White.png */; };
 		305060092251E22100F0132B /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
 		3050600A2251E22100F0132B /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
 		3050600B2251E22100F0132B /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
@@ -1625,6 +1759,10 @@
 		207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klimovsk12.release.xcconfig"; path = "Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12.release.xcconfig"; sourceTree = "<group>"; };
 		296AEE95442ECF4E01E51D6F /* Pods-Klimovsk12.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klimovsk12.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12.debug.xcconfig"; sourceTree = "<group>"; };
 		2B09A7C6DA427C96ACCD0100 /* Pods-ChistDom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChistDom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChistDom/Pods-ChistDom.debug.xcconfig"; sourceTree = "<group>"; };
+		302EF687225443B00080B482 /* Soldatova1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soldatova1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		302EF688225443B00080B482 /* ReutKomfort copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ReutKomfort copy-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/ReutKomfort copy-Info.plist"; sourceTree = "<absolute>"; };
+		302EF690225450400080B482 /* Logo_Soldatova1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Soldatova1.png; sourceTree = "<group>"; };
+		302EF691225450400080B482 /* Logo_Soldatova_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Soldatova_White.png; sourceTree = "<group>"; };
 		305060082251E22100F0132B /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
 		30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstControllerCons.swift; sourceTree = "<group>"; };
 		32AB9239C83A89AD5E777625 /* Pods-UK_Garant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Garant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Garant/Pods-UK_Garant.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1847,6 +1985,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		302EF654225443B00080B482 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302EF655225443B00080B482 /* CoreLocation.framework in Frameworks */,
+				302EF656225443B00080B482 /* Pods_ObjJKH.framework in Frameworks */,
+				302EF657225443B00080B482 /* Pods_ReutKomfort.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		411F9B0622238A0E00C5F697 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1968,6 +2116,15 @@
 			path = UK_Garant;
 			sourceTree = "<group>";
 		};
+		302EF68922544F6A0080B482 /* Soldatova1 */ = {
+			isa = PBXGroup;
+			children = (
+				302EF691225450400080B482 /* Logo_Soldatova_White.png */,
+				302EF690225450400080B482 /* Logo_Soldatova1.png */,
+			);
+			path = Soldatova1;
+			sourceTree = "<group>";
+		};
 		410D51F021B6870D00C21455 /* Tinkoff_Pay */ = {
 			isa = PBXGroup;
 			children = (
@@ -2046,6 +2203,7 @@
 				F0BAD5FABF0F698BF24700C4 /* Frameworks */,
 				6EED220D6D9D4CDBD7DD198D /* Pods */,
 				4137E29422128B04009C6A7F /* ObjJKH copy-Info.plist */,
+				302EF688225443B00080B482 /* ReutKomfort copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2064,6 +2222,7 @@
 				4137E29322128AE7009C6A7F /* JKH_Pocket.app */,
 				411F9B3322238A0E00C5F697 /* ReutKomfort.app */,
 				1CF8B8D32223D66E00B1D289 /* UK_Garant.app */,
+				302EF687225443B00080B482 /* Soldatova1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2173,6 +2332,7 @@
 		418ABF202133CF52004DB75C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				302EF68922544F6A0080B482 /* Soldatova1 */,
 				1CF8B8A72223CE3600B1D289 /* UK_Garant */,
 				411F9B492223A79500C5F697 /* ReutKomfort */,
 				4137E2952212951E009C6A7F /* JKH_Pocket */,
@@ -2557,6 +2717,26 @@
 			productReference = 1CF8B8D32223D66E00B1D289 /* UK_Garant.app */;
 			productType = "com.apple.product-type.application";
 		};
+		302EF5F9225443AF0080B482 /* Soldatova1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 302EF684225443B00080B482 /* Build configuration list for PBXNativeTarget "Soldatova1" */;
+			buildPhases = (
+				302EF5FA225443AF0080B482 /* [CP] Check Pods Manifest.lock */,
+				302EF5FB225443AF0080B482 /* Sources */,
+				302EF654225443B00080B482 /* Frameworks */,
+				302EF658225443B00080B482 /* Resources */,
+				302EF682225443B00080B482 /* ShellScript */,
+				302EF683225443B00080B482 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Soldatova1;
+			productName = ObjJKH;
+			productReference = 302EF687225443B00080B482 /* Soldatova1.app */;
+			productType = "com.apple.product-type.application";
+		};
 		411F9AB122238A0E00C5F697 /* ReutKomfort */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 411F9B3022238A0E00C5F697 /* Build configuration list for PBXNativeTarget "ReutKomfort" */;
@@ -2914,6 +3094,7 @@
 				4137E21122128AE6009C6A7F /* JKH_Pocket */,
 				411F9AB122238A0E00C5F697 /* ReutKomfort */,
 				1CF8B8D22223D66E00B1D289 /* UK_Garant */,
+				302EF5F9225443AF0080B482 /* Soldatova1 */,
 			);
 		};
 /* End PBXProject section */
@@ -2936,6 +3117,7 @@
 				1CF8B9522223D96C00B1D289 /* account_icon_user.png in Resources */,
 				1CF8B9452223D95500B1D289 /* News.storyboard in Resources */,
 				1CF8B94F2223D96200B1D289 /* Logo_DemoUC.png in Resources */,
+				302EF68F225450190080B482 /* Logo_UK_Garant_White.png in Resources */,
 				1CF8B9562223D96C00B1D289 /* ic_get_app.png in Resources */,
 				1CF8B93D2223D93000B1D289 /* Main.storyboard in Resources */,
 				1CF8B9462223D95500B1D289 /* Questions.storyboard in Resources */,
@@ -2953,7 +3135,6 @@
 				1C51CEB5222917BF003EFD8C /* MupCounters.storyboard in Resources */,
 				1CF8B9512223D96C00B1D289 /* arrow_rigth.png in Resources */,
 				1CF8B95F2223DA2600B1D289 /* GoogleService-Info.plist in Resources */,
-				1CF8B9622223DF6900B1D289 /* Logo_UK_Garant_White.png in Resources */,
 				1CF8B9542223D96C00B1D289 /* spin.png in Resources */,
 				1CF8B9532223D96C00B1D289 /* account_icon_cons.jpg in Resources */,
 				1CF8B9432223D95500B1D289 /* MainMenuCons.storyboard in Resources */,
@@ -2964,6 +3145,56 @@
 				1CF8B9632223DF6B00B1D289 /* Logo_UK_Garant.png in Resources */,
 				1CF8B9612223DE2000B1D289 /* Assets.xcassets in Resources */,
 				1CF8B9552223D96C00B1D289 /* logo_SM.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		302EF658225443B00080B482 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302EF659225443B00080B482 /* WebCameras.storyboard in Resources */,
+				302EF65A225443B00080B482 /* Logo_ReutKomfort_White.png in Resources */,
+				302EF65B225443B00080B482 /* app_open.png in Resources */,
+				302EF65C225443B00080B482 /* Registration.storyboard in Resources */,
+				302EF65D225443B00080B482 /* ForgotPass.storyboard in Resources */,
+				302EF65E225443B00080B482 /* ic_ok_app.png in Resources */,
+				302EF65F225443B00080B482 /* LaunchScreen.storyboard in Resources */,
+				302EF660225443B00080B482 /* GoogleService-Info.plist in Resources */,
+				302EF661225443B00080B482 /* Assets.xcassets in Resources */,
+				302EF662225443B00080B482 /* PaysMytishi.storyboard in Resources */,
+				302EF663225443B00080B482 /* MupCounters.storyboard in Resources */,
+				302EF664225443B00080B482 /* logo_SM.png in Resources */,
+				302EF665225443B00080B482 /* app_close.png in Resources */,
+				302EF666225443B00080B482 /* ic_close_action.png in Resources */,
+				302EF667225443B00080B482 /* spin.png in Resources */,
+				302EF668225443B00080B482 /* Counters.storyboard in Resources */,
+				302EF669225443B00080B482 /* News.storyboard in Resources */,
+				302EF66A225443B00080B482 /* MainMenuCons.storyboard in Resources */,
+				302EF66B225443B00080B482 /* Saldo.storyboard in Resources */,
+				302EF692225450400080B482 /* Logo_Soldatova1.png in Resources */,
+				302EF66C225443B00080B482 /* main_background.png in Resources */,
+				302EF66D225443B00080B482 /* account_icon_cons.jpg in Resources */,
+				302EF66E225443B00080B482 /* ic_action_files_grey.png in Resources */,
+				302EF66F225443B00080B482 /* arrow_rigth.png in Resources */,
+				302EF670225443B00080B482 /* ic_send_app.png in Resources */,
+				302EF671225443B00080B482 /* PaymentSuccessViewController.xib in Resources */,
+				302EF672225443B00080B482 /* SelectItem.storyboard in Resources */,
+				302EF673225443B00080B482 /* Support.storyboard in Resources */,
+				302EF674225443B00080B482 /* Questions.storyboard in Resources */,
+				302EF675225443B00080B482 /* Logo_ReutKomfort.png in Resources */,
+				302EF693225450400080B482 /* Logo_Soldatova_White.png in Resources */,
+				302EF676225443B00080B482 /* MainMenu.storyboard in Resources */,
+				302EF677225443B00080B482 /* NewMainMenu.storyboard in Resources */,
+				302EF678225443B00080B482 /* Main.storyboard in Resources */,
+				302EF679225443B00080B482 /* ic_get_app.png in Resources */,
+				302EF67A225443B00080B482 /* Account.storyboard in Resources */,
+				302EF67B225443B00080B482 /* Apps.storyboard in Resources */,
+				302EF67C225443B00080B482 /* Logo_DemoUC_White.png in Resources */,
+				302EF67D225443B00080B482 /* Pays.storyboard in Resources */,
+				302EF67E225443B00080B482 /* AdditionalServices.storyboard in Resources */,
+				302EF67F225443B00080B482 /* Logo_DemoUC.png in Resources */,
+				302EF680225443B00080B482 /* NoCounters.storyboard in Resources */,
+				302EF681225443B00080B482 /* account_icon_user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3615,6 +3846,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UK_Komfort/Pods-UK_Komfort-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		302EF5FA225443AF0080B482 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReutKomfort-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		302EF682225443B00080B482 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		302EF683225443B00080B482 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReutKomfort/Pods-ReutKomfort-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AKMaskField/AKMaskField.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
+				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKMaskField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReutKomfort/Pods-ReutKomfort-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		34C9797503A213CE7D51D862 /* [CP] Check Pods Manifest.lock */ = {
@@ -4291,6 +4600,101 @@
 				1CF8B9112223D89A00B1D289 /* ForgotPass.swift in Sources */,
 				1CF8B9292223D90100B1D289 /* CountersController.swift in Sources */,
 				1CF8B9122223D89D00B1D289 /* SupportController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		302EF5FB225443AF0080B482 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302EF5FC225443AF0080B482 /* AddAppCons.swift in Sources */,
+				302EF5FD225443AF0080B482 /* QuestionAnswerVC.swift in Sources */,
+				302EF5FE225443AF0080B482 /* AllLS.swift in Sources */,
+				302EF5FF225443AF0080B482 /* TransactionHistoryModelController.m in Sources */,
+				302EF600225443AF0080B482 /* NewsController.swift in Sources */,
+				302EF601225443AF0080B482 /* AppsCell.swift in Sources */,
+				302EF602225443AF0080B482 /* addCountersController.swift in Sources */,
+				302EF603225443AF0080B482 /* QuestionsTableVC.swift in Sources */,
+				302EF604225443AF0080B482 /* Pay.swift in Sources */,
+				302EF605225443AF0080B482 /* AdditionalServicesController.swift in Sources */,
+				302EF606225443AF0080B482 /* AddLS.swift in Sources */,
+				302EF607225443AF0080B482 /* WebsController.swift in Sources */,
+				302EF608225443AF0080B482 /* CommCell.swift in Sources */,
+				302EF609225443AF0080B482 /* ShemeColor.swift in Sources */,
+				302EF60A225443AF0080B482 /* Counters+CoreDataProperties.swift in Sources */,
+				302EF60B225443AF0080B482 /* SendSMSCod.swift in Sources */,
+				302EF60C225443AF0080B482 /* ASDKTestSettings.m in Sources */,
+				302EF60D225443AF0080B482 /* NewPass.swift in Sources */,
+				302EF60E225443AF0080B482 /* News.swift in Sources */,
+				302EF60F225443AF0080B482 /* AddAppUser.swift in Sources */,
+				302EF610225443B00080B482 /* EditAccountController.swift in Sources */,
+				302EF611225443B00080B482 /* Comments+CoreDataClass.swift in Sources */,
+				302EF612225443B00080B482 /* empty.cpp in Sources */,
+				302EF613225443B00080B482 /* Tinkoff_Pay_Decides.m in Sources */,
+				302EF614225443B00080B482 /* ImageConstant.swift in Sources */,
+				302EF615225443B00080B482 /* PaysController.swift in Sources */,
+				302EF616225443B00080B482 /* CoreDataManager.swift in Sources */,
+				302EF617225443B00080B482 /* News+UITableViewDataSource.swift in Sources */,
+				302EF618225443B00080B482 /* PayController.m in Sources */,
+				302EF619225443B00080B482 /* Settings+CoreDataProperties.swift in Sources */,
+				302EF61A225443B00080B482 /* Web_JSON.swift in Sources */,
+				302EF61B225443B00080B482 /* Fotos+CoreDataProperties.swift in Sources */,
+				302EF61C225443B00080B482 /* SelectItemController.swift in Sources */,
+				302EF61D225443B00080B482 /* Reachability.swift in Sources */,
+				302EF61E225443B00080B482 /* SupportController.swift in Sources */,
+				302EF61F225443B00080B482 /* FirstControllerCons.swift in Sources */,
+				302EF620225443B00080B482 /* NewsView.swift in Sources */,
+				302EF621225443B00080B482 /* CounterCell.swift in Sources */,
+				302EF622225443B00080B482 /* CommCellCons.swift in Sources */,
+				302EF623225443B00080B482 /* NewHomePage.swift in Sources */,
+				302EF624225443B00080B482 /* FirstController.swift in Sources */,
+				302EF625225443B00080B482 /* CountersController.swift in Sources */,
+				302EF626225443B00080B482 /* NewMainMenu.swift in Sources */,
+				302EF627225443B00080B482 /* Applications+CoreDataProperties.swift in Sources */,
+				302EF628225443B00080B482 /* Saldo+CoreDataProperties.swift in Sources */,
+				302EF629225443B00080B482 /* QuestionsTableCell.swift in Sources */,
+				302EF62A225443B00080B482 /* StartController.swift in Sources */,
+				302EF62B225443B00080B482 /* Fotos+CoreDataClass.swift in Sources */,
+				302EF62C225443B00080B482 /* Comments+CoreDataProperties.swift in Sources */,
+				302EF62D225443B00080B482 /* OnOffButton.swift in Sources */,
+				302EF62E225443B00080B482 /* UpdateAppController.swift in Sources */,
+				302EF62F225443B00080B482 /* ASDKCardIOScanner.m in Sources */,
+				302EF630225443B00080B482 /* NewsClient.swift in Sources */,
+				302EF631225443B00080B482 /* NewsManager.swift in Sources */,
+				302EF632225443B00080B482 /* Counters+CoreDataClass.swift in Sources */,
+				302EF633225443B00080B482 /* WebsCell.swift in Sources */,
+				302EF634225443B00080B482 /* MainMenu.swift in Sources */,
+				302EF635225443B00080B482 /* Applications+CoreDataClass.swift in Sources */,
+				302EF636225443B00080B482 /* MupCounterController.swift in Sources */,
+				302EF637225443B00080B482 /* ColorsConstant.swift in Sources */,
+				302EF638225443B00080B482 /* Titles.swift in Sources */,
+				302EF639225443B00080B482 /* FloatRatingView.swift in Sources */,
+				302EF63A225443B00080B482 /* UniqCountersController.swift in Sources */,
+				302EF63B225443B00080B482 /* MainMenuCons.swift in Sources */,
+				302EF63C225443B00080B482 /* Saldo+CoreDataClass.swift in Sources */,
+				302EF63D225443B00080B482 /* AppUser.swift in Sources */,
+				302EF63E225443B00080B482 /* Extensions.swift in Sources */,
+				302EF63F225443B00080B482 /* SaldoController.swift in Sources */,
+				302EF640225443B00080B482 /* Server.swift in Sources */,
+				302EF641225443B00080B482 /* AppsCellClose.swift in Sources */,
+				302EF642225443B00080B482 /* HistoryPayController.swift in Sources */,
+				302EF643225443B00080B482 /* DB.swift in Sources */,
+				302EF644225443B00080B482 /* FilesController.swift in Sources */,
+				302EF645225443B00080B482 /* PaymentSuccessViewController.m in Sources */,
+				302EF646225443B00080B482 /* ObjJKH.xcdatamodeld in Sources */,
+				302EF647225443B00080B482 /* ForgotPass.swift in Sources */,
+				302EF648225443B00080B482 /* Registration.swift in Sources */,
+				302EF649225443B00080B482 /* NewsCell.swift in Sources */,
+				302EF64A225443B00080B482 /* Settings+CoreDataClass.swift in Sources */,
+				302EF64B225443B00080B482 /* SaldoCell.swift in Sources */,
+				302EF64C225443B00080B482 /* AppDelegate.swift in Sources */,
+				302EF64D225443B00080B482 /* CloseAppAlert.swift in Sources */,
+				302EF64E225443B00080B482 /* QuestionFinal.swift in Sources */,
+				302EF64F225443B00080B482 /* NoCounters.swift in Sources */,
+				302EF650225443B00080B482 /* AppCons.swift in Sources */,
+				302EF651225443B00080B482 /* Web_Camera.swift in Sources */,
+				302EF652225443B00080B482 /* AppsController.swift in Sources */,
+				302EF653225443B00080B482 /* QuestionsJson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5400,6 +5804,63 @@
 			};
 			name = Release;
 		};
+		302EF685225443B00080B482 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5B024543C6208DEC75197C4 /* Pods-ReutKomfort.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon (ТСЖ Солдатова 1)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "ReutKomfort copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-DisSoldatova1";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Soldatova1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isSoldatova1 DEBUG";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
+			};
+			name = Debug;
+		};
+		302EF686225443B00080B482 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B47F1FBDBDC59BB1F02B7905 /* Pods-ReutKomfort.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon (ТСЖ Солдатова 1)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ObjJKH/ObjJKH.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "ReutKomfort copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-DisSoldatova1";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Soldatova1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isSoldatova1;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
+			};
+			name = Release;
+		};
 		411F9B3122238A0E00C5F697 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C5B024543C6208DEC75197C4 /* Pods-ReutKomfort.debug.xcconfig */;
@@ -6124,6 +6585,15 @@
 			buildConfigurations = (
 				1CF8B8E62223D67000B1D289 /* Debug */,
 				1CF8B8E72223D67000B1D289 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		302EF684225443B00080B482 /* Build configuration list for PBXNativeTarget "Soldatova1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				302EF685225443B00080B482 /* Debug */,
+				302EF686225443B00080B482 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

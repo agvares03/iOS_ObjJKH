@@ -172,7 +172,9 @@ class NewPass: UIViewController {
         indicator.color = myColors.indicatorColor.uiColor()
         
         lock1.image = myImages.lock_image
+        lock1.setImageColor(color: myColors.btnColor.uiColor())
         lock2.image = myImages.lock_image
+        lock2.setImageColor(color: myColors.btnColor.uiColor())
         backBtn.tintColor = myColors.btnColor.uiColor()
         showPass1.tintColor = myColors.btnColor.uiColor()
         showPass2.tintColor = myColors.btnColor.uiColor()

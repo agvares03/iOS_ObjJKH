@@ -114,7 +114,9 @@ class Registration: UIViewController {
         authBtn.isHidden = true
         
         phone.image = myImages.phone_image
+        phone.setImageColor(color: myColors.btnColor.uiColor())
         person.image = myImages.person_image
+        person.setImageColor(color: myColors.btnColor.uiColor())
         backBtn.tintColor = myColors.btnColor.uiColor()
         if firstEnter{
             btnCancel.isHidden = true

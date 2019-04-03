@@ -222,6 +222,7 @@ class SendSMSCod: UIViewController {
         indicator.color = myColors.indicatorColor.uiColor()
         
         phone_img.image = myImages.phone_image
+        phone_img.setImageColor(color: myColors.btnColor.uiColor())
         backBtn.tintColor = myColors.btnColor.uiColor()
     }
 
