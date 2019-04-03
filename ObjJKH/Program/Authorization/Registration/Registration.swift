@@ -84,7 +84,13 @@ class Registration: UIViewController {
         } else {
             
             let defaults = UserDefaults.standard
-            defaults.setValue(self.edPhone.text, forKey: "phone")
+            
+            var strLogin = edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            
+            defaults.setValue(strLogin, forKey: "phone")
             defaults.synchronize()
             
             StartIndicator()
