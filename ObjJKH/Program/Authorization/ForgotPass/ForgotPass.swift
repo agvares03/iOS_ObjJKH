@@ -29,7 +29,12 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
     @IBAction func btnForgotGo(_ sender: UIButton) {
         StartIndicator()
         
-        let urlPath = Server.SERVER + Server.FORGOT + "login=" + FogLogin.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        var strLogin = FogLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        
+        let urlPath = Server.SERVER + Server.FORGOT + "login=" + strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let url: NSURL = NSURL(string: urlPath)!
         
         let request = NSMutableURLRequest(url: url as URL)

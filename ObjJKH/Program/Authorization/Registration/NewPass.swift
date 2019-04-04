@@ -125,7 +125,13 @@ class NewPass: UIViewController {
                     self.edPass.isEnabled = false
                     self.edPassAgain.isEnabled = false
                     self.StartIndicator()
-                    self.get_LS(txtLogin: (self.phone?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!, txtPass: (self.edPass.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!)
+                    
+                    var strLogin: String = self.phone?.replacingOccurrences(of: "(", with: "", options: .literal, range: nil) ?? ""
+                    strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+                    strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+                    strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+                    
+                    self.get_LS(txtLogin: (strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!), txtPass: (self.edPass.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!)
                     
                 }
                 alert.addAction(cancelAction)
@@ -166,14 +172,23 @@ class NewPass: UIViewController {
         indicator.color = myColors.indicatorColor.uiColor()
         
         lock1.image = myImages.lock_image
+        lock1.setImageColor(color: myColors.btnColor.uiColor())
         lock2.image = myImages.lock_image
+        lock2.setImageColor(color: myColors.btnColor.uiColor())
         backBtn.tintColor = myColors.btnColor.uiColor()
         showPass1.tintColor = myColors.btnColor.uiColor()
         showPass2.tintColor = myColors.btnColor.uiColor()
     }
     
     func getServerUrlNewPass(phone PhoneText:String, pass txtPass:String) -> String {
-        return Server.SERVER + Server.MOBILE_API_PATH + Server.SEND_NEW_PASS + "phone=" + PhoneText.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + txtPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        
+        
+        var strLogin = PhoneText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        
+        return Server.SERVER + Server.MOBILE_API_PATH + Server.SEND_NEW_PASS + "phone=" + strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + txtPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
     }
 
     override func didReceiveMemoryWarning() {
@@ -322,7 +337,7 @@ class NewPass: UIViewController {
                 var answer = responseString.components(separatedBy: ";")
                 
                 // сохраним значения в defaults
-                self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10])
+                self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11])
                 
                 // отправим на сервер данные об ид. устройства для отправки уведомлений
                 let token = Messaging.messaging().fcmToken
@@ -342,23 +357,35 @@ class NewPass: UIViewController {
     }
     
     func getServerUrlBy(login loginText:String ,password txtPass:String) -> String {
-        if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass
-        } else {
-            return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
-        }
+//        if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
+        
+        var strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        
+            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + strLogin + "&pwd=" + txtPass
+//        } else {
+//            return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
+//        }
     }
     
     func getServerUrlByIdent(login loginText:String) -> String {
-        if loginText.isPhoneNumber , let _ = loginText.asPhoneNumberWithoutPlus  {
-            return Server.SERVER + Server.MOBILE_API_PATH + Server.GET_IDENTS_ACC + "phone=" + loginText
-        } else {
-            return "xxx"
-        }
+//        if loginText.isPhoneNumber , let _ = loginText.asPhoneNumberWithoutPlus  {
+        
+        var strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        
+            return Server.SERVER + Server.MOBILE_API_PATH + Server.GET_IDENTS_ACC + "phone=" + strLogin
+//        } else {
+//            return "xxx"
+//        }
     }
     
     // сохранение глобальных значений
-    func save_global_data(date1: String, date2: String, can_count: String, mail: String, id_account: String, isCons: String, name: String, history_counters: String, strah: String, phone_operator: String) {
+    func save_global_data(date1: String, date2: String, can_count: String, mail: String, id_account: String, isCons: String, name: String, history_counters: String, strah: String, phone_operator: String, encoding_Pays: String) {
         let defaults = UserDefaults.standard
         defaults.setValue(date1, forKey: "date1")
         defaults.setValue(date2, forKey: "date2")
@@ -370,6 +397,7 @@ class NewPass: UIViewController {
         defaults.setValue(strah, forKey: "strah")
         defaults.setValue(history_counters, forKey: "history_counters")
         defaults.setValue(phone_operator, forKey: "phone_operator")
+        defaults.setValue(encoding_Pays, forKey: "encoding_Pays")
         defaults.synchronize()
     }
     

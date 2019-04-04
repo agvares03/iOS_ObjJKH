@@ -206,6 +206,10 @@ class NewHomePage: UIViewController {
         fon_top.image = UIImage(named: "Logo_ReutKomfort")
         #elseif isUKGarant
         fon_top.image = UIImage(named: "Logo_UK_Garant")
+        #elseif isSoldatova1
+        fon_top.image = UIImage(named: "Logo_Soldatova1")
+        #elseif isTafgai
+        fon_top.image = UIImage(named: "Logo_Tafgai_White")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         callBtnImg.setImageColor(color: myColors.btnColor.uiColor())

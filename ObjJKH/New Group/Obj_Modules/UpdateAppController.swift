@@ -38,6 +38,10 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_ReutKomfort_White")
         #elseif isUKGarant
         imageApp.image = UIImage(named: "Logo_UK_Garant_White")
+        #elseif isSoldatova1
+        imageApp.image = UIImage(named: "Logo_Soldatova_White")
+        #elseif isTafgai
+        imageApp.image = UIImage(named: "Logo_Tafgai_White")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -75,6 +79,10 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1420424696"
         #elseif isUKGarant
         str = "itms-apps://itunes.apple.com/ru/app/id1420424696"
+        #elseif isSoldatova1
+        str = "" // Вставить адрес после выпуска
+        #elseif isTafgai
+        str = ""
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
