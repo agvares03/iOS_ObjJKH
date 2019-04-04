@@ -80,7 +80,14 @@ class OneVoteController: UIViewController, UITableViewDelegate, UITableViewDataS
         if vote?.dateRealPart == ""{
             dateLbl.text = "-"
         }else{
-            dateLbl.text = vote?.dateRealPart
+            var str:String = (vote?.dateRealPart)!
+            let i: Int = (vote?.dateRealPart!.count)!
+            for _ in 1...i{
+                if str.last != " "{
+                    str.removeLast()
+                }
+            }
+            dateLbl.text = str
         }
         if vote?.houseAddress == ""{
             addressLbl.text = "-"

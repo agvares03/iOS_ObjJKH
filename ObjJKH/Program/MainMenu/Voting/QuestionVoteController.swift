@@ -59,7 +59,7 @@ class QuestionVoteController: UIViewController {
             return
         }
         self.StartIndicator()
-        self.sendAnswer(complete: true)
+        self.sendAnswer(complete: true, next: true)
         questions?.forEach{
             if $0.answer != nil{
                 i += 1
@@ -159,17 +159,17 @@ class QuestionVoteController: UIViewController {
                 selAnswer = "0"
                 questions![selectQ].answer = "0"
                 self.StartIndicator()
-                self.sendAnswer(complete: false)
+                self.sendAnswer(complete: false, next: true)
             }else if noClk && questions![selectQ].answer != "1"{
                 selAnswer = "1"
                 questions![selectQ].answer = "1"
                 self.StartIndicator()
-                self.sendAnswer(complete: false)
+                self.sendAnswer(complete: false, next: true)
             }else if orClk && questions![selectQ].answer != "2"{
                 selAnswer = "2"
                 questions![selectQ].answer = "2"
                 self.StartIndicator()
-                self.sendAnswer(complete: false)
+                self.sendAnswer(complete: false, next: true)
             }else if !yesClk && !noClk && !orClk{
                 let alert = UIAlertController(title: "Ошибка", message: "Выберите вариант ответа", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -212,6 +212,10 @@ class QuestionVoteController: UIViewController {
             }
         }
         if selectQ == questions!.count - 1{
+            if questions![selectQ].answer != nil{
+                endVoteBtn.backgroundColor = .green
+                endVoteBtn.isUserInteractionEnabled = true
+            }
             nextQBtn.backgroundColor = .lightGray
             nextQBtn.isUserInteractionEnabled = false
         }
@@ -219,45 +223,64 @@ class QuestionVoteController: UIViewController {
     
     @IBAction func backQAction(_ sender: UIButton) {
         if selectQ > 0{
-//            if yesClk{
-//                questions![selectQ].answer = "0"
-//            }else if noClk{
-//                questions![selectQ].answer = "1"
-//            }else if orClk{
-//                questions![selectQ].answer = "2"
-//            }
-            selectQ -= 1
-            textQLbl.text = questions![selectQ].text
-            countQLbl.text = "Вопрос " + String(selectQ + 1) + " из " + String(questions!.count) + ":"
-            nextQBtn.backgroundColor = myColors.btnColor.uiColor()
-            nextQBtn.isUserInteractionEnabled = true
-            yesBtn.setTitleColor(.white, for: .normal)
-            yesBtn.backgroundColor = myColors.btnColor.uiColor()
-            yesClk = false
-            orBtn.setTitleColor(.white, for: .normal)
-            orBtn.backgroundColor = myColors.btnColor.uiColor()
-            orClk = false
-            noBtn.setTitleColor(.white, for: .normal)
-            noBtn.backgroundColor = myColors.btnColor.uiColor()
-            noClk = false
-            if questions![selectQ].answer != nil{
-                if questions![selectQ].answer == "0"{
-                    yesBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-                    yesBtn.backgroundColor = .white
-                    yesClk = true
-                }else if questions![selectQ].answer == "1"{
-                    noBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-                    noBtn.backgroundColor = .white
-                    noClk = true
-                }else if questions![selectQ].answer == "2"{
-                    orBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-                    orBtn.backgroundColor = .white
-                    orClk = true
-                }
+            if yesClk && questions![selectQ].answer != "0"{
+                selAnswer = "0"
+                questions![selectQ].answer = "0"
+                self.StartIndicator()
+                self.sendAnswer(complete: false, next: false)
+            }else if noClk && questions![selectQ].answer != "1"{
+                selAnswer = "1"
+                questions![selectQ].answer = "1"
+                self.StartIndicator()
+                self.sendAnswer(complete: false, next: false)
+            }else if orClk && questions![selectQ].answer != "2"{
+                selAnswer = "2"
+                questions![selectQ].answer = "2"
+                self.StartIndicator()
+                self.sendAnswer(complete: false, next: false)
+            }else if !yesClk && !noClk && !orClk{
+                let alert = UIAlertController(title: "Ошибка", message: "Выберите вариант ответа", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                self.backQuestion()
             }
-            endVoteBtn.backgroundColor = .lightGray
-            endVoteBtn.isUserInteractionEnabled = false
         }
+    }
+    
+    func backQuestion(){
+        selectQ -= 1
+        textQLbl.text = questions![selectQ].text
+        countQLbl.text = "Вопрос " + String(selectQ + 1) + " из " + String(questions!.count) + ":"
+        nextQBtn.backgroundColor = myColors.btnColor.uiColor()
+        nextQBtn.isUserInteractionEnabled = true
+        yesBtn.setTitleColor(.white, for: .normal)
+        yesBtn.backgroundColor = myColors.btnColor.uiColor()
+        yesClk = false
+        orBtn.setTitleColor(.white, for: .normal)
+        orBtn.backgroundColor = myColors.btnColor.uiColor()
+        orClk = false
+        noBtn.setTitleColor(.white, for: .normal)
+        noBtn.backgroundColor = myColors.btnColor.uiColor()
+        noClk = false
+        if questions![selectQ].answer != nil{
+            if questions![selectQ].answer == "0"{
+                yesBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+                yesBtn.backgroundColor = .white
+                yesClk = true
+            }else if questions![selectQ].answer == "1"{
+                noBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+                noBtn.backgroundColor = .white
+                noClk = true
+            }else if questions![selectQ].answer == "2"{
+                orBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+                orBtn.backgroundColor = .white
+                orClk = true
+            }
+        }
+        endVoteBtn.backgroundColor = .lightGray
+        endVoteBtn.isUserInteractionEnabled = false
         if selectQ == 0{
             backQBtn.backgroundColor = .lightGray
             backQBtn.isUserInteractionEnabled = false
@@ -293,16 +316,17 @@ class QuestionVoteController: UIViewController {
         loader.color = myColors.indicatorColor.uiColor()
         textQLbl.text = questions![0].text
         countQLbl.text = "Вопрос 1 из " + String(questions!.count) + ":"
+        var i = 0
         questions?.forEach{
-            if $0.answer != nil{
+            i += 1
+            if ($0.answer != nil) && (i != questions?.count){
                 self.nextQuestion()
             }
         }
         // Do any additional setup after loading the view.
     }
     
-    private func sendAnswer(complete: Bool) {
-        print(questions![selectQ].id!)
+    private func sendAnswer(complete: Bool, next: Bool) {
         let id: Int64 = questions![selectQ].id!
         let urlPath = Server.SERVER + Server.SAVE_ANSWER_VOTE + "phone=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&questionId=" + String(id).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&answer=" + selAnswer.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
@@ -331,7 +355,11 @@ class QuestionVoteController: UIViewController {
                                                         if !complete{
                                                             self.StopIndicator()
                                                             self.selAnswer = ""
-                                                            self.nextQuestion()
+                                                            if next{
+                                                                self.nextQuestion()
+                                                            }else{
+                                                                self.backQuestion()
+                                                            }                       
                                                         }
                                                     })
                                                 }else{

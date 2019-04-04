@@ -107,7 +107,18 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "VotingCell") as! VotingCell
         cell.nameVote.text = voting![indexPath.row].comment
-        cell.dateVote.text = voting![indexPath.row].dateEnd
+        if voting![indexPath.row].dateEnd == ""{
+            cell.dateVote.text = "-"
+        }else{
+            var str:String = (voting![indexPath.row].dateEnd)!
+            let i: Int = voting![indexPath.row].dateEnd!.count
+            for _ in 1...i{
+                if str.last != " "{
+                    str.removeLast()
+                }
+            }
+            cell.dateVote.text = str
+        }
         cell.infoVote.isHidden = true
         var answer = 0
         voting![indexPath.row].questions?.forEach{
