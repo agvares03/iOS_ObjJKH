@@ -372,6 +372,7 @@
                         <outlet property="viewTop" destination="a8l-2v-bU6" id="i4w-Sj-rAA"/>
                         <segue destination="Ld3-Zb-LxI" kind="show" identifier="addLSMup" id="yiT-ng-b40"/>
                         <segue destination="qK7-Fk-Kmh" kind="show" identifier="addLS" id="Rkm-y0-Yxe"/>
+                        <segue destination="1Wa-Am-5fg" kind="show" identifier="support" id="B4v-ZH-sO3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="px2-wU-oxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -915,4 +916,7 @@
         <image name="spin.png" width="840" height="840"/>
         <image name="unCheck" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="B4v-ZH-sO3"/>
+    </inferredMetricsTieBreakers>
 </document>

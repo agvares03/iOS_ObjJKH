@@ -77,6 +77,16 @@
 		1C406DEB2255997D007B2887 /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
 		1C406DEC2255997D007B2887 /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
 		1C406DED2255997D007B2887 /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
+		1C406DEE225639D3007B2887 /* VotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB1F225372F300812964 /* VotingController.swift */; };
+		1C406DEF225639D4007B2887 /* VotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB1F225372F300812964 /* VotingController.swift */; };
+		1C406DF0225639D9007B2887 /* OneVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB2C225498E500812964 /* OneVoteController.swift */; };
+		1C406DF1225639D9007B2887 /* QuestionVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB3922550D0D00812964 /* QuestionVoteController.swift */; };
+		1C406DF2225639D9007B2887 /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
+		1C406DF3225639DA007B2887 /* OneVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB2C225498E500812964 /* OneVoteController.swift */; };
+		1C406DF4225639DA007B2887 /* QuestionVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB3922550D0D00812964 /* QuestionVoteController.swift */; };
+		1C406DF5225639DA007B2887 /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
+		1C406DF6225639E4007B2887 /* Voting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C66AB1122532BFF00812964 /* Voting.storyboard */; };
+		1C406DF7225639E4007B2887 /* Voting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C66AB1122532BFF00812964 /* Voting.storyboard */; };
 		1C5153CF21EEFE9800DE36D9 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
 		1C5153D121EF04A600DE36D9 /* EditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5153D021EF04A600DE36D9 /* EditAccountController.swift */; };
 		1C5153D221EF10C500DE36D9 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
@@ -3460,6 +3470,7 @@
 				302EF67B225443B00080B482 /* Apps.storyboard in Resources */,
 				302EF67C225443B00080B482 /* Logo_DemoUC_White.png in Resources */,
 				302EF67D225443B00080B482 /* Pays.storyboard in Resources */,
+				1C406DF6225639E4007B2887 /* Voting.storyboard in Resources */,
 				302EF67E225443B00080B482 /* AdditionalServices.storyboard in Resources */,
 				302EF67F225443B00080B482 /* Logo_DemoUC.png in Resources */,
 				302EF680225443B00080B482 /* NoCounters.storyboard in Resources */,
@@ -4054,6 +4065,7 @@
 				9A5F6E69225634D500C9B3BE /* NewMainMenu.storyboard in Resources */,
 				9A5F6E6A225634D500C9B3BE /* Main.storyboard in Resources */,
 				9A5F6E6B225634D500C9B3BE /* ic_get_app.png in Resources */,
+				1C406DF7225639E4007B2887 /* Voting.storyboard in Resources */,
 				9A5F6E6C225634D500C9B3BE /* Account.storyboard in Resources */,
 				9A5F6E6D225634D500C9B3BE /* Apps.storyboard in Resources */,
 				9A5F6E6E225634D500C9B3BE /* Logo_DemoUC_White.png in Resources */,
@@ -5018,6 +5030,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302EF5FC225443AF0080B482 /* AddAppCons.swift in Sources */,
+				1C406DF1225639D9007B2887 /* QuestionVoteController.swift in Sources */,
 				302EF5FD225443AF0080B482 /* QuestionAnswerVC.swift in Sources */,
 				302EF5FE225443AF0080B482 /* AllLS.swift in Sources */,
 				302EF5FF225443AF0080B482 /* TransactionHistoryModelController.m in Sources */,
@@ -5069,6 +5082,7 @@
 				302EF62D225443B00080B482 /* OnOffButton.swift in Sources */,
 				302EF62E225443B00080B482 /* UpdateAppController.swift in Sources */,
 				302EF62F225443B00080B482 /* ASDKCardIOScanner.m in Sources */,
+				1C406DEE225639D3007B2887 /* VotingController.swift in Sources */,
 				302EF630225443B00080B482 /* NewsClient.swift in Sources */,
 				302EF631225443B00080B482 /* NewsManager.swift in Sources */,
 				302EF632225443B00080B482 /* Counters+CoreDataClass.swift in Sources */,
@@ -5104,6 +5118,8 @@
 				302EF650225443B00080B482 /* AppCons.swift in Sources */,
 				302EF651225443B00080B482 /* Web_Camera.swift in Sources */,
 				302EF652225443B00080B482 /* AppsController.swift in Sources */,
+				1C406DF0225639D9007B2887 /* OneVoteController.swift in Sources */,
+				1C406DF2225639D9007B2887 /* resVoteController.swift in Sources */,
 				302EF653225443B00080B482 /* QuestionsJson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6190,6 +6206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A5F6DEE225634D500C9B3BE /* AddAppCons.swift in Sources */,
+				1C406DF4225639DA007B2887 /* QuestionVoteController.swift in Sources */,
 				9A5F6DEF225634D500C9B3BE /* QuestionAnswerVC.swift in Sources */,
 				9A5F6DF0225634D500C9B3BE /* AllLS.swift in Sources */,
 				9A5F6DF1225634D500C9B3BE /* TransactionHistoryModelController.m in Sources */,
@@ -6241,6 +6258,7 @@
 				9A5F6E1F225634D500C9B3BE /* OnOffButton.swift in Sources */,
 				9A5F6E20225634D500C9B3BE /* UpdateAppController.swift in Sources */,
 				9A5F6E21225634D500C9B3BE /* ASDKCardIOScanner.m in Sources */,
+				1C406DEF225639D4007B2887 /* VotingController.swift in Sources */,
 				9A5F6E22225634D500C9B3BE /* NewsClient.swift in Sources */,
 				9A5F6E23225634D500C9B3BE /* NewsManager.swift in Sources */,
 				9A5F6E24225634D500C9B3BE /* Counters+CoreDataClass.swift in Sources */,
@@ -6276,6 +6294,8 @@
 				9A5F6E42225634D500C9B3BE /* AppCons.swift in Sources */,
 				9A5F6E43225634D500C9B3BE /* Web_Camera.swift in Sources */,
 				9A5F6E44225634D500C9B3BE /* AppsController.swift in Sources */,
+				1C406DF3225639DA007B2887 /* OneVoteController.swift in Sources */,
+				1C406DF5225639DA007B2887 /* resVoteController.swift in Sources */,
 				9A5F6E45225634D500C9B3BE /* QuestionsJson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
