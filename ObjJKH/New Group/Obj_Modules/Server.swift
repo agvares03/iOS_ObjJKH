@@ -77,6 +77,10 @@ class Server {
     static let OK_APP              = "PerformRequest.ashx?"          // Выполнить заявку (консультант)
     static let CLOSE_APP_CONS      = "CloseRequestConsultant.ashx?"  // Закрыть заявку (консультант)
     
+    static let GET_OSS             = "MobileAPI/OSS/GetOSS.ashx?"    // Получить данные ОСС
+    static let SAVE_ANSWER_VOTE    = "MobileAPI/OSS/SaveAnswer.ashx?"// Сохранить ответ голосования ОСС
+    static let COMPLETE_VOTE       = "MobileAPI/OSS/CompleteVote.ashx?"// Завершить голосование ОСС
+    
     // Новая регистрация
     static let REGISTRATION_NEW    = "RegisterAccount.ashx?"         // Новая регистрация
     static let VALIDATE_SMS        = "ValidateCheckCode.ashx?"       // Отправка смс-кода на проверку

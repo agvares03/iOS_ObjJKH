@@ -96,5 +96,7 @@ struct myImages {
     static let record_image = UIImage(named: "record_visit")
     //account
     static let acc_image = UIImage(named: "person_Mup")
+    //oss
+    static let oss_image = UIImage(named: "oss_icon")
     
 }

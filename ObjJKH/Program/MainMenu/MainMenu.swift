@@ -87,6 +87,11 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var btn_name_8: UIButton!
     @IBOutlet weak var btn_arr_8: UIImageView!
     @IBOutlet weak var line_bottom_8: UILabel!
+    // Голосования
+    @IBOutlet weak var oss_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_oss: UIButton!
+    @IBOutlet weak var btn_arr_oss: UIImageView!
+    @IBOutlet weak var line_bottom_oss: UILabel!
     // Выход - только название
     @IBOutlet weak var btn_name_9: UIButton!
     
@@ -118,6 +123,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var record_img: UIImageView!
     @IBOutlet weak var acc_img: UIImageView!
     @IBOutlet weak var main_background: UIImageView!
+    @IBOutlet weak var oss: UIImageView!
     
     var phone: String?
     
@@ -360,6 +366,8 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
         acc_img.image = myImages.acc_image
         acc_img.setImageColor(color: myColors.btnColor.uiColor())
+        oss.image = myImages.oss_image
+        oss.setImageColor(color: myColors.btnColor.uiColor())
         
         btn_Add_LS.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
@@ -513,6 +521,23 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
             } else {
                 line_bottom_6.isHidden   = false
                 btn_name_8.setTitle(answer[1], for: .normal)
+            }
+        }
+        // Голосования
+        let str_menu_oss = defaults.bool(forKey: "enable_OSS")
+//        let str_menu_oss = true
+        if !str_menu_oss{
+            oss_heigth.constant   = 0
+            btn_name_oss.isHidden    = true
+            btn_arr_oss.isHidden     = true
+            oss.isHidden        = true
+//            line_bottom_oss.isHidden = true
+            heigth_view.constant     = heigth_view.constant - 40
+        }else{
+            let width = view.frame.size.width
+            if width <= 320{
+                oss_heigth.constant  = 60
+                heigth_view.constant = heigth_view.constant + 21
             }
         }
         
@@ -1171,7 +1196,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }else{
                 if debtSum.count != 0 {
                     debtHeight.constant = CGFloat(debtSum.count * 30)
-                    heigth_view.constant = heigth_view.constant + CGFloat((debtSum.count - 1) * 30)
+                    heigth_view.constant = heigth_view.constant + CGFloat((debtSum.count - 1) * 25)
                     if (self.heigth_view.constant + 115) > self.view.frame.size.height{
                         self.backgroundHeight.constant = self.backgroundHeight.constant + ((self.heigth_view.constant + 115) - self.view.frame.size.height) + 20
                     }
