@@ -561,7 +561,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var sendedArr:[Bool] = []
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "MupCounterCell") as! MupCounterCell
-        let send = false
+        var send = false
         var countName = ""
         cell.ident.text       = identArr[indexPath.row]
         cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
