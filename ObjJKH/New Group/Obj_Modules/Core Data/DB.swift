@@ -52,7 +52,7 @@ class DB: NSObject, XMLParserDelegate {
     }
     
     public func getDataByEnter(login: String, pass: String) {
-        var data:[String] = []
+//        var data:[String] = []
         
         // ПОКАЗАНИЯ СЧЕТЧИКОВ
         // Удалим данные из базы данных

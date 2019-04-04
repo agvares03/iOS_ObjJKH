@@ -1904,6 +1904,7 @@
 		302EF728225479280080B482 /* Logo_Tafgai_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Tafgai_White.png; sourceTree = "<group>"; };
 		302EF72B2254805F0080B482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Tafgai/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		305060082251E22100F0132B /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
+		30B461272256316800DB6C10 /* info - Tafgai.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "info - Tafgai.plist"; sourceTree = SOURCE_ROOT; };
 		30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstControllerCons.swift; sourceTree = "<group>"; };
 		32AB9239C83A89AD5E777625 /* Pods-UK_Garant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Garant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Garant/Pods-UK_Garant.debug.xcconfig"; sourceTree = "<group>"; };
 		34641B081E377E8D82EE8373 /* Pods-MupRCMytishi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MupRCMytishi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1923,7 +1924,6 @@
 		4120929C2158D116001E713E /* logo_Stolitsa_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa_white.png; sourceTree = "<group>"; };
 		4120929E2158D126001E713E /* logo_Stolitsa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa.png; sourceTree = "<group>"; };
 		412093122159E603001E713E /* Komeks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komeks.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		412093132159E619001E713E /* Info - Komeks.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Info - Komeks.plist"; path = "../../../../tuzinroman/Documents/Работа - мобильная разработка/iOS/ObjJKH/Info - Komeks.plist"; sourceTree = "<group>"; };
 		412093152159EB15001E713E /* Logo_Komeks_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Komeks_White.png; sourceTree = "<group>"; };
 		412093172159EB1E001E713E /* Logo_Komeks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Komeks.png; sourceTree = "<group>"; };
 		41209320215C105F001E713E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -2401,8 +2401,8 @@
 				41DFC442213D2083002CEB62 /* Info - DJService.plist */,
 				41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */,
 				4120929A2158CB36001E713E /* Info - Stolitsa.plist */,
-				412093132159E619001E713E /* Info - Komeks.plist */,
 				411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */,
+				30B461272256316800DB6C10 /* info - Tafgai.plist */,
 				1CF8B95E2223DA2600B1D289 /* GoogleService-Info.plist */,
 				41BD716B21B4E86E006E78FC /* Info - Klimovsk12.plist */,
 				41EF7E80220D779B0041D53B /* GoogleService-Info.plist */,
@@ -6293,7 +6293,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "ReutKomfort copy2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/info - Tafgai.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6322,7 +6322,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "ReutKomfort copy2-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/info - Tafgai.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

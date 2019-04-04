@@ -114,8 +114,8 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         if ls == "Все"{
             ls = defaults.string(forKey: "login")!
             choiceIdent = "Все"
-            let str_ls = defaults.string(forKey: "str_ls")
-            let str_ls_arr = str_ls?.components(separatedBy: ",")
+//            let str_ls = defaults.string(forKey: "str_ls")
+//            let str_ls_arr = str_ls?.components(separatedBy: ",")
 //            if str_ls_arr?.count == 1{
 //                lsLbl.text = "Л/с: " + str_ls_arr![0]
 //            }
