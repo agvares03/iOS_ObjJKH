@@ -104,7 +104,10 @@ class Registration: UIViewController {
         hideKeyboard_byTap()
         
         // Маска для ввода - телефон
-        edPhone.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+        #if isDJ
+        #else
+            edPhone.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+        #endif
         
         StopIndicator()
         edPhone.text = "+7"

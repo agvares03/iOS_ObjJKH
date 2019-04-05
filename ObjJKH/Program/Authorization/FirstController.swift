@@ -79,7 +79,10 @@ class FirstController: UIViewController {
         StopIndicator()
         
         // Маска для ввода - телефон
-        edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+        #if isDJ
+        #else
+            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+        #endif
         
         loadUsersDefaults()
         let version = targetSettings().getVersion()
