@@ -145,6 +145,7 @@ class OneVoteController: UIViewController, UITableViewDelegate, UITableViewDataS
         if (vote?.isComplete)!{
             resVoteHeight.constant = 40.5
             resView.isHidden = false
+            goVoteBtn.isHidden = true
         }else{
             resVoteHeight.constant = 0
             resView.isHidden = true
@@ -195,6 +196,7 @@ class OneVoteController: UIViewController, UITableViewDelegate, UITableViewDataS
                                                     if (self.vote?.isComplete)!{
                                                         self.resVoteHeight.constant = 40.5
                                                         self.resView.isHidden = false
+                                                        self.goVoteBtn.isHidden = true
                                                     }else{
                                                         self.resVoteHeight.constant = 0
                                                         self.resView.isHidden = true
