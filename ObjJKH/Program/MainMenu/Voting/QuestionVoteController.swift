@@ -45,12 +45,15 @@ class QuestionVoteController: UIViewController {
         if yesClk && questions![selectQ].answer != "0"{
             selAnswer = "0"
             questions![selectQ].answer = "0"
+            self.sendAnswer(complete: true, next: true)
         }else if noClk && questions![selectQ].answer != "1"{
             selAnswer = "1"
             questions![selectQ].answer = "1"
+            self.sendAnswer(complete: true, next: true)
         }else if orClk && questions![selectQ].answer != "2"{
             selAnswer = "2"
             questions![selectQ].answer = "2"
+            self.sendAnswer(complete: true, next: true)
         }else if !yesClk && !noClk && !orClk{
             let alert = UIAlertController(title: "Ошибка", message: "Выберите вариант ответа", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -59,7 +62,6 @@ class QuestionVoteController: UIViewController {
             return
         }
         self.StartIndicator()
-        self.sendAnswer(complete: true, next: true)
         questions?.forEach{
             if $0.answer != nil{
                 i += 1
