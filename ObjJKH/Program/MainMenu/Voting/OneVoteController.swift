@@ -49,7 +49,11 @@ class OneVoteController: UIViewController, UITableViewDelegate, UITableViewDataS
         }else{
             clickPov = true
             DispatchQueue.main.async {
-                self.tableViewHeight.constant = CGFloat((self.vote?.questions?.count)! * 40)
+                var height: CGFloat = 0
+                for cell in self.tableView.visibleCells {
+                    height += cell.bounds.height
+                }
+                self.tableViewHeight.constant = CGFloat((self.vote?.questions?.count)! * Int(height) + 10)
             }
             meetSobrImg.image = UIImage(named: "arrows_down")
         }
@@ -229,6 +233,14 @@ class OneVoteController: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.delegate = self
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let cell = self.tableView.dequeueReusableCell(withIdentifier: "OneVoteCell") as! OneVoteCell
+//        DispatchQueue.main.async {
+//            self.tableViewHeight.constant = CGFloat((self.vote?.questions?.count)! * cell.textQuestion.frame.size.height)
+//        }
+//        return cell.textQuestion.frame.size.height
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

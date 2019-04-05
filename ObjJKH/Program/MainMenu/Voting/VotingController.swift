@@ -133,6 +133,9 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }else if answer != 0{
             cell.statusVote.text = "Ваш голос учтен"
             cell.statusVote.textColor = .green
+        }else{
+            cell.statusVote.text = "Вы не голосовали"
+            cell.statusVote.textColor = .red
         }
         cell.id = voting![indexPath.row].id!
         cell.delegate1 = self
@@ -170,7 +173,7 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func sendPressed(name: String, id: Int64) {
         voting?.forEach{
-            if $0.comment == name{
+            if $0.comment == name && $0.id == id{
                 self.selectedVote = $0
             }
         }

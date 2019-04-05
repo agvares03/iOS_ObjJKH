@@ -325,6 +325,10 @@ class QuestionVoteController: UIViewController {
                 self.nextQuestion()
             }
         }
+        if questions?.count == 1{
+            backQBtn.isHidden = true
+            nextQBtn.isHidden = true
+        }
         // Do any additional setup after loading the view.
     }
     
