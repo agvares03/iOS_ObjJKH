@@ -97,7 +97,7 @@ class QuestionVoteController: UIViewController {
             orBtn.backgroundColor = myColors.btnColor.uiColor()
             orClk = false
             if selectQ == (questions!.count - 1){
-                endVoteBtn.backgroundColor = .green
+                endVoteBtn.backgroundColor = .init(red: 0, green: 100, blue: 0, alpha: 1.0)
                 endVoteBtn.isUserInteractionEnabled = true
             }
         }
@@ -123,7 +123,7 @@ class QuestionVoteController: UIViewController {
             orBtn.backgroundColor = myColors.btnColor.uiColor()
             orClk = false
             if selectQ == (questions!.count - 1){
-                endVoteBtn.backgroundColor = .green
+                endVoteBtn.backgroundColor = .init(red: 0, green: 100, blue: 0, alpha: 1.0)
                 endVoteBtn.isUserInteractionEnabled = true
             }
         }
@@ -149,7 +149,7 @@ class QuestionVoteController: UIViewController {
             yesBtn.backgroundColor = myColors.btnColor.uiColor()
             yesClk = false
             if selectQ == (questions!.count - 1){
-                endVoteBtn.backgroundColor = .green
+                endVoteBtn.backgroundColor = .init(red: 0, green: 100, blue: 0, alpha: 1.0)
                 endVoteBtn.isUserInteractionEnabled = true
             }
         }
@@ -215,7 +215,7 @@ class QuestionVoteController: UIViewController {
         }
         if selectQ == questions!.count - 1{
             if questions![selectQ].answer != nil{
-                endVoteBtn.backgroundColor = .green
+                endVoteBtn.backgroundColor = .init(red: 0, green: 100, blue: 0, alpha: 1.0)
                 endVoteBtn.isUserInteractionEnabled = true
             }
             nextQBtn.backgroundColor = .lightGray

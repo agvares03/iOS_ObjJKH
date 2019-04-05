@@ -660,6 +660,9 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                                             sum = String(format:"%.2f", json_bills["Sum"] as! Double)
                                                                             let s = json_bills["Sum"] as! Double
                                                                             sumFine = String(format:"%.2f", json_bills["SumFine"] as! Double)
+//                                                                            sum = "0.00"
+//                                                                            let s = 0
+//                                                                            sumFine = "0.00"
                                                                             if s > 0{
                                                                                 self.debtIdent.append(ls)
                                                                                 self.debtSum.append(sum)
@@ -697,14 +700,14 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                                                 
                                                                                 if self.debtSum.count == 0 && tht.contains("отсутствует") == false{
                                                                                     self.debtLbl.text = self.debtLbl.text! + " отсутствует"
-                                                                                    self.debtLbl.textColor = .green
+                                                                                    self.debtLbl.textColor = .init(red: 0, green: 100, blue: 0, alpha: 1.0)
                                                                                     self.debtHeight.constant = 3
                                                                                     self.menu_6_heigth.constant = 63
-                                                                                    self.heigth_view.constant = viewHeight - 60
+                                                                                    self.heigth_view.constant = self.heigth_view.constant - 25
                                                                                     if self.view.frame.size.width <= 320{
                                                                                         self.debtLblHeight.constant = 36
                                                                                         self.menu_6_heigth.constant = 80
-                                                                                        self.heigth_view.constant = viewHeight - 40
+                                                                                        self.heigth_view.constant = self.heigth_view.constant + 15
                                                                                     }
                                                                                     if (self.heigth_view.constant + 115) > self.view.frame.size.height{
                                                                                         self.backgroundHeight.constant = backHeight + ((self.heigth_view.constant + 115) - self.view.frame.size.height) + 40
