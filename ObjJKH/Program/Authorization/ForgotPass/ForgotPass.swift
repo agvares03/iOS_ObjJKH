@@ -118,7 +118,10 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
         FogLogin.delegate = self
         
         // Маска для ввода - телефон
+        #if isDJ
+        #else
         FogLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+        #endif
         
         hideKeyboard_byTap()
         StopIndicator()
