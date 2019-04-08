@@ -60,6 +60,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     let dropper = Dropper(width: 150, height: 400)
     
     public var saldoIdent = "Все"
+    public var debtArr:[AnyObject] = []
     
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
@@ -515,12 +516,30 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         self.totalSum = self.sum + serviceP
                         self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                         self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                        
+                        if self.debtArr.count != 0{
+                            var s = 0.00
+                            self.debtArr.forEach{
+                                if self.choiceIdent == "Все"{
+                                    s = s + Double($0["Sum"] as! String)!
+                                    if s == 0.00{
+                                        self.txt_sum_obj.text = "0.00 руб."
+                                        self.txt_sum_jkh.text = "0.00 руб."
+                                        self.servicePay.text  = "0.00 руб."
+                                    }
+                                }else if self.choiceIdent == ($0["Ident"] as! String){
+                                    if ($0["Sum"] as! String) == "0.00"{
+                                        self.txt_sum_obj.text = "0.00 руб."
+                                        self.txt_sum_jkh.text = "0.00 руб."
+                                        self.servicePay.text  = "0.00 руб."
+                                    }
+                                }
+                            }
+                        }
                     } else {
                         //                    self.txt_sum_jkh.text = "0,00 р."
-                        self.txt_sum_obj.text = "0,00"
-                        self.txt_sum_jkh.text = "0,00 руб."
-                        self.servicePay.text  = "0,00 руб."
+                        self.self.txt_sum_obj.text = "0.00 руб."
+                        self.txt_sum_jkh.text = "0.00 руб."
+                        self.servicePay.text  = "0.00 руб."
                     }
                 })
                 //                }
@@ -573,12 +592,30 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     self.totalSum = self.sum + serviceP
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                     self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                    
+                    if self.debtArr.count != 0{
+                        var s = 0.00
+                        self.debtArr.forEach{
+                            if self.choiceIdent == "Все"{
+                                s = s + Double($0["Sum"] as! String)!
+                                if s == 0.00{
+                                    self.txt_sum_obj.text = "0.00 руб."
+                                    self.txt_sum_jkh.text = "0.00 руб."
+                                    self.servicePay.text  = "0.00 руб."
+                                }
+                            }else if self.choiceIdent == ($0["Ident"] as! String){
+                                if ($0["Sum"] as! String) == "0.00"{
+                                    self.txt_sum_obj.text = "0.00 руб."
+                                    self.txt_sum_jkh.text = "0.00 руб."
+                                    self.servicePay.text  = "0.00 руб."
+                                }
+                            }
+                        }
+                    }
                 } else {
                     //                    self.txt_sum_jkh.text = "0,00 р."
-                    self.txt_sum_obj.text = "0,00"
-                    self.txt_sum_jkh.text = "0,00 руб."
-                    self.servicePay.text  = "0,00 руб."
+                    self.self.txt_sum_obj.text = "0.00 руб."
+                    self.txt_sum_jkh.text = "0.00 руб."
+                    self.servicePay.text  = "0.00 руб."
                 }
                 self.updateFetchedResultsController()
             })
@@ -769,6 +806,25 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         self.totalSum = self.sum + serviceP
         self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
         self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+        if self.debtArr.count != 0{
+            var s = 0.00
+            self.debtArr.forEach{
+                if choiceIdent == "Все"{
+                    s = s + Double($0["Sum"] as! String)!
+                    if s == 0.00{
+                        self.txt_sum_obj.text = "0.00 руб."
+                        self.txt_sum_jkh.text = "0.00 руб."
+                        self.servicePay.text  = "0.00 руб."
+                    }
+                }else if self.choiceIdent == ($0["Ident"] as! String){
+                    if ($0["Sum"] as! String) == "0.00"{
+                        self.txt_sum_obj.text = "0.00 руб."
+                        self.txt_sum_jkh.text = "0.00 руб."
+                        self.servicePay.text  = "0.00 руб."
+                    }
+                }
+            }
+        }
     }
     
     @objc func textFieldEditingDidEnd(_ textField: UITextField) {
@@ -816,6 +872,25 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
             self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+            if self.debtArr.count != 0{
+                var s = 0.00
+                self.debtArr.forEach{
+                    if choiceIdent == "Все"{
+                        s = s + Double($0["Sum"] as! String)!
+                        if s == 0.00{
+                            self.txt_sum_obj.text = "0.00 руб."
+                            self.txt_sum_jkh.text = "0.00 руб."
+                            self.servicePay.text  = "0.00 руб."
+                        }
+                    }else if self.choiceIdent == ($0["Ident"] as! String){
+                        if ($0["Sum"] as! String) == "0.00"{
+                            self.txt_sum_obj.text = "0.00 руб."
+                            self.txt_sum_jkh.text = "0.00 руб."
+                            self.servicePay.text  = "0.00 руб."
+                        }
+                    }
+                }
+            }
         }else{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]
@@ -843,6 +918,25 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
             self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+            if self.debtArr.count != 0{
+                var s = 0.00
+                self.debtArr.forEach{
+                    if choiceIdent == "Все"{
+                        s = s + Double($0["Sum"] as! String)!
+                        if s == 0.00{
+                            self.txt_sum_obj.text = "0.00 руб."
+                            self.txt_sum_jkh.text = "0.00 руб."
+                            self.servicePay.text  = "0.00 руб."
+                        }
+                    }else if self.choiceIdent == ($0["Ident"] as! String){
+                        if ($0["Sum"] as! String) == "0.00"{
+                            self.txt_sum_obj.text = "0.00 руб."
+                            self.txt_sum_jkh.text = "0.00 руб."
+                            self.servicePay.text  = "0.00 руб."
+                        }
+                    }
+                }
+            }
         }
     }
     

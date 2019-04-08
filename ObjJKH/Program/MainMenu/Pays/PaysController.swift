@@ -56,6 +56,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     let dropper = Dropper(width: 150, height: 400)
     
     public var saldoIdent = "Все"
+    public var debtArr:[AnyObject] = []
     
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_obj: UITextField!
@@ -213,6 +214,8 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         currPoint = 537
+        print(self.debtArr.count)
+        
         let defaults     = UserDefaults.standard
         // Логин и пароль
         login = defaults.string(forKey: "login")
@@ -389,10 +392,25 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                             let serviceP = self.sum / 0.992 - self.sum
                             self.totalSum = self.sum + serviceP
                             self.txt_sum_obj.text = String(format:"%.2f", self.sum)
-                            
+                            if self.debtArr.count != 0{
+                                var s = 0.00
+                                self.debtArr.forEach{
+                                    if self.choiceIdent == "Все"{
+                                        print($0["Sum"])
+                                        s = s + Double($0["Sum"] as! String)!
+                                        if s == 0.00{
+                                            self.txt_sum_obj.text = "0.00"
+                                        }
+                                    }else if self.choiceIdent == ($0["Ident"] as! String){
+                                        if ($0["Sum"] as! String) == "0.00"{
+                                            self.txt_sum_obj.text = "0.00"
+                                        }
+                                    }
+                                }
+                            }
                         } else {
-                            //                    self.txt_sum_jkh.text = "0,00 р."
-                            self.txt_sum_obj.text = "0,00"
+                            //                    self.txt_sum_jkh.text = "0.00 р."
+                            self.txt_sum_obj.text = "0.00"
                         }
                     })
 //                }
@@ -441,10 +459,24 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                     let serviceP = self.sum / 0.992 - self.sum
                     self.totalSum = self.sum + serviceP
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum)
-                    
+                    if self.debtArr.count != 0{
+                        var s = 0.00
+                        self.debtArr.forEach{
+                            if self.choiceIdent == "Все"{
+                                s = s + Double($0["Sum"] as! String)!
+                                if s == 0.00{
+                                    self.txt_sum_obj.text = "0.00"
+                                }
+                            }else if self.choiceIdent == ($0["Ident"] as! String){
+                                if ($0["Sum"] as! String) == "0.00"{
+                                    self.txt_sum_obj.text = "0.00"
+                                }
+                            }
+                        }
+                    }
                 } else {
-                    //                    self.txt_sum_jkh.text = "0,00 р."
-                    self.txt_sum_obj.text = "0,00"
+                    //                    self.txt_sum_jkh.text = "0.00 р."
+                    self.txt_sum_obj.text = "0.00"
                 }
                 if self.saldoIdent == "Все"{
                     self.updateFetchedResultsController()
@@ -573,6 +605,21 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         }
         self.sum = sum
         self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+        if self.debtArr.count != 0{
+            var s = 0.00
+            self.debtArr.forEach{
+                if choiceIdent == "Все"{
+                    s = s + Double($0["Sum"] as! String)!
+                    if s == 0.00{
+                        self.txt_sum_obj.text = "0.00"
+                    }
+                }else if self.choiceIdent == ($0["Ident"] as! String){
+                    if ($0["Sum"] as! String) == "0.00"{
+                        self.txt_sum_obj.text = "0.00"
+                    }
+                }
+            }
+        }
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

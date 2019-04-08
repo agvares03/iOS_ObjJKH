@@ -60,6 +60,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     var maxMonth: String = ""
     var fileList: [File] = []
     var link: String = ""
+    public var debtArr:[AnyObject] = []
     
     // название месяца для вывода в шапку
     var name_month: String = "";
@@ -155,6 +156,22 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             }else{
                 payController.saldoIdent = choiceIdent
             }
+            payController.debtArr = self.debtArr
+        }
+        if segue.identifier == "openURL" {
+            let payController             = segue.destination as! openSaldoController
+            payController.urlLink = self.link
+        }
+        #elseif isKlimovsk12
+        if segue.identifier == "paysMytishi" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! PaysMytishiController
+            if choiceIdent == ""{
+                payController.saldoIdent = "Все"
+            }else{
+                payController.saldoIdent = choiceIdent
+            }
+            payController.debtArr = self.debtArr
         }
         if segue.identifier == "openURL" {
             let payController             = segue.destination as! openSaldoController
@@ -169,6 +186,9 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             }else{
                 payController.saldoIdent = choiceIdent
             }
+            print(self.debtArr.count)
+            
+            payController.debtArr = self.debtArr
         }
         #endif
     }

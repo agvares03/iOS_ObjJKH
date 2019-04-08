@@ -602,6 +602,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     // Оплаты
+    var debtArr:[AnyObject] = []
     @IBAction func go_pays(_ sender: UIButton) {
         #if isMupRCMytishi
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
@@ -609,6 +610,44 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #else
         self.performSegue(withIdentifier: "pays", sender: self)
+        #endif
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        debtArr.removeAll()
+        var debt:[String:String] = [:]
+        if debtSum.count != 0{
+            for i in 0...debtSum.count - 1{
+                debt["Ident"] = debtIdent[i]
+                debt["Sum"] = debtSum[i]
+                debt["SumFine"] = debtSumFine[i]
+                debtArr.append(debt as AnyObject)
+            }
+        }
+        if segue.identifier == "goSaldo" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! SaldoController
+            print(self.debtArr.count)
+            payController.debtArr = self.debtArr
+        }
+        #if isMupRCMytishi
+        if segue.identifier == "paysMytishi" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! PaysMytishiController
+            payController.debtArr = self.debtArr
+        }
+        #elseif isKlimovsk12
+        if segue.identifier == "paysMytishi" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! PaysMytishiController
+            payController.debtArr = self.debtArr
+        }
+        #else
+        if segue.identifier == "pays" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! PaysController
+            payController.debtArr = self.debtArr
+        }
         #endif
     }
     
@@ -624,7 +663,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         var u = 0
         let viewHeight = self.heigth_view.constant
         let backHeight = self.backgroundHeight.constant
-        if (str_ls_arr?.count)! > 0{
+        if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
             str_ls_arr?.forEach{
                 let ls = $0
                 let urlPath = Server.SERVER + Server.GET_DEBT_ACCOUNT + "ident=" + ls.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
@@ -632,6 +671,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 let request = NSMutableURLRequest(url: url as URL)
                 request.httpMethod = "GET"
                 print(request)
+                
                 let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                       completionHandler: {
                                                         data, response, error in
@@ -642,6 +682,8 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                             do {
                                                                 u += 1
                                                                 let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                                print(responseStr)
+                                                                
                                                                 if !responseStr.contains("error"){
                                                                     var date        = ""
                                                                     var sum         = ""
@@ -658,16 +700,14 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                                             
                                                                         } else {
                                                                             sum = String(format:"%.2f", json_bills["Sum"] as! Double)
-                                                                            let s = json_bills["Sum"] as! Double
+//                                                                            let s = json_bills["Sum"] as! Double
                                                                             sumFine = String(format:"%.2f", json_bills["SumFine"] as! Double)
-//                                                                            sum = "0.00"
-//                                                                            let s = 0
-//                                                                            sumFine = "0.00"
-                                                                            if s > 0{
-                                                                                self.debtIdent.append(ls)
-                                                                                self.debtSum.append(sum)
-                                                                                self.debtSumFine.append(sumFine)
-                                                                            }
+                                                                            sum = "0.00"
+                                                                            let s = 0
+                                                                            sumFine = "0.00"
+                                                                            self.debtIdent.append(ls)
+                                                                            self.debtSum.append(sum)
+                                                                            self.debtSumFine.append(sumFine)
                                                                             sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
                                                                             date = json_bills["Date"] as! String
                                                                             
@@ -697,14 +737,19 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                                             DispatchQueue.main.async {
                                                                                 let tht: String = self.debtLbl.text!
                                                                                 print(tht)
-                                                                                
-                                                                                if self.debtSum.count == 0 && tht.contains("отсутствует") == false{
+                                                                                var o = 0
+                                                                                self.debtSum.forEach{
+                                                                                    if Double($0) != 0.00{
+                                                                                        o += 1
+                                                                                    }
+                                                                                }
+                                                                                if o == 0 && tht.contains("отсутствует") == false{
                                                                                     self.debtLbl.text = self.debtLbl.text! + " отсутствует"
                                                                                     self.debtLbl.textColor = .init(red: 0, green: 100, blue: 0, alpha: 1.0)
                                                                                     self.debtHeight.constant = 3
                                                                                     self.menu_6_heigth.constant = 63
                                                                                     self.heigth_view.constant = self.heigth_view.constant - 25
-                                                                                    if self.view.frame.size.width <= 320{
+                                                                                    if self.view.frame.size.width <= 375{
                                                                                         self.debtLblHeight.constant = 36
                                                                                         self.menu_6_heigth.constant = 80
                                                                                         self.heigth_view.constant = self.heigth_view.constant + 15
@@ -1213,7 +1258,13 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if (answer[2] == "0") {
                 return 0
             }else{
-                if debtSum.count != 0 {
+                var o = 0
+                debtSum.forEach{
+                    if Double($0) != 0.00{
+                        o += 1
+                    }
+                }
+                if o != 0 && debtSum.count != 0{
                     debtHeight.constant = CGFloat(debtSum.count * 30)
                     heigth_view.constant = heigth_view.constant + CGFloat((debtSum.count - 1) * 25)
                     if (self.heigth_view.constant + 115) > self.view.frame.size.height{
