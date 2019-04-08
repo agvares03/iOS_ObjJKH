@@ -702,9 +702,9 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                                             sum = String(format:"%.2f", json_bills["Sum"] as! Double)
 //                                                                            let s = json_bills["Sum"] as! Double
                                                                             sumFine = String(format:"%.2f", json_bills["SumFine"] as! Double)
-                                                                            sum = "0.00"
-                                                                            let s = 0
-                                                                            sumFine = "0.00"
+//                                                                            sum = "0.00"
+//                                                                            let s = 0
+//                                                                            sumFine = "0.00"
                                                                             self.debtIdent.append(ls)
                                                                             self.debtSum.append(sum)
                                                                             self.debtSumFine.append(sumFine)
