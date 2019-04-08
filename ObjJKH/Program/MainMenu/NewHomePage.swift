@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewHomePage: UIViewController {
+class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var ls1: UILabel!
@@ -24,6 +24,9 @@ class NewHomePage: UIViewController {
     @IBOutlet weak var news_indicator: UILabel!
     @IBOutlet weak var request_indicator: UILabel!
     @IBOutlet weak var question_indicator: UILabel!
+    
+    @IBOutlet weak var tableLS: UITableView!
+    @IBOutlet weak var tableLSHeight: NSLayoutConstraint!
     
     // Размеры для настройки меню
     // Звонок диспетчеру
@@ -177,6 +180,10 @@ class NewHomePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableLS.delegate = self
+        tableLS.dataSource = self
+        
         targetName.text = "Мобильное ЖКХ"
         #if isOur_Obj_Home
         targetName.text = "Наш Общий Дом"
@@ -212,49 +219,8 @@ class NewHomePage: UIViewController {
         fon_top.image = UIImage(named: "Logo_Tafgai_White")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
-        callBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
-        callBtn.tintColor = myColors.btnColor.uiColor()
         suppBtn.tintColor = myColors.btnColor.uiColor()
-        if view.frame.size.width > 320{
-            callBtnWidth.constant = callBtnWidth.constant + 20
-            suppBtnWidth.constant = suppBtnWidth.constant + 20
-        }
-        news_View.layer.borderWidth = 1
-        news_View.layer.borderColor = UIColor.lightGray.cgColor
-        ls_View.layer.borderWidth = 1
-        ls_View.layer.borderColor = UIColor.lightGray.cgColor
-        counters_View.layer.borderWidth = 1
-        counters_View.layer.borderColor = UIColor.lightGray.cgColor
-        
-        let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
-        let lsUnderline = NSAttributedString(string: "ВСЕ ЛИЦЕВЫЕ СЧЕТА", attributes: underlineAttribute)
-        let oneLsUnderline = NSAttributedString(string: "Оплатить", attributes: underlineAttribute)
-        let twoLsUnderline = NSAttributedString(string: "Оплатить", attributes: underlineAttribute)
-        let addLsUnderline = NSAttributedString(string: "Подключить лицевой счет", attributes: underlineAttribute)
-        let newsUnderline = NSAttributedString(string: "ВСЕ НОВОСТИ", attributes: underlineAttribute)
-        let countersUnderline = NSAttributedString(string: "СПИСОК ПРИБОРОВ", attributes: underlineAttribute)
-        let oneCountersUnderline = NSAttributedString(string: "Передать показания", attributes: underlineAttribute)
-        let twoCountersUnderline = NSAttributedString(string: "Изменить показания", attributes: underlineAttribute)
-        
-        allLSBtn.attributedText = lsUnderline
-        one_LS_Pay.attributedText = oneLsUnderline
-        two_LS_Pay.attributedText = twoLsUnderline
-        lbl_Add_LS.attributedText = addLsUnderline
-        allNewsBtn.attributedText = newsUnderline
-        allCountersBtn.attributedText = countersUnderline
-        one_Counters_Set.attributedText = oneCountersUnderline
-        two_Counters_Set.attributedText = twoCountersUnderline
-        
-        allLSBtn.textColor = myColors.btnColor.uiColor()
-        one_LS_Pay.textColor = myColors.btnColor.uiColor()
-        two_LS_Pay.textColor = myColors.btnColor.uiColor()
-        lbl_Add_LS.textColor = myColors.btnColor.uiColor()
-        allNewsBtn.textColor = myColors.btnColor.uiColor()
-        allCountersBtn.textColor = myColors.btnColor.uiColor()
-        one_Counters_Set.textColor = myColors.btnColor.uiColor()
-        two_Counters_Set.textColor = myColors.btnColor.uiColor()
-        targetName.textColor = myColors.btnColor.uiColor()
         
         let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
         if (str_menu_2 != "") {
@@ -273,15 +239,40 @@ class NewHomePage: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    let vote = ["123","12"]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        DispatchQueue.main.async {
+            var height: CGFloat = 0
+            for cell in self.tableLS.visibleCells {
+                height += cell.bounds.height
+            }
+            self.tableLSHeight.constant = CGFloat((self.vote.count) * Int(height) + 10)
+            print(self.tableLSHeight.constant, height)
+        }
+        return vote.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableLS.dequeueReusableCell(withIdentifier: "HomeLSCell") as! HomeLSCell
+        cell.delegate = self
+        return cell
+    }
+}
 
+class HomeLSCell: UITableViewCell {
+    
+    var delegate: UIViewController?
+    
+    @IBOutlet weak var textQuestion: UILabel!
+    @IBOutlet weak var statusImg: UIImageView!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 }

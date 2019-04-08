@@ -134,7 +134,7 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
                 "&name=" + txtText +
                 "&text=" + txtText +
                 "&type=" + String(self.appType + 1) +
-                "&priority=" + "2"
+                "&priority=" + "2" + "&phonenum=" + txtLogin
             
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)

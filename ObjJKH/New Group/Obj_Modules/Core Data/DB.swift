@@ -297,7 +297,7 @@ class DB: NSObject, XMLParserDelegate {
         // Заявки с комментариями (xml)
         var id_app: String = ""
         if (elementName == "Row") {
-            print(attributeDict)
+//            print(attributeDict)
             // Запишем заявку в БД
             let managedObject = Applications()
             managedObject.id              = 1
@@ -345,18 +345,43 @@ class DB: NSObject, XMLParserDelegate {
             
         } else if (elementName == "Comm") {
             // Запишем комментарии в БД
-            let managedObject = Comments()
-            managedObject.id              = Int64(attributeDict["ID"]!)!
-            managedObject.id_app          = Int64(attributeDict["id_request"]!)!
-            managedObject.text            = attributeDict["text"]
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-            managedObject.dateK           = dateFormatter.date(from: attributeDict["added"]!)
-            managedObject.id_author       = attributeDict["id_Author"]
-            managedObject.author          = attributeDict["Name"]
-            managedObject.id_account      = attributeDict["id_account"]
+//            print(attributeDict)
             
-            CoreDataManager.instance.saveContext()
+            if UserDefaults.standard.string(forKey: "isCons") == "1"{
+                let managedObject = Comments()
+                managedObject.id              = Int64(attributeDict["ID"]!)!
+                managedObject.id_app          = Int64(attributeDict["id_request"]!)!
+                managedObject.text            = attributeDict["text"]
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+                managedObject.dateK           = dateFormatter.date(from: attributeDict["added"]!)
+                managedObject.id_author       = attributeDict["id_Author"]
+                managedObject.author          = attributeDict["Name"]
+                managedObject.id_account      = attributeDict["id_account"]
+                if attributeDict["isHidden"] == "1"{
+                    managedObject.is_hidden   = true
+                }else{
+                    managedObject.is_hidden   = false
+                }
+                CoreDataManager.instance.saveContext()
+            }else{
+                let managedObject = Comments()
+                if attributeDict["isHidden"] == "1"{
+//                    managedObject.is_hidden   = true
+                }else{
+                    managedObject.id              = Int64(attributeDict["ID"]!)!
+                    managedObject.id_app          = Int64(attributeDict["id_request"]!)!
+                    managedObject.text            = attributeDict["text"]
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+                    managedObject.dateK           = dateFormatter.date(from: attributeDict["added"]!)
+                    managedObject.id_author       = attributeDict["id_Author"]
+                    managedObject.author          = attributeDict["Name"]
+                    managedObject.id_account      = attributeDict["id_account"]
+                    managedObject.is_hidden   = false
+                    CoreDataManager.instance.saveContext()
+                }
+            }
         } else if (elementName == "File") {
             // Запишем файл в БД
             let managedObject = Fotos()

@@ -33,7 +33,29 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
     @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var ed_comment: UITextField!
     @IBOutlet weak var table_comments: UITableView!
+    @IBOutlet weak var hiddenCommBtn: UIButton!
     
+    @IBAction func hiddenCommAction(_ sender: UIButton) {
+        if isHiddenComm{
+            hiddenCommBtn.setImage(UIImage(named: "unCheck.png"), for: .normal)
+            isHiddenComm = false
+        }else{
+            hiddenCommBtn.setImage(UIImage(named: "Check.png"), for: .normal)
+            isHiddenComm = true
+        }
+    }
+    
+    @IBAction func hiddenCommAction2(_ sender: UIButton) {
+        if isHiddenComm{
+            hiddenCommBtn.setImage(UIImage(named: "unCheck.png"), for: .normal)
+            isHiddenComm = false
+        }else{
+            hiddenCommBtn.setImage(UIImage(named: "Check.png"), for: .normal)
+            isHiddenComm = true
+        }
+    }
+    
+    var isHiddenComm = false
     var delegate:ShowAppConsDelegate?
     var updDelegt: AppsConsUpdateDelegate?
     var App: Applications? = nil
@@ -135,11 +157,15 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             
             let id_app_txt = self.id_app.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             let text_txt: String   = ed_comment.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            
-            let urlPath = Server.SERVER + Server.SEND_COMM_CONS + "reqID=" + id_app_txt + "&accID=" + id_account + "&text=" + text_txt;
+            var isHidden = "false"
+            if isHiddenComm{
+                isHidden = "true"
+            }
+            let urlPath = Server.SERVER + Server.SEND_COMM_CONS + "reqID=" + id_app_txt + "&accID=" + id_account + "&text=" + text_txt + "&isHidden=" + isHidden;
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
+            print(request)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                   completionHandler: {
@@ -250,6 +276,8 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         back.tintColor = myColors.btnColor.uiColor()
         ls_call.tintColor = myColors.btnColor.uiColor()
         hidden_Header.tintColor = myColors.indicatorColor.uiColor()
+        hiddenCommBtn.tintColor = myColors.btnColor.uiColor()
+        hiddenCommBtn.backgroundColor = .white
         let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
         let count = tema_txt.frame.size.height * numberLine
         headerHeight.constant = headerHeight.constant + count

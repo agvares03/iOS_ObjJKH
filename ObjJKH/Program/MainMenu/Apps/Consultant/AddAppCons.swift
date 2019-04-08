@@ -40,6 +40,7 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
     @IBOutlet weak var imgScroll: UIScrollView!
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var edPhone: UITextField!
     
     @IBAction func attachFile(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -116,12 +117,16 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
             self.present(alert, animated: true, completion: nil)
         } else {
             let ident = self.edLS.text!
-            let urlPath = Server.SERVER + Server.ADD_APP +
+            var urlPath = Server.SERVER + Server.ADD_APP +
                 "ident=" + ident +
                 "&name=" + txtText +
                 "&text=" + txtText +
                 "&type=" + String(self.appType + 1) +
                 "&priority=2"
+            let phone = self.edPhone.text!
+            if phone != ""{
+                urlPath = urlPath + "&phonenum=" + phone
+            }
             
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
@@ -243,9 +248,10 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.StopIndicator()
         
+        self.StopIndicator()
+        indicator.stopAnimating()
+        indicator.isHidden = true
         let defaults = UserDefaults.standard
         edLogin = defaults.string(forKey: "login")!
         edPass = defaults.string(forKey: "pass")!
@@ -316,19 +322,23 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
     }
     
     func StartIndicator() {
-        self.btnAdd.isEnabled = false
-        self.btnAdd.isHidden  = true
-        
-        self.indicator.startAnimating()
-        self.indicator.isHidden = false
+        DispatchQueue.main.async {
+            self.btnAdd.isEnabled = false
+            self.btnAdd.isHidden  = true
+            
+            self.indicator.startAnimating()
+            self.indicator.isHidden = false
+        }
     }
     
     func StopIndicator() {
-        self.btnAdd.isEnabled = true
-        self.btnAdd.isHidden  = false
-        
-        self.indicator.stopAnimating()
-        self.indicator.isHidden = true
+        DispatchQueue.main.async {
+            self.btnAdd.isEnabled = true
+            self.btnAdd.isHidden  = false
+            
+            self.indicator.stopAnimating()
+            self.indicator.isHidden = true
+        }
     }
     
     func date_teck() -> (String)? {

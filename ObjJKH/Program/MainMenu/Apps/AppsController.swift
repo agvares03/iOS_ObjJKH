@@ -127,8 +127,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })
         // Установим цвета для элементов в зависимости от Таргета
-//        btnAdd.backgroundColor = myColors.btnColor.uiColor()
-        btnAdd.tintColor = myColors.btnColor.uiColor()
+        btnAdd.backgroundColor = myColors.btnColor.uiColor()
+//        btnAdd.tintColor = myColors.btnColor.uiColor()
         switchCloseApps.tintColor = myColors.btnColor.uiColor()
         switchCloseApps.onTintColor = myColors.btnColor.uiColor()
         back.tintColor = myColors.btnColor.uiColor()
