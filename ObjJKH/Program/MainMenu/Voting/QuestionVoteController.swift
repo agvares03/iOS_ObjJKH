@@ -433,7 +433,7 @@ class QuestionVoteController: UIViewController {
                     textField.placeholder = "SMS-код..."
                     textField.keyboardType = .decimalPad
                 }
-                let cancelAction = UIAlertAction(title: "Отправить", style: .default) { (_) -> Void in
+                let okAction = UIAlertAction(title: "Отправить", style: .default) { (_) -> Void in
                     let textField = alert.textFields![0]
                     let str = textField.text
                     if str != ""{
@@ -451,8 +451,9 @@ class QuestionVoteController: UIViewController {
                         return
                     }
                 }
-                
+                let cancelAction = UIAlertAction(title: "Отмена", style: .destructive) { (_) -> Void in }
                 alert.addAction(cancelAction)
+                alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
             })
         } else {
