@@ -385,11 +385,10 @@ class QuestionVoteController: UIViewController {
         task.resume()
     }
     
-    func get_sms_code(itsAgain: Bool) {
+    private func get_sms_code(itsAgain: Bool) {
         self.StartIndicator()
         self.view.endEditing(true)
-//        self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.SEND_CHECK_PASS + "phone=" + "79247512110"
+        let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.SEND_CHECK_PASS + "phone=" + self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -425,7 +424,7 @@ class QuestionVoteController: UIViewController {
     }
     var responseString = ""
     
-    func choice_sms_again() {
+    private func choice_sms_again() {
         if (responseString == "ok") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
@@ -467,7 +466,7 @@ class QuestionVoteController: UIViewController {
         }
     }
     
-    func send_sms_code(code: String) {
+    private func send_sms_code(code: String) {
         self.view.endEditing(true)
         if (code == "") {
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо ввести код СМС", preferredStyle: .alert)
@@ -477,8 +476,7 @@ class QuestionVoteController: UIViewController {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-//            self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.VALIDATE_SMS + "phone=" + "79247512110" + "&code=" + code.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.VALIDATE_SMS + "phone=" + self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&code=" + code.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
@@ -514,7 +512,7 @@ class QuestionVoteController: UIViewController {
         }
     }
     
-    func choice() {
+    private func choice() {
         if (responseString == "ok") {
             DispatchQueue.main.async(execute: {
                 self.completeVote()
