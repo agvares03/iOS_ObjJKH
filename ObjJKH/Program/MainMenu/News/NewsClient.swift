@@ -62,7 +62,7 @@ class NewsClient {
     
     func getNews(completedBlock: @escaping (_ list:[News]) -> ()){
         var news_read = 0
-        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "login") ?? ""
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
         request.httpMethod = "GET"
@@ -78,26 +78,30 @@ class NewsClient {
 //            }
             
             guard data != nil else { return }
-            let json = try? JSONSerialization.jsonObject(with: data!,
-                                                         options: .allowFragments)
-            let unfilteredData = NewsJson(json: json! as! JSON)?.data
-            var newsList: [News] = []
-            unfilteredData?.forEach { json in
-                if !json.readed! {
-                    news_read += 1
-                    UserDefaults.standard.setValue(news_read, forKey: "news_read")
-                    UserDefaults.standard.synchronize()
-                }
-                let idNews = json.idNews
-                let Created = json.created
-                let Header = json.header
-                let Text = json.text
-                let IsReaded = json.readed
-                let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
-                newsList.append(newsObj)
-            }
-            
-            completedBlock(newsList)
+                                                var newsList: [News] = []
+                                                if !responseString.contains("error"){
+                                                    let json = try? JSONSerialization.jsonObject(with: data!,
+                                                                                                 options: .allowFragments)
+                                                    let unfilteredData = NewsJson(json: json! as! JSON)?.data
+                                                    
+                                                    unfilteredData?.forEach { json in
+                                                        if !json.readed! {
+                                                            news_read += 1
+                                                            UserDefaults.standard.setValue(news_read, forKey: "news_read")
+                                                            UserDefaults.standard.synchronize()
+                                                        }
+                                                        let idNews = json.idNews
+                                                        let Created = json.created
+                                                        let Header = json.header
+                                                        let Text = json.text
+                                                        let IsReaded = json.readed
+                                                        let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
+                                                        newsList.append(newsObj)
+                                                    }
+                                                    
+                                                    
+                                                }
+                                                completedBlock(newsList)
         })
         task.resume()
     }
