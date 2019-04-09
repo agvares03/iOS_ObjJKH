@@ -73,7 +73,8 @@ class QuestionVoteController: UIViewController {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }else{
-            self.completeVote()
+//            self.completeVote()
+            self.get_sms_code(itsAgain: false)
         }
     }
     
@@ -339,7 +340,7 @@ class QuestionVoteController: UIViewController {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "POST"
-        print(request)
+        //print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -355,7 +356,7 @@ class QuestionVoteController: UIViewController {
                                                 }
                                                 
                                                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                                                print("responseString = \(responseString)")
+                                                //print("responseString = \(responseString)")
                                                 if !responseString.contains("error"){
                                                     DispatchQueue.main.async(execute: {
                                                         if !complete{
@@ -384,13 +385,175 @@ class QuestionVoteController: UIViewController {
         task.resume()
     }
     
+    func get_sms_code(itsAgain: Bool) {
+        self.StartIndicator()
+        self.view.endEditing(true)
+//        self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.SEND_CHECK_PASS + "phone=" + "79247512110"
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        //print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        self.StopIndicator()
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                //print("responseString = \(String(describing: self.responseString))")
+                                                
+                                                self.choice_sms_again()
+        })
+        task.resume()
+    }
+    var responseString = ""
+    
+    func choice_sms_again() {
+        if (responseString == "ok") {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Подтвердите завершение голосования", message: "Смс-сообщение с кодом подтверждения отправлено на Ваш номер телефона.\nВведите код в поле ниже:", preferredStyle: .alert)
+                alert.addTextField { (textField) in
+                    textField.placeholder = "SMS-код..."
+                    textField.keyboardType = .decimalPad
+                }
+                let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
+                    let textField = alert.textFields![0]
+                    let str = textField.text
+                    if str != ""{
+                        self.StartIndicator()
+                        self.send_sms_code(code: str!)
+                    }else{
+                        textField.text = ""
+                        textField.placeholder = "SMS-код..."
+                        let alert = UIAlertController(title: "Ошибка", message: "Вы не ввели SMS-код", preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                            self.choice_sms_again()
+                        }
+                        alert.addAction(cancelAction)
+                        self.present(alert, animated: true, completion: nil)
+                        return
+                    }
+                }
+                
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: self.responseString.replacingOccurrences(of: "error: ", with: ""), preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    func send_sms_code(code: String) {
+        self.view.endEditing(true)
+        if (code == "") {
+            let alert = UIAlertController(title: "Ошибка", message: "Необходимо ввести код СМС", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                self.choice_sms_again()
+            }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+//            self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.VALIDATE_SMS + "phone=" + "79247512110" + "&code=" + code.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            let url: NSURL = NSURL(string: urlPath)!
+            let request = NSMutableURLRequest(url: url as URL)
+            request.httpMethod = "GET"
+            //print(request)
+            let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                  completionHandler: {
+                                                    data, response, error in
+                                                    
+                                                    if error != nil {
+                                                        DispatchQueue.main.async(execute: {
+                                                            self.StopIndicator()
+                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                            UserDefaults.standard.synchronize()
+                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                self.performSegue(withIdentifier: "support", sender: self)
+                                                            }
+                                                            alert.addAction(cancelAction)
+                                                            alert.addAction(supportAction)
+                                                            self.present(alert, animated: true, completion: nil)
+                                                        })
+                                                        return
+                                                    }
+                                                    
+                                                    self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                    //print("responseString = \(String(describing: self.responseString))")
+                                                    
+                                                    self.choice()
+            })
+            task.resume()
+            
+        }
+    }
+    
+    func choice() {
+        if (responseString == "ok") {
+            DispatchQueue.main.async(execute: {
+                self.completeVote()
+            })
+        } else if (responseString.contains("неверный проверочный код")){
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Неверный код SMS", message: "", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    self.responseString = "ok"
+                    self.choice_sms_again()
+                }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }else{
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
+                alert.addAction(cancelAction)
+                alert.addAction(supportAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+    }
+    
     private func completeVote() {
         let urlPath = Server.SERVER + Server.COMPLETE_VOTE + "phone=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&ossId=" + idOSS.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "POST"
-        print(request)
+        //print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -406,7 +569,7 @@ class QuestionVoteController: UIViewController {
                                                 }
                                                 
                                                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                                                print("responseString = \(responseString)")
+                                                //print("responseString = \(responseString)")
                                                 if !responseString.contains("error"){
                                                     DispatchQueue.main.async(execute: {
                                                         self.StopIndicator()
