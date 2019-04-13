@@ -152,8 +152,6 @@ class AdditionalServicesController: UIViewController{
         objectArray.removeAll()
         let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         DispatchQueue.global(qos: .userInteractive).async {
-            
-//            var request = URLRequest(url: URL(string: "http://uk-gkh.org/komfortnew/GetAdditionalServices.ashx?login=+79261937745&pwd=123")!)
             var request = URLRequest(url: URL(string: urlPath)!)
             request.httpMethod = "GET"
             

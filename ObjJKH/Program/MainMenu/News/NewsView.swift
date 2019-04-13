@@ -31,7 +31,7 @@ class NewsView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         if !newsRead!{
             self.read_news()
         }

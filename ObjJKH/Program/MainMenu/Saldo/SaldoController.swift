@@ -173,10 +173,6 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             }
             payController.debtArr = self.debtArr
         }
-        if segue.identifier == "openURL" {
-            let payController             = segue.destination as! openSaldoController
-            payController.urlLink = self.link
-        }
         #else
         if segue.identifier == "pays" {
             let nav = segue.destination as! UINavigationController
