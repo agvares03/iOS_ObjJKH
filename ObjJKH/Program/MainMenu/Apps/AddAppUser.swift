@@ -34,11 +34,7 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
     weak var delegate: AddAppDelegate?
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        if UserDefaults.standard.bool(forKey: "fromMenu"){
-            navigationController?.popViewController(animated: true)
-        }else{
-            navigationController?.dismiss(animated: true, completion: nil)
-        }
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet weak var lsCell: UITableViewCell!
