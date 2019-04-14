@@ -164,6 +164,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         stopAnimation()
         navigationItem.title    = question_?.name
         if !(question_?.readed)!{

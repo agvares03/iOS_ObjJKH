@@ -127,8 +127,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })
         // Установим цвета для элементов в зависимости от Таргета
+        
         btnAdd.backgroundColor = myColors.btnColor.uiColor()
-//        btnAdd.tintColor = myColors.btnColor.uiColor()
         switchCloseApps.tintColor = myColors.btnColor.uiColor()
         switchCloseApps.onTintColor = myColors.btnColor.uiColor()
         back.tintColor = myColors.btnColor.uiColor()
@@ -391,11 +391,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.App        = app
             AppUser.updDelegt  = self
         }else if (segue.identifier == "add_app") {
-            let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppUser
-            AddApp.delegate = self
+                let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppUser
+                AddApp.delegate = self
         } else if (segue.identifier == "add_app_cons") {
-            let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppCons
-            AddApp.delegate = self
+                let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppCons
+                AddApp.delegate = self
         }
     }
     
@@ -499,9 +499,6 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         if (UserDefaults.standard.integer(forKey: "request_read_cons") < question_read_cons){
             self.load_new_data()
-        }
-        if UserDefaults.standard.bool(forKey: "NewMain"){
-            self.navigationController?.setNavigationBarHidden(true, animated: animated)
         }
         self.load_data()
         self.tableApps.reloadData()
