@@ -73,7 +73,6 @@ class NewMainMenu2: UIViewController {
     @IBOutlet weak var btn_arr_oss: UIImageView!
     @IBOutlet weak var line_bottom_oss: UILabel!
     // Выход - только название
-    @IBOutlet weak var line_bottom_9: UILabel!
     @IBOutlet weak var line_bottom_10: UILabel!
     @IBOutlet weak var btn_name_9: UIButton!
     @IBOutlet weak var heigth_Questions: NSLayoutConstraint!
@@ -91,7 +90,6 @@ class NewMainMenu2: UIViewController {
     @IBOutlet weak var webs_img: UIImageView!
     @IBOutlet weak var services: UIImageView!
     @IBOutlet weak var exit_img: UIImageView!
-    @IBOutlet weak var acc_img: UIImageView!
     @IBOutlet weak var oss: UIImageView!
     
     var phone: String?
@@ -206,8 +204,6 @@ class NewMainMenu2: UIViewController {
         services.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
-        acc_img.image = myImages.acc_image
-        acc_img.setImageColor(color: myColors.btnColor.uiColor())
         oss.image = myImages.oss_image
         oss.setImageColor(color: myColors.btnColor.uiColor())
         
@@ -219,7 +215,6 @@ class NewMainMenu2: UIViewController {
         line_bottom_6.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_7.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_8.backgroundColor = myColors.btnColor.uiColor()
-        line_bottom_9.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_10.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_oss.backgroundColor = myColors.btnColor.uiColor()
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
