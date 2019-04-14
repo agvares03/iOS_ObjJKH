@@ -462,8 +462,8 @@ class FirstController: UIViewController {
                 //                }
                 self.one = false
                 if (self.isCons == "0") {
-                    //UserDefaults.standard.set(true, forKey: "NewMain")
-                    //self.performSegue(withIdentifier: "NewMainMenu", sender: self)
+//                    UserDefaults.standard.set(true, forKey: "NewMain")
+//                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)
                     self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)

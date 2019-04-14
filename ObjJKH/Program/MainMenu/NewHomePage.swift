@@ -21,6 +21,13 @@ protocol DelLSCellDelegate: class {
 class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate {
     
     
+    @IBOutlet weak var newsIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var appsIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var webIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var serviceIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var questionIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var counterIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var elipseBackground: UIView!
     
@@ -88,6 +95,37 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     var phone: String?
     var fetchedResultsController: NSFetchedResultsController<Applications>?
+    
+    @IBAction func goNewsAction(_ sender: UIButton) {
+        self.newsIndicator.startAnimating()
+        self.newsIndicator.isHidden = false
+        self.allNewsBtn.isHidden = true
+    }
+    @IBAction func goAppsAction(_ sender: UIButton) {
+        self.appsIndicator.startAnimating()
+        self.appsIndicator.isHidden = false
+        self.allAppsBtn.isHidden = true
+    }
+    @IBAction func goCounterAction(_ sender: UIButton) {
+        self.counterIndicator.startAnimating()
+        self.counterIndicator.isHidden = false
+        self.allCountersBtn.isHidden = true
+    }
+    @IBAction func goQuestionAction(_ sender: UIButton) {
+        self.questionIndicator.startAnimating()
+        self.questionIndicator.isHidden = false
+        self.allQuestionsBtn.isHidden = true
+    }
+    @IBAction func goWebAction(_ sender: UIButton) {
+        self.webIndicator.startAnimating()
+        self.webIndicator.isHidden = false
+        self.allWebsBtn.isHidden = true
+    }
+    @IBAction func goServiceAction(_ sender: UIButton) {
+        self.serviceIndicator.startAnimating()
+        self.serviceIndicator.isHidden = false
+        self.allServicesBtn.isHidden = true
+    }
     
     @IBAction func AddLS(_ sender: UIButton) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
@@ -171,6 +209,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        StopIndicators()
         let defaults = UserDefaults.standard
         var phone = defaults.string(forKey: "phone_operator")
         if phone?.first == "8"{
@@ -276,6 +315,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         suppBtn.tintColor = myColors.btnColor.uiColor()
         
+        newsIndicator.color = myColors.btnColor.uiColor()
+        appsIndicator.color = myColors.btnColor.uiColor()
+        counterIndicator.color = myColors.btnColor.uiColor()
+        questionIndicator.color = myColors.btnColor.uiColor()
+        webIndicator.color = myColors.btnColor.uiColor()
+        serviceIndicator.color = myColors.btnColor.uiColor()
+        
         allAppsBtn.tintColor = myColors.btnColor.uiColor()
         allQuestionsBtn.tintColor = myColors.btnColor.uiColor()
         allNewsBtn.tintColor = myColors.btnColor.uiColor()
@@ -297,6 +343,27 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         // Do any additional setup after loading the view.
     }
     
+    func StopIndicators() {
+        self.newsIndicator.stopAnimating()
+        self.newsIndicator.isHidden = true
+        self.appsIndicator.stopAnimating()
+        self.appsIndicator.isHidden = true
+        self.questionIndicator.stopAnimating()
+        self.questionIndicator.isHidden = true
+        self.counterIndicator.stopAnimating()
+        self.counterIndicator.isHidden = true
+        self.webIndicator.stopAnimating()
+        self.webIndicator.isHidden = true
+        self.serviceIndicator.stopAnimating()
+        self.serviceIndicator.isHidden = true
+        self.allNewsBtn.isHidden = false
+        self.allAppsBtn.isHidden = false
+        self.allCountersBtn.isHidden = false
+        self.allQuestionsBtn.isHidden = false
+        self.allWebsBtn.isHidden = false
+        self.allServicesBtn.isHidden = false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -304,6 +371,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.StopIndicators()
         UserDefaults.standard.set(true, forKey: "fromMenu")
     }
     
@@ -464,7 +532,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 }
                                                 var i = 0
                                                 newsList.forEach{
-                                                    if i < 3{
+                                                    if i < 2{
                                                         self.newsArr.append($0)
                                                     }
                                                     i += 1
@@ -758,13 +826,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func load_data_Apps() {
 //        if (switchCloseApps.isOn) {
-            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"]) as? NSFetchedResultsController<Applications>
+//            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"]) as? NSFetchedResultsController<Applications>
 //        } else {
-//            let close: NSNumber = 1
-//            let predicateFormat = String(format: " is_close =%@ ", close)
-//            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat) as? NSFetchedResultsController<Applications>
+            let close: NSNumber = 1
+            let predicateFormat = String(format: " is_close =%@ ", close)
+            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat) as? NSFetchedResultsController<Applications>
 //        }
-        
+    
         do {
             try fetchedResultsController!.performFetch()
         } catch {
@@ -834,14 +902,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         self.tableWeb.isHidden = false
                     }
                     
-                    if (self.webArr != nil) {
-                        for (index, item) in (self.webArr.enumerated()) {
-                            //                        if item.name == self.performName_ {
-                            //                            self.index = index
-                            //                            self.performSegue(withIdentifier: Segues.fromQuestionsTableVC.toQuestion, sender: self)
-                            //                        }
-                        }
-                    }
+//                    if (self.webArr != nil) {
+//                        for (index, item) in (self.webArr.enumerated()) {
+//                            //                        if item.name == self.performName_ {
+//                            //                            self.index = index
+//                            //                            self.performSegue(withIdentifier: Segues.fromQuestionsTableVC.toQuestion, sender: self)
+//                            //                        }
+//                        }
+//                    }
                     
                 }
             }
@@ -944,6 +1012,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if tableView == self.tableWeb {
             count =  webArr.count
+            if count! > 2{
+                count = 2
+            }
         }
         if tableView == self.tableService {
             if serviceArr.count != 0{
