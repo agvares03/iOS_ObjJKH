@@ -398,7 +398,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                                     if self.choiceIdent == "Все"{
                                         print($0["Sum"])
                                         s = s + Double($0["Sum"] as! String)!
-                                        if s == 0.00{
+                                        if s <= 0.00{
                                             self.txt_sum_obj.text = "0.00"
                                         }
                                     }else if self.choiceIdent == ($0["Ident"] as! String){
@@ -464,7 +464,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                         self.debtArr.forEach{
                             if self.choiceIdent == "Все"{
                                 s = s + Double($0["Sum"] as! String)!
-                                if s == 0.00{
+                                if s <= 0.00{
                                     self.txt_sum_obj.text = "0.00"
                                 }
                             }else if self.choiceIdent == ($0["Ident"] as! String){
@@ -610,7 +610,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.debtArr.forEach{
                 if choiceIdent == "Все"{
                     s = s + Double($0["Sum"] as! String)!
-                    if s == 0.00{
+                    if s <= 0.00{
                         self.txt_sum_obj.text = "0.00"
                     }
                 }else if self.choiceIdent == ($0["Ident"] as! String){

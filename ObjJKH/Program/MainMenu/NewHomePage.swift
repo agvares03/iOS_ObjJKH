@@ -277,32 +277,26 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         tableService.delegate = self
         tableService.dataSource = self
         
-        targetName.text = "Мобильное ЖКХ"
+        targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
         #if isOur_Obj_Home
-        targetName.text = "Наш Общий Дом"
         fon_top.image = UIImage(named: "logo_Our_Obj_Home")
         #elseif isChist_Dom
         fon_top.image = UIImage(named: "Logo_Chist_Dom")
         #elseif isMupRCMytishi
-        targetName.text = "МУП РЦ Мытищи"
         fon_top.image = UIImage(named: "logo_MupRCMytishi")
         #elseif isDJ
         fon_top.image = UIImage(named: "logo_DJ")
         #elseif isStolitsa
-        targetName.text = "УК Жилищник Столица"
         fon_top.image = UIImage(named: "logo_Stolitsa")
         #elseif isKomeks
         fon_top.image = UIImage(named: "Logo_Komeks")
         #elseif isUKKomfort
-        targetName.text = "УК Комфорт"
         fon_top.image = UIImage(named: "logo_UK_Komfort")
         #elseif isKlimovsk12
-        targetName.text = "ТСЖ Климовск 12"
         fon_top.image = UIImage(named: "logo_Klimovsk12")
         #elseif isPocket
         fon_top.image = UIImage(named: "Logo_Pocket")
         #elseif isReutKomfort
-        targetName.text = "УК Реут Комфорт"
         fon_top.image = UIImage(named: "Logo_ReutKomfort")
         #elseif isUKGarant
         fon_top.image = UIImage(named: "Logo_UK_Garant")
@@ -390,17 +384,18 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var debtSum:[String] = []
         var debtSumFine:[String] = []
         var debtDate:[String] = []
+        var debtAddress:[String] = []
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         var sumObj = 0.00
         var u = 0
+        let login = defaults.string(forKey: "login")
 //        let viewHeight = self.heigth_view.constant
 //        let backHeight = self.backgroundHeight.constant
         if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
-            str_ls_arr?.forEach{
-                let ls = $0
-                let urlPath = Server.SERVER + Server.GET_DEBT_ACCOUNT + "ident=" + ls.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+//            str_ls_arr?.forEach{
+            let urlPath = Server.SERVER + "MobileAPI/GetDebt.ashx?" + "phone=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
                 let url: NSURL = NSURL(string: urlPath)!
                 let request = NSMutableURLRequest(url: url as URL)
                 request.httpMethod = "GET"
@@ -422,6 +417,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                     var date        = ""
                                                                     var sum         = ""
                                                                     var sumFine     = ""
+                                                                    var ls = ""
+                                                                    var address = ""
                                                                     
                                                                     //                                                                var sumOver     = ""
                                                                     //                                                                var sumFineOver = ""
@@ -434,34 +431,59 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                         if (int_end < 0) {
                                                                             
                                                                         } else {
-                                                                            sum = String(format:"%.2f", json_bills["Sum"] as! Double)
-                                                                            //                                                                            let s = json_bills["Sum"] as! Double
-                                                                            sumFine = String(format:"%.2f", json_bills["SumFine"] as! Double)
-//                                                                            sum = "0.00"
-//                                                                            sumFine = "0.00"
-                                                                            date = json_bills["Date"] as! String
-                                                                            debtIdent.append(ls)
-                                                                            debtSum.append(sum)
-                                                                            debtSumFine.append(sumFine)
-                                                                            debtDate.append(date)
-                                                                            sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
-                                                                            
-                                                                            defaults.set(date, forKey: "dateDebt")
-                                                                            if Double(sumAll) != 0.00{
-                                                                                let d = date.components(separatedBy: ".")
-                                                                                let d1 = self.dateOld.components(separatedBy: ".")
-                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
-                                                                                    DispatchQueue.main.async {
-                                                                                        self.dateOld = date
+                                                                            for index in 0...int_end {
+                                                                                let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                                                                for obj in json_bill {
+                                                                                    if obj.key == "Sum" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            sum = String(describing: obj.value as! Double)
+                                                                                        }
                                                                                     }
+                                                                                    if obj.key == "SumFine" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            sumFine = String(describing: obj.value as! Double)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "Address" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            address = String(describing: obj.value as! String)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "Ident" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            ls = String(describing: obj.value as! String)
+                                                                                        }
+                                                                                    }
+                                                                                    
                                                                                 }
-                                                                                sumObj = sumObj + Double(sumAll)!
+                                                                                if date == ""{
+                                                                                    let dateFormatter = DateFormatter()
+                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                                                                                    date = dateFormatter.string(from: Date())
+                                                                                }
+                                                                                debtIdent.append(ls)
+                                                                                debtSum.append(sum)
+                                                                                debtSumFine.append(sumFine)
+                                                                                debtAddress.append(address)
+                                                                                debtDate.append(date)
+                                                                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address))
                                                                             }
+                                                                            
+//                                                                            defaults.set(date, forKey: "dateDebt")
+//                                                                            if Double(sumAll) != 0.00{
+//                                                                                let d = date.components(separatedBy: ".")
+//                                                                                let d1 = self.dateOld.components(separatedBy: ".")
+//                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+//                                                                                    DispatchQueue.main.async {
+//                                                                                        self.dateOld = date
+//                                                                                    }
+//                                                                                }
+//                                                                                sumObj = sumObj + Double(sumAll)!
+//                                                                            }
                                                                         }
                                                                     }
-                                                                    self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date))
-                                                                    defaults.set(sumObj, forKey: "sumDebt")
-                                                                    defaults.synchronize()
+//                                                                    defaults.set(sumObj, forKey: "sumDebt")
+//                                                                    defaults.synchronize()
                                                                     DispatchQueue.main.async {
                                                                         self.tableLS.reloadData()
                                                                     }
@@ -474,7 +496,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         }
                 })
                 task.resume()
-            }
+//            }
         }else{
             let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
             if (str_menu_6 != "") {
@@ -1155,6 +1177,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.dateText.text = month + " " + str_date_arr![2]
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
+            cell.addressText.text = lsArr[indexPath.row].address!
             if Double(lsArr[indexPath.row].sum!)! > 0.00{
                 cell.separator.isHidden = true
                 cell.noDebtText.isHidden = true
@@ -1669,11 +1692,13 @@ struct lsData {
     let sum: String?
     let sumFine: String?
     let date: String?
+    let address: String?
     
-    init(ident: String?, sum: String?, sumFine: String?, date:String?) {
+    init(ident: String?, sum: String?, sumFine: String?, date:String?, address: String?) {
         self.ident = ident
         self.sum = sum
         self.sumFine = sumFine
         self.date = date
+        self.address = address
     }
 }

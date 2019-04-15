@@ -147,33 +147,26 @@ class NewMainMenu2: UIViewController {
         }
         
         btn_name_1.setTitle(phoneOperator, for: .normal)
-        targetName.text = "Мобильное ЖКХ"
-        // Картинка в зависимости от Таргета
+        targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
         #if isOur_Obj_Home
-        targetName.text = "Наш Общий Дом"
         fon_top.image = UIImage(named: "logo_Our_Obj_Home")
         #elseif isChist_Dom
         fon_top.image = UIImage(named: "Logo_Chist_Dom")
         #elseif isMupRCMytishi
-        targetName.text = "МУП РЦ Мытищи"
         fon_top.image = UIImage(named: "logo_MupRCMytishi")
         #elseif isDJ
         fon_top.image = UIImage(named: "logo_DJ")
         #elseif isStolitsa
-        targetName.text = "УК Жилищник Столица"
         fon_top.image = UIImage(named: "logo_Stolitsa")
         #elseif isKomeks
         fon_top.image = UIImage(named: "Logo_Komeks")
         #elseif isUKKomfort
-        targetName.text = "УК Комфорт"
         fon_top.image = UIImage(named: "logo_UK_Komfort")
         #elseif isKlimovsk12
-        targetName.text = "ТСЖ Климовск 12"
         fon_top.image = UIImage(named: "logo_Klimovsk12")
         #elseif isPocket
         fon_top.image = UIImage(named: "Logo_Pocket")
         #elseif isReutKomfort
-        targetName.text = "УК Реут Комфорт"
         fon_top.image = UIImage(named: "Logo_ReutKomfort")
         #elseif isUKGarant
         fon_top.image = UIImage(named: "Logo_UK_Garant")

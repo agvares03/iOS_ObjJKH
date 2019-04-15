@@ -521,7 +521,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                             self.debtArr.forEach{
                                 if self.choiceIdent == "Все"{
                                     s = s + Double($0["Sum"] as! String)!
-                                    if s == 0.00{
+                                    if s <= 0.00{
                                         self.txt_sum_obj.text = "0.00 руб."
                                         self.txt_sum_jkh.text = "0.00 руб."
                                         self.servicePay.text  = "0.00 руб."
@@ -597,7 +597,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         self.debtArr.forEach{
                             if self.choiceIdent == "Все"{
                                 s = s + Double($0["Sum"] as! String)!
-                                if s == 0.00{
+                                if s <= 0.00{
                                     self.txt_sum_obj.text = "0.00 руб."
                                     self.txt_sum_jkh.text = "0.00 руб."
                                     self.servicePay.text  = "0.00 руб."
@@ -811,7 +811,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.debtArr.forEach{
                 if choiceIdent == "Все"{
                     s = s + Double($0["Sum"] as! String)!
-                    if s == 0.00{
+                    if s <= 0.00{
                         self.txt_sum_obj.text = "0.00 руб."
                         self.txt_sum_jkh.text = "0.00 руб."
                         self.servicePay.text  = "0.00 руб."
@@ -877,7 +877,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.debtArr.forEach{
                     if choiceIdent == "Все"{
                         s = s + Double($0["Sum"] as! String)!
-                        if s == 0.00{
+                        if s <= 0.00{
                             self.txt_sum_obj.text = "0.00 руб."
                             self.txt_sum_jkh.text = "0.00 руб."
                             self.servicePay.text  = "0.00 руб."
@@ -923,7 +923,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.debtArr.forEach{
                     if choiceIdent == "Все"{
                         s = s + Double($0["Sum"] as! String)!
-                        if s == 0.00{
+                        if s <= 0.00{
                             self.txt_sum_obj.text = "0.00 руб."
                             self.txt_sum_jkh.text = "0.00 руб."
                             self.servicePay.text  = "0.00 руб."
