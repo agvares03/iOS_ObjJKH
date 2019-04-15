@@ -274,6 +274,9 @@
 		1CCA98602249160900636270 /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
 		1CCA98612249160900636270 /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
 		1CCA98622249160900636270 /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
+		1CD2D3922264841A00494DE6 /* ChoiceRegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2D3912264841A00494DE6 /* ChoiceRegionController.swift */; };
+		1CD2D3942264844D00494DE6 /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
+		1CD2D3952264844D00494DE6 /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
 		1CE43D0021C76549001B42B6 /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
 		1CE57D22220D520500B647C0 /* main_Background_MupRCMytishi.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CE57D21220D520500B647C0 /* main_Background_MupRCMytishi.png */; };
 		1CEFC88021F1C42900A042AA /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
@@ -2007,6 +2010,8 @@
 		1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainMenu.storyboard; sourceTree = "<group>"; };
 		1CC3FF32223A3E2500FDBA82 /* NewHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomePage.swift; sourceTree = "<group>"; };
 		1CCA98562249160900636270 /* addCountersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCountersController.swift; sourceTree = "<group>"; };
+		1CD2D3912264841A00494DE6 /* ChoiceRegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceRegionController.swift; sourceTree = "<group>"; };
+		1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddLsPocket.storyboard; sourceTree = "<group>"; };
 		1CE57D21220D520500B647C0 /* main_Background_MupRCMytishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_Background_MupRCMytishi.png; sourceTree = "<group>"; };
 		1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klimovsk12-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UK_Garant_White.png; sourceTree = "<group>"; };
@@ -2399,6 +2404,14 @@
 			path = Voting;
 			sourceTree = "<group>";
 		};
+		1CD2D3902264837C00494DE6 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				1CD2D3912264841A00494DE6 /* ChoiceRegionController.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		1CF8B8A72223CE3600B1D289 /* UK_Garant */ = {
 			isa = PBXGroup;
 			children = (
@@ -2593,6 +2606,7 @@
 				1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */,
 				1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */,
 				305060082251E22100F0132B /* Support.storyboard */,
+				1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -2704,6 +2718,7 @@
 		418ABF4121341BA5004DB75C /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
+				1CD2D3902264837C00494DE6 /* New Group */,
 				1C009E41214946BC004E8BFD /* AdditionalServices */,
 				41EF59FC2138D3D900789370 /* Apps */,
 				41EF5A49213A81F000789370 /* WebCameras */,
@@ -3784,6 +3799,7 @@
 				4137E28122128AE6009C6A7F /* MainMenu.storyboard in Resources */,
 				4137E28222128AE6009C6A7F /* Main.storyboard in Resources */,
 				4137E28322128AE6009C6A7F /* ic_get_app.png in Resources */,
+				1CD2D3952264844D00494DE6 /* AddLsPocket.storyboard in Resources */,
 				4137E28422128AE6009C6A7F /* Account.storyboard in Resources */,
 				4137E28522128AE6009C6A7F /* Apps.storyboard in Resources */,
 				1CC3FF2F223A19D200FDBA82 /* NewMainMenu.storyboard in Resources */,
@@ -3833,6 +3849,7 @@
 				1C5153CF21EEFE9800DE36D9 /* Account.storyboard in Resources */,
 				1CF8B8AE2223CF3200B1D289 /* Logo_UK_Garant_White.png in Resources */,
 				41EF59F12138CF3D00789370 /* Apps.storyboard in Resources */,
+				1CD2D3942264844D00494DE6 /* AddLsPocket.storyboard in Resources */,
 				1CEFC88621F1C79A00A042AA /* Logo_DemoUC_White.png in Resources */,
 				41EF59E42137ECDD00789370 /* Pays.storyboard in Resources */,
 				1CC3FF26223A19D200FDBA82 /* NewMainMenu.storyboard in Resources */,
@@ -5682,6 +5699,7 @@
 				4137E24F22128AE6009C6A7F /* SaldoController.swift in Sources */,
 				4137E25022128AE6009C6A7F /* Server.swift in Sources */,
 				4137E25122128AE6009C6A7F /* AppsCellClose.swift in Sources */,
+				1CD2D3922264841A00494DE6 /* ChoiceRegionController.swift in Sources */,
 				4137E25222128AE6009C6A7F /* HistoryPayController.swift in Sources */,
 				4137E25322128AE6009C6A7F /* DB.swift in Sources */,
 				4137E25422128AE6009C6A7F /* FilesController.swift in Sources */,
