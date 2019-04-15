@@ -47,7 +47,9 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var sendBtn: UIButton!
     
     @IBAction func sendClick(_ sender: UIButton) {
-        let login: String = phoneTxt.text!
+        var login: String = phoneTxt.text!
+        print(login)
+        login = login.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "*", with: "")
         let email: String = emailTxt.text!
         let text: String  = problemTxt.text!
         if (!(login.contains("+7")) || (login.count < 12)){
