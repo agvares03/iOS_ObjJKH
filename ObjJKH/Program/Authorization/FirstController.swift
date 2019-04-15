@@ -515,7 +515,7 @@ class FirstController: UIViewController {
         strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
         strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
         strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        
+        strLogin = strLogin.replacingOccurrences(of: "*", with: "", options: .literal, range: nil)
         defaults.setValue(strLogin, forKey: "login")
         defaults.setValue(strLogin, forKey: "phone")
         defaults.setValue(edPass.text!, forKey: "pass")
