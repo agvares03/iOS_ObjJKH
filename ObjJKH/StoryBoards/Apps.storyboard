@@ -332,6 +332,7 @@
                         <segue destination="b20-aw-L1T" kind="show" identifier="add_app_cons" id="h4t-Z8-wdF"/>
                         <segue destination="faK-qC-gzb" kind="show" identifier="addLSMup" id="PNe-1w-dBl"/>
                         <segue destination="C4f-NX-JpH" kind="show" identifier="addLS" id="5Mg-CX-Tqc"/>
+                        <segue destination="vik-c3-FkK" kind="show" identifier="addLSPocket" id="bnI-2y-375"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKg-xP-qp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2046,6 +2047,14 @@
             </objects>
             <point key="canvasLocation" x="2566" y="-877"/>
         </scene>
+        <!--AddLsPocket-->
+        <scene sceneID="ygt-Yy-QZU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddLsPocket" id="vik-c3-FkK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fY3-9a-7UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1734" y="-382"/>
+        </scene>
         <!--addLSMup-->
         <scene sceneID="bmY-lK-iqu">
             <objects>
@@ -2084,8 +2093,8 @@
         <image name="unCheck" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VNT-bQ-6nH"/>
-        <segue reference="3a9-cV-fC3"/>
+        <segue reference="pW3-Zd-2nm"/>
+        <segue reference="mMc-hD-jgf"/>
         <segue reference="M7G-ag-hjx"/>
         <segue reference="x4h-mP-Bcg"/>
         <segue reference="deB-u2-yJl"/>

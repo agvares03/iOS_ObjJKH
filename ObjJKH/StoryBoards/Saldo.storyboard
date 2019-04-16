@@ -421,6 +421,7 @@
                         <segue destination="w7B-jE-bXy" kind="show" identifier="addLSMup" id="s6Y-hz-IMY"/>
                         <segue destination="2lM-ci-Lhd" kind="show" identifier="addLS" id="YWJ-QU-YYN"/>
                         <segue destination="DM5-8b-5gY" kind="show" identifier="openURL" id="Wwy-Bw-3mb"/>
+                        <segue destination="ehj-ME-Nja" kind="show" identifier="addLSPocket" id="CbS-XO-Lz8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uz2-jd-bDI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -513,7 +514,15 @@
                 <viewControllerPlaceholder storyboardName="MainMenu" referencedIdentifier="addLSMup" id="w7B-jE-bXy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h44-w6-B5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="89"/>
+            <point key="canvasLocation" x="1788" y="1"/>
+        </scene>
+        <!--AddLsPocket-->
+        <scene sceneID="gON-WN-ylo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddLsPocket" id="ehj-ME-Nja" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gOI-Gj-5Q0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1800" y="-80"/>
         </scene>
         <!--addLS-->
         <scene sceneID="To8-ZA-FfJ">
@@ -521,7 +530,7 @@
                 <viewControllerPlaceholder storyboardName="MainMenu" referencedIdentifier="addLS" id="2lM-ci-Lhd" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdM-bS-E5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1863" y="142"/>
+            <point key="canvasLocation" x="1766" y="-38"/>
         </scene>
     </scenes>
     <resources>
@@ -532,6 +541,6 @@
         <image name="spin.png" width="840" height="840"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6fO-jL-683"/>
+        <segue reference="Z7T-ws-bjN"/>
     </inferredMetricsTieBreakers>
 </document>

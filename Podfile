@@ -253,7 +253,7 @@ target 'Soldatova1' do
   
 end
 
-target 'Tafgay' do
+target 'Tafgai' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   # Оплата - Тинькофф
   pod 'CardIO'
@@ -275,5 +275,27 @@ target 'Tafgay' do
   pod 'Dropper'
   pod 'AKMaskField'
   
+end
+
+target 'JKH_Pocket' do
+# Оплата - Тинькофф
+pod 'CardIO'
+pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
+pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
+
+pod 'Fabric'
+pod 'Crashlytics'
+
+use_frameworks!
+
+# Pods for JKH_Pocket
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
+pod 'Firebase/Database'
+pod 'Alamofire', '~> 4.0'
+pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+pod 'Gloss'
+pod 'Dropper'
+pod 'AKMaskField'
 end
 

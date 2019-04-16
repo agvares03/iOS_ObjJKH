@@ -51,6 +51,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
         #if isMupRCMytishi
         self.performSegue(withIdentifier: "addLSMup", sender: self)
+        #elseif isPocket
+        self.performSegue(withIdentifier: "addLSPocket", sender: self)
         #else
         self.performSegue(withIdentifier: "addLS", sender: self)
         #endif

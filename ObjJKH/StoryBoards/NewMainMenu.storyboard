@@ -1434,6 +1434,7 @@
                         <segue destination="Gql-SV-Xjp" kind="show" identifier="addCounters" id="v9c-4c-8pD"/>
                         <segue destination="3Ur-QV-U2Q" kind="show" identifier="paysMytishi" id="Hvu-GH-O0f"/>
                         <segue destination="VGj-sw-31o" kind="show" identifier="pays" id="3vI-WY-9G8"/>
+                        <segue destination="pxm-Lb-BZl" kind="show" identifier="addLSPocket" id="ljn-C4-FuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76W-eJ-S4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1911,6 +1912,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEd-V3-uyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-673" y="-168"/>
+        </scene>
+        <!--AddLsPocket-->
+        <scene sceneID="ZM9-eD-9Gr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddLsPocket" id="pxm-Lb-BZl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYw-zJ-stM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-658" y="-228"/>
         </scene>
         <!--appUser-->
         <scene sceneID="x1F-aL-KI4">
@@ -3251,6 +3260,7 @@
                         <segue destination="b0H-FT-oKT" kind="show" identifier="support" id="7dK-YJ-0kI"/>
                         <segue destination="CI8-yu-H5e" kind="show" identifier="pays" id="kVR-59-EJo"/>
                         <segue destination="dP9-TT-jre" kind="show" identifier="paysMytishi" id="Pwj-1d-22M"/>
+                        <segue destination="yqO-oc-1b6" kind="show" identifier="addLSPocket" id="hxl-63-Ecr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Q5-26-bkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3264,6 +3274,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7H-O9-ZcU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="834" y="1464"/>
+        </scene>
+        <!--AddLsPocket-->
+        <scene sceneID="mLR-GY-6zV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddLsPocket" id="yqO-oc-1b6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sbK-R0-qJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072" y="1126"/>
         </scene>
         <!--addLSMup-->
         <scene sceneID="0bT-QM-MDz">
@@ -3351,15 +3369,15 @@
         <segue reference="QyU-aW-HIx"/>
         <segue reference="8Cn-1r-0Af"/>
         <segue reference="eFt-Yy-DpX"/>
-        <segue reference="VI0-A3-yGV"/>
+        <segue reference="Pwj-1d-22M"/>
         <segue reference="vAR-XL-Bc6"/>
         <segue reference="gnc-5X-dGK"/>
         <segue reference="9Qn-3c-HfF"/>
-        <segue reference="KAh-TB-RwK"/>
+        <segue reference="kVR-59-EJo"/>
         <segue reference="WbI-xw-6JQ"/>
         <segue reference="Dlz-bY-09d"/>
         <segue reference="JbC-lw-adM"/>
-        <segue reference="kvO-2U-F0q"/>
+        <segue reference="7dK-YJ-0kI"/>
         <segue reference="0eH-c3-S8y"/>
         <segue reference="d1f-xl-6a3"/>
     </inferredMetricsTieBreakers>

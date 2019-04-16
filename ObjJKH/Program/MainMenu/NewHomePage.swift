@@ -131,6 +131,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         #if isMupRCMytishi
         self.performSegue(withIdentifier: "addLS_Mup", sender: self)
+        #elseif isPocket
+        self.performSegue(withIdentifier: "addLSPocket", sender: self)
         #else
         self.performSegue(withIdentifier: "addLS", sender: self)
         #endif
