@@ -237,7 +237,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         btnPay.isHidden = false
         iterMonth = currMonth
         iterYear = currYear
-        btnPdf.isHidden = true
+//        btnPdf.isHidden = true
         
         // Заполним лиц. счетами отбор
         let str_ls = defaults.string(forKey: "str_ls")
@@ -308,7 +308,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         #endif
         #if isMupRCMytishi
         //получение файлов
-//        getPaysFile()
+        getPaysFile()
         #else
         btnPdf.isHidden = true
         #endif
@@ -460,24 +460,24 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         
         self.nextMonthLabel.isHidden = !self.isValidNextMonth()
         self.prevMonthLabel.isHidden = !self.isValidPrevMonth()
-//        #if isMupRCMytishi
+        #if isMupRCMytishi
         //получение файлов
-//        var i = 0
-//        fileList.forEach{
-//            if String($0.month) == iterMonth && String($0.year) == iterYear && $0.link.contains(".pdf"){
-//                self.link = $0.link
-//                self.btnPdf.isHidden = false
-//                i = 1
-//            }else{
-//                if i == 0{
-//                    self.btnPdf.isHidden = true
-//                }
-//            }
-//        }
+        var i = 0
+        fileList.forEach{
+            if String($0.month) == iterMonth && String($0.year) == iterYear && $0.link.contains(".png"){
+                self.link = $0.link
+                self.btnPdf.isHidden = false
+                i = 1
+            }else{
+                if i == 0{
+                    self.btnPdf.isHidden = true
+                }
+            }
+        }
+        #endif
         getData(ident: choiceIdent)
-//        #else
 //        self.updateTable()
-//        #endif
+        
     }
     
     func updateTable() {
@@ -669,21 +669,21 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         } else {
             choiceIdent = contents
             
-            //получение файлов
-//            #if isMupRCMytishi
-//            var k = 0
-//            fileList.forEach{
-//                if String($0.month) == iterMonth && String($0.year) == iterYear && $0.ident == choiceIdent && $0.link.contains(".pdf"){
-//                    self.link = $0.link
-//                    self.btnPdf.isHidden = false
-//                    k = 1
-//                }else{
-//                    if k == 0{
-//                        self.btnPdf.isHidden = true
-//                    }
-//                }
-//            }
-//            #endif
+//            получение файлов
+            #if isMupRCMytishi
+            var k = 0
+            fileList.forEach{
+                if String($0.month) == iterMonth && String($0.year) == iterYear && $0.ident == choiceIdent && $0.link.contains(".png"){
+                    self.link = $0.link
+                    self.btnPdf.isHidden = false
+                    k = 1
+                }else{
+                    if k == 0{
+                        self.btnPdf.isHidden = true
+                    }
+                }
+            }
+            #endif
             getData(ident: contents)
         }
     }
@@ -705,8 +705,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, error, responce in
-//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                print("responseString = \(responseString)")
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
                                                 
                                                 guard data != nil else { return }
                                                 let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
@@ -718,7 +718,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                         let month = json.month
                                                         let link = json.link
                                                         var i = 0
-                                                        if self.currYear == String(json.year!) && self.currMonth == String(json.month!) && (json.link?.contains(".pdf"))!{
+                                                        if self.currYear == String(json.year!) && self.currMonth == String(json.month!) && json.link!.contains(".png"){
                                                             print(String(json.year!), String(json.month!))
                                                             self.link = json.link!
                                                             DispatchQueue.main.async {
