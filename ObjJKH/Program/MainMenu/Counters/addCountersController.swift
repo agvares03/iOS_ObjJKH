@@ -54,7 +54,20 @@ class AddCountersController: UIViewController {
     }
     @IBAction func sendAction(_ sender: UIButton) {
         var count: String = newCounters.text!
-        if count != "" && count != "0"{
+        if count == "" || count == "0"{
+            let alert = UIAlertController(title: "", message: "Вы хотите передать нулевые показания?", preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "Нет", style: .default) { (_) -> Void in
+                
+            }
+            let yesAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
+                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: self.metrId, count: "0,00")
+            }
+            alert.addAction(noAction)
+            alert.addAction(yesAction)
+            self.present(alert, animated: true, completion: nil)
+        }else
+//            if count != "" && count != "0"
+            {
             for _ in 1...count.count{
                 if count.first == "0"{
                     count.removeFirst()
@@ -76,13 +89,14 @@ class AddCountersController: UIViewController {
             }
 //            print(count.replacingOccurrences(of: ".", with: ","))
             self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: metrId, count: count.replacingOccurrences(of: ".", with: ","))
-        }else{
-            let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-            }
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
         }
+//        else{
+//            let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
+//            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+//            }
+//            alert.addAction(cancelAction)
+//            self.present(alert, animated: true, completion: nil)
+//        }
     }
     
     var edLogin = ""

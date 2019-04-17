@@ -58,7 +58,16 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imgArea: UIImageView!
     
     @IBAction func NextAction(_ sender: UIButton){
-        
+        if teck_number != -1{
+            self.performSegue(withIdentifier: "nextStreet", sender: self)
+        }else{
+            let alert = UIAlertController(title: "Ошибка", message: "Вы не выбрали Город/Район региона", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                
+            }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func supportBtn(_ sender: UIButton) {
@@ -193,7 +202,7 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        print(request)
+//        print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -202,8 +211,8 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
                                                     return
                                                 }
                                                 
-//                                                self.streetString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                print("REGION = \(String(describing: self.streetString))")
+                                                self.streetString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("REGION = \(String(describing: self.streetString))")
                                                 do {
                                                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [AnyObject]
                                                     
@@ -321,12 +330,13 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
+        print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
                                                 
-                                                
+                                                self.streetString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("CITY = \(String(describing: self.streetString))")
                                                 if error != nil {
                                                     return
                                                 }
@@ -356,7 +366,7 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
+        print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in

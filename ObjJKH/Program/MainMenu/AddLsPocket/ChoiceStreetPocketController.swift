@@ -58,7 +58,16 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imgOrg: UIImageView!
     
     @IBAction func NextAction(_ sender: UIButton){
-        
+        if teck_flat != -1{
+            self.performSegue(withIdentifier: "nextStreet", sender: self)
+        }else{
+            let alert = UIAlertController(title: "Ошибка", message: "Вы не выбрали Организацию", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                
+            }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func supportBtn(_ sender: UIButton) {
@@ -309,7 +318,7 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
+        print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -345,7 +354,7 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
+        print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in

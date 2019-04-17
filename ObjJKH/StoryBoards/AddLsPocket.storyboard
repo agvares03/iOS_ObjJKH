@@ -131,7 +131,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="NextAction:" destination="PQJ-ou-soo" eventType="touchUpInside" id="Mrq-4S-bgr"/>
-                                    <segue destination="k6Z-UC-SyD" kind="show" identifier="nextStreet" id="bj3-jA-PaU"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tws-p8-Qb5">
@@ -264,6 +263,7 @@
                         <segue destination="8ow-2t-J3e" kind="show" identifier="get_number_new" id="71B-7z-5Vh"/>
                         <segue destination="8ow-2t-J3e" kind="show" identifier="get_flat_new" id="CVf-TW-uOP"/>
                         <segue destination="PUO-3v-c0M" kind="show" identifier="support" id="elr-Ov-w7B"/>
+                        <segue destination="k6Z-UC-SyD" kind="show" identifier="nextStreet" id="R8A-Tz-gnJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WD8-uz-Qqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -417,7 +417,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="NextAction:" destination="k6Z-UC-SyD" eventType="touchUpInside" id="dDr-Hg-aZa"/>
-                                    <segue destination="nWP-YD-lQC" kind="show" id="jRD-bD-eeV"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qKb-qe-bbt">
@@ -550,6 +549,7 @@
                         <segue destination="8ow-2t-J3e" kind="show" identifier="get_number_new" id="rvN-0u-1Bf"/>
                         <segue destination="8ow-2t-J3e" kind="show" identifier="get_flat_new" id="2fe-wN-zZq"/>
                         <segue destination="PUO-3v-c0M" kind="show" identifier="support" id="JSh-SV-S9v"/>
+                        <segue destination="nWP-YD-lQC" kind="show" identifier="nextStreet" id="cRB-JV-zq4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wB1-bl-9xW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -700,7 +700,7 @@
         <image name="spin.png" width="840" height="840"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jhX-7L-Tl4"/>
-        <segue reference="bhc-UW-azM"/>
+        <segue reference="JSh-SV-S9v"/>
+        <segue reference="rvN-0u-1Bf"/>
     </inferredMetricsTieBreakers>
 </document>

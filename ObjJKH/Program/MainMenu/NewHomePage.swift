@@ -1456,7 +1456,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var date1: String = ""
     var date2: String = ""
     func isEditable() -> Bool {
-        return can_edit == "0"
+        return can_edit == "1"
     }
     
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String) {
