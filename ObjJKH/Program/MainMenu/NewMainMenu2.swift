@@ -176,6 +176,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_Soldatova1")
         #elseif isTafgai
         fon_top.image = UIImage(named: "Logo_Tafgai_White")
+        #elseif isServiceKomfort
+        fon_top.image = UIImage(named: "Logo_ServiceKomfort_White")
         #endif
         
         // Картинки для разных Таргетов

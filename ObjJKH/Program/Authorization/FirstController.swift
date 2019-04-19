@@ -143,6 +143,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Soldatova1")
         #elseif isTafgai
         fon_top.image = UIImage(named: "Logo_Tafgai")
+        #elseif isServiceKomfort
+        fon_top.image = UIImage(named: "Logo_ServiceKomfort")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
@@ -464,7 +466,7 @@ class FirstController: UIViewController {
                 if (self.isCons == "0") {
                     UserDefaults.standard.set(true, forKey: "NewMain")
                     self.performSegue(withIdentifier: "NewMainMenu", sender: self)
-//                    self.performSegue(withIdentifier: "MainMenu", sender: self)
+  //                  self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)
                 }
