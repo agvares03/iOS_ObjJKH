@@ -568,7 +568,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         cell.ident.text       = identArr[indexPath.row]
         cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
         cell.number.text      = ownerArr[indexPath.row]
-        countName             = nameArr[indexPath.row]
+        countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
         cell.pred.text        = String(format:"%.3f", predArr[indexPath.row])
         cell.teck.text        = String(format:"%.3f", teckArr[indexPath.row])
         cell.diff.text        = String(format:"%.3f", diffArr[indexPath.row])
@@ -592,7 +592,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             cell.imgCounter.image = UIImage(named: "fire")
             cell.viewImgCounter.backgroundColor = .red
         }
-        if (countName.lowercased().range(of: "элект") != nil){
+        if (countName.lowercased().range(of: "элект") != nil) || (countName.contains("кВт")){
             cell.imgCounter.image = UIImage(named: "lamp")
             cell.viewImgCounter.backgroundColor = .yellow
         }
