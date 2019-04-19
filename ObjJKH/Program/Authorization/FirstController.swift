@@ -143,6 +143,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Soldatova1")
         #elseif isTafgai
         fon_top.image = UIImage(named: "Logo_Tafgai")
+        #elseif isServiceKomfort
+        fon_top.image = UIImage(named: "Logo_ServiceKomfort")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
