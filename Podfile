@@ -94,6 +94,7 @@ target 'MupRCMytishi' do
     use_frameworks!
 
     # Pods for Наш Общий Дом
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'

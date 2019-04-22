@@ -34,7 +34,12 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
     weak var delegate: AddAppDelegate?
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+        if UserDefaults.standard.bool(forKey: "fromMenu"){
+            UserDefaults.standard.set(false, forKey: "fromMenu")
+            navigationController?.popViewController(animated: true)
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBOutlet weak var lsCell: UITableViewCell!
@@ -316,6 +321,7 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
     }
     
     func appLsString() -> String {
+        print(appLSs, appLS)
         if appLS == -1 {
             appLS = 0
             return appLSs[appLS]
@@ -484,17 +490,19 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
-        
-        if ((str_ls_arr?.count)! > 3) {
-            self.appLSs.append((str_ls_arr?[0])!)
-            self.appLSs.append((str_ls_arr?[1])!)
-            self.appLSs.append((str_ls_arr?[2])!)
-        } else if ((str_ls_arr?.count)! == 2) {
-            self.appLSs.append((str_ls_arr?[0])!)
-            self.appLSs.append((str_ls_arr?[1])!)
-        } else if ((str_ls_arr?.count)! == 1) {
-            self.appLSs.append((str_ls_arr?[0])!)
+        str_ls_arr?.forEach{
+            self.appLSs.append($0)
         }
+//        if ((str_ls_arr?.count)! > 3) {
+//            self.appLSs.append((str_ls_arr?[0])!)
+//            self.appLSs.append((str_ls_arr?[1])!)
+//            self.appLSs.append((str_ls_arr?[2])!)
+//        } else if ((str_ls_arr?.count)! == 2) {
+//            self.appLSs.append((str_ls_arr?[0])!)
+//            self.appLSs.append((str_ls_arr?[1])!)
+//        } else if ((str_ls_arr?.count)! == 1) {
+//            self.appLSs.append((str_ls_arr?[0])!)
+//        }
     }
     
     private func getTypes() {

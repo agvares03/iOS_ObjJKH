@@ -10,6 +10,7 @@ import UIKit
 import Gloss
 import CoreData
 import SwiftyXMLParser
+//import YandexMobileAds
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)
@@ -40,6 +41,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var services_View: UIView!
     
     @IBOutlet weak var btn_Add_LS: UIButton!
+    @IBOutlet weak var btn_add_Apps: UIButton!
+    @IBOutlet weak var btn_Apps_Height: NSLayoutConstraint!
     
     @IBOutlet weak var tableLS: UITableView!
     @IBOutlet weak var tableLSHeight: NSLayoutConstraint!
@@ -327,6 +330,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         allCountersBtn.tintColor = myColors.btnColor.uiColor()
         allServicesBtn.tintColor = myColors.btnColor.uiColor()
         btn_Add_LS.tintColor = myColors.btnColor.uiColor()
+        btn_add_Apps.backgroundColor = myColors.btnColor.uiColor()
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
         
         let login = defaults.string(forKey: "login")
@@ -1005,7 +1009,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var count:Int?
         self.tableLSHeight.constant = 400
         self.tableNewsHeight.constant = 400
-        self.tableCounterHeight.constant = 400
+        self.tableCounterHeight.constant = 2000
         self.tableAppsHeight.constant = 400
         self.tableQuestionHeight.constant = 400
         self.tableWebHeight.constant = 400
@@ -1018,9 +1022,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if tableView == self.tableCounter {
             count =  nameArr.count
-            if count! > 2{
-                count = 2
-            }
+//            if count! > 2{
+//                count = 2
+//            }
         }
         if tableView == self.tableApps {
             if let sections = fetchedResultsController?.sections {
@@ -1094,6 +1098,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }else{
                 self.menu_3_const.constant = 15
                 self.appsHeight.constant = 45
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+                let str_ls_arr = str_ls?.components(separatedBy: ",")
+                if str_ls_arr?.count == 0{
+                    self.btn_add_Apps.isHidden = true
+                }
             }
             self.tableAppsHeight.constant = height4
             var height5: CGFloat = 0
@@ -1101,11 +1110,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 height5 += cell.bounds.height
             }
             if height5 == 0{
-                self.menu_4_const.constant = 0
+                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+                if (str_menu_2 != "") {
+                    var answer = str_menu_2.components(separatedBy: ";")
+                    if (answer[2] == "0") {
+                        self.menu_4_const.constant = 0
+                        self.questionLSHeight.constant = 0
+                        self.btn_Apps_Height.constant = 0
+                    } else {
+                    }
+                }
                 self.questionLSHeight.constant = 0
             }else{
                 self.menu_4_const.constant = 15
                 self.questionLSHeight.constant = 45
+                self.btn_Apps_Height.constant = 36
             }
             self.tableQuestionHeight.constant = height5
             var height6: CGFloat = 0
@@ -1211,7 +1230,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.ident.text       = identArr[indexPath.row]
             cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.number.text      = ownerArr[indexPath.row]
-            countName             = nameArr[indexPath.row]
+            countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.pred.text        = String(format:"%.3f", predArr[indexPath.row])
             cell.teck.text        = String(format:"%.3f", teckArr[indexPath.row])
             cell.diff.text        = String(format:"%.3f", diffArr[indexPath.row])
@@ -1234,7 +1253,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.imgCounter.image = UIImage(named: "fire")
                 cell.imgCounter.setImageColor(color: .red)
             }
-            if (countName.lowercased().range(of: "элект") != nil){
+            if (countName.lowercased().range(of: "элект") != nil) || (countName.contains("кВт")){
                 cell.imgCounter.image = UIImage(named: "lamp")
                 cell.imgCounter.setImageColor(color: .yellow)
             }
