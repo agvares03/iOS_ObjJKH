@@ -311,6 +311,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Tafgai_White")
         #elseif isServiceKomfort
         fon_top.image = UIImage(named: "Logo_ServiceKomfort_White")
+        #elseif isParitet
+        fon_top.image = UIImage(named: "Logo_Paritet")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())

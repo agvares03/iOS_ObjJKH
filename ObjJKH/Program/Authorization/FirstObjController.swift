@@ -127,6 +127,8 @@ class FirstObjController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Tafgai")
         #elseif isTafgai
         fon_top.image = UIImage(named: "Logo_ServiceKomfort")
+        #elseif isParitet
+        fon_top.image = UIImage(named: "Logo_Paritet")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

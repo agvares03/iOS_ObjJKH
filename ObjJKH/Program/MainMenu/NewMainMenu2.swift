@@ -178,6 +178,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_Tafgai_White")
         #elseif isServiceKomfort
         fon_top.image = UIImage(named: "Logo_ServiceKomfort_White")
+        #elseif isParitet
+        fon_top.image = UIImage(named: "Logo_Paritet")
         #endif
         
         // Картинки для разных Таргетов
