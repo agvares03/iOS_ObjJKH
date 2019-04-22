@@ -44,6 +44,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Tafgai_White")
         #elseif isServiceKomfort
         imageApp.image = UIImage(named: "Logo_ServiceKomfort_White")
+        #elseif isParitet
+        imageApp.image = UIImage(named: "Logo_Paritet")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
