@@ -20,6 +20,7 @@ class Pay: UIViewController {
     var login: String = ""
     var pass: String  = ""
     var sum: String   = ""
+    var ident: String = ""
     
     var responseString: String = ""
     
@@ -49,7 +50,7 @@ class Pay: UIViewController {
     }
     
     func getServerUrlByIdent() -> String {
-        return Server.SERVER + Server.GET_LINK + "login=" + self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + self.pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&sum=" + self.sum
+        return Server.SERVER + Server.GET_LINK + "login=" + self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + self.pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&sum=" + self.sum + "&ident=" + self.ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
     }
     
     func get_link() {
@@ -57,6 +58,7 @@ class Pay: UIViewController {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
+        print(request)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {

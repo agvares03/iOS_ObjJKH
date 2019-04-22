@@ -10,6 +10,7 @@ import UIKit
 import Gloss
 import CoreData
 import SwiftyXMLParser
+//import YandexMobileAds
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)

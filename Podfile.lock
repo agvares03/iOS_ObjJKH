@@ -81,6 +81,18 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
   - SwiftyXMLParser (4.3.0)
+  - YandexMobileAds (2.11.1):
+    - YandexMobileAds/Static (= 2.11.1)
+  - YandexMobileAds/Static (2.11.1):
+    - YandexMobileMetrica (< 4.0.0, >= 3.2.0)
+  - YandexMobileMetrica (3.6.0):
+    - YandexMobileMetrica/Static (= 3.6.0)
+  - YandexMobileMetrica/Static (3.6.0):
+    - YandexMobileMetrica/Static/Core (= 3.6.0)
+    - YandexMobileMetrica/Static/Crashes (= 3.6.0)
+  - YandexMobileMetrica/Static/Core (3.6.0)
+  - YandexMobileMetrica/Static/Crashes (3.6.0):
+    - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
   - AKMaskField
@@ -96,6 +108,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Gloss
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
+  - YandexMobileAds
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -119,6 +132,8 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - YandexMobileAds
+    - YandexMobileMetrica
 
 EXTERNAL SOURCES:
   ASDKCore:
@@ -157,7 +172,9 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftyXMLParser: b2e0b0dd0e0fb1ac39869dd4a0c6181847af2945
+  YandexMobileAds: 365afd81e87fb0913396ab06dff367ec78173cd8
+  YandexMobileMetrica: 11eee6732831a44aea2d81e3ae8626b5b0e129c5
 
-PODFILE CHECKSUM: 7a4fa7ceee89abd37cbce3833d37e5b6c41654b4
+PODFILE CHECKSUM: 9be2d9fe4ebf435c8484c766f5f6e2974ef39f73
 
 COCOAPODS: 1.6.1
