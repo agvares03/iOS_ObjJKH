@@ -1098,6 +1098,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }else{
                 self.menu_3_const.constant = 15
                 self.appsHeight.constant = 45
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+                let str_ls_arr = str_ls?.components(separatedBy: ",")
+                if str_ls_arr?.count == 0{
+                    self.btn_add_Apps.isHidden = true
+                }
             }
             self.tableAppsHeight.constant = height4
             var height5: CGFloat = 0
