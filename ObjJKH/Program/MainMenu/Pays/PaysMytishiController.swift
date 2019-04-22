@@ -524,12 +524,18 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                 if self.choiceIdent == "Все"{
                                     s = s + Double($0["Sum"] as! String)!
                                     if s <= 0.00{
+                                        for i in 0...self.checkBox.count - 1{
+                                            self.checkBox[i] = false
+                                        }
                                         self.txt_sum_obj.text = "0.00 руб."
                                         self.txt_sum_jkh.text = "0.00 руб."
                                         self.servicePay.text  = "0.00 руб."
                                     }
                                 }else if self.choiceIdent == ($0["Ident"] as! String){
                                     if ($0["Sum"] as! String) == "0.00"{
+                                        for i in 0...self.checkBox.count - 1{
+                                            self.checkBox[i] = false
+                                        }
                                         self.txt_sum_obj.text = "0.00 руб."
                                         self.txt_sum_jkh.text = "0.00 руб."
                                         self.servicePay.text  = "0.00 руб."
@@ -555,77 +561,77 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
     }
     
-    func end_osv() {
-        self.sum = 0
-        select = false
-        checkBox.removeAll()
-        sumOSV.removeAll()
-        osvc.removeAll()
-        uslugaArr.removeAll()
-        endArr.removeAll()
-        idArr.removeAll()
-        identOSV.removeAll()
-        idOSV.removeAll()
-        // Выборка из БД последней ведомости - посчитаем сумму к оплате
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
-        fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
-        do {
-            let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
-            for result in results {
-                let object = result as! NSManagedObject
-                if (object.value(forKey: "usluga") as! String) != "Я"{
-                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
-                    checkBox.append(true)
-                    osvc.append(object.value(forKey: "usluga") as! String)
-                    idOSV.append(Int(object.value(forKey: "id") as! Int64))
-                    identOSV.append(object.value(forKey: "ident") as! String)
-                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
-                }
-            }
-            DispatchQueue.main.async(execute: {
-                if (self.sum != 0) {
-                    //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-                    #if isKlimovsk12
-                    let serviceP = self.sum / 100 * 1.5
-                    #else
-                    let serviceP = self.sum / 0.992 - self.sum
-                    #endif
-                    self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
-                    self.totalSum = self.sum + serviceP
-                    self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
-                    self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                    if self.debtArr.count != 0{
-                        var s = 0.00
-                        self.debtArr.forEach{
-                            if self.choiceIdent == "Все"{
-                                s = s + Double($0["Sum"] as! String)!
-                                if s <= 0.00{
-                                    self.txt_sum_obj.text = "0.00 руб."
-                                    self.txt_sum_jkh.text = "0.00 руб."
-                                    self.servicePay.text  = "0.00 руб."
-                                }
-                            }else if self.choiceIdent == ($0["Ident"] as! String){
-                                if ($0["Sum"] as! String) == "0.00"{
-                                    self.txt_sum_obj.text = "0.00 руб."
-                                    self.txt_sum_jkh.text = "0.00 руб."
-                                    self.servicePay.text  = "0.00 руб."
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    //                    self.txt_sum_jkh.text = "0,00 р."
-                    self.self.txt_sum_obj.text = "0.00 руб."
-                    self.txt_sum_jkh.text = "0.00 руб."
-                    self.servicePay.text  = "0.00 руб."
-                }
-                self.updateFetchedResultsController()
-            })
-            
-        } catch {
-            print(error)
-        }
-    }
+//    func end_osv() {
+//        self.sum = 0
+//        select = false
+//        checkBox.removeAll()
+//        sumOSV.removeAll()
+//        osvc.removeAll()
+//        uslugaArr.removeAll()
+//        endArr.removeAll()
+//        idArr.removeAll()
+//        identOSV.removeAll()
+//        idOSV.removeAll()
+//        // Выборка из БД последней ведомости - посчитаем сумму к оплате
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
+//        fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
+//        do {
+//            let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
+//            for result in results {
+//                let object = result as! NSManagedObject
+//                if (object.value(forKey: "usluga") as! String) != "Я"{
+//                    sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+//                    checkBox.append(true)
+//                    osvc.append(object.value(forKey: "usluga") as! String)
+//                    idOSV.append(Int(object.value(forKey: "id") as! Int64))
+//                    identOSV.append(object.value(forKey: "ident") as! String)
+//                    self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+//                }
+//            }
+//            DispatchQueue.main.async(execute: {
+//                if (self.sum != 0) {
+//                    //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
+//                    #if isKlimovsk12
+//                    let serviceP = self.sum / 100 * 1.5
+//                    #else
+//                    let serviceP = self.sum / 0.992 - self.sum
+//                    #endif
+//                    self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+//                    self.totalSum = self.sum + serviceP
+//                    self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+//                    self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+//                    if self.debtArr.count != 0{
+//                        var s = 0.00
+//                        self.debtArr.forEach{
+//                            if self.choiceIdent == "Все"{
+//                                s = s + Double($0["Sum"] as! String)!
+//                                if s <= 0.00{
+//                                    self.txt_sum_obj.text = "0.00 руб."
+//                                    self.txt_sum_jkh.text = "0.00 руб."
+//                                    self.servicePay.text  = "0.00 руб."
+//                                }
+//                            }else if self.choiceIdent == ($0["Ident"] as! String){
+//                                if ($0["Sum"] as! String) == "0.00"{
+//                                    self.txt_sum_obj.text = "0.00 руб."
+//                                    self.txt_sum_jkh.text = "0.00 руб."
+//                                    self.servicePay.text  = "0.00 руб."
+//                                }
+//                            }
+//                        }
+//                    }
+//                } else {
+//                    //                    self.txt_sum_jkh.text = "0,00 р."
+//                    self.self.txt_sum_obj.text = "0.00 руб."
+//                    self.txt_sum_jkh.text = "0.00 руб."
+//                    self.servicePay.text  = "0.00 руб."
+//                }
+//                self.updateFetchedResultsController()
+//            })
+//
+//        } catch {
+//            print(error)
+//        }
+//    }
     
     func updateFetchedResultsController() {
         let predicateFormat = String(format: "num_month = %@ AND year = %@", iterMonth, iterYear)
@@ -808,25 +814,25 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         self.totalSum = self.sum + serviceP
         self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
         self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-        if self.debtArr.count != 0{
-            var s = 0.00
-            self.debtArr.forEach{
-                if choiceIdent == "Все"{
-                    s = s + Double($0["Sum"] as! String)!
-                    if s <= 0.00{
-                        self.txt_sum_obj.text = "0.00 руб."
-                        self.txt_sum_jkh.text = "0.00 руб."
-                        self.servicePay.text  = "0.00 руб."
-                    }
-                }else if self.choiceIdent == ($0["Ident"] as! String){
-                    if ($0["Sum"] as! String) == "0.00"{
-                        self.txt_sum_obj.text = "0.00 руб."
-                        self.txt_sum_jkh.text = "0.00 руб."
-                        self.servicePay.text  = "0.00 руб."
-                    }
-                }
-            }
-        }
+//        if self.debtArr.count != 0{
+//            var s = 0.00
+//            self.debtArr.forEach{
+//                if choiceIdent == "Все"{
+//                    s = s + Double($0["Sum"] as! String)!
+//                    if s <= 0.00{
+//                        self.txt_sum_obj.text = "0.00 руб."
+//                        self.txt_sum_jkh.text = "0.00 руб."
+//                        self.servicePay.text  = "0.00 руб."
+//                    }
+//                }else if self.choiceIdent == ($0["Ident"] as! String){
+//                    if ($0["Sum"] as! String) == "0.00"{
+//                        self.txt_sum_obj.text = "0.00 руб."
+//                        self.txt_sum_jkh.text = "0.00 руб."
+//                        self.servicePay.text  = "0.00 руб."
+//                    }
+//                }
+//            }
+//        }
     }
     
     @objc func textFieldEditingDidEnd(_ textField: UITextField) {
@@ -874,25 +880,25 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
             self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-            if self.debtArr.count != 0{
-                var s = 0.00
-                self.debtArr.forEach{
-                    if choiceIdent == "Все"{
-                        s = s + Double($0["Sum"] as! String)!
-                        if s <= 0.00{
-                            self.txt_sum_obj.text = "0.00 руб."
-                            self.txt_sum_jkh.text = "0.00 руб."
-                            self.servicePay.text  = "0.00 руб."
-                        }
-                    }else if self.choiceIdent == ($0["Ident"] as! String){
-                        if ($0["Sum"] as! String) == "0.00"{
-                            self.txt_sum_obj.text = "0.00 руб."
-                            self.txt_sum_jkh.text = "0.00 руб."
-                            self.servicePay.text  = "0.00 руб."
-                        }
-                    }
-                }
-            }
+//            if self.debtArr.count != 0{
+//                var s = 0.00
+//                self.debtArr.forEach{
+//                    if choiceIdent == "Все"{
+//                        s = s + Double($0["Sum"] as! String)!
+//                        if s <= 0.00{
+//                            self.txt_sum_obj.text = "0.00 руб."
+//                            self.txt_sum_jkh.text = "0.00 руб."
+//                            self.servicePay.text  = "0.00 руб."
+//                        }
+//                    }else if self.choiceIdent == ($0["Ident"] as! String){
+//                        if ($0["Sum"] as! String) == "0.00"{
+//                            self.txt_sum_obj.text = "0.00 руб."
+//                            self.txt_sum_jkh.text = "0.00 руб."
+//                            self.servicePay.text  = "0.00 руб."
+//                        }
+//                    }
+//                }
+//            }
         }else{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]
@@ -920,25 +926,25 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
             self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-            if self.debtArr.count != 0{
-                var s = 0.00
-                self.debtArr.forEach{
-                    if choiceIdent == "Все"{
-                        s = s + Double($0["Sum"] as! String)!
-                        if s <= 0.00{
-                            self.txt_sum_obj.text = "0.00 руб."
-                            self.txt_sum_jkh.text = "0.00 руб."
-                            self.servicePay.text  = "0.00 руб."
-                        }
-                    }else if self.choiceIdent == ($0["Ident"] as! String){
-                        if ($0["Sum"] as! String) == "0.00"{
-                            self.txt_sum_obj.text = "0.00 руб."
-                            self.txt_sum_jkh.text = "0.00 руб."
-                            self.servicePay.text  = "0.00 руб."
-                        }
-                    }
-                }
-            }
+//            if self.debtArr.count != 0{
+//                var s = 0.00
+//                self.debtArr.forEach{
+//                    if choiceIdent == "Все"{
+//                        s = s + Double($0["Sum"] as! String)!
+//                        if s <= 0.00{
+//                            self.txt_sum_obj.text = "0.00 руб."
+//                            self.txt_sum_jkh.text = "0.00 руб."
+//                            self.servicePay.text  = "0.00 руб."
+//                        }
+//                    }else if self.choiceIdent == ($0["Ident"] as! String){
+//                        if ($0["Sum"] as! String) == "0.00"{
+//                            self.txt_sum_obj.text = "0.00 руб."
+//                            self.txt_sum_jkh.text = "0.00 руб."
+//                            self.servicePay.text  = "0.00 руб."
+//                        }
+//                    }
+//                }
+//            }
         }
     }
     
