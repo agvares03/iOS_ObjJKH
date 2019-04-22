@@ -588,6 +588,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var errorOneArr:[Bool] = []
     var errorTwoArr:[Bool] = []
     var errorThreeArr:[Bool] = []
+    var errorTextOneArr:[String] = []
+    var errorTextTwoArr:[String] = []
+    var errorTextThreeArr:[String] = []
     var sendedArr:[Bool] = []
     func getDataCounter(){
         let ident = "Все"
@@ -606,6 +609,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         errorOneArr.removeAll()
         errorTwoArr.removeAll()
         errorThreeArr.removeAll()
+        errorTextOneArr.removeAll()
+        errorTextTwoArr.removeAll()
+        errorTextThreeArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.currYear))
         do {
@@ -620,6 +626,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             var sendOne = false
             var sendTwo = false
             var sendThree = false
+            var errorOne = ""
+            var errorTwo = ""
+            var errorThree = ""
             var count_name = ""
             var owner = ""
             var unit_name = ""
@@ -627,105 +636,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             var identk = ""
             var i = 0
             for result in results {
-                    let object = result as! NSManagedObject
-                    if ident != "Все"{
-                        if (object.value(forKey: "ident") as! String) == ident{
-                            if i == 0{
-                                uniq_num = (object.value(forKey: "uniq_num") as! String)
-                                dateOne = (object.value(forKey: "num_month") as! String)
-                                valueOne = (object.value(forKey: "value") as! Float)
-                                identk = (object.value(forKey: "ident") as! String)
-                                count_name = (object.value(forKey: "count_name") as! String)
-                                uniq_num = (object.value(forKey: "uniq_num") as! String)
-                                owner = (object.value(forKey: "owner") as! String)
-                                unit_name = (object.value(forKey: "unit_name") as! String)
-                                sended = (object.value(forKey: "sended") as! Bool)
-                                sendOne = (object.value(forKey: "sendError") as! Bool)
-                                i = 1
-                            }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
-                                dateTwo = (object.value(forKey: "num_month") as! String)
-                                valueTwo = (object.value(forKey: "value") as! Float)
-                                identk = (object.value(forKey: "ident") as! String)
-                                count_name = (object.value(forKey: "count_name") as! String)
-                                uniq_num = (object.value(forKey: "uniq_num") as! String)
-                                owner = (object.value(forKey: "owner") as! String)
-                                unit_name = (object.value(forKey: "unit_name") as! String)
-                                sended = (object.value(forKey: "sended") as! Bool)
-                                sendTwo = (object.value(forKey: "sendError") as! Bool)
-                                i = 2
-                            }else if i == 2 && uniq_num == (object.value(forKey: "uniq_num") as! String){
-                                dateThree = (object.value(forKey: "num_month") as! String)
-                                valueThree = (object.value(forKey: "value") as! Float)
-                                sendThree = (object.value(forKey: "sendError") as! Bool)
-                                identArr.append(object.value(forKey: "ident") as! String)
-                                nameArr.append(object.value(forKey: "count_name") as! String)
-                                numberArr.append(object.value(forKey: "uniq_num") as! String)
-                                ownerArr.append(object.value(forKey: "owner") as! String)
-                                predArr.append(valueOne)
-                                teckArr.append(valueTwo)
-                                diffArr.append(valueThree)
-                                dateOneArr.append(dateOne)
-                                dateTwoArr.append(dateTwo)
-                                dateThreeArr.append(dateThree)
-                                unitArr.append(object.value(forKey: "unit_name") as! String)
-                                sendedArr.append(object.value(forKey: "sended") as! Bool)
-                                errorOneArr.append(sendOne)
-                                errorTwoArr.append(sendTwo)
-                                errorThreeArr.append(sendThree)
-                                uniq_num = ""
-                                dateOne = ""
-                                valueOne = 0.00
-                                dateTwo = ""
-                                valueTwo = 0.00
-                                dateThree = ""
-                                valueThree = 0.00
-                                count_name = ""
-                                owner = ""
-                                unit_name = ""
-                                sended = true
-                                sendOne = false
-                                sendTwo = false
-                                sendThree = false
-                                identk = ""
-                                i = 0
-                            }else if uniq_num != (object.value(forKey: "uniq_num") as! String){
-                                i = 1
-                                identArr.append(identk)
-                                nameArr.append(count_name)
-                                numberArr.append(uniq_num)
-                                ownerArr.append(owner)
-                                predArr.append(valueOne)
-                                teckArr.append(valueTwo)
-                                diffArr.append(valueThree)
-                                dateOneArr.append(dateOne)
-                                dateTwoArr.append(dateTwo)
-                                dateThreeArr.append(dateThree)
-                                unitArr.append(unit_name)
-                                sendedArr.append(sended)
-                                errorOneArr.append(sendOne)
-                                errorTwoArr.append(sendTwo)
-                                errorThreeArr.append(sendThree)
-                                
-                                uniq_num = (object.value(forKey: "uniq_num") as! String)
-                                dateOne = (object.value(forKey: "num_month") as! String)
-                                valueOne = (object.value(forKey: "value") as! Float)
-                                identk = (object.value(forKey: "ident") as! String)
-                                count_name = (object.value(forKey: "count_name") as! String)
-                                uniq_num = (object.value(forKey: "uniq_num") as! String)
-                                owner = (object.value(forKey: "owner") as! String)
-                                unit_name = (object.value(forKey: "unit_name") as! String)
-                                sended = (object.value(forKey: "sended") as! Bool)
-                                sendOne = (object.value(forKey: "sendError") as! Bool)
-                                
-                                dateTwo = ""
-                                valueTwo = 0.00
-                                sendTwo = false
-                                dateThree = ""
-                                valueThree = 0.00
-                                sendThree = false
-                            }
-                        }
-                    }else{
+                let object = result as! NSManagedObject
+                if ident != "Все"{
+                    if (object.value(forKey: "ident") as! String) == ident{
                         if i == 0{
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
@@ -737,6 +650,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             unit_name = (object.value(forKey: "unit_name") as! String)
                             sended = (object.value(forKey: "sended") as! Bool)
                             sendOne = (object.value(forKey: "sendError") as! Bool)
+                            errorOne = (object.value(forKey: "sendErrorText") as! String)
                             i = 1
                         }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateTwo = (object.value(forKey: "num_month") as! String)
@@ -748,11 +662,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             unit_name = (object.value(forKey: "unit_name") as! String)
                             sended = (object.value(forKey: "sended") as! Bool)
                             sendTwo = (object.value(forKey: "sendError") as! Bool)
+                            errorTwo = (object.value(forKey: "sendErrorText") as! String)
                             i = 2
                         }else if i == 2 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateThree = (object.value(forKey: "num_month") as! String)
                             valueThree = (object.value(forKey: "value") as! Float)
                             sendThree = (object.value(forKey: "sendError") as! Bool)
+                            errorThree = (object.value(forKey: "sendErrorText") as! String)
                             identArr.append(object.value(forKey: "ident") as! String)
                             nameArr.append(object.value(forKey: "count_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
@@ -768,6 +684,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             errorOneArr.append(sendOne)
                             errorTwoArr.append(sendTwo)
                             errorThreeArr.append(sendThree)
+                            errorTextOneArr.append(errorOne)
+                            errorTextTwoArr.append(errorTwo)
+                            errorTextThreeArr.append(errorThree)
                             uniq_num = ""
                             dateOne = ""
                             valueOne = 0.00
@@ -779,10 +698,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             owner = ""
                             unit_name = ""
                             sended = true
-                            identk = ""
                             sendOne = false
-                            sendThree = false
                             sendTwo = false
+                            sendThree = false
+                            errorOne = ""
+                            errorTwo = ""
+                            errorThree = ""
+                            identk = ""
                             i = 0
                         }else if uniq_num != (object.value(forKey: "uniq_num") as! String){
                             i = 1
@@ -801,6 +723,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             errorOneArr.append(sendOne)
                             errorTwoArr.append(sendTwo)
                             errorThreeArr.append(sendThree)
+                            errorTextOneArr.append(errorOne)
+                            errorTextTwoArr.append(errorTwo)
+                            errorTextThreeArr.append(errorThree)
                             
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
@@ -812,15 +737,130 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             unit_name = (object.value(forKey: "unit_name") as! String)
                             sended = (object.value(forKey: "sended") as! Bool)
                             sendOne = (object.value(forKey: "sendError") as! Bool)
+                            errorOne = (object.value(forKey: "sendErrorText") as! String)
                             
                             dateTwo = ""
                             valueTwo = 0.00
+                            sendTwo = false
+                            errorTwo = ""
                             dateThree = ""
                             valueThree = 0.00
-                            sendTwo = false
                             sendThree = false
+                            errorThree = ""
                         }
                     }
+                }else{
+                    if i == 0{
+                        uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        dateOne = (object.value(forKey: "num_month") as! String)
+                        valueOne = (object.value(forKey: "value") as! Float)
+                        identk = (object.value(forKey: "ident") as! String)
+                        count_name = (object.value(forKey: "count_name") as! String)
+                        uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        owner = (object.value(forKey: "owner") as! String)
+                        unit_name = (object.value(forKey: "unit_name") as! String)
+                        sended = (object.value(forKey: "sended") as! Bool)
+                        sendOne = (object.value(forKey: "sendError") as! Bool)
+                        errorOne = (object.value(forKey: "sendErrorText") as! String)
+                        i = 1
+                    }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
+                        dateTwo = (object.value(forKey: "num_month") as! String)
+                        valueTwo = (object.value(forKey: "value") as! Float)
+                        identk = (object.value(forKey: "ident") as! String)
+                        count_name = (object.value(forKey: "count_name") as! String)
+                        uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        owner = (object.value(forKey: "owner") as! String)
+                        unit_name = (object.value(forKey: "unit_name") as! String)
+                        sended = (object.value(forKey: "sended") as! Bool)
+                        sendTwo = (object.value(forKey: "sendError") as! Bool)
+                        errorTwo = (object.value(forKey: "sendErrorText") as! String)
+                        i = 2
+                    }else if i == 2 && uniq_num == (object.value(forKey: "uniq_num") as! String){
+                        dateThree = (object.value(forKey: "num_month") as! String)
+                        valueThree = (object.value(forKey: "value") as! Float)
+                        sendThree = (object.value(forKey: "sendError") as! Bool)
+                        errorThree = (object.value(forKey: "sendErrorText") as! String)
+                        identArr.append(object.value(forKey: "ident") as! String)
+                        nameArr.append(object.value(forKey: "count_name") as! String)
+                        numberArr.append(object.value(forKey: "uniq_num") as! String)
+                        ownerArr.append(object.value(forKey: "owner") as! String)
+                        predArr.append(valueOne)
+                        teckArr.append(valueTwo)
+                        diffArr.append(valueThree)
+                        dateOneArr.append(dateOne)
+                        dateTwoArr.append(dateTwo)
+                        dateThreeArr.append(dateThree)
+                        unitArr.append(object.value(forKey: "unit_name") as! String)
+                        sendedArr.append(object.value(forKey: "sended") as! Bool)
+                        errorOneArr.append(sendOne)
+                        errorTwoArr.append(sendTwo)
+                        errorThreeArr.append(sendThree)
+                        errorTextOneArr.append(errorOne)
+                        errorTextTwoArr.append(errorTwo)
+                        errorTextThreeArr.append(errorThree)
+                        uniq_num = ""
+                        dateOne = ""
+                        valueOne = 0.00
+                        dateTwo = ""
+                        valueTwo = 0.00
+                        dateThree = ""
+                        valueThree = 0.00
+                        count_name = ""
+                        owner = ""
+                        unit_name = ""
+                        sended = true
+                        identk = ""
+                        sendOne = false
+                        sendThree = false
+                        sendTwo = false
+                        errorOne = ""
+                        errorTwo = ""
+                        errorThree = ""
+                        i = 0
+                    }else if uniq_num != (object.value(forKey: "uniq_num") as! String){
+                        i = 1
+                        identArr.append(identk)
+                        nameArr.append(count_name)
+                        numberArr.append(uniq_num)
+                        ownerArr.append(owner)
+                        predArr.append(valueOne)
+                        teckArr.append(valueTwo)
+                        diffArr.append(valueThree)
+                        dateOneArr.append(dateOne)
+                        dateTwoArr.append(dateTwo)
+                        dateThreeArr.append(dateThree)
+                        unitArr.append(unit_name)
+                        sendedArr.append(sended)
+                        errorOneArr.append(sendOne)
+                        errorTwoArr.append(sendTwo)
+                        errorThreeArr.append(sendThree)
+                        errorTextOneArr.append(errorOne)
+                        errorTextTwoArr.append(errorTwo)
+                        errorTextThreeArr.append(errorThree)
+                        
+                        uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        dateOne = (object.value(forKey: "num_month") as! String)
+                        valueOne = (object.value(forKey: "value") as! Float)
+                        identk = (object.value(forKey: "ident") as! String)
+                        count_name = (object.value(forKey: "count_name") as! String)
+                        uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        owner = (object.value(forKey: "owner") as! String)
+                        unit_name = (object.value(forKey: "unit_name") as! String)
+                        sended = (object.value(forKey: "sended") as! Bool)
+                        sendOne = (object.value(forKey: "sendError") as! Bool)
+                        errorOne = (object.value(forKey: "sendErrorText") as! String)
+                        
+                        dateTwo = ""
+                        valueTwo = 0.00
+                        sendTwo = false
+                        errorTwo = ""
+                        dateThree = ""
+                        valueThree = 0.00
+                        sendThree = false
+                        errorThree = ""
+                    }
+                }
+                
             }
             if i == 2 || i == 1{
                 identArr.append(identk)
@@ -838,6 +878,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 errorOneArr.append(sendOne)
                 errorTwoArr.append(sendTwo)
                 errorThreeArr.append(sendThree)
+                errorTextOneArr.append(errorOne)
+                errorTextTwoArr.append(errorTwo)
+                errorTextThreeArr.append(errorThree)
             }
             
             DispatchQueue.main.async(execute: {
@@ -1271,37 +1314,39 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.lblHeight3.constant = 16
                 cell.lblHeight6.constant = 16
             }
-//            if errorOneArr[indexPath.row]{
-//                cell.nonCounterOne.isHidden = false
-//                cell.nonCounter.isHidden = false
-//                cell.nonCounterHeight.constant = 16
-//                cell.nonCounterOne.setImageColor(color: .red)
-//                cell.sendButton.setTitle("Передать ещё раз", for: .normal)
-//            }else{
-//                cell.nonCounterOne.isHidden = true
-//                cell.nonCounter.isHidden = true
-//                cell.nonCounterHeight.constant = 0
-//                cell.sendButton.setTitle("Передать показания", for: .normal)
-//            }
-//            if errorTwoArr[indexPath.row]{
-//                cell.nonCounterTwo.isHidden = false
-//                cell.nonCounterTwo.setImageColor(color: .red)
-//            }else{
-//                cell.nonCounterTwo.isHidden = true
-//            }
-//            if errorThreeArr[indexPath.row]{
-//                cell.nonCounterThree.isHidden = false
-//                cell.nonCounterThree.setImageColor(color: .red)
-//            }else{
-//                cell.nonCounterThree.isHidden = true
-//            }
-            //        if isEditable(){
-//            cell.sendButton.isEnabled = true
-//            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(1.0)
-            //        }else{
-            //            cell.sendButton.isEnabled = false
-            //            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(0.5)
-            //        }
+            if errorOneArr[indexPath.row]{
+                cell.nonCounterOne.isHidden = false
+                cell.nonCounterOne.setImageColor(color: .red)
+                cell.errorTextOne.isHidden = false
+                cell.errorTextOne.text = errorTextOneArr[indexPath.row]
+                cell.errorOneHeight.constant = self.heightForView(text: errorTextOneArr[indexPath.row], font: cell.errorTextOne.font, width: cell.errorTextOne.frame.size.width)
+            }else{
+                cell.nonCounterOne.isHidden = true
+                cell.errorTextOne.isHidden = true
+                cell.errorOneHeight.constant = 0
+            }
+            if errorTwoArr[indexPath.row]{
+                cell.nonCounterTwo.isHidden = false
+                cell.nonCounterTwo.setImageColor(color: .red)
+                cell.errorTextTwo.isHidden = false
+                cell.errorTextTwo.text = errorTextTwoArr[indexPath.row]
+                cell.errorTwoHeight.constant = self.heightForView(text: errorTextTwoArr[indexPath.row], font: cell.errorTextTwo.font, width: cell.errorTextTwo.frame.size.width)
+            }else{
+                cell.nonCounterTwo.isHidden = true
+                cell.errorTextTwo.isHidden = true
+                cell.errorTwoHeight.constant = 0
+            }
+            if errorThreeArr[indexPath.row]{
+                cell.nonCounterThree.isHidden = false
+                cell.nonCounterThree.setImageColor(color: .red)
+                cell.errorTextThree.isHidden = false
+                cell.errorTextThree.text = errorTextThreeArr[indexPath.row]
+                cell.errorThreeHeight.constant = self.heightForView(text: errorTextThreeArr[indexPath.row], font: cell.errorTextThree.font, width: cell.errorTextThree.frame.size.width)
+            }else{
+                cell.nonCounterThree.isHidden = true
+                cell.errorTextThree.isHidden = true
+                cell.errorThreeHeight.constant = 0
+            }
             cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
 //            cell = shadowCell(cell: cell) as! HomeCounterCell
@@ -1350,6 +1395,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else{
            return StockCell()
         }
+    }
+    
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        print(label.frame.height, width)
+        return label.frame.height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -1593,6 +1649,13 @@ class HomeCounterCell: UITableViewCell {
     @IBOutlet weak var nonCounterOne: UIImageView!
     @IBOutlet weak var nonCounterTwo: UIImageView!
     @IBOutlet weak var nonCounterThree: UIImageView!
+    
+    @IBOutlet weak var errorTextOne: UILabel!
+    @IBOutlet weak var errorTextTwo: UILabel!
+    @IBOutlet weak var errorTextThree: UILabel!
+    @IBOutlet weak var errorOneHeight: NSLayoutConstraint!
+    @IBOutlet weak var errorTwoHeight: NSLayoutConstraint!
+    @IBOutlet weak var errorThreeHeight: NSLayoutConstraint!
     
     @IBOutlet weak var separator: UILabel!
     

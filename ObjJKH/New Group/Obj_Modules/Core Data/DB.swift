@@ -255,7 +255,7 @@ class DB: NSObject, XMLParserDelegate {
                 }else{
                     managedObject.sendError = false
                 }
-                
+                managedObject.sendErrorText = attributeDict["SendErrorText"]!
                 CoreDataManager.instance.saveContext()
             }
 //        }else{
