@@ -847,12 +847,23 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         if str.suffix(1) == "."{
             str = str + "00"
         }
-        textField.text = str
+        let s: Double = Double(str) as! Double
+        textField.text = String(format:"%.2f", s)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         var str: String = textField.text!
         str = str.replacingOccurrences(of: ",", with: ".")
+        if str.contains("."){
+            if let index = str.index(of: ".") {
+                let distance = str.distance(from: str.startIndex, to: index)
+                let k = str.count - distance - 1
+                if k > 2{
+                    str.removeLast()
+                    textField.text = str
+                }
+            }
+        }
         if str != "" && str != "-"{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]

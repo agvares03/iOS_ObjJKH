@@ -625,13 +625,23 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        let str: String = textField.text!
+        var str: String = textField.text!
+        str = str.replacingOccurrences(of: ",", with: ".")
         if str != ""{
             self.sum = Double(str)!
         }else{
             self.sum = 0.00
         }
-        
+        if str.contains("."){
+            if let index = str.index(of: ".") {
+                let distance = str.distance(from: str.startIndex, to: index)
+                let k = str.count - distance - 1
+                if k > 2{
+                    str.removeLast()
+                    textField.text = str
+                }
+            }
+        }
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {

@@ -347,6 +347,33 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         // Do any additional setup after loading the view.
     }
     
+    func showGDRPDialog(){
+        let alert = UIAlertController(title: "", message: "Это приложение содержит рекламный код Яндекса, который собирает данные, чтобы показать вам релевантные объявления, которые лучше соответствуют вашим интересам. Подробнее о том, как и почему Яндекс обрабатывает ваши данные, читайте в Политике конфиденциальности.", preferredStyle: .alert)
+        let declineAction = UIAlertAction(title: "Отклонить", style: .destructive) { (_) -> Void in
+            self.setUserConsent(consent: false)
+        }
+        let acceptAction = UIAlertAction(title: "Принять", style: .default) { (_) -> Void in
+            self.setUserConsent(consent: true)
+        }
+        let aboutAction = UIAlertAction(title: "Подробнее", style: .default) { (_) -> Void in
+            if let url = URL(string: "") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
+        alert.addAction(aboutAction)
+        alert.addAction(acceptAction)
+        alert.addAction(declineAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setUserConsent(consent: Bool){
+        UserDefaults.standard.set(consent, forKey: "userConsent")
+    }
+    
     func StopIndicators() {
         self.newsIndicator.stopAnimating()
         self.newsIndicator.isHidden = true

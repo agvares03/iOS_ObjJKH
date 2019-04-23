@@ -174,6 +174,7 @@ target 'UK_Komfort' do
   use_frameworks!
 
   # Pods for UK_Komfort
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
