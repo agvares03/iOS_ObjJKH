@@ -158,9 +158,8 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     var teckArr     :[Float] = []
     var diffArr     :[Float] = []
     var unitArr     :[String] = []
-    var dateOneArr     :[String] = []
-    var dateTwoArr     :[String] = []
-    var dateThreeArr   :[String] = []
+    var dateOneArr  :[String] = []
+    var errorTextArr:[String] = []
     
     func parse_Countrers(login: String, pass: String) {
         StartIndicator()
@@ -191,9 +190,8 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         unitArr.removeAll()
         sendedArr.removeAll()
         dateOneArr.removeAll()
-        dateTwoArr.removeAll()
-        dateThreeArr.removeAll()
         sendError.removeAll()
+        errorTextArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.iterYear))
         do {
@@ -213,6 +211,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                             unitArr.append(object.value(forKey: "unit_name") as! String)
                             sendedArr.append(object.value(forKey: "sended") as! Bool)
                             sendError.append(object.value(forKey: "sendError") as! Bool)
+                            errorTextArr.append(object.value(forKey: "sendErrorText") as! String)
                         }
                     }
                 }else{
@@ -227,6 +226,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                         unitArr.append(object.value(forKey: "unit_name") as! String)
                         sendedArr.append(object.value(forKey: "sended") as! Bool)
                         sendError.append(object.value(forKey: "sendError") as! Bool)
+                        errorTextArr.append(object.value(forKey: "sendErrorText") as! String)
                     }
                 }
                 
@@ -269,20 +269,25 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     var sendError:[Bool] = []
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "uniqCounterCell") as! UniqCounterCell
-        var send = false
+//        var send = false
         cell.teck.text        = String(format:"%.3f", teckArr[indexPath.row])
         cell.teckLbl.text     = dateOneArr[indexPath.row]
-        send = sendedArr[indexPath.row]
+//        send = sendedArr[indexPath.row]
         if sendError[0]{
             nonCounter.isHidden = false
             cell.nonCounter.isHidden = false
             nonCounterHeight.constant = 16
             cell.nonCounter.setImageColor(color: .red)
             sendButton.setTitle("Передать ещё раз", for: .normal)
+            cell.errorText.isHidden = false
+            cell.errorText.text = errorTextArr[indexPath.row]
+            cell.errorHeight.constant = self.heightForView(text: errorTextArr[indexPath.row], font: cell.errorText.font, width: cell.errorText.frame.size.width)
         }else if !sendError[0]{
             nonCounter.isHidden = true
             cell.nonCounter.isHidden = true
             nonCounterHeight.constant = 0
+            cell.errorText.isHidden = true
+            cell.errorHeight.constant = 0
             sendButton.setTitle("Передать показания", for: .normal)
         }
         if sendError[indexPath.row]{
@@ -299,6 +304,17 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         cell.delegate = self
         return cell
         
+    }
+    
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        print(label.frame.height, width)
+        return label.frame.height
     }
     
     func updateTable() {
@@ -391,7 +407,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             }else{
                 managedObject.sendError = false
             }
-            
+            managedObject.sendErrorText = attributeDict["SendErrorText"]!
             CoreDataManager.instance.saveContext()
         }
         getData(ident: choiceIdent)
@@ -511,6 +527,8 @@ class UniqCounterCell: UITableViewCell {
     @IBOutlet weak var teck: UILabel!
     @IBOutlet weak var teckLbl: UILabel!
     @IBOutlet weak var nonCounter: UIImageView!
+    @IBOutlet weak var errorText: UILabel!
+    @IBOutlet weak var errorHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

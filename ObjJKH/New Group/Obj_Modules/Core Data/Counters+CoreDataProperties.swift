@@ -31,5 +31,5 @@ extension Counters {
     @NSManaged public var ident: String?
     @NSManaged public var sended: Bool
     @NSManaged public var sendError: Bool
-
+    @NSManaged public var sendErrorText: String?
 }
