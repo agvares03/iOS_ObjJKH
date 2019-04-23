@@ -468,13 +468,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 if UserDefaults.standard.string(forKey: "encoding_Pays") == "1"{
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "usluga") as! String) != "Я"{
-                            sumOSV.append(Double(object.value(forKey: "end") as! String)!)
+                            sumOSV.append(Double(String(format:"%.2f", Double(object.value(forKey: "end") as! String)!)) as! Double)
                             checkBox.append(true)
                             osvc.append(object.value(forKey: "usluga") as! String)
                             idOSV.append(Int(object.value(forKey: "id") as! Int64))
                             
                             uslugaArr.append(object.value(forKey: "usluga") as! String)
-                            endArr.append(object.value(forKey: "end") as! String)
+                            endArr.append(String(format:"%.2f", Double(object.value(forKey: "end") as! String)!))
                             idArr.append(Int(object.value(forKey: "id") as! Int64))
                             identOSV.append(object.value(forKey: "ident") as! String)
                             if (object.value(forKey: "usluga") as! String) != "Я"{
