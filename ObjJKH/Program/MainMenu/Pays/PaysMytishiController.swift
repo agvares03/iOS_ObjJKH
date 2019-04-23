@@ -489,18 +489,19 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                             }
                             if sumOSV.count == 0{
-                                sumOSV.append(self.sum)
+                                print(self.sum, String(format:"%.2f", self.sum))
+                                sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
                                 checkBox.append(true)
                                 osvc.append("Услуги ЖКУ")
                                 idOSV.append(Int(object.value(forKey: "id") as! Int64))
                                 
                                 uslugaArr.append("Услуги ЖКУ")
-                                endArr.append(String(self.sum))
+                                endArr.append(String(format:"%.2f", self.sum))
                                 idArr.append(Int(object.value(forKey: "id") as! Int64))
                                 identOSV.append(object.value(forKey: "ident") as! String)
                             }else{
-                                sumOSV[0] = self.sum
-                                endArr[0] = String(self.sum)
+                                sumOSV[0] = Double(String(format:"%.2f", self.sum)) as! Double
+                                endArr[0] = String(format:"%.2f", self.sum)
                             }
                         }
                     }
