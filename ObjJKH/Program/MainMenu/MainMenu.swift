@@ -345,6 +345,8 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         fon_top.image = UIImage(named: "Logo_ServiceKomfort_White")
         #elseif isParitet
         fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isSkyfort
+        fon_top.image = UIImage(named: "Logo_Skyfort")
         #endif
         
         debtTable.delegate = self

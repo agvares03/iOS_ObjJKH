@@ -21,6 +21,7 @@ protocol DelLSCellDelegate: class {
 
 class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate {
     
+    @IBOutlet weak var view_no_ls: UIView!
     
     @IBOutlet weak var newsIndicator: UIActivityIndicatorView!
     @IBOutlet weak var appsIndicator: UIActivityIndicatorView!
@@ -313,6 +314,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_ServiceKomfort_White")
         #elseif isParitet
         fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isSkyfort
+        fon_top.image = UIImage(named: "Logo_Skyfort")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
@@ -542,6 +545,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }else{
                     DispatchQueue.main.async {
                         self.tableLSHeight.constant = 0
+                        self.view_no_ls.isHidden = false
                     }
                 }
             }

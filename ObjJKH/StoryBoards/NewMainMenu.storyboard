@@ -137,6 +137,25 @@
                                                             <segue destination="b0H-FT-oKT" kind="show" id="2f3-XE-7n6"/>
                                                         </connections>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7d-a3-jrd">
+                                                        <rect key="frame" x="26.5" y="111" width="292" height="22"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лицевые счета не подключены" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxJ-wj-OcO">
+                                                                <rect key="frame" x="34" y="2" width="223" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="292" id="51D-kH-mRA"/>
+                                                            <constraint firstItem="IxJ-wj-OcO" firstAttribute="centerY" secondItem="m7d-a3-jrd" secondAttribute="centerY" id="Df4-th-Do6"/>
+                                                            <constraint firstItem="IxJ-wj-OcO" firstAttribute="centerX" secondItem="m7d-a3-jrd" secondAttribute="centerX" id="Jza-Tl-Tqn"/>
+                                                            <constraint firstAttribute="height" constant="22" id="omP-q4-XVc"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -146,7 +165,9 @@
                                                     <constraint firstItem="pSd-9l-IzV" firstAttribute="top" secondItem="MeH-Fi-k8i" secondAttribute="bottom" constant="12" id="B5a-uk-GC7"/>
                                                     <constraint firstItem="SET-ZL-cqD" firstAttribute="top" secondItem="MeH-Fi-k8i" secondAttribute="bottom" constant="10" id="Hp0-wq-hk5"/>
                                                     <constraint firstItem="zFs-UV-dqi" firstAttribute="top" secondItem="J1a-NQ-D21" secondAttribute="top" constant="19" id="Ja4-bi-6p5"/>
+                                                    <constraint firstItem="m7d-a3-jrd" firstAttribute="centerX" secondItem="J1a-NQ-D21" secondAttribute="centerX" id="Vst-T8-Y41"/>
                                                     <constraint firstItem="pSd-9l-IzV" firstAttribute="leading" secondItem="J1a-NQ-D21" secondAttribute="leading" constant="10" id="axo-zz-oQT"/>
+                                                    <constraint firstItem="m7d-a3-jrd" firstAttribute="top" secondItem="SET-ZL-cqD" secondAttribute="bottom" constant="4.5" id="dat-Jh-Jv9"/>
                                                     <constraint firstItem="SET-ZL-cqD" firstAttribute="leading" secondItem="pSd-9l-IzV" secondAttribute="trailing" constant="5" id="iyt-L5-jRA"/>
                                                     <constraint firstItem="MeH-Fi-k8i" firstAttribute="leading" secondItem="J1a-NQ-D21" secondAttribute="leading" constant="10" id="nCW-hC-dha"/>
                                                     <constraint firstItem="lnb-pE-rWH" firstAttribute="top" secondItem="J1a-NQ-D21" secondAttribute="top" constant="25" id="q2M-ve-eB7"/>
@@ -1520,6 +1541,7 @@
                         <outlet property="tableWeb" destination="ODF-2C-Qhi" id="0U1-uJ-l9c"/>
                         <outlet property="tableWebHeight" destination="nF1-sa-go3" id="kV1-d6-5qC"/>
                         <outlet property="targetName" destination="lnb-pE-rWH" id="ebv-Wf-ZHa"/>
+                        <outlet property="view_no_ls" destination="m7d-a3-jrd" id="Uep-dI-egW"/>
                         <outlet property="webIndicator" destination="viC-JP-w6k" id="f7z-fW-n35"/>
                         <outlet property="webLSHeight" destination="xya-Sj-Nr8" id="uwt-OV-lNt"/>
                         <outlet property="webs_View" destination="giL-EP-QWs" id="ArB-ns-cMB"/>

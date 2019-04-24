@@ -147,6 +147,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_ServiceKomfort")
         #elseif isParitet
         fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isSkyfort
+        fon_top.image = UIImage(named: "Logo_Skyfort")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
@@ -466,9 +468,9 @@ class FirstController: UIViewController {
                 //                }
                 self.one = false
                 if (self.isCons == "0") {
-//                    UserDefaults.standard.set(true, forKey: "NewMain")
-//                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)
-                    self.performSegue(withIdentifier: "MainMenu", sender: self)
+                    UserDefaults.standard.set(true, forKey: "NewMain")
+                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)
+//                    self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)
                 }

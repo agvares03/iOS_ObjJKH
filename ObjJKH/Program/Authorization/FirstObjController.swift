@@ -129,6 +129,8 @@ class FirstObjController: UIViewController {
         fon_top.image = UIImage(named: "Logo_ServiceKomfort")
         #elseif isParitet
         fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isSkyfort
+        fon_top.image = UIImage(named: "Logo_Skyfort")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

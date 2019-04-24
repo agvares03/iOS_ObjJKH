@@ -180,6 +180,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_ServiceKomfort_White")
         #elseif isParitet
         fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isSkyfort
+        fon_top.image = UIImage(named: "Logo_Skyfort")
         #endif
         
         // Картинки для разных Таргетов
