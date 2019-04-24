@@ -434,6 +434,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //        let viewHeight = self.heigth_view.constant
 //        let backHeight = self.backgroundHeight.constant
         if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
+            self.view_no_ls.isHidden = true
 //            str_ls_arr?.forEach{
             let urlPath = Server.SERVER + "MobileAPI/GetDebt.ashx?" + "phone=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
                 let url: NSURL = NSURL(string: urlPath)!
@@ -538,6 +539,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 task.resume()
 //            }
         }else{
+            self.view_no_ls.isHidden = false
             let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
             if (str_menu_6 != "") {
                 var answer = str_menu_6.components(separatedBy: ";")
