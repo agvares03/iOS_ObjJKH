@@ -8,6 +8,7 @@ target 'ChistDom' do
     use_frameworks!
 
   # Pods for ChistDom
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -25,6 +26,7 @@ pod 'Fabric'
   use_frameworks!
 
   # Pods for DJ
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -46,7 +48,8 @@ pod 'Fabric'
   use_frameworks!
 
   # Pods for Klimovsk12
-pod 'Firebase/Core'
+    pod 'YandexMobileAds'
+    pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', '~> 4.0'
@@ -69,6 +72,7 @@ target 'Komeks' do
   use_frameworks!
 
   # Pods for Komeks
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -117,6 +121,7 @@ target 'ObjJKH' do
     use_frameworks!
 
     # Pods for Мобильное ЖКХ
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'Firebase/Database'
@@ -135,6 +140,7 @@ pod 'Fabric'
   use_frameworks!
 
   # Pods for OurObjHome
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -156,6 +162,7 @@ target 'Stolitsa' do
     use_frameworks!
 
     # Pods for Наш Общий Дом
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -199,6 +206,7 @@ target 'ReutKomfort' do
     use_frameworks!
     
     # Pods for UK_Komfort
+    pod 'YandexMobileAds'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -220,7 +228,8 @@ pod 'Fabric'
   use_frameworks!
 
   # Pods for UK_Garant
-pod 'Firebase/Core'
+    pod 'YandexMobileAds'
+    pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
     pod 'Alamofire', '~> 4.0'
@@ -244,6 +253,7 @@ target 'Soldatova1' do
   use_frameworks!
   
   # Pods for UK_Komfort
+    pod 'YandexMobileAds'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
@@ -268,6 +278,7 @@ target 'Tafgai' do
   use_frameworks!
   
   # Pods for UK_Komfort
+    pod 'YandexMobileAds'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
@@ -291,6 +302,7 @@ pod 'Crashlytics'
 use_frameworks!
 
 # Pods for JKH_Pocket
+pod 'YandexMobileAds'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 pod 'Firebase/Database'

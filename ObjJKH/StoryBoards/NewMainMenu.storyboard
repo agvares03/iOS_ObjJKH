@@ -55,11 +55,11 @@
             <objects>
                 <viewController id="SMs-2A-P1i" customClass="NewHomePage" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ix-ip-Am6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9i4-AQ-5Ne">
-                                <rect key="frame" x="0.0" y="20" width="375" height="1631"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="1731"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYi-MM-SD4">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1641"/>
@@ -141,7 +141,7 @@
                                                         <rect key="frame" x="26.5" y="111" width="292" height="22"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лицевые счета не подключены" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxJ-wj-OcO">
-                                                                <rect key="frame" x="34" y="2" width="223" height="18"/>
+                                                                <rect key="frame" x="34.5" y="2" width="223" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -1486,7 +1486,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Главная" image="home" id="o1q-00-yLG"/>
                     <navigationItem key="navigationItem" id="lc2-8a-G9t"/>
-                    <size key="freeformSize" width="375" height="1700"/>
+                    <size key="freeformSize" width="375" height="1800"/>
                     <connections>
                         <outlet property="allAppsBtn" destination="BJ1-R0-2ul" id="CnX-zo-eUa"/>
                         <outlet property="allCountersBtn" destination="meg-El-ldi" id="Gi9-zz-n85"/>
@@ -1497,6 +1497,7 @@
                         <outlet property="appsHeight" destination="rG0-aw-kAv" id="6pB-RC-jBO"/>
                         <outlet property="appsIndicator" destination="q6e-4d-U89" id="zzd-Ch-jPM"/>
                         <outlet property="apps_View" destination="oV6-ni-kqT" id="Lyg-He-beF"/>
+                        <outlet property="bottomViewHeight" destination="Q09-Oe-3Sx" id="aYZ-69-MXC"/>
                         <outlet property="btn_Add_LS" destination="3Wb-TM-ZVj" id="Bd8-9c-sNa"/>
                         <outlet property="btn_Apps_Height" destination="sb4-YG-mNF" id="EQl-Zd-pDf"/>
                         <outlet property="btn_add_Apps" destination="c3D-rw-FSZ" id="KIn-iN-oEJ"/>

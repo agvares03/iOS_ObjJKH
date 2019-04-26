@@ -16,6 +16,7 @@ import CoreLocation
 
 import Fabric
 import Crashlytics
+import YandexMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -52,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         requestNotificationAuthorization(application: application)
 //        locationNotificationAuthorization(application: application)
+        YMAMobileAds.enableLogging()
         return true
     }
     

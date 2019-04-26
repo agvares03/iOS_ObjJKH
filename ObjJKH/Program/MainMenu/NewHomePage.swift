@@ -10,7 +10,7 @@ import UIKit
 import Gloss
 import CoreData
 import SwiftyXMLParser
-//import YandexMobileAds
+import YandexMobileAds
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)
@@ -19,9 +19,13 @@ protocol DelLSCellDelegate: class {
     func try_del_ls_from_acc(ls: String)
 }
 
-class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate {
+class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate, YMANativeAdDelegate, YMANativeAdLoaderDelegate {
     
     @IBOutlet weak var view_no_ls: UIView!
+    
+    var adLoader: YMANativeAdLoader!
+    var bannerView: YMANativeBannerView?
+    @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var newsIndicator: UIActivityIndicatorView!
     @IBOutlet weak var appsIndicator: UIActivityIndicatorView!
@@ -338,6 +342,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         btn_add_Apps.backgroundColor = myColors.btnColor.uiColor()
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
         
+        let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                           imageSizes: [kYMANativeImageSizeMedium],
+                                                           loadImagesAutomatically: true)
+        self.adLoader = YMANativeAdLoader(configuration: configuration)
+        self.adLoader.delegate = self
+        if defaults.bool(forKey: "show_Ad"){
+            loadAd()
+        }
         let login = defaults.string(forKey: "login")
         let pass  = defaults.string(forKey: "pass")
         getDebt()
@@ -350,31 +362,69 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         // Do any additional setup after loading the view.
     }
     
-    func showGDRPDialog(){
-        let alert = UIAlertController(title: "", message: "Это приложение содержит рекламный код Яндекса, который собирает данные, чтобы показать вам релевантные объявления, которые лучше соответствуют вашим интересам. Подробнее о том, как и почему Яндекс обрабатывает ваши данные, читайте в Политике конфиденциальности.", preferredStyle: .alert)
-        let declineAction = UIAlertAction(title: "Отклонить", style: .destructive) { (_) -> Void in
-            self.setUserConsent(consent: false)
-        }
-        let acceptAction = UIAlertAction(title: "Принять", style: .default) { (_) -> Void in
-            self.setUserConsent(consent: true)
-        }
-        let aboutAction = UIAlertAction(title: "Подробнее", style: .default) { (_) -> Void in
-            if let url = URL(string: "") {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(url)
-                }
-            }
-        }
-        alert.addAction(aboutAction)
-        alert.addAction(acceptAction)
-        alert.addAction(declineAction)
-        self.present(alert, animated: true, completion: nil)
+    func loadAd() {
+        self.adLoader.loadAd(with: nil)
     }
     
-    func setUserConsent(consent: Bool){
-        UserDefaults.standard.set(consent, forKey: "userConsent")
+    func didLoadAd(_ ad: YMANativeGenericAd) {
+        ad.delegate = self
+        self.bannerView?.removeFromSuperview()
+        let bannerView = YMANativeBannerView(frame: CGRect.zero)
+        bannerView.ad = ad
+        self.view.addSubview(bannerView)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        self.bannerView = bannerView
+        DispatchQueue.main.async {
+            self.bottomViewHeight.constant = bannerView.frame.size.height + 10
+        }
+        
+        if #available(iOS 11.0, *) {
+            displayAdAtBottomOfSafeArea();
+        } else {
+            displayAdAtBottom();
+        }
+    }
+    
+    func displayAdAtBottom() {
+        let views = ["bannerView" : self.bannerView!]
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
+                                                        options: [],
+                                                        metrics: nil,
+                                                        views: views)
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: views)
+        self.view.addConstraints(horizontal)
+        self.view.addConstraints(vertical)
+    }
+    
+    @available(iOS 11.0, *)
+    func displayAdAtBottomOfSafeArea() {
+        let bannerView = self.bannerView!
+        let layoutGuide = self.view.safeAreaLayoutGuide
+        let constraints = [
+            bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
+            bannerView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -10),
+            bannerView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: 2)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    // MARK: - YMANativeAdDelegate
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didLoad ad: YMANativeAppInstallAd) {
+        print("Loaded App Install ad")
+        didLoadAd(ad)
+    }
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didLoad ad: YMANativeContentAd) {
+        print("Loaded Content ad")
+        didLoadAd(ad)
+    }
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didFailLoadingWithError error: Error) {
+        print("Native ad loading error: \(error)")
     }
     
     func StopIndicators() {
@@ -400,6 +450,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "show_Ad"){
+            loadAd()
+        }
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
