@@ -48,6 +48,8 @@ class SelectItemController: UITableViewController {
         //        let cell = tableView.dequeueReusableCell(withIdentifier: "item", for: indexPath as IndexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "item")
         cell?.textLabel?.text = strings[indexPath.row]
+        cell?.textLabel?.lineBreakMode = .byWordWrapping
+        cell?.textLabel?.numberOfLines = 0
         cell?.accessoryType = selectedIndex == indexPath.row ? .checkmark : .none
         return cell!
     }

@@ -56,6 +56,8 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edOrg: UITextField!
     @IBOutlet weak var indicatorOrg: UIActivityIndicatorView!
     @IBOutlet weak var imgOrg: UIImageView!
+    @IBOutlet weak var orgLblHeight: NSLayoutConstraint!
+    @IBOutlet weak var orgLbl: UILabel!
     
     @IBAction func NextAction(_ sender: UIButton){
         if teck_flat != -1{
@@ -284,7 +286,11 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
             self.edStreet.text   = self.appString(teck: self.teck_street, names: self.street_names)
             self.edNumber.text   = self.appString(teck: self.teck_number, names: self.number_names)
             self.edOrg.text     = self.appString(teck: self.teck_flat, names: self.orgCity_names)
-            
+            self.orgLbl.text    = self.appString(teck: self.teck_flat, names: self.orgCity_names)
+            if self.teck_flat != -1{
+                self.orgLblHeight.constant = self.heightForView(text: self.appString(teck: self.teck_flat, names: self.orgCity_names), font: self.orgLbl.font, width: self.orgLbl.frame.size.width)
+                self.nonorgConst.constant = 43 + self.orgLblHeight.constant
+            }
         }
     }
     
@@ -371,8 +377,8 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
                                                     if ((json.count) == 0) {
                                                     } else {
                                                         json.forEach{
-                                                            self.orgCity_names.append($0["FormalName"]!! as! String)
-                                                            self.orgCity_ids.append($0["AoGuid"]!! as! String)
+                                                            self.orgCity_names.append($0["FullName"]!! as! String)
+                                                            self.orgCity_ids.append($0["Guid"]!! as! String)
                                                         }
                                                     }
                                                 } catch let error as NSError {
@@ -403,6 +409,7 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
                 self.imgOrg.isHidden = true
                 self.separator3.isHidden = true
                 self.nonorgConst.constant = 15
+                self.orgLbl.isHidden = true
             }else{
                 self.nonorgConst.constant = 73
                 self.separator3.isHidden = false
@@ -448,4 +455,14 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
         indicatorOrg.isHidden = !show_hide
     }
     
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        print(label.frame.height, width)
+        return label.frame.height
+    }    
 }

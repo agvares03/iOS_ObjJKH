@@ -400,6 +400,7 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
+        print(request)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
