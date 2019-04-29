@@ -137,7 +137,7 @@ class StartController: UIViewController {
                 let inputData = self.responseLS?.data(using: .utf8)!
                 let decoder = JSONDecoder()
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)
-                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth)
+                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds)
             }else{
                 UserDefaults.standard.set(self.responseLS, forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
@@ -162,10 +162,11 @@ class StartController: UIViewController {
         }
     }
     
-    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool) {
+    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool) {
         let defaults = UserDefaults.standard
         defaults.setValue(color, forKey: "hex_color")
         defaults.setValue(oss, forKey: "enable_OSS")
+        defaults.set(showAds, forKey: "show_Ad")
         var numb: Int = 0
         statMenu.forEach {
             defaults.setValue(String($0.id) + ";" + $0.name_app + ";" + String($0.visible)  + ";" + $0.simple_name, forKey: "menu_" + String(numb))
@@ -218,6 +219,7 @@ class StartController: UIViewController {
         let color: String
         let menu: [Menu]
         let useDispatcherAuth: Bool
+        let showAds: Bool
     }
     
     struct Menu: Decodable {

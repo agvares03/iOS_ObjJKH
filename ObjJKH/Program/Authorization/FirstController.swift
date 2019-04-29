@@ -433,11 +433,7 @@ class FirstController: UIViewController {
                 var answer = self.responseString.components(separatedBy: ";")
                 print(answer.count)
                 // сохраним значения в defaults
-                var showAd = false
-                #if isUKKomfort
-                showAd = true
-                #endif
-                self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], show_Ad: showAd)
+                self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11])
                 
                 // отправим на сервер данные об ид. устройства для отправки уведомлений
                 let token = Messaging.messaging().fcmToken
@@ -472,9 +468,9 @@ class FirstController: UIViewController {
                 //                }
                 self.one = false
                 if (self.isCons == "0") {
-//                    UserDefaults.standard.set(true, forKey: "NewMain")
-//                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)
-                    self.performSegue(withIdentifier: "MainMenu", sender: self)
+                    UserDefaults.standard.set(true, forKey: "NewMain")
+                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)
+//                    self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)
                 }
@@ -554,7 +550,7 @@ class FirstController: UIViewController {
     }
     
     // сохранение глобальных значений
-    func save_global_data(date1: String, date2: String, can_count: String, mail: String, id_account: String, isCons: String, name: String, history_counters: String, strah: String, phone_operator: String, encoding_Pays: String, show_Ad: Bool) {
+    func save_global_data(date1: String, date2: String, can_count: String, mail: String, id_account: String, isCons: String, name: String, history_counters: String, strah: String, phone_operator: String, encoding_Pays: String) {
         let defaults = UserDefaults.standard
         defaults.setValue(date1, forKey: "date1")
         defaults.setValue(date2, forKey: "date2")
@@ -567,7 +563,6 @@ class FirstController: UIViewController {
         defaults.setValue(history_counters, forKey: "history_counters")
         defaults.setValue(phone_operator, forKey: "phone_operator")
         defaults.setValue(encoding_Pays, forKey: "encoding_Pays")
-        defaults.setValue(show_Ad, forKey: "show_Ad")
         defaults.synchronize()
     }
     
