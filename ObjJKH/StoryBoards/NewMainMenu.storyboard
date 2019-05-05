@@ -1431,10 +1431,18 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V49-Bl-jdP">
+                                                <rect key="frame" x="0.0" y="1641" width="375" height="0.0"/>
+                                                <color key="backgroundColor" red="0.92148774862289429" green="0.92162030935287476" blue="0.92145884037017822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="OOs-bu-44f"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92161188471502598" green="0.92161188471502598" blue="0.92161188471502598" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="oV6-ni-kqT" firstAttribute="top" secondItem="dE5-L1-TZW" secondAttribute="bottom" constant="15" id="2Ib-5u-VIl"/>
+                                            <constraint firstItem="V49-Bl-jdP" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" id="3k0-Bf-Fqc"/>
                                             <constraint firstItem="oV6-ni-kqT" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" constant="15" id="63r-GM-cmp"/>
                                             <constraint firstAttribute="trailing" secondItem="QiJ-xU-ZDT" secondAttribute="trailing" constant="15" id="7Ck-cc-4O2"/>
                                             <constraint firstItem="V2F-tl-Bwz" firstAttribute="top" secondItem="oV6-ni-kqT" secondAttribute="bottom" constant="15" id="7f0-hf-f9w"/>
@@ -1444,7 +1452,7 @@
                                             <constraint firstItem="J1a-NQ-D21" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" constant="15" id="LY8-Vg-Lx6"/>
                                             <constraint firstAttribute="trailing" secondItem="LPQ-KX-vwg" secondAttribute="trailing" constant="15" id="N14-Wa-nGR"/>
                                             <constraint firstAttribute="trailing" secondItem="dE5-L1-TZW" secondAttribute="trailing" constant="15" id="Ox0-9m-wfi"/>
-                                            <constraint firstAttribute="bottom" secondItem="zUG-ya-8gk" secondAttribute="bottom" constant="15" id="Q09-Oe-3Sx"/>
+                                            <constraint firstItem="V49-Bl-jdP" firstAttribute="top" secondItem="zUG-ya-8gk" secondAttribute="bottom" constant="15" id="Q09-Oe-3Sx"/>
                                             <constraint firstAttribute="trailing" secondItem="zUG-ya-8gk" secondAttribute="trailing" constant="15" id="RuI-X1-cgZ"/>
                                             <constraint firstItem="zUG-ya-8gk" firstAttribute="top" secondItem="giL-EP-QWs" secondAttribute="bottom" constant="15" id="SEF-gu-b6B"/>
                                             <constraint firstItem="LPQ-KX-vwg" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" constant="15" id="XXg-tb-9wd"/>
@@ -1452,6 +1460,7 @@
                                             <constraint firstAttribute="trailing" secondItem="J1a-NQ-D21" secondAttribute="trailing" constant="15" id="aPD-F2-Ftm"/>
                                             <constraint firstItem="QiJ-xU-ZDT" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" constant="15" id="fVK-hd-yRs"/>
                                             <constraint firstItem="zUG-ya-8gk" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" constant="15" id="ft3-I7-rsu"/>
+                                            <constraint firstAttribute="bottom" secondItem="V49-Bl-jdP" secondAttribute="bottom" id="gff-dS-ppf"/>
                                             <constraint firstItem="dE5-L1-TZW" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" constant="15" id="ifu-NA-IAM"/>
                                             <constraint firstItem="giL-EP-QWs" firstAttribute="top" secondItem="V2F-tl-Bwz" secondAttribute="bottom" constant="15" id="kHs-xS-7dt"/>
                                             <constraint firstItem="eZE-Qd-PYW" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" constant="-99" id="l1m-lV-iIL"/>
@@ -1462,6 +1471,7 @@
                                             <constraint firstItem="eZE-Qd-PYW" firstAttribute="top" secondItem="VYi-MM-SD4" secondAttribute="top" constant="-170" id="saN-w0-kav"/>
                                             <constraint firstItem="J1a-NQ-D21" firstAttribute="top" secondItem="VYi-MM-SD4" secondAttribute="top" constant="15" id="tL3-vy-C8L"/>
                                             <constraint firstItem="giL-EP-QWs" firstAttribute="leading" secondItem="VYi-MM-SD4" secondAttribute="leading" constant="15" id="yVn-O2-jBi"/>
+                                            <constraint firstAttribute="trailing" secondItem="V49-Bl-jdP" secondAttribute="trailing" id="z81-ms-68p"/>
                                             <constraint firstItem="QiJ-xU-ZDT" firstAttribute="top" secondItem="J1a-NQ-D21" secondAttribute="bottom" constant="15" id="zE8-hZ-oGK"/>
                                         </constraints>
                                     </view>
@@ -1497,7 +1507,8 @@
                         <outlet property="appsHeight" destination="rG0-aw-kAv" id="6pB-RC-jBO"/>
                         <outlet property="appsIndicator" destination="q6e-4d-U89" id="zzd-Ch-jPM"/>
                         <outlet property="apps_View" destination="oV6-ni-kqT" id="Lyg-He-beF"/>
-                        <outlet property="bottomViewHeight" destination="Q09-Oe-3Sx" id="aYZ-69-MXC"/>
+                        <outlet property="backgroundView" destination="V49-Bl-jdP" id="cyt-58-C2u"/>
+                        <outlet property="bottomViewHeight" destination="OOs-bu-44f" id="0ZF-5e-nkn"/>
                         <outlet property="btn_Add_LS" destination="3Wb-TM-ZVj" id="Bd8-9c-sNa"/>
                         <outlet property="btn_Apps_Height" destination="sb4-YG-mNF" id="EQl-Zd-pDf"/>
                         <outlet property="btn_add_Apps" destination="c3D-rw-FSZ" id="KIn-iN-oEJ"/>

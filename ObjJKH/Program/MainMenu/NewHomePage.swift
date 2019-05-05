@@ -36,6 +36,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var elipseBackground: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var ls_View: UIView!
     @IBOutlet weak var news_View: UIView!
@@ -371,11 +372,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.bannerView?.removeFromSuperview()
         let bannerView = YMANativeBannerView(frame: CGRect.zero)
         bannerView.ad = ad
-        self.view.addSubview(bannerView)
+        backgroundView.addSubview(bannerView)
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         self.bannerView = bannerView
         DispatchQueue.main.async {
-            self.bottomViewHeight.constant = bannerView.frame.size.height + 10
+            self.bottomViewHeight.constant = bannerView.frame.size.height
         }
         
         if #available(iOS 11.0, *) {
@@ -395,14 +396,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                       options: [],
                                                       metrics: nil,
                                                       views: views)
-        self.view.addConstraints(horizontal)
-        self.view.addConstraints(vertical)
+        self.backgroundView.addConstraints(horizontal)
+        self.backgroundView.addConstraints(vertical)
     }
     
     @available(iOS 11.0, *)
     func displayAdAtBottomOfSafeArea() {
         let bannerView = self.bannerView!
-        let layoutGuide = self.view.safeAreaLayoutGuide
+        let layoutGuide = self.backgroundView.safeAreaLayoutGuide
         let constraints = [
             bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
             bannerView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -10),
