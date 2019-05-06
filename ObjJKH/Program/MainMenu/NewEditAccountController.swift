@@ -122,7 +122,17 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func SaveInfo(_ sender: UIButton) {
         let email:String = emailText.text!
-        if ((email.contains("@")) && (email.contains(".ru"))) || ((email.contains("@")) && (email.contains(".com"))){
+        var kD = 0
+        var kS = 0
+        email.forEach{
+            if $0 == "."{
+                kD += 1
+            }
+            if $0 == "@"{
+                kS += 1
+            }
+        }
+        if (email.contains("@")) && (email.contains(".")) && kD == 1 && kS == 1{
             UserDefaults.standard.set(email, forKey: "mail")
             
             let defaults = UserDefaults.standard
