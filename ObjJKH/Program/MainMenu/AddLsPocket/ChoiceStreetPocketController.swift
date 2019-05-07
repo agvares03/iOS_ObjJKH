@@ -451,6 +451,7 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
         edOrg.isHidden         = show_hide
         txtOrg.isHidden        = show_hide
         imgOrg.isHidden        = show_hide
+        orgLbl.isHidden        = show_hide
         
         indicatorOrg.isHidden = !show_hide
     }
