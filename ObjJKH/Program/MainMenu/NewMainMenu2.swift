@@ -448,27 +448,25 @@ class NewMainMenu2: UIViewController {
             }
         }
         if segue.identifier == "goSaldo" {
-            let nav = segue.destination as! UINavigationController
-            let payController             = nav.topViewController as! SaldoController
+            let payController             = segue.destination as! SaldoController
             print(self.debtArr.count)
             payController.debtArr = self.debtArr
         }
         #if isMupRCMytishi
         if segue.identifier == "paysMytishi" {
-            let nav = segue.destination as! UINavigationController
-            let payController             = nav.topViewController as! PaysMytishiController
+            let payController             = segue.destination as! PaysMytishiController
             payController.debtArr = self.debtArr
         }
         #elseif isKlimovsk12
         if segue.identifier == "paysMytishi" {
             let nav = segue.destination as! UINavigationController
-            let payController             = nav.topViewController as! PaysMytishiController
+            let payController             = segue.destination as! PaysMytishiController
             payController.debtArr = self.debtArr
         }
         #else
         if segue.identifier == "pays" {
             let nav = segue.destination as! UINavigationController
-            let payController             = nav.topViewController as! PaysController
+            let payController             = segue.destination as! PaysController
             payController.debtArr = self.debtArr
         }
         #endif

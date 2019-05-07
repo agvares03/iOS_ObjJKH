@@ -101,7 +101,7 @@ class NewsController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if UserDefaults.standard.integer(forKey: "news_read") < news_read{
             NewsManager.instance.loadNews()
             self.tableView.reloadData()
@@ -129,7 +129,8 @@ class NewsController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-       navigationController?.dismiss(animated: true, completion: nil)
+//       navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

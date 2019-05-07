@@ -28,7 +28,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var isCons: String = "0"
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func updateConect(_ sender: UIButton) {
@@ -496,6 +497,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if (UserDefaults.standard.integer(forKey: "request_read") < question_read){
             self.load_new_data()
         }

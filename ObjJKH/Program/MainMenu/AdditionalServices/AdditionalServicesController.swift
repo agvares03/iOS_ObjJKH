@@ -53,7 +53,8 @@ class AdditionalServicesController: UIViewController{
     @IBOutlet weak var nonConectView: UIView!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     var mainScreenXml:  XML.Accessor?
@@ -97,6 +98,10 @@ class AdditionalServicesController: UIViewController{
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func updateUserInterface() {

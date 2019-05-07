@@ -29,7 +29,8 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
     private var voting: [VoteDataJson]? = []
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -153,6 +154,7 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if !fromMenu{
             getVote()
         }else{

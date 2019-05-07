@@ -15,7 +15,7 @@ import CoreData
 import CoreLocation
 
 import Fabric
-import Crashlytics
+//import Crashlytics
 import YandexMobileAds
 
 @UIApplicationMain

@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import YandexMobileAds
 
-class AddCountersController: UIViewController {
+class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdLoaderDelegate {
+    
+    var adLoader: YMANativeAdLoader!
+    var bannerView: YMANativeBannerView?
 
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
@@ -186,7 +190,77 @@ class AddCountersController: UIViewController {
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tap)
         newCounters.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                           imageSizes: [kYMANativeImageSizeMedium],
+                                                           loadImagesAutomatically: true)
+        self.adLoader = YMANativeAdLoader(configuration: configuration)
+        self.adLoader.delegate = self
+        if defaults.bool(forKey: "show_Ad"){
+            loadAd()
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    func loadAd() {
+        self.adLoader.loadAd(with: nil)
+    }
+    
+    func didLoadAd(_ ad: YMANativeGenericAd) {
+        ad.delegate = self
+        self.bannerView?.removeFromSuperview()
+        let bannerView = YMANativeBannerView(frame: CGRect.zero)
+        bannerView.ad = ad
+        view.addSubview(bannerView)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        self.bannerView = bannerView
+        
+        if #available(iOS 11.0, *) {
+            displayAdAtBottomOfSafeArea();
+        } else {
+            displayAdAtBottom();
+        }
+    }
+    
+    func displayAdAtBottom() {
+        let views = ["bannerView" : self.bannerView!]
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
+                                                        options: [],
+                                                        metrics: nil,
+                                                        views: views)
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: views)
+        self.view.addConstraints(horizontal)
+        self.view.addConstraints(vertical)
+    }
+    
+    @available(iOS 11.0, *)
+    func displayAdAtBottomOfSafeArea() {
+        let bannerView = self.bannerView!
+        let layoutGuide = self.view.safeAreaLayoutGuide
+        let constraints = [
+            bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
+            bannerView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -10),
+            bannerView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: 2)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    // MARK: - YMANativeAdDelegate
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didLoad ad: YMANativeAppInstallAd) {
+        print("Loaded App Install ad")
+        didLoadAd(ad)
+    }
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didLoad ad: YMANativeContentAd) {
+        print("Loaded Content ad")
+        didLoadAd(ad)
+    }
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didFailLoadingWithError error: Error) {
+        print("Native ad loading error: \(error)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

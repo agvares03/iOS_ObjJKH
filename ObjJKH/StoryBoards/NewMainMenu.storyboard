@@ -13,7 +13,7 @@
         <!--AdditionalServices-->
         <scene sceneID="976-t6-2an">
             <objects>
-                <viewControllerPlaceholder storyboardName="AdditionalServices" id="hdy-sD-q64" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AdditionalServices" referencedIdentifier="AdditionalServices" id="hdy-sD-q64" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXX-Cy-EQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1862" y="905"/>
@@ -21,7 +21,7 @@
         <!--WebCameras-->
         <scene sceneID="Gnq-yo-Ten">
             <objects>
-                <viewControllerPlaceholder storyboardName="WebCameras" id="ZyW-h3-hmd" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="WebCameras" referencedIdentifier="WebCameras" id="ZyW-h3-hmd" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2EZ-70-5v8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1835" y="762"/>
@@ -29,15 +29,15 @@
         <!--Questions-->
         <scene sceneID="mHW-Ej-ogz">
             <objects>
-                <viewControllerPlaceholder storyboardName="Questions" id="jvF-A3-pja" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Questions" referencedIdentifier="Questions" id="jvF-A3-pja" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Gd-nq-Hv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1821" y="617"/>
         </scene>
-        <!--MupCounters-->
+        <!--Counters-->
         <scene sceneID="5Ah-cy-fVz">
             <objects>
-                <viewControllerPlaceholder storyboardName="MupCounters" id="voT-iI-R0t" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="MupCounters" referencedIdentifier="Counters" id="voT-iI-R0t" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvM-iK-TM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1837" y="226"/>
@@ -45,7 +45,7 @@
         <!--News-->
         <scene sceneID="KSE-H8-Sve">
             <objects>
-                <viewControllerPlaceholder storyboardName="News" id="d4h-5G-AXc" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="News" referencedIdentifier="News" id="d4h-5G-AXc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUX-YF-MLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1798" y="62"/>
@@ -784,7 +784,7 @@
                                                                 <state key="normal" title="См.все"/>
                                                                 <connections>
                                                                     <action selector="goCounterAction:" destination="SMs-2A-P1i" eventType="touchUpInside" id="eQo-rV-ltG"/>
-                                                                    <segue destination="voT-iI-R0t" kind="show" id="Zek-9n-Aeb"/>
+                                                                    <segue destination="voT-iI-R0t" kind="show" id="Awk-H2-Y9c"/>
                                                                 </connections>
                                                             </button>
                                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oej-Wo-5rV">
@@ -2032,7 +2032,7 @@
         <!--News-->
         <scene sceneID="Hwd-nX-Qwk">
             <objects>
-                <viewControllerPlaceholder storyboardName="News" id="y07-E5-IxO" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="News" referencedIdentifier="News" id="y07-E5-IxO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca0-2K-9ay" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2010" y="336"/>
@@ -2040,7 +2040,7 @@
         <!--Apps-->
         <scene sceneID="YUG-cA-ZKV">
             <objects>
-                <viewControllerPlaceholder storyboardName="Apps" id="L5D-Ni-1Pa" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="Apps" id="L5D-Ni-1Pa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldj-2A-Y1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2010" y="376"/>
@@ -2088,7 +2088,7 @@
         <!--Apps-->
         <scene sceneID="tpU-NH-Trv">
             <objects>
-                <viewControllerPlaceholder storyboardName="Apps" id="YN0-UN-Uo0" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="Apps" id="YN0-UN-Uo0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIw-VB-CxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-611" y="64"/>
@@ -2112,7 +2112,7 @@
         <!--Questions-->
         <scene sceneID="2az-eK-Ter">
             <objects>
-                <viewControllerPlaceholder storyboardName="Questions" id="TE0-gv-EAp" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Questions" referencedIdentifier="Questions" id="TE0-gv-EAp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD7-wg-ek7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2034" y="417"/>
@@ -2128,7 +2128,7 @@
         <!--Saldo-->
         <scene sceneID="o0o-3O-Go7">
             <objects>
-                <viewControllerPlaceholder storyboardName="Saldo" id="ecG-Tx-Zkv" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Saldo" referencedIdentifier="Saldo" id="ecG-Tx-Zkv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sk0-A7-25w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2011" y="723"/>
@@ -2136,7 +2136,7 @@
         <!--Pays-->
         <scene sceneID="dB9-xg-dVn">
             <objects>
-                <viewControllerPlaceholder storyboardName="Pays" id="CI8-yu-H5e" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Pays" referencedIdentifier="Pays" id="CI8-yu-H5e" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMH-DM-jg3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2007" y="625"/>
@@ -2144,7 +2144,7 @@
         <!--WebCameras-->
         <scene sceneID="q6Z-1I-qeN">
             <objects>
-                <viewControllerPlaceholder storyboardName="WebCameras" id="Qq8-fM-pmT" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="WebCameras" referencedIdentifier="WebCameras" id="Qq8-fM-pmT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvz-pQ-HYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2050" y="762"/>
@@ -2152,7 +2152,7 @@
         <!--AdditionalServices-->
         <scene sceneID="uAJ-1Q-h0t">
             <objects>
-                <viewControllerPlaceholder storyboardName="AdditionalServices" id="ZZx-ON-jht" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AdditionalServices" referencedIdentifier="AdditionalServices" id="ZZx-ON-jht" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7T-WT-upK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2075" y="805"/>
@@ -2893,15 +2893,15 @@
         <!--PaysMytishi-->
         <scene sceneID="zgE-Ic-lPq">
             <objects>
-                <viewControllerPlaceholder storyboardName="PaysMytishi" id="dP9-TT-jre" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="PaysMytishi" referencedIdentifier="PaysMytishi" id="dP9-TT-jre" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5c-gX-Cd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2042" y="685"/>
         </scene>
-        <!--MupCounters-->
+        <!--Counters-->
         <scene sceneID="WHM-aB-fwp">
             <objects>
-                <viewControllerPlaceholder storyboardName="MupCounters" id="XkE-vd-zYM" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="MupCounters" referencedIdentifier="Counters" id="XkE-vd-zYM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Va9-FC-XJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2050" y="459"/>
@@ -3458,7 +3458,7 @@
         <!--Pays-->
         <scene sceneID="o7K-Yf-u7J">
             <objects>
-                <viewControllerPlaceholder storyboardName="Pays" id="VGj-sw-31o" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Pays" referencedIdentifier="Pays" id="VGj-sw-31o" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0l-n8-X3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-657" y="127"/>
@@ -3466,7 +3466,7 @@
         <!--PaysMytishi-->
         <scene sceneID="kvR-W9-hHZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="PaysMytishi" id="3Ur-QV-U2Q" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="PaysMytishi" referencedIdentifier="PaysMytishi" id="3Ur-QV-U2Q" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvp-T6-Z2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-622" y="187"/>
@@ -3474,7 +3474,7 @@
         <!--Voting-->
         <scene sceneID="Ybd-Fl-vPH">
             <objects>
-                <viewControllerPlaceholder storyboardName="Voting" id="ayz-cx-9UC" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Voting" referencedIdentifier="Voting" id="ayz-cx-9UC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tuq-Zn-rBE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3317" y="615"/>

@@ -23,7 +23,8 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     @IBOutlet weak var addLs: UILabel!
     @IBOutlet weak var lsView: UIView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func pdfClick(_ sender: UIButton) {
@@ -689,6 +690,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
 //        getData(login: login!, pass: pass!)
     }
     

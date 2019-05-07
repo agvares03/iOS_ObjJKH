@@ -69,7 +69,8 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
@@ -762,6 +763,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     override func viewWillAppear(_ animated: Bool) {
 //        ls_Button.setTitle("Все", for: UIControlState.normal)
 //        choiceIdent = "Все"
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         DB().del_db(table_name: "Counters")
         parse_Countrers(login: edLogin, pass: edPass)
     }

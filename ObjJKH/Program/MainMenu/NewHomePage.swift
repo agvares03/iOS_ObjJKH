@@ -147,6 +147,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         #endif
     }
     
+    @IBAction func ShowAllCounter(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "allCounter", sender: self)
+    }
+    
     func try_del_ls_from_acc(ls: String) {
         
         let defaults = UserDefaults.standard
@@ -193,7 +197,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                         print("responseString = \(responseString)")
                                                         
-                                                        self.getDebt()
+                                                        self.viewDidLoad()
                 })
                 task.resume()
                 

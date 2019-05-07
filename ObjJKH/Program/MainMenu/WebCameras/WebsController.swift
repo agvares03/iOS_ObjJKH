@@ -12,7 +12,8 @@ import Gloss
 class WebsController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func updateConect(_ sender: UIButton) {
@@ -88,6 +89,10 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func updateUserInterface() {

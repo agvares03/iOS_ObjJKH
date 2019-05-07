@@ -11,13 +11,18 @@ import Dropper
 import CoreData
 import StoreKit
 import PassKit
+import YandexMobileAds
 
 private protocol MainDataProtocol:  class {}
 
-class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
+class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource, YMANativeAdDelegate, YMANativeAdLoaderDelegate {
+    
+    var adLoader: YMANativeAdLoader!
+    var bannerView: YMANativeBannerView?
     
     @IBAction func backClick(_ sender: UIBarButtonItem){
-        navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBOutlet weak var lsView: UIView!
@@ -398,6 +403,80 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
+        let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                           imageSizes: [kYMANativeImageSizeMedium],
+                                                           loadImagesAutomatically: true)
+        self.adLoader = YMANativeAdLoader(configuration: configuration)
+        self.adLoader.delegate = self
+        if defaults.bool(forKey: "show_Ad"){
+            loadAd()
+        }
+        // Do any additional setup after loading the view.
+    }
+    
+    func loadAd() {
+        self.adLoader.loadAd(with: nil)
+    }
+    var adHeight = CGFloat()
+    func didLoadAd(_ ad: YMANativeGenericAd) {
+        ad.delegate = self
+        self.bannerView?.removeFromSuperview()
+        let bannerView = YMANativeBannerView(frame: CGRect.zero)
+        bannerView.ad = ad
+        view.addSubview(bannerView)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        self.bannerView = bannerView
+        DispatchQueue.main.async {
+            self.adHeight = bannerView.frame.size.height
+            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 40
+        }
+        if #available(iOS 11.0, *) {
+            displayAdAtBottomOfSafeArea();
+        } else {
+            displayAdAtBottom();
+        }
+    }
+    
+    func displayAdAtBottom() {
+        let views = ["bannerView" : self.bannerView!]
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
+                                                        options: [],
+                                                        metrics: nil,
+                                                        views: views)
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: views)
+        self.view.addConstraints(horizontal)
+        self.view.addConstraints(vertical)
+    }
+    
+    @available(iOS 11.0, *)
+    func displayAdAtBottomOfSafeArea() {
+        let bannerView = self.bannerView!
+        let layoutGuide = self.view.safeAreaLayoutGuide
+        let constraints = [
+            bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
+            bannerView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -10),
+            bannerView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: 2)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    // MARK: - YMANativeAdDelegate
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didLoad ad: YMANativeAppInstallAd) {
+        print("Loaded App Install ad")
+        didLoadAd(ad)
+    }
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didLoad ad: YMANativeContentAd) {
+        print("Loaded Content ad")
+        didLoadAd(ad)
+    }
+    
+    func nativeAdLoader(_ loader: YMANativeAdLoader!, didFailLoadingWithError error: Error) {
+        print("Native ad loading error: \(error)")
     }
     
     func updateUserInterface() {
@@ -976,6 +1055,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     // И вниз при исчезновении
     @objc func keyboardWillHide(sender: NSNotification?) {
         viewTop.constant = getPoint()
+        if UserDefaults.standard.bool(forKey: "show_Ad"){
+            viewTop.constant = getPoint() - adHeight + 40
+        }
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -997,6 +1079,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         //        k = 0
         UserDefaults.standard.addObserver(self, forKeyPath: "PaysError", options:NSKeyValueObservingOptions.new, context: nil)
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentID", options:NSKeyValueObservingOptions.new, context: nil)

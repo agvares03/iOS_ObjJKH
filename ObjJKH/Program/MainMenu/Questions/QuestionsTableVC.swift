@@ -36,8 +36,8 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var back: UIBarButtonItem!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-//        navigationController?.popViewController(animated: true)
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+//        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -103,6 +103,7 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.refresh(nil)
     }
     
