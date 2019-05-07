@@ -312,10 +312,10 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
         #else
         btnPdf.isHidden = true
         #endif
-        #if isUKKomfort
-            btnPay.isHidden = true
-            can_btn_pay.constant = 0
-        #endif
+//        #if isUKKomfort
+//            btnPay.isHidden = true
+//            can_btn_pay.constant = 0
+//        #endif
         NotificationCenter.default
             .addObserver(self,
                          selector: #selector(statusManager),
