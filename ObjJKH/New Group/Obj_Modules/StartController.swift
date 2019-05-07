@@ -166,7 +166,7 @@ class StartController: UIViewController {
         let defaults = UserDefaults.standard
         defaults.setValue(color, forKey: "hex_color")
         defaults.setValue(oss, forKey: "enable_OSS")
-        defaults.set(showAds, forKey: "show_Ad")
+        defaults.set(true, forKey: "show_Ad")
         var numb: Int = 0
         statMenu.forEach {
             defaults.setValue(String($0.id) + ";" + $0.name_app + ";" + String($0.visible)  + ";" + $0.simple_name, forKey: "menu_" + String(numb))
