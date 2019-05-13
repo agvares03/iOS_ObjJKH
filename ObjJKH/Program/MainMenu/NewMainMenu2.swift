@@ -459,13 +459,11 @@ class NewMainMenu2: UIViewController {
         }
         #elseif isKlimovsk12
         if segue.identifier == "paysMytishi" {
-            let nav = segue.destination as! UINavigationController
             let payController             = segue.destination as! PaysMytishiController
             payController.debtArr = self.debtArr
         }
         #else
         if segue.identifier == "pays" {
-            let nav = segue.destination as! UINavigationController
             let payController             = segue.destination as! PaysController
             payController.debtArr = self.debtArr
         }

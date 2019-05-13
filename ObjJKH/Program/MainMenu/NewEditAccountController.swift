@@ -484,8 +484,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         }
         #if isMupRCMytishi
         if segue.identifier == "paysMytishi" {
-            let nav = segue.destination as! UINavigationController
-            let payController             = nav.topViewController as! PaysMytishiController
+            let payController             = segue.destination as! PaysMytishiController
             if choiceIdent == ""{
                 payController.saldoIdent = "Все"
             }else{
@@ -495,8 +494,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         }
         #elseif isKlimovsk12
         if segue.identifier == "paysMytishi" {
-            let nav = segue.destination as! UINavigationController
-            let payController             = nav.topViewController as! PaysMytishiController
+            let payController             = segue.destination as! PaysMytishiController
             if choiceIdent == ""{
                 payController.saldoIdent = "Все"
             }else{
@@ -506,8 +504,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         }
         #else
         if segue.identifier == "pays" {
-            let nav = segue.destination as! UINavigationController
-            let payController             = nav.topViewController as! PaysController
+            let payController             = segue.destination as! PaysController
             if choiceIdent == ""{
                 payController.saldoIdent = "Все"
             }else{

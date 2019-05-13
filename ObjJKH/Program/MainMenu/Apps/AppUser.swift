@@ -24,6 +24,21 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         navigationController?.popViewController(animated: true)
     }
     
+    @IBOutlet weak var pay_txt: UILabel!
+    @IBOutlet weak var payBtn: UIButton!
+    @IBOutlet weak var payView: UIView!
+    @IBOutlet weak var heightPayView: NSLayoutConstraint!
+    
+    @IBAction func payBtnAction(_ sender: UIButton) {
+        #if isKlimovsk12
+        payedM()
+        #elseif isMupRCMytishi
+        payedM()
+        #else
+        payedA()
+        #endif
+    }
+    
     @IBOutlet weak var table_Const: NSLayoutConstraint!
     @IBOutlet weak var headerHeight: NSLayoutConstraint!
     @IBOutlet weak var date_txt: UILabel!
@@ -63,12 +78,94 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     var teck_id: Int64 = 1
     var str_type_app: String = ""
     var read: Int64 = 0
+    var paid_sum: Double = 0.00
+    var paid_text: String = ""
+    var isPay: Bool = false
+    var isPaid: Bool = false
+    var acc_ident = ""
     
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
     var postData = [String]()
     
     var timer: Timer? = nil
+    var totalSum = Double()
+    var items:[Any] = []
+    func payedM(){
+        let k:String = String(paid_sum)
+        self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
+        if (self.totalSum <= 0) {
+            let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            items.removeAll()
+            let price = String(format:"%.2f", paid_sum).replacingOccurrences(of: ".", with: "")
+            let ItemsData = ["Name" : paid_text, "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
+            items.append(ItemsData)
+            var Data:[String:String] = [:]
+            var DataStr: String = ""
+            DataStr = "ls1-\(acc_ident)|"
+            DataStr = DataStr + "|"
+            Data["name"] = DataStr
+            print(Data)
+            let defaults = UserDefaults.standard
+            self.onePay = 0
+            self.oneCheck = 0
+            #if isKlimovsk12
+            UserDefaults.standard.set("_" + acc_ident, forKey: "payIdent")
+            UserDefaults.standard.synchronize()
+            Data["chargeFlag"] = "false"
+            let shopCode = "215944"
+            var shops:[Any] = []
+            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
+            shops.append(shopItem)
+            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            let name = "Оплата услуг ЖКХ"
+            let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
+            print(receiptData)
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+
+            }, cancelled:  {
+
+            }, error: { (error) in
+                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+            #else
+            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            let name = "Оплата услуг ЖКХ"
+            let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
+            print(receiptData)
+            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
+
+            }, cancelled: {
+
+            }) { (error) in
+                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+
+            #endif
+        }
+    }
+    
+    func payedA(){
+        self.totalSum = self.paid_sum
+        let defaults = UserDefaults.standard
+        defaults.setValue(String(describing: self.paid_sum), forKey: "sum")
+        defaults.synchronize()
+        self.performSegue(withIdentifier: "CostPay_New", sender: self)
+    }
 
     @IBAction func add_foto(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -113,16 +210,21 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     }
     
     @IBAction func add_comm(_ sender: UIButton) {
-        if (ed_comment.text != "") {
+        self.addComm(comm: ed_comment.text)
+    }
+    
+    func addComm(comm: String?){
+        if (comm != "") {
             self.StartIndicator()
-            
+            self.ed_comment.text = comm!
             let id_app_txt = self.id_app.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            let text_txt: String   = ed_comment.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            let text_txt: String   = comm!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             
             let urlPath = Server.SERVER + Server.SEND_COMM + "reqID=" + id_app_txt + "&text=" + text_txt;
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
+            print(request)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                   completionHandler: {
@@ -148,7 +250,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                                                     self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                     print("responseString = \(self.responseString)")
                                                     
-                                                    self.choice()
+                                                    self.choice(comm: comm!)
             })
             task.resume()
             
@@ -188,7 +290,9 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         tema_txt.text = txt_tema
         date_txt.text = txt_date
-        
+        defaults.set("", forKey: "PaymentID")
+        defaults.set("", forKey: "PaysError")
+        defaults.set(false, forKey: "PaymentSucces")
         table_comments.delegate = self
         table_comments.rowHeight = UITableViewAutomaticDimension
         table_comments.estimatedRowHeight = 44.0
@@ -210,6 +314,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
+        payBtn.backgroundColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         fot_img.imageView?.setImageColor(color: myColors.btnColor.uiColor())
         hidden_Header.tintColor = myColors.indicatorColor.uiColor()
@@ -252,6 +357,13 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         headerHeight.constant = headerHeight.constant + count
         headerView.isHidden = true
         table_Const.constant = table_Const.constant - headerView.frame.size.height
+        if isPay && !isPaid{
+            pay_txt.text = paid_text
+            payBtn.setTitle("Оплатить " + String(format:"%.2f", paid_sum) + " руб", for: .normal)
+        }else{
+            heightPayView.constant = 0
+            payView.isHidden = true
+        }
     }
     
     func read_request(){
@@ -326,7 +438,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         view.frame.origin.y = 0
     }
 
-    func choice() {
+    func choice(comm: String?) {
         if (responseString == "xxx") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
@@ -341,17 +453,24 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                 alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             })
-        } else {
+        } else if responseString != "-1" {
             DispatchQueue.main.async(execute: {
                 
                 // Экземпляр класса DB
                 let db = DB()
-                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: self.ed_comment.text!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
+                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: comm!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
                 self.ed_comment.text = ""
                 self.StopIndicator()
                 self.load_data()
                 self.updateTable()
                 
+                self.view.endEditing(true)
+                
+            })
+        }else{
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                self.ed_comment.text = ""
                 self.view.endEditing(true)
                 
             })
@@ -366,6 +485,18 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     override func viewWillAppear(_ animated: Bool) {
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
+    }
+    
+    var onePay = 0
+    var oneCheck = 0
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && onePay == 0{
+            
+            onePay = 1
+            addMobilePay()
         }
     }
     
@@ -418,7 +549,9 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
             cell.author.text     = "Вы" //comm.author
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-            cell.date.text       = dateFormatter.string(from: comm.dateK!)
+            if comm.dateK != nil{
+                cell.date.text       = dateFormatter.string(from: comm.dateK!)
+            }
             cell.text_comm.text  = comm.text
             self.teck_id = comm.id + 1
             
@@ -533,11 +666,14 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
         if segue.identifier == "files" {
             let vc = segue.destination as! FilesController
             vc.data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
+        }
+        if segue.identifier == "CostPay_New" {
+            let payController             = segue.destination as! Pay
+            payController.ident = acc_ident
         }
     }
     
@@ -567,6 +703,80 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                 }
             }
         }
+    }
+    
+    func addMobilePay() {
+        let ident: String = acc_ident
+        var idPay: String = UserDefaults.standard.string(forKey: "PaymentID")!
+        if UserDefaults.standard.string(forKey: "PaymentID") == ""{
+            idPay = "12345"
+        }
+        var status = ""
+        if UserDefaults.standard.string(forKey: "PaysError") == ""{
+            status = "Оплачен"
+        }else{
+            status = UserDefaults.standard.string(forKey: "PaysError")!
+        }
+//        let sum = self.totalSum
+        let sum = 1.00
+        let desc = "Произведена оплата" + String(sum) + "руб. за " + paid_text
+        let urlPath = Server.SERVER + "MobileAPI/AddPay.ashx?"
+            + "idpay=" + idPay.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&status=" + status.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&desc=" + desc.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&sum=" + String(sum).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&idreq=" + id_app.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                    UserDefaults.standard.synchronize()
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
+                                                print("responseString = \(responseString)")
+                                                UserDefaults.standard.setValue("", forKey: "PaysError")
+                                                UserDefaults.standard.setValue("", forKey: "PaymentID")
+                                                UserDefaults.standard.set(false, forKey: "PaymentSucces")
+                                                if responseString != "ok"{
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Ошибка", message: responseString as String, preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ok", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }else{
+                                                    DispatchQueue.main.async {
+                                                        UserDefaults.standard.set(-1, forKey: "request_read")
+                                                        UserDefaults.standard.synchronize()
+                                                        self.payView.isHidden = true
+                                                        self.heightPayView.constant = 0
+                                                        self.addComm(comm: "Произведена оплата " + String(sum) + " руб. за " + self.paid_text)
+                                                    }
+                                                }
+                                                
+        })
+        
+        task.resume()
     }
     
 }

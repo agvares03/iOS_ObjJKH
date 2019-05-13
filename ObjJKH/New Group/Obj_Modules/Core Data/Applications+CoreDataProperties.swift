@@ -32,5 +32,9 @@ extension Applications {
     @NSManaged public var tema: String?
     @NSManaged public var text: String?
     @NSManaged public var type_app: String?
-
+    @NSManaged public var is_pay: Bool
+    @NSManaged public var is_paid: Bool
+    @NSManaged public var paid_sum: String?
+    @NSManaged public var paid_text: String?
+    @NSManaged public var acc_ident: String?
 }

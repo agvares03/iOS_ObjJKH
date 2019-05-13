@@ -8,11 +8,12 @@
 
 import UIKit
 
-class Pay: UIViewController {
+class Pay: UIViewController, UIWebViewDelegate {
 
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBOutlet weak var webView: UIWebView!
@@ -26,7 +27,7 @@ class Pay: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        webView.delegate = self
         let defaults     = UserDefaults.standard
         
         // Логин и пароль
@@ -43,6 +44,15 @@ class Pay: UIViewController {
 //        #endif
         
     }
+    var webViewCurrUrl = ""
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        if let text = webView.request?.url?.absoluteString{
+            webViewCurrUrl = text
+            print(text)
+        }
+        let doc = webView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
+        webViewCurrUrl = doc!
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -50,7 +60,19 @@ class Pay: UIViewController {
     }
     
     func getServerUrlByIdent() -> String {
-        return Server.SERVER + Server.GET_LINK + "login=" + self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + self.pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&sum=" + self.sum + "&ident=" + self.ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        if ident != ""{
+            return Server.SERVER + Server.GET_LINK + "login=" + self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + self.pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&sum=" + self.sum + "&ident=" + self.ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        }else{
+            return Server.SERVER + Server.GET_LINK + "login=" + self.login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + self.pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&sum=" + self.sum
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if webViewCurrUrl.contains("Платеж успешно выполнен"){
+            UserDefaults.standard.set(true, forKey: "PaymentSucces")
+        }        
     }
     
     func get_link() {
