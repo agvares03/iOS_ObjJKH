@@ -581,6 +581,37 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                             }else{
                                 sumOSV[0] = Double(String(format:"%.2f", self.sum)) as! Double
                                 endArr[0] = String(format:"%.2f", self.sum)
+                                var s = 0.00
+                                self.debtArr.forEach{
+                                    if self.choiceIdent == "Все"{
+                                        s = s + Double($0["Sum"] as! String)!
+                                        if s <= 0.00{
+                                            for i in 0...self.checkBox.count - 1{
+                                                self.checkBox[i] = false
+                                            }
+                                            self.txt_sum_obj.text = "0.00 руб."
+                                            self.txt_sum_jkh.text = "0.00 руб."
+                                            self.servicePay.text  = "0.00 руб."
+                                        }else{
+                                            s = $0["Sum"] as! Double
+                                        }
+                                    }else if self.choiceIdent == ($0["Ident"] as! String){
+                                        if ($0["Sum"] as! String) == "0.00"{
+                                            for i in 0...self.checkBox.count - 1{
+                                                self.checkBox[i] = false
+                                            }
+                                            self.txt_sum_obj.text = "0.00 руб."
+                                            self.txt_sum_jkh.text = "0.00 руб."
+                                            self.servicePay.text  = "0.00 руб."
+                                        }else{
+                                            s = $0["Sum"] as! Double
+                                        }
+                                    }
+                                }
+                                if s != sumOSV[0]{
+                                    sumOSV[0] = s
+                                    endArr[0] = String(s)
+                                }
                             }
                         }
                     }

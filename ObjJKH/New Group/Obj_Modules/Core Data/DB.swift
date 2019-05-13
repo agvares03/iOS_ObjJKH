@@ -297,7 +297,7 @@ class DB: NSObject, XMLParserDelegate {
         // Заявки с комментариями (xml)
         var id_app: String = ""
         if (elementName == "Row") {
-//            print(attributeDict)
+            print(attributeDict)
             // Запишем заявку в БД
             let managedObject = Applications()
             managedObject.id              = 1
@@ -308,7 +308,24 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.adress          = attributeDict["HouseAddress"]
             managedObject.flat            = attributeDict["FlatNumber"]
             managedObject.phone           = attributeDict["Phone"]
+            managedObject.acc_ident       = attributeDict["AccountIdent"]
+            if attributeDict["PaidSumm"] == ""{
+                managedObject.paid_sum        = "0.00"
+            }else{
+                managedObject.paid_sum        = attributeDict["PaidSumm"]?.replacingOccurrences(of: ",", with: ".")
+            }
+            managedObject.paid_text       = attributeDict["PaidServiceText"]
             managedObject.owner           = login
+            if (attributeDict["IsPay"] == "1") {
+                managedObject.is_pay   = true
+            } else {
+                managedObject.is_pay    = false
+            }
+            if (attributeDict["IsPaid"] == "1") {
+                managedObject.is_paid   = true
+            } else {
+                managedObject.is_paid    = false
+            }
             if (attributeDict["isActive"] == "1") {
                 managedObject.is_close    = 1
             } else {
@@ -320,8 +337,10 @@ class DB: NSObject, XMLParserDelegate {
                 if (attributeDict["isActive"] == "1"){
                     managedObject.is_read_client     = 0
                     request_read += 1
-                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-                    UserDefaults.standard.synchronize()
+                    DispatchQueue.main.async {
+                        UserDefaults.standard.set(self.request_read, forKey: "request_read")
+                        UserDefaults.standard.synchronize()
+                    }
                 }
             }
             if (attributeDict["IsReaded"] == "1") {
@@ -330,8 +349,10 @@ class DB: NSObject, XMLParserDelegate {
                 if (attributeDict["isActive"] == "1"){
                     managedObject.is_read     = 0
                     request_read_cons += 1
-                    UserDefaults.standard.setValue(request_read_cons, forKey: "request_read_cons")
-                    UserDefaults.standard.synchronize()
+                    DispatchQueue.main.async {
+                        UserDefaults.standard.set(self.request_read_cons, forKey: "request_read_cons")
+                        UserDefaults.standard.synchronize()
+                    }
                 }
             }
             if (attributeDict["IsAnswered"] == "1") {
@@ -389,6 +410,16 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.name            = attributeDict["FileName"]
             managedObject.number          = id_app
             managedObject.date            = attributeDict["DateTime"]
+            CoreDataManager.instance.saveContext()
+        } else if (elementName == "Payment"){
+            let managedObject = PaymentApp()
+            managedObject.id              = Int64(attributeDict["ID"]!)!
+            managedObject.id_pay          = Int64(attributeDict["ID_Pay"]!)!
+            managedObject.date            = attributeDict["Date"]
+            managedObject.ident           = attributeDict["Ident"]
+            managedObject.status          = attributeDict["Status"]
+            managedObject.desc            = attributeDict["Desc"]
+            managedObject.sum             = attributeDict["Sum"]
             CoreDataManager.instance.saveContext()
         }
     }
@@ -602,7 +633,8 @@ class DB: NSObject, XMLParserDelegate {
         //        if (fetchedResultsController?.sections?.count)! > 0 {
         //
         //        } else {
-        
+        request_read = 0
+        request_read_cons = 0
         self.login = login
         let pass  = pass
         var TextCons = ""

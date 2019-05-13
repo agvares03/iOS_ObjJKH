@@ -333,6 +333,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.adress = app.adress!
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
+            AppUser.paid_text = app.paid_text!
+            AppUser.paid_sum = Double(app.paid_sum!) as! Double
+            AppUser.isPay = app.is_pay
+            AppUser.isPaid = app.is_paid
+            AppUser.acc_ident = app.acc_ident!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
@@ -498,12 +503,16 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        if (UserDefaults.standard.integer(forKey: "request_read") < question_read){
+        if (UserDefaults.standard.integer(forKey: "request_read") < question_read) || UserDefaults.standard.integer(forKey: "request_read") == -1{
             self.load_new_data()
         }
         if (UserDefaults.standard.integer(forKey: "request_read_cons") < question_read_cons){
             self.load_new_data()
         }
+//        if UserDefaults.standard.bool(forKey: "back"){
+//            UserDefaults.standard.set(false, forKey: "back")
+//            self.load_new_data()
+//        }
         self.load_data()
         self.tableApps.reloadData()
     }

@@ -458,6 +458,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if UserDefaults.standard.bool(forKey: "show_Ad"){
             loadAd()
         }
+        if UserDefaults.standard.integer(forKey: "request_read") == -1{
+            self.load_new_data()
+        }
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -982,6 +985,30 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
         } catch {
             print(error)
+        }
+    }
+    
+    func load_new_data() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.global(qos: .background).async {
+                sleep(2)
+                DispatchQueue.main.sync {
+                    // Экземпляр класса DB
+                    let db = DB()
+                    let defaults = UserDefaults.standard
+                    let login = defaults.object(forKey: "login")
+                    let pass = defaults.object(forKey: "pass")
+                    let isCons = defaults.string(forKey: "isCons")
+                    // ЗАЯВКИ С КОММЕНТАРИЯМИ
+                    db.del_db(table_name: "Comments")
+                    db.del_db(table_name: "Fotos")
+                    db.del_db(table_name: "Applications")
+                    db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!, isLoad: false)
+                    
+                    self.updateListApps()
+                    
+                }
+            }
         }
     }
     
@@ -1566,6 +1593,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             AppUser.adress = app.adress!
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
+            AppUser.paid_text = app.paid_text!
+            AppUser.paid_sum = Double(app.paid_sum!) as! Double
+            AppUser.isPay = app.is_pay
+            AppUser.isPaid = app.is_paid
+            AppUser.acc_ident = app.acc_ident!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
