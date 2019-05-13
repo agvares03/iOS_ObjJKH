@@ -774,7 +774,7 @@
 		301D0B8122896DFE0032DE2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		301D0B8222896DFE0032DE2A /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		301D0B89228976720032DE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 301D0B88228976720032DE2A /* GoogleService-Info.plist */; };
-		301D0B8C22897E9C0032DE2A /* Logo_StandartDV.png in Resources */ = {isa = PBXBuildFile; fileRef = 301D0B8B22897E9C0032DE2A /* Logo_StandartDV.png */; };
+		301D0B8E22898F560032DE2A /* Logo_StandartDV.png in Resources */ = {isa = PBXBuildFile; fileRef = 301D0B8D22898F560032DE2A /* Logo_StandartDV.png */; };
 		302BC756226DBF5500AB2105 /* Logo_Paritet.png in Resources */ = {isa = PBXBuildFile; fileRef = 302BC755226DBF5500AB2105 /* Logo_Paritet.png */; };
 		302EF5FC225443AF0080B482 /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
 		302EF5FD225443AF0080B482 /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
@@ -2665,7 +2665,7 @@
 		301D0B8622896DFE0032DE2A /* StandartDV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandartDV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		301D0B8722896DFF0032DE2A /* StandartDV-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "StandartDV-info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/StandartDV-info.plist"; sourceTree = "<absolute>"; };
 		301D0B88228976720032DE2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/StandartDV/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		301D0B8B22897E9C0032DE2A /* Logo_StandartDV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_StandartDV.png; sourceTree = "<group>"; };
+		301D0B8D22898F560032DE2A /* Logo_StandartDV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_StandartDV.png; sourceTree = "<group>"; };
 		302BC755226DBF5500AB2105 /* Logo_Paritet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Paritet.png; sourceTree = "<group>"; };
 		302EF687225443B00080B482 /* Soldatova1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soldatova1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		302EF688225443B00080B482 /* ReutKomfort copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ReutKomfort copy-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/ReutKomfort copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -3126,7 +3126,7 @@
 		301D0B8A22897E2C0032DE2A /* StandartDV */ = {
 			isa = PBXGroup;
 			children = (
-				301D0B8B22897E9C0032DE2A /* Logo_StandartDV.png */,
+				301D0B8D22898F560032DE2A /* Logo_StandartDV.png */,
 			);
 			path = StandartDV;
 			sourceTree = "<group>";
@@ -4450,7 +4450,7 @@
 				301D0B7922896DFE0032DE2A /* account_icon_cons.jpg in Resources */,
 				301D0B7A22896DFE0032DE2A /* MainMenuCons.storyboard in Resources */,
 				301D0B7B22896DFE0032DE2A /* NewMainMenu.storyboard in Resources */,
-				301D0B8C22897E9C0032DE2A /* Logo_StandartDV.png in Resources */,
+				301D0B8E22898F560032DE2A /* Logo_StandartDV.png in Resources */,
 				301D0B7C22896DFE0032DE2A /* PaysMytishi.storyboard in Resources */,
 				301D0B7D22896DFE0032DE2A /* Apps.storyboard in Resources */,
 				301D0B7E22896DFE0032DE2A /* SelectItem.storyboard in Resources */,
@@ -8246,7 +8246,7 @@
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "Skyfort copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/StandartDV-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8271,7 +8271,7 @@
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "Skyfort copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/StandartDV-info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
