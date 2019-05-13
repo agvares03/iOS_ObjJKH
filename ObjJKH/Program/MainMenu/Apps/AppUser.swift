@@ -137,7 +137,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
-            #else
+            #elseif isMupRCMytishi
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
