@@ -325,6 +325,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Paritet")
         #elseif isSkyfort
         fon_top.image = UIImage(named: "Logo_Skyfort")
+        #elseif isStandartDV
+        fon_top.image = UIImage(named: "Logo_StandartDV")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
