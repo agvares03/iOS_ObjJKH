@@ -11,7 +11,12 @@ import UIKit
 class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+        if UserDefaults.standard.bool(forKey: "fromMenu"){
+            UserDefaults.standard.set(false, forKey: "fromMenu")
+            navigationController?.popViewController(animated: true)
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func updateConect(_ sender: UIButton) {
@@ -104,6 +109,11 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func updateUserInterface() {

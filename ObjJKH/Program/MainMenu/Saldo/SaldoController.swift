@@ -719,6 +719,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                         let year = json.year
                                                         let month = json.month
                                                         let link = json.link
+                                                        let sum = json.sum
                                                         var i = 0
                                                         if self.currYear == String(json.year!) && self.currMonth == String(json.month!) && json.link!.contains(".png"){
                                                             print(String(json.year!), String(json.month!))
@@ -733,7 +734,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                                     self.btnPdf.isHidden = true
                                                                 }
                                                             }                                                    }
-                                                        let fileObj = File(month: month!, year: year!, ident: ident!, link: link!)
+                                                        let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
                                                         self.fileList.append(fileObj)
                                                     }
                                                 }
@@ -785,12 +786,14 @@ struct PaysFileJsonData: JSONDecodable {
     let year:Int?
     let ident:String?
     let link:String?
+    let sum: Double?
     
     init?(json: JSON) {
         month    = "Month"   <~~ json
         year     = "Year"    <~~ json
         ident    = "Ident"   <~~ json
         link     = "Link"    <~~ json
+        sum      = "Sum"     <~~ json
     }
 }
 
@@ -799,11 +802,13 @@ class File {
     let year:Int
     let ident:String
     let link:String
+    let sum:Double
     
-    init(month:Int,year:Int,ident:String,link:String) {
+    init(month:Int,year:Int,ident:String,link:String,sum:Double) {
         self.month = month
         self.year = year
         self.ident = ident
         self.link = link
+        self.sum = sum
     }
 }

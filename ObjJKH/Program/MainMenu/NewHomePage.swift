@@ -18,21 +18,26 @@ protocol DebtCellDelegate: class {
 protocol DelLSCellDelegate: class {
     func try_del_ls_from_acc(ls: String)
 }
+protocol GoUrlReceiptDelegate: class {
+    func goUrlReceipt(url: String)
+}
 
-class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate, YMANativeAdDelegate, YMANativeAdLoaderDelegate {
+class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate, YMANativeAdDelegate, YMANativeAdLoaderDelegate, GoUrlReceiptDelegate {
     
     @IBOutlet weak var view_no_ls: UIView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     var adLoader: YMANativeAdLoader!
     var bannerView: YMANativeBannerView?
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
-    
+    private var refreshControl: UIRefreshControl?
     @IBOutlet weak var newsIndicator: UIActivityIndicatorView!
     @IBOutlet weak var appsIndicator: UIActivityIndicatorView!
     @IBOutlet weak var webIndicator: UIActivityIndicatorView!
     @IBOutlet weak var serviceIndicator: UIActivityIndicatorView!
     @IBOutlet weak var questionIndicator: UIActivityIndicatorView!
     @IBOutlet weak var counterIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var receiptsIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var elipseBackground: UIView!
@@ -45,6 +50,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var questions_View: UIView!
     @IBOutlet weak var webs_View: UIView!
     @IBOutlet weak var services_View: UIView!
+    @IBOutlet weak var receipts_View: UIView!
     
     @IBOutlet weak var btn_Add_LS: UIButton!
     @IBOutlet weak var btn_add_Apps: UIButton!
@@ -64,6 +70,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var tableWebHeight: NSLayoutConstraint!
     @IBOutlet weak var tableService: UITableView!
     @IBOutlet weak var tableServiceHeight: NSLayoutConstraint!
+    @IBOutlet weak var tableReceipts: UITableView!
+    @IBOutlet weak var tableReceiptsHeight: NSLayoutConstraint!
     
     @IBOutlet weak var newsHeight: NSLayoutConstraint!
     @IBOutlet weak var counterHeight: NSLayoutConstraint!
@@ -71,6 +79,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var questionLSHeight: NSLayoutConstraint!
     @IBOutlet weak var webLSHeight: NSLayoutConstraint!
     @IBOutlet weak var serviceHeight: NSLayoutConstraint!
+    @IBOutlet weak var receipts1Height: NSLayoutConstraint!
+    @IBOutlet weak var receipts2Height: NSLayoutConstraint!
     
     @IBOutlet weak var can_count_label: UILabel!
     @IBOutlet weak var canCountHeight: NSLayoutConstraint!
@@ -81,6 +91,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var menu_4_const: NSLayoutConstraint!
     @IBOutlet weak var menu_5_const: NSLayoutConstraint!
     @IBOutlet weak var menu_6_const: NSLayoutConstraint!
+    @IBOutlet weak var menu_7_const: NSLayoutConstraint!
     
     // Размеры для настройки меню
     // Звонок диспетчеру
@@ -101,6 +112,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var allQuestionsBtn: UIButton!
     @IBOutlet weak var allWebsBtn: UIButton!
     @IBOutlet weak var allServicesBtn: UIButton!
+    @IBOutlet weak var allReceiptsBtn: UIButton!
+    @IBOutlet weak var allSaldoBtn: UIButton!
+    @IBOutlet weak var allPayHistoryBtn: UIButton!
     
     var phone: String?
     var fetchedResultsController: NSFetchedResultsController<Applications>?
@@ -134,6 +148,22 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.serviceIndicator.startAnimating()
         self.serviceIndicator.isHidden = false
         self.allServicesBtn.isHidden = true
+    }
+    @IBAction func goReceiptsAction(_ sender: UIButton) {
+        self.receiptsIndicator.startAnimating()
+        self.receiptsIndicator.isHidden = false
+        self.allReceiptsBtn.isHidden = true
+        self.performSegue(withIdentifier: "goSaldo", sender: self)
+    }
+    @IBAction func goSaldoAction(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goSaldo", sender: self)
+    }
+    @IBAction func goPayHistoryAction(_ sender: UIButton) {
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "goPayHistoryMytishi", sender: self)
+        #else
+        self.performSegue(withIdentifier: "goPayHistory", sender: self)
+        #endif
     }
     
     @IBAction func AddLS(_ sender: UIButton) {
@@ -291,6 +321,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         tableWeb.dataSource = self
         tableService.delegate = self
         tableService.dataSource = self
+        tableReceipts.delegate = self
+        tableReceipts.dataSource = self
         
         targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
         #if isOur_Obj_Home
@@ -336,6 +368,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         questionIndicator.color = myColors.btnColor.uiColor()
         webIndicator.color = myColors.btnColor.uiColor()
         serviceIndicator.color = myColors.btnColor.uiColor()
+        receiptsIndicator.color = myColors.btnColor.uiColor()
         
         allAppsBtn.tintColor = myColors.btnColor.uiColor()
         allQuestionsBtn.tintColor = myColors.btnColor.uiColor()
@@ -343,10 +376,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         allWebsBtn.tintColor = myColors.btnColor.uiColor()
         allCountersBtn.tintColor = myColors.btnColor.uiColor()
         allServicesBtn.tintColor = myColors.btnColor.uiColor()
+        allReceiptsBtn.tintColor = myColors.btnColor.uiColor()
+        allSaldoBtn.tintColor = myColors.btnColor.uiColor()
+        allPayHistoryBtn.tintColor = myColors.btnColor.uiColor()
         btn_Add_LS.tintColor = myColors.btnColor.uiColor()
         btn_add_Apps.backgroundColor = myColors.btnColor.uiColor()
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
-        
+        let login = defaults.string(forKey: "login")
+        let pass  = defaults.string(forKey: "pass")
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            scrollView.refreshControl = refreshControl
+        } else {
+            scrollView.addSubview(refreshControl!)
+        }
         let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
                                                            imageSizes: [kYMANativeImageSizeMedium],
                                                            loadImagesAutomatically: true)
@@ -355,8 +399,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if defaults.bool(forKey: "show_Ad"){
             loadAd()
         }
-        let login = defaults.string(forKey: "login")
-        let pass  = defaults.string(forKey: "pass")
         getDebt()
         getNews()
         getDataCounter()
@@ -364,7 +406,39 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         getQuestions()
         getWebs()
         get_Services(login: login!, pass: pass!)
+        getPaysFile()
         // Do any additional setup after loading the view.
+    }
+    
+    @objc private func refresh(_ sender: UIRefreshControl) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            sleep(2)
+            DispatchQueue.main.async {
+                self.lsArr.removeAll()
+                self.newsArr.removeAll()
+                self.counterArr.removeAll()
+                self.appsArr.removeAll()
+                self.questionArr.removeAll()
+                self.webArr.removeAll()
+                self.serviceArr.removeAll()
+                self.rowComms.removeAll()
+                let login = UserDefaults.standard.string(forKey: "login")
+                let pass  = UserDefaults.standard.string(forKey: "pass")
+                self.getDebt()
+                self.getNews()
+                self.getDataCounter()
+                self.updateListApps()
+                self.getQuestions()
+                self.getWebs()
+                self.get_Services(login: login!, pass: pass!)
+                self.getPaysFile()
+                if #available(iOS 10.0, *) {
+                    self.scrollView.refreshControl?.endRefreshing()
+                } else {
+                    self.refreshControl?.endRefreshing()
+                }
+            }
+        }
     }
     
     func loadAd() {
@@ -451,6 +525,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.allQuestionsBtn.isHidden = false
         self.allWebsBtn.isHidden = false
         self.allServicesBtn.isHidden = false
+        self.receiptsIndicator.stopAnimating()
+        self.receiptsIndicator.isHidden = true
+        self.allReceiptsBtn.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -1032,6 +1109,51 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             print(error)
         }
     }
+    var link: String = ""
+    var fileList: [File] = []
+    
+    func getPaysFile() {
+        let login = UserDefaults.standard.string(forKey: "login") ?? ""
+        let pass = UserDefaults.standard.string(forKey: "pass") ?? ""
+        let urlPath = Server.SERVER + Server.GET_BILLS_FILE + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, error, responce in
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
+                                                
+                                                guard data != nil else { return }
+                                                let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                                                if json != nil{
+                                                    let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
+                                                    unfilteredData?.forEach { json in
+                                                        let ident = json.ident
+                                                        let year = json.year
+                                                        let month = json.month
+                                                        let link = json.link
+                                                        let sum = json.sum
+                                                        var i = 0
+                                                        let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
+                                                        if (link?.contains(".png"))!{
+                                                            print(fileObj.sum, fileObj.month)
+                                                            self.fileList.append(fileObj)
+                                                        }
+                                                    }
+                                                    DispatchQueue.main.async {
+                                                        self.fileList.reverse()
+                                                        self.tableReceipts.reloadData()
+                                                    }
+                                                }
+                                                
+        })
+        task.resume()
+    }
     
     func getQuestions() {
         
@@ -1176,7 +1298,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.tableAppsHeight.constant = 400
         self.tableQuestionHeight.constant = 400
         self.tableWebHeight.constant = 400
-        self.tableServiceHeight.constant = 400
+        self.tableServiceHeight.constant = 1000
+        self.tableReceiptsHeight.constant = 1000
         if tableView == self.tableLS {
             count = lsArr.count
         }
@@ -1185,9 +1308,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if tableView == self.tableCounter {
             count =  nameArr.count
-//            if count! > 2{
-//                count = 2
-//            }
         }
         if tableView == self.tableApps {
             if let sections = fetchedResultsController?.sections {
@@ -1198,7 +1318,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             } else {
                 count = 0
             }
-//            count =  appsArr.count
         }
         if tableView == self.tableQuestion {
             count =  questionArr.count
@@ -1215,8 +1334,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }else{
                 count = 0
             }
-            if count! > 2{
-                count = 2
+            if count! > 3{
+                count = 3
+            }
+        }
+        if tableView == self.tableReceipts {
+            count =  fileList.count
+            if count! > 3{
+                count = 3
             }
         }
         DispatchQueue.main.async {
@@ -1314,6 +1439,22 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.serviceHeight.constant = 45
             }
             self.tableServiceHeight.constant = height7
+            var height8: CGFloat = 0
+            for cell in self.tableReceipts.visibleCells {
+                height8 += cell.bounds.height
+            }
+            if height8 == 0{
+                self.menu_7_const.constant = 0
+                self.receipts1Height.constant = 0
+                self.receipts2Height.constant = 0
+                self.receipts_View.isHidden = true
+            }else{
+                self.menu_7_const.constant = 15
+                self.receipts1Height.constant = 45
+                self.receipts2Height.constant = 40
+                self.receipts_View.isHidden = false
+            }
+            self.tableReceiptsHeight.constant = height8
         }
         return count!
     }
@@ -1508,9 +1649,38 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else if tableView == self.tableService {
             let cell = self.tableService.dequeueReusableCell(withIdentifier: "HomeServiceCell") as! HomeServiceCell
             cell.serviceText.text = serviceArr[indexPath.section].sectionObjects[indexPath.row].name
-            cell.goService.backgroundColor = myColors.btnColor.uiColor()
-//            cell = shadowCell(cell: cell) as! HomeServiceCell
-            //            cell.delegate = self
+            cell.imgPhone.setImageColor(color: myColors.btnColor.uiColor())
+            var str:String = serviceArr[indexPath.section].sectionObjects[indexPath.row].address!
+            if str == ""{
+                cell.urlBtn.isHidden = true
+                cell.imgUrl.isHidden = true
+                cell.imgUrlHeight.constant = 0
+                cell.urlHeight.constant = 0
+                cell.constant2.constant = 0
+            }else{
+                if !str.contains("http"){
+                    str = "http://" + str
+                }
+                cell.urlBtn.setTitle(str, for: .normal)
+            }
+            if serviceArr[indexPath.section].sectionObjects[indexPath.row].phone == ""{
+                cell.phoneBtn.isHidden = true
+                cell.imgPhone.isHidden = true
+                cell.imgPhoneHeight.constant = 0
+                cell.phoneHeight.constant = 0
+                cell.constant1.constant = 0
+            }else{
+                cell.phoneBtn.setTitle(serviceArr[indexPath.section].sectionObjects[indexPath.row].phone, for: .normal)
+            }
+            return cell
+        }else if tableView == self.tableReceipts {
+            let cell = self.tableReceipts.dequeueReusableCell(withIdentifier: "HomeReceiptsCell") as! HomeReceiptsCell
+            cell.goReceipt.tintColor = myColors.btnColor.uiColor()
+            cell.receiptText.text = self.get_name_month(number_month: String(fileList[indexPath.row].month)) + " " + String(fileList[indexPath.row].year)
+            cell.receiptSum.text = String(format:"%.2f", fileList[indexPath.row].sum) + " руб"
+            cell.separator.text = fileList[indexPath.row].link
+            cell.delegate2 = self
+            cell.delegate = self
             return cell
         }else{
            return StockCell()
@@ -1644,6 +1814,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.debtArr = self.debtArr
         }
         #endif
+        if segue.identifier == "openURL" {
+            let payController             = segue.destination as! openSaldoController
+            payController.urlLink = self.link
+        }
+        if segue.identifier == "goSaldo" {
+            let payController             = segue.destination as! SaldoController
+            print(self.debtArr.count)
+            payController.debtArr = self.debtArr
+        }
     }
     var selectedUniq = ""
     var selectedUniqName = ""
@@ -1656,6 +1835,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var date2: String = ""
     func isEditable() -> Bool {
         return can_edit == "1"
+    }
+    
+    func goUrlReceipt(url: String) {
+        self.link = url
+        self.performSegue(withIdentifier: "openURL", sender: self)
     }
     
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String) {
@@ -1868,8 +2052,45 @@ class HomeServiceCell: UITableViewCell {
     var delegate: UIViewController?
     
     @IBOutlet weak var serviceText: UILabel!
-    @IBOutlet weak var goService: UIButton!
+    @IBOutlet weak var urlHeight: NSLayoutConstraint!
+    @IBOutlet weak var phoneHeight: NSLayoutConstraint!
+    @IBOutlet weak var imgUrlHeight: NSLayoutConstraint!
+    @IBOutlet weak var imgPhoneHeight: NSLayoutConstraint!
+    @IBOutlet weak var constant1: NSLayoutConstraint!
+    @IBOutlet weak var constant2: NSLayoutConstraint!
+    @IBOutlet weak var urlBtn: UIButton!
+    @IBOutlet weak var phoneBtn: UIButton!
+    @IBOutlet weak var imgUrl: UIImageView!
+    @IBOutlet weak var imgPhone: UIImageView!
+    @IBAction func urlBtnPressed(_ sender: UIButton) {
+        let url = URL(string: (urlBtn.titleLabel?.text)!)
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    @IBAction func phoneBtnPressed(_ sender: UIButton) {
+        let newPhone = phoneBtn.titleLabel?.text?.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+        if let url = URL(string: "tel://" + newPhone!) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+}
+
+class HomeReceiptsCell: UITableViewCell {
     
+    var delegate: UIViewController?
+    var delegate2: GoUrlReceiptDelegate?
+    
+    @IBOutlet weak var receiptText: UILabel!
+    @IBOutlet weak var goReceipt: UIButton!
+    @IBOutlet weak var receiptSum: UILabel!
+    @IBOutlet weak var separator: UILabel!
+    
+    @IBAction func urlBtnPressed(_ sender: UIButton) {
+        delegate2?.goUrlReceipt(url: separator.text!)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
