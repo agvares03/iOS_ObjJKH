@@ -13,6 +13,7 @@ import FirebaseInstanceID
 import FirebaseMessaging
 import CoreData
 import CoreLocation
+import GoogleMobileAds
 
 import Fabric
 //import Crashlytics
@@ -54,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         requestNotificationAuthorization(application: application)
 //        locationNotificationAuthorization(application: application)
         YMAMobileAds.enableLogging()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
     

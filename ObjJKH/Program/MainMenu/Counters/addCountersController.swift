@@ -8,11 +8,13 @@
 
 import UIKit
 import YandexMobileAds
+import GoogleMobileAds
 
 class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdLoaderDelegate {
     
     var adLoader: YMANativeAdLoader!
     var bannerView: YMANativeBannerView?
+    var gadBannerView: GADBannerView!
 
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
@@ -190,15 +192,37 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tap)
         newCounters.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
-                                                           imageSizes: [kYMANativeImageSizeMedium],
-                                                           loadImagesAutomatically: true)
-        self.adLoader = YMANativeAdLoader(configuration: configuration)
-        self.adLoader.delegate = self
-        if defaults.bool(forKey: "show_Ad"){
+        if defaults.integer(forKey: "show_Ad") == 1{
+            let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                               imageSizes: [kYMANativeImageSizeMedium],
+                                                               loadImagesAutomatically: true)
+            self.adLoader = YMANativeAdLoader(configuration: configuration)
+            self.adLoader.delegate = self
             loadAd()
+        }else if defaults.integer(forKey: "show_Ad") == 2{
+            gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            gadBannerView.rootViewController = self
+            addBannerViewToView(gadBannerView)
+            gadBannerView.load(GADRequest())
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView){
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        let views = ["bannerView" : bannerView]
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
+                                                        options: [],
+                                                        metrics: nil,
+                                                        views: views)
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: views)
+        self.view.addConstraints(horizontal)
+        self.view.addConstraints(vertical)
     }
     
     func loadAd() {

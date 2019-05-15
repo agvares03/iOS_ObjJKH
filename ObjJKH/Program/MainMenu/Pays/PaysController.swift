@@ -10,6 +10,7 @@ import UIKit
 import Dropper
 import CoreData
 import YandexMobileAds
+import GoogleMobileAds
 
 private protocol MainDataProtocol:  class {}
 
@@ -17,6 +18,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     var adLoader: YMANativeAdLoader!
     var bannerView: YMANativeBannerView?
+    var gadBannerView: GADBannerView!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
 //        navigationController?.dismiss(animated: true, completion: nil)
@@ -316,15 +318,41 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
-        let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
-                                                           imageSizes: [kYMANativeImageSizeMedium],
-                                                           loadImagesAutomatically: true)
-        self.adLoader = YMANativeAdLoader(configuration: configuration)
-        self.adLoader.delegate = self
-        if defaults.bool(forKey: "show_Ad"){
+        if defaults.integer(forKey: "show_Ad") == 1{
+            let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                               imageSizes: [kYMANativeImageSizeMedium],
+                                                               loadImagesAutomatically: true)
+            self.adLoader = YMANativeAdLoader(configuration: configuration)
+            self.adLoader.delegate = self
             loadAd()
+        }else if defaults.integer(forKey: "show_Ad") == 2{
+            gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            gadBannerView.rootViewController = self
+            addBannerViewToView(gadBannerView)
+            gadBannerView.load(GADRequest())
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView){
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        let views = ["bannerView" : bannerView]
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
+                                                        options: [],
+                                                        metrics: nil,
+                                                        views: views)
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: views)
+        DispatchQueue.main.async {
+            self.adHeight = bannerView.frame.size.height
+            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 40
+        }
+        self.view.addConstraints(horizontal)
+        self.view.addConstraints(vertical)
     }
     
     func loadAd() {

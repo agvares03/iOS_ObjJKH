@@ -349,7 +349,9 @@ class NewPass: UIViewController {
                 let db = DB()
                 db.getDataByEnter(login: login, pass: pass)
                 
-                self.performSegue(withIdentifier: "GoToApp", sender: self)
+//                self.performSegue(withIdentifier: "GoToApp", sender: self)
+                UserDefaults.standard.set(true, forKey: "NewMain")
+                self.performSegue(withIdentifier: "NewMainMenu", sender: self)
                 
                 self.StopIndicator()
             })

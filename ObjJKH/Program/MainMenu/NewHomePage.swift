@@ -11,6 +11,7 @@ import Gloss
 import CoreData
 import SwiftyXMLParser
 import YandexMobileAds
+import GoogleMobileAds
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)
@@ -28,7 +29,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     @IBOutlet weak var scrollView: UIScrollView!
     var adLoader: YMANativeAdLoader!
-    var bannerView: YMANativeBannerView?
+    var yaBannerView: YMANativeBannerView?
+    var gadBannerView: GADBannerView!
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     private var refreshControl: UIRefreshControl?
     @IBOutlet weak var newsIndicator: UIActivityIndicatorView!
@@ -393,13 +395,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         } else {
             scrollView.addSubview(refreshControl!)
         }
-        let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
-                                                           imageSizes: [kYMANativeImageSizeMedium],
-                                                           loadImagesAutomatically: true)
-        self.adLoader = YMANativeAdLoader(configuration: configuration)
-        self.adLoader.delegate = self
-        if defaults.bool(forKey: "show_Ad"){
+        if defaults.integer(forKey: "show_Ad") == 1{
+            let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                               imageSizes: [kYMANativeImageSizeMedium],
+                                                               loadImagesAutomatically: true)
+            self.adLoader = YMANativeAdLoader(configuration: configuration)
+            self.adLoader.delegate = self
             loadAd()
+        }else if defaults.integer(forKey: "show_Ad") == 2{
+            gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            gadBannerView.rootViewController = self
+            addBannerViewToView(gadBannerView)
+            gadBannerView.load(GADRequest())
         }
         getDebt()
         getNews()
@@ -443,18 +451,37 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
+    func addBannerViewToView(_ bannerView: GADBannerView){
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.addSubview(bannerView)
+        let views = ["bannerView" : bannerView]
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
+                                                        options: [],
+                                                        metrics: nil,
+                                                        views: views)
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: views)
+        DispatchQueue.main.async {
+            self.bottomViewHeight.constant = bannerView.frame.size.height
+        }
+        self.backgroundView.addConstraints(horizontal)
+        self.backgroundView.addConstraints(vertical)
+    }
+    
     func loadAd() {
         self.adLoader.loadAd(with: nil)
     }
     
     func didLoadAd(_ ad: YMANativeGenericAd) {
         ad.delegate = self
-        self.bannerView?.removeFromSuperview()
+        self.yaBannerView?.removeFromSuperview()
         let bannerView = YMANativeBannerView(frame: CGRect.zero)
         bannerView.ad = ad
         backgroundView.addSubview(bannerView)
         bannerView.translatesAutoresizingMaskIntoConstraints = false
-        self.bannerView = bannerView
+        self.yaBannerView = bannerView
         DispatchQueue.main.async {
             self.bottomViewHeight.constant = bannerView.frame.size.height
         }
@@ -467,7 +494,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func displayAdAtBottom() {
-        let views = ["bannerView" : self.bannerView!]
+        let views = ["bannerView" : self.yaBannerView!]
         let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
                                                         options: [],
                                                         metrics: nil,
@@ -482,7 +509,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     @available(iOS 11.0, *)
     func displayAdAtBottomOfSafeArea() {
-        let bannerView = self.bannerView!
+        let bannerView = self.yaBannerView!
         let layoutGuide = self.backgroundView.safeAreaLayoutGuide
         let constraints = [
             bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
@@ -534,8 +561,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.bool(forKey: "show_Ad"){
+        if UserDefaults.standard.integer(forKey: "show_Ad") == 1{
             loadAd()
+        }else if UserDefaults.standard.integer(forKey: "show_Ad") == 2{
+            gadBannerView.load(GADRequest())
         }
         if UserDefaults.standard.integer(forKey: "request_read") == -1{
             self.load_new_data()
@@ -1383,9 +1412,32 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 height4 += cell.bounds.height
             }
             if height4 == 0{
-                self.menu_3_const.constant = 0
-                self.appsHeight.constant = 0
+                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+                if (str_menu_2 != "") {
+                    var answer = str_menu_2.components(separatedBy: ";")
+                    if (answer[2] == "0") {
+                        self.menu_3_const.constant = 0
+                        self.appsHeight.constant = 0
+                        self.apps_View.isHidden = true
+                        self.btn_add_Apps.isHidden = true
+                    } else {
+                        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+                        let str_ls_arr = str_ls?.components(separatedBy: ",")
+                        if str_ls_arr?.count == 0 || str_ls_arr![0] == ""{
+                            self.apps_View.isHidden = true
+                            self.menu_3_const.constant = 0
+                            self.appsHeight.constant = 0
+                            self.btn_add_Apps.isHidden = true
+                        }else{
+                            self.apps_View.isHidden = false
+                            self.menu_3_const.constant = 15
+                            self.appsHeight.constant = 45
+                            self.btn_add_Apps.isHidden = false
+                        }
+                    }
+                }
             }else{
+                self.apps_View.isHidden = false
                 self.menu_3_const.constant = 15
                 self.appsHeight.constant = 45
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")

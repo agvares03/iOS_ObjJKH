@@ -137,7 +137,7 @@ class StartController: UIViewController {
                 let inputData = self.responseLS?.data(using: .utf8)!
                 let decoder = JSONDecoder()
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)
-                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds)
+                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds)//stat.showAds
             }else{
                 UserDefaults.standard.set(self.responseLS, forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
@@ -162,8 +162,9 @@ class StartController: UIViewController {
         }
     }
     
-    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool) {
+    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Int) {
         let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "show_Ad")//удалить через месяц
         defaults.setValue(color, forKey: "hex_color")
         defaults.setValue(oss, forKey: "enable_OSS")
         defaults.set(showAds, forKey: "show_Ad")
@@ -219,7 +220,7 @@ class StartController: UIViewController {
         let color: String
         let menu: [Menu]
         let useDispatcherAuth: Bool
-        let showAds: Bool
+        let showAds: Int
     }
     
     struct Menu: Decodable {

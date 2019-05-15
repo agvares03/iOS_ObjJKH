@@ -571,6 +571,7 @@
                         <segue destination="OFk-58-7H5" kind="show" identifier="GoToApp" id="gc6-Oy-WC7"/>
                         <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="MfD-33-Bqq"/>
                         <segue destination="dSs-8F-Ong" kind="show" identifier="start_app" id="WB9-fi-g7m"/>
+                        <segue destination="adH-5g-lLu" kind="show" identifier="NewMainMenu" id="UfM-O2-xyJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdA-qh-MHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,6 +604,14 @@
             </objects>
             <point key="canvasLocation" x="333.60000000000002" y="26.53673163418291"/>
         </scene>
+        <!--NewMainMenu-->
+        <scene sceneID="Tyu-ti-t0w">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewMainMenu" id="adH-5g-lLu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RVa-VZ-Kbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3300" y="71"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="17" height="17"/>
@@ -612,7 +621,7 @@
         <image name="phone" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qca-ii-V6F"/>
-        <segue reference="79Z-3o-APL"/>
+        <segue reference="WB9-fi-g7m"/>
+        <segue reference="MfD-33-Bqq"/>
     </inferredMetricsTieBreakers>
 </document>

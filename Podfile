@@ -9,6 +9,7 @@ target 'ChistDom' do
 
   # Pods for ChistDom
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -27,6 +28,7 @@ pod 'Fabric'
 
   # Pods for DJ
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -49,6 +51,7 @@ pod 'Fabric'
 
   # Pods for Klimovsk12
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -73,6 +76,7 @@ target 'Komeks' do
 
   # Pods for Komeks
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -99,6 +103,7 @@ target 'MupRCMytishi' do
 
     # Pods for Наш Общий Дом
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -122,6 +127,7 @@ target 'ObjJKH' do
 
     # Pods for Мобильное ЖКХ
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'Firebase/Database'
@@ -141,6 +147,7 @@ pod 'Fabric'
 
   # Pods for OurObjHome
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -163,6 +170,7 @@ target 'Stolitsa' do
 
     # Pods for Наш Общий Дом
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -182,6 +190,7 @@ target 'UK_Komfort' do
 
   # Pods for UK_Komfort
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -207,6 +216,7 @@ target 'ReutKomfort' do
     
     # Pods for UK_Komfort
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -229,6 +239,7 @@ pod 'Fabric'
 
   # Pods for UK_Garant
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'
@@ -254,6 +265,7 @@ target 'Soldatova1' do
   
   # Pods for UK_Komfort
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
@@ -279,6 +291,7 @@ target 'Tafgai' do
   
   # Pods for UK_Komfort
     pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
@@ -303,6 +316,7 @@ use_frameworks!
 
 # Pods for JKH_Pocket
 pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 pod 'Firebase/Database'
@@ -327,6 +341,7 @@ target 'StandartDV' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+    pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'

@@ -1145,6 +1145,10 @@ SOFTWARE.
 
 
 
+## Google-Mobile-Ads-SDK
+
+Copyright 2019 Google
+
 ## GoogleAppMeasurement
 
 Copyright 2019 Google
