@@ -102,6 +102,7 @@ class Server {
     static let GET_NUMBERS_HOUSE   = "GetHouses.ashx?"               // Подтянуть номер домов
     static let GET_HOUSE_DATA      = "GetHouseData.ashx?"            // Подтянуть квартиры по дому
     static let ADD_IDENT_TO_ACCOUNT = "AddIdentToAccount.ashx?"      // Добавить лицевой счет в аккаунт
+    static let ADD_IDENT_POCKET    = "AddExternalIdentToAccount.ashx?"// Добавить лиц счет в аккаунт ЖКХ в кармане
     static let GET_IDENTS_ACC      = "GetAccountIdents.ashx?"        // Получить лиц. счета по аккаунту
     static let DEL_IDENT_ACC       = "DeleteIdentFromAccount.ashx?"  // Удалить лиц. счет из аккаунта
     static let SET_EMAIL_ACC       = "SetAccountEmail.ashx?"         // Сохранить e-mail 

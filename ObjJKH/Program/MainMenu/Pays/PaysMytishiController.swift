@@ -405,19 +405,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
-        if defaults.integer(forKey: "show_Ad") == 1{
-            let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
-                                                               imageSizes: [kYMANativeImageSizeMedium],
-                                                               loadImagesAutomatically: true)
-            self.adLoader = YMANativeAdLoader(configuration: configuration)
-            self.adLoader.delegate = self
-            loadAd()
-        }else if defaults.integer(forKey: "show_Ad") == 2{
-            gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-            gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            gadBannerView.rootViewController = self
-            addBannerViewToView(gadBannerView)
-            gadBannerView.load(GADRequest())
+        if defaults.bool(forKey: "show_Ad"){
+            if defaults.integer(forKey: "ad_Type") == 2{
+                let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                                   imageSizes: [kYMANativeImageSizeMedium],
+                                                                   loadImagesAutomatically: true)
+                self.adLoader = YMANativeAdLoader(configuration: configuration)
+                self.adLoader.delegate = self
+                loadAd()
+            }else if defaults.integer(forKey: "ad_Type") == 3{
+                gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
+                gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+                gadBannerView.rootViewController = self
+                addBannerViewToView(gadBannerView)
+                gadBannerView.load(GADRequest())
+            }
         }
         // Do any additional setup after loading the view.
     }

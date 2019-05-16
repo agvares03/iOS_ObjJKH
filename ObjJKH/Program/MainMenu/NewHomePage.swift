@@ -395,19 +395,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         } else {
             scrollView.addSubview(refreshControl!)
         }
-        if defaults.integer(forKey: "show_Ad") == 1{
-            let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
-                                                               imageSizes: [kYMANativeImageSizeMedium],
-                                                               loadImagesAutomatically: true)
-            self.adLoader = YMANativeAdLoader(configuration: configuration)
-            self.adLoader.delegate = self
-            loadAd()
-        }else if defaults.integer(forKey: "show_Ad") == 2{
-            gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-            gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            gadBannerView.rootViewController = self
-            addBannerViewToView(gadBannerView)
-            gadBannerView.load(GADRequest())
+        if defaults.bool(forKey: "show_Ad"){
+            if defaults.integer(forKey: "ad_Type") == 2{
+                let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                                   imageSizes: [kYMANativeImageSizeMedium],
+                                                                   loadImagesAutomatically: true)
+                self.adLoader = YMANativeAdLoader(configuration: configuration)
+                self.adLoader.delegate = self
+                loadAd()
+            }else if defaults.integer(forKey: "ad_Type") == 3{
+                gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
+                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                gadBannerView.rootViewController = self
+                addBannerViewToView(gadBannerView)
+                gadBannerView.load(GADRequest())
+            }
         }
         getDebt()
         getNews()
@@ -561,10 +563,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if UserDefaults.standard.integer(forKey: "show_Ad") == 1{
-            loadAd()
-        }else if UserDefaults.standard.integer(forKey: "show_Ad") == 2{
-            gadBannerView.load(GADRequest())
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "show_Ad"){
+            if defaults.integer(forKey: "ad_Type") == 2{
+                loadAd()
+            }else if defaults.integer(forKey: "ad_Type") == 3{
+                gadBannerView.load(GADRequest())
+            }
         }
         if UserDefaults.standard.integer(forKey: "request_read") == -1{
             self.load_new_data()

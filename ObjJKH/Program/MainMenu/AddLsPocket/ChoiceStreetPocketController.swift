@@ -61,7 +61,7 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
     
     @IBAction func NextAction(_ sender: UIButton){
         if teck_flat != -1{
-            self.performSegue(withIdentifier: "nextStreet", sender: self)
+            self.performSegue(withIdentifier: "nextOgrn", sender: self)
         }else{
             let alert = UIAlertController(title: "Ошибка", message: "Вы не выбрали Организацию", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
@@ -257,6 +257,11 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
             
             prepare_seque_for_choice(teck: teck_flat, names: orgCity_names, segue: segue, numb: 3)
             
+        } else if (segue.identifier == "nextOgrn") {
+            let selectItemController = segue.destination as! ChoiceLsPocketController
+            if teck_flat == -1{
+                selectItemController.ogrn = orgCity_ids[teck_number]
+            }
         }
     }
     

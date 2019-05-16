@@ -192,19 +192,21 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tap)
         newCounters.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        if defaults.integer(forKey: "show_Ad") == 1{
-            let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
-                                                               imageSizes: [kYMANativeImageSizeMedium],
-                                                               loadImagesAutomatically: true)
-            self.adLoader = YMANativeAdLoader(configuration: configuration)
-            self.adLoader.delegate = self
-            loadAd()
-        }else if defaults.integer(forKey: "show_Ad") == 2{
-            gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-            gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            gadBannerView.rootViewController = self
-            addBannerViewToView(gadBannerView)
-            gadBannerView.load(GADRequest())
+        if defaults.bool(forKey: "show_Ad"){
+            if defaults.integer(forKey: "ad_Type") == 2{
+                let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                                                                   imageSizes: [kYMANativeImageSizeMedium],
+                                                                   loadImagesAutomatically: true)
+                self.adLoader = YMANativeAdLoader(configuration: configuration)
+                self.adLoader.delegate = self
+                loadAd()
+            }else if defaults.integer(forKey: "ad_Type") == 3{
+                gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
+                gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+                gadBannerView.rootViewController = self
+                addBannerViewToView(gadBannerView)
+                gadBannerView.load(GADRequest())
+            }
         }
         // Do any additional setup after loading the view.
     }
@@ -325,13 +327,20 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             StartIndicator()
             
             let strNumber: String = uniq_num
-            
+            #if isPocket
             let urlPath = Server.SERVER + "AddMeterValueEverydayMode.ashx?"
                 + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                 + "&val=" + count.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            
+            #else
+            let urlPath = Server.SERVER + "AddMeterValueEverydayMode.ashx?"
+                + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                + "&val=" + count.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                + "&ident=" + self.ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            #endif
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"

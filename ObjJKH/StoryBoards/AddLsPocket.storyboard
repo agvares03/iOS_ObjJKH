@@ -561,7 +561,7 @@
                         <segue destination="8ow-2t-J3e" kind="show" identifier="get_number_new" id="rvN-0u-1Bf"/>
                         <segue destination="8ow-2t-J3e" kind="show" identifier="get_flat_new" id="2fe-wN-zZq"/>
                         <segue destination="PUO-3v-c0M" kind="show" identifier="support" id="JSh-SV-S9v"/>
-                        <segue destination="nWP-YD-lQC" kind="show" identifier="nextStreet" id="cRB-JV-zq4"/>
+                        <segue destination="nWP-YD-lQC" kind="show" identifier="nextOgrn" id="cRB-JV-zq4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wB1-bl-9xW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -691,6 +691,7 @@
                         <outlet property="supportBtn" destination="P29-MQ-apV" id="8fo-Kc-EHh"/>
                         <outlet property="txtNumberLS" destination="S1l-iC-Crr" id="c79-Hq-FQd"/>
                         <segue destination="PUO-3v-c0M" kind="show" identifier="support" id="jhX-7L-Tl4"/>
+                        <segue destination="25i-ls-Xnp" kind="show" identifier="go_to_app" id="DGG-gi-Xtz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daF-QB-ubO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -705,6 +706,14 @@
             </objects>
             <point key="canvasLocation" x="3772" y="-324"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="vfN-ps-2FH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="25i-ls-Xnp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EWu-a3-nro" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5262" y="83"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="17" height="17"/>
@@ -712,7 +721,7 @@
         <image name="spin.png" width="840" height="840"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JSh-SV-S9v"/>
+        <segue reference="jhX-7L-Tl4"/>
         <segue reference="rvN-0u-1Bf"/>
     </inferredMetricsTieBreakers>
 </document>
