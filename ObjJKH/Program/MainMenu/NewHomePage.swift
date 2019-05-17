@@ -31,6 +31,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var adLoader: YMANativeAdLoader!
     var yaBannerView: YMANativeBannerView?
     var gadBannerView: GADBannerView!
+    var request = GADRequest()
+    @IBOutlet weak var adTopConst: NSLayoutConstraint!
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     private var refreshControl: UIRefreshControl?
     @IBOutlet weak var newsIndicator: UIActivityIndicatorView!
@@ -408,8 +410,16 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
-                gadBannerView.load(GADRequest())
+                
+                #if DEBUG
+                request.testDevices = ["2019ef9a63d2b397740261c8441a0c9b"];
+                #else
+                request.testDevices = nil;
+                #endif
+                gadBannerView.load(request)
             }
+        }else{
+            adTopConst.constant = 0
         }
         getDebt()
         getNews()
@@ -456,20 +466,31 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func addBannerViewToView(_ bannerView: GADBannerView){
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.addSubview(bannerView)
-        let views = ["bannerView" : bannerView]
-        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
-                                                        options: [],
-                                                        metrics: nil,
-                                                        views: views)
-        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
-                                                      options: [],
-                                                      metrics: nil,
-                                                      views: views)
         DispatchQueue.main.async {
             self.bottomViewHeight.constant = bannerView.frame.size.height
         }
-        self.backgroundView.addConstraints(horizontal)
-        self.backgroundView.addConstraints(vertical)
+        if #available(iOS 11.0, *) {
+            let bannerView = bannerView
+            let layoutGuide = self.backgroundView.safeAreaLayoutGuide
+            let constraints = [
+                bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
+                bannerView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -10),
+                bannerView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: 2)
+            ]
+            NSLayoutConstraint.activate(constraints)
+        } else {
+            let views = ["bannerView" : bannerView]
+            let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
+                                                            options: [],
+                                                            metrics: nil,
+                                                            views: views)
+            let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
+                                                          options: [],
+                                                          metrics: nil,
+                                                          views: views)
+            self.backgroundView.addConstraints(horizontal)
+            self.backgroundView.addConstraints(vertical)
+        }
     }
     
     func loadAd() {
@@ -568,7 +589,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             if defaults.integer(forKey: "ad_Type") == 2{
                 loadAd()
             }else if defaults.integer(forKey: "ad_Type") == 3{
-                gadBannerView.load(GADRequest())
+                gadBannerView.load(request)
             }
         }
         if UserDefaults.standard.integer(forKey: "request_read") == -1{

@@ -15,6 +15,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     var adLoader: YMANativeAdLoader!
     var bannerView: YMANativeBannerView?
     var gadBannerView: GADBannerView!
+    var request = GADRequest()
 
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
@@ -202,10 +203,15 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                 loadAd()
             }else if defaults.integer(forKey: "ad_Type") == 3{
                 gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-                gadBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
-                gadBannerView.load(GADRequest())
+                #if DEBUG
+                request.testDevices = ["2019ef9a63d2b397740261c8441a0c9b"];
+                #else
+                request.testDevices = nil;
+                #endif
+                gadBannerView.load(request)
             }
         }
         // Do any additional setup after loading the view.
@@ -214,17 +220,28 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     func addBannerViewToView(_ bannerView: GADBannerView){
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
-        let views = ["bannerView" : bannerView]
-        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
-                                                        options: [],
-                                                        metrics: nil,
-                                                        views: views)
-        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
-                                                      options: [],
-                                                      metrics: nil,
-                                                      views: views)
-        self.view.addConstraints(horizontal)
-        self.view.addConstraints(vertical)
+        if #available(iOS 11.0, *) {
+            let bannerView = bannerView
+            let layoutGuide = self.view.safeAreaLayoutGuide
+            let constraints = [
+                bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
+                bannerView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -10),
+                bannerView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: 2)
+            ]
+            NSLayoutConstraint.activate(constraints)
+        } else {
+            let views = ["bannerView" : bannerView]
+            let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[bannerView]-(10)-|",
+                                                            options: [],
+                                                            metrics: nil,
+                                                            views: views)
+            let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[bannerView]-(10)-|",
+                                                          options: [],
+                                                          metrics: nil,
+                                                          views: views)
+            self.view.addConstraints(horizontal)
+            self.view.addConstraints(vertical)
+        }
     }
     
     func loadAd() {
