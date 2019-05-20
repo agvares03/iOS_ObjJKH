@@ -220,8 +220,11 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
                                                     if ((json.count) == 0) {
                                                     } else {
                                                         json.forEach{
-                                                            self.region_names.append($0["FormalName"]!! as! String)
-                                                            self.region_ids.append($0["AoGuid"]!! as! String)
+                                                            if $0["FormalName"]!! as! String != ""{
+                                                                self.region_names.append($0["FormalName"]!! as! String)
+                                                                self.region_ids.append($0["AoGuid"]!! as! String)
+                                                            }
+                                                            
                                                         }
                                                     }
                                                     self.end_choice(num: 1)
@@ -380,8 +383,11 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
                                                     if ((json.count) == 0) {
                                                     } else {
                                                         json.forEach{
-                                                            self.districs_names.append($0["FormalName"]!! as! String)
-                                                            self.districs_ids.append($0["AoGuid"]!! as! String)
+                                                            if $0["FormalName"]!! as! String != ""{
+                                                                self.districs_names.append($0["FormalName"]!! as! String)
+                                                                self.districs_ids.append($0["AoGuid"]!! as! String)
+                                                            }
+                                                            
                                                         }
                                                     }
                                                 } catch let error as NSError {
@@ -418,8 +424,11 @@ class ChoiceRegionController: UIViewController, UITextFieldDelegate {
                                                     if ((json.count) == 0) {
                                                     } else {
                                                         json.forEach{
-                                                            self.areaCity_names.append($0["FormalName"]!! as! String)
-                                                            self.areaCity_ids.append($0["AoGuid"]!! as! String)
+                                                            if $0["FormalName"]!! as! String != ""{
+                                                                self.areaCity_names.append($0["FormalName"]!! as! String)
+                                                                self.areaCity_ids.append($0["AoGuid"]!! as! String)
+                                                            }
+                                                            
                                                         }
                                                     }
                                                 } catch let error as NSError {

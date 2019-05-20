@@ -221,8 +221,10 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
                                                     if ((json.count) == 0) {
                                                     } else {
                                                         json.forEach{
-                                                            self.street_names.append($0["FormalName"]!! as! String)
-                                                            self.street_ids.append($0["AoGuid"]!! as! String)
+                                                            if $0["FormalName"]!! as! String != ""{
+                                                                self.street_names.append($0["FormalName"]!! as! String)
+                                                                self.street_ids.append($0["AoGuid"]!! as! String)
+                                                            }
                                                         }
                                                     }
                                                     self.end_choice(num: 1)
@@ -347,8 +349,11 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
                                                     if ((json.count) == 0) {
                                                     } else {
                                                         json.forEach{
-                                                            self.number_names.append($0["Number"]!! as! String)
-                                                            self.number_ids.append($0["HouseGuid"]!! as! String)
+                                                            if $0["Number"]!! as! String != ""{
+                                                                self.number_names.append($0["Number"]!! as! String)
+                                                                self.number_ids.append($0["HouseGuid"]!! as! String)
+                                                            }
+                                                            
                                                         }
                                                     }
                                                 } catch let error as NSError {
@@ -382,8 +387,11 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
                                                     if ((json.count) == 0) {
                                                     } else {
                                                         json.forEach{
-                                                            self.orgCity_names.append($0["FullName"]!! as! String)
-                                                            self.orgCity_ids.append($0["Guid"]!! as! String)
+                                                            if $0["FullName"]!! as! String != ""{
+                                                                self.orgCity_names.append($0["FullName"]!! as! String)
+                                                                self.orgCity_ids.append($0["Guid"]!! as! String)
+                                                            }
+                                                            
                                                         }
                                                     }
                                                 } catch let error as NSError {
