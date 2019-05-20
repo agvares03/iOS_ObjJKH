@@ -242,6 +242,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         fon_top.image = UIImage(named: "Logo_Skyfort")
         #elseif isStandartDV
         fon_top.image = UIImage(named: "Logo_StandartDV")
+        #elseif isGarmonia
+        fon_top.image = UIImage(named: "Logo_UkGarmonia")
         #endif
         
         if UserDefaults.standard.string(forKey: "mail") != ""{

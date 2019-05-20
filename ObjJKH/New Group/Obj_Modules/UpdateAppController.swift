@@ -50,6 +50,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Skyfort")
         #elseif isStandartDV
         imageApp.image = UIImage(named: "Logo_StandartDV")
+        #elseif isGarmonia
+        imageApp.image = UIImage(named: "Logo_UkGarmonia")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
