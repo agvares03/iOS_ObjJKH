@@ -50,7 +50,7 @@ class ChoiceLsPocketController: UIViewController, UITextFieldDelegate {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
+        print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -72,7 +72,7 @@ class ChoiceLsPocketController: UIViewController, UITextFieldDelegate {
                                                 }
                                                 
                                                 self.response_add_ident = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                // print("responseString = \(String(describing: self.response_add_ident))")
+                                                 print("responseString = \(String(describing: self.response_add_ident))")
                                                 self.choice_add_ident()
                                                 
         })

@@ -261,8 +261,8 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
             
         } else if (segue.identifier == "nextOgrn") {
             let selectItemController = segue.destination as! ChoiceLsPocketController
-            if teck_flat == -1{
-                selectItemController.ogrn = orgCity_ids[teck_number]
+            if teck_flat != -1{
+                selectItemController.ogrn = orgCity_ids[teck_flat]
             }
         }
     }
