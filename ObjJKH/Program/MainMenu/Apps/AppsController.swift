@@ -503,7 +503,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        if (UserDefaults.standard.integer(forKey: "request_read") < question_read) || UserDefaults.standard.integer(forKey: "request_read") == -1{
+        if (UserDefaults.standard.integer(forKey: "request_read") < question_read) || UserDefaults.standard.integer(forKey: "request_read") == 0{
             self.load_new_data()
         }
         if (UserDefaults.standard.integer(forKey: "request_read_cons") < question_read_cons){

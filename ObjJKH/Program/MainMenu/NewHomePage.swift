@@ -592,7 +592,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 gadBannerView.load(request)
             }
         }
-        if UserDefaults.standard.integer(forKey: "request_read") == -1{
+        if UserDefaults.standard.integer(forKey: "request_read") == 0{
             self.load_new_data()
         }
         self.navigationController?.setNavigationBarHidden(true, animated: animated)

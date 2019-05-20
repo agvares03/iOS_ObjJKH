@@ -279,9 +279,9 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         super.viewDidLoad()
 
         self.StopIndicator()
-        if read == 0{
+//        if read == 0{
             self.read_request()
-        }
+//        }
         // получим id текущего аккаунта
         let defaults = UserDefaults.standard
         id_author    = defaults.string(forKey: "id_account")!
@@ -387,10 +387,15 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                 if (updatedBadgeNumber > -1) {
                     UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
                 }
+                if request_read >= 0{
+                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+                    UserDefaults.standard.synchronize()
+                }else{
+                    UserDefaults.standard.setValue(0, forKey: "request_read")
+                    UserDefaults.standard.synchronize()
+                }
+                
             }
-            
-            UserDefaults.standard.setValue(request_read, forKey: "request_read")
-            UserDefaults.standard.synchronize()
             
             }.resume()
     }
@@ -766,7 +771,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                                                     })
                                                 }else{
                                                     DispatchQueue.main.async {
-                                                        UserDefaults.standard.set(-1, forKey: "request_read")
+                                                        UserDefaults.standard.set(0, forKey: "request_read")
                                                         UserDefaults.standard.synchronize()
                                                         self.payView.isHidden = true
                                                         self.heightPayView.constant = 0

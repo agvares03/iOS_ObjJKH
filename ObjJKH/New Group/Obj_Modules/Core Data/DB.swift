@@ -338,8 +338,13 @@ class DB: NSObject, XMLParserDelegate {
                     managedObject.is_read_client     = 0
                     request_read += 1
                     DispatchQueue.main.async {
-                        UserDefaults.standard.set(self.request_read, forKey: "request_read")
-                        UserDefaults.standard.synchronize()
+                        if self.request_read >= 0{
+                            UserDefaults.standard.setValue(self.request_read, forKey: "request_read")
+                            UserDefaults.standard.synchronize()
+                        }else{
+                            UserDefaults.standard.setValue(0, forKey: "request_read")
+                            UserDefaults.standard.synchronize()
+                        }
                     }
                 }
             }
