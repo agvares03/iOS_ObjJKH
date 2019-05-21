@@ -115,7 +115,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.present(alert, animated: true, completion: nil)
             return
         }
-        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
+        let email = ""
+//        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
+        if email == ""{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.placeholder = "e-mail..."
@@ -124,7 +126,17 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
                 let textField = alert.textFields![0]
                 let str = textField.text
-                if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
+                var kD = 0
+                var kS = 0
+                str!.forEach{
+                    if $0 == "."{
+                        kD += 1
+                    }
+                    if $0 == "@"{
+                        kS += 1
+                    }
+                }
+                if ((str?.contains("@"))!) && ((str?.contains("."))!) && kD == 1 && kS == 1{
                     UserDefaults.standard.set(str, forKey: "mail")
                     self.payType = 1
                     self.payedM()
@@ -166,7 +178,17 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
                 let textField = alert.textFields![0]
                 let str = textField.text
-                if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
+                var kD = 0
+                var kS = 0
+                str!.forEach{
+                    if $0 == "."{
+                        kD += 1
+                    }
+                    if $0 == "@"{
+                        kS += 1
+                    }
+                }
+                if ((str?.contains("@"))!) && ((str?.contains("."))!) && kD == 1 && kS == 1{
                     UserDefaults.standard.set(str, forKey: "mail")
 //                    #if isMupRCMytishi
 //                    let alert = UIAlertController(title: nil, message: "Выберите способ оплаты", preferredStyle: .actionSheet)
