@@ -49,6 +49,12 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     
+    @IBOutlet weak var applePayBtn: UIButton!
+    @IBOutlet weak var applePayView: UIView!
+    @IBOutlet weak var applePayIcon: UIImageView!
+    @IBOutlet weak var applePayWidth: NSLayoutConstraint!
+    @IBOutlet weak var applePayLeft: NSLayoutConstraint!
+    
     var fetchedResultsController: NSFetchedResultsController<Saldo>?
     var iterYear: String = "0"
     var iterMonth: String = "0"
@@ -98,6 +104,48 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var items:[Any] = []
     
     // Нажатие в оплату
+    @IBAction func applePayAction(_ sender: UIButton) {
+        let defaults = UserDefaults.standard
+        let str_ls = defaults.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        if (ls_button.titleLabel?.text == "Все") && ((str_ls_arr?.count)! > 1){
+            let alert = UIAlertController(title: "", message: "Для совершения оплаты укажите лицевой счет", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
+            let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
+            alert.addTextField { (textField) in
+                textField.placeholder = "e-mail..."
+                textField.keyboardType = .emailAddress
+            }
+            let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
+                let textField = alert.textFields![0]
+                let str = textField.text
+                if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
+                    UserDefaults.standard.set(str, forKey: "mail")
+                    self.payType = 1
+                    self.payedM()
+                }else{
+                    textField.text = ""
+                    textField.placeholder = "e-mail..."
+                    let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+            }
+            //
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.payType = 1
+            self.payedM()
+        }
+    }
     @IBAction func Payed(_ sender: UIButton) {
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
@@ -120,24 +168,29 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 let str = textField.text
                 if ((str?.contains("@"))! && (str?.contains(".ru"))!) || ((str?.contains("@"))! && (str?.contains(".com"))!){
                     UserDefaults.standard.set(str, forKey: "mail")
+//                    #if isMupRCMytishi
+//                    let alert = UIAlertController(title: nil, message: "Выберите способ оплаты", preferredStyle: .actionSheet)
+//                    let cardImage = UIImage(named: "cardIcon")
+//                    let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
+//                        self.payType = 0
+//                        self.payedM()
+//                    })
+//                    actionCard.setValue(cardImage, forKey: "image")
+//                    let appleImage = UIImage(named: "applePayIcon")
+//                    let actionApple = UIAlertAction(title: "Оплатить", style: .default, handler: { (_) in
+//                        self.payType = 1
+//                        self.payedM()
+//                    })
+//                    actionApple.setValue(appleImage, forKey: "image")
+//                    alert.view.tintColor = UIColor.black
+//                    alert.addAction(actionCard)
+//                    alert.addAction(actionApple)
+//                    alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
+//                    self.present(alert, animated: true, completion: nil)
+//                    #else
+                    self.payType = 0
                     self.payedM()
-                    //                    let alert = UIAlertController(title: nil, message: "Выберите способ оплаты", preferredStyle: .actionSheet)
-                    //                    let cardImage = UIImage(named: "cardIcon")
-                    //                    let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
-                    //                        self.payType = 0
-                    //                        self.payedM()
-                    //                    })
-                    //                    actionCard.setValue(cardImage, forKey: "image")
-                    //                    let appleImage = UIImage(named: "applePayIcon")
-                    //                    let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
-                    //                        self.payType = 1
-                    //                        self.payedM()
-                    //                    })
-                    //                    actionApple.setValue(appleImage, forKey: "image")
-                    //                    alert.addAction(actionCard)
-                    //                    alert.addAction(actionApple)
-                    //                    alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
-                    //                    self.present(alert, animated: true, completion: nil)
+//                    #endif
                 }else{
                     textField.text = ""
                     textField.placeholder = "e-mail..."
@@ -152,24 +205,29 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
+//            #if isMupRCMytishi
+//            let alert = UIAlertController(title: nil, message: "Выберите привязанный лицевой счет", preferredStyle: .actionSheet)
+//            let cardImage = UIImage(named: "cardIcon")
+//            let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
+//                self.payType = 0
+//                self.payedM()
+//            })
+//            actionCard.setValue(cardImage, forKey: "image")
+//            let appleImage = UIImage(named: "applePayMark")
+//            let actionApple = UIAlertAction(title: "Оплатить", style: .default, handler: { (_) in
+//                self.payType = 1
+//                self.payedM()
+//            })
+//            actionApple.setValue(appleImage, forKey: "image")
+////            alert.view.tintColor = UIColor.black
+//            alert.addAction(actionCard)
+//            alert.addAction(actionApple)
+//            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
+//            present(alert, animated: true, completion: nil)
+//            #else
+            self.payType = 0
             self.payedM()
-            //            let alert = UIAlertController(title: nil, message: "Выберите привязанный лицевой счет", preferredStyle: .actionSheet)
-            //            let cardImage = UIImage(named: "cardIcon")
-            //            let actionCard = UIAlertAction(title: "Оплата по карте", style: .default, handler: { (_) in
-            //                self.payType = 0
-            //                self.payedM()
-            //            })
-            //            actionCard.setValue(cardImage, forKey: "image")
-            //            let appleImage = UIImage(named: "applePayIcon")
-            //            let actionApple = UIAlertAction(title: "Оплата Apple Pay", style: .default, handler: { (_) in
-            //                self.payType = 1
-            //                self.payedM()
-            //            })
-            //            actionApple.setValue(appleImage, forKey: "image")
-            //            alert.addAction(actionCard)
-            //            alert.addAction(actionApple)
-            //            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
-            //            present(alert, animated: true, completion: nil)
+//            #endif
         }
     }
     var payType = 0
@@ -329,7 +387,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set("", forKey: "payIdent")
-        currPoint = 502
+        currPoint = 462
         let defaults     = UserDefaults.standard
         // Логин и пароль
         login = defaults.string(forKey: "login")
@@ -427,6 +485,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 gadBannerView.load(request)
             }
         }
+        #if isMupRCMytishi
+        applePayIcon.setImageColor(color: .white)
+        applePayView.isHidden = false
+        applePayWidth.constant = 160
+        applePayLeft.constant = 10
+        #else
+        applePayView.isHidden = true
+        applePayWidth.constant = 0
+        applePayLeft.constant = 0
+        #endif
         // Do any additional setup after loading the view.
     }
     
