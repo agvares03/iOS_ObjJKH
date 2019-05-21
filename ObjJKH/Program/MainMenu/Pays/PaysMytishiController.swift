@@ -115,9 +115,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let email = ""
-//        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
-        if email == ""{
+        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.placeholder = "e-mail..."
