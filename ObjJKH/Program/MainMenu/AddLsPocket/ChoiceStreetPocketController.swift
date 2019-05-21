@@ -389,7 +389,7 @@ class ChoiceStreetPocketController: UIViewController, UITextFieldDelegate {
                                                         json.forEach{
                                                             if $0["FullName"]!! as! String != ""{
                                                                 self.orgCity_names.append($0["FullName"]!! as! String)
-                                                                self.orgCity_ids.append($0["Guid"]!! as! String)
+                                                                self.orgCity_ids.append($0["OGRN"]!! as! String)
                                                             }
                                                             
                                                         }
