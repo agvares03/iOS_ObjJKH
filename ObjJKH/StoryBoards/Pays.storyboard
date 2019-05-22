@@ -389,11 +389,12 @@
                     <navigationItem key="navigationItem" title="Оплата" id="ipR-Sn-ZNb">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="zwB-RO-8to">
                             <connections>
-                                <action selector="backClick:" destination="56L-lP-ZyS" id="TEZ-3z-FGT"/>
+                                <action selector="backClick:" destination="56L-lP-ZyS" id="ljP-Av-GIE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backBtn" destination="zwB-RO-8to" id="MCo-yI-0aL"/>
                         <outlet property="webView" destination="WFP-6C-H0Y" id="rpt-Ko-vRV"/>
                         <segue destination="Ryn-LP-KKT" kind="show" identifier="support" id="euB-Ao-ZzW"/>
                     </connections>
@@ -1096,6 +1097,6 @@
         <image name="unCheck" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A3j-03-Qxb"/>
+        <segue reference="euB-Ao-ZzW"/>
     </inferredMetricsTieBreakers>
 </document>

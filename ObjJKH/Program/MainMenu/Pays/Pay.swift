@@ -17,6 +17,7 @@ class Pay: UIViewController, UIWebViewDelegate {
     }
     
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     
     var login: String = ""
     var pass: String  = ""
@@ -34,7 +35,7 @@ class Pay: UIViewController, UIWebViewDelegate {
         login = defaults.string(forKey: "login")!
         pass  = defaults.string(forKey: "pass")!
         sum  = defaults.string(forKey: "sum")!
-        
+        backBtn.tintColor = myColors.btnColor.uiColor()
 //        #if isStolitsa
 //            let url = NSURL(string: Server.SERVER + Server.GET_LINK_STOLITSA + "login=" + self.login + "&pwd=" + self.pass + "&sum=" + self.sum)
 //            let requestObj = NSURLRequest(url: url! as URL)
@@ -112,7 +113,14 @@ class Pay: UIViewController, UIWebViewDelegate {
     
     func choice() {
         DispatchQueue.main.async(execute: {
-            if (self.responseString.contains("Ошибка")) {
+            if (self.responseString == "Ошибка: Недопустимый URI: Невозможно определить формат URI.") {
+                let alert = UIAlertController(title: "Ошибка", message: "Оплата не подключена", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            }else if (self.responseString.contains("Ошибка")) {
                 let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                     self.navigationController?.popViewController(animated: true)
