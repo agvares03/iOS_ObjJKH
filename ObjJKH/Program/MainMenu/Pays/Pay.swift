@@ -115,7 +115,7 @@ class Pay: UIViewController, UIWebViewDelegate {
             if (self.responseString.contains("Ошибка")) {
                 let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
@@ -126,7 +126,7 @@ class Pay: UIViewController, UIWebViewDelegate {
             } else {
                 let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
