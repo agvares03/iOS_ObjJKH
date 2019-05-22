@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Dropper
 import Gloss
+import YandexMobileMetrica
 
 class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource {
 
@@ -222,7 +223,11 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let params : [String : Any] = ["Переход на страницу": "Ведомости"]
+        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+            //            print("DID FAIL REPORT EVENT: %@", message)
+            print("REPORT ERROR: %@", error.localizedDescription)
+        })
         // Получим данные из глобальных сохраненных
         let defaults     = UserDefaults.standard
         currYear         = defaults.string(forKey: "year_osv")!

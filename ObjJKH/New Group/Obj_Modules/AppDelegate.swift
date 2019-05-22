@@ -14,6 +14,7 @@ import FirebaseMessaging
 import CoreData
 import CoreLocation
 import GoogleMobileAds
+import YandexMobileMetrica
 
 import Fabric
 //import Crashlytics
@@ -56,6 +57,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //        locationNotificationAuthorization(application: application)
         YMAMobileAds.enableLogging()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        #if isOur_Obj_Home
+        let apiKey = ""
+        #elseif isChist_Dom
+        let apiKey = ""
+        #elseif isMupRCMytishi
+        let apiKey = ""
+        #elseif isDJ
+        let apiKey = ""
+        #elseif isStolitsa
+        let apiKey = ""
+        #elseif isKomeks
+        let apiKey = ""
+        #elseif isUKKomfort
+        let apiKey = "1361881b-37dd-49e9-8573-c7a37ee7a239"
+        #elseif isKlimovsk12
+        let apiKey = ""
+        #elseif isPocket
+        let apiKey = ""
+        #elseif isReutKomfort
+        let apiKey = ""
+        #elseif isUKGarant
+        let apiKey = ""
+        #elseif isSoldatova1
+        let apiKey = ""
+        #elseif isTafgai
+        let apiKey = ""
+        #elseif isServiceKomfort
+        let apiKey = ""
+        #elseif isParitet
+        let apiKey = ""
+        #elseif isSkyfort
+        let apiKey = ""
+        #elseif isStandartDV
+        let apiKey = ""
+        #elseif isGarmonia
+        let apiKey = ""
+        #endif
+        if apiKey != ""{
+            let configuration = YMMYandexMetricaConfiguration.init(apiKey: apiKey)
+            // Отслеживание новых пользователей
+            configuration?.handleFirstActivationAsUpdate = true
+            // Отслеживание аварийной остановки приложений
+            configuration?.crashReporting = true
+            configuration?.statisticsSending = true
+            YMMYandexMetrica.activate(with: configuration!)
+        }
+        
+        return true
+    }
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        YMMYandexMetrica.handleOpen(url)
+        return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        YMMYandexMetrica.handleOpen(url)
+        return true
+    }
+    
+    // Делегат для трекинга Universal links.
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            if let url = userActivity.webpageURL {
+                YMMYandexMetrica.handleOpen(url)
+            }
+        }
         return true
     }
     

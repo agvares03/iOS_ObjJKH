@@ -1115,13 +1115,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2463663, лс/ч 63636" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td0-In-htV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2463663, лс/ч 63636" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td0-In-htV">
                                         <rect key="frame" x="109.5" y="36.5" width="156" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Горячая вода, м3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9Z-ER-7PZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Горячая вода, м3" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9Z-ER-7PZ">
                                         <rect key="frame" x="109.5" y="10" width="156" height="21.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -1136,6 +1136,8 @@
                                     <constraint firstItem="td0-In-htV" firstAttribute="top" secondItem="w9Z-ER-7PZ" secondAttribute="bottom" constant="5" id="KH3-yP-WBW"/>
                                     <constraint firstAttribute="bottom" secondItem="td0-In-htV" secondAttribute="bottom" constant="15" id="M3C-jQ-Q61"/>
                                     <constraint firstItem="l9m-s1-niU" firstAttribute="top" secondItem="GQC-Kp-YWE" secondAttribute="top" constant="17" id="VA9-1k-Nk6"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w9Z-ER-7PZ" secondAttribute="trailing" constant="20" id="b0R-nj-5yW"/>
+                                    <constraint firstItem="l9m-s1-niU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GQC-Kp-YWE" secondAttribute="leading" constant="20" id="cJV-yv-9NL"/>
                                     <constraint firstItem="td0-In-htV" firstAttribute="leading" secondItem="l9m-s1-niU" secondAttribute="trailing" constant="10" id="eYX-gN-beV"/>
                                     <constraint firstItem="w9Z-ER-7PZ" firstAttribute="centerX" secondItem="GQC-Kp-YWE" secondAttribute="centerX" id="sfm-hE-AkP"/>
                                     <constraint firstItem="w9Z-ER-7PZ" firstAttribute="leading" secondItem="l9m-s1-niU" secondAttribute="trailing" constant="10" id="zcC-RC-9YO"/>
@@ -1251,6 +1253,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j6v-6b-WYb"/>
-        <segue reference="Set-AI-sEC"/>
+        <segue reference="d7h-Fz-fUI"/>
     </inferredMetricsTieBreakers>
 </document>

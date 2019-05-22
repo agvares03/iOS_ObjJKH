@@ -13,6 +13,7 @@ import StoreKit
 import PassKit
 import YandexMobileAds
 import GoogleMobileAds
+import YandexMobileMetrica
 
 private protocol MainDataProtocol:  class {}
 
@@ -406,9 +407,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults     = UserDefaults.standard
+        let params : [String : Any] = ["Переход на страницу": "Оплата"]
+        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+            //            print("DID FAIL REPORT EVENT: %@", message)
+            print("REPORT ERROR: %@", error.localizedDescription)
+        })
         UserDefaults.standard.set("", forKey: "payIdent")
         currPoint = 462
-        let defaults     = UserDefaults.standard
         // Логин и пароль
         login = defaults.string(forKey: "login")
         pass  = defaults.string(forKey: "pass")

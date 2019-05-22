@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Dropper
+import YandexMobileMetrica
 
 protocol CountersCellDelegate: class {
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String)
@@ -97,6 +98,12 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults     = UserDefaults.standard
+        let params : [String : Any] = ["Переход на страницу": "Показания приборов"]
+        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+            //            print("DID FAIL REPORT EVENT: %@", message)
+            print("REPORT ERROR: %@", error.localizedDescription)
+        })
         nonConectView.isHidden = true
         lsView.isHidden = false
         ls_lbl.isHidden = false
@@ -106,7 +113,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         tableCounters.isHidden = false
         spinImg.isHidden = false
         // Получим данные из глобальных сохраненных
-        let defaults     = UserDefaults.standard
         edLogin          = defaults.string(forKey: "login")!
         edPass           = defaults.string(forKey: "pass")!
         if defaults.object(forKey: "year") != nil && defaults.object(forKey: "month") != nil{

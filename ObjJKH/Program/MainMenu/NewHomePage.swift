@@ -265,6 +265,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             phone?.removeFirst()
             phone = "+7" + phone!
         }
+        phone = phone?.replacingOccurrences(of: " ", with: "")
+        phone = phone?.replacingOccurrences(of: "-", with: "")
         var phoneOperator = ""
         if !(phone?.contains(")"))! && phone != ""{
             for i in 0...11{

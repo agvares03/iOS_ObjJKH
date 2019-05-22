@@ -11,6 +11,7 @@ import Dropper
 import CoreData
 import YandexMobileAds
 import GoogleMobileAds
+import YandexMobileMetrica
 
 private protocol MainDataProtocol:  class {}
 
@@ -233,10 +234,13 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currPoint = 537
-        print(self.debtArr.count)
-        
         let defaults     = UserDefaults.standard
+        let params : [String : Any] = ["Переход на страницу": "Оплата"]
+        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+            //            print("DID FAIL REPORT EVENT: %@", message)
+            print("REPORT ERROR: %@", error.localizedDescription)
+        })
+        currPoint = 537
         // Логин и пароль
         login = defaults.string(forKey: "login")
         pass  = defaults.string(forKey: "pass")

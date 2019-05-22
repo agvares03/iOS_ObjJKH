@@ -9,6 +9,7 @@ target 'ChistDom' do
 
   # Pods for ChistDom
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -28,6 +29,7 @@ pod 'Fabric'
 
   # Pods for DJ
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -51,6 +53,7 @@ pod 'Fabric'
 
   # Pods for Klimovsk12
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -76,6 +79,7 @@ target 'Komeks' do
 
   # Pods for Komeks
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -103,6 +107,7 @@ target 'MupRCMytishi' do
 
     # Pods for Наш Общий Дом
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -127,6 +132,7 @@ target 'ObjJKH' do
 
     # Pods for Мобильное ЖКХ
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
@@ -147,6 +153,7 @@ pod 'Fabric'
 
   # Pods for OurObjHome
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -170,6 +177,7 @@ target 'Stolitsa' do
 
     # Pods for Наш Общий Дом
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -190,6 +198,7 @@ target 'UK_Komfort' do
 
   # Pods for UK_Komfort
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -216,6 +225,7 @@ target 'ReutKomfort' do
     
     # Pods for UK_Komfort
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -239,6 +249,7 @@ pod 'Fabric'
 
   # Pods for UK_Garant
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
@@ -265,6 +276,7 @@ target 'Soldatova1' do
   
   # Pods for UK_Komfort
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
@@ -291,6 +303,7 @@ target 'Tafgai' do
   
   # Pods for UK_Komfort
     pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
@@ -316,6 +329,7 @@ use_frameworks!
 
 # Pods for JKH_Pocket
 pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
@@ -341,6 +355,7 @@ target 'StandartDV' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
     pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
@@ -367,6 +382,7 @@ target 'Skyfort' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
@@ -393,6 +409,7 @@ target 'UK_Service_Comfort' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+    pod 'YandexMobileMetrica', '3.6.0'
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'

@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import UserNotifications
 import Firebase
+import YandexMobileMetrica
 
 protocol AppsUserUpdateDelegate {
     func updateList()
@@ -78,6 +79,12 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let defaults     = UserDefaults.standard
+        let params : [String : Any] = ["Переход на страницу": "Заявки"]
+        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+//            print("DID FAIL REPORT EVENT: %@", message)
+            print("REPORT ERROR: %@", error.localizedDescription)
+        })
         question_read = UserDefaults.standard.integer(forKey: "request_read")
         question_read_cons = UserDefaults.standard.integer(forKey: "request_read_cons")
         

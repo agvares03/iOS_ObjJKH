@@ -128,6 +128,8 @@ class NewMainMenu2: UIViewController {
             phone1?.removeFirst()
             phone1 = "+7" + phone1!
         }
+        phone1 = phone1?.replacingOccurrences(of: " ", with: "")
+        phone1 = phone1?.replacingOccurrences(of: "-", with: "")
         var phoneOperator = ""
         if !(phone1?.contains(")"))! && phone1 != ""{
             for i in 0...11{
