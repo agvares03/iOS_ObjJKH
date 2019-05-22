@@ -57,42 +57,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //        locationNotificationAuthorization(application: application)
         YMAMobileAds.enableLogging()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        var apiKey = ""
         #if isOur_Obj_Home
-        let apiKey = ""
+        apiKey = ""
         #elseif isChist_Dom
-        let apiKey = ""
+        apiKey = ""
         #elseif isMupRCMytishi
-        let apiKey = ""
+        apiKey = ""
         #elseif isDJ
-        let apiKey = ""
+        apiKey = ""
         #elseif isStolitsa
-        let apiKey = ""
+        apiKey = ""
         #elseif isKomeks
-        let apiKey = ""
+        apiKey = ""
         #elseif isUKKomfort
-        let apiKey = "1361881b-37dd-49e9-8573-c7a37ee7a239"
+        apiKey = "1361881b-37dd-49e9-8573-c7a37ee7a239"
         #elseif isKlimovsk12
-        let apiKey = ""
+        apiKey = ""
         #elseif isPocket
-        let apiKey = ""
+        apiKey = ""
         #elseif isReutKomfort
-        let apiKey = ""
+        apiKey = ""
         #elseif isUKGarant
-        let apiKey = ""
+        apiKey = ""
         #elseif isSoldatova1
-        let apiKey = ""
+        apiKey = ""
         #elseif isTafgai
-        let apiKey = ""
+        apiKey = ""
         #elseif isServiceKomfort
-        let apiKey = ""
+        apiKey = ""
         #elseif isParitet
-        let apiKey = ""
+        apiKey = ""
         #elseif isSkyfort
-        let apiKey = ""
+        apiKey = ""
         #elseif isStandartDV
-        let apiKey = ""
+        apiKey = ""
         #elseif isGarmonia
-        let apiKey = ""
+        apiKey = ""
         #endif
         if apiKey != ""{
             let configuration = YMMYandexMetricaConfiguration.init(apiKey: apiKey)
