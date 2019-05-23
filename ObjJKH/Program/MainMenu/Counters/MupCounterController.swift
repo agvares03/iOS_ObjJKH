@@ -70,8 +70,11 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-//        navigationController?.dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            navigationController?.popViewController(animated: true)
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc private func lblTapped(_ sender: UITapGestureRecognizer) {

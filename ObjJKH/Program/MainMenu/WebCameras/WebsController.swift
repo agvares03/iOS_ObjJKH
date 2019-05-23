@@ -13,8 +13,11 @@ import YandexMobileMetrica
 class WebsController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-//        navigationController?.dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            navigationController?.popViewController(animated: true)
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func updateConect(_ sender: UIButton) {

@@ -24,8 +24,11 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     @IBOutlet weak var addLs: UILabel!
     @IBOutlet weak var lsView: UIView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-//        navigationController?.dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            navigationController?.popViewController(animated: true)
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func pdfClick(_ sender: UIButton) {

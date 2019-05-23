@@ -135,8 +135,11 @@ class NewsController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-//       navigationController?.dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            navigationController?.popViewController(animated: true)
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
