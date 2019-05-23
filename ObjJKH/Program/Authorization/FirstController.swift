@@ -472,9 +472,9 @@ class FirstController: UIViewController {
                 //                }
                 self.one = false
                 if (self.isCons == "0") {
-//                    UserDefaults.standard.set(true, forKey: "NewMain")//Закоментить для старого дизайна
-//                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)//Закоментить для старого дизайна
-                    self.performSegue(withIdentifier: "MainMenu", sender: self)
+                    UserDefaults.standard.set(true, forKey: "NewMain")//Закоментить для старого дизайна
+                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)//Закоментить для старого дизайна
+//                    self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)
                 }
