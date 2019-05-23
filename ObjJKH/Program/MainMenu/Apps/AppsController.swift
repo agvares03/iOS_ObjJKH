@@ -29,11 +29,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var isCons: String = "0"
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        if UserDefaults.standard.bool(forKey: "NewMain"){
+//        if UserDefaults.standard.bool(forKey: "NewMain"){
             navigationController?.popViewController(animated: true)
-        }else{
-            navigationController?.dismiss(animated: true, completion: nil)
-        }
+//        }else{
+//            navigationController?.dismiss(animated: true, completion: nil)
+//        }
     }
     
     @IBAction func updateConect(_ sender: UIButton) {

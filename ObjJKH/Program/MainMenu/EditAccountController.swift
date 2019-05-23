@@ -43,7 +43,8 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
             defaults.set(str_rezult, forKey: "str_ls")
             defaults.synchronize()
         }
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+//        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func AddLS(_ sender: UIButton) {

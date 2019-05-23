@@ -37,11 +37,11 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var back: UIBarButtonItem!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        if UserDefaults.standard.bool(forKey: "NewMain"){
+//        if UserDefaults.standard.bool(forKey: "NewMain"){
             navigationController?.popViewController(animated: true)
-        }else{
-            navigationController?.dismiss(animated: true, completion: nil)
-        }
+//        }else{
+//            navigationController?.dismiss(animated: true, completion: nil)
+//        }
     }
     
     override func viewDidLoad() {
