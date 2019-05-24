@@ -23,7 +23,7 @@ protocol GoUrlReceiptDelegate: class {
     func goUrlReceipt(url: String)
 }
 
-class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate, YMANativeAdDelegate, YMANativeAdLoaderDelegate, GoUrlReceiptDelegate {
+class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate, YMANativeAdDelegate, YMANativeAdLoaderDelegate, GoUrlReceiptDelegate, GADBannerViewDelegate {
     
     @IBOutlet weak var view_no_ls: UIView!
     
@@ -414,7 +414,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
-                
+                gadBannerView.delegate = self
                 #if DEBUG
                 request.testDevices = ["2019ef9a63d2b397740261c8441a0c9b"];
                 #else
@@ -423,6 +423,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 gadBannerView.load(request)
             }
         }else{
+            bottomViewHeight.constant = 0
             adTopConst.constant = 0
         }
         getDebt()
@@ -495,6 +496,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.backgroundView.addConstraints(horizontal)
             self.backgroundView.addConstraints(vertical)
         }
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+                didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        bottomViewHeight.constant = 0
+        adTopConst.constant = 0
     }
     
     func loadAd() {
@@ -1448,21 +1457,24 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     if (answer[2] == "0") {
                         self.menu_3_const.constant = 0
                         self.appsHeight.constant = 0
+                        self.btn_Apps_Height.constant = 0
                         self.apps_View.isHidden = true
                         self.btn_add_Apps.isHidden = true
                     } else {
                         let str_ls = UserDefaults.standard.string(forKey: "str_ls")
                         let str_ls_arr = str_ls?.components(separatedBy: ",")
                         if str_ls_arr?.count == 0 || str_ls_arr![0] == ""{
-                            self.apps_View.isHidden = true
                             self.menu_3_const.constant = 0
                             self.appsHeight.constant = 0
+                            self.btn_Apps_Height.constant = 0
+                            self.apps_View.isHidden = true
                             self.btn_add_Apps.isHidden = true
                         }else{
                             self.apps_View.isHidden = false
                             self.menu_3_const.constant = 15
                             self.appsHeight.constant = 45
                             self.btn_add_Apps.isHidden = false
+                            self.btn_Apps_Height.constant = 36
                         }
                     }
                 }
@@ -1470,6 +1482,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.apps_View.isHidden = false
                 self.menu_3_const.constant = 15
                 self.appsHeight.constant = 45
+                self.btn_Apps_Height.constant = 36
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")
                 let str_ls_arr = str_ls?.components(separatedBy: ",")
                 if str_ls_arr?.count == 0{
@@ -1488,7 +1501,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     if (answer[2] == "0") {
                         self.menu_4_const.constant = 0
                         self.questionLSHeight.constant = 0
-                        self.btn_Apps_Height.constant = 0
                     } else {
                     }
                 }
@@ -1496,7 +1508,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }else{
                 self.menu_4_const.constant = 15
                 self.questionLSHeight.constant = 45
-                self.btn_Apps_Height.constant = 36
             }
             self.tableQuestionHeight.constant = height5
             var height6: CGFloat = 0
@@ -1539,6 +1550,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.receipts_View.isHidden = false
             }
             self.tableReceiptsHeight.constant = height8
+//            print("Отступы меню: ", self.menu_1_const.constant, self.menu_2_const.constant, self.menu_3_const.constant, self.menu_4_const.constant, self.menu_5_const.constant, self.menu_6_const.constant, self.menu_7_const.constant)
+//            print("Высота таблиц: ", self.tableNewsHeight.constant, self.tableCounterHeight.constant, self.tableAppsHeight.constant, self.tableQuestionHeight.constant, self.tableWebHeight.constant, self.tableServiceHeight.constant, self.tableReceiptsHeight.constant)
+//            print("Высота шапок: ", self.newsHeight.constant, self.counterHeight.constant, self.appsHeight.constant, self.questionLSHeight.constant, self.webLSHeight.constant, self.serviceHeight.constant, self.receipts1Height.constant + self.receipts2Height.constant)
         }
         return count!
     }
