@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class Pay: UIViewController, UIWebViewDelegate {
 
@@ -28,6 +29,15 @@ class Pay: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Чистим кэш у webView
+        URLCache.shared.removeAllCachedResponses()
+        if let cookies = HTTPCookieStorage.shared.cookies {
+            for cookie in cookies {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
+        }
+        
         webView.delegate = self
         let defaults     = UserDefaults.standard
         
@@ -53,6 +63,8 @@ class Pay: UIViewController, UIWebViewDelegate {
         }
         let doc = webView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
         webViewCurrUrl = doc!
+        
+        URLCache.shared.removeAllCachedResponses()
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,6 +143,15 @@ class Pay: UIViewController, UIWebViewDelegate {
                 let url = NSURL(string: self.responseString)
                 let requestObj = NSURLRequest(url: url! as URL)
                 self.webView.loadRequest(requestObj as URLRequest)
+                
+                // Отправлять в сафари-аналог
+//                if let url = URL(string: self.responseString) {
+//                    let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+//                    vc.delegate = self as? SFSafariViewControllerDelegate
+//
+//                    self.present(vc, animated: true)
+//                }
+                
             } else {
                 let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
