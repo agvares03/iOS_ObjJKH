@@ -491,6 +491,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: NSNotification.Name(rawValue: "reloadTheTable"), object: nil)
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
     }
     

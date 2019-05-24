@@ -298,6 +298,7 @@ class DB: NSObject, XMLParserDelegate {
         var id_app: String = ""
         if (elementName == "Row") {
             print(attributeDict)
+            
             // Запишем заявку в БД
             let managedObject = Applications()
             managedObject.id              = 1
