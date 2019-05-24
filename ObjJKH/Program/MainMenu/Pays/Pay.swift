@@ -29,15 +29,14 @@ class Pay: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Чистим кэш у webView
-        URLCache.shared.removeAllCachedResponses()
-        if let cookies = HTTPCookieStorage.shared.cookies {
-            for cookie in cookies {
-                HTTPCookieStorage.shared.deleteCookie(cookie)
+        if !UserDefaults.standard.bool(forKey: "settSaveCard"){
+            URLCache.shared.removeAllCachedResponses()
+            if let cookies = HTTPCookieStorage.shared.cookies {
+                for cookie in cookies {
+                    HTTPCookieStorage.shared.deleteCookie(cookie)
+                }
             }
         }
-        
         webView.delegate = self
         let defaults     = UserDefaults.standard
         
@@ -83,6 +82,15 @@ class Pay: UIViewController, UIWebViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // Чистим кэш у webView
+        if !UserDefaults.standard.bool(forKey: "settSaveCard"){
+            URLCache.shared.removeAllCachedResponses()
+            if let cookies = HTTPCookieStorage.shared.cookies {
+                for cookie in cookies {
+                    HTTPCookieStorage.shared.deleteCookie(cookie)
+                }
+            }
+        }
         if webViewCurrUrl.contains("Платеж успешно выполнен"){
             UserDefaults.standard.set(true, forKey: "PaymentSucces")
         }        

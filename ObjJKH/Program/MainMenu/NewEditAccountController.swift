@@ -30,6 +30,11 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     
+    @IBOutlet weak var nonSaveSwitch: UISwitch!
+    @IBOutlet weak var settingsView: UIView!
+    @IBOutlet weak var settingsViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var settingsViewTop: NSLayoutConstraint!
+    
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         if (isModified) {
             let defaults = UserDefaults.standard
@@ -265,7 +270,44 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         separator1.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        nonSaveSwitch.tintColor = myColors.btnColor.uiColor()
+        nonSaveSwitch.onTintColor = myColors.btnColor.uiColor()
+        #if isStolitsa
+        if UserDefaults.standard.bool(forKey: "settSaveCard"){
+            nonSaveSwitch.isOn = true
+            UserDefaults.standard.set(true, forKey: "settSaveCard")
+        }else{
+            nonSaveSwitch.isOn = false
+            UserDefaults.standard.set(false, forKey: "settSaveCard")
+        }
+        settingsViewHeight.constant = 110
+        settingsViewTop.constant = 15
+        settingsView.isHidden = false
+        #elseif isUKKomfort
+        if UserDefaults.standard.bool(forKey: "settSaveCard"){
+            nonSaveSwitch.isOn = true
+            UserDefaults.standard.set(true, forKey: "settSaveCard")
+        }else{
+            nonSaveSwitch.isOn = false
+            UserDefaults.standard.set(false, forKey: "settSaveCard")
+        }
+        settingsViewHeight.constant = 110
+        settingsViewTop.constant = 15
+        settingsView.isHidden = false
+        #else
+        settingsViewHeight.constant = 0
+        settingsViewTop.constant = 0
+        settingsView.isHidden = true
+        #endif
         //        tableView.setEditing(true, animated: true)
+    }
+    
+    @IBAction func switch_Go(_ sender: UISwitch) {
+        if nonSaveSwitch.isOn{
+            UserDefaults.standard.set(true, forKey: "settSaveCard")
+        }else{
+            UserDefaults.standard.set(false, forKey: "settSaveCard")
+        }
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
