@@ -417,11 +417,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
                 gadBannerView.delegate = self
-                #if DEBUG
-                request.testDevices = ["2019ef9a63d2b397740261c8441a0c9b"];
-                #else
-                request.testDevices = nil;
-                #endif
                 gadBannerView.load(request)
             }
         }else{
