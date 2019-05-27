@@ -245,17 +245,21 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.prev_value    = 123.53
                 managedObject.value         = (attributeDict["Value"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
                 managedObject.diff          = 6757.43
-                if attributeDict["IsSended"] == "1"{
+                if attributeDict["IsSended"] != nil && attributeDict["IsSended"] == "1"{
                     managedObject.sended    = true
                 }else{
                     managedObject.sended    = false
                 }
-                if attributeDict["SendError"] == "1"{
+                if attributeDict["SendError"] != nil && attributeDict["SendError"] == "1"{
                     managedObject.sendError = true
                 }else{
                     managedObject.sendError = false
                 }
-                managedObject.sendErrorText = attributeDict["SendErrorText"]!
+                if attributeDict["SendErrorText"] != nil{
+                    managedObject.sendErrorText = attributeDict["SendErrorText"]!
+                }else{
+                    managedObject.sendErrorText = ""
+                }
                 CoreDataManager.instance.saveContext()
             }
 //        }else{
@@ -315,14 +319,18 @@ class DB: NSObject, XMLParserDelegate {
             }else{
                 managedObject.paid_sum        = attributeDict["PaidSumm"]?.replacingOccurrences(of: ",", with: ".")
             }
-            managedObject.paid_text       = attributeDict["PaidServiceText"]
+            if attributeDict["PaidServiceText"] != nil{
+                managedObject.paid_text       = attributeDict["PaidServiceText"]
+            }else{
+                managedObject.paid_text       = ""
+            }
             managedObject.owner           = login
-            if (attributeDict["IsPay"] == "1") {
+            if attributeDict["IsPay"] != nil && (attributeDict["IsPay"] == "1") {
                 managedObject.is_pay   = true
             } else {
                 managedObject.is_pay    = false
             }
-            if (attributeDict["IsPaid"] == "1") {
+            if attributeDict["IsPaid"] != nil && (attributeDict["IsPaid"] == "1") {
                 managedObject.is_paid   = true
             } else {
                 managedObject.is_paid    = false
@@ -356,7 +364,12 @@ class DB: NSObject, XMLParserDelegate {
                     managedObject.is_read     = 0
                     request_read_cons += 1
                     DispatchQueue.main.async {
-                        UserDefaults.standard.set(self.request_read_cons, forKey: "request_read_cons")
+                        if self.request_read_cons > -1{
+                            UserDefaults.standard.set(self.request_read_cons, forKey: "request_read_cons")
+                        }else{
+                            UserDefaults.standard.set(0, forKey: "request_read_cons")
+                        }
+                        
                         UserDefaults.standard.synchronize()
                     }
                 }
@@ -419,8 +432,16 @@ class DB: NSObject, XMLParserDelegate {
             CoreDataManager.instance.saveContext()
         } else if (elementName == "Payment"){
             let managedObject = PaymentApp()
-            managedObject.id              = Int64(attributeDict["ID"]!)!
-            managedObject.id_pay          = Int64(attributeDict["ID_Pay"]!)!
+            if Int64(attributeDict["ID"]!) != nil{
+                managedObject.id              = Int64(attributeDict["ID"]!)!
+            }else{
+                managedObject.id              = 0
+            }
+            if Int64(attributeDict["ID_Pay"]!) != nil{
+                managedObject.id_pay          = Int64(attributeDict["ID_Pay"]!)!
+            }else{
+                managedObject.id_pay          = 0
+            }
             managedObject.date            = attributeDict["Date"]
             managedObject.ident           = attributeDict["Ident"]
             managedObject.status          = attributeDict["Status"]
