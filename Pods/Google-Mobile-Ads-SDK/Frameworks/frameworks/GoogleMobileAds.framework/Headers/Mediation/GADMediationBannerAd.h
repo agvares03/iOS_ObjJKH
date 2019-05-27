@@ -2,7 +2,7 @@
 //  GADMediationBannerAd.h
 //  Google Mobile Ads SDK
 //
-//  Copyright 2018 Google Inc. All rights reserved.
+//  Copyright 2018 Google LLC. All rights reserved.
 //
 
 #import <GoogleMobileAds/GADAdSize.h>
@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// Rendered banner ad. Provides a single subview to add to the banner view's view hierarchy.
-@protocol GADMediationBannerAd<GADMediationAd>
+@protocol GADMediationBannerAd <GADMediationAd>
 @property(nonatomic, readonly, nonnull) UIView *view;
 
 @optional

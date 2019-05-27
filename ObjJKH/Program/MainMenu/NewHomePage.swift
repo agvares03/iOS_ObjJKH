@@ -367,6 +367,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_StandartDV")
         #elseif isGarmonia
         fon_top.image = UIImage(named: "Logo_UkGarmonia")
+        #elseif isUpravdomChe
+        fon_top.image = UIImage(named: "Logo_UkUpravdomChe")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())

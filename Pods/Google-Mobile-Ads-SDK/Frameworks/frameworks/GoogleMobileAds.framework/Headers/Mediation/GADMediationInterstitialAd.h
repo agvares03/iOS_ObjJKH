@@ -2,7 +2,7 @@
 //  GADMediationInterstitialAd.h
 //  Google Mobile Ads SDK
 //
-//  Copyright 2018 Google Inc. All rights reserved.
+//  Copyright 2018 Google LLC. All rights reserved.
 //
 
 #import <GoogleMobileAds/Mediation/GADMediationAd.h>
@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 
 /// Rendered interstitial ad.
-@protocol GADMediationInterstitialAd<GADMediationAd>
+@protocol GADMediationInterstitialAd <GADMediationAd>
 - (void)presentFromViewController:(nonnull UIViewController *)viewController;
 @end
 

@@ -13,16 +13,13 @@ framework module GoogleMobileAds {
   link framework "CFNetwork"
   link framework "CoreGraphics"
   link framework "CoreMedia"
-  link framework "CoreMotion"
   link framework "CoreTelephony"
   link framework "CoreVideo"
   link framework "Foundation"
-  link framework "GLKit"
   link framework "JavaScriptCore"
   link framework "MediaPlayer"
   link framework "MessageUI"
   link framework "MobileCoreServices"
-  link framework "OpenGLES"
   link framework "QuartzCore"
   link framework "SafariServices"
   link framework "Security"
@@ -33,16 +30,19 @@ framework module GoogleMobileAds {
 
   header "GoogleMobileAdsDefines.h"
 
+  header "GADMobileAds.h"
+
   header "GADAdFormat.h"
+  header "GADAdMetadataKeys.h"
   header "GADAdNetworkExtras.h"
   header "GADAdSize.h"
+  header "GADAppOpenAd.h"
   header "GADAudioVideoManager.h"
   header "GADAudioVideoManagerDelegate.h"
   header "GADBannerView.h"
   header "GADBannerViewDelegate.h"
-  header "GADCorrelator.h"
-  header "GADCorrelatorAdLoaderOptions.h"
   header "GADDebugOptionsViewController.h"
+  header "GADDisplayAdMeasurement.h"
   header "GADExtras.h"
   header "GADInAppPurchase.h"
   header "GADInAppPurchaseDelegate.h"
@@ -51,7 +51,6 @@ framework module GoogleMobileAds {
   header "GADInterstitialDelegate.h"
   header "GADMediaContent.h"
   header "GADMediaView.h"
-  header "GADMobileAds.h"
   header "GADNativeExpressAdView.h"
   header "GADNativeExpressAdViewDelegate.h"
   header "GADRequest.h"
@@ -95,6 +94,7 @@ framework module GoogleMobileAds {
   header "GADMultipleAdsAdLoaderOptions.h"
   header "GADMuteThisAdReason.h"
   header "GADNativeAdImageAdLoaderOptions.h"
+  header "GADNativeAdMediaAdLoaderOptions.h"
   header "GADNativeAdViewAdOptions.h"
   header "GADNativeMuteThisAdLoaderOptions.h"
 
@@ -112,7 +112,6 @@ framework module GoogleMobileAds {
   header "GADSearchBannerView.h"
   header "GADSearchRequest.h"
 
-  header "GADAdMetadataKeys.h"
   header "GADAdReward.h"
   header "GADRewardBasedVideoAd.h"
   header "GADRewardBasedVideoAdDelegate.h"
@@ -146,7 +145,7 @@ framework module GoogleMobileAds {
   header "Mediation/GADMRewardBasedVideoAdNetworkConnectorProtocol.h"
   header "Mediation/GADVersionNumber.h"
 
+
   header "RTBMediation/GADRTBAdapter.h"
   header "RTBMediation/GADRTBRequestParameters.h"
-
 }

@@ -92,7 +92,6 @@
 #define kASDKPaymentIdMaxLength 20
     NSString *paymentId = self.paymentId;
     NSLog(@"paymentId=%@\nrealPaymentId=%@",paymentId,self.paymentId);
-    
     if (paymentId.length > kASDKPaymentIdMaxLength || paymentId.length == 0)
     {
         validationError = [ASDKAcquringSdkError errorWithMessage:kASDKPaymentId details:[NSString stringWithFormat:@"%@ %@ %d",kASDKPaymentIdDescription, kASDKValidationErrorMaxLengthString, kASDKPaymentIdMaxLength] code:0];

@@ -135,6 +135,8 @@ class FirstObjController: UIViewController {
         fon_top.image = UIImage(named: "Logo_StandartDV")
         #elseif isGarmonia
         fon_top.image = UIImage(named: "Logo_UkGarmonia")
+        #elseif isUpravdomChe
+        fon_top.image = UIImage(named: "Logo_UkUpravdomChe")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
