@@ -79,6 +79,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     public var saldoIdent = "Все"
     public var debtArr:[AnyObject] = []
+    public var endSum = ""
     
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
@@ -680,7 +681,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         idArr.removeAll()
         identOSV.removeAll()
         idOSV.removeAll()
-        
+        print(endSum)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         do {
@@ -773,7 +774,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         self.totalSum = self.sum + serviceP
                         self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                         self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                        if self.debtArr.count != 0{
+                        if self.debtArr.count != 0 && self.endSum == ""{
                             var s = 0.00
                             self.debtArr.forEach{
                                 if self.choiceIdent == "Все"{
@@ -787,6 +788,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                         self.servicePay.text  = "0.00 руб."
                                     }
                                 }else if self.choiceIdent == ($0["Ident"] as! String){
+                                    s = s + Double($0["Sum"] as! String)!
                                     if ($0["Sum"] as! String) == "0.00"{
                                         for i in 0...self.checkBox.count - 1{
                                             self.checkBox[i] = false
@@ -796,7 +798,17 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                         self.servicePay.text  = "0.00 руб."
                                     }
                                 }
+                                print(s)
                             }
+                            #if isKlimovsk12
+                            let serviceP = s / 100 * 1.5
+                            #else
+                            let serviceP = s / 0.992 - s
+                            #endif
+                            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+                            self.totalSum = s + serviceP
+                            self.txt_sum_obj.text = String(format:"%.2f", s) + " руб."
+                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
                         }
                     } else {
                         //                    self.txt_sum_jkh.text = "0,00 р."

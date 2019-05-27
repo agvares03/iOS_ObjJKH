@@ -163,6 +163,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             }else{
                 payController.saldoIdent = choiceIdent
             }
+            payController.endSum = self.endSum
             payController.debtArr = self.debtArr
         }
         if segue.identifier == "openURL" {
@@ -178,6 +179,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             }else{
                 payController.saldoIdent = choiceIdent
             }
+            payController.endSum = self.endSum
             payController.debtArr = self.debtArr
         }
         #else
@@ -189,8 +191,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             }else{
                 payController.saldoIdent = choiceIdent
             }
-            print(self.debtArr.count)
-            
+            payController.endSum = self.endSum
             payController.debtArr = self.debtArr
         }
         #endif
@@ -592,7 +593,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
 //            }
 //        }
     }
-    
+    var endSum = ""
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableOSV.dequeueReusableCell(withIdentifier: "Cell") as! SaldoCell
 //        if choiceIdent == "Все"{
@@ -611,6 +612,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             cell.minus.isHidden = true
             cell.lblHeight1.constant = 8
             cell.lblHeight2.constant = 8
+            endSum = endArr[indexPath.row]
             #else
             if (uslugaArr[indexPath.row] == "Я") {
                 cell.usluga.text = "ИТОГО"
@@ -621,6 +623,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             cell.plus.text   = startArr[indexPath.row]
             cell.minus.text  = minusArr[indexPath.row]
             cell.end.text    = endArr[indexPath.row]
+            endSum = endArr[indexPath.row]
             #endif
 //        }else{
 //            if (uslugaArr[indexPath.row] == "Я") {

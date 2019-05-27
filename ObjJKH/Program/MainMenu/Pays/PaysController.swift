@@ -61,6 +61,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     var sumOSV  :[Double] = []
     var osvc    :[String] = []
     var idOSV   :[Int]    = []
+    var endSum = ""
     
     var login: String?
     var pass: String?
@@ -538,21 +539,24 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                             let serviceP = self.sum / 0.992 - self.sum
                             self.totalSum = self.sum + serviceP
                             self.txt_sum_obj.text = String(format:"%.2f", self.sum)
-                            if self.debtArr.count != 0{
+                            if self.debtArr.count != 0 && self.endSum == ""{
                                 var s = 0.00
                                 self.debtArr.forEach{
                                     if self.choiceIdent == "Все"{
-                                        print($0["Sum"])
                                         s = s + Double($0["Sum"] as! String)!
                                         if s <= 0.00{
                                             self.txt_sum_obj.text = "0.00"
                                         }
                                     }else if self.choiceIdent == ($0["Ident"] as! String){
+                                        s = s + Double($0["Sum"] as! String)!
                                         if ($0["Sum"] as! String) == "0.00"{
                                             self.txt_sum_obj.text = "0.00"
                                         }
                                     }
                                 }
+                                let serviceP = s / 0.992 - s
+                                self.totalSum = s + serviceP
+                                self.txt_sum_obj.text = String(format:"%.2f", s)
                             }
                         } else {
                             //                    self.txt_sum_jkh.text = "0.00 р."
