@@ -1430,8 +1430,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.menu_1_const.constant = 0
                 self.newsHeight.constant = 0
             }else{
-                self.menu_1_const.constant = 15
-                self.newsHeight.constant = 45
+                let str_menu_0 = UserDefaults.standard.string(forKey: "menu_0") ?? ""
+                if (str_menu_0 != "") {
+                    var answer = str_menu_0.components(separatedBy: ";")
+                    if (answer[2] == "0") {
+                        self.menu_1_const.constant = 0
+                        self.newsHeight.constant = 0
+                    }else{
+                        self.menu_1_const.constant = 15
+                        self.newsHeight.constant = 45
+                    }
+                }
             }
             self.tableNewsHeight.constant = height2
             var height3: CGFloat = 0
@@ -1443,9 +1452,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.counterHeight.constant = 0
                 self.canCountHeight.constant = 0
             }else{
-                self.menu_2_const.constant = 15
-                self.counterHeight.constant = 45
-                self.canCountHeight.constant = 30
+                let str_menu_4 = UserDefaults.standard.string(forKey: "menu_4") ?? ""
+                if (str_menu_4 != "") {
+                    var answer = str_menu_4.components(separatedBy: ";")
+                    if (answer[2] == "0") {
+                        self.menu_2_const.constant = 0
+                        self.counterHeight.constant = 0
+                        self.canCountHeight.constant = 0
+                    }else{
+                        self.menu_2_const.constant = 15
+                        self.counterHeight.constant = 45
+                        self.canCountHeight.constant = 30
+                    }
+                }
             }
             self.tableCounterHeight.constant = height3
             var height4: CGFloat = 0
@@ -1481,14 +1500,26 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }
                 }
             }else{
-                self.apps_View.isHidden = false
-                self.menu_3_const.constant = 15
-                self.appsHeight.constant = 45
-                self.btn_Apps_Height.constant = 36
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")
-                let str_ls_arr = str_ls?.components(separatedBy: ",")
-                if str_ls_arr?.count == 0{
-                    self.btn_add_Apps.isHidden = true
+                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+                if (str_menu_2 != "") {
+                    var answer = str_menu_2.components(separatedBy: ";")
+                    if (answer[2] == "0") {
+                        self.menu_3_const.constant = 0
+                        self.appsHeight.constant = 0
+                        self.btn_Apps_Height.constant = 0
+                        self.apps_View.isHidden = true
+                        self.btn_add_Apps.isHidden = true
+                    } else {
+                        self.apps_View.isHidden = false
+                        self.menu_3_const.constant = 15
+                        self.appsHeight.constant = 45
+                        self.btn_Apps_Height.constant = 36
+                        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+                        let str_ls_arr = str_ls?.components(separatedBy: ",")
+                        if str_ls_arr?.count == 0{
+                            self.btn_add_Apps.isHidden = true
+                        }
+                    }
                 }
             }
             self.tableAppsHeight.constant = height4
@@ -1497,7 +1528,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 height5 += cell.bounds.height
             }
             if height5 == 0{
-                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_3") ?? ""
                 if (str_menu_2 != "") {
                     var answer = str_menu_2.components(separatedBy: ";")
                     if (answer[2] == "0") {
@@ -1508,8 +1539,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
                 self.questionLSHeight.constant = 0
             }else{
-                self.menu_4_const.constant = 15
-                self.questionLSHeight.constant = 45
+                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_3") ?? ""
+                if (str_menu_2 != "") {
+                    var answer = str_menu_2.components(separatedBy: ";")
+                    if (answer[2] == "0") {
+                        self.menu_4_const.constant = 0
+                        self.questionLSHeight.constant = 0
+                    }else{
+                        self.menu_4_const.constant = 15
+                        self.questionLSHeight.constant = 45
+                    }
+                }
             }
             self.tableQuestionHeight.constant = height5
             var height6: CGFloat = 0
@@ -1520,8 +1560,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.menu_5_const.constant = 0
                 self.webLSHeight.constant = 0
             }else{
-                self.menu_5_const.constant = 15
-                self.webLSHeight.constant = 45
+                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_7") ?? ""
+                if (str_menu_2 != "") {
+                    var answer = str_menu_2.components(separatedBy: ";")
+                    if (answer[2] == "0") {
+                        self.menu_6_const.constant = 0
+                        self.serviceHeight.constant = 0
+                    }else{
+                        self.menu_6_const.constant = 15
+                        self.serviceHeight.constant = 45
+                    }
+                }
             }
             self.tableWebHeight.constant = height6
             var height7: CGFloat = 0
@@ -1532,8 +1581,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.menu_6_const.constant = 0
                 self.serviceHeight.constant = 0
             }else{
-                self.menu_6_const.constant = 15
-                self.serviceHeight.constant = 45
+                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_8") ?? ""
+                if (str_menu_2 != "") {
+                    var answer = str_menu_2.components(separatedBy: ";")
+                    if (answer[2] == "0") {
+                        self.menu_6_const.constant = 0
+                        self.serviceHeight.constant = 0
+                    }else{
+                        self.menu_6_const.constant = 15
+                        self.serviceHeight.constant = 45
+                    }
+                }
             }
             self.tableServiceHeight.constant = height7
             var height8: CGFloat = 0
