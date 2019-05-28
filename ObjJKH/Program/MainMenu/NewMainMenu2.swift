@@ -455,11 +455,11 @@ class NewMainMenu2: UIViewController {
                 debtArr.append(debt as AnyObject)
             }
         }
-        if segue.identifier == "goSaldo" {
-            let payController             = segue.destination as! SaldoController
-            print(self.debtArr.count)
-            payController.debtArr = self.debtArr
-        }
+//        if segue.identifier == "goSaldo" {
+//            let payController             = segue.destination as! SaldoController
+//            print(self.debtArr.count)
+//            payController.debtArr = self.debtArr
+//        }
         #if isMupRCMytishi
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
