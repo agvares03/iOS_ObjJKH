@@ -154,6 +154,10 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openURL" {
+            let payController             = segue.destination as! openSaldoController
+            payController.urlLink = self.link
+        }
         #if isMupRCMytishi
         if segue.identifier == "paysMytishi" {
             //let nav = segue.destination as! UINavigationController
@@ -166,10 +170,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             payController.endSum = self.endSum
             payController.debtArr = self.debtArr
         }
-        if segue.identifier == "openURL" {
-            let payController             = segue.destination as! openSaldoController
-            payController.urlLink = self.link
-        }
+        
         #elseif isKlimovsk12
         if segue.identifier == "paysMytishi" {
             //let nav = segue.destination as! UINavigationController
@@ -316,12 +317,12 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             btnPay.isHidden = true
             can_btn_pay.constant = 0
         #endif
-        #if isMupRCMytishi
+//        #if isMupRCMytishi
         //получение файлов
         getPaysFile()
-        #else
-        btnPdf.isHidden = true
-        #endif
+//        #else
+//        btnPdf.isHidden = true
+//        #endif
 //        #if isUKKomfort
 //            btnPay.isHidden = true
 //            can_btn_pay.constant = 0
@@ -732,7 +733,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                         let link = json.link
                                                         let sum = json.sum
                                                         var i = 0
-                                                        if self.currYear == String(json.year!) && self.currMonth == String(json.month!) && json.link!.contains(".png"){
+                                                        if self.currYear == String(json.year!) && self.currMonth == String(json.month!) && (json.link!.contains(".png") || json.link!.contains(".jpg") || json.link!.contains(".pdf")){
                                                             print(String(json.year!), String(json.month!))
                                                             self.link = json.link!
                                                             DispatchQueue.main.async {

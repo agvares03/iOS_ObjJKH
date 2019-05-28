@@ -1207,7 +1207,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         let sum = json.sum
                                                         var i = 0
                                                         let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
-                                                        if (link?.contains(".png"))!{
+                                                        if (link?.contains(".png"))! || (link?.contains(".jpg"))! || (link?.contains(".pdf"))!{
                                                             print(fileObj.sum, fileObj.month)
                                                             self.fileList.append(fileObj)
                                                         }
