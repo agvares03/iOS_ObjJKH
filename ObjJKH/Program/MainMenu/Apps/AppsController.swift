@@ -343,10 +343,14 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.adress = app.adress!
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
-            AppUser.paid_text = app.paid_text!
-            AppUser.paid_sum = Double(app.paid_sum!) as! Double
-            AppUser.isPay = app.is_pay
-            AppUser.isPaid = app.is_paid
+            if app.paid_text != nil{
+                AppUser.paid_text = app.paid_text!
+            }
+            if app.paid_sum != nil{
+                AppUser.paid_sum = Double(app.paid_sum!) as! Double
+                AppUser.isPay = app.is_pay
+                AppUser.isPaid = app.is_paid
+            }
             AppUser.acc_ident = app.acc_ident!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
