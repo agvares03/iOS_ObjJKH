@@ -11,7 +11,7 @@ import UIKit
 import FirebaseMessaging
 import SwiftyXMLParser
 
-class FirstControllerCons: UIViewController {
+class FirstControllerCons: UIViewController, UITextFieldDelegate {
     
     // Вспомогальные переменные для взаимодействия с севрером
     var responseString: String = ""
@@ -30,6 +30,8 @@ class FirstControllerCons: UIViewController {
     
     @IBOutlet weak var questionBtn: UIButton!
     @IBOutlet weak var questionImg: UIImageView!
+    @IBOutlet weak var errAuthLbl: UILabel!
+    @IBOutlet weak var errArrowLbl: UILabel!
     
     @IBAction func showPassAction(_ sender: UIButton) {
         edPass.isSecureTextEntry.toggle()
@@ -240,9 +242,9 @@ class FirstControllerCons: UIViewController {
                 self.StopIndicator()
                 //                }
                 if (self.isCons == "0") {
-                    //                    UserDefaults.standard.set(true, forKey: "NewMain")
-                    //                    self.performSegue(withIdentifier: "NewMainMenu", sender: self)
-                    self.performSegue(withIdentifier: "MainMenu", sender: self)
+                    self.errAuthLbl.isHidden = false
+                    self.errArrowLbl.isHidden = false
+                    self.view.backgroundColor = UIColor(red:205/255.0, green: 205/255.0, blue: 205/255.0, alpha:1)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons_", sender: self)
                 }
@@ -271,7 +273,8 @@ class FirstControllerCons: UIViewController {
         loadUsersDefaults()
         let version = targetSettings().getVersion()
         ver_Lbl.text = "ver. " + version
-
+        edLogin.delegate = self
+        edPass.delegate = self
         hideKeyboard_byTap()
         
         // Кнопка - Вход для сотрудников
@@ -386,6 +389,12 @@ class FirstControllerCons: UIViewController {
             #endif
             
             }.resume()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.errAuthLbl.isHidden = true
+        self.errArrowLbl.isHidden = true
+        self.view.backgroundColor = UIColor(red:255/255.0, green: 255/255.0, blue: 255/255.0, alpha:1)
     }
     
 }

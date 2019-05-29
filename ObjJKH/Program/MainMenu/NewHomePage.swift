@@ -1711,7 +1711,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.diffLbl.text     = dateThreeArr[indexPath.row]
             cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
             cell.imgCounter.image = UIImage(named: "water")
-            if (countName.lowercased().range(of: "гвс") != nil){
+            if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil){
                 cell.imgCounter.setImageColor(color: .red)
             }
             if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil){
@@ -1844,6 +1844,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else if tableView == self.tableReceipts {
             let cell = self.tableReceipts.dequeueReusableCell(withIdentifier: "HomeReceiptsCell") as! HomeReceiptsCell
             cell.goReceipt.tintColor = myColors.btnColor.uiColor()
+            cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.receiptText.text = self.get_name_month(number_month: String(fileList[indexPath.row].month)) + " " + String(fileList[indexPath.row].year)
             cell.receiptSum.text = String(format:"%.2f", fileList[indexPath.row].sum) + " руб"
             cell.separator.text = fileList[indexPath.row].link
@@ -1987,9 +1988,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.urlLink = self.link
         }
         if segue.identifier == "goSaldo" {
-            let payController             = segue.destination as! SaldoController
-            print(self.debtArr.count)
-            payController.debtArr = self.debtArr
+//            let payController             = segue.destination as! SaldoController
+//            print(self.debtArr.count)
+//            payController.debtArr = self.debtArr
         }
     }
     var selectedUniq = ""
