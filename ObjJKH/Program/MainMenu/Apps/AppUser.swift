@@ -401,11 +401,9 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     }
     
     @objc func reload() {
-        DispatchQueue.global(qos: .userInteractive).async {
-            let db = DB()
-            if (db.isNotification()) {
-                self.load_notification()
-            }
+        let db = DB()
+        if (db.isNotification()) {
+            self.load_notification()
         }
     }
     
@@ -485,6 +483,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver("reloadTheTable")
     }
     
     override func viewWillAppear(_ animated: Bool) {
