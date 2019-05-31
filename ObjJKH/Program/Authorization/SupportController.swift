@@ -59,17 +59,8 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
             self.present(alert, animated: true, completion: nil)
             return
         }
-        var kD = 0
-        var kS = 0
-        email.forEach{
-            if $0 == "."{
-                kD += 1
-            }
-            if $0 == "@"{
-                kS += 1
-            }
-        }
-        if (email.contains("@")) && (email.contains(".")) && kD == 1 && kS == 1{
+        let validEmail = DB().isValidEmail(testStr: email)
+        if validEmail{
             
         }else{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail", preferredStyle: .alert)
