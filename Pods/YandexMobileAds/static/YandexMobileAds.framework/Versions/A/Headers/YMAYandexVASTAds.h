@@ -70,15 +70,15 @@ extern NSString *const YMAVASTSpecialResponseTextKey;
 @protocol YMAVideoAdLoaderDelegate <NSObject>
 
 /**
- Called when VAST Ads have been successfully loaded.
- @param ads NSArray of YMAVASTAd objects describing each individual VAST block. Usually there is only one object.
+ * Called when VAST Ads have been successfully loaded.
+ * @param ads NSArray of YMAVASTAd objects describing each individual VAST block. Usually there is only one object.
  */
 - (void)loaderDidLoadVideoAds:(NSArray *)ads;
 
 /**
- Called when error occured while loading VAST Ads.
- @param error NSError object describing problem encountered while loading VAST Ads. UserInfo dictionary may contain
- additional information, such as server response, that cannot be parsed as an XML. @see YMAVASTSpecialResponseTextKey.
+ * Called when error occured while loading VAST Ads.
+ * @param error NSError object describing problem encountered while loading VAST Ads. UserInfo dictionary may contain
+ * additional information, such as server response, that cannot be parsed as an XML. @see YMAVASTSpecialResponseTextKey.
  */
 - (void)loaderDidFailLoadingVideoAdsWithError:(NSError *)error;
 

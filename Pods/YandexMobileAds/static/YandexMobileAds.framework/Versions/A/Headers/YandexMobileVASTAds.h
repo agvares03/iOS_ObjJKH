@@ -16,15 +16,3 @@
 #import <YandexMobileAds/YMAErrors.h>
 #import <YandexMobileAds/YMAVASTErrors.h>
 #import <YandexMobileAds/YMAIcon.h>
-#import <YandexMobileAds/YMAVMAP.h>
-#import <YandexMobileAds/YMAVMAPAdBreak.h>
-#import <YandexMobileAds/YMAVMAPAdSource.h>
-#import <YandexMobileAds/YMAVMAPBreakID.h>
-#import <YandexMobileAds/YMAVMAPBreakType.h>
-#import <YandexMobileAds/YMAVMAPExtension.h>
-#import <YandexMobileAds/YMAVMAPTimeOffset.h>
-#import <YandexMobileAds/YMAVMAPRequestConfiguration.h>
-#import <YandexMobileAds/YMAVMAPLoader.h>
-#import <YandexMobileAds/YMAVMAPErrors.h>
-#import <YandexMobileAds/YMAVASTRequestConfiguration.h>
-#import <YandexMobileAds/YMAVideoAdLoader.h>

@@ -57,6 +57,11 @@ class DB: NSObject, XMLParserDelegate {
         // ПОКАЗАНИЯ СЧЕТЧИКОВ
         // Удалим данные из базы данных
         del_db(table_name: "Counters")
+        del_db(table_name: "PaymentApp")
+        del_db(table_name: "Applications")
+        del_db(table_name: "Fotos")
+        del_db(table_name: "Comments")
+        del_db(table_name: "Saldo")
         // Получим данные в базу данных
         parse_Countrers(login: login, pass: pass)
     }
@@ -220,7 +225,7 @@ class DB: NSObject, XMLParserDelegate {
 //        #endif
 //        if k == 1{
             if (elementName == "Meter") {
-                print(attributeDict)
+//                print(attributeDict)
                 ident = attributeDict["Ident"]!
                 units = attributeDict["Units"]!
                 name = attributeDict["Name"]!
@@ -229,7 +234,7 @@ class DB: NSObject, XMLParserDelegate {
                 // Запишем показание прибора
             }
             if (elementName == "MeterValue"){
-                print(attributeDict)
+//                print(attributeDict)
                 let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
                 
                 let managedObject = Counters()
@@ -301,7 +306,7 @@ class DB: NSObject, XMLParserDelegate {
         // Заявки с комментариями (xml)
         var id_app: String = ""
         if (elementName == "Row") {
-            print(attributeDict)
+//            print(attributeDict)
             
             // Запишем заявку в БД
             let managedObject = Applications()
@@ -363,15 +368,6 @@ class DB: NSObject, XMLParserDelegate {
                 if (attributeDict["isActive"] == "1"){
                     managedObject.is_read     = 0
                     request_read_cons += 1
-                    DispatchQueue.main.async {
-                        if self.request_read_cons > -1{
-                            UserDefaults.standard.set(self.request_read_cons, forKey: "request_read_cons")
-                        }else{
-                            UserDefaults.standard.set(0, forKey: "request_read_cons")
-                        }
-                        
-                        UserDefaults.standard.synchronize()
-                    }
                 }
             }
             if (attributeDict["IsAnswered"] == "1") {
@@ -680,6 +676,15 @@ class DB: NSObject, XMLParserDelegate {
             print("parse failure!")
         }
         if isLoad{
+            if UserDefaults.standard.bool(forKey: "isCons"){
+                if self.request_read_cons > -1{
+                    UserDefaults.standard.set(self.request_read_cons, forKey: "request_read_cons")
+                }else{
+                    UserDefaults.standard.set(0, forKey: "request_read_cons")
+                }
+            }
+            
+            UserDefaults.standard.synchronize()
             // ВЕДОМОСТЬ
             // Удалим данные из базы данных
             del_db(table_name: "Saldo")
