@@ -139,6 +139,8 @@ class FirstObjController: UIViewController {
         fon_top.image = UIImage(named: "Logo_UkUpravdomChe")
         #elseif isJKH_Pavlovskoe
         fon_top.image = UIImage(named: "Logo_JKH_Pavlovskoe")
+        #elseif isPerspectiva
+        fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
