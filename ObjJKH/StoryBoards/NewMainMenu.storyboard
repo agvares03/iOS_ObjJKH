@@ -1847,6 +1847,7 @@
                         <segue destination="6XI-sg-Rum" kind="show" identifier="goSaldo" id="Xxo-V5-ZPe"/>
                         <segue destination="Xy6-1b-ghE" kind="show" identifier="goPayHistory" id="CFP-J9-yjH"/>
                         <segue destination="3b2-k7-PRB" kind="show" identifier="goPayHistoryMytishi" id="kGH-85-ijz"/>
+                        <segue destination="sgy-Dp-eJA" kind="show" identifier="go_to_app" id="dzo-rQ-cnH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76W-eJ-S4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3786,6 +3787,7 @@
                         <segue destination="CI8-yu-H5e" kind="show" identifier="pays" id="kVR-59-EJo"/>
                         <segue destination="dP9-TT-jre" kind="show" identifier="paysMytishi" id="Pwj-1d-22M"/>
                         <segue destination="yqO-oc-1b6" kind="show" identifier="addLSPocket" id="hxl-63-Ecr"/>
+                        <segue destination="sgy-Dp-eJA" kind="show" identifier="go_to_app" id="qZW-oS-uRV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Q5-26-bkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3864,6 +3866,14 @@
             </objects>
             <point key="canvasLocation" x="3317" y="615"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="grO-l8-Wtc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="sgy-Dp-eJA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uwe-Yk-W3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="226"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Logo_DemoUC.png" width="120" height="120"/>
@@ -3895,6 +3905,7 @@
         <image name="webs_menu" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="dzo-rQ-cnH"/>
         <segue reference="QyU-aW-HIx"/>
         <segue reference="8Cn-1r-0Af"/>
         <segue reference="eFt-Yy-DpX"/>

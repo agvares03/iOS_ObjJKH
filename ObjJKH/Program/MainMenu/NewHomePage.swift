@@ -203,7 +203,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
                 
                 var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
-                urlPath = urlPath + "phone=" + phone! + "&ident=" + ident
+                urlPath = urlPath + "phone=" + phone! + "&ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
                 let url: NSURL = NSURL(string: urlPath)!
                 let request = NSMutableURLRequest(url: url as URL)
                 request.httpMethod = "GET"
@@ -230,8 +230,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         
                                                         let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                         print("responseString = \(responseString)")
+                                                        DispatchQueue.main.async{
+                                                            let defaults = UserDefaults.standard
+                                                           
+                                                            defaults.set(true, forKey: "go_to_app")
+                                                            defaults.synchronize()
+                                                            // Перейдем на главную страницу со входом в приложение
+                                                            self.performSegue(withIdentifier: "go_to_app", sender: self)
+                                                        }
                                                         
-                                                        self.viewDidLoad()
                 })
                 task.resume()
                 
@@ -573,6 +580,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func StopIndicators() {
+        
         self.newsIndicator.stopAnimating()
         self.newsIndicator.isHidden = true
         self.appsIndicator.stopAnimating()
@@ -1964,6 +1972,16 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             payController.debtArr = self.debtArr
         }
+        #elseif isUpravdomChe
+        if segue.identifier == "paysMytishi" {
+            let payController             = segue.destination as! PaysMytishiController
+            if choiceIdent == ""{
+                payController.saldoIdent = "Все"
+            }else{
+                payController.saldoIdent = choiceIdent
+            }
+            payController.debtArr = self.debtArr
+        }
         #elseif isKlimovsk12
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
@@ -2039,6 +2057,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func goPaysPressed(ident: String) {
         choiceIdent = ident
         #if isMupRCMytishi
+        self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #elseif isUpravdomChe
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #elseif isKlimovsk12
         self.performSegue(withIdentifier: "paysMytishi", sender: self)

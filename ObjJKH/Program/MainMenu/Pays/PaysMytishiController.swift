@@ -268,6 +268,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             items.removeAll()
             let servicePay = totalSum - self.sum
             var i = 0
+            print(sumOSV)
             checkBox.forEach{
                 if $0 == true && sumOSV[i] > 0.00{
                     let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
@@ -277,6 +278,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         ItemsData = ["ShopCode" : "215944", "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                         items.append(ItemsData)
                     }
+                    #elseif isUpravdomChe
+                    let ItemsData = ["ShopCode" : "245322", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                    items.append(ItemsData)
                     #else
                     let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
@@ -284,13 +288,17 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 i += 1
             }
-            let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
-            #if isKlimovsk12
-            let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-            #else
-            let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-            #endif
-            items.append(ItemsData)
+            if servicePay != 0{
+                let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
+                #if isKlimovsk12
+                let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                #elseif isUpravdomChe
+                let ItemsData = ["ShopCode" : "245322", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                #else
+                let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                #endif
+                items.append(ItemsData)
+            }
             var Data:[String:String] = [:]
             var DataStr: String = ""
             if selectLS == "Все"{
@@ -309,6 +317,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }else{
                 #if isKlimovsk12
                 DataStr = DataStr + "1-\(String(format:"%.2f", self.sum))|"
+                #elseif isUpravdomChe
+                checkBox.forEach{
+                    if $0 == true && sumOSV[i] > 0.00{
+                        DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                    }
+                    i += 1
+                }
                 #else
                 checkBox.forEach{
                     if $0 == true && sumOSV[i] > 0.00{
@@ -339,6 +354,55 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             var shops:[Any] = []
             let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
             shops.append(shopItem)
+            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            let name = "Оплата услуг ЖКХ"
+            let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
+            print(receiptData)
+            if payType == 1{
+                let address = PKContact()
+                address.emailAddress = defaults.object(forKey: "mail")! as? String
+                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }else{
+                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+            #elseif isUpravdomChe
+            if selectLS == "Все"{
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+                let str_ls_arr = str_ls.components(separatedBy: ",")
+                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
+                
+            }else{
+                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
+            }
+            UserDefaults.standard.synchronize()
+            Data["chargeFlag"] = "false"
+            let shopCode = "245322"
+            var shops:[Any] = []
+            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
+            shops.append(shopItem)
+            print(items)
+            
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "Оплата услуг ЖКХ"
             let amount = NSNumber(floatLiteral: self.totalSum)
@@ -689,7 +753,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             for result in results {
                 let object = result as! NSManagedObject
                 //                if ident != "Все"{
-                if UserDefaults.standard.string(forKey: "encoding_Pays") == "1"{
+                var upravdom = 0
+                #if isUpravdomChe
+                upravdom = 1
+                #endif
+                if UserDefaults.standard.string(forKey: "encoding_Pays") == "1" || upravdom == 1{
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "usluga") as! String) != "Я"{
                             sumOSV.append(Double(String(format:"%.2f", Double(object.value(forKey: "end") as! String)!)) as! Double)
@@ -765,10 +833,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 DispatchQueue.main.async(execute: {
                     if (self.sum != 0) {
                         //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-                        #if isKlimovsk12
-                        let serviceP = self.sum / 100 * 1.5
-                        #else
+//                        #if isKlimovsk12
+//                        let serviceP = self.sum / 100 * 1.5
+//                        #else
+                        #if isMupRCMytishi
                         let serviceP = self.sum / 0.992 - self.sum
+                        #else
+                        let serviceP = UserDefaults.standard.double(forKey: "servPercent")
                         #endif
                         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                         self.totalSum = self.sum + serviceP
@@ -800,10 +871,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                 }
                                 print(s)
                             }
-                            #if isKlimovsk12
-                            let serviceP = s / 100 * 1.5
+                            #if isMupRCMytishi
+                            let serviceP = self.sum / 0.992 - self.sum
                             #else
-                            let serviceP = s / 0.992 - s
+                            let serviceP = UserDefaults.standard.double(forKey: "servPercent")
                             #endif
                             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                             self.totalSum = s + serviceP
@@ -1072,10 +1143,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         self.sum = sum
-        #if isKlimovsk12
-        let serviceP = self.sum / 100 * 1.5
-        #else
+        #if isMupRCMytishi
         let serviceP = self.sum / 0.992 - self.sum
+        #else
+        let serviceP = UserDefaults.standard.double(forKey: "servPercent")
         #endif
         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
         self.totalSum = self.sum + serviceP
@@ -1149,10 +1220,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 i += 1
             }
-            #if isKlimovsk12
-            let serviceP = self.sum / 100 * 1.5
-            #else
+            #if isMupRCMytishi
             let serviceP = self.sum / 0.992 - self.sum
+            #else
+            let serviceP = UserDefaults.standard.double(forKey: "servPercent")
             #endif
             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
@@ -1195,10 +1266,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 i += 1
             }
-            #if isKlimovsk12
-            let serviceP = self.sum / 100 * 1.5
-            #else
+            #if isMupRCMytishi
             let serviceP = self.sum / 0.992 - self.sum
+            #else
+            let serviceP = UserDefaults.standard.double(forKey: "servPercent")
             #endif
             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP

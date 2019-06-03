@@ -137,7 +137,7 @@ class StartController: UIViewController {
                 let inputData = self.responseLS?.data(using: .utf8)!
                 let decoder = JSONDecoder()
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)
-                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds, adType: stat.adsType)//stat.showAds  stat.adsType
+                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds, adType: stat.adsType, servPercent: stat.servicePercent)//stat.showAds  stat.adsType
             }else{
                 UserDefaults.standard.set(self.responseLS, forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
@@ -162,8 +162,9 @@ class StartController: UIViewController {
         }
     }
     
-    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool, adType: Int) {
+    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool, adType: Int, servPercent: Double) {
         let defaults = UserDefaults.standard
+        defaults.set(servPercent, forKey: "servPercent")
         defaults.removeObject(forKey: "show_Ad")//удалить через месяц
         defaults.setValue(color, forKey: "hex_color")
         defaults.setValue(oss, forKey: "enable_OSS")
@@ -223,6 +224,7 @@ class StartController: UIViewController {
         let useDispatcherAuth: Bool
         let showAds: Bool
         let adsType: Int
+        let servicePercent: Double
     }
     
     struct Menu: Decodable {

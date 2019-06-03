@@ -25,6 +25,9 @@
     if ([savedValue  isEqual: @"Klimovsk12"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
+    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
 	return @[kASDKTestTerminalKey];
 }
 
@@ -37,6 +40,9 @@
         NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                                 stringForKey:@"targetName"];
         if ([savedValue  isEqual: @"Klimovsk12"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
 	}
@@ -56,6 +62,9 @@
     if ([savedValue  isEqual: @"Klimovsk12"]){
         return kASDKTestPasswordKlimovsk;
     }
+    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
+        return kASDKTestPasswordKlimovsk;
+    }
 	return kASDKTestPassword;
 }
 
@@ -64,6 +73,9 @@
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"targetName"];
     if ([savedValue  isEqual: @"Klimovsk12"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
         return kASDKTestPublicKeyKlimovsk;
     }
     return kASDKTestPublicKey;

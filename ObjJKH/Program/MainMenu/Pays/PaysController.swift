@@ -149,6 +149,46 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         }else{
             payed()
         }
+        #elseif isUpravdomChe
+        if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
+            let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
+            alert.addTextField { (textField) in
+                textField.placeholder = "e-mail..."
+                textField.keyboardType = .emailAddress
+            }
+            let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
+                let textField = alert.textFields![0]
+                let str = textField.text
+                var kD = 0
+                var kS = 0
+                str!.forEach{
+                    if $0 == "."{
+                        kD += 1
+                    }
+                    if $0 == "@"{
+                        kS += 1
+                    }
+                }
+                if ((str?.contains("@"))!) && ((str?.contains("."))!) && kD == 1 && kS == 1{
+                    UserDefaults.standard.set(str, forKey: "mail")
+                    self.payed()
+                }else{
+                    textField.text = ""
+                    textField.placeholder = "e-mail..."
+                    let alert = UIAlertController(title: "Ошибка", message: "Укажите корректный e-mail!", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+            }
+            
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            payed()
+        }
         #else
         payed()
         #endif
@@ -165,7 +205,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let k:String = txt_sum_obj.text!
+        let k:String = txt_sum_obj.text!.replacingOccurrences(of: ",", with: ".")
         self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
         if (self.totalSum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)

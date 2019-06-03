@@ -29,6 +29,7 @@
 		1C0A1E1D2243548B0040E7F7 /* NewMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A1E132243548B0040E7F7 /* NewMainMenu.swift */; };
 		1C0A1E1E2243548B0040E7F7 /* NewMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A1E132243548B0040E7F7 /* NewMainMenu.swift */; };
 		1C0A1E1F2243548B0040E7F7 /* NewMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A1E132243548B0040E7F7 /* NewMainMenu.swift */; };
+		1C0A4B6922A544BB00855BA6 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
 		1C13B8BB221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		1C13B8BC221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		1C13B8BD221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
@@ -3168,7 +3169,6 @@
 		56279C75722BB00CB3E0EFEF /* Pods_Skyfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8BF8463432180A878BACE6 /* Pods_Skyfort.framework */; };
 		58E638C44A19695BEBCD3876 /* Pods_Tafgai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FF736481198B5057DC38F3 /* Pods_Tafgai.framework */; };
 		59AB60C74EA69B056978218C /* Pods_Klimovsk12.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */; };
-		7458D0B2AA495348992BBAA9 /* Pods_UK_Komfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C026E682265993500E62FC6 /* Pods_UK_Komfort.framework */; };
 		7F320DCC2F3EA0D3E0DAA09F /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5428DDDDBA3E4A0A69BCBC8D /* Pods_ObjJKH.framework */; };
 		807B3CD237EA6541C63CBD05 /* Pods_Stolitsa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0B17C963363C8850F6A8BA /* Pods_Stolitsa.framework */; };
 		80D9F109D4256C34D1726522 /* Pods_ChistDom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBA0E90ADE2FAE50B12C336 /* Pods_ChistDom.framework */; };
@@ -3203,6 +3203,7 @@
 		1C026E6C2265C18500E62FC6 /* ChoiceLsPocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceLsPocketController.swift; sourceTree = "<group>"; };
 		1C081DEC225B631F001A8F43 /* FirstObjController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstObjController.swift; sourceTree = "<group>"; };
 		1C0A1E132243548B0040E7F7 /* NewMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainMenu.swift; sourceTree = "<group>"; };
+		1C0A4B6822A53DCE00855BA6 /* UK_Upravdom_Che-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Upravdom_Che-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C13B8BA221ACDCC0011D343 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		1C19ADFB2226845400C51656 /* MupCounters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MupCounters.storyboard; sourceTree = "<group>"; };
 		1C19ADFE222690BA00C51656 /* nonPassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nonPassController.swift; sourceTree = "<group>"; };
@@ -3557,7 +3558,6 @@
 			files = (
 				301D0B5522896DFE0032DE2A /* CoreLocation.framework in Frameworks */,
 				A59F1E200E0D48B6BB916C3F /* Pods_StandartDV.framework in Frameworks */,
-				AD5AAC6054C95AABAFE11F93 /* Pods_StandartDV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3734,7 +3734,6 @@
 			files = (
 				1C7B34D421993A3800E6BAA3 /* CoreLocation.framework in Frameworks */,
 				9242BA2A61E35556991F63A6 /* Pods_UK_Komfort.framework in Frameworks */,
-				7458D0B2AA495348992BBAA9 /* Pods_UK_Komfort.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3883,6 +3882,7 @@
 				41B5BC43216B348A003F4868 /* UK_Komfort-Bridging-Header.h */,
 				417FCFDE217ED35F009CDBB8 /* MupRCMytishi-Bridging-Header.h */,
 				1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */,
+				1C0A4B6822A53DCE00855BA6 /* UK_Upravdom_Che-Bridging-Header.h */,
 				1CF8B8F12223D7E400B1D289 /* UK_Garant-Bridging-Header.h */,
 			);
 			path = Bridges;
@@ -7704,6 +7704,7 @@
 				303EBCBD229B922900223A2B /* QuestionVoteController.swift in Sources */,
 				303EBCBE229B922900223A2B /* NewsView.swift in Sources */,
 				303EBCBF229B922900223A2B /* PaymentApp+CoreDataProperties.swift in Sources */,
+				1C0A4B6922A544BB00855BA6 /* PaysMytishiController.swift in Sources */,
 				303EBCC0229B922900223A2B /* QuestionsTableCell.swift in Sources */,
 				303EBCC1229B922900223A2B /* NewMainMenu2.swift in Sources */,
 				303EBCC2229B922900223A2B /* OnOffButton.swift in Sources */,
@@ -9686,6 +9687,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.UK-Upravdom-Che";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isUpravdomChe Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Upravdom_Che-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -9710,6 +9712,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.UK-Upravdom-Che";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isUpravdomChe;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Upravdom_Che-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
