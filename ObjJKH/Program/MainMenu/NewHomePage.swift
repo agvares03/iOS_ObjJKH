@@ -1780,7 +1780,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 sumBoDate = sumAll - sum
                 isPayBoDate = true
             }
-            print(sumAll, sumBoDate)
+            print(sumAll, sumBoDate, sum)
             if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate{
                 cell.noDebtText.isHidden = false
                 cell.payDebt.isHidden = true
