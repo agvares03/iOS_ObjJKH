@@ -338,15 +338,13 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         var debtIdent:[String] = []
         var debtSum:[String] = []
         var debtSumFine:[String] = []
-        var debtAddress:[String] = []
         var debtDate:[String] = []
+        var debtAddress:[String] = []
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         var sumObj = 0.00
         var u = 0
-        //        let viewHeight = self.heigth_view.constant
-        //        let backHeight = self.backgroundHeight.constant
         let login = defaults.string(forKey: "login")
         if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
             //            str_ls_arr?.forEach{
@@ -377,7 +375,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                 
                                                                 //                                                                var sumOver     = ""
                                                                 //                                                                var sumFineOver = ""
-                                                                var sumAll      = ""
+                                                                //                                                                    var sumAll      = ""
                                                                 var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
                                                                 //                                                                                                                                        print(json)
                                                                 
@@ -409,13 +407,18 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                                         ls = String(describing: obj.value as! String)
                                                                                     }
                                                                                 }
+                                                                                if obj.key == "DebtActualDate" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        date = String(describing: obj.value as! String)
+                                                                                    }
+                                                                                }
                                                                                 
                                                                             }
-                                                                            if date == ""{
-                                                                                let dateFormatter = DateFormatter()
-                                                                                dateFormatter.dateFormat = "dd.MM.yyyy"
-                                                                                date = dateFormatter.string(from: Date())
-                                                                            }
+                                                                            //                                                                                if date == ""{
+                                                                            //                                                                                    let dateFormatter = DateFormatter()
+                                                                            //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                                                                            //                                                                                    date = dateFormatter.string(from: Date())
+                                                                            //                                                                                }
                                                                             debtIdent.append(ls)
                                                                             debtSum.append(sum)
                                                                             debtSumFine.append(sumFine)
@@ -423,8 +426,23 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                             debtDate.append(date)
                                                                             self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address))
                                                                         }
+                                                                        
+                                                                        //                                                                            defaults.set(date, forKey: "dateDebt")
+                                                                        //                                                                            if Double(sumAll) != 0.00{
+                                                                        //                                                                                let d = date.components(separatedBy: ".")
+                                                                        //                                                                                let d1 = self.dateOld.components(separatedBy: ".")
+                                                                        //                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                                                                        //                                                                                    DispatchQueue.main.async {
+                                                                        //                                                                                        self.dateOld = date
+                                                                        //                                                                                    }
+                                                                        //                                                                                }
+                                                                        //                                                                                sumObj = sumObj + Double(sumAll)!
+                                                                        //                                                                            }
                                                                     }
                                                                 }
+                                                                //                                                                    defaults.set(sumObj, forKey: "sumDebt")
+                                                                //                                                                    defaults.synchronize()
+                                                                self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
                                                                 DispatchQueue.main.async {
                                                                     self.tableView.reloadData()
                                                                 }
@@ -439,6 +457,68 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             task.resume()
             //            }
         }
+    }
+    
+    private var values: [HistoryPayCellData] = []
+    
+    func parse_Mobile(login: String) {
+        values.removeAll()
+        let urlPath = Server.SERVER + "MobileAPI/GetPays.ashx?" + "phone=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
+                                                
+                                                if error != nil {
+                                                    return
+                                                } else {
+                                                    do {
+                                                        var bill_date    = ""
+                                                        var bill_ident   = ""
+                                                        var bill_sum = ""
+                                                        var bill_status = ""
+                                                        var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                        if let json_bills = json["data"] {
+                                                            let int_end = (json_bills.count)!-1
+                                                            if (int_end < 0) {
+                                                                
+                                                            } else {
+                                                                
+                                                                for index in 0...int_end {
+                                                                    let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                                                    for obj in json_bill {
+                                                                        if obj.key == "Date" {
+                                                                            bill_date = obj.value as! String
+                                                                        }
+                                                                        if obj.key == "Ident" {
+                                                                            bill_ident = obj.value as! String
+                                                                        }
+                                                                        if obj.key == "Sum" {
+                                                                            bill_sum = String(describing: obj.value as! NSNumber)
+                                                                        }
+                                                                        if obj.key == "Status" {
+                                                                            bill_status = obj.value as! String
+                                                                        }
+                                                                    }
+                                                                    if bill_status == "Оплачен"{
+                                                                        self.values.append(HistoryPayCellData(date: bill_date, id: "", ident: bill_ident, period: "", sum: bill_sum, width: 0, payType: 0))
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        DispatchQueue.main.async {
+                                                            self.tableView.reloadData()
+                                                        }
+                                                    } catch let error as NSError {
+                                                        print(error)
+                                                    }
+                                                }
+        })
+        task.resume()
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -494,27 +574,85 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "HomeLSCell1") as! HomeLSCell
         cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
-        var str_date_arr = lsArr[indexPath.row].date?.components(separatedBy: ".")
-        if str_date_arr![1].first == "0"{
-            str_date_arr![1].removeFirst()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        var str_date_arr = dateFormatter.string(from: Date()).components(separatedBy: ".")
+        if str_date_arr[1].first == "0"{
+            str_date_arr[1].removeFirst()
         }
-        let month = get_name_month(number_month: str_date_arr![1])
-        cell.dateText.text = month + " " + str_date_arr![2]
+        let month = get_name_month(number_month: str_date_arr[1])
+        cell.dateText.text = month + " " + str_date_arr[2]
         cell.separator.backgroundColor = myColors.btnColor.uiColor()
         cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
         cell.addressText.text = lsArr[indexPath.row].address!
-        if Double(lsArr[indexPath.row].sum!)! > 0.00{
-            cell.separator.isHidden = true
-            cell.noDebtText.isHidden = true
-            cell.payDebt.isHidden = false
-            cell.payDebt.setTitle("Оплатить " + lsArr[indexPath.row].sum! + " руб", for: .normal)
-        }else{
+        cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
+        cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
+        cell.sumText.textColor = myColors.btnColor.uiColor()
+        var sumAll = 0.00
+        var isPayToDate = false
+        var isPayBoDate = false
+        var sumBoDate = 0.00
+        self.values.forEach{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy"
-            cell.separator.isHidden = false
+            let date1: Date = dateFormatter.date(from: $0.date.replacingOccurrences(of: " 00:00:00", with: ""))!
+            let date2: Date = dateFormatter.date(from: lsArr[indexPath.row].date!)!
+            if date2 > date1{
+                //                        #if isMupRCMytishi
+                //                        let serviceP = self.sum / 0.992 - self.sum
+                //                        #else
+                //                        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * Double($0.sum)! / 100
+                //                        #endif
+                sumAll = sumAll + Double($0.sum)!
+            }
+        }
+        let sum:Double = Double(lsArr[indexPath.row].sum!) as! Double
+        if sumAll == sum{
+            isPayToDate = true
+        }else if sumAll > sum{
+            sumBoDate = sumAll - sum
+            isPayBoDate = true
+        }
+        print(sumAll, sumBoDate)
+        if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate{
             cell.noDebtText.isHidden = false
-            cell.noDebtText.text = "Нет задолженности на " + dateFormatter.string(from: Date())
             cell.payDebt.isHidden = true
+            cell.topPeriodConst.constant = 0
+            cell.bottViewHeight.constant = 0
+            cell.payDebtHeight.constant = 0
+            cell.sumViewHeight.constant = 50
+            cell.sumInfo.text = "Имеется переплата на " + lsArr[indexPath.row].date! + " на сумму"
+            cell.sumText.text = String(format:"%.2f", sumBoDate) + " руб."
+        }else if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayToDate{
+            cell.noDebtText.isHidden = false
+            cell.payDebt.isHidden = true
+            cell.topPeriodConst.constant = 20
+            cell.sumViewHeight.constant = 0
+            cell.payDebtHeight.constant = 0
+            if self.view.frame.size.width > 320{
+                cell.bottViewHeight.constant = 50
+            }else{
+                cell.bottViewHeight.constant = 70
+            }
+        }else if Double(lsArr[indexPath.row].sum!)! > 0.00{
+            //                cell.separator.isHidden = true
+            cell.noDebtText.isHidden = true
+            cell.payDebt.isHidden = false
+            cell.topPeriodConst.constant = 5
+            if self.view.frame.size.width > 320{
+                cell.bottViewHeight.constant = 30
+            }else{
+                cell.bottViewHeight.constant = 50
+            }
+        }else{
+            cell.noDebtText.isHidden = true
+            cell.payDebt.isHidden = true
+            cell.periodPay.isHidden = true
+            cell.allPayText.isHidden = false
+            cell.allPayText.text = "Все квитанции оплачены на " + lsArr[indexPath.row].date! + " г."
+            cell.sumViewHeight.constant = 0
+            cell.payDebtHeight.constant = 0
+            cell.bottViewHeight.constant = 50
         }
         cell.delegate = self
         cell.delegate2 = self

@@ -363,7 +363,7 @@ class HistoryPayCell: UITableViewCell {
     
 }
 
-private final class HistoryPayCellData {
+final class HistoryPayCellData {
     
     let date:           String
     let id:             String

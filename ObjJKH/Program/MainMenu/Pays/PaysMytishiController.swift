@@ -839,7 +839,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         #if isMupRCMytishi
                         let serviceP = self.sum / 0.992 - self.sum
                         #else
-                        let serviceP = UserDefaults.standard.double(forKey: "servPercent")
+                        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
                         #endif
                         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                         self.totalSum = self.sum + serviceP
@@ -874,7 +874,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                             #if isMupRCMytishi
                             let serviceP = self.sum / 0.992 - self.sum
                             #else
-                            let serviceP = UserDefaults.standard.double(forKey: "servPercent")
+                            let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
                             #endif
                             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                             self.totalSum = s + serviceP
@@ -1146,7 +1146,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #if isMupRCMytishi
         let serviceP = self.sum / 0.992 - self.sum
         #else
-        let serviceP = UserDefaults.standard.double(forKey: "servPercent")
+        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
         #endif
         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
         self.totalSum = self.sum + serviceP
@@ -1223,7 +1223,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             #if isMupRCMytishi
             let serviceP = self.sum / 0.992 - self.sum
             #else
-            let serviceP = UserDefaults.standard.double(forKey: "servPercent")
+            let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
             #endif
             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
@@ -1269,7 +1269,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             #if isMupRCMytishi
             let serviceP = self.sum / 0.992 - self.sum
             #else
-            let serviceP = UserDefaults.standard.double(forKey: "servPercent")
+            let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
             #endif
             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
