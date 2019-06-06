@@ -614,7 +614,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             isPayBoDate = true
         }
         print(sumAll, sumBoDate)
-        if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate{
+        if (Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate) || (Double(lsArr[indexPath.row].sum!)! < 0.00){
             cell.noDebtText.isHidden = false
             cell.payDebt.isHidden = true
             cell.topPeriodConst.constant = 0
@@ -623,6 +623,9 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             cell.sumViewHeight.constant = 50
             cell.sumInfo.text = "Имеется переплата на " + lsArr[indexPath.row].date! + " на сумму"
             cell.sumText.text = String(format:"%.2f", sumBoDate) + " руб."
+            if Double(lsArr[indexPath.row].sum!)! < 0.00{
+                cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
+            }
         }else if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayToDate{
             cell.noDebtText.isHidden = false
             cell.payDebt.isHidden = true

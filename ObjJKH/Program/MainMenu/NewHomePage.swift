@@ -1781,7 +1781,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 isPayBoDate = true
             }
             print(sumAll, sumBoDate, sum)
-            if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate{
+            if (Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate) || (Double(lsArr[indexPath.row].sum!)! < 0.00){
                 cell.noDebtText.isHidden = false
                 cell.payDebt.isHidden = true
                 cell.topPeriodConst.constant = 0
@@ -1790,6 +1790,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.sumViewHeight.constant = 50
                 cell.sumInfo.text = "Имеется переплата на " + lsArr[indexPath.row].date! + " на сумму"
                 cell.sumText.text = String(format:"%.2f", sumBoDate) + " руб."
+                if Double(lsArr[indexPath.row].sum!)! < 0.00{
+                    cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
+                }
             }else if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayToDate{
                 cell.noDebtText.isHidden = false
                 cell.payDebt.isHidden = true
