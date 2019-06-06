@@ -73,6 +73,11 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_obj: UITextField!
+    @IBOutlet weak var txt_sum_jkh: UILabel!
+    @IBOutlet weak var servicePay: UILabel!
+    @IBOutlet weak var textSum: UILabel!
+    @IBOutlet weak var textService: UILabel!
+    @IBOutlet weak var paysViewHeight: NSLayoutConstraint!
     
     @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
         #if isMupRCMytishi
@@ -205,74 +210,17 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let k:String = txt_sum_obj.text!.replacingOccurrences(of: ",", with: ".")
-        self.totalSum = Double(k.replacingOccurrences(of: " .руб", with: ""))!
+        let k:String = txt_sum_jkh.text!.replacingOccurrences(of: ",", with: ".")
+        self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         if (self.totalSum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            #if isKlimovsk12
-            items.removeAll()
-            var i = 0
-            checkBox.forEach{
-                if $0 == true && sumOSV[i] > 0.00{
-                    let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
-                    let ItemsData = ["ShopCode" : "66950", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                    items.append(ItemsData)
-                }
-                i += 1
-            }
-            var Data:[String:Any] = [:]
-            var DataStr: String = ""
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                for i in 0...str_ls_arr.count - 1{
-                    DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0])|"
-                }
-            }else{
-                DataStr = "ls1-\(selectLS)|"
-            }
-            DataStr = DataStr + "|"
-            i = 0
-            checkBox.forEach{
-                if $0 == true && sumOSV[i] > 0.00{
-                    DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
-                }
-                i += 1
-            }
-            Data["name"] = DataStr
-            
-            let defaults = UserDefaults.standard
-            let shopCode = "66950"
-            var shops:[Any] = []
-            let ItemsData = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
-            shops.append(ItemsData)
-            print(shops)
-            print(items)
-            let receiptData = ["ShopCode" : shopCode, "Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
-            defaults.synchronize()
-            print(receiptData)
-            PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                
-            }, cancelled:  {
-                
-            }, error: { (error) in
-                let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-            })
-            #else
-            defaults.setValue(String(describing: self.sum), forKey: "sum")
+            defaults.setValue(String(describing: self.totalSum), forKey: "sum")
             defaults.synchronize()
             self.performSegue(withIdentifier: "CostPay_New", sender: self)
-            #endif
         }
     }
     
@@ -284,7 +232,21 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             //            print("DID FAIL REPORT EVENT: %@", message)
             print("REPORT ERROR: %@", error.localizedDescription)
         })
-        currPoint = 537
+        if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
+            currPoint = 537
+            paysViewHeight.constant = 90
+            txt_sum_jkh.isHidden = true
+            servicePay.isHidden = true
+            textSum.isHidden = true
+            textService.isHidden = true
+        }else{
+            currPoint = 487
+            paysViewHeight.constant = 140
+            txt_sum_jkh.isHidden = false
+            servicePay.isHidden = false
+            textSum.isHidden = false
+            textService.isHidden = false
+        }
         // Логин и пароль
         login = defaults.string(forKey: "login")
         pass  = defaults.string(forKey: "pass")
@@ -558,6 +520,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             for result in results {
                 let object = result as! NSManagedObject
 //                if ident != "Все"{
+                if UserDefaults.standard.string(forKey: "encoding_Pays") == "1"{
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "usluga") as! String) != "Я"{
                             sumOSV.append(Double(String(format:"%.2f", Double(object.value(forKey: "end") as! String)!)) as! Double)
@@ -573,36 +536,106 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                             }
                         }
                     }
-                    DispatchQueue.main.async(execute: {
-                        if (self.sum != 0) {
-                            //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-                            let serviceP = self.sum / 0.992 - self.sum
-                            self.totalSum = self.sum + serviceP
-                            self.txt_sum_obj.text = String(format:"%.2f", self.sum)
-                            if self.debtArr.count != 0 && self.endSum == ""{
+                }else{
+                    if (object.value(forKey: "ident") as! String) == ident{
+                        if (object.value(forKey: "usluga") as! String) != "Я"{
+                            if (object.value(forKey: "usluga") as! String) != "Я"{
+                                self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
+                            }
+                            if sumOSV.count == 0{
+//                                print(self.sum, String(format:"%.2f", self.sum))
+                                sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
+                                checkBox.append(true)
+                                osvc.append("Услуги ЖКУ")
+                                idOSV.append(Int(object.value(forKey: "id") as! Int64))
+                                
+                                uslugaArr.append("Услуги ЖКУ")
+                                endArr.append(String(format:"%.2f", self.sum))
+                                idArr.append(Int(object.value(forKey: "id") as! Int64))
+                            }else{
+                                sumOSV[0] = Double(String(format:"%.2f", self.sum)) as! Double
+                                endArr[0] = String(format:"%.2f", self.sum)
                                 var s = 0.00
                                 self.debtArr.forEach{
                                     if self.choiceIdent == "Все"{
                                         s = s + Double($0["Sum"] as! String)!
                                         if s <= 0.00{
+                                            for i in 0...self.checkBox.count - 1{
+                                                self.checkBox[i] = false
+                                            }
                                             self.txt_sum_obj.text = "0.00"
+                                            self.txt_sum_jkh.text = "0.00 руб."
+                                            self.servicePay.text  = "0.00 руб."
+                                        }else{
+                                            s = Double($0["Sum"] as! String)!
                                         }
                                     }else if self.choiceIdent == ($0["Ident"] as! String){
-                                        s = s + Double($0["Sum"] as! String)!
                                         if ($0["Sum"] as! String) == "0.00"{
+                                            for i in 0...self.checkBox.count - 1{
+                                                self.checkBox[i] = false
+                                            }
                                             self.txt_sum_obj.text = "0.00"
+                                            self.txt_sum_jkh.text = "0.00 руб."
+                                            self.servicePay.text  = "0.00 руб."
+                                        }else{
+                                            s = Double($0["Sum"] as! String)!
                                         }
                                     }
                                 }
-                                let serviceP = s / 0.992 - s
-                                self.totalSum = s + serviceP
-                                self.txt_sum_obj.text = String(format:"%.2f", s)
+                                if s != sumOSV[0]{
+                                    sumOSV[0] = s
+                                    endArr[0] = String(s)
+                                }
                             }
-                        } else {
-                            //                    self.txt_sum_jkh.text = "0.00 р."
-                            self.txt_sum_obj.text = "0.00"
                         }
-                    })
+                    }
+                }
+                DispatchQueue.main.async(execute: {
+                    if (self.sum != 0) {
+                        let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
+                        self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+                        self.totalSum = self.sum + serviceP
+                        self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+                        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                        if self.debtArr.count != 0 && self.endSum == ""{
+                            var s = 0.00
+                            self.debtArr.forEach{
+                                if self.choiceIdent == "Все"{
+                                    s = s + Double($0["Sum"] as! String)!
+                                    if s <= 0.00{
+                                        for i in 0...self.checkBox.count - 1{
+                                            self.checkBox[i] = false
+                                        }
+                                        self.txt_sum_obj.text = "0.00"
+                                        self.txt_sum_jkh.text = "0.00 руб."
+                                        self.servicePay.text  = "0.00 руб."
+                                    }
+                                }else if self.choiceIdent == ($0["Ident"] as! String){
+                                    s = s + Double($0["Sum"] as! String)!
+                                    if ($0["Sum"] as! String) == "0.00"{
+                                        for i in 0...self.checkBox.count - 1{
+                                            self.checkBox[i] = false
+                                        }
+                                        self.txt_sum_obj.text = "0.00"
+                                        self.txt_sum_jkh.text = "0.00 руб."
+                                        self.servicePay.text  = "0.00 руб."
+                                    }
+                                }
+                                print(s)
+                            }
+                            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
+                            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+                            self.totalSum = s + serviceP
+                            self.txt_sum_obj.text = String(format:"%.2f", s)
+                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                        }
+                    } else {
+                        //                    self.txt_sum_jkh.text = "0,00 р."
+                        self.self.txt_sum_obj.text = "0.00"
+                        self.txt_sum_jkh.text = "0.00 руб."
+                        self.servicePay.text  = "0.00 руб."
+                    }
+                })
 //                }
             }
             DispatchQueue.main.async(execute: {
