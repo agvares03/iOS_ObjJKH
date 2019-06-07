@@ -776,7 +776,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 #if isUpravdomChe
                 upravdom = 1
                 #endif
-                if UserDefaults.standard.string(forKey: "encoding_Pays") == "1" || upravdom == 1{
+                if UserDefaults.standard.string(forKey: "encoding_Pays") == "1"{
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "usluga") as! String) != "Я"{
                             sumOSV.append(Double(String(format:"%.2f", Double(object.value(forKey: "end") as! String)!)) as! Double)
