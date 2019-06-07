@@ -233,7 +233,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             print("REPORT ERROR: %@", error.localizedDescription)
         })
         if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
-            currPoint = 557
+            currPoint = 520
             paysViewHeight.constant = 110
             txt_sum_jkh.isHidden = true
             servicePay.text = "Комиссия не взимается"
