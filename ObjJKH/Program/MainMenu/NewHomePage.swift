@@ -435,7 +435,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             adTopConst.constant = 0
         }
         getDebt()
-        getNews()
+//        getNews()
         getDataCounter()
         updateListApps()
         getQuestions()
@@ -614,9 +614,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 gadBannerView.load(request)
             }
         }
-        if UserDefaults.standard.integer(forKey: "request_read") == 0{
-            self.load_new_data()
-        }
+        self.load_new_data()
+        self.getNews()
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -839,6 +838,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func getNews(){
+        self.newsArr.removeAll()
         var news_read = 0
         let phone = UserDefaults.standard.string(forKey: "login") ?? ""
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
@@ -1741,14 +1741,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cell = self.tableLS.dequeueReusableCell(withIdentifier: "HomeLSCell") as! HomeLSCell
 //            cell = shadowCell(cell: cell) as! HomeLSCell
             cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy"
-            var str_date_arr = dateFormatter.string(from: Date()).components(separatedBy: ".")
-            if str_date_arr[1].first == "0"{
-                str_date_arr[1].removeFirst()
-            }
-            let month = get_name_month(number_month: str_date_arr[1])
-            cell.dateText.text = month + " " + str_date_arr[2]
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
             cell.addressText.text = lsArr[indexPath.row].address!
@@ -2207,7 +2199,6 @@ class HomeLSCell: UITableViewCell {
     
     @IBOutlet weak var lsText: UILabel!
     @IBOutlet weak var addressText: UILabel!
-    @IBOutlet weak var dateText: UILabel!
     
     @IBOutlet weak var noDebtText: UILabel!
     @IBOutlet weak var periodPay: UILabel!

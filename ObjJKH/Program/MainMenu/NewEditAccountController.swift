@@ -574,14 +574,6 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "HomeLSCell1") as! HomeLSCell
         cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        var str_date_arr = dateFormatter.string(from: Date()).components(separatedBy: ".")
-        if str_date_arr[1].first == "0"{
-            str_date_arr[1].removeFirst()
-        }
-        let month = get_name_month(number_month: str_date_arr[1])
-        cell.dateText.text = month + " " + str_date_arr[2]
         cell.separator.backgroundColor = myColors.btnColor.uiColor()
         cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
         cell.addressText.text = lsArr[indexPath.row].address!

@@ -233,10 +233,11 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             print("REPORT ERROR: %@", error.localizedDescription)
         })
         if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
-            currPoint = 537
-            paysViewHeight.constant = 90
+            currPoint = 557
+            paysViewHeight.constant = 110
             txt_sum_jkh.isHidden = true
-            servicePay.isHidden = true
+            servicePay.text = "Комиссия не взимается"
+            servicePay.textColor = .lightGray
             textSum.isHidden = true
             textService.isHidden = true
         }else{
@@ -639,6 +640,10 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
 //                }
             }
             DispatchQueue.main.async(execute: {
+                if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
+                    self.servicePay.text = "Комиссия не взимается"
+                    self.servicePay.textColor = .lightGray
+                }
                 self.updateTable()
             })
             

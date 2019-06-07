@@ -133,13 +133,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ИТОГО" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-CY-JaE">
-                                        <rect key="frame" x="16" y="6" width="60" height="21"/>
+                                        <rect key="frame" x="16" y="6" width="60" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сервисный сбор" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvD-hC-VO9">
-                                        <rect key="frame" x="16" y="32" width="135" height="21"/>
+                                        <rect key="frame" x="16" y="31.5" width="135" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -165,25 +165,25 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 руб." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3q-GE-1Ot">
-                                        <rect key="frame" x="297.5" y="6" width="73.5" height="20"/>
+                                        <rect key="frame" x="297.5" y="6.5" width="73.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 руб." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1i-V2-bje">
-                                        <rect key="frame" x="303" y="36" width="68" height="19.5"/>
+                                        <rect key="frame" x="303" y="32.5" width="68" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 руб." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnR-er-GSR">
-                                        <rect key="frame" x="297.5" y="59.5" width="73.5" height="19.5"/>
+                                        <rect key="frame" x="297.5" y="61.5" width="73.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ИТОГО К ОПЛАТЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMZ-K1-hhS">
-                                        <rect key="frame" x="16" y="61" width="150" height="21"/>
+                                        <rect key="frame" x="16" y="60.5" width="150" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -232,20 +232,20 @@
                                     <constraint firstItem="DKC-tj-BjP" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="68Y-1L-lOY"/>
                                     <constraint firstAttribute="trailing" secondItem="UMk-23-oSc" secondAttribute="trailing" constant="16" id="AMh-eA-rJ0"/>
                                     <constraint firstAttribute="trailing" secondItem="RnR-er-GSR" secondAttribute="trailing" constant="4" id="G9t-OV-twI"/>
-                                    <constraint firstItem="RnR-er-GSR" firstAttribute="top" secondItem="P1i-V2-bje" secondAttribute="bottom" constant="4" id="GLP-XB-kmF"/>
                                     <constraint firstItem="UMk-23-oSc" firstAttribute="top" secondItem="2O7-uP-SgY" secondAttribute="bottom" constant="5" id="GOv-PA-QbI"/>
                                     <constraint firstAttribute="trailing" secondItem="i3q-GE-1Ot" secondAttribute="trailing" constant="4" id="HQH-Yn-gVU"/>
                                     <constraint firstItem="2O7-uP-SgY" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="MhH-lT-L7i"/>
+                                    <constraint firstItem="i3q-GE-1Ot" firstAttribute="centerY" secondItem="YGB-CY-JaE" secondAttribute="centerY" id="NnV-bW-X78"/>
                                     <constraint firstItem="UMk-23-oSc" firstAttribute="leading" secondItem="DaL-sh-I0s" secondAttribute="trailing" constant="10" id="WjP-Km-Ycr"/>
                                     <constraint firstItem="DKC-tj-BjP" firstAttribute="top" secondItem="GCU-rr-B6M" secondAttribute="top" id="XoP-R9-Iv6"/>
-                                    <constraint firstItem="P1i-V2-bje" firstAttribute="top" secondItem="i3q-GE-1Ot" secondAttribute="bottom" constant="10" id="Y44-LW-PTw"/>
                                     <constraint firstItem="YGB-CY-JaE" firstAttribute="top" secondItem="DKC-tj-BjP" secondAttribute="bottom" constant="5" id="YUU-Ta-GcK"/>
-                                    <constraint firstItem="i3q-GE-1Ot" firstAttribute="top" secondItem="DKC-tj-BjP" secondAttribute="bottom" constant="5" id="Zvo-ox-3n8"/>
                                     <constraint firstAttribute="trailing" secondItem="DKC-tj-BjP" secondAttribute="trailing" constant="16" id="aNI-Nz-tY4"/>
                                     <constraint firstItem="DaL-sh-I0s" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="bHd-Jh-yPG"/>
                                     <constraint firstItem="YGB-CY-JaE" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="flv-Oa-ZEQ"/>
                                     <constraint firstItem="pvD-hC-VO9" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="hT2-AU-oGc"/>
                                     <constraint firstItem="zMZ-K1-hhS" firstAttribute="top" secondItem="pvD-hC-VO9" secondAttribute="bottom" constant="8" id="jhl-06-r6F"/>
+                                    <constraint firstItem="RnR-er-GSR" firstAttribute="centerY" secondItem="zMZ-K1-hhS" secondAttribute="centerY" id="q09-OG-Geq"/>
+                                    <constraint firstItem="P1i-V2-bje" firstAttribute="centerY" secondItem="pvD-hC-VO9" secondAttribute="centerY" id="qZT-HA-u1K"/>
                                     <constraint firstAttribute="bottom" secondItem="UMk-23-oSc" secondAttribute="bottom" constant="13" id="tl6-It-hsI"/>
                                     <constraint firstItem="DaL-sh-I0s" firstAttribute="top" secondItem="2O7-uP-SgY" secondAttribute="bottom" constant="5" id="uiZ-U1-sR1"/>
                                     <constraint firstAttribute="height" constant="165" id="x5J-qC-gik"/>

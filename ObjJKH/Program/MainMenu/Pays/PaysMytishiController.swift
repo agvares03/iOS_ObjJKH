@@ -488,10 +488,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         })
         UserDefaults.standard.set("", forKey: "payIdent")
         if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
-            currPoint = 512
-            paysViewHeight.constant = 115
+            currPoint = 532
+            paysViewHeight.constant = 135
             txt_sum_jkh.isHidden = true
-            servicePay.isHidden = true
+            servicePay.text = "Комиссия не взимается"
+            servicePay.textColor = .lightGray
             textSum.isHidden = true
             textService.isHidden = true
         }else{
@@ -898,6 +899,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 //                }
             }
             DispatchQueue.main.async(execute: {
+                if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
+                    self.servicePay.text = "Комиссия не взимается"
+                    self.servicePay.textColor = .lightGray
+                }
                 self.updateTable()
             })
             
