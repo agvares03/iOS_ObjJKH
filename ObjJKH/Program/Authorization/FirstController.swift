@@ -572,6 +572,7 @@ class FirstController: UIViewController {
         defaults.setValue(strah, forKey: "strah")
         defaults.setValue(history_counters, forKey: "history_counters")
         defaults.setValue(phone_operator, forKey: "phone_operator")
+        print("encoding_Pays: ", encoding_Pays)
         defaults.setValue(encoding_Pays, forKey: "encoding_Pays")
         defaults.synchronize()
     }

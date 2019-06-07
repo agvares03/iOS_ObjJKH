@@ -227,6 +227,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="P1i-V2-bje" secondAttribute="trailing" constant="4" id="2oV-0n-bCr"/>
                                     <constraint firstItem="zMZ-K1-hhS" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="3Ah-Gf-6G8"/>
+                                    <constraint firstAttribute="bottom" secondItem="DaL-sh-I0s" secondAttribute="bottom" constant="13" id="4Bt-qj-xsP"/>
                                     <constraint firstItem="pvD-hC-VO9" firstAttribute="top" secondItem="YGB-CY-JaE" secondAttribute="bottom" constant="5" id="4wt-n8-8NB"/>
                                     <constraint firstItem="DKC-tj-BjP" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="68Y-1L-lOY"/>
                                     <constraint firstAttribute="trailing" secondItem="UMk-23-oSc" secondAttribute="trailing" constant="16" id="AMh-eA-rJ0"/>
@@ -242,10 +243,10 @@
                                     <constraint firstItem="i3q-GE-1Ot" firstAttribute="top" secondItem="DKC-tj-BjP" secondAttribute="bottom" constant="5" id="Zvo-ox-3n8"/>
                                     <constraint firstAttribute="trailing" secondItem="DKC-tj-BjP" secondAttribute="trailing" constant="16" id="aNI-Nz-tY4"/>
                                     <constraint firstItem="DaL-sh-I0s" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="bHd-Jh-yPG"/>
-                                    <constraint firstItem="2O7-uP-SgY" firstAttribute="top" secondItem="YGB-CY-JaE" secondAttribute="bottom" constant="60" id="ebG-wA-i3V"/>
                                     <constraint firstItem="YGB-CY-JaE" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="flv-Oa-ZEQ"/>
                                     <constraint firstItem="pvD-hC-VO9" firstAttribute="leading" secondItem="GCU-rr-B6M" secondAttribute="leading" constant="16" id="hT2-AU-oGc"/>
                                     <constraint firstItem="zMZ-K1-hhS" firstAttribute="top" secondItem="pvD-hC-VO9" secondAttribute="bottom" constant="8" id="jhl-06-r6F"/>
+                                    <constraint firstAttribute="bottom" secondItem="UMk-23-oSc" secondAttribute="bottom" constant="13" id="tl6-It-hsI"/>
                                     <constraint firstItem="DaL-sh-I0s" firstAttribute="top" secondItem="2O7-uP-SgY" secondAttribute="bottom" constant="5" id="uiZ-U1-sR1"/>
                                     <constraint firstAttribute="height" constant="165" id="x5J-qC-gik"/>
                                     <constraint firstAttribute="trailing" secondItem="2O7-uP-SgY" secondAttribute="trailing" constant="16" id="xtf-Vu-ahC"/>
@@ -365,7 +366,6 @@
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="trailing" secondItem="MkC-gE-W0P" secondAttribute="trailing" id="Sf4-h5-ZRu"/>
                             <constraint firstItem="os7-xk-ILO" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="30" id="Tov-gD-Bbz"/>
                             <constraint firstItem="eJY-xZ-v4L" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="12" id="UZ7-4g-ZgU"/>
-                            <constraint firstItem="MkC-gE-W0P" firstAttribute="bottom" secondItem="enP-cC-omN" secondAttribute="bottom" id="YhJ-mf-ybL"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="110" id="ZXi-fS-SkV"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="462" id="a8l-2v-bU6"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="NqZ-RR-9oV" secondAttribute="trailing" constant="16" id="bVh-S1-TLN"/>
@@ -397,12 +397,15 @@
                         <outlet property="lsView" destination="os7-xk-ILO" id="iWz-Db-u4o"/>
                         <outlet property="ls_button" destination="eJY-xZ-v4L" id="eg5-K7-onF"/>
                         <outlet property="nonConectView" destination="aPA-3J-M3o" id="kPO-hp-JV6"/>
+                        <outlet property="paysViewHeight" destination="x5J-qC-gik" id="BO6-H0-sW7"/>
                         <outlet property="sendView" destination="GCU-rr-B6M" id="dcr-Zn-hcW"/>
                         <outlet property="servicePay" destination="P1i-V2-bje" id="QII-Xo-TSi"/>
                         <outlet property="spinImg" destination="NqZ-RR-9oV" id="xzx-5W-WIB"/>
                         <outlet property="support" destination="ewl-4A-dUc" id="SiD-uc-WoL"/>
                         <outlet property="supportBtn" destination="mSt-8I-KNw" id="N8Z-PD-4P6"/>
                         <outlet property="tableView" destination="ds5-Ye-OVv" id="Cvh-s6-0iX"/>
+                        <outlet property="textService" destination="pvD-hC-VO9" id="r3R-A2-PXx"/>
+                        <outlet property="textSum" destination="zMZ-K1-hhS" id="V8h-wS-ckS"/>
                         <outlet property="txt_sum_jkh" destination="RnR-er-GSR" id="38q-1y-RBp"/>
                         <outlet property="txt_sum_obj" destination="i3q-GE-1Ot" id="OIs-Zq-fGl"/>
                         <outlet property="updateConectBtn" destination="47Z-2G-Rj0" id="SMz-pR-dkY"/>

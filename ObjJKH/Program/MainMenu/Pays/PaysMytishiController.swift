@@ -84,6 +84,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
     @IBOutlet weak var txt_sum_obj: UILabel!
+    @IBOutlet weak var textSum: UILabel!
+    @IBOutlet weak var textService: UILabel!
+    @IBOutlet weak var paysViewHeight: NSLayoutConstraint!
     
     @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
         #if isMupRCMytishi
@@ -258,7 +261,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var payType = 0
     private func payedM(){
         let k:String = txt_sum_jkh.text!
+        let l:String = txt_sum_obj.text!
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
+        self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
         if (self.totalSum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -268,7 +273,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             items.removeAll()
             let servicePay = totalSum - self.sum
             var i = 0
-            print(sumOSV)
+//            print(sumOSV)
             checkBox.forEach{
                 if $0 == true && sumOSV[i] > 0.00{
                     let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
@@ -482,7 +487,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             print("REPORT ERROR: %@", error.localizedDescription)
         })
         UserDefaults.standard.set("", forKey: "payIdent")
-        currPoint = 462
+        if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
+            currPoint = 512
+            paysViewHeight.constant = 115
+            txt_sum_jkh.isHidden = true
+            servicePay.isHidden = true
+            textSum.isHidden = true
+            textService.isHidden = true
+        }else{
+            currPoint = 462
+            paysViewHeight.constant = 165
+            txt_sum_jkh.isHidden = false
+            servicePay.isHidden = false
+            textSum.isHidden = false
+            textService.isHidden = false
+        }
         // Логин и пароль
         login = defaults.string(forKey: "login")
         pass  = defaults.string(forKey: "pass")
@@ -806,7 +825,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                             self.txt_sum_jkh.text = "0.00 руб."
                                             self.servicePay.text  = "0.00 руб."
                                         }else{
-                                            s = $0["Sum"] as! Double
+                                            s = Double($0["Sum"] as! String)!
                                         }
                                     }else if self.choiceIdent == ($0["Ident"] as! String){
                                         if ($0["Sum"] as! String) == "0.00"{
@@ -817,7 +836,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                             self.txt_sum_jkh.text = "0.00 руб."
                                             self.servicePay.text  = "0.00 руб."
                                         }else{
-                                            s = $0["Sum"] as! Double
+                                            s = Double($0["Sum"] as! String)!
                                         }
                                     }
                                 }
@@ -832,15 +851,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 
                 DispatchQueue.main.async(execute: {
                     if (self.sum != 0) {
-                        //                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " р."
-//                        #if isKlimovsk12
-//                        let serviceP = self.sum / 100 * 1.5
-//                        #else
-                        #if isMupRCMytishi
-                        let serviceP = self.sum / 0.992 - self.sum
-                        #else
-                        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
-                        #endif
+                        let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
                         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                         self.totalSum = self.sum + serviceP
                         self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
@@ -871,11 +882,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                 }
                                 print(s)
                             }
-                            #if isMupRCMytishi
-                            let serviceP = self.sum / 0.992 - self.sum
-                            #else
-                            let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
-                            #endif
+                            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
                             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                             self.totalSum = s + serviceP
                             self.txt_sum_obj.text = String(format:"%.2f", s) + " руб."
@@ -1143,11 +1150,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         self.sum = sum
-        #if isMupRCMytishi
-        let serviceP = self.sum / 0.992 - self.sum
-        #else
-        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
-        #endif
+        let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
         self.totalSum = self.sum + serviceP
         self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
@@ -1220,11 +1223,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 i += 1
             }
-            #if isMupRCMytishi
-            let serviceP = self.sum / 0.992 - self.sum
-            #else
-            let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
-            #endif
+            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
@@ -1266,11 +1265,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 i += 1
             }
-            #if isMupRCMytishi
-            let serviceP = self.sum / 0.992 - self.sum
-            #else
-            let serviceP = UserDefaults.standard.double(forKey: "servPercent") * self.sum / 100
-            #endif
+            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
