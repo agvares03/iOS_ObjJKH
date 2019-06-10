@@ -923,9 +923,18 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         // Подхватываем показ клавиатуры
-//        UserDefaults.standard.addObserver(self, forKeyPath: "PaysError", options:NSKeyValueObservingOptions.new, context: nil)
-//        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentID", options:NSKeyValueObservingOptions.new, context: nil)
-        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
+            oneCheck = 1
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && onePay == 0{
+            onePay = 1
+            addMobilePay()
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         txt_sum_obj.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -933,8 +942,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        UserDefaults.standard.removeObserver(self, forKeyPath: "PaymentID")
-//        UserDefaults.standard.removeObserver(self, forKeyPath: "PaysError")
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         txt_sum_obj.removeTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -958,21 +965,6 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     var onePay = 0
     var oneCheck = 0
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
-            oneCheck = 1
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
-            } else {
-                // Fallback on earlier versions
-            }
-        }
-        if UserDefaults.standard.bool(forKey: "PaymentSucces") && onePay == 0{
-            onePay = 1
-            addMobilePay()
-        }
-    }
     
     func addMobilePay() {
         var ident: String = ""

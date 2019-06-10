@@ -894,6 +894,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                         }
                                     }
                                 }
+                                self.sum = s
                                 if s != sumOSV[0]{
                                     sumOSV[0] = s
                                     endArr[0] = String(s)
@@ -934,7 +935,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                         self.servicePay.text  = "0.00 руб."
                                     }
                                 }
-                                print(s)
+//                                print(s)
                             }
                             if s > 0{
                                 let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
@@ -946,7 +947,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         }
                     } else {
                         //                    self.txt_sum_jkh.text = "0,00 р."
-                        self.self.txt_sum_obj.text = "0.00 руб."
+                        self.txt_sum_obj.text = "0.00 руб."
                         self.txt_sum_jkh.text = "0.00 руб."
                         self.servicePay.text  = "0.00 руб."
                     }
@@ -1393,19 +1394,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        //        k = 0
-        UserDefaults.standard.addObserver(self, forKeyPath: "PaysError", options:NSKeyValueObservingOptions.new, context: nil)
-        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentID", options:NSKeyValueObservingOptions.new, context: nil)
-        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
-        // Подхватываем показ клавиатуры
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    var onePay = 0
-    var oneCheck = 0
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && onePay == 0{
+            onePay = 1
+            addMobilePay()
+        }
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1
             if #available(iOS 10.3, *) {
@@ -1414,11 +1406,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 // Fallback on earlier versions
             }
         }
-        if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && onePay == 0{
-            onePay = 1
-            addMobilePay()
-        }
+        // Подхватываем показ клавиатуры
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+    
+    var onePay = 0
+    var oneCheck = 0
     
     func addMobilePay() {
         var ident: String = ""
@@ -1473,7 +1467,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                 }
                                                 
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
-                                                print("responseString = \(responseString)")
+                                                print("responseStringMobile = \(responseString)")
                                                 UserDefaults.standard.setValue("", forKey: "PaysError")
                                                 UserDefaults.standard.setValue("", forKey: "PaymentID")
                                                 UserDefaults.standard.set(false, forKey: "PaymentSucces")
@@ -1493,8 +1487,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UserDefaults.standard.removeObserver(self, forKeyPath: "PaymentID")
-        UserDefaults.standard.removeObserver(self, forKeyPath: "PaysError")
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
