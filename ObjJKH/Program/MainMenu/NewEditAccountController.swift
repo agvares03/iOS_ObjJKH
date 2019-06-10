@@ -614,9 +614,9 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             cell.payDebtHeight.constant = 0
             cell.sumViewHeight.constant = 50
             cell.sumInfo.text = "Имеется переплата на " + lsArr[indexPath.row].date! + " на сумму"
-            cell.sumText.text = String(format:"%.2f", sumBoDate) + " руб."
+            cell.sumText.text = String(format:"%.2f", sumBoDate).replacingOccurrences(of: "-", with: "") + " руб."
             if Double(lsArr[indexPath.row].sum!)! < 0.00{
-                cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
+                cell.sumText.text = lsArr[indexPath.row].sum!.replacingOccurrences(of: "-", with: "") + " руб."
             }
         }else if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayToDate{
             cell.noDebtText.isHidden = false

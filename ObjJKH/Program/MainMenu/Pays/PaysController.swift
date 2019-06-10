@@ -592,7 +592,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                     }
                 }
                 DispatchQueue.main.async(execute: {
-                    if (self.sum != 0) {
+                    if (self.sum <= 0) {
                         let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
                         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                         self.totalSum = self.sum + serviceP
