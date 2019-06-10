@@ -93,6 +93,7 @@ class Pay: UIViewController, UIWebViewDelegate {
         }
         if webViewCurrUrl.contains("Платеж успешно выполнен"){
             UserDefaults.standard.set(true, forKey: "PaymentSucces")
+            UserDefaults.standard.synchronize()
         }        
     }
     

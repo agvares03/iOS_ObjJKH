@@ -12,6 +12,7 @@ import CoreData
 import SwiftyXMLParser
 import YandexMobileAds
 import GoogleMobileAds
+import StoreKit
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)
@@ -266,6 +267,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         StopIndicators()
+        UserDefaults.standard.set(false, forKey: "PaymentSucces")
+        UserDefaults.standard.synchronize()
         let defaults = UserDefaults.standard
         var phone = defaults.string(forKey: "phone_operator")
         if phone?.first == "8"{
@@ -416,7 +419,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if defaults.bool(forKey: "show_Ad"){
             if defaults.integer(forKey: "ad_Type") == 2{
-                let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                let configuration = YMANativeAdLoaderConfiguration(blockID: defaults.string(forKey: "adsCode")!,
                                                                    imageSizes: [kYMANativeImageSizeMedium],
                                                                    loadImagesAutomatically: true)
                 self.adLoader = YMANativeAdLoader(configuration: configuration)
@@ -424,7 +427,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 loadAd()
             }else if defaults.integer(forKey: "ad_Type") == 3{
                 gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+//                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                gadBannerView.adUnitID = defaults.string(forKey: "adsCode")
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
                 gadBannerView.delegate = self
@@ -614,6 +618,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 gadBannerView.load(request)
             }
         }
+        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
         self.load_new_data()
         self.getNews()
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -2189,6 +2194,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func update() {
         getQuestions()
+    }
+    
+    var oneCheck = 0
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
+            oneCheck = 1
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
     }
 }
 

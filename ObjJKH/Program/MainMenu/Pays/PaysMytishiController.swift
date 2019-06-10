@@ -286,6 +286,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     #elseif isUpravdomChe
                     let ItemsData = ["ShopCode" : "245322", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                     items.append(ItemsData)
+                    #elseif isReutKomfort
+                    let ItemsData = ["ShopCode" : "234821", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                    items.append(ItemsData)
                     #else
                     let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
@@ -299,6 +302,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
                 #elseif isUpravdomChe
                 let ItemsData = ["ShopCode" : "245322", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                #elseif isReutKomfort
+                let ItemsData = ["ShopCode" : "234821", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
                 #else
                 let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
                 #endif
@@ -323,6 +328,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 #if isKlimovsk12
                 DataStr = DataStr + "1-\(String(format:"%.2f", self.sum))|"
                 #elseif isUpravdomChe
+                checkBox.forEach{
+                    if $0 == true && sumOSV[i] > 0.00{
+                        DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                    }
+                    i += 1
+                }
+                #elseif isReutKomfort
                 checkBox.forEach{
                     if $0 == true && sumOSV[i] > 0.00{
                         DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
@@ -404,7 +416,56 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             Data["chargeFlag"] = "false"
             let shopCode = "245322"
             var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
+            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "УК Упрадом Чебоксары"] as [String : Any]
+            shops.append(shopItem)
+            print(items)
+            
+            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            let name = "Оплата услуг ЖКХ"
+            let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
+            print(receiptData)
+            if payType == 1{
+                let address = PKContact()
+                address.emailAddress = defaults.object(forKey: "mail")! as? String
+                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }else{
+                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+            #elseif isReutKomfort
+            if selectLS == "Все"{
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+                let str_ls_arr = str_ls.components(separatedBy: ",")
+                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
+                
+            }else{
+                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
+            }
+            UserDefaults.standard.synchronize()
+            Data["chargeFlag"] = "false"
+            let shopCode = "234821"
+            var shops:[Any] = []
+            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "УК РеутКомфорт"] as [String : Any]
             shops.append(shopItem)
             print(items)
             
@@ -580,7 +641,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         updateUserInterface()
         if defaults.bool(forKey: "show_Ad"){
             if defaults.integer(forKey: "ad_Type") == 2{
-                let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                let configuration = YMANativeAdLoaderConfiguration(blockID: defaults.string(forKey: "adsCode")!,
                                                                    imageSizes: [kYMANativeImageSizeMedium],
                                                                    loadImagesAutomatically: true)
                 self.adLoader = YMANativeAdLoader(configuration: configuration)
@@ -588,14 +649,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 loadAd()
             }else if defaults.integer(forKey: "ad_Type") == 3{
                 gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                //                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                gadBannerView.adUnitID = defaults.string(forKey: "adsCode")
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
-                #if DEBUG
-                request.testDevices = ["2019ef9a63d2b397740261c8441a0c9b"];
-                #else
-                request.testDevices = nil;
-                #endif
+                gadBannerView.delegate = self
                 gadBannerView.load(request)
             }
         }

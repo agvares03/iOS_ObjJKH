@@ -195,7 +195,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         newCounters.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         if defaults.bool(forKey: "show_Ad"){
             if defaults.integer(forKey: "ad_Type") == 2{
-                let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                let configuration = YMANativeAdLoaderConfiguration(blockID: defaults.string(forKey: "adsCode")!,
                                                                    imageSizes: [kYMANativeImageSizeMedium],
                                                                    loadImagesAutomatically: true)
                 self.adLoader = YMANativeAdLoader(configuration: configuration)
@@ -203,14 +203,11 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                 loadAd()
             }else if defaults.integer(forKey: "ad_Type") == 3{
                 gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                //                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                gadBannerView.adUnitID = defaults.string(forKey: "adsCode")
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
-                #if DEBUG
-                request.testDevices = ["2019ef9a63d2b397740261c8441a0c9b"];
-                #else
-                request.testDevices = nil;
-                #endif
+//                gadBannerView.delegate = self
                 gadBannerView.load(request)
             }
         }
@@ -311,6 +308,14 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         // Подхватываем показ клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (responseString == "5"){
+            UserDefaults.standard.set(true, forKey: "PaymentSucces")
+            UserDefaults.standard.synchronize()
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

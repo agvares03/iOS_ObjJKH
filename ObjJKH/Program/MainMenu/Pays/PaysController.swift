@@ -12,6 +12,7 @@ import CoreData
 import YandexMobileAds
 import GoogleMobileAds
 import YandexMobileMetrica
+import StoreKit
 
 private protocol MainDataProtocol:  class {}
 
@@ -228,6 +229,8 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         super.viewDidLoad()
         let defaults     = UserDefaults.standard
         let params : [String : Any] = ["Переход на страницу": "Оплата"]
+        UserDefaults.standard.set(false, forKey: "PaymentSucces")
+        UserDefaults.standard.synchronize()
         YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
             //            print("DID FAIL REPORT EVENT: %@", message)
             print("REPORT ERROR: %@", error.localizedDescription)
@@ -342,7 +345,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         updateUserInterface()
         if defaults.bool(forKey: "show_Ad"){
             if defaults.integer(forKey: "ad_Type") == 2{
-                let configuration = YMANativeAdLoaderConfiguration(blockID: "R-M-393573-1",
+                let configuration = YMANativeAdLoaderConfiguration(blockID: defaults.string(forKey: "adsCode")!,
                                                                    imageSizes: [kYMANativeImageSizeMedium],
                                                                    loadImagesAutomatically: true)
                 self.adLoader = YMANativeAdLoader(configuration: configuration)
@@ -350,14 +353,11 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 loadAd()
             }else if defaults.integer(forKey: "ad_Type") == 3{
                 gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                //                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                gadBannerView.adUnitID = defaults.string(forKey: "adsCode")
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
-                #if DEBUG
-                request.testDevices = ["2019ef9a63d2b397740261c8441a0c9b"];
-                #else
-                request.testDevices = nil;
-                #endif
+//                gadBannerView.delegate = self
                 gadBannerView.load(request)
             }
         }
@@ -871,6 +871,11 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 }
             }
         }
+        let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
+        self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+        self.totalSum = self.sum + serviceP
+//        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {
@@ -918,6 +923,9 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         // Подхватываем показ клавиатуры
+//        UserDefaults.standard.addObserver(self, forKeyPath: "PaysError", options:NSKeyValueObservingOptions.new, context: nil)
+//        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentID", options:NSKeyValueObservingOptions.new, context: nil)
+        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         txt_sum_obj.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -925,7 +933,8 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+//        UserDefaults.standard.removeObserver(self, forKeyPath: "PaymentID")
+//        UserDefaults.standard.removeObserver(self, forKeyPath: "PaysError")
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         txt_sum_obj.removeTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -945,6 +954,95 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             let payController             = segue.destination as! Pay
             payController.ident = ident
         }
+    }
+    
+    var onePay = 0
+    var oneCheck = 0
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
+            oneCheck = 1
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && onePay == 0{
+            onePay = 1
+            addMobilePay()
+        }
+    }
+    
+    func addMobilePay() {
+        var ident: String = ""
+        var idPay: String = UserDefaults.standard.string(forKey: "PaymentID")!
+        if UserDefaults.standard.string(forKey: "PaymentID") == ""{
+            idPay = "12345"
+        }
+        var status = ""
+        if UserDefaults.standard.string(forKey: "PaysError") == ""{
+            status = "Оплачен"
+        }else{
+            status = UserDefaults.standard.string(forKey: "PaysError")!
+        }
+        let sum = self.totalSum
+        if selectLS == "Все"{
+            let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+            let str_ls_arr = str_ls.components(separatedBy: ",")
+            for i in 0...str_ls_arr.count - 1{
+                ident = str_ls_arr[0]
+            }
+        }else{
+            ident = selectLS
+        }
+        let urlPath = Server.SERVER + "MobileAPI/AddPay.ashx?"
+            + "idpay=" + idPay.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&status=" + status.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&desc=&sum=" + String(sum).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                    UserDefaults.standard.synchronize()
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
+                                                print("responseString = \(responseString)")
+                                                UserDefaults.standard.setValue("", forKey: "PaysError")
+                                                UserDefaults.standard.setValue("", forKey: "PaymentID")
+                                                UserDefaults.standard.set(false, forKey: "PaymentSucces")
+                                                if responseString != "ok"{
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Ошибка", message: responseString as String, preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ok", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }
+                                                
+        })
+        
+        task.resume()
     }
 }
 
