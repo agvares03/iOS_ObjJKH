@@ -618,7 +618,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 gadBannerView.load(request)
             }
         }
-        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
+            oneCheck = 1
+            UserDefaults.standard.set(false, forKey: "PaymentSucces")
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
         self.load_new_data()
         self.getNews()
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -2107,6 +2115,16 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             payController.debtArr = self.debtArr
         }
+        #elseif isReutKomfort
+        if segue.identifier == "paysMytishi" {
+            let payController             = segue.destination as! PaysMytishiController
+            if choiceIdent == ""{
+                payController.saldoIdent = "Все"
+            }else{
+                payController.saldoIdent = choiceIdent
+            }
+            payController.debtArr = self.debtArr
+        }
         #elseif isKlimovsk12
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
@@ -2185,6 +2203,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #elseif isUpravdomChe
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #elseif isReutKomfort
+        self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #elseif isKlimovsk12
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #else
@@ -2197,17 +2217,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     var oneCheck = 0
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
-            oneCheck = 1
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
-            } else {
-                // Fallback on earlier versions
-            }
-        }
-    }
 }
 
 class HomeLSCell: UITableViewCell {

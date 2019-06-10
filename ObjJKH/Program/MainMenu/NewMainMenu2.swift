@@ -443,6 +443,8 @@ class NewMainMenu2: UIViewController {
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #elseif isUpravdomChe
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #elseif isReutKomfort
+        self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #elseif isKlimovsk12
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #else
@@ -472,6 +474,11 @@ class NewMainMenu2: UIViewController {
             payController.debtArr = self.debtArr
         }
         #elseif isUpravdomChe
+        if segue.identifier == "paysMytishi" {
+            let payController             = segue.destination as! PaysMytishiController
+            payController.debtArr = self.debtArr
+        }
+        #elseif isReutKomfort
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
             payController.debtArr = self.debtArr

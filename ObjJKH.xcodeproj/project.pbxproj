@@ -275,6 +275,7 @@
 		1C953D6321FAAE7200313221 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C953D6221FAAE7100313221 /* GoogleService-Info.plist */; };
 		1C953D6621FAC9DD00313221 /* OnePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6421FAC9D500313221 /* OnePageController.swift */; };
 		1C953D6821FAC9F100313221 /* TwoPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6721FAC9F100313221 /* TwoPageController.swift */; };
+		1CA666B222AE8AB2005EE645 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
 		1CAA429A226596980057A36B /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
 		1CAA429B226596980057A36B /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
 		1CAA429C226596990057A36B /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
@@ -3233,6 +3234,7 @@
 		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/DJ/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C953D6421FAC9D500313221 /* OnePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePageController.swift; sourceTree = "<group>"; };
 		1C953D6721FAC9F100313221 /* TwoPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageController.swift; sourceTree = "<group>"; };
+		1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReutKomfort-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CAE79A3229D02F6005223C1 /* NewSaldoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSaldoController.swift; sourceTree = "<group>"; };
 		1CC3FF212237EB2600FDBA82 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainMenu.storyboard; sourceTree = "<group>"; };
@@ -3885,6 +3887,7 @@
 				1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */,
 				1C0A4B6822A53DCE00855BA6 /* UK_Upravdom_Che-Bridging-Header.h */,
 				1CF8B8F12223D7E400B1D289 /* UK_Garant-Bridging-Header.h */,
+				1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -8286,6 +8289,7 @@
 				1CC3FF3D223A3E2500FDBA82 /* NewHomePage.swift in Sources */,
 				411F9AD922238A0E00C5F697 /* FirstController.swift in Sources */,
 				411F9ADA22238A0E00C5F697 /* CountersController.swift in Sources */,
+				1CA666B222AE8AB2005EE645 /* PaysMytishiController.swift in Sources */,
 				1C0A1E1E2243548B0040E7F7 /* NewMainMenu.swift in Sources */,
 				411F9ADB22238A0E00C5F697 /* Applications+CoreDataProperties.swift in Sources */,
 				411F9ADC22238A0E00C5F697 /* Saldo+CoreDataProperties.swift in Sources */,
@@ -9989,7 +9993,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isReutKomfort DEBUG";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ReutKomfort-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -10018,7 +10022,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isReutKomfort;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/ReutKomfort-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";

@@ -776,7 +776,15 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
 //        ls_Button.setTitle("Все", for: UIControlState.normal)
 //        choiceIdent = "Все"
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
+        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
+            oneCheck = 1
+            UserDefaults.standard.set(false, forKey: "PaymentSucces")
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
         DB().del_db(table_name: "Counters")
         parse_Countrers(login: edLogin, pass: edPass)
     }
@@ -1026,17 +1034,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
 
     var oneCheck = 0
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
-            oneCheck = 1
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
-            } else {
-                // Fallback on earlier versions
-            }
-        }
-    }
 }
 
 class MupCounterCell: UITableViewCell {
