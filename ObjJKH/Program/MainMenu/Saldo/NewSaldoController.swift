@@ -77,12 +77,8 @@ class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewData
                                                         let month = json.month
                                                         let link = json.link
                                                         let sum = json.sum
-                                                        var i = 0
                                                         let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
-                                                        if (link?.contains(".png"))! || (link?.contains(".jpg"))! || (link?.contains(".pdf"))!{
-                                                            print(fileObj.sum, fileObj.month)
-                                                            self.fileList.append(fileObj)
-                                                        }
+                                                        self.fileList.append(fileObj)
                                                     }
                                                     DispatchQueue.main.async {
                                                         self.fileList.reverse()
@@ -136,6 +132,11 @@ class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewData
     var endSum = ""
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableReceipts.dequeueReusableCell(withIdentifier: "HomeReceiptsCell1") as! HomeReceiptsCell
+        if (fileList[indexPath.row].link.contains(".png")) || (fileList[indexPath.row].link.contains(".jpg")) || (fileList[indexPath.row].link.contains(".pdf")){
+            cell.goReceipt.isHidden = false
+        }else{
+            cell.goReceipt.isHidden = true
+        }
         cell.goReceipt.tintColor = myColors.btnColor.uiColor()
         cell.separator.backgroundColor = myColors.btnColor.uiColor()
         cell.receiptText.text = self.get_name_month(number_month: String(fileList[indexPath.row].month)) + " " + String(fileList[indexPath.row].year)
