@@ -81,6 +81,8 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         parse_all(login: login, pass: pass)
         #if isMupRCMytishi
         #elseif isKlimovsk12
+        #elseif isReutKomfort
+        #elseif isUpravdomChe
         #else
         headerViewTop.constant = 0
         allPaysBtn.isHidden = true
