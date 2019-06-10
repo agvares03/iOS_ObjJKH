@@ -161,6 +161,38 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #endif
         
+        // targetName - используется для определения ключа терминала (оплата Мытищи)
+        #if isOur_Obj_Home
+        #elseif isChist_Dom
+        #elseif isMupRCMytishi
+            UserDefaults.standard.set("MupRCMytishi", forKey: "targetName")
+            UserDefaults.standard.synchronize()
+        #elseif isDJ
+        #elseif isStolitsa
+        #elseif isKomeks
+        #elseif isUKKomfort
+        #elseif isKlimovsk12
+            UserDefaults.standard.set("Klimovsk12", forKey: "targetName")
+            UserDefaults.standard.synchronize()
+        #elseif isPocket
+        #elseif isReutKomfort
+            UserDefaults.standard.set("ReutComfort", forKey: "targetName")
+            UserDefaults.standard.synchronize()
+        #elseif isUKGarant
+        #elseif isSoldatova1
+        #elseif isTafgai
+        #elseif isServiceKomfort
+        #elseif isParitet
+        #elseif isSkyfort
+        #elseif isStandartDV
+        #elseif isGarmonia
+        #elseif isUpravdomChe
+            UserDefaults.standard.set("UK_Upravdom_Che", forKey: "targetName")
+            UserDefaults.standard.synchronize()
+        #elseif isJKH_Pavlovskoe
+        #elseif isPerspectiva
+        #endif
+        
         // Установим цвета для элементов в зависимости от Таргета
         btnEnter.backgroundColor = myColors.btnColor.uiColor()
         separator1.backgroundColor = myColors.labelColor.uiColor()

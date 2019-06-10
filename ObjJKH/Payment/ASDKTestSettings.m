@@ -28,6 +28,9 @@
     if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
+    if ([savedValue  isEqual: @"ReutComfort"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
 	return @[kASDKTestTerminalKey];
 }
 
@@ -43,6 +46,9 @@
             result = kASDKTestTerminalKeyKlimovsk;
         }
         if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"ReutComfort"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
 	}

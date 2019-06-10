@@ -653,7 +653,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 gadBannerView.adUnitID = defaults.string(forKey: "adsCode")
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
-                gadBannerView.delegate = self
+                gadBannerView.delegate = self as! GADBannerViewDelegate
                 gadBannerView.load(request)
             }
         }
