@@ -765,7 +765,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         idArr.removeAll()
         identOSV.removeAll()
         idOSV.removeAll()
-        print(endSum)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Saldo")
         fetchRequest.predicate = NSPredicate.init(format: "num_month = %@ AND year = %@", String(self.iterMonth), String(self.iterYear))
         do {
@@ -773,10 +772,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             for result in results {
                 let object = result as! NSManagedObject
                 //                if ident != "Все"{
-                var upravdom = 0
-                #if isUpravdomChe
-                upravdom = 1
-                #endif
                 if UserDefaults.standard.string(forKey: "encoding_Pays") == "1"{
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "usluga") as! String) != "Я"{
@@ -851,7 +846,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 
                 DispatchQueue.main.async(execute: {
-                    if (self.sum <= 0) {
+                    if (self.sum > 0) {
                         let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
                         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                         self.totalSum = self.sum + serviceP
@@ -883,11 +878,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                 }
                                 print(s)
                             }
-                            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
-                            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
-                            self.totalSum = s + serviceP
-                            self.txt_sum_obj.text = String(format:"%.2f", s) + " руб."
-                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                            if s > 0{
+                                let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
+                                self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+                                self.totalSum = s + serviceP
+                                self.txt_sum_obj.text = String(format:"%.2f", s) + " руб."
+                                self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                            }
                         }
                     } else {
                         //                    self.txt_sum_jkh.text = "0,00 р."

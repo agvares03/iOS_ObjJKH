@@ -592,7 +592,7 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                     }
                 }
                 DispatchQueue.main.async(execute: {
-                    if (self.sum <= 0) {
+                    if (self.sum > 0) {
                         let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
                         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                         self.totalSum = self.sum + serviceP
@@ -624,11 +624,14 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                                 }
                                 print(s)
                             }
-                            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
-                            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
-                            self.totalSum = s + serviceP
-                            self.txt_sum_obj.text = String(format:"%.2f", s)
-                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                            if s > 0{
+                                let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
+                                self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+                                self.totalSum = s + serviceP
+                                self.txt_sum_obj.text = String(format:"%.2f", s)
+                                self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                            }
+                            
                         }
                     } else {
                         //                    self.txt_sum_jkh.text = "0,00 р."
