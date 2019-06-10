@@ -71,6 +71,9 @@
     if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
         return kASDKTestPasswordKlimovsk;
     }
+    if ([savedValue  isEqual: @"ReutComfort"]){
+        return kASDKTestPasswordKlimovsk;
+    }
 	return kASDKTestPassword;
 }
 
@@ -82,6 +85,9 @@
         return kASDKTestPublicKeyKlimovsk;
     }
     if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"ReutComfort"]){
         return kASDKTestPublicKeyKlimovsk;
     }
     return kASDKTestPublicKey;

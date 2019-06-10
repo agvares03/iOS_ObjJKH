@@ -899,6 +899,16 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
                 alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             })
+        }else if responseString.contains("недостаточно прав") {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "", message: "Недостаточно прав для выполнения операции", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
         } else if (responseString == "1") {
             DispatchQueue.main.async(execute: {
                 // Экземпляр класса DB
@@ -944,6 +954,16 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
                 alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             })
+        }else if responseString.contains("недостаточно прав") {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "", message: "Недостаточно прав для выполнения операции", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
         } else{
             DispatchQueue.main.async(execute: {
                 self.load_new_data()
@@ -974,6 +994,16 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
                 }
                 alert.addAction(cancelAction)
                 alert.addAction(supportAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }else if responseString.contains("недостаточно прав") {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "", message: "Недостаточно прав для выполнения операции", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
         } else{
