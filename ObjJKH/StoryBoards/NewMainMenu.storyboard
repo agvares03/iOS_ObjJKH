@@ -1915,6 +1915,7 @@
                         <segue destination="Xy6-1b-ghE" kind="show" identifier="goPayHistory" id="CFP-J9-yjH"/>
                         <segue destination="3b2-k7-PRB" kind="show" identifier="goPayHistoryMytishi" id="kGH-85-ijz"/>
                         <segue destination="sgy-Dp-eJA" kind="show" identifier="go_to_app" id="dzo-rQ-cnH"/>
+                        <segue destination="b2t-KN-1kD" kind="show" identifier="paysMytishi2" id="eYq-Ct-Btc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76W-eJ-S4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3264,6 +3265,7 @@
                         <segue destination="CI8-yu-H5e" kind="show" identifier="pays" id="KAh-TB-RwK"/>
                         <segue destination="dP9-TT-jre" kind="show" identifier="paysMytishi" id="VI0-A3-yGV"/>
                         <segue destination="b0H-FT-oKT" kind="show" identifier="support" id="kvO-2U-F0q"/>
+                        <segue destination="H2R-w2-W77" kind="show" identifier="paysMytishi2" id="XoR-sX-4nR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RS7-OR-Cdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3920,6 +3922,7 @@
                         <segue destination="dP9-TT-jre" kind="show" identifier="paysMytishi" id="Pwj-1d-22M"/>
                         <segue destination="yqO-oc-1b6" kind="show" identifier="addLSPocket" id="hxl-63-Ecr"/>
                         <segue destination="sgy-Dp-eJA" kind="show" identifier="go_to_app" id="qZW-oS-uRV"/>
+                        <segue destination="H2R-w2-W77" kind="show" identifier="paysMytishi2" id="mCg-qu-B3k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Q5-26-bkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3990,6 +3993,14 @@
             </objects>
             <point key="canvasLocation" x="-622" y="187"/>
         </scene>
+        <!--2PaysMytishi-->
+        <scene sceneID="A21-CO-CTm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="2PaysMytishi" referencedIdentifier="2PaysMytishi" id="b2t-KN-1kD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eF9-wp-bWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-601" y="234"/>
+        </scene>
         <!--Voting-->
         <scene sceneID="Ybd-Fl-vPH">
             <objects>
@@ -4005,6 +4016,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uwe-Yk-W3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="958" y="226"/>
+        </scene>
+        <!--2PaysMytishi-->
+        <scene sceneID="WiQ-lK-Ia2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="2PaysMytishi" referencedIdentifier="2PaysMytishi" id="H2R-w2-W77" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ybM-9U-Df1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2157" y="226"/>
         </scene>
     </scenes>
     <resources>
@@ -4037,9 +4056,10 @@
         <image name="webs_menu" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dzo-rQ-cnH"/>
-        <segue reference="jYg-pB-5lL"/>
-        <segue reference="2dh-Vt-jmR"/>
+        <segue reference="mCg-qu-B3k"/>
+        <segue reference="qZW-oS-uRV"/>
+        <segue reference="QyU-aW-HIx"/>
+        <segue reference="8Cn-1r-0Af"/>
         <segue reference="eFt-Yy-DpX"/>
         <segue reference="Pwj-1d-22M"/>
         <segue reference="vAR-XL-Bc6"/>
@@ -4049,7 +4069,7 @@
         <segue reference="WbI-xw-6JQ"/>
         <segue reference="Dlz-bY-09d"/>
         <segue reference="JbC-lw-adM"/>
-        <segue reference="Xov-w8-Ys4"/>
+        <segue reference="eE3-sw-gUi"/>
         <segue reference="0eH-c3-S8y"/>
         <segue reference="d1f-xl-6a3"/>
     </inferredMetricsTieBreakers>

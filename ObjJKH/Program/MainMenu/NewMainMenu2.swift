@@ -439,7 +439,11 @@ class NewMainMenu2: UIViewController {
     // Оплаты
     var debtArr:[AnyObject] = []
     @IBAction func go_pays(_ sender: UIButton) {
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "paysMytishi2", sender: self)
+        #else
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #endif
 //        self.performSegue(withIdentifier: "pays", sender: self)
     }
     
@@ -461,6 +465,10 @@ class NewMainMenu2: UIViewController {
 //        }
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
+            payController.debtArr = self.debtArr
+        }
+        if segue.identifier == "paysMytishi2" {
+            let payController             = segue.destination as! PaysMytishi2Controller
             payController.debtArr = self.debtArr
         }
 //        if segue.identifier == "pays" {

@@ -2093,6 +2093,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.predValue = predVal
             payController.metrId = metrID
         }
+        
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
             if choiceIdent == ""{
@@ -2102,6 +2103,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             payController.debtArr = self.debtArr
             payController.isHomePage = true
+        }
+        if segue.identifier == "paysMytishi2" {
+            let payController             = segue.destination as! PaysMytishi2Controller
+            if choiceIdent == ""{
+                payController.saldoIdent = "Все"
+            }else{
+                payController.saldoIdent = choiceIdent
+            }
+            payController.debtArr = self.debtArr
         }
         if segue.identifier == "pays" {
             let payController             = segue.destination as! PaysController
@@ -2165,7 +2175,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var choiceIdent = ""
     func goPaysPressed(ident: String) {
         choiceIdent = ident
+        #if isMupRCMytishi
+        self.performSegue(withIdentifier: "paysMytishi2", sender: self)
+        #else
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
+        #endif
 //        self.performSegue(withIdentifier: "pays", sender: self)
     }
     
