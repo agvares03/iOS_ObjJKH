@@ -674,6 +674,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             payController.debtArr = self.debtArr
             payController.isHomePage = true
         }
+        #if isMupRCMytishi
         if segue.identifier == "paysMytishi2" {
             let payController             = segue.destination as! PaysMytishi2Controller
             if choiceIdent == ""{
@@ -683,6 +684,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             }
             payController.debtArr = self.debtArr
         }
+        #endif
         if segue.identifier == "pays" {
             let payController             = segue.destination as! PaysController
             if choiceIdent == ""{

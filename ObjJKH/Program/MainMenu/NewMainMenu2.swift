@@ -467,10 +467,12 @@ class NewMainMenu2: UIViewController {
             let payController             = segue.destination as! PaysMytishiController
             payController.debtArr = self.debtArr
         }
+        #if isMupRCMytishi
         if segue.identifier == "paysMytishi2" {
             let payController             = segue.destination as! PaysMytishi2Controller
             payController.debtArr = self.debtArr
         }
+        #endif
 //        if segue.identifier == "pays" {
 //            let payController             = segue.destination as! PaysController
 //            payController.debtArr = self.debtArr
