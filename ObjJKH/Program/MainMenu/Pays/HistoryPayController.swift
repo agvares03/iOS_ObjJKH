@@ -11,12 +11,12 @@ import UIKit
 class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        if UserDefaults.standard.bool(forKey: "fromMenu"){
-            UserDefaults.standard.set(false, forKey: "fromMenu")
+//        if UserDefaults.standard.bool(forKey: "fromMenu"){
+//            UserDefaults.standard.set(false, forKey: "fromMenu")
             navigationController?.popViewController(animated: true)
-        }else{
-            navigationController?.dismiss(animated: true, completion: nil)
-        }
+//        }else{
+//            navigationController?.dismiss(animated: true, completion: nil)
+//        }
     }
     
     @IBAction func updateConect(_ sender: UIButton) {
