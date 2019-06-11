@@ -276,46 +276,73 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             items.removeAll()
             let servicePay = totalSum - self.sum
             var i = 0
-//            print(sumOSV)
+            var k = false
             checkBox.forEach{
-                if $0 == true && sumOSV[i] > 0.00{
-                    let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
-                    #if isKlimovsk12
-                    var ItemsData: [String : Any] = [:]
-                    if i == 0{
-                        ItemsData = ["ShopCode" : "215944", "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                        items.append(ItemsData)
-                    }
-                    #elseif isUpravdomChe
-                    let ItemsData = ["ShopCode" : "245322", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isReutKomfort
-                    let ItemsData = ["ShopCode" : "234821", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isMupRCMytishi
-                    let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                    #endif
+                if $0 == true && sumOSV[i] < 0{
+                    k = true
                 }
                 i += 1
             }
-            if servicePay != 0{
-                let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
+            i = 0
+            if k{
+                let price = String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: "")
                 #if isKlimovsk12
-                let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-                items.append(ItemsData)
+                var ItemsData: [String : Any] = [:]
+                if i == 0{
+                    ItemsData = ["ShopCode" : "215944", "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                    items.append(ItemsData)
+                }
                 #elseif isUpravdomChe
-                let ItemsData = ["ShopCode" : "245322", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                let ItemsData = ["ShopCode" : "245322", "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                 items.append(ItemsData)
                 #elseif isReutKomfort
-                let ItemsData = ["ShopCode" : "234821", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                let ItemsData = ["ShopCode" : "234821", "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                 items.append(ItemsData)
                 #elseif isMupRCMytishi
-                let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                let ItemsData = ["Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                 items.append(ItemsData)
                 #endif
-                
+            }else{
+                checkBox.forEach{
+                    if $0 == true && sumOSV[i] > 0.00{
+                        let price = String(format:"%.2f", sumOSV[i]).replacingOccurrences(of: ".", with: "")
+                        #if isKlimovsk12
+                        var ItemsData: [String : Any] = [:]
+                        if i == 0{
+                            ItemsData = ["ShopCode" : "215944", "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                            items.append(ItemsData)
+                        }
+                        #elseif isUpravdomChe
+                        let ItemsData = ["ShopCode" : "245322", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                        items.append(ItemsData)
+                        #elseif isReutKomfort
+                        let ItemsData = ["ShopCode" : "234821", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                        items.append(ItemsData)
+                        #elseif isMupRCMytishi
+                        let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
+                        items.append(ItemsData)
+                        #endif
+                    }
+                    i += 1
+                }
+                if servicePay != 0{
+                    let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
+                    #if isKlimovsk12
+                    let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                    items.append(ItemsData)
+                    #elseif isUpravdomChe
+                    let ItemsData = ["ShopCode" : "245322", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                    items.append(ItemsData)
+                    #elseif isReutKomfort
+                    let ItemsData = ["ShopCode" : "234821", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                    items.append(ItemsData)
+                    #elseif isMupRCMytishi
+                    let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                    items.append(ItemsData)
+                    #endif
+                }
             }
+            
             var Data:[String:String] = [:]
             var DataStr: String = ""
             if selectLS == "Все"{
@@ -335,29 +362,43 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 #if isKlimovsk12
                 DataStr = DataStr + "1-\(String(format:"%.2f", self.sum))|"
                 #elseif isUpravdomChe
-                checkBox.forEach{
-                    if $0 == true && sumOSV[i] > 0.00{
-                        DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                if k{
+                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
+                }else{
+                    checkBox.forEach{
+                        if $0 == true && sumOSV[i] > 0.00{
+                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                        }
+                        i += 1
                     }
-                    i += 1
                 }
                 #elseif isReutKomfort
-                checkBox.forEach{
-                    if $0 == true && sumOSV[i] > 0.00{
-                        DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                if k{
+                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
+                }else{
+                    checkBox.forEach{
+                        if $0 == true && sumOSV[i] > 0.00{
+                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                        }
+                        i += 1
                     }
-                    i += 1
                 }
                 #elseif isMupRCMytishi
-                checkBox.forEach{
-                    if $0 == true && sumOSV[i] > 0.00{
-                        DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                if k{
+                    DataStr = DataStr + "usluga-\(String(format:"%.2f", self.totalSum))|"
+                }else{
+                    checkBox.forEach{
+                        if $0 == true && sumOSV[i] > 0.00{
+                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                        }
+                        i += 1
                     }
-                    i += 1
                 }
                 #endif
             }
-            DataStr = DataStr + "serv-\(String(format:"%.2f", servicePay))"
+            if k == false{
+                DataStr = DataStr + "serv-\(String(format:"%.2f", servicePay))"
+            }
             Data["name"] = DataStr
             print(Data)
             let defaults = UserDefaults.standard
