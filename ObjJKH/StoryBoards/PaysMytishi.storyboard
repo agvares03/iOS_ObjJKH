@@ -404,6 +404,7 @@
                         <outlet property="support" destination="ewl-4A-dUc" id="SiD-uc-WoL"/>
                         <outlet property="supportBtn" destination="mSt-8I-KNw" id="N8Z-PD-4P6"/>
                         <outlet property="tableView" destination="ds5-Ye-OVv" id="Cvh-s6-0iX"/>
+                        <outlet property="tableViewTop" destination="ZXi-fS-SkV" id="gPS-Ph-iEx"/>
                         <outlet property="textService" destination="pvD-hC-VO9" id="r3R-A2-PXx"/>
                         <outlet property="textSum" destination="zMZ-K1-hhS" id="V8h-wS-ckS"/>
                         <outlet property="txt_sum_jkh" destination="RnR-er-GSR" id="38q-1y-RBp"/>
@@ -414,6 +415,7 @@
                         <segue destination="qK7-Fk-Kmh" kind="show" identifier="addLS" id="Rkm-y0-Yxe"/>
                         <segue destination="1Wa-Am-5fg" kind="show" identifier="support" id="B4v-ZH-sO3"/>
                         <segue destination="q64-KO-FTk" kind="show" identifier="addLSPocket" id="Kbl-Qr-Dr2"/>
+                        <segue destination="08Q-5b-sMS" kind="show" identifier="CostPay_New" id="UyZ-4p-KNN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="px2-wU-oxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -956,6 +958,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vc-kj-ar3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2060" y="833"/>
+        </scene>
+        <!--Оплата-->
+        <scene sceneID="wdG-9v-bxY">
+            <objects>
+                <viewController id="08Q-5b-sMS" customClass="Pay" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WVC-xc-Pj3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbP-bm-P13">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SbP-bm-P13" firstAttribute="leading" secondItem="Bej-wu-Hfc" secondAttribute="leading" id="B0l-B2-rD9"/>
+                            <constraint firstItem="SbP-bm-P13" firstAttribute="trailing" secondItem="Bej-wu-Hfc" secondAttribute="trailing" id="BqH-Xh-hKw"/>
+                            <constraint firstItem="SbP-bm-P13" firstAttribute="bottom" secondItem="Bej-wu-Hfc" secondAttribute="bottom" id="Xgu-gm-wcU"/>
+                            <constraint firstItem="SbP-bm-P13" firstAttribute="top" secondItem="Bej-wu-Hfc" secondAttribute="top" id="gKD-f6-ZRj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bej-wu-Hfc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Оплата" id="Juu-yy-VZM">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="xOn-7l-dNH">
+                            <connections>
+                                <action selector="backClick:" destination="08Q-5b-sMS" id="Ncm-Os-er9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backBtn" destination="xOn-7l-dNH" id="Maz-15-DMA"/>
+                        <outlet property="webView" destination="SbP-bm-P13" id="jWP-F7-HYt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Efk-Sw-vph" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2604" y="135"/>
         </scene>
     </scenes>
     <resources>

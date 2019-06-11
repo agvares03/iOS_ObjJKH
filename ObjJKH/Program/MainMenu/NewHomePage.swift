@@ -1760,33 +1760,34 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
             cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
             cell.sumText.textColor = myColors.btnColor.uiColor()
-            var sumAll = 0.00
-            var isPayToDate = false
-            var isPayBoDate = false
-            var sumBoDate = 0.00
-            self.values.forEach{
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd.MM.yyyy"
-                    let date1: Date = dateFormatter.date(from: $0.date.replacingOccurrences(of: " 00:00:00", with: ""))!
-                    let date2: Date = dateFormatter.date(from: lsArr[indexPath.row].date!)!
-                    if date2 > date1{
-//                        #if isMupRCMytishi
-//                        let serviceP = self.sum / 0.992 - self.sum
-//                        #else
-//                        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * Double($0.sum)! / 100
-//                        #endif
-                        sumAll = sumAll + Double($0.sum)!
-                    }
-            }
-            let sum:Double = Double(lsArr[indexPath.row].sum!) as! Double
-            if sumAll == sum{
-                isPayToDate = true
-            }else if sumAll > sum{
-                sumBoDate = sumAll - sum
-                isPayBoDate = true
-            }
-            print(sumAll, sumBoDate, sum)
-            if (Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate) || (Double(lsArr[indexPath.row].sum!)! < 0.00){
+//            var sumAll = 0.00
+//            var isPayToDate = false
+//            var isPayBoDate = false
+//            var sumBoDate = 0.00
+//            self.values.forEach{
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "dd.MM.yyyy"
+//                    let date1: Date = dateFormatter.date(from: $0.date.replacingOccurrences(of: " 00:00:00", with: ""))!
+//                    let date2: Date = dateFormatter.date(from: lsArr[indexPath.row].date!)!
+//                    if date2 > date1{
+////                        #if isMupRCMytishi
+////                        let serviceP = self.sum / 0.992 - self.sum
+////                        #else
+////                        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * Double($0.sum)! / 100
+////                        #endif
+//                        sumAll = sumAll + Double($0.sum)!
+//                    }
+//            }
+//            let sum:Double = Double(lsArr[indexPath.row].sum!) as! Double
+//            if sumAll == sum{
+//                isPayToDate = true
+//            }else if sumAll > sum{
+//                sumBoDate = sumAll - sum
+//                isPayBoDate = true
+//            }
+//            print(sumAll, sumBoDate, sum)
+//            if (Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate) || (Double(lsArr[indexPath.row].sum!)! < 0.00){
+            if Double(lsArr[indexPath.row].sum!)! < 0.00{
                 cell.noDebtText.isHidden = false
                 cell.payDebt.isHidden = true
                 cell.topPeriodConst.constant = 0
@@ -1794,21 +1795,18 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.payDebtHeight.constant = 0
                 cell.sumViewHeight.constant = 50
                 cell.sumInfo.text = "Имеется переплата на " + lsArr[indexPath.row].date! + " на сумму"
-                cell.sumText.text = String(format:"%.2f", sumBoDate).replacingOccurrences(of: "-", with: "") + " руб."
-                if Double(lsArr[indexPath.row].sum!)! < 0.00{
-                    cell.sumText.text = lsArr[indexPath.row].sum!.replacingOccurrences(of: "-", with: "") + " руб."
-                }
-            }else if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayToDate{
-                cell.noDebtText.isHidden = false
-                cell.payDebt.isHidden = true
-                cell.topPeriodConst.constant = 20
-                cell.sumViewHeight.constant = 0
-                cell.payDebtHeight.constant = 0
-                if self.view.frame.size.width > 320{
-                    cell.bottViewHeight.constant = 50
-                }else{
-                    cell.bottViewHeight.constant = 70
-                }
+                cell.sumText.text = lsArr[indexPath.row].sum!.replacingOccurrences(of: "-", with: "") + " руб."
+//            }else if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayToDate{
+//                cell.noDebtText.isHidden = false
+//                cell.payDebt.isHidden = true
+//                cell.topPeriodConst.constant = 20
+//                cell.sumViewHeight.constant = 0
+//                cell.payDebtHeight.constant = 0
+//                if self.view.frame.size.width > 320{
+//                    cell.bottViewHeight.constant = 50
+//                }else{
+//                    cell.bottViewHeight.constant = 70
+//                }
             }else if Double(lsArr[indexPath.row].sum!)! > 0.00{
 //                cell.separator.isHidden = true
                 cell.noDebtText.isHidden = true
@@ -2095,7 +2093,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.predValue = predVal
             payController.metrId = metrID
         }
-        #if isMupRCMytishi
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
             if choiceIdent == ""{
@@ -2104,38 +2101,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 payController.saldoIdent = choiceIdent
             }
             payController.debtArr = self.debtArr
+            payController.isHomePage = true
         }
-        #elseif isUpravdomChe
-        if segue.identifier == "paysMytishi" {
-            let payController             = segue.destination as! PaysMytishiController
-            if choiceIdent == ""{
-                payController.saldoIdent = "Все"
-            }else{
-                payController.saldoIdent = choiceIdent
-            }
-            payController.debtArr = self.debtArr
-        }
-        #elseif isReutKomfort
-        if segue.identifier == "paysMytishi" {
-            let payController             = segue.destination as! PaysMytishiController
-            if choiceIdent == ""{
-                payController.saldoIdent = "Все"
-            }else{
-                payController.saldoIdent = choiceIdent
-            }
-            payController.debtArr = self.debtArr
-        }
-        #elseif isKlimovsk12
-        if segue.identifier == "paysMytishi" {
-            let payController             = segue.destination as! PaysMytishiController
-            if choiceIdent == ""{
-                payController.saldoIdent = "Все"
-            }else{
-                payController.saldoIdent = choiceIdent
-            }
-            payController.debtArr = self.debtArr
-        }
-        #else
         if segue.identifier == "pays" {
             let payController             = segue.destination as! PaysController
             if choiceIdent == ""{
@@ -2145,7 +2112,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }            
             payController.debtArr = self.debtArr
         }
-        #endif
         if segue.identifier == "openURL" {
             let payController             = segue.destination as! openSaldoController
             payController.urlLink = self.link
@@ -2199,17 +2165,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var choiceIdent = ""
     func goPaysPressed(ident: String) {
         choiceIdent = ident
-        #if isMupRCMytishi
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
-        #elseif isUpravdomChe
-        self.performSegue(withIdentifier: "paysMytishi", sender: self)
-        #elseif isReutKomfort
-        self.performSegue(withIdentifier: "paysMytishi", sender: self)
-        #elseif isKlimovsk12
-        self.performSegue(withIdentifier: "paysMytishi", sender: self)
-        #else
-        self.performSegue(withIdentifier: "pays", sender: self)
-        #endif
+//        self.performSegue(withIdentifier: "pays", sender: self)
     }
     
     func update() {

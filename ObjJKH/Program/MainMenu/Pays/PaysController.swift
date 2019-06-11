@@ -835,7 +835,17 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
             }
         }
         self.sum = sum
-        self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+        if self.sum > 0{
+            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
+            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+            self.totalSum = self.sum + serviceP
+            self.txt_sum_obj.text = String(format:"%.2f", self.sum)
+            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+        }else{
+            self.txt_sum_obj.text = "0.00"
+            self.txt_sum_jkh.text = "0.00 руб."
+            self.servicePay.text  = "0.00 руб."
+        }
         if self.debtArr.count != 0{
             var s = 0.00
             self.debtArr.forEach{
@@ -843,10 +853,14 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                     s = s + Double($0["Sum"] as! String)!
                     if s <= 0.00{
                         self.txt_sum_obj.text = "0.00"
+                        self.txt_sum_jkh.text = "0.00 руб."
+                        self.servicePay.text  = "0.00 руб."
                     }
                 }else if self.choiceIdent == ($0["Ident"] as! String){
                     if ($0["Sum"] as! String) == "0.00"{
                         self.txt_sum_obj.text = "0.00"
+                        self.txt_sum_jkh.text = "0.00 руб."
+                        self.servicePay.text  = "0.00 руб."
                     }
                 }
             }
@@ -871,11 +885,18 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
                 }
             }
         }
-        let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
-        self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
-        self.totalSum = self.sum + serviceP
-//        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
-        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+        if self.sum > 0{
+            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
+            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+            self.totalSum = self.sum + serviceP
+            //        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+        }else{
+            self.txt_sum_obj.text = "0.00"
+            self.txt_sum_jkh.text = "0.00 руб."
+            self.servicePay.text  = "0.00 руб."
+        }
+        
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {

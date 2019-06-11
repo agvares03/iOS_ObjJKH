@@ -439,17 +439,8 @@ class NewMainMenu2: UIViewController {
     // Оплаты
     var debtArr:[AnyObject] = []
     @IBAction func go_pays(_ sender: UIButton) {
-        #if isMupRCMytishi
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
-        #elseif isUpravdomChe
-        self.performSegue(withIdentifier: "paysMytishi", sender: self)
-        #elseif isReutKomfort
-        self.performSegue(withIdentifier: "paysMytishi", sender: self)
-        #elseif isKlimovsk12
-        self.performSegue(withIdentifier: "paysMytishi", sender: self)
-        #else
-        self.performSegue(withIdentifier: "pays", sender: self)
-        #endif
+//        self.performSegue(withIdentifier: "pays", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -468,32 +459,14 @@ class NewMainMenu2: UIViewController {
 //            print(self.debtArr.count)
 //            payController.debtArr = self.debtArr
 //        }
-        #if isMupRCMytishi
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
             payController.debtArr = self.debtArr
         }
-        #elseif isUpravdomChe
-        if segue.identifier == "paysMytishi" {
-            let payController             = segue.destination as! PaysMytishiController
-            payController.debtArr = self.debtArr
-        }
-        #elseif isReutKomfort
-        if segue.identifier == "paysMytishi" {
-            let payController             = segue.destination as! PaysMytishiController
-            payController.debtArr = self.debtArr
-        }
-        #elseif isKlimovsk12
-        if segue.identifier == "paysMytishi" {
-            let payController             = segue.destination as! PaysMytishiController
-            payController.debtArr = self.debtArr
-        }
-        #else
-        if segue.identifier == "pays" {
-            let payController             = segue.destination as! PaysController
-            payController.debtArr = self.debtArr
-        }
-        #endif
+//        if segue.identifier == "pays" {
+//            let payController             = segue.destination as! PaysController
+//            payController.debtArr = self.debtArr
+//        }
     }
     
     // Web-камеры
