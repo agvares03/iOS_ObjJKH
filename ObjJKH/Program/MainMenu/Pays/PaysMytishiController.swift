@@ -135,17 +135,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
                 let textField = alert.textFields![0]
                 let str = textField.text
-                var kD = 0
-                var kS = 0
-                str!.forEach{
-                    if $0 == "."{
-                        kD += 1
-                    }
-                    if $0 == "@"{
-                        kS += 1
-                    }
-                }
-                if ((str?.contains("@"))!) && ((str?.contains("."))!) && kD == 1 && kS == 1{
+                let validEmail = DB().isValidEmail(testStr: str!)
+                if validEmail{
                     UserDefaults.standard.set(str, forKey: "mail")
                     self.payType = 1
                     self.payedT()
@@ -203,17 +194,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 let cancelAction = UIAlertAction(title: "Сохранить", style: .default) { (_) -> Void in
                     let textField = alert.textFields![0]
                     let str = textField.text
-                    var kD = 0
-                    var kS = 0
-                    str!.forEach{
-                        if $0 == "."{
-                            kD += 1
-                        }
-                        if $0 == "@"{
-                            kS += 1
-                        }
-                    }
-                    if ((str?.contains("@"))!) && ((str?.contains("."))!) && kD == 1 && kS == 1{
+                    let validEmail = DB().isValidEmail(testStr: str!)
+                    if validEmail{
                         UserDefaults.standard.set(str, forKey: "mail")
                         self.payType = 0
                         self.payedT()
