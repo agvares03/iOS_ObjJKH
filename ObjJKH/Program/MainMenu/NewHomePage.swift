@@ -383,6 +383,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_JKH_Pavlovskoe")
         #elseif isPerspectiva
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
+        #elseif isParus
+        fon_top.image = UIImage(named: "Logo_Parus")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())

@@ -1410,6 +1410,151 @@
 		306C2CE622927F1200C29263 /* Logo_UK_Garant.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */; };
 		306C2CE722927F1200C29263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		306C2CE822927F1200C29263 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		3076905922B288C40043916F /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
+		3076905A22B288C40043916F /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		3076905B22B288C40043916F /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		3076905C22B288C40043916F /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		3076905D22B288C40043916F /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		3076905E22B288C40043916F /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
+		3076905F22B288C40043916F /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		3076906022B288C40043916F /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		3076906122B288C40043916F /* ShemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F017214765B500FE0473 /* ShemeColor.swift */; };
+		3076906222B288C40043916F /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		3076906322B288C40043916F /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		3076906422B288C40043916F /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		3076906522B288C40043916F /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F00F2147605E00FE0473 /* ImageConstant.swift */; };
+		3076906622B288C40043916F /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		3076906722B288C40043916F /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		3076906822B288C40043916F /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		3076906922B288C40043916F /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC721708CB600857D4D /* Applications+CoreDataClass.swift */; };
+		3076906A22B288C40043916F /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		3076906B22B288C40043916F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		3076906C22B288C40043916F /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		3076906D22B288C40043916F /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
+		3076906E22B288C40043916F /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		3076906F22B288C40043916F /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		3076907022B288C40043916F /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		3076907122B288C40043916F /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		3076907222B288C40043916F /* NewEditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB84522605AA800DBD52E /* NewEditAccountController.swift */; };
+		3076907322B288C40043916F /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		3076907422B288C40043916F /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		3076907522B288C40043916F /* ColorsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F0092147604400FE0473 /* ColorsConstant.swift */; };
+		3076907622B288C40043916F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		3076907722B288C40043916F /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		3076907822B288C40043916F /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		3076907922B288C40043916F /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		3076907A22B288C40043916F /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02E213634CC004DB75C /* Counters+CoreDataClass.swift */; };
+		3076907B22B288C40043916F /* OneVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB2C225498E500812964 /* OneVoteController.swift */; };
+		3076907C22B288C40043916F /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		3076907D22B288C40043916F /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
+		3076907E22B288C40043916F /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		3076907F22B288C40043916F /* openSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78BF78222CEC8A00F31938 /* openSaldoController.swift */; };
+		3076908022B288C40043916F /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		3076908122B288C40043916F /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */; };
+		3076908222B288C40043916F /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		3076908322B288C40043916F /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		3076908422B288C40043916F /* FirstControllerCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */; };
+		3076908522B288C40043916F /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		3076908622B288C40043916F /* NewHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC3FF32223A3E2500FDBA82 /* NewHomePage.swift */; };
+		3076908722B288C40043916F /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		3076908822B288C40043916F /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02F213634CC004DB75C /* Counters+CoreDataProperties.swift */; };
+		3076908922B288C40043916F /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
+		3076908A22B288C40043916F /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		3076908B22B288C40043916F /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC821708CB600857D4D /* Applications+CoreDataProperties.swift */; };
+		3076908C22B288C40043916F /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		3076908D22B288C40043916F /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		3076908E22B288C40043916F /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		3076908F22B288C40043916F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		3076909022B288C40043916F /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		3076909122B288C40043916F /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		3076909222B288C40043916F /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		3076909322B288C40043916F /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		3076909422B288C40043916F /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		3076909522B288C40043916F /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		3076909622B288C40043916F /* UniqCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE0A222799F600C51656 /* UniqCountersController.swift */; };
+		3076909722B288C40043916F /* MainMenuCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC455213FCA99002CEB62 /* MainMenuCons.swift */; };
+		3076909822B288C40043916F /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		3076909922B288C40043916F /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
+		3076909A22B288C40043916F /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		3076909B22B288C40043916F /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		3076909C22B288C40043916F /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		3076909D22B288C40043916F /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		3076909E22B288C40043916F /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		3076909F22B288C40043916F /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */; };
+		307690A022B288C40043916F /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		307690A122B288C40043916F /* VotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB1F225372F300812964 /* VotingController.swift */; };
+		307690A222B288C40043916F /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		307690A322B288C40043916F /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		307690A422B288C40043916F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		307690A522B288C40043916F /* MupCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE012226B31600C51656 /* MupCounterController.swift */; };
+		307690A622B288C40043916F /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		307690A722B288C40043916F /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		307690A822B288C40043916F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
+		307690A922B288C40043916F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		307690AA22B288C40043916F /* NoCounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F01F2147C28D00FE0473 /* NoCounters.swift */; };
+		307690AB22B288C40043916F /* AppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC4682140B0D4002CEB62 /* AppCons.swift */; };
+		307690AC22B288C40043916F /* NewSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAE79A3229D02F6005223C1 /* NewSaldoController.swift */; };
+		307690AD22B288C40043916F /* NewMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A1E132243548B0040E7F7 /* NewMainMenu.swift */; };
+		307690AE22B288C40043916F /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		307690AF22B288C40043916F /* EditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5153D021EF04A600DE36D9 /* EditAccountController.swift */; };
+		307690B022B288C40043916F /* QuestionVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB3922550D0D00812964 /* QuestionVoteController.swift */; };
+		307690B122B288C40043916F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		307690B222B288C40043916F /* PaymentApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DC2282E89500B7F66C /* PaymentApp+CoreDataProperties.swift */; };
+		307690B322B288C40043916F /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
+		307690B422B288C40043916F /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		307690B522B288C40043916F /* NewMainMenu2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB85422608CF900DBD52E /* NewMainMenu2.swift */; };
+		307690B622B288C40043916F /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		307690B722B288C40043916F /* PaymentApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DB2282E89500B7F66C /* PaymentApp+CoreDataClass.swift */; };
+		307690B822B288C40043916F /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		307690B922B288C40043916F /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		307690BA22B288C40043916F /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
+		307690BC22B288C40043916F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		307690BD22B288C40043916F /* Pods_UK_Perspectiva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0571FC0305A21118CDA446BD /* Pods_UK_Perspectiva.framework */; };
+		307690C022B288C40043916F /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		307690C222B288C40043916F /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		307690C322B288C40043916F /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		307690C422B288C40043916F /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		307690C522B288C40043916F /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		307690C622B288C40043916F /* Voting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C66AB1122532BFF00812964 /* Voting.storyboard */; };
+		307690C722B288C40043916F /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
+		307690C822B288C40043916F /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		307690C922B288C40043916F /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		307690CA22B288C40043916F /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		307690CB22B288C40043916F /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		307690CC22B288C40043916F /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		307690CD22B288C40043916F /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		307690CE22B288C40043916F /* 2PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C33544322AFA34500D695C8 /* 2PaysMytishi.storyboard */; };
+		307690CF22B288C40043916F /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		307690D022B288C40043916F /* Logo_UK_Garant_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */; };
+		307690D122B288C40043916F /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
+		307690D222B288C40043916F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		307690D322B288C40043916F /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		307690D422B288C40043916F /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		307690D522B288C40043916F /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		307690D622B288C40043916F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		307690D722B288C40043916F /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		307690D822B288C40043916F /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		307690D922B288C40043916F /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
+		307690DA22B288C40043916F /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
+		307690DB22B288C40043916F /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		307690DC22B288C40043916F /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
+		307690DD22B288C40043916F /* ic_send_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA20D2140CA9600921C82 /* ic_send_app.png */; };
+		307690DE22B288C40043916F /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
+		307690DF22B288C40043916F /* MupCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C19ADFB2226845400C51656 /* MupCounters.storyboard */; };
+		307690E022B288C40043916F /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		307690E122B288C40043916F /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		307690E222B288C40043916F /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
+		307690E322B288C40043916F /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		307690E422B288C40043916F /* MainMenuCons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */; };
+		307690E522B288C40043916F /* NewMainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */; };
+		307690E622B288C40043916F /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
+		307690E722B288C40043916F /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		307690E822B288C40043916F /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		307690E922B288C40043916F /* Logo_UK_Garant.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */; };
+		307690EA22B288C40043916F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		307690EB22B288C40043916F /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		307690F422B28CDC0043916F /* Logo_Parus.png in Resources */ = {isa = PBXBuildFile; fileRef = 307690F322B28CDC0043916F /* Logo_Parus.png */; };
+		307690F622B28DAF0043916F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 307690F522B28DAE0043916F /* GoogleService-Info.plist */; };
 		30ABD1E3225C343C00A5D6F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30ABD1E2225C343C00A5D6F1 /* GoogleService-Info.plist */; };
 		30ABD1E5225C476000A5D6F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30ABD1E4225C475F00A5D6F1 /* GoogleService-Info.plist */; };
 		30ABD1E6225C648800A5D6F1 /* openSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78BF78222CEC8A00F31938 /* openSaldoController.swift */; };
@@ -3272,7 +3417,7 @@
 		1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaysMytishi.storyboard; sourceTree = "<group>"; };
 		1C85139721EC4E940003D587 /* PaysMytishiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaysMytishiController.swift; sourceTree = "<group>"; };
-		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/DJ/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/DJ/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C953D6421FAC9D500313221 /* OnePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePageController.swift; sourceTree = "<group>"; };
 		1C953D6721FAC9F100313221 /* TwoPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageController.swift; sourceTree = "<group>"; };
 		1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReutKomfort-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -3287,10 +3432,10 @@
 		1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klimovsk12-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UK_Garant_White.png; sourceTree = "<group>"; };
 		1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UK_Garant.png; sourceTree = "<group>"; };
-		1CF8B8CD2223D34E00B1D289 /* Info - UK_Garant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info - UK_Garant.plist"; path = "../Info - UK_Garant.plist"; sourceTree = "<group>"; };
+		1CF8B8CD2223D34E00B1D289 /* Info - UK_Garant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info - UK_Garant.plist"; sourceTree = "<group>"; };
 		1CF8B8D32223D66E00B1D289 /* UK_Garant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Garant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF8B8F12223D7E400B1D289 /* UK_Garant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Garant-Bridging-Header.h"; sourceTree = "<group>"; };
-		1CF8B95E2223DA2600B1D289 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/UKGarant/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1CF8B95E2223DA2600B1D289 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CF8B9602223DA9C00B1D289 /* UK_Garant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UK_Garant.entitlements; sourceTree = "<group>"; };
 		1E7B655A63C375E7709122DB /* Pods-ObjJKH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.debug.xcconfig"; sourceTree = "<group>"; };
 		207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klimovsk12.release.xcconfig"; path = "Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12.release.xcconfig"; sourceTree = "<group>"; };
@@ -3303,18 +3448,17 @@
 		3008305222699CB4005BF485 /* Tafgai copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tafgai copy2-Info.plist"; sourceTree = "<group>"; };
 		301D0B8622896DFE0032DE2A /* StandartDV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandartDV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		301D0B8722896DFF0032DE2A /* StandartDV-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StandartDV-info.plist"; sourceTree = "<group>"; };
-		301D0B88228976720032DE2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/StandartDV/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		301D0B88228976720032DE2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/StandartDV/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		301D0B8D22898F560032DE2A /* Logo_StandartDV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_StandartDV.png; sourceTree = "<group>"; };
 		302BC755226DBF5500AB2105 /* Logo_Paritet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Paritet.png; sourceTree = "<group>"; };
 		302EF687225443B00080B482 /* Soldatova1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soldatova1.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		302EF688225443B00080B482 /* ReutKomfort copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ReutKomfort copy-Info.plist"; path = "/Users/sergeyivanov/Desktop/ios_objjkh/ReutKomfort copy-Info.plist"; sourceTree = "<absolute>"; };
 		302EF690225450400080B482 /* Logo_Soldatova1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Soldatova1.png; sourceTree = "<group>"; };
 		302EF691225450400080B482 /* Logo_Soldatova_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Soldatova_White.png; sourceTree = "<group>"; };
-		302EF694225456450080B482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Soldatova 1/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		302EF694225456450080B482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Soldatova 1/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		302EF72522546DE10080B482 /* ReutKomfort copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReutKomfort copy2-Info.plist"; sourceTree = "<group>"; };
 		302EF727225479280080B482 /* Logo_Tafgai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Tafgai.png; sourceTree = "<group>"; };
 		302EF728225479280080B482 /* Logo_Tafgai_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Tafgai_White.png; sourceTree = "<group>"; };
-		302EF72B2254805F0080B482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Tafgai/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		302EF72B2254805F0080B482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Tafgai/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		302FA17F2256F15B006B7874 /* Tafgai copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tafgai copy-Info.plist"; sourceTree = "<group>"; };
 		302FA21C2256F1A8006B7874 /* Tafgai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tafgai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		302FA21D2256F1A9006B7874 /* MupRCMytishi copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MupRCMytishi copy-Info.plist"; sourceTree = "<group>"; };
@@ -3322,32 +3466,38 @@
 		303EBCF9229B922900223A2B /* UK_Upravdom_Che.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Upravdom_Che.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		303EBCFA229B922A00223A2B /* UK_Upravdom_Che-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UK_Upravdom_Che-Info.plist"; sourceTree = "<group>"; };
 		303EBCFC229B94CF00223A2B /* Logo_UkUpravdomChe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UkUpravdomChe.png; sourceTree = "<group>"; };
-		303EBCFE229B97B200223A2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/UkUpravdomChe/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		303EBCFE229B97B200223A2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/UkUpravdomChe/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		305060082251E22100F0132B /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
 		306C2CED22927F1200C29263 /* UK_Garmonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Garmonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306C2CEE22927F1200C29263 /* UK_Garmonia-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UK_Garmonia-Info.plist"; sourceTree = "<group>"; };
-		30ABD1E2225C343C00A5D6F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Komeks/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		30ABD1E4225C475F00A5D6F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/ChistDom/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		307690F022B288C50043916F /* Parus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		307690F122B288C50043916F /* Parus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Parus-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/Parus-Info.plist"; sourceTree = "<absolute>"; };
+		307690F322B28CDC0043916F /* Logo_Parus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Parus.png; sourceTree = "<group>"; };
+		307690F522B28DAE0043916F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Parus/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		307690F922B28E060043916F /* ReutKomfort copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ReutKomfort copy-Info.plist"; path = "../../../../../../../sergeyivanov/Desktop/ios_objjkh/ReutKomfort copy-Info.plist"; sourceTree = "<group>"; };
+		307690FA22B28E0A0043916F /* ReutKomfort copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ReutKomfort copy2-Info.plist"; path = "../../../../../../../sergeyivanov/Desktop/ios_objjkh/ReutKomfort copy2-Info.plist"; sourceTree = "<group>"; };
+		30ABD1E2225C343C00A5D6F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Komeks/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30ABD1E4225C475F00A5D6F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/ChistDom/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30BBD034229287480028AC33 /* Logo_UkGarmonia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UkGarmonia.png; sourceTree = "<group>"; };
-		30BBD03722928B420028AC33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Uk_Garmonia/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		30C91AFE2269A49700B8E17D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/UK_Paritet/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30BBD03722928B420028AC33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Uk_Garmonia/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30C91AFE2269A49700B8E17D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/UK_Paritet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30CFB23122696A2800723E61 /* UK_Service_Comfort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Service_Comfort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30CFB23222696A2900723E61 /* ReutKomfort copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReutKomfort copy3-Info.plist"; sourceTree = "<group>"; };
-		30CFB2332269768B00723E61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/UK_Service_Komfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30CFB2332269768B00723E61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/UK_Service_Komfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30CFB23622697A4900723E61 /* Logo_ServiceKomfort_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_ServiceKomfort_White.png; sourceTree = "<group>"; };
 		30CFB23A22697C9A00723E61 /* Logo_ServiceKomfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_ServiceKomfort.png; sourceTree = "<group>"; };
 		30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstControllerCons.swift; sourceTree = "<group>"; };
 		30EE015F229CECF80011BEE1 /* JKH_Pavlovskoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKH_Pavlovskoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EE0160229CED010011BEE1 /* JKH_Pavlovskoe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JKH_Pavlovskoe-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/JKH_Pavlovskoe-Info.plist"; sourceTree = "<absolute>"; };
 		30EE0162229CF4980011BEE1 /* Logo_JKH_Pavlovskoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_JKH_Pavlovskoe.png; sourceTree = "<group>"; };
-		30EE0164229CF6550011BEE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/JKH_Pavlovskoe/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30EE0164229CF6550011BEE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/JKH_Pavlovskoe/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30F3BDE822A50748007B24FB /* UK_Perspectiva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Perspectiva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F3BDE922A50749007B24FB /* UK_Perspectiva.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = UK_Perspectiva.plist; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/UK_Perspectiva.plist"; sourceTree = "<absolute>"; };
 		30F3BDEB22A5098A007B24FB /* Logo_UkPerspectiva.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UkPerspectiva.png; sourceTree = "<group>"; };
-		30F3BDED22A50A53007B24FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/UK_Perspectiva/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30F3BDED22A50A53007B24FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/UK_Perspectiva/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30FDC91B22701E7500CC48C5 /* Skyfort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skyfort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FDC91C22701E7600CC48C5 /* UK_Garant copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UK_Garant copy-Info.plist"; sourceTree = "<group>"; };
-		30FDC91D227027CD00CC48C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Skyfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30FDC91D227027CD00CC48C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Skyfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31397E3AB3FF6A66EB571107 /* Pods-UK_Garant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Garant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Garant/Pods-UK_Garant.debug.xcconfig"; sourceTree = "<group>"; };
 		34641B081E377E8D82EE8373 /* Pods-MupRCMytishi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MupRCMytishi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi.debug.xcconfig"; sourceTree = "<group>"; };
 		3812FAFB8B6F58CBB776AADB /* Pods_UK_Garant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UK_Garant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3359,18 +3509,18 @@
 		411AD1C82161E17E004FD1B5 /* empty.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = empty.cpp; sourceTree = "<group>"; };
 		411AD1C92161E17E004FD1B5 /* empty.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = empty.hpp; sourceTree = "<group>"; };
 		411F9B3322238A0E00C5F697 /* ReutKomfort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReutKomfort.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - ReutKomfort.plist"; path = "../Info - ReutKomfort.plist"; sourceTree = "<group>"; };
-		411F9B37222390B200C5F697 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/ReutKomfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - ReutKomfort.plist"; sourceTree = "<group>"; };
+		411F9B37222390B200C5F697 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/ReutKomfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_ReutKomfort_White.png; path = ObjJKH/images/ReutKomfort/Logo_ReutKomfort_White.png; sourceTree = SOURCE_ROOT; };
 		411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_ReutKomfort.png; path = ObjJKH/images/ReutKomfort/Logo_ReutKomfort.png; sourceTree = SOURCE_ROOT; };
 		412092992158CB2D001E713E /* Stolitsa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stolitsa.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4120929A2158CB36001E713E /* Info - Stolitsa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - Stolitsa.plist"; path = "../Info - Stolitsa.plist"; sourceTree = "<group>"; };
+		4120929A2158CB36001E713E /* Info - Stolitsa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - Stolitsa.plist"; sourceTree = "<group>"; };
 		4120929C2158D116001E713E /* logo_Stolitsa_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa_white.png; sourceTree = "<group>"; };
 		4120929E2158D126001E713E /* logo_Stolitsa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa.png; sourceTree = "<group>"; };
 		412093122159E603001E713E /* Komeks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komeks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		412093152159EB15001E713E /* Logo_Komeks_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Komeks_White.png; sourceTree = "<group>"; };
 		412093172159EB1E001E713E /* Logo_Komeks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Komeks.png; sourceTree = "<group>"; };
-		41209320215C105F001E713E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41209320215C105F001E713E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		413752F32152954B00D2C7DE /* OurObjHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OurObjHome.entitlements; sourceTree = "<group>"; };
 		413752F42152955800D2C7DE /* ObjJKH.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ObjJKH.entitlements; sourceTree = "<group>"; };
 		413752F52152955E00D2C7DE /* ChistDom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChistDom.entitlements; sourceTree = "<group>"; };
@@ -3382,12 +3532,12 @@
 		4137E29622129689009C6A7F /* Logo_Pocket_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Pocket_White.png; sourceTree = "<group>"; };
 		4137E2982212969E009C6A7F /* Logo_Pocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Pocket.png; sourceTree = "<group>"; };
 		41645B56216492A300C61AF9 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
-		4179E913217DCC10007A395D /* Info - OurObjHome.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info - OurObjHome.plist"; path = "../Info - OurObjHome.plist"; sourceTree = "<group>"; };
+		4179E913217DCC10007A395D /* Info - OurObjHome.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info - OurObjHome.plist"; sourceTree = "<group>"; };
 		417FCFDE217ED35F009CDBB8 /* MupRCMytishi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MupRCMytishi-Bridging-Header.h"; sourceTree = "<group>"; };
 		417FCFDF217EF074009CDBB8 /* ObjJKH_3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ObjJKH_3.xcdatamodel; sourceTree = "<group>"; };
 		417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataClass.swift"; sourceTree = "<group>"; };
 		417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4180400A21871C840004267A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4180400A21871C840004267A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		418ABF072133CC7B004DB75C /* ObjJKH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjJKH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		418ABF0A2133CC7B004DB75C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		418ABF0C2133CC7B004DB75C /* FirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstController.swift; sourceTree = "<group>"; };
@@ -3396,7 +3546,7 @@
 		418ABF142133CC8C004DB75C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		418ABF162133CC8C004DB75C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		418ABF222133CF96004DB75C /* logo_SM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_SM.png; sourceTree = "<group>"; };
-		418ABF262133D5CF004DB75C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		418ABF262133D5CF004DB75C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		418ABF292133D834004DB75C /* Logo_DemoUC_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_DemoUC_White.png; sourceTree = "<group>"; };
 		418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_DemoUC.png; sourceTree = "<group>"; };
 		418ABF2F2133E0D7004DB75C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -3431,7 +3581,7 @@
 		418ABFA421357B14004DB75C /* QuestionsJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsJson.swift; sourceTree = "<group>"; };
 		418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableCell.swift; sourceTree = "<group>"; };
 		418ABFDC21357DA5004DB75C /* ChistDom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChistDom.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - ChistDom.plist"; path = "../Info - ChistDom.plist"; sourceTree = "<group>"; };
+		418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - ChistDom.plist"; sourceTree = "<group>"; };
 		418ABFDF213580F3004DB75C /* Logo_Chist_Dom_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Chist_Dom_White.png; sourceTree = "<group>"; };
 		418ABFE121358101004DB75C /* Logo_Chist_Dom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Chist_Dom.png; sourceTree = "<group>"; };
 		418ABFE321361949004DB75C /* Counters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Counters.storyboard; sourceTree = "<group>"; };
@@ -3454,19 +3604,19 @@
 		41B5BC3E216746D9003F4868 /* Stolitsa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stolitsa-Bridging-Header.h"; sourceTree = "<group>"; };
 		41B5BC43216B348A003F4868 /* UK_Komfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Komfort-Bridging-Header.h"; sourceTree = "<group>"; };
 		41BD716A21B4E869006E78FC /* Klimovsk12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klimovsk12.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41BD716B21B4E86E006E78FC /* Info - Klimovsk12.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - Klimovsk12.plist"; path = "../Info - Klimovsk12.plist"; sourceTree = "<group>"; };
-		41BD716C21B4EDC7006E78FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Klimovsk12/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41BD716B21B4E86E006E78FC /* Info - Klimovsk12.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - Klimovsk12.plist"; sourceTree = "<group>"; };
+		41BD716C21B4EDC7006E78FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Klimovsk12/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41BD716F21B4F2AA006E78FC /* logo_Klimovsk12_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Klimovsk12_White.png; sourceTree = "<group>"; };
 		41BD717121B4F2B6006E78FC /* logo_Klimovsk12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Klimovsk12.png; sourceTree = "<group>"; };
-		41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/Mitischi/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Mitischi/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41DFC36E213C0B5B002CEB62 /* FilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesController.swift; sourceTree = "<group>"; };
 		41DFC376213CF14A002CEB62 /* QuestionFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFinal.swift; sourceTree = "<group>"; };
 		41DFC3DA213CF4E9002CEB62 /* MupRCMytishi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MupRCMytishi.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - MupRCMytishi.plist"; path = "../Info - MupRCMytishi.plist"; sourceTree = "<group>"; };
+		41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - MupRCMytishi.plist"; sourceTree = "<group>"; };
 		41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_MupRCMytishi_White.png; sourceTree = "<group>"; };
 		41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_MupRCMytishi.png; sourceTree = "<group>"; };
 		41DFC441213D206D002CEB62 /* DJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41DFC442213D2083002CEB62 /* Info - DJService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - DJService.plist"; path = "../Info - DJService.plist"; sourceTree = "<group>"; };
+		41DFC442213D2083002CEB62 /* Info - DJService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - DJService.plist"; sourceTree = "<group>"; };
 		41DFC444213D2740002CEB62 /* logo_DJ_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_DJ_White.png; sourceTree = "<group>"; };
 		41DFC446213D2758002CEB62 /* logo_DJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_DJ.png; sourceTree = "<group>"; };
 		41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainMenuCons.storyboard; sourceTree = "<group>"; };
@@ -3514,9 +3664,9 @@
 		41EF5A5A213A8F0D00789370 /* OnOffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffButton.swift; sourceTree = "<group>"; };
 		41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerVC.swift; sourceTree = "<group>"; };
 		41EF5A6B213BAF9600789370 /* FloatRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
-		41EF7E80220D779B0041D53B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Google-Services/UKComfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41EF7E80220D779B0041D53B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/UKComfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41FDA2B2214229A0003D8110 /* UK_Komfort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Komfort.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info - UK_Komfort.plist"; path = "../Info - UK_Komfort.plist"; sourceTree = "<group>"; };
+		41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - UK_Komfort.plist"; sourceTree = "<group>"; };
 		41FDA2B521422BA0003D8110 /* logo_UK_Komfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_UK_Komfort.png; sourceTree = "<group>"; };
 		41FDA2B721422BAE003D8110 /* logo_UK_Komfort_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_UK_Komfort_white.png; sourceTree = "<group>"; };
 		4BBF34895412B82A851AA58D /* Pods-Stolitsa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stolitsa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stolitsa/Pods-Stolitsa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -3535,7 +3685,6 @@
 		911B653B53BE285B8E0F33C1 /* Pods-JKH_Pocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKH_Pocket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKH_Pocket/Pods-JKH_Pocket.debug.xcconfig"; sourceTree = "<group>"; };
 		92C109260303D035EE8EE25F /* Pods-UK_Upravdom_Che.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Upravdom_Che.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Upravdom_Che/Pods-UK_Upravdom_Che.debug.xcconfig"; sourceTree = "<group>"; };
 		964492CA0DB9008F249F3AD8 /* Pods-DJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJ/Pods-DJ.debug.xcconfig"; sourceTree = "<group>"; };
-		9A5F6E7A225634D500C9B3BE /* ReutKomfort copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ReutKomfort copy2-Info.plist"; path = "/Users/sergeyivanov/Desktop/ios_objjkh/ReutKomfort copy2-Info.plist"; sourceTree = "<absolute>"; };
 		9CC813AF3B67E2529AD80684 /* Pods-ObjJKH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.release.xcconfig"; sourceTree = "<group>"; };
 		9E153E47D5D22676EE4DF870 /* Pods-StandartDV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StandartDV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StandartDV/Pods-StandartDV.debug.xcconfig"; sourceTree = "<group>"; };
 		9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Klimovsk12.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3638,6 +3787,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				306C2CBA22927F1200C29263 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		307690BB22B288C40043916F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				307690BC22B288C40043916F /* CoreLocation.framework in Frameworks */,
+				307690BD22B288C40043916F /* Pods_UK_Perspectiva.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3872,6 +4030,75 @@
 			path = UkGarmonia;
 			sourceTree = "<group>";
 		};
+		307690F222B28C8E0043916F /* Parus */ = {
+			isa = PBXGroup;
+			children = (
+				307690F322B28CDC0043916F /* Logo_Parus.png */,
+			);
+			path = Parus;
+			sourceTree = "<group>";
+		};
+		307690F722B28DC70043916F /* Google_Services */ = {
+			isa = PBXGroup;
+			children = (
+				41209320215C105F001E713E /* GoogleService-Info.plist */,
+				30FDC91D227027CD00CC48C5 /* GoogleService-Info.plist */,
+				41EF7E80220D779B0041D53B /* GoogleService-Info.plist */,
+				30BBD03722928B420028AC33 /* GoogleService-Info.plist */,
+				30CFB2332269768B00723E61 /* GoogleService-Info.plist */,
+				303EBCFE229B97B200223A2B /* GoogleService-Info.plist */,
+				302EF694225456450080B482 /* GoogleService-Info.plist */,
+				307690F522B28DAE0043916F /* GoogleService-Info.plist */,
+				30F3BDED22A50A53007B24FB /* GoogleService-Info.plist */,
+				301D0B88228976720032DE2A /* GoogleService-Info.plist */,
+				30C91AFE2269A49700B8E17D /* GoogleService-Info.plist */,
+				30ABD1E4225C475F00A5D6F1 /* GoogleService-Info.plist */,
+				302EF72B2254805F0080B482 /* GoogleService-Info.plist */,
+				30ABD1E2225C343C00A5D6F1 /* GoogleService-Info.plist */,
+				411F9B37222390B200C5F697 /* GoogleService-Info.plist */,
+				41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */,
+				1C953D6221FAAE7100313221 /* GoogleService-Info.plist */,
+				41BD716C21B4EDC7006E78FC /* GoogleService-Info.plist */,
+				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
+				30EE0164229CF6550011BEE1 /* GoogleService-Info.plist */,
+				4180400A21871C840004267A /* GoogleService-Info.plist */,
+				1CF8B95E2223DA2600B1D289 /* GoogleService-Info.plist */,
+			);
+			path = Google_Services;
+			sourceTree = "<group>";
+		};
+		307690F822B28DEC0043916F /* Info_Plists */ = {
+			isa = PBXGroup;
+			children = (
+				418ABF162133CC8C004DB75C /* Info.plist */,
+				1CF8B8CD2223D34E00B1D289 /* Info - UK_Garant.plist */,
+				4179E913217DCC10007A395D /* Info - OurObjHome.plist */,
+				418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */,
+				41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */,
+				41DFC442213D2083002CEB62 /* Info - DJService.plist */,
+				41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */,
+				4120929A2158CB36001E713E /* Info - Stolitsa.plist */,
+				411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */,
+				41BD716B21B4E86E006E78FC /* Info - Klimovsk12.plist */,
+				4137E29422128B04009C6A7F /* ObjJKH copy-Info.plist */,
+				307690F922B28E060043916F /* ReutKomfort copy-Info.plist */,
+				302EF72522546DE10080B482 /* ReutKomfort copy2-Info.plist */,
+				307690FA22B28E0A0043916F /* ReutKomfort copy2-Info.plist */,
+				302FA17F2256F15B006B7874 /* Tafgai copy-Info.plist */,
+				302FA21D2256F1A9006B7874 /* MupRCMytishi copy-Info.plist */,
+				30CFB23222696A2900723E61 /* ReutKomfort copy3-Info.plist */,
+				3008305222699CB4005BF485 /* Tafgai copy2-Info.plist */,
+				30FDC91C22701E7600CC48C5 /* UK_Garant copy-Info.plist */,
+				301D0B8722896DFF0032DE2A /* StandartDV-info.plist */,
+				306C2CEE22927F1200C29263 /* UK_Garmonia-Info.plist */,
+				303EBCFA229B922A00223A2B /* UK_Upravdom_Che-Info.plist */,
+				30EE0160229CED010011BEE1 /* JKH_Pavlovskoe-Info.plist */,
+				30F3BDE922A50749007B24FB /* UK_Perspectiva.plist */,
+				307690F122B288C50043916F /* Parus-Info.plist */,
+			);
+			path = Info_Plists;
+			sourceTree = "<group>";
+		};
 		30CFB235226977CA00723E61 /* ServiceKomfort */ = {
 			isa = PBXGroup;
 			children = (
@@ -3984,20 +4211,6 @@
 				418ABF082133CC7B004DB75C /* Products */,
 				F0BAD5FABF0F698BF24700C4 /* Frameworks */,
 				6EED220D6D9D4CDBD7DD198D /* Pods */,
-				4137E29422128B04009C6A7F /* ObjJKH copy-Info.plist */,
-				302EF688225443B00080B482 /* ReutKomfort copy-Info.plist */,
-				302EF72522546DE10080B482 /* ReutKomfort copy2-Info.plist */,
-				9A5F6E7A225634D500C9B3BE /* ReutKomfort copy2-Info.plist */,
-				302FA17F2256F15B006B7874 /* Tafgai copy-Info.plist */,
-				302FA21D2256F1A9006B7874 /* MupRCMytishi copy-Info.plist */,
-				30CFB23222696A2900723E61 /* ReutKomfort copy3-Info.plist */,
-				3008305222699CB4005BF485 /* Tafgai copy2-Info.plist */,
-				30FDC91C22701E7600CC48C5 /* UK_Garant copy-Info.plist */,
-				301D0B8722896DFF0032DE2A /* StandartDV-info.plist */,
-				306C2CEE22927F1200C29263 /* UK_Garmonia-Info.plist */,
-				303EBCFA229B922A00223A2B /* UK_Upravdom_Che-Info.plist */,
-				30EE0160229CED010011BEE1 /* JKH_Pavlovskoe-Info.plist */,
-				30F3BDE922A50749007B24FB /* UK_Perspectiva.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4026,6 +4239,7 @@
 				303EBCF9229B922900223A2B /* UK_Upravdom_Che.app */,
 				30EE015F229CECF80011BEE1 /* JKH_Pavlovskoe.app */,
 				30F3BDE822A50748007B24FB /* UK_Perspectiva.app */,
+				307690F022B288C50043916F /* Parus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4033,39 +4247,10 @@
 		418ABF092133CC7B004DB75C /* ObjJKH */ = {
 			isa = PBXGroup;
 			children = (
+				307690F822B28DEC0043916F /* Info_Plists */,
+				307690F722B28DC70043916F /* Google_Services */,
 				F43655A221BD64AC001225DA /* Payment */,
 				413752F42152955800D2C7DE /* ObjJKH.entitlements */,
-				418ABF162133CC8C004DB75C /* Info.plist */,
-				1CF8B8CD2223D34E00B1D289 /* Info - UK_Garant.plist */,
-				4179E913217DCC10007A395D /* Info - OurObjHome.plist */,
-				418ABFDD21357DA9004DB75C /* Info - ChistDom.plist */,
-				41DFC3DB213CF4F2002CEB62 /* Info - MupRCMytishi.plist */,
-				41DFC442213D2083002CEB62 /* Info - DJService.plist */,
-				41FDA2B3214229A0003D8110 /* Info - UK_Komfort.plist */,
-				4120929A2158CB36001E713E /* Info - Stolitsa.plist */,
-				411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */,
-				1CF8B95E2223DA2600B1D289 /* GoogleService-Info.plist */,
-				41BD716B21B4E86E006E78FC /* Info - Klimovsk12.plist */,
-				41EF7E80220D779B0041D53B /* GoogleService-Info.plist */,
-				41CBEBB6219D34FD00B1BD6C /* GoogleService-Info.plist */,
-				4180400A21871C840004267A /* GoogleService-Info.plist */,
-				41209320215C105F001E713E /* GoogleService-Info.plist */,
-				418ABF262133D5CF004DB75C /* GoogleService-Info.plist */,
-				41BD716C21B4EDC7006E78FC /* GoogleService-Info.plist */,
-				1C953D6221FAAE7100313221 /* GoogleService-Info.plist */,
-				411F9B37222390B200C5F697 /* GoogleService-Info.plist */,
-				302EF694225456450080B482 /* GoogleService-Info.plist */,
-				302EF72B2254805F0080B482 /* GoogleService-Info.plist */,
-				30ABD1E2225C343C00A5D6F1 /* GoogleService-Info.plist */,
-				30ABD1E4225C475F00A5D6F1 /* GoogleService-Info.plist */,
-				30CFB2332269768B00723E61 /* GoogleService-Info.plist */,
-				30C91AFE2269A49700B8E17D /* GoogleService-Info.plist */,
-				30FDC91D227027CD00CC48C5 /* GoogleService-Info.plist */,
-				301D0B88228976720032DE2A /* GoogleService-Info.plist */,
-				30BBD03722928B420028AC33 /* GoogleService-Info.plist */,
-				303EBCFE229B97B200223A2B /* GoogleService-Info.plist */,
-				30EE0164229CF6550011BEE1 /* GoogleService-Info.plist */,
-				30F3BDED22A50A53007B24FB /* GoogleService-Info.plist */,
 				418ABF1D2133CDD3004DB75C /* Program */,
 				418ABF1C2133CCAA004DB75C /* StoryBoards */,
 				418ABF202133CF52004DB75C /* images */,
@@ -4150,6 +4335,7 @@
 		418ABF202133CF52004DB75C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				307690F222B28C8E0043916F /* Parus */,
 				30F3BDEA22A50935007B24FB /* UKPerspectiva */,
 				30EE0161229CF43C0011BEE1 /* JKH_Pavlovskoe */,
 				303EBCFB229B948300223A2B /* UkUpravdomChe */,
@@ -4690,6 +4876,25 @@
 			productReference = 306C2CED22927F1200C29263 /* UK_Garmonia.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3076905622B288C40043916F /* Parus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 307690ED22B288C40043916F /* Build configuration list for PBXNativeTarget "Parus" */;
+			buildPhases = (
+				3076905722B288C40043916F /* [CP] Check Pods Manifest.lock */,
+				3076905822B288C40043916F /* Sources */,
+				307690BB22B288C40043916F /* Frameworks */,
+				307690BE22B288C40043916F /* Resources */,
+				307690EC22B288C40043916F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Parus;
+			productName = UK_Garant;
+			productReference = 307690F022B288C50043916F /* Parus.app */;
+			productType = "com.apple.product-type.application";
+		};
 		30CFB19A22696A2800723E61 /* UK_Service_Comfort */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30CFB22E22696A2800723E61 /* Build configuration list for PBXNativeTarget "UK_Service_Comfort" */;
@@ -5141,6 +5346,7 @@
 				303EBC65229B922900223A2B /* UK_Upravdom_Che */,
 				30EE00C8229CECF80011BEE1 /* JKH_Pavlovskoe */,
 				30F3BD5322A50748007B24FB /* UK_Perspectiva */,
+				3076905622B288C40043916F /* Parus */,
 			);
 		};
 /* End PBXProject section */
@@ -5516,6 +5722,58 @@
 				306C2CE622927F1200C29263 /* Logo_UK_Garant.png in Resources */,
 				306C2CE722927F1200C29263 /* Assets.xcassets in Resources */,
 				306C2CE822927F1200C29263 /* logo_SM.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		307690BE22B288C40043916F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				307690C022B288C40043916F /* MainMenu.storyboard in Resources */,
+				307690C222B288C40043916F /* app_open.png in Resources */,
+				307690C322B288C40043916F /* AdditionalServices.storyboard in Resources */,
+				307690C422B288C40043916F /* Counters.storyboard in Resources */,
+				307690C522B288C40043916F /* Pays.storyboard in Resources */,
+				307690C622B288C40043916F /* Voting.storyboard in Resources */,
+				307690C722B288C40043916F /* ic_ok_app.png in Resources */,
+				307690C822B288C40043916F /* Logo_DemoUC_White.png in Resources */,
+				307690C922B288C40043916F /* WebCameras.storyboard in Resources */,
+				307690CA22B288C40043916F /* ic_action_files_grey.png in Resources */,
+				307690CB22B288C40043916F /* app_close.png in Resources */,
+				307690CC22B288C40043916F /* account_icon_user.png in Resources */,
+				307690CD22B288C40043916F /* News.storyboard in Resources */,
+				307690CE22B288C40043916F /* 2PaysMytishi.storyboard in Resources */,
+				307690CF22B288C40043916F /* Logo_DemoUC.png in Resources */,
+				307690D022B288C40043916F /* Logo_UK_Garant_White.png in Resources */,
+				307690D122B288C40043916F /* ic_get_app.png in Resources */,
+				307690D222B288C40043916F /* Main.storyboard in Resources */,
+				307690F622B28DAF0043916F /* GoogleService-Info.plist in Resources */,
+				307690F422B28CDC0043916F /* Logo_Parus.png in Resources */,
+				307690D322B288C40043916F /* Questions.storyboard in Resources */,
+				307690D422B288C40043916F /* Registration.storyboard in Resources */,
+				307690D522B288C40043916F /* ForgotPass.storyboard in Resources */,
+				307690D622B288C40043916F /* LaunchScreen.storyboard in Resources */,
+				307690D722B288C40043916F /* Saldo.storyboard in Resources */,
+				307690D822B288C40043916F /* ic_close_action.png in Resources */,
+				307690D922B288C40043916F /* PaymentSuccessViewController.xib in Resources */,
+				307690DA22B288C40043916F /* Account.storyboard in Resources */,
+				307690DB22B288C40043916F /* main_background.png in Resources */,
+				307690DC22B288C40043916F /* NoCounters.storyboard in Resources */,
+				307690DD22B288C40043916F /* ic_send_app.png in Resources */,
+				307690DE22B288C40043916F /* Support.storyboard in Resources */,
+				307690DF22B288C40043916F /* MupCounters.storyboard in Resources */,
+				307690E022B288C40043916F /* arrow_rigth.png in Resources */,
+				307690E122B288C40043916F /* spin.png in Resources */,
+				307690E222B288C40043916F /* AddLsPocket.storyboard in Resources */,
+				307690E322B288C40043916F /* account_icon_cons.jpg in Resources */,
+				307690E422B288C40043916F /* MainMenuCons.storyboard in Resources */,
+				307690E522B288C40043916F /* NewMainMenu.storyboard in Resources */,
+				307690E622B288C40043916F /* PaysMytishi.storyboard in Resources */,
+				307690E722B288C40043916F /* Apps.storyboard in Resources */,
+				307690E822B288C40043916F /* SelectItem.storyboard in Resources */,
+				307690E922B288C40043916F /* Logo_UK_Garant.png in Resources */,
+				307690EA22B288C40043916F /* Assets.xcassets in Resources */,
+				307690EB22B288C40043916F /* logo_SM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6516,6 +6774,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		3076905722B288C40043916F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UK_Perspectiva-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		307690EC22B288C40043916F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UK_Perspectiva/Pods-UK_Perspectiva-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UK_Perspectiva/Pods-UK_Perspectiva-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UK_Perspectiva/Pods-UK_Perspectiva-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		30CFB22C22696A2800723E61 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7889,6 +8186,111 @@
 				306C2CB622927F1200C29263 /* ForgotPass.swift in Sources */,
 				306C2CB722927F1200C29263 /* CountersController.swift in Sources */,
 				306C2CB822927F1200C29263 /* SupportController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3076905822B288C40043916F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3076905922B288C40043916F /* PayController.m in Sources */,
+				3076905A22B288C40043916F /* QuestionsTableVC.swift in Sources */,
+				3076905B22B288C40043916F /* AllLS.swift in Sources */,
+				3076905C22B288C40043916F /* NewsCell.swift in Sources */,
+				3076905D22B288C40043916F /* FirstController.swift in Sources */,
+				3076905E22B288C40043916F /* HistoryPayController.swift in Sources */,
+				3076905F22B288C40043916F /* StartController.swift in Sources */,
+				3076906022B288C40043916F /* AppsController.swift in Sources */,
+				3076906122B288C40043916F /* ShemeColor.swift in Sources */,
+				3076906222B288C40043916F /* CounterCell.swift in Sources */,
+				3076906322B288C40043916F /* Registration.swift in Sources */,
+				3076906422B288C40043916F /* Comments+CoreDataProperties.swift in Sources */,
+				3076906522B288C40043916F /* ImageConstant.swift in Sources */,
+				3076906622B288C40043916F /* AppsCellClose.swift in Sources */,
+				3076906722B288C40043916F /* Saldo+CoreDataClass.swift in Sources */,
+				3076906822B288C40043916F /* WebsCell.swift in Sources */,
+				3076906922B288C40043916F /* Applications+CoreDataClass.swift in Sources */,
+				3076906A22B288C40043916F /* QuestionAnswerVC.swift in Sources */,
+				3076906B22B288C40043916F /* News.swift in Sources */,
+				3076906C22B288C40043916F /* SelectItemController.swift in Sources */,
+				3076906D22B288C40043916F /* AddAppCons.swift in Sources */,
+				3076906E22B288C40043916F /* Tinkoff_Pay_Decides.m in Sources */,
+				3076906F22B288C40043916F /* ASDKTestSettings.m in Sources */,
+				3076907022B288C40043916F /* AdditionalServicesController.swift in Sources */,
+				3076907122B288C40043916F /* Web_JSON.swift in Sources */,
+				3076907222B288C40043916F /* NewEditAccountController.swift in Sources */,
+				3076907322B288C40043916F /* PaysController.swift in Sources */,
+				3076907422B288C40043916F /* Titles.swift in Sources */,
+				3076907522B288C40043916F /* ColorsConstant.swift in Sources */,
+				3076907622B288C40043916F /* Server.swift in Sources */,
+				3076907722B288C40043916F /* News+UITableViewDataSource.swift in Sources */,
+				3076907822B288C40043916F /* SendSMSCod.swift in Sources */,
+				3076907922B288C40043916F /* NewsManager.swift in Sources */,
+				3076907A22B288C40043916F /* Counters+CoreDataClass.swift in Sources */,
+				3076907B22B288C40043916F /* OneVoteController.swift in Sources */,
+				3076907C22B288C40043916F /* MainMenu.swift in Sources */,
+				3076907D22B288C40043916F /* addCountersController.swift in Sources */,
+				3076907E22B288C40043916F /* CommCellCons.swift in Sources */,
+				3076907F22B288C40043916F /* openSaldoController.swift in Sources */,
+				3076908022B288C40043916F /* QuestionFinal.swift in Sources */,
+				3076908122B288C40043916F /* Settings+CoreDataClass.swift in Sources */,
+				3076908222B288C40043916F /* ObjJKH.xcdatamodeld in Sources */,
+				3076908322B288C40043916F /* Pay.swift in Sources */,
+				3076908422B288C40043916F /* FirstControllerCons.swift in Sources */,
+				3076908522B288C40043916F /* Saldo+CoreDataProperties.swift in Sources */,
+				3076908622B288C40043916F /* NewHomePage.swift in Sources */,
+				3076908722B288C40043916F /* AddLS.swift in Sources */,
+				3076908822B288C40043916F /* Counters+CoreDataProperties.swift in Sources */,
+				3076908922B288C40043916F /* resVoteController.swift in Sources */,
+				3076908A22B288C40043916F /* AppsCell.swift in Sources */,
+				3076908B22B288C40043916F /* Applications+CoreDataProperties.swift in Sources */,
+				3076908C22B288C40043916F /* Fotos+CoreDataProperties.swift in Sources */,
+				3076908D22B288C40043916F /* FloatRatingView.swift in Sources */,
+				3076908E22B288C40043916F /* FilesController.swift in Sources */,
+				3076908F22B288C40043916F /* AppDelegate.swift in Sources */,
+				3076909022B288C40043916F /* QuestionsJson.swift in Sources */,
+				3076909122B288C40043916F /* Fotos+CoreDataClass.swift in Sources */,
+				3076909222B288C40043916F /* DB.swift in Sources */,
+				3076909322B288C40043916F /* AppUser.swift in Sources */,
+				3076909422B288C40043916F /* Comments+CoreDataClass.swift in Sources */,
+				3076909522B288C40043916F /* TransactionHistoryModelController.m in Sources */,
+				3076909622B288C40043916F /* UniqCountersController.swift in Sources */,
+				3076909722B288C40043916F /* MainMenuCons.swift in Sources */,
+				3076909822B288C40043916F /* AddAppUser.swift in Sources */,
+				3076909922B288C40043916F /* UpdateAppController.swift in Sources */,
+				3076909A22B288C40043916F /* WebsController.swift in Sources */,
+				3076909B22B288C40043916F /* Web_Camera.swift in Sources */,
+				3076909C22B288C40043916F /* NewPass.swift in Sources */,
+				3076909D22B288C40043916F /* CloseAppAlert.swift in Sources */,
+				3076909E22B288C40043916F /* PaymentSuccessViewController.m in Sources */,
+				3076909F22B288C40043916F /* Settings+CoreDataProperties.swift in Sources */,
+				307690A022B288C40043916F /* SaldoController.swift in Sources */,
+				307690A122B288C40043916F /* VotingController.swift in Sources */,
+				307690A222B288C40043916F /* SaldoCell.swift in Sources */,
+				307690A322B288C40043916F /* NewsClient.swift in Sources */,
+				307690A422B288C40043916F /* CoreDataManager.swift in Sources */,
+				307690A522B288C40043916F /* MupCounterController.swift in Sources */,
+				307690A622B288C40043916F /* NewsController.swift in Sources */,
+				307690A722B288C40043916F /* CommCell.swift in Sources */,
+				307690A822B288C40043916F /* Reachability.swift in Sources */,
+				307690A922B288C40043916F /* Extensions.swift in Sources */,
+				307690AA22B288C40043916F /* NoCounters.swift in Sources */,
+				307690AB22B288C40043916F /* AppCons.swift in Sources */,
+				307690AC22B288C40043916F /* NewSaldoController.swift in Sources */,
+				307690AD22B288C40043916F /* NewMainMenu.swift in Sources */,
+				307690AE22B288C40043916F /* ASDKCardIOScanner.m in Sources */,
+				307690AF22B288C40043916F /* EditAccountController.swift in Sources */,
+				307690B022B288C40043916F /* QuestionVoteController.swift in Sources */,
+				307690B122B288C40043916F /* NewsView.swift in Sources */,
+				307690B222B288C40043916F /* PaymentApp+CoreDataProperties.swift in Sources */,
+				307690B322B288C40043916F /* PaysMytishiController.swift in Sources */,
+				307690B422B288C40043916F /* QuestionsTableCell.swift in Sources */,
+				307690B522B288C40043916F /* NewMainMenu2.swift in Sources */,
+				307690B622B288C40043916F /* OnOffButton.swift in Sources */,
+				307690B722B288C40043916F /* PaymentApp+CoreDataClass.swift in Sources */,
+				307690B822B288C40043916F /* ForgotPass.swift in Sources */,
+				307690B922B288C40043916F /* CountersController.swift in Sources */,
+				307690BA22B288C40043916F /* SupportController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9852,6 +10254,55 @@
 			};
 			name = Release;
 		};
+		307690EE22B288C40043916F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2108610941DABC4FFBB7BF85 /* Pods-UK_Perspectiva.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Uk_Perspectiva";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/Parus-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DisParus";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Parus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isParus Debug";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		307690EF22B288C40043916F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83E870DB1C8A0F32DAE0773A /* Pods-UK_Perspectiva.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Uk_Perspectiva";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/Parus-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DisParus";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Parus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isParus;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		30CFB22F22696A2800723E61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1571C3EF4B661F60077FAAD /* Pods-UK_Service_Comfort.debug.xcconfig */;
@@ -10834,6 +11285,15 @@
 			buildConfigurations = (
 				306C2CEB22927F1200C29263 /* Debug */,
 				306C2CEC22927F1200C29263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		307690ED22B288C40043916F /* Build configuration list for PBXNativeTarget "Parus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				307690EE22B288C40043916F /* Debug */,
+				307690EF22B288C40043916F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
