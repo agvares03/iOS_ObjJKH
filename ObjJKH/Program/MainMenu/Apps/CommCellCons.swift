@@ -29,3 +29,24 @@ class CommCellCons: UITableViewCell {
     }
 
 }
+
+class NewCommCellCons: UITableViewCell {
+    
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var text_comm: UILabel!
+    @IBOutlet weak var heightDate: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+}
