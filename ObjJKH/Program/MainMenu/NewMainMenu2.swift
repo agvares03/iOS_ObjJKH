@@ -194,6 +194,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_JKH_Pavlovskoe")
         #elseif isPerspectiva
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
+        #elseif isParus
+        fon_top.image = UIImage(named: "Logo_Parus")
         #endif
         
         // Картинки для разных Таргетов
