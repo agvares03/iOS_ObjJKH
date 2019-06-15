@@ -1,9 +1,9 @@
 //
-//  AppUser.swift
+//  NewAppUser.swift
 //  ObjJKH
 //
-//  Created by Роман Тузин on 31.08.2018.
-//  Copyright © 2018 The Best. All rights reserved.
+//  Created by Sergey Ivanov on 15/06/2019.
+//  Copyright © 2019 The Best. All rights reserved.
 //
 
 import UIKit
@@ -12,22 +12,23 @@ import Alamofire
 import UserNotifications
 import Firebase
 
-protocol ShowAppDelegate : class {
-    func showAppDone(showApp: AppUser)
+protocol ShowNewAppDelegate : class {
+    func showAppDone(showApp: NewAppUser)
 }
 
-class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, CloseAppDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, CloseAppDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var hidden_Header: UIBarButtonItem!
+//    @IBOutlet weak var hidden_Header: UIBarButtonItem!
     @IBOutlet weak var back: UIBarButtonItem!
+    @IBOutlet weak var fileBtn: UIBarButtonItem!
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBOutlet weak var pay_txt: UILabel!
-    @IBOutlet weak var payBtn: UIButton!
-    @IBOutlet weak var payView: UIView!
-    @IBOutlet weak var heightPayView: NSLayoutConstraint!
+//    @IBOutlet weak var pay_txt: UILabel!
+//    @IBOutlet weak var payBtn: UIButton!
+//    @IBOutlet weak var payView: UIView!
+//    @IBOutlet weak var heightPayView: NSLayoutConstraint!
     
     @IBAction func payBtnAction(_ sender: UIButton) {
         var payT = false
@@ -71,24 +72,25 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         }
     }
     
-    @IBOutlet weak var table_Const: NSLayoutConstraint!
-    @IBOutlet weak var headerHeight: NSLayoutConstraint!
-    @IBOutlet weak var date_txt: UILabel!
-    @IBOutlet weak var tema_txt: UILabel!
+//    @IBOutlet weak var table_Const: NSLayoutConstraint!
+//    @IBOutlet weak var headerHeight: NSLayoutConstraint!
+//    @IBOutlet weak var date_txt: UILabel!
+//    @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var table_comments: UITableView!
     @IBOutlet weak var ed_comment: UITextField!
-    @IBOutlet weak var type_app: UILabel!
-    @IBOutlet weak var ls_adress: UILabel!
-    @IBOutlet weak var ls_phone: UILabel!
-    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var sendBtn: UIButton!
+//    @IBOutlet weak var type_app: UILabel!
+//    @IBOutlet weak var ls_adress: UILabel!
+//    @IBOutlet weak var ls_phone: UILabel!
+//    @IBOutlet weak var headerView: UIView!
     
-    var delegate:ShowAppDelegate?
+    var delegate:ShowNewAppDelegate?
     var updDelegt: AppsUserUpdateDelegate?
     var App: Applications? = nil
-    @IBOutlet weak var fot_img: UIButton!
-    
-    @IBOutlet weak var btn2: UIButton!
-    @IBOutlet weak var btn3: UIButton!
+//    @IBOutlet weak var fot_img: UIButton!
+//
+//    @IBOutlet weak var btn2: UIButton!
+//    @IBOutlet weak var btn3: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     private var refreshControl: UIRefreshControl?
@@ -160,9 +162,9 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
             defaults.synchronize()
             print(receiptData)
             PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-
+                
             }, cancelled:  {
-
+                
             }, error: { (error) in
                 let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -177,16 +179,16 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
             defaults.synchronize()
             print(receiptData)
             PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
-
+                
             }, cancelled: {
-
+                
             }) { (error) in
                 let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             }
-
+            
             #endif
         }
     }
@@ -198,7 +200,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         defaults.synchronize()
         self.performSegue(withIdentifier: "CostPay_New", sender: self)
     }
-
+    
     @IBAction func add_foto(_ sender: UIButton) {
         let action = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         action.addAction(UIAlertAction(title: "Выбрать из галереи", style: .default, handler: { (_) in
@@ -226,20 +228,20 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     }
     var isHidden = true
     
-    @IBAction func hiddHeader(_ sender: UIButton) {
-        print(isHidden, headerView.frame.origin.y)
-        if !isHidden{
-            hidden_Header.title = "▽"
-            headerView.isHidden = true
-            table_Const.constant = table_Const.constant - headerView.frame.size.height
-            isHidden = true
-        }else{
-            hidden_Header.title = "△"
-            headerView.isHidden = false
-            table_Const.constant = table_Const.constant + headerView.frame.size.height
-            isHidden = false
-        }
-    }
+//    @IBAction func hiddHeader(_ sender: UIButton) {
+//        print(isHidden, headerView.frame.origin.y)
+//        if !isHidden{
+//            hidden_Header.title = "▽"
+//            headerView.isHidden = true
+//            table_Const.constant = table_Const.constant - headerView.frame.size.height
+//            isHidden = true
+//        }else{
+//            hidden_Header.title = "△"
+//            headerView.isHidden = false
+//            table_Const.constant = table_Const.constant + headerView.frame.size.height
+//            isHidden = false
+//        }
+//    }
     
     @IBAction func add_comm(_ sender: UIButton) {
         self.addComm(comm: ed_comment.text)
@@ -309,19 +311,19 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.StopIndicator()
-//        if read == 0{
-            self.read_request()
-//        }
+        //        if read == 0{
+        self.read_request()
+        //        }
         // получим id текущего аккаунта
         let defaults = UserDefaults.standard
         id_author    = defaults.string(forKey: "id_account")!
         name_account = defaults.string(forKey: "name")!
         id_account   = defaults.string(forKey: "id_account")!
         
-        tema_txt.text = txt_tema
-        date_txt.text = txt_date
+//        tema_txt.text = txt_tema
+//        date_txt.text = txt_date
         defaults.set("", forKey: "PaymentID")
         defaults.set("", forKey: "PaysError")
         defaults.set(false, forKey: "PaymentSucces")
@@ -346,56 +348,57 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
-        payBtn.backgroundColor = myColors.btnColor.uiColor()
+        fileBtn.tintColor = myColors.btnColor.uiColor()
+        sendBtn.tintColor = myColors.btnColor.uiColor()
+//        payBtn.backgroundColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
-        fot_img.imageView?.setImageColor(color: myColors.btnColor.uiColor())
-        hidden_Header.tintColor = myColors.indicatorColor.uiColor()
+//        fot_img.imageView?.setImageColor(color: myColors.btnColor.uiColor())
+//        hidden_Header.tintColor = myColors.indicatorColor.uiColor()
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
-        print(self.adress, self.flat, self.phone)
-        self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
-        if self.flat.count > 0{
-            var ls_12_end = ""
-            if self.flat.count > 2{
-                let ls_12 = self.flat.index(self.flat.startIndex, offsetBy: 2)
-                ls_12_end = self.flat.substring(to: ls_12)
-            }
-            if ls_12_end == "00"{
-                self.flat.remove(at: self.flat.startIndex)
-            }
-            var ls_1_end = ""
-            let ls_1 = self.flat.index(self.flat.startIndex, offsetBy: 1)
-            ls_1_end = self.flat.substring(to: ls_1)
-            if ls_1_end == "0"{
-                self.flat.remove(at: self.flat.startIndex)
-            }
-            if ls_12_end == "кв"{
-                self.ls_adress.text = self.adress + ", " + self.flat
-            }else{
-                self.ls_adress.text = self.adress + ", кв. " + self.flat
-            }
-        }else{
-            self.ls_adress.text = self.adress
-        }
-        self.ls_phone.text = self.phone
+//        self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
+//        if self.flat.count > 0{
+//            var ls_12_end = ""
+//            if self.flat.count > 2{
+//                let ls_12 = self.flat.index(self.flat.startIndex, offsetBy: 2)
+//                ls_12_end = self.flat.substring(to: ls_12)
+//            }
+//            if ls_12_end == "00"{
+//                self.flat.remove(at: self.flat.startIndex)
+//            }
+//            var ls_1_end = ""
+//            let ls_1 = self.flat.index(self.flat.startIndex, offsetBy: 1)
+//            ls_1_end = self.flat.substring(to: ls_1)
+//            if ls_1_end == "0"{
+//                self.flat.remove(at: self.flat.startIndex)
+//            }
+//            if ls_12_end == "кв"{
+//                self.ls_adress.text = self.adress + ", " + self.flat
+//            }else{
+//                self.ls_adress.text = self.adress + ", кв. " + self.flat
+//            }
+//        }else{
+//            self.ls_adress.text = self.adress
+//        }
+//        self.ls_phone.text = self.phone
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
-        })        
+        })
         
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
-        let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
-        let count = tema_txt.frame.size.height * numberLine
-        headerHeight.constant = headerHeight.constant + count
-        headerView.isHidden = true
-        table_Const.constant = table_Const.constant - headerView.frame.size.height
-        if isPay && !isPaid{
-            pay_txt.text = paid_text
-            payBtn.setTitle("Оплатить " + String(format:"%.2f", paid_sum) + " руб", for: .normal)
-        }else{
-            heightPayView.constant = 0
-            payView.isHidden = true
-        }
+//        let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
+//        let count = tema_txt.frame.size.height * numberLine
+//        headerHeight.constant = headerHeight.constant + count
+//        headerView.isHidden = true
+//        table_Const.constant = table_Const.constant - headerView.frame.size.height
+//        if isPay && !isPaid{
+//            pay_txt.text = paid_text
+//            payBtn.setTitle("Оплатить " + String(format:"%.2f", paid_sum) + " руб", for: .normal)
+//        }else{
+//            heightPayView.constant = 0
+//            payView.isHidden = true
+//        }
     }
     
     func read_request(){
@@ -472,7 +475,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     @objc func keyboardWillHide(notification:NSNotification) {
         view.frame.origin.y = 0
     }
-
+    
     func choice(comm: String?) {
         if (responseString == "xxx") {
             DispatchQueue.main.async(execute: {
@@ -562,42 +565,92 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
             return 0
         }
     }
-    
+    var commDate = Date()
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
         if (comm.id_author != comm.id_account) {
-            let cell = self.table_comments.dequeueReusableCell(withIdentifier: "CommCellCons") as! CommCellCons
+            let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCellCons") as! NewCommCellCons
             cell.author.text     = comm.author
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-            cell.date.text       = dateFormatter.string(from: comm.dateK!)
             cell.text_comm.text  = comm.text
             self.teck_id = comm.id + 1
-            
-//            #if isGKRZS
-//            let server = Server()
-//            cell.author.textColor = server.hexStringToUIColor(hex: "#1f287f")
-//            #else
-//            #endif
-            
+            let calendar = Calendar.current
+            if comm.dateK != nil{
+                var hour = String(calendar.component(.hour, from: comm.dateK!))
+                if hour.count == 1{
+                    hour = "0" + hour
+                }
+                var minute = String(calendar.component(.minute, from: comm.dateK!))
+                if minute.count == 1{
+                    minute = "0" + minute
+                }
+                var day = String(calendar.component(.day, from: comm.dateK!))
+                if day.count == 1{
+                    day = "0" + day
+                }
+                var month = String(calendar.component(.month, from: comm.dateK!))
+                if month.count == 1{
+                    month = "0" + month
+                }
+                let year = String(calendar.component(.year, from: comm.dateK!))
+                let time = hour + ":" + minute
+                let date = day + "." + month + "." + year
+                cell.time.text = time
+                cell.date.text = date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                if dateFormatter.date(from: date)! > commDate{
+                    commDate = comm.dateK!
+                    cell.heightDate.constant = 31
+                }else{
+                    cell.heightDate.constant = 0
+                }
+                if indexPath.row == 0{
+                    commDate = comm.dateK!
+                    cell.heightDate.constant = 31
+                }
+            }
             return cell
         } else {
-            let cell = self.table_comments.dequeueReusableCell(withIdentifier: "CommCell") as! CommCell
-            cell.author.text     = "Вы" //comm.author
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-            if comm.dateK != nil{
-                cell.date.text       = dateFormatter.string(from: comm.dateK!)
-            }
+            let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCell") as! NewCommCell
+//            cell.author.text     = "Вы" //comm.author
+            let calendar = Calendar.current
             cell.text_comm.text  = comm.text
             self.teck_id = comm.id + 1
-            
-//            #if isGKRZS
-//            let server = Server()
-//            cell.author.textColor = server.hexStringToUIColor(hex: "#1f287f")
-//            #else
-//            #endif
-            
+            if comm.dateK != nil{
+                var hour = String(calendar.component(.hour, from: comm.dateK!))
+                if hour.count == 1{
+                    hour = "0" + hour
+                }
+                var minute = String(calendar.component(.minute, from: comm.dateK!))
+                if minute.count == 1{
+                    minute = "0" + minute
+                }
+                var day = String(calendar.component(.day, from: comm.dateK!))
+                if day.count == 1{
+                    day = "0" + day
+                }
+                var month = String(calendar.component(.month, from: comm.dateK!))
+                if month.count == 1{
+                    month = "0" + month
+                }
+                let year = String(calendar.component(.year, from: comm.dateK!))
+                let time = hour + ":" + minute
+                let date = day + "." + month + "." + year
+                cell.time.text = time
+                cell.date.text = date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                if dateFormatter.date(from: date)! > commDate{
+                    commDate = comm.dateK!
+                    cell.heightDate.constant = 31
+                }else{
+                    cell.heightDate.constant = 0
+                }
+                if indexPath.row == 0{
+                    commDate = comm.dateK!
+                    cell.heightDate.constant = 31
+                }
+            }
             return cell
         }
     }
@@ -624,11 +677,11 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     
     func StartIndicator() {
         
-        self.btn2.isEnabled = false
-        self.btn2.isHidden  = true
-        
-        self.btn3.isEnabled = false
-        self.btn3.isHidden  = true
+//        self.btn2.isEnabled = false
+//        self.btn2.isHidden  = true
+//
+//        self.btn3.isEnabled = false
+//        self.btn3.isHidden  = true
         
         self.indicator.startAnimating()
         self.indicator.isHidden = false
@@ -636,11 +689,11 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     
     func StopIndicator() {
         
-        self.btn2.isEnabled = true
-        self.btn2.isHidden  = false
-        
-        self.btn3.isEnabled = true
-        self.btn3.isHidden  = false
+//        self.btn2.isEnabled = true
+//        self.btn2.isHidden  = false
+//
+//        self.btn3.isEnabled = true
+//        self.btn3.isHidden  = false
         
         self.indicator.stopAnimating()
         self.indicator.isHidden = true
@@ -703,7 +756,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "files" {
             let vc = segue.destination as! FilesController
             vc.data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
@@ -754,7 +807,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         }else{
             status = UserDefaults.standard.string(forKey: "PaysError")!
         }
-//        let sum = self.totalSum
+        //        let sum = self.totalSum
         let sum = 1.00
         let desc = "Произведена оплата" + String(sum) + "руб. за " + paid_text
         let urlPath = Server.SERVER + "MobileAPI/AddPay.ashx?"
@@ -805,8 +858,8 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                                                     DispatchQueue.main.async {
 //                                                        UserDefaults.standard.set(0, forKey: "request_read")
 //                                                        UserDefaults.standard.synchronize()
-                                                        self.payView.isHidden = true
-                                                        self.heightPayView.constant = 0
+//                                                        self.payView.isHidden = true
+//                                                        self.heightPayView.constant = 0
                                                         self.addComm(comm: "Произведена оплата " + String(sum) + " руб. за " + self.paid_text)
                                                     }
                                                 }

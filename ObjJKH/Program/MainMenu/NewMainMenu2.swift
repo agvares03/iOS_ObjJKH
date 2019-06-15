@@ -523,33 +523,36 @@ class NewMainMenu2: UIViewController {
                                                                     //                                                                                                                                        print(json)
                                                                     
                                                                     if let json_bills = json["data"] {
-                                                                        let int_end = (json_bills.count)!-1
-                                                                        if (int_end < 0) {
-                                                                            
-                                                                        } else {
-                                                                            sum = String(format:"%.2f", json_bills["Sum"] as! Double)
-                                                                            //                                                                            let s = json_bills["Sum"] as! Double
-                                                                            sumFine = String(format:"%.2f", json_bills["SumFine"] as! Double)
-//                                                                            sum = "0.00"
-//                                                                            sumFine = "0.00"
-                                                                            self.debtIdent.append(ls)
-                                                                            self.debtSum.append(sum)
-                                                                            self.debtSumFine.append(sumFine)
-                                                                            sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
-                                                                            date = json_bills["Date"] as! String
-                                                                            
-                                                                            defaults.set(date, forKey: "dateDebt")
-                                                                            if Double(sumAll) != 0.00{
-                                                                                let d = date.components(separatedBy: ".")
-                                                                                let d1 = self.dateOld.components(separatedBy: ".")
-                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
-                                                                                    DispatchQueue.main.async {
-                                                                                        self.dateOld = date
+                                                                        if ((json_bills as? NSNull) == nil){
+                                                                            let int_end = (json_bills.count)!-1
+                                                                            if (int_end < 0) {
+                                                                                
+                                                                            } else {
+                                                                                sum = String(format:"%.2f", json_bills["Sum"] as! Double)
+                                                                                //                                                                            let s = json_bills["Sum"] as! Double
+                                                                                sumFine = String(format:"%.2f", json_bills["SumFine"] as! Double)
+                                                                                //                                                                            sum = "0.00"
+                                                                                //                                                                            sumFine = "0.00"
+                                                                                self.debtIdent.append(ls)
+                                                                                self.debtSum.append(sum)
+                                                                                self.debtSumFine.append(sumFine)
+                                                                                sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
+                                                                                date = json_bills["Date"] as! String
+                                                                                
+                                                                                defaults.set(date, forKey: "dateDebt")
+                                                                                if Double(sumAll) != 0.00{
+                                                                                    let d = date.components(separatedBy: ".")
+                                                                                    let d1 = self.dateOld.components(separatedBy: ".")
+                                                                                    if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                                                                                        DispatchQueue.main.async {
+                                                                                            self.dateOld = date
+                                                                                        }
                                                                                     }
+                                                                                    sumObj = sumObj + Double(sumAll)!
                                                                                 }
-                                                                                sumObj = sumObj + Double(sumAll)!
                                                                             }
                                                                         }
+                                                                        
                                                                     }
                                                                     defaults.set(sumObj, forKey: "sumDebt")
                                                                     defaults.synchronize()

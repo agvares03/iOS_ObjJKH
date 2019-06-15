@@ -30,3 +30,62 @@ class AppsCell: UITableViewCell {
     }
 
 }
+
+class LsAddAppsCell: UITableViewCell {
+    
+    var delegate: UIViewController?
+    
+    @IBOutlet weak var textLS: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+}
+class TypeAddAppsCell: UITableViewCell {
+    
+    var delegate: UIViewController?
+    
+    @IBOutlet weak var textType: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+}
+class FileAddAppsCell: UITableViewCell {
+    
+    var delegate: UIViewController?
+    var delegate2: DelFileAppCellDelegate?
+    var ident = -1
+    
+    @IBOutlet weak var textFile: UILabel!
+    @IBOutlet weak var iconFile: UIImageView!
+    @IBOutlet weak var delIconFile: UIImageView!
+    @IBOutlet weak var delFileBtn: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    @IBAction func addAppAction(_ sender: UIButton) {
+        delegate2?.delFileLs(ident: ident, name: textFile.text!)
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+}

@@ -245,7 +245,6 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
                 
             })
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -351,15 +351,15 @@ class DB: NSObject, XMLParserDelegate {
                 if (attributeDict["isActive"] == "1"){
                     managedObject.is_read_client     = 0
                     request_read += 1
-                    DispatchQueue.main.async {
-                        if self.request_read >= 0{
-                            UserDefaults.standard.setValue(self.request_read, forKey: "request_read")
-                            UserDefaults.standard.synchronize()
-                        }else{
-                            UserDefaults.standard.setValue(0, forKey: "request_read")
-                            UserDefaults.standard.synchronize()
-                        }
-                    }
+//                    DispatchQueue.main.async {
+//                        if self.request_read >= 0{
+//                            UserDefaults.standard.setValue(self.request_read, forKey: "request_read")
+//                            UserDefaults.standard.synchronize()
+//                        }else{
+//                            UserDefaults.standard.setValue(0, forKey: "request_read")
+//                            UserDefaults.standard.synchronize()
+//                        }
+//                    }
                 }
             }
             if (attributeDict["IsReaded"] == "1") {

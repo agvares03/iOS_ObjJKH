@@ -20,7 +20,7 @@ protocol AppsConsUpdateDelegate {
     func updateList()
 }
 
-class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddAppDelegate, AddAppConsDelegate, ShowAppDelegate, AppsUserUpdateDelegate, AppsConsUpdateDelegate {
+class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddAppDelegate, NewAddAppDelegate, AddAppConsDelegate, ShowAppDelegate, ShowNewAppDelegate, AppsUserUpdateDelegate, AppsConsUpdateDelegate {
     
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var back: UIBarButtonItem!
@@ -68,6 +68,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let isCons = defaults.string(forKey: "isCons")
         if (isCons == "0") {
             self.performSegue(withIdentifier: "add_app", sender: self)
+//            self.performSegue(withIdentifier: "new_add_app", sender: self)
         } else {
             self.performSegue(withIdentifier: "add_app_cons", sender: self)
         }
@@ -316,6 +317,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (app.is_close == 1) {
             if (isCons == "0") {
                 self.performSegue(withIdentifier: "show_app", sender: self)
+//                self.performSegue(withIdentifier: "new_show_app", sender: self)
             } else {
                 self.performSegue(withIdentifier: "show_app_cons", sender: self)
             }
@@ -336,6 +338,36 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let app = fetchedResultsController!.object(at: indexPath)
             
             let AppUser             = segue.destination as! AppUser
+            AppUser.title           = "Заявка №" + app.number!
+            AppUser.txt_tema   = app.tema!
+            AppUser.str_type_app = app.type_app!
+            AppUser.read = app.is_read_client
+            AppUser.adress = app.adress!
+            AppUser.flat = app.flat!
+            AppUser.phone = app.phone!
+            if app.paid_text != nil{
+                AppUser.paid_text = app.paid_text!
+            }
+            if app.paid_sum != nil{
+                AppUser.paid_sum = Double(app.paid_sum!) as! Double
+                AppUser.isPay = app.is_pay
+                AppUser.isPaid = app.is_paid
+            }
+            if app.acc_ident != nil{
+                AppUser.acc_ident = app.acc_ident!
+            }
+            
+            //            AppUser.txt_text   = app.text!
+            AppUser.txt_date   = app.date!
+            AppUser.id_app     = app.number!
+            AppUser.delegate   = self
+            AppUser.App        = app
+            AppUser.updDelegt = self
+        }else if segue.identifier == "new_show_app" {
+            let indexPath = tableApps.indexPathForSelectedRow!
+            let app = fetchedResultsController!.object(at: indexPath)
+            
+            let AppUser             = segue.destination as! NewAppUser
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
@@ -418,6 +450,9 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }else if (segue.identifier == "add_app") {
                 let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppUser
                 AddApp.delegate = self
+        }else if (segue.identifier == "new_add_app") {
+            let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! NewAddAppUser
+            AddApp.delegate = self
         } else if (segue.identifier == "add_app_cons") {
                 let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppCons
                 AddApp.delegate = self
@@ -428,6 +463,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         load_data()
         self.tableApps.reloadData()
     }
+    
+    func newAddAppDone(addApp: NewAddAppUser) {
+        load_data()
+        self.tableApps.reloadData()
+    }
 
     func addAppDoneCons(addApp: AddAppCons) {
         load_data()
@@ -435,6 +475,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func showAppDone(showApp: AppUser) {
+        load_data()
+        updateTable()
+    }
+    
+    func showAppDone(showApp: NewAppUser) {
         load_data()
         updateTable()
     }
