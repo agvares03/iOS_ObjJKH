@@ -1601,6 +1601,7 @@
 		307690EB22B288C40043916F /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		307690F422B28CDC0043916F /* Logo_Parus.png in Resources */ = {isa = PBXBuildFile; fileRef = 307690F322B28CDC0043916F /* Logo_Parus.png */; };
 		307690F622B28DAF0043916F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 307690F522B28DAE0043916F /* GoogleService-Info.plist */; };
+		307690FC22B5207E0043916F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 307690FB22B5207E0043916F /* GoogleService-Info.plist */; };
 		30ABD1E3225C343C00A5D6F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30ABD1E2225C343C00A5D6F1 /* GoogleService-Info.plist */; };
 		30ABD1E5225C476000A5D6F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30ABD1E4225C475F00A5D6F1 /* GoogleService-Info.plist */; };
 		30ABD1E6225C648800A5D6F1 /* openSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78BF78222CEC8A00F31938 /* openSaldoController.swift */; };
@@ -3524,6 +3525,7 @@
 		307690F522B28DAE0043916F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Parus/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		307690F922B28E060043916F /* ReutKomfort copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ReutKomfort copy-Info.plist"; path = "../../../../../../../sergeyivanov/Desktop/ios_objjkh/ReutKomfort copy-Info.plist"; sourceTree = "<group>"; };
 		307690FA22B28E0A0043916F /* ReutKomfort copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ReutKomfort copy2-Info.plist"; path = "../../../../../../../sergeyivanov/Desktop/ios_objjkh/ReutKomfort copy2-Info.plist"; sourceTree = "<group>"; };
+		307690FB22B5207E0043916F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/Parus/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		30ABD1E2225C343C00A5D6F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Komeks/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30ABD1E4225C475F00A5D6F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/ChistDom/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30BBD034229287480028AC33 /* Logo_UkGarmonia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UkGarmonia.png; sourceTree = "<group>"; };
@@ -4089,6 +4091,7 @@
 		307690F722B28DC70043916F /* Google_Services */ = {
 			isa = PBXGroup;
 			children = (
+				307690FB22B5207E0043916F /* GoogleService-Info.plist */,
 				41209320215C105F001E713E /* GoogleService-Info.plist */,
 				30FDC91D227027CD00CC48C5 /* GoogleService-Info.plist */,
 				41EF7E80220D779B0041D53B /* GoogleService-Info.plist */,
@@ -5798,6 +5801,7 @@
 				307690D122B288C40043916F /* ic_get_app.png in Resources */,
 				307690D222B288C40043916F /* Main.storyboard in Resources */,
 				307690F622B28DAF0043916F /* GoogleService-Info.plist in Resources */,
+				307690FC22B5207E0043916F /* GoogleService-Info.plist in Resources */,
 				307690F422B28CDC0043916F /* Logo_Parus.png in Resources */,
 				307690D322B288C40043916F /* Questions.storyboard in Resources */,
 				307690D422B288C40043916F /* Registration.storyboard in Resources */,
@@ -10950,7 +10954,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = ObjJKH/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10979,7 +10983,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = ObjJKH/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
