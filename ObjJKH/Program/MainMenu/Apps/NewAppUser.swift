@@ -18,7 +18,7 @@ protocol ShowNewAppDelegate : class {
 
 class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, CloseAppDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-//    @IBOutlet weak var hidden_Header: UIBarButtonItem!
+    @IBOutlet weak var hidden_Header: UIBarButtonItem!
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var fileBtn: UIBarButtonItem!
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
@@ -72,17 +72,17 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-//    @IBOutlet weak var table_Const: NSLayoutConstraint!
-//    @IBOutlet weak var headerHeight: NSLayoutConstraint!
-//    @IBOutlet weak var date_txt: UILabel!
-//    @IBOutlet weak var tema_txt: UILabel!
+    @IBOutlet weak var table_Const: NSLayoutConstraint!
+    @IBOutlet weak var headerHeight: NSLayoutConstraint!
+    @IBOutlet weak var date_txt: UILabel!
+    @IBOutlet weak var tema_txt: UILabel!
     @IBOutlet weak var table_comments: UITableView!
     @IBOutlet weak var ed_comment: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
-//    @IBOutlet weak var type_app: UILabel!
-//    @IBOutlet weak var ls_adress: UILabel!
-//    @IBOutlet weak var ls_phone: UILabel!
-//    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var type_app: UILabel!
+    @IBOutlet weak var ls_adress: UILabel!
+    @IBOutlet weak var ls_phone: UILabel!
+    @IBOutlet weak var headerView: UIView!
     
     var delegate:ShowNewAppDelegate?
     var updDelegt: AppsUserUpdateDelegate?
@@ -228,20 +228,20 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     var isHidden = true
     
-//    @IBAction func hiddHeader(_ sender: UIButton) {
-//        print(isHidden, headerView.frame.origin.y)
-//        if !isHidden{
+    @IBAction func hiddHeader(_ sender: UIButton) {
+        print(isHidden, headerView.frame.origin.y)
+        if !isHidden{
 //            hidden_Header.title = "▽"
-//            headerView.isHidden = true
-//            table_Const.constant = table_Const.constant - headerView.frame.size.height
-//            isHidden = true
-//        }else{
+            headerView.isHidden = true
+            table_Const.constant = table_Const.constant - headerView.frame.size.height
+            isHidden = true
+        }else{
 //            hidden_Header.title = "△"
-//            headerView.isHidden = false
-//            table_Const.constant = table_Const.constant + headerView.frame.size.height
-//            isHidden = false
-//        }
-//    }
+            headerView.isHidden = false
+            table_Const.constant = table_Const.constant + headerView.frame.size.height
+            isHidden = false
+        }
+    }
     
     @IBAction func add_comm(_ sender: UIButton) {
         self.addComm(comm: ed_comment.text)
@@ -322,8 +322,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         name_account = defaults.string(forKey: "name")!
         id_account   = defaults.string(forKey: "id_account")!
         
-//        tema_txt.text = txt_tema
-//        date_txt.text = txt_date
+        tema_txt.text = txt_tema
+        date_txt.text = txt_date
         defaults.set("", forKey: "PaymentID")
         defaults.set("", forKey: "PaysError")
         defaults.set(false, forKey: "PaymentSucces")
@@ -348,50 +348,50 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
-        fileBtn.tintColor = myColors.btnColor.uiColor()
+//        fileBtn.tintColor = myColors.btnColor.uiColor()
         sendBtn.tintColor = myColors.btnColor.uiColor()
 //        payBtn.backgroundColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
 //        fot_img.imageView?.setImageColor(color: myColors.btnColor.uiColor())
-//        hidden_Header.tintColor = myColors.indicatorColor.uiColor()
+        hidden_Header.tintColor = myColors.indicatorColor.uiColor()
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
-//        self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
-//        if self.flat.count > 0{
-//            var ls_12_end = ""
-//            if self.flat.count > 2{
-//                let ls_12 = self.flat.index(self.flat.startIndex, offsetBy: 2)
-//                ls_12_end = self.flat.substring(to: ls_12)
-//            }
-//            if ls_12_end == "00"{
-//                self.flat.remove(at: self.flat.startIndex)
-//            }
-//            var ls_1_end = ""
-//            let ls_1 = self.flat.index(self.flat.startIndex, offsetBy: 1)
-//            ls_1_end = self.flat.substring(to: ls_1)
-//            if ls_1_end == "0"{
-//                self.flat.remove(at: self.flat.startIndex)
-//            }
-//            if ls_12_end == "кв"{
-//                self.ls_adress.text = self.adress + ", " + self.flat
-//            }else{
-//                self.ls_adress.text = self.adress + ", кв. " + self.flat
-//            }
-//        }else{
-//            self.ls_adress.text = self.adress
-//        }
-//        self.ls_phone.text = self.phone
+        self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
+        if self.flat.count > 0{
+            var ls_12_end = ""
+            if self.flat.count > 2{
+                let ls_12 = self.flat.index(self.flat.startIndex, offsetBy: 2)
+                ls_12_end = self.flat.substring(to: ls_12)
+            }
+            if ls_12_end == "00"{
+                self.flat.remove(at: self.flat.startIndex)
+            }
+            var ls_1_end = ""
+            let ls_1 = self.flat.index(self.flat.startIndex, offsetBy: 1)
+            ls_1_end = self.flat.substring(to: ls_1)
+            if ls_1_end == "0"{
+                self.flat.remove(at: self.flat.startIndex)
+            }
+            if ls_12_end == "кв"{
+                self.ls_adress.text = self.adress + ", " + self.flat
+            }else{
+                self.ls_adress.text = self.adress + ", кв. " + self.flat
+            }
+        }else{
+            self.ls_adress.text = self.adress
+        }
+        self.ls_phone.text = self.phone
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })
         
         timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
-//        let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
-//        let count = tema_txt.frame.size.height * numberLine
-//        headerHeight.constant = headerHeight.constant + count
-//        headerView.isHidden = true
-//        table_Const.constant = table_Const.constant - headerView.frame.size.height
+        let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
+        let count = tema_txt.frame.size.height * numberLine
+        headerHeight.constant = headerHeight.constant + count
+        headerView.isHidden = true
+        table_Const.constant = table_Const.constant - headerView.frame.size.height
 //        if isPay && !isPaid{
 //            pay_txt.text = paid_text
 //            payBtn.setTitle("Оплатить " + String(format:"%.2f", paid_sum) + " руб", for: .normal)
@@ -469,7 +469,10 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
-        view.frame.origin.y = -265
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            view.frame.origin.y = 0 - keyboardHeight
+        }
     }
     
     @objc func keyboardWillHide(notification:NSNotification) {
