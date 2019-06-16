@@ -437,7 +437,7 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
         view.addSubview(bannerView)
         DispatchQueue.main.async {
             self.adHeight = bannerView.frame.size.height
-            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 40
+            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
         }
         if #available(iOS 11.0, *) {
             let bannerView = bannerView
