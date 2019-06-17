@@ -267,6 +267,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         StopIndicators()
+        self.ls_View.isHidden = true
+        self.news_View.isHidden = true
+        self.counters_View.isHidden = true
+        self.apps_View.isHidden = true
+        self.questions_View.isHidden = true
+        self.webs_View.isHidden = true
+        self.services_View.isHidden = true
+        self.receipts_View.isHidden = true
+        self.backgroundView.isHidden = true
         UserDefaults.standard.set(false, forKey: "PaymentSucces")
         UserDefaults.standard.synchronize()
         let defaults = UserDefaults.standard
@@ -455,6 +464,16 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         DispatchQueue.global(qos: .userInitiated).async {
             sleep(2)
             DispatchQueue.main.async {
+                self.ls_View.isHidden = true
+                self.news_View.isHidden = true
+                self.counters_View.isHidden = true
+                self.apps_View.isHidden = true
+                self.questions_View.isHidden = true
+                self.webs_View.isHidden = true
+                self.services_View.isHidden = true
+                self.receipts_View.isHidden = true
+                self.backgroundView.isHidden = true
+                self.loadAd()
                 self.lsArr.removeAll()
                 self.newsArr.removeAll()
                 self.counterArr.removeAll()
@@ -1309,6 +1328,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                     DispatchQueue.main.async {
                                                         self.fileList.reverse()
                                                         self.tableReceipts.reloadData()
+                                                        self.ls_View.isHidden = false
+                                                        self.news_View.isHidden = false
+                                                        self.counters_View.isHidden = false
+                                                        self.apps_View.isHidden = false
+                                                        self.questions_View.isHidden = false
+                                                        self.webs_View.isHidden = false
+                                                        self.services_View.isHidden = false
+                                                        self.receipts_View.isHidden = false
+                                                        self.backgroundView.isHidden = false
                                                     }
                                                 }
                                                 
