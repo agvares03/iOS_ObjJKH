@@ -2218,7 +2218,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                     print("responseString = \(responseString)")
                                                     if (responseString == "0") {
                                                         DispatchQueue.main.async{
-                                                            let alert = UIAlertController(title: "Ошибка", message: "Передача показаний невозможна", preferredStyle: .alert)
+                                                            let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
                                                             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                                                             alert.addAction(cancelAction)
                                                             self.present(alert, animated: true, completion: nil)
