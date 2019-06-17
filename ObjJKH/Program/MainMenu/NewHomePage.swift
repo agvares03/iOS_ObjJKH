@@ -458,7 +458,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         get_Services(login: login!, pass: pass!)
         getPaysFile()
         Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { (t) in
-            if defaults.bool(forKey: "show_Ad"){
+            if defaults.bool(forKey: "show_Ad") && self.showAD{
                 if defaults.integer(forKey: "ad_Type") == 2{
                     self.loadAd()
                 }else if defaults.integer(forKey: "ad_Type") == 3{
@@ -468,6 +468,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         })
         // Do any additional setup after loading the view.
     }
+    
+    var showAD = true
     
     @objc private func refresh(_ sender: UIRefreshControl) {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -640,6 +642,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showAD = true
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1
             UserDefaults.standard.set(false, forKey: "PaymentSucces")
@@ -656,6 +659,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        showAD = false
         self.StopIndicators()
         UserDefaults.standard.set(true, forKey: "fromMenu")
     }
