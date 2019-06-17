@@ -457,6 +457,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         getWebs()
         get_Services(login: login!, pass: pass!)
         getPaysFile()
+        Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { (t) in
+            if defaults.bool(forKey: "show_Ad"){
+                if defaults.integer(forKey: "ad_Type") == 2{
+                    self.loadAd()
+                }else if defaults.integer(forKey: "ad_Type") == 3{
+                    self.gadBannerView.load(self.request)
+                }
+            }
+        })
         // Do any additional setup after loading the view.
     }
     
@@ -631,14 +640,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let defaults = UserDefaults.standard
-        if defaults.bool(forKey: "show_Ad"){
-            if defaults.integer(forKey: "ad_Type") == 2{
-                loadAd()
-            }else if defaults.integer(forKey: "ad_Type") == 3{
-                gadBannerView.load(request)
-            }
-        }
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1
             UserDefaults.standard.set(false, forKey: "PaymentSucces")
@@ -2182,6 +2183,51 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.performSegue(withIdentifier: "openURL", sender: self)
     }
     
+    func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String) {
+            let urlPath = Server.SERVER + "GetMeterAccessFlag.ashx?ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            let url: NSURL = NSURL(string: urlPath)!
+            let request = NSMutableURLRequest(url: url as URL)
+            request.httpMethod = "GET"
+            print(request)
+            
+            let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                  completionHandler: {
+                                                    data, response, error in
+                                                    
+                                                    if error != nil {
+                                                        DispatchQueue.main.async(execute: {
+                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                            UserDefaults.standard.synchronize()
+                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                self.performSegue(withIdentifier: "support", sender: self)
+                                                            }
+                                                            alert.addAction(cancelAction)
+                                                            alert.addAction(supportAction)
+                                                            self.present(alert, animated: true, completion: nil)
+                                                        })
+                                                        return
+                                                    }
+                                                    
+                                                    let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                    print("responseString = \(responseString)")
+                                                    if (responseString == "0") {
+                                                        DispatchQueue.main.async{
+                                                            let alert = UIAlertController(title: "Ошибка", message: "Передача показаний невозможна", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                            alert.addAction(cancelAction)
+                                                            self.present(alert, animated: true, completion: nil)
+                                                        }
+                                                    } else if (responseString == "1") {
+                                                        self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue)
+                                                    }
+                                                    
+            })
+            
+            task.resume()
+    }
+    
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String) {
         print(isEditable())
         if isEditable(){
@@ -2333,7 +2379,8 @@ class HomeCounterCell: UITableViewCell {
     }
     
     @IBAction func sendAction(_ sender: UIButton) {
-        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
+        delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
+//        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
     }
 }
 
