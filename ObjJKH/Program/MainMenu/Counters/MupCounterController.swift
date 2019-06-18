@@ -13,7 +13,8 @@ import YandexMobileMetrica
 import StoreKit
 
 protocol CountersCellDelegate: class {
-    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String)
+    func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String)
+//    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String)
 }
 
 class MupCounterController:UIViewController, DropperDelegate, CountersCellDelegate, UITableViewDelegate, UITableViewDataSource, XMLParserDelegate {
@@ -789,6 +790,51 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         parse_Countrers(login: edLogin, pass: edPass)
     }
     
+    func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String) {
+        let urlPath = Server.SERVER + "GetMeterAccessFlag.ashx?ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
+                                                if (responseString == "0") {
+                                                    DispatchQueue.main.async{
+                                                        let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    }
+                                                } else if (responseString == "1") {
+                                                    self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue)
+                                                }
+                                                
+        })
+        
+        task.resume()
+    }
+    
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String) {
         print(isEditable())
         if isEditable(){
@@ -1077,7 +1123,8 @@ class MupCounterCell: UITableViewCell {
     @IBOutlet weak var lblHeight6: NSLayoutConstraint!
     
     @IBAction func sendAction(_ sender: UIButton) {
-        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
+        delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
+//        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
     }
     
     override func awakeFromNib() {

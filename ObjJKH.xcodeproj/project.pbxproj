@@ -5265,6 +5265,20 @@
 							};
 						};
 					};
+					303EBC65229B922900223A2B = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					30F3BD5322A50748007B24FB = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					4120922B2158CB2D001E713E = {
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
@@ -11173,6 +11187,7 @@
 				CODE_SIGN_ENTITLEMENTS = MupRCMytishi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/Info - MupRCMytishi.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

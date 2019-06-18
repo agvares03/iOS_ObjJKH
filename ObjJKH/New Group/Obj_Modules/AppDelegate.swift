@@ -276,22 +276,22 @@ extension AppDelegate : MessagingDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
         print("==============")
-        guard let aps = userInfo["aps"] as? [String : AnyObject] else {
+        guard let aps = userInfo["comment"] as? [String : AnyObject] else {
             print("Error parsing aps")
             return
         }
         print(aps)
-        guard let requests = userInfo["requestsCount"] as? String else {
+        guard let requests = userInfo["meters"] as? String else {
             print("Error parsing request")
             return
         }
         print(requests)
-        guard let news = userInfo["unreadedAnnouncements"] as? String else {
+        guard let news = userInfo["announcement"] as? String else {
             print("Error parsing news")
             return
         }
         print(news)
-        guard let survays = userInfo["survaysCount"] as? String else {
+        guard let survays = userInfo["other"] as? String else {
             print("Error parsing survays")
             return
         }
