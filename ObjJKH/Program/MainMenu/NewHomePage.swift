@@ -280,27 +280,31 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         UserDefaults.standard.synchronize()
         let defaults = UserDefaults.standard
         var phone = defaults.string(forKey: "phone_operator")
-        if phone?.first == "8"{
+        if phone?.first == "8" && phone!.count > 10{
             phone?.removeFirst()
             phone = "+7" + phone!
         }
-        phone = phone?.replacingOccurrences(of: " ", with: "")
-        phone = phone?.replacingOccurrences(of: "-", with: "")
         var phoneOperator = ""
-        if !(phone?.contains(")"))! && phone != ""{
-            for i in 0...11{
-                if i == 2{
-                    phoneOperator = phoneOperator + " (" + String(phone!.first!)
-                }else if i == 5{
-                    phoneOperator = phoneOperator + ") " + String(phone!.first!)
-                }else if i == 8{
-                    phoneOperator = phoneOperator + "-" + String(phone!.first!)
-                }else if i == 10{
-                    phoneOperator = phoneOperator + "-" + String(phone!.first!)
-                }else{
-                    phoneOperator = phoneOperator + String(phone!.first!)
+        if phone!.count > 10{
+            phone = phone?.replacingOccurrences(of: " ", with: "")
+            phone = phone?.replacingOccurrences(of: "-", with: "")
+            if !(phone?.contains(")"))! && phone != ""{
+                for i in 0...11{
+                    if i == 2{
+                        phoneOperator = phoneOperator + " (" + String(phone!.first!)
+                    }else if i == 5{
+                        phoneOperator = phoneOperator + ") " + String(phone!.first!)
+                    }else if i == 8{
+                        phoneOperator = phoneOperator + "-" + String(phone!.first!)
+                    }else if i == 10{
+                        phoneOperator = phoneOperator + "-" + String(phone!.first!)
+                    }else{
+                        phoneOperator = phoneOperator + String(phone!.first!)
+                    }
+                    phone?.removeFirst()
                 }
-                phone?.removeFirst()
+            }else{
+                phoneOperator = phone!
             }
         }else{
             phoneOperator = phone!

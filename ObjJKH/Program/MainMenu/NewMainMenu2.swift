@@ -124,27 +124,31 @@ class NewMainMenu2: UIViewController {
         // Телефон диспетчера
         phone = defaults.string(forKey: "phone_operator")
         var phone1 = defaults.string(forKey: "phone_operator")
-        if phone1?.first == "8"{
+        if phone1?.first == "8" && phone1!.count > 10{
             phone1?.removeFirst()
             phone1 = "+7" + phone1!
         }
-        phone1 = phone1?.replacingOccurrences(of: " ", with: "")
-        phone1 = phone1?.replacingOccurrences(of: "-", with: "")
         var phoneOperator = ""
-        if !(phone1?.contains(")"))! && phone1 != ""{
-            for i in 0...11{
-                if i == 2{
-                    phoneOperator = phoneOperator + " (" + String(phone1!.first!)
-                }else if i == 5{
-                    phoneOperator = phoneOperator + ") " + String(phone1!.first!)
-                }else if i == 8{
-                    phoneOperator = phoneOperator + "-" + String(phone1!.first!)
-                }else if i == 10{
-                    phoneOperator = phoneOperator + "-" + String(phone1!.first!)
-                }else{
-                    phoneOperator = phoneOperator + String(phone1!.first!)
+        if phone1!.count > 10{
+            phone1 = phone1?.replacingOccurrences(of: " ", with: "")
+            phone1 = phone1?.replacingOccurrences(of: "-", with: "")
+            if !(phone1?.contains(")"))! && phone1 != ""{
+                for i in 0...11{
+                    if i == 2{
+                        phoneOperator = phoneOperator + " (" + String(phone1!.first!)
+                    }else if i == 5{
+                        phoneOperator = phoneOperator + ") " + String(phone1!.first!)
+                    }else if i == 8{
+                        phoneOperator = phoneOperator + "-" + String(phone1!.first!)
+                    }else if i == 10{
+                        phoneOperator = phoneOperator + "-" + String(phone1!.first!)
+                    }else{
+                        phoneOperator = phoneOperator + String(phone1!.first!)
+                    }
+                    phone1?.removeFirst()
                 }
-                phone1?.removeFirst()
+            }else{
+                phoneOperator = phone1!
             }
         }else{
             phoneOperator = phone1!
