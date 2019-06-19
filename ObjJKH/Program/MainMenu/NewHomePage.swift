@@ -484,7 +484,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.services_View.isHidden = true
                 self.receipts_View.isHidden = true
                 self.backgroundView.isHidden = true
-                self.loadAd()
+                let defaults = UserDefaults.standard
+                if defaults.bool(forKey: "show_Ad") && self.showAD{
+                    if defaults.integer(forKey: "ad_Type") == 2{
+                        self.loadAd()
+                    }else if defaults.integer(forKey: "ad_Type") == 3{
+                        self.gadBannerView.load(self.request)
+                    }
+                }
                 self.lsArr.removeAll()
                 self.newsArr.removeAll()
                 self.counterArr.removeAll()
@@ -1313,25 +1320,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("responseString = \(responseString)")
                                                 
-                                                guard data != nil else { return }
-                                                let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                                                if json != nil{
-                                                    let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
-                                                    unfilteredData?.forEach { json in
-                                                        let ident = json.ident
-                                                        let year = json.year
-                                                        let month = json.month
-                                                        let link = json.link
-                                                        let sum = json.sum
-                                                        var i = 0
-                                                        let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
-                                                        if (link?.contains(".png"))! || (link?.contains(".jpg"))! || (link?.contains(".pdf"))!{
-                                                            print(fileObj.sum, fileObj.month)
-                                                            self.fileList.append(fileObj)
-                                                        }
-                                                    }
+                                                guard data != nil else {
                                                     DispatchQueue.main.async {
-                                                        self.fileList.reverse()
                                                         self.tableReceipts.reloadData()
                                                         self.ls_View.isHidden = false
                                                         self.news_View.isHidden = false
@@ -1343,6 +1333,36 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         self.receipts_View.isHidden = false
                                                         self.backgroundView.isHidden = false
                                                     }
+                                                    return }
+                                                let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                                                if json != nil{
+                                                    let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
+                                                    unfilteredData?.forEach { json in
+                                                        let ident = json.ident
+                                                        let year = json.year
+                                                        let month = json.month
+                                                        let link = json.link
+                                                        let sum = json.sum
+//                                                        var i = 0
+                                                        let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
+//                                                        if (link?.contains(".png"))! || (link?.contains(".jpg"))! || (link?.contains(".pdf"))!{
+//                                                            print(fileObj.sum, fileObj.month)
+                                                            self.fileList.append(fileObj)
+//                                                        }
+                                                    }
+                                                }
+                                                DispatchQueue.main.async {
+                                                    self.fileList.reverse()
+                                                    self.tableReceipts.reloadData()
+                                                    self.ls_View.isHidden = false
+                                                    self.news_View.isHidden = false
+                                                    self.counters_View.isHidden = false
+                                                    self.apps_View.isHidden = false
+                                                    self.questions_View.isHidden = false
+                                                    self.webs_View.isHidden = false
+                                                    self.services_View.isHidden = false
+                                                    self.receipts_View.isHidden = false
+                                                    self.backgroundView.isHidden = false
                                                 }
                                                 
         })
@@ -1534,8 +1554,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if tableView == self.tableReceipts {
             count =  fileList.count
-            if count! > 3{
-                count = 3
+            if count! > 2{
+                count = 2
             }
         }
         DispatchQueue.main.async {
@@ -2020,6 +2040,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else if tableView == self.tableReceipts {
             let cell = self.tableReceipts.dequeueReusableCell(withIdentifier: "HomeReceiptsCell") as! HomeReceiptsCell
             cell.goReceipt.tintColor = myColors.btnColor.uiColor()
+            if (fileList[indexPath.row].link.contains(".png")) || (fileList[indexPath.row].link.contains(".jpg")) || (fileList[indexPath.row].link.contains(".pdf")){
+                cell.goReceipt.isHidden = false
+            }else{
+                cell.goReceipt.isHidden = true
+            }
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.receiptText.text = self.get_name_month(number_month: String(fileList[indexPath.row].month)) + " " + String(fileList[indexPath.row].year)
             cell.receiptSum.text = String(format:"%.2f", fileList[indexPath.row].sum) + " руб"
