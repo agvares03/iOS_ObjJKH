@@ -2217,6 +2217,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String) {
+        DispatchQueue.main.async{
+            self.counterIndicator.startAnimating()
+            self.counterIndicator.isHidden = false
+            self.allCountersBtn.isHidden = true
+        }
             let urlPath = Server.SERVER + "GetMeterAccessFlag.ashx?ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
@@ -2239,6 +2244,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             alert.addAction(cancelAction)
                                                             alert.addAction(supportAction)
                                                             self.present(alert, animated: true, completion: nil)
+                                                            self.counterIndicator.stopAnimating()
+                                                            self.counterIndicator.isHidden = true
+                                                            self.allCountersBtn.isHidden = false
                                                         })
                                                         return
                                                     }
@@ -2251,6 +2259,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                                                             alert.addAction(cancelAction)
                                                             self.present(alert, animated: true, completion: nil)
+                                                            self.counterIndicator.stopAnimating()
+                                                            self.counterIndicator.isHidden = true
+                                                            self.allCountersBtn.isHidden = false
                                                         }
                                                     } else if (responseString == "1") {
                                                         self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue)
@@ -2275,12 +2286,22 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             countIdent = ident
             predVal = predValue
             self.metrID = metrId
-            self.performSegue(withIdentifier: "addCounters", sender: self)
+            DispatchQueue.main.async{
+                self.counterIndicator.stopAnimating()
+                self.counterIndicator.isHidden = true
+                self.allCountersBtn.isHidden = false
+                self.performSegue(withIdentifier: "addCounters", sender: self)
+            }
         }else{
-            let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
+            DispatchQueue.main.async{
+                let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+                self.counterIndicator.stopAnimating()
+                self.counterIndicator.isHidden = true
+                self.allCountersBtn.isHidden = false
+            }
         }
     }
     var choiceIdent = ""

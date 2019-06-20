@@ -104,6 +104,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(false, forKey: "PaymentSucces")
+        UserDefaults.standard.set(false, forKey: "fromMenu")
         UserDefaults.standard.synchronize()
         let defaults     = UserDefaults.standard
         let params : [String : Any] = ["Переход на страницу": "Показания приборов"]
@@ -791,6 +792,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String) {
+        StartIndicator()
         let urlPath = Server.SERVER + "GetMeterAccessFlag.ashx?ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
@@ -813,6 +815,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                                                         alert.addAction(cancelAction)
                                                         alert.addAction(supportAction)
                                                         self.present(alert, animated: true, completion: nil)
+                                                        self.StopIndicator()
                                                     })
                                                     return
                                                 }
@@ -825,6 +828,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                                                         let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                                                         alert.addAction(cancelAction)
                                                         self.present(alert, animated: true, completion: nil)
+                                                        self.StopIndicator()
                                                     }
                                                 } else if (responseString == "1") {
                                                     self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue)
@@ -864,12 +868,18 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             countIdent = ident
             predVal = predValue
             self.metrID = metrId
-            self.performSegue(withIdentifier: "addCounters", sender: self)
+            DispatchQueue.main.async{
+                self.StopIndicator()
+                self.performSegue(withIdentifier: "addCounters", sender: self)
+            }
         }else{
-            let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
+            DispatchQueue.main.async{
+                let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+                self.StopIndicator()
+            }
         }
     }
     

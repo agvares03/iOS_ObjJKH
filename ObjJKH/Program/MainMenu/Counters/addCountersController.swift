@@ -54,9 +54,11 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var supportBtn: UIButton!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
+        StartIndicator()
         navigationController?.popViewController(animated: true)
     }
     @IBAction func back(_ sender: UIButton) {
+        StartIndicator()
         navigationController?.popViewController(animated: true)
     }
     @IBAction func sendAction(_ sender: UIButton) {
@@ -316,6 +318,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             UserDefaults.standard.set(true, forKey: "PaymentSucces")
             UserDefaults.standard.synchronize()
         }
+        StopIndicator()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
