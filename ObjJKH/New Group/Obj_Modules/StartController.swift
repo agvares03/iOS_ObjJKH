@@ -194,19 +194,19 @@ class StartController: UIViewController {
         } else {
             let defaults = UserDefaults.standard
             let login = defaults.string(forKey: "login")
-            if login == "" || login == nil{
-                self.performSegue(withIdentifier: "reg_app", sender: self)
-            }else{
-                #if isDemoUC
+            #if isDemoUC
                 self.performSegue(withIdentifier: "start_app_OBJ", sender: self)
-                #else
-                if (defaults.bool(forKey: "windowCons")) {
-                    self.performSegue(withIdentifier: "start_app_cons", sender: self)
-                } else {
-                    self.performSegue(withIdentifier: "start_app", sender: self)
+            #else
+                if login == "" || login == nil{
+                    self.performSegue(withIdentifier: "reg_app", sender: self)
+                }else{
+                    if (defaults.bool(forKey: "windowCons")) {
+                        self.performSegue(withIdentifier: "start_app_cons", sender: self)
+                    } else {
+                        self.performSegue(withIdentifier: "start_app", sender: self)
+                    }
                 }
-                #endif
-            }
+            #endif
         }
     }
     

@@ -508,15 +508,15 @@ class FirstObjController: UIViewController {
     }
     
     func loadUsersDefaults() {
-        let defaults = UserDefaults.standard
-        let login = defaults.string(forKey: "login")
-        let pass = defaults.string(forKey: "pass")
-        if (login == "" || login == nil) && firstEnter == false{
-            let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in }
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
-        }
+//        let defaults = UserDefaults.standard
+//        let login = defaults.string(forKey: "login")
+//        let pass = defaults.string(forKey: "pass")
+//        if (login == "" || login == nil) && firstEnter == false{
+//            let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
+//            let cancelAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in }
+//            alert.addAction(cancelAction)
+//            self.present(alert, animated: true, completion: nil)
+//        }
     }
     
     // сохранение глобальных значений
