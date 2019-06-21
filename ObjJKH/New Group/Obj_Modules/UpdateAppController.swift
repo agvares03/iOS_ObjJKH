@@ -98,9 +98,31 @@ class UpdateAppController: UIViewController {
         #elseif isUKGarant
         str = "itms-apps://itunes.apple.com/ru/app/id1420424696"
         #elseif isSoldatova1
-        str = "" // Вставить адрес после выпуска
+        str = "itms-apps://itunes.apple.com/ru/app/id1458565611"
         #elseif isTafgai
-        str = ""
+        str = "itms-apps://itunes.apple.com/ru/app/id1458579800"
+        #elseif isServiceKomfort
+        str = "itms-apps://itunes.apple.com/ru/app/id1460346469"
+        #elseif isParitet
+        str = "itms-apps://itunes.apple.com/ru/app/id1460356773"
+        #elseif isSkyfort
+        str = "itms-apps://itunes.apple.com/ru/app/id1460771757"
+        #elseif isStandartDV
+        str = "itms-apps://itunes.apple.com/ru/app/id1300217674"
+        #elseif isGarmonia
+        str = "itms-apps://itunes.apple.com/ru/app/id1464487701"
+        #elseif isUpravdomChe
+        str = "itms-apps://itunes.apple.com/ru/app/id1465368359"
+        #elseif isJKH_Pavlovskoe
+        str = "itms-apps://itunes.apple.com/ru/app/id1465871964"
+        #elseif isPerspectiva
+        str = "itms-apps://itunes.apple.com/ru/app/id1466899004"
+        #elseif isParus
+        str = "itms-apps://itunes.apple.com/ru/app/id1468735380"
+        #elseif isPocket
+        str = "itms-apps://itunes.apple.com/ru/app/id1290134819"
+        #elseif isReutKomfort
+        str = "itms-apps://itunes.apple.com/ru/app/id1454260301"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
