@@ -36,7 +36,12 @@ class NewCommCellCons: UITableViewCell {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var text_comm: UILabel!
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var heightDate: NSLayoutConstraint!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var heightImg: NSLayoutConstraint!
+    @IBOutlet weak var widthImg: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

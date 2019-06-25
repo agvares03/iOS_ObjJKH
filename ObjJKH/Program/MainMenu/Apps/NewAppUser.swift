@@ -546,7 +546,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+    private var files: [Fotos] = []
     func load_data() {
         let predicateFormat = String(format: "id_app = %@", id_app)
         fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Comments", keysForSort: ["dateK"], predicateFormat: predicateFormat) as? NSFetchedResultsController<Comments>
@@ -558,6 +558,16 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func updateTable() {
+        let data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
+        let objs = (CoreDataManager.instance.fetchedResultsController(entityName: "Fotos", keysForSort: ["name"]) as? NSFetchedResultsController<Fotos>)
+        try? objs?.performFetch()
+        objs?.fetchedObjects?.forEach { obj in
+            data_.forEach {
+                if $0.text?.contains(obj.name ?? "") ?? false {
+                    self.files.append(obj)
+                }
+            }
+        }
         table_comments.reloadData()
     }
     
@@ -573,6 +583,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
         if (comm.id_author != comm.id_account) {
             let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCellCons") as! NewCommCellCons
+            cell.loader.isHidden = true
             cell.author.text     = comm.author
             cell.text_comm.text  = comm.text
             self.teck_id = comm.id + 1
@@ -612,10 +623,55 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.heightDate.constant = 31
                 }
             }
+            if (comm.text?.contains("Отправлен новый файл"))!{
+                cell.loader.isHidden = false
+                cell.view.isHidden = true
+                let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(_:)))
+                cell.img.isUserInteractionEnabled = true
+                cell.img.addGestureRecognizer(tap)
+                
+                cell.loader.isHidden = false
+                cell.loader.startAnimating()
+                let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
+                var id = 0
+                files.forEach{
+                    if $0.name == imgName{
+                        id = Int($0.id)
+                    }
+                }
+                if !imgs.keys.contains(imgName ?? "") {
+                    
+                    var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
+                    request.httpMethod = "GET"
+                    
+                    URLSession.shared.dataTask(with: request) {
+                        data, error, responce in
+                        
+                        guard data != nil else { return }
+                        DispatchQueue.main.async { [weak self] in
+                            
+                            let img = UIImage(data: data!)
+                            imgs[imgName!] = img
+                            cell.img.image = img
+                            cell.loader.stopAnimating()
+                            cell.loader.isHidden = true
+                            cell.heightImg.constant = 150
+                            cell.widthImg.constant = 150
+                        }
+                        
+                        }.resume()
+                    
+                } else {
+                    cell.img.image = imgs[imgName ?? ""]
+                    cell.heightImg.constant = 150
+                    cell.widthImg.constant = 150
+                }
+            }
             return cell
         } else {
             let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCell") as! NewCommCell
 //            cell.author.text     = "Вы" //comm.author
+            cell.loader.isHidden = true
             let calendar = Calendar.current
             cell.text_comm.text  = comm.text
             self.teck_id = comm.id + 1
@@ -654,8 +710,76 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.heightDate.constant = 31
                 }
             }
+            print("ТЕКСТ: ", comm.text!)
+            if (comm.text?.contains("Отправлен новый файл"))!{
+                cell.loader.isHidden = false
+                cell.view.isHidden = true
+                let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(_:)))
+                cell.img.isUserInteractionEnabled = true
+                cell.img.addGestureRecognizer(tap)
+                
+                cell.loader.isHidden = false
+                cell.loader.startAnimating()
+                let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
+                var id = 0
+                files.forEach{
+                    if $0.name == imgName{
+                        id = Int($0.id)
+                    }
+                }
+                if !imgs.keys.contains(imgName ?? "") {
+                    
+                    var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
+                    request.httpMethod = "GET"
+                    print("REQUES`t = ", request)
+                    URLSession.shared.dataTask(with: request) {
+                        data, error, responce in
+                        
+                        guard data != nil else { return }
+                        DispatchQueue.main.async { [weak self] in
+                            
+                            let img = UIImage(data: data!)
+                            imgs[imgName!] = img
+                            cell.img.image = img
+                            cell.loader.stopAnimating()
+                            cell.loader.isHidden = true
+                            cell.heightImg.constant = 150
+                            cell.widthImg.constant = 150
+                        }
+                        
+                        }.resume()
+                    
+                } else {
+                    cell.img.image = imgs[imgName ?? ""]
+                    cell.heightImg.constant = 150
+                    cell.widthImg.constant = 150
+                }
+            }
             return cell
         }
+    }
+    
+    @objc private func imagePressed(_ sender: UITapGestureRecognizer) {
+        self.imgPressed(sender)
+    }
+    
+    private func imgPressed(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleToFill
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        sender.view?.removeFromSuperview()
     }
     
     func closeAppDone(closeApp: CloseAppAlert) {
@@ -873,3 +997,5 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
 }
+
+private var imgs: [String:UIImage] = [:]

@@ -1325,18 +1325,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 print("responseString = \(responseString)")
                                                 
                                                 guard data != nil else {
-                                                    DispatchQueue.main.async {
-                                                        self.tableReceipts.reloadData()
-                                                        self.ls_View.isHidden = false
-                                                        self.news_View.isHidden = false
-                                                        self.counters_View.isHidden = false
-                                                        self.apps_View.isHidden = false
-                                                        self.questions_View.isHidden = false
-                                                        self.webs_View.isHidden = false
-                                                        self.services_View.isHidden = false
-                                                        self.receipts_View.isHidden = false
-                                                        self.backgroundView.isHidden = false
-                                                    }
+                                                    self.endRefresh()
                                                     return }
                                                 let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                                                 if json != nil{
@@ -1355,22 +1344,26 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //                                                        }
                                                     }
                                                 }
-                                                DispatchQueue.main.async {
-                                                    self.fileList.reverse()
-                                                    self.tableReceipts.reloadData()
-                                                    self.ls_View.isHidden = false
-                                                    self.news_View.isHidden = false
-                                                    self.counters_View.isHidden = false
-                                                    self.apps_View.isHidden = false
-                                                    self.questions_View.isHidden = false
-                                                    self.webs_View.isHidden = false
-                                                    self.services_View.isHidden = false
-                                                    self.receipts_View.isHidden = false
-                                                    self.backgroundView.isHidden = false
-                                                }
+                                                self.endRefresh()
                                                 
         })
         task.resume()
+    }
+    
+    private func endRefresh(){
+        DispatchQueue.main.async {
+            self.fileList.reverse()
+            self.tableReceipts.reloadData()
+            self.ls_View.isHidden = false
+            self.news_View.isHidden = false
+            self.counters_View.isHidden = false
+            self.apps_View.isHidden = false
+            self.questions_View.isHidden = false
+            self.webs_View.isHidden = false
+            self.services_View.isHidden = false
+            self.receipts_View.isHidden = false
+            self.backgroundView.isHidden = false
+        }
     }
     
     func getQuestions() {
@@ -1812,6 +1805,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if tableView == self.tableLS {
             let cell = self.tableLS.dequeueReusableCell(withIdentifier: "HomeLSCell") as! HomeLSCell
 //            cell = shadowCell(cell: cell) as! HomeLSCell
+            #if isDJ
+            cell.del_ls_btn.isHidden = true
+            #endif
             cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
