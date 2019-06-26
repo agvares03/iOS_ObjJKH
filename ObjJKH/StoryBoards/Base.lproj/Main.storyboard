@@ -51,7 +51,6 @@
                         <segue destination="CSW-ZA-Agb" kind="show" identifier="reg_app" id="pL0-7K-IfN"/>
                         <segue destination="sMe-Cd-FRw" kind="show" identifier="start_app_cons" id="8Is-M9-Kjz"/>
                         <segue destination="duM-Dd-leu" kind="show" identifier="start_app_OBJ" id="FtF-Id-iQE"/>
-                        <segue destination="MJw-G9-ikP" kind="show" identifier="notification" id="GCq-rF-TSD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF5-e1-U8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1078,13 +1077,13 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
         <!--Меню-->
         <scene sceneID="rDq-Q4-a6V">
             <objects>
-                <viewController id="MJw-G9-ikP" customClass="NotificationController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notifi" id="MJw-G9-ikP" customClass="NotificationController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lMd-sX-GnF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="740"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W04-fY-Oa0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="676"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="720"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ld-OO-a6N">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
