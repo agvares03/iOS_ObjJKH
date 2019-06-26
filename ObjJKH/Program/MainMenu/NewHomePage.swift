@@ -229,8 +229,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             return
                                                         }
                                                         
-                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                        print("responseString = \(responseString)")
+//                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                        print("responseString = \(responseString)")
                                                         DispatchQueue.main.async{
                                                             let defaults = UserDefaults.standard
                                                            
@@ -706,8 +706,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 let url: NSURL = NSURL(string: urlPath)!
                 let request = NSMutableURLRequest(url: url as URL)
                 request.httpMethod = "GET"
-                print(request)
-                
+//                print(request)
+            
                 let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                       completionHandler: {
                                                         data, response, error in
@@ -718,9 +718,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             do {
                                                                 u += 1
                                                                 let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                                print(responseStr)
+//                                                                print(responseStr)
                                                                 
                                                                 if !responseStr.contains("error"){
+                                                                    var date1       = ""
+                                                                    var date2       = ""
                                                                     var date        = ""
                                                                     var sum         = ""
                                                                     var sumFine     = ""
@@ -766,6 +768,16 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                                             date = String(describing: obj.value as! String)
                                                                                         }
                                                                                     }
+                                                                                    if obj.key == "MetersStartDay" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            date1 = String(describing: obj.value as! Int)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "MetersEndDay" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            date2 = String(describing: obj.value as! Int)
+                                                                                        }
+                                                                                    }
                                                                                     
                                                                                 }
 //                                                                                if date == ""{
@@ -794,10 +806,18 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //                                                                            }
                                                                         }
                                                                     }
-//                                                                    defaults.set(sumObj, forKey: "sumDebt")
-//                                                                    defaults.synchronize()
+                                                                    self.date1 = date1
+                                                                    self.date2 = date2
+                                                                    defaults.setValue(date1, forKey: "date1")
+                                                                    defaults.setValue(date2, forKey: "date2")
+                                                                    defaults.synchronize()
                                                                     self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
                                                                     DispatchQueue.main.async {
+                                                                        if (self.date1 == "0") && (self.date2 == "0") {
+                                                                            self.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+                                                                        } else {
+                                                                            self.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
+                                                                        }
                                                                         self.tableLS.reloadData()
                                                                     }
                                                                 }
@@ -836,8 +856,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("responseString = \(responseString)")
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(responseString)")
                                                 
                                                 if error != nil {
                                                     return
@@ -1316,13 +1336,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        print(request)
+//        print(request)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, error, responce in
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("responseString = \(responseString)")
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(responseString)")
                                                 
                                                 guard data != nil else {
                                                     self.endRefresh()
@@ -2064,7 +2084,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         label.font = font
         label.text = text
         label.sizeToFit()
-        print(label.frame.height, width)
+//        print(label.frame.height, width)
         return label.frame.height
     }
     
@@ -2222,8 +2242,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
-            print(request)
-            
+//            print(request)
+        
             let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                   completionHandler: {
                                                     data, response, error in
@@ -2248,7 +2268,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                     }
                                                     
                                                     let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    print("responseString = \(responseString)")
+//                                                    print("responseString = \(responseString)")
                                                     if (responseString == "0") {
                                                         DispatchQueue.main.async{
                                                             let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
@@ -2269,7 +2289,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String) {
-        print(isEditable())
+//        print(isEditable())
         if isEditable(){
             var metrId = ""
             for i in 0...self.numberArr.count - 1{

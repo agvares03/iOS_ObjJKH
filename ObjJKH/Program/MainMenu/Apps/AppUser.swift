@@ -413,21 +413,21 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
             
             var request_read = UserDefaults.standard.integer(forKey: "request_read")
             request_read -= 1
-            DispatchQueue.main.async {
-                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-                let updatedBadgeNumber = currentBadgeNumber - 1
-                if (updatedBadgeNumber > -1) {
-                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-                }
-//                if request_read >= 0{
-//                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-//                    UserDefaults.standard.synchronize()
-//                }else{
-//                    UserDefaults.standard.setValue(0, forKey: "request_read")
-//                    UserDefaults.standard.synchronize()
+//            DispatchQueue.main.async {
+//                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+//                let updatedBadgeNumber = currentBadgeNumber - 1
+//                if (updatedBadgeNumber > -1) {
+//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
 //                }
-                
-            }
+////                if request_read >= 0{
+////                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+////                    UserDefaults.standard.synchronize()
+////                }else{
+////                    UserDefaults.standard.setValue(0, forKey: "request_read")
+////                    UserDefaults.standard.synchronize()
+////                }
+//                
+//            }
             
             }.resume()
     }

@@ -211,17 +211,17 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
             data, error, responce in
 //            print(String(data: data!, encoding: .utf8) ?? "")
             guard data != nil else { return }
-            var question_read = UserDefaults.standard.integer(forKey: "question_read")
-            question_read -= 1
-            DispatchQueue.main.async {
-                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-                let updatedBadgeNumber = currentBadgeNumber - 1
-                if (updatedBadgeNumber > -1) {
-                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-                }
-            }
-            UserDefaults.standard.setValue(question_read, forKey: "question_read")
-            UserDefaults.standard.synchronize()
+//            var question_read = UserDefaults.standard.integer(forKey: "question_read")
+//            question_read -= 1
+//            DispatchQueue.main.async {
+//                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+//                let updatedBadgeNumber = currentBadgeNumber - 1
+//                if (updatedBadgeNumber > -1) {
+//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+//                }
+//            }
+//            UserDefaults.standard.setValue(question_read, forKey: "question_read")
+//            UserDefaults.standard.synchronize()
             
             }.resume()
     }

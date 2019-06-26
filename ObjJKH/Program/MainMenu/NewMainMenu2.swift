@@ -682,13 +682,13 @@ class NewMainMenu2: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !load{
-            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "question_read") + UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read")
-            if (updatedBadgeNumber > -1) {
-                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-            }
-            load = true
-        }
+//        if !load{
+//            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "question_read") + UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read")
+//            if (updatedBadgeNumber > -1) {
+//                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+//            }
+//            load = true
+//        }
         
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)

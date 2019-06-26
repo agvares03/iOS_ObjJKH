@@ -416,36 +416,32 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             var request_read = UserDefaults.standard.integer(forKey: "request_read")
             request_read -= 1
-            DispatchQueue.main.async {
-                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-                let updatedBadgeNumber = currentBadgeNumber - 1
-                if (updatedBadgeNumber > -1) {
-                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-                }
-//                if request_read >= 0{
-//                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-//                    UserDefaults.standard.synchronize()
-//                }else{
-//                    UserDefaults.standard.setValue(0, forKey: "request_read")
-//                    UserDefaults.standard.synchronize()
+//            DispatchQueue.main.async {
+//                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
+//                let updatedBadgeNumber = currentBadgeNumber - 1
+//                if (updatedBadgeNumber > -1) {
+//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
 //                }
-                
-            }
+////                if request_read >= 0{
+////                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+////                    UserDefaults.standard.synchronize()
+////                }else{
+////                    UserDefaults.standard.setValue(0, forKey: "request_read")
+////                    UserDefaults.standard.synchronize()
+////                }
+//                
+//            }
             
             }.resume()
     }
     
     @objc func reload() {
-        let db = DB()
-        if (db.isNotification()) {
-            self.load_notification()
-        }
-    }
-    
-    func load_notification() {
+//        let db = DB()
+//        if (db.isNotification()) {
         DispatchQueue.main.async(execute: {
             self.load_new_data()
         })
+//        }
     }
     
     func load_new_data() {
@@ -460,7 +456,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         db.getComByID(login: login as! String, pass: pass as! String, number: self.id_app)
         
         self.load_data()
-        self.table_comments.reloadData()
+        self.updateTable()
         if #available(iOS 10.0, *) {
             self.table_comments.refreshControl?.endRefreshing()
         } else {
@@ -537,7 +533,6 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && onePay == 0{
-            
             onePay = 1
             addMobilePay()
         }
@@ -558,6 +553,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func updateTable() {
+        files.removeAll()
         let data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
         let objs = (CoreDataManager.instance.fetchedResultsController(entityName: "Fotos", keysForSort: ["name"]) as? NSFetchedResultsController<Fotos>)
         try? objs?.performFetch()
@@ -573,6 +569,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController?.sections {
+            print(sections[section].numberOfObjects, files.count)
             return sections[section].numberOfObjects
         } else {
             return 0
@@ -582,56 +579,87 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
         if (comm.id_author != comm.id_account) {
-            let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCellCons") as! NewCommCellCons
-            cell.loader.isHidden = true
-            cell.author.text     = comm.author
-            cell.text_comm.text  = comm.text
-            self.teck_id = comm.id + 1
-            let calendar = Calendar.current
-            if comm.dateK != nil{
-                var hour = String(calendar.component(.hour, from: comm.dateK!))
-                if hour.count == 1{
-                    hour = "0" + hour
+            if comm.text != nil && !(comm.text?.contains("Отправлен новый файл"))!{
+                let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCellCons") as! NewCommCellCons
+                cell.author.text     = comm.author
+                cell.text_comm.text  = comm.text
+                self.teck_id = comm.id + 1
+                let calendar = Calendar.current
+                if comm.dateK != nil{
+                    var hour = String(calendar.component(.hour, from: comm.dateK!))
+                    if hour.count == 1{
+                        hour = "0" + hour
+                    }
+                    var minute = String(calendar.component(.minute, from: comm.dateK!))
+                    if minute.count == 1{
+                        minute = "0" + minute
+                    }
+                    var day = String(calendar.component(.day, from: comm.dateK!))
+                    if day.count == 1{
+                        day = "0" + day
+                    }
+                    var month = String(calendar.component(.month, from: comm.dateK!))
+                    if month.count == 1{
+                        month = "0" + month
+                    }
+                    let year = String(calendar.component(.year, from: comm.dateK!))
+                    let time = hour + ":" + minute
+                    let date = day + "." + month + "." + year
+                    cell.time.text = time
+                    cell.date.text = date
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                    if dateFormatter.date(from: date)! > commDate{
+                        commDate = comm.dateK!
+                        cell.heightDate.constant = 31
+                    }else{
+                        cell.heightDate.constant = 0
+                    }
+                    if indexPath.row == 0{
+                        commDate = comm.dateK!
+                        cell.heightDate.constant = 31
+                    }
                 }
-                var minute = String(calendar.component(.minute, from: comm.dateK!))
-                if minute.count == 1{
-                    minute = "0" + minute
+                return cell
+            }else{
+                let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommFileCellCons") as! NewCommFileCellCons
+                let calendar = Calendar.current
+                self.teck_id = comm.id + 1
+                if comm.dateK != nil{
+                    var hour = String(calendar.component(.hour, from: comm.dateK!))
+                    if hour.count == 1{
+                        hour = "0" + hour
+                    }
+                    var minute = String(calendar.component(.minute, from: comm.dateK!))
+                    if minute.count == 1{
+                        minute = "0" + minute
+                    }
+                    var day = String(calendar.component(.day, from: comm.dateK!))
+                    if day.count == 1{
+                        day = "0" + day
+                    }
+                    var month = String(calendar.component(.month, from: comm.dateK!))
+                    if month.count == 1{
+                        month = "0" + month
+                    }
+                    let year = String(calendar.component(.year, from: comm.dateK!))
+                    let time = hour + ":" + minute
+                    let date = day + "." + month + "." + year
+                    cell.time.text = time
+                    cell.date.text = date
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                    if dateFormatter.date(from: date)! > commDate{
+                        commDate = comm.dateK!
+                        cell.heightDate.constant = 31
+                    }else{
+                        cell.heightDate.constant = 0
+                    }
+                    if indexPath.row == 0{
+                        commDate = comm.dateK!
+                        cell.heightDate.constant = 31
+                    }
                 }
-                var day = String(calendar.component(.day, from: comm.dateK!))
-                if day.count == 1{
-                    day = "0" + day
-                }
-                var month = String(calendar.component(.month, from: comm.dateK!))
-                if month.count == 1{
-                    month = "0" + month
-                }
-                let year = String(calendar.component(.year, from: comm.dateK!))
-                let time = hour + ":" + minute
-                let date = day + "." + month + "." + year
-                cell.time.text = time
-                cell.date.text = date
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd.MM.yyyy"
-                if dateFormatter.date(from: date)! > commDate{
-                    commDate = comm.dateK!
-                    cell.heightDate.constant = 31
-                }else{
-                    cell.heightDate.constant = 0
-                }
-                if indexPath.row == 0{
-                    commDate = comm.dateK!
-                    cell.heightDate.constant = 31
-                }
-            }
-            if (comm.text?.contains("Отправлен новый файл"))!{
-                cell.loader.isHidden = false
-                cell.view.isHidden = true
-                let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(_:)))
-                cell.img.isUserInteractionEnabled = true
-                cell.img.addGestureRecognizer(tap)
-                
-                cell.loader.isHidden = false
-                cell.loader.startAnimating()
                 let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
                 var id = 0
                 files.forEach{
@@ -639,87 +667,127 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         id = Int($0.id)
                     }
                 }
-                if !imgs.keys.contains(imgName ?? "") {
+                if id != 0{
+                    cell.loader.isHidden = false
+                    let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(_:)))
+                    cell.img.isUserInteractionEnabled = true
+                    cell.img.addGestureRecognizer(tap)
                     
-                    var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
-                    request.httpMethod = "GET"
-                    
-                    URLSession.shared.dataTask(with: request) {
-                        data, error, responce in
+                    cell.loader.isHidden = false
+                    cell.loader.startAnimating()
+                    if !imgs.keys.contains(imgName ?? "") {
                         
-                        guard data != nil else { return }
-                        DispatchQueue.main.async { [weak self] in
+                        var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
+                        request.httpMethod = "GET"
+                        print("REQUES`t = ", request)
+                        URLSession.shared.dataTask(with: request) {
+                            data, error, responce in
                             
-                            let img = UIImage(data: data!)
-                            imgs[imgName!] = img
-                            cell.img.image = img
-                            cell.loader.stopAnimating()
-                            cell.loader.isHidden = true
-                            cell.heightImg.constant = 150
-                            cell.widthImg.constant = 150
-                        }
-                        
-                        }.resume()
-                    
-                } else {
-                    cell.img.image = imgs[imgName ?? ""]
-                    cell.heightImg.constant = 150
-                    cell.widthImg.constant = 150
+                            guard data != nil else { return }
+                            DispatchQueue.main.async { [weak self] in
+                                
+                                let img = UIImage(data: data!)
+                                imgs[imgName!] = img
+                                cell.img.image = img
+                                cell.loader.stopAnimating()
+                                cell.loader.isHidden = true
+                            }
+                            
+                            }.resume()
+                        cell.heightImg.constant = 150
+                        cell.widthImg.constant = 150
+                    } else {
+                        cell.loader.isHidden = true
+                        cell.loader.stopAnimating()
+                        cell.img.image = imgs[imgName ?? ""]
+                        cell.heightImg.constant = 150
+                        cell.widthImg.constant = 150
+                    }
                 }
+                return cell
             }
-            return cell
         } else {
-            let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCell") as! NewCommCell
-//            cell.author.text     = "Вы" //comm.author
-            cell.loader.isHidden = true
-            let calendar = Calendar.current
-            cell.text_comm.text  = comm.text
-            self.teck_id = comm.id + 1
-            if comm.dateK != nil{
-                var hour = String(calendar.component(.hour, from: comm.dateK!))
-                if hour.count == 1{
-                    hour = "0" + hour
+            if comm.text != nil && !(comm.text?.contains("Отправлен новый файл"))!{
+                let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCell") as! NewCommCell
+    //            cell.author.text     = "Вы" //comm.author
+                let calendar = Calendar.current
+                cell.text_comm.text  = comm.text
+                self.teck_id = comm.id + 1
+                if comm.dateK != nil{
+                    var hour = String(calendar.component(.hour, from: comm.dateK!))
+                    if hour.count == 1{
+                        hour = "0" + hour
+                    }
+                    var minute = String(calendar.component(.minute, from: comm.dateK!))
+                    if minute.count == 1{
+                        minute = "0" + minute
+                    }
+                    var day = String(calendar.component(.day, from: comm.dateK!))
+                    if day.count == 1{
+                        day = "0" + day
+                    }
+                    var month = String(calendar.component(.month, from: comm.dateK!))
+                    if month.count == 1{
+                        month = "0" + month
+                    }
+                    let year = String(calendar.component(.year, from: comm.dateK!))
+                    let time = hour + ":" + minute
+                    let date = day + "." + month + "." + year
+                    cell.time.text = time
+                    cell.date.text = date
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                    if dateFormatter.date(from: date)! > commDate{
+                        commDate = comm.dateK!
+                        cell.heightDate.constant = 31
+                    }else{
+                        cell.heightDate.constant = 0
+                    }
+                    if indexPath.row == 0{
+                        commDate = comm.dateK!
+                        cell.heightDate.constant = 31
+                    }
                 }
-                var minute = String(calendar.component(.minute, from: comm.dateK!))
-                if minute.count == 1{
-                    minute = "0" + minute
+                return cell
+            }else{
+                let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommFileCell") as! NewCommFileCell
+                let calendar = Calendar.current
+                self.teck_id = comm.id + 1
+                if comm.dateK != nil{
+                    var hour = String(calendar.component(.hour, from: comm.dateK!))
+                    if hour.count == 1{
+                        hour = "0" + hour
+                    }
+                    var minute = String(calendar.component(.minute, from: comm.dateK!))
+                    if minute.count == 1{
+                        minute = "0" + minute
+                    }
+                    var day = String(calendar.component(.day, from: comm.dateK!))
+                    if day.count == 1{
+                        day = "0" + day
+                    }
+                    var month = String(calendar.component(.month, from: comm.dateK!))
+                    if month.count == 1{
+                        month = "0" + month
+                    }
+                    let year = String(calendar.component(.year, from: comm.dateK!))
+                    let time = hour + ":" + minute
+                    let date = day + "." + month + "." + year
+                    cell.time.text = time
+                    cell.date.text = date
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                    if dateFormatter.date(from: date)! > commDate{
+                        commDate = comm.dateK!
+                        cell.heightDate.constant = 31
+                    }else{
+                        cell.heightDate.constant = 0
+                    }
+                    if indexPath.row == 0{
+                        commDate = comm.dateK!
+                        cell.heightDate.constant = 31
+                    }
                 }
-                var day = String(calendar.component(.day, from: comm.dateK!))
-                if day.count == 1{
-                    day = "0" + day
-                }
-                var month = String(calendar.component(.month, from: comm.dateK!))
-                if month.count == 1{
-                    month = "0" + month
-                }
-                let year = String(calendar.component(.year, from: comm.dateK!))
-                let time = hour + ":" + minute
-                let date = day + "." + month + "." + year
-                cell.time.text = time
-                cell.date.text = date
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd.MM.yyyy"
-                if dateFormatter.date(from: date)! > commDate{
-                    commDate = comm.dateK!
-                    cell.heightDate.constant = 31
-                }else{
-                    cell.heightDate.constant = 0
-                }
-                if indexPath.row == 0{
-                    commDate = comm.dateK!
-                    cell.heightDate.constant = 31
-                }
-            }
-            print("ТЕКСТ: ", comm.text!)
-            if (comm.text?.contains("Отправлен новый файл"))!{
-                cell.loader.isHidden = false
-                cell.view.isHidden = true
-                let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(_:)))
-                cell.img.isUserInteractionEnabled = true
-                cell.img.addGestureRecognizer(tap)
-                
-                cell.loader.isHidden = false
-                cell.loader.startAnimating()
                 let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
                 var id = 0
                 files.forEach{
@@ -727,36 +795,57 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         id = Int($0.id)
                     }
                 }
-                if !imgs.keys.contains(imgName ?? "") {
+                if id != 0{
+                    cell.loader.isHidden = false
+                    let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(_:)))
+                    cell.img.isUserInteractionEnabled = true
+                    cell.img.addGestureRecognizer(tap)
                     
-                    var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
-                    request.httpMethod = "GET"
-                    print("REQUES`t = ", request)
-                    URLSession.shared.dataTask(with: request) {
-                        data, error, responce in
+                    cell.loader.isHidden = false
+                    cell.loader.startAnimating()
+                    if !imgs.keys.contains(imgName ?? "") {
                         
-                        guard data != nil else { return }
-                        DispatchQueue.main.async { [weak self] in
+                        var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
+                        request.httpMethod = "GET"
+                        print("REQUES`t = ", request)
+                        URLSession.shared.dataTask(with: request) {
+                            data, error, responce in
                             
-                            let img = UIImage(data: data!)
-                            imgs[imgName!] = img
-                            cell.img.image = img
-                            cell.loader.stopAnimating()
-                            cell.loader.isHidden = true
-                            cell.heightImg.constant = 150
-                            cell.widthImg.constant = 150
-                        }
-                        
-                        }.resume()
-                    
-                } else {
-                    cell.img.image = imgs[imgName ?? ""]
-                    cell.heightImg.constant = 150
-                    cell.widthImg.constant = 150
+                            guard data != nil else { return }
+                            DispatchQueue.main.async { [weak self] in
+                                
+                                let img = UIImage(data: data!)
+                                imgs[imgName!] = img
+                                cell.img.image = img
+                                cell.loader.stopAnimating()
+                                cell.loader.isHidden = true
+                            }
+                            
+                            }.resume()
+                        cell.heightImg.constant = 150
+                        cell.widthImg.constant = 150
+                    } else {
+                        cell.loader.isHidden = true
+                        cell.loader.stopAnimating()
+                        cell.img.image = imgs[imgName ?? ""]
+                        cell.heightImg.constant = 150
+                        cell.widthImg.constant = 150
+                    }
                 }
+                return cell
             }
-            return cell
         }
+    }
+    
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        print(label.frame.height, width)
+        return label.frame.height
     }
     
     @objc private func imagePressed(_ sender: UITapGestureRecognizer) {
@@ -910,7 +999,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     db.getComByID(login: login as! String, pass: pass as! String, number: self.id_app)
                     
                     self.load_data()
-                    self.table_comments.reloadData()
+                    self.updateTable()
                     if #available(iOS 10.0, *) {
                         self.table_comments.refreshControl?.endRefreshing()
                     } else {
@@ -996,6 +1085,18 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         task.resume()
     }
     
+}
+
+extension UITableView {
+    func scrollToBottom(animated: Bool = true) {
+        let section = self.numberOfSections
+        if section > 0 {
+            let row = self.numberOfRows(inSection: section - 1)
+            if row > 0 {
+                self.scrollToRow(at: NSIndexPath(row: row - 1, section: section - 1) as IndexPath, at: .bottom, animated: animated)
+            }
+        }
+    }
 }
 
 private var imgs: [String:UIImage] = [:]

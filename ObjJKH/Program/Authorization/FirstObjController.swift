@@ -522,8 +522,8 @@ class FirstObjController: UIViewController {
     // сохранение глобальных значений
     func save_global_data(date1: String, date2: String, can_count: String, mail: String, id_account: String, isCons: String, name: String, history_counters: String, strah: String, phone_operator: String, encoding_Pays: String) {
         let defaults = UserDefaults.standard
-        defaults.setValue(date1, forKey: "date1")
-        defaults.setValue(date2, forKey: "date2")
+//        defaults.setValue(date1, forKey: "date1")
+//        defaults.setValue(date2, forKey: "date2")
         defaults.setValue(can_count, forKey: "can_count")
         defaults.setValue(mail, forKey: "mail")
         defaults.setValue(id_account, forKey: "id_account")

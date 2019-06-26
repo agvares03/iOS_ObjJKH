@@ -109,6 +109,80 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return true
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
+        print("==============")
+//        guard let aps = userInfo["comment"] as? [String : AnyObject] else {
+//            print("Error parsing aps")
+//            return
+//        }
+//        print(aps)
+//        guard let requests = userInfo["meters"] as? String else {
+//            print("Error parsing request")
+//            return
+//        }
+//        print(requests)
+        guard let notifi = userInfo["aps"] as? [String : AnyObject] else {
+            print("Error parsing")
+            return
+        }
+//        guard let news = userInfo["announcement"] as? String else {
+//            print("Error parsing news")
+//            return
+//        }
+//        guard let survays = userInfo["other"] as? String else {
+//            print("Error parsing survays")
+//            return
+//        }
+//        print(survays)
+//        if (requests != request1) || (news != news1) || (survays != survays1){
+//            UIApplication.shared.applicationIconBadgeNumber = 0
+//            UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
+//            request1 = requests
+//            news1 = news
+//            survays1 = survays
+//            print("Уведомления: ", UIApplication.shared.applicationIconBadgeNumber)
+//        }
+        var body = ""
+        var title = ""
+        var msgURL = ""
+        if let alert = notifi["alert"] as? String {
+            body = alert
+        } else if let alert = notifi["alert"] as? [String : String] {
+            body = alert["body"]!
+            title = alert["title"]!
+        }
+        if userInfo["gcm.notification.type_push"] as? String == "announcement"{
+            UserDefaults.standard.set(true, forKey: "newNotifi")
+            UserDefaults.standard.set(body, forKey: "bodyNotifi")
+            UserDefaults.standard.set(title, forKey: "titleNotifi")
+            UserDefaults.standard.synchronize()
+            print("---isNEWS---")
+        }
+        if userInfo["gcm.notification.type_push"] as? String == "comment"{
+//            UserDefaults.standard.set(true, forKey: "newNotifi")
+//            UserDefaults.standard.synchronize()
+            print("---isCOMMENT---")
+        }
+//
+//        if let alert1 = aps["category"] as? String {
+//            msgURL = alert1
+//        }
+
+        print("Body:", body, "Title:", title, "msgURL:", msgURL)
+        let db = DB()
+        db.addSettings(id: 1, name: "notification", diff: "true")
+        if title.contains("поступил комментарий"){
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTheTable"), object: nil)
+        }
+        if UIApplication.shared.applicationState == .active {
+            window?.rootViewController?.present(NotificationController(), animated: true, completion: nil)
+            //TODO: Handle foreground notification
+        } else {
+            //TODO: Handle background notification
+        }
+    }
+    
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         YMMYandexMetrica.handleOpen(url)
         return true
@@ -273,58 +347,58 @@ extension AppDelegate : MessagingDelegate {
     }
     
     // iOS9, called when presenting notification in foreground
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
-        print("==============")
-        guard let aps = userInfo["comment"] as? [String : AnyObject] else {
-            print("Error parsing aps")
-            return
-        }
-        print(aps)
-        guard let requests = userInfo["meters"] as? String else {
-            print("Error parsing request")
-            return
-        }
-        print(requests)
-        guard let news = userInfo["announcement"] as? String else {
-            print("Error parsing news")
-            return
-        }
-        print(news)
-        guard let survays = userInfo["other"] as? String else {
-            print("Error parsing survays")
-            return
-        }
-        print(survays)
-        if (requests != request1) || (news != news1) || (survays != survays1){
-            UIApplication.shared.applicationIconBadgeNumber = 0
-            UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
-            request1 = requests
-            news1 = news
-            survays1 = survays
-            print("Уведомления: ", UIApplication.shared.applicationIconBadgeNumber)
-        }
-        
-//        if let alert = aps["alert"] as? String {
-//            body = alert
-//        } else if let alert = aps["alert"] as? [String : String] {
-//            body = alert["body"]!
-//            title = alert["title"]!
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+//        NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
+//        print("==============")
+//        guard let aps = userInfo["comment"] as? [String : AnyObject] else {
+//            print("Error parsing aps")
+//            return
+//        }
+//        print(aps)
+//        guard let requests = userInfo["meters"] as? String else {
+//            print("Error parsing request")
+//            return
+//        }
+//        print(requests)
+//        guard let news = userInfo["announcement"] as? String else {
+//            print("Error parsing news")
+//            return
+//        }
+//        print(news)
+//        guard let survays = userInfo["other"] as? String else {
+//            print("Error parsing survays")
+//            return
+//        }
+//        print(survays)
+//        if (requests != request1) || (news != news1) || (survays != survays1){
+//            UIApplication.shared.applicationIconBadgeNumber = 0
+//            UIApplication.shared.applicationIconBadgeNumber = Int(requests)! + Int(news)! + Int(survays)!
+//            request1 = requests
+//            news1 = news
+//            survays1 = survays
+//            print("Уведомления: ", UIApplication.shared.applicationIconBadgeNumber)
 //        }
 //
-//        if let alert1 = aps["category"] as? String {
-//            msgURL = alert1
+////        if let alert = aps["alert"] as? String {
+////            body = alert
+////        } else if let alert = aps["alert"] as? [String : String] {
+////            body = alert["body"]!
+////            title = alert["title"]!
+////        }
+////
+////        if let alert1 = aps["category"] as? String {
+////            msgURL = alert1
+////        }
+//
+////        print("Body:", body, "Title:", title, "msgURL:", msgURL)
+//        print("---УВЕДОМЛЕНИЕ---")
+//        let db = DB()
+//        db.addSettings(id: 1, name: "notification", diff: "true")
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTheTable"), object: nil)
+//        if UIApplication.shared.applicationState == .active {
+//            //TODO: Handle foreground notification
+//        } else {
+//            //TODO: Handle background notification
 //        }
-        
-//        print("Body:", body, "Title:", title, "msgURL:", msgURL)
-        print("---УВЕДОМЛЕНИЕ---")
-        let db = DB()
-        db.addSettings(id: 1, name: "notification", diff: "true")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTheTable"), object: nil)
-        if UIApplication.shared.applicationState == .active {
-            //TODO: Handle foreground notification
-        } else {
-            //TODO: Handle background notification
-        }
-    }
+//    }
 }

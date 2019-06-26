@@ -18,6 +18,7 @@ class StartController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")
         UserDefaults.standard.set(true, forKey: "can_tech")
         UserDefaults.standard.synchronize()
