@@ -317,8 +317,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if (app.is_close == 1) {
             if (isCons == "0") {
-//                self.performSegue(withIdentifier: "show_app", sender: self)
-                self.performSegue(withIdentifier: "new_show_app", sender: self)
+                self.performSegue(withIdentifier: "show_app", sender: self)
+//                self.performSegue(withIdentifier: "new_show_app", sender: self)
             } else {
                 self.performSegue(withIdentifier: "show_app_cons", sender: self)
             }

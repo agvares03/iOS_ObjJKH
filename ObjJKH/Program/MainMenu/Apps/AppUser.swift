@@ -433,10 +433,12 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     }
     
     @objc func reload() {
-        let db = DB()
-        if (db.isNotification()) {
-            self.load_notification()
-        }
+        //        let db = DB()
+        //        if (db.isNotification()) {
+        DispatchQueue.main.async(execute: {
+            self.load_new_data()
+        })
+        //        }
     }
     
     func load_notification() {
