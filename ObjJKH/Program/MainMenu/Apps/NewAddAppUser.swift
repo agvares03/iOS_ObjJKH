@@ -23,12 +23,12 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     @IBOutlet weak var backBtn: UIBarButtonItem!
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
-//        if UserDefaults.standard.bool(forKey: "fromMenu"){
-//            UserDefaults.standard.set(false, forKey: "fromMenu")
-//            navigationController?.popViewController(animated: true)
-//        }else{
+        if UserDefaults.standard.bool(forKey: "fromMenu"){
+            UserDefaults.standard.set(false, forKey: "fromMenu")
+            navigationController?.popViewController(animated: true)
+        }else{
             navigationController?.dismiss(animated: true, completion: nil)
-//        }
+        }
     }
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var viewTop: NSLayoutConstraint!
@@ -95,6 +95,9 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
+            DispatchQueue.main.async {
+                self.view.isUserInteractionEnabled = false
+            }
             let urlPath = Server.SERVER + Server.ADD_APP +
                 "ident=" + txtLogin +
                 "&pwd=" + txtPass +
@@ -126,6 +129,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                                             alert.addAction(cancelAction)
                                                             alert.addAction(supportAction)
                                                             self.present(alert, animated: true, completion: nil)
+                                                            self.view.isUserInteractionEnabled = true
                                                         })
                                                         return
                                                     }
@@ -191,6 +195,9 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 self.present(alert, animated: true, completion: nil)
                 
             })
+        }
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = true
         }
     }
     
@@ -303,6 +310,12 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         lsTextView.addTarget(self, action: #selector(lsTapped), for: .touchDown)
         typeTextView.addTarget(self, action: #selector(typeTapped), for: .touchDown)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

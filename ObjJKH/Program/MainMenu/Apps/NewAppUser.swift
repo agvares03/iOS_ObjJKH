@@ -21,6 +21,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var hidden_Header: UIBarButtonItem!
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var fileBtn: UIBarButtonItem!
+    @IBOutlet weak var addFileBtn: UIButton!
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
@@ -247,9 +248,26 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         self.addComm(comm: ed_comment.text)
     }
     
+    func hiddAddComm(){
+        DispatchQueue.main.async{
+            self.addFileBtn.isHidden = true
+            self.sendBtn.isHidden = true
+            self.ed_comment.isHidden = true
+        }
+    }
+    
+    func showAddComm(){
+        DispatchQueue.main.async{
+            self.addFileBtn.isHidden = false
+            self.sendBtn.isHidden = false
+            self.ed_comment.isHidden = false
+        }
+    }
+    
     func addComm(comm: String?){
         if (comm != "") {
             self.StartIndicator()
+            self.hiddAddComm()
             self.ed_comment.text = comm!
             let id_app_txt = self.id_app.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             let text_txt: String   = comm!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
@@ -278,6 +296,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                                                             alert.addAction(supportAction)
                                                             self.present(alert, animated: true, completion: nil)
                                                         })
+                                                        self.showAddComm()
                                                         return
                                                     }
                                                     
@@ -494,8 +513,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             DispatchQueue.main.async(execute: {
                 
                 // Экземпляр класса DB
-                let db = DB()
-                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: comm!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
+//                let db = DB()
+//                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: comm!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
                 self.ed_comment.text = ""
                 self.StopIndicator()
                 self.load_data()
@@ -512,6 +531,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 
             })
         }
+        self.showAddComm()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -565,7 +585,14 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         }
         table_comments.reloadData()
+        if kolR == 0{
+            DispatchQueue.main.async {
+                self.table_comments.scrollToRow(at: IndexPath(item: self.table_comments.numberOfRows(inSection: 0) - 1, section: 0), at: .top, animated: true)
+            }
+            kolR = 1
+        }
     }
+    var kolR = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController?.sections {
@@ -855,9 +882,15 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     private func imgPressed(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
+//        newImageView.frame.size.width = UIScreen.main.bounds.width
+//        newImageView.frame.size.height = UIScreen.main.bounds.width
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleToFill
+        if Double((imageView.image?.size.width)!) > Double((imageView.image?.size.height)!){
+            newImageView.contentMode = .scaleAspectFit
+        }else{
+            newImageView.contentMode = .scaleToFill
+        }
         newImageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
         newImageView.addGestureRecognizer(tap)

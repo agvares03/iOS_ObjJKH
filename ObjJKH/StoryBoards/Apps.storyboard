@@ -1880,7 +1880,7 @@
         <!--Добавить заявку-->
         <scene sceneID="9GH-ET-Jy2">
             <objects>
-                <viewController id="2eO-4a-Qu3" customClass="NewAddAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addAppUserNew" id="2eO-4a-Qu3" customClass="NewAddAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="odg-Jl-Mgw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2615,7 +2615,7 @@
         <!--Заявка № 1234-->
         <scene sceneID="efe-6g-ZjE">
             <objects>
-                <viewController id="35B-wL-CPX" customClass="NewAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appUserNew" id="35B-wL-CPX" customClass="NewAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hwF-L3-SQx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2969,32 +2969,32 @@
                                             <outlet property="view" destination="e6a-qC-HYh" id="GjV-ui-GTi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommFileCellCons" rowHeight="112" id="peO-bP-AE5" customClass="NewCommFileCellCons" customModule="ChistDom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="330" width="375" height="112"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommFileCellCons" rowHeight="117" id="peO-bP-AE5" customClass="NewCommFileCellCons" customModule="ChistDom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="330" width="375" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="peO-bP-AE5" id="UgH-hm-wo1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1aT-35-xTk">
-                                                    <rect key="frame" x="40" y="41" width="175" height="46"/>
+                                                    <rect key="frame" x="40" y="41" width="175" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="175" id="6hf-kg-ics"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="nr6-w1-nQK"/>
+                                                        <constraint firstAttribute="height" constant="29" id="nr6-w1-nQK"/>
                                                     </constraints>
                                                 </imageView>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tF2-yt-WLx">
-                                                    <rect key="frame" x="117.5" y="52" width="20" height="20"/>
+                                                    <rect key="frame" x="117.5" y="43.5" width="20" height="20"/>
                                                 </activityIndicatorView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account_icon_cons.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="NyL-Dg-9i7">
-                                                    <rect key="frame" x="10" y="62" width="25" height="25"/>
+                                                    <rect key="frame" x="10" y="45" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="fSL-5c-Hnd"/>
                                                         <constraint firstAttribute="width" constant="25" id="rY6-4D-Alm"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scy-ka-3oZ">
-                                                    <rect key="frame" x="40" y="92" width="40" height="15"/>
+                                                    <rect key="frame" x="40" y="75" width="40" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="EIj-6d-NB7"/>
                                                         <constraint firstAttribute="width" constant="40" id="N7c-OW-lPY"/>
@@ -3004,7 +3004,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Шевченко светлана" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb3-jK-3LM">
-                                                    <rect key="frame" x="90" y="92" width="275" height="15"/>
+                                                    <rect key="frame" x="90" y="75" width="275" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="NEt-sR-Htn"/>
                                                     </constraints>
@@ -3038,15 +3038,16 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="fb3-jK-3LM" secondAttribute="bottom" constant="5" id="5df-a7-jX1"/>
                                                 <constraint firstItem="tF2-yt-WLx" firstAttribute="centerY" secondItem="1aT-35-xTk" secondAttribute="centerY" constant="-2" id="CzL-p8-xRP"/>
                                                 <constraint firstAttribute="bottom" secondItem="Scy-ka-3oZ" secondAttribute="bottom" constant="5" id="Dg7-LR-Gp4"/>
                                                 <constraint firstItem="1aT-35-xTk" firstAttribute="top" secondItem="0NJ-g1-pgP" secondAttribute="bottom" constant="5" id="IZG-u9-uMc"/>
                                                 <constraint firstAttribute="trailing" secondItem="fb3-jK-3LM" secondAttribute="trailing" constant="10" id="NJf-5f-tVW"/>
+                                                <constraint firstAttribute="bottom" secondItem="fb3-jK-3LM" secondAttribute="bottom" constant="5" id="PgL-Aj-rbg"/>
                                                 <constraint firstItem="fb3-jK-3LM" firstAttribute="leading" secondItem="Scy-ka-3oZ" secondAttribute="trailing" constant="10" id="QcS-gE-yVr"/>
                                                 <constraint firstItem="Scy-ka-3oZ" firstAttribute="top" secondItem="1aT-35-xTk" secondAttribute="bottom" constant="5" id="fxV-tk-MfD"/>
                                                 <constraint firstItem="0NJ-g1-pgP" firstAttribute="centerX" secondItem="UgH-hm-wo1" secondAttribute="centerX" id="gKr-Kb-n0V"/>
                                                 <constraint firstItem="0NJ-g1-pgP" firstAttribute="top" secondItem="UgH-hm-wo1" secondAttribute="top" constant="5" id="lks-ih-toC"/>
+                                                <constraint firstItem="fb3-jK-3LM" firstAttribute="centerY" secondItem="Scy-ka-3oZ" secondAttribute="centerY" id="ogE-Na-39N"/>
                                                 <constraint firstItem="NyL-Dg-9i7" firstAttribute="leading" secondItem="UgH-hm-wo1" secondAttribute="leading" constant="10" id="pNY-at-2Zm"/>
                                                 <constraint firstItem="tF2-yt-WLx" firstAttribute="centerX" secondItem="1aT-35-xTk" secondAttribute="centerX" id="rk8-VL-85p"/>
                                                 <constraint firstItem="1aT-35-xTk" firstAttribute="leading" secondItem="NyL-Dg-9i7" secondAttribute="trailing" constant="5" id="sxa-z3-9Lo"/>
@@ -3216,6 +3217,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addFileBtn" destination="NO2-ob-lcs" id="dkC-kr-Xba"/>
                         <outlet property="back" destination="mNb-ei-O2J" id="nMX-gb-HOh"/>
                         <outlet property="date_txt" destination="gLR-3I-Ff4" id="qP1-Po-si8"/>
                         <outlet property="ed_comment" destination="6ok-uW-jdR" id="ebD-rE-2a7"/>
@@ -3282,10 +3284,10 @@
         <image name="unCheck" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zTB-mo-hC5"/>
+        <segue reference="YD9-Qs-hQS"/>
         <segue reference="mMc-hD-jgf"/>
         <segue reference="cE0-Ts-8T9"/>
         <segue reference="x4h-mP-Bcg"/>
-        <segue reference="deB-u2-yJl"/>
+        <segue reference="chi-GF-50Z"/>
     </inferredMetricsTieBreakers>
 </document>

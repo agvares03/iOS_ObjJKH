@@ -1056,7 +1056,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <segue destination="aLO-4A-Owb" kind="show" id="5EH-Gu-COv"/>
+                                                            <action selector="addAppC:" destination="SMs-2A-P1i" eventType="touchUpInside" id="16R-DR-HCj"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1916,6 +1916,9 @@
                         <segue destination="3b2-k7-PRB" kind="show" identifier="goPayHistoryMytishi" id="kGH-85-ijz"/>
                         <segue destination="sgy-Dp-eJA" kind="show" identifier="go_to_app" id="dzo-rQ-cnH"/>
                         <segue destination="b2t-KN-1kD" kind="show" identifier="paysMytishi2" id="eYq-Ct-Btc"/>
+                        <segue destination="zw2-Xo-r9m" kind="show" identifier="new_show_app" id="iUf-hw-nZL"/>
+                        <segue destination="aLO-4A-Owb" kind="show" identifier="add_app" id="cMu-8l-q5U"/>
+                        <segue destination="X83-QV-uAE" kind="show" identifier="new_add_app" id="YLe-8c-WdY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76W-eJ-S4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1928,7 +1931,7 @@
                 <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="addAppUser" id="aLO-4A-Owb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Glu-6o-Nef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-486" y="693"/>
+            <point key="canvasLocation" x="-457" y="674"/>
         </scene>
         <!--Меню-->
         <scene sceneID="fVE-Wh-rOe">
@@ -2416,7 +2419,7 @@
                 <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="appUser" id="gKi-ov-geT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0v-8l-eU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-621" y="-104"/>
+            <point key="canvasLocation" x="-641" y="-135"/>
         </scene>
         <!--NewsView-->
         <scene sceneID="4ej-f1-alW">
@@ -4026,6 +4029,22 @@
             </objects>
             <point key="canvasLocation" x="2157" y="226"/>
         </scene>
+        <!--appUserNew-->
+        <scene sceneID="Nxm-XL-E1N">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="appUserNew" id="zw2-Xo-r9m" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fb2-t5-7L9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-641" y="-95"/>
+        </scene>
+        <!--addAppUserNew-->
+        <scene sceneID="AQh-wg-vIB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="addAppUserNew" id="X83-QV-uAE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hUl-ip-Qpx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-457" y="730"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Logo_DemoUC.png" width="120" height="120"/>
@@ -4057,20 +4076,20 @@
         <image name="webs_menu" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mCg-qu-B3k"/>
-        <segue reference="qZW-oS-uRV"/>
-        <segue reference="QyU-aW-HIx"/>
-        <segue reference="8Cn-1r-0Af"/>
+        <segue reference="XoR-sX-4nR"/>
+        <segue reference="dzo-rQ-cnH"/>
+        <segue reference="jYg-pB-5lL"/>
+        <segue reference="2dh-Vt-jmR"/>
         <segue reference="eFt-Yy-DpX"/>
-        <segue reference="Pwj-1d-22M"/>
+        <segue reference="VI0-A3-yGV"/>
         <segue reference="vAR-XL-Bc6"/>
         <segue reference="gnc-5X-dGK"/>
         <segue reference="9Qn-3c-HfF"/>
-        <segue reference="kVR-59-EJo"/>
+        <segue reference="KAh-TB-RwK"/>
         <segue reference="WbI-xw-6JQ"/>
         <segue reference="Dlz-bY-09d"/>
         <segue reference="JbC-lw-adM"/>
-        <segue reference="7dK-YJ-0kI"/>
+        <segue reference="Xov-w8-Ys4"/>
         <segue reference="0eH-c3-S8y"/>
         <segue reference="d1f-xl-6a3"/>
     </inferredMetricsTieBreakers>

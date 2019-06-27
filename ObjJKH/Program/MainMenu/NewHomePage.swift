@@ -171,6 +171,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         #endif
     }
     
+    @IBAction func addAppC(_ sender: UIButton) {
+//        self.performSegue(withIdentifier: "add_app", sender: self)
+        self.performSegue(withIdentifier: "new_add_app", sender: self)
+    }
     @IBAction func AddLS(_ sender: UIButton) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         #if isMupRCMytishi
@@ -718,7 +722,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             do {
                                                                 u += 1
                                                                 let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                                print(responseStr)
+                                                                print(responseStr)
                                                                 
                                                                 if !responseStr.contains("error"){
                                                                     var date1       = ""
@@ -2095,7 +2099,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else if tableView == self.tableNews{
             performSegue(withIdentifier: "show_news", sender: self)
         }else if tableView == self.tableApps{
-            performSegue(withIdentifier: "show_app", sender: self)
+//            performSegue(withIdentifier: "show_app", sender: self)
+            performSegue(withIdentifier: "new_show_app", sender: self)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -2164,6 +2169,37 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //            AppUser.delegate   = ShowAppDelegate()
             AppUser.App        = app
 //            AppUser.updDelegt = AppsUserUpdateDelegate()
+        }
+        if segue.identifier == "new_show_app" {
+            let indexPath = tableApps.indexPathForSelectedRow!
+            let app = fetchedResultsController!.object(at: indexPath)
+            
+            let AppUser             = segue.destination as! NewAppUser
+            AppUser.title           = "Заявка №" + app.number!
+            AppUser.txt_tema   = app.tema!
+            AppUser.str_type_app = app.type_app!
+            AppUser.read = app.is_read_client
+            AppUser.adress = app.adress!
+            AppUser.flat = app.flat!
+            AppUser.phone = app.phone!
+            if app.paid_text != nil{
+                AppUser.paid_text = app.paid_text!
+            }
+            if app.paid_sum != nil{
+                AppUser.paid_sum = Double(app.paid_sum!) as! Double
+                AppUser.isPay = app.is_pay
+                AppUser.isPaid = app.is_paid
+            }
+            if app.acc_ident != nil{
+                AppUser.acc_ident = app.acc_ident!
+            }
+            
+            //            AppUser.txt_text   = app.text!
+            AppUser.txt_date   = app.date!
+            AppUser.id_app     = app.number!
+//            AppUser.delegate   = self
+            AppUser.App        = app
+//            AppUser.updDelegt = self
         }
         if segue.identifier == "addCounters"{
             let payController             = segue.destination as! AddCountersController
