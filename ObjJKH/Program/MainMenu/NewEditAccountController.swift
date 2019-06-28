@@ -305,6 +305,11 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         settingsViewTop.constant = 0
         settingsView.isHidden = true
         #endif
+        if UserDefaults.standard.bool(forKey: "dontShowDebt"){
+            settingsViewHeight.constant = 0
+            settingsViewTop.constant = 0
+            settingsView.isHidden = true
+        }
         //        tableView.setEditing(true, animated: true)
     }
     
@@ -660,6 +665,10 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             cell.sumViewHeight.constant = 0
             cell.payDebtHeight.constant = 0
             cell.separator.isHidden = true
+            cell.noDebtText.isHidden = true
+            cell.payDebt.isHidden = true
+            cell.periodPay.isHidden = true
+            cell.allPayText.isHidden = true
         }
         return cell
     }

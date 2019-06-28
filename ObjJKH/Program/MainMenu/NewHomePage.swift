@@ -1913,6 +1913,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.sumViewHeight.constant = 0
                 cell.payDebtHeight.constant = 0
                 cell.separator.isHidden = true
+                cell.noDebtText.isHidden = true
+                cell.payDebt.isHidden = true
+                cell.periodPay.isHidden = true
+                cell.allPayText.isHidden = true
             }
             return cell
         }else if tableView == self.tableNews {
