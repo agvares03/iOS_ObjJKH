@@ -880,21 +880,28 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     private func imgPressed(_ sender: UITapGestureRecognizer) {
+        let view = UIView()
+        view.frame = UIScreen.main.bounds
+        view.backgroundColor = .black
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
-//        newImageView.frame.size.width = UIScreen.main.bounds.width
-//        newImageView.frame.size.height = UIScreen.main.bounds.width
-        newImageView.frame = UIScreen.main.bounds
-        newImageView.backgroundColor = .black
-        if Double((imageView.image?.size.width)!) > Double((imageView.image?.size.height)!){
-            newImageView.contentMode = .scaleAspectFit
+        let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
+        let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
+        if k > l{
+            newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
         }else{
-            newImageView.contentMode = .scaleToFill
+            newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
         }
+        newImageView.frame.size.width = self.view.frame.size.width
+        let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
+        newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleToFill
         newImageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
+        view.addGestureRecognizer(tap)
+        view.addSubview(newImageView)
+        self.view.addSubview(view)
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }

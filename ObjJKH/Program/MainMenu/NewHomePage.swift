@@ -1908,6 +1908,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             cell.delegate = self
             cell.delegate2 = self
+            if UserDefaults.standard.bool(forKey: "dontShowDebt"){
+                cell.bottViewHeight.constant = 0
+                cell.sumViewHeight.constant = 0
+                cell.payDebtHeight.constant = 0
+                cell.separator.isHidden = true
+            }
             return cell
         }else if tableView == self.tableNews {
             let cell = self.tableNews.dequeueReusableCell(withIdentifier: "HomeNewsCell") as! HomeNewsCell
