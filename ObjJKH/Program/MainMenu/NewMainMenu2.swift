@@ -553,13 +553,13 @@ class NewMainMenu2: UIViewController {
                                                                                         }
                                                                                     }
                                                                                     sumObj = sumObj + Double(sumAll)!
+                                                                                    defaults.set(sumObj, forKey: "sumDebt")
+                                                                                    defaults.synchronize()
                                                                                 }
                                                                             }
                                                                         }
                                                                         
                                                                     }
-                                                                    defaults.set(sumObj, forKey: "sumDebt")
-                                                                    defaults.synchronize()
                                                                 }
                                                                 
                                                             } catch let error as NSError {

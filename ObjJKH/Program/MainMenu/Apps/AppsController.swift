@@ -324,7 +324,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         } else {
             if (isCons == "0") {
-                self.performSegue(withIdentifier: "show_app_close", sender: self)
+//                self.performSegue(withIdentifier: "show_app_close", sender: self)
+                self.performSegue(withIdentifier: "new_show_app_close", sender: self)
             } else {
                 self.performSegue(withIdentifier: "show_app_close_cons", sender: self)
             }
@@ -339,7 +340,9 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let app = fetchedResultsController!.object(at: indexPath)
             
             let AppUser             = segue.destination as! AppUser
-            AppUser.title           = "Заявка №" + app.number!
+            if app.number != nil{
+                AppUser.title           = "Заявка №" + app.number!
+            }
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read_client
@@ -369,7 +372,9 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let app = fetchedResultsController!.object(at: indexPath)
             
             let AppUser             = segue.destination as! NewAppUser
-            AppUser.title           = "Заявка №" + app.number!
+            if app.number != nil{
+                AppUser.title           = "Заявка №" + app.number!
+            }
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read_client
@@ -399,7 +404,29 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let app = fetchedResultsController!.object(at: indexPath)
             
             let AppUser             = segue.destination as! AppUser
-            AppUser.title           = "Заявка №" + app.number!
+            if app.number != nil{
+                AppUser.title           = "Заявка №" + app.number!
+            }
+            AppUser.txt_tema   = app.tema!
+            AppUser.str_type_app = app.type_app!
+            AppUser.read = app.is_read_client
+            AppUser.adress = app.adress!
+            AppUser.flat = app.flat!
+            AppUser.phone = app.phone!
+            //            AppUser.txt_text   = app.text!
+            AppUser.txt_date   = app.date!
+            AppUser.id_app     = app.number!
+            AppUser.delegate   = self
+            AppUser.App        = app
+            AppUser.updDelegt  = self
+        } else if (segue.identifier == "new_show_app_close") {
+            let indexPath = tableApps.indexPathForSelectedRow!
+            let app = fetchedResultsController!.object(at: indexPath)
+            
+            let AppUser             = segue.destination as! NewAppUser
+            if app.number != nil{
+                AppUser.title           = "Заявка №" + app.number!
+            }
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read_client
