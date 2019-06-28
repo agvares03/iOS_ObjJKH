@@ -118,6 +118,7 @@ class NewMainMenu2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(true, forKey: "fromMenu")
+        UserDefaults.standard.synchronize()
         self.getQuestions()
         self.getNews()
         let defaults = UserDefaults.standard

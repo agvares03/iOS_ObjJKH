@@ -36,6 +36,7 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         if UserDefaults.standard.bool(forKey: "fromMenu"){
             UserDefaults.standard.set(false, forKey: "fromMenu")
+            UserDefaults.standard.synchronize()
             navigationController?.popViewController(animated: true)
         }else{
             navigationController?.dismiss(animated: true, completion: nil)

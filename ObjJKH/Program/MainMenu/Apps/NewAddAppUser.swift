@@ -23,13 +23,14 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     @IBOutlet weak var backBtn: UIBarButtonItem!
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
-        if UserDefaults.standard.bool(forKey: "fromMenu"){
-            UserDefaults.standard.set(false, forKey: "fromMenu")
+        if fromMenu{
             navigationController?.popViewController(animated: true)
         }else{
             navigationController?.dismiss(animated: true, completion: nil)
         }
     }
+    
+    public var fromMenu = false
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var viewTop: NSLayoutConstraint!
     
@@ -276,7 +277,8 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         self.StopIndicator()
-        
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()
         let defaults = UserDefaults.standard
         edLogin = defaults.string(forKey: "login")!
         edPass = defaults.string(forKey: "pass")!
@@ -302,7 +304,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         descText.textColor = UIColor.lightGray
         
         addAppBtn.backgroundColor = myColors.btnColor.uiColor()
-        backBtn.tintColor = myColors.btnColor.uiColor()
+        backBtn.tintColor = .white
         indicator.color = myColors.indicatorColor.uiColor()
         lsImg.setImageColor(color: myColors.indicatorColor.uiColor())
         typeImg.setImageColor(color: myColors.indicatorColor.uiColor())
@@ -310,6 +312,10 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         lsTextView.addTarget(self, action: #selector(lsTapped), for: .touchDown)
         typeTextView.addTarget(self, action: #selector(typeTapped), for: .touchDown)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {

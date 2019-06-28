@@ -281,13 +281,19 @@
                                     <constraint firstItem="2gr-MO-9GI" firstAttribute="centerX" secondItem="V1G-Gt-dz5" secondAttribute="centerX" id="xEX-RJ-Y4g"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="F73-fX-31i">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="V1G-Gt-dz5" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" constant="30" id="0Ev-Rf-p8q"/>
                             <constraint firstItem="Y0h-LB-nC8" firstAttribute="centerY" secondItem="vuI-SL-bHF" secondAttribute="centerY" id="18s-4f-5dS"/>
+                            <constraint firstItem="F73-fX-31i" firstAttribute="centerX" secondItem="vuI-SL-bHF" secondAttribute="centerX" id="4Qu-Uo-bgd"/>
                             <constraint firstItem="h0P-vy-YeW" firstAttribute="leading" secondItem="LN9-gp-7Vx" secondAttribute="leading" id="4Re-xd-n4J"/>
                             <constraint firstItem="LN9-gp-7Vx" firstAttribute="trailing" secondItem="h0P-vy-YeW" secondAttribute="trailing" id="9c7-gd-Z6q"/>
+                            <constraint firstItem="F73-fX-31i" firstAttribute="centerY" secondItem="vuI-SL-bHF" secondAttribute="centerY" id="DKx-n8-uiq"/>
                             <constraint firstItem="woV-n9-mQe" firstAttribute="top" secondItem="LN9-gp-7Vx" secondAttribute="top" id="DfN-Yo-0I1"/>
                             <constraint firstItem="whj-2p-mZl" firstAttribute="top" secondItem="woV-n9-mQe" secondAttribute="bottom" constant="8" id="KxX-qJ-CbA"/>
                             <constraint firstItem="h0P-vy-YeW" firstAttribute="top" secondItem="whj-2p-mZl" secondAttribute="bottom" constant="8" symbolic="YES" id="LSF-qC-WM3"/>
@@ -317,6 +323,7 @@
                         <outlet property="back" destination="lfj-oo-VGl" id="3UZ-ar-KJV"/>
                         <outlet property="btnAdd" destination="whj-2p-mZl" id="r5i-si-EAU"/>
                         <outlet property="hiddenAppsView" destination="h0P-vy-YeW" id="EoR-jM-Kyu"/>
+                        <outlet property="indicator" destination="F73-fX-31i" id="Kaz-X5-siK"/>
                         <outlet property="lsView" destination="V1G-Gt-dz5" id="cB2-R7-0c3"/>
                         <outlet property="nonConectView" destination="Y0h-LB-nC8" id="Bzc-Fe-l6O"/>
                         <outlet property="support" destination="s9q-s9-VpS" id="PMj-9S-pml"/>
@@ -334,8 +341,8 @@
                         <segue destination="C4f-NX-JpH" kind="show" identifier="addLS" id="5Mg-CX-Tqc"/>
                         <segue destination="vik-c3-FkK" kind="show" identifier="addLSPocket" id="bnI-2y-375"/>
                         <segue destination="drB-Jg-nF0" kind="show" identifier="new_add_app" id="fGf-1N-5Qa"/>
-                        <segue destination="35B-wL-CPX" kind="show" identifier="new_show_app" id="ScW-NP-Vv0"/>
-                        <segue destination="35B-wL-CPX" kind="show" identifier="new_show_app_close" id="lyo-Pm-PDl"/>
+                        <segue destination="BCE-5o-WMX" kind="show" identifier="new_show_app" id="ScW-NP-Vv0"/>
+                        <segue destination="BCE-5o-WMX" kind="show" identifier="new_show_app_close" id="lyo-Pm-PDl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKg-xP-qp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2316,7 +2323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3o-PX-HsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3504.8000000000002" y="-1571.0644677661171"/>
+            <point key="canvasLocation" x="3505" y="-1556"/>
         </scene>
         <!--Создание заявки (конс.)-->
         <scene sceneID="nR8-uv-ifb">
@@ -3237,7 +3244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHW-mn-Yk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2565.5999999999999" y="-2247.5262368815593"/>
+            <point key="canvasLocation" x="3504.8000000000002" y="-2247.5262368815593"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FEA-cl-yqy">
@@ -3247,6 +3254,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KiK-6P-c9b">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.084393614219999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3256,6 +3264,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnE-XO-UBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2566" y="-1571"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nUg-lF-lJm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BCE-5o-WMX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nuf-WZ-9kV">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.084393614219999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="35B-wL-CPX" kind="relationship" relationship="rootViewController" id="ZOM-Cm-lkl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ArT-Rr-y2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2565.5999999999999" y="-2247.5262368815593"/>
         </scene>
     </scenes>
     <resources>
@@ -3285,7 +3312,7 @@
         <image name="unCheck" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lyo-Pm-PDl"/>
+        <segue reference="ScW-NP-Vv0"/>
         <segue reference="pW3-Zd-2nm"/>
         <segue reference="mMc-hD-jgf"/>
         <segue reference="M7G-ag-hjx"/>

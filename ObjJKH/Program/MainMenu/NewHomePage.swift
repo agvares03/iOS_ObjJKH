@@ -676,7 +676,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         super.viewWillDisappear(animated)
         showAD = false
         self.StopIndicators()
-        UserDefaults.standard.set(true, forKey: "fromMenu")
+        DispatchQueue.main.async{
+            UserDefaults.standard.set(true, forKey: "fromMenu")
+            UserDefaults.standard.synchronize()
+        }
     }
     
     var lsArr:[lsData] = []
@@ -2161,7 +2164,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let app = fetchedResultsController!.object(at: indexPath)
             
             let AppUser             = segue.destination as! AppUser
-            AppUser.title           = "Заявка №" + app.number!
+            if app.number != nil{
+                AppUser.title           = "Заявка №" + app.number!
+            }
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read_client
@@ -2180,18 +2185,25 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             AppUser.App        = app
 //            AppUser.updDelegt = AppsUserUpdateDelegate()
         }
+        if segue.identifier == "new_add_app" {            
+            let AppUser             = segue.destination as! NewAddAppUser
+            AppUser.fromMenu = true
+        }
         if segue.identifier == "new_show_app" {
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
             
             let AppUser             = segue.destination as! NewAppUser
-            AppUser.title           = "Заявка №" + app.number!
+            if app.number != nil{
+                AppUser.title           = "Заявка №" + app.number!
+            }
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read_client
             AppUser.adress = app.adress!
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
+            AppUser.fromMenu = true
             if app.paid_text != nil{
                 AppUser.paid_text = app.paid_text!
             }

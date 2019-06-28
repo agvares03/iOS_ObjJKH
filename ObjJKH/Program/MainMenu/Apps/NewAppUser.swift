@@ -23,7 +23,11 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var fileBtn: UIBarButtonItem!
     @IBOutlet weak var addFileBtn: UIButton!
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        if fromMenu{
+            navigationController?.popViewController(animated: true)
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
 //    @IBOutlet weak var pay_txt: UILabel!
@@ -310,6 +314,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
+    public var fromMenu = false
+    
     @IBAction func close_app(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Apps", bundle: nil)
         let myAlert = storyboard.instantiateViewController(withIdentifier: "close_alert") as! CloseAppAlert
@@ -330,7 +336,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()
         self.StopIndicator()
         //        if read == 0{
         self.read_request()
@@ -366,13 +373,13 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         
         // Установим цвета для элементов в зависимости от Таргета
-        back.tintColor = myColors.btnColor.uiColor()
+        back.tintColor = .white
 //        fileBtn.tintColor = myColors.btnColor.uiColor()
         sendBtn.tintColor = myColors.btnColor.uiColor()
 //        payBtn.backgroundColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
 //        fot_img.imageView?.setImageColor(color: myColors.btnColor.uiColor())
-        hidden_Header.tintColor = myColors.indicatorColor.uiColor()
+        hidden_Header.tintColor = .white
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
@@ -404,7 +411,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })
         
-        timer = Timer(timeInterval: 4, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
+        timer = Timer(timeInterval: 20, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
         RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
         let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
         let count = tema_txt.frame.size.height * numberLine
@@ -418,6 +425,10 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //            heightPayView.constant = 0
 //            payView.isHidden = true
 //        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func read_request(){

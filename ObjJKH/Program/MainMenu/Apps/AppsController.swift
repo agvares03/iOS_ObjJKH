@@ -24,6 +24,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var back: UIBarButtonItem!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var timer: Timer? = nil
     var isCons: String = "0"
@@ -84,6 +85,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(false, forKey: "fromMenu")
+        UserDefaults.standard.synchronize()
 //        let defaults     = UserDefaults.standard
         let params : [String : Any] = ["Переход на страницу": "Заявки"]
         YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
@@ -105,6 +107,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         btnAdd.isHidden = false
         tableApps.isHidden = false
         hiddenAppsView.isHidden = false
+        indicator.color = myColors.indicatorColor.uiColor()
         
         let str_ls = UserDefaults.standard.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
@@ -162,6 +165,16 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
+    }
+    
+    func StartIndicator() {
+        self.indicator.startAnimating()
+        self.indicator.isHidden = false
+    }
+    
+    func StopIndicator() {
+        self.indicator.stopAnimating()
+        self.indicator.isHidden = true
     }
     
     func updateUserInterface() {
@@ -371,7 +384,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
             
-            let AppUser             = segue.destination as! NewAppUser
+            let AppUser             = (segue.destination as! UINavigationController).viewControllers.first as! NewAppUser
             if app.number != nil{
                 AppUser.title           = "Заявка №" + app.number!
             }
@@ -423,7 +436,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
             
-            let AppUser             = segue.destination as! NewAppUser
+            let AppUser             = (segue.destination as! UINavigationController).viewControllers.first as! NewAppUser
             if app.number != nil{
                 AppUser.title           = "Заявка №" + app.number!
             }
@@ -561,6 +574,10 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func load_new_data() {
+        DispatchQueue.main.async{
+            self.view.isUserInteractionEnabled = false
+            self.StartIndicator()
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.global(qos: .background).async {
                 sleep(2)
@@ -579,6 +596,10 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     self.load_data()
                     self.tableApps.reloadData()
+                    DispatchQueue.main.async{
+                        self.view.isUserInteractionEnabled = true
+                        self.StopIndicator()
+                    }
                     if #available(iOS 10.0, *) {
                         self.tableApps.refreshControl?.endRefreshing()
                     } else {
