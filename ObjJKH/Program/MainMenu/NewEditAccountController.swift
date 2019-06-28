@@ -655,7 +655,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         }
         cell.delegate = self
         cell.delegate2 = self
-        if !UserDefaults.standard.bool(forKey: "dontShowDebt"){
+        if UserDefaults.standard.bool(forKey: "dontShowDebt"){
             cell.bottViewHeight.constant = 0
             cell.sumViewHeight.constant = 0
             cell.payDebtHeight.constant = 0
