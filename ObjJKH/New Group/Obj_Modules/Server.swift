@@ -59,6 +59,8 @@ class Server {
     #elseif isDemoUC
 //    #else
         static let SERVER          = "http://uk-gkh.org/newjkh/"
+    #elseif isUyutService
+        static let SERVER          = "http://uk-gkh.org/uyut-service/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения
