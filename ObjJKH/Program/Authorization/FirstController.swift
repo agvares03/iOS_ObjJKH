@@ -42,8 +42,15 @@ class FirstController: UIViewController {
     @IBOutlet weak var btnConsEnter: UIButton!
     
     var iconClick = false
-    
+    var eye = false
     @IBAction func showPassAction(_ sender: UIButton) {
+        if eye{
+            showPass.setImage(UIImage(named: "eye.png"), for: .normal)
+            eye = false
+        }else{
+            showPass.setImage(UIImage(named: "eyeHide.png"), for: .normal)
+            eye = true
+        }
         edPass.isSecureTextEntry.toggle()
     }
     
@@ -184,6 +191,8 @@ class FirstController: UIViewController {
         #elseif isSoldatova1
         #elseif isTafgai
         #elseif isServiceKomfort
+            UserDefaults.standard.set("UK_Service_Comfort", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #elseif isParitet
         #elseif isSkyfort
         #elseif isStandartDV
