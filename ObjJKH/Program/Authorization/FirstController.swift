@@ -42,8 +42,15 @@ class FirstController: UIViewController {
     @IBOutlet weak var btnConsEnter: UIButton!
     
     var iconClick = false
-    
+    var eye = false
     @IBAction func showPassAction(_ sender: UIButton) {
+        if eye{
+            showPass.setImage(UIImage(named: "eye.png"), for: .normal)
+            eye = false
+        }else{
+            showPass.setImage(UIImage(named: "eyeHide.png"), for: .normal)
+            eye = true
+        }
         edPass.isSecureTextEntry.toggle()
     }
     
