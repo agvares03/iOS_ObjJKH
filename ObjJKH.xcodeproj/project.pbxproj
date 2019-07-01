@@ -3505,6 +3505,7 @@
 		1CD2D3912264841A00494DE6 /* ChoiceRegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceRegionController.swift; sourceTree = "<group>"; };
 		1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddLsPocket.storyboard; sourceTree = "<group>"; };
 		1CE57D21220D520500B647C0 /* main_Background_MupRCMytishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_Background_MupRCMytishi.png; sourceTree = "<group>"; };
+		1CF8992A22C9D2DE006924FF /* UK_Service_Comfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Service_Comfort-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klimovsk12-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UK_Garant_White.png; sourceTree = "<group>"; };
 		1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UK_Garant.png; sourceTree = "<group>"; };
@@ -4239,6 +4240,7 @@
 				41B5BC43216B348A003F4868 /* UK_Komfort-Bridging-Header.h */,
 				417FCFDE217ED35F009CDBB8 /* MupRCMytishi-Bridging-Header.h */,
 				1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */,
+				1CF8992A22C9D2DE006924FF /* UK_Service_Comfort-Bridging-Header.h */,
 				1C0A4B6822A53DCE00855BA6 /* UK_Upravdom_Che-Bridging-Header.h */,
 				1CF8B8F12223D7E400B1D289 /* UK_Garant-Bridging-Header.h */,
 				1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */,
@@ -10545,7 +10547,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isServiceKomfort DEBUG";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Service_Comfort-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -10574,7 +10576,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isServiceKomfort;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Service_Comfort-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";

@@ -31,6 +31,9 @@
     if ([savedValue  isEqual: @"ReutComfort"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
+    if ([savedValue  isEqual: @"UK_Service_Comfort"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
 	return @[kASDKTestTerminalKey];
 }
 
@@ -49,6 +52,9 @@
             result = kASDKTestTerminalKeyKlimovsk;
         }
         if ([savedValue  isEqual: @"ReutComfort"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"UK_Service_Comfort"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
 	}
@@ -74,6 +80,9 @@
     if ([savedValue  isEqual: @"ReutComfort"]){
         return kASDKTestPasswordKlimovsk;
     }
+    if ([savedValue  isEqual: @"UK_Service_Comfort"]){
+        return kASDKTestPasswordKlimovsk;
+    }
 	return kASDKTestPassword;
 }
 
@@ -88,6 +97,9 @@
         return kASDKTestPublicKeyKlimovsk;
     }
     if ([savedValue  isEqual: @"ReutComfort"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"UK_Service_Comfort"]){
         return kASDKTestPublicKeyKlimovsk;
     }
     return kASDKTestPublicKey;
