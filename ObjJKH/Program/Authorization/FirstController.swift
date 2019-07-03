@@ -168,6 +168,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #elseif isParus
         fon_top.image = UIImage(named: "Logo_Parus")
+        #elseif isUyutService
+        fon_top.image = UIImage(named: "Logo_UyutService")
         #endif
         
         // targetName - используется для определения ключа терминала (оплата Мытищи)

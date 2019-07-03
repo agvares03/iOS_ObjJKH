@@ -446,13 +446,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver. 1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcU-W0-eSh">
-                                <rect key="frame" x="311" y="80" width="48" height="18"/>
+                                <rect key="frame" x="311" y="36" width="48" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.21895414590000001" green="0.71306502819999995" blue="0.9233877063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pK-HI-Xzi">
-                                <rect key="frame" x="8" y="153" width="359" height="44"/>
+                                <rect key="frame" x="8" y="109" width="359" height="44"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="Zt1-yC-WEl">
                                         <rect key="frame" x="24" y="18" width="16" height="16"/>
@@ -482,13 +482,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВХОД ДЛЯ СОТРУДНИКА" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDS-tP-f1Q">
-                                <rect key="frame" x="32" y="80" width="205" height="21"/>
+                                <rect key="frame" x="32" y="36" width="205" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gsk-yp-NSE">
-                                <rect key="frame" x="8" y="197" width="359" height="44"/>
+                                <rect key="frame" x="8" y="153" width="359" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7tg-Sn-AFY">
                                         <rect key="frame" x="51" y="10" width="254" height="34"/>
@@ -530,7 +530,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXv-sA-IEA">
-                                <rect key="frame" x="127.5" y="266" width="120" height="30"/>
+                                <rect key="frame" x="127.5" y="222" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1y6-6Q-9D5"/>
@@ -548,18 +548,18 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xpF-E6-6VW">
-                                <rect key="frame" x="169" y="263" width="37" height="36"/>
+                                <rect key="frame" x="169" y="219" width="37" height="36"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvv-aF-zgO">
-                                <rect key="frame" x="16" y="195" width="343" height="2"/>
+                                <rect key="frame" x="16" y="151" width="343" height="2"/>
                                 <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="cTE-OF-uFf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyv-Do-dpD">
-                                <rect key="frame" x="16" y="239" width="343" height="2"/>
+                                <rect key="frame" x="16" y="195" width="343" height="2"/>
                                 <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="Pjx-ZP-Pyb"/>
@@ -1309,12 +1309,12 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
         <image name="question" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f5y-Hb-ovZ"/>
-        <segue reference="8Is-M9-Kjz"/>
-        <segue reference="WVU-dt-Tbq"/>
-        <segue reference="pL0-7K-IfN"/>
-        <segue reference="e2k-pn-FcR"/>
-        <segue reference="zci-C9-f9B"/>
+        <segue reference="hgh-nQ-HmL"/>
+        <segue reference="HOf-6N-z37"/>
+        <segue reference="53e-mu-ax4"/>
+        <segue reference="fZT-TL-lKn"/>
+        <segue reference="bsE-0I-EYW"/>
+        <segue reference="4fX-lc-XiI"/>
         <segue reference="Fda-SR-7H1"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -60,6 +60,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_UkPerspectiva")
         #elseif isParus
         imageApp.image = UIImage(named: "Logo_Parus")
+        #elseif isUyutService
+        imageApp.image = UIImage(named: "Logo_UyutService")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
