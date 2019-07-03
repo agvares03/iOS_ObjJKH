@@ -117,8 +117,6 @@ class NewMainMenu2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.set(true, forKey: "fromMenu")
-        UserDefaults.standard.synchronize()
         self.getQuestions()
         self.getNews()
         let defaults = UserDefaults.standard
@@ -697,6 +695,8 @@ class NewMainMenu2: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UserDefaults.standard.set(true, forKey: "fromMenu")
+        UserDefaults.standard.synchronize()
     }
     
     func add_record(numb: Int) {

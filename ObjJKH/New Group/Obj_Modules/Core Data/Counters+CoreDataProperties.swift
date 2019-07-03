@@ -27,9 +27,12 @@ extension Counters {
     @NSManaged public var prev_value: Float
     @NSManaged public var uniq_num: String?
     @NSManaged public var value: Float
+    @NSManaged public var valueT2: Float
+    @NSManaged public var valueT3: Float
     @NSManaged public var year: String?
     @NSManaged public var ident: String?
     @NSManaged public var sended: Bool
     @NSManaged public var sendError: Bool
     @NSManaged public var sendErrorText: String?
+    @NSManaged public var tariffNumber: String?
 }

@@ -84,8 +84,6 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.set(false, forKey: "fromMenu")
-        UserDefaults.standard.synchronize()
 //        let defaults     = UserDefaults.standard
         let params : [String : Any] = ["Переход на страницу": "Заявки"]
         YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
@@ -348,6 +346,10 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "support" {
+            UserDefaults.standard.set(true, forKey: "fromMenu")
+            UserDefaults.standard.synchronize()
+        }
         if segue.identifier == "show_app" {
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
@@ -613,6 +615,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UserDefaults.standard.set(false, forKey: "fromMenu")
+        UserDefaults.standard.synchronize()
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.load_new_data()
 //        if UserDefaults.standard.bool(forKey: "back"){

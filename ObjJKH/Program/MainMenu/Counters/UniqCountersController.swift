@@ -17,6 +17,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
 
     public var uniq_num = ""
     public var uniq_name = ""
+    public var selTariffNumber = 0
     public var ls = ""
     public var owner = ""
     
@@ -40,7 +41,9 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     var selectedUniqName = ""
     var selectedOwner = ""
     var countIdent = ""
-    var predVal = ""
+    var predVal1 = ""
+    var predVal2 = ""
+    var predVal3 = ""
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addCounters"{
@@ -48,8 +51,11 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             payController.counterNumber = selectedUniq
             payController.counterName = selectedUniqName
             payController.ident = countIdent
-            payController.predValue = predVal
+            payController.predValue1 = predVal1
+            payController.predValue2 = predVal2
+            payController.predValue3 = predVal3
             payController.metrId = uniq_num
+            payController.tariffNumber = selTariffNumber
         }
     }
     
@@ -66,7 +72,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
 //            self.present(alert, animated: true, completion: nil)
             selectedUniq = owner
             selectedUniqName = uniq_name
-            predVal = String(format:"%.3f", teckArr[0])
+            predVal1 = String(format:"%.3f", teckArr[0])
             self.performSegue(withIdentifier: "addCounters", sender: self)
         }else{
             let date1            = UserDefaults.standard.string(forKey: "date1")!
@@ -369,6 +375,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     var name = ""
     var meterUniqueNum = ""
     var factoryNumber = ""
+    var tariffNumber = ""
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if (elementName == "Meter") {
@@ -378,6 +385,11 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             name = attributeDict["Name"]!
             meterUniqueNum = attributeDict["MeterUniqueNum"]!
             factoryNumber = attributeDict["FactoryNumber"]!
+            if attributeDict["TariffNumber"]! != ""{
+                tariffNumber = attributeDict["TariffNumber"]!
+            }else{
+                tariffNumber = "0"
+            }
             // Запишем показание прибора
         }
         if (elementName == "MeterValue"){
@@ -394,8 +406,11 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             managedObject.ident         = ident
             managedObject.count_name    = name
             managedObject.count_ed_izm  = units
+            managedObject.tariffNumber  = tariffNumber
             managedObject.prev_value    = 123.53
             managedObject.value         = (attributeDict["Value"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
+            managedObject.valueT2         = (attributeDict["ValueT2"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
+            managedObject.valueT3         = (attributeDict["ValueT3"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
             managedObject.diff          = 6757.43
             if attributeDict["IsSended"] == "1"{
                 managedObject.sended    = true

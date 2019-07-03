@@ -213,6 +213,7 @@ class DB: NSObject, XMLParserDelegate {
     var name = ""
     var meterUniqueNum = ""
     var factoryNumber = ""
+    var tariffNumber = ""
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
 //        var k = 0
@@ -231,6 +232,11 @@ class DB: NSObject, XMLParserDelegate {
                 name = attributeDict["Name"]!
                 meterUniqueNum = attributeDict["MeterUniqueNum"]!
                 factoryNumber = attributeDict["FactoryNumber"]!
+                if attributeDict["TariffNumber"]! != ""{
+                    tariffNumber = attributeDict["TariffNumber"]!
+                }else{
+                    tariffNumber = "0"
+                }
                 // Запишем показание прибора
             }
             if (elementName == "MeterValue"){
@@ -247,8 +253,11 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.ident         = ident
                 managedObject.count_name    = name
                 managedObject.count_ed_izm  = units
+                managedObject.tariffNumber  = tariffNumber
                 managedObject.prev_value    = 123.53
                 managedObject.value         = (attributeDict["Value"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
+                managedObject.valueT2         = (attributeDict["ValueT2"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
+                managedObject.valueT3         = (attributeDict["ValueT3"]!.replacingOccurrences(of: ",", with: ".") as NSString).floatValue
                 managedObject.diff          = 6757.43
                 if attributeDict["IsSended"] != nil && attributeDict["IsSended"] == "1"{
                     managedObject.sended    = true

@@ -35,10 +35,10 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
     var eye = false
     @IBAction func showPassAction(_ sender: UIButton) {
         if eye{
-            showPass.setImage(UIImage(named: "eye.png"), for: .normal)
+            showPass.tintColor = .lightGray
             eye = false
         }else{
-            showPass.setImage(UIImage(named: "eyeHide.png"), for: .normal)
+            showPass.tintColor = myColors.btnColor.uiColor()
             eye = true
         }
         edPass.isSecureTextEntry.toggle()
@@ -302,7 +302,7 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
         new_face.setImageColor(color: myColors.btnColor.uiColor())
         new_zamoc.image = myImages.lock_image
         new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
-        showPass.tintColor = myColors.btnColor.uiColor()
+        showPass.tintColor = .lightGray
         ver_Lbl.textColor = myColors.btnColor.uiColor()
         questionImg.setImageColor(color: myColors.btnColor.uiColor())
         questionBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)

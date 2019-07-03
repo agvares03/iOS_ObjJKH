@@ -45,10 +45,10 @@ class FirstController: UIViewController {
     var eye = false
     @IBAction func showPassAction(_ sender: UIButton) {
         if eye{
-            showPass.setImage(UIImage(named: "eye.png"), for: .normal)
+            showPass.tintColor = .lightGray
             eye = false
         }else{
-            showPass.setImage(UIImage(named: "eyeHide.png"), for: .normal)
+            showPass.tintColor = myColors.btnColor.uiColor()
             eye = true
         }
         edPass.isSecureTextEntry.toggle()
@@ -217,7 +217,7 @@ class FirstController: UIViewController {
         new_zamoc.setImageColor(color: myColors.btnColor.uiColor())
         questionImg.setImageColor(color: myColors.btnColor.uiColor())
         questionBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        showPass.tintColor = myColors.btnColor.uiColor()
+        showPass.tintColor = .lightGray
         ver_Lbl.textColor = myColors.btnColor.uiColor()
     }
     

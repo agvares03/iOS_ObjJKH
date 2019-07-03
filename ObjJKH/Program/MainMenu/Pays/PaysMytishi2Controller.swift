@@ -273,7 +273,7 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
             self.onePay = 0
             self.oneCheck = 0
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ"
+            let name = "МУП РЦ Мытищи"
             let amount = NSNumber(floatLiteral: self.totalSum)
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()

@@ -970,32 +970,46 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         task.resume()
     }
     
-    var identArr    :[String] = []
-    var nameArr     :[String] = []
-    var numberArr   :[String] = []
-    var predArr     :[Float] = []
-    var teckArr     :[Float] = []
-    var diffArr     :[Float] = []
-    var unitArr     :[String] = []
-    var dateOneArr  :[String] = []
-    var dateTwoArr  :[String] = []
-    var dateThreeArr:[String] = []
-    var ownerArr    :[String] = []
-    var errorOneArr:[Bool] = []
-    var errorTwoArr:[Bool] = []
-    var errorThreeArr:[Bool] = []
-    var errorTextOneArr:[String] = []
-    var errorTextTwoArr:[String] = []
+    var identArr         :[String] = []
+    var tariffArr        :[String] = []
+    var nameArr          :[String] = []
+    var numberArr        :[String] = []
+    var predArr          :[Float]  = []
+    var teckArr          :[Float]  = []
+    var diffArr          :[Float]  = []
+    var predArr2         :[Float]  = []
+    var teckArr2         :[Float]  = []
+    var diffArr2         :[Float]  = []
+    var predArr3         :[Float]  = []
+    var teckArr3         :[Float]  = []
+    var diffArr3         :[Float]  = []
+    var unitArr          :[String] = []
+    var dateOneArr       :[String] = []
+    var dateTwoArr       :[String] = []
+    var dateThreeArr     :[String] = []
+    var ownerArr         :[String] = []
+    var errorOneArr      :[Bool]   = []
+    var errorTwoArr      :[Bool]   = []
+    var errorThreeArr    :[Bool]   = []
+    var errorTextOneArr  :[String] = []
+    var errorTextTwoArr  :[String] = []
     var errorTextThreeArr:[String] = []
-    var sendedArr:[Bool] = []
+    var sendedArr        :[Bool]   = []
     func getDataCounter(){
         let ident = "Все"
         identArr.removeAll()
+        tariffArr.removeAll()
         nameArr.removeAll()
         numberArr.removeAll()
         predArr.removeAll()
         teckArr.removeAll()
         diffArr.removeAll()
+        predArr2.removeAll()
+        teckArr2.removeAll()
+        diffArr2.removeAll()
+        predArr3.removeAll()
+        teckArr3.removeAll()
+        diffArr3.removeAll()
         unitArr.removeAll()
         sendedArr.removeAll()
         dateOneArr.removeAll()
@@ -1013,12 +1027,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         do {
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             var uniq_num = ""
+            var tariffNumber = ""
             var dateOne = ""
             var valueOne:Float = 0.00
+            var valueOne2:Float = 0.00
+            var valueOne3:Float = 0.00
             var dateTwo = ""
             var valueTwo:Float = 0.00
+            var valueTwo2:Float = 0.00
+            var valueTwo3:Float = 0.00
             var dateThree = ""
             var valueThree:Float = 0.00
+            var valueThree2:Float = 0.00
+            var valueThree3:Float = 0.00
             var sendOne = false
             var sendTwo = false
             var sendThree = false
@@ -1037,8 +1058,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     if (object.value(forKey: "ident") as! String) == ident{
                         if i == 0{
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
+                            tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
                             valueOne = (object.value(forKey: "value") as! Float)
+                            valueOne2 = (object.value(forKey: "valueT2") as! Float)
+                            valueOne3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
@@ -1051,9 +1075,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateTwo = (object.value(forKey: "num_month") as! String)
                             valueTwo = (object.value(forKey: "value") as! Float)
+                            valueTwo2 = (object.value(forKey: "valueT2") as! Float)
+                            valueTwo3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
+                            tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
                             sended = (object.value(forKey: "sended") as! Bool)
@@ -1063,15 +1090,24 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         }else if i == 2 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateThree = (object.value(forKey: "num_month") as! String)
                             valueThree = (object.value(forKey: "value") as! Float)
+                            valueThree2 = (object.value(forKey: "valueT2") as! Float)
+                            valueThree3 = (object.value(forKey: "valueT3") as! Float)
                             sendThree = (object.value(forKey: "sendError") as! Bool)
                             errorThree = (object.value(forKey: "sendErrorText") as! String)
                             identArr.append(object.value(forKey: "ident") as! String)
                             nameArr.append(object.value(forKey: "count_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
+                            tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                             ownerArr.append(object.value(forKey: "owner") as! String)
                             predArr.append(valueOne)
                             teckArr.append(valueTwo)
                             diffArr.append(valueThree)
+                            predArr2.append(valueOne2)
+                            teckArr2.append(valueTwo2)
+                            diffArr2.append(valueThree2)
+                            predArr3.append(valueOne3)
+                            teckArr3.append(valueTwo3)
+                            diffArr3.append(valueThree3)
                             dateOneArr.append(dateOne)
                             dateTwoArr.append(dateTwo)
                             dateThreeArr.append(dateThree)
@@ -1084,12 +1120,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             errorTextTwoArr.append(errorTwo)
                             errorTextThreeArr.append(errorThree)
                             uniq_num = ""
+                            tariffNumber = ""
                             dateOne = ""
                             valueOne = 0.00
+                            valueOne2 = 0.00
+                            valueOne3 = 0.00
                             dateTwo = ""
                             valueTwo = 0.00
+                            valueTwo2 = 0.00
+                            valueTwo3 = 0.00
                             dateThree = ""
                             valueThree = 0.00
+                            valueThree2 = 0.00
+                            valueThree3 = 0.00
                             count_name = ""
                             owner = ""
                             unit_name = ""
@@ -1107,10 +1150,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             identArr.append(identk)
                             nameArr.append(count_name)
                             numberArr.append(uniq_num)
+                            tariffArr.append(tariffNumber)
                             ownerArr.append(owner)
                             predArr.append(valueOne)
                             teckArr.append(valueTwo)
                             diffArr.append(valueThree)
+                            predArr2.append(valueOne2)
+                            teckArr2.append(valueTwo2)
+                            diffArr2.append(valueThree2)
+                            predArr3.append(valueOne3)
+                            teckArr3.append(valueTwo3)
+                            diffArr3.append(valueThree3)
                             dateOneArr.append(dateOne)
                             dateTwoArr.append(dateTwo)
                             dateThreeArr.append(dateThree)
@@ -1122,10 +1172,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             errorTextOneArr.append(errorOne)
                             errorTextTwoArr.append(errorTwo)
                             errorTextThreeArr.append(errorThree)
-                            
+                            tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
                             valueOne = (object.value(forKey: "value") as! Float)
+                            valueOne2 = (object.value(forKey: "valueT2") as! Float)
+                            valueOne3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
@@ -1137,19 +1189,26 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             
                             dateTwo = ""
                             valueTwo = 0.00
+                            valueTwo2 = 0.00
+                            valueTwo3 = 0.00
                             sendTwo = false
                             errorTwo = ""
                             dateThree = ""
                             valueThree = 0.00
+                            valueThree2 = 0.00
+                            valueThree3 = 0.00
                             sendThree = false
                             errorThree = ""
                         }
                     }
                 }else{
                     if i == 0{
+                        tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
                         valueOne = (object.value(forKey: "value") as! Float)
+                        valueOne2 = (object.value(forKey: "valueT2") as! Float)
+                        valueOne3 = (object.value(forKey: "valueT3") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
@@ -1162,8 +1221,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                         dateTwo = (object.value(forKey: "num_month") as! String)
                         valueTwo = (object.value(forKey: "value") as! Float)
+                        valueTwo2 = (object.value(forKey: "valueT2") as! Float)
+                        valueTwo3 = (object.value(forKey: "valueT3") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
+                        tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
@@ -1174,15 +1236,24 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }else if i == 2 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                         dateThree = (object.value(forKey: "num_month") as! String)
                         valueThree = (object.value(forKey: "value") as! Float)
+                        valueThree2 = (object.value(forKey: "valueT2") as! Float)
+                        valueThree3 = (object.value(forKey: "valueT3") as! Float)
                         sendThree = (object.value(forKey: "sendError") as! Bool)
                         errorThree = (object.value(forKey: "sendErrorText") as! String)
                         identArr.append(object.value(forKey: "ident") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
+                        tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                         ownerArr.append(object.value(forKey: "owner") as! String)
                         predArr.append(valueOne)
                         teckArr.append(valueTwo)
                         diffArr.append(valueThree)
+                        predArr2.append(valueOne2)
+                        teckArr2.append(valueTwo2)
+                        diffArr2.append(valueThree2)
+                        predArr3.append(valueOne3)
+                        teckArr3.append(valueTwo3)
+                        diffArr3.append(valueThree3)
                         dateOneArr.append(dateOne)
                         dateTwoArr.append(dateTwo)
                         dateThreeArr.append(dateThree)
@@ -1195,12 +1266,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         errorTextTwoArr.append(errorTwo)
                         errorTextThreeArr.append(errorThree)
                         uniq_num = ""
+                        tariffNumber = ""
                         dateOne = ""
                         valueOne = 0.00
+                        valueOne2 = 0.00
+                        valueOne3 = 0.00
                         dateTwo = ""
                         valueTwo = 0.00
+                        valueTwo2 = 0.00
+                        valueTwo3 = 0.00
                         dateThree = ""
                         valueThree = 0.00
+                        valueThree2 = 0.00
+                        valueThree3 = 0.00
                         count_name = ""
                         owner = ""
                         unit_name = ""
@@ -1218,10 +1296,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         identArr.append(identk)
                         nameArr.append(count_name)
                         numberArr.append(uniq_num)
+                        tariffArr.append(tariffNumber)
                         ownerArr.append(owner)
                         predArr.append(valueOne)
                         teckArr.append(valueTwo)
                         diffArr.append(valueThree)
+                        predArr2.append(valueOne2)
+                        teckArr2.append(valueTwo2)
+                        diffArr2.append(valueThree2)
+                        predArr3.append(valueOne3)
+                        teckArr3.append(valueTwo3)
+                        diffArr3.append(valueThree3)
                         dateOneArr.append(dateOne)
                         dateTwoArr.append(dateTwo)
                         dateThreeArr.append(dateThree)
@@ -1233,10 +1318,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         errorTextOneArr.append(errorOne)
                         errorTextTwoArr.append(errorTwo)
                         errorTextThreeArr.append(errorThree)
-                        
+                        tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
                         valueOne = (object.value(forKey: "value") as! Float)
+                        valueOne2 = (object.value(forKey: "value") as! Float)
+                        valueOne3 = (object.value(forKey: "value") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
@@ -1248,10 +1335,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         
                         dateTwo = ""
                         valueTwo = 0.00
+                        valueTwo2 = 0.00
+                        valueTwo3 = 0.00
                         sendTwo = false
                         errorTwo = ""
                         dateThree = ""
                         valueThree = 0.00
+                        valueThree2 = 0.00
+                        valueThree3 = 0.00
                         sendThree = false
                         errorThree = ""
                     }
@@ -1261,11 +1352,18 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             if i == 2 || i == 1{
                 identArr.append(identk)
                 nameArr.append(count_name)
+                tariffArr.append(tariffNumber)
                 numberArr.append(uniq_num)
                 ownerArr.append(owner)
                 predArr.append(valueOne)
                 teckArr.append(valueTwo)
                 diffArr.append(valueThree)
+                predArr2.append(valueOne2)
+                teckArr2.append(valueTwo2)
+                diffArr2.append(valueThree2)
+                predArr3.append(valueOne3)
+                teckArr3.append(valueTwo3)
+                diffArr3.append(valueThree3)
                 dateOneArr.append(dateOne)
                 dateTwoArr.append(dateTwo)
                 dateThreeArr.append(dateThree)
@@ -1932,16 +2030,39 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else if tableView == self.tableCounter {
             let cell = self.tableCounter.dequeueReusableCell(withIdentifier: "HomeCounterCell") as! HomeCounterCell
             var countName = ""
+            cell.tariffNumber     = tariffArr[indexPath.row]
             cell.ident.text       = identArr[indexPath.row]
             cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.number.text      = ownerArr[indexPath.row]
             countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
-            cell.pred.text        = String(format:"%.3f", predArr[indexPath.row])
-            cell.teck.text        = String(format:"%.3f", teckArr[indexPath.row])
-            cell.diff.text        = String(format:"%.3f", diffArr[indexPath.row])
-            cell.predLbl.text     = dateOneArr[indexPath.row]
-            cell.teckLbl.text     = dateTwoArr[indexPath.row]
-            cell.diffLbl.text     = dateThreeArr[indexPath.row]
+            cell.pred1.text        = String(format:"%.3f", predArr[indexPath.row])
+            cell.teck1.text        = String(format:"%.3f", teckArr[indexPath.row])
+            cell.diff1.text        = String(format:"%.3f", diffArr[indexPath.row])
+            cell.predLbl1.text     = dateOneArr[indexPath.row]
+            cell.teckLbl1.text     = dateTwoArr[indexPath.row]
+            cell.diffLbl1.text     = dateThreeArr[indexPath.row]
+            if Int(cell.tariffNumber) == 2{
+                cell.pred2.text        = String(format:"%.3f", predArr2[indexPath.row])
+                cell.teck2.text        = String(format:"%.3f", teckArr2[indexPath.row])
+                cell.diff2.text        = String(format:"%.3f", diffArr2[indexPath.row])
+                cell.predLbl2.text     = dateOneArr[indexPath.row]
+                cell.teckLbl2.text     = dateTwoArr[indexPath.row]
+                cell.diffLbl2.text     = dateThreeArr[indexPath.row]
+            }else if Int(cell.tariffNumber) == 3{
+                cell.pred2.text        = String(format:"%.3f", predArr2[indexPath.row])
+                cell.teck2.text        = String(format:"%.3f", teckArr2[indexPath.row])
+                cell.diff2.text        = String(format:"%.3f", diffArr2[indexPath.row])
+                cell.predLbl2.text     = dateOneArr[indexPath.row]
+                cell.teckLbl2.text     = dateTwoArr[indexPath.row]
+                cell.diffLbl2.text     = dateThreeArr[indexPath.row]
+                
+                cell.pred3.text        = String(format:"%.3f", predArr3[indexPath.row])
+                cell.teck3.text        = String(format:"%.3f", teckArr3[indexPath.row])
+                cell.diff3.text        = String(format:"%.3f", diffArr3[indexPath.row])
+                cell.predLbl3.text     = dateOneArr[indexPath.row]
+                cell.teckLbl3.text     = dateTwoArr[indexPath.row]
+                cell.diffLbl3.text     = dateThreeArr[indexPath.row]
+            }
             cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
             cell.imgCounter.image = UIImage(named: "water")
             if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil){
@@ -1963,54 +2084,155 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.imgCounter.setImageColor(color: .yellow)
             }
             if dateTwoArr[indexPath.row] == ""{
-                cell.lblHeight2.constant = 0
-                cell.lblHeight5.constant = 0
+                cell.lblHeight11.constant = 0
+                cell.lblHeight13.constant = 0
+                if Int(cell.tariffNumber) == 2{
+                    cell.lblHeight21.constant = 0
+                    cell.lblHeight23.constant = 0
+                }else if Int(cell.tariffNumber) == 3{
+                    cell.lblHeight21.constant = 0
+                    cell.lblHeight23.constant = 0
+                    
+                    cell.lblHeight31.constant = 0
+                    cell.lblHeight33.constant = 0
+                }
             }else{
-                cell.lblHeight2.constant = 16
-                cell.lblHeight5.constant = 16
+                cell.lblHeight11.constant = 16
+                cell.lblHeight13.constant = 16
+                if Int(cell.tariffNumber) == 2{
+                    cell.lblHeight21.constant = 16
+                    cell.lblHeight23.constant = 16
+                }else if Int(cell.tariffNumber) == 3{
+                    cell.lblHeight21.constant = 16
+                    cell.lblHeight23.constant = 16
+                    
+                    cell.lblHeight31.constant = 16
+                    cell.lblHeight33.constant = 16
+                }
             }
             if dateThreeArr[indexPath.row] == ""{
-                cell.lblHeight3.constant = 0
-                cell.lblHeight6.constant = 0
+                cell.lblHeight12.constant = 0
+                cell.lblHeight14.constant = 0
+                if Int(cell.tariffNumber) == 2{
+                    cell.lblHeight22.constant = 0
+                    cell.lblHeight24.constant = 0
+                }else if Int(cell.tariffNumber) == 3{
+                    cell.lblHeight22.constant = 0
+                    cell.lblHeight24.constant = 0
+                    
+                    cell.lblHeight32.constant = 0
+                    cell.lblHeight34.constant = 0
+                }
             }else{
-                cell.lblHeight3.constant = 16
-                cell.lblHeight6.constant = 16
+                cell.lblHeight12.constant = 16
+                cell.lblHeight14.constant = 16
+                if Int(cell.tariffNumber) == 2{
+                    cell.lblHeight22.constant = 16
+                    cell.lblHeight24.constant = 16
+                }else if Int(cell.tariffNumber) == 3{
+                    cell.lblHeight22.constant = 16
+                    cell.lblHeight24.constant = 16
+                    
+                    cell.lblHeight32.constant = 16
+                    cell.lblHeight34.constant = 16
+                }
             }
             if errorOneArr[indexPath.row]{
-                cell.nonCounterOne.isHidden = false
-                cell.nonCounterOne.setImageColor(color: .red)
-                cell.errorTextOne.isHidden = false
-                cell.errorTextOne.text = errorTextOneArr[indexPath.row]
-                cell.errorOneHeight.constant = self.heightForView(text: errorTextOneArr[indexPath.row], font: cell.errorTextOne.font, width: cell.errorTextOne.frame.size.width)
+                cell.nonCounterOne1.isHidden = false
+                cell.nonCounterOne1.setImageColor(color: .red)
+                cell.errorTextOne1.isHidden = false
+                cell.errorTextOne1.text = errorTextOneArr[indexPath.row]
+                cell.errorOneHeight1.constant = self.heightForView(text: errorTextOneArr[indexPath.row], font: cell.errorTextOne1.font, width: cell.errorTextOne1.frame.size.width)
+                cell.nonCounterOne2.isHidden = true
+                cell.errorTextOne2.isHidden = true
+                cell.errorOneHeight2.constant = 0
+                cell.nonCounterOne3.isHidden = true
+                cell.errorTextOne3.isHidden = true
+                cell.errorOneHeight3.constant = 0
             }else{
-                cell.nonCounterOne.isHidden = true
-                cell.errorTextOne.isHidden = true
-                cell.errorOneHeight.constant = 0
+                cell.nonCounterOne1.isHidden = true
+                cell.errorTextOne1.isHidden = true
+                cell.errorOneHeight1.constant = 0
+                cell.nonCounterOne2.isHidden = true
+                cell.errorTextOne2.isHidden = true
+                cell.errorOneHeight2.constant = 0
+                cell.nonCounterOne3.isHidden = true
+                cell.errorTextOne3.isHidden = true
+                cell.errorOneHeight3.constant = 0
             }
             if errorTwoArr[indexPath.row]{
-                cell.nonCounterTwo.isHidden = false
-                cell.nonCounterTwo.setImageColor(color: .red)
-                cell.errorTextTwo.isHidden = false
-                cell.errorTextTwo.text = errorTextTwoArr[indexPath.row]
-                cell.errorTwoHeight.constant = self.heightForView(text: errorTextTwoArr[indexPath.row], font: cell.errorTextTwo.font, width: cell.errorTextTwo.frame.size.width)
+                cell.nonCounterTwo1.isHidden = false
+                cell.nonCounterTwo1.setImageColor(color: .red)
+                cell.errorTextTwo1.isHidden = false
+                cell.errorTextTwo1.text = errorTextTwoArr[indexPath.row]
+                cell.errorTwoHeight1.constant = self.heightForView(text: errorTextTwoArr[indexPath.row], font: cell.errorTextTwo1.font, width: cell.errorTextTwo1.frame.size.width)
+                cell.nonCounterTwo2.isHidden = true
+                cell.errorTextTwo2.isHidden = true
+                cell.errorTwoHeight2.constant = 0
+                cell.nonCounterTwo3.isHidden = true
+                cell.errorTextTwo3.isHidden = true
+                cell.errorTwoHeight3.constant = 0
             }else{
-                cell.nonCounterTwo.isHidden = true
-                cell.errorTextTwo.isHidden = true
-                cell.errorTwoHeight.constant = 0
+                cell.nonCounterTwo1.isHidden = true
+                cell.errorTextTwo1.isHidden = true
+                cell.errorTwoHeight1.constant = 0
+                cell.nonCounterTwo2.isHidden = true
+                cell.errorTextTwo2.isHidden = true
+                cell.errorTwoHeight2.constant = 0
+                cell.nonCounterTwo3.isHidden = true
+                cell.errorTextTwo3.isHidden = true
+                cell.errorTwoHeight3.constant = 0
             }
             if errorThreeArr[indexPath.row]{
-                cell.nonCounterThree.isHidden = false
-                cell.nonCounterThree.setImageColor(color: .red)
-                cell.errorTextThree.isHidden = false
-                cell.errorTextThree.text = errorTextThreeArr[indexPath.row]
-                cell.errorThreeHeight.constant = self.heightForView(text: errorTextThreeArr[indexPath.row], font: cell.errorTextThree.font, width: cell.errorTextThree.frame.size.width)
+                cell.nonCounterThree1.isHidden = false
+                cell.nonCounterThree1.setImageColor(color: .red)
+                cell.errorTextThree1.isHidden = false
+                cell.errorTextThree1.text = errorTextThreeArr[indexPath.row]
+                cell.errorThreeHeight1.constant = self.heightForView(text: errorTextThreeArr[indexPath.row], font: cell.errorTextThree1.font, width: cell.errorTextThree1.frame.size.width)
+                cell.nonCounterThree2.isHidden = true
+                cell.errorTextThree2.isHidden = true
+                cell.errorThreeHeight2.constant = 0
+                cell.nonCounterThree3.isHidden = true
+                cell.errorTextThree3.isHidden = true
+                cell.errorThreeHeight3.constant = 0
             }else{
-                cell.nonCounterThree.isHidden = true
-                cell.errorTextThree.isHidden = true
-                cell.errorThreeHeight.constant = 0
+                cell.nonCounterThree1.isHidden = true
+                cell.errorTextThree1.isHidden = true
+                cell.errorThreeHeight1.constant = 0
+                cell.nonCounterThree2.isHidden = true
+                cell.errorTextThree2.isHidden = true
+                cell.errorThreeHeight2.constant = 0
+                cell.nonCounterThree3.isHidden = true
+                cell.errorTextThree3.isHidden = true
+                cell.errorThreeHeight3.constant = 0
             }
+            cell.tariffOne.textColor = myColors.btnColor.uiColor()
+            cell.tariffTwo.textColor = myColors.btnColor.uiColor()
+            cell.tariffThree.textColor = myColors.btnColor.uiColor()
             cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
+            if Int(cell.tariffNumber) == 0 || Int(cell.tariffNumber) == 1{
+                cell.tariffHeight2.constant = 0
+                cell.tariffHeight3.constant = 0
+                cell.tariffOne.isHidden = true
+                cell.tariffOneHeight.constant = 0
+                cell.tariff2.isHidden = true
+                cell.tariff3.isHidden = true
+            }else if Int(cell.tariffNumber) == 2{
+                cell.tariffOne.isHidden = false
+                cell.tariffOneHeight.constant = 20
+                cell.tariffHeight2.constant = 100
+                cell.tariff2.isHidden = false
+                cell.tariffHeight3.constant = 0
+                cell.tariff3.isHidden = true
+            }else if Int(cell.tariffNumber) == 3{
+                cell.tariffOneHeight.constant = 20
+                cell.tariffOne.isHidden = false
+                cell.tariffHeight2.constant = 100
+                cell.tariff2.isHidden = false
+                cell.tariffHeight3.constant = 100
+                cell.tariff3.isHidden = false
+            }
 //            cell = shadowCell(cell: cell) as! HomeCounterCell
             cell.delegate = self
             return cell
@@ -2228,8 +2450,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.counterNumber = selectedUniq
             payController.counterName = selectedUniqName
             payController.ident = countIdent
-            payController.predValue = predVal
+            payController.predValue1 = predVal1
+            payController.predValue2 = predVal2
+            payController.predValue3 = predVal3
             payController.metrId = metrID
+            payController.tariffNumber = selTariffNumber
         }
         
         if segue.identifier == "paysMytishi" {
@@ -2273,10 +2498,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     var selectedUniq = ""
+    var selTariffNumber = 0
     var selectedUniqName = ""
     var selectedOwner = ""
     var countIdent = ""
-    var predVal = ""
+    var predVal1 = ""
+    var predVal2 = ""
+    var predVal3 = ""
     var metrID = ""
     var can_edit: String = ""
     var date1: String = ""
@@ -2290,7 +2518,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.performSegue(withIdentifier: "openURL", sender: self)
     }
     
-    func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String) {
+    func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String) {
         DispatchQueue.main.async{
             self.counterIndicator.startAnimating()
             self.counterIndicator.isHidden = false
@@ -2338,15 +2566,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             self.allCountersBtn.isHidden = false
                                                         }
                                                     } else if (responseString == "1") {
-                                                        self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue)
+                                                        self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
                                                     }
-                                                    
+        
             })
             
             task.resume()
     }
     
-    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String) {
+    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String) {
 //        print(isEditable())
         if isEditable(){
             var metrId = ""
@@ -2355,10 +2583,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     metrId = self.numberArr[i]
                 }
             }
+            selTariffNumber = Int(tariffNumber)!
             selectedUniq = uniq_num
             selectedUniqName = count_name
             countIdent = ident
-            predVal = predValue
+            predVal1 = predValue
+            predVal2 = predValue2
+            predVal3 = predValue3
             self.metrID = metrId
             DispatchQueue.main.async{
                 self.counterIndicator.stopAnimating()
@@ -2458,6 +2689,7 @@ class HomeNewsCell: UITableViewCell {
 class HomeCounterCell: UITableViewCell {
     
     var delegate: CountersCellDelegate?
+    var tariffNumber = "0"
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
@@ -2466,36 +2698,89 @@ class HomeCounterCell: UITableViewCell {
     @IBOutlet weak var viewImgCounter: UIView!
     @IBOutlet weak var sendButton: UIButton!
     
-    @IBOutlet weak var pred: UILabel!
-    @IBOutlet weak var teck: UILabel!
-    @IBOutlet weak var diff: UILabel!
+    @IBOutlet weak var pred1: UILabel!
+    @IBOutlet weak var teck1: UILabel!
+    @IBOutlet weak var diff1: UILabel!
     
-    @IBOutlet weak var predLbl: UILabel!
-    @IBOutlet weak var teckLbl: UILabel!
-    @IBOutlet weak var diffLbl: UILabel!
+    @IBOutlet weak var pred2: UILabel!
+    @IBOutlet weak var teck2: UILabel!
+    @IBOutlet weak var diff2: UILabel!
     
-    @IBOutlet weak var nonCounter: UILabel!
-    @IBOutlet weak var sendCounter: UILabel!
+    @IBOutlet weak var pred3: UILabel!
+    @IBOutlet weak var teck3: UILabel!
+    @IBOutlet weak var diff3: UILabel!
     
-    @IBOutlet weak var nonCounterOne: UIImageView!
-    @IBOutlet weak var nonCounterTwo: UIImageView!
-    @IBOutlet weak var nonCounterThree: UIImageView!
+    @IBOutlet weak var predLbl1: UILabel!
+    @IBOutlet weak var teckLbl1: UILabel!
+    @IBOutlet weak var diffLbl1: UILabel!
     
-    @IBOutlet weak var errorTextOne: UILabel!
-    @IBOutlet weak var errorTextTwo: UILabel!
-    @IBOutlet weak var errorTextThree: UILabel!
-    @IBOutlet weak var errorOneHeight: NSLayoutConstraint!
-    @IBOutlet weak var errorTwoHeight: NSLayoutConstraint!
-    @IBOutlet weak var errorThreeHeight: NSLayoutConstraint!
+    @IBOutlet weak var predLbl2: UILabel!
+    @IBOutlet weak var teckLbl2: UILabel!
+    @IBOutlet weak var diffLbl2: UILabel!
+    
+    @IBOutlet weak var predLbl3: UILabel!
+    @IBOutlet weak var teckLbl3: UILabel!
+    @IBOutlet weak var diffLbl3: UILabel!
+    
+    @IBOutlet weak var nonCounterOne1: UIImageView!
+    @IBOutlet weak var nonCounterTwo1: UIImageView!
+    @IBOutlet weak var nonCounterThree1: UIImageView!
+    
+    @IBOutlet weak var nonCounterOne2: UIImageView!
+    @IBOutlet weak var nonCounterTwo2: UIImageView!
+    @IBOutlet weak var nonCounterThree2: UIImageView!
+    
+    @IBOutlet weak var nonCounterOne3: UIImageView!
+    @IBOutlet weak var nonCounterTwo3: UIImageView!
+    @IBOutlet weak var nonCounterThree3: UIImageView!
+    
+    @IBOutlet weak var tariff2: UIView!
+    @IBOutlet weak var tariff3: UIView!
+    
+    @IBOutlet weak var tariffHeight2: NSLayoutConstraint!
+    @IBOutlet weak var tariffHeight3: NSLayoutConstraint!
+    
+    @IBOutlet weak var tariffOneHeight: NSLayoutConstraint!
+    @IBOutlet weak var tariffOne: UILabel!
+    @IBOutlet weak var tariffTwo: UILabel!
+    @IBOutlet weak var tariffThree: UILabel!
+    
+    @IBOutlet weak var errorTextOne1: UILabel!
+    @IBOutlet weak var errorTextTwo1: UILabel!
+    @IBOutlet weak var errorTextThree1: UILabel!
+    @IBOutlet weak var errorTextOne2: UILabel!
+    @IBOutlet weak var errorTextTwo2: UILabel!
+    @IBOutlet weak var errorTextThree2: UILabel!
+    @IBOutlet weak var errorTextOne3: UILabel!
+    @IBOutlet weak var errorTextTwo3: UILabel!
+    @IBOutlet weak var errorTextThree3: UILabel!
+    
+    @IBOutlet weak var errorOneHeight1: NSLayoutConstraint!
+    @IBOutlet weak var errorTwoHeight1: NSLayoutConstraint!
+    @IBOutlet weak var errorThreeHeight1: NSLayoutConstraint!
+    @IBOutlet weak var errorOneHeight2: NSLayoutConstraint!
+    @IBOutlet weak var errorTwoHeight2: NSLayoutConstraint!
+    @IBOutlet weak var errorThreeHeight2: NSLayoutConstraint!
+    @IBOutlet weak var errorOneHeight3: NSLayoutConstraint!
+    @IBOutlet weak var errorTwoHeight3: NSLayoutConstraint!
+    @IBOutlet weak var errorThreeHeight3: NSLayoutConstraint!
     
     @IBOutlet weak var separator: UILabel!
     
-    @IBOutlet weak var nonCounterHeight: NSLayoutConstraint!
-    @IBOutlet weak var lblHeight2: NSLayoutConstraint!
-    @IBOutlet weak var lblHeight3: NSLayoutConstraint!
-    @IBOutlet weak var lblHeight4: NSLayoutConstraint!
-    @IBOutlet weak var lblHeight5: NSLayoutConstraint!
-    @IBOutlet weak var lblHeight6: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight11: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight12: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight13: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight14: NSLayoutConstraint!
+    
+    @IBOutlet weak var lblHeight21: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight22: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight23: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight24: NSLayoutConstraint!
+    
+    @IBOutlet weak var lblHeight31: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight32: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight33: NSLayoutConstraint!
+    @IBOutlet weak var lblHeight34: NSLayoutConstraint!
     
     
     override func awakeFromNib() {
@@ -2507,7 +2792,7 @@ class HomeCounterCell: UITableViewCell {
     }
     
     @IBAction func sendAction(_ sender: UIButton) {
-        delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
+        delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred1.text!, predValue2: pred2.text!, predValue3: pred3.text!, tariffNumber: tariffNumber)
 //        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
     }
 }

@@ -424,7 +424,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
             shops.append(shopItem)
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ"
+            let name = "ТСЖ Климовск 12"
             let amount = NSNumber(floatLiteral: self.totalSum)
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
@@ -473,7 +473,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             print(items)
             
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ"
+            let name = "УК Упрадом Чебоксары"
             let amount = NSNumber(floatLiteral: self.totalSum)
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
@@ -522,7 +522,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             print(items)
             
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ"
+            let name = "УК РеутКомфорт"
             let amount = NSNumber(floatLiteral: self.totalSum)
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
@@ -571,7 +571,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             print(items)
             
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ"
+            let name = "УК Сервис и Комфорт"
             let amount = NSNumber(floatLiteral: self.totalSum)
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
@@ -604,7 +604,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             #elseif isMupRCMytishi
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Оплата услуг ЖКХ"
+            let name = "МУП РЦ Мытищи"
             let amount = NSNumber(floatLiteral: self.totalSum)
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
