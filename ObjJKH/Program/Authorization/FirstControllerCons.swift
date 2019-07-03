@@ -137,7 +137,7 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
         if (responseString == "1") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка", message: "Не переданы обязательные параметры", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
