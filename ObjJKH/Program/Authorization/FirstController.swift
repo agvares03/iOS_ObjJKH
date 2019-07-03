@@ -168,6 +168,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #elseif isParus
         fon_top.image = UIImage(named: "Logo_Parus")
+        #elseif isUyutService
+        fon_top.image = UIImage(named: "Logo_UyutService")
         #endif
         
         // targetName - используется для определения ключа терминала (оплата Мытищи)
@@ -400,14 +402,6 @@ class FirstController: UIViewController {
         if (responseString == "1") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка", message: "Не переданы обязательные параметры", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-            })
-        }else if (responseString == "2") || (responseString.contains("еверный логин")){
-            DispatchQueue.main.async(execute: {
-                self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                     let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. Номер телефона укажите в формате +7xxxxxxxxxx \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
@@ -416,6 +410,14 @@ class FirstController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
                 alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }else if (responseString == "2") || (responseString.contains("еверный логин")){
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
         } else if (responseString.contains("смена пароля")){

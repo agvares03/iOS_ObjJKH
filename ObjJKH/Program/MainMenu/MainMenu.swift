@@ -359,6 +359,8 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #elseif isParus
         fon_top.image = UIImage(named: "Logo_Parus")
+        #elseif isUyutService
+        fon_top.image = UIImage(named: "Logo_UyutService")
         #endif
         
         debtTable.delegate = self

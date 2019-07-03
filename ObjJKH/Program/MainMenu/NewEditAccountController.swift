@@ -255,6 +255,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #elseif isParus
         fon_top.image = UIImage(named: "Logo_Parus")
+        #elseif isUyutService
+        fon_top.image = UIImage(named: "Logo_UyutService")
         #endif
         
         if UserDefaults.standard.string(forKey: "mail") != ""{
