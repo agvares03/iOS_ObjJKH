@@ -782,7 +782,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         view.addSubview(bannerView)
         DispatchQueue.main.async {
             self.adHeight = bannerView.frame.size.height
-            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 40
+            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
         }
         if #available(iOS 11.0, *) {
             let bannerView = bannerView
@@ -823,6 +823,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         DispatchQueue.main.async {
             self.adHeight = bannerView.frame.size.height
             self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
+            print("ViewTOP: ", self.viewTop.constant)
         }
         if #available(iOS 11.0, *) {
             displayAdAtBottomOfSafeArea();
@@ -1374,15 +1375,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {
-        let viewHeight = view.frame.size.height
-        if viewHeight == 667{
-            viewTop.constant = getPoint() - 210 + 40
-        }else if viewHeight == 736{
-            viewTop.constant = getPoint() - 220 + 40
-        }else if viewHeight == 568{
-            viewTop.constant = getPoint() + 40
-        }else{
-            viewTop.constant = getPoint() - 240 + 40
+        var keyboardH = CGFloat()
+        if let keyboardSize = (sender?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardH = keyboardSize.height
+            viewTop.constant = getPoint() - keyboardH + 10
         }
     }
     
@@ -1390,7 +1386,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @objc func keyboardWillHide(sender: NSNotification?) {
         viewTop.constant = getPoint()
         if UserDefaults.standard.bool(forKey: "show_Ad"){
-            viewTop.constant = getPoint() - adHeight + 40
+            viewTop.constant = getPoint() - adHeight + 10
         }
     }
     
