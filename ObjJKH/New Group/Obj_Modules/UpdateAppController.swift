@@ -62,6 +62,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Parus")
         #elseif isUyutService
         imageApp.image = UIImage(named: "Logo_UyutService")
+        #elseif isElectroSbitSaratov
+        imageApp.image = UIImage(named: "Logo_ElectrosbitSaratov")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()

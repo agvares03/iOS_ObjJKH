@@ -35,6 +35,8 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var tarif2View: UIView!
     @IBOutlet weak var tarif3View: UIView!
     @IBOutlet weak var tariffOne: UILabel!
+    @IBOutlet weak var tariffTwo: UILabel!
+    @IBOutlet weak var tariffThree: UILabel!
     
     @IBOutlet weak var count11: UITextField!
     @IBOutlet weak var count12: UITextField!
@@ -400,6 +402,11 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         backBtn.tintColor = myColors.btnColor.uiColor()
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         
+        // Покрасим название тарифов
+        tariffOne.textColor = myColors.btnColor.uiColor()
+        tariffTwo.textColor = myColors.btnColor.uiColor()
+        tariffThree.textColor = myColors.btnColor.uiColor()
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tap)
@@ -577,9 +584,9 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                 + "&ident=" + self.ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             #endif
             if tariffNumber == 2{
-                urlPath = urlPath + "&val2=" + count2.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                urlPath = urlPath + "&valT2=" + count2.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             }else if tariffNumber == 3{
-                urlPath = urlPath + "&val2=" + count2.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&val3=" + count3.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                urlPath = urlPath + "&valT2=" + count2.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&valT3=" + count3.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             }
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
