@@ -404,6 +404,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Parus")
         #elseif isUyutService
         fon_top.image = UIImage(named: "Logo_UyutService")
+        #elseif isElectroSbitSaratov
+        fon_top.image = UIImage(named: "Logo_ElectrosbitSaratov")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
