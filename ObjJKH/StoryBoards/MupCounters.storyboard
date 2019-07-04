@@ -1529,8 +1529,8 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тариф 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DM-dF-Xc7">
-                                                        <rect key="frame" x="10" y="12" width="96" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <rect key="frame" x="10" y="12" width="96" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1828,8 +1828,8 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тариф 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaM-eY-mXQ">
-                                                        <rect key="frame" x="10" y="12" width="101" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <rect key="frame" x="10" y="12" width="101" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2153,8 +2153,8 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тариф 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaQ-Lj-Wm7">
-                                                        <rect key="frame" x="10" y="13" width="101" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <rect key="frame" x="10" y="13" width="101" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2308,6 +2308,8 @@
                         <outlet property="tarif3Height" destination="yeU-cO-Tlx" id="sby-XJ-VTj"/>
                         <outlet property="tarif3View" destination="8mz-un-hbe" id="6R3-r0-OqF"/>
                         <outlet property="tariffOne" destination="PaQ-Lj-Wm7" id="WFU-wJ-vo3"/>
+                        <outlet property="tariffThree" destination="JaM-eY-mXQ" id="DgV-qX-jd4"/>
+                        <outlet property="tariffTwo" destination="5DM-dF-Xc7" id="gL1-dM-LUo"/>
                         <outlet property="viewImgCounter" destination="l9m-s1-niU" id="HwM-GC-hiA"/>
                         <outlet property="viewTop" destination="LmZ-Ja-McR" id="hf9-i1-rCm"/>
                     </connections>
