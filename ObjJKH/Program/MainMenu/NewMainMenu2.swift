@@ -203,6 +203,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_UyutService")
         #elseif isElectroSbitSaratov
         fon_top.image = UIImage(named: "Logo_ElectrosbitSaratov")
+        #elseif isServicekom
+        fon_top.image = UIImage(named: "Logo_Servicekom")
         #endif
         
         // Картинки для разных Таргетов
