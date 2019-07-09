@@ -208,6 +208,9 @@ class FirstController: UIViewController {
             UserDefaults.standard.synchronize()
         #elseif isJKH_Pavlovskoe
         #elseif isPerspectiva
+        #elseif isServicekom
+            UserDefaults.standard.set("Servicekom", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

@@ -13,6 +13,7 @@
 		125428DFEB43912C20A73DD7 /* Pods_DJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B7EA4A0A2CB233BB4A6F85 /* Pods_DJ.framework */; };
 		12783016ABC597CE6305A9F4 /* Pods_UK_Garant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3812FAFB8B6F58CBB776AADB /* Pods_UK_Garant.framework */; };
 		128D47EE9322D6CDE0458465 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		13443F7B9ABC28697C1812C1 /* Pods_ElectroSbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26A37D2FA3DA51F312C1828 /* Pods_ElectroSbit.framework */; };
 		138D2D293EB28FCE3C08F02E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		14C1E4A63EC675B15D524331 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		175C018860CAAB860B031DEF /* Pods_Servicekom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED333027048369F04AFE8A48 /* Pods_Servicekom.framework */; };
@@ -3946,6 +3947,7 @@
 		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/DJ/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C953D6421FAC9D500313221 /* OnePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePageController.swift; sourceTree = "<group>"; };
 		1C953D6721FAC9F100313221 /* TwoPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageController.swift; sourceTree = "<group>"; };
+		1CA5F17822D48E9200752E2E /* Servicekom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Servicekom-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReutKomfort-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CAE79A3229D02F6005223C1 /* NewSaldoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSaldoController.swift; sourceTree = "<group>"; };
 		1CC3FF212237EB2600FDBA82 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
@@ -4233,6 +4235,7 @@
 		9CC813AF3B67E2529AD80684 /* Pods-ObjJKH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.release.xcconfig"; sourceTree = "<group>"; };
 		9E153E47D5D22676EE4DF870 /* Pods-StandartDV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StandartDV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StandartDV/Pods-StandartDV.debug.xcconfig"; sourceTree = "<group>"; };
 		9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Klimovsk12.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A26A37D2FA3DA51F312C1828 /* Pods_ElectroSbit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectroSbit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4919958CB6F30B2B9885A31 /* Pods-StandartDV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StandartDV.release.xcconfig"; path = "Pods/Target Support Files/Pods-StandartDV/Pods-StandartDV.release.xcconfig"; sourceTree = "<group>"; };
 		A4EE7F46997DE3377DA4101F /* Pods-Tafgai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tafgai.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tafgai/Pods-Tafgai.release.xcconfig"; sourceTree = "<group>"; };
 		A57CDCCC0166F072C93E3573 /* Pods-UyutService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UyutService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UyutService/Pods-UyutService.debug.xcconfig"; sourceTree = "<group>"; };
@@ -4335,6 +4338,7 @@
 				302F334122CDB50B00305EF2 /* CoreLocation.framework in Frameworks */,
 				302F334222CDB50B00305EF2 /* (null) in Frameworks */,
 				00BFCF80FD8156762059186A /* (null) in Frameworks */,
+				13443F7B9ABC28697C1812C1 /* Pods_ElectroSbit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4773,6 +4777,7 @@
 				1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */,
 				1CF8992A22C9D2DE006924FF /* UK_Service_Comfort-Bridging-Header.h */,
 				1C0A4B6822A53DCE00855BA6 /* UK_Upravdom_Che-Bridging-Header.h */,
+				1CA5F17822D48E9200752E2E /* Servicekom-Bridging-Header.h */,
 				1CF8B8F12223D7E400B1D289 /* UK_Garant-Bridging-Header.h */,
 				1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */,
 			);
@@ -5359,6 +5364,7 @@
 				1F0930D79EBDCC4C4F4AD349 /* Pods_UyutService.framework */,
 				D3BDF0CCC6B22C7D44ED6A1D /* Pods_Parus.framework */,
 				ED333027048369F04AFE8A48 /* Pods_Servicekom.framework */,
+				A26A37D2FA3DA51F312C1828 /* Pods_ElectroSbit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -11446,6 +11452,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Servicekom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isServicekom Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Servicekom-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -11470,6 +11477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Servicekom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isServicekom;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Servicekom-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

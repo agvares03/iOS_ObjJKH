@@ -34,6 +34,9 @@
     if ([savedValue  isEqual: @"UK_Service_Comfort"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
+    if ([savedValue  isEqual: @"Servicekom"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
 	return @[kASDKTestTerminalKey];
 }
 
@@ -55,6 +58,9 @@
             result = kASDKTestTerminalKeyKlimovsk;
         }
         if ([savedValue  isEqual: @"UK_Service_Comfort"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"Servicekom"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
 	}
@@ -83,6 +89,9 @@
     if ([savedValue  isEqual: @"UK_Service_Comfort"]){
         return kASDKTestPasswordKlimovsk;
     }
+    if ([savedValue  isEqual: @"Servicekom"]){
+        return kASDKTestPasswordKlimovsk;
+    }
 	return kASDKTestPassword;
 }
 
@@ -100,6 +109,9 @@
         return kASDKTestPublicKeyKlimovsk;
     }
     if ([savedValue  isEqual: @"UK_Service_Comfort"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"Servicekom"]){
         return kASDKTestPublicKeyKlimovsk;
     }
     return kASDKTestPublicKey;

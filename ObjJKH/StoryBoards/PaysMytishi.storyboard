@@ -252,7 +252,7 @@
                                     <constraint firstAttribute="trailing" secondItem="2O7-uP-SgY" secondAttribute="trailing" constant="16" id="xtf-Vu-ahC"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enP-cC-omN">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enP-cC-omN">
                                 <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSt-8I-KNw">
@@ -403,6 +403,7 @@
                         <outlet property="spinImg" destination="NqZ-RR-9oV" id="xzx-5W-WIB"/>
                         <outlet property="support" destination="ewl-4A-dUc" id="SiD-uc-WoL"/>
                         <outlet property="supportBtn" destination="mSt-8I-KNw" id="N8Z-PD-4P6"/>
+                        <outlet property="supportView" destination="enP-cC-omN" id="xOU-eO-Bgf"/>
                         <outlet property="tableView" destination="ds5-Ye-OVv" id="Cvh-s6-0iX"/>
                         <outlet property="tableViewTop" destination="ZXi-fS-SkV" id="gPS-Ph-iEx"/>
                         <outlet property="textService" destination="pvD-hC-VO9" id="r3R-A2-PXx"/>
