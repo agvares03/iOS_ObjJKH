@@ -22,6 +22,10 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var fileBtn: UIBarButtonItem!
     @IBOutlet weak var addFileBtn: UIButton!
+    
+    @IBOutlet weak var btn2: UIButton!
+    @IBOutlet weak var btn3: UIButton!
+    
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
         if fromMenu{
             navigationController?.popViewController(animated: true)
@@ -944,11 +948,11 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func StartIndicator() {
         
-//        self.btn2.isEnabled = false
-//        self.btn2.isHidden  = true
-//
-//        self.btn3.isEnabled = false
-//        self.btn3.isHidden  = true
+        self.btn2.isEnabled = false
+        self.btn2.isHidden  = true
+
+        self.btn3.isEnabled = false
+        self.btn3.isHidden  = true
         
         self.indicator.startAnimating()
         self.indicator.isHidden = false
@@ -956,11 +960,11 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func StopIndicator() {
         
-//        self.btn2.isEnabled = true
-//        self.btn2.isHidden  = false
-//
-//        self.btn3.isEnabled = true
-//        self.btn3.isHidden  = false
+        self.btn2.isEnabled = true
+        self.btn2.isHidden  = false
+
+        self.btn3.isEnabled = true
+        self.btn3.isHidden  = false
         
         self.indicator.stopAnimating()
         self.indicator.isHidden = true
@@ -1027,6 +1031,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if segue.identifier == "files" {
             let vc = segue.destination as! FilesController
             vc.data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
+            vc.fromNew = true
         }
         if segue.identifier == "CostPay_New" {
             let payController             = segue.destination as! Pay

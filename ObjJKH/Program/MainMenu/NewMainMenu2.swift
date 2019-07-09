@@ -459,6 +459,11 @@ class NewMainMenu2: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if UserDefaults.standard.value(forKey: "fromMenu") != nil{
+            UserDefaults.standard.synchronize()
+            UserDefaults.standard.set(true, forKey: "fromMenu")
+            
+        }
         debtArr.removeAll()
         var debt:[String:String] = [:]
         if debtSum.count != 0{
@@ -701,8 +706,8 @@ class NewMainMenu2: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UserDefaults.standard.set(true, forKey: "fromMenu")
-        UserDefaults.standard.synchronize()
+//        UserDefaults.standard.set(true, forKey: "fromMenu")
+//        UserDefaults.standard.synchronize()
     }
     
     func add_record(numb: Int) {

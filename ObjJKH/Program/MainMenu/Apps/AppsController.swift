@@ -615,8 +615,8 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UserDefaults.standard.set(false, forKey: "fromMenu")
-        UserDefaults.standard.synchronize()
+//        UserDefaults.standard.set(false, forKey: "fromMenu")
+//        UserDefaults.standard.synchronize()
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.load_new_data()
 //        if UserDefaults.standard.bool(forKey: "back"){

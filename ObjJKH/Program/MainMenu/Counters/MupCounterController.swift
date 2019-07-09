@@ -1011,8 +1011,8 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     override func viewWillAppear(_ animated: Bool) {
 //        ls_Button.setTitle("Все", for: UIControlState.normal)
 //        choiceIdent = "Все"
-        UserDefaults.standard.set(false, forKey: "fromMenu")
-        UserDefaults.standard.synchronize()
+//        UserDefaults.standard.set(false, forKey: "fromMenu")
+//        UserDefaults.standard.synchronize()
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1

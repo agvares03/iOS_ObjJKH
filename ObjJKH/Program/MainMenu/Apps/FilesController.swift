@@ -19,7 +19,7 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
     
     open var data_: [Comments] = []
     private var data: [Fotos] = []
-    
+    public var fromNew: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +37,9 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
         collection.delegate   = self
         
         navigationController?.navigationBar.tintColor = myColors.btnColor.uiColor()
+        if fromNew{
+            navigationController?.navigationBar.tintColor = .white
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -47,23 +50,37 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilesImageCell", for: indexPath) as! FilesImageCell
         cell.display(data[indexPath.row], delegate: self)
+        cell.delegate2 = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: 200.0)
+        return CGSize(width: view.frame.size.width, height: 256.0)
     }
     
     func imagePressed(_ sender: UITapGestureRecognizer) {
+        let view = UIView()
+        view.frame = UIScreen.main.bounds
+        view.backgroundColor = .black
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
-        newImageView.frame = UIScreen.main.bounds
+        let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
+        let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
+        if k > l{
+            newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
+        }else{
+            newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
+        }
+        newImageView.frame.size.width = self.view.frame.size.width
+        let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
+        newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
         newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit
+        newImageView.contentMode = .scaleToFill
         newImageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
+        view.addGestureRecognizer(tap)
+        view.addSubview(newImageView)
+        self.view.addSubview(view)
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -87,6 +104,7 @@ final class FilesImageCell: UICollectionViewCell {
     @IBOutlet weak var date: UILabel!
     
     private var delegate: FilesDelegate?
+    public var delegate2: UIViewController?
     
     func display(_ item: Fotos, delegate: FilesDelegate?) {
         title.text = item.name
