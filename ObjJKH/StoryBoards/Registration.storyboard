@@ -262,7 +262,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -318,6 +318,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не пришла СМС?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laB-MG-pKm">
+                                <rect key="frame" x="25" y="299" width="325" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LdF-Kg-O5G">
+                                <rect key="frame" x="25" y="322" width="334" height="46"/>
+                                <color key="backgroundColor" red="0.085386164489999999" green="0.48004096750000003" blue="0.9989228845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Pkr-C9-3mb"/>
+                                </constraints>
+                                <state key="normal">
+                                    <string key="title">   Напишите в тех.поддержку.
+Поможем зарегистрироваться!</string>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Ex5-hw-ZEJ" kind="show" id="aJc-v5-YaR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -330,14 +354,20 @@
                             <constraint firstItem="o1g-Th-Tok" firstAttribute="top" secondItem="WmY-F0-Ke8" secondAttribute="bottom" constant="4" id="DSB-Qk-d3d"/>
                             <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="dBs-QR-UBI" secondAttribute="trailing" constant="16" id="FJC-1w-7S2"/>
                             <constraint firstItem="Eoz-IW-gwj" firstAttribute="centerX" secondItem="dBs-QR-UBI" secondAttribute="centerX" id="FJj-cq-ehK"/>
+                            <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="LdF-Kg-O5G" secondAttribute="trailing" constant="16" id="VBa-hw-Oe3"/>
                             <constraint firstItem="dBs-QR-UBI" firstAttribute="leading" secondItem="QZ5-wY-j80" secondAttribute="leading" constant="25" id="WUq-pn-W9D"/>
                             <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="y0C-5j-bYI" secondAttribute="trailing" constant="8" id="WeM-VG-ffy"/>
                             <constraint firstItem="aMW-7w-f7D" firstAttribute="leading" secondItem="QZ5-wY-j80" secondAttribute="leading" constant="16" id="WtF-KO-p6a"/>
                             <constraint firstItem="aMW-7w-f7D" firstAttribute="top" secondItem="QZ5-wY-j80" secondAttribute="top" constant="16" id="Yrc-MW-QPa"/>
                             <constraint firstItem="dBs-QR-UBI" firstAttribute="top" secondItem="o1g-Th-Tok" secondAttribute="bottom" constant="15" id="Z5s-MQ-HqJ"/>
+                            <constraint firstItem="laB-MG-pKm" firstAttribute="leading" secondItem="QZ5-wY-j80" secondAttribute="leading" constant="25" id="ZGm-jU-cbP"/>
                             <constraint firstItem="WmY-F0-Ke8" firstAttribute="top" secondItem="y0C-5j-bYI" secondAttribute="bottom" constant="16" id="aGu-xh-RSS"/>
+                            <constraint firstItem="LdF-Kg-O5G" firstAttribute="top" secondItem="laB-MG-pKm" secondAttribute="bottom" constant="5" id="dIC-jP-wy1"/>
                             <constraint firstItem="y0C-5j-bYI" firstAttribute="leading" secondItem="QZ5-wY-j80" secondAttribute="leading" constant="8" id="g6a-xS-vCT"/>
+                            <constraint firstItem="laB-MG-pKm" firstAttribute="top" secondItem="dBs-QR-UBI" secondAttribute="bottom" constant="10" id="jDV-hJ-LOx"/>
+                            <constraint firstItem="LdF-Kg-O5G" firstAttribute="leading" secondItem="QZ5-wY-j80" secondAttribute="leading" constant="25" id="ngO-cg-X7v"/>
                             <constraint firstItem="Eoz-IW-gwj" firstAttribute="centerY" secondItem="dBs-QR-UBI" secondAttribute="centerY" id="oKQ-IJ-tVx"/>
+                            <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="laB-MG-pKm" secondAttribute="trailing" constant="25" id="sxn-AA-lh6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QZ5-wY-j80"/>
                     </view>
@@ -357,6 +387,7 @@
                         <outlet property="phone_img" destination="X8U-Q8-N80" id="q1I-US-NzC"/>
                         <outlet property="sendSMS" destination="o1g-Th-Tok" id="wV1-kp-DKQ"/>
                         <outlet property="separator1" destination="ujo-8b-qvK" id="lzn-ua-FPk"/>
+                        <outlet property="supportBtn" destination="LdF-Kg-O5G" id="35a-eO-lhO"/>
                         <segue destination="RFk-ku-hT4" kind="show" identifier="SendNewPass" id="QsT-I0-IRy"/>
                         <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="79Z-3o-APL"/>
                         <segue destination="dSs-8F-Ong" kind="show" identifier="start_app" id="qca-ii-V6F"/>
@@ -621,7 +652,7 @@
         <image name="phone" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WB9-fi-g7m"/>
-        <segue reference="MfD-33-Bqq"/>
+        <segue reference="qca-ii-V6F"/>
+        <segue reference="79Z-3o-APL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,6 +22,7 @@ class SendSMSCod: UIViewController {
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var sendSMS: UIButton!
     @IBOutlet weak var phone_img: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
     
     @IBAction func sendSMSAgain(_ sender: UIButton) {
         send_sms(itsAgain: true)
@@ -187,6 +188,10 @@ class SendSMSCod: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "support" {
+//            let AppUser             = segue.destination as! SupportController
+//            AppUser.fromMenu = true
+//        }
         if segue.identifier == "SendNewPass"{
             let defaults = UserDefaults.standard
             let login = defaults.string(forKey: "login")
@@ -224,6 +229,18 @@ class SendSMSCod: UIViewController {
         phone_img.image = myImages.phone_image
         phone_img.setImageColor(color: myColors.btnColor.uiColor())
         backBtn.tintColor = myColors.btnColor.uiColor()
+        supportBtn.backgroundColor = myColors.btnColor.uiColor()
+//        supportLbl.textColor = myColors.indicatorColor.uiColor()
+//        let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+//        let underlineAttributedString = NSAttributedString(string: "Напишите в тех.поддержку. \nПоможем зарегистрироваться!", attributes: underlineAttribute)
+//        supportLbl.attributedText = underlineAttributedString
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(lblTapped(_:)))
+//        supportLbl.isUserInteractionEnabled = true
+//        supportLbl.addGestureRecognizer(tap)
+    }
+    
+    @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "support", sender: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {

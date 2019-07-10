@@ -26,7 +26,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var heightTextView: NSLayoutConstraint!
     @IBOutlet weak var btnCancel: UIButton!
     @IBAction func btnCancelGo(_ sender: UIButton) {
-        if UserDefaults.standard.bool(forKey: "fromMenu"){
+        if UserDefaults.standard.bool(forKey: "fromMenu") || fromMenu{
             navigationController?.popViewController(animated: true)
         }else{
             navigationController?.dismiss(animated: true, completion: nil)
@@ -125,7 +125,11 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
                                                         
                                                         let alert = UIAlertController(title: "Ваше сообщение успешно отправлено!", message: "", preferredStyle: .alert)
                                                         let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                                                            self.navigationController?.popViewController(animated: true)
+                                                            if UserDefaults.standard.bool(forKey: "fromMenu") || self.fromMenu{
+                                                                self.navigationController?.popViewController(animated: true)
+                                                            }else{
+                                                                self.navigationController?.dismiss(animated: true, completion: nil)
+                                                            }
                                                         }
                                                         alert.addAction(cancelAction)
                                                         self.present(alert, animated: true, completion: nil)
@@ -147,7 +151,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         })
         task.resume()
     }
-    
+    public var fromMenu = false
     override func viewDidLoad() {
         super.viewDidLoad()
         indicator.isHidden = true
