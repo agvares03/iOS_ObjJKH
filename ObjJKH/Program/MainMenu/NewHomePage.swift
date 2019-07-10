@@ -172,8 +172,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     @IBAction func addAppC(_ sender: UIButton) {
-//        self.performSegue(withIdentifier: "add_app", sender: self)
-        self.performSegue(withIdentifier: "new_add_app", sender: self)
+        if UserDefaults.standard.bool(forKey: "newApps"){
+            self.performSegue(withIdentifier: "new_add_app", sender: self)
+        }else{
+            self.performSegue(withIdentifier: "add_app", sender: self)
+        }
     }
     @IBAction func AddLS(_ sender: UIButton) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
@@ -2340,8 +2343,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else if tableView == self.tableNews{
             performSegue(withIdentifier: "show_news", sender: self)
         }else if tableView == self.tableApps{
-//            performSegue(withIdentifier: "show_app", sender: self)
-            performSegue(withIdentifier: "new_show_app", sender: self)
+            if UserDefaults.standard.bool(forKey: "newApps"){
+                self.performSegue(withIdentifier: "new_show_app", sender: self)
+            }else{
+                self.performSegue(withIdentifier: "show_app", sender: self)
+            }
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -2415,6 +2421,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if segue.identifier == "new_add_app" {            
             let AppUser             = segue.destination as! NewAddAppUser
+            AppUser.fromMenu = true
+        }
+        if segue.identifier == "add_app" {
+            let AppUser             = segue.destination as! AddAppUser
             AppUser.fromMenu = true
         }
         if segue.identifier == "new_show_app" {

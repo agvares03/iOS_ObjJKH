@@ -30,13 +30,11 @@ class AddAppUser: UITableViewController, UIImagePickerControllerDelegate, UINavi
             drawImages()
         }
     }
-    
+    public var fromMenu: Bool = false
     weak var delegate: AddAppDelegate?
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        if UserDefaults.standard.bool(forKey: "fromMenu"){
-            UserDefaults.standard.set(false, forKey: "fromMenu")
-            UserDefaults.standard.synchronize()
+        if fromMenu{
             navigationController?.popViewController(animated: true)
         }else{
             navigationController?.dismiss(animated: true, completion: nil)

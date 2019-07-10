@@ -1136,15 +1136,15 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     })
                     //                }
                 }
-                sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
-                checkBox.append(true)
-                osvc.append("Услуги ЖКУ")
-                idOSV.append(0)
-                
-                uslugaArr.append("Услуги ЖКУ")
-                endArr.append(String(format:"%.2f", self.sum))
-                idArr.append(0)
-                identOSV.append(ident)
+//                sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
+//                checkBox.append(true)
+//                osvc.append("Услуги ЖКУ")
+//                idOSV.append(0)
+//
+//                uslugaArr.append("Услуги ЖКУ")
+//                endArr.append(String(format:"%.2f", self.sum))
+//                idArr.append(0)
+//                identOSV.append(ident)
                 DispatchQueue.main.async(execute: {
                     if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
                         self.servicePay.text = "Комиссия не взимается"

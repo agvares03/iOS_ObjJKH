@@ -9,7 +9,13 @@
 import UIKit
 import SafariServices
 
-class Pay: UIViewController, UIWebViewDelegate {
+class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegate {
+    func newAddAppDone(addApp: NewAddAppUser) {
+    }
+    
+    func addAppDone(addApp: AddAppUser) {
+    }
+    
 
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
@@ -17,8 +23,20 @@ class Pay: UIViewController, UIWebViewDelegate {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBOutlet weak var noPayView: UIView!
+    @IBOutlet weak var appBtn: UIButton!
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var backBtn: UIBarButtonItem!
+    
+    @IBAction func addAppAction(_ sender: UIButton){
+        if UserDefaults.standard.bool(forKey: "newApps"){
+            self.navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "new_add_app", sender: self)
+        }else{
+            self.navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "add_app", sender: self)
+        }
+    }
     
     var login: String = ""
     var pass: String  = ""
@@ -29,6 +47,7 @@ class Pay: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.noPayView.isHidden = true
         if !UserDefaults.standard.bool(forKey: "settSaveCard"){
             URLCache.shared.removeAllCachedResponses()
             if let cookies = HTTPCookieStorage.shared.cookies {
@@ -45,6 +64,7 @@ class Pay: UIViewController, UIWebViewDelegate {
         pass  = defaults.string(forKey: "pass")!
         sum  = defaults.string(forKey: "sum")!
         backBtn.tintColor = myColors.btnColor.uiColor()
+        appBtn.backgroundColor = myColors.btnColor.uiColor()
 //        #if isStolitsa
 //            let url = NSURL(string: Server.SERVER + Server.GET_LINK_STOLITSA + "login=" + self.login + "&pwd=" + self.pass + "&sum=" + self.sum)
 //            let requestObj = NSURLRequest(url: url! as URL)
@@ -136,12 +156,13 @@ class Pay: UIViewController, UIWebViewDelegate {
     func choice() {
         DispatchQueue.main.async(execute: {
             if (self.responseString == "Ошибка: Недопустимый URI: Невозможно определить формат URI.") {
-                let alert = UIAlertController(title: "Ошибка", message: "Оплата не подключена", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    self.navigationController?.popViewController(animated: true)
-                }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
+//                let alert = UIAlertController(title: "Ошибка", message: "Оплата не подключена", preferredStyle: .alert)
+//                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+//                    self.navigationController?.popViewController(animated: true)
+//                }
+//                alert.addAction(cancelAction)
+//                self.present(alert, animated: true, completion: nil)
+                self.noPayView.isHidden = false
             }else if (self.responseString.contains("Ошибка")) {
                 let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
@@ -171,6 +192,18 @@ class Pay: UIViewController, UIWebViewDelegate {
                 self.present(alert, animated: true, completion: nil)
             }
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "add_app") {
+            let AddApp = segue.destination as! AddAppUser
+            AddApp.delegate = self
+            AddApp.fromMenu = true
+        }else if (segue.identifier == "new_add_app") {
+            let AddApp = segue.destination as! NewAddAppUser
+            AddApp.delegate = self
+            AddApp.fromMenu = true
+        }
     }
 
 }

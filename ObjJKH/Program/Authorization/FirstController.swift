@@ -83,6 +83,7 @@ class FirstController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(false, forKey: "fromMenu")
+        UserDefaults.standard.set(true, forKey: "newApps")
         StopIndicator()
         
         // Маска для ввода - телефон

@@ -324,6 +324,11 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.barTintColor = .white
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)

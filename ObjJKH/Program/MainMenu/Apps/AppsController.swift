@@ -68,8 +68,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let defaults = UserDefaults.standard
         let isCons = defaults.string(forKey: "isCons")
         if (isCons == "0") {
-//            self.performSegue(withIdentifier: "add_app", sender: self)
-            self.performSegue(withIdentifier: "new_add_app", sender: self)
+            if UserDefaults.standard.bool(forKey: "newApps"){
+                self.performSegue(withIdentifier: "new_add_app", sender: self)
+            }else{
+                self.performSegue(withIdentifier: "add_app", sender: self)
+            }
         } else {
             self.performSegue(withIdentifier: "add_app_cons", sender: self)
         }
@@ -328,8 +331,11 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if (app.is_close == 1) {
             if (isCons == "0") {
-//                self.performSegue(withIdentifier: "show_app", sender: self)
-                self.performSegue(withIdentifier: "new_show_app", sender: self)
+                if UserDefaults.standard.bool(forKey: "newApps"){
+                    self.performSegue(withIdentifier: "new_show_app", sender: self)
+                }else{
+                    self.performSegue(withIdentifier: "show_app", sender: self)
+                }
             } else {
                 self.performSegue(withIdentifier: "show_app_cons", sender: self)
             }

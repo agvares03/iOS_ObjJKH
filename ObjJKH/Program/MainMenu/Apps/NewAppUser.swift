@@ -553,6 +553,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver("reloadTheTable")
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.barTintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
