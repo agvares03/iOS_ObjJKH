@@ -23,8 +23,8 @@ class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegat
         navigationController?.popViewController(animated: true)
     }
     
-    @IBOutlet weak var noPayView: UIView!
     @IBOutlet weak var appBtn: UIButton!
+    @IBOutlet weak var appLbl: UILabel!
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var backBtn: UIBarButtonItem!
     
@@ -47,7 +47,8 @@ class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.noPayView.isHidden = true
+        self.appBtn.isHidden = true
+        self.appLbl.isHidden = true
         if !UserDefaults.standard.bool(forKey: "settSaveCard"){
             URLCache.shared.removeAllCachedResponses()
             if let cookies = HTTPCookieStorage.shared.cookies {
@@ -162,7 +163,9 @@ class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegat
 //                }
 //                alert.addAction(cancelAction)
 //                self.present(alert, animated: true, completion: nil)
-                self.noPayView.isHidden = false
+                self.webView.isHidden = true
+                self.appBtn.isHidden = false
+                self.appLbl.isHidden = false
             }else if (self.responseString.contains("Ошибка")) {
                 let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
@@ -174,7 +177,7 @@ class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegat
                 let url = NSURL(string: self.responseString)
                 let requestObj = NSURLRequest(url: url! as URL)
                 self.webView.loadRequest(requestObj as URLRequest)
-                
+            
                 // Отправлять в сафари-аналог
 //                if let url = URL(string: self.responseString) {
 //                    let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
@@ -182,7 +185,7 @@ class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegat
 //
 //                    self.present(vc, animated: true)
 //                }
-                
+            
             } else {
                 let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
