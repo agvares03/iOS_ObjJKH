@@ -172,6 +172,14 @@ class AddLS: UIViewController, UITextFieldDelegate {
                 alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             }
+        }else if (self.response_add_ident?.contains("л/сч не найден"))!{
+            DispatchQueue.main.async(execute: {
+                let alert = UIAlertController(title: "Ошибка", message: "Л/сч не найден в БД. \n№ лицевого счета можно узнать на квитанции или в офисе Управляющей организации", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
         } else {
             DispatchQueue.main.async(execute: {
                 let alert = UIAlertController(title: "Ошибка", message: self.response_add_ident?.replacingOccurrences(of: "error: ", with: ""), preferredStyle: .alert)

@@ -138,6 +138,10 @@ class Registration: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "support") {
+            let AddApp = segue.destination as! SupportController
+            AddApp.fromAuth = true
+        }
         if segue.identifier == "start_app"{
             let defaults = UserDefaults.standard
             let login = defaults.string(forKey: "login")

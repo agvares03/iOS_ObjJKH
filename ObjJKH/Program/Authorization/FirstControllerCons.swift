@@ -315,6 +315,18 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "support_cons1") {
+            let nav = segue.destination as! UINavigationController
+            let AddApp = nav.topViewController as! SupportController
+            AddApp.fromAuth = true
+        }
+        if (segue.identifier == "support_cons"){
+            let AddApp = segue.destination as! SupportController
+            AddApp.fromAuth = true
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UserDefaults.standard.set(true, forKey: "firstConst")

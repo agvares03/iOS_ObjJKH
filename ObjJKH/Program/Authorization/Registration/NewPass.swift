@@ -246,7 +246,6 @@ class NewPass: UIViewController {
             task.resume()
         }
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "start_app"{
             let defaults = UserDefaults.standard
@@ -255,6 +254,10 @@ class NewPass: UIViewController {
                 let payController             = segue.destination as! FirstController
                 payController.firstEnter = true
             }
+        }
+        if (segue.identifier == "support") {
+            let AddApp = segue.destination as! SupportController
+            AddApp.fromAuth = true
         }
     }
     

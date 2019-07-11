@@ -80,6 +80,18 @@ class FirstController: UIViewController {
         get_LS()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "support1") {
+            let nav = segue.destination as! UINavigationController
+            let AddApp = nav.topViewController as! SupportController
+            AddApp.fromAuth = true
+        }
+        if (segue.identifier == "support"){
+            let AddApp = segue.destination as! SupportController
+            AddApp.fromAuth = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(false, forKey: "fromMenu")

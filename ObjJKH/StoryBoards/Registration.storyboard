@@ -339,7 +339,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Ex5-hw-ZEJ" kind="show" id="aJc-v5-YaR"/>
+                                    <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="aJc-v5-YaR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -389,7 +389,6 @@
                         <outlet property="separator1" destination="ujo-8b-qvK" id="lzn-ua-FPk"/>
                         <outlet property="supportBtn" destination="LdF-Kg-O5G" id="35a-eO-lhO"/>
                         <segue destination="RFk-ku-hT4" kind="show" identifier="SendNewPass" id="QsT-I0-IRy"/>
-                        <segue destination="Ex5-hw-ZEJ" kind="show" identifier="support" id="79Z-3o-APL"/>
                         <segue destination="dSs-8F-Ong" kind="show" identifier="start_app" id="qca-ii-V6F"/>
                     </connections>
                 </viewController>
@@ -403,7 +402,7 @@
                 <viewControllerPlaceholder storyboardName="Support" referencedIdentifier="supportView" id="Ex5-hw-ZEJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ka2-LI-05i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1041" y="470"/>
+            <point key="canvasLocation" x="1362" y="670"/>
         </scene>
         <!--authView-->
         <scene sceneID="IAu-lb-Gm6">
@@ -652,7 +651,7 @@
         <image name="phone" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qca-ii-V6F"/>
-        <segue reference="79Z-3o-APL"/>
+        <segue reference="8NC-1r-Q06"/>
+        <segue reference="BRR-sj-Z8H"/>
     </inferredMetricsTieBreakers>
 </document>

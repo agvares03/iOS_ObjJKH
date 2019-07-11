@@ -550,6 +550,18 @@ class FirstObjController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "support1") {
+            let nav = segue.destination as! UINavigationController
+            let AddApp = nav.topViewController as! SupportController
+            AddApp.fromAuth = true
+        }
+        if (segue.identifier == "support"){
+            let AddApp = segue.destination as! SupportController
+            AddApp.fromAuth = true
+        }
+    }
+    
     // Получить типы заявок
     func getTypesApps() {
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_REQUEST_TYPES + "table=Support_RequestTypes")!)

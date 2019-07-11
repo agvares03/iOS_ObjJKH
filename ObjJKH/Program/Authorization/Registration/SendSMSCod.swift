@@ -188,10 +188,11 @@ class SendSMSCod: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "support" {
-//            let AppUser             = segue.destination as! SupportController
-//            AppUser.fromMenu = true
-//        }
+        if segue.identifier == "support" {
+            let AppUser             = segue.destination as! SupportController
+            AppUser.fromMenu = true
+            AppUser.fromAuth = true
+        }
         if segue.identifier == "SendNewPass"{
             let defaults = UserDefaults.standard
             let login = defaults.string(forKey: "login")

@@ -63,6 +63,13 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
         task.resume()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "support") {
+            let AddApp = segue.destination as! SupportController
+            AddApp.fromAuth = true
+        }
+    }
+    
     func choice(){
         if (responseString == "1") {
             DispatchQueue.main.async(execute: {

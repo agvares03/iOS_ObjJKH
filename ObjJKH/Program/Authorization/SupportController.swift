@@ -9,13 +9,21 @@
 import UIKit
 import AKMaskField
 
-class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelegate, AddAppDelegate, NewAddAppDelegate {
+    func newAddAppDone(addApp: NewAddAppUser) {
+    }
+    
+    func addAppDone(addApp: AddAppUser) {
+    }
     
     // Navigation
 //    @IBOutlet weak var cancelItem: UIBarButtonItem!
 //    @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
 //        navigationController?.popViewController(animated: true)
 //    }
+    @IBOutlet weak var appBtn: UIButton!
+    @IBOutlet weak var appLbl: UILabel!
+    @IBOutlet weak var heigthAppBtn: NSLayoutConstraint!
     
     @IBOutlet weak var phoneTxt: AKMaskField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -30,6 +38,16 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
             navigationController?.popViewController(animated: true)
         }else{
             navigationController?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func addAppAction(_ sender: UIButton){
+        if UserDefaults.standard.bool(forKey: "newApps"){
+//            self.navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "new_add_app", sender: self)
+        }else{
+//            self.navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "add_app", sender: self)
         }
     }
     
@@ -152,6 +170,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         task.resume()
     }
     public var fromMenu = false
+    public var fromAuth = false
     override func viewDidLoad() {
         super.viewDidLoad()
         indicator.isHidden = true
@@ -193,7 +212,35 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         indicator.color = myColors.indicatorColor.uiColor()
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         btnCancel.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        
+        appBtn.backgroundColor = myColors.btnColor.uiColor()
+        if fromAuth{
+            let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+            if (str_menu_2 != "") {
+                var answer = str_menu_2.components(separatedBy: ";")
+                if (answer[2] == "0") {
+                    appLbl.text = ""
+                    heigthAppBtn.constant = 0
+                    appBtn.isHidden = true
+                    appLbl.isHidden = true
+                } else {
+                    appLbl.text = "Данная форма предназначена для обращения в поддержку приложения. Если Вы хотите обратиться в Управляющую организацию, то авторизуйтесь в приложении и создайте заявку"
+                    heigthAppBtn.constant = 0
+                    appBtn.isHidden = true
+                }
+            }
+        }else{
+            let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+            if (str_menu_2 != "") {
+                var answer = str_menu_2.components(separatedBy: ";")
+                if (answer[2] == "0") {
+                    appLbl.text = ""
+                    heigthAppBtn.constant = 0
+                    appBtn.isHidden = true
+                    appLbl.isHidden = true
+                } else {
+                }
+            }
+        }
 //        cancelItem.tintColor = myColors.btnColor.uiColor()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
@@ -320,6 +367,18 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "add_app") {
+            let AddApp = segue.destination as! AddAppUser
+            AddApp.delegate = self
+            AddApp.fromMenu = true
+        }else if (segue.identifier == "new_add_app") {
+            let AddApp = segue.destination as! NewAddAppUser
+            AddApp.delegate = self
+            AddApp.fromMenu = true
+        }
     }
     /*
      // MARK: - Navigation
