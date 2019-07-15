@@ -37,6 +37,12 @@
     if ([savedValue  isEqual: @"Servicekom"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
+    if ([savedValue  isEqual: @"UK_Garant"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
+    if ([savedValue  isEqual: @"Parus"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
 	return @[kASDKTestTerminalKey];
 }
 
@@ -61,6 +67,12 @@
             result = kASDKTestTerminalKeyKlimovsk;
         }
         if ([savedValue  isEqual: @"Servicekom"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"UK_Garant"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"Parus"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
 	}
@@ -92,6 +104,12 @@
     if ([savedValue  isEqual: @"Servicekom"]){
         return kASDKTestPasswordKlimovsk;
     }
+    if ([savedValue  isEqual: @"UK_Garant"]){
+        return kASDKTestPasswordKlimovsk;
+    }
+    if ([savedValue  isEqual: @"Parus"]){
+        return kASDKTestPasswordKlimovsk;
+    }
 	return kASDKTestPassword;
 }
 
@@ -112,6 +130,12 @@
         return kASDKTestPublicKeyKlimovsk;
     }
     if ([savedValue  isEqual: @"Servicekom"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"UK_Garant"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"Parus"]){
         return kASDKTestPublicKeyKlimovsk;
     }
     return kASDKTestPublicKey;

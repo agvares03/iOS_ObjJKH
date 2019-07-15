@@ -207,10 +207,15 @@ class FirstController: UIViewController {
             UserDefaults.standard.set("ReutComfort", forKey: "targetName")
             UserDefaults.standard.synchronize()
         #elseif isUKGarant
+            UserDefaults.standard.set("UK_Garant", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #elseif isSoldatova1
         #elseif isTafgai
         #elseif isServiceKomfort
             UserDefaults.standard.set("UK_Service_Comfort", forKey: "targetName")
+            UserDefaults.standard.synchronize()
+        #elseif isParus
+            UserDefaults.standard.set("Parus", forKey: "targetName")
             UserDefaults.standard.synchronize()
         #elseif isParitet
         #elseif isSkyfort
