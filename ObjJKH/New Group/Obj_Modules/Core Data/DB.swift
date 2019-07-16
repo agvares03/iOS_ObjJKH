@@ -447,11 +447,11 @@ class DB: NSObject, XMLParserDelegate {
             }else{
                 managedObject.id_pay          = 0
             }
-            managedObject.date            = attributeDict["Date"]
-            managedObject.ident           = attributeDict["Ident"]
-            managedObject.status          = attributeDict["Status"]
-            managedObject.desc            = attributeDict["Desc"]
-            managedObject.sum             = attributeDict["Sum"]
+            managedObject.date            = String(attributeDict["Date"]!)
+            managedObject.ident           = String(attributeDict["Ident"]!)
+            managedObject.status          = String(attributeDict["Status"]!)
+            managedObject.desc            = String(attributeDict["Desc"]!)
+            managedObject.sum             = String(attributeDict["Sum"]!)
             CoreDataManager.instance.saveContext()
         }
     }

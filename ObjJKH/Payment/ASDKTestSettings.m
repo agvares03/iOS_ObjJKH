@@ -43,6 +43,9 @@
     if ([savedValue  isEqual: @"Parus"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
+    if ([savedValue  isEqual: @"Teplovodoresources"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
 	return @[kASDKTestTerminalKey];
 }
 
@@ -73,6 +76,9 @@
             result = kASDKTestTerminalKeyKlimovsk;
         }
         if ([savedValue  isEqual: @"Parus"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"Teplovodoresources"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
 	}
@@ -110,6 +116,9 @@
     if ([savedValue  isEqual: @"Parus"]){
         return kASDKTestPasswordKlimovsk;
     }
+    if ([savedValue  isEqual: @"Teplovodoresources"]){
+        return kASDKTestPasswordKlimovsk;
+    }
 	return kASDKTestPassword;
 }
 
@@ -136,6 +145,9 @@
         return kASDKTestPublicKeyKlimovsk;
     }
     if ([savedValue  isEqual: @"Parus"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"Teplovodoresources"]){
         return kASDKTestPublicKeyKlimovsk;
     }
     return kASDKTestPublicKey;
