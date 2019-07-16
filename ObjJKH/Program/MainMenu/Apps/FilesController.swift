@@ -38,6 +38,8 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
         
         navigationController?.navigationBar.tintColor = myColors.btnColor.uiColor()
         if fromNew{
+            navigationController?.navigationBar.barStyle = .black
+            navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()
             navigationController?.navigationBar.tintColor = .white
         }
     }
