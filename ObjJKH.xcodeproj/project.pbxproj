@@ -4395,6 +4395,7 @@
 		1C78BF78222CEC8A00F31938 /* openSaldoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openSaldoController.swift; sourceTree = "<group>"; };
 		1C7B2DFA219BFA4900787507 /* RegLSMup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegLSMup.swift; sourceTree = "<group>"; };
 		1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1C83D7AC22DD08AD0006A8E2 /* Parus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parus-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaysMytishi.storyboard; sourceTree = "<group>"; };
 		1C85139721EC4E940003D587 /* PaysMytishiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaysMytishiController.swift; sourceTree = "<group>"; };
 		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/DJ/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -5312,6 +5313,7 @@
 				1CF8992A22C9D2DE006924FF /* UK_Service_Comfort-Bridging-Header.h */,
 				1C0A4B6822A53DCE00855BA6 /* UK_Upravdom_Che-Bridging-Header.h */,
 				1CA5F17822D48E9200752E2E /* Servicekom-Bridging-Header.h */,
+				1C83D7AC22DD08AD0006A8E2 /* Parus-Bridging-Header.h */,
 				1CF8B8F12223D7E400B1D289 /* UK_Garant-Bridging-Header.h */,
 				1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */,
 			);
@@ -12562,6 +12564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.UkGarant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isUKGarant Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Garant-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -12586,6 +12589,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.UkGarant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isUKGarant;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Garant-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -13125,6 +13129,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Parus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isParus Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Parus-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -13149,6 +13154,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.Parus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isParus;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Parus-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
