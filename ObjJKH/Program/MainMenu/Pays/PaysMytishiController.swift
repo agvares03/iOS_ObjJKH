@@ -180,6 +180,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         l = true
         #elseif isParus
         l = true
+        #elseif isTeplovodoresources
+        l = true
         #else
         self.payedS()
         #endif
@@ -256,6 +258,33 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     private func payedT(){
         let k:String = txt_sum_jkh.text!
         let l:String = txt_sum_obj.text!
+        var shopCode = ""
+        var targetName = ""
+        #if isKlimovsk12
+        shopCode = "215944"
+        targetName = "ТСЖ Климовск 12"
+        #elseif isUpravdomChe
+        shopCode = "245322"
+        targetName = "УК Упрадом Чебоксары"
+        #elseif isReutKomfort
+        shopCode = "234821"
+        targetName = "УК РеутКомфорт"
+        #elseif isServiceKomfort
+        shopCode = "252187"
+        targetName = "УК Сервис и Комфорт"
+        #elseif isServicekom
+        shopCode = "254158"
+        targetName = "Сервиском"
+        #elseif isUKGarant
+        shopCode = "256133"
+        targetName = "УК Гарант"
+        #elseif isParus
+        shopCode = "256138"
+        targetName = "РКЦ Парус"
+        #elseif isTeplovodoresources
+        shopCode = "256310"
+        targetName = "Тепловодоресурс"
+        #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
         if (self.totalSum <= 0) {
@@ -280,29 +309,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 #if isKlimovsk12
                 var ItemsData: [String : Any] = [:]
                 if i == 0{
-                    ItemsData = ["ShopCode" : "215944", "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                    ItemsData = ["ShopCode" : shopCode, "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                     items.append(ItemsData)
                 }
-                #elseif isUpravdomChe
-                let ItemsData = ["ShopCode" : "245322", "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                items.append(ItemsData)
-                #elseif isReutKomfort
-                let ItemsData = ["ShopCode" : "234821", "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                items.append(ItemsData)
-                #elseif isServiceKomfort
-                let ItemsData = ["ShopCode" : "252187", "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                items.append(ItemsData)
-                #elseif isServicekom
-                let ItemsData = ["ShopCode" : "254158", "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                items.append(ItemsData)
-                #elseif isUKGarant
-                let ItemsData = ["ShopCode" : "256133", "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                items.append(ItemsData)
-                #elseif isParus
-                let ItemsData = ["ShopCode" : "256138", "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                items.append(ItemsData)
                 #elseif isMupRCMytishi
                 let ItemsData = ["Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
+                items.append(ItemsData)
+                #else
+                let ItemsData = ["ShopCode" : shopCode, "Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                 items.append(ItemsData)
                 #endif
             }else{
@@ -312,29 +326,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         #if isKlimovsk12
                         var ItemsData: [String : Any] = [:]
                         if i == 0{
-                            ItemsData = ["ShopCode" : "215944", "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                            ItemsData = ["ShopCode" : shopCode, "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                             items.append(ItemsData)
                         }
-                        #elseif isUpravdomChe
-                        let ItemsData = ["ShopCode" : "245322", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                        items.append(ItemsData)
-                        #elseif isReutKomfort
-                        let ItemsData = ["ShopCode" : "234821", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                        items.append(ItemsData)
-                        #elseif isServiceKomfort
-                        let ItemsData = ["ShopCode" : "252187", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                        items.append(ItemsData)
-                        #elseif isServicekom
-                        let ItemsData = ["ShopCode" : "254158", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                        items.append(ItemsData)
-                        #elseif isUKGarant
-                        let ItemsData = ["ShopCode" : "256133", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                        items.append(ItemsData)
-                        #elseif isParus
-                        let ItemsData = ["ShopCode" : "256138", "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                        items.append(ItemsData)
                         #elseif isMupRCMytishi
                         let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
+                        items.append(ItemsData)
+                        #else
+                        let ItemsData = ["ShopCode" : shopCode, "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                         items.append(ItemsData)
                         #endif
                     }
@@ -342,29 +341,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 if servicePay != 0{
                     let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
-                    #if isKlimovsk12
-                    let ItemsData = ["ShopCode" : "215944", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isUpravdomChe
-                    let ItemsData = ["ShopCode" : "245322", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isReutKomfort
-                    let ItemsData = ["ShopCode" : "234821", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isServiceKomfort
-                    let ItemsData = ["ShopCode" : "252187", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isServicekom
-                    let ItemsData = ["ShopCode" : "254158", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isUKGarant
-                    let ItemsData = ["ShopCode" : "256133", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isParus
-                    let ItemsData = ["ShopCode" : "256138", "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
-                    items.append(ItemsData)
-                    #elseif isMupRCMytishi
+                    #if isMupRCMytishi
                     let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
+                    items.append(ItemsData)
+                    #else
+                    let ItemsData = ["ShopCode" : shopCode, "Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
                     #endif
                 }
@@ -388,75 +369,20 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }else{
                 #if isKlimovsk12
                 DataStr = DataStr + "1-\(String(format:"%.2f", self.sum))|"
-                #elseif isUpravdomChe
-                if k{
-                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
-                }else{
-                    checkBox.forEach{
-                        if $0 == true && sumOSV[i] > 0.00{
-                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
-                        }
-                        i += 1
-                    }
-                }
-                #elseif isReutKomfort
-                if k{
-                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
-                }else{
-                    checkBox.forEach{
-                        if $0 == true && sumOSV[i] > 0.00{
-                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
-                        }
-                        i += 1
-                    }
-                }
-                #elseif isServiceKomfort
-                if k{
-                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
-                }else{
-                    checkBox.forEach{
-                        if $0 == true && sumOSV[i] > 0.00{
-                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
-                        }
-                        i += 1
-                    }
-                }
-                #elseif isServicekom
-                if k{
-                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
-                }else{
-                    checkBox.forEach{
-                        if $0 == true && sumOSV[i] > 0.00{
-                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
-                        }
-                        i += 1
-                    }
-                }
-                #elseif isUKGarant
-                if k{
-                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
-                }else{
-                    checkBox.forEach{
-                        if $0 == true && sumOSV[i] > 0.00{
-                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
-                        }
-                        i += 1
-                    }
-                }
-                #elseif isParus
-                if k{
-                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
-                }else{
-                    checkBox.forEach{
-                        if $0 == true && sumOSV[i] > 0.00{
-                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
-                        }
-                        i += 1
-                    }
-                }
                 #elseif isMupRCMytishi
                 if k{
                     DataStr = DataStr + "usluga-\(String(format:"%.2f", self.totalSum))|"
+                }else{
+                    checkBox.forEach{
+                        if $0 == true && sumOSV[i] > 0.00{
+                            DataStr = DataStr + "\(String(idOSV[i]))-\(String(format:"%.2f", sumOSV[i]))|"
+                        }
+                        i += 1
+                    }
+                }
+                #else
+                if k{
+                    DataStr = DataStr + "0-\(String(format:"%.2f", self.totalSum))|"
                 }else{
                     checkBox.forEach{
                         if $0 == true && sumOSV[i] > 0.00{
@@ -471,352 +397,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 DataStr = DataStr + "serv-\(String(format:"%.2f", servicePay))"
             }
             Data["name"] = DataStr
-            print(Data)
             let defaults = UserDefaults.standard
             self.onePay = 0
             self.oneCheck = 0
-            #if isKlimovsk12
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
-                
-            }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
-            }
-            UserDefaults.standard.synchronize()
-            Data["chargeFlag"] = "false"
-            let shopCode = "215944"
-            var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "ТСЖ Климовск 12"] as [String : Any]
-            shops.append(shopItem)
-            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "ТСЖ Климовск 12"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
-            defaults.synchronize()
-            print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
-                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-            #elseif isUpravdomChe
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
-                
-            }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
-            }
-            UserDefaults.standard.synchronize()
-            Data["chargeFlag"] = "false"
-            let shopCode = "245322"
-            var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "УК Упрадом Чебоксары"] as [String : Any]
-            shops.append(shopItem)
-            print(items)
-            
-            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "УК Упрадом Чебоксары"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
-            defaults.synchronize()
-            print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
-                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-            #elseif isReutKomfort
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
-                
-            }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
-            }
-            UserDefaults.standard.synchronize()
-            Data["chargeFlag"] = "false"
-            let shopCode = "234821"
-            var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "УК РеутКомфорт"] as [String : Any]
-            shops.append(shopItem)
-            print(items)
-            
-            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "УК РеутКомфорт"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
-            defaults.synchronize()
-            print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
-                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-            #elseif isServiceKomfort
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
-                
-            }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
-            }
-            UserDefaults.standard.synchronize()
-            Data["chargeFlag"] = "false"
-            let shopCode = "252187"
-            var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "УК Сервис и Комфорт"] as [String : Any]
-            shops.append(shopItem)
-            print(items)
-            
-            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "УК Сервис и Комфорт"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
-            defaults.synchronize()
-            print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
-                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-            #elseif isServicekom
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
-                
-            }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
-            }
-            UserDefaults.standard.synchronize()
-            Data["chargeFlag"] = "false"
-            let shopCode = "254158"
-            var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "Сервиском"] as [String : Any]
-            shops.append(shopItem)
-            print(items)
-            
-            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "Сервиском"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
-            defaults.synchronize()
-            print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
-                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-            #elseif isUKGarant
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
-                
-            }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
-            }
-            UserDefaults.standard.synchronize()
-            Data["chargeFlag"] = "false"
-            let shopCode = "256133"
-            var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "УК Гарант"] as [String : Any]
-            shops.append(shopItem)
-            print(items)
-            
-            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "УК Гарант"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
-            defaults.synchronize()
-            print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
-                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-            #elseif isParus
-            if selectLS == "Все"{
-                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
-                let str_ls_arr = str_ls.components(separatedBy: ",")
-                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
-                
-            }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
-            }
-            UserDefaults.standard.synchronize()
-            Data["chargeFlag"] = "false"
-            let shopCode = "256138"
-            var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : "РКЦ Парус"] as [String : Any]
-            shops.append(shopItem)
-            print(items)
-            
-            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
-            let name = "РКЦ Парус"
-            let amount = NSNumber(floatLiteral: self.totalSum)
-            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
-            defaults.synchronize()
-            print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
-                PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-            #elseif isMupRCMytishi
+            #if isMupRCMytishi
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "МУП РЦ Мытищи"
             let amount = NSNumber(floatLiteral: self.totalSum)
@@ -849,7 +433,53 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     self.present(alert, animated: true, completion: nil)
                 }
             }
+            #else
+            if selectLS == "Все"{
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+                let str_ls_arr = str_ls.components(separatedBy: ",")
+                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
+                
+            }else{
+                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
+            }
+            UserDefaults.standard.synchronize()
+            Data["chargeFlag"] = "false"
+            var shops:[Any] = []
+            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : targetName] as [String : Any]
+            shops.append(shopItem)
+            print(shops)
+            let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
+            let amount = NSNumber(floatLiteral: self.totalSum)
+            defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
+            defaults.synchronize()
+            print(receiptData)
             
+            if payType == 1{
+                let address = PKContact()
+                address.emailAddress = defaults.object(forKey: "mail")! as? String
+                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }else{
+                PayController.buyItem(withName: targetName, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+                    
+                }, cancelled:  {
+                    
+                }, error: { (error) in
+                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
             #endif
         }
     }
@@ -864,7 +494,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         })
         UserDefaults.standard.set("", forKey: "payIdent")
         if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
-            currPoint = 532
+            currPoint = 492
             paysViewHeight.constant = 135
             txt_sum_jkh.isHidden = true
             servicePay.text = "Комиссия не взимается"
@@ -1507,10 +1137,18 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.totalSum = self.sum + serviceP
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
             self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+            if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
+                self.servicePay.text = "Комиссия не взимается"
+                self.servicePay.textColor = .lightGray
+            }
         }else{
             self.txt_sum_obj.text = "0.00 руб."
             self.txt_sum_jkh.text = "0.00 руб."
             self.servicePay.text  = "0.00 руб."
+            if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
+                self.servicePay.text = "Комиссия не взимается"
+                self.servicePay.textColor = .lightGray
+            }
         }
     }
     
@@ -1596,13 +1234,17 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.servicePay.text  = "0.00 руб."
             }
         }
+        if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
+            self.servicePay.text = "Комиссия не взимается"
+            self.servicePay.textColor = .lightGray
+        }
     }
     
     @objc func keyboardWillShow(sender: NSNotification?) {
         var keyboardH = CGFloat()
         if let keyboardSize = (sender?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardH = keyboardSize.height
-            viewTop.constant = getPoint() - keyboardH + 10
+            viewTop.constant = getPoint() - keyboardH + 50
         }
     }
     

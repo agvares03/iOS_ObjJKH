@@ -235,6 +235,9 @@ class FirstController: UIViewController {
         #elseif isServicekom
             UserDefaults.standard.set("Servicekom", forKey: "targetName")
             UserDefaults.standard.synchronize()
+        #elseif isTeplovodoresources
+            UserDefaults.standard.set("Teplovodoresources", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
