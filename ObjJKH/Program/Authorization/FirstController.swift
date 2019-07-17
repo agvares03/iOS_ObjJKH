@@ -238,6 +238,9 @@ class FirstController: UIViewController {
         #elseif isTeplovodoresources
             UserDefaults.standard.set("Teplovodoresources", forKey: "targetName")
             UserDefaults.standard.synchronize()
+        #elseif isStroimBud
+            UserDefaults.standard.set("StroimBud", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
@@ -634,7 +637,7 @@ class FirstController: UIViewController {
             edLogin.text = login
             
         }
-        print(login)
+//        print(login)
         edPass.text = pass
     }
     

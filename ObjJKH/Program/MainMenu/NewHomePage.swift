@@ -2083,7 +2083,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil){
                 cell.imgCounter.setImageColor(color: .red)
             }
-            if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil){
+            if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil) || (countName.lowercased().range(of: "х/в") != nil){
                 cell.imgCounter.setImageColor(color: .blue)
             }
             if (countName.lowercased().range(of: "газ") != nil){

@@ -759,7 +759,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil){
             cell.viewImgCounter.backgroundColor = .red
         }
-        if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil){
+        if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil) || (countName.lowercased().range(of: "х/в") != nil){
             cell.viewImgCounter.backgroundColor = .blue
         }
         if (countName.lowercased().range(of: "газ") != nil){

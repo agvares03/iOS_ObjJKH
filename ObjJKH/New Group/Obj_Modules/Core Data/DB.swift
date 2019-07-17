@@ -50,10 +50,10 @@ class DB: NSObject, XMLParserDelegate {
         
         return rezult;
     }
-    
+    var enter = false
     public func getDataByEnter(login: String, pass: String) {
 //        var data:[String] = []
-        
+        enter = true
         // ПОКАЗАНИЯ СЧЕТЧИКОВ
         // Удалим данные из базы данных
         del_db(table_name: "Counters")
@@ -153,25 +153,28 @@ class DB: NSObject, XMLParserDelegate {
         } else {
             print("parse failure!")
         }
-        save_month_year(month: self.currMonth, year: self.currYear)
-        let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
-        if (str_menu_2 != "") {
-            var answer = str_menu_2.components(separatedBy: ";")
-            if (answer[2] == "0") {
-                // ВЕДОМОСТЬ
-                // Удалим данные из базы данных
-                del_db(table_name: "Saldo")
-                // Получим данные в базу данных
-                parse_OSV(login: login, pass: pass)
-            }else{
-                // ЗАЯВКИ С КОММЕНТАРИЯМИ
-                del_db(table_name: "Applications")
-                del_db(table_name: "Comments")
-                del_db(table_name: "Fotos")
-                let isCons = UserDefaults.standard.string(forKey: "isCons")
-                parse_Apps(login: login, pass: pass, isCons: isCons!, isLoad: true)
+        if enter{
+            save_month_year(month: self.currMonth, year: self.currYear)
+            let str_menu_2 = UserDefaults.standard.string(forKey: "menu_2") ?? ""
+            if (str_menu_2 != "") {
+                var answer = str_menu_2.components(separatedBy: ";")
+                if (answer[2] == "0") {
+                    // ВЕДОМОСТЬ
+                    // Удалим данные из базы данных
+                    del_db(table_name: "Saldo")
+                    // Получим данные в базу данных
+                    parse_OSV(login: login, pass: pass)
+                }else{
+                    // ЗАЯВКИ С КОММЕНТАРИЯМИ
+                    del_db(table_name: "Applications")
+                    del_db(table_name: "Comments")
+                    del_db(table_name: "Fotos")
+                    let isCons = UserDefaults.standard.string(forKey: "isCons")
+                    parse_Apps(login: login, pass: pass, isCons: isCons!, isLoad: true)
+                }
             }
         }
+        
         // сохраним последние значения Месяц-Год в глобальных переменных
     }
     
@@ -437,13 +440,13 @@ class DB: NSObject, XMLParserDelegate {
             CoreDataManager.instance.saveContext()
         } else if (elementName == "Payment"){
             let managedObject = PaymentApp()
-            if Int64(attributeDict["ID"]!) != nil{
-                managedObject.id              = Int64(attributeDict["ID"]!)!
+            if Int64(String(attributeDict["ID"]!)) != nil{
+                managedObject.id              = Int64(String(attributeDict["ID"]!))!
             }else{
                 managedObject.id              = 0
             }
-            if Int64(attributeDict["ID_Pay"]!) != nil{
-                managedObject.id_pay          = Int64(attributeDict["ID_Pay"]!)!
+            if Int64(String(attributeDict["ID_Pay"]!)) != nil{
+                managedObject.id_pay          = Int64(String(attributeDict["ID_Pay"]!))!
             }else{
                 managedObject.id_pay          = 0
             }
@@ -684,22 +687,25 @@ class DB: NSObject, XMLParserDelegate {
         } else {
             print("parse failure!")
         }
-        if isLoad{
-            if UserDefaults.standard.bool(forKey: "isCons"){
-                if self.request_read_cons > -1{
-                    UserDefaults.standard.set(self.request_read_cons, forKey: "request_read_cons")
-                }else{
-                    UserDefaults.standard.set(0, forKey: "request_read_cons")
-                }
+        if enter{
+            if isLoad{
+                //            if UserDefaults.standard.bool(forKey: "isCons"){
+                //                if self.request_read_cons > -1{
+                //                    UserDefaults.standard.set(self.request_read_cons, forKey: "request_read_cons")
+                //                }else{
+                //                    UserDefaults.standard.set(0, forKey: "request_read_cons")
+                //                }
+                //            }
+                //
+                //            UserDefaults.standard.synchronize()
+                // ВЕДОМОСТЬ
+                // Удалим данные из базы данных
+                del_db(table_name: "Saldo")
+                // Получим данные в базу данных
+                parse_OSV(login: login, pass: pass)
             }
-            
-            UserDefaults.standard.synchronize()
-            // ВЕДОМОСТЬ
-            // Удалим данные из базы данных
-            del_db(table_name: "Saldo")
-            // Получим данные в базу данных
-            parse_OSV(login: login, pass: pass)
         }
+        
         //        }
     }
     

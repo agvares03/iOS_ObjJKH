@@ -182,6 +182,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         l = true
         #elseif isTeplovodoresources
         l = true
+        #elseif isStroimBud
+        l = true
         #else
         self.payedS()
         #endif
@@ -284,6 +286,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isTeplovodoresources
         shopCode = "256310"
         targetName = "Тепловодоресурс"
+        #elseif isStroimBud
+        shopCode = "254788"
+        targetName = "Строим будущее"
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
