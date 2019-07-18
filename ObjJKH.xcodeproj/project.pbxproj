@@ -4533,6 +4533,7 @@
 		1CD2D3912264841A00494DE6 /* ChoiceRegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceRegionController.swift; sourceTree = "<group>"; };
 		1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddLsPocket.storyboard; sourceTree = "<group>"; };
 		1CE57D21220D520500B647C0 /* main_Background_MupRCMytishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_Background_MupRCMytishi.png; sourceTree = "<group>"; };
+		1CEF47A122E02E3900DDD095 /* UK_Paritet_Khab-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Paritet_Khab-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF8992A22C9D2DE006924FF /* UK_Service_Comfort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Service_Comfort-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF8B8A6221FD0BD00B1D289 /* Klimovsk12-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klimovsk12-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UK_Garant_White.png; sourceTree = "<group>"; };
@@ -5462,6 +5463,7 @@
 				1C83D7AF22DDCE150006A8E2 /* Teplovodoresources-Bridging-Header.h */,
 				1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */,
 				1C83D7B022DECE680006A8E2 /* StroimBud-Bridging-Header.h */,
+				1CEF47A122E02E3900DDD095 /* UK_Paritet_Khab-Bridging-Header.h */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -13060,7 +13062,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.uk-paritet-khab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isUKParitetKhab Debug";
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Servicekom-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Paritet_Khab-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -13085,7 +13087,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.uk-paritet-khab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isUKParitetKhab;
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Servicekom-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Paritet_Khab-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
