@@ -184,6 +184,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         l = true
         #elseif isStroimBud
         l = true
+        #elseif isRodnikMUP
+        l = true
         #else
         self.payedS()
         #endif
