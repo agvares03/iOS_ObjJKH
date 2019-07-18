@@ -49,6 +49,9 @@
     if ([savedValue  isEqual: @"StroimBud"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
+    if ([savedValue  isEqual: @"UKParitetKhab"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
 	return @[kASDKTestTerminalKey];
 }
 
@@ -85,6 +88,9 @@
             result = kASDKTestTerminalKeyKlimovsk;
         }
         if ([savedValue  isEqual: @"StroimBud"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"UKParitetKhab"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
 	}
@@ -128,6 +134,9 @@
     if ([savedValue  isEqual: @"StroimBud"]){
         return kASDKTestPasswordKlimovsk;
     }
+    if ([savedValue  isEqual: @"UKParitetKhab"]){
+        return kASDKTestPasswordKlimovsk;
+    }
 	return kASDKTestPassword;
 }
 
@@ -160,6 +169,9 @@
         return kASDKTestPublicKeyKlimovsk;
     }
     if ([savedValue  isEqual: @"StroimBud"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"UKParitetKhab"]){
         return kASDKTestPublicKeyKlimovsk;
     }
     return kASDKTestPublicKey;

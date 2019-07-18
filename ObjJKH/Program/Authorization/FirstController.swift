@@ -243,6 +243,9 @@ class FirstController: UIViewController {
         #elseif isStroimBud
             UserDefaults.standard.set("StroimBud", forKey: "targetName")
             UserDefaults.standard.synchronize()
+        #elseif isUKParitetKhab
+            UserDefaults.standard.set("UKParitetKhab", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
