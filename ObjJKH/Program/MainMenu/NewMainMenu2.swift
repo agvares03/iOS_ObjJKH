@@ -211,6 +211,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_StroimBud")
         #elseif isRodnikMUP
         fon_top.image = UIImage(named: "Logo_RodnikMUP")
+        #elseif isUKParitetKhab
+        fon_top.image = UIImage(named: "Logo_Paritet")
         #endif
         
         // Картинки для разных Таргетов

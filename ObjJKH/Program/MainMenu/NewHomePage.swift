@@ -417,6 +417,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_StroimBud")
         #elseif isRodnikMUP
         fon_top.image = UIImage(named: "Logo_RodnikMUP")
+        #elseif isUKParitetKhab
+        fon_top.image = UIImage(named: "Logo_Paritet")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
