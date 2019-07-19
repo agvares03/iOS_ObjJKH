@@ -690,7 +690,16 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         var cnt: String = textField.text!.replacingOccurrences(of: ".", with: ",")
         var str: String = textField.text!.replacingOccurrences(of: ".", with: ",")
         if str.contains(","){
-            if str.last != ","{
+            var k = 0
+            str.forEach{
+                if $0 == ","{
+                    k += 1
+                }
+            }
+            if str.last == "," && k > 1{
+                str.removeLast()
+                textField.text = str
+            }else if str.last != ","{
                 for _ in 0...str.count - 1{
                     if str.first != ","{
                         str.removeFirst()

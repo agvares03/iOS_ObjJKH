@@ -33,14 +33,17 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     private var refreshControl: UIRefreshControl?
     private var questions: [QuestionDataJson]? = []
     private var index = 0
+    open var question_: QuestionDataJson?
+    open var questionDelegate: QuestionTableDelegate?
+    open var questionTitle = ""
     
     @IBOutlet weak var back: UIBarButtonItem!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
 //        if UserDefaults.standard.bool(forKey: "NewMain"){
-            navigationController?.popViewController(animated: true)
+//            navigationController?.popViewController(animated: true)
 //        }else{
-//            navigationController?.dismiss(animated: true, completion: nil)
+            navigationController?.dismiss(animated: true, completion: nil)
 //        }
     }
     
@@ -82,6 +85,9 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
+        if questionTitle != ""{
+            performSegue(withIdentifier: "go_answers", sender: self)
+        }
     }
     
     func updateUserInterface() {
@@ -112,7 +118,17 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        if questionTitle != "" && prep{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
         self.refresh(nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if questionTitle != ""{
+            prep = true
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -136,16 +152,25 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         index = indexPath.row
         performSegue(withIdentifier: "go_answers", sender: self)
     }
-    
+    var prep = false
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "go_answers" {
-            let vc = segue.destination as! QuestionAnswerVC
-            vc.title = questions?[index].name
-            vc.question_ = questions?[index]
-            //            vc.delegate = delegate
-            vc.questionDelegate = self
-            performName_ = ""
+            if questionTitle != ""{
+                let vc = segue.destination as! QuestionAnswerVC
+                vc.title = questionTitle
+                vc.question_ = question_
+                //            vc.delegate = delegate
+                vc.questionDelegate = self
+                performName_ = ""
+            }else{
+                let vc = segue.destination as! QuestionAnswerVC
+                vc.title = questions?[index].name
+                vc.question_ = questions?[index]
+                //            vc.delegate = delegate
+                vc.questionDelegate = self
+                performName_ = ""
+            }
         }
     }
     

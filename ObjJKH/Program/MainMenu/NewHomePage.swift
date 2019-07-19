@@ -2385,8 +2385,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
         }
         if segue.identifier == "go_answers" {
-            let vc = segue.destination as! QuestionAnswerVC
-            vc.title = questionArr[indexQuestion].name
+//            let vc = segue.destination as! QuestionAnswerVC
+//            vc.title = questionArr[indexQuestion].name
+//            vc.question_ = questionArr[indexQuestion]
+//            //            vc.delegate = delegate
+//            vc.questionDelegate = self
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! QuestionsTableVC
+            vc.questionTitle = questionArr[indexQuestion].name!
             vc.question_ = questionArr[indexQuestion]
             //            vc.delegate = delegate
             vc.questionDelegate = self
