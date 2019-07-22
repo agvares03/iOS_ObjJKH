@@ -649,6 +649,14 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
                     })
                     //                }
                 }
+                checkBox.reverse()
+                sumOSV.reverse()
+                osvc.reverse()
+                uslugaArr.reverse()
+                endArr.reverse()
+                idArr.reverse()
+                identOSV.reverse()
+                idOSV.reverse()
                 DispatchQueue.main.async(execute: {
                     if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
                         self.servicePay.text = "Комиссия не взимается"
