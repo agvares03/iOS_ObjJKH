@@ -157,6 +157,8 @@ class FirstObjController: UIViewController {
         fon_top.image = UIImage(named: "Logo_RodnikMUP")
         #elseif isUKParitetKhab
         fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isADS68
+        fon_top.image = UIImage(named: "Logo_ADS68")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

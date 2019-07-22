@@ -195,6 +195,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_RodnikMUP")
         #elseif isUKParitetKhab
         fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isADS68
+        fon_top.image = UIImage(named: "Logo_ADS68")
         #endif
         
         // targetName - используется для определения ключа терминала (оплата Мытищи)

@@ -74,6 +74,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_RodnikMUP")
         #elseif isUKParitetKhab
         imageApp.image = UIImage(named: "Logo_Paritet")
+        #elseif isADS68
+        imageApp.image = UIImage(named: "Logo_ADS68")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
