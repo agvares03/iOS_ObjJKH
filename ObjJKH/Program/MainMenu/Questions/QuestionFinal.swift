@@ -15,7 +15,10 @@ class QuestionFinal: UIViewController {
     @IBAction func backClick(_ sender: UIBarButtonItem) {
     }
     
-    @IBAction func goButtonPressed(_ sender: UIButton) {        navigationController?.popToRootViewController(animated: true)
+    @IBAction func goButtonPressed(_ sender: UIButton) {
+        
+        navigationController?.popToRootViewController(animated: true)
+//        navigationController?.popToViewController(QuestionsTableVC(), animated: true)
     }
     
     override func viewDidLoad() {

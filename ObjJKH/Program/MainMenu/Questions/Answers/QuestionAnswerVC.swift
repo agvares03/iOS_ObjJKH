@@ -146,11 +146,14 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
-        let userDefaults = UserDefaults.standard
-        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: answers)
-        userDefaults.set(encodedData, forKey: String(question_?.id ?? 0))
-        userDefaults.synchronize()
-        i = 0
+        DispatchQueue.main.async {
+            let userDefaults = UserDefaults.standard
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self.answers)
+            userDefaults.set(encodedData, forKey: String(self.question_?.id ?? 0))
+            userDefaults.synchronize()
+            i = 0
+        }
+        
         
         navigationController?.popViewController(animated: true)
     }
