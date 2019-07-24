@@ -76,6 +76,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Paritet")
         #elseif isADS68
         imageApp.image = UIImage(named: "Logo_ADS68")
+        #elseif isAFregat
+        imageApp.image = UIImage(named: "Logo_Fregat")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()

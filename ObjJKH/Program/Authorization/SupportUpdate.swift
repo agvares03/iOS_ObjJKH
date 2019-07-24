@@ -74,6 +74,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_RodnikMUP")
         #elseif isUKParitetKhab
         imageApp.image = UIImage(named: "Logo_Paritet")
+        #elseif isAFregat
+        imageApp.image = UIImage(named: "Logo_Fregat")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()

@@ -113,6 +113,8 @@ class NotificationController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Paritet")
         #elseif isADS68
         fon_top.image = UIImage(named: "Logo_ADS68")
+        #elseif isAFregat
+        fon_top.image = UIImage(named: "Logo_Fregat")
         #endif
         btn_name_1.setTitle(phoneOperator, for: .normal)
         targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)

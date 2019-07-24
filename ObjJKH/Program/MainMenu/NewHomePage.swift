@@ -421,6 +421,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Paritet")
         #elseif isADS68
         fon_top.image = UIImage(named: "Logo_ADS68")
+        #elseif isAFregat
+        fon_top.image = UIImage(named: "Logo_Fregat")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
