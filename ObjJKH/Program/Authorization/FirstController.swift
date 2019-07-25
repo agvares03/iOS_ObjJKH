@@ -87,7 +87,8 @@ class FirstController: UIViewController {
             AddApp.fromAuth = true
         }
         if (segue.identifier == "support"){
-            let AddApp = segue.destination as! SupportController
+            let nav = segue.destination as! UINavigationController
+            let AddApp = nav.topViewController as! SupportController
             AddApp.fromAuth = true
         }
     }
@@ -437,14 +438,14 @@ class FirstController: UIViewController {
                                                 }
                                                 
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                                                //                                                self.responseString = "error: смена пароля: 12345678"
+//                                                self.responseString = "error: смена пароля: 12345678"
                                                 print("responseString = \(self.responseString)")
                                                 self.choice()
         })
         task.resume()
     }
     
-    func choice() {
+    private func choice() {
         if (responseString == "1") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
@@ -510,7 +511,17 @@ class FirstController: UIViewController {
                     alert.addAction(supportAction)
                     self.present(alert, animated: true, completion: nil)
                 }
-                
+                #else
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
+                alert.addAction(cancelAction)
+                alert.addAction(supportAction)
+                self.present(alert, animated: true, completion: nil)
                 #endif
             })
         }else if (responseString.contains("error")){
