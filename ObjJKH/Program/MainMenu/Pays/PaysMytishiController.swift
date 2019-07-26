@@ -1103,6 +1103,23 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CostPay_New" {
+            var ident = ""
+            if choiceIdent == "Все"{
+                let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+                let str_ls_arr = str_ls.components(separatedBy: ",")
+                for i in 0...str_ls_arr.count - 1{
+                    ident = str_ls_arr[0]
+                }
+            }else{
+                ident = choiceIdent
+            }
+            let payController             = segue.destination as! Pay
+            payController.ident = ident
+        }
+    }
+    
     var editRow = IndexPath()
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if kol > 1{
