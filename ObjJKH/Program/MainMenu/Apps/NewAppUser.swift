@@ -603,10 +603,15 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         table_comments.reloadData()
         if kolR == 0{
-            DispatchQueue.main.async {
-                self.table_comments.scrollToRow(at: IndexPath(item: self.table_comments.numberOfRows(inSection: 0) - 1, section: 0), at: .top, animated: true)
+            if let sections = fetchedResultsController?.sections {
+                if sections[0].numberOfObjects > 0{
+                    DispatchQueue.main.async {
+                        self.table_comments.scrollToRow(at: IndexPath(item: self.table_comments.numberOfRows(inSection: 0) - 1, section: 0), at: .top, animated: true)
+                    }
+                    kolR = 1
+                }
+                
             }
-            kolR = 1
         }
     }
     var kolR = 0

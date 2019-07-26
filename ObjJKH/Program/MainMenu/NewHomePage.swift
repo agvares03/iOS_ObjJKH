@@ -699,7 +699,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.StopIndicators()
         DispatchQueue.main.async{
             UserDefaults.standard.set(true, forKey: "fromMenu")
-            UserDefaults.standard.synchronize()
+//            UserDefaults.standard.synchronize()
         }
     }
     

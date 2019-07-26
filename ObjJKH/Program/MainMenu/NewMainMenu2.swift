@@ -564,7 +564,7 @@ class NewMainMenu2: UIViewController {
                                                                                 self.debtSumFine.append(sumFine)
                                                                                 sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
                                                                                 date = json_bills["Date"] as! String
-                                                                                
+                                                                                defaults.synchronize()
                                                                                 defaults.set(date, forKey: "dateDebt")
                                                                                 if Double(sumAll) != 0.00{
                                                                                     let d = date.components(separatedBy: ".")
@@ -575,6 +575,7 @@ class NewMainMenu2: UIViewController {
                                                                                         }
                                                                                     }
                                                                                     sumObj = sumObj + Double(sumAll)!
+                                                                                    print(sumObj)
                                                                                     defaults.set(sumObj, forKey: "sumDebt")
                                                                                     defaults.synchronize()
                                                                                 }
