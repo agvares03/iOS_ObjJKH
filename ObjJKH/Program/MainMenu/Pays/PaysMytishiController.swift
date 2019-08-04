@@ -165,7 +165,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
 //        self.payedS()
 //        #elseif isStolitsa
 //        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
+        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat
         l = true
         #else
         self.payedS()
@@ -278,6 +278,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isUKParitetKhab
         shopCode = "255262"
         targetName = "УК Паритет Хабаровск"
+        #elseif isAFregat
+        shopCode = "260713"
+        targetName = "ТСЖ Фрегат"
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
@@ -428,7 +431,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
 //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
+            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
@@ -854,15 +857,18 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     })
                     //                }
                 }
-//                sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
-//                checkBox.append(true)
-//                osvc.append("Услуги ЖКУ")
-//                idOSV.append(0)
-//
-//                uslugaArr.append("Услуги ЖКУ")
-//                endArr.append(String(format:"%.2f", self.sum))
-//                idArr.append(0)
-//                identOSV.append(ident)
+                if (uslugaArr.count == 0) {
+                    sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
+                    checkBox.append(true)
+                    osvc.append("Услуги ЖКУ")
+                    idOSV.append(0)
+                    
+                    uslugaArr.append("Услуги ЖКУ")
+                    endArr.append(String(format:"%.2f", self.sum))
+                    idArr.append(0)
+                    identOSV.append(ident)
+                }
+                
                 DispatchQueue.main.async(execute: {
                     if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
                         self.servicePay.text = "Комиссия не взимается"
