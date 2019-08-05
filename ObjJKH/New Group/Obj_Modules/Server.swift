@@ -134,7 +134,9 @@ class Server {
     static let ADD_IDENT_POCKET    = "AddExternalIdentToAccount.ashx?"// Добавить лиц счет в аккаунт ЖКХ в кармане
     static let GET_IDENTS_ACC      = "GetAccountIdents.ashx?"        // Получить лиц. счета по аккаунту
     static let DEL_IDENT_ACC       = "DeleteIdentFromAccount.ashx?"  // Удалить лиц. счет из аккаунта
-    static let SET_EMAIL_ACC       = "SetAccountEmail.ashx?"         // Сохранить e-mail 
+    static let SET_EMAIL_ACC       = "SetAccountEmail.ashx?"         // Сохранить e-mail
+    
+    static let ADD_LS_SIMPLE       = "AddIdentToAccountSimple.ashx?";// Добавить лицевой счет - новая схема
     
     static let GET_ADDITIONAL_SERVICES = "GetAdditionalServices.ashx?" // Получить дополнительные услуги
 

@@ -17,20 +17,182 @@ class AddLSSimple: UIViewController {
     @IBAction func sendTech(_ sender: UIButton) {
         self.performSegue(withIdentifier: "support", sender: self)
     }
-    
+
+    @IBOutlet weak var indicatior: UIActivityIndicatorView!
+    @IBOutlet weak var edLS: UITextField!
     @IBOutlet weak var imgTech: UIImageView!
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     @IBOutlet weak var back: UIBarButtonItem!
+    @IBOutlet weak var separator: UILabel!
+    @IBOutlet weak var btnAddOutlet: UIButton!
+    
+    // Телефон, который регистрируется
+    var phone: String = ""
+    var response_add_ident: String?
+    var response_ident: String?
+    
+    @IBAction func btnAdd(_ sender: UIButton) {
+        
+        if (edLS.text == "") {
+            
+            let alert = UIAlertController(title: "Ошибка", message: "Укажите лицевой счет для подключения", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            
+            StartIndicator()
+            
+            // Добавление лицевого счета
+            var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_LS_SIMPLE
+            urlPath = urlPath + "phone=" + phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            urlPath = urlPath + "&ident=" + (edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+
+            let url: NSURL = NSURL(string: urlPath)!
+            let request = NSMutableURLRequest(url: url as URL)
+            request.httpMethod = "GET"
+            print(request)
+            let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                  completionHandler: {
+                                                    data, response, error in
+                                                    
+                                                    if error != nil {
+                                                        DispatchQueue.main.async(execute: {
+                                                            self.StopIndicator()
+                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                            UserDefaults.standard.synchronize()
+                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                self.performSegue(withIdentifier: "support", sender: self)
+                                                            }
+                                                            alert.addAction(cancelAction)
+                                                            alert.addAction(supportAction)
+                                                            self.present(alert, animated: true, completion: nil)
+                                                        })
+                                                        return
+                                                    }
+                                                    
+                                                    self.response_ident = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                    // print("responseString = \(String(describing: self.response_add_ident))")
+                                                    self.choice_ident()
+                                                    
+            })
+            task.resume()
+            
+        }
+        
+    }
+    
+    func choice_ident() {
+        if (self.response_ident?.contains("ok") == true) {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Проверьте правильность адреса", message: self.response_ident?.replacingOccurrences(of: "ok: ", with: ""), preferredStyle: .alert)
+                let addAction = UIAlertAction(title: "Добавить лицевой счет", style: .default, handler: { (_) -> Void in
+                    self.StartIndicator()
+                    // Добавление лицевого счета
+                    var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_LS_SIMPLE
+                    urlPath = urlPath + "phone=" + self.phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                    urlPath = urlPath + "&ident=" + (self.edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+                    urlPath = urlPath + "&doAdd=1"
+                    
+                    let url: NSURL = NSURL(string: urlPath)!
+                    let request = NSMutableURLRequest(url: url as URL)
+                    request.httpMethod = "GET"
+                    print(request)
+                    let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                          completionHandler: {
+                                                            data, response, error in
+                                                            
+                                                            if error != nil {
+                                                                DispatchQueue.main.async(execute: {
+                                                                    self.StopIndicator()
+                                                                    UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                                    UserDefaults.standard.synchronize()
+                                                                    let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                                    let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                                    let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                        self.performSegue(withIdentifier: "support", sender: self)
+                                                                    }
+                                                                    alert.addAction(cancelAction)
+                                                                    alert.addAction(supportAction)
+                                                                    self.present(alert, animated: true, completion: nil)
+                                                                })
+                                                                return
+                                                            }
+                                                            
+                                                            self.response_add_ident = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                            // print("responseString = \(String(describing: self.response_add_ident))")
+                                                            self.choice_add_ident()
+                                                            
+                    })
+                    task.resume()
+                    
+                })
+                alert.addAction(addAction)
+                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
+                }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: self.response_ident?.replacingOccurrences(of: "error: ", with: ""), preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    func choice_add_ident() {
+        if (self.response_add_ident?.contains("ok") == true) {
+                DispatchQueue.main.async(execute: {
+                    self.StopIndicator()
+                    let alert = UIAlertController(title: "Успешно", message: "Лицевой счет - " + (self.edLS.text)! + " привязан к аккаунту " + self.phone, preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                        
+                        let defaults = UserDefaults.standard
+                        defaults.set(self.phone, forKey: "login")
+                        defaults.set(true, forKey: "go_to_app")
+                        defaults.synchronize()
+                        
+                        // Перейдем на главную страницу со входом в приложение
+                        self.performSegue(withIdentifier: "go_to_app", sender: self)
+                        
+                    }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                })
+        } else {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: self.response_ident?.replacingOccurrences(of: "error: ", with: ""), preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let defaults = UserDefaults.standard
+        phone = defaults.string(forKey: "phone")!
+        
+        StopIndicator()
 
         back.tintColor = myColors.btnColor.uiColor()
-        
+        btnAddOutlet.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
-        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-//        imgTech.setImageColor(color: myColors.btnColor.uiColor())
+    supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        imgTech.setImageColor(color: myColors.btnColor.uiColor())
+        separator.backgroundColor = myColors.labelColor.uiColor()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,15 +202,16 @@ class AddLSSimple: UIViewController {
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func StartIndicator() {
+        self.btnAddOutlet.isHidden = true
+        self.indicatior.startAnimating()
+        self.indicatior.isHidden = false
     }
-    */
+    
+    func StopIndicator() {
+        self.btnAddOutlet.isHidden = false
+        self.indicatior.stopAnimating()
+        self.indicatior.isHidden = true
+    }
 
 }

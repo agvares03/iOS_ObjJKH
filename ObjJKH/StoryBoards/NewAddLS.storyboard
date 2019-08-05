@@ -13,7 +13,7 @@
         <!--Добавить лицевой счет-->
         <scene sceneID="nzi-CZ-wTO">
             <objects>
-                <viewController storyboardIdentifier="addLSSimple" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ebg-Me-bz3" customClass="AddLSSimple" customModule="ObjJKH" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addLSSimple" id="Ebg-Me-bz3" customClass="AddLSSimple" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mcu-PR-08c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не удалось добавить лицевой счет, " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvY-9Y-Fhl">
-                                        <rect key="frame" x="69.666666666666657" y="8" width="274.66666666666674" height="20"/>
+                                        <rect key="frame" x="69.666666666666686" y="8" width="275" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -54,12 +54,71 @@
                                     <constraint firstItem="PMa-sN-J6Z" firstAttribute="centerX" secondItem="j78-mo-Gyz" secondAttribute="centerX" id="qu8-oX-zKF"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите номер лицевого счета:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4d-aM-Gwq">
+                                <rect key="frame" x="20" y="85" width="374" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w9v-Pa-Y3l">
+                                <rect key="frame" x="20" y="110" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Rf3-Sg-e8f"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnB-5M-xHT">
+                                <rect key="frame" x="20" y="138" width="374" height="2"/>
+                                <color key="backgroundColor" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="Inr-NN-2TC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYG-YT-nJF">
+                                <rect key="frame" x="20" y="172" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1yN-9a-arD"/>
+                                </constraints>
+                                <state key="normal" title="ДОБАВИТЬ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnAdd:" destination="Ebg-Me-bz3" eventType="touchUpInside" id="ONV-oT-Paz"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dIz-tm-fRg">
+                                <rect key="frame" x="197" y="177" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dIz-tm-fRg" firstAttribute="centerY" secondItem="zYG-YT-nJF" secondAttribute="centerY" id="2ac-Nu-cqe"/>
                             <constraint firstItem="j78-mo-Gyz" firstAttribute="trailing" secondItem="u90-ti-kCV" secondAttribute="trailing" id="308-f9-qz1"/>
+                            <constraint firstItem="dIz-tm-fRg" firstAttribute="centerX" secondItem="zYG-YT-nJF" secondAttribute="centerX" id="7er-EH-x7W"/>
+                            <constraint firstItem="zYG-YT-nJF" firstAttribute="leading" secondItem="u90-ti-kCV" secondAttribute="leading" constant="20" id="9iL-04-tXv"/>
                             <constraint firstItem="j78-mo-Gyz" firstAttribute="bottom" secondItem="u90-ti-kCV" secondAttribute="bottom" id="BBv-5I-xV7"/>
+                            <constraint firstItem="jnB-5M-xHT" firstAttribute="trailing" secondItem="Mcu-PR-08c" secondAttribute="trailingMargin" id="GS5-ti-XSH"/>
+                            <constraint firstItem="w9v-Pa-Y3l" firstAttribute="top" secondItem="Y4d-aM-Gwq" secondAttribute="bottom" constant="8" id="P27-Eq-OKh"/>
                             <constraint firstItem="j78-mo-Gyz" firstAttribute="leading" secondItem="u90-ti-kCV" secondAttribute="leading" id="S99-o9-BFT"/>
+                            <constraint firstItem="w9v-Pa-Y3l" firstAttribute="leading" secondItem="u90-ti-kCV" secondAttribute="leading" constant="20" id="Szp-E7-Mp3"/>
+                            <constraint firstItem="Y4d-aM-Gwq" firstAttribute="trailing" secondItem="w9v-Pa-Y3l" secondAttribute="trailing" id="URz-l3-e0i"/>
+                            <constraint firstItem="Y4d-aM-Gwq" firstAttribute="top" secondItem="u90-ti-kCV" secondAttribute="top" constant="21" id="Ucl-Z9-BKs"/>
+                            <constraint firstItem="w9v-Pa-Y3l" firstAttribute="centerX" secondItem="u90-ti-kCV" secondAttribute="centerX" id="XaA-jM-88p"/>
+                            <constraint firstItem="jnB-5M-xHT" firstAttribute="bottom" secondItem="w9v-Pa-Y3l" secondAttribute="bottom" id="Zzp-TL-Xj8"/>
+                            <constraint firstItem="u90-ti-kCV" firstAttribute="trailing" secondItem="zYG-YT-nJF" secondAttribute="trailing" constant="20" id="fh1-0B-8KS"/>
+                            <constraint firstItem="zYG-YT-nJF" firstAttribute="top" secondItem="w9v-Pa-Y3l" secondAttribute="bottom" constant="32" id="nWu-LZ-P12"/>
+                            <constraint firstItem="u90-ti-kCV" firstAttribute="trailing" secondItem="w9v-Pa-Y3l" secondAttribute="trailing" constant="20" id="oTG-vC-Ocx"/>
+                            <constraint firstItem="Y4d-aM-Gwq" firstAttribute="leading" secondItem="w9v-Pa-Y3l" secondAttribute="leading" id="obp-Nq-XRJ"/>
+                            <constraint firstItem="jnB-5M-xHT" firstAttribute="leading" secondItem="Mcu-PR-08c" secondAttribute="leadingMargin" id="w7c-Xv-7qe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u90-ti-kCV"/>
                     </view>
@@ -72,13 +131,36 @@
                     </navigationItem>
                     <connections>
                         <outlet property="back" destination="P0F-MC-svF" id="6BZ-Os-Utg"/>
+                        <outlet property="btnAddOutlet" destination="zYG-YT-nJF" id="1EP-KI-BTg"/>
+                        <outlet property="edLS" destination="w9v-Pa-Y3l" id="h7Y-Q6-1t3"/>
+                        <outlet property="imgTech" destination="Xth-hi-1lE" id="2Hn-YK-pl2"/>
+                        <outlet property="indicatior" destination="dIz-tm-fRg" id="4qK-tg-lff"/>
+                        <outlet property="separator" destination="jnB-5M-xHT" id="g6G-ct-D6w"/>
                         <outlet property="support" destination="Xth-hi-1lE" id="qzg-cd-vRN"/>
                         <outlet property="supportBtn" destination="PMa-sN-J6Z" id="A9k-Re-3oG"/>
+                        <segue destination="6sE-1m-hEP" kind="show" identifier="support" id="diW-HJ-kML"/>
+                        <segue destination="0Zz-CE-XOw" kind="show" identifier="go_to_app" id="eti-lP-0no"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZ9-sr-xga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4807.2463768115949" y="129.61956521739131"/>
+        </scene>
+        <!--supportView-->
+        <scene sceneID="gBL-33-yom">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Support" referencedIdentifier="supportView" id="6sE-1m-hEP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VvZ-Xc-Wif" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5356" y="-65"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="O4G-LO-odc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="0Zz-CE-XOw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MN1-eX-FvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5396" y="1"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mUW-Rl-K6h">
