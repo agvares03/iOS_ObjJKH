@@ -76,6 +76,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_Paritet")
         #elseif isAFregat
         imageApp.image = UIImage(named: "Logo_Fregat")
+        #elseif isNewOpaliha
+        fon_top.image = UIImage(named: "Logo_NewOpaliha")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
