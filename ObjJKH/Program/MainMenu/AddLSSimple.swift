@@ -11,7 +11,7 @@ import UIKit
 class AddLSSimple: UIViewController {
 
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func sendTech(_ sender: UIButton) {
@@ -31,6 +31,13 @@ class AddLSSimple: UIViewController {
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
 //        imgTech.setImageColor(color: myColors.btnColor.uiColor())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserDefaults.standard.bool(forKey: "NewMain"){
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
     }
     
 
