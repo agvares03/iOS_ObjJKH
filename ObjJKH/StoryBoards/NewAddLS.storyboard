@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mnH-T2-dzb">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Добавить лицевой счет-->
+        <scene sceneID="nzi-CZ-wTO">
+            <objects>
+                <viewController storyboardIdentifier="addLSSimple" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ebg-Me-bz3" customClass="AddLSSimple" customModule="ObjJKH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mcu-PR-08c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j78-mo-Gyz">
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-sN-J6Z">
+                                        <rect key="frame" x="106" y="25" width="202" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="напишите в техподдержку"/>
+                                        <connections>
+                                            <action selector="sendTech:" destination="Ebg-Me-bz3" eventType="touchUpInside" id="la5-o6-ztz"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не удалось добавить лицевой счет, " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvY-9Y-Fhl">
+                                        <rect key="frame" x="69.666666666666657" y="8" width="274.66666666666674" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poll_Mup" translatesAutoresizingMaskIntoConstraints="NO" id="Xth-hi-1lE">
+                                        <rect key="frame" x="69.666666666666671" y="28" width="28.333333333333329" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28.5" id="b26-y6-G8W"/>
+                                            <constraint firstAttribute="height" constant="28" id="xGx-Ni-NdX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92220896480000003" green="0.92299562690000003" blue="0.92167395350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="PMa-sN-J6Z" firstAttribute="leading" secondItem="Xth-hi-1lE" secondAttribute="trailing" constant="8" id="3RU-ae-jxC"/>
+                                    <constraint firstItem="NvY-9Y-Fhl" firstAttribute="centerX" secondItem="j78-mo-Gyz" secondAttribute="centerX" id="Tpa-QU-CV0"/>
+                                    <constraint firstAttribute="height" constant="60" id="bYY-EG-OC4"/>
+                                    <constraint firstItem="Xth-hi-1lE" firstAttribute="top" secondItem="NvY-9Y-Fhl" secondAttribute="bottom" id="bsf-2f-G4D"/>
+                                    <constraint firstItem="PMa-sN-J6Z" firstAttribute="top" secondItem="j78-mo-Gyz" secondAttribute="top" constant="25" id="fI9-Oy-d51"/>
+                                    <constraint firstItem="NvY-9Y-Fhl" firstAttribute="top" secondItem="j78-mo-Gyz" secondAttribute="top" constant="8" id="ff3-S1-Ikt"/>
+                                    <constraint firstItem="PMa-sN-J6Z" firstAttribute="centerX" secondItem="j78-mo-Gyz" secondAttribute="centerX" id="qu8-oX-zKF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="j78-mo-Gyz" firstAttribute="trailing" secondItem="u90-ti-kCV" secondAttribute="trailing" id="308-f9-qz1"/>
+                            <constraint firstItem="j78-mo-Gyz" firstAttribute="bottom" secondItem="u90-ti-kCV" secondAttribute="bottom" id="BBv-5I-xV7"/>
+                            <constraint firstItem="j78-mo-Gyz" firstAttribute="leading" secondItem="u90-ti-kCV" secondAttribute="leading" id="S99-o9-BFT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="u90-ti-kCV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Добавить лицевой счет" id="PVB-co-6Sb">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="P0F-MC-svF">
+                            <connections>
+                                <action selector="backPressed:" destination="Ebg-Me-bz3" id="iar-Ul-T0o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sZ9-sr-xga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4807.2463768115949" y="129.61956521739131"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mUW-Rl-K6h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mnH-T2-dzb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="63S-G1-fPU">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ebg-Me-bz3" kind="relationship" relationship="rootViewController" id="chl-U2-7Pl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YSB-K9-ige" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3900.0000000000005" y="129.61956521739131"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="17" height="17"/>
+        <image name="poll_Mup" width="60" height="60"/>
+    </resources>
+</document>
