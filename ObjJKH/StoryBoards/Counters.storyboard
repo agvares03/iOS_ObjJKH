@@ -13,7 +13,7 @@
         <!--Показания приборов-->
         <scene sceneID="uwc-xg-v30">
             <objects>
-                <viewController id="hql-eH-RGM" customClass="CountersController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hql-eH-RGM" customClass="CountersController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dby-de-Qo4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,7 +122,7 @@
                                 <rect key="frame" x="0.0" y="232.5" width="375" height="394.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CounterCell" rowHeight="174" id="yh6-o1-Z4Q" customClass="CounterCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CounterCell" rowHeight="174" id="yh6-o1-Z4Q" customClass="CounterCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="174"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yh6-o1-Z4Q" id="3Jc-ag-0lR">
@@ -487,11 +487,20 @@
                         <segue destination="7ty-SY-RPj" kind="show" identifier="addLSMup" id="Tdu-Ia-3Zi"/>
                         <segue destination="DJm-na-37W" kind="show" identifier="addLS" id="HNY-tx-oZc"/>
                         <segue destination="7v8-Em-hdx" kind="show" identifier="addLSPocket" id="j1n-R7-hxv"/>
+                        <segue destination="AEc-Em-cKg" kind="show" identifier="addLSSimple" id="JJV-ZY-1Iz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etY-ol-xF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1266.4000000000001" y="146.17691154422789"/>
+        </scene>
+        <!--NewAddLS-->
+        <scene sceneID="FAg-Wd-8Sh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewAddLS" id="AEc-Em-cKg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fcq-cd-EQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895" y="12"/>
         </scene>
         <!--addLSMup-->
         <scene sceneID="h92-o3-g1e">

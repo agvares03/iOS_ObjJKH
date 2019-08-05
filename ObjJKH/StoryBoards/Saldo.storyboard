@@ -13,7 +13,7 @@
         <!--Ведомость-->
         <scene sceneID="cjY-Z1-k66">
             <objects>
-                <viewController storyboardIdentifier="Saldo" id="zKW-ao-E5V" customClass="SaldoController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Saldo" id="zKW-ao-E5V" customClass="SaldoController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lUE-GL-TjV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +112,7 @@
                                 <rect key="frame" x="0.0" y="179" width="375" height="383"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="149" id="T0d-2h-Rfa" customClass="SaldoCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="149" id="T0d-2h-Rfa" customClass="SaldoCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="149"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T0d-2h-Rfa" id="vWM-d4-eVO">
@@ -422,6 +422,7 @@
                         <segue destination="2lM-ci-Lhd" kind="show" identifier="addLS" id="YWJ-QU-YYN"/>
                         <segue destination="DM5-8b-5gY" kind="show" identifier="openURL" id="Wwy-Bw-3mb"/>
                         <segue destination="ehj-ME-Nja" kind="show" identifier="addLSPocket" id="CbS-XO-Lz8"/>
+                        <segue destination="pRj-8h-tV9" kind="show" identifier="addLSSimple" id="Ax3-I5-mvA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uz2-jd-bDI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,7 +474,7 @@
         <!--Open Saldo Controller-->
         <scene sceneID="Xkj-Wq-ht0">
             <objects>
-                <viewController storyboardIdentifier="openURL" id="DM5-8b-5gY" customClass="openSaldoController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="openURL" id="DM5-8b-5gY" customClass="openSaldoController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e5P-gr-ziE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -519,7 +520,7 @@
         <!--Ведомость-->
         <scene sceneID="hBi-oL-P64">
             <objects>
-                <viewController storyboardIdentifier="Saldo1" id="Zpo-cY-bSS" customClass="NewSaldoController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Saldo1" id="Zpo-cY-bSS" customClass="NewSaldoController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1yG-Qe-TPl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -529,7 +530,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeReceiptsCell1" rowHeight="63" id="01f-IR-0qY" customClass="HomeReceiptsCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeReceiptsCell1" rowHeight="63" id="01f-IR-0qY" customClass="HomeReceiptsCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="01f-IR-0qY" id="LPy-Nt-gsG">
@@ -672,11 +673,20 @@
                         <segue destination="ehj-ME-Nja" kind="show" identifier="addLSPocket" id="H6K-SY-aXK"/>
                         <segue destination="2lM-ci-Lhd" kind="show" identifier="addLS" id="yTi-o8-hVa"/>
                         <segue destination="w7B-jE-bXy" kind="show" identifier="addLSMup" id="Pqq-hs-tcf"/>
+                        <segue destination="pRj-8h-tV9" kind="show" identifier="addLSSimple" id="pip-jB-7fv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJY-Jb-PkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1208.8" y="-565.36731634182911"/>
+        </scene>
+        <!--NewAddLS-->
+        <scene sceneID="8MS-2g-hic">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewAddLS" id="pRj-8h-tV9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYf-uB-tbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792" y="-537"/>
         </scene>
         <!--AddLsPocket-->
         <scene sceneID="gON-WN-ylo">
@@ -684,7 +694,7 @@
                 <viewControllerPlaceholder storyboardName="AddLsPocket" id="ehj-ME-Nja" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOI-Gj-5Q0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1805" y="-431"/>
+            <point key="canvasLocation" x="1803" y="-434"/>
         </scene>
         <!--addLS-->
         <scene sceneID="To8-ZA-FfJ">
@@ -721,9 +731,10 @@
         <image name="spin.png" width="840" height="840"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yTi-o8-hVa"/>
-        <segue reference="H6K-SY-aXK"/>
-        <segue reference="Pqq-hs-tcf"/>
+        <segue reference="YWJ-QU-YYN"/>
+        <segue reference="CbS-XO-Lz8"/>
+        <segue reference="Ax3-I5-mvA"/>
+        <segue reference="s6Y-hz-IMY"/>
         <segue reference="0Ds-gQ-eM5"/>
         <segue reference="Z7T-ws-bjN"/>
     </inferredMetricsTieBreakers>

@@ -11,7 +11,7 @@ import UIKit
 class AddLSSimple: UIViewController {
 
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendTech(_ sender: UIButton) {
@@ -19,11 +19,18 @@ class AddLSSimple: UIViewController {
     }
     
     @IBOutlet weak var imgTech: UIImageView!
+    @IBOutlet weak var support: UIImageView!
+    @IBOutlet weak var supportBtn: UIButton!
+    @IBOutlet weak var back: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imgTech.setImageColor(color: myColors.btnColor.uiColor())
+        back.tintColor = myColors.btnColor.uiColor()
+        
+        support.setImageColor(color: myColors.btnColor.uiColor())
+        supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+//        imgTech.setImageColor(color: myColors.btnColor.uiColor())
     }
     
 

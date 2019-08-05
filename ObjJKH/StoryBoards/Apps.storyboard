@@ -13,7 +13,7 @@
         <!--Заявки-->
         <scene sceneID="qhH-q9-fWK">
             <objects>
-                <viewController storyboardIdentifier="Apps" id="60p-cV-5Uu" customClass="AppsController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Apps" id="60p-cV-5Uu" customClass="AppsController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vuI-SL-bHF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="473"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppCell" rowHeight="90" id="XJo-K7-Yyi" customClass="AppsCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppCell" rowHeight="90" id="XJo-K7-Yyi" customClass="AppsCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XJo-K7-Yyi" id="bAj-Zb-fQo">
@@ -80,7 +80,7 @@
                                             <outlet property="tema" destination="qyd-MF-Hhv" id="dV6-Mw-7EI"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppCellClose" rowHeight="90" id="Xrg-o2-Qph" customClass="AppsCellClose" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppCellClose" rowHeight="90" id="Xrg-o2-Qph" customClass="AppsCellClose" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="118" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xrg-o2-Qph" id="RQD-X4-W26">
@@ -343,6 +343,7 @@
                         <segue destination="drB-Jg-nF0" kind="show" identifier="new_add_app" id="fGf-1N-5Qa"/>
                         <segue destination="BCE-5o-WMX" kind="show" identifier="new_show_app" id="ScW-NP-Vv0"/>
                         <segue destination="BCE-5o-WMX" kind="show" identifier="new_show_app_close" id="lyo-Pm-PDl"/>
+                        <segue destination="ldy-S4-35h" kind="show" identifier="addLSSimple" id="rU1-Xi-wGh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKg-xP-qp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -352,7 +353,7 @@
         <!--Создание заявки-->
         <scene sceneID="bAD-87-9yg">
             <objects>
-                <tableViewController storyboardIdentifier="addAppUser" id="hjA-m1-HIp" customClass="AddAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addAppUser" id="hjA-m1-HIp" customClass="AddAppUser" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dWN-To-lmq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -532,7 +533,7 @@
         <!--Close App Alert-->
         <scene sceneID="kao-Vo-FBh">
             <objects>
-                <viewController storyboardIdentifier="close_alert" id="9zd-an-59f" customClass="CloseAppAlert" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="close_alert" id="9zd-an-59f" customClass="CloseAppAlert" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0m2-Oe-LC2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -552,7 +553,7 @@
                                         <color key="textColor" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEV-46-9MS" customClass="FloatRatingView" customModule="ChistDom" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEV-46-9MS" customClass="FloatRatingView" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="8" y="71" width="327" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -649,7 +650,7 @@
         <!--Title-->
         <scene sceneID="Xu9-47-DMS">
             <objects>
-                <viewController storyboardIdentifier="appCons" id="u5u-8K-6DU" customClass="AppCons" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appCons" id="u5u-8K-6DU" customClass="AppCons" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zEr-0d-gl4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -950,7 +951,7 @@
                                 <rect key="frame" x="0.0" y="209" width="375" height="349"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommCell" rowHeight="100" id="HP5-5k-f8T" customClass="CommCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommCell" rowHeight="100" id="HP5-5k-f8T" customClass="CommCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HP5-5k-f8T" id="RF8-V2-zJ1">
@@ -1006,7 +1007,7 @@
                                             <outlet property="text_comm" destination="6Ub-Kh-Rvc" id="fI8-ZT-JQV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommCellCons" rowHeight="100" id="wVa-yD-cim" customClass="CommCellCons" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommCellCons" rowHeight="100" id="wVa-yD-cim" customClass="CommCellCons" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wVa-yD-cim" id="fK3-ZH-526">
@@ -1267,7 +1268,7 @@
         <!--Title-->
         <scene sceneID="A7i-4c-b46">
             <objects>
-                <viewController storyboardIdentifier="appUser" id="bOu-DP-0Qr" customClass="AppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appUser" id="bOu-DP-0Qr" customClass="AppUser" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dah-YE-ujU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1276,7 +1277,7 @@
                                 <rect key="frame" x="0.0" y="209" width="375" height="281"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommCell" rowHeight="100" id="1qe-0C-Wp3" customClass="CommCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommCell" rowHeight="100" id="1qe-0C-Wp3" customClass="CommCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1qe-0C-Wp3" id="bgS-zA-c4A">
@@ -1332,7 +1333,7 @@
                                             <outlet property="text_comm" destination="P1a-O5-JeO" id="spb-Bq-pAf"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommCellCons" rowHeight="100" id="9jd-VS-avw" customClass="CommCellCons" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommCellCons" rowHeight="100" id="9jd-VS-avw" customClass="CommCellCons" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9jd-VS-avw" id="AqU-sx-JDA">
@@ -1762,7 +1763,7 @@
         <!--Files Controller-->
         <scene sceneID="sOD-V0-PVx">
             <objects>
-                <viewController id="PGF-QM-Hfs" customClass="FilesController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PGF-QM-Hfs" customClass="FilesController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7m6-OZ-NPD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1777,7 +1778,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilesImageCell" id="hDk-hR-Dcb" customClass="FilesImageCell" customModule="ChistDom" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilesImageCell" id="hDk-hR-Dcb" customClass="FilesImageCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1891,7 +1892,7 @@
         <!--Добавить заявку-->
         <scene sceneID="9GH-ET-Jy2">
             <objects>
-                <viewController storyboardIdentifier="addAppUserNew" id="2eO-4a-Qu3" customClass="NewAddAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addAppUserNew" id="2eO-4a-Qu3" customClass="NewAddAppUser" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="odg-Jl-Mgw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1949,7 +1950,7 @@
                                                         </constraints>
                                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="typeAddAppCell" rowHeight="30" id="IzE-LM-iqG" customClass="TypeAddAppsCell" customModule="ChistDom" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="typeAddAppCell" rowHeight="30" id="IzE-LM-iqG" customClass="TypeAddAppsCell" customModule="ADS_68" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="299" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IzE-LM-iqG" id="4x2-Qc-WdW">
@@ -2075,7 +2076,7 @@
                                                         </constraints>
                                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lsAddAppCell" rowHeight="30" id="6ty-AM-jLA" customClass="LsAddAppsCell" customModule="ChistDom" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lsAddAppCell" rowHeight="30" id="6ty-AM-jLA" customClass="LsAddAppsCell" customModule="ADS_68" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="299" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ty-AM-jLA" id="hwc-6z-Vnk">
@@ -2134,7 +2135,7 @@
                                                     <constraint firstItem="WZ8-ZC-Oek" firstAttribute="leading" secondItem="1J9-JE-5nW" secondAttribute="leading" id="zQy-ZY-FoB"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKh-jT-9Cs" customClass="DashedBorderView" customModule="ChistDom" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKh-jT-9Cs" customClass="DashedBorderView" customModule="ADS_68" customModuleProvider="target">
                                                 <rect key="frame" x="22" y="371" width="299" height="100"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addFile" translatesAutoresizingMaskIntoConstraints="NO" id="rqI-H3-qlb">
@@ -2179,7 +2180,7 @@
                                                     <constraint firstAttribute="height" constant="107" id="Can-JP-o9T"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileAddAppCell" rowHeight="33" id="Xoy-lc-9VT" customClass="FileAddAppsCell" customModule="ChistDom" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileAddAppCell" rowHeight="33" id="Xoy-lc-9VT" customClass="FileAddAppsCell" customModule="ADS_68" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="299" height="33"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xoy-lc-9VT" id="2n2-T7-8kB">
@@ -2331,7 +2332,7 @@
         <!--Создание заявки (конс.)-->
         <scene sceneID="nR8-uv-ifb">
             <objects>
-                <tableViewController storyboardIdentifier="addAppCons" id="pqo-rN-GPZ" customClass="AddAppCons" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addAppCons" id="pqo-rN-GPZ" customClass="AddAppCons" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RnR-G2-Ll6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2562,13 +2563,21 @@
             </objects>
             <point key="canvasLocation" x="2566" y="-877"/>
         </scene>
+        <!--NewAddLS-->
+        <scene sceneID="7ld-Go-kxC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewAddLS" id="ldy-S4-35h" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hep-8i-Tis" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1740" y="-440"/>
+        </scene>
         <!--AddLsPocket-->
         <scene sceneID="ygt-Yy-QZU">
             <objects>
                 <viewControllerPlaceholder storyboardName="AddLsPocket" id="vik-c3-FkK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fY3-9a-7UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1734" y="-382"/>
+            <point key="canvasLocation" x="1750" y="-387"/>
         </scene>
         <!--addLSMup-->
         <scene sceneID="bmY-lK-iqu">
@@ -2576,7 +2585,7 @@
                 <viewControllerPlaceholder storyboardName="MainMenu" referencedIdentifier="addLSMup" id="faK-qC-gzb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geE-Ne-BOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="-333"/>
+            <point key="canvasLocation" x="1738" y="-334"/>
         </scene>
         <!--addLS-->
         <scene sceneID="R8n-O4-cya">
@@ -2584,12 +2593,12 @@
                 <viewControllerPlaceholder storyboardName="MainMenu" referencedIdentifier="addLS" id="C4f-NX-JpH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N74-SZ-Kqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1707" y="-280"/>
+            <point key="canvasLocation" x="1717" y="-280"/>
         </scene>
         <!--Оплата-->
         <scene sceneID="BWT-Be-i8J">
             <objects>
-                <viewController id="s6j-2L-6Ly" customClass="Pay" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="s6j-2L-6Ly" customClass="Pay" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hYK-yE-PqU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2626,7 +2635,7 @@
         <!--Заявка № 1234-->
         <scene sceneID="efe-6g-ZjE">
             <objects>
-                <viewController storyboardIdentifier="appUserNew" id="35B-wL-CPX" customClass="NewAppUser" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appUserNew" id="35B-wL-CPX" customClass="NewAppUser" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hwF-L3-SQx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2699,7 +2708,7 @@
                                 <rect key="frame" x="0.0" y="209" width="375" height="356"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommFileCell" rowHeight="95" id="dr4-tt-4Yq" customClass="NewCommFileCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommFileCell" rowHeight="95" id="dr4-tt-4Yq" customClass="NewCommFileCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dr4-tt-4Yq" id="P5l-4A-MkM">
@@ -2781,7 +2790,7 @@
                                             <outlet property="widthImg" destination="Wvg-O3-6l7" id="LB9-Ds-WbY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommCell" rowHeight="95" id="EKS-XI-pzQ" customClass="NewCommCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommCell" rowHeight="95" id="EKS-XI-pzQ" customClass="NewCommCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="123" width="375" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EKS-XI-pzQ" id="pFm-Cb-741">
@@ -2873,7 +2882,7 @@
                                             <outlet property="view" destination="4kh-5U-k7o" id="Azp-QQ-A1V"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommCellCons" rowHeight="112" id="Jly-xW-UCg" customClass="NewCommCellCons" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommCellCons" rowHeight="112" id="Jly-xW-UCg" customClass="NewCommCellCons" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="218" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jly-xW-UCg" id="dFR-sw-Rdw">
@@ -2980,7 +2989,7 @@
                                             <outlet property="view" destination="e6a-qC-HYh" id="GjV-ui-GTi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommFileCellCons" rowHeight="117" id="peO-bP-AE5" customClass="NewCommFileCellCons" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommFileCellCons" rowHeight="117" id="peO-bP-AE5" customClass="NewCommFileCellCons" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="330" width="375" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="peO-bP-AE5" id="UgH-hm-wo1">
@@ -3387,7 +3396,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ScW-NP-Vv0"/>
-        <segue reference="zTB-mo-hC5"/>
+        <segue reference="pW3-Zd-2nm"/>
         <segue reference="tMO-ch-tff"/>
         <segue reference="M7G-ag-hjx"/>
         <segue reference="x4h-mP-Bcg"/>

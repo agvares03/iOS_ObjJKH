@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="110" width="375" height="351"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PayMupCell" rowHeight="55" id="h6D-Wz-ZOl" customClass="PayMupSaldoCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PayMupCell" rowHeight="55" id="h6D-Wz-ZOl" customClass="PayMupSaldoCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h6D-Wz-ZOl" id="koY-4h-tk2">
@@ -416,6 +416,7 @@
                         <segue destination="njB-ln-qaj" kind="show" identifier="support" id="9Sb-7t-H6a"/>
                         <segue destination="ZRD-fv-53i" kind="show" identifier="addLSPocket" id="vw0-Qq-kFC"/>
                         <segue destination="DK8-KB-BwK" kind="show" identifier="CostPay_New" id="6Ye-hE-x4R"/>
+                        <segue destination="gK5-m2-Tph" kind="show" identifier="addLSSimple" id="6s2-kU-0Jr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ost-fd-JKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,7 +434,7 @@
         <!--История платежей-->
         <scene sceneID="PJs-gE-PUN">
             <objects>
-                <viewController storyboardIdentifier="PayHistory" id="kxg-yF-izv" customClass="HistoryPayController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayHistory" id="kxg-yF-izv" customClass="HistoryPayController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DI9-yz-4bw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -442,7 +443,7 @@
                                 <rect key="frame" x="0.0" y="137" width="375" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryPayCell" id="UbS-zq-DZc" customClass="HistoryPayCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryPayCell" id="UbS-zq-DZc" customClass="HistoryPayCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UbS-zq-DZc" id="lQA-3e-sqK">
@@ -726,6 +727,14 @@
             </objects>
             <point key="canvasLocation" x="397.60000000000002" y="135.38230884557723"/>
         </scene>
+        <!--NewAddLS-->
+        <scene sceneID="tVv-XM-7ZU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewAddLS" id="gK5-m2-Tph" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EQp-UI-BGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2103" y="-141"/>
+        </scene>
         <!--addLSMup-->
         <scene sceneID="j5G-mR-q8b">
             <objects>
@@ -753,7 +762,7 @@
         <!--Мобильные платежи-->
         <scene sceneID="X6o-Db-anV">
             <objects>
-                <viewController id="F9L-Wo-nto" customClass="MobilePaysController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="F9L-Wo-nto" customClass="MobilePaysController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NbF-tf-rmK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -762,7 +771,7 @@
                                 <rect key="frame" x="0.0" y="59" width="375" height="608"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MobilePayCell" id="Vam-4y-2PN" customClass="MobilePayCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MobilePayCell" id="Vam-4y-2PN" customClass="MobilePayCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vam-4y-2PN" id="7lX-I8-e2O">
@@ -962,7 +971,7 @@
         <!--Оплата-->
         <scene sceneID="Bsv-Np-FaP">
             <objects>
-                <viewController id="DK8-KB-BwK" customClass="Pay" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DK8-KB-BwK" customClass="Pay" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hXI-TE-PZN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

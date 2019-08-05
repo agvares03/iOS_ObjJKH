@@ -13,7 +13,7 @@
         <!--Показания приборов-->
         <scene sceneID="L4q-LZ-Xsy">
             <objects>
-                <viewController storyboardIdentifier="Counters" id="ydz-rR-Nyk" customClass="MupCounterController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Counters" id="ydz-rR-Nyk" customClass="MupCounterController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wio-eB-1qy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="199.5" width="375" height="660.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MupCounterCell" rowHeight="556" id="pMl-oe-c33" customClass="MupCounterCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MupCounterCell" rowHeight="556" id="pMl-oe-c33" customClass="MupCounterCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="556"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pMl-oe-c33" id="QfI-Ze-YYv">
@@ -883,6 +883,7 @@
                         <segue destination="BvK-wk-1lS" kind="show" identifier="uniqCounters" id="Lur-5G-UqA"/>
                         <segue destination="Wwf-NL-cKm" kind="show" identifier="addCounters" id="j6v-6b-WYb"/>
                         <segue destination="zIy-1T-2OT" kind="show" identifier="addLSPocket" id="Kl7-96-3jc"/>
+                        <segue destination="g9d-F7-8eg" kind="show" identifier="addLSSimple" id="s1I-6v-oBW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6Z-u5-vcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -908,7 +909,7 @@
         <!--Показания приборов-->
         <scene sceneID="5XN-Wf-S8D">
             <objects>
-                <viewController id="BvK-wk-1lS" customClass="UniqCountersController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BvK-wk-1lS" customClass="UniqCountersController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jSZ-dh-a9H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -917,7 +918,7 @@
                                 <rect key="frame" x="0.0" y="198" width="375" height="469"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="uniqCounterCell" rowHeight="105" id="AhR-So-Cb8" customClass="UniqCounterCell" customModule="ChistDom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="uniqCounterCell" rowHeight="105" id="AhR-So-Cb8" customClass="UniqCounterCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AhR-So-Cb8" id="c6m-DW-dYa">
@@ -1136,6 +1137,14 @@
             </objects>
             <point key="canvasLocation" x="1843" y="121"/>
         </scene>
+        <!--NewAddLS-->
+        <scene sceneID="CeZ-AS-3JX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewAddLS" id="g9d-F7-8eg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xb6-Wm-dwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1844" y="181"/>
+        </scene>
         <!--supportView-->
         <scene sceneID="fNP-yY-hep">
             <objects>
@@ -1147,7 +1156,7 @@
         <!--Передать показания-->
         <scene sceneID="iaM-25-0Xx">
             <objects>
-                <viewController storyboardIdentifier="sendCount" id="Wwf-NL-cKm" customClass="AddCountersController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sendCount" id="Wwf-NL-cKm" customClass="AddCountersController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QJD-9l-F7U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2340,7 +2349,7 @@
         <image name="water" width="36" height="54"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nPm-iE-IOA"/>
+        <segue reference="j6v-6b-WYb"/>
         <segue reference="Set-AI-sEC"/>
     </inferredMetricsTieBreakers>
 </document>

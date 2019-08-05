@@ -13,7 +13,7 @@
         <!--Добавить лицевой счет-->
         <scene sceneID="nzi-CZ-wTO">
             <objects>
-                <viewController storyboardIdentifier="addLSSimple" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ebg-Me-bz3" customClass="AddLSSimple" customModule="ObjJKH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addLSSimple" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ebg-Me-bz3" customClass="AddLSSimple" customModule="ObjJKH" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mcu-PR-08c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,6 +70,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="back" destination="P0F-MC-svF" id="6BZ-Os-Utg"/>
+                        <outlet property="support" destination="Xth-hi-1lE" id="qzg-cd-vRN"/>
+                        <outlet property="supportBtn" destination="PMa-sN-J6Z" id="A9k-Re-3oG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZ9-sr-xga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

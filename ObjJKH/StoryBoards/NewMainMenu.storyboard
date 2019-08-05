@@ -3240,6 +3240,7 @@
                         <segue destination="dP9-TT-jre" kind="show" identifier="paysMytishi" id="VI0-A3-yGV"/>
                         <segue destination="b0H-FT-oKT" kind="show" identifier="support" id="kvO-2U-F0q"/>
                         <segue destination="H2R-w2-W77" kind="show" identifier="paysMytishi2" id="XoR-sX-4nR"/>
+                        <segue destination="IR4-2n-JMB" kind="show" identifier="addLSSimple" id="Fr0-NQ-StV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RS7-OR-Cdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3898,6 +3899,7 @@
                         <segue destination="yqO-oc-1b6" kind="show" identifier="addLSPocket" id="hxl-63-Ecr"/>
                         <segue destination="sgy-Dp-eJA" kind="show" identifier="go_to_app" id="qZW-oS-uRV"/>
                         <segue destination="H2R-w2-W77" kind="show" identifier="paysMytishi2" id="mCg-qu-B3k"/>
+                        <segue destination="IR4-2n-JMB" kind="show" identifier="addLSSimple" id="oI7-of-Hvs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Q5-26-bkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3942,7 +3944,7 @@
                 <viewControllerPlaceholder storyboardName="NewAddLS" id="IR4-2n-JMB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOg-ct-U0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="1555"/>
+            <point key="canvasLocation" x="1899" y="1176"/>
         </scene>
         <!--appCons-->
         <scene sceneID="ZUb-tb-smf">
@@ -4047,12 +4049,13 @@
         <image name="webCam_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mCg-qu-B3k"/>
+        <segue reference="XoR-sX-4nR"/>
         <segue reference="dzo-rQ-cnH"/>
+        <segue reference="Txi-5R-Pta"/>
         <segue reference="jYg-pB-5lL"/>
         <segue reference="2dh-Vt-jmR"/>
-        <segue reference="Pwj-1d-22M"/>
-        <segue reference="kVR-59-EJo"/>
+        <segue reference="VI0-A3-yGV"/>
+        <segue reference="KAh-TB-RwK"/>
         <segue reference="2f3-XE-7n6"/>
     </inferredMetricsTieBreakers>
 </document>
