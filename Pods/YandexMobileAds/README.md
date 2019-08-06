@@ -1,7 +1,7 @@
 # Yandex Advertising Network Mobile
 This package contains Yandex Advertising Network Mobile SDK and source code of samples of SDK usage.
 
-## [**Download**](https://storage.mds.yandex.net/get-ads-mobile-sdk/212922/YandexMobileAds-2.11.1-ios-f876f865-cebd-4e7c-988b-708d604316db.zip) latest SDK archive
+## [**Download**](https://storage.mds.yandex.net/get-ads-mobile-sdk/212922/YandexMobileAds-2.13.0-ios-28924bd3-62d2-436a-87ba-4987ae20ef94.zip) latest SDK archive
 
 ## Documentation
 Documentation could be found at the [official website][DOCUMENTATION]
@@ -14,30 +14,45 @@ EULA is available at [EULA website][LICENSE]
 
 2. Go to one of example projects:
 #### Objective C
-  * /Examples/ObjectiveC/BannerExample
-  * /Examples/ObjectiveC/GDPRExample
-  * /Examples/ObjectiveC/InterstitialExample
-  * /Examples/ObjectiveC/NativeExample
-  * /Examples/ObjectiveC/NativeTemplatesExample
-  * /Examples/ObjectiveC/NativeTemplatesTableViewExample
-  * /Examples/ObjectiveC/RewardedExample
-  * /Examples/ObjectiveC/VideoExample
-  * /Examples/ObjectiveC/AdMobBannerAdapterExample
-  * /Examples/ObjectiveC/AdMobRewardedAdapterExample
-  * /Examples/ObjectiveC/MoPubBannerAdapterExample
-  * /Examples/ObjectiveC/MoPubRewardedAdapterExample
-  * /Examples/ObjectiveC/AdFoxNativeExample
   * /Examples/ObjectiveC/AdFoxMediationBannerExample
   * /Examples/ObjectiveC/AdFoxMediationInterstitialExample
   * /Examples/ObjectiveC/AdFoxMediationNativeExample
   * /Examples/ObjectiveC/AdFoxMediationRewardedExample
+  * /Examples/ObjectiveC/AdFoxNativeExample
+  * /Examples/ObjectiveC/AdMobBannerAdapterExample
+  * /Examples/ObjectiveC/AdMobInterstitialAdapterExample
+  * /Examples/ObjectiveC/AdMobRewardedAdapterExample
+  * /Examples/ObjectiveC/BannerExample
+  * /Examples/ObjectiveC/GDPRExample
+  * /Examples/ObjectiveC/InterstitialExample
+  * /Examples/ObjectiveC/MoPubBannerAdapterExample
+  * /Examples/ObjectiveC/MoPubNativeAdaptersExample
+  * /Examples/ObjectiveC/MoPubRewardedAdapterExample
+  * /Examples/ObjectiveC/NativeExample
+  * /Examples/ObjectiveC/NativeTemplatesExample
+  * /Examples/ObjectiveC/NativeTemplatesTableViewExample
+  * /Examples/ObjectiveC/RewardedExample
+  * /Examples/ObjectiveC/VASTExample
   
 #### Swift
-  * /Examples/Swift/BannerExample
-  * /Examples/Swift/InterstitialExample
-  * /Examples/Swift/NativeTemplatesExample
-  * /Examples/Swift/RewardedExample
+  * /Examples/Swift/AdFoxMediationBannerExample
+  * /Examples/Swift/AdFoxMediationInterstitialExample
+  * /Examples/Swift/AdFoxMediationNativeExample
   * /Examples/Swift/AdFoxMediationRewardedExample
+  * /Examples/Swift/AdMobBannerAdapterExample
+  * /Examples/Swift/AdMobNativeAdapterExample
+  * /Examples/Swift/AdMobInterstitialAdapterExample
+  * /Examples/Swift/AdMobRewardedAdapterExample
+  * /Examples/Swift/BannerExample
+  * /Examples/Swift/GDPRExample
+  * /Examples/Swift/InterstitialExample
+  * /Examples/Swift/MoPubBannerAdapterExample
+  * /Examples/Swift/MoPubInterstitialAdapterExample
+  * /Examples/Swift/NativeExample
+  * /Examples/Swift/NativeTemplatesExample
+  * /Examples/Swift/NativeTemplatesTableViewExample
+  * /Examples/Swift/RewardedExample
+  * /Examples/Swift/VASTExample
 
 3. Install dependencies:
 ```pod install```
