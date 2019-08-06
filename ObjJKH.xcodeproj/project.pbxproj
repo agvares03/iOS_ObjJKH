@@ -5236,6 +5236,7 @@
 		302FA17F2256F15B006B7874 /* Tafgai copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tafgai copy-Info.plist"; sourceTree = "<group>"; };
 		302FA21C2256F1A8006B7874 /* Tafgai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tafgai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		302FA21D2256F1A9006B7874 /* MupRCMytishi copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MupRCMytishi copy-Info.plist"; sourceTree = "<group>"; };
+		30353FF722F94CFF00A3350F /* ElectroSbit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ElectroSbit-Bridging-Header.h"; sourceTree = "<group>"; };
 		3037D73022F6F7620083ED60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/UK_Paritet_Khab/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		303B3224228A7A9500C0AB90 /* Logo_Skyfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Skyfort.png; sourceTree = "<group>"; };
 		303EBCF9229B922900223A2B /* UK_Upravdom_Che.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Upravdom_Che.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6195,6 +6196,7 @@
 				1CA666B322AE8BA0005EE645 /* ReutKomfort-Bridging-Header.h */,
 				1C83D7B022DECE680006A8E2 /* StroimBud-Bridging-Header.h */,
 				1CEF47A122E02E3900DDD095 /* UK_Paritet_Khab-Bridging-Header.h */,
+				30353FF722F94CFF00A3350F /* ElectroSbit-Bridging-Header.h */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -14935,6 +14937,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.ElectroSbitSaratov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isElectroSbitSaratov Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Electrosbit-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -14959,6 +14962,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.ElectroSbitSaratov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isElectroSbitSaratov;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Electrosbit-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
