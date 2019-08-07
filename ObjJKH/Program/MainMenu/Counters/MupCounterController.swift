@@ -84,10 +84,11 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         self.performSegue(withIdentifier: "addLSMup", sender: self)
         #elseif isPocket
         self.performSegue(withIdentifier: "addLSPocket", sender: self)
-        #elseif isRodnikMUP
-        self.performSegue(withIdentifier: "addLSSimple", sender: self)
+//        #elseif isRodnikMUP
+//        self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #else
-        self.performSegue(withIdentifier: "addLS", sender: self)
+//        self.performSegue(withIdentifier: "addLS", sender: self)
+        self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #endif
     }
     

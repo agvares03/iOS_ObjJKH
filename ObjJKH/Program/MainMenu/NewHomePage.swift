@@ -184,10 +184,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.performSegue(withIdentifier: "addLS_Mup", sender: self)
         #elseif isPocket
         self.performSegue(withIdentifier: "addLSPocket", sender: self)
-        #elseif isRodnikMUP
-        self.performSegue(withIdentifier: "addLSSimple", sender: self)
+//        #elseif isRodnikMUP
+//        self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #else
-        self.performSegue(withIdentifier: "addLS", sender: self)
+//        self.performSegue(withIdentifier: "addLS", sender: self)
+        self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #endif
     }
     
@@ -429,6 +430,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_NewOpaliha")
         #elseif isPritomskoe
         fon_top.image = UIImage(named: "Logo_Pritomskoe")
+        #elseif isDJVladimir
+        fon_top.image = UIImage(named: "Logo_DJVladimir")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())

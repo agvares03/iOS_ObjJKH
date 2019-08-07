@@ -80,6 +80,8 @@ class SupportUpdate: UIViewController {
         fon_top.image = UIImage(named: "Logo_NewOpaliha")
         #elseif isPritomskoe
         fon_top.image = UIImage(named: "Logo_Pritomskoe")
+        #elseif isDJVladimir
+        fon_top.image = UIImage(named: "Logo_DJVladimir")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
