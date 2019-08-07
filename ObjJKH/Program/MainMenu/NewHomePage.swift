@@ -427,6 +427,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Fregat")
         #elseif isNewOpaliha
         fon_top.image = UIImage(named: "Logo_NewOpaliha")
+        #elseif isPritomskoe
+        fon_top.image = UIImage(named: "Logo_Pritomskoe")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
