@@ -785,7 +785,7 @@ target 'Pritomskoe' do
   
   use_frameworks!
   
-  # Pods for UK_Komfort
+  # Pods for Pritomskoe
   pod 'YandexMobileAds'
   pod 'YandexMobileMetrica', '3.6.0'
   pod 'Google-Mobile-Ads-SDK'
