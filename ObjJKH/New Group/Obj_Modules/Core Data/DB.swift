@@ -217,6 +217,9 @@ class DB: NSObject, XMLParserDelegate {
     var meterUniqueNum = ""
     var factoryNumber = ""
     var tariffNumber = ""
+    var autoValueGettingOnly = false
+    var recheckInterval = ""
+    var lastCheckDate = ""
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
 //        var k = 0
@@ -240,6 +243,17 @@ class DB: NSObject, XMLParserDelegate {
                 }else{
                     tariffNumber = "0"
                 }
+                if attributeDict["AutoValueGettingOnly"]! == "1"{
+                    autoValueGettingOnly = true
+                }else{
+                    autoValueGettingOnly = false
+                }
+                recheckInterval = attributeDict["RecheckInterval"]!
+                if attributeDict["LastCheckupDate"] != nil{
+                    lastCheckDate = attributeDict["LastCheckupDate"]!
+                }else{
+                    lastCheckDate = "0"
+                }
                 // Запишем показание прибора
             }
             if (elementName == "MeterValue"){
@@ -248,6 +262,9 @@ class DB: NSObject, XMLParserDelegate {
                 
                 let managedObject = Counters()
                 managedObject.id            = 1
+                managedObject.autoValueGettingOnly = autoValueGettingOnly
+                managedObject.lastCheckupDate = lastCheckDate
+                managedObject.recheckInterval = recheckInterval
                 managedObject.uniq_num      = meterUniqueNum
                 managedObject.owner         = factoryNumber
                 managedObject.num_month     = attributeDict["PeriodDate"]!

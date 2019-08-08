@@ -16,81 +16,95 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     var bannerView: YMANativeBannerView?
     var gadBannerView: GADBannerView!
     var request = GADRequest()
-
-    @IBOutlet weak var dateLbl: UILabel!
-    @IBOutlet weak var nameLbl: UILabel!
-    @IBOutlet weak var numberLbl: UILabel!
-    @IBOutlet weak var newCounters1: UITextField!
-    @IBOutlet weak var newCounters2: UITextField!
-    @IBOutlet weak var newCounters3: UITextField!
-    @IBOutlet weak var sendCount: UIButton!
-    @IBOutlet weak var cancelCount: UIButton!
-    @IBOutlet weak var backBtn: UIBarButtonItem!
-    @IBOutlet weak var imgCounter: UIImageView!
-    @IBOutlet weak var viewImgCounter: UIView!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var viewTop: NSLayoutConstraint!
-    @IBOutlet weak var tarif2Height: NSLayoutConstraint!
-    @IBOutlet weak var tarif3Height: NSLayoutConstraint!
-    @IBOutlet weak var tarif2View: UIView!
-    @IBOutlet weak var tarif3View: UIView!
-    @IBOutlet weak var tariffOne: UILabel!
-    @IBOutlet weak var tariffTwo: UILabel!
-    @IBOutlet weak var tariffThree: UILabel!
     
-    @IBOutlet weak var count11: UITextField!
-    @IBOutlet weak var count12: UITextField!
-    @IBOutlet weak var count13: UITextField!
-    @IBOutlet weak var count14: UITextField!
-    @IBOutlet weak var count15: UITextField!
-    @IBOutlet weak var count16: UITextField!
-    @IBOutlet weak var count17: UITextField!
-    @IBOutlet weak var count18: UITextField!
+    @IBOutlet weak var dateLbl:         UILabel!
+    @IBOutlet weak var nameLbl:         UILabel!
+    @IBOutlet weak var numberLbl:       UILabel!
+    @IBOutlet weak var newCounters1:    UITextField!
+    @IBOutlet weak var newCounters2:    UITextField!
+    @IBOutlet weak var newCounters3:    UITextField!
+    @IBOutlet weak var sendCount:       UIButton!
+    @IBOutlet weak var cancelCount:     UIButton!
+    @IBOutlet weak var autoSendLbl:     UILabel!
+    @IBOutlet weak var backBtn:         UIBarButtonItem!
+    @IBOutlet weak var imgCounter:      UIImageView!
+    @IBOutlet weak var viewImgCounter:  UIView!
+    @IBOutlet weak var indicator:       UIActivityIndicatorView!
+    @IBOutlet weak var viewTop:         NSLayoutConstraint!
+    @IBOutlet weak var tarif2Height:    NSLayoutConstraint!
+    @IBOutlet weak var tarif3Height:    NSLayoutConstraint!
+    @IBOutlet weak var tarif2View:      UIView!
+    @IBOutlet weak var tarif3View:      UIView!
+    @IBOutlet weak var tariffOne:       UILabel!
+    @IBOutlet weak var tariffTwo:       UILabel!
+    @IBOutlet weak var tariffThree:     UILabel!
+    @IBOutlet weak var interLbl:        UILabel!
     
-    @IBOutlet weak var count21: UITextField!
-    @IBOutlet weak var count22: UITextField!
-    @IBOutlet weak var count23: UITextField!
-    @IBOutlet weak var count24: UITextField!
-    @IBOutlet weak var count25: UITextField!
-    @IBOutlet weak var count26: UITextField!
-    @IBOutlet weak var count27: UITextField!
-    @IBOutlet weak var count28: UITextField!
+    @IBOutlet weak var count11:         UITextField!
+    @IBOutlet weak var count12:         UITextField!
+    @IBOutlet weak var count13:         UITextField!
+    @IBOutlet weak var count14:         UITextField!
+    @IBOutlet weak var count15:         UITextField!
+    @IBOutlet weak var count16:         UITextField!
+    @IBOutlet weak var count17:         UITextField!
+    @IBOutlet weak var count18:         UITextField!
+    @IBOutlet weak var teckLbl1:        UILabel!
     
-    @IBOutlet weak var count31: UITextField!
-    @IBOutlet weak var count32: UITextField!
-    @IBOutlet weak var count33: UITextField!
-    @IBOutlet weak var count34: UITextField!
-    @IBOutlet weak var count35: UITextField!
-    @IBOutlet weak var count36: UITextField!
-    @IBOutlet weak var count37: UITextField!
-    @IBOutlet weak var count38: UITextField!
+    @IBOutlet weak var count21:         UITextField!
+    @IBOutlet weak var count22:         UITextField!
+    @IBOutlet weak var count23:         UITextField!
+    @IBOutlet weak var count24:         UITextField!
+    @IBOutlet weak var count25:         UITextField!
+    @IBOutlet weak var count26:         UITextField!
+    @IBOutlet weak var count27:         UITextField!
+    @IBOutlet weak var count28:         UITextField!
+    @IBOutlet weak var teckLbl2:        UILabel!
     
-    @IBOutlet weak var pred11: UILabel!
-    @IBOutlet weak var pred12: UILabel!
-    @IBOutlet weak var pred13: UILabel!
-    @IBOutlet weak var pred14: UILabel!
-    @IBOutlet weak var pred15: UILabel!
-    @IBOutlet weak var pred16: UILabel!
-    @IBOutlet weak var pred17: UILabel!
-    @IBOutlet weak var pred18: UILabel!
+    @IBOutlet weak var count31:         UITextField!
+    @IBOutlet weak var count32:         UITextField!
+    @IBOutlet weak var count33:         UITextField!
+    @IBOutlet weak var count34:         UITextField!
+    @IBOutlet weak var count35:         UITextField!
+    @IBOutlet weak var count36:         UITextField!
+    @IBOutlet weak var count37:         UITextField!
+    @IBOutlet weak var count38:         UITextField!
+    @IBOutlet weak var teckLbl3:        UILabel!
     
-    @IBOutlet weak var pred21: UILabel!
-    @IBOutlet weak var pred22: UILabel!
-    @IBOutlet weak var pred23: UILabel!
-    @IBOutlet weak var pred24: UILabel!
-    @IBOutlet weak var pred25: UILabel!
-    @IBOutlet weak var pred26: UILabel!
-    @IBOutlet weak var pred27: UILabel!
-    @IBOutlet weak var pred28: UILabel!
+    @IBOutlet weak var pred11:          UILabel!
+    @IBOutlet weak var pred12:          UILabel!
+    @IBOutlet weak var pred13:          UILabel!
+    @IBOutlet weak var pred14:          UILabel!
+    @IBOutlet weak var pred15:          UILabel!
+    @IBOutlet weak var pred16:          UILabel!
+    @IBOutlet weak var pred17:          UILabel!
+    @IBOutlet weak var pred18:          UILabel!
+    @IBOutlet weak var predView1:       UIView!
+    @IBOutlet weak var pred1Height:     NSLayoutConstraint!
+    @IBOutlet weak var predLbl1:        UILabel!
     
-    @IBOutlet weak var pred31: UILabel!
-    @IBOutlet weak var pred32: UILabel!
-    @IBOutlet weak var pred33: UILabel!
-    @IBOutlet weak var pred34: UILabel!
-    @IBOutlet weak var pred35: UILabel!
-    @IBOutlet weak var pred36: UILabel!
-    @IBOutlet weak var pred37: UILabel!
-    @IBOutlet weak var pred38: UILabel!
+    @IBOutlet weak var pred21:          UILabel!
+    @IBOutlet weak var pred22:          UILabel!
+    @IBOutlet weak var pred23:          UILabel!
+    @IBOutlet weak var pred24:          UILabel!
+    @IBOutlet weak var pred25:          UILabel!
+    @IBOutlet weak var pred26:          UILabel!
+    @IBOutlet weak var pred27:          UILabel!
+    @IBOutlet weak var pred28:          UILabel!
+    @IBOutlet weak var predView2:       UIView!
+    @IBOutlet weak var pred2Height:     NSLayoutConstraint!
+    @IBOutlet weak var predLbl2:        UILabel!
+    
+    @IBOutlet weak var pred31:          UILabel!
+    @IBOutlet weak var pred32:          UILabel!
+    @IBOutlet weak var pred33:          UILabel!
+    @IBOutlet weak var pred34:          UILabel!
+    @IBOutlet weak var pred35:          UILabel!
+    @IBOutlet weak var pred36:          UILabel!
+    @IBOutlet weak var pred37:          UILabel!
+    @IBOutlet weak var pred38:          UILabel!
+    @IBOutlet weak var predView3:       UIView!
+    @IBOutlet weak var pred3Height:     NSLayoutConstraint!
+    @IBOutlet weak var predLbl3:        UILabel!
     
     
     @IBOutlet weak var support: UIImageView!
@@ -127,114 +141,114 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             self.present(alert, animated: true, completion: nil)
             return
         }else{
-                if tariffNumber == 0 || tariffNumber == 1{
-                    for _ in 1...count1.count{
-                        if count1.first == "0"{
-                            count1.removeFirst()
-                        }
+            if tariffNumber == 0 || tariffNumber == 1{
+                for _ in 1...count1.count{
+                    if count1.first == "0"{
+                        count1.removeFirst()
                     }
-                    if count1.replacingOccurrences(of: ".", with: ",").first == ","{
-                        count1 = "0" + count1
-                    }
-                    if count1.replacingOccurrences(of: ".", with: ",").last == ","{
-                        count1.removeLast()
-                    }
-                    if count1 == "0"{
-                        let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
-                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                        }
-                        alert.addAction(cancelAction)
-                        self.present(alert, animated: true, completion: nil)
-                        return
-                    }
-                    //            print(count.replacingOccurrences(of: ".", with: ","))
-                    self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: metrId, count1: count1.replacingOccurrences(of: ".", with: ","), count2: "", count3: "")
-                }else if tariffNumber == 2{
-                    for _ in 1...count1.count{
-                        if count1.first == "0"{
-                            count1.removeFirst()
-                        }
-                    }
-                    for _ in 1...count2.count{
-                        if count2.first == "0"{
-                            count2.removeFirst()
-                        }
-                    }
-                    if count1.replacingOccurrences(of: ".", with: ",").first == ","{
-                        count1 = "0" + count1
-                    }
-                    if count1.replacingOccurrences(of: ".", with: ",").last == ","{
-                        count1.removeLast()
-                    }
-                    if count2.replacingOccurrences(of: ".", with: ",").first == ","{
-                        count2 = "0" + count2
-                    }
-                    if count2.replacingOccurrences(of: ".", with: ",").last == ","{
-                        count2.removeLast()
-                    }
-                    if count1 == "0" || count2 == "0"{
-                        let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
-                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                        }
-                        alert.addAction(cancelAction)
-                        self.present(alert, animated: true, completion: nil)
-                        return
-                    }
-                    //            print(count.replacingOccurrences(of: ".", with: ","))
-                    self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: metrId, count1: count1.replacingOccurrences(of: ".", with: ","), count2: count2.replacingOccurrences(of: ".", with: ","), count3: "")
-                }else if tariffNumber == 3{
-                    for _ in 1...count1.count{
-                        if count1.first == "0"{
-                            count1.removeFirst()
-                        }
-                    }
-                    for _ in 1...count2.count{
-                        if count2.first == "0"{
-                            count2.removeFirst()
-                        }
-                    }
-                    for _ in 1...count3.count{
-                        if count3.first == "0"{
-                            count3.removeFirst()
-                        }
-                    }
-                    if count1.replacingOccurrences(of: ".", with: ",").first == ","{
-                        count1 = "0" + count1
-                    }
-                    if count1.replacingOccurrences(of: ".", with: ",").last == ","{
-                        count1.removeLast()
-                    }
-                    if count2.replacingOccurrences(of: ".", with: ",").first == ","{
-                        count2 = "0" + count2
-                    }
-                    if count2.replacingOccurrences(of: ".", with: ",").last == ","{
-                        count2.removeLast()
-                    }
-                    if count3.replacingOccurrences(of: ".", with: ",").first == ","{
-                        count3 = "0" + count3
-                    }
-                    if count3.replacingOccurrences(of: ".", with: ",").last == ","{
-                        count3.removeLast()
-                    }
-                    if count1 == "0" || count2 == "0" || count3 == "0"{
-                        let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
-                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                        }
-                        alert.addAction(cancelAction)
-                        self.present(alert, animated: true, completion: nil)
-                        return
-                    }
-                    //            print(count.replacingOccurrences(of: ".", with: ","))
-                    self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: metrId, count1: count1.replacingOccurrences(of: ".", with: ","), count2: count2.replacingOccurrences(of: ".", with: ","), count3: count3.replacingOccurrences(of: ".", with: ","))
                 }
+                if count1.replacingOccurrences(of: ".", with: ",").first == ","{
+                    count1 = "0" + count1
+                }
+                if count1.replacingOccurrences(of: ".", with: ",").last == ","{
+                    count1.removeLast()
+                }
+                if count1 == "0"{
+                    let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                //            print(count.replacingOccurrences(of: ".", with: ","))
+                self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: metrId, count1: count1.replacingOccurrences(of: ".", with: ","), count2: "", count3: "")
+            }else if tariffNumber == 2{
+                for _ in 1...count1.count{
+                    if count1.first == "0"{
+                        count1.removeFirst()
+                    }
+                }
+                for _ in 1...count2.count{
+                    if count2.first == "0"{
+                        count2.removeFirst()
+                    }
+                }
+                if count1.replacingOccurrences(of: ".", with: ",").first == ","{
+                    count1 = "0" + count1
+                }
+                if count1.replacingOccurrences(of: ".", with: ",").last == ","{
+                    count1.removeLast()
+                }
+                if count2.replacingOccurrences(of: ".", with: ",").first == ","{
+                    count2 = "0" + count2
+                }
+                if count2.replacingOccurrences(of: ".", with: ",").last == ","{
+                    count2.removeLast()
+                }
+                if count1 == "0" || count2 == "0"{
+                    let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                //            print(count.replacingOccurrences(of: ".", with: ","))
+                self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: metrId, count1: count1.replacingOccurrences(of: ".", with: ","), count2: count2.replacingOccurrences(of: ".", with: ","), count3: "")
+            }else if tariffNumber == 3{
+                for _ in 1...count1.count{
+                    if count1.first == "0"{
+                        count1.removeFirst()
+                    }
+                }
+                for _ in 1...count2.count{
+                    if count2.first == "0"{
+                        count2.removeFirst()
+                    }
+                }
+                for _ in 1...count3.count{
+                    if count3.first == "0"{
+                        count3.removeFirst()
+                    }
+                }
+                if count1.replacingOccurrences(of: ".", with: ",").first == ","{
+                    count1 = "0" + count1
+                }
+                if count1.replacingOccurrences(of: ".", with: ",").last == ","{
+                    count1.removeLast()
+                }
+                if count2.replacingOccurrences(of: ".", with: ",").first == ","{
+                    count2 = "0" + count2
+                }
+                if count2.replacingOccurrences(of: ".", with: ",").last == ","{
+                    count2.removeLast()
+                }
+                if count3.replacingOccurrences(of: ".", with: ",").first == ","{
+                    count3 = "0" + count3
+                }
+                if count3.replacingOccurrences(of: ".", with: ",").last == ","{
+                    count3.removeLast()
+                }
+                if count1 == "0" || count2 == "0" || count3 == "0"{
+                    let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                //            print(count.replacingOccurrences(of: ".", with: ","))
+                self.send_count(edLogin: edLogin, edPass: edPass, uniq_num: metrId, count1: count1.replacingOccurrences(of: ".", with: ","), count2: count2.replacingOccurrences(of: ".", with: ","), count3: count3.replacingOccurrences(of: ".", with: ","))
+            }
         }
-//        else{
-//            let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
-//            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-//            }
-//            alert.addAction(cancelAction)
-//            self.present(alert, animated: true, completion: nil)
-//        }
+        //        else{
+        //            let alert = UIAlertController(title: "Ошибка", message: "Введите показания", preferredStyle: .alert)
+        //            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+        //            }
+        //            alert.addAction(cancelAction)
+        //            self.present(alert, animated: true, completion: nil)
+        //        }
     }
     
     var edLogin = ""
@@ -247,6 +261,9 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     private var count3:[UITextField] = []
     private var pred3:[UILabel] = []
     
+    public var lastCheckDate = ""
+    public var autoSend = false
+    public var recheckInter = ""
     public var metrId = ""
     public var counterName = ""
     public var counterNumber = ""
@@ -333,48 +350,146 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         dateFormatter.dateFormat = resultDay < 10 ? "d MMMM yyyy" : "dd MMMM yyyy"
         let currentDate = dateFormatter.string(from: date)
         dateLbl.text = "Показания на \(currentDate) г."
+        if lastCheckDate != "" && lastCheckDate != "0"{
+            dateLbl.text = "Последняя проверка \(lastCheckDate) г."
+        }
         nameLbl.text = counterName
         numberLbl.text = counterNumber + ", л/сч " + ident
-        var predV1 = predValue1.replacingOccurrences(of: ".", with: ",")
-        if predV1.count < 9{
-            for _ in predV1.count ... 8{
-                predV1 = "0" + predV1
+        
+        if autoSend{
+            var predV1 = predValue1.replacingOccurrences(of: ".", with: ",")
+            if predV1.count < 9{
+                for _ in predV1.count ... 8{
+                    predV1 = "0" + predV1
+                }
             }
-        }
-        pred1.forEach{
-            if predV1.first == ","{
+            count1.forEach{
+                if predV1.first == ","{
+                    predV1.removeFirst()
+                }
+                $0.text = String(predV1.first!)
                 predV1.removeFirst()
             }
-            $0.text = String(predV1.first!)
-            predV1.removeFirst()
-        }
-        
-        var predV2 = predValue2.replacingOccurrences(of: ".", with: ",")
-        if predV2.count < 9{
-            for _ in predV2.count ... 8{
-                predV2 = "0" + predV2
+            var k = count1[0].text
+            count1[0].text = count1[4].text
+            count1[4].text = k
+            k = count1[1].text
+            count1[1].text = count1[3].text
+            count1[3].text = k
+            var predV2 = predValue2.replacingOccurrences(of: ".", with: ",")
+            if predV2.count < 9{
+                for _ in predV2.count ... 8{
+                    predV2 = "0" + predV2
+                }
             }
-        }
-        pred2.forEach{
-            if predV2.first == ","{
+            count2.forEach{
+                if predV2.first == ","{
+                    predV2.removeFirst()
+                }
+                $0.text = String(predV2.first!)
                 predV2.removeFirst()
             }
-            $0.text = String(predV2.first!)
-            predV2.removeFirst()
-        }
-        
-        var predV3 = predValue3.replacingOccurrences(of: ".", with: ",")
-        if predV3.count < 9{
-            for _ in predV3.count ... 8{
-                predV3 = "0" + predV3
+            k = count2[0].text
+            count2[0].text = count2[4].text
+            count2[4].text = k
+            k = count2[1].text
+            count2[1].text = count2[3].text
+            count2[3].text = k
+            var predV3 = predValue3.replacingOccurrences(of: ".", with: ",")
+            if predV3.count < 9{
+                for _ in predV3.count ... 8{
+                    predV3 = "0" + predV3
+                }
             }
-        }
-        pred3.forEach{
-            if predV3.first == ","{
+            count3.forEach{
+                if predV3.first == ","{
+                    predV3.removeFirst()
+                }
+                $0.text = String(predV3.first!)
                 predV3.removeFirst()
             }
-            $0.text = String(predV3.first!)
-            predV3.removeFirst()
+            k = count3[0].text
+            count3[0].text = count3[4].text
+            count3[4].text = k
+            k = count3[1].text
+            count3[1].text = count3[3].text
+            count3[3].text = k
+            teckLbl1.text = "Текущие показания"
+            teckLbl2.text = "Текущие показания"
+            teckLbl3.text = "Текущие показания"
+            autoSendLbl.isHidden = false
+            sendCount.isHidden = true
+            cancelCount.isHidden = true
+            predView1.isHidden = true
+            predView2.isHidden = true
+            predView3.isHidden = true
+            pred1Height.constant = 0
+            pred2Height.constant = 0
+            pred3Height.constant = 0
+            predLbl1.isHidden = true
+            predLbl2.isHidden = true
+            predLbl3.isHidden = true
+            newCounters1.isUserInteractionEnabled = false
+            newCounters2.isUserInteractionEnabled = false
+            newCounters3.isUserInteractionEnabled = false
+        }else{
+            var predV1 = predValue1.replacingOccurrences(of: ".", with: ",")
+            if predV1.count < 9{
+                for _ in predV1.count ... 8{
+                    predV1 = "0" + predV1
+                }
+            }
+            pred1.forEach{
+                if predV1.first == ","{
+                    predV1.removeFirst()
+                }
+                $0.text = String(predV1.first!)
+                predV1.removeFirst()
+            }
+            
+            var predV2 = predValue2.replacingOccurrences(of: ".", with: ",")
+            if predV2.count < 9{
+                for _ in predV2.count ... 8{
+                    predV2 = "0" + predV2
+                }
+            }
+            pred2.forEach{
+                if predV2.first == ","{
+                    predV2.removeFirst()
+                }
+                $0.text = String(predV2.first!)
+                predV2.removeFirst()
+            }
+            
+            var predV3 = predValue3.replacingOccurrences(of: ".", with: ",")
+            if predV3.count < 9{
+                for _ in predV3.count ... 8{
+                    predV3 = "0" + predV3
+                }
+            }
+            pred3.forEach{
+                if predV3.first == ","{
+                    predV3.removeFirst()
+                }
+                $0.text = String(predV3.first!)
+                predV3.removeFirst()
+            }
+            autoSendLbl.isHidden = true
+            sendCount.isHidden = false
+            cancelCount.isHidden = false
+            predView1.isHidden = false
+            predView2.isHidden = false
+            predView3.isHidden = false
+            pred1Height.constant = 30
+            pred2Height.constant = 30
+            pred3Height.constant = 30
+        }
+        if recheckInter != "" && recheckInter != "0"{
+            interLbl.isHidden = false
+            interLbl.text = "Межпроверочный интервал \(recheckInter) \(getInterYear(str: recheckInter))"
+        }else{
+            interLbl.isHidden = true
+            interLbl.text = ""
         }
         imgCounter.image = UIImage(named: "water")
         if (nameLbl.text!.lowercased().range(of: "гвс") != nil) || (nameLbl.text!.lowercased().range(of: "ф/в") != nil){
@@ -406,6 +521,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         tariffOne.textColor = myColors.btnColor.uiColor()
         tariffTwo.textColor = myColors.btnColor.uiColor()
         tariffThree.textColor = myColors.btnColor.uiColor()
+        autoSendLbl.textColor = myColors.btnColor.uiColor()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         self.view.isUserInteractionEnabled = true
@@ -427,11 +543,23 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                 gadBannerView.adUnitID = defaults.string(forKey: "adsCode")
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
-//                gadBannerView.delegate = self
+                //                gadBannerView.delegate = self
                 gadBannerView.load(request)
             }
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func getInterYear(str: String) -> String{
+        if str == "11" || str == "12" || str == "13" || str == "14"{
+            return "лет"
+        }else if str.last == "1"{
+            return "год"
+        }else if str.last == "2" || str.last == "3" || str.last == "4"{
+            return "года"
+        }else{
+            return "лет"
+        }
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView){
@@ -547,18 +675,18 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                 viewTop.constant = 0
             }
         }
-//        if self.view.frame.size.height <= 568{
-//            sendBtnTop.constant = 7
-//            cancelBtnTop.constant = 7
-//        }
+        //        if self.view.frame.size.height <= 568{
+        //            sendBtnTop.constant = 7
+        //            cancelBtnTop.constant = 7
+        //        }
     }
     // И вниз при исчезновении
     @objc func keyboardWillHide(notification: NSNotification?) {
         viewTop.constant = 0
-//        if self.view.frame.size.height <= 568{
-//            sendBtnTop.constant = 40
-//            cancelBtnTop.constant = 40
-//        }
+        //        if self.view.frame.size.height <= 568{
+        //            sendBtnTop.constant = 40
+        //            cancelBtnTop.constant = 40
+        //        }
     }
     
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -566,61 +694,61 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     }
     
     func send_count(edLogin: String, edPass: String, uniq_num: String, count1: String, count2: String, count3: String) {
-            StartIndicator()
-            
-            let strNumber: String = uniq_num
-            #if isPocket
-            var urlPath = Server.SERVER + "AddMeterValueEverydayMode.ashx?"
-                + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&val=" + count1.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            #else
-            var urlPath = Server.SERVER + "AddMeterValueEverydayMode.ashx?"
-                + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&val=" + count1.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-                + "&ident=" + self.ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            #endif
-            if tariffNumber == 2{
-                urlPath = urlPath + "&valT2=" + count2.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            }else if tariffNumber == 3{
-                urlPath = urlPath + "&valT2=" + count2.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&valT3=" + count3.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            }
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            print(request)
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        DispatchQueue.main.async(execute: {
-                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
-                                                            UserDefaults.standard.synchronize()
-                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
-                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                                                                self.performSegue(withIdentifier: "support", sender: self)
-                                                            }
-                                                            alert.addAction(cancelAction)
-                                                            alert.addAction(supportAction)
-                                                            self.present(alert, animated: true, completion: nil)
-                                                        })
-                                                        return
-                                                    }
-                                                    
-                                                    self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    print("responseString = \(self.responseString)")
-                                                    
-                                                    self.choice()
-                                                    
-            })
-            
-            task.resume()
+        StartIndicator()
+        
+        let strNumber: String = uniq_num
+        #if isPocket
+        var urlPath = Server.SERVER + "AddMeterValueEverydayMode.ashx?"
+            + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&val=" + count1.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        #else
+        var urlPath = Server.SERVER + "AddMeterValueEverydayMode.ashx?"
+            + "login=" + edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&pwd=" + edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&meterID=" + strNumber.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&val=" + count1.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            + "&ident=" + self.ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        #endif
+        if tariffNumber == 2{
+            urlPath = urlPath + "&valT2=" + count2.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        }else if tariffNumber == 3{
+            urlPath = urlPath + "&valT2=" + count2.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&valT3=" + count3.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        }
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(self.responseString)")
+                                                
+                                                self.choice()
+                                                
+        })
+        
+        task.resume()
     }
     
     func choice() {
@@ -796,7 +924,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             }
         }
     }
-
+    
     func StartIndicator(){
         self.sendCount.isHidden = true
         self.cancelCount.isHidden = true

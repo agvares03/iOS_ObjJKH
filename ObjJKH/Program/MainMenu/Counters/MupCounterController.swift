@@ -14,7 +14,7 @@ import StoreKit
 
 protocol CountersCellDelegate: class {
     func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String)
-//    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String)
+    //    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String)
 }
 
 class MupCounterController:UIViewController, DropperDelegate, CountersCellDelegate, UITableViewDelegate, UITableViewDataSource, XMLParserDelegate {
@@ -72,11 +72,11 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-//        if UserDefaults.standard.bool(forKey: "NewMain"){
-            navigationController?.popViewController(animated: true)
-//        }else{
-//            navigationController?.dismiss(animated: true, completion: nil)
-//        }
+        //        if UserDefaults.standard.bool(forKey: "NewMain"){
+        navigationController?.popViewController(animated: true)
+        //        }else{
+        //            navigationController?.dismiss(animated: true, completion: nil)
+        //        }
     }
     
     @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
@@ -84,10 +84,10 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         self.performSegue(withIdentifier: "addLSMup", sender: self)
         #elseif isPocket
         self.performSegue(withIdentifier: "addLSPocket", sender: self)
-//        #elseif isRodnikMUP
-//        self.performSegue(withIdentifier: "addLSSimple", sender: self)
+        //        #elseif isRodnikMUP
+        //        self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #else
-//        self.performSegue(withIdentifier: "addLS", sender: self)
+        //        self.performSegue(withIdentifier: "addLS", sender: self)
         self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #endif
     }
@@ -196,9 +196,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         tableCounters.dataSource = self
         monthLabel.text = get_name_month(number_month: iterMonth) + " " + iterYear
         StopIndicator()
-//        DB().del_db(table_name: "Counters")
-//        // Получим данные в базу данных
-//        parse_Countrers(login: edLogin, pass: edPass)
+        //        DB().del_db(table_name: "Counters")
+        //        // Получим данные в базу данных
+        //        parse_Countrers(login: edLogin, pass: edPass)
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
@@ -280,6 +280,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var errorTextTwoArr  :[String] = []
     var errorTextThreeArr:[String] = []
     var tariffArr        :[String] = []
+    var autoValueArr     :[Bool]   = []
+    var recheckInterArr  :[String] = []
+    var lastCheckArr     :[String] = []
     
     func getData(ident: String){
         let ident = "Все"
@@ -308,6 +311,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         errorTextOneArr.removeAll()
         errorTextTwoArr.removeAll()
         errorTextThreeArr.removeAll()
+        autoValueArr.removeAll()
+        recheckInterArr.removeAll()
+        lastCheckArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.currYear))
         do {
@@ -337,6 +343,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             var unit_name = ""
             var sended = true
             var identk = ""
+            var autoSend = false
+            var recheckInter = ""
+            var lastCheck = ""
             var i = 0
             for result in results {
                 let object = result as! NSManagedObject
@@ -357,6 +366,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             sended = (object.value(forKey: "sended") as! Bool)
                             sendOne = (object.value(forKey: "sendError") as! Bool)
                             errorOne = (object.value(forKey: "sendErrorText") as! String)
+                            autoSend = (object.value(forKey: "autoValueGettingOnly") as! Bool)
+                            recheckInter = (object.value(forKey: "recheckInterval") as! String)
+                            lastCheck = (object.value(forKey: "lastCheckupDate") as! String)
                             i = 1
                         }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateTwo = (object.value(forKey: "num_month") as! String)
@@ -385,6 +397,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
                             tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                             ownerArr.append(object.value(forKey: "owner") as! String)
+                            autoValueArr.append(object.value(forKey: "autoValueGettingOnly") as! Bool)
+                            recheckInterArr.append(object.value(forKey: "recheckInterval") as! String)
+                            lastCheckArr.append(object.value(forKey: "lastCheckupDate") as! String)
                             predArr.append(valueOne)
                             teckArr.append(valueTwo)
                             diffArr.append(valueThree)
@@ -405,6 +420,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             errorTextOneArr.append(errorOne)
                             errorTextTwoArr.append(errorTwo)
                             errorTextThreeArr.append(errorThree)
+                            
                             uniq_num = ""
                             tariffNumber = ""
                             dateOne = ""
@@ -426,6 +442,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             sendOne = false
                             sendTwo = false
                             sendThree = false
+                            autoSend = false
+                            recheckInter = ""
+                            lastCheck = ""
                             errorOne = ""
                             errorTwo = ""
                             errorThree = ""
@@ -458,6 +477,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             errorTextOneArr.append(errorOne)
                             errorTextTwoArr.append(errorTwo)
                             errorTextThreeArr.append(errorThree)
+                            autoValueArr.append(autoSend)
+                            recheckInterArr.append(recheckInter)
+                            lastCheckArr.append(lastCheck)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
@@ -472,6 +494,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             sended = (object.value(forKey: "sended") as! Bool)
                             sendOne = (object.value(forKey: "sendError") as! Bool)
                             errorOne = (object.value(forKey: "sendErrorText") as! String)
+                            autoSend = (object.value(forKey: "autoValueGettingOnly") as! Bool)
+                            recheckInter = (object.value(forKey: "recheckInterval") as! String)
+                            lastCheck = (object.value(forKey: "lastCheckupDate") as! String)
                             
                             dateTwo = ""
                             valueTwo = 0.00
@@ -503,6 +528,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         sended = (object.value(forKey: "sended") as! Bool)
                         sendOne = (object.value(forKey: "sendError") as! Bool)
                         errorOne = (object.value(forKey: "sendErrorText") as! String)
+                        autoSend = (object.value(forKey: "autoValueGettingOnly") as! Bool)
+                        recheckInter = (object.value(forKey: "recheckInterval") as! String)
+                        lastCheck = (object.value(forKey: "lastCheckupDate") as! String)
                         i = 1
                     }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                         dateTwo = (object.value(forKey: "num_month") as! String)
@@ -531,6 +559,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
                         tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                         ownerArr.append(object.value(forKey: "owner") as! String)
+                        autoValueArr.append(object.value(forKey: "autoValueGettingOnly") as! Bool)
+                        recheckInterArr.append(object.value(forKey: "recheckInterval") as! String)
+                        lastCheckArr.append(object.value(forKey: "lastCheckupDate") as! String)
                         predArr.append(valueOne)
                         teckArr.append(valueTwo)
                         diffArr.append(valueThree)
@@ -576,6 +607,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         errorOne = ""
                         errorTwo = ""
                         errorThree = ""
+                        autoSend = false
+                        recheckInter = ""
+                        lastCheck = ""
                         i = 0
                     }else if uniq_num != (object.value(forKey: "uniq_num") as! String){
                         i = 1
@@ -604,6 +638,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         errorTextOneArr.append(errorOne)
                         errorTextTwoArr.append(errorTwo)
                         errorTextThreeArr.append(errorThree)
+                        autoValueArr.append(autoSend)
+                        recheckInterArr.append(recheckInter)
+                        lastCheckArr.append(lastCheck)
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
@@ -618,6 +655,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         sended = (object.value(forKey: "sended") as! Bool)
                         sendOne = (object.value(forKey: "sendError") as! Bool)
                         errorOne = (object.value(forKey: "sendErrorText") as! String)
+                        autoSend = (object.value(forKey: "autoValueGettingOnly") as! Bool)
+                        recheckInter = (object.value(forKey: "recheckInterval") as! String)
+                        lastCheck = (object.value(forKey: "lastCheckupDate") as! String)
                         
                         dateTwo = ""
                         valueTwo = 0.00
@@ -661,6 +701,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                 errorTextOneArr.append(errorOne)
                 errorTextTwoArr.append(errorTwo)
                 errorTextThreeArr.append(errorThree)
+                autoValueArr.append(autoSend)
+                recheckInterArr.append(recheckInter)
+                lastCheckArr.append(lastCheck)
             }
             DispatchQueue.main.async(execute: {
                 self.updateTable()
@@ -699,19 +742,19 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     func isEditable() -> Bool {
-//        if self.nextMonthLabel.isHidden == false{
-//            return false
-//        }
+        //        if self.nextMonthLabel.isHidden == false{
+        //            return false
+        //        }
         return iterYear == currYear && iterMonth == currMonth && can_edit == "1"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-            if nameArr.count != 0 {
-                return nameArr.count
-            } else {
-                return 0
-            }
+        if nameArr.count != 0 {
+            return nameArr.count
+        } else {
+            return 0
+        }
     }
     
     //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -931,13 +974,13 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             cell.tariffHeight3.constant = 100
             cell.tariff3.isHidden = false
         }
-//        if isEditable(){
-            cell.sendButton.isEnabled = true
-            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(1.0)
-//        }else{
-//            cell.sendButton.isEnabled = false
-//            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(0.5)
-//        }
+        //        if isEditable(){
+        cell.sendButton.isEnabled = true
+        cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(1.0)
+        //        }else{
+        //            cell.sendButton.isEnabled = false
+        //            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(0.5)
+        //        }
         cell.delegate = self
         return cell
     }
@@ -959,6 +1002,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         selectedUniqName = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
         selTariffNumber = Int(tariffArr[indexPath.row])!
         selectedOwner = ownerArr[indexPath.row]
+        autoSend = autoValueArr[indexPath.row]
+        recheckInter = recheckInterArr[indexPath.row]
+        lastCheckupDate = lastCheckArr[indexPath.row]
         self.performSegue(withIdentifier: "uniqCounters", sender: self)
     }
     
@@ -966,6 +1012,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var selectedUniqName = ""
     var selTariffNumber = 0
     var selectedOwner = ""
+    var autoSend = false
+    var recheckInter = ""
+    var lastCheckDate = ""
     var countIdent = ""
     var predVal1 = ""
     var predVal2 = ""
@@ -988,6 +1037,9 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         }
         if segue.identifier == "addCounters"{
             let payController             = segue.destination as! AddCountersController
+            payController.autoSend = autoSend
+            payController.recheckInter = recheckInter
+            payController.lastCheckDate = lastCheckupDate
             payController.counterNumber = selectedUniq
             payController.counterName = selectedUniqName
             payController.ident = countIdent
@@ -1012,10 +1064,10 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        ls_Button.setTitle("Все", for: UIControlState.normal)
-//        choiceIdent = "Все"
-//        UserDefaults.standard.set(false, forKey: "fromMenu")
-//        UserDefaults.standard.synchronize()
+        //        ls_Button.setTitle("Все", for: UIControlState.normal)
+        //        choiceIdent = "Все"
+        //        UserDefaults.standard.set(false, forKey: "fromMenu")
+        //        UserDefaults.standard.synchronize()
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1
@@ -1072,7 +1124,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                                                 } else if (responseString == "1") {
                                                     self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
                                                 }
-        
+                                                
         })
         
         task.resume()
@@ -1081,25 +1133,28 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String) {
         print(isEditable())
         if isEditable(){
-//            let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
-//            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
-//            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-//            alert.addAction(cancelAction)
-//            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-//                var metrID = ""
-//                for i in 0...self.numberArr.count - 1{
-//                    if uniq_num == self.ownerArr[i]{
-//                        metrID = self.numberArr[i]
-//                    }
-//                }
-//                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
-//            }
-//            alert.addAction(okAction)
-//            self.present(alert, animated: true, completion: nil)
+            //            let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
+            //            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
+            //            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+            //            alert.addAction(cancelAction)
+            //            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+            //                var metrID = ""
+            //                for i in 0...self.numberArr.count - 1{
+            //                    if uniq_num == self.ownerArr[i]{
+            //                        metrID = self.numberArr[i]
+            //                    }
+            //                }
+            //                self.send_count(edLogin: self.edLogin, edPass: self.edPass, uniq_num: metrID, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
+            //            }
+            //            alert.addAction(okAction)
+            //            self.present(alert, animated: true, completion: nil)
             var metrId = ""
             for i in 0...self.numberArr.count - 1{
                 if uniq_num == self.ownerArr[i] && count_name == (nameArr[i] + ", " + unitArr[i]){
                     metrId = self.numberArr[i]
+                    autoSend = autoValueArr[i]
+                    recheckInter = recheckInterArr[i]
+                    lastCheckupDate = lastCheckArr[i]
                 }
             }
             selTariffNumber = Int(tariffNumber)!
@@ -1109,6 +1164,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             predVal1 = predValue
             predVal2 = predValue2
             predVal3 = predValue3
+            
             self.metrID = metrId
             DispatchQueue.main.async{
                 self.StopIndicator()
@@ -1277,10 +1333,14 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var meterUniqueNum = ""
     var factoryNumber = ""
     var tariffNumber = ""
+    var autoValueGettingOnly = false
+    var recheckInterval = ""
+    var lastCheckupDate = ""
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if (elementName == "Meter") {
             print(attributeDict)
+            
             ident = attributeDict["Ident"]!
             units = attributeDict["Units"]!
             name = attributeDict["Name"]!
@@ -1291,14 +1351,28 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             }else{
                 tariffNumber = "0"
             }
+            if attributeDict["AutoValueGettingOnly"]! == "1"{
+                autoValueGettingOnly = true
+            }else{
+                autoValueGettingOnly = false
+            }
+            recheckInterval = attributeDict["RecheckInterval"]!
+            if attributeDict["LastCheckupDate"] != nil{
+                lastCheckDate = attributeDict["LastCheckupDate"]!
+            }else{
+                lastCheckDate = "0"
+            }
             // Запишем показание прибора
         }
         if (elementName == "MeterValue"){
             print(attributeDict)
             let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
-//            self.currYear = date[2]
+            //            self.currYear = date[2]
             let managedObject = Counters()
             managedObject.id            = 1
+            managedObject.lastCheckupDate = lastCheckDate
+            managedObject.autoValueGettingOnly = autoValueGettingOnly
+            managedObject.recheckInterval = recheckInterval
             managedObject.uniq_num      = meterUniqueNum
             managedObject.owner         = factoryNumber
             managedObject.num_month     = attributeDict["PeriodDate"]!
@@ -1324,7 +1398,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                 managedObject.sendError = false
             }
             managedObject.sendErrorText = attributeDict["SendErrorText"]!
-//            print(managedObject.uniq_num!, managedObject.owner!, managedObject.num_month!, managedObject.unit_name!, managedObject.year!, managedObject.ident!, managedObject.count_name!, managedObject.count_ed_izm!, managedObject.prev_value, managedObject.value, managedObject.diff)
+            //            print(managedObject.uniq_num!, managedObject.owner!, managedObject.num_month!, managedObject.unit_name!, managedObject.year!, managedObject.ident!, managedObject.count_name!, managedObject.count_ed_izm!, managedObject.prev_value, managedObject.value, managedObject.diff)
             CoreDataManager.instance.saveContext()
         }
         getData(ident: choiceIdent)
@@ -1339,7 +1413,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         self.indicator.stopAnimating()
         self.indicator.isHidden = true
     }
-
+    
     var oneCheck = 0
 }
 
@@ -1445,7 +1519,7 @@ class MupCounterCell: UITableViewCell {
     
     @IBAction func sendAction(_ sender: UIButton) {
         delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred1.text!, predValue2: pred2.text!, predValue3: pred3.text!, tariffNumber: tariffNumber)
-//        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
+        //        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
     }
     
     override func awakeFromNib() {

@@ -35,4 +35,7 @@ extension Counters {
     @NSManaged public var sendError: Bool
     @NSManaged public var sendErrorText: String?
     @NSManaged public var tariffNumber: String?
+    @NSManaged public var lastCheckupDate: String?
+    @NSManaged public var recheckInterval: String?
+    @NSManaged public var autoValueGettingOnly: Bool
 }

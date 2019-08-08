@@ -52,14 +52,17 @@
     if ([savedValue  isEqual: @"UKParitetKhab"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
-	return @[kASDKTestTerminalKey];
+    if ([savedValue  isEqual: @"JKH_Pavlovskoe"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
+    return @[kASDKTestTerminalKey];
 }
 
 + (NSString *)testActiveTerminal
 {
-	NSString *result = [ASDKTestSettings valueForKey:kActiveTerminal];
-	if (result == nil)
-	{
+    NSString *result = [ASDKTestSettings valueForKey:kActiveTerminal];
+    if (result == nil)
+    {
         result = kASDKTestTerminalKey;
         NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                                 stringForKey:@"targetName"];
@@ -93,14 +96,17 @@
         if ([savedValue  isEqual: @"UKParitetKhab"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
-	}
-	
-	return result;
+        if ([savedValue  isEqual: @"JKH_Pavlovskoe"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+    }
+    
+    return result;
 }
 
 + (void)setActiveTestTerminal:(NSString *)value
 {
-	[ASDKTestSettings saveValue:value forKey:kActiveTerminal];
+    [ASDKTestSettings saveValue:value forKey:kActiveTerminal];
 }
 
 + (NSString *)testTerminalPassword
@@ -137,7 +143,10 @@
     if ([savedValue  isEqual: @"UKParitetKhab"]){
         return kASDKTestPasswordKlimovsk;
     }
-	return kASDKTestPassword;
+    if ([savedValue  isEqual: @"JKH_Pavlovskoe"]){
+        return kASDKTestPasswordKlimovsk;
+    }
+    return kASDKTestPassword;
 }
 
 + (NSString *)testPublicKey
@@ -174,76 +183,79 @@
     if ([savedValue  isEqual: @"UKParitetKhab"]){
         return kASDKTestPublicKeyKlimovsk;
     }
+    if ([savedValue  isEqual: @"JKH_Pavlovskoe"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
     return kASDKTestPublicKey;
 }
 
 + (void)setCustomButtonCancel:(BOOL)value
 {
-	[ASDKTestSettings saveValue:@(value) forKey:kSettingCustomButtonCancel];
+    [ASDKTestSettings saveValue:@(value) forKey:kSettingCustomButtonCancel];
 }
 
 + (BOOL)customButtonCancel
 {
-	return [[ASDKTestSettings valueForKey:kSettingCustomButtonCancel] boolValue];
+    return [[ASDKTestSettings valueForKey:kSettingCustomButtonCancel] boolValue];
 }
 
 + (void)setCustomButtonPay:(BOOL)value
 {
-	[ASDKTestSettings saveValue:@(value) forKey:kSettingCustomButtonPay];
+    [ASDKTestSettings saveValue:@(value) forKey:kSettingCustomButtonPay];
 }
 
 + (BOOL)customButtonPay
 {
-	return [[ASDKTestSettings valueForKey:kSettingCustomButtonPay] boolValue];
+    return [[ASDKTestSettings valueForKey:kSettingCustomButtonPay] boolValue];
 }
 
 + (void)setCustomNavBarColor:(BOOL)value
 {
-	[ASDKTestSettings saveValue:@(value) forKey:kSettingCustomNavBarColor];
+    [ASDKTestSettings saveValue:@(value) forKey:kSettingCustomNavBarColor];
 }
 
 + (BOOL)customNavBarColor
 {
-	return [[ASDKTestSettings valueForKey:kSettingCustomNavBarColor] boolValue];
+    return [[ASDKTestSettings valueForKey:kSettingCustomNavBarColor] boolValue];
 }
 
 + (void)setMakeCharge:(BOOL)value
 {
-	[ASDKTestSettings saveValue:@(value) forKey:kSettingMakeCharge];
+    [ASDKTestSettings saveValue:@(value) forKey:kSettingMakeCharge];
 }
 
 + (BOOL)makeCharge
 {
-	return [[ASDKTestSettings valueForKey:kSettingMakeCharge] boolValue];
+    return [[ASDKTestSettings valueForKey:kSettingMakeCharge] boolValue];
 }
 
 + (void)setMakeNewCard:(BOOL)value
 {
-	[ASDKTestSettings saveValue:@(value) forKey:kSettingMakeNewCard];
+    [ASDKTestSettings saveValue:@(value) forKey:kSettingMakeNewCard];
 }
 
 + (BOOL)makeNewCard
 {
-	return [[ASDKTestSettings valueForKey:kSettingMakeNewCard] boolValue];
+    return [[ASDKTestSettings valueForKey:kSettingMakeNewCard] boolValue];
 }
 
 + (void)saveValue:(id)value forKey:(NSString *)key
 {
-	if (value)
-	{
-		[[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
-	}
-	else
-	{
-		[[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-	}
-	
-	[[NSUserDefaults standardUserDefaults] synchronize];
+    if (value)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (id)valueForKey:(NSString *)key
 {
-	return [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 
 @end

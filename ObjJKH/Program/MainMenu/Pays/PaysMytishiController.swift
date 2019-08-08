@@ -100,7 +100,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
 //        #elseif isRodnikMUP
 //        self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #else
-//        self.performSegue(withIdentifier: "addLS", sender: self)
+        //        self.performSegue(withIdentifier: "addLS", sender: self)
         self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #endif
     }
@@ -168,7 +168,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
 //        self.payedS()
 //        #elseif isStolitsa
 //        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov
+        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe
         l = true
         #else
         self.payedS()
@@ -257,9 +257,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isReutKomfort
         shopCode = "234821"
         targetName = "УК РеутКомфорт"
-//        #elseif isServiceKomfort
-//        shopCode = "252187"
-//        targetName = "УК Сервис и Комфорт"
+        //        #elseif isServiceKomfort
+        //        shopCode = "252187"
+        //        targetName = "УК Сервис и Комфорт"
         #elseif isServicekom
         shopCode = "254158"
         targetName = "Сервиском"
@@ -290,6 +290,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isElectroSbitSaratov
         shopCode = "252095"
         targetName = "Электросбыт Саратов"
+        #elseif isJKH_Pavlovskoe
+        shopCode = "261606"
+        targetName = "Павловское ЖКХ"
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
@@ -439,8 +442,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     self.present(alert, animated: true, completion: nil)
                 }
             }
-//            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov
+            //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
+            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
