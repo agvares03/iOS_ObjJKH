@@ -220,6 +220,15 @@ class FirstController: UIViewController {
         #elseif isStolitsa
         #elseif isKomeks
         #elseif isUKKomfort
+        #elseif isElectroSbitSaratov
+            UserDefaults.standard.set("ElectroSbitSaratov", forKey: "targetName")
+            UserDefaults.standard.synchronize()
+        #elseif isRodnikMUP
+            UserDefaults.standard.set("RodnikMUP", forKey: "targetName")
+            UserDefaults.standard.synchronize()
+        #elseif isAFregat
+            UserDefaults.standard.set("AFregat", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #elseif isKlimovsk12
             UserDefaults.standard.set("Klimovsk12", forKey: "targetName")
             UserDefaults.standard.synchronize()
@@ -246,6 +255,8 @@ class FirstController: UIViewController {
             UserDefaults.standard.set("UK_Upravdom_Che", forKey: "targetName")
             UserDefaults.standard.synchronize()
         #elseif isJKH_Pavlovskoe
+            UserDefaults.standard.set("JKH_Pavlovskoe", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #elseif isPerspectiva
         #elseif isServicekom
             UserDefaults.standard.set("Servicekom", forKey: "targetName")

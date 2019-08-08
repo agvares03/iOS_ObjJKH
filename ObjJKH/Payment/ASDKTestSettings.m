@@ -55,6 +55,15 @@
     if ([savedValue  isEqual: @"JKH_Pavlovskoe"]){
         return @[kASDKTestTerminalKeyKlimovsk];
     }
+    if ([savedValue  isEqual: @"ElectroSbitSaratov"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
+    if ([savedValue  isEqual: @"RodnikMUP"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
+    if ([savedValue  isEqual: @"AFregat"]){
+        return @[kASDKTestTerminalKeyKlimovsk];
+    }
     return @[kASDKTestTerminalKey];
 }
 
@@ -97,6 +106,15 @@
             result = kASDKTestTerminalKeyKlimovsk;
         }
         if ([savedValue  isEqual: @"JKH_Pavlovskoe"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"ElectroSbitSaratov"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"RodnikMUP"]){
+            result = kASDKTestTerminalKeyKlimovsk;
+        }
+        if ([savedValue  isEqual: @"AFregat"]){
             result = kASDKTestTerminalKeyKlimovsk;
         }
     }
@@ -146,6 +164,15 @@
     if ([savedValue  isEqual: @"JKH_Pavlovskoe"]){
         return kASDKTestPasswordKlimovsk;
     }
+    if ([savedValue  isEqual: @"ElectroSbitSaratov"]){
+        return kASDKTestPasswordKlimovsk;
+    }
+    if ([savedValue  isEqual: @"RodnikMUP"]){
+        return kASDKTestPasswordKlimovsk;
+    }
+    if ([savedValue  isEqual: @"AFregat"]){
+        return kASDKTestPasswordKlimovsk;
+    }
     return kASDKTestPassword;
 }
 
@@ -184,6 +211,15 @@
         return kASDKTestPublicKeyKlimovsk;
     }
     if ([savedValue  isEqual: @"JKH_Pavlovskoe"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"ElectroSbitSaratov"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"RodnikMUP"]){
+        return kASDKTestPublicKeyKlimovsk;
+    }
+    if ([savedValue  isEqual: @"AFregat"]){
         return kASDKTestPublicKeyKlimovsk;
     }
     return kASDKTestPublicKey;
