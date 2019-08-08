@@ -246,6 +246,8 @@ class FirstController: UIViewController {
             UserDefaults.standard.set("UK_Upravdom_Che", forKey: "targetName")
             UserDefaults.standard.synchronize()
         #elseif isJKH_Pavlovskoe
+            UserDefaults.standard.set("JKH_Pavlovskoe", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #elseif isPerspectiva
         #elseif isServicekom
             UserDefaults.standard.set("Servicekom", forKey: "targetName")
