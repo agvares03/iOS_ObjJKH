@@ -9,5 +9,7 @@
 #ifndef UK_Komfort_Bridging_Header_h
 #define UK_Komfort_Bridging_Header_h
 
+#import "PayController.h"
+#import "ASDKTestSettings.h"
 
 #endif /* UK_Komfort_Bridging_Header_h */
