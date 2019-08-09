@@ -254,6 +254,9 @@ class FirstController: UIViewController {
             UserDefaults.standard.set("Parus", forKey: "targetName")
             UserDefaults.standard.synchronize()
         #elseif isParitet
+        #elseif isNewOpaliha
+            UserDefaults.standard.set("NewOpaliha", forKey: "targetName")
+            UserDefaults.standard.synchronize()
         #elseif isSkyfort
         #elseif isStandartDV
         #elseif isGarmonia
