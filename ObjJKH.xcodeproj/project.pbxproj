@@ -2725,6 +2725,165 @@
 		306716A922FD023C00239C75 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		306716B222FD064100239C75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 306716B122FD064100239C75 /* GoogleService-Info.plist */; };
 		306716B522FD07FC00239C75 /* Logo_Narian_Mar_El.png in Resources */ = {isa = PBXBuildFile; fileRef = 306716B422FD07FC00239C75 /* Logo_Narian_Mar_El.png */; };
+		306716B922FD16E900239C75 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
+		306716BA22FD16E900239C75 /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		306716BB22FD16E900239C75 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		306716BC22FD16E900239C75 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		306716BD22FD16E900239C75 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		306716BE22FD16E900239C75 /* TwoPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6721FAC9F100313221 /* TwoPageController.swift */; };
+		306716BF22FD16E900239C75 /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
+		306716C022FD16E900239C75 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		306716C122FD16E900239C75 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		306716C222FD16E900239C75 /* ShemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F017214765B500FE0473 /* ShemeColor.swift */; };
+		306716C322FD16E900239C75 /* AddLSSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303FAC1022F73512009EEE25 /* AddLSSimple.swift */; };
+		306716C422FD16E900239C75 /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		306716C522FD16E900239C75 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF068F22C21F1C00700A7D /* NotificationController.swift */; };
+		306716C622FD16E900239C75 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		306716C722FD16E900239C75 /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		306716C822FD16E900239C75 /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F00F2147605E00FE0473 /* ImageConstant.swift */; };
+		306716C922FD16E900239C75 /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		306716CA22FD16E900239C75 /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		306716CB22FD16E900239C75 /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		306716CC22FD16E900239C75 /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC721708CB600857D4D /* Applications+CoreDataClass.swift */; };
+		306716CD22FD16E900239C75 /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		306716CE22FD16E900239C75 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		306716CF22FD16E900239C75 /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		306716D022FD16E900239C75 /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
+		306716D122FD16E900239C75 /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		306716D222FD16E900239C75 /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		306716D322FD16E900239C75 /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		306716D422FD16E900239C75 /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		306716D522FD16E900239C75 /* NewEditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB84522605AA800DBD52E /* NewEditAccountController.swift */; };
+		306716D622FD16E900239C75 /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		306716D722FD16E900239C75 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		306716D822FD16E900239C75 /* ColorsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F0092147604400FE0473 /* ColorsConstant.swift */; };
+		306716D922FD16E900239C75 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		306716DA22FD16E900239C75 /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		306716DB22FD16E900239C75 /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		306716DC22FD16E900239C75 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		306716DD22FD16E900239C75 /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02E213634CC004DB75C /* Counters+CoreDataClass.swift */; };
+		306716DE22FD16E900239C75 /* OneVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB2C225498E500812964 /* OneVoteController.swift */; };
+		306716DF22FD16E900239C75 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		306716E022FD16E900239C75 /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
+		306716E122FD16E900239C75 /* NewAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C625A3122B439A50053971C /* NewAppUser.swift */; };
+		306716E222FD16E900239C75 /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		306716E322FD16E900239C75 /* openSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78BF78222CEC8A00F31938 /* openSaldoController.swift */; };
+		306716E422FD16E900239C75 /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		306716E522FD16E900239C75 /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */; };
+		306716E622FD16E900239C75 /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		306716E722FD16E900239C75 /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		306716E822FD16E900239C75 /* FirstControllerCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */; };
+		306716E922FD16E900239C75 /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		306716EA22FD16E900239C75 /* NewHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC3FF32223A3E2500FDBA82 /* NewHomePage.swift */; };
+		306716EB22FD16E900239C75 /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		306716EC22FD16E900239C75 /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02F213634CC004DB75C /* Counters+CoreDataProperties.swift */; };
+		306716ED22FD16E900239C75 /* NewAddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C625A3222B439A60053971C /* NewAddAppUser.swift */; };
+		306716EE22FD16E900239C75 /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
+		306716EF22FD16E900239C75 /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		306716F022FD16E900239C75 /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC821708CB600857D4D /* Applications+CoreDataProperties.swift */; };
+		306716F122FD16E900239C75 /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		306716F222FD16E900239C75 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		306716F322FD16E900239C75 /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		306716F422FD16E900239C75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		306716F522FD16E900239C75 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		306716F622FD16E900239C75 /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		306716F722FD16E900239C75 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		306716F822FD16E900239C75 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		306716F922FD16E900239C75 /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		306716FA22FD16E900239C75 /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		306716FB22FD16E900239C75 /* UniqCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE0A222799F600C51656 /* UniqCountersController.swift */; };
+		306716FC22FD16E900239C75 /* MobilePaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C51CEBF22291F27003EFD8C /* MobilePaysController.swift */; };
+		306716FD22FD16E900239C75 /* MainMenuCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC455213FCA99002CEB62 /* MainMenuCons.swift */; };
+		306716FE22FD16E900239C75 /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		306716FF22FD16E900239C75 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
+		3067170022FD16E900239C75 /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		3067170122FD16E900239C75 /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		3067170222FD16E900239C75 /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		3067170322FD16E900239C75 /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		3067170422FD16E900239C75 /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		3067170522FD16E900239C75 /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */; };
+		3067170622FD16E900239C75 /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		3067170722FD16E900239C75 /* VotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB1F225372F300812964 /* VotingController.swift */; };
+		3067170822FD16E900239C75 /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		3067170922FD16E900239C75 /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		3067170A22FD16E900239C75 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		3067170B22FD16E900239C75 /* MupCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE012226B31600C51656 /* MupCounterController.swift */; };
+		3067170C22FD16E900239C75 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		3067170D22FD16E900239C75 /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		3067170E22FD16E900239C75 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
+		3067170F22FD16E900239C75 /* OnePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6421FAC9D500313221 /* OnePageController.swift */; };
+		3067171022FD16E900239C75 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		3067171122FD16E900239C75 /* NoCounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F01F2147C28D00FE0473 /* NoCounters.swift */; };
+		3067171222FD16E900239C75 /* AppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC4682140B0D4002CEB62 /* AppCons.swift */; };
+		3067171322FD16E900239C75 /* NewSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAE79A3229D02F6005223C1 /* NewSaldoController.swift */; };
+		3067171422FD16E900239C75 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		3067171522FD16E900239C75 /* EditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5153D021EF04A600DE36D9 /* EditAccountController.swift */; };
+		3067171622FD16E900239C75 /* QuestionVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB3922550D0D00812964 /* QuestionVoteController.swift */; };
+		3067171722FD16E900239C75 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		3067171822FD16E900239C75 /* PaymentApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DC2282E89500B7F66C /* PaymentApp+CoreDataProperties.swift */; };
+		3067171922FD16E900239C75 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
+		3067171A22FD16E900239C75 /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		3067171B22FD16E900239C75 /* NewMainMenu2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB85422608CF900DBD52E /* NewMainMenu2.swift */; };
+		3067171C22FD16E900239C75 /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		3067171D22FD16E900239C75 /* PaymentApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DB2282E89500B7F66C /* PaymentApp+CoreDataClass.swift */; };
+		3067171E22FD16E900239C75 /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		3067171F22FD16E900239C75 /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		3067172022FD16E900239C75 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
+		3067172222FD16E900239C75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		3067172322FD16E900239C75 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		3067172422FD16E900239C75 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		3067172522FD16E900239C75 /* Pods_NewOpaliha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5779DCAA450F22C57B3060A2 /* Pods_NewOpaliha.framework */; };
+		3067172622FD16E900239C75 /* Pods_NewOpaliha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585B2C5C226A4BE825D3CC5C /* Pods_NewOpaliha.framework */; };
+		3067172822FD16E900239C75 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		3067172922FD16E900239C75 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		3067172A22FD16E900239C75 /* NewAddLS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302E31BF22F7C95D0043209D /* NewAddLS.storyboard */; };
+		3067172B22FD16E900239C75 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		3067172C22FD16E900239C75 /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		3067172D22FD16E900239C75 /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		3067172E22FD16E900239C75 /* Voting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C66AB1122532BFF00812964 /* Voting.storyboard */; };
+		3067172F22FD16E900239C75 /* Parus-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30CB571322B6690100AE34FC /* Parus-Info.plist */; };
+		3067173022FD16E900239C75 /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
+		3067173122FD16E900239C75 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		3067173222FD16E900239C75 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		3067173322FD16E900239C75 /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		3067173422FD16E900239C75 /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		3067173522FD16E900239C75 /* Logo_Paritet.png in Resources */ = {isa = PBXBuildFile; fileRef = 3013F3B522E00B0B00AE0695 /* Logo_Paritet.png */; };
+		3067173622FD16E900239C75 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		3067173722FD16E900239C75 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		3067173822FD16E900239C75 /* 2PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C33544322AFA34500D695C8 /* 2PaysMytishi.storyboard */; };
+		3067173922FD16E900239C75 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		3067173A22FD16E900239C75 /* Logo_UK_Garant_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */; };
+		3067173B22FD16E900239C75 /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
+		3067173C22FD16E900239C75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		3067173D22FD16E900239C75 /* Logo_Parus.png in Resources */ = {isa = PBXBuildFile; fileRef = 307690F322B28CDC0043916F /* Logo_Parus.png */; };
+		3067173E22FD16E900239C75 /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		3067173F22FD16E900239C75 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		3067174022FD16E900239C75 /* Logo_ADS68.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C84EA22E5E62F00CFE739 /* Logo_ADS68.png */; };
+		3067174122FD16E900239C75 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		3067174222FD16E900239C75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		3067174422FD16E900239C75 /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		3067174522FD16E900239C75 /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		3067174622FD16E900239C75 /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
+		3067174722FD16E900239C75 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
+		3067174822FD16E900239C75 /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		3067174922FD16E900239C75 /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
+		3067174A22FD16E900239C75 /* ic_send_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA20D2140CA9600921C82 /* ic_send_app.png */; };
+		3067174B22FD16E900239C75 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
+		3067174C22FD16E900239C75 /* MupCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C19ADFB2226845400C51656 /* MupCounters.storyboard */; };
+		3067174D22FD16E900239C75 /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		3067174E22FD16E900239C75 /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		3067174F22FD16E900239C75 /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
+		3067175022FD16E900239C75 /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		3067175122FD16E900239C75 /* MainMenuCons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */; };
+		3067175222FD16E900239C75 /* NewMainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */; };
+		3067175322FD16E900239C75 /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
+		3067175422FD16E900239C75 /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		3067175522FD16E900239C75 /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		3067175722FD16E900239C75 /* Logo_UK_Garant.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */; };
+		3067175822FD16E900239C75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		3067175922FD16E900239C75 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		3067176322FD1D3600239C75 /* Logo_SibAliance.png in Resources */ = {isa = PBXBuildFile; fileRef = 3067176222FD1D3600239C75 /* Logo_SibAliance.png */; };
+		3067176522FD1F2D00239C75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3067176422FD1F2D00239C75 /* GoogleService-Info.plist */; };
 		306C2C5922927F1200C29263 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		306C2C5A22927F1200C29263 /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
 		306C2C5B22927F1200C29263 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
@@ -6202,6 +6361,10 @@
 		306716B022FD023D00239C75 /* Narian_Mar_El-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Narian_Mar_El-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/Narian_Mar_El-Info.plist"; sourceTree = "<absolute>"; };
 		306716B122FD064100239C75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/Narian_Mar_El/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		306716B422FD07FC00239C75 /* Logo_Narian_Mar_El.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Narian_Mar_El.png; sourceTree = "<group>"; };
+		3067175F22FD16E900239C75 /* Sib_Aliance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sib_Aliance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3067176022FD16EA00239C75 /* SibAliance-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SibAliance-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/SibAliance-Info.plist"; sourceTree = "<absolute>"; };
+		3067176222FD1D3600239C75 /* Logo_SibAliance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_SibAliance.png; sourceTree = "<group>"; };
+		3067176422FD1F2D00239C75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/SibAliance/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		306C2CED22927F1200C29263 /* UK_Garmonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Garmonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306C2CEE22927F1200C29263 /* UK_Garmonia-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UK_Garmonia-Info.plist"; sourceTree = "<group>"; };
 		307690F022B288C50043916F /* Parus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6684,6 +6847,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3067172122FD16E900239C75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3067172222FD16E900239C75 /* CoreLocation.framework in Frameworks */,
+				3067172322FD16E900239C75 /* (null) in Frameworks */,
+				3067172422FD16E900239C75 /* (null) in Frameworks */,
+				3067172522FD16E900239C75 /* Pods_NewOpaliha.framework in Frameworks */,
+				3067172622FD16E900239C75 /* Pods_NewOpaliha.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		306C2CB922927F1200C29263 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -7069,6 +7244,14 @@
 			path = Narian_Mar_El;
 			sourceTree = "<group>";
 		};
+		3067176122FD1CC200239C75 /* SibAliance */ = {
+			isa = PBXGroup;
+			children = (
+				3067176222FD1D3600239C75 /* Logo_SibAliance.png */,
+			);
+			path = SibAliance;
+			sourceTree = "<group>";
+		};
 		306C2CEF229286B900C29263 /* UkGarmonia */ = {
 			isa = PBXGroup;
 			children = (
@@ -7088,6 +7271,7 @@
 		307690F722B28DC70043916F /* Google_Services */ = {
 			isa = PBXGroup;
 			children = (
+				3067176422FD1F2D00239C75 /* GoogleService-Info.plist */,
 				306716B122FD064100239C75 /* GoogleService-Info.plist */,
 				3067160422FCFAFB00239C75 /* GoogleService-Info.plist */,
 				30F8FB9F22FACBB300BE9629 /* GoogleService-Info.plist */,
@@ -7134,6 +7318,7 @@
 		307690F822B28DEC0043916F /* Info_Plists */ = {
 			isa = PBXGroup;
 			children = (
+				3067176022FD16EA00239C75 /* SibAliance-Info.plist */,
 				306716B022FD023D00239C75 /* Narian_Mar_El-Info.plist */,
 				3067160022FCF2DC00239C75 /* Cristall-Info.plist */,
 				3044D9F822FAC1F000FDB7FE /* TSN_Ruble40-Info.plist */,
@@ -7418,6 +7603,7 @@
 				3044D9F722FAC1E800FDB7FE /* TSN_Ruble40.app */,
 				306715FF22FCF2D700239C75 /* Cristall.app */,
 				306716AF22FD023C00239C75 /* Narian_Mar_el.app */,
+				3067175F22FD16E900239C75 /* Sib_Aliance.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -7515,6 +7701,7 @@
 		418ABF202133CF52004DB75C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3067176122FD1CC200239C75 /* SibAliance */,
 				306716B322FD078900239C75 /* Narian_Mar_El */,
 				3067160122FCF84500239C75 /* Cristall */,
 				3044D9F922FAC3D100FDB7FE /* TSN_Ruble40 */,
@@ -8270,6 +8457,26 @@
 			productReference = 306716AF22FD023C00239C75 /* Narian_Mar_el.app */;
 			productType = "com.apple.product-type.application";
 		};
+		306716B622FD16E900239C75 /* Sib_Aliance */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3067175C22FD16E900239C75 /* Build configuration list for PBXNativeTarget "Sib_Aliance" */;
+			buildPhases = (
+				306716B722FD16E900239C75 /* [CP] Check Pods Manifest.lock */,
+				306716B822FD16E900239C75 /* Sources */,
+				3067172122FD16E900239C75 /* Frameworks */,
+				3067172722FD16E900239C75 /* Resources */,
+				3067175A22FD16E900239C75 /* [CP] Embed Pods Frameworks */,
+				3067175B22FD16E900239C75 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sib_Aliance;
+			productName = UK_Garant;
+			productReference = 3067175F22FD16E900239C75 /* Sib_Aliance.app */;
+			productType = "com.apple.product-type.application";
+		};
 		306C2C5622927F1200C29263 /* UK_Garmonia */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 306C2CEA22927F1200C29263 /* Build configuration list for PBXNativeTarget "UK_Garmonia" */;
@@ -8993,6 +9200,7 @@
 				3044D95022FAC1E800FDB7FE /* TSN_Ruble40 */,
 				3067155722FCF2D700239C75 /* Cristall */,
 				3067160622FD023C00239C75 /* Narian_Mar_el */,
+				306716B622FD16E900239C75 /* Sib_Aliance */,
 			);
 		};
 /* End PBXProject section */
@@ -9768,6 +9976,63 @@
 				306716A722FD023C00239C75 /* Logo_UK_Garant.png in Resources */,
 				306716A822FD023C00239C75 /* Assets.xcassets in Resources */,
 				306716A922FD023C00239C75 /* logo_SM.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3067172722FD16E900239C75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3067172822FD16E900239C75 /* MainMenu.storyboard in Resources */,
+				3067172922FD16E900239C75 /* app_open.png in Resources */,
+				3067172A22FD16E900239C75 /* NewAddLS.storyboard in Resources */,
+				3067172B22FD16E900239C75 /* AdditionalServices.storyboard in Resources */,
+				3067172C22FD16E900239C75 /* Counters.storyboard in Resources */,
+				3067172D22FD16E900239C75 /* Pays.storyboard in Resources */,
+				3067172E22FD16E900239C75 /* Voting.storyboard in Resources */,
+				3067172F22FD16E900239C75 /* Parus-Info.plist in Resources */,
+				3067173022FD16E900239C75 /* ic_ok_app.png in Resources */,
+				3067173122FD16E900239C75 /* Logo_DemoUC_White.png in Resources */,
+				3067173222FD16E900239C75 /* WebCameras.storyboard in Resources */,
+				3067173322FD16E900239C75 /* ic_action_files_grey.png in Resources */,
+				3067173422FD16E900239C75 /* app_close.png in Resources */,
+				3067173522FD16E900239C75 /* Logo_Paritet.png in Resources */,
+				3067173622FD16E900239C75 /* account_icon_user.png in Resources */,
+				3067173722FD16E900239C75 /* News.storyboard in Resources */,
+				3067173822FD16E900239C75 /* 2PaysMytishi.storyboard in Resources */,
+				3067173922FD16E900239C75 /* Logo_DemoUC.png in Resources */,
+				3067173A22FD16E900239C75 /* Logo_UK_Garant_White.png in Resources */,
+				3067173B22FD16E900239C75 /* ic_get_app.png in Resources */,
+				3067173C22FD16E900239C75 /* Main.storyboard in Resources */,
+				3067173D22FD16E900239C75 /* Logo_Parus.png in Resources */,
+				3067173E22FD16E900239C75 /* Questions.storyboard in Resources */,
+				3067173F22FD16E900239C75 /* Registration.storyboard in Resources */,
+				3067174022FD16E900239C75 /* Logo_ADS68.png in Resources */,
+				3067174122FD16E900239C75 /* ForgotPass.storyboard in Resources */,
+				3067174222FD16E900239C75 /* LaunchScreen.storyboard in Resources */,
+				3067174422FD16E900239C75 /* Saldo.storyboard in Resources */,
+				3067176522FD1F2D00239C75 /* GoogleService-Info.plist in Resources */,
+				3067174522FD16E900239C75 /* ic_close_action.png in Resources */,
+				3067174622FD16E900239C75 /* PaymentSuccessViewController.xib in Resources */,
+				3067174722FD16E900239C75 /* Account.storyboard in Resources */,
+				3067176322FD1D3600239C75 /* Logo_SibAliance.png in Resources */,
+				3067174822FD16E900239C75 /* main_background.png in Resources */,
+				3067174922FD16E900239C75 /* NoCounters.storyboard in Resources */,
+				3067174A22FD16E900239C75 /* ic_send_app.png in Resources */,
+				3067174B22FD16E900239C75 /* Support.storyboard in Resources */,
+				3067174C22FD16E900239C75 /* MupCounters.storyboard in Resources */,
+				3067174D22FD16E900239C75 /* arrow_rigth.png in Resources */,
+				3067174E22FD16E900239C75 /* spin.png in Resources */,
+				3067174F22FD16E900239C75 /* AddLsPocket.storyboard in Resources */,
+				3067175022FD16E900239C75 /* account_icon_cons.jpg in Resources */,
+				3067175122FD16E900239C75 /* MainMenuCons.storyboard in Resources */,
+				3067175222FD16E900239C75 /* NewMainMenu.storyboard in Resources */,
+				3067175322FD16E900239C75 /* PaysMytishi.storyboard in Resources */,
+				3067175422FD16E900239C75 /* Apps.storyboard in Resources */,
+				3067175522FD16E900239C75 /* SelectItem.storyboard in Resources */,
+				3067175722FD16E900239C75 /* Logo_UK_Garant.png in Resources */,
+				3067175822FD16E900239C75 /* Assets.xcassets in Resources */,
+				3067175922FD16E900239C75 /* logo_SM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11687,6 +11952,63 @@
 			showEnvVarsInLog = 0;
 		};
 		306716AB22FD023C00239C75 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		306716B722FD16E900239C75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NewOpaliha-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3067175A22FD16E900239C75 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewOpaliha/Pods-NewOpaliha-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewOpaliha/Pods-NewOpaliha-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewOpaliha/Pods-NewOpaliha-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3067175B22FD16E900239C75 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -14462,6 +14784,117 @@
 				3067166E22FD023C00239C75 /* ForgotPass.swift in Sources */,
 				3067166F22FD023C00239C75 /* CountersController.swift in Sources */,
 				3067167022FD023C00239C75 /* SupportController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		306716B822FD16E900239C75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				306716B922FD16E900239C75 /* PayController.m in Sources */,
+				306716BA22FD16E900239C75 /* QuestionsTableVC.swift in Sources */,
+				306716BB22FD16E900239C75 /* AllLS.swift in Sources */,
+				306716BC22FD16E900239C75 /* NewsCell.swift in Sources */,
+				306716BD22FD16E900239C75 /* FirstController.swift in Sources */,
+				306716BE22FD16E900239C75 /* TwoPageController.swift in Sources */,
+				306716BF22FD16E900239C75 /* HistoryPayController.swift in Sources */,
+				306716C022FD16E900239C75 /* StartController.swift in Sources */,
+				306716C122FD16E900239C75 /* AppsController.swift in Sources */,
+				306716C222FD16E900239C75 /* ShemeColor.swift in Sources */,
+				306716C322FD16E900239C75 /* AddLSSimple.swift in Sources */,
+				306716C422FD16E900239C75 /* CounterCell.swift in Sources */,
+				306716C522FD16E900239C75 /* NotificationController.swift in Sources */,
+				306716C622FD16E900239C75 /* Registration.swift in Sources */,
+				306716C722FD16E900239C75 /* Comments+CoreDataProperties.swift in Sources */,
+				306716C822FD16E900239C75 /* ImageConstant.swift in Sources */,
+				306716C922FD16E900239C75 /* AppsCellClose.swift in Sources */,
+				306716CA22FD16E900239C75 /* Saldo+CoreDataClass.swift in Sources */,
+				306716CB22FD16E900239C75 /* WebsCell.swift in Sources */,
+				306716CC22FD16E900239C75 /* Applications+CoreDataClass.swift in Sources */,
+				306716CD22FD16E900239C75 /* QuestionAnswerVC.swift in Sources */,
+				306716CE22FD16E900239C75 /* News.swift in Sources */,
+				306716CF22FD16E900239C75 /* SelectItemController.swift in Sources */,
+				306716D022FD16E900239C75 /* AddAppCons.swift in Sources */,
+				306716D122FD16E900239C75 /* Tinkoff_Pay_Decides.m in Sources */,
+				306716D222FD16E900239C75 /* ASDKTestSettings.m in Sources */,
+				306716D322FD16E900239C75 /* AdditionalServicesController.swift in Sources */,
+				306716D422FD16E900239C75 /* Web_JSON.swift in Sources */,
+				306716D522FD16E900239C75 /* NewEditAccountController.swift in Sources */,
+				306716D622FD16E900239C75 /* PaysController.swift in Sources */,
+				306716D722FD16E900239C75 /* Titles.swift in Sources */,
+				306716D822FD16E900239C75 /* ColorsConstant.swift in Sources */,
+				306716D922FD16E900239C75 /* Server.swift in Sources */,
+				306716DA22FD16E900239C75 /* News+UITableViewDataSource.swift in Sources */,
+				306716DB22FD16E900239C75 /* SendSMSCod.swift in Sources */,
+				306716DC22FD16E900239C75 /* NewsManager.swift in Sources */,
+				306716DD22FD16E900239C75 /* Counters+CoreDataClass.swift in Sources */,
+				306716DE22FD16E900239C75 /* OneVoteController.swift in Sources */,
+				306716DF22FD16E900239C75 /* MainMenu.swift in Sources */,
+				306716E022FD16E900239C75 /* addCountersController.swift in Sources */,
+				306716E122FD16E900239C75 /* NewAppUser.swift in Sources */,
+				306716E222FD16E900239C75 /* CommCellCons.swift in Sources */,
+				306716E322FD16E900239C75 /* openSaldoController.swift in Sources */,
+				306716E422FD16E900239C75 /* QuestionFinal.swift in Sources */,
+				306716E522FD16E900239C75 /* Settings+CoreDataClass.swift in Sources */,
+				306716E622FD16E900239C75 /* ObjJKH.xcdatamodeld in Sources */,
+				306716E722FD16E900239C75 /* Pay.swift in Sources */,
+				306716E822FD16E900239C75 /* FirstControllerCons.swift in Sources */,
+				306716E922FD16E900239C75 /* Saldo+CoreDataProperties.swift in Sources */,
+				306716EA22FD16E900239C75 /* NewHomePage.swift in Sources */,
+				306716EB22FD16E900239C75 /* AddLS.swift in Sources */,
+				306716EC22FD16E900239C75 /* Counters+CoreDataProperties.swift in Sources */,
+				306716ED22FD16E900239C75 /* NewAddAppUser.swift in Sources */,
+				306716EE22FD16E900239C75 /* resVoteController.swift in Sources */,
+				306716EF22FD16E900239C75 /* AppsCell.swift in Sources */,
+				306716F022FD16E900239C75 /* Applications+CoreDataProperties.swift in Sources */,
+				306716F122FD16E900239C75 /* Fotos+CoreDataProperties.swift in Sources */,
+				306716F222FD16E900239C75 /* FloatRatingView.swift in Sources */,
+				306716F322FD16E900239C75 /* FilesController.swift in Sources */,
+				306716F422FD16E900239C75 /* AppDelegate.swift in Sources */,
+				306716F522FD16E900239C75 /* QuestionsJson.swift in Sources */,
+				306716F622FD16E900239C75 /* Fotos+CoreDataClass.swift in Sources */,
+				306716F722FD16E900239C75 /* DB.swift in Sources */,
+				306716F822FD16E900239C75 /* AppUser.swift in Sources */,
+				306716F922FD16E900239C75 /* Comments+CoreDataClass.swift in Sources */,
+				306716FA22FD16E900239C75 /* TransactionHistoryModelController.m in Sources */,
+				306716FB22FD16E900239C75 /* UniqCountersController.swift in Sources */,
+				306716FC22FD16E900239C75 /* MobilePaysController.swift in Sources */,
+				306716FD22FD16E900239C75 /* MainMenuCons.swift in Sources */,
+				306716FE22FD16E900239C75 /* AddAppUser.swift in Sources */,
+				306716FF22FD16E900239C75 /* UpdateAppController.swift in Sources */,
+				3067170022FD16E900239C75 /* WebsController.swift in Sources */,
+				3067170122FD16E900239C75 /* Web_Camera.swift in Sources */,
+				3067170222FD16E900239C75 /* NewPass.swift in Sources */,
+				3067170322FD16E900239C75 /* CloseAppAlert.swift in Sources */,
+				3067170422FD16E900239C75 /* PaymentSuccessViewController.m in Sources */,
+				3067170522FD16E900239C75 /* Settings+CoreDataProperties.swift in Sources */,
+				3067170622FD16E900239C75 /* SaldoController.swift in Sources */,
+				3067170722FD16E900239C75 /* VotingController.swift in Sources */,
+				3067170822FD16E900239C75 /* SaldoCell.swift in Sources */,
+				3067170922FD16E900239C75 /* NewsClient.swift in Sources */,
+				3067170A22FD16E900239C75 /* CoreDataManager.swift in Sources */,
+				3067170B22FD16E900239C75 /* MupCounterController.swift in Sources */,
+				3067170C22FD16E900239C75 /* NewsController.swift in Sources */,
+				3067170D22FD16E900239C75 /* CommCell.swift in Sources */,
+				3067170E22FD16E900239C75 /* Reachability.swift in Sources */,
+				3067170F22FD16E900239C75 /* OnePageController.swift in Sources */,
+				3067171022FD16E900239C75 /* Extensions.swift in Sources */,
+				3067171122FD16E900239C75 /* NoCounters.swift in Sources */,
+				3067171222FD16E900239C75 /* AppCons.swift in Sources */,
+				3067171322FD16E900239C75 /* NewSaldoController.swift in Sources */,
+				3067171422FD16E900239C75 /* ASDKCardIOScanner.m in Sources */,
+				3067171522FD16E900239C75 /* EditAccountController.swift in Sources */,
+				3067171622FD16E900239C75 /* QuestionVoteController.swift in Sources */,
+				3067171722FD16E900239C75 /* NewsView.swift in Sources */,
+				3067171822FD16E900239C75 /* PaymentApp+CoreDataProperties.swift in Sources */,
+				3067171922FD16E900239C75 /* PaysMytishiController.swift in Sources */,
+				3067171A22FD16E900239C75 /* QuestionsTableCell.swift in Sources */,
+				3067171B22FD16E900239C75 /* NewMainMenu2.swift in Sources */,
+				3067171C22FD16E900239C75 /* OnOffButton.swift in Sources */,
+				3067171D22FD16E900239C75 /* PaymentApp+CoreDataClass.swift in Sources */,
+				3067171E22FD16E900239C75 /* ForgotPass.swift in Sources */,
+				3067171F22FD16E900239C75 /* CountersController.swift in Sources */,
+				3067172022FD16E900239C75 /* SupportController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -18007,6 +18440,57 @@
 			};
 			name = Release;
 		};
+		3067175D22FD16E900239C75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FE0B9C8DACF5D7DB3EA118C /* Pods-NewOpaliha.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-SibAliance";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/SibAliance-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DisSibAliance";
+				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.sib-aliance";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isSibAliance Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Paritet_Khab-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3067175E22FD16E900239C75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E660478A93B26675F667A396 /* Pods-NewOpaliha.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-SibAliance";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/SibAliance-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DisSibAliance";
+				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.sib-aliance";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isSibAliance;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Paritet_Khab-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		306C2CEB22927F1200C29263 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -19561,6 +20045,15 @@
 			buildConfigurations = (
 				306716AD22FD023C00239C75 /* Debug */,
 				306716AE22FD023C00239C75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3067175C22FD16E900239C75 /* Build configuration list for PBXNativeTarget "Sib_Aliance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3067175D22FD16E900239C75 /* Debug */,
+				3067175E22FD16E900239C75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
