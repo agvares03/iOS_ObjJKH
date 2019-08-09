@@ -90,6 +90,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Cristall")
         #elseif isNarianMarEl
         imageApp.image = UIImage(named: "Logo_Narian_Mar_El")
+        #elseif isSibAliance
+        imageApp.image = UIImage(named: "Logo_SibAliance")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
