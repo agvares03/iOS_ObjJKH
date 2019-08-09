@@ -208,6 +208,10 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_DJVladimir")
         #elseif isTSN_Dnestr
         fon_top.image = UIImage(named: "Logo_TSN_Dnestr")
+        #elseif isCristall
+        fon_top.image = UIImage(named: "Logo_Cristall")
+        #elseif isNarianMarEl
+        fon_top.image = UIImage(named: "Logo_Narian_Mar_El")
         #endif
         
         // targetName - используется для определения ключа терминала (оплата Мытищи)
