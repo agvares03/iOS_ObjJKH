@@ -1033,6 +1033,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var errorTextTwoArr  :[String] = []
     var errorTextThreeArr:[String] = []
     var sendedArr        :[Bool]   = []
+    
+    var autoValueArr     :[Bool]   = []
+    var recheckInterArr  :[String] = []
+    var lastCheckArr     :[String] = []
+    
     func getDataCounter(){
         let ident = "Все"
         identArr.removeAll()
@@ -1060,6 +1065,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         errorTextOneArr.removeAll()
         errorTextTwoArr.removeAll()
         errorTextThreeArr.removeAll()
+        autoValueArr.removeAll()
+        recheckInterArr.removeAll()
+        lastCheckArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.currYear))
         do {
@@ -1089,6 +1097,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             var unit_name = ""
             var sended = true
             var identk = ""
+            var autoSend = false
+            var recheckInter = ""
+            var lastCheck = ""
             var i = 0
             for result in results {
                 let object = result as! NSManagedObject
@@ -1109,6 +1120,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             sended = (object.value(forKey: "sended") as! Bool)
                             sendOne = (object.value(forKey: "sendError") as! Bool)
                             errorOne = (object.value(forKey: "sendErrorText") as! String)
+                            autoSend = (object.value(forKey: "autoValueGettingOnly") as! Bool)
+                            recheckInter = (object.value(forKey: "recheckInterval") as! String)
+                            lastCheck = (object.value(forKey: "lastCheckupDate") as! String)
                             i = 1
                         }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateTwo = (object.value(forKey: "num_month") as! String)
@@ -1137,6 +1151,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
                             tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                             ownerArr.append(object.value(forKey: "owner") as! String)
+                            autoValueArr.append(object.value(forKey: "autoValueGettingOnly") as! Bool)
+                            recheckInterArr.append(object.value(forKey: "recheckInterval") as! String)
+                            lastCheckArr.append(object.value(forKey: "lastCheckupDate") as! String)
                             predArr.append(valueOne)
                             teckArr.append(valueTwo)
                             diffArr.append(valueThree)
@@ -1157,6 +1174,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             errorTextOneArr.append(errorOne)
                             errorTextTwoArr.append(errorTwo)
                             errorTextThreeArr.append(errorThree)
+                            
                             uniq_num = ""
                             tariffNumber = ""
                             dateOne = ""
@@ -1178,6 +1196,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             sendOne = false
                             sendTwo = false
                             sendThree = false
+                            autoSend = false
+                            recheckInter = ""
+                            lastCheck = ""
                             errorOne = ""
                             errorTwo = ""
                             errorThree = ""
@@ -1210,6 +1231,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             errorTextOneArr.append(errorOne)
                             errorTextTwoArr.append(errorTwo)
                             errorTextThreeArr.append(errorThree)
+                            autoValueArr.append(autoSend)
+                            recheckInterArr.append(recheckInter)
+                            lastCheckArr.append(lastCheck)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
@@ -1224,6 +1248,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             sended = (object.value(forKey: "sended") as! Bool)
                             sendOne = (object.value(forKey: "sendError") as! Bool)
                             errorOne = (object.value(forKey: "sendErrorText") as! String)
+                            autoSend = (object.value(forKey: "autoValueGettingOnly") as! Bool)
+                            recheckInter = (object.value(forKey: "recheckInterval") as! String)
+                            lastCheck = (object.value(forKey: "lastCheckupDate") as! String)
                             
                             dateTwo = ""
                             valueTwo = 0.00
@@ -1255,6 +1282,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         sended = (object.value(forKey: "sended") as! Bool)
                         sendOne = (object.value(forKey: "sendError") as! Bool)
                         errorOne = (object.value(forKey: "sendErrorText") as! String)
+                        autoSend = (object.value(forKey: "autoValueGettingOnly") as! Bool)
+                        recheckInter = (object.value(forKey: "recheckInterval") as! String)
+                        lastCheck = (object.value(forKey: "lastCheckupDate") as! String)
                         i = 1
                     }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                         dateTwo = (object.value(forKey: "num_month") as! String)
@@ -1283,6 +1313,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
                         tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                         ownerArr.append(object.value(forKey: "owner") as! String)
+                        autoValueArr.append(object.value(forKey: "autoValueGettingOnly") as! Bool)
+                        recheckInterArr.append(object.value(forKey: "recheckInterval") as! String)
+                        lastCheckArr.append(object.value(forKey: "lastCheckupDate") as! String)
                         predArr.append(valueOne)
                         teckArr.append(valueTwo)
                         diffArr.append(valueThree)
@@ -1328,6 +1361,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         errorOne = ""
                         errorTwo = ""
                         errorThree = ""
+                        autoSend = false
+                        recheckInter = ""
+                        lastCheck = ""
                         i = 0
                     }else if uniq_num != (object.value(forKey: "uniq_num") as! String){
                         i = 1
@@ -1356,6 +1392,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         errorTextOneArr.append(errorOne)
                         errorTextTwoArr.append(errorTwo)
                         errorTextThreeArr.append(errorThree)
+                        autoValueArr.append(autoSend)
+                        recheckInterArr.append(recheckInter)
+                        lastCheckArr.append(lastCheck)
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
@@ -1370,6 +1409,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         sended = (object.value(forKey: "sended") as! Bool)
                         sendOne = (object.value(forKey: "sendError") as! Bool)
                         errorOne = (object.value(forKey: "sendErrorText") as! String)
+                        autoSend = (object.value(forKey: "autoValueGettingOnly") as! Bool)
+                        recheckInter = (object.value(forKey: "recheckInterval") as! String)
+                        lastCheck = (object.value(forKey: "lastCheckupDate") as! String)
                         
                         dateTwo = ""
                         valueTwo = 0.00
@@ -1413,8 +1455,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 errorTextOneArr.append(errorOne)
                 errorTextTwoArr.append(errorTwo)
                 errorTextThreeArr.append(errorThree)
+                autoValueArr.append(autoSend)
+                recheckInterArr.append(recheckInter)
+                lastCheckArr.append(lastCheck)
             }
-            
             DispatchQueue.main.async(execute: {
                 self.tableCounter.reloadData()
             })
@@ -2079,6 +2123,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.predLbl1.text     = dateOneArr[indexPath.row]
             cell.teckLbl1.text     = dateTwoArr[indexPath.row]
             cell.diffLbl1.text     = dateThreeArr[indexPath.row]
+            
+            // Проверка и интервал
+            cell.checkup_date.text = lastCheckArr[indexPath.row]
+            cell.recheckup_diff.text = recheckInterArr[indexPath.row] + getAge(age: recheckInterArr[indexPath.row])
+            if (autoValueArr[indexPath.row]) {
+                cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
+            }
+            
             if Int(cell.tariffNumber) == 2{
                 cell.pred2.text        = String(format:"%.3f", predArr2[indexPath.row])
                 cell.teck2.text        = String(format:"%.3f", teckArr2[indexPath.row])
@@ -2742,6 +2794,10 @@ class HomeCounterCell: UITableViewCell {
     var delegate: CountersCellDelegate?
     var tariffNumber = "0"
     
+    // Поверка и интервал
+    @IBOutlet weak var checkup_date: UILabel!
+    @IBOutlet weak var recheckup_diff: UILabel!
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var ident: UILabel!
@@ -2992,4 +3048,27 @@ struct lsData {
         self.date = date
         self.address = address
     }
+}
+
+func getAge(age: String) -> String {
+    
+    if (age == "") {
+        return "";
+    } else {
+        
+        let age_int = Int(age)
+        if (age_int == 1) {
+            return " год"
+        } else if (age_int == 2) {
+            return " года"
+        } else if (age_int == 2) {
+            return " года"
+        } else if (age_int == 2) {
+            return " года"
+        } else {
+            return " лет"
+        }
+        
+    }
+    
 }

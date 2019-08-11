@@ -1034,6 +1034,11 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             payController.ls = choiceIdent
             payController.countIdent = countIdent
             payController.selTariffNumber = selTariffNumber
+            
+            payController.autoSend = autoSend
+            payController.recheckInter = recheckInter
+            payController.lastCheckDate = lastCheckupDate
+            
         }
         if segue.identifier == "addCounters"{
             let payController             = segue.destination as! AddCountersController

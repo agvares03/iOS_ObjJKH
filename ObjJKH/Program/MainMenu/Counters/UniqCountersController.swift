@@ -21,6 +21,10 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     public var ls = ""
     public var owner = ""
     
+    public var lastCheckDate = ""
+    public var recheckInter = ""
+    public var autoSend = false
+    
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var tableCounters: UITableView!
     @IBOutlet weak var uniqNum: UILabel!
@@ -32,6 +36,9 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var nonCounter: UILabel!
     @IBOutlet weak var nonCounterHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var checkup_date: UILabel!
+    @IBOutlet weak var recheckup_diff: UILabel!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
@@ -107,6 +114,10 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         
         uniqNum.text = owner
         uniqName.text = uniq_name
+        
+        checkup_date.text = lastCheckDate
+        recheckup_diff.text = recheckInter + getAge(age: recheckInter)
+        
         StartIndicator()
         let defaults     = UserDefaults.standard
         login          = defaults.string(forKey: "login")!
@@ -144,6 +155,29 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
 //            sendButton.backgroundColor = sendButton.backgroundColor?.withAlphaComponent(0.5)
 //        }
         // Do any additional setup after loading the view.
+    }
+    
+    func getAge(age: String) -> String {
+        
+        if (age == "") {
+            return "";
+        } else {
+            
+            let age_int = Int(age)
+            if (age_int == 1) {
+                return " год"
+            } else if (age_int == 2) {
+                return " года"
+            } else if (age_int == 2) {
+                return " года"
+            } else if (age_int == 2) {
+                return " года"
+            } else {
+                return " лет"
+            }
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -295,6 +329,9 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             cell.errorText.isHidden = true
             cell.errorHeight.constant = 0
             sendButton.setTitle("Передать показания", for: .normal)
+        }
+        if (autoSend) {
+            sendButton.setTitle("Снятие авт.", for: .normal)
         }
         if sendError[indexPath.row]{
             cell.nonCounter.isHidden = false
@@ -557,3 +594,4 @@ class UniqCounterCell: UITableViewCell {
     }
     
 }
+
