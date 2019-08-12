@@ -184,10 +184,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.performSegue(withIdentifier: "addLS_Mup", sender: self)
         #elseif isPocket
         self.performSegue(withIdentifier: "addLSPocket", sender: self)
-//        #elseif isRodnikMUP
-//        self.performSegue(withIdentifier: "addLSSimple", sender: self)
+        //        #elseif isRodnikMUP
+        //        self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #else
-//        self.performSegue(withIdentifier: "addLS", sender: self)
+        //        self.performSegue(withIdentifier: "addLS", sender: self)
         self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #endif
     }
@@ -239,11 +239,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             return
                                                         }
                                                         
-//                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                        print("responseString = \(responseString)")
+                                                        //                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                        //                                                        print("responseString = \(responseString)")
                                                         DispatchQueue.main.async{
                                                             let defaults = UserDefaults.standard
-                                                           
+                                                            
                                                             defaults.set(true, forKey: "go_to_app")
                                                             defaults.synchronize()
                                                             // Перейдем на главную страницу со входом в приложение
@@ -486,7 +486,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 loadAd()
             }else if defaults.integer(forKey: "ad_Type") == 3{
                 gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-//                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                //                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
                 gadBannerView.adUnitID = defaults.string(forKey: "adsCode")
                 gadBannerView.rootViewController = self
                 addBannerViewToView(gadBannerView)
@@ -498,7 +498,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             adTopConst.constant = 0
         }
         getDebt()
-//        getNews()
+        //        getNews()
         getDataCounter()
         updateListApps()
         getQuestions()
@@ -718,7 +718,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.StopIndicators()
         DispatchQueue.main.async{
             UserDefaults.standard.set(true, forKey: "fromMenu")
-//            UserDefaults.standard.synchronize()
+            //            UserDefaults.standard.synchronize()
         }
     }
     
@@ -744,139 +744,139 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var sumObj = 0.00
         var u = 0
         let login = defaults.string(forKey: "login")
-//        let viewHeight = self.heigth_view.constant
-//        let backHeight = self.backgroundHeight.constant
+        //        let viewHeight = self.heigth_view.constant
+        //        let backHeight = self.backgroundHeight.constant
         if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
             self.view_no_ls.isHidden = true
-//            str_ls_arr?.forEach{
+            //            str_ls_arr?.forEach{
             let urlPath = Server.SERVER + "MobileAPI/GetDebt.ashx?" + "phone=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-                let url: NSURL = NSURL(string: urlPath)!
-                let request = NSMutableURLRequest(url: url as URL)
-                request.httpMethod = "GET"
-//                print(request)
+            let url: NSURL = NSURL(string: urlPath)!
+            let request = NSMutableURLRequest(url: url as URL)
+            request.httpMethod = "GET"
+            //                print(request)
             
-                let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                      completionHandler: {
-                                                        data, response, error in
-                                                        
-                                                        if error != nil {
-                                                            return
-                                                        } else {
-                                                            do {
-                                                                u += 1
-                                                                let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                                print(responseStr)
+            let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                  completionHandler: {
+                                                    data, response, error in
+                                                    
+                                                    if error != nil {
+                                                        return
+                                                    } else {
+                                                        do {
+                                                            u += 1
+                                                            let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                            print(responseStr)
+                                                            
+                                                            if !responseStr.contains("error"){
+                                                                var date1       = ""
+                                                                var date2       = ""
+                                                                var date        = ""
+                                                                var sum         = ""
+                                                                var sumFine     = ""
+                                                                var ls = ""
+                                                                var address = ""
                                                                 
-                                                                if !responseStr.contains("error"){
-                                                                    var date1       = ""
-                                                                    var date2       = ""
-                                                                    var date        = ""
-                                                                    var sum         = ""
-                                                                    var sumFine     = ""
-                                                                    var ls = ""
-                                                                    var address = ""
-                                                                    
-                                                                    //                                                                var sumOver     = ""
-                                                                    //                                                                var sumFineOver = ""
-//                                                                    var sumAll      = ""
-                                                                    var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                                    //                                                                                                                                        print(json)
-                                                                    
-                                                                    if let json_bills = json["data"] {
-                                                                        let int_end = (json_bills.count)!-1
-                                                                        if (int_end < 0) {
-                                                                            
-                                                                        } else {
-                                                                            for index in 0...int_end {
-                                                                                let json_bill = json_bills.object(at: index) as! [String:AnyObject]
-                                                                                for obj in json_bill {
-                                                                                    if obj.key == "Sum" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            sum = String(describing: obj.value as! Double)
-                                                                                        }
+                                                                //                                                                var sumOver     = ""
+                                                                //                                                                var sumFineOver = ""
+                                                                //                                                                    var sumAll      = ""
+                                                                var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                                //                                                                                                                                        print(json)
+                                                                
+                                                                if let json_bills = json["data"] {
+                                                                    let int_end = (json_bills.count)!-1
+                                                                    if (int_end < 0) {
+                                                                        
+                                                                    } else {
+                                                                        for index in 0...int_end {
+                                                                            let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                                                            for obj in json_bill {
+                                                                                if obj.key == "Sum" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        sum = String(describing: obj.value as! Double)
                                                                                     }
-                                                                                    if obj.key == "SumFine" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            sumFine = String(describing: obj.value as! Double)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "Address" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            address = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "Ident" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            ls = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "DebtActualDate" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            date = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "MetersStartDay" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            date1 = String(describing: obj.value as! Int)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "MetersEndDay" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            date2 = String(describing: obj.value as! Int)
-                                                                                        }
-                                                                                    }
-                                                                                    
                                                                                 }
-//                                                                                if date == ""{
-//                                                                                    let dateFormatter = DateFormatter()
-//                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
-//                                                                                    date = dateFormatter.string(from: Date())
-//                                                                                }
-                                                                                debtIdent.append(ls)
-                                                                                debtSum.append(sum)
-                                                                                debtSumFine.append(sumFine)
-                                                                                debtAddress.append(address)
-                                                                                debtDate.append(date)
-                                                                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address))
+                                                                                if obj.key == "SumFine" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        sumFine = String(describing: obj.value as! Double)
+                                                                                    }
+                                                                                }
+                                                                                if obj.key == "Address" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        address = String(describing: obj.value as! String)
+                                                                                    }
+                                                                                }
+                                                                                if obj.key == "Ident" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        ls = String(describing: obj.value as! String)
+                                                                                    }
+                                                                                }
+                                                                                if obj.key == "DebtActualDate" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        date = String(describing: obj.value as! String)
+                                                                                    }
+                                                                                }
+                                                                                if obj.key == "MetersStartDay" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        date1 = String(describing: obj.value as! Int)
+                                                                                    }
+                                                                                }
+                                                                                if obj.key == "MetersEndDay" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        date2 = String(describing: obj.value as! Int)
+                                                                                    }
+                                                                                }
+                                                                                
                                                                             }
-                                                                            
-//                                                                            defaults.set(date, forKey: "dateDebt")
-//                                                                            if Double(sumAll) != 0.00{
-//                                                                                let d = date.components(separatedBy: ".")
-//                                                                                let d1 = self.dateOld.components(separatedBy: ".")
-//                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
-//                                                                                    DispatchQueue.main.async {
-//                                                                                        self.dateOld = date
-//                                                                                    }
-//                                                                                }
-//                                                                                sumObj = sumObj + Double(sumAll)!
-//                                                                            }
+                                                                            //                                                                                if date == ""{
+                                                                            //                                                                                    let dateFormatter = DateFormatter()
+                                                                            //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                                                                            //                                                                                    date = dateFormatter.string(from: Date())
+                                                                            //                                                                                }
+                                                                            debtIdent.append(ls)
+                                                                            debtSum.append(sum)
+                                                                            debtSumFine.append(sumFine)
+                                                                            debtAddress.append(address)
+                                                                            debtDate.append(date)
+                                                                            self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address))
                                                                         }
-                                                                    }
-                                                                    self.date1 = date1
-                                                                    self.date2 = date2
-                                                                    defaults.setValue(date1, forKey: "date1")
-                                                                    defaults.setValue(date2, forKey: "date2")
-                                                                    defaults.synchronize()
-                                                                    self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
-                                                                    DispatchQueue.main.async {
-                                                                        if (self.date1 == "0") && (self.date2 == "0") {
-                                                                            self.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
-                                                                        } else {
-                                                                            self.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
-                                                                        }
-                                                                        self.tableLS.reloadData()
+                                                                        
+                                                                        //                                                                            defaults.set(date, forKey: "dateDebt")
+                                                                        //                                                                            if Double(sumAll) != 0.00{
+                                                                        //                                                                                let d = date.components(separatedBy: ".")
+                                                                        //                                                                                let d1 = self.dateOld.components(separatedBy: ".")
+                                                                        //                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                                                                        //                                                                                    DispatchQueue.main.async {
+                                                                        //                                                                                        self.dateOld = date
+                                                                        //                                                                                    }
+                                                                        //                                                                                }
+                                                                        //                                                                                sumObj = sumObj + Double(sumAll)!
+                                                                        //                                                                            }
                                                                     }
                                                                 }
-                                                                
-                                                            } catch let error as NSError {
-                                                                print(error)
+                                                                self.date1 = date1
+                                                                self.date2 = date2
+                                                                defaults.setValue(date1, forKey: "date1")
+                                                                defaults.setValue(date2, forKey: "date2")
+                                                                defaults.synchronize()
+                                                                self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
+                                                                DispatchQueue.main.async {
+                                                                    if (self.date1 == "0") && (self.date2 == "0") {
+                                                                        self.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+                                                                    } else {
+                                                                        self.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
+                                                                    }
+                                                                    self.tableLS.reloadData()
+                                                                }
                                                             }
                                                             
+                                                        } catch let error as NSError {
+                                                            print(error)
                                                         }
-                })
-                task.resume()
-//            }
+                                                        
+                                                    }
+            })
+            task.resume()
+            //            }
         }else{
             self.view_no_ls.isHidden = false
             let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
@@ -903,8 +903,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
-//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                print("responseString = \(responseString)")
+                                                //                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                //                                                print("responseString = \(responseString)")
                                                 
                                                 if error != nil {
                                                     return
@@ -961,13 +961,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
         request.httpMethod = "GET"
-//        print(request)
+        //        print(request)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, error, responce in
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                print("responseString = \(responseString)")
+                                                //                                                print("responseString = \(responseString)")
                                                 
                                                 //            if error != nil {
                                                 //                print("ERROR")
@@ -1500,14 +1500,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func load_data_Apps() {
-//        if (switchCloseApps.isOn) {
-//            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"]) as? NSFetchedResultsController<Applications>
-//        } else {
-            let close: NSNumber = 1
-            let predicateFormat = String(format: " is_close =%@ ", close)
-            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat) as? NSFetchedResultsController<Applications>
-//        }
-    
+        //        if (switchCloseApps.isOn) {
+        //            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"]) as? NSFetchedResultsController<Applications>
+        //        } else {
+        let close: NSNumber = 1
+        let predicateFormat = String(format: " is_close =%@ ", close)
+        self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat) as? NSFetchedResultsController<Applications>
+        //        }
+        
         do {
             try fetchedResultsController!.performFetch()
         } catch {
@@ -1525,13 +1525,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-//        print(request)
+        //        print(request)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, error, responce in
-//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                print("responseString = \(responseString)")
+                                                //                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                //                                                print("responseString = \(responseString)")
                                                 
                                                 guard data != nil else {
                                                     self.endRefresh()
@@ -1545,12 +1545,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         let month = json.month
                                                         let link = json.link
                                                         let sum = json.sum
-//                                                        var i = 0
+                                                        //                                                        var i = 0
                                                         let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
-//                                                        if (link?.contains(".png"))! || (link?.contains(".jpg"))! || (link?.contains(".pdf"))!{
-//                                                            print(fileObj.sum, fileObj.month)
-                                                            self.fileList.append(fileObj)
-//                                                        }
+                                                        //                                                        if (link?.contains(".png"))! || (link?.contains(".jpg"))! || (link?.contains(".pdf"))!{
+                                                        //                                                            print(fileObj.sum, fileObj.month)
+                                                        self.fileList.append(fileObj)
+                                                        //                                                        }
                                                     }
                                                 }
                                                 self.endRefresh()
@@ -1577,18 +1577,18 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func getQuestions() {
         
-//        let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
+        //        let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
         let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + phone)!)
         request.httpMethod = "GET"
-//        print(request)
+        //        print(request)
         
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
             
-//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//            print("responseString = \(responseString)")
+            //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            //            print("responseString = \(responseString)")
             
             guard data != nil else { return }
             let json = try? JSONSerialization.jsonObject(with: data!,
@@ -1606,7 +1606,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
                 if !isContains {
                     if i < 2{
-                       filtered.append(json)
+                        filtered.append(json)
                     }
                 }
                 i += 1
@@ -1625,8 +1625,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
-//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//            print("responseString = \(responseString)")
+            //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            //            print("responseString = \(responseString)")
             
             defer {
                 DispatchQueue.main.sync {
@@ -1637,14 +1637,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         self.tableWeb.isHidden = false
                     }
                     
-//                    if (self.webArr != nil) {
-//                        for (index, item) in (self.webArr.enumerated()) {
-//                            //                        if item.name == self.performName_ {
-//                            //                            self.index = index
-//                            //                            self.performSegue(withIdentifier: Segues.fromQuestionsTableVC.toQuestion, sender: self)
-//                            //                        }
-//                        }
-//                    }
+                    //                    if (self.webArr != nil) {
+                    //                        for (index, item) in (self.webArr.enumerated()) {
+                    //                            //                        if item.name == self.performName_ {
+                    //                            //                            self.index = index
+                    //                            //                            self.performSegue(withIdentifier: Segues.fromQuestionsTableVC.toQuestion, sender: self)
+                    //                            //                        }
+                    //                        }
+                    //                    }
                     
                 }
             }
@@ -1922,11 +1922,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     var answer = str_menu_2.components(separatedBy: ";")
                     if (answer[2] == "0") {
                         self.menu_6_const.constant = 0
-                        self.serviceHeight.constant = 0
+                        self.webLSHeight.constant = 0
                         self.tableWebHeight.constant = 0
                     }else{
                         self.menu_6_const.constant = 15
-                        self.serviceHeight.constant = 45
+                        self.webLSHeight.constant = 45
                         self.tableWebHeight.constant = height6
                     }
                 }
@@ -1971,9 +1971,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.receipts_View.isHidden = false
                 self.tableReceiptsHeight.constant = height8
             }
-//            print("Отступы меню: ", self.menu_1_const.constant, self.menu_2_const.constant, self.menu_3_const.constant, self.menu_4_const.constant, self.menu_5_const.constant, self.menu_6_const.constant, self.menu_7_const.constant)
-//            print("Высота таблиц: ", self.tableNewsHeight.constant, self.tableCounterHeight.constant, self.tableAppsHeight.constant, self.tableQuestionHeight.constant, self.tableWebHeight.constant, self.tableServiceHeight.constant, self.tableReceiptsHeight.constant)
-//            print("Высота шапок: ", self.newsHeight.constant, self.counterHeight.constant, self.appsHeight.constant, self.questionLSHeight.constant, self.webLSHeight.constant, self.serviceHeight.constant, self.receipts1Height.constant + self.receipts2Height.constant)
+            //            print("Отступы меню: ", self.menu_1_const.constant, self.menu_2_const.constant, self.menu_3_const.constant, self.menu_4_const.constant, self.menu_5_const.constant, self.menu_6_const.constant, self.menu_7_const.constant)
+            //            print("Высота таблиц: ", self.tableNewsHeight.constant, self.tableCounterHeight.constant, self.tableAppsHeight.constant, self.tableQuestionHeight.constant, self.tableWebHeight.constant, self.tableServiceHeight.constant, self.tableReceiptsHeight.constant)
+            //            print("Высота шапок: ", self.newsHeight.constant, self.counterHeight.constant, self.appsHeight.constant, self.questionLSHeight.constant, self.webLSHeight.constant, self.serviceHeight.constant, self.receipts1Height.constant + self.receipts2Height.constant)
         }
         return count!
     }
@@ -2013,7 +2013,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == self.tableLS {
             let cell = self.tableLS.dequeueReusableCell(withIdentifier: "HomeLSCell") as! HomeLSCell
-//            cell = shadowCell(cell: cell) as! HomeLSCell
+            //            cell = shadowCell(cell: cell) as! HomeLSCell
             #if isDJ
             cell.del_ls_btn.isHidden = true
             #endif
@@ -2024,33 +2024,33 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
             cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
             cell.sumText.textColor = myColors.btnColor.uiColor()
-//            var sumAll = 0.00
-//            var isPayToDate = false
-//            var isPayBoDate = false
-//            var sumBoDate = 0.00
-//            self.values.forEach{
-//                    let dateFormatter = DateFormatter()
-//                    dateFormatter.dateFormat = "dd.MM.yyyy"
-//                    let date1: Date = dateFormatter.date(from: $0.date.replacingOccurrences(of: " 00:00:00", with: ""))!
-//                    let date2: Date = dateFormatter.date(from: lsArr[indexPath.row].date!)!
-//                    if date2 > date1{
-////                        #if isMupRCMytishi
-////                        let serviceP = self.sum / 0.992 - self.sum
-////                        #else
-////                        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * Double($0.sum)! / 100
-////                        #endif
-//                        sumAll = sumAll + Double($0.sum)!
-//                    }
-//            }
-//            let sum:Double = Double(lsArr[indexPath.row].sum!) as! Double
-//            if sumAll == sum{
-//                isPayToDate = true
-//            }else if sumAll > sum{
-//                sumBoDate = sumAll - sum
-//                isPayBoDate = true
-//            }
-//            print(sumAll, sumBoDate, sum)
-//            if (Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate) || (Double(lsArr[indexPath.row].sum!)! < 0.00){
+            //            var sumAll = 0.00
+            //            var isPayToDate = false
+            //            var isPayBoDate = false
+            //            var sumBoDate = 0.00
+            //            self.values.forEach{
+            //                    let dateFormatter = DateFormatter()
+            //                    dateFormatter.dateFormat = "dd.MM.yyyy"
+            //                    let date1: Date = dateFormatter.date(from: $0.date.replacingOccurrences(of: " 00:00:00", with: ""))!
+            //                    let date2: Date = dateFormatter.date(from: lsArr[indexPath.row].date!)!
+            //                    if date2 > date1{
+            ////                        #if isMupRCMytishi
+            ////                        let serviceP = self.sum / 0.992 - self.sum
+            ////                        #else
+            ////                        let serviceP = UserDefaults.standard.double(forKey: "servPercent") * Double($0.sum)! / 100
+            ////                        #endif
+            //                        sumAll = sumAll + Double($0.sum)!
+            //                    }
+            //            }
+            //            let sum:Double = Double(lsArr[indexPath.row].sum!) as! Double
+            //            if sumAll == sum{
+            //                isPayToDate = true
+            //            }else if sumAll > sum{
+            //                sumBoDate = sumAll - sum
+            //                isPayBoDate = true
+            //            }
+            //            print(sumAll, sumBoDate, sum)
+            //            if (Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayBoDate) || (Double(lsArr[indexPath.row].sum!)! < 0.00){
             if Double(lsArr[indexPath.row].sum!)! < 0.00{
                 cell.noDebtText.isHidden = false
                 cell.payDebt.isHidden = true
@@ -2060,19 +2060,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.sumViewHeight.constant = 50
                 cell.sumInfo.text = "Имеется переплата на " + lsArr[indexPath.row].date! + " на сумму"
                 cell.sumText.text = lsArr[indexPath.row].sum!.replacingOccurrences(of: "-", with: "") + " руб."
-//            }else if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayToDate{
-//                cell.noDebtText.isHidden = false
-//                cell.payDebt.isHidden = true
-//                cell.topPeriodConst.constant = 20
-//                cell.sumViewHeight.constant = 0
-//                cell.payDebtHeight.constant = 0
-//                if self.view.frame.size.width > 320{
-//                    cell.bottViewHeight.constant = 50
-//                }else{
-//                    cell.bottViewHeight.constant = 70
-//                }
+                //            }else if Double(lsArr[indexPath.row].sum!)! > 0.00 && isPayToDate{
+                //                cell.noDebtText.isHidden = false
+                //                cell.payDebt.isHidden = true
+                //                cell.topPeriodConst.constant = 20
+                //                cell.sumViewHeight.constant = 0
+                //                cell.payDebtHeight.constant = 0
+                //                if self.view.frame.size.width > 320{
+                //                    cell.bottViewHeight.constant = 50
+                //                }else{
+                //                    cell.bottViewHeight.constant = 70
+                //                }
             }else if Double(lsArr[indexPath.row].sum!)! > 0.00{
-//                cell.separator.isHidden = true
+                //                cell.separator.isHidden = true
                 cell.noDebtText.isHidden = true
                 cell.payDebt.isHidden = false
                 cell.topPeriodConst.constant = 5
@@ -2108,8 +2108,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cell = self.tableNews.dequeueReusableCell(withIdentifier: "HomeNewsCell") as! HomeNewsCell
             cell.textQuestion.text = newsArr[indexPath.row].header
             cell.openNews.tintColor = myColors.btnColor.uiColor()
-//            cell = shadowCell(cell: cell) as! HomeNewsCell
-//            cell.delegate = self
+            //            cell = shadowCell(cell: cell) as! HomeNewsCell
+            //            cell.delegate = self
             return cell
         }else if tableView == self.tableCounter {
             let cell = self.tableCounter.dequeueReusableCell(withIdentifier: "HomeCounterCell") as! HomeCounterCell
@@ -2325,7 +2325,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.tariffHeight3.constant = 100
                 cell.tariff3.isHidden = false
             }
-//            cell = shadowCell(cell: cell) as! HomeCounterCell
+            //            cell = shadowCell(cell: cell) as! HomeCounterCell
             cell.delegate = self
             return cell
         }else if tableView == self.tableApps {
@@ -2341,7 +2341,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let date = dateFormatter.date(from: app.date!)
             dateFormatter.dateFormat = "dd.MM.yyyy"
             cell.date.text  = dateFormatter.string(from: date!)
-//            cell = shadowCell(cell: cell) as! HomeAppsCell
+            //            cell = shadowCell(cell: cell) as! HomeAppsCell
             //            cell.delegate = self
             return cell
         }else if tableView == self.tableQuestion {
@@ -2351,14 +2351,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.questionsCount.text = String(questionArr[indexPath.row].questions?.count as! Int) + " вопросов"
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.goQuestion.tintColor = myColors.btnColor.uiColor()
-//            cell = shadowCell(cell: cell) as! HomeQuestionsCell
+            //            cell = shadowCell(cell: cell) as! HomeQuestionsCell
             cell.delegate = self
             return cell
         }else if tableView == self.tableWeb {
             let cell = self.tableWeb.dequeueReusableCell(withIdentifier: "HomeWebCell") as! HomeWebCell
             cell.goWeb.tintColor = myColors.btnColor.uiColor()
             cell.img.setImageColor(color: myColors.btnColor.uiColor())
-//            cell = shadowCell(cell: cell) as! HomeWebCell
+            //            cell = shadowCell(cell: cell) as! HomeWebCell
             //            cell.delegate = self
             return cell
         }else if tableView == self.tableService {
@@ -2404,7 +2404,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.delegate = self
             return cell
         }else{
-           return StockCell()
+            return StockCell()
         }
     }
     
@@ -2415,7 +2415,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         label.font = font
         label.text = text
         label.sizeToFit()
-//        print(label.frame.height, width)
+        //        print(label.frame.height, width)
         return label.frame.height
     }
     
@@ -2436,17 +2436,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     var indexQuestion = 0
-//    func shadowCell(cell: UITableViewCell) -> UITableViewCell{
-//        cell.layer.cornerRadius = 7
-//        cell.layer.masksToBounds = false
-//        cell.layer.shadowColor = UIColor.lightGray.cgColor
-//        cell.layer.shadowOffset = CGSize(width: 0, height: 1)
-//        cell.layer.shadowRadius = 7
-//        cell.layer.shadowOpacity = 0.5
-//        cell.layer.shouldRasterize = true
-//        cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
-//        return cell
-//    }
+    //    func shadowCell(cell: UITableViewCell) -> UITableViewCell{
+    //        cell.layer.cornerRadius = 7
+    //        cell.layer.masksToBounds = false
+    //        cell.layer.shadowColor = UIColor.lightGray.cgColor
+    //        cell.layer.shadowOffset = CGSize(width: 0, height: 1)
+    //        cell.layer.shadowRadius = 7
+    //        cell.layer.shadowOpacity = 0.5
+    //        cell.layer.shouldRasterize = true
+    //        cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
+    //        return cell
+    //    }
     var debtArr:[AnyObject] = []
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         debtArr.removeAll()
@@ -2460,11 +2460,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
         }
         if segue.identifier == "go_answers" {
-//            let vc = segue.destination as! QuestionAnswerVC
-//            vc.title = questionArr[indexQuestion].name
-//            vc.question_ = questionArr[indexQuestion]
-//            //            vc.delegate = delegate
-//            vc.questionDelegate = self
+            //            let vc = segue.destination as! QuestionAnswerVC
+            //            vc.title = questionArr[indexQuestion].name
+            //            vc.question_ = questionArr[indexQuestion]
+            //            //            vc.delegate = delegate
+            //            vc.questionDelegate = self
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! QuestionsTableVC
             vc.questionTitle = questionArr[indexQuestion].name!
@@ -2504,11 +2504,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
-//            AppUser.delegate   = ShowAppDelegate()
+            //            AppUser.delegate   = ShowAppDelegate()
             AppUser.App        = app
-//            AppUser.updDelegt = AppsUserUpdateDelegate()
+            //            AppUser.updDelegt = AppsUserUpdateDelegate()
         }
-        if segue.identifier == "new_add_app" {            
+        if segue.identifier == "new_add_app" {
             let AppUser             = segue.destination as! NewAddAppUser
             AppUser.fromMenu = true
         }
@@ -2546,9 +2546,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
-//            AppUser.delegate   = self
+            //            AppUser.delegate   = self
             AppUser.App        = app
-//            AppUser.updDelegt = self
+            //            AppUser.updDelegt = self
         }
         if segue.identifier == "addCounters"{
             let payController             = segue.destination as! AddCountersController
@@ -2589,7 +2589,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 payController.saldoIdent = "Все"
             }else{
                 payController.saldoIdent = choiceIdent
-            }            
+            }
             payController.debtArr = self.debtArr
         }
         if segue.identifier == "openURL" {
@@ -2597,9 +2597,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.urlLink = self.link
         }
         if segue.identifier == "goSaldo" {
-//            let payController             = segue.destination as! SaldoController
-//            print(self.debtArr.count)
-//            payController.debtArr = self.debtArr
+            //            let payController             = segue.destination as! SaldoController
+            //            print(self.debtArr.count)
+            //            payController.debtArr = self.debtArr
         }
     }
     var selectedUniq = ""
@@ -2629,58 +2629,58 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.counterIndicator.isHidden = false
             self.allCountersBtn.isHidden = true
         }
-            let urlPath = Server.SERVER + "GetMeterAccessFlag.ashx?ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-//            print(request)
+        let urlPath = Server.SERVER + "GetMeterAccessFlag.ashx?ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        //            print(request)
         
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        DispatchQueue.main.async(execute: {
-                                                            UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
-                                                            UserDefaults.standard.synchronize()
-                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
-                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                                                                self.performSegue(withIdentifier: "support", sender: self)
-                                                            }
-                                                            alert.addAction(cancelAction)
-                                                            alert.addAction(supportAction)
-                                                            self.present(alert, animated: true, completion: nil)
-                                                            self.counterIndicator.stopAnimating()
-                                                            self.counterIndicator.isHidden = true
-                                                            self.allCountersBtn.isHidden = false
-                                                        })
-                                                        return
-                                                    }
-                                                    
-                                                    let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                    print("responseString = \(responseString)")
-                                                    if (responseString == "0") {
-                                                        DispatchQueue.main.async{
-                                                            let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
-                                                            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                                                            alert.addAction(cancelAction)
-                                                            self.present(alert, animated: true, completion: nil)
-                                                            self.counterIndicator.stopAnimating()
-                                                            self.counterIndicator.isHidden = true
-                                                            self.allCountersBtn.isHidden = false
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
                                                         }
-                                                    } else if (responseString == "1") {
-                                                        self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                        self.counterIndicator.stopAnimating()
+                                                        self.counterIndicator.isHidden = true
+                                                        self.allCountersBtn.isHidden = false
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                //                                                    print("responseString = \(responseString)")
+                                                if (responseString == "0") {
+                                                    DispatchQueue.main.async{
+                                                        let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                        self.counterIndicator.stopAnimating()
+                                                        self.counterIndicator.isHidden = true
+                                                        self.allCountersBtn.isHidden = false
                                                     }
+                                                } else if (responseString == "1") {
+                                                    self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
+                                                }
+                                                
+        })
         
-            })
-            
-            task.resume()
+        task.resume()
     }
     
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String) {
-//        print(isEditable())
+        //        print(isEditable())
         if isEditable(){
             var metrId = ""
             for i in 0...self.numberArr.count - 1{
@@ -2722,7 +2722,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         #else
         self.performSegue(withIdentifier: "paysMytishi", sender: self)
         #endif
-//        self.performSegue(withIdentifier: "pays", sender: self)
+        //        self.performSegue(withIdentifier: "pays", sender: self)
     }
     
     func update() {
@@ -2902,7 +2902,7 @@ class HomeCounterCell: UITableViewCell {
     
     @IBAction func sendAction(_ sender: UIButton) {
         delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred1.text!, predValue2: pred2.text!, predValue3: pred3.text!, tariffNumber: tariffNumber)
-//        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
+        //        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
     }
 }
 
@@ -2944,7 +2944,7 @@ class HomeQuestionsCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    @IBAction func goQuestions(_ sender: UIButton) {        
+    @IBAction func goQuestions(_ sender: UIButton) {
         delegate!.performSegue(withIdentifier: "go_answers", sender: self)
     }
 }
