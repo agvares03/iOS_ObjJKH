@@ -25,11 +25,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var request = GADRequest()
     
     @IBAction func backClick(_ sender: UIBarButtonItem){
-//        if UserDefaults.standard.bool(forKey: "NewMain"){
-            navigationController?.popViewController(animated: true)
-//        }else{
-//            navigationController?.dismiss(animated: true, completion: nil)
-//        }
+        //        if UserDefaults.standard.bool(forKey: "NewMain"){
+        navigationController?.popViewController(animated: true)
+        //        }else{
+        //            navigationController?.dismiss(animated: true, completion: nil)
+        //        }
     }
     
     @IBOutlet weak var lsView: UIView!
@@ -97,8 +97,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         self.performSegue(withIdentifier: "addLSMup", sender: self)
         #elseif isPocket
         self.performSegue(withIdentifier: "addLSPocket", sender: self)
-//        #elseif isRodnikMUP
-//        self.performSegue(withIdentifier: "addLSSimple", sender: self)
+        //        #elseif isRodnikMUP
+        //        self.performSegue(withIdentifier: "addLSSimple", sender: self)
         #else
         //        self.performSegue(withIdentifier: "addLS", sender: self)
         self.performSegue(withIdentifier: "addLSSimple", sender: self)
@@ -164,10 +164,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     @IBAction func Payed(_ sender: UIButton) {
         var l = false
-//        #if isUKKomfort
-//        self.payedS()
-//        #elseif isStolitsa
-//        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
+        //        #if isUKKomfort
+        //        self.payedS()
+        //        #elseif isStolitsa
+        //        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
         #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha
         l = true
         #else
@@ -366,10 +366,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
                 for i in 0...str_ls_arr.count - 1{
-                    DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0])|"
+                    DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0].stringByAddingPercentEncodingForRFC3986() ?? "")|"
                 }
             }else{
-                DataStr = "ls1-\(selectLS)|"
+                DataStr = "ls1-\(selectLS.stringByAddingPercentEncodingForRFC3986() ?? "")|"
             }
             DataStr = DataStr + "|"
             i = 0
@@ -447,10 +447,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
-                UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
+                
+                UserDefaults.standard.set("_\(str_ls_arr[0].stringByAddingPercentEncodingForRFC3986() ?? "")", forKey: "payIdent")
                 
             }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
+                UserDefaults.standard.set("_\(selectLS.stringByAddingPercentEncodingForRFC3986() ?? "")", forKey: "payIdent")
             }
             UserDefaults.standard.synchronize()
             Data["chargeFlag"] = "false"
@@ -1018,51 +1019,51 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         if choiceIdent == ""{
             let osv = fetchedResultsController!.object(at: indexPath)
-//            if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
-//                cell.end.isUserInteractionEnabled = false
-//                cell.end.isHidden = true
-//                cell.endL.isHidden = false
-//                cell.endL.text = osv.end
-//            }else{
-                cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-                cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
-                cell.end.isUserInteractionEnabled = true
-                cell.endL.isHidden = true
-                cell.end.isHidden = false
-                //                print(osv.end)
-                cell.end.text = osv.end
-                if osvc.count != 0{
-                    for i in 0...osvc.count - 1{
-                        let code:String = osvc[i] + identOSV[i]
-                        if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
-                            //                            print(code, sumOSV[i])
-                            cell.end.text = String(sumOSV[i])
-                        }
+            //            if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
+            //                cell.end.isUserInteractionEnabled = false
+            //                cell.end.isHidden = true
+            //                cell.endL.isHidden = false
+            //                cell.endL.text = osv.end
+            //            }else{
+            cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+            cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+            cell.end.isUserInteractionEnabled = true
+            cell.endL.isHidden = true
+            cell.end.isHidden = false
+            //                print(osv.end)
+            cell.end.text = osv.end
+            if osvc.count != 0{
+                for i in 0...osvc.count - 1{
+                    let code:String = osvc[i] + identOSV[i]
+                    if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
+                        //                            print(code, sumOSV[i])
+                        cell.end.text = String(sumOSV[i])
                     }
                 }
-//            }
+            }
+            //            }
         }else{
-//            if (uslugaArr[indexPath.row].contains("газ")) || uslugaArr[indexPath.row] == "Страховка"{
-//                cell.end.isUserInteractionEnabled = false
-//                cell.end.isHidden = true
-//                cell.endL.isHidden = false
-//                cell.endL.text = endArr[indexPath.row]
-//            }else{
-                cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-                cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
-                cell.end.isUserInteractionEnabled = true
-                cell.endL.isHidden = true
-                cell.end.isHidden = false
-                cell.end.text = endArr[indexPath.row]
-                if osvc.count != 0{
-                    for i in 0...osvc.count - 1{
-                        let code:String = osvc[i]
-                        if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
-                            cell.end.text = String(sumOSV[i])
-                        }
+            //            if (uslugaArr[indexPath.row].contains("газ")) || uslugaArr[indexPath.row] == "Страховка"{
+            //                cell.end.isUserInteractionEnabled = false
+            //                cell.end.isHidden = true
+            //                cell.endL.isHidden = false
+            //                cell.endL.text = endArr[indexPath.row]
+            //            }else{
+            cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+            cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+            cell.end.isUserInteractionEnabled = true
+            cell.endL.isHidden = true
+            cell.end.isHidden = false
+            cell.end.text = endArr[indexPath.row]
+            if osvc.count != 0{
+                for i in 0...osvc.count - 1{
+                    let code:String = osvc[i]
+                    if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
+                        cell.end.text = String(sumOSV[i])
                     }
                 }
-//            }
+            }
+            //            }
         }
         cell.delegate = self
         if kol == 1{
