@@ -102,7 +102,7 @@ class FirstController: UIViewController {
         // Маска для ввода - телефон
         #if isDJ
         #else
-            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+        edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
         #endif
         
         loadUsersDefaults()
@@ -217,70 +217,71 @@ class FirstController: UIViewController {
         #elseif isSpartak
         fon_top.image = UIImage(named: "Logo_Spartak")
         #endif
-        
+        UserDefaults.standard.set("", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         // targetName - используется для определения ключа терминала (оплата Мытищи)
         #if isOur_Obj_Home
         #elseif isChist_Dom
         #elseif isMupRCMytishi
-            UserDefaults.standard.set("MupRCMytishi", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("MupRCMytishi", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isDJ
         #elseif isStolitsa
         #elseif isKomeks
         #elseif isUKKomfort
         #elseif isElectroSbitSaratov
-            UserDefaults.standard.set("ElectroSbitSaratov", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("ElectroSbitSaratov", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isRodnikMUP
-            UserDefaults.standard.set("RodnikMUP", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("RodnikMUP", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isAFregat
-            UserDefaults.standard.set("AFregat", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("AFregat", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isKlimovsk12
-            UserDefaults.standard.set("Klimovsk12", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("Klimovsk12", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isPocket
         #elseif isReutKomfort
-            UserDefaults.standard.set("ReutComfort", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("ReutComfort", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isUKGarant
-            UserDefaults.standard.set("UK_Garant", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("UK_Garant", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isSoldatova1
         #elseif isTafgai
         #elseif isServiceKomfort
-            UserDefaults.standard.set("UK_Service_Comfort", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("UK_Service_Comfort", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isParus
-            UserDefaults.standard.set("Parus", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("Parus", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isParitet
         #elseif isNewOpaliha
-            UserDefaults.standard.set("NewOpaliha", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("NewOpaliha", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isSkyfort
         #elseif isStandartDV
         #elseif isGarmonia
         #elseif isUpravdomChe
-            UserDefaults.standard.set("UK_Upravdom_Che", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("UK_Upravdom_Che", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isJKH_Pavlovskoe
-            UserDefaults.standard.set("JKH_Pavlovskoe", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("JKH_Pavlovskoe", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isPerspectiva
         #elseif isServicekom
-            UserDefaults.standard.set("Servicekom", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("Servicekom", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isTeplovodoresources
-            UserDefaults.standard.set("Teplovodoresources", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("Teplovodoresources", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isStroimBud
-            UserDefaults.standard.set("StroimBud", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("StroimBud", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #elseif isUKParitetKhab
-            UserDefaults.standard.set("UKParitetKhab", forKey: "targetName")
-            UserDefaults.standard.synchronize()
+        UserDefaults.standard.set("UKParitetKhab", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
@@ -332,7 +333,7 @@ class FirstController: UIViewController {
         UserDefaults.standard.synchronize()
         UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
         
-//        self.navigationController?.isNavigationBarHidden = false;
+        //        self.navigationController?.isNavigationBarHidden = false;
     }
     
     override func didReceiveMemoryWarning() {
@@ -468,7 +469,7 @@ class FirstController: UIViewController {
                                                 }
                                                 
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-//                                                self.responseString = "error: смена пароля: 12345678"
+                                                //                                                self.responseString = "error: смена пароля: 12345678"
                                                 print("responseString = \(self.responseString)")
                                                 self.choice()
         })
@@ -494,7 +495,7 @@ class FirstController: UIViewController {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                                alert.addAction(cancelAction)
+                alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
         } else if (responseString.contains("смена пароля")){
@@ -612,7 +613,7 @@ class FirstController: UIViewController {
                 if (self.isCons == "0") {
                     UserDefaults.standard.set(true, forKey: "NewMain")//Закоментить для старого дизайна
                     self.performSegue(withIdentifier: "NewMainMenu", sender: self)//Закоментить для старого дизайна
-//                    self.performSegue(withIdentifier: "MainMenu", sender: self)
+                    //                    self.performSegue(withIdentifier: "MainMenu", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "MainMenuCons", sender: self)
                 }
@@ -687,15 +688,15 @@ class FirstController: UIViewController {
             edLogin.text = login
             
         }
-//        print(login)
+        //        print(login)
         edPass.text = pass
     }
     
     // сохранение глобальных значений
     func save_global_data(date1: String, date2: String, can_count: String, mail: String, id_account: String, isCons: String, name: String, history_counters: String, strah: String, phone_operator: String, encoding_Pays: String) {
         let defaults = UserDefaults.standard
-//        defaults.setValue(date1, forKey: "date1")
-//        defaults.setValue(date2, forKey: "date2")
+        //        defaults.setValue(date1, forKey: "date1")
+        //        defaults.setValue(date2, forKey: "date2")
         defaults.setValue(can_count, forKey: "can_count")
         defaults.setValue(mail, forKey: "mail")
         defaults.setValue(id_account, forKey: "id_account")

@@ -6579,6 +6579,7 @@
 		30EE0160229CED010011BEE1 /* JKH_Pavlovskoe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JKH_Pavlovskoe-Info.plist"; path = "../../JKH_Pavlovskoe-Info.plist"; sourceTree = "<group>"; };
 		30EE0162229CF4980011BEE1 /* Logo_JKH_Pavlovskoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_JKH_Pavlovskoe.png; sourceTree = "<group>"; };
 		30EE0164229CF6550011BEE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/JKH_Pavlovskoe/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30F35DE92301731F00B5399E /* Pritomskoe-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pritomskoe-Bridging-Header.h"; sourceTree = "<group>"; };
 		30F3BDE822A50748007B24FB /* UK_Perspectiva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Perspectiva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F3BDE922A50749007B24FB /* UK_Perspectiva.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = UK_Perspectiva.plist; path = ../../UK_Perspectiva.plist; sourceTree = "<group>"; };
 		30F3BDEB22A5098A007B24FB /* Logo_UkPerspectiva.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UkPerspectiva.png; sourceTree = "<group>"; };
@@ -7685,6 +7686,7 @@
 				1CEF47A122E02E3900DDD095 /* UK_Paritet_Khab-Bridging-Header.h */,
 				30353FF722F94CFF00A3350F /* ElectroSbit-Bridging-Header.h */,
 				1CACEAB622FBB5C000EB5163 /* JKH_Pavlovskoe-Bridging-Header.h */,
+				30F35DE92301731F00B5399E /* Pritomskoe-Bridging-Header.h */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -19156,7 +19158,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.pritomskoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isPritomskoe Debug";
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Paritet_Khab-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Pritomskoe-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -19181,7 +19183,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.pritomskoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isPritomskoe;
-				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Paritet_Khab-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/Pritomskoe-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
