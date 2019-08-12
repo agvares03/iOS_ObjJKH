@@ -171,7 +171,7 @@ class AddLSSimple: UIViewController {
         } else {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка", message: self.response_ident?.replacingOccurrences(of: "error: ", with: ""), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Ошибка", message: self.response_add_ident?.replacingOccurrences(of: "error: ", with: ""), preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
