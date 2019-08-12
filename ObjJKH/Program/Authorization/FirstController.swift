@@ -216,6 +216,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_SibAliance")
         #elseif isSpartak
         fon_top.image = UIImage(named: "Logo_Spartak")
+        #elseif isTSN_Ruble40
+        fon_top.image = UIImage(named: "Logo_Ruble40")
         #endif
         UserDefaults.standard.set("", forKey: "targetName")
         UserDefaults.standard.synchronize()

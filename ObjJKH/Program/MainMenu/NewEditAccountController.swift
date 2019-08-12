@@ -292,6 +292,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         fon_top.image = UIImage(named: "Logo_SibAliance")
         #elseif isSpartak
         fon_top.image = UIImage(named: "Logo_Spartak")
+        #elseif isTSN_Ruble40
+        fon_top.image = UIImage(named: "Logo_Ruble40")
         #endif
         
         if UserDefaults.standard.string(forKey: "mail") != ""{

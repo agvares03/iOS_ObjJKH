@@ -442,6 +442,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_SibAliance")
         #elseif isSpartak
         fon_top.image = UIImage(named: "Logo_Spartak")
+        #elseif isTSN_Ruble40
+        fon_top.image = UIImage(named: "Logo_Ruble40")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
