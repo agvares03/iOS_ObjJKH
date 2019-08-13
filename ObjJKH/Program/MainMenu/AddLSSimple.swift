@@ -90,14 +90,50 @@ class AddLSSimple: UIViewController {
         if (self.response_ident?.contains("ok") == true) {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
+                
                 let alert = UIAlertController(title: "Проверьте правильность адреса", message: self.response_ident?.replacingOccurrences(of: "ok: ", with: ""), preferredStyle: .alert)
+                #if isElectroSbitSaratov
+                    alert.addTextField { textField in
+                        textField.placeholder = "Введите пин-код..."
+                    }
+                #endif
+                
                 let addAction = UIAlertAction(title: "Добавить лицевой счет", style: .default, handler: { (_) -> Void in
+                    
+                    #if isElectroSbitSaratov
+
+                        if (alert.textFields?.first?.text == "") {
+                        
+                            DispatchQueue.main.async(execute: {
+                                self.StopIndicator()
+                                let alert = UIAlertController(title: "Ошибка", message: "Укажите пин-код", preferredStyle: .alert)
+                                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                    self.performSegue(withIdentifier: "support", sender: self)
+                                }
+                                alert.addAction(cancelAction)
+                                alert.addAction(supportAction)
+                                self.present(alert, animated: true, completion: nil)
+                            })
+                            return
+                        
+                        }
+                    
+                    #endif
+                    
+                    
                     self.StartIndicator()
                     // Добавление лицевого счета
                     var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_LS_SIMPLE
                     urlPath = urlPath + "phone=" + self.phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                     urlPath = urlPath + "&ident=" + (self.edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
                     urlPath = urlPath + "&doAdd=1"
+                    
+                    #if isElectroSbitSaratov
+                    
+                        urlPath = urlPath + "&pin=" + (alert.textFields?.first!.text)!
+                    
+                    #endif
                     
                     let url: NSURL = NSURL(string: urlPath)!
                     let request = NSMutableURLRequest(url: url as URL)
