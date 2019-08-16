@@ -351,6 +351,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KNL-mb-ujO" firstAttribute="top" secondItem="AzI-nS-Nnb" secondAttribute="bottom" id="84Y-0A-Rxf"/>
                             <constraint firstItem="V1J-ao-p7S" firstAttribute="leading" secondItem="vVt-Pm-INO" secondAttribute="leading" id="AyJ-Yp-r4x"/>
                             <constraint firstItem="vVt-Pm-INO" firstAttribute="trailing" secondItem="Dte-TX-uAn" secondAttribute="trailing" constant="16" id="B2s-kh-V0O"/>
                             <constraint firstItem="pSP-uR-81l" firstAttribute="centerY" secondItem="Ybl-tH-NTg" secondAttribute="centerY" id="GTW-vl-o5q"/>
@@ -375,6 +376,11 @@
                             <constraint firstAttribute="trailing" secondItem="KNL-mb-ujO" secondAttribute="trailing" id="wb8-Sx-Fxd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vVt-Pm-INO"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="I5J-Yk-ptO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Оплатить" id="2aG-cZ-e3B">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="pK3-9B-Exi">
@@ -410,7 +416,7 @@
                         <outlet property="txt_sum_jkh" destination="RxR-FK-LPq" id="a2V-n7-fPt"/>
                         <outlet property="txt_sum_obj" destination="IwD-MS-cst" id="Zsw-UG-s2C"/>
                         <outlet property="updateConectBtn" destination="AAW-RU-wcv" id="xUs-ip-GhS"/>
-                        <outlet property="viewTop" destination="I5J-Yk-ptO" id="Vpi-Ln-N6l"/>
+                        <outlet property="viewBot" destination="84Y-0A-Rxf" id="oUy-8E-YFJ"/>
                         <segue destination="FnL-8H-qNc" kind="show" identifier="addLSMup" id="7Iv-N0-vWs"/>
                         <segue destination="kZ9-NH-ucM" kind="show" identifier="addLS" id="xlP-Qn-1rT"/>
                         <segue destination="njB-ln-qaj" kind="show" identifier="support" id="9Sb-7t-H6a"/>

@@ -44,7 +44,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var lsLbl: UILabel!
     @IBOutlet weak var spinImg: UIImageView!
     @IBOutlet weak var servicePay: UILabel!
-    @IBOutlet weak var viewTop: NSLayoutConstraint!
+//    @IBOutlet weak var viewTop: NSLayoutConstraint!
+    @IBOutlet weak var viewBot: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var btnPay: UIButton!
@@ -592,7 +593,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         historyPay.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
-        viewTop.constant = self.getPoint()
+//        viewTop.constant = self.getPoint()
+        viewBot.constant = 0
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         sendView.isUserInteractionEnabled = true
@@ -644,10 +646,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     func addBannerViewToView(_ bannerView: GADBannerView){
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
-        DispatchQueue.main.async {
-            self.adHeight = bannerView.frame.size.height
-            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
-        }
         if #available(iOS 11.0, *) {
             let bannerView = bannerView
             let layoutGuide = self.view.safeAreaLayoutGuide
@@ -670,6 +668,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.view.addConstraints(horizontal)
             self.view.addConstraints(vertical)
         }
+        DispatchQueue.main.async {
+            self.adHeight = bannerView.frame.size.height - 35
+//            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
+            self.viewBot.constant = bannerView.frame.size.height - 35
+        }
     }
     
     func loadAd() {
@@ -684,15 +687,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         view.addSubview(bannerView)
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         self.bannerView = bannerView
-        DispatchQueue.main.async {
-            self.adHeight = bannerView.frame.size.height
-            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
-            print("ViewTOP: ", self.viewTop.constant)
-        }
         if #available(iOS 11.0, *) {
             displayAdAtBottomOfSafeArea();
         } else {
             displayAdAtBottom();
+        }
+        DispatchQueue.main.async {
+            self.adHeight = bannerView.frame.size.height - 35
+//            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
+            self.viewBot.constant = bannerView.frame.size.height - 35
+            //            print("ViewTOP: ", self.viewTop.constant)
         }
     }
     
@@ -1234,15 +1238,18 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         var keyboardH = CGFloat()
         if let keyboardSize = (sender?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardH = keyboardSize.height
-            viewTop.constant = getPoint() - keyboardH + 50
+//            viewTop.constant = getPoint() - keyboardH + 50
+            viewBot.constant = keyboardH - 40
         }
     }
     
     // И вниз при исчезновении
     @objc func keyboardWillHide(sender: NSNotification?) {
-        viewTop.constant = getPoint()
+//        viewTop.constant = getPoint()
+        viewBot.constant = 0
         if UserDefaults.standard.bool(forKey: "show_Ad"){
-            viewTop.constant = getPoint() - adHeight + 10
+//            viewTop.constant = getPoint() - adHeight + 10
+            viewBot.constant = adHeight
         }
     }
     
