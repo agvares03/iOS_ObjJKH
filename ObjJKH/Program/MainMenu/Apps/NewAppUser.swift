@@ -52,7 +52,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         #endif
         if payT{
             if UserDefaults.standard.string(forKey: "mail")! == "" || UserDefaults.standard.string(forKey: "mail")! == "-"{
-                let alert = UIAlertController(title: "Ошибка", message: "Укажите e-mail", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Электронный чек", message: "Укажите e-mail", preferredStyle: .alert)
                 alert.addTextField { (textField) in
                     textField.placeholder = "e-mail..."
                     textField.keyboardType = .emailAddress
