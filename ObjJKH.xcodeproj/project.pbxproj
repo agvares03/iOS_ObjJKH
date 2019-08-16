@@ -3617,6 +3617,7 @@
 		30940BB922F80D7C00422C64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		30940BBA22F80D7C00422C64 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		30940BC222F810CB00422C64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30940BC122F810CB00422C64 /* GoogleService-Info.plist */; };
+		30946B1E23065EF000F98AA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30946B1D23065EEF00F98AA8 /* GoogleService-Info.plist */; };
 		309D05EF22F94102001A526F /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		309D05F022F94103001A526F /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		309D05F122F94104001A526F /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
@@ -5413,7 +5414,6 @@
 		30FF5D5C2301B0BD00AD297B /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
 		30FF5D5D2301B0BD00AD297B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		30FF5D5E2301B0BD00AD297B /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
-		30FF5D5F2301B0BD00AD297B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30FDF544230119DC0010B349 /* GoogleService-Info.plist */; };
 		30FF5D602301B0BD00AD297B /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
 		30FF5D612301B0BD00AD297B /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
 		30FF5D622301B0BD00AD297B /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
@@ -6858,6 +6858,7 @@
 		30940BBF22F80D7C00422C64 /* NewOpaliha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewOpaliha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30940BC022F80D7D00422C64 /* NewOpaliha-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NewOpaliha-Info.plist"; path = "../../NewOpaliha-Info.plist"; sourceTree = "<group>"; };
 		30940BC122F810CB00422C64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/NewOpaliha/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		30946B1D23065EEF00F98AA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/TSJ_Archangel/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		30ABD1E2225C343C00A5D6F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/Komeks/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30ABD1E4225C475F00A5D6F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/ChistDom/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30BBD034229287480028AC33 /* Logo_UkGarmonia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_UkGarmonia.png; sourceTree = "<group>"; };
@@ -7803,6 +7804,7 @@
 		307690F722B28DC70043916F /* Google_Services */ = {
 			isa = PBXGroup;
 			children = (
+				30946B1D23065EEF00F98AA8 /* GoogleService-Info.plist */,
 				304023132301AF160057B3E5 /* GoogleService-Info.plist */,
 				30FDF544230119DC0010B349 /* GoogleService-Info.plist */,
 				3067176422FD1F2D00239C75 /* GoogleService-Info.plist */,
@@ -11592,7 +11594,7 @@
 				30FF5D7D2301B27C00AD297B /* Logo_TSJ_Archangel.png in Resources */,
 				30FF5D5D2301B0BD00AD297B /* LaunchScreen.storyboard in Resources */,
 				30FF5D5E2301B0BD00AD297B /* Saldo.storyboard in Resources */,
-				30FF5D5F2301B0BD00AD297B /* GoogleService-Info.plist in Resources */,
+				30946B1E23065EF000F98AA8 /* GoogleService-Info.plist in Resources */,
 				30FF5D602301B0BD00AD297B /* ic_close_action.png in Resources */,
 				30FF5D612301B0BD00AD297B /* PaymentSuccessViewController.xib in Resources */,
 				30FF5D622301B0BD00AD297B /* Account.storyboard in Resources */,
