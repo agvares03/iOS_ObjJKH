@@ -355,6 +355,7 @@
                             <constraint firstItem="NqZ-RR-9oV" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="16" id="2L6-ax-yxy"/>
                             <constraint firstItem="os7-xk-ILO" firstAttribute="centerY" secondItem="ABp-Jo-kEA" secondAttribute="centerY" id="7x6-Qq-h70"/>
                             <constraint firstAttribute="trailing" secondItem="enP-cC-omN" secondAttribute="trailing" id="C3h-CT-89c"/>
+                            <constraint firstItem="enP-cC-omN" firstAttribute="top" secondItem="GCU-rr-B6M" secondAttribute="bottom" id="DgU-tK-Q7p"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="eJY-xZ-v4L" secondAttribute="trailing" id="FKt-vO-zFP"/>
                             <constraint firstItem="tCL-un-6ER" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="16" id="Hec-2V-Yy4"/>
                             <constraint firstItem="tCL-un-6ER" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="16" id="Jjq-P9-HaA"/>
@@ -375,6 +376,11 @@
                             <constraint firstItem="aPA-3J-M3o" firstAttribute="centerX" secondItem="ABp-Jo-kEA" secondAttribute="centerX" id="rq3-ss-sGa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MkC-gE-W0P"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="a8l-2v-bU6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Оплатить" id="gN9-d1-vWi">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="Cub-5c-2T4">
@@ -411,7 +417,7 @@
                         <outlet property="txt_sum_jkh" destination="RnR-er-GSR" id="38q-1y-RBp"/>
                         <outlet property="txt_sum_obj" destination="i3q-GE-1Ot" id="OIs-Zq-fGl"/>
                         <outlet property="updateConectBtn" destination="47Z-2G-Rj0" id="SMz-pR-dkY"/>
-                        <outlet property="viewTop" destination="a8l-2v-bU6" id="i4w-Sj-rAA"/>
+                        <outlet property="viewBot" destination="DgU-tK-Q7p" id="Bol-wE-Gaf"/>
                         <segue destination="Ld3-Zb-LxI" kind="show" identifier="addLSMup" id="yiT-ng-b40"/>
                         <segue destination="qK7-Fk-Kmh" kind="show" identifier="addLS" id="Rkm-y0-Yxe"/>
                         <segue destination="1Wa-Am-5fg" kind="show" identifier="support" id="B4v-ZH-sO3"/>
