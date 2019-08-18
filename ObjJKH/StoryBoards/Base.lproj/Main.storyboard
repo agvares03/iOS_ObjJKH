@@ -13,7 +13,7 @@
         <!--Start Controller-->
         <scene sceneID="K8E-c2-CPi">
             <objects>
-                <viewController id="Yka-bE-a77" customClass="StartController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Yka-bE-a77" customClass="StartController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C6i-U9-t64">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,6 +51,7 @@
                         <segue destination="CSW-ZA-Agb" kind="show" identifier="reg_app" id="pL0-7K-IfN"/>
                         <segue destination="sMe-Cd-FRw" kind="show" identifier="start_app_cons" id="8Is-M9-Kjz"/>
                         <segue destination="duM-Dd-leu" kind="show" identifier="start_app_OBJ" id="FtF-Id-iQE"/>
+                        <segue destination="Kuk-DL-5Er" kind="show" identifier="start_tech_work" id="Nyo-6S-CSs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF5-e1-U8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -60,7 +61,7 @@
         <!--Update App Controller-->
         <scene sceneID="vhB-KM-aaG">
             <objects>
-                <viewController id="Tf2-V8-fll" customClass="UpdateAppController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Tf2-V8-fll" customClass="UpdateAppController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZGT-Ll-Rxs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,7 +133,7 @@
         <!--First Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="authView" id="BYZ-38-t0r" customClass="FirstController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authView" id="BYZ-38-t0r" customClass="FirstController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -440,19 +441,19 @@
         <!--First Controller Cons-->
         <scene sceneID="I4n-K9-n7M">
             <objects>
-                <viewController id="sMe-Cd-FRw" customClass="FirstControllerCons" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sMe-Cd-FRw" customClass="FirstControllerCons" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cQ0-cH-1Kw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver. 1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcU-W0-eSh">
-                                <rect key="frame" x="311" y="36" width="48" height="18"/>
+                                <rect key="frame" x="311" y="80" width="48" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.21895414590000001" green="0.71306502819999995" blue="0.9233877063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pK-HI-Xzi">
-                                <rect key="frame" x="8" y="109" width="359" height="44"/>
+                                <rect key="frame" x="8" y="153" width="359" height="44"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="Zt1-yC-WEl">
                                         <rect key="frame" x="24" y="18" width="16" height="16"/>
@@ -482,13 +483,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВХОД ДЛЯ СОТРУДНИКА" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDS-tP-f1Q">
-                                <rect key="frame" x="32" y="36" width="205" height="21"/>
+                                <rect key="frame" x="32" y="80" width="205" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gsk-yp-NSE">
-                                <rect key="frame" x="8" y="153" width="359" height="44"/>
+                                <rect key="frame" x="8" y="197" width="359" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7tg-Sn-AFY">
                                         <rect key="frame" x="51" y="10" width="254" height="34"/>
@@ -530,7 +531,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXv-sA-IEA">
-                                <rect key="frame" x="127.5" y="222" width="120" height="30"/>
+                                <rect key="frame" x="127.5" y="266" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1y6-6Q-9D5"/>
@@ -548,18 +549,18 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xpF-E6-6VW">
-                                <rect key="frame" x="169" y="219" width="37" height="36"/>
+                                <rect key="frame" x="169" y="263" width="37" height="36"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvv-aF-zgO">
-                                <rect key="frame" x="16" y="151" width="343" height="2"/>
+                                <rect key="frame" x="16" y="195" width="343" height="2"/>
                                 <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="cTE-OF-uFf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyv-Do-dpD">
-                                <rect key="frame" x="16" y="195" width="343" height="2"/>
+                                <rect key="frame" x="16" y="239" width="343" height="2"/>
                                 <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="Pjx-ZP-Pyb"/>
@@ -729,7 +730,7 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
         <!--Non Pass Controller-->
         <scene sceneID="yrQ-uL-FEq">
             <objects>
-                <viewController storyboardIdentifier="nonPassController" id="AVf-Uh-uje" customClass="nonPassController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nonPassController" id="AVf-Uh-uje" customClass="nonPassController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="unj-5R-eEi"/>
                         <viewControllerLayoutGuide type="bottom" id="JVl-Bx-71H"/>
@@ -946,6 +947,14 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
             </objects>
             <point key="canvasLocation" x="1456.8" y="-599.55022488755628"/>
         </scene>
+        <!--TechWork-->
+        <scene sceneID="jVc-nY-NCH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TechWork" id="Kuk-DL-5Er" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UcJ-vm-jNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1081" y="752"/>
+        </scene>
         <!--First Obj Controller-->
         <scene sceneID="9PR-ZS-8YS">
             <objects>
@@ -1077,7 +1086,7 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
         <!--Меню-->
         <scene sceneID="rDq-Q4-a6V">
             <objects>
-                <viewController storyboardIdentifier="notifi" id="MJw-G9-ikP" customClass="NotificationController" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notifi" id="MJw-G9-ikP" customClass="NotificationController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lMd-sX-GnF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="740"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1310,11 +1319,11 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="y5T-zN-aQd"/>
-        <segue reference="HOf-6N-z37"/>
+        <segue reference="8Is-M9-Kjz"/>
         <segue reference="53e-mu-ax4"/>
-        <segue reference="fZT-TL-lKn"/>
+        <segue reference="pL0-7K-IfN"/>
         <segue reference="bsE-0I-EYW"/>
         <segue reference="4fX-lc-XiI"/>
-        <segue reference="k1G-pj-6pb"/>
+        <segue reference="Fda-SR-7H1"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -132,6 +132,7 @@ class StartController: UIViewController {
     }
     
     var updateApp = false
+    var tech_now = false
     func setSettings() {
         DispatchQueue.main.sync {
             if (self.responseLS?.contains("color"))!{
@@ -139,7 +140,11 @@ class StartController: UIViewController {
                 let decoder = JSONDecoder()
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)
                 self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds, adType: stat.adsType, servPercent: stat.servicePercent, adsCode: stat.adsCodeIOS, dontShowDebt: stat.DontShowDebt)//stat.showAds  stat.adsType
-            }else{
+            } else if (self.responseLS?.contains("No enter - tech work"))! {
+                
+                self.tech_now = true
+            
+            } else {
                 UserDefaults.standard.set(self.responseLS, forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
                 let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseLS! + ">", preferredStyle: .alert)
@@ -155,12 +160,20 @@ class StartController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            if updateApp{
-                self.update_app()
-            }else{
-                self.start_app()
+            if tech_now {
+                self.start_tech_work()
+            } else {
+                if updateApp{
+                    self.update_app()
+                }else{
+                    self.start_app()
+                }
             }
         }
+    }
+    
+    func start_tech_work() {
+        self.performSegue(withIdentifier: "start_tech_work", sender: self)
     }
     
     func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool, adType: Int, servPercent: Double, adsCode: String, dontShowDebt: Bool) {

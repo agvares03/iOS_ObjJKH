@@ -77,27 +77,27 @@ class SupportUpdate: UIViewController {
         #elseif isAFregat
         imageApp.image = UIImage(named: "Logo_Fregat")
         #elseif isNewOpaliha
-        fon_top.image = UIImage(named: "Logo_NewOpaliha")
+        imageApp.image = UIImage(named: "Logo_NewOpaliha")
         #elseif isPritomskoe
-        fon_top.image = UIImage(named: "Logo_Pritomskoe")
+        imageApp.image = UIImage(named: "Logo_Pritomskoe")
         #elseif isDJVladimir
-        fon_top.image = UIImage(named: "Logo_DJVladimir")
+        imageApp.image = UIImage(named: "Logo_DJVladimir")
         #elseif isTSN_Dnestr
         imageApp.image = UIImage(named: "Logo_TSN_Dnestr")
         #elseif isCristall
-        fon_top.image = UIImage(named: "Logo_Cristall")
+        imageApp.image = UIImage(named: "Logo_Cristall")
         #elseif isNarianMarEl
-        fon_top.image = UIImage(named: "Logo_Narian_Mar_El")
+        imageApp.image = UIImage(named: "Logo_Narian_Mar_El")
         #elseif isSibAliance
-        fon_top.image = UIImage(named: "Logo_SibAliance")
+        imageApp.image = UIImage(named: "Logo_SibAliance")
         #elseif isSpartak
-        fon_top.image = UIImage(named: "Logo_Spartak")
+        imageApp.image = UIImage(named: "Logo_Spartak")
         #elseif isTSN_Ruble40
-        fon_top.image = UIImage(named: "Logo_Ruble40")
+        imageApp.image = UIImage(named: "Logo_Ruble40")
         #elseif isKosm11
-        fon_top.image = UIImage(named: "Logo_Kosm11")
+        imageApp.image = UIImage(named: "Logo_Kosm11")
         #elseif isTSJ_Rachangel
-        fon_top.image = UIImage(named: "Logo_TSJ_Archangel")
+        imageApp.image = UIImage(named: "Logo_TSJ_Archangel")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()

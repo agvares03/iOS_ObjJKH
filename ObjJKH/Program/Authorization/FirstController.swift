@@ -96,6 +96,7 @@ class FirstController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(false, forKey: "fromMenu")
+        UserDefaults.standard.set(false, forKey: "fromTech")
         UserDefaults.standard.set(true, forKey: "newApps")
         StopIndicator()
         

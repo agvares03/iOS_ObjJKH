@@ -41,6 +41,11 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBAction func btnCancelGo(_ sender: UIButton) {
         if UserDefaults.standard.bool(forKey: "fromMenu") || fromMenu{
             navigationController?.popViewController(animated: true)
+        
+        } else if UserDefaults.standard.bool(forKey: "fromTech") {
+            
+            navigationController?.popViewController(animated: true)
+            
         }else{
             navigationController?.dismiss(animated: true, completion: nil)
         }
