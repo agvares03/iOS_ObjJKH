@@ -169,7 +169,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         //        self.payedS()
         //        #elseif isStolitsa
         //        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance
+        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC
         l = true
         #else
         self.payedS()
@@ -303,6 +303,12 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isSibAliance
         shopCode = "259876"
         targetName = "УК Сибирский Альянс"
+        #elseif isTSJ_Rachangel
+        shopCode = "265024"
+        targetName = "ТСЖ Архангельское"
+        #elseif isMUP_IRKC
+        shopCode = "266061"
+        targetName = "МУП ИРКЦ"
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
@@ -453,7 +459,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
             //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance
+            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
