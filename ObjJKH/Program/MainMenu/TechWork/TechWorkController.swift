@@ -92,7 +92,7 @@ class TechWorkController: UIViewController {
         #elseif isDJVladimir
         fon_top.image = UIImage(named: "Logo_DJVladimir")
         #elseif isTSN_Dnestr
-        imageApp.image = UIImage(named: "Logo_TSN_Dnestr")
+        fon_top.image = UIImage(named: "Logo_TSN_Dnestr")
         #elseif isCristall
         fon_top.image = UIImage(named: "Logo_Cristall")
         #elseif isNarianMarEl
@@ -107,6 +107,8 @@ class TechWorkController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Kosm11")
         #elseif isTSJ_Rachangel
         fon_top.image = UIImage(named: "Logo_TSJ_Archangel")
+        #elseif isMUP_IRKC
+        fon_top.image = UIImage(named: "Logo_MUP_IRKC")
         #endif
         
         btn_tech.backgroundColor = myColors.indicatorColor.uiColor()

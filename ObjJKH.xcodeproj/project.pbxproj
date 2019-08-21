@@ -1837,6 +1837,164 @@
 		302FA2122256F1A8006B7874 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
 		302FA2142256F1A8006B7874 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC3FF212237EB2600FDBA82 /* PassKit.framework */; };
 		302FA2152256F1A8006B7874 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		302FB39F230D2A750024A90D /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
+		302FB3A0230D2A750024A90D /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		302FB3A1230D2A750024A90D /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		302FB3A2230D2A750024A90D /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		302FB3A3230D2A750024A90D /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		302FB3A4230D2A750024A90D /* TwoPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6721FAC9F100313221 /* TwoPageController.swift */; };
+		302FB3A5230D2A750024A90D /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
+		302FB3A6230D2A750024A90D /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		302FB3A7230D2A750024A90D /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		302FB3A8230D2A750024A90D /* ShemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F017214765B500FE0473 /* ShemeColor.swift */; };
+		302FB3A9230D2A750024A90D /* AddLSSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303FAC1022F73512009EEE25 /* AddLSSimple.swift */; };
+		302FB3AA230D2A750024A90D /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		302FB3AB230D2A750024A90D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF068F22C21F1C00700A7D /* NotificationController.swift */; };
+		302FB3AC230D2A750024A90D /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		302FB3AD230D2A750024A90D /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		302FB3AE230D2A750024A90D /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F00F2147605E00FE0473 /* ImageConstant.swift */; };
+		302FB3AF230D2A750024A90D /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		302FB3B0230D2A750024A90D /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		302FB3B1230D2A750024A90D /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		302FB3B2230D2A750024A90D /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC721708CB600857D4D /* Applications+CoreDataClass.swift */; };
+		302FB3B3230D2A750024A90D /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		302FB3B4230D2A750024A90D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		302FB3B5230D2A750024A90D /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		302FB3B6230D2A750024A90D /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
+		302FB3B7230D2A750024A90D /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		302FB3B8230D2A750024A90D /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		302FB3B9230D2A750024A90D /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		302FB3BA230D2A750024A90D /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		302FB3BB230D2A750024A90D /* NewEditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB84522605AA800DBD52E /* NewEditAccountController.swift */; };
+		302FB3BC230D2A750024A90D /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		302FB3BD230D2A750024A90D /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		302FB3BE230D2A750024A90D /* ColorsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F0092147604400FE0473 /* ColorsConstant.swift */; };
+		302FB3BF230D2A750024A90D /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		302FB3C0230D2A750024A90D /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		302FB3C1230D2A750024A90D /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		302FB3C2230D2A750024A90D /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		302FB3C3230D2A750024A90D /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02E213634CC004DB75C /* Counters+CoreDataClass.swift */; };
+		302FB3C4230D2A750024A90D /* OneVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB2C225498E500812964 /* OneVoteController.swift */; };
+		302FB3C5230D2A750024A90D /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		302FB3C6230D2A750024A90D /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
+		302FB3C7230D2A750024A90D /* NewAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C625A3122B439A50053971C /* NewAppUser.swift */; };
+		302FB3C8230D2A750024A90D /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		302FB3C9230D2A750024A90D /* openSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78BF78222CEC8A00F31938 /* openSaldoController.swift */; };
+		302FB3CA230D2A750024A90D /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		302FB3CB230D2A750024A90D /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */; };
+		302FB3CC230D2A750024A90D /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		302FB3CD230D2A750024A90D /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		302FB3CE230D2A750024A90D /* FirstControllerCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */; };
+		302FB3CF230D2A750024A90D /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		302FB3D0230D2A750024A90D /* NewHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC3FF32223A3E2500FDBA82 /* NewHomePage.swift */; };
+		302FB3D1230D2A750024A90D /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		302FB3D2230D2A750024A90D /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC02F213634CC004DB75C /* Counters+CoreDataProperties.swift */; };
+		302FB3D3230D2A750024A90D /* NewAddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C625A3222B439A60053971C /* NewAddAppUser.swift */; };
+		302FB3D4230D2A750024A90D /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
+		302FB3D5230D2A750024A90D /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		302FB3D6230D2A750024A90D /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC821708CB600857D4D /* Applications+CoreDataProperties.swift */; };
+		302FB3D7230D2A750024A90D /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		302FB3D8230D2A750024A90D /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		302FB3D9230D2A750024A90D /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		302FB3DA230D2A750024A90D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		302FB3DB230D2A750024A90D /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		302FB3DC230D2A750024A90D /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		302FB3DD230D2A750024A90D /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		302FB3DE230D2A750024A90D /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		302FB3DF230D2A750024A90D /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		302FB3E0230D2A750024A90D /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		302FB3E1230D2A750024A90D /* UniqCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE0A222799F600C51656 /* UniqCountersController.swift */; };
+		302FB3E2230D2A750024A90D /* MobilePaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C51CEBF22291F27003EFD8C /* MobilePaysController.swift */; };
+		302FB3E3230D2A750024A90D /* MainMenuCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC455213FCA99002CEB62 /* MainMenuCons.swift */; };
+		302FB3E4230D2A750024A90D /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		302FB3E5230D2A750024A90D /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
+		302FB3E6230D2A750024A90D /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		302FB3E7230D2A750024A90D /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		302FB3E8230D2A750024A90D /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		302FB3E9230D2A750024A90D /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		302FB3EA230D2A750024A90D /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		302FB3EB230D2A750024A90D /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */; };
+		302FB3EC230D2A750024A90D /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		302FB3ED230D2A750024A90D /* VotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB1F225372F300812964 /* VotingController.swift */; };
+		302FB3EE230D2A750024A90D /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		302FB3EF230D2A750024A90D /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		302FB3F0230D2A750024A90D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		302FB3F1230D2A750024A90D /* MupCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE012226B31600C51656 /* MupCounterController.swift */; };
+		302FB3F2230D2A750024A90D /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		302FB3F3230D2A750024A90D /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		302FB3F4230D2A750024A90D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
+		302FB3F5230D2A750024A90D /* OnePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6421FAC9D500313221 /* OnePageController.swift */; };
+		302FB3F6230D2A750024A90D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		302FB3F7230D2A750024A90D /* NoCounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F01F2147C28D00FE0473 /* NoCounters.swift */; };
+		302FB3F8230D2A750024A90D /* AppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC4682140B0D4002CEB62 /* AppCons.swift */; };
+		302FB3F9230D2A750024A90D /* NewSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAE79A3229D02F6005223C1 /* NewSaldoController.swift */; };
+		302FB3FA230D2A750024A90D /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		302FB3FB230D2A750024A90D /* EditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5153D021EF04A600DE36D9 /* EditAccountController.swift */; };
+		302FB3FC230D2A750024A90D /* QuestionVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB3922550D0D00812964 /* QuestionVoteController.swift */; };
+		302FB3FD230D2A750024A90D /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		302FB3FE230D2A750024A90D /* PaymentApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DC2282E89500B7F66C /* PaymentApp+CoreDataProperties.swift */; };
+		302FB3FF230D2A750024A90D /* TechWorkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B4E88F2309052C00E13DF9 /* TechWorkController.swift */; };
+		302FB400230D2A750024A90D /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
+		302FB401230D2A750024A90D /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		302FB402230D2A750024A90D /* NewMainMenu2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB85422608CF900DBD52E /* NewMainMenu2.swift */; };
+		302FB403230D2A750024A90D /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		302FB404230D2A750024A90D /* PaymentApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DB2282E89500B7F66C /* PaymentApp+CoreDataClass.swift */; };
+		302FB405230D2A750024A90D /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		302FB406230D2A750024A90D /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		302FB407230D2A750024A90D /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
+		302FB409230D2A750024A90D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		302FB40A230D2A750024A90D /* Pods_TSJ_Archangel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2ED4528BD4D0AF86DE81F /* Pods_TSJ_Archangel.framework */; };
+		302FB40C230D2A750024A90D /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		302FB40D230D2A750024A90D /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		302FB40E230D2A750024A90D /* NewAddLS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302E31BF22F7C95D0043209D /* NewAddLS.storyboard */; };
+		302FB40F230D2A750024A90D /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		302FB410230D2A750024A90D /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		302FB411230D2A750024A90D /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		302FB412230D2A750024A90D /* Voting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C66AB1122532BFF00812964 /* Voting.storyboard */; };
+		302FB413230D2A750024A90D /* Parus-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30CB571322B6690100AE34FC /* Parus-Info.plist */; };
+		302FB414230D2A750024A90D /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
+		302FB415230D2A750024A90D /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		302FB416230D2A750024A90D /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		302FB417230D2A750024A90D /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		302FB418230D2A750024A90D /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		302FB419230D2A750024A90D /* Logo_Paritet.png in Resources */ = {isa = PBXBuildFile; fileRef = 3013F3B522E00B0B00AE0695 /* Logo_Paritet.png */; };
+		302FB41A230D2A750024A90D /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		302FB41B230D2A750024A90D /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		302FB41C230D2A750024A90D /* 2PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C33544322AFA34500D695C8 /* 2PaysMytishi.storyboard */; };
+		302FB41D230D2A750024A90D /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		302FB41E230D2A750024A90D /* Logo_UK_Garant_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */; };
+		302FB41F230D2A750024A90D /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
+		302FB420230D2A750024A90D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		302FB421230D2A750024A90D /* Logo_Parus.png in Resources */ = {isa = PBXBuildFile; fileRef = 307690F322B28CDC0043916F /* Logo_Parus.png */; };
+		302FB422230D2A750024A90D /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		302FB423230D2A750024A90D /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		302FB424230D2A750024A90D /* Logo_ADS68.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C84EA22E5E62F00CFE739 /* Logo_ADS68.png */; };
+		302FB425230D2A750024A90D /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		302FB427230D2A750024A90D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		302FB428230D2A750024A90D /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		302FB42A230D2A750024A90D /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		302FB42B230D2A750024A90D /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
+		302FB42C230D2A750024A90D /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
+		302FB42D230D2A750024A90D /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		302FB42E230D2A750024A90D /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
+		302FB42F230D2A750024A90D /* ic_send_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA20D2140CA9600921C82 /* ic_send_app.png */; };
+		302FB430230D2A750024A90D /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
+		302FB431230D2A750024A90D /* TechWork.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B4E8622309012800E13DF9 /* TechWork.storyboard */; };
+		302FB432230D2A750024A90D /* MupCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C19ADFB2226845400C51656 /* MupCounters.storyboard */; };
+		302FB433230D2A750024A90D /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		302FB434230D2A750024A90D /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		302FB435230D2A750024A90D /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
+		302FB436230D2A750024A90D /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		302FB437230D2A750024A90D /* MainMenuCons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */; };
+		302FB438230D2A750024A90D /* NewMainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */; };
+		302FB439230D2A750024A90D /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
+		302FB43A230D2A750024A90D /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		302FB43B230D2A750024A90D /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		302FB43C230D2A750024A90D /* Logo_UK_Garant.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */; };
+		302FB43D230D2A750024A90D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		302FB43E230D2A750024A90D /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		302FB447230D2C940024A90D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302FB446230D2C930024A90D /* GoogleService-Info.plist */; };
+		302FB44A230D2F820024A90D /* Logo_MUP_IRKC.png in Resources */ = {isa = PBXBuildFile; fileRef = 302FB449230D2F810024A90D /* Logo_MUP_IRKC.png */; };
 		30307F3C226AE79500C51AE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302EF72B2254805F0080B482 /* GoogleService-Info.plist */; };
 		30353F9B22F9490D00A3350F /* MobilePaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C51CEBF22291F27003EFD8C /* MobilePaysController.swift */; };
 		30353F9C22F9490E00A3350F /* MobilePaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C51CEBF22291F27003EFD8C /* MobilePaysController.swift */; };
@@ -6899,6 +7057,10 @@
 		302FA17F2256F15B006B7874 /* Tafgai copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tafgai copy-Info.plist"; sourceTree = "<group>"; };
 		302FA21C2256F1A8006B7874 /* Tafgai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tafgai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		302FA21D2256F1A9006B7874 /* MupRCMytishi copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MupRCMytishi copy-Info.plist"; sourceTree = "<group>"; };
+		302FB444230D2A750024A90D /* MUP_IRKC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MUP_IRKC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		302FB445230D2A760024A90D /* MUP_IRKC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MUP_IRKC-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/MUP_IRKC-Info.plist"; sourceTree = "<absolute>"; };
+		302FB446230D2C930024A90D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/MUP_IRKC/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		302FB449230D2F810024A90D /* Logo_MUP_IRKC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_MUP_IRKC.png; sourceTree = "<group>"; };
 		30353FF722F94CFF00A3350F /* ElectroSbit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ElectroSbit-Bridging-Header.h"; sourceTree = "<group>"; };
 		3037D73022F6F7620083ED60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/UK_Paritet_Khab/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		303B3224228A7A9500C0AB90 /* Logo_Skyfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Skyfort.png; sourceTree = "<group>"; };
@@ -7385,6 +7547,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		302FB408230D2A750024A90D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302FB409230D2A750024A90D /* CoreLocation.framework in Frameworks */,
+				302FB40A230D2A750024A90D /* Pods_TSJ_Archangel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		303EBCC7229B922900223A2B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -7816,6 +7987,14 @@
 			path = Electrosbit;
 			sourceTree = "<group>";
 		};
+		302FB448230D2F070024A90D /* MUP_IRKC */ = {
+			isa = PBXGroup;
+			children = (
+				302FB449230D2F810024A90D /* Logo_MUP_IRKC.png */,
+			);
+			path = MUP_IRKC;
+			sourceTree = "<group>";
+		};
 		303DD1BA22FBC018006F4038 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -7892,6 +8071,7 @@
 		307690F722B28DC70043916F /* Google_Services */ = {
 			isa = PBXGroup;
 			children = (
+				302FB446230D2C930024A90D /* GoogleService-Info.plist */,
 				30946B1D23065EEF00F98AA8 /* GoogleService-Info.plist */,
 				304023132301AF160057B3E5 /* GoogleService-Info.plist */,
 				30FDF544230119DC0010B349 /* GoogleService-Info.plist */,
@@ -7942,6 +8122,7 @@
 		307690F822B28DEC0043916F /* Info_Plists */ = {
 			isa = PBXGroup;
 			children = (
+				302FB445230D2A760024A90D /* MUP_IRKC-Info.plist */,
 				30FF5D7A2301B0BE00AD297B /* TSJ_Archangel-Info.plist */,
 				3040230F2301A9E00057B3E5 /* TSJ_Kosm11-Info.plist */,
 				30FDF54323010C3B0010B349 /* Spartak-Info.plist */,
@@ -8259,6 +8440,7 @@
 				30FDF54223010C3A0010B349 /* UK_Spartak.app */,
 				3040230E2301A9DE0057B3E5 /* TSJ_Kosm11.app */,
 				30FF5D792301B0BD00AD297B /* TSJ_Archangel.app */,
+				302FB444230D2A750024A90D /* MUP_IRKC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -8357,6 +8539,7 @@
 		418ABF202133CF52004DB75C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				302FB448230D2F070024A90D /* MUP_IRKC */,
 				30FF5D7B2301B1D800AD297B /* TSJ_Archangel */,
 				304023102301AD920057B3E5 /* TSJ_Kosm11 */,
 				30FDF546230119FE0010B349 /* UK_Spartak */,
@@ -9032,6 +9215,26 @@
 			name = Tafgai;
 			productName = ObjJKH;
 			productReference = 302FA21C2256F1A8006B7874 /* Tafgai.app */;
+			productType = "com.apple.product-type.application";
+		};
+		302FB39C230D2A750024A90D /* MUP_IRKC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 302FB441230D2A750024A90D /* Build configuration list for PBXNativeTarget "MUP_IRKC" */;
+			buildPhases = (
+				302FB39D230D2A750024A90D /* [CP] Check Pods Manifest.lock */,
+				302FB39E230D2A750024A90D /* Sources */,
+				302FB408230D2A750024A90D /* Frameworks */,
+				302FB40B230D2A750024A90D /* Resources */,
+				302FB43F230D2A750024A90D /* [CP] Embed Pods Frameworks */,
+				302FB440230D2A750024A90D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MUP_IRKC;
+			productName = UK_Garant;
+			productReference = 302FB444230D2A750024A90D /* MUP_IRKC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		303EBC65229B922900223A2B /* UK_Upravdom_Che */ = {
@@ -9939,6 +10142,7 @@
 				30FDF49C23010C3A0010B349 /* UK_Spartak */,
 				304022682301A9DE0057B3E5 /* TSJ_Kosm11 */,
 				30FF5CD32301B0BD00AD297B /* TSJ_Archangel */,
+				302FB39C230D2A750024A90D /* MUP_IRKC */,
 			);
 		};
 /* End PBXProject section */
@@ -10444,6 +10648,64 @@
 				302FA1AD2256F1A8006B7874 /* ic_send_app.png in Resources */,
 				302FA1AE2256F1A8006B7874 /* account_icon_user.png in Resources */,
 				302FA1AF2256F1A8006B7874 /* Logo_DemoUC.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		302FB40B230D2A750024A90D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302FB40C230D2A750024A90D /* MainMenu.storyboard in Resources */,
+				302FB40D230D2A750024A90D /* app_open.png in Resources */,
+				302FB40E230D2A750024A90D /* NewAddLS.storyboard in Resources */,
+				302FB40F230D2A750024A90D /* AdditionalServices.storyboard in Resources */,
+				302FB410230D2A750024A90D /* Counters.storyboard in Resources */,
+				302FB411230D2A750024A90D /* Pays.storyboard in Resources */,
+				302FB412230D2A750024A90D /* Voting.storyboard in Resources */,
+				302FB413230D2A750024A90D /* Parus-Info.plist in Resources */,
+				302FB414230D2A750024A90D /* ic_ok_app.png in Resources */,
+				302FB415230D2A750024A90D /* Logo_DemoUC_White.png in Resources */,
+				302FB416230D2A750024A90D /* WebCameras.storyboard in Resources */,
+				302FB417230D2A750024A90D /* ic_action_files_grey.png in Resources */,
+				302FB418230D2A750024A90D /* app_close.png in Resources */,
+				302FB447230D2C940024A90D /* GoogleService-Info.plist in Resources */,
+				302FB419230D2A750024A90D /* Logo_Paritet.png in Resources */,
+				302FB41A230D2A750024A90D /* account_icon_user.png in Resources */,
+				302FB41B230D2A750024A90D /* News.storyboard in Resources */,
+				302FB41C230D2A750024A90D /* 2PaysMytishi.storyboard in Resources */,
+				302FB41D230D2A750024A90D /* Logo_DemoUC.png in Resources */,
+				302FB41E230D2A750024A90D /* Logo_UK_Garant_White.png in Resources */,
+				302FB41F230D2A750024A90D /* ic_get_app.png in Resources */,
+				302FB420230D2A750024A90D /* Main.storyboard in Resources */,
+				302FB421230D2A750024A90D /* Logo_Parus.png in Resources */,
+				302FB422230D2A750024A90D /* Questions.storyboard in Resources */,
+				302FB423230D2A750024A90D /* Registration.storyboard in Resources */,
+				302FB424230D2A750024A90D /* Logo_ADS68.png in Resources */,
+				302FB425230D2A750024A90D /* ForgotPass.storyboard in Resources */,
+				302FB427230D2A750024A90D /* LaunchScreen.storyboard in Resources */,
+				302FB428230D2A750024A90D /* Saldo.storyboard in Resources */,
+				302FB42A230D2A750024A90D /* ic_close_action.png in Resources */,
+				302FB42B230D2A750024A90D /* PaymentSuccessViewController.xib in Resources */,
+				302FB42C230D2A750024A90D /* Account.storyboard in Resources */,
+				302FB42D230D2A750024A90D /* main_background.png in Resources */,
+				302FB44A230D2F820024A90D /* Logo_MUP_IRKC.png in Resources */,
+				302FB42E230D2A750024A90D /* NoCounters.storyboard in Resources */,
+				302FB42F230D2A750024A90D /* ic_send_app.png in Resources */,
+				302FB430230D2A750024A90D /* Support.storyboard in Resources */,
+				302FB431230D2A750024A90D /* TechWork.storyboard in Resources */,
+				302FB432230D2A750024A90D /* MupCounters.storyboard in Resources */,
+				302FB433230D2A750024A90D /* arrow_rigth.png in Resources */,
+				302FB434230D2A750024A90D /* spin.png in Resources */,
+				302FB435230D2A750024A90D /* AddLsPocket.storyboard in Resources */,
+				302FB436230D2A750024A90D /* account_icon_cons.jpg in Resources */,
+				302FB437230D2A750024A90D /* MainMenuCons.storyboard in Resources */,
+				302FB438230D2A750024A90D /* NewMainMenu.storyboard in Resources */,
+				302FB439230D2A750024A90D /* PaysMytishi.storyboard in Resources */,
+				302FB43A230D2A750024A90D /* Apps.storyboard in Resources */,
+				302FB43B230D2A750024A90D /* SelectItem.storyboard in Resources */,
+				302FB43C230D2A750024A90D /* Logo_UK_Garant.png in Resources */,
+				302FB43D230D2A750024A90D /* Assets.xcassets in Resources */,
+				302FB43E230D2A750024A90D /* logo_SM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12713,6 +12975,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		302FB39D230D2A750024A90D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TSJ_Archangel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		302FB43F230D2A750024A90D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		302FB440230D2A750024A90D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		3037D72F22F6E82F0083ED60 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -15359,6 +15678,118 @@
 				302FA2102256F1A8006B7874 /* AppsController.swift in Sources */,
 				302FA2112256F1A8006B7874 /* QuestionsJson.swift in Sources */,
 				302FA2122256F1A8006B7874 /* SupportController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		302FB39E230D2A750024A90D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302FB39F230D2A750024A90D /* PayController.m in Sources */,
+				302FB3A0230D2A750024A90D /* QuestionsTableVC.swift in Sources */,
+				302FB3A1230D2A750024A90D /* AllLS.swift in Sources */,
+				302FB3A2230D2A750024A90D /* NewsCell.swift in Sources */,
+				302FB3A3230D2A750024A90D /* FirstController.swift in Sources */,
+				302FB3A4230D2A750024A90D /* TwoPageController.swift in Sources */,
+				302FB3A5230D2A750024A90D /* HistoryPayController.swift in Sources */,
+				302FB3A6230D2A750024A90D /* StartController.swift in Sources */,
+				302FB3A7230D2A750024A90D /* AppsController.swift in Sources */,
+				302FB3A8230D2A750024A90D /* ShemeColor.swift in Sources */,
+				302FB3A9230D2A750024A90D /* AddLSSimple.swift in Sources */,
+				302FB3AA230D2A750024A90D /* CounterCell.swift in Sources */,
+				302FB3AB230D2A750024A90D /* NotificationController.swift in Sources */,
+				302FB3AC230D2A750024A90D /* Registration.swift in Sources */,
+				302FB3AD230D2A750024A90D /* Comments+CoreDataProperties.swift in Sources */,
+				302FB3AE230D2A750024A90D /* ImageConstant.swift in Sources */,
+				302FB3AF230D2A750024A90D /* AppsCellClose.swift in Sources */,
+				302FB3B0230D2A750024A90D /* Saldo+CoreDataClass.swift in Sources */,
+				302FB3B1230D2A750024A90D /* WebsCell.swift in Sources */,
+				302FB3B2230D2A750024A90D /* Applications+CoreDataClass.swift in Sources */,
+				302FB3B3230D2A750024A90D /* QuestionAnswerVC.swift in Sources */,
+				302FB3B4230D2A750024A90D /* News.swift in Sources */,
+				302FB3B5230D2A750024A90D /* SelectItemController.swift in Sources */,
+				302FB3B6230D2A750024A90D /* AddAppCons.swift in Sources */,
+				302FB3B7230D2A750024A90D /* Tinkoff_Pay_Decides.m in Sources */,
+				302FB3B8230D2A750024A90D /* ASDKTestSettings.m in Sources */,
+				302FB3B9230D2A750024A90D /* AdditionalServicesController.swift in Sources */,
+				302FB3BA230D2A750024A90D /* Web_JSON.swift in Sources */,
+				302FB3BB230D2A750024A90D /* NewEditAccountController.swift in Sources */,
+				302FB3BC230D2A750024A90D /* PaysController.swift in Sources */,
+				302FB3BD230D2A750024A90D /* Titles.swift in Sources */,
+				302FB3BE230D2A750024A90D /* ColorsConstant.swift in Sources */,
+				302FB3BF230D2A750024A90D /* Server.swift in Sources */,
+				302FB3C0230D2A750024A90D /* News+UITableViewDataSource.swift in Sources */,
+				302FB3C1230D2A750024A90D /* SendSMSCod.swift in Sources */,
+				302FB3C2230D2A750024A90D /* NewsManager.swift in Sources */,
+				302FB3C3230D2A750024A90D /* Counters+CoreDataClass.swift in Sources */,
+				302FB3C4230D2A750024A90D /* OneVoteController.swift in Sources */,
+				302FB3C5230D2A750024A90D /* MainMenu.swift in Sources */,
+				302FB3C6230D2A750024A90D /* addCountersController.swift in Sources */,
+				302FB3C7230D2A750024A90D /* NewAppUser.swift in Sources */,
+				302FB3C8230D2A750024A90D /* CommCellCons.swift in Sources */,
+				302FB3C9230D2A750024A90D /* openSaldoController.swift in Sources */,
+				302FB3CA230D2A750024A90D /* QuestionFinal.swift in Sources */,
+				302FB3CB230D2A750024A90D /* Settings+CoreDataClass.swift in Sources */,
+				302FB3CC230D2A750024A90D /* ObjJKH.xcdatamodeld in Sources */,
+				302FB3CD230D2A750024A90D /* Pay.swift in Sources */,
+				302FB3CE230D2A750024A90D /* FirstControllerCons.swift in Sources */,
+				302FB3CF230D2A750024A90D /* Saldo+CoreDataProperties.swift in Sources */,
+				302FB3D0230D2A750024A90D /* NewHomePage.swift in Sources */,
+				302FB3D1230D2A750024A90D /* AddLS.swift in Sources */,
+				302FB3D2230D2A750024A90D /* Counters+CoreDataProperties.swift in Sources */,
+				302FB3D3230D2A750024A90D /* NewAddAppUser.swift in Sources */,
+				302FB3D4230D2A750024A90D /* resVoteController.swift in Sources */,
+				302FB3D5230D2A750024A90D /* AppsCell.swift in Sources */,
+				302FB3D6230D2A750024A90D /* Applications+CoreDataProperties.swift in Sources */,
+				302FB3D7230D2A750024A90D /* Fotos+CoreDataProperties.swift in Sources */,
+				302FB3D8230D2A750024A90D /* FloatRatingView.swift in Sources */,
+				302FB3D9230D2A750024A90D /* FilesController.swift in Sources */,
+				302FB3DA230D2A750024A90D /* AppDelegate.swift in Sources */,
+				302FB3DB230D2A750024A90D /* QuestionsJson.swift in Sources */,
+				302FB3DC230D2A750024A90D /* Fotos+CoreDataClass.swift in Sources */,
+				302FB3DD230D2A750024A90D /* DB.swift in Sources */,
+				302FB3DE230D2A750024A90D /* AppUser.swift in Sources */,
+				302FB3DF230D2A750024A90D /* Comments+CoreDataClass.swift in Sources */,
+				302FB3E0230D2A750024A90D /* TransactionHistoryModelController.m in Sources */,
+				302FB3E1230D2A750024A90D /* UniqCountersController.swift in Sources */,
+				302FB3E2230D2A750024A90D /* MobilePaysController.swift in Sources */,
+				302FB3E3230D2A750024A90D /* MainMenuCons.swift in Sources */,
+				302FB3E4230D2A750024A90D /* AddAppUser.swift in Sources */,
+				302FB3E5230D2A750024A90D /* UpdateAppController.swift in Sources */,
+				302FB3E6230D2A750024A90D /* WebsController.swift in Sources */,
+				302FB3E7230D2A750024A90D /* Web_Camera.swift in Sources */,
+				302FB3E8230D2A750024A90D /* NewPass.swift in Sources */,
+				302FB3E9230D2A750024A90D /* CloseAppAlert.swift in Sources */,
+				302FB3EA230D2A750024A90D /* PaymentSuccessViewController.m in Sources */,
+				302FB3EB230D2A750024A90D /* Settings+CoreDataProperties.swift in Sources */,
+				302FB3EC230D2A750024A90D /* SaldoController.swift in Sources */,
+				302FB3ED230D2A750024A90D /* VotingController.swift in Sources */,
+				302FB3EE230D2A750024A90D /* SaldoCell.swift in Sources */,
+				302FB3EF230D2A750024A90D /* NewsClient.swift in Sources */,
+				302FB3F0230D2A750024A90D /* CoreDataManager.swift in Sources */,
+				302FB3F1230D2A750024A90D /* MupCounterController.swift in Sources */,
+				302FB3F2230D2A750024A90D /* NewsController.swift in Sources */,
+				302FB3F3230D2A750024A90D /* CommCell.swift in Sources */,
+				302FB3F4230D2A750024A90D /* Reachability.swift in Sources */,
+				302FB3F5230D2A750024A90D /* OnePageController.swift in Sources */,
+				302FB3F6230D2A750024A90D /* Extensions.swift in Sources */,
+				302FB3F7230D2A750024A90D /* NoCounters.swift in Sources */,
+				302FB3F8230D2A750024A90D /* AppCons.swift in Sources */,
+				302FB3F9230D2A750024A90D /* NewSaldoController.swift in Sources */,
+				302FB3FA230D2A750024A90D /* ASDKCardIOScanner.m in Sources */,
+				302FB3FB230D2A750024A90D /* EditAccountController.swift in Sources */,
+				302FB3FC230D2A750024A90D /* QuestionVoteController.swift in Sources */,
+				302FB3FD230D2A750024A90D /* NewsView.swift in Sources */,
+				302FB3FE230D2A750024A90D /* PaymentApp+CoreDataProperties.swift in Sources */,
+				302FB3FF230D2A750024A90D /* TechWorkController.swift in Sources */,
+				302FB400230D2A750024A90D /* PaysMytishiController.swift in Sources */,
+				302FB401230D2A750024A90D /* QuestionsTableCell.swift in Sources */,
+				302FB402230D2A750024A90D /* NewMainMenu2.swift in Sources */,
+				302FB403230D2A750024A90D /* OnOffButton.swift in Sources */,
+				302FB404230D2A750024A90D /* PaymentApp+CoreDataClass.swift in Sources */,
+				302FB405230D2A750024A90D /* ForgotPass.swift in Sources */,
+				302FB406230D2A750024A90D /* CountersController.swift in Sources */,
+				302FB407230D2A750024A90D /* SupportController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -19688,6 +20119,57 @@
 			};
 			name = Release;
 		};
+		302FB442230D2A750024A90D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A40D6EE2D78B4CC23014D684 /* Pods-TSJ_Archangel.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-MUP_IRKC";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/MUP_IRKC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DisMUP_IRKC";
+				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.mip-irkc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isMUP_IRKC Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Paritet_Khab-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		302FB443230D2A750024A90D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FF75C80329F378AC3746C03 /* Pods-TSJ_Archangel.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-MUP_IRKC";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/MUP_IRKC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DisMUP_IRKC";
+				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.mip-irkc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isMUP_IRKC;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/UK_Paritet_Khab-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		303EBCF7229B922900223A2B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 92C109260303D035EE8EE25F /* Pods-UK_Upravdom_Che.debug.xcconfig */;
@@ -21656,6 +22138,15 @@
 			buildConfigurations = (
 				302FA21A2256F1A8006B7874 /* Debug */,
 				302FA21B2256F1A8006B7874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		302FB441230D2A750024A90D /* Build configuration list for PBXNativeTarget "MUP_IRKC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				302FB442230D2A750024A90D /* Debug */,
+				302FB443230D2A750024A90D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

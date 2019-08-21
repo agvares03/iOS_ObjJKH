@@ -448,6 +448,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Kosm11")
         #elseif isTSJ_Rachangel
         fon_top.image = UIImage(named: "Logo_TSJ_Archangel")
+        #elseif isMUP_IRKC
+        fon_top.image = UIImage(named: "Logo_MUP_IRKC")
         #endif
         UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
