@@ -67,13 +67,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="прибор 1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjR-pe-cmh">
-                                                    <rect key="frame" x="39" y="11" width="178" height="53"/>
+                                                    <rect key="frame" x="39" y="11" width="178" height="28"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Эл Т2 00458126843" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTX-g6-gX4">
-                                                    <rect key="frame" x="38" y="71" width="167" height="17"/>
+                                                    <rect key="frame" x="38" y="46" width="322" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.7843137255" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -618,24 +618,24 @@
                                                 <constraint firstAttribute="trailing" secondItem="1VG-bp-gWL" secondAttribute="trailing" constant="15" id="0xo-ND-IK6"/>
                                                 <constraint firstItem="fjR-pe-cmh" firstAttribute="top" secondItem="QfI-Ze-YYv" secondAttribute="topMargin" id="1bE-w0-9nx"/>
                                                 <constraint firstItem="bhu-Ui-eBX" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leadingMargin" id="4lm-Hl-ZI1"/>
+                                                <constraint firstItem="dxK-hB-GeI" firstAttribute="top" secondItem="eTX-g6-gX4" secondAttribute="bottom" constant="6" id="BJI-n3-ejm"/>
                                                 <constraint firstItem="mIH-pL-T94" firstAttribute="top" secondItem="dxK-hB-GeI" secondAttribute="bottom" constant="5" id="BuB-AM-lfR"/>
                                                 <constraint firstItem="m3w-wI-bnI" firstAttribute="trailing" secondItem="QfI-Ze-YYv" secondAttribute="trailingMargin" id="EY4-rE-WHV"/>
                                                 <constraint firstItem="orx-IF-ppm" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leading" constant="5" id="OWa-FB-r0Q"/>
                                                 <constraint firstItem="m3w-wI-bnI" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leadingMargin" id="U4H-fb-xWc"/>
                                                 <constraint firstItem="Ihi-ks-LRr" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leadingMargin" id="VAr-GM-8Rp"/>
                                                 <constraint firstItem="1VG-bp-gWL" firstAttribute="leading" secondItem="fjR-pe-cmh" secondAttribute="trailing" constant="3" id="VWJ-gA-1Qb"/>
-                                                <constraint firstItem="dxK-hB-GeI" firstAttribute="top" secondItem="fjR-pe-cmh" secondAttribute="bottom" constant="5" id="Xdw-tF-ZhG"/>
                                                 <constraint firstItem="fjR-pe-cmh" firstAttribute="leading" secondItem="orx-IF-ppm" secondAttribute="trailing" constant="8" id="YZd-Gj-Pt3"/>
                                                 <constraint firstItem="m3w-wI-bnI" firstAttribute="top" secondItem="bhu-Ui-eBX" secondAttribute="bottom" id="ZTw-3g-lZY"/>
+                                                <constraint firstAttribute="trailing" secondItem="eTX-g6-gX4" secondAttribute="trailing" constant="15" id="g3h-By-ecS"/>
                                                 <constraint firstItem="eTX-g6-gX4" firstAttribute="leading" secondItem="orx-IF-ppm" secondAttribute="leadingMargin" constant="25" id="iCf-cy-rDN"/>
+                                                <constraint firstItem="eTX-g6-gX4" firstAttribute="top" secondItem="fjR-pe-cmh" secondAttribute="bottom" constant="7" id="iUF-1F-am5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mIH-pL-T94" secondAttribute="trailing" id="ioA-WF-9ID"/>
                                                 <constraint firstItem="Ihi-ks-LRr" firstAttribute="top" secondItem="m3w-wI-bnI" secondAttribute="bottom" id="kmD-hj-cWr"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Ihi-ks-LRr" secondAttribute="bottom" id="lnp-9L-rE6"/>
                                                 <constraint firstItem="Ihi-ks-LRr" firstAttribute="trailing" secondItem="QfI-Ze-YYv" secondAttribute="trailingMargin" id="mwC-3B-rH8"/>
-                                                <constraint firstItem="eTX-g6-gX4" firstAttribute="top" secondItem="dxK-hB-GeI" secondAttribute="top" constant="2" id="p5o-9C-p7Q"/>
                                                 <constraint firstItem="orx-IF-ppm" firstAttribute="top" secondItem="QfI-Ze-YYv" secondAttribute="top" constant="11" id="tCc-CX-qES"/>
                                                 <constraint firstItem="1VG-bp-gWL" firstAttribute="top" secondItem="QfI-Ze-YYv" secondAttribute="top" constant="9" id="tRi-12-LRf"/>
-                                                <constraint firstItem="dxK-hB-GeI" firstAttribute="leading" secondItem="eTX-g6-gX4" secondAttribute="trailing" id="ugp-hM-Mjs"/>
                                                 <constraint firstItem="bhu-Ui-eBX" firstAttribute="top" secondItem="mIH-pL-T94" secondAttribute="bottom" id="v9r-Bb-nta"/>
                                                 <constraint firstItem="bhu-Ui-eBX" firstAttribute="trailing" secondItem="QfI-Ze-YYv" secondAttribute="trailingMargin" id="wi6-NL-h8Q"/>
                                             </constraints>
@@ -2418,7 +2418,7 @@
         <image name="water" width="36" height="54"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nPm-iE-IOA"/>
-        <segue reference="d7h-Fz-fUI"/>
+        <segue reference="j6v-6b-WYb"/>
+        <segue reference="Set-AI-sEC"/>
     </inferredMetricsTieBreakers>
 </document>
