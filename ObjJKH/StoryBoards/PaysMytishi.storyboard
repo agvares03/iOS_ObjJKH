@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ds5-Ye-OVv">
-                                <rect key="frame" x="0.0" y="110" width="375" height="351"/>
+                                <rect key="frame" x="0.0" y="150" width="375" height="311"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PayMupCell" rowHeight="55" id="YUA-0f-fvR" customClass="PayMupSaldoCell" customModule="ADS_68" customModuleProvider="target">
@@ -115,6 +115,9 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лицевой счет" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCL-un-6ER">
                                 <rect key="frame" x="16" y="80" width="117" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="KWd-MU-8fz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -348,11 +351,18 @@
                                     <constraint firstAttribute="height" constant="220" id="z9f-30-bRp"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оплата производится по квитанции за Июнь 2019" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bO-cG-U4Q">
+                                <rect key="frame" x="15" y="106" width="345" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="enP-cC-omN" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="1aE-jz-ljR"/>
                             <constraint firstItem="NqZ-RR-9oV" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="16" id="2L6-ax-yxy"/>
+                            <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="1bO-cG-U4Q" secondAttribute="trailing" constant="15" id="5ZW-jD-fBD"/>
                             <constraint firstItem="os7-xk-ILO" firstAttribute="centerY" secondItem="ABp-Jo-kEA" secondAttribute="centerY" id="7x6-Qq-h70"/>
                             <constraint firstAttribute="trailing" secondItem="enP-cC-omN" secondAttribute="trailing" id="C3h-CT-89c"/>
                             <constraint firstItem="enP-cC-omN" firstAttribute="top" secondItem="GCU-rr-B6M" secondAttribute="bottom" id="DgU-tK-Q7p"/>
@@ -367,13 +377,16 @@
                             <constraint firstItem="os7-xk-ILO" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="30" id="Tov-gD-Bbz"/>
                             <constraint firstItem="eJY-xZ-v4L" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="12" id="UZ7-4g-ZgU"/>
                             <constraint firstItem="enP-cC-omN" firstAttribute="bottom" secondItem="MkC-gE-W0P" secondAttribute="bottom" id="WnE-zv-H0G"/>
-                            <constraint firstItem="ds5-Ye-OVv" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="110" id="ZXi-fS-SkV"/>
+                            <constraint firstItem="ds5-Ye-OVv" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="150" id="ZXi-fS-SkV"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="462" id="a8l-2v-bU6"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="NqZ-RR-9oV" secondAttribute="trailing" constant="16" id="bVh-S1-TLN"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="eAR-0d-ZC2"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="gFD-zk-WjN"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ds5-Ye-OVv" secondAttribute="bottom" constant="1" id="gcz-X2-OIH"/>
+                            <constraint firstItem="1bO-cG-U4Q" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="15" id="qzh-8C-scv"/>
                             <constraint firstItem="aPA-3J-M3o" firstAttribute="centerX" secondItem="ABp-Jo-kEA" secondAttribute="centerX" id="rq3-ss-sGa"/>
+                            <constraint firstItem="1bO-cG-U4Q" firstAttribute="top" secondItem="tCL-un-6ER" secondAttribute="bottom" constant="5" id="s9A-Vq-ID4"/>
+                            <constraint firstItem="ds5-Ye-OVv" firstAttribute="top" secondItem="1bO-cG-U4Q" secondAttribute="bottom" id="ybz-Ku-Jcm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MkC-gE-W0P"/>
                         <variation key="default">
@@ -403,6 +416,7 @@
                         <outlet property="lsView" destination="os7-xk-ILO" id="iWz-Db-u4o"/>
                         <outlet property="ls_button" destination="eJY-xZ-v4L" id="eg5-K7-onF"/>
                         <outlet property="nonConectView" destination="aPA-3J-M3o" id="kPO-hp-JV6"/>
+                        <outlet property="paysPeriodLbl" destination="1bO-cG-U4Q" id="8Dc-iB-aA4"/>
                         <outlet property="paysViewHeight" destination="x5J-qC-gik" id="BO6-H0-sW7"/>
                         <outlet property="sendView" destination="GCU-rr-B6M" id="dcr-Zn-hcW"/>
                         <outlet property="servicePay" destination="P1i-V2-bje" id="QII-Xo-TSi"/>
