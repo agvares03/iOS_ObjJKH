@@ -54,6 +54,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     @IBOutlet weak var supportView: UIView!
+    @IBOutlet weak var paysPeriodLbl: UILabel!
     
     @IBOutlet weak var applePayBtn: UIButton!
     @IBOutlet weak var applePayView: UIView!
@@ -640,6 +641,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         applePayWidth.constant = 0
         applePayLeft.constant = 0
         #endif
+        if UserDefaults.standard.string(forKey: "periodPays") != ""{
+            paysPeriodLbl.text = "Оплата производится по квитанции за \(UserDefaults.standard.string(forKey: "periodPays") ?? "")"
+        }else{
+            paysPeriodLbl.text = ""
+            tableViewTop.constant = 110
+        }
+        paysPeriodLbl.textColor = myColors.btnColor.uiColor()
         if isHomePage{
             tableViewTop.constant = 70
             lsLbl.isHidden = true

@@ -1570,6 +1570,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     private func endRefresh(){
         DispatchQueue.main.async {
             self.fileList.reverse()
+            
+            var period = ""
+            if self.fileList.count != 0{
+                let m: Int = self.fileList.first!.month
+                let y: Int = self.fileList.first!.year
+                period = self.get_name_month(number_month: String(m)) + " \(String(y))"
+            }
+            UserDefaults.standard.set(period, forKey: "periodPays")
             self.tableReceipts.reloadData()
             self.ls_View.isHidden = false
             self.news_View.isHidden = false
