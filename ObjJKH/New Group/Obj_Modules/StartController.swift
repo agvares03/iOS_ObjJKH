@@ -139,7 +139,7 @@ class StartController: UIViewController {
                 let inputData = self.responseLS?.data(using: .utf8)!
                 let decoder = JSONDecoder()
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)
-                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds, adType: stat.adsType, servPercent: stat.servicePercent, adsCode: stat.adsCodeIOS, dontShowDebt: stat.DontShowDebt)//stat.showAds  stat.adsType
+                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds, adType: stat.adsType, servPercent: stat.servicePercent, adsCode: stat.adsCodeIOS, dontShowDebt: stat.DontShowDebt, registerWithoutSMS: stat.registerWithoutSMS)//stat.showAds  stat.adsType
             } else if (self.responseLS?.contains("No enter - tech work"))! {
                 
                 self.tech_now = true
@@ -176,7 +176,7 @@ class StartController: UIViewController {
         self.performSegue(withIdentifier: "start_tech_work", sender: self)
     }
     
-    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool, adType: Int, servPercent: Double, adsCode: String, dontShowDebt: Bool) {
+    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool, adType: Int, servPercent: Double, adsCode: String, dontShowDebt: Bool, registerWithoutSMS: Bool) {
         let defaults = UserDefaults.standard
         defaults.set(servPercent, forKey: "servPercent")
         defaults.removeObject(forKey: "show_Ad")//удалить через месяц
@@ -186,6 +186,7 @@ class StartController: UIViewController {
         defaults.set(adsCode, forKey: "adsCode")
         defaults.set(adType, forKey: "ad_Type")
         defaults.set(dontShowDebt, forKey: "dontShowDebt")
+        defaults.set(registerWithoutSMS, forKey: "registerWithoutSMS")
         var numb: Int = 0
         statMenu.forEach {
             defaults.setValue(String($0.id) + ";" + $0.name_app + ";" + String($0.visible)  + ";" + $0.simple_name, forKey: "menu_" + String(numb))
@@ -213,7 +214,11 @@ class StartController: UIViewController {
                 self.performSegue(withIdentifier: "start_app_OBJ", sender: self)
             #else
                 if login == "" || login == nil{
-                    self.performSegue(withIdentifier: "reg_app", sender: self)
+                    if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+                        self.performSegue(withIdentifier: "reg_app2", sender: self)
+                    }else{
+                        self.performSegue(withIdentifier: "reg_app", sender: self)
+                    }
                 }else{
                     if (defaults.bool(forKey: "windowCons")) {
                         self.performSegue(withIdentifier: "start_app_cons", sender: self)
@@ -231,18 +236,24 @@ class StartController: UIViewController {
             let payController             = nav.topViewController as! Registration
             payController.firstEnter = true
         }
+        if segue.identifier == "reg_app2" {
+            let nav = segue.destination as! UINavigationController
+            let payController             = nav.topViewController as! NewRegistration
+            payController.firstEnter = true
+        }
     }
     
     struct MenuData: Decodable {
-        let enableOSS: Bool
-        let color: String
-        let menu: [Menu]
-        let useDispatcherAuth: Bool
-        let showAds: Bool
-        let adsType: Int
-        let servicePercent: Double
-        let adsCodeIOS: String
-        let DontShowDebt: Bool
+        let enableOSS:          Bool
+        let color:              String
+        let menu:              [Menu]
+        let useDispatcherAuth:  Bool
+        let showAds:            Bool
+        let adsType:            Int
+        let servicePercent:     Double
+        let adsCodeIOS:         String
+        let DontShowDebt:       Bool
+        let registerWithoutSMS: Bool
     }
     
     struct Menu: Decodable {

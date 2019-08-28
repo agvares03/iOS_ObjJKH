@@ -150,6 +150,7 @@ class Server {
     
     // Новая регистрация
     static let REGISTRATION_NEW    = "RegisterAccount.ashx?"         // Новая регистрация
+    static let REGISTER_WITHOUT_SMS = "RegisterAccountWithoutSMS.ashx?"         // Регистрация без СМС
     static let VALIDATE_SMS        = "ValidateCheckCode.ashx?"       // Отправка смс-кода на проверку
     static let SEND_NEW_PASS       = "SetAccountPassword.ashx?"      // Отправка нового пароля
     static let SEND_CHECK_PASS     = "SendCheckCode.ashx?"           // Повторная отправка

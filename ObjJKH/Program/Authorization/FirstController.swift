@@ -20,6 +20,8 @@ class FirstController: UIViewController {
     // Для получения, хранения лиц. счетов
     private var data_ls: [String] = []
     var str_ls: String = ""
+    var maskPhone = false
+    var maskLogin = false
     
     @IBOutlet weak var ver_Lbl: UILabel!
     @IBOutlet weak var questionBtn: UIButton!
@@ -52,6 +54,13 @@ class FirstController: UIViewController {
             eye = true
         }
         edPass.isSecureTextEntry.toggle()
+    }
+    @IBAction func regAction(_ sender: UIButton) {
+        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+            self.performSegue(withIdentifier: "reg_app2", sender: self)
+        }else{
+            self.performSegue(withIdentifier: "reg_app", sender: self)
+        }
     }
     
     @IBAction func Enter(_ sender: UIButton) {
@@ -99,13 +108,20 @@ class FirstController: UIViewController {
         UserDefaults.standard.set(false, forKey: "fromTech")
         UserDefaults.standard.set(true, forKey: "newApps")
         StopIndicator()
-        
-        // Маска для ввода - телефон
-        #if isDJ
-        #else
-        edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-        #endif
-        
+        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+            edLogin.maskDelegate = self
+            #if isDJ
+            #else
+            edLogin.maskExpression = "{.}"
+            #endif
+            edLogin.text = ""
+        }else{
+            // Маска для ввода - телефон
+            #if isDJ
+            #else
+            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+            #endif
+        }
         loadUsersDefaults()
         let version = targetSettings().getVersion()
         ver_Lbl.text = "ver. " + version
@@ -380,10 +396,15 @@ class FirstController: UIViewController {
     func get_LS() {
         StartIndicator()
         // Авторизация пользователя
-        var strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        var strLogin = ""
+        if !maskLogin{
+            strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        }else{
+            strLogin = edLogin.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        }
         
         let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         
@@ -444,10 +465,15 @@ class FirstController: UIViewController {
         defaults.synchronize()
         
         // Авторизация пользователя
-        var strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        var strLogin = ""
+        if !maskLogin{
+            strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        }else{
+            strLogin = edLogin.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        }
         
         let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let txtPass: String = edPass.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
@@ -621,6 +647,7 @@ class FirstController: UIViewController {
                 self.StopIndicator()
                 //                }
                 self.one = false
+                UserDefaults.standard.set(false, forKey: "exit")
                 if (self.isCons == "0") {
                     UserDefaults.standard.set(true, forKey: "NewMain")//Закоментить для старого дизайна
                     self.performSegue(withIdentifier: "NewMainMenu", sender: self)//Закоментить для старого дизайна
@@ -671,11 +698,16 @@ class FirstController: UIViewController {
     func saveUsersDefaults() {
         let defaults = UserDefaults.standard
         
-        var strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "*", with: "", options: .literal, range: nil)
+        var strLogin = ""
+        if !maskLogin{
+            strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: "*", with: "", options: .literal, range: nil)
+        }else{
+            strLogin = edLogin.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        }
         defaults.setValue(strLogin, forKey: "login")
         defaults.setValue(strLogin, forKey: "phone")
         defaults.setValue(edPass.text!, forKey: "pass")
@@ -693,14 +725,64 @@ class FirstController: UIViewController {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
-        if (login == "") {
-            edLogin.text = "+7"
-        } else {
-            edLogin.text = login
-            
+        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+            edLogin.maskDelegate = self
+            #if isDJ
+            #else
+            edLogin.maskExpression = "{.}"
+            #endif
+            if (login == "") {
+                edLogin.text = ""
+            } else {
+                if (Int(login!) != nil || login?.first == "+") && !maskPhone{
+                    maskPhone = true
+                    #if isDJ
+                    #else
+                    edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+                    #endif
+                    edLogin.maskTemplate = "*"
+                    edLogin.text = login
+                    edLogin.keyboardType = .phonePad
+                    edLogin.reloadInputViews()
+                    edPass.text = pass
+                }else if !maskLogin && !maskPhone && login!.count > 0{
+                    maskLogin = true
+                    edLogin.maskExpression = "{..................}"
+                    edLogin.maskTemplate = " "
+                    edLogin.text = login
+                    edLogin.keyboardType = .default
+                    edLogin.reloadInputViews()
+                    edPass.text = pass
+                }
+                if !UserDefaults.standard.bool(forKey: "exit"){
+                    // Сохраним значения
+                    saveUsersDefaults()
+                    
+                    // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
+                    get_LS()
+                }
+            }
+        }else{
+            // Маска для ввода - телефон
+            #if isDJ
+            #else
+            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+            #endif
+            if (login == "") {
+                edLogin.text = "+7"
+            } else {
+                edLogin.text = login
+                edPass.text = pass
+                if !UserDefaults.standard.bool(forKey: "exit"){
+                    // Сохраним значения
+                    saveUsersDefaults()
+                    
+                    // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
+                    get_LS()
+                }
+            }
         }
         //        print(login)
-        edPass.text = pass
     }
     
     // сохранение глобальных значений
@@ -757,5 +839,41 @@ class FirstController: UIViewController {
             }.resume()
     }
     
+}
+
+extension FirstController: AKMaskFieldDelegate {
+    
+    func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
+        let s = maskField.text!
+        print(s)
+        if maskField.text!.count == 1 && (Int(maskField.text!) != nil || maskField.text?.first == "+") && !maskPhone{
+            maskPhone = true
+            #if isDJ
+            #else
+            maskField.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+            #endif
+            maskField.maskTemplate = "*"
+            maskField.text = s
+            maskField.keyboardType = .phonePad
+            maskField.reloadInputViews()
+        }else if maskField.text!.count == 1 && !maskLogin && !maskPhone{
+            maskLogin = true
+            maskField.maskExpression = "{..................}"
+            maskField.maskTemplate = " "
+            maskField.text = s
+            maskField.keyboardType = .default
+            maskField.reloadInputViews()
+        }else if maskField.text!.count == 0 && (maskPhone || maskLogin){
+            maskPhone = false
+            maskLogin = false
+            #if isDJ
+            #else
+            maskField.maskExpression = "{.}"
+            #endif
+            maskField.maskTemplate = " "
+            maskField.keyboardType = .default
+            maskField.reloadInputViews()
+        }
+    }
 }
 

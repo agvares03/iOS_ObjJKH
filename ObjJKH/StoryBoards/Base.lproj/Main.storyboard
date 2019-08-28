@@ -52,6 +52,7 @@
                         <segue destination="sMe-Cd-FRw" kind="show" identifier="start_app_cons" id="8Is-M9-Kjz"/>
                         <segue destination="duM-Dd-leu" kind="show" identifier="start_app_OBJ" id="FtF-Id-iQE"/>
                         <segue destination="Kuk-DL-5Er" kind="show" identifier="start_tech_work" id="Nyo-6S-CSs"/>
+                        <segue destination="wbp-s8-uXl" kind="show" identifier="reg_app2" id="QUN-dQ-i0D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FF5-e1-U8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -276,7 +277,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CSW-ZA-Agb" kind="show" id="fZT-TL-lKn"/>
+                                    <action selector="regAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cvM-6k-Qis"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WV7-ep-iiE">
@@ -392,6 +393,8 @@
                         <segue destination="cxN-jU-vJl" kind="show" identifier="MainMenuCons" id="4fX-lc-XiI"/>
                         <segue destination="U8E-8p-Jq8" kind="show" identifier="NewMainMenu" id="53e-mu-ax4"/>
                         <segue destination="yRK-vh-qQ9" kind="show" identifier="support" id="Dey-o5-QsW"/>
+                        <segue destination="CSW-ZA-Agb" kind="show" identifier="reg_app" id="n6t-VA-cVZ"/>
+                        <segue destination="wbp-s8-uXl" kind="show" identifier="reg_app2" id="k1c-WC-ELh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -404,7 +407,7 @@
                 <viewControllerPlaceholder storyboardName="MainMenuCons" id="cxN-jU-vJl" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATM-Vp-ZEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1789" y="-56"/>
+            <point key="canvasLocation" x="2029" y="-125"/>
         </scene>
         <!--MainMenu-->
         <scene sceneID="83w-yO-F9Q">
@@ -412,7 +415,15 @@
                 <viewControllerPlaceholder storyboardName="MainMenu" id="62W-f1-6cX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Esf-Db-EHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="26"/>
+            <point key="canvasLocation" x="2004" y="-25"/>
+        </scene>
+        <!--NewRegistration-->
+        <scene sceneID="3S1-TS-DlJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewRegistration" id="wbp-s8-uXl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bUF-q4-1Iu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2034" y="48"/>
         </scene>
         <!--Registration-->
         <scene sceneID="47n-GO-9Jd">
@@ -420,7 +431,7 @@
                 <viewControllerPlaceholder storyboardName="Registration" id="CSW-ZA-Agb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGv-MD-7Nu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="117"/>
+            <point key="canvasLocation" x="2013" y="120"/>
         </scene>
         <!--ForgotPass-->
         <scene sceneID="88V-WB-8yf">
@@ -428,7 +439,7 @@
                 <viewControllerPlaceholder storyboardName="ForgotPass" id="BUs-9T-p31" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfb-x4-A8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="194"/>
+            <point key="canvasLocation" x="2009" y="196"/>
         </scene>
         <!--NewMainMenu-->
         <scene sceneID="aSc-dK-xRk">
@@ -436,7 +447,7 @@
                 <viewControllerPlaceholder storyboardName="NewMainMenu" id="U8E-8p-Jq8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHg-AM-fCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1760" y="269"/>
+            <point key="canvasLocation" x="2025" y="267"/>
         </scene>
         <!--First Controller Cons-->
         <scene sceneID="I4n-K9-n7M">
@@ -1322,6 +1333,7 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
         <segue reference="8Is-M9-Kjz"/>
         <segue reference="53e-mu-ax4"/>
         <segue reference="pL0-7K-IfN"/>
+        <segue reference="QUN-dQ-i0D"/>
         <segue reference="bsE-0I-EYW"/>
         <segue reference="4fX-lc-XiI"/>
         <segue reference="Fda-SR-7H1"/>

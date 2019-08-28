@@ -714,6 +714,7 @@ class NewMainMenu2: UIViewController {
     
     // Выход
     @IBAction func go_exit(_ sender: UIButton) {
+        UserDefaults.standard.set(true, forKey: "exit")
         exit(0)
         //        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
     }
