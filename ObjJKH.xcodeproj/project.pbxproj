@@ -7267,7 +7267,7 @@
 		30353FF722F94CFF00A3350F /* ElectroSbit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ElectroSbit-Bridging-Header.h"; sourceTree = "<group>"; };
 		30354A3A231610C5008874D3 /* NewRegistration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewRegistration.storyboard; sourceTree = "<group>"; };
 		30354B10231616A2008874D3 /* UK_First.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_First.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		30354B11231616A3008874D3 /* MUP_IRKC copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MUP_IRKC copy-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/MUP_IRKC copy-Info.plist"; sourceTree = "<absolute>"; };
+		30354B11231616A3008874D3 /* UK_First-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UK_First-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/UK_First-Info.plist"; sourceTree = "<absolute>"; };
 		30354B1423161A5A008874D3 /* Logo_Uk_First.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Uk_First.png; sourceTree = "<group>"; };
 		30354B1623161E6B008874D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/UK_First/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3037D73022F6F7620083ED60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/UK_Paritet_Khab/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -8401,6 +8401,7 @@
 		307690F822B28DEC0043916F /* Info_Plists */ = {
 			isa = PBXGroup;
 			children = (
+				30354B11231616A3008874D3 /* UK_First-Info.plist */,
 				302FB445230D2A760024A90D /* MUP_IRKC-Info.plist */,
 				30FF5D7A2301B0BE00AD297B /* TSJ_Archangel-Info.plist */,
 				3040230F2301A9E00057B3E5 /* TSJ_Kosm11-Info.plist */,
@@ -8669,7 +8670,6 @@
 				6EED220D6D9D4CDBD7DD198D /* Pods */,
 				30D6080922E73CE0003B004E /* ADS_68 copy-Info.plist */,
 				303DD1BA22FBC018006F4038 /* Recovered References */,
-				30354B11231616A3008874D3 /* MUP_IRKC copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 			wrapsLines = 0;
@@ -20710,7 +20710,7 @@
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "MUP_IRKC copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/UK_First-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -20736,7 +20736,7 @@
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "MUP_IRKC copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/UK_First-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
