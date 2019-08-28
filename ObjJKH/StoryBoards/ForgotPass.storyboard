@@ -13,7 +13,7 @@
         <!--Forgot Pass-->
         <scene sceneID="vmb-S6-p4S">
             <objects>
-                <viewController id="ZR0-f4-fsM" customClass="ForgotPass" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZR0-f4-fsM" customClass="ForgotPass" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="27h-9W-NQH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,6 +121,7 @@
                         <outlet property="separator1" destination="W45-ou-0YC" id="JmQ-ae-hmI"/>
                         <segue destination="3Tg-bO-kwW" kind="show" identifier="support" id="soM-uI-hSj"/>
                         <segue destination="l0C-bd-037" kind="show" identifier="reg" id="IY1-h9-lqC"/>
+                        <segue destination="YIs-jS-nrY" kind="show" identifier="req2" id="AYF-5I-F1q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJK-Kb-Yba" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,6 +143,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sm-YM-OF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="817" y="170"/>
+        </scene>
+        <!--NewRegistration-->
+        <scene sceneID="4kD-fD-pkL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewRegistration" id="YIs-jS-nrY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldO-i3-XKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816" y="235"/>
         </scene>
     </scenes>
     <resources>

@@ -84,7 +84,11 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Аккаунт не обнаружен, пройдите процедуру регистрации", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    self.performSegue(withIdentifier: "reg", sender: self)
+                    if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+                        self.performSegue(withIdentifier: "reg2", sender: self)
+                    }else{
+                        self.performSegue(withIdentifier: "reg", sender: self)
+                    }
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
