@@ -139,7 +139,7 @@ class StartController: UIViewController {
                 let inputData = self.responseLS?.data(using: .utf8)!
                 let decoder = JSONDecoder()
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)
-                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds, adType: stat.adsType, servPercent: stat.servicePercent, adsCode: stat.adsCodeIOS, dontShowDebt: stat.DontShowDebt, registerWithoutSMS: stat.registerWithoutSMS)//stat.showAds  stat.adsType
+                self.set_settings(oss: stat.enableOSS, color: stat.color, statMenu: stat.menu, useDispatcherAuth: stat.useDispatcherAuth, showAds: stat.showAds, adType: stat.adsType, servPercent: stat.servicePercent, adsCode: stat.adsCodeIOS, dontShowDebt: stat.DontShowDebt, registerWithoutSMS: stat.registerWithoutSMS, сheckCrashSystem: stat.сheckCrashSystem)//stat.showAds  stat.adsType
             } else if (self.responseLS?.contains("No enter - tech work"))! {
                 
                 self.tech_now = true
@@ -176,7 +176,7 @@ class StartController: UIViewController {
         self.performSegue(withIdentifier: "start_tech_work", sender: self)
     }
     
-    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool, adType: Int, servPercent: Double, adsCode: String, dontShowDebt: Bool, registerWithoutSMS: Bool) {
+    func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool, adType: Int, servPercent: Double, adsCode: String, dontShowDebt: Bool, registerWithoutSMS: Bool, сheckCrashSystem: Bool) {
         let defaults = UserDefaults.standard
         defaults.set(servPercent, forKey: "servPercent")
         defaults.removeObject(forKey: "show_Ad")//удалить через месяц
@@ -187,6 +187,7 @@ class StartController: UIViewController {
         defaults.set(adType, forKey: "ad_Type")
         defaults.set(dontShowDebt, forKey: "dontShowDebt")
         defaults.set(registerWithoutSMS, forKey: "registerWithoutSMS")
+        defaults.set(сheckCrashSystem, forKey: "сheckCrashSystem")
         var numb: Int = 0
         statMenu.forEach {
             defaults.setValue(String($0.id) + ";" + $0.name_app + ";" + String($0.visible)  + ";" + $0.simple_name, forKey: "menu_" + String(numb))
@@ -254,6 +255,7 @@ class StartController: UIViewController {
         let adsCodeIOS:         String
         let DontShowDebt:       Bool
         let registerWithoutSMS: Bool
+        let сheckCrashSystem:   Bool
     }
     
     struct Menu: Decodable {

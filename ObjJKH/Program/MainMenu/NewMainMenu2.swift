@@ -8,6 +8,7 @@
 
 import UIKit
 import Gloss
+import Crashlytics
 
 class NewMainMenu2: UIViewController {
     
@@ -715,7 +716,11 @@ class NewMainMenu2: UIViewController {
     // Выход
     @IBAction func go_exit(_ sender: UIButton) {
         UserDefaults.standard.set(true, forKey: "exit")
-        exit(0)
+        if UserDefaults.standard.bool(forKey: "сheckCrashSystem"){
+            Crashlytics.sharedInstance().crash()
+        }else{
+            exit(0)
+        }
         //        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
     }
     
