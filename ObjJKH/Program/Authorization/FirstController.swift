@@ -62,17 +62,22 @@ class FirstController: UIViewController {
             self.performSegue(withIdentifier: "reg_app", sender: self)
         }
     }
-    
+    var loginText = ""
     @IBAction func Enter(_ sender: UIButton) {
         // Проверка на заполнение
         var ret: Bool = false;
         var message: String = ""
+        loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
         if (edLogin.text == "") {
             message = "Не указан логин. "
             ret = true;
         }
         if (edPass.text == "") {
             message = message + "Не указан пароль."
+            ret = true
+        }
+        if !DB().isValidLogin(testStr: loginText) && maskLogin{
+            message = message + "Логин может содержать только буквы латинские (большие, маленькие), цифры и знак нижнего подчеркивания «_»"
             ret = true
         }
         if ret {
@@ -398,12 +403,12 @@ class FirstController: UIViewController {
         // Авторизация пользователя
         var strLogin = ""
         if !maskLogin{
-            strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }else{
-            strLogin = edLogin.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            strLogin = loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }
         
         let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
@@ -467,12 +472,12 @@ class FirstController: UIViewController {
         // Авторизация пользователя
         var strLogin = ""
         if !maskLogin{
-            strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }else{
-            strLogin = edLogin.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            strLogin = loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }
         
         let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
@@ -552,7 +557,7 @@ class FirstController: UIViewController {
                     if ls[0] != "" && ls[0] != " "{
                         vc.ls = ls[0]
                         vc.lsLbl.text = "У лицевого счета \(ls[0]) был изменён пароль"
-                        vc.login = self.edLogin.text!
+                        vc.login = self.loginText!
                         self.addChildViewController(vc)
                         self.view.addSubview(vc.view)
                     }else{
@@ -623,7 +628,7 @@ class FirstController: UIViewController {
                 }
                 
                 let db = DB()
-                db.getDataByEnter(login: self.edLogin.text!, pass: self.edPass.text!)
+                db.getDataByEnter(login: self.loginText, pass: self.edPass.text!)
                 self.getTypesApps()
                 self.isCons = answer[5]
             })
@@ -700,13 +705,13 @@ class FirstController: UIViewController {
         
         var strLogin = ""
         if !maskLogin{
-            strLogin = edLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: "*", with: "", options: .literal, range: nil)
         }else{
-            strLogin = edLogin.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            strLogin = loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }
         defaults.setValue(strLogin, forKey: "login")
         defaults.setValue(strLogin, forKey: "phone")
@@ -858,10 +863,10 @@ extension FirstController: AKMaskFieldDelegate {
             maskField.reloadInputViews()
         }else if maskField.text!.count == 1 && !maskLogin && !maskPhone{
             maskLogin = true
-            maskField.maskExpression = "{..................}"
+            maskField.maskExpression = "{..........................}"
             maskField.maskTemplate = " "
             maskField.text = s
-            maskField.keyboardType = .default
+            maskField.keyboardType = .asciiCapable
             maskField.reloadInputViews()
         }else if maskField.text!.count == 0 && (maskPhone || maskLogin){
             maskPhone = false
@@ -871,7 +876,7 @@ extension FirstController: AKMaskFieldDelegate {
             maskField.maskExpression = "{.}"
             #endif
             maskField.maskTemplate = " "
-            maskField.keyboardType = .default
+            maskField.keyboardType = .asciiCapable
             maskField.reloadInputViews()
         }
     }

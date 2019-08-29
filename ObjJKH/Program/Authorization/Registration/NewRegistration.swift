@@ -90,16 +90,23 @@ class NewRegistration: UIViewController {
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
+    var loginText = ""
     @IBAction func btnRegGo(_ sender: UIButton) {
         self.view.endEditing(true)
+        loginText = edPhone.text!.replacingOccurrences(of: " ", with: "")
         // Проверка на правильность поля номер телефона
-        if (edPhone.text?.contains("*"))! && maskPhone{
+        if (loginText.contains("*")) && maskPhone{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите номер телефона в формате +7(***)***-**-**", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-        } else if (edPhone.text == ""){
+        } else if !DB().isValidLogin(testStr: loginText) && maskLogin{
+            print("-\(loginText)-")
+            let alert = UIAlertController(title: "Ошибка", message: "Логин может содержать только буквы латинские (большие, маленькие), цифры и знак нижнего подчеркивания «_»", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        } else if (loginText == ""){
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать логин или номер телефона", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
@@ -127,12 +134,12 @@ class NewRegistration: UIViewController {
             let defaults = UserDefaults.standard
             var strLogin = ""
             if maskPhone{
-                strLogin = edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+                strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
                 strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
                 strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
                 strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
             }else{
-                strLogin = edPhone.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+                strLogin = loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
             }
             
             
@@ -227,18 +234,18 @@ class NewRegistration: UIViewController {
         //        if PhoneText.isPhoneNumber , let phone = PhoneText.asPhoneNumberWithoutPlus  {
         var strLogin = ""
         if maskPhone{
-            strLogin = edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }else{
-            strLogin = edPhone.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            strLogin = loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }
         return Server.SERVER + Server.MOBILE_API_PATH + Server.REGISTER_WITHOUT_SMS + "login=" + strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + txtPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&fio=" + txtFIO.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
     }
     
     func get_registration() {
-        let urlPath = self.getServerUrlBy(phone: self.edPhone.text!, fio: self.edFIO.text!, pass: edPass1.text!)
+        let urlPath = self.getServerUrlBy(phone: self.loginText, fio: self.edFIO.text!, pass: edPass1.text!)
         if (urlPath == "xxx") {
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона в формате +7XXXXXXXXXX", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
@@ -296,12 +303,12 @@ class NewRegistration: UIViewController {
                     
                     var strLogin = ""
                     if self.maskPhone{
-                        strLogin = self.edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+                        strLogin = self.loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
                         strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
                         strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
                         strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                     }else{
-                        strLogin = self.edPhone.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+                        strLogin = self.loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                     }
                     
                     let defaults = UserDefaults.standard
@@ -478,12 +485,12 @@ class NewRegistration: UIViewController {
         
         var strLogin = ""
         if self.maskPhone{
-            strLogin = self.edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = self.loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }else{
-            strLogin = self.edPhone.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            strLogin = self.loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }
         
         return Server.SERVER + Server.ENTER_MOBILE + "phone=" + strLogin + "&pwd=" + txtPass
@@ -497,12 +504,12 @@ class NewRegistration: UIViewController {
         
         var strLogin = ""
         if self.maskPhone{
-            strLogin = self.edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = self.loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
             strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }else{
-            strLogin = self.edPhone.text!.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            strLogin = self.loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }
         
         return Server.SERVER + Server.MOBILE_API_PATH + Server.GET_IDENTS_ACC + "phone=" + strLogin
@@ -569,10 +576,10 @@ extension NewRegistration: AKMaskFieldDelegate {
             maskField.reloadInputViews()
         }else if maskField.text!.count == 1 && !maskLogin && !maskPhone{
             maskLogin = true
-            maskField.maskExpression = "{..................}"
+            maskField.maskExpression = "{..........................}"
             maskField.maskTemplate = " "
             maskField.text = s
-            maskField.keyboardType = .default
+            maskField.keyboardType = .asciiCapable
             maskField.reloadInputViews()
         }else if maskField.text!.count == 0{
             maskPhone = false
@@ -582,7 +589,7 @@ extension NewRegistration: AKMaskFieldDelegate {
             maskField.maskExpression = "{.}"
             #endif
             maskField.maskTemplate = " "
-            maskField.keyboardType = .default
+            maskField.keyboardType = .asciiCapable
             maskField.reloadInputViews()
         }
     }

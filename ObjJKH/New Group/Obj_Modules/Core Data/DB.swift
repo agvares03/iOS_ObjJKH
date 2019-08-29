@@ -767,5 +767,9 @@ class DB: NSObject, XMLParserDelegate {
         let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
-    
+    func isValidLogin(testStr: String) -> Bool{
+        let RegEx = "\\w{0,26}"
+        let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
+        return Test.evaluate(with: testStr)
+    }
 }
