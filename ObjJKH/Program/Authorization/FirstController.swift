@@ -67,6 +67,7 @@ class FirstController: UIViewController {
         // Проверка на заполнение
         var ret: Bool = false;
         var message: String = ""
+        print(edLogin.text!)
         loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
         if (edLogin.text == "") {
             message = "Не указан логин. "
@@ -473,12 +474,16 @@ class FirstController: UIViewController {
         var strLogin = ""
         if !maskLogin{
             strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            print(strLogin)
             strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+            print(strLogin)
             strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+            print(strLogin)
             strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }else{
             strLogin = loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }
+        print(strLogin)
         
         let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let txtPass: String = edPass.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
@@ -747,6 +752,7 @@ class FirstController: UIViewController {
                     #endif
                     edLogin.maskTemplate = "*"
                     edLogin.text = login
+                    loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
                     edLogin.keyboardType = .phonePad
                     edLogin.reloadInputViews()
                     edPass.text = pass
@@ -755,6 +761,7 @@ class FirstController: UIViewController {
                     edLogin.maskExpression = "{..................}"
                     edLogin.maskTemplate = " "
                     edLogin.text = login
+                    loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
                     edLogin.keyboardType = .default
                     edLogin.reloadInputViews()
                     edPass.text = pass
@@ -777,6 +784,7 @@ class FirstController: UIViewController {
                 edLogin.text = "+7"
             } else {
                 edLogin.text = login
+                loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
                 edPass.text = pass
                 if !UserDefaults.standard.bool(forKey: "exit"){
                     // Сохраним значения
