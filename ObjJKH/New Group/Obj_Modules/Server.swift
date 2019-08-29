@@ -171,13 +171,16 @@ class Server {
     
     // Отправка ид для оповещений
     public func send_id_app(id_account: String, token: String) {
-        let urlPath = Server.SERVER + Server.SEND_ID_GOOGLE +
+        var urlPath = Server.SERVER + Server.SEND_ID_GOOGLE +
             "cid=" + id_account +
             "&did=" + token +
             "&os=" + "iOS" +
             "&version=" + UIDevice.current.systemVersion +
             "&model=" + UIDevice.current.model +
             "&isMobAcc=1"
+        if UserDefaults.standard.bool(forKey: "isCons"){
+            urlPath = urlPath + "&IsDispatcher=1"
+        }
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
