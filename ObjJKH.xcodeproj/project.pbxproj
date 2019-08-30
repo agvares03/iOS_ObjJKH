@@ -725,7 +725,7 @@
 		1CF8FD8D21FB1AD40058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		2634C04815704A2D97F2C141 /* Pods_UK_Service_Comfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB46B23F8B123C151FD65A6 /* Pods_UK_Service_Comfort.framework */; };
 		265D6308F9C3077327185719 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		26C33F61AEC0026809A8A320 /* Pods_TSJ_Archangel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2ED4528BD4D0AF86DE81F /* Pods_TSJ_Archangel.framework */; };
+		26C33F61AEC0026809A8A320 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		30082FB222699CB3005BF485 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		30082FB322699CB3005BF485 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
 		30082FB422699CB3005BF485 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
@@ -1308,6 +1308,22 @@
 		301D0B8122896DFE0032DE2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		301D0B8222896DFE0032DE2A /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		301D0B89228976720032DE2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 301D0B88228976720032DE2A /* GoogleService-Info.plist */; };
+		301E659B231939C0001620B9 /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		301E659C231939C1001620B9 /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		301E659D231939C2001620B9 /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		301E659E231939C2001620B9 /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		301E659F23193A66001620B9 /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		301E65A023193A66001620B9 /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		301E65A123193A67001620B9 /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		301E65A223193A68001620B9 /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		301E65A323193A8B001620B9 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		301E65A423193A8C001620B9 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		301E65A523193A8C001620B9 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		301E65A623193A8D001620B9 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		301E65A723193AAE001620B9 /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		301E65A823193AAE001620B9 /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		301E65A923193AAF001620B9 /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		301E65AA23193AB0001620B9 /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
 		30260B4022DA028C00D019DA /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		30260B4122DA028C00D019DA /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
 		30260B4222DA028C00D019DA /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
@@ -1988,7 +2004,6 @@
 		302FB406230D2A750024A90D /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
 		302FB407230D2A750024A90D /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
 		302FB409230D2A750024A90D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
-		302FB40A230D2A750024A90D /* Pods_TSJ_Archangel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2ED4528BD4D0AF86DE81F /* Pods_TSJ_Archangel.framework */; };
 		302FB40C230D2A750024A90D /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
 		302FB40D230D2A750024A90D /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		302FB40E230D2A750024A90D /* NewAddLS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302E31BF22F7C95D0043209D /* NewAddLS.storyboard */; };
@@ -2283,7 +2298,6 @@
 		30354AD1231616A2008874D3 /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
 		30354AD2231616A2008874D3 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
 		30354AD4231616A2008874D3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
-		30354AD5231616A2008874D3 /* Pods_TSJ_Archangel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2ED4528BD4D0AF86DE81F /* Pods_TSJ_Archangel.framework */; };
 		30354AD7231616A2008874D3 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
 		30354AD8231616A2008874D3 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		30354AD9231616A2008874D3 /* NewAddLS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302E31BF22F7C95D0043209D /* NewAddLS.storyboard */; };
@@ -5930,6 +5944,7 @@
 		31BACE6BA10557AE758A1C80 /* Pods_TSJ_Kosm11.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC243C84ED7248F6402C4019 /* Pods_TSJ_Kosm11.framework */; };
 		383FCB2C20A1FF43AB7F9677 /* Pods_ReutKomfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2903771CADF5773D31887B2E /* Pods_ReutKomfort.framework */; };
 		38EC162B214B946FAB73FA46 /* Pods_NewOpaliha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5779DCAA450F22C57B3060A2 /* Pods_NewOpaliha.framework */; };
+		3D64A1836F8D60885C6031DF /* Pods_TSJ_Archangel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12318D496ACED16AF55DFED2 /* Pods_TSJ_Archangel.framework */; };
 		410004B521C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
 		410004B621C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
 		410004B721C1EB200040D703 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
@@ -7157,6 +7172,7 @@
 		934908097E1E684387DF032F /* Pods_Fregat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB56EA33A54165288A2309E /* Pods_Fregat.framework */; };
 		935A0804E965A3B5FF2D7F60 /* Pods_ADS_68.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C69E7CE27CF580C2EDF8A70A /* Pods_ADS_68.framework */; };
 		988DD0CA68D3E3FC58293D52 /* Pods_OurObjHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E18311FD916634DB235975 /* Pods_OurObjHome.framework */; };
+		991C56901C349633B4F4576E /* Pods_MUP_IRKC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6F73C2F4B494CA557D83DC /* Pods_MUP_IRKC.framework */; };
 		998389282861D0FCBDDF7743 /* Pods_NewOpaliha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E1D250E88FCF49CADABAFE /* Pods_NewOpaliha.framework */; };
 		998D044E483B5897E321D937 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		9AD7BA4A22FC29700059B5A5 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
@@ -7190,8 +7206,8 @@
 		050726E11C4A595AC266E450 /* Pods-ReutKomfort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReutKomfort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReutKomfort/Pods-ReutKomfort.debug.xcconfig"; sourceTree = "<group>"; };
 		061365A4C43210A11FA59BA9 /* Pods-ReutKomfort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReutKomfort.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReutKomfort/Pods-ReutKomfort.release.xcconfig"; sourceTree = "<group>"; };
 		0FBA0E90ADE2FAE50B12C336 /* Pods_ChistDom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChistDom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FF75C80329F378AC3746C03 /* Pods-TSJ_Archangel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSJ_Archangel.release.xcconfig"; path = "Pods/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel.release.xcconfig"; sourceTree = "<group>"; };
 		11426F384837FBDFC9D38925 /* Pods-TSN_Ruble40.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSN_Ruble40.release.xcconfig"; path = "Pods/Target Support Files/Pods-TSN_Ruble40/Pods-TSN_Ruble40.release.xcconfig"; sourceTree = "<group>"; };
+		12318D496ACED16AF55DFED2 /* Pods_TSJ_Archangel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSJ_Archangel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		126F73D4F5E7682528FFF4D1 /* Pods_UK_Komfort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UK_Komfort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E193FD8B44CEC1C4885263 /* Pods_NewOpaliha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewOpaliha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A07BDB9A94B259683EE0C6C /* Pods_DJ_Vladimir.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJ_Vladimir.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -7266,6 +7282,7 @@
 		1F0930D79EBDCC4C4F4AD349 /* Pods_UyutService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UyutService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klimovsk12.release.xcconfig"; path = "Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12.release.xcconfig"; sourceTree = "<group>"; };
 		2108610941DABC4FFBB7BF85 /* Pods-UK_Perspectiva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Perspectiva.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Perspectiva/Pods-UK_Perspectiva.debug.xcconfig"; sourceTree = "<group>"; };
+		24E7E58D5A86AE593ADE8F70 /* Pods-TSJ_Archangel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSJ_Archangel.release.xcconfig"; path = "Pods/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel.release.xcconfig"; sourceTree = "<group>"; };
 		25B69B4D3245B3C8AC714F49 /* Pods-Sib_Aliance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sib_Aliance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sib_Aliance/Pods-Sib_Aliance.debug.xcconfig"; sourceTree = "<group>"; };
 		2903771CADF5773D31887B2E /* Pods_ReutKomfort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReutKomfort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296AEE95442ECF4E01E51D6F /* Pods-Klimovsk12.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klimovsk12.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Klimovsk12/Pods-Klimovsk12.debug.xcconfig"; sourceTree = "<group>"; };
@@ -7608,6 +7625,7 @@
 		4FE03121F9F7CB4B9A579C86 /* Pods-ADS_68.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADS_68.release.xcconfig"; path = "Pods/Target Support Files/Pods-ADS_68/Pods-ADS_68.release.xcconfig"; sourceTree = "<group>"; };
 		506FB076571D10AD6C93A0BB /* Pods-OurObjHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurObjHome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurObjHome/Pods-OurObjHome.debug.xcconfig"; sourceTree = "<group>"; };
 		51C98F6851A378B2BEC43A4C /* Pods_JKH_Pavlovskoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKH_Pavlovskoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53D797FBB7BD2909F1EA25DF /* Pods-MUP_IRKC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MUP_IRKC.release.xcconfig"; path = "Pods/Target Support Files/Pods-MUP_IRKC/Pods-MUP_IRKC.release.xcconfig"; sourceTree = "<group>"; };
 		5428DDDDBA3E4A0A69BCBC8D /* Pods_ObjJKH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjJKH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779DCAA450F22C57B3060A2 /* Pods_NewOpaliha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewOpaliha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A50C912C4F79F1F90C177E2 /* Pods_UK_Upravdom_Che.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UK_Upravdom_Che.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -7631,7 +7649,6 @@
 		81B7EA4A0A2CB233BB4A6F85 /* Pods_DJ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E870DB1C8A0F32DAE0773A /* Pods-UK_Perspectiva.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Perspectiva.release.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Perspectiva/Pods-UK_Perspectiva.release.xcconfig"; sourceTree = "<group>"; };
 		84079EF8E0229E25C298D825 /* Pods-ElectroSbit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ElectroSbit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ElectroSbit/Pods-ElectroSbit.debug.xcconfig"; sourceTree = "<group>"; };
-		86D2ED4528BD4D0AF86DE81F /* Pods_TSJ_Archangel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSJ_Archangel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B8EBBD488BAF8F82A2D9FB /* Pods_Pritomskoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pritomskoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D88319703C839B522DF2A2 /* Pods-RodnikMUP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RodnikMUP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RodnikMUP/Pods-RodnikMUP.debug.xcconfig"; sourceTree = "<group>"; };
 		8AA318046015842FCC91043A /* Pods-TSJ_Kosm11.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSJ_Kosm11.release.xcconfig"; path = "Pods/Target Support Files/Pods-TSJ_Kosm11/Pods-TSJ_Kosm11.release.xcconfig"; sourceTree = "<group>"; };
@@ -7647,13 +7664,14 @@
 		9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Klimovsk12.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6F7A935F8F6D0C6731D8EF /* Pods_Sib_Aliance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sib_Aliance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26A37D2FA3DA51F312C1828 /* Pods_ElectroSbit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ElectroSbit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A40D6EE2D78B4CC23014D684 /* Pods-TSJ_Archangel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSJ_Archangel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel.debug.xcconfig"; sourceTree = "<group>"; };
 		A4919958CB6F30B2B9885A31 /* Pods-StandartDV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StandartDV.release.xcconfig"; path = "Pods/Target Support Files/Pods-StandartDV/Pods-StandartDV.release.xcconfig"; sourceTree = "<group>"; };
 		A4EE7F46997DE3377DA4101F /* Pods-Tafgai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tafgai.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tafgai/Pods-Tafgai.release.xcconfig"; sourceTree = "<group>"; };
 		A57CDCCC0166F072C93E3573 /* Pods-UyutService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UyutService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UyutService/Pods-UyutService.debug.xcconfig"; sourceTree = "<group>"; };
 		A596BB15652E526F3E639843 /* Pods-ADS_68.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADS_68.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ADS_68/Pods-ADS_68.debug.xcconfig"; sourceTree = "<group>"; };
 		A60A0F4D9F7D88A36FA8652B /* Pods-Sib_Aliance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sib_Aliance.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sib_Aliance/Pods-Sib_Aliance.release.xcconfig"; sourceTree = "<group>"; };
 		A8D96C7D1087725F67E3D16C /* Pods_Servicekom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Servicekom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB6F73C2F4B494CA557D83DC /* Pods_MUP_IRKC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MUP_IRKC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD03AE2954E9C15FF04C595 /* Pods-TSJ_Archangel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSJ_Archangel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel.debug.xcconfig"; sourceTree = "<group>"; };
 		ACDBE253FE55124384C73FA1 /* Pods_JKH_Pocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKH_Pocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0F43C730EDC44BF7CAB605 /* Pods-Skyfort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyfort.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skyfort/Pods-Skyfort.release.xcconfig"; sourceTree = "<group>"; };
 		B3057830815857E40C776201 /* Pods-UK_Paritet_Khab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Paritet_Khab.release.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Paritet_Khab/Pods-UK_Paritet_Khab.release.xcconfig"; sourceTree = "<group>"; };
@@ -7675,6 +7693,7 @@
 		D63FA35DCA7CAD66ECB8ED45 /* Pods-Parus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Parus/Pods-Parus.debug.xcconfig"; sourceTree = "<group>"; };
 		D6E18311FD916634DB235975 /* Pods_OurObjHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurObjHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B9897924B7FB593B890CC7 /* Pods-TSN_Dnestr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSN_Dnestr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TSN_Dnestr/Pods-TSN_Dnestr.debug.xcconfig"; sourceTree = "<group>"; };
+		D9A4E8CA17B4DFEE0411C6EC /* Pods-MUP_IRKC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MUP_IRKC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MUP_IRKC/Pods-MUP_IRKC.debug.xcconfig"; sourceTree = "<group>"; };
 		DEE00CD69F1D5A624B72F555 /* Pods-Parus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parus/Pods-Parus.release.xcconfig"; sourceTree = "<group>"; };
 		DFE18997918A9D42C3A1860A /* Pods-UK_Garant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Garant.release.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Garant/Pods-UK_Garant.release.xcconfig"; sourceTree = "<group>"; };
 		DFE60B1B30E47ED0DC4CA548 /* Pods_StroimBud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StroimBud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -7806,7 +7825,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302FB409230D2A750024A90D /* CoreLocation.framework in Frameworks */,
-				302FB40A230D2A750024A90D /* Pods_TSJ_Archangel.framework in Frameworks */,
+				991C56901C349633B4F4576E /* Pods_MUP_IRKC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7815,7 +7834,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				30354AD4231616A2008874D3 /* CoreLocation.framework in Frameworks */,
-				30354AD5231616A2008874D3 /* Pods_TSJ_Archangel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8034,7 +8052,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				30FF5D3F2301B0BD00AD297B /* CoreLocation.framework in Frameworks */,
-				26C33F61AEC0026809A8A320 /* Pods_TSJ_Archangel.framework in Frameworks */,
+				26C33F61AEC0026809A8A320 /* (null) in Frameworks */,
+				3D64A1836F8D60885C6031DF /* Pods_TSJ_Archangel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9245,10 +9264,12 @@
 				A60A0F4D9F7D88A36FA8652B /* Pods-Sib_Aliance.release.xcconfig */,
 				42276F93FDD51C7F8546F4E2 /* Pods-UK_Spartak.debug.xcconfig */,
 				7898ED320C2C9C9CD174B8CF /* Pods-UK_Spartak.release.xcconfig */,
-				A40D6EE2D78B4CC23014D684 /* Pods-TSJ_Archangel.debug.xcconfig */,
-				0FF75C80329F378AC3746C03 /* Pods-TSJ_Archangel.release.xcconfig */,
 				E8A301911D950D79BAA66A7D /* Pods-TSJ_Kosm11.debug.xcconfig */,
 				8AA318046015842FCC91043A /* Pods-TSJ_Kosm11.release.xcconfig */,
+				D9A4E8CA17B4DFEE0411C6EC /* Pods-MUP_IRKC.debug.xcconfig */,
+				53D797FBB7BD2909F1EA25DF /* Pods-MUP_IRKC.release.xcconfig */,
+				ACD03AE2954E9C15FF04C595 /* Pods-TSJ_Archangel.debug.xcconfig */,
+				24E7E58D5A86AE593ADE8F70 /* Pods-TSJ_Archangel.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -9298,9 +9319,10 @@
 				F057313E6FE1D0F041B71E71 /* Pods_Narian_Mar_el.framework */,
 				02E1D250E88FCF49CADABAFE /* Pods_NewOpaliha.framework */,
 				9F6F7A935F8F6D0C6731D8EF /* Pods_Sib_Aliance.framework */,
-				86D2ED4528BD4D0AF86DE81F /* Pods_TSJ_Archangel.framework */,
 				EC243C84ED7248F6402C4019 /* Pods_TSJ_Kosm11.framework */,
 				5AC19624621919286B6DB4FC /* Pods_UK_Spartak.framework */,
+				AB6F73C2F4B494CA557D83DC /* Pods_MUP_IRKC.framework */,
+				12318D496ACED16AF55DFED2 /* Pods_TSJ_Archangel.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -9527,11 +9549,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30354B0D231616A2008874D3 /* Build configuration list for PBXNativeTarget "UK_First" */;
 			buildPhases = (
-				30354A68231616A2008874D3 /* [CP] Check Pods Manifest.lock */,
 				30354A69231616A2008874D3 /* Sources */,
 				30354AD3231616A2008874D3 /* Frameworks */,
 				30354AD6231616A2008874D3 /* Resources */,
-				30354B0B231616A2008874D3 /* [CP] Embed Pods Frameworks */,
 				30354B0C231616A2008874D3 /* ShellScript */,
 			);
 			buildRules = (
@@ -13401,7 +13421,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TSJ_Archangel-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MUP_IRKC-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -13414,15 +13434,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MUP_IRKC/Pods-MUP_IRKC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MUP_IRKC/Pods-MUP_IRKC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MUP_IRKC/Pods-MUP_IRKC-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		302FB440230D2A750024A90D /* ShellScript */ = {
@@ -13442,45 +13462,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
-		};
-		30354A68231616A2008874D3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TSJ_Archangel-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		30354B0B231616A2008874D3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TSJ_Archangel/Pods-TSJ_Archangel-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		30354B0C231616A2008874D3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -19277,9 +19258,11 @@
 				412092BD2159E603001E713E /* NewsView.swift in Sources */,
 				412092BE2159E603001E713E /* CounterCell.swift in Sources */,
 				412092BF2159E603001E713E /* CommCellCons.swift in Sources */,
+				301E65A623193A8D001620B9 /* ASDKCardIOScanner.m in Sources */,
 				412092C02159E603001E713E /* FirstController.swift in Sources */,
 				412092C12159E603001E713E /* CountersController.swift in Sources */,
 				4193AED821708CB600857D4D /* Applications+CoreDataProperties.swift in Sources */,
+				301E659E231939C2001620B9 /* PaymentSuccessViewController.m in Sources */,
 				412092C22159E603001E713E /* Saldo+CoreDataProperties.swift in Sources */,
 				412092C42159E603001E713E /* QuestionsTableCell.swift in Sources */,
 				41645B5E216492A300C61AF9 /* StartController.swift in Sources */,
@@ -19320,6 +19303,7 @@
 				412092DB2159E603001E713E /* Registration.swift in Sources */,
 				1C261EC3223F6DB9002C925E /* MupCounterController.swift in Sources */,
 				412092DC2159E603001E713E /* NewsCell.swift in Sources */,
+				301E65A223193A68001620B9 /* TransactionHistoryModelController.m in Sources */,
 				417FCFE9217EF143009CDBB8 /* Settings+CoreDataClass.swift in Sources */,
 				412092DD2159E603001E713E /* SaldoCell.swift in Sources */,
 				412092DE2159E603001E713E /* AppDelegate.swift in Sources */,
@@ -19328,6 +19312,7 @@
 				412092E12159E603001E713E /* NoCounters.swift in Sources */,
 				412092E22159E603001E713E /* AppCons.swift in Sources */,
 				412092E32159E603001E713E /* Web_Camera.swift in Sources */,
+				301E65AA23193AB0001620B9 /* ASDKTestSettings.m in Sources */,
 				412092E42159E603001E713E /* AppsController.swift in Sources */,
 				412092E52159E603001E713E /* QuestionsJson.swift in Sources */,
 			);
@@ -19623,9 +19608,11 @@
 				418ABFEE21361F70004DB75C /* CounterCell.swift in Sources */,
 				41EF5A37213903C100789370 /* CommCellCons.swift in Sources */,
 				418ABF4F2134CF1A004DB75C /* FirstController.swift in Sources */,
+				301E65A323193A8B001620B9 /* ASDKCardIOScanner.m in Sources */,
 				418ABFEA21361F56004DB75C /* CountersController.swift in Sources */,
 				418AC03C213634CC004DB75C /* Saldo+CoreDataProperties.swift in Sources */,
 				4193AED221708CB600857D4D /* Applications+CoreDataProperties.swift in Sources */,
+				301E659B231939C0001620B9 /* PaymentSuccessViewController.m in Sources */,
 				418ABFA921357B6C004DB75C /* QuestionsTableCell.swift in Sources */,
 				41645B58216492A300C61AF9 /* StartController.swift in Sources */,
 				41EF5A40213917C900789370 /* Fotos+CoreDataClass.swift in Sources */,
@@ -19666,6 +19653,7 @@
 				418ABF542134CF1A004DB75C /* Registration.swift in Sources */,
 				1C261EBF223F6DB6002C925E /* MupCounterController.swift in Sources */,
 				418ABF8A21353F19004DB75C /* NewsCell.swift in Sources */,
+				301E659F23193A66001620B9 /* TransactionHistoryModelController.m in Sources */,
 				417FCFE3217EF143009CDBB8 /* Settings+CoreDataClass.swift in Sources */,
 				41EF59E12137B6BA00789370 /* SaldoCell.swift in Sources */,
 				418ABF552134CF1A004DB75C /* AppDelegate.swift in Sources */,
@@ -19674,6 +19662,7 @@
 				41E8F0212147C28D00FE0473 /* NoCounters.swift in Sources */,
 				41DFC46A2140B0D4002CEB62 /* AppCons.swift in Sources */,
 				41EF5A58213A87E600789370 /* Web_Camera.swift in Sources */,
+				301E65A723193AAE001620B9 /* ASDKTestSettings.m in Sources */,
 				41EF59FF2138D3F200789370 /* AppsController.swift in Sources */,
 				418ABFA621357B14004DB75C /* QuestionsJson.swift in Sources */,
 			);
@@ -19734,9 +19723,11 @@
 				418ABFEF21361F70004DB75C /* CounterCell.swift in Sources */,
 				41EF5A38213903C100789370 /* CommCellCons.swift in Sources */,
 				418ABFB621357DA5004DB75C /* FirstController.swift in Sources */,
+				301E65A423193A8C001620B9 /* ASDKCardIOScanner.m in Sources */,
 				418ABFEB21361F56004DB75C /* CountersController.swift in Sources */,
 				418AC03D213634CC004DB75C /* Saldo+CoreDataProperties.swift in Sources */,
 				4193AED321708CB600857D4D /* Applications+CoreDataProperties.swift in Sources */,
+				301E659C231939C1001620B9 /* PaymentSuccessViewController.m in Sources */,
 				418ABFB721357DA5004DB75C /* QuestionsTableCell.swift in Sources */,
 				41645B59216492A300C61AF9 /* StartController.swift in Sources */,
 				41EF5A41213917C900789370 /* Fotos+CoreDataClass.swift in Sources */,
@@ -19777,6 +19768,7 @@
 				418ABFBE21357DA5004DB75C /* Registration.swift in Sources */,
 				1C261EC0223F6DB7002C925E /* MupCounterController.swift in Sources */,
 				418ABFBF21357DA5004DB75C /* NewsCell.swift in Sources */,
+				301E65A023193A66001620B9 /* TransactionHistoryModelController.m in Sources */,
 				417FCFE4217EF143009CDBB8 /* Settings+CoreDataClass.swift in Sources */,
 				41EF59E22137B6BA00789370 /* SaldoCell.swift in Sources */,
 				418ABFC021357DA5004DB75C /* AppDelegate.swift in Sources */,
@@ -19785,6 +19777,7 @@
 				41E8F0222147C28D00FE0473 /* NoCounters.swift in Sources */,
 				41DFC46B2140B0D4002CEB62 /* AppCons.swift in Sources */,
 				41EF5A59213A87E600789370 /* Web_Camera.swift in Sources */,
+				301E65A823193AAE001620B9 /* ASDKTestSettings.m in Sources */,
 				41EF5A002138D3F200789370 /* AppsController.swift in Sources */,
 				418ABFC121357DA5004DB75C /* QuestionsJson.swift in Sources */,
 			);
@@ -20079,9 +20072,11 @@
 				1C953D6621FAC9DD00313221 /* OnePageController.swift in Sources */,
 				1C66AB3E22550D0D00812964 /* QuestionVoteController.swift in Sources */,
 				41DFC3FF213D206C002CEB62 /* QuestionsTableCell.swift in Sources */,
+				301E65A523193A8C001620B9 /* ASDKCardIOScanner.m in Sources */,
 				41645B5B216492A300C61AF9 /* StartController.swift in Sources */,
 				41DFC401213D206C002CEB62 /* Fotos+CoreDataClass.swift in Sources */,
 				41DFC402213D206C002CEB62 /* Comments+CoreDataProperties.swift in Sources */,
+				301E659D231939C2001620B9 /* PaymentSuccessViewController.m in Sources */,
 				41DFC403213D206C002CEB62 /* OnOffButton.swift in Sources */,
 				41DFC404213D206C002CEB62 /* NewsClient.swift in Sources */,
 				41DFC405213D206C002CEB62 /* NewsManager.swift in Sources */,
@@ -20122,6 +20117,7 @@
 				41DFC416213D206C002CEB62 /* SaldoCell.swift in Sources */,
 				41DFC417213D206C002CEB62 /* AppDelegate.swift in Sources */,
 				1CF8FD8921FB1AD20058D852 /* UpdateAppController.swift in Sources */,
+				301E65A123193A67001620B9 /* TransactionHistoryModelController.m in Sources */,
 				1C3DB85922608CF900DBD52E /* NewMainMenu2.swift in Sources */,
 				41DFC418213D206C002CEB62 /* CloseAppAlert.swift in Sources */,
 				41DFC419213D206C002CEB62 /* QuestionFinal.swift in Sources */,
@@ -20130,6 +20126,7 @@
 				1C66AB24225372F300812964 /* VotingController.swift in Sources */,
 				41DFC41A213D206C002CEB62 /* Web_Camera.swift in Sources */,
 				41DFC41B213D206C002CEB62 /* AppsController.swift in Sources */,
+				301E65A923193AAF001620B9 /* ASDKTestSettings.m in Sources */,
 				1CA666B722AF5162005EE645 /* PaysMytishiController.swift in Sources */,
 				41DFC41C213D206C002CEB62 /* QuestionsJson.swift in Sources */,
 			);
@@ -20745,7 +20742,7 @@
 		};
 		302FB442230D2A750024A90D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A40D6EE2D78B4CC23014D684 /* Pods-TSJ_Archangel.debug.xcconfig */;
+			baseConfigurationReference = D9A4E8CA17B4DFEE0411C6EC /* Pods-MUP_IRKC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-MUP_IRKC";
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
@@ -20771,7 +20768,7 @@
 		};
 		302FB443230D2A750024A90D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FF75C80329F378AC3746C03 /* Pods-TSJ_Archangel.release.xcconfig */;
+			baseConfigurationReference = 53D797FBB7BD2909F1EA25DF /* Pods-MUP_IRKC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-MUP_IRKC";
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
@@ -20796,7 +20793,6 @@
 		};
 		30354B0E231616A2008874D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A40D6EE2D78B4CC23014D684 /* Pods-TSJ_Archangel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-UK_First";
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
@@ -20822,7 +20818,6 @@
 		};
 		30354B0F231616A2008874D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FF75C80329F378AC3746C03 /* Pods-TSJ_Archangel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-UK_First";
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
@@ -21965,7 +21960,7 @@
 		};
 		30FF5D772301B0BD00AD297B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A40D6EE2D78B4CC23014D684 /* Pods-TSJ_Archangel.debug.xcconfig */;
+			baseConfigurationReference = ACD03AE2954E9C15FF04C595 /* Pods-TSJ_Archangel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-TSJ_Arcangel";
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
@@ -21991,7 +21986,7 @@
 		};
 		30FF5D782301B0BD00AD297B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FF75C80329F378AC3746C03 /* Pods-TSJ_Archangel.release.xcconfig */;
+			baseConfigurationReference = 24E7E58D5A86AE593ADE8F70 /* Pods-TSJ_Archangel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-TSJ_Arcangel";
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
