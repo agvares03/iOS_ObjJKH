@@ -137,6 +137,7 @@ class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewData
         }else{
             cell.goReceipt.isHidden = true
         }
+        cell.ident.text = "Л/сч.:  " + fileList[indexPath.row].ident
         cell.goReceipt.tintColor = myColors.btnColor.uiColor()
         cell.separator.backgroundColor = myColors.btnColor.uiColor()
         cell.receiptText.text = self.get_name_month(number_month: String(fileList[indexPath.row].month)) + " " + String(fileList[indexPath.row].year)

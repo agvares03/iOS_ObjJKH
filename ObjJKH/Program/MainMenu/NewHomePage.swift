@@ -2134,8 +2134,22 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             var countName = ""
             cell.tariffNumber     = tariffArr[indexPath.row]
             cell.ident.text       = identArr[indexPath.row]
+            if identArr[indexPath.row] == "" || identArr[indexPath.row] == " " || identArr[indexPath.row] == "-" || identArr[indexPath.row] == nil{
+                cell.identView.isHidden = true
+                cell.identHeight.constant = 0
+            }else{
+                cell.identView.isHidden = false
+                cell.identHeight.constant = 24
+            }
             cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.number.text      = ownerArr[indexPath.row]
+            if ownerArr[indexPath.row] == "" || ownerArr[indexPath.row] == " " || ownerArr[indexPath.row] == "-" || ownerArr[indexPath.row] == nil{
+                cell.numberView.isHidden = true
+                cell.numberHeight.constant = 0
+            }else{
+                cell.numberView.isHidden = false
+                cell.numberHeight.constant = 24
+            }
             countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.pred1.text        = String(format:"%.3f", predArr[indexPath.row])
             cell.teck1.text        = String(format:"%.3f", teckArr[indexPath.row])
@@ -2146,7 +2160,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             // Проверка и интервал
             cell.checkup_date.text = lastCheckArr[indexPath.row]
+            if lastCheckArr[indexPath.row] == "" || lastCheckArr[indexPath.row] == " " || lastCheckArr[indexPath.row] == "-" || lastCheckArr[indexPath.row] == nil{
+                cell.checkView.isHidden = true
+                cell.chechHeight.constant = 0
+            }else{
+                cell.checkView.isHidden = false
+                cell.chechHeight.constant = 24
+            }
             cell.recheckup_diff.text = recheckInterArr[indexPath.row] + getAge(age: recheckInterArr[indexPath.row])
+            if recheckInterArr[indexPath.row] == "" || recheckInterArr[indexPath.row] == " " || recheckInterArr[indexPath.row] == "-" || recheckInterArr[indexPath.row] == nil{
+                cell.recheckView.isHidden = true
+                cell.recheckHeight.constant = 0
+            }else{
+                cell.recheckView.isHidden = false
+                cell.recheckHeight.constant = 24
+            }
             if (autoValueArr[indexPath.row]) {
                 cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
             }
@@ -2414,6 +2442,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }else{
                 cell.goReceipt.isHidden = true
             }
+            cell.ident.text = "Л/сч.:  " + fileList[indexPath.row].ident
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.receiptText.text = self.get_name_month(number_month: String(fileList[indexPath.row].month)) + " " + String(fileList[indexPath.row].year)
             cell.receiptSum.text = String(format:"%.2f", fileList[indexPath.row].sum) + " руб"
@@ -2825,6 +2854,16 @@ class HomeCounterCell: UITableViewCell {
     @IBOutlet weak var viewImgCounter: UIView!
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var numberView:  UIView!
+    @IBOutlet weak var identView:   UIView!
+    @IBOutlet weak var checkView:   UIView!
+    @IBOutlet weak var recheckView: UIView!
+    
+    @IBOutlet weak var numberHeight:    NSLayoutConstraint!
+    @IBOutlet weak var identHeight:     NSLayoutConstraint!
+    @IBOutlet weak var chechHeight:     NSLayoutConstraint!
+    @IBOutlet weak var recheckHeight:   NSLayoutConstraint!
+    
     @IBOutlet weak var pred1: UILabel!
     @IBOutlet weak var teck1: UILabel!
     @IBOutlet weak var diff1: UILabel!
@@ -3025,6 +3064,7 @@ class HomeReceiptsCell: UITableViewCell {
     @IBOutlet weak var goReceipt: UIButton!
     @IBOutlet weak var receiptSum: UILabel!
     @IBOutlet weak var separator: UILabel!
+    @IBOutlet weak var ident:     UILabel!
     
     @IBAction func urlBtnPressed(_ sender: UIButton) {
         delegate2?.goUrlReceipt(url: separator.text!)
