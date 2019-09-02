@@ -2718,6 +2718,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         self.allCountersBtn.isHidden = false
                                                     }
                                                 } else if (responseString == "1") {
+                                                    self.can_edit = "1"
                                                     self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
                                                 }
                                                 

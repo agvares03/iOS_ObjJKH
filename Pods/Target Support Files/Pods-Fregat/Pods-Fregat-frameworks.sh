@@ -162,6 +162,8 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AKMaskField/AKMaskField.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework"
@@ -170,11 +172,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AKMaskField/AKMaskField.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework"
@@ -183,8 +185,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ASDKCore/ASDKCore.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ASDKUI/ASDKUI.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
