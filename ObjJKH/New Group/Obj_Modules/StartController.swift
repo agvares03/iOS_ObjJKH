@@ -178,6 +178,14 @@ class StartController: UIViewController {
     
     func set_settings(oss: Bool, color: String, statMenu: [Menu], useDispatcherAuth: Bool, showAds: Bool, adType: Int, servPercent: Double, adsCode: String, dontShowDebt: Bool, registerWithoutSMS: Bool, сheckCrashSystem: Bool) {
         let defaults = UserDefaults.standard
+        let launchedBefore = defaults.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        } else {
+            print("First launch, setting UserDefault.")
+            defaults.set(true, forKey: "launchedBefore")
+            defaults.set(true, forKey: "exit")
+        }
         defaults.set(servPercent, forKey: "servPercent")
         defaults.removeObject(forKey: "show_Ad")//удалить через месяц
         defaults.setValue(color, forKey: "hex_color")
