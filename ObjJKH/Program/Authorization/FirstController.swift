@@ -737,26 +737,25 @@ class FirstController: UIViewController {
         if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
             edLogin.maskDelegate = self
             edLogin.maskExpression = "{.}"
+            edLogin.keyboardType = .asciiCapable
+            edLogin.reloadInputViews()
             edLogin.text = ""
-            if login?.first == "+" && !maskPhone{
+            if login != nil && login != "" && login?.first == "+" && !maskPhone{
                 maskPhone = true
-                #if isDJ
-                #else
                 edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-                #endif
                 edLogin.maskTemplate = "*"
                 edLogin.text = login
                 loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
                 edLogin.keyboardType = .phonePad
                 edLogin.reloadInputViews()
                 edPass.text = pass
-            }else if !maskLogin && !maskPhone {//&& login!.count > 0{
+            }else if login != nil && login != "" && !maskLogin && !maskPhone {//&& login!.count > 0{
                 maskLogin = true
                 edLogin.maskExpression = "{..................}"
                 edLogin.maskTemplate = " "
                 edLogin.text = login
                 loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
-                edLogin.keyboardType = .default
+                edLogin.keyboardType = .asciiCapable
                 edLogin.reloadInputViews()
                 edPass.text = pass
             }
