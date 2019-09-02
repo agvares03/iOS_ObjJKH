@@ -745,7 +745,7 @@ class FirstController: UIViewController {
             if (login == "") {
                 edLogin.text = ""
             } else {
-                if (Int(login!) != nil || login?.first == "+") && !maskPhone{
+                if (login != nil || login?.first == "+") && !maskPhone{
                     maskPhone = true
                     #if isDJ
                     #else
@@ -757,7 +757,7 @@ class FirstController: UIViewController {
                     edLogin.keyboardType = .phonePad
                     edLogin.reloadInputViews()
                     edPass.text = pass
-                }else if !maskLogin && !maskPhone && login!.count > 0{
+                }else if !maskLogin && !maskPhone {//&& login!.count > 0{
                     maskLogin = true
                     edLogin.maskExpression = "{..................}"
                     edLogin.maskTemplate = " "
