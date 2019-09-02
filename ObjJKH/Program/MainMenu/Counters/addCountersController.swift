@@ -10,7 +10,7 @@ import UIKit
 import YandexMobileAds
 import GoogleMobileAds
 
-class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdLoaderDelegate {
+class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdLoaderDelegate, UITextFieldDelegate {
     
     var adLoader: YMANativeAdLoader!
     var bannerView: YMANativeBannerView?
@@ -23,6 +23,9 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var newCounters1:    UITextField!
     @IBOutlet weak var newCounters2:    UITextField!
     @IBOutlet weak var newCounters3:    UITextField!
+    @IBOutlet weak var newCountersDrob1:UITextField!
+    @IBOutlet weak var newCountersDrob2:UITextField!
+    @IBOutlet weak var newCountersDrob3:UITextField!
     @IBOutlet weak var sendCount:       UIButton!
     @IBOutlet weak var cancelCount:     UIButton!
     @IBOutlet weak var autoSendLbl:     UILabel!
@@ -119,9 +122,24 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         navigationController?.popViewController(animated: true)
     }
     @IBAction func sendAction1(_ sender: UIButton) {
-        var count1: String = newCounters1.text!
-        var count2: String = newCounters2.text!
-        var count3: String = newCounters3.text!
+        var count1 = ""
+        var count2 = ""
+        var count3 = ""
+        if newCounters1.text! != ""{
+            count1 = newCounters1.text!
+        }else if newCountersDrob1.text! != ""{
+            count1 = newCountersDrob1.text!
+        }
+        if newCounters2.text! != ""{
+            count2 = newCounters2.text!
+        }else if newCountersDrob2.text! != ""{
+            count2 = newCountersDrob2.text!
+        }
+        if newCounters3.text! != ""{
+            count3 = newCounters3.text!
+        }else if newCountersDrob3.text! != ""{
+            count3 = newCountersDrob3.text!
+        }
         if ((count1 == "" || count1 == "0") && (tariffNumber == 0 || tariffNumber == 1)){
             let alert = UIAlertController(title: "", message: "Вы хотите передать нулевые показания?", preferredStyle: .alert)
             let noAction = UIAlertAction(title: "Нет", style: .default) { (_) -> Void in
@@ -529,6 +547,11 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         newCounters1.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         newCounters2.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         newCounters3.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+//
+//        newCountersDrob1.addTarget(self, action: #selector(self.textFieldTouch(_:)), for: .editingDidBegin)
+        newCountersDrob1.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        newCountersDrob2.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        newCountersDrob3.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         if defaults.bool(forKey: "show_Ad"){
             if defaults.integer(forKey: "ad_Type") == 2{
                 let configuration = YMANativeAdLoaderConfiguration(blockID: defaults.string(forKey: "adsCode")!,
@@ -817,6 +840,12 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @objc func textFieldDidChange(_ textField: UITextField) {
         var cnt: String = textField.text!.replacingOccurrences(of: ".", with: ",")
         var str: String = textField.text!.replacingOccurrences(of: ".", with: ",")
+        if (newCounters1.text!.count < newCountersDrob1.text!.count || newCounters2.text!.count < newCountersDrob2.text!.count || newCounters3.text!.count < newCountersDrob3.text!.count) && str.count > 0 && !str.contains(",") && (textField == newCountersDrob1 || textField == newCountersDrob2 || textField == newCountersDrob3){
+            let l = str.last
+            str.removeLast()
+            str = str + "," + String(l!)
+            textField.text = str
+        }
         if str.contains(","){
             var k = 0
             str.forEach{
@@ -836,31 +865,31 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                 str.removeFirst()
                 if str.count < 4{
                     for i in 5...7{
-                        if textField == newCounters1{
+                        if textField == newCounters1 || textField == newCountersDrob1{
                             count1[i].text = "0"
-                        }else if textField == newCounters2{
+                        }else if textField == newCounters2 || textField == newCountersDrob2{
                             count2[i].text = "0"
-                        }else if textField == newCounters3{
+                        }else if textField == newCounters3 || textField == newCountersDrob3{
                             count3[i].text = "0"
                         }
                     }
                     for i in 5...str.count + 4{
-                        if textField == newCounters1{
+                        if textField == newCounters1 || textField == newCountersDrob1{
                             count1[i].text = String(str.first!)
-                        }else if textField == newCounters2{
+                        }else if textField == newCounters2 || textField == newCountersDrob2{
                             count2[i].text = String(str.first!)
-                        }else if textField == newCounters3{
+                        }else if textField == newCounters3 || textField == newCountersDrob3{
                             count3[i].text = String(str.first!)
                         }
                         str.removeFirst()
                     }
                 }else if str.count == 0{
                     for i in 5...7{
-                        if textField == newCounters1{
+                        if textField == newCounters1 || textField == newCountersDrob1{
                             count1[i].text = "0"
-                        }else if textField == newCounters2{
+                        }else if textField == newCounters2 || textField == newCountersDrob2{
                             count2[i].text = "0"
-                        }else if textField == newCounters3{
+                        }else if textField == newCounters3 || textField == newCountersDrob3{
                             count3[i].text = "0"
                         }
                     }
@@ -870,58 +899,77 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                 }
             }else{
                 for i in 5...7{
-                    if textField == newCounters1{
+                    if textField == newCounters1 || textField == newCountersDrob2{
                         count1[i].text = "0"
-                    }else if textField == newCounters2{
+                    }else if textField == newCounters2 || textField == newCountersDrob2{
                         count2[i].text = "0"
-                    }else if textField == newCounters3{
+                    }else if textField == newCounters3 || textField == newCountersDrob3{
                         count3[i].text = "0"
                     }
                 }
             }
         }else{
             if str.count > 0 && str.count < 6{
-                if textField == newCounters1{
+                if textField == newCounters1 || textField == newCountersDrob1{
                     count1.forEach{
                         $0.text = "0"
                     }
-                }else if textField == newCounters2{
+                }else if textField == newCounters2 || textField == newCountersDrob2{
                     count2.forEach{
                         $0.text = "0"
                     }
-                }else if textField == newCounters3{
+                }else if textField == newCounters3 || textField == newCountersDrob3{
                     count3.forEach{
                         $0.text = "0"
                     }
                 }
                 for i in 0...str.count - 1{
-                    if textField == newCounters1{
+                    if textField == newCounters1 || textField == newCountersDrob1{
                         count1[i].text = String(str.last!)
-                    }else if textField == newCounters2{
+                        str.removeLast()
+                    }else if textField == newCounters2 || textField == newCountersDrob2{
                         count2[i].text = String(str.last!)
-                    }else if textField == newCounters3{
+                        str.removeLast()
+                    }else if textField == newCounters3 || textField == newCountersDrob3{
                         count3[i].text = String(str.last!)
+                        str.removeLast()
                     }
-                    str.removeLast()
                 }
             }else if str.count > 5{
                 str.removeLast()
                 textField.text = str
             }else if str.count == 0{
-                if textField == newCounters1{
+                if textField == newCounters1 || textField == newCountersDrob1{
                     count1.forEach{
                         $0.text = "0"
                     }
-                }else if textField == newCounters2{
+                }else if textField == newCounters2 || textField == newCountersDrob2{
                     count2.forEach{
                         $0.text = "0"
                     }
-                }else if textField == newCounters3{
+                }else if textField == newCounters3 || textField == newCountersDrob3{
                     count3.forEach{
                         $0.text = "0"
                     }
                 }
             }
+        }
+        if textField == newCounters1{
+            newCountersDrob1.text = newCounters1.text
+        }else if textField == newCountersDrob1{
+            newCounters1.text = newCountersDrob1.text
+        }
+        
+        if textField == newCounters2{
+            newCountersDrob2.text = newCounters2.text
+        }else if textField == newCountersDrob2{
+            newCounters2.text = newCountersDrob2.text
+        }
+        
+        if textField == newCounters3{
+            newCountersDrob3.text = newCounters3.text
+        }else if textField == newCountersDrob3{
+            newCounters3.text = newCountersDrob3.text
         }
     }
     
