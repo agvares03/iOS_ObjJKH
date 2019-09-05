@@ -256,7 +256,7 @@ class NewPass: UIViewController {
             }
         }
         if (segue.identifier == "support") {
-            let AddApp = segue.destination as! SupportController
+            let AddApp = segue.destination as! SupportUpdate
             AddApp.fromAuth = true
         }
     }

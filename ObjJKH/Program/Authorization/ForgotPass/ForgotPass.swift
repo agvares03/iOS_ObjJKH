@@ -65,7 +65,7 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "support") {
-            let AddApp = segue.destination as! SupportController
+            let AddApp = segue.destination as! SupportUpdate
             AddApp.fromAuth = true
         }
     }

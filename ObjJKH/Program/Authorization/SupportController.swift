@@ -26,9 +26,6 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var heigthAppBtn: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var indicatorUpd: UIActivityIndicatorView!
-    @IBOutlet weak var updLbl: UILabel!
-    @IBOutlet weak var updView: UIView!
     
     @IBOutlet weak var phoneTxt: AKMaskField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -39,16 +36,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var heightTextView: NSLayoutConstraint!
     @IBOutlet weak var btnCancel: UIButton!
     @IBAction func btnCancelGo(_ sender: UIButton) {
-        if UserDefaults.standard.bool(forKey: "fromMenu") || fromMenu{
-            navigationController?.popViewController(animated: true)
-        
-        } else if UserDefaults.standard.bool(forKey: "fromTech") {
-            
-            navigationController?.popViewController(animated: true)
-            
-        }else{
-            navigationController?.dismiss(animated: true, completion: nil)
-        }
+        navigationController?.popViewController(animated: false)
     }
     
     @IBAction func addAppAction(_ sender: UIButton){
@@ -220,8 +208,6 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         separator3.backgroundColor = myColors.labelColor.uiColor()
         ver_Lbl.textColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
-        indicatorUpd.color = myColors.indicatorColor.uiColor()
-        updLbl.textColor = myColors.indicatorColor.uiColor()
         updateConectBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         btnCancel.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         appBtn.backgroundColor = myColors.btnColor.uiColor()
@@ -268,60 +254,6 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         
         // Доступность и видимость кнопки отправки
         enable_btn_send()
-        checkUpd()
-    }
-    
-    func checkUpd(){
-        DispatchQueue.main.async {
-            self.scrollView.isHidden = true
-            self.updView.isHidden = false
-            
-            self.indicatorUpd.startAnimating()
-            self.indicatorUpd.isHidden = false
-        }
-        self.getSettings()
-    }
-    
-    func falseUpd(){
-        DispatchQueue.main.async {
-            self.scrollView.isHidden = false
-            self.updView.isHidden = true
-            
-            self.indicatorUpd.stopAnimating()
-            self.indicatorUpd.isHidden = true
-        }
-    }
-    
-    func getSettings() {
-        let dictionary = Bundle.main.infoDictionary!
-        let version = dictionary["CFBundleShortVersionString"] as! String
-        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
-//        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=1.01"
-        let url: NSURL = NSURL(string: urlPath)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "GET"
-        print(request)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, response, error in
-                                                
-                                                if error != nil {
-                                                    return
-                                                }
-                                                
-                                                let responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("Response: \(responseLS)")
-                                                
-                                                if (responseLS.contains("обновить")){
-                                                    self.falseUpd()
-                                                    self.performSegue(withIdentifier: "updateApp", sender: self)
-                                                }else{
-                                                    self.falseUpd()
-                                                }
-        })
-        task.resume()
-        
     }
     
     func enable_btn_send() {

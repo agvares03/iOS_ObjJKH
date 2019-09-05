@@ -542,6 +542,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             textSum.isHidden = false
             textService.isHidden = false
         }
+        #if isDJ
+        currPoint = 522
+        paysViewHeight.constant = 110
+        txt_sum_jkh.isHidden = true
+        servicePay.text = "Комиссия не взимается"
+        servicePay.textColor = .lightGray
+        servicePay.isHidden = true
+        textSum.isHidden = true
+        textService.isHidden = true
+        #endif
         // Логин и пароль
         login = defaults.string(forKey: "login")
         pass  = defaults.string(forKey: "pass")
@@ -660,6 +670,26 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             ls_button.isHidden = true
             spinImg.isHidden = true
         }
+        #if isDJ
+        DispatchQueue.main.async(execute: {
+            let sumDebt = UserDefaults.standard.double(forKey: "sumDebt")
+            if sumDebt > 0 && sumDebt < 10000{
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
+                vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                self.addChildViewController(vc)
+                self.view.addSubview(vc.view)
+            }else if sumDebt > 10000{
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "OnePageController") as! OnePageController
+                vc.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+                self.addChildViewController(vc)
+                let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "TwoPageController") as! TwoPageController
+                vc1.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                self.addChildViewController(vc1)
+                self.view.addSubview(vc1.view)
+                self.view.addSubview(vc.view)
+            }
+        })
+        #endif
         // Do any additional setup after loading the view.
     }
     

@@ -604,11 +604,11 @@ class FirstObjController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "support1") {
             let nav = segue.destination as! UINavigationController
-            let AddApp = nav.topViewController as! SupportController
+            let AddApp = nav.topViewController as! SupportUpdate
             AddApp.fromAuth = true
         }
         if (segue.identifier == "support"){
-            let AddApp = segue.destination as! SupportController
+            let AddApp = segue.destination as! SupportUpdate
             AddApp.fromAuth = true
         }
     }

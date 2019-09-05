@@ -612,15 +612,26 @@
                                                         <constraint firstItem="xIr-rc-6YF" firstAttribute="top" secondItem="rxI-cC-HvS" secondAttribute="bottom" constant="2" id="yzE-bm-VDz"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Автоматическое снятие, передача показаний запрещена" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP6-2K-ZUl">
+                                                    <rect key="frame" x="15" y="69" width="345" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="7qF-b0-lqW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dxK-hB-GeI" secondAttribute="trailing" id="0ac-r0-R12"/>
                                                 <constraint firstAttribute="trailing" secondItem="1VG-bp-gWL" secondAttribute="trailing" constant="15" id="0xo-ND-IK6"/>
                                                 <constraint firstItem="fjR-pe-cmh" firstAttribute="top" secondItem="QfI-Ze-YYv" secondAttribute="topMargin" id="1bE-w0-9nx"/>
+                                                <constraint firstItem="gP6-2K-ZUl" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leadingMargin" id="2R8-bp-bfT"/>
                                                 <constraint firstItem="bhu-Ui-eBX" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leadingMargin" id="4lm-Hl-ZI1"/>
                                                 <constraint firstItem="dxK-hB-GeI" firstAttribute="top" secondItem="eTX-g6-gX4" secondAttribute="bottom" constant="6" id="BJI-n3-ejm"/>
                                                 <constraint firstItem="mIH-pL-T94" firstAttribute="top" secondItem="dxK-hB-GeI" secondAttribute="bottom" constant="5" id="BuB-AM-lfR"/>
                                                 <constraint firstItem="m3w-wI-bnI" firstAttribute="trailing" secondItem="QfI-Ze-YYv" secondAttribute="trailingMargin" id="EY4-rE-WHV"/>
+                                                <constraint firstItem="gP6-2K-ZUl" firstAttribute="top" secondItem="eTX-g6-gX4" secondAttribute="bottom" constant="6" id="NUw-Eh-Mou"/>
                                                 <constraint firstItem="orx-IF-ppm" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leading" constant="5" id="OWa-FB-r0Q"/>
                                                 <constraint firstItem="m3w-wI-bnI" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leadingMargin" id="U4H-fb-xWc"/>
                                                 <constraint firstItem="Ihi-ks-LRr" firstAttribute="leading" secondItem="QfI-Ze-YYv" secondAttribute="leadingMargin" id="VAr-GM-8Rp"/>
@@ -638,9 +649,11 @@
                                                 <constraint firstItem="1VG-bp-gWL" firstAttribute="top" secondItem="QfI-Ze-YYv" secondAttribute="top" constant="9" id="tRi-12-LRf"/>
                                                 <constraint firstItem="bhu-Ui-eBX" firstAttribute="top" secondItem="mIH-pL-T94" secondAttribute="bottom" id="v9r-Bb-nta"/>
                                                 <constraint firstItem="bhu-Ui-eBX" firstAttribute="trailing" secondItem="QfI-Ze-YYv" secondAttribute="trailingMargin" id="wi6-NL-h8Q"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gP6-2K-ZUl" secondAttribute="trailing" id="zCY-qq-olx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="autoLbl" destination="gP6-2K-ZUl" id="cAf-57-g3V"/>
                                             <outlet property="diff1" destination="u6P-RC-QyE" id="nDm-gn-HH2"/>
                                             <outlet property="diff2" destination="UGD-j6-LI4" id="ajM-0M-860"/>
                                             <outlet property="diff3" destination="d4w-c6-fHt" id="5iw-pD-q1e"/>
@@ -854,6 +867,12 @@
                             <constraint firstItem="c7l-V3-B30" firstAttribute="top" secondItem="hGu-0T-icN" secondAttribute="top" id="yeT-pg-ID9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hGu-0T-icN"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="HBl-2i-w8T"/>
+                                <exclude reference="MAg-Es-LKV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Показания приборов" id="xn4-3Q-AT0">
                         <barButtonItem key="leftBarButtonItem" image="back" id="wi0-hZ-4Kg">
@@ -2450,6 +2469,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j6v-6b-WYb"/>
-        <segue reference="d7h-Fz-fUI"/>
+        <segue reference="Set-AI-sEC"/>
     </inferredMetricsTieBreakers>
 </document>

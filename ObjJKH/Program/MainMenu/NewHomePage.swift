@@ -2176,7 +2176,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.recheckHeight.constant = 24
             }
             if (autoValueArr[indexPath.row]) {
-                cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
+//                cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
+                cell.sendBtnHeight.constant = 0
+                cell.sendButton.isHidden = true
+                cell.autoLbl.isHidden = false
+                cell.autoLbl.textColor = myColors.btnColor.uiColor()
+                cell.autoLblHeight.constant = 40
+                cell.checkView.isHidden = true
+                cell.chechHeight.constant = 0
+                cell.recheckView.isHidden = true
+                cell.recheckHeight.constant = 0
+            }else{
+                cell.sendBtnHeight.constant = 36
+                cell.sendButton.isHidden = false
+                cell.autoLbl.isHidden = true
+                cell.autoLblHeight.constant = 0
             }
             
             if Int(cell.tariffNumber) == 2{
@@ -2718,7 +2732,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         self.allCountersBtn.isHidden = false
                                                     }
                                                 } else if (responseString == "1") {
-                                                    self.can_edit = "1"
                                                     self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
                                                 }
                                                 
@@ -2948,6 +2961,9 @@ class HomeCounterCell: UITableViewCell {
     @IBOutlet weak var lblHeight32: NSLayoutConstraint!
     @IBOutlet weak var lblHeight33: NSLayoutConstraint!
     @IBOutlet weak var lblHeight34: NSLayoutConstraint!
+    @IBOutlet weak var sendBtnHeight: NSLayoutConstraint!
+    @IBOutlet weak var autoLbl: UILabel!
+    @IBOutlet weak var autoLblHeight: NSLayoutConstraint!
     
     
     override func awakeFromNib() {
