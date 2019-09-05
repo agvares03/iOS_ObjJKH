@@ -76,13 +76,17 @@ class Registration: UIViewController {
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
+        } else if (edPhone.text?.contains("*") == true) {
+            let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
         } else if (edFIO.text == "") {
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать фамилию, имя, отчество", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            
             let defaults = UserDefaults.standard
             
             var strLogin = edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
@@ -95,6 +99,7 @@ class Registration: UIViewController {
             
             StartIndicator()
             get_registration()
+
         }
     }
     
@@ -134,7 +139,8 @@ class Registration: UIViewController {
             regBtnWidth.constant = self.view.frame.width - 32
             authBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         }
-        // Do any additional setup after loading the view.
+        
+        switch_can.onTintColor = myColors.btnColor.uiColor()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

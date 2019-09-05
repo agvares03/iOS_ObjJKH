@@ -337,7 +337,7 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         #elseif isPocket
         fon_top.image = UIImage(named: "Logo_Pocket_White")
         #elseif isReutKomfort
-        fon_top.image = UIImage(named: "Logo_ReutKomfort_White")
+        fon_top.image = UIImage(named: "Logo_ReutKomfort")
         #elseif isUKGarant
         fon_top.image = UIImage(named: "Logo_UK_Garant_White")
         #elseif isSoldatova1

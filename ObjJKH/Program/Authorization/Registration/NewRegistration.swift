@@ -46,11 +46,27 @@ class NewRegistration: UIViewController {
     @IBOutlet weak var switch_can: UISwitch!
     var responseString: String = ""
     
+    var eye = false
     @IBAction func showPassAction1(_ sender: UIBarButtonItem) {
+        if eye {
+            showPass1.tintColor = .lightGray
+            eye = false
+        } else {
+            showPass1.tintColor = myColors.btnColor.uiColor()
+            eye = true
+        }
         edPass1.isSecureTextEntry.toggle()
     }
     
+    var eye2 = false
     @IBAction func showPassAction2(_ sender: UIBarButtonItem) {
+        if eye2 {
+            showPass2.tintColor = .lightGray
+            eye2 = false
+        } else {
+            showPass2.tintColor = myColors.btnColor.uiColor()
+            eye2 = true
+        }
         edPass2.isSecureTextEntry.toggle()
     }
     
@@ -170,8 +186,8 @@ class NewRegistration: UIViewController {
         separator2.backgroundColor = myColors.labelColor.uiColor()
         separator3.backgroundColor = myColors.labelColor.uiColor()
         separator4.backgroundColor = myColors.labelColor.uiColor()
-        showPass1.tintColor = myColors.btnColor.uiColor()
-        showPass2.tintColor = myColors.btnColor.uiColor()
+        showPass1.tintColor = .lightGray
+        showPass2.tintColor = .lightGray
         indicator.color = myColors.indicatorColor.uiColor()
         btnCancel.isHidden = false
         authLbl.isHidden = true
@@ -193,7 +209,8 @@ class NewRegistration: UIViewController {
             regBtnWidth.constant = self.view.frame.width - 32
             authBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         }
-        // Do any additional setup after loading the view.
+        
+        switch_can.onTintColor = myColors.btnColor.uiColor()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

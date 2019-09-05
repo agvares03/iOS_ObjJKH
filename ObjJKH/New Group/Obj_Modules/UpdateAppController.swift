@@ -35,7 +35,7 @@ class UpdateAppController: UIViewController {
         #elseif isPocket
         imageApp.image = UIImage(named: "Logo_Pocket_White")
         #elseif isReutKomfort
-        imageApp.image = UIImage(named: "Logo_ReutKomfort_White")
+        imageApp.image = UIImage(named: "Logo_ReutKomfort")
         #elseif isUKGarant
         imageApp.image = UIImage(named: "Logo_UK_Garant_White")
         #elseif isSoldatova1

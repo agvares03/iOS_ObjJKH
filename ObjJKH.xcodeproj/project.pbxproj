@@ -875,6 +875,8 @@
 		3008304622699CB3005BF485 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
 		3008304822699CB3005BF485 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC3FF212237EB2600FDBA82 /* PassKit.framework */; };
 		3008304922699CB3005BF485 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		300ECC64231E2F8300B36682 /* Logo_ReutKomfort_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 300ECC63231E2F8300B36682 /* Logo_ReutKomfort_White.png */; };
+		300ECC66231E2F9500B36682 /* Logo_ReutKomfort.png in Resources */ = {isa = PBXBuildFile; fileRef = 300ECC65231E2F9400B36682 /* Logo_ReutKomfort.png */; };
 		300F1CC322D4268D00C32229 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		300F1CC422D4268D00C32229 /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
 		300F1CC522D4268D00C32229 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
@@ -1564,7 +1566,6 @@
 		302EF653225443B00080B482 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
 		302EF655225443B00080B482 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		302EF659225443B00080B482 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
-		302EF65A225443B00080B482 /* Logo_ReutKomfort_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */; };
 		302EF65B225443B00080B482 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		302EF65C225443B00080B482 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		302EF65D225443B00080B482 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
@@ -1590,7 +1591,6 @@
 		302EF672225443B00080B482 /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
 		302EF673225443B00080B482 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
 		302EF674225443B00080B482 /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
-		302EF675225443B00080B482 /* Logo_ReutKomfort.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */; };
 		302EF676225443B00080B482 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
 		302EF677225443B00080B482 /* NewMainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */; };
 		302EF678225443B00080B482 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
@@ -4399,7 +4399,6 @@
 		30CFB1FB22696A2800723E61 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
 		30CFB1FD22696A2800723E61 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		30CFB20122696A2800723E61 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
-		30CFB20222696A2800723E61 /* Logo_ReutKomfort_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */; };
 		30CFB20322696A2800723E61 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		30CFB20422696A2800723E61 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		30CFB20522696A2800723E61 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
@@ -4426,7 +4425,6 @@
 		30CFB21B22696A2800723E61 /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
 		30CFB21C22696A2800723E61 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
 		30CFB21D22696A2800723E61 /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
-		30CFB21E22696A2800723E61 /* Logo_ReutKomfort.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */; };
 		30CFB21F22696A2800723E61 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
 		30CFB22022696A2800723E61 /* NewMainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */; };
 		30CFB22122696A2800723E61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
@@ -6093,8 +6091,6 @@
 		411F9B4622239D9D00C5F697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		411F9B4722239F4500C5F697 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		411F9B4822239F4800C5F697 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
-		411F9B4D2223A7DC00C5F697 /* Logo_ReutKomfort_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */; };
-		411F9B4F2223A7E700C5F697 /* Logo_ReutKomfort.png in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */; };
 		4120922E2158CB2D001E713E /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
 		4120922F2158CB2D001E713E /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
 		412092302158CB2D001E713E /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
@@ -7293,6 +7289,8 @@
 		2CB46B23F8B123C151FD65A6 /* Pods_UK_Service_Comfort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UK_Service_Comfort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3008305122699CB3005BF485 /* UK_Paritet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Paritet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3008305222699CB4005BF485 /* Tafgai copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tafgai copy2-Info.plist"; sourceTree = "<group>"; };
+		300ECC63231E2F8300B36682 /* Logo_ReutKomfort_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_ReutKomfort_White.png; sourceTree = "<group>"; };
+		300ECC65231E2F9400B36682 /* Logo_ReutKomfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_ReutKomfort.png; sourceTree = "<group>"; };
 		300F1D6022D4268D00C32229 /* Servicekom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Servicekom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		300F1D6122D4268E00C32229 /* Servicekom-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Servicekom-Info.plist"; path = "../../Servicekom-Info.plist"; sourceTree = "<group>"; };
 		300F1D6522D42B0400C32229 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/Servicekom/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -7459,8 +7457,6 @@
 		411F9B3322238A0E00C5F697 /* ReutKomfort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReutKomfort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		411F9B3422238A0F00C5F697 /* Info - ReutKomfort.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - ReutKomfort.plist"; sourceTree = "<group>"; };
 		411F9B37222390B200C5F697 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/ReutKomfort/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_ReutKomfort_White.png; path = ObjJKH/images/ReutKomfort/Logo_ReutKomfort_White.png; sourceTree = SOURCE_ROOT; };
-		411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_ReutKomfort.png; path = ObjJKH/images/ReutKomfort/Logo_ReutKomfort.png; sourceTree = SOURCE_ROOT; };
 		412092992158CB2D001E713E /* Stolitsa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stolitsa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4120929A2158CB36001E713E /* Info - Stolitsa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info - Stolitsa.plist"; sourceTree = "<group>"; };
 		4120929C2158D116001E713E /* logo_Stolitsa_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_Stolitsa_white.png; sourceTree = "<group>"; };
@@ -8690,8 +8686,8 @@
 		411F9B492223A79500C5F697 /* ReutKomfort */ = {
 			isa = PBXGroup;
 			children = (
-				411F9B4C2223A7DC00C5F697 /* Logo_ReutKomfort_White.png */,
-				411F9B4E2223A7E700C5F697 /* Logo_ReutKomfort.png */,
+				300ECC63231E2F8300B36682 /* Logo_ReutKomfort_White.png */,
+				300ECC65231E2F9400B36682 /* Logo_ReutKomfort.png */,
 			);
 			path = ReutKomfort;
 			sourceTree = "<group>";
@@ -10128,6 +10124,7 @@
 				418ABF562134CF1A004DB75C /* Frameworks */,
 				418ABF582134CF1A004DB75C /* Resources */,
 				F761DE226ED679AD5E910BD2 /* [CP] Embed Pods Frameworks */,
+				3052765C2320ACB1000A6DF2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -10225,6 +10222,7 @@
 				41FDA288214229A0003D8110 /* Frameworks */,
 				41FDA28B214229A0003D8110 /* Resources */,
 				1E454B06D4E87353F784FC68 /* [CP] Embed Pods Frameworks */,
+				300ECC62231E18F200B36682 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -10349,7 +10347,7 @@
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -10831,7 +10829,6 @@
 			files = (
 				302EF659225443B00080B482 /* WebCameras.storyboard in Resources */,
 				30B4E86F2309012800E13DF9 /* TechWork.storyboard in Resources */,
-				302EF65A225443B00080B482 /* Logo_ReutKomfort_White.png in Resources */,
 				302EF65B225443B00080B482 /* app_open.png in Resources */,
 				302EF65C225443B00080B482 /* Registration.storyboard in Resources */,
 				302EF65D225443B00080B482 /* ForgotPass.storyboard in Resources */,
@@ -10862,7 +10859,6 @@
 				302EF672225443B00080B482 /* SelectItem.storyboard in Resources */,
 				302EF673225443B00080B482 /* Support.storyboard in Resources */,
 				302EF674225443B00080B482 /* Questions.storyboard in Resources */,
-				302EF675225443B00080B482 /* Logo_ReutKomfort.png in Resources */,
 				302EF693225450400080B482 /* Logo_Soldatova_White.png in Resources */,
 				302EF676225443B00080B482 /* MainMenu.storyboard in Resources */,
 				302EF677225443B00080B482 /* NewMainMenu.storyboard in Resources */,
@@ -11814,7 +11810,6 @@
 			files = (
 				30CFB20122696A2800723E61 /* WebCameras.storyboard in Resources */,
 				30B4E8712309012800E13DF9 /* TechWork.storyboard in Resources */,
-				30CFB20222696A2800723E61 /* Logo_ReutKomfort_White.png in Resources */,
 				30CFB20322696A2800723E61 /* app_open.png in Resources */,
 				30CFB20422696A2800723E61 /* Registration.storyboard in Resources */,
 				30CFB23B22697C9A00723E61 /* Logo_ServiceKomfort.png in Resources */,
@@ -11845,7 +11840,6 @@
 				30CFB21B22696A2800723E61 /* SelectItem.storyboard in Resources */,
 				30CFB21C22696A2800723E61 /* Support.storyboard in Resources */,
 				30CFB21D22696A2800723E61 /* Questions.storyboard in Resources */,
-				30CFB21E22696A2800723E61 /* Logo_ReutKomfort.png in Resources */,
 				30CFB21F22696A2800723E61 /* MainMenu.storyboard in Resources */,
 				30CFB22022696A2800723E61 /* NewMainMenu.storyboard in Resources */,
 				30CFB22122696A2800723E61 /* Main.storyboard in Resources */,
@@ -12444,7 +12438,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				411F9B0A22238A0E00C5F697 /* WebCameras.storyboard in Resources */,
-				411F9B4D2223A7DC00C5F697 /* Logo_ReutKomfort_White.png in Resources */,
 				411F9B0B22238A0E00C5F697 /* app_open.png in Resources */,
 				411F9B0C22238A0E00C5F697 /* Registration.storyboard in Resources */,
 				411F9B0D22238A0E00C5F697 /* ForgotPass.storyboard in Resources */,
@@ -12474,8 +12467,9 @@
 				411F9B1F22238A0E00C5F697 /* PaymentSuccessViewController.xib in Resources */,
 				411F9B2022238A0E00C5F697 /* SelectItem.storyboard in Resources */,
 				305060132251E22100F0132B /* Support.storyboard in Resources */,
+				300ECC64231E2F8300B36682 /* Logo_ReutKomfort_White.png in Resources */,
 				411F9B2122238A0E00C5F697 /* Questions.storyboard in Resources */,
-				411F9B4F2223A7E700C5F697 /* Logo_ReutKomfort.png in Resources */,
+				300ECC66231E2F9500B36682 /* Logo_ReutKomfort.png in Resources */,
 				411F9B2222238A0E00C5F697 /* MainMenu.storyboard in Resources */,
 				1C2EF7D022F7D76000581B16 /* NewAddLS.storyboard in Resources */,
 				1CC3FF30223A19D200FDBA82 /* NewMainMenu.storyboard in Resources */,
@@ -13154,6 +13148,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
+		300ECC62231E18F200B36682 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
 		300F1CC122D4268D00C32229 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -13663,6 +13675,24 @@
 			showEnvVarsInLog = 0;
 		};
 		304E874D22F8145F00403C34 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		3052765C2320ACB1000A6DF2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

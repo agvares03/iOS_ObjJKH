@@ -15,6 +15,8 @@ class NotificationController: UIViewController {
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var btn_name_1: UIButton!
     @IBOutlet weak var supportBtn: UIButton!
+    @IBOutlet weak var btnGo: UIButton!
+    @IBOutlet weak var img_mail: UIImageView!
     
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var bodyText: UILabel!
@@ -145,7 +147,10 @@ class NotificationController: UIViewController {
         btn_name_1.setTitle(phoneOperator, for: .normal)
         targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
         
+        img_mail.setImageColor(color: myColors.btnColor.uiColor())
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
+        btnGo.backgroundColor = myColors.btnColor.uiColor()
+        supportBtn.tintColor = myColors.btnColor.uiColor()
         
         if UserDefaults.standard.string(forKey: "titleNotifi") != nil{
             titleText?.text = UserDefaults.standard.string(forKey: "titleNotifi")!
