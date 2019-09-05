@@ -17,7 +17,7 @@ import GoogleMobileAds
 import YandexMobileMetrica
 
 import Fabric
-//import Crashlytics
+import Crashlytics
 import YandexMobileAds
 
 @UIApplicationMain

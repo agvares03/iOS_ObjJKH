@@ -163,10 +163,10 @@ target 'OurObjHome' do
   pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
   pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
   
+  use_frameworks!
   pod 'Fabric'
   pod 'Crashlytics'
   
-  use_frameworks!
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
