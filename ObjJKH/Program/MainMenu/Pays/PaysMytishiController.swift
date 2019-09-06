@@ -943,7 +943,47 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     idArr.append(0)
                     identOSV.append(ident)
                 }
-                
+                #if isDJ
+                self.debtArr.forEach{
+                    if String($0["Ident"] as! String) == ident{
+                        if String($0["InsuranceSum"] as! String) != "" && String($0["InsuranceSum"] as! String) != "0.00" && String($0["InsuranceSum"] as! String) != "0"{
+                            let suInsur: Double = Double($0["InsuranceSum"] as! String)!
+                            sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
+                            checkBox.append(true)
+                            osvc.append("Страховой сбор")
+                            idOSV.append(1)
+                            
+                            uslugaArr.append("Страховой сбор")
+                            endArr.append(String(format:"%.2f", suInsur))
+                            idArr.append(1)
+                            identOSV.append(ident)
+                            DispatchQueue.main.async(execute: {
+                                self.totalSum = self.sum + suInsur
+                                self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
+                                self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                            })
+                        }
+                    }else if ident == "Все"{
+                        if String(self.debtArr[0]["InsuranceSum"] as! String) != "" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0.00" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0"{
+                            let suInsur: Double = Double(self.debtArr[0]["InsuranceSum"] as! String)!
+                            sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
+                            checkBox.append(true)
+                            osvc.append("Страховой сбор")
+                            idOSV.append(1)
+                            
+                            uslugaArr.append("Страховой сбор")
+                            endArr.append(String(format:"%.2f", suInsur))
+                            idArr.append(1)
+                            identOSV.append(ident)
+                            DispatchQueue.main.async(execute: {
+                                self.totalSum = self.sum + suInsur
+                                self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
+                                self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                            })
+                        }
+                    }
+                }
+                #endif
                 DispatchQueue.main.async(execute: {
                     if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
                         self.servicePay.text = "Комиссия не взимается"
@@ -998,6 +1038,48 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             endArr.append(String(format:"%.2f", self.sum))
             idArr.append(0)
             identOSV.append(ident)
+            #if isDJ
+            self.debtArr.forEach{
+                if String($0["Ident"] as! String) == ident{
+                    if String($0["InsuranceSum"] as! String) != "" && String($0["InsuranceSum"] as! String) != "0.00" && String($0["InsuranceSum"] as! String) != "0"{
+                        let suInsur: Double = Double($0["InsuranceSum"] as! String)!
+                        sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
+                        checkBox.append(true)
+                        osvc.append("Страховой сбор")
+                        idOSV.append(1)
+                        
+                        uslugaArr.append("Страховой сбор")
+                        endArr.append(String(format:"%.2f", suInsur))
+                        idArr.append(1)
+                        identOSV.append(ident)
+                        DispatchQueue.main.async(execute: {
+                            self.totalSum = self.sum + suInsur
+                            self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
+                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                        })
+                    }
+                }else if ident == "Все"{
+                    if String(self.debtArr[0]["InsuranceSum"] as! String) != "" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0.00" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0"{
+                        let suInsur: Double = Double(self.debtArr[0]["InsuranceSum"] as! String)!
+                        sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
+                        checkBox.append(true)
+                        osvc.append("Страховой сбор")
+                        idOSV.append(1)
+                        
+                        uslugaArr.append("Страховой сбор")
+                        endArr.append(String(format:"%.2f", suInsur))
+                        idArr.append(1)
+                        identOSV.append(ident)
+                        DispatchQueue.main.async(execute: {
+                            self.totalSum = self.sum + suInsur
+                            self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
+                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                        })
+                    }
+                }
+            }
+            #endif
+            
             DispatchQueue.main.async(execute: {
                 if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
                     self.servicePay.text = "Комиссия не взимается"
@@ -1105,30 +1187,36 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             //            }
         }else{
-            //            if (uslugaArr[indexPath.row].contains("газ")) || uslugaArr[indexPath.row] == "Страховка"{
-            //                cell.end.isUserInteractionEnabled = false
-            //                cell.end.isHidden = true
-            //                cell.endL.isHidden = false
-            //                cell.endL.text = endArr[indexPath.row]
-            //            }else{
-            cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-            cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
-            cell.end.isUserInteractionEnabled = true
-            cell.endL.isHidden = true
-            cell.end.isHidden = false
-            cell.end.text = endArr[indexPath.row]
-            if osvc.count != 0{
-                for i in 0...osvc.count - 1{
-                    let code:String = osvc[i]
-                    if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
-                        cell.end.text = String(sumOSV[i])
+            if uslugaArr[indexPath.row] == "Страховой сбор"{
+                #if isDJ
+                cell.end.isUserInteractionEnabled = false
+                cell.end.isHidden = true
+                cell.endL.isHidden = false
+                cell.endL.text = endArr[indexPath.row]
+                #endif
+            }else{
+                cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+                cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+                cell.end.isUserInteractionEnabled = true
+                cell.endL.isHidden = true
+                cell.end.isHidden = false
+                cell.end.text = endArr[indexPath.row]
+                if osvc.count != 0{
+                    for i in 0...osvc.count - 1{
+                        let code:String = osvc[i]
+                        if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
+                            cell.end.text = String(sumOSV[i])
+                        }
                     }
                 }
             }
-            //            }
         }
         cell.delegate = self
-        if kol == 1{
+        if kol == 2{
+            if uslugaArr[indexPath.row] == "Услуги ЖКУ"{
+                cell.check.isHidden = true
+            }
+        }else if kol == 1{
             cell.check.isHidden = true
         }
         select = false
