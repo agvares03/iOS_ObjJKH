@@ -33,9 +33,9 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     private var refreshControl: UIRefreshControl?
     private var questions: [QuestionDataJson]? = []
     private var index = 0
-    open var question_: QuestionDataJson?
-    open var questionDelegate: QuestionTableDelegate?
-    open var questionTitle = ""
+    public var question_: QuestionDataJson?
+    public var questionDelegate: QuestionTableDelegate?
+    public var questionTitle = ""
     
     @IBOutlet weak var back: UIBarButtonItem!
     
@@ -121,7 +121,9 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         if questionTitle != "" && prep{
             navigationController?.dismiss(animated: true, completion: nil)
         }
-        self.refresh(nil)
+        DispatchQueue.main.async{
+            self.refresh(nil)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -132,9 +134,11 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(questions?.count ?? 0)
-        
-        return questions?.count ?? 0
+        if questions?.count != 0{
+            return questions!.count
+        }else{
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -87,6 +87,7 @@ class Registration: UIViewController {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
+            
             let defaults = UserDefaults.standard
             
             var strLogin = edPhone.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
@@ -99,7 +100,6 @@ class Registration: UIViewController {
             
             StartIndicator()
             get_registration()
-
         }
     }
     
@@ -145,7 +145,7 @@ class Registration: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "support") {
-            let AddApp = segue.destination as! SupportController
+            let AddApp = segue.destination as! SupportUpdate
             AddApp.fromAuth = true
         }
         if segue.identifier == "start_app"{

@@ -98,12 +98,12 @@ class FirstController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "support1") {
             let nav = segue.destination as! UINavigationController
-            let AddApp = nav.topViewController as! SupportController
+            let AddApp = nav.topViewController as! SupportUpdate
             AddApp.fromAuth = true
         }
         if (segue.identifier == "support"){
             let nav = segue.destination as! UINavigationController
-            let AddApp = nav.topViewController as! SupportController
+            let AddApp = nav.topViewController as! SupportUpdate
             AddApp.fromAuth = true
         }
     }
@@ -517,6 +517,7 @@ class FirstController: UIViewController {
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
                                                 //                                                self.responseString = "error: смена пароля: 12345678"
                                                 print("responseString = \(self.responseString)")
+                                                
                                                 self.choice()
         })
         task.resume()

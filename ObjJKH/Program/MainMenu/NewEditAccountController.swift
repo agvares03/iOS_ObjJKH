@@ -424,6 +424,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                 var date        = ""
                                                                 var sum         = ""
                                                                 var sumFine     = ""
+                                                                var insuranceSum = ""
                                                                 var ls = ""
                                                                 var address = ""
                                                                 
@@ -466,6 +467,11 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                                         date = String(describing: obj.value as! String)
                                                                                     }
                                                                                 }
+                                                                                if obj.key == "InsuranceSum" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        insuranceSum = String(describing: obj.value as! Double)
+                                                                                    }
+                                                                                }
                                                                                 
                                                                             }
                                                                             //                                                                                if date == ""{
@@ -478,7 +484,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                             debtSumFine.append(sumFine)
                                                                             debtAddress.append(address)
                                                                             debtDate.append(date)
-                                                                            self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address))
+                                                                            self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum))
                                                                         }
                                                                         
                                                                         //                                                                            defaults.set(date, forKey: "dateDebt")

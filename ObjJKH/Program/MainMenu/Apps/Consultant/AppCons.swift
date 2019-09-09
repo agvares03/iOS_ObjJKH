@@ -472,7 +472,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
+        print(request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -481,22 +481,28 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
                                                     return
                                                 } else {
                                                     do {
+                                                        self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                        print("responseString = \(self.responseString)")
+                                                        
                                                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
                                                         
-                                                        // Получим список консультантов
-                                                        if let houses = json["data"] {
-                                                            for index in 0...(houses.count)!-1 {
-                                                                let obj_cons = houses.object(at: index) as! [String:AnyObject]
-                                                                for obj in obj_cons {
-                                                                    if obj.key == "name" {
-                                                                        self.names_cons.append(obj.value as! String)
-                                                                    }
-                                                                    if obj.key == "id" {
-                                                                        self.ids_cons.append(String(describing: obj.value))
+                                                        if json["data"]?.count != 0{
+                                                            // Получим список консультантов
+                                                            if let houses = json["data"]{
+                                                                for index in 0...(houses.count)!-1 {
+                                                                    let obj_cons = houses.object(at: index) as! [String:AnyObject]
+                                                                    for obj in obj_cons {
+                                                                        if obj.key == "name" {
+                                                                            self.names_cons.append(obj.value as! String)
+                                                                        }
+                                                                        if obj.key == "id" {
+                                                                            self.ids_cons.append(String(describing: obj.value))
+                                                                        }
                                                                     }
                                                                 }
                                                             }
                                                         }
+                                                        
                                                     } catch let error as NSError {
                                                         print(error)
                                                     }
@@ -781,6 +787,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
+            print(request)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                   completionHandler: {
@@ -899,7 +906,17 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
                 alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             })
-        }else if responseString.contains("недостаточно прав") {
+        } else if responseString.contains("сотруднику запрещен") {
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "", message: "Перевод заявки выбранному сотруднику запрещен!", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if responseString.contains("недостаточно прав") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")

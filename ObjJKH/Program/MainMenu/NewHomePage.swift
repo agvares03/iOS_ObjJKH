@@ -748,6 +748,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var debtSumFine:[String] = []
         var debtDate:[String] = []
         var debtAddress:[String] = []
+        var debtInsurance:[String] = []
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
@@ -756,136 +757,144 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let login = defaults.string(forKey: "login")
         //        let viewHeight = self.heigth_view.constant
         //        let backHeight = self.backgroundHeight.constant
-        if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
-            self.view_no_ls.isHidden = true
-            //            str_ls_arr?.forEach{
-            let urlPath = Server.SERVER + "MobileAPI/GetDebt.ashx?" + "phone=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            //                print(request)
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        return
-                                                    } else {
-                                                        do {
-                                                            u += 1
-                                                            let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                            print(responseStr)
-                                                            
-                                                            if !responseStr.contains("error"){
-                                                                var date1       = ""
-                                                                var date2       = ""
-                                                                var date        = ""
-                                                                var sum         = ""
-                                                                var sumFine     = ""
-                                                                var ls = ""
-                                                                var address = ""
+        if (str_ls_arr?.count)! > 0{
+            if str_ls_arr?[0] != ""{
+                self.view_no_ls.isHidden = true
+                //            str_ls_arr?.forEach{
+                let urlPath = Server.SERVER + "MobileAPI/GetDebt.ashx?" + "phone=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+                let url: NSURL = NSURL(string: urlPath)!
+                let request = NSMutableURLRequest(url: url as URL)
+                request.httpMethod = "GET"
+                //                print(request)
+                
+                let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                      completionHandler: {
+                                                        data, response, error in
+                                                        
+                                                        if error != nil {
+                                                            return
+                                                        } else {
+                                                            do {
+                                                                u += 1
+                                                                let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                                print(responseStr)
                                                                 
-                                                                //                                                                var sumOver     = ""
-                                                                //                                                                var sumFineOver = ""
-                                                                //                                                                    var sumAll      = ""
-                                                                var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                                //                                                                                                                                        print(json)
-                                                                
-                                                                if let json_bills = json["data"] {
-                                                                    let int_end = (json_bills.count)!-1
-                                                                    if (int_end < 0) {
-                                                                        
-                                                                    } else {
-                                                                        for index in 0...int_end {
-                                                                            let json_bill = json_bills.object(at: index) as! [String:AnyObject]
-                                                                            for obj in json_bill {
-                                                                                if obj.key == "Sum" {
-                                                                                    if ((obj.value as? NSNull) == nil){
-                                                                                        sum = String(describing: obj.value as! Double)
+                                                                if !responseStr.contains("error"){
+                                                                    var date1       = ""
+                                                                    var date2       = ""
+                                                                    var date        = ""
+                                                                    var sum         = ""
+                                                                    var sumFine     = ""
+                                                                    var insuranceSum = ""
+                                                                    var ls = ""
+                                                                    var address = ""
+                                                                    
+                                                                    //                                                                var sumOver     = ""
+                                                                    //                                                                var sumFineOver = ""
+                                                                    //                                                                    var sumAll      = ""
+                                                                    var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                                    //                                                                                                                                        print(json)
+                                                                    
+                                                                    if let json_bills = json["data"] {
+                                                                        let int_end = (json_bills.count)!-1
+                                                                        if (int_end < 0) {
+                                                                            
+                                                                        } else {
+                                                                            for index in 0...int_end {
+                                                                                let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                                                                for obj in json_bill {
+                                                                                    if obj.key == "Sum" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            sum = String(describing: obj.value as! Double)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "SumFine" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            sumFine = String(describing: obj.value as! Double)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "InsuranceSum" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            insuranceSum = String(describing: obj.value as! Double)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "Address" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            address = String(describing: obj.value as! String)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "Ident" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            ls = String(describing: obj.value as! String)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "DebtActualDate" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            date = String(describing: obj.value as! String)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "MetersStartDay" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            date1 = String(describing: obj.value as! Int)
+                                                                                        }
+                                                                                    }
+                                                                                    if obj.key == "MetersEndDay" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            date2 = String(describing: obj.value as! Int)
+                                                                                        }
                                                                                     }
                                                                                 }
-                                                                                if obj.key == "SumFine" {
-                                                                                    if ((obj.value as? NSNull) == nil){
-                                                                                        sumFine = String(describing: obj.value as! Double)
-                                                                                    }
-                                                                                }
-                                                                                if obj.key == "Address" {
-                                                                                    if ((obj.value as? NSNull) == nil){
-                                                                                        address = String(describing: obj.value as! String)
-                                                                                    }
-                                                                                }
-                                                                                if obj.key == "Ident" {
-                                                                                    if ((obj.value as? NSNull) == nil){
-                                                                                        ls = String(describing: obj.value as! String)
-                                                                                    }
-                                                                                }
-                                                                                if obj.key == "DebtActualDate" {
-                                                                                    if ((obj.value as? NSNull) == nil){
-                                                                                        date = String(describing: obj.value as! String)
-                                                                                    }
-                                                                                }
-                                                                                if obj.key == "MetersStartDay" {
-                                                                                    if ((obj.value as? NSNull) == nil){
-                                                                                        date1 = String(describing: obj.value as! Int)
-                                                                                    }
-                                                                                }
-                                                                                if obj.key == "MetersEndDay" {
-                                                                                    if ((obj.value as? NSNull) == nil){
-                                                                                        date2 = String(describing: obj.value as! Int)
-                                                                                    }
-                                                                                }
-                                                                                
+                                                                                //                                                                                if date == ""{
+                                                                                //                                                                                    let dateFormatter = DateFormatter()
+                                                                                //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                                                                                //                                                                                    date = dateFormatter.string(from: Date())
+                                                                                //                                                                                }
+                                                                                debtIdent.append(ls)
+                                                                                debtSum.append(sum)
+                                                                                debtSumFine.append(sumFine)
+                                                                                debtAddress.append(address)
+                                                                                debtDate.append(date)
+                                                                                debtInsurance.append(insuranceSum)
+                                                                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum))
                                                                             }
-                                                                            //                                                                                if date == ""{
-                                                                            //                                                                                    let dateFormatter = DateFormatter()
-                                                                            //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
-                                                                            //                                                                                    date = dateFormatter.string(from: Date())
+                                                                            
+                                                                            //                                                                            defaults.set(date, forKey: "dateDebt")
+                                                                            //                                                                            if Double(sumAll) != 0.00{
+                                                                            //                                                                                let d = date.components(separatedBy: ".")
+                                                                            //                                                                                let d1 = self.dateOld.components(separatedBy: ".")
+                                                                            //                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                                                                            //                                                                                    DispatchQueue.main.async {
+                                                                            //                                                                                        self.dateOld = date
+                                                                            //                                                                                    }
                                                                             //                                                                                }
-                                                                            debtIdent.append(ls)
-                                                                            debtSum.append(sum)
-                                                                            debtSumFine.append(sumFine)
-                                                                            debtAddress.append(address)
-                                                                            debtDate.append(date)
-                                                                            self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address))
+                                                                            //                                                                                sumObj = sumObj + Double(sumAll)!
+                                                                            //                                                                            }
                                                                         }
-                                                                        
-                                                                        //                                                                            defaults.set(date, forKey: "dateDebt")
-                                                                        //                                                                            if Double(sumAll) != 0.00{
-                                                                        //                                                                                let d = date.components(separatedBy: ".")
-                                                                        //                                                                                let d1 = self.dateOld.components(separatedBy: ".")
-                                                                        //                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
-                                                                        //                                                                                    DispatchQueue.main.async {
-                                                                        //                                                                                        self.dateOld = date
-                                                                        //                                                                                    }
-                                                                        //                                                                                }
-                                                                        //                                                                                sumObj = sumObj + Double(sumAll)!
-                                                                        //                                                                            }
+                                                                    }
+                                                                    self.date1 = date1
+                                                                    self.date2 = date2
+                                                                    defaults.setValue(date1, forKey: "date1")
+                                                                    defaults.setValue(date2, forKey: "date2")
+                                                                    defaults.synchronize()
+                                                                    self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
+                                                                    DispatchQueue.main.async {
+                                                                        if (self.date1 == "0") && (self.date2 == "0") {
+                                                                            self.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+                                                                        } else {
+                                                                            self.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
+                                                                        }
+                                                                        self.tableLS.reloadData()
                                                                     }
                                                                 }
-                                                                self.date1 = date1
-                                                                self.date2 = date2
-                                                                defaults.setValue(date1, forKey: "date1")
-                                                                defaults.setValue(date2, forKey: "date2")
-                                                                defaults.synchronize()
-                                                                self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
-                                                                DispatchQueue.main.async {
-                                                                    if (self.date1 == "0") && (self.date2 == "0") {
-                                                                        self.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
-                                                                    } else {
-                                                                        self.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
-                                                                    }
-                                                                    self.tableLS.reloadData()
-                                                                }
+                                                                
+                                                            } catch let error as NSError {
+                                                                print(error)
                                                             }
                                                             
-                                                        } catch let error as NSError {
-                                                            print(error)
                                                         }
-                                                        
-                                                    }
-            })
-            task.resume()
+                })
+                task.resume()
+            }
             //            }
         }else{
             self.view_no_ls.isHidden = false
@@ -2176,7 +2185,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.recheckHeight.constant = 24
             }
             if (autoValueArr[indexPath.row]) {
-                cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
+//                cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
+                cell.sendBtnHeight.constant = 0
+                cell.sendButton.isHidden = true
+                cell.autoLbl.isHidden = false
+                cell.autoLbl.textColor = myColors.btnColor.uiColor()
+                cell.autoLblHeight.constant = 40
+                cell.checkView.isHidden = true
+                cell.chechHeight.constant = 0
+                cell.recheckView.isHidden = true
+                cell.recheckHeight.constant = 0
+            }else{
+                cell.sendBtnHeight.constant = 36
+                cell.sendButton.isHidden = false
+                cell.autoLbl.isHidden = true
+                cell.autoLblHeight.constant = 0
             }
             
             if Int(cell.tariffNumber) == 2{
@@ -2503,6 +2526,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 debt["Ident"] = lsArr[i].ident
                 debt["Sum"] = lsArr[i].sum
                 debt["SumFine"] = lsArr[i].sumFine
+                debt["InsuranceSum"] = lsArr[i].insuranceSum
                 debtArr.append(debt as AnyObject)
             }
         }
@@ -2718,7 +2742,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         self.allCountersBtn.isHidden = false
                                                     }
                                                 } else if (responseString == "1") {
-                                                    self.can_edit = "1"
                                                     self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
                                                 }
                                                 
@@ -2948,6 +2971,9 @@ class HomeCounterCell: UITableViewCell {
     @IBOutlet weak var lblHeight32: NSLayoutConstraint!
     @IBOutlet weak var lblHeight33: NSLayoutConstraint!
     @IBOutlet weak var lblHeight34: NSLayoutConstraint!
+    @IBOutlet weak var sendBtnHeight: NSLayoutConstraint!
+    @IBOutlet weak var autoLbl: UILabel!
+    @IBOutlet weak var autoLblHeight: NSLayoutConstraint!
     
     
     override func awakeFromNib() {
@@ -3101,13 +3127,15 @@ struct lsData {
     let sumFine: String?
     let date: String?
     let address: String?
+    let insuranceSum: String?
     
-    init(ident: String?, sum: String?, sumFine: String?, date:String?, address: String?) {
+    init(ident: String?, sum: String?, sumFine: String?, date:String?, address: String?, insuranceSum: String?) {
         self.ident = ident
         self.sum = sum
         self.sumFine = sumFine
         self.date = date
         self.address = address
+        self.insuranceSum = insuranceSum
     }
 }
 

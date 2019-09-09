@@ -10,12 +10,29 @@ import UIKit
 
 class SupportUpdate: UIViewController {
     
-    @IBOutlet weak var imageApp: UIImageView!
-    @IBOutlet weak var updateBtn: UIButton!
+    @IBOutlet weak var imageApp:        UIImageView!
+    @IBOutlet weak var updateBtn:       UIButton!
+    @IBOutlet weak var indicatorUpd:    UIActivityIndicatorView!
+    @IBOutlet weak var updLbl:          UILabel!
+    @IBOutlet weak var updView:         UIView!
+    @IBOutlet weak var goLbl:           UILabel!
+    @IBOutlet weak var infoLbl:         UILabel!
     
-    @IBOutlet weak var goLbl: UILabel!
+    public var fromMenu = false
+    public var fromAuth = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicatorUpd.color = myColors.indicatorColor.uiColor()
+        updLbl.textColor = myColors.indicatorColor.uiColor()
+        self.imageApp.isHidden = true
+        self.updateBtn.isHidden = true
+        self.goLbl.isHidden = true
+        self.infoLbl.isHidden = true
+        self.updView.isHidden = false
+        
+        self.indicatorUpd.startAnimating()
+        self.indicatorUpd.isHidden = false
         #if isOur_Obj_Home
         imageApp.image = UIImage(named: "logo_Our_Obj_Home_white")
         #elseif isChist_Dom
@@ -35,7 +52,7 @@ class SupportUpdate: UIViewController {
         #elseif isPocket
         imageApp.image = UIImage(named: "Logo_Pocket_White")
         #elseif isReutKomfort
-        imageApp.image = UIImage(named: "Logo_ReutKomfort")
+        imageApp.image = UIImage(named: "Logo_ReutKomfort_White")
         #elseif isUKGarant
         imageApp.image = UIImage(named: "Logo_UK_Garant_White")
         #elseif isSoldatova1
@@ -112,10 +129,83 @@ class SupportUpdate: UIViewController {
         goLbl.isUserInteractionEnabled = true
         goLbl.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
+        checkUpd()
     }
     
+    func checkUpd(){
+        DispatchQueue.main.async {
+            self.imageApp.isHidden = true
+            self.updateBtn.isHidden = true
+            self.goLbl.isHidden = true
+            self.infoLbl.isHidden = true
+            self.updView.isHidden = false
+            
+            self.indicatorUpd.startAnimating()
+            self.indicatorUpd.isHidden = false
+        }
+        self.getSettings()
+    }
+    
+    func falseUpd(){
+        DispatchQueue.main.async {
+            self.imageApp.isHidden = false
+            self.updateBtn.isHidden = false
+            self.goLbl.isHidden = false
+            self.infoLbl.isHidden = false
+            self.updView.isHidden = true
+            
+            self.indicatorUpd.stopAnimating()
+            self.indicatorUpd.isHidden = true
+        }
+    }
+    
+    func getSettings() {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
+        //        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=1.01"
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    return
+                                                }
+                                                
+                                                let responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("Response: \(responseLS)")
+                                                
+                                                if (responseLS.contains("обновить")){
+                                                    self.falseUpd()
+                                                }else{
+//                                                    self.falseUpd()
+                                                    DispatchQueue.main.async {
+                                                        self.updView.isHidden = true
+                                                        self.goSupport = true
+                                                        self.performSegue(withIdentifier: "goSupport", sender: self)
+                                                    }
+                                                }
+        })
+        task.resume()
+        
+    }
+    var goSupport = false
     @objc private func lblTapped(_ sender: UITapGestureRecognizer) {
-        navigationController?.popViewController(animated: true)
+        if UserDefaults.standard.bool(forKey: "fromMenu") || fromMenu{
+            navigationController?.popViewController(animated: true)
+            
+        } else if UserDefaults.standard.bool(forKey: "fromTech") {
+            
+            navigationController?.popViewController(animated: true)
+            
+        }else{
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
 //        navigationController?.dismiss(animated: true, completion: nil)
     }
     
@@ -123,6 +213,18 @@ class SupportUpdate: UIViewController {
         super.viewWillAppear(animated)
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        if goSupport{
+            if UserDefaults.standard.bool(forKey: "fromMenu") || fromMenu{
+                navigationController?.popViewController(animated: true)
+                
+            } else if UserDefaults.standard.bool(forKey: "fromTech") {
+                
+                navigationController?.popViewController(animated: true)
+                
+            }else{
+                navigationController?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func BtnAction(_ sender: UIButton) {
@@ -179,6 +281,12 @@ class SupportUpdate: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "goSupport") {
+            let AddApp = segue.destination as! SupportController
+            AddApp.fromAuth = true
+        }
+    }
     
     /*
      // MARK: - Navigation

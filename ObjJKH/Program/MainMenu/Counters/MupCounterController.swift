@@ -981,6 +981,17 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         //            cell.sendButton.isEnabled = false
         //            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(0.5)
         //        }
+        if (autoValueArr[indexPath.row]) {
+            cell.sendButton.isHidden = true
+            cell.autoLbl.isHidden = false
+            cell.autoLbl.textColor = myColors.btnColor.uiColor()
+            cell.nonCounter.isHidden = true
+            cell.nonCounterHeight.constant = 16
+        }else{
+            cell.sendButton.isHidden = false
+            cell.autoLbl.isHidden = true
+            cell.nonCounter.isHidden = false
+        }
         cell.delegate = self
         return cell
     }
@@ -1517,6 +1528,10 @@ class MupCounterCell: UITableViewCell {
     @IBOutlet weak var lblHeight32: NSLayoutConstraint!
     @IBOutlet weak var lblHeight33: NSLayoutConstraint!
     @IBOutlet weak var lblHeight34: NSLayoutConstraint!
+    
+    @IBOutlet weak var sendBtnHeight: NSLayoutConstraint!
+    @IBOutlet weak var autoLbl: UILabel!
+    @IBOutlet weak var autoLblHeight: NSLayoutConstraint!
     
     @IBOutlet weak var nonCounter: UILabel!
     

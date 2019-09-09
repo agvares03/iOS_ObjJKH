@@ -273,9 +273,20 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
             changeSectionStatus(indexPath.section)
+        }else{
+            sectionNum = indexPath
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "goService", sender: self)
+            }
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "goService") {
+            let AddApp = segue.destination as! AdditionalVC
+            AddApp.item = objectArray[sectionNum.section].sectionObjects[sectionNum.row - 1]
+        }
+    }
     // MARK: UITableViewDelegate
 }
 

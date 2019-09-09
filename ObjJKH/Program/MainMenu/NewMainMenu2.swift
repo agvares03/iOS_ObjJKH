@@ -513,6 +513,7 @@ class NewMainMenu2: UIViewController {
                 debt["Ident"] = debtIdent[i]
                 debt["Sum"] = debtSum[i]
                 debt["SumFine"] = debtSumFine[i]
+                debt["InsuranceSum"] = debtInsurance[i]
                 debtArr.append(debt as AnyObject)
             }
         }
@@ -523,6 +524,8 @@ class NewMainMenu2: UIViewController {
 //        }
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
+            print(self.debtArr)
+            
             payController.debtArr = self.debtArr
         }
         #if isMupRCMytishi
@@ -547,81 +550,113 @@ class NewMainMenu2: UIViewController {
         let str_ls_arr = str_ls?.components(separatedBy: ",")
         var sumObj = 0.00
         var u = 0
-        if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
-            str_ls_arr?.forEach{
-                let ls = $0
-                let urlPath = Server.SERVER + Server.GET_DEBT_ACCOUNT + "ident=" + ls.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-                let url: NSURL = NSURL(string: urlPath)!
-                let request = NSMutableURLRequest(url: url as URL)
-                request.httpMethod = "GET"
-                print(request)
-                
-                let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                      completionHandler: {
-                                                        data, response, error in
-                                                        
-                                                        if error != nil {
-                                                            return
-                                                        } else {
-                                                            do {
-                                                                u += 1
-                                                                let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                                print(responseStr)
-                                                                
-                                                                if !responseStr.contains("error"){
-                                                                    var date        = ""
-                                                                    var sum         = ""
-                                                                    var sumFine     = ""
-                                                                    //                                                                var sumOver     = ""
-                                                                    //                                                                var sumFineOver = ""
-                                                                    var sumAll      = ""
-                                                                    var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                                    //                                                                                                                                        print(json)
-                                                                    
-                                                                    if let json_bills = json["data"] {
-                                                                        if ((json_bills as? NSNull) == nil){
-                                                                            let int_end = (json_bills.count)!-1
-                                                                            if (int_end < 0) {
-                                                                                
-                                                                            } else {
-                                                                                sum = String(format:"%.2f", json_bills["Sum"] as! Double)
-                                                                                //                                                                            let s = json_bills["Sum"] as! Double
-                                                                                sumFine = String(format:"%.2f", json_bills["SumFine"] as! Double)
-                                                                                //                                                                            sum = "0.00"
-                                                                                //                                                                            sumFine = "0.00"
-                                                                                self.debtIdent.append(ls)
-                                                                                self.debtSum.append(sum)
-                                                                                self.debtSumFine.append(sumFine)
-                                                                                sumAll = String(format:"%.2f", json_bills["SumAll"] as! Double)
-                                                                                date = json_bills["Date"] as! String
-                                                                                defaults.synchronize()
-                                                                                defaults.set(date, forKey: "dateDebt")
-                                                                                if Double(sumAll) != 0.00{
-                                                                                    let d = date.components(separatedBy: ".")
-                                                                                    let d1 = self.dateOld.components(separatedBy: ".")
-                                                                                    if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
-                                                                                        DispatchQueue.main.async {
-                                                                                            self.dateOld = date
+        let login = defaults.string(forKey: "login")
+        if (str_ls_arr?.count)! > 0{
+            if str_ls_arr?[0] != ""{
+                str_ls_arr?.forEach{
+                    let ls = $0
+                    let urlPath = Server.SERVER + "MobileAPI/GetDebt.ashx?" + "phone=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+                    let url: NSURL = NSURL(string: urlPath)!
+                    let request = NSMutableURLRequest(url: url as URL)
+                    request.httpMethod = "GET"
+                    print(request)
+                    
+                    let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                          completionHandler: {
+                                                            data, response, error in
+                                                            let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                            print(responseStr)
+                                                            
+                                                            if error != nil {
+                                                                return
+                                                            } else {
+                                                                do {
+                                                                    u += 1
+                                                                    if !responseStr.contains("error"){
+                                                                        var date        = ""
+                                                                        var sum         = ""
+                                                                        var sumFine     = ""
+                                                                        var insuranceSum = ""
+                                                                        var ls = ""
+                                                                        //                                                                var sumOver     = ""
+                                                                        //                                                                var sumFineOver = ""
+                                                                        var sumAll      = ""
+                                                                        var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                                        //                                                                                                                                        print(json)
+                                                                        
+                                                                        if let json_bills = json["data"] {
+                                                                            print(json_bills.count!)
+                                                                            
+                                                                            if ((json_bills as? NSNull) == nil) && json_bills.count != 0{
+                                                                                let int_end = (json_bills.count)!-1
+                                                                                if (int_end < 0) {
+                                                                                    
+                                                                                } else {
+                                                                                    for index in 0...int_end {
+                                                                                        let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                                                                        for obj in json_bill {
+                                                                                            if obj.key == "Sum" {
+                                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                                    sum = String(describing: obj.value as! Double)
+                                                                                                    self.debtSum.append(sum)
+                                                                                                }
+                                                                                            }
+                                                                                            if obj.key == "SumFine" {
+                                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                                    sumFine = String(describing: obj.value as! Double)
+                                                                                                    self.debtSumFine.append(sumFine)
+                                                                                                }
+                                                                                            }
+                                                                                            if obj.key == "InsuranceSum" {
+                                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                                    insuranceSum = String(describing: obj.value as! Double)
+                                                                                                    self.debtInsurance.append(insuranceSum)
+                                                                                                }
+                                                                                            }
+                                                                                            if obj.key == "Ident" {
+                                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                                    ls = String(describing: obj.value as! String)
+                                                                                                    self.debtIdent.append(ls)
+                                                                                                }
+                                                                                            }
+                                                                                            if obj.key == "SumAll" {
+                                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                                    sumAll = String(describing: obj.value as! Double)
+                                                                                                    date = json_bills["Date"] as! String
+                                                                                                    defaults.synchronize()
+                                                                                                    defaults.set(date, forKey: "dateDebt")
+                                                                                                    if Double(sumAll) != 0.00{
+                                                                                                        let d = date.components(separatedBy: ".")
+                                                                                                        let d1 = self.dateOld.components(separatedBy: ".")
+                                                                                                        if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                                                                                                            DispatchQueue.main.async {
+                                                                                                                self.dateOld = date
+                                                                                                            }
+                                                                                                        }
+                                                                                                        sumObj = sumObj + Double(sumAll)!
+                                                                                                        print(sumObj)
+                                                                                                        defaults.set(sumObj, forKey: "sumDebt")
+                                                                                                        defaults.synchronize()
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                            
                                                                                         }
                                                                                     }
-                                                                                    sumObj = sumObj + Double(sumAll)!
-                                                                                    print(sumObj)
-                                                                                    defaults.set(sumObj, forKey: "sumDebt")
-                                                                                    defaults.synchronize()
                                                                                 }
                                                                             }
+                                                                            
                                                                         }
-                                                                        
                                                                     }
+                                                                    
+                                                                } catch let error as NSError {
+                                                                    print(error)
                                                                 }
                                                                 
-                                                            } catch let error as NSError {
-                                                                print(error)
                                                             }
-                                                            
-                                                        }
-                })
-                task.resume()
+                    })
+                    task.resume()
+                }
             }
         }
     }
@@ -934,6 +969,7 @@ class NewMainMenu2: UIViewController {
     var debtIdent:[String] = []
     var debtSum:[String] = []
     var debtSumFine:[String] = []
+    var debtInsurance:[String] = []
     
     var sendedArr:[Bool] = []
     

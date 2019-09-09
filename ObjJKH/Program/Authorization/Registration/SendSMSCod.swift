@@ -189,7 +189,7 @@ class SendSMSCod: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "support" {
-            let AppUser             = segue.destination as! SupportController
+            let AppUser             = segue.destination as! SupportUpdate
             AppUser.fromMenu = true
             AppUser.fromAuth = true
         }
