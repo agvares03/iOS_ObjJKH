@@ -72,12 +72,12 @@ class Registration: UIViewController {
         self.view.endEditing(true)
         // Проверка на правильность поля номер телефона
         if (edPhone.text == "") {
-            let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона или логин", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else if (edPhone.text?.contains("*") == true) {
-            let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона или логин", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
