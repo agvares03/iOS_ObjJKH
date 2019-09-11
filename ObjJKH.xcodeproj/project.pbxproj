@@ -9700,6 +9700,7 @@
 				304A317522DAEB7000008E1B /* Frameworks */,
 				304A317822DAEB7000008E1B /* Resources */,
 				304A31A822DAEB7000008E1B /* [CP] Embed Pods Frameworks */,
+				30E4B86F2328B5D0003DBDAA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -14286,6 +14287,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RodnikMUP/Pods-RodnikMUP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		30E4B86F2328B5D0003DBDAA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		30FA50F822CA07FE00D755DA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
