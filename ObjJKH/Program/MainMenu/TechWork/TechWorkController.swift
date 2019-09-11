@@ -111,6 +111,8 @@ class TechWorkController: UIViewController {
         fon_top.image = UIImage(named: "Logo_MUP_IRKC")
         #elseif isUK_First
         fon_top.image = UIImage(named: "Logo_Uk_First")
+        #elseif isRKC_Samara
+        fon_top.image = UIImage(named: "Logo_Samara")
         #endif
         
         btn_tech.backgroundColor = myColors.indicatorColor.uiColor()
