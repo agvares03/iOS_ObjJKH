@@ -175,6 +175,7 @@ class NewRegistration: UIViewController {
         StopIndicator()
         edPhone.maskDelegate = self
         #if isDJ
+        maskLogin = true
         #else
         edPhone.maskExpression = "{.}"
         #endif
