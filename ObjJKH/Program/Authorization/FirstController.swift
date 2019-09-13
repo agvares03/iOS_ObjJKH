@@ -122,6 +122,7 @@ class FirstController: UIViewController {
         }else{
             // Маска для ввода - телефон
             #if isDJ
+            maskLogin = true
             #else
             edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
             #endif
@@ -772,6 +773,7 @@ class FirstController: UIViewController {
         }else{
             // Маска для ввода - телефон
             #if isDJ
+            maskLogin = true
             #else
             edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
             #endif
