@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81K-Yt-3gD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81K-Yt-3gD">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Main Menu Cons-->
         <scene sceneID="oAn-OX-A4b">
             <objects>
-                <viewController id="hIX-fI-jOU" customClass="MainMenuCons" customModule="ChistDom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hIX-fI-jOU" customClass="MainMenuCons" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ti6-XA-pNB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,7 +294,7 @@
         <!--Apps-->
         <scene sceneID="hC1-sQ-UYa">
             <objects>
-                <viewControllerPlaceholder storyboardName="Apps" id="6D0-J4-k6E" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="Apps" id="6D0-J4-k6E" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aI-4N-2LD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1851" y="72"/>
@@ -335,9 +335,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo_DemoUC_White.png" width="120" height="120"/>
-        <image name="application" width="28.799999237060547" height="28.799999237060547"/>
+        <image name="Logo_DemoUC_White.png" width="28.799999237060547" height="28.799999237060547"/>
+        <image name="application" width="60" height="60"/>
         <image name="arrow_rigth.png" width="1024" height="1024"/>
-        <image name="notice" width="28.799999237060547" height="28.799999237060547"/>
+        <image name="notice" width="60" height="60"/>
     </resources>
 </document>
