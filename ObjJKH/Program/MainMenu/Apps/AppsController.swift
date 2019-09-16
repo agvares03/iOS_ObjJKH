@@ -172,11 +172,13 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func StartIndicator() {
+        self.tableApps.isHidden = true
         self.indicator.startAnimating()
         self.indicator.isHidden = false
     }
     
     func StopIndicator() {
+        self.tableApps.isHidden = false
         self.indicator.stopAnimating()
         self.indicator.isHidden = true
     }

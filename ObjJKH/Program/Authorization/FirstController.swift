@@ -68,16 +68,16 @@ class FirstController: UIViewController {
         var ret: Bool = false;
         var message: String = ""
         print(edLogin.text!)
-        loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
-        if (edLogin.text == "") {
+        loginText = edLogin.text!
+        if (edLogin.text == "") || (edLogin.text!.replacingOccurrences(of: " ", with: "").count == 0){
             message = "Не указан логин. "
             ret = true;
         }
-        if (edPass.text == "") {
+        if (edPass.text == "") || edPass.text!.contains(" ") || (edLogin.text!.replacingOccurrences(of: " ", with: "").count == 0){
             message = message + "Не указан пароль."
             ret = true
         }
-        if !DB().isValidLogin(testStr: loginText) && maskLogin{
+        if (!DB().isValidLogin(testStr: loginText) && maskLogin) || (loginText.contains(" ") && maskLogin){
             message = message + "Логин может содержать только буквы латинские (большие, маленькие), цифры и знак нижнего подчеркивания «_»"
             ret = true
         }
@@ -123,6 +123,7 @@ class FirstController: UIViewController {
             // Маска для ввода - телефон
             #if isDJ
             maskLogin = true
+            edLogin.keyboardType = .asciiCapable
             #else
             edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
             #endif
@@ -774,6 +775,7 @@ class FirstController: UIViewController {
             // Маска для ввода - телефон
             #if isDJ
             maskLogin = true
+            edLogin.keyboardType = .asciiCapable
             #else
             edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
             #endif

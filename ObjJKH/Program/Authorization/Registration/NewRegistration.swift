@@ -116,23 +116,23 @@ class NewRegistration: UIViewController {
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-        } else if !DB().isValidLogin(testStr: loginText) && maskLogin{
+        } else if (!DB().isValidLogin(testStr: loginText) && maskLogin) || (loginText.contains(" ") && maskLogin){
             print("-\(loginText)-")
             let alert = UIAlertController(title: "Ошибка", message: "Логин может содержать только буквы латинские (большие, маленькие), цифры и знак нижнего подчеркивания «_»", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-        } else if (loginText == ""){
+        } else if (loginText == "") || (loginText.replacingOccurrences(of: " ", with: "").count == 0){
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать логин или номер телефона", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-        } else if (edFIO.text == "") {
+        } else if (edFIO.text == "") || (edFIO.text!.replacingOccurrences(of: " ", with: "").count == 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать фамилию, имя, отчество", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-        } else if (self.edPass1.text == "") {
+        } else if (self.edPass1.text == "") || (self.edPass1.text!.replacingOccurrences(of: " ", with: "").count == 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Укажите пароль для входа", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
@@ -176,6 +176,7 @@ class NewRegistration: UIViewController {
         edPhone.maskDelegate = self
         #if isDJ
         maskLogin = true
+        edPhone.keyboardType = .asciiCapable
         #else
         edPhone.maskExpression = "{.}"
         #endif
