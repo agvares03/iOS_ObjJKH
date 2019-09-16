@@ -140,13 +140,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_DemoUC.png" translatesAutoresizingMaskIntoConstraints="NO" id="gzy-vQ-M8M">
-                                <rect key="frame" x="8" y="80" width="359" height="95"/>
+                                <rect key="frame" x="8" y="36" width="359" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="2IB-De-kNP"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bo-Tp-5r1">
-                                <rect key="frame" x="8" y="207" width="359" height="44"/>
+                                <rect key="frame" x="8" y="163" width="359" height="44"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="mDz-lf-0B3">
                                         <rect key="frame" x="24" y="18" width="16" height="16"/>
@@ -174,7 +174,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCd-zV-fPH" userLabel="separatorView">
-                                <rect key="frame" x="24" y="249" width="335" height="2"/>
+                                <rect key="frame" x="24" y="205" width="335" height="2"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="6wF-nu-iOI"/>
@@ -183,7 +183,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eX-Yq-rI8">
-                                <rect key="frame" x="8" y="252" width="359" height="44"/>
+                                <rect key="frame" x="8" y="208" width="359" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpu-XD-BFA" userLabel="separatorView">
                                         <rect key="frame" x="16" y="44" width="335" height="2"/>
@@ -242,7 +242,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUk-Kg-k9v">
-                                <rect key="frame" x="127.5" y="321" width="120" height="30"/>
+                                <rect key="frame" x="127.5" y="277" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.74901960784313726" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="UdF-q3-3O2"/>
@@ -259,11 +259,11 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Deu-lN-pqC">
-                                <rect key="frame" x="169" y="317.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="273.5" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-SU-d7J">
-                                <rect key="frame" x="120" y="367" width="135" height="30"/>
+                                <rect key="frame" x="120" y="323" width="135" height="30"/>
                                 <state key="normal" title="ЗАБЫЛИ ПАРОЛЬ?">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -272,7 +272,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvI-x4-DkS">
-                                <rect key="frame" x="99.5" y="413" width="176" height="30"/>
+                                <rect key="frame" x="99.5" y="369" width="176" height="30"/>
                                 <state key="normal" title="ЗАРЕГИСТРИРОВАТЬСЯ">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -319,7 +319,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver. 1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVX-SO-eGE">
-                                <rect key="frame" x="311" y="80" width="48" height="18"/>
+                                <rect key="frame" x="311" y="36" width="48" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.21895414590835571" green="0.71306502819061279" blue="0.92338770627975464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1331,13 +1331,13 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
         <image name="question" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y5T-zN-aQd"/>
+        <segue reference="C7t-VO-iWp"/>
         <segue reference="HOf-6N-z37"/>
         <segue reference="53e-mu-ax4"/>
         <segue reference="n6t-VA-cVZ"/>
         <segue reference="k1c-WC-ELh"/>
         <segue reference="bsE-0I-EYW"/>
-        <segue reference="4fX-lc-XiI"/>
-        <segue reference="Fda-SR-7H1"/>
+        <segue reference="2M2-zu-IaE"/>
+        <segue reference="JGK-9a-5mu"/>
     </inferredMetricsTieBreakers>
 </document>

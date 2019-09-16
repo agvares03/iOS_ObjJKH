@@ -73,7 +73,7 @@ class FirstController: UIViewController {
             message = "Не указан логин. "
             ret = true;
         }
-        if (edPass.text == "") || edPass.text!.contains(" ") || (edLogin.text!.replacingOccurrences(of: " ", with: "").count == 0){
+        if (edPass.text == "") || edPass.text!.contains(" ") || (edPass.text!.replacingOccurrences(of: " ", with: "").count == 0){
             message = message + "Не указан пароль."
             ret = true
         }

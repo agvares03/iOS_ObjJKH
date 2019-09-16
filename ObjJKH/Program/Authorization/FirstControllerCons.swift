@@ -48,11 +48,11 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
         // Проверка на заполнение
         var ret: Bool = false;
         var message: String = ""
-        if (edLogin.text == "") {
+        if (edLogin.text == "") || (edLogin.text!.replacingOccurrences(of: " ", with: "").count == 0) {
             message = "Не указан логин. "
             ret = true;
         }
-        if (edPass.text == "") {
+        if (edPass.text == "") || edPass.text!.contains(" ") || (edPass.text!.replacingOccurrences(of: " ", with: "").count == 0) {
             message = message + "Не указан пароль."
             ret = true
         }
@@ -282,6 +282,7 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
         ver_Lbl.text = "ver. " + version
         edLogin.delegate = self
         edPass.delegate = self
+        edLogin.keyboardType = .asciiCapable
         hideKeyboard_byTap()
         
         // Кнопка - Вход для сотрудников
