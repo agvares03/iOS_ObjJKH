@@ -69,6 +69,13 @@ class FirstController: UIViewController {
         var message: String = ""
         print(edLogin.text!)
         loginText = edLogin.text!
+        if loginText.last == " "{
+            for _ in 0...loginText.count - 1{
+                if loginText.last == " "{
+                    loginText.removeLast()
+                }
+            }
+        }
         if (edLogin.text == "") || (edLogin.text!.replacingOccurrences(of: " ", with: "").count == 0){
             message = "Не указан логин. "
             ret = true;
@@ -114,6 +121,11 @@ class FirstController: UIViewController {
         UserDefaults.standard.set(false, forKey: "fromTech")
         UserDefaults.standard.set(true, forKey: "newApps")
         StopIndicator()
+        #if isDJ
+        maskLogin = true
+        edLogin.keyboardType = .asciiCapable
+        edLogin.placeholder = "Логин или номер телефона"
+        #else
         if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
             edLogin.maskDelegate = self
             edLogin.maskExpression = "{.}"
@@ -128,6 +140,7 @@ class FirstController: UIViewController {
             edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
             #endif
         }
+        #endif
         loadUsersDefaults()
         let version = targetSettings().getVersion()
         ver_Lbl.text = "ver. " + version
@@ -739,6 +752,24 @@ class FirstController: UIViewController {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
+        #if isDJ
+        maskLogin = true
+        edLogin.keyboardType = .asciiCapable
+        if (login == "") {
+            edLogin.text = "+7"
+        } else {
+            edLogin.text = login
+            loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
+            edPass.text = pass
+            if !UserDefaults.standard.bool(forKey: "exit"){
+                // Сохраним значения
+                saveUsersDefaults()
+                
+                // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
+                get_LS()
+            }
+        }
+        #else
         if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
             edLogin.maskDelegate = self
             edLogin.maskExpression = "{.}"
@@ -756,7 +787,12 @@ class FirstController: UIViewController {
                 edPass.text = pass
             }else if login != nil && login != "" && !maskLogin && !maskPhone {//&& login!.count > 0{
                 maskLogin = true
-                edLogin.maskExpression = "{..................}"
+                var mask = ""
+                for _ in 0...login!.count - 1{
+                    mask = mask + "."
+                }
+                mask = "{" + mask + "}"
+                edLogin.maskExpression = mask
                 edLogin.maskTemplate = " "
                 edLogin.text = login
                 loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
@@ -773,12 +809,7 @@ class FirstController: UIViewController {
             }
         }else{
             // Маска для ввода - телефон
-            #if isDJ
-            maskLogin = true
-            edLogin.keyboardType = .asciiCapable
-            #else
             edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-            #endif
             if (login == "") {
                 edLogin.text = "+7"
             } else {
@@ -794,6 +825,7 @@ class FirstController: UIViewController {
                 }
             }
         }
+        #endif
         //        print(login)
     }
     
@@ -857,7 +889,8 @@ extension FirstController: AKMaskFieldDelegate {
     
     func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
         let s = maskField.text!
-        print(s)
+        #if isDJ
+        #else
         if maskField.text!.count == 1 && (Int(maskField.text!) != nil || maskField.text?.first == "+") && !maskPhone{
             maskPhone = true
             #if isDJ
@@ -886,6 +919,7 @@ extension FirstController: AKMaskFieldDelegate {
             maskField.keyboardType = .asciiCapable
             maskField.reloadInputViews()
         }
+        #endif
     }
 }
 
