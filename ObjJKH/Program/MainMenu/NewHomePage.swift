@@ -455,7 +455,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         #elseif isRKC_Samara
         fon_top.image = UIImage(named: "Logo_Samara")
         #endif
-        UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         suppBtn.tintColor = myColors.btnColor.uiColor()
         
@@ -732,6 +731,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             UserDefaults.standard.set(true, forKey: "fromMenu")
             //            UserDefaults.standard.synchronize()
         }
+        self.navigationController?.isNavigationBarHidden = false;
     }
     
     var lsArr:[lsData] = []

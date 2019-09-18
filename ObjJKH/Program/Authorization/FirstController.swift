@@ -337,7 +337,7 @@ class FirstController: UIViewController {
         separator1.backgroundColor = myColors.labelColor.uiColor()
         separator2.backgroundColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
-        
+        UITabBar.appearance().tintColor = myColors.btnColor.uiColor()
         // Картинки для разных Таргетов
         new_face.image = myImages.person_image
         new_face.setImageColor(color: myColors.btnColor.uiColor())
