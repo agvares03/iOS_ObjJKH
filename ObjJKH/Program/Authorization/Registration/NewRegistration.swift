@@ -27,6 +27,9 @@ class NewRegistration: UIViewController {
     @IBOutlet weak var regBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var showPass1:   UIButton!
     @IBOutlet weak var showPass2:   UIButton!
+    @IBOutlet weak var numberSwitch: UISwitch!
+    @IBOutlet weak var switchView: UIView!
+    @IBOutlet weak var switchHeight: NSLayoutConstraint!
     
     @IBOutlet weak var separator1:  UIView!
     @IBOutlet weak var separator2:  UIView!
@@ -82,6 +85,26 @@ class NewRegistration: UIViewController {
         alert.addAction(exitAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func switch_Go(_ sender: UISwitch) {
+        if numberSwitch.isOn{
+            maskLogin = false
+            maskPhone = true
+            edPhone.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+            edPhone.maskTemplate = "*"
+            edPhone.keyboardType = .phonePad
+            edPhone.reloadInputViews()
+            edPhone.placeholder = "Телефон"
+        }else{
+            maskLogin = true
+            maskPhone = false
+            edPhone.maskExpression = "{..........................}"
+            edPhone.maskTemplate = " "
+            edPhone.keyboardType = .asciiCapable
+            edPhone.reloadInputViews()
+            edPhone.placeholder = "Логин"
+        }
     }
     
     @IBAction func canRegistration(_ sender: UISwitch) {
@@ -182,9 +205,17 @@ class NewRegistration: UIViewController {
         StopIndicator()
         edPhone.maskDelegate = self
         #if isDJ
+        switchView.isHidden = false
+        switchView.tintColor = myColors.btnColor.uiColor()
+        numberSwitch.onTintColor = myColors.btnColor.uiColor()
+        numberSwitch.isOn = false
         maskLogin = true
         edPhone.keyboardType = .asciiCapable
+        edPhone.placeholder = "Логин"
+        switchHeight.constant = 45
         #else
+        switchView.isHidden = true
+        switchHeight.constant = 5
         edPhone.maskExpression = "{.}"
         #endif
         edPhone.text = ""
@@ -590,6 +621,8 @@ extension NewRegistration: AKMaskFieldDelegate {
     
     func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
         let s = maskField.text!
+        #if isDJ
+        #else
         if maskField.text!.count == 1 && (Int(maskField.text!) != nil || maskField.text?.first == "+") && !maskPhone{
             maskPhone = true
             #if isDJ
@@ -618,5 +651,6 @@ extension NewRegistration: AKMaskFieldDelegate {
             maskField.keyboardType = .asciiCapable
             maskField.reloadInputViews()
         }
+        #endif
     }
 }

@@ -37,6 +37,9 @@ class FirstController: UIViewController {
     @IBOutlet weak var btnForgot: UIButton!
     @IBOutlet weak var btnReg: UIButton!
     @IBOutlet weak var showPass: UIButton!
+    @IBOutlet weak var numberSwitch: UISwitch!
+    @IBOutlet weak var switchView: UIView!
+    @IBOutlet weak var switchHeight: NSLayoutConstraint!
     
     @IBOutlet weak var separator1: UIView!
     @IBOutlet weak var separator2: UIView!
@@ -122,10 +125,15 @@ class FirstController: UIViewController {
         UserDefaults.standard.set(true, forKey: "newApps")
         StopIndicator()
         #if isDJ
+        switchView.isHidden = false
+        switchView.tintColor = myColors.btnColor.uiColor()
+        numberSwitch.onTintColor = myColors.btnColor.uiColor()
+        numberSwitch.isOn = false
         maskLogin = true
         edLogin.keyboardType = .asciiCapable
-        edLogin.placeholder = "Логин или номер телефона"
+        edLogin.placeholder = "Логин"
         #else
+        switchView.isHidden = true
         if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
             edLogin.maskDelegate = self
             edLogin.maskExpression = "{.}"
@@ -347,6 +355,26 @@ class FirstController: UIViewController {
         questionBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         showPass.tintColor = .lightGray
         ver_Lbl.textColor = myColors.btnColor.uiColor()
+    }
+    
+    @IBAction func switch_Go(_ sender: UISwitch) {
+        if numberSwitch.isOn{
+            maskLogin = false
+            maskPhone = true
+            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+            edLogin.maskTemplate = "*"
+            edLogin.keyboardType = .phonePad
+            edLogin.reloadInputViews()
+            edLogin.placeholder = "Телефон"
+        }else{
+            maskLogin = true
+            maskPhone = false
+            edLogin.maskExpression = "{..........................}"
+            edLogin.maskTemplate = " "
+            edLogin.keyboardType = .asciiCapable
+            edLogin.reloadInputViews()
+            edLogin.placeholder = "Логин"
+        }
     }
     
     @objc func keyboardWillShow(notification:NSNotification) {
@@ -756,10 +784,30 @@ class FirstController: UIViewController {
         maskLogin = true
         edLogin.keyboardType = .asciiCapable
         if (login == "") {
-            edLogin.text = "+7"
+            edLogin.text = ""
         } else {
             edLogin.text = login
             loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
+            if loginText.first == "+"{
+                numberSwitch.isOn = true
+                maskLogin = false
+                maskPhone = true
+                edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+                edLogin.maskTemplate = "*"
+                edLogin.keyboardType = .phonePad
+                edLogin.reloadInputViews()
+                edLogin.text = login
+                edLogin.placeholder = "Телефон"
+            }else{
+                maskLogin = true
+                maskPhone = false
+                edLogin.maskExpression = "{..........................}"
+                edLogin.maskTemplate = " "
+                edLogin.keyboardType = .asciiCapable
+                edLogin.reloadInputViews()
+                edLogin.text = login
+                edLogin.placeholder = "Логин"
+            }
             edPass.text = pass
             if !UserDefaults.standard.bool(forKey: "exit"){
                 // Сохраним значения
