@@ -110,6 +110,13 @@ class NewRegistration: UIViewController {
     @IBAction func btnRegGo(_ sender: UIButton) {
         self.view.endEditing(true)
         loginText = edPhone.text!
+        if loginText.last == " "{
+            for _ in 0...loginText.count - 1{
+                if loginText.last == " "{
+                    loginText.removeLast()
+                }
+            }
+        }
         // Проверка на правильность поля номер телефона
         if (loginText.contains("*")) && maskPhone{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите номер телефона в формате +7(***)***-**-**", preferredStyle: .alert)
