@@ -338,7 +338,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ui5-9V-OQt">
-                                <rect key="frame" x="70" y="131" width="235.5" height="45"/>
+                                <rect key="frame" x="24" y="131" width="351" height="45"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wbi-do-ehj">
                                         <rect key="frame" x="0.0" y="7" width="51" height="31"/>
@@ -347,7 +347,7 @@
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход по номеру телефона" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EK2-QV-8Yb">
-                                        <rect key="frame" x="59" y="0.0" width="176.5" height="45"/>
+                                        <rect key="frame" x="87.5" y="0.0" width="176.5" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -358,8 +358,7 @@
                                     <constraint firstAttribute="height" constant="45" id="1Ev-1o-BhI"/>
                                     <constraint firstItem="Wbi-do-ehj" firstAttribute="leading" secondItem="Ui5-9V-OQt" secondAttribute="leading" id="3G7-gZ-YVW"/>
                                     <constraint firstItem="EK2-QV-8Yb" firstAttribute="top" secondItem="Ui5-9V-OQt" secondAttribute="top" id="SU1-RO-1u9"/>
-                                    <constraint firstItem="EK2-QV-8Yb" firstAttribute="leading" secondItem="Wbi-do-ehj" secondAttribute="trailing" constant="10" id="gqM-2v-D69"/>
-                                    <constraint firstAttribute="trailing" secondItem="EK2-QV-8Yb" secondAttribute="trailing" id="pI2-Y3-Gtb"/>
+                                    <constraint firstItem="EK2-QV-8Yb" firstAttribute="centerX" secondItem="Ui5-9V-OQt" secondAttribute="centerX" id="tvR-4c-pNf"/>
                                     <constraint firstItem="Wbi-do-ehj" firstAttribute="centerY" secondItem="Ui5-9V-OQt" secondAttribute="centerY" id="y7R-sv-h3I"/>
                                     <constraint firstAttribute="bottom" secondItem="EK2-QV-8Yb" secondAttribute="bottom" id="yHG-Vq-SOU"/>
                                 </constraints>
@@ -370,12 +369,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gzy-vQ-M8M" secondAttribute="trailing" constant="8" id="1FB-da-0go"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8eX-Yq-rI8" secondAttribute="trailing" constant="8" id="1db-h1-lDj"/>
                             <constraint firstItem="8eX-Yq-rI8" firstAttribute="top" secondItem="3bo-Tp-5r1" secondAttribute="bottom" constant="1" id="5he-mG-7JL"/>
+                            <constraint firstItem="Ui5-9V-OQt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="6Js-C3-yWA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zVX-SO-eGE" secondAttribute="trailing" constant="16" id="6c5-ph-W0f"/>
                             <constraint firstItem="8eX-Yq-rI8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="7Kp-nG-55t"/>
                             <constraint firstItem="Deu-lN-pqC" firstAttribute="centerX" secondItem="BUk-Kg-k9v" secondAttribute="centerX" id="9mf-CP-J65"/>
                             <constraint firstItem="gzy-vQ-M8M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Aq6-Pv-tOc"/>
                             <constraint firstItem="zVX-SO-eGE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="BzR-B0-OUH"/>
-                            <constraint firstItem="Ui5-9V-OQt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fkh-Hs-smP"/>
                             <constraint firstItem="Deu-lN-pqC" firstAttribute="centerY" secondItem="BUk-Kg-k9v" secondAttribute="centerY" id="Gtc-QS-hCH"/>
                             <constraint firstItem="zVX-SO-eGE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="H5h-gA-5jj"/>
                             <constraint firstAttribute="trailing" secondItem="yCd-zV-fPH" secondAttribute="trailing" constant="16" id="HQi-y0-LOb"/>
@@ -394,6 +393,7 @@
                             <constraint firstItem="LvI-x4-DkS" firstAttribute="top" secondItem="Af0-SU-d7J" secondAttribute="bottom" constant="16" id="dI6-h6-5D1"/>
                             <constraint firstItem="WV7-ep-iiE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ea5-Sl-W5r"/>
                             <constraint firstItem="BUk-Kg-k9v" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="g2X-yF-8tS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ui5-9V-OQt" secondAttribute="trailing" id="iSm-n6-zTP"/>
                             <constraint firstItem="Zdm-TW-hcP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="q5d-wd-Gio"/>
                             <constraint firstItem="LvI-x4-DkS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ttp-a8-EOk"/>
                         </constraints>

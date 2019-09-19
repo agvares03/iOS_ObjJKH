@@ -282,7 +282,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZh-fL-x8n">
-                                <rect key="frame" x="70" y="67" width="235.5" height="45"/>
+                                <rect key="frame" x="24" y="67" width="351" height="45"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12B-CH-SsD">
                                         <rect key="frame" x="0.0" y="7" width="51" height="31"/>
@@ -290,8 +290,8 @@
                                             <action selector="switch_Go:" destination="zCK-9S-PKf" eventType="touchUpInside" id="YTY-S7-Mv7"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход по номеру телефона" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2c-Ng-suj">
-                                        <rect key="frame" x="59" y="0.0" width="176.5" height="45"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход по номеру телефона" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2c-Ng-suj">
+                                        <rect key="frame" x="87.5" y="0.0" width="176.5" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -299,12 +299,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Z2c-Ng-suj" firstAttribute="centerX" secondItem="NZh-fL-x8n" secondAttribute="centerX" id="UJx-td-Nlv"/>
                                     <constraint firstItem="12B-CH-SsD" firstAttribute="leading" secondItem="NZh-fL-x8n" secondAttribute="leading" id="Vhe-3B-aS6"/>
-                                    <constraint firstItem="Z2c-Ng-suj" firstAttribute="leading" secondItem="12B-CH-SsD" secondAttribute="trailing" constant="10" id="eiC-qh-Jz3"/>
                                     <constraint firstItem="Z2c-Ng-suj" firstAttribute="top" secondItem="NZh-fL-x8n" secondAttribute="top" id="evO-pM-LTJ"/>
                                     <constraint firstItem="12B-CH-SsD" firstAttribute="centerY" secondItem="NZh-fL-x8n" secondAttribute="centerY" id="j5F-Pn-2ZB"/>
                                     <constraint firstAttribute="bottom" secondItem="Z2c-Ng-suj" secondAttribute="bottom" id="jbL-FO-UgR"/>
-                                    <constraint firstAttribute="trailing" secondItem="Z2c-Ng-suj" secondAttribute="trailing" id="k33-Kv-J2C"/>
                                     <constraint firstAttribute="height" constant="45" id="oWh-ye-eEf"/>
                                 </constraints>
                             </view>
@@ -318,7 +317,8 @@
                             <constraint firstItem="1Rj-Wr-Qd1" firstAttribute="leading" secondItem="niJ-dS-u6V" secondAttribute="leading" constant="8" id="6az-mA-qSj"/>
                             <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="ARH-Du-L6l" secondAttribute="trailing" constant="8" id="8Lg-QD-NHT"/>
                             <constraint firstItem="umi-rq-Uci" firstAttribute="top" secondItem="ndk-7S-6B3" secondAttribute="bottom" constant="30" id="BC2-aW-zuC"/>
-                            <constraint firstItem="NZh-fL-x8n" firstAttribute="centerX" secondItem="KrW-xD-8FU" secondAttribute="centerX" id="BbU-jF-PqG"/>
+                            <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="NZh-fL-x8n" secondAttribute="trailing" id="BCv-Or-97c"/>
+                            <constraint firstItem="NZh-fL-x8n" firstAttribute="leading" secondItem="niJ-dS-u6V" secondAttribute="leading" constant="24" id="Dqb-zB-jyV"/>
                             <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="Kje-lZ-rAb" secondAttribute="trailing" constant="16" id="HOa-Ja-iyx"/>
                             <constraint firstItem="Kje-lZ-rAb" firstAttribute="leading" secondItem="niJ-dS-u6V" secondAttribute="leading" constant="16" id="L6F-Va-Yws"/>
                             <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="ndk-7S-6B3" secondAttribute="trailing" constant="8" id="Nmk-tE-QnJ"/>
