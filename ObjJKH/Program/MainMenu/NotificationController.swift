@@ -16,6 +16,7 @@ class NotificationController: UIViewController {
     @IBOutlet weak var btn_name_1: UIButton!
     @IBOutlet weak var supportBtn: UIButton!
     @IBOutlet weak var btnGo: UIButton!
+    @IBOutlet weak var btnApp: UIButton!
     @IBOutlet weak var img_mail: UIImageView!
     
     @IBOutlet weak var titleText: UILabel!
@@ -152,8 +153,13 @@ class NotificationController: UIViewController {
         img_mail.setImageColor(color: myColors.btnColor.uiColor())
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
         btnGo.backgroundColor = myColors.btnColor.uiColor()
+        btnApp.backgroundColor = myColors.btnColor.uiColor()
         supportBtn.tintColor = myColors.btnColor.uiColor()
-        
+        if self.view.frame.size.width < 375{
+            btnApp.setTitle("   Зайти в приложение", for: .normal)
+        }else{
+            btnApp.setTitle("Зайти в приложение", for: .normal)
+        }
         if UserDefaults.standard.string(forKey: "titleNotifi") != nil{
             titleText?.text = UserDefaults.standard.string(forKey: "titleNotifi")!
         }
@@ -173,6 +179,10 @@ class NotificationController: UIViewController {
     
     @IBAction func go_exit(_ sender: UIButton) {
         exit(0)
+    }
+    
+    @IBAction func go_app(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goApp", sender: self)
     }
     
 
