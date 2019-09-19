@@ -170,7 +170,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         //        self.payedS()
         //        #elseif isStolitsa
         //        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet
+        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
         l = true
         #else
         self.payedS()
@@ -316,6 +316,30 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isParitet
         shopCode = "266564"
         targetName = "УК Паритет"
+        #elseif isTSN_Ruble40
+        targetName = "ТСН Рублевский 40"
+        print(debtArr)
+        debtArr.forEach{
+            if debtArr.count > 1{
+                if String($0["ident"] as! String) == selectLS{
+                    if String($0["HouseId"] as! String) == "3"{
+                        shopCode = "272890"
+                    }else if String($0["HouseId"] as! String) == "5"{
+                        shopCode = "272878"
+                    }else if String($0["HouseId"] as! String) == "10"{
+                        shopCode = "272890"
+                    }
+                }
+            }else{
+                if String($0["HouseId"] as! String) == "3"{
+                    shopCode = "272890"
+                }else if String($0["HouseId"] as! String) == "5"{
+                    shopCode = "272878"
+                }else if String($0["HouseId"] as! String) == "10"{
+                    shopCode = "272890"
+                }
+            }
+        }
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
@@ -466,7 +490,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
             //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet
+            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")

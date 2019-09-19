@@ -579,7 +579,7 @@ class FirstController: UIViewController {
                     if ls[0] != "" && ls[0] != " "{
                         vc.ls = ls[0]
                         vc.lsLbl.text = "У лицевого счета \(ls[0]) был изменён пароль"
-                        vc.login = self.loginText!
+                        vc.login = self.loginText
                         self.addChildViewController(vc)
                         self.view.addSubview(vc.view)
                     }else{

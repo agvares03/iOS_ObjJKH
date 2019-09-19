@@ -516,6 +516,7 @@ class NewMainMenu2: UIViewController {
                 debt["Sum"] = debtSum[i]
                 debt["SumFine"] = debtSumFine[i]
                 debt["InsuranceSum"] = debtInsurance[i]
+                debt["HouseId"] = debtHouse[i]
                 debtArr.append(debt as AnyObject)
             }
         }
@@ -545,6 +546,7 @@ class NewMainMenu2: UIViewController {
     // Web-камеры
     @IBAction func go_web(_ sender: UIButton) {
     }
+    
     var dateOld = "01.01"
     func getDebt() {
         let defaults = UserDefaults.standard
@@ -580,6 +582,7 @@ class NewMainMenu2: UIViewController {
                                                                         var sumFine     = ""
                                                                         var insuranceSum = ""
                                                                         var ls = ""
+                                                                        var houseId = ""
                                                                         //                                                                var sumOver     = ""
                                                                         //                                                                var sumFineOver = ""
                                                                         var sumAll      = ""
@@ -619,6 +622,12 @@ class NewMainMenu2: UIViewController {
                                                                                                 if ((obj.value as? NSNull) == nil){
                                                                                                     ls = String(describing: obj.value as! String)
                                                                                                     self.debtIdent.append(ls)
+                                                                                                }
+                                                                                            }
+                                                                                            if obj.key == "HouseId" {
+                                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                                    houseId = String(describing: obj.value as! Int)
+                                                                                                    self.debtHouse.append(houseId)
                                                                                                 }
                                                                                             }
                                                                                             if obj.key == "SumAll" {
@@ -969,6 +978,7 @@ class NewMainMenu2: UIViewController {
     }
     
     var debtIdent:[String] = []
+    var debtHouse:[String] = []
     var debtSum:[String] = []
     var debtSumFine:[String] = []
     var debtInsurance:[String] = []

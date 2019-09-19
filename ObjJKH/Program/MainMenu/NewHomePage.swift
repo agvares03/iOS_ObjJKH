@@ -751,6 +751,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var debtDate:[String] = []
         var debtAddress:[String] = []
         var debtInsurance:[String] = []
+        var debtHouse:[String] = []
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
@@ -790,6 +791,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                     var insuranceSum = ""
                                                                     var ls = ""
                                                                     var address = ""
+                                                                    var houseId = ""
                                                                     
                                                                     //                                                                var sumOver     = ""
                                                                     //                                                                var sumFineOver = ""
@@ -830,6 +832,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                                             ls = String(describing: obj.value as! String)
                                                                                         }
                                                                                     }
+                                                                                    if obj.key == "HouseId" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            houseId = String(describing: obj.value as! Int)
+                                                                                        }
+                                                                                    }
                                                                                     if obj.key == "DebtActualDate" {
                                                                                         if ((obj.value as? NSNull) == nil){
                                                                                             date = String(describing: obj.value as! String)
@@ -857,7 +864,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                                 debtAddress.append(address)
                                                                                 debtDate.append(date)
                                                                                 debtInsurance.append(insuranceSum)
-                                                                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum))
+                                                                                debtHouse.append(houseId)
+                                                                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum, houseId: houseId))
                                                                             }
                                                                             
                                                                             //                                                                            defaults.set(date, forKey: "dateDebt")
@@ -2529,6 +2537,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 debt["Sum"] = lsArr[i].sum
                 debt["SumFine"] = lsArr[i].sumFine
                 debt["InsuranceSum"] = lsArr[i].insuranceSum
+                debt["HouseId"] = lsArr[i].houseId
                 debtArr.append(debt as AnyObject)
             }
         }
@@ -3130,14 +3139,16 @@ struct lsData {
     let date: String?
     let address: String?
     let insuranceSum: String?
+    let houseId: String?
     
-    init(ident: String?, sum: String?, sumFine: String?, date:String?, address: String?, insuranceSum: String?) {
+    init(ident: String?, sum: String?, sumFine: String?, date:String?, address: String?, insuranceSum: String?, houseId: String?) {
         self.ident = ident
         self.sum = sum
         self.sumFine = sumFine
         self.date = date
         self.address = address
         self.insuranceSum = insuranceSum
+        self.houseId = houseId
     }
 }
 
