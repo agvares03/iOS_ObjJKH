@@ -1506,6 +1506,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 lastCheckArr.append(lastCheck)
             }
             DispatchQueue.main.async(execute: {
+                self.counterIndicator.stopAnimating()
+                self.counterIndicator.isHidden = true
+                self.allCountersBtn.isHidden = false
                 self.tableCounter.reloadData()
             })
             
@@ -1518,6 +1521,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.global(qos: .background).async {
                 sleep(2)
+                DispatchQueue.main.async {
+                    self.counterIndicator.startAnimating()
+                    self.counterIndicator.isHidden = false
+                    self.allCountersBtn.isHidden = true
+                }
                 DispatchQueue.main.sync {
                     // Экземпляр класса DB
                     let db = DB()
