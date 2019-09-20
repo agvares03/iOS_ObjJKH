@@ -107,6 +107,7 @@ class NewsController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if UserDefaults.standard.integer(forKey: "news_read") < news_read{
             NewsManager.instance.loadNews()

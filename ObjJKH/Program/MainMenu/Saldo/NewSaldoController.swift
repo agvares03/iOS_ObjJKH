@@ -48,6 +48,7 @@ class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.tabBar.isHidden = true
         //        getData(login: login!, pass: pass!)
     }
     

@@ -1084,6 +1084,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         //        choiceIdent = "Все"
         //        UserDefaults.standard.set(false, forKey: "fromMenu")
         //        UserDefaults.standard.synchronize()
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1

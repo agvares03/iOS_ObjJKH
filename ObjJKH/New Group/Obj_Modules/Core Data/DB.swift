@@ -89,6 +89,8 @@ class DB: NSObject, XMLParserDelegate {
             "&login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
             "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         let url: NSURL = NSURL(string: urlPath)!
+        print(url)
+        
         parser = XMLParser(contentsOf: url as URL)!
         parser.delegate = self
         let success:Bool = parser.parse()

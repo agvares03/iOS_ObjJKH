@@ -124,7 +124,7 @@ class FirstController: UIViewController {
         UserDefaults.standard.set(false, forKey: "fromTech")
         UserDefaults.standard.set(true, forKey: "newApps")
         StopIndicator()
-        #if isDJ
+//        #if isDJ
         switchView.isHidden = false
         switchView.tintColor = myColors.btnColor.uiColor()
         numberSwitch.onTintColor = myColors.btnColor.uiColor()
@@ -132,23 +132,23 @@ class FirstController: UIViewController {
         maskLogin = true
         edLogin.keyboardType = .asciiCapable
         edLogin.placeholder = "Логин"
-        #else
-        switchView.isHidden = true
-        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
-            edLogin.maskDelegate = self
-            edLogin.maskExpression = "{.}"
-            edLogin.text = ""
-            edLogin.placeholder = "Логин или номер телефона"
-        }else{
-            // Маска для ввода - телефон
-            #if isDJ
-            maskLogin = true
-            edLogin.keyboardType = .asciiCapable
-            #else
-            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-            #endif
-        }
-        #endif
+//        #else
+//        switchView.isHidden = true
+//        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+//            edLogin.maskDelegate = self
+//            edLogin.maskExpression = "{.}"
+//            edLogin.text = ""
+//            edLogin.placeholder = "Логин или номер телефона"
+//        }else{
+//            // Маска для ввода - телефон
+//            #if isDJ
+//            maskLogin = true
+//            edLogin.keyboardType = .asciiCapable
+//            #else
+//            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+//            #endif
+//        }
+//        #endif
         loadUsersDefaults()
         let version = targetSettings().getVersion()
         ver_Lbl.text = "ver. " + version
@@ -780,15 +780,51 @@ class FirstController: UIViewController {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
-        #if isDJ
-        maskLogin = true
-        edLogin.keyboardType = .asciiCapable
-        if (login == "") {
+//        #if isDJ
+//        maskLogin = true
+//        edLogin.keyboardType = .asciiCapable
+//        if (login == "") {
+//            edLogin.text = ""
+//        } else {
+//            edLogin.text = login
+//            loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
+//            if loginText.first == "+"{
+//                numberSwitch.isOn = true
+//                maskLogin = false
+//                maskPhone = true
+//                edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+//                edLogin.maskTemplate = "*"
+//                edLogin.keyboardType = .phonePad
+//                edLogin.reloadInputViews()
+//                edLogin.text = login
+//                edLogin.placeholder = "Телефон"
+//            }else{
+//                maskLogin = true
+//                maskPhone = false
+//                edLogin.maskExpression = "{..........................}"
+//                edLogin.maskTemplate = " "
+//                edLogin.keyboardType = .asciiCapable
+//                edLogin.reloadInputViews()
+//                edLogin.text = login
+//                edLogin.placeholder = "Логин"
+//            }
+//            edPass.text = pass
+//            if !UserDefaults.standard.bool(forKey: "exit"){
+//                // Сохраним значения
+//                saveUsersDefaults()
+//
+//                // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
+//                get_LS()
+//            }
+//        }
+//        #else
+//        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+//            edLogin.maskDelegate = self
+//            edLogin.maskExpression = "{.}"
+//            edLogin.keyboardType = .asciiCapable
+//            edLogin.reloadInputViews()
             edLogin.text = ""
-        } else {
-            edLogin.text = login
-            loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
-            if loginText.first == "+"{
+            if login != nil && login != "" && login?.first == "+" && !maskPhone{
                 numberSwitch.isOn = true
                 maskLogin = false
                 maskPhone = true
@@ -797,18 +833,26 @@ class FirstController: UIViewController {
                 edLogin.keyboardType = .phonePad
                 edLogin.reloadInputViews()
                 edLogin.text = login
+                loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
                 edLogin.placeholder = "Телефон"
-            }else{
+                edPass.text = pass
+            }else if login != nil && login != "" && !maskLogin && !maskPhone {//&& login!.count > 0{
                 maskLogin = true
                 maskPhone = false
+//                var mask = ""
+//                for _ in 0...login!.count - 1{
+//                    mask = mask + "."
+//                }
+//                mask = "{" + mask + "}"
                 edLogin.maskExpression = "{..........................}"
                 edLogin.maskTemplate = " "
                 edLogin.keyboardType = .asciiCapable
                 edLogin.reloadInputViews()
                 edLogin.text = login
+                loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
+                edPass.text = pass
                 edLogin.placeholder = "Логин"
             }
-            edPass.text = pass
             if !UserDefaults.standard.bool(forKey: "exit"){
                 // Сохраним значения
                 saveUsersDefaults()
@@ -816,64 +860,25 @@ class FirstController: UIViewController {
                 // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
                 get_LS()
             }
-        }
-        #else
-        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
-            edLogin.maskDelegate = self
-            edLogin.maskExpression = "{.}"
-            edLogin.keyboardType = .asciiCapable
-            edLogin.reloadInputViews()
-            edLogin.text = ""
-            if login != nil && login != "" && login?.first == "+" && !maskPhone{
-                maskPhone = true
-                edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-                edLogin.maskTemplate = "*"
-                edLogin.text = login
-                loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
-                edLogin.keyboardType = .phonePad
-                edLogin.reloadInputViews()
-                edPass.text = pass
-            }else if login != nil && login != "" && !maskLogin && !maskPhone {//&& login!.count > 0{
-                maskLogin = true
-                var mask = ""
-                for _ in 0...login!.count - 1{
-                    mask = mask + "."
-                }
-                mask = "{" + mask + "}"
-                edLogin.maskExpression = mask
-                edLogin.maskTemplate = " "
-                edLogin.text = login
-                loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
-                edLogin.keyboardType = .asciiCapable
-                edLogin.reloadInputViews()
-                edPass.text = pass
-            }
-            if !UserDefaults.standard.bool(forKey: "exit"){
-                // Сохраним значения
-                saveUsersDefaults()
-                
-                // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-                get_LS()
-            }
-        }else{
-            // Маска для ввода - телефон
-            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-            if (login == "") {
-                edLogin.text = "+7"
-            } else {
-                edLogin.text = login
-                loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
-                edPass.text = pass
-                if !UserDefaults.standard.bool(forKey: "exit"){
-                    // Сохраним значения
-                    saveUsersDefaults()
-                    
-                    // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-                    get_LS()
-                }
-            }
-        }
-        #endif
+//        }else{
+//            // Маска для ввода - телефон
+//            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+//            if (login == "") {
+//                edLogin.text = "+7"
+//            } else {
+//                edLogin.text = login
+//                loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
+//                edPass.text = pass
+//                if !UserDefaults.standard.bool(forKey: "exit"){
+//                    // Сохраним значения
+//                    saveUsersDefaults()
+//
+//                    // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
+//                    get_LS()
+//                }
+//            }
+//        }
+//        #endif
         //        print(login)
     }
     
@@ -937,37 +942,37 @@ extension FirstController: AKMaskFieldDelegate {
     
     func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
         let s = maskField.text!
-        #if isDJ
-        #else
-        if maskField.text!.count == 1 && (Int(maskField.text!) != nil || maskField.text?.first == "+") && !maskPhone{
-            maskPhone = true
-            #if isDJ
-            #else
-            maskField.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-            #endif
-            maskField.maskTemplate = "*"
-            maskField.text = s
-            maskField.keyboardType = .phonePad
-            maskField.reloadInputViews()
-        }else if maskField.text!.count == 1 && !maskLogin && !maskPhone{
-            maskLogin = true
-            maskField.maskExpression = "{..........................}"
-            maskField.maskTemplate = " "
-            maskField.text = s
-            maskField.keyboardType = .asciiCapable
-            maskField.reloadInputViews()
-        }else if maskField.text!.count == 0 && (maskPhone || maskLogin){
-            maskPhone = false
-            maskLogin = false
-            #if isDJ
-            #else
-            maskField.maskExpression = "{.}"
-            #endif
-            maskField.maskTemplate = " "
-            maskField.keyboardType = .asciiCapable
-            maskField.reloadInputViews()
-        }
-        #endif
+//        #if isDJ
+//        #else
+//        if maskField.text!.count == 1 && (Int(maskField.text!) != nil || maskField.text?.first == "+") && !maskPhone{
+//            maskPhone = true
+//            #if isDJ
+//            #else
+//            maskField.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+//            #endif
+//            maskField.maskTemplate = "*"
+//            maskField.text = s
+//            maskField.keyboardType = .phonePad
+//            maskField.reloadInputViews()
+//        }else if maskField.text!.count == 1 && !maskLogin && !maskPhone{
+//            maskLogin = true
+//            maskField.maskExpression = "{..........................}"
+//            maskField.maskTemplate = " "
+//            maskField.text = s
+//            maskField.keyboardType = .asciiCapable
+//            maskField.reloadInputViews()
+//        }else if maskField.text!.count == 0 && (maskPhone || maskLogin){
+//            maskPhone = false
+//            maskLogin = false
+//            #if isDJ
+//            #else
+//            maskField.maskExpression = "{.}"
+//            #endif
+//            maskField.maskTemplate = " "
+//            maskField.keyboardType = .asciiCapable
+//            maskField.reloadInputViews()
+//        }
+//        #endif
     }
 }
 

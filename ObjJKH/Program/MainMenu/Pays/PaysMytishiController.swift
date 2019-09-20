@@ -1434,6 +1434,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && onePay == 0{
             onePay = 1

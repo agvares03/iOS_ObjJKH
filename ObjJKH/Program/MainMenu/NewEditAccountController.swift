@@ -874,6 +874,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(true, animated: animated)
         }
@@ -884,5 +885,10 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         self.view.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        self.tabBarController?.tabBar.isHidden = true
     }
 }

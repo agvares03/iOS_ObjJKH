@@ -317,6 +317,7 @@ class AddLSSimple: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }

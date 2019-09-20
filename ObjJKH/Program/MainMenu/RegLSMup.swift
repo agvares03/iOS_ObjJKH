@@ -209,4 +209,9 @@ class RegLSMup: UIViewController, UITextFieldDelegate {
         }
         super.touchesBegan(touches, with: event)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
 }

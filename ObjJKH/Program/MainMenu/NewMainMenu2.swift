@@ -794,12 +794,14 @@ class NewMainMenu2: UIViewController {
 //            load = true
 //        }
         
+        self.tabBarController?.tabBar.isHidden = false
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+//        self.tabBarController?.tabBar.isHidden = true
 //        UserDefaults.standard.set(true, forKey: "fromMenu")
 //        UserDefaults.standard.synchronize()
     }

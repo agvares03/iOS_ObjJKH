@@ -276,16 +276,17 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func addComm(comm: String?){
         if (comm != "") {
+//            self.timer?.invalidate()
             self.StartIndicator()
             self.hiddAddComm()
             self.ed_comment.text = comm!
             let id_app_txt = self.id_app.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            let text_txt: String   = comm!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            let text_txt: String = comm!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             
             let urlPath = Server.SERVER + Server.SEND_COMM + "reqID=" + id_app_txt + "&text=" + text_txt;
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
+//            request.httpMethod = "POST"
             print(request)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest,
@@ -306,6 +307,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                                                             alert.addAction(supportAction)
                                                             self.present(alert, animated: true, completion: nil)
                                                         })
+//                                                        self.timer = Timer(timeInterval: 20, target: self, selector: #selector(self.reload), userInfo: ["start" : "ok"], repeats: true)
+//                                                        RunLoop.main.add(self.timer!, forMode: .defaultRunLoopMode)
                                                         self.showAddComm()
                                                         return
                                                     }
@@ -417,8 +420,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in
         })
         
-        timer = Timer(timeInterval: 20, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
-        RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
+//        timer = Timer(timeInterval: 20, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
+//        RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
         let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
         let count = tema_txt.frame.size.height * numberLine
         headerHeight.constant = headerHeight.constant + count
@@ -515,6 +518,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if (responseString == "xxx") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
+//                self.timer = Timer(timeInterval: 20, target: self, selector: #selector(self.reload), userInfo: ["start" : "ok"], repeats: true)
+//                RunLoop.main.add(self.timer!, forMode: .defaultRunLoopMode)
                 UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
                 let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
@@ -530,8 +535,10 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             DispatchQueue.main.async(execute: {
                 
                 // Экземпляр класса DB
-//                let db = DB()
-//                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: comm!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
+                let db = DB()
+                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: comm!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
+//                self.timer = Timer(timeInterval: 20, target: self, selector: #selector(self.reload), userInfo: ["start" : "ok"], repeats: true)
+//                RunLoop.main.add(self.timer!, forMode: .defaultRunLoopMode)
                 self.ed_comment.text = ""
                 self.StopIndicator()
                 self.load_data()
@@ -543,6 +550,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }else{
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
+//                self.timer = Timer(timeInterval: 20, target: self, selector: #selector(self.reload), userInfo: ["start" : "ok"], repeats: true)
+//                RunLoop.main.add(self.timer!, forMode: .defaultRunLoopMode)
                 self.ed_comment.text = ""
                 self.view.endEditing(true)
                 
@@ -558,6 +567,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
@@ -591,6 +601,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func updateTable() {
         files.removeAll()
+        showDate.removeAll()
         let data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
         let objs = (CoreDataManager.instance.fetchedResultsController(entityName: "Fotos", keysForSort: ["name"]) as? NSFetchedResultsController<Fotos>)
         try? objs?.performFetch()
@@ -599,6 +610,49 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 if $0.text?.contains(obj.name ?? "") ?? false {
                     self.files.append(obj)
                 }
+            }
+        }
+        if let sections = fetchedResultsController?.sections {
+//            print(sections[section].numberOfObjects, files.count)
+            for i in 0...sections[0].numberOfObjects - 1{
+                let indexPath = IndexPath(row: i, section: 0)
+                let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
+                let calendar = Calendar.current
+                if comm.dateK != nil{
+                    var hour = String(calendar.component(.hour, from: comm.dateK!))
+                    if hour.count == 1{
+                        hour = "0" + hour
+                    }
+                    var minute = String(calendar.component(.minute, from: comm.dateK!))
+                    if minute.count == 1{
+                        minute = "0" + minute
+                    }
+                    var day = String(calendar.component(.day, from: comm.dateK!))
+                    if day.count == 1{
+                        day = "0" + day
+                    }
+                    var month = String(calendar.component(.month, from: comm.dateK!))
+                    if month.count == 1{
+                        month = "0" + month
+                    }
+                    let year = String(calendar.component(.year, from: comm.dateK!))
+//                    let time = hour + ":" + minute
+                    let date = day + "." + month + "." + year
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                    if indexPath.row == 0{
+                        commDate = comm.dateK!
+                        showDate.append(true)
+                    }else{
+                        if dateFormatter.date(from: date)! > commDate{
+                            commDate = comm.dateK!
+                            showDate.append(true)
+                        }else{
+                            showDate.append(false)
+                        }
+                    }
+                }
+                print(comm.text, comm.dateK, showDate[i])
             }
         }
         table_comments.reloadData()
@@ -615,10 +669,10 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     var kolR = 0
-    
+    var showDate:[Bool] = []
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController?.sections {
-            print(sections[section].numberOfObjects, files.count)
+//            print(sections[section].numberOfObjects, files.count)
             return sections[section].numberOfObjects
         } else {
             return 0
@@ -627,6 +681,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var commDate = Date()
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
+        
         if (comm.id_author != comm.id_account) {
             if comm.text != nil && !(comm.text?.contains("Отправлен новый файл"))!{
                 let cell = self.table_comments.dequeueReusableCell(withIdentifier: "NewCommCellCons") as! NewCommCellCons
@@ -658,16 +713,21 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.date.text = date
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd.MM.yyyy"
-                    if dateFormatter.date(from: date)! > commDate{
-                        commDate = comm.dateK!
+                    if showDate[indexPath.row]{
                         cell.heightDate.constant = 31
                     }else{
                         cell.heightDate.constant = 0
                     }
-                    if indexPath.row == 0{
-                        commDate = comm.dateK!
-                        cell.heightDate.constant = 31
-                    }
+//                    if dateFormatter.date(from: date)! > commDate{
+//                        commDate = comm.dateK!
+//                        cell.heightDate.constant = 31
+//                    }else{
+//                        cell.heightDate.constant = 0
+//                    }
+//                    if indexPath.row == 0{
+//                        commDate = comm.dateK!
+//                        cell.heightDate.constant = 31
+//                    }
                 }
                 return cell
             }else{
@@ -698,16 +758,21 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.date.text = date
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd.MM.yyyy"
-                    if dateFormatter.date(from: date)! > commDate{
-                        commDate = comm.dateK!
+                    if showDate[indexPath.row]{
                         cell.heightDate.constant = 31
                     }else{
                         cell.heightDate.constant = 0
                     }
-                    if indexPath.row == 0{
-                        commDate = comm.dateK!
-                        cell.heightDate.constant = 31
-                    }
+//                    if dateFormatter.date(from: date)! > commDate{
+//                        commDate = comm.dateK!
+//                        cell.heightDate.constant = 31
+//                    }else{
+//                        cell.heightDate.constant = 0
+//                    }
+//                    if indexPath.row == 0{
+//                        commDate = comm.dateK!
+//                        cell.heightDate.constant = 31
+//                    }
                 }
                 let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
                 var id = 0
@@ -786,16 +851,21 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.date.text = date
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd.MM.yyyy"
-                    if dateFormatter.date(from: date)! > commDate{
-                        commDate = comm.dateK!
+                    if showDate[indexPath.row]{
                         cell.heightDate.constant = 31
                     }else{
                         cell.heightDate.constant = 0
                     }
-                    if indexPath.row == 0{
-                        commDate = comm.dateK!
-                        cell.heightDate.constant = 31
-                    }
+//                    if dateFormatter.date(from: date)! > commDate{
+//                        commDate = comm.dateK!
+//                        cell.heightDate.constant = 31
+//                    }else{
+//                        cell.heightDate.constant = 0
+//                    }
+//                    if indexPath.row == 0{
+//                        commDate = comm.dateK!
+//                        cell.heightDate.constant = 31
+//                    }
                 }
                 return cell
             }else{
@@ -826,16 +896,21 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.date.text = date
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd.MM.yyyy"
-                    if dateFormatter.date(from: date)! > commDate{
-                        commDate = comm.dateK!
+                    if showDate[indexPath.row]{
                         cell.heightDate.constant = 31
                     }else{
                         cell.heightDate.constant = 0
                     }
-                    if indexPath.row == 0{
-                        commDate = comm.dateK!
-                        cell.heightDate.constant = 31
-                    }
+//                    if dateFormatter.date(from: date)! > commDate{
+//                        commDate = comm.dateK!
+//                        cell.heightDate.constant = 31
+//                    }else{
+//                        cell.heightDate.constant = 0
+//                    }
+//                    if indexPath.row == 0{
+//                        commDate = comm.dateK!
+//                        cell.heightDate.constant = 31
+//                    }
                 }
                 let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
                 var id = 0

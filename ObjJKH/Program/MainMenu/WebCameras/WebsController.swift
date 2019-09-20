@@ -101,6 +101,7 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     

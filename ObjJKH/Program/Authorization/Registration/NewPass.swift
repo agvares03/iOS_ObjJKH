@@ -180,6 +180,11 @@ class NewPass: UIViewController {
         showPass2.tintColor = myColors.btnColor.uiColor()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     func getServerUrlNewPass(phone PhoneText:String, pass txtPass:String) -> String {
         
         

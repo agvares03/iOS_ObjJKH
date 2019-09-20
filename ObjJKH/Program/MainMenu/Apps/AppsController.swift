@@ -628,6 +628,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewWillAppear(animated)
 //        UserDefaults.standard.set(false, forKey: "fromMenu")
 //        UserDefaults.standard.synchronize()
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.load_new_data()
 //        if UserDefaults.standard.bool(forKey: "back"){

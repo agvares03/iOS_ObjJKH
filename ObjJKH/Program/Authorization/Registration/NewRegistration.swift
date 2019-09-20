@@ -27,9 +27,6 @@ class NewRegistration: UIViewController {
     @IBOutlet weak var regBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var showPass1:   UIButton!
     @IBOutlet weak var showPass2:   UIButton!
-    @IBOutlet weak var numberSwitch: UISwitch!
-    @IBOutlet weak var switchView: UIView!
-    @IBOutlet weak var switchHeight: NSLayoutConstraint!
     
     @IBOutlet weak var separator1:  UIView!
     @IBOutlet weak var separator2:  UIView!
@@ -87,26 +84,6 @@ class NewRegistration: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func switch_Go(_ sender: UISwitch) {
-        if numberSwitch.isOn{
-            maskLogin = false
-            maskPhone = true
-            edPhone.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-            edPhone.maskTemplate = "*"
-            edPhone.keyboardType = .phonePad
-            edPhone.reloadInputViews()
-            edPhone.placeholder = "Телефон"
-        }else{
-            maskLogin = true
-            maskPhone = false
-            edPhone.maskExpression = "{..........................}"
-            edPhone.maskTemplate = " "
-            edPhone.keyboardType = .asciiCapable
-            edPhone.reloadInputViews()
-            edPhone.placeholder = "Логин"
-        }
-    }
-    
     @IBAction func canRegistration(_ sender: UISwitch) {
         if (switch_can.isOn) {
             btnReg.isEnabled = true
@@ -133,13 +110,13 @@ class NewRegistration: UIViewController {
     @IBAction func btnRegGo(_ sender: UIButton) {
         self.view.endEditing(true)
         loginText = edPhone.text!
-        if loginText.last == " "{
-            for _ in 0...loginText.count - 1{
-                if loginText.last == " "{
-                    loginText.removeLast()
-                }
-            }
-        }
+//        if loginText.last == " "{
+//            for _ in 0...loginText.count - 1{
+//                if loginText.last == " "{
+//                    loginText.removeLast()
+//                }
+//            }
+//        }
         // Проверка на правильность поля номер телефона
         if (loginText.contains("*")) && maskPhone{
             let alert = UIAlertController(title: "Ошибка", message: "Укажите номер телефона в формате +7(***)***-**-**", preferredStyle: .alert)
@@ -203,21 +180,17 @@ class NewRegistration: UIViewController {
         hideKeyboard_byTap()
         // Маска для ввода - телефон
         StopIndicator()
-        edPhone.maskDelegate = self
-        #if isDJ
-        switchView.isHidden = false
-        switchView.tintColor = myColors.btnColor.uiColor()
-        numberSwitch.onTintColor = myColors.btnColor.uiColor()
-        numberSwitch.isOn = false
+//        edPhone.maskDelegate = self
+//        #if isDJ
+//        maskLogin = true
+//        edPhone.keyboardType = .asciiCapable
+//        edPhone.placeholder = "Логин"
+//        #else
+//        edPhone.maskExpression = "{.}"
+//        #endif
         maskLogin = true
         edPhone.keyboardType = .asciiCapable
         edPhone.placeholder = "Логин"
-        switchHeight.constant = 45
-        #else
-        switchView.isHidden = true
-        switchHeight.constant = 5
-        edPhone.maskExpression = "{.}"
-        #endif
         edPhone.text = ""
         // Установим цвета для элементов в зависимости от Таргета
         btnReg.backgroundColor = myColors.btnColor.uiColor()
@@ -285,6 +258,11 @@ class NewRegistration: UIViewController {
         }else{
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func getServerUrlBy(phone PhoneText:String, fio txtFIO:String, pass txtPass: String) -> String {
@@ -620,37 +598,37 @@ class NewRegistration: UIViewController {
 extension NewRegistration: AKMaskFieldDelegate {
     
     func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
-        let s = maskField.text!
-        #if isDJ
-        #else
-        if maskField.text!.count == 1 && (Int(maskField.text!) != nil || maskField.text?.first == "+") && !maskPhone{
-            maskPhone = true
-            #if isDJ
-            #else
-            maskField.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-            #endif
-            maskField.maskTemplate = "*"
-            maskField.text = s
-            maskField.keyboardType = .phonePad
-            maskField.reloadInputViews()
-        }else if maskField.text!.count == 1 && !maskLogin && !maskPhone{
-            maskLogin = true
-            maskField.maskExpression = "{..........................}"
-            maskField.maskTemplate = " "
-            maskField.text = s
-            maskField.keyboardType = .asciiCapable
-            maskField.reloadInputViews()
-        }else if maskField.text!.count == 0{
-            maskPhone = false
-            maskLogin = false
-            #if isDJ
-            #else
-            maskField.maskExpression = "{.}"
-            #endif
-            maskField.maskTemplate = " "
-            maskField.keyboardType = .asciiCapable
-            maskField.reloadInputViews()
-        }
-        #endif
+//        let s = maskField.text!
+//        #if isDJ
+//        #else
+//        if maskField.text!.count == 1 && (Int(maskField.text!) != nil || maskField.text?.first == "+") && !maskPhone{
+//            maskPhone = true
+//            #if isDJ
+//            #else
+//            maskField.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
+//            #endif
+//            maskField.maskTemplate = "*"
+//            maskField.text = s
+//            maskField.keyboardType = .phonePad
+//            maskField.reloadInputViews()
+//        }else if maskField.text!.count == 1 && !maskLogin && !maskPhone{
+//            maskLogin = true
+//            maskField.maskExpression = "{..........................}"
+//            maskField.maskTemplate = " "
+//            maskField.text = s
+//            maskField.keyboardType = .asciiCapable
+//            maskField.reloadInputViews()
+//        }else if maskField.text!.count == 0{
+//            maskPhone = false
+//            maskLogin = false
+//            #if isDJ
+//            #else
+//            maskField.maskExpression = "{.}"
+//            #endif
+//            maskField.maskTemplate = " "
+//            maskField.keyboardType = .asciiCapable
+//            maskField.reloadInputViews()
+//        }
+//        #endif
     }
 }

@@ -720,6 +720,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         self.load_new_data()
         self.getNews()
+        self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -731,6 +732,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             UserDefaults.standard.set(true, forKey: "fromMenu")
             //            UserDefaults.standard.synchronize()
         }
+//        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.isNavigationBarHidden = false;
     }
     
