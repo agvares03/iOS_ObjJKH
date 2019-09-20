@@ -967,6 +967,21 @@ class NewMainMenu2: UIViewController {
                     self.news_read += 1
                 }
             }
+            UserDefaults.standard.set(self.news_read, forKey: "newsKol")
+            DispatchQueue.main.async {
+                let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+                if (updatedBadgeNumber > -1) {
+                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                }
+                //                if request_read >= 0{
+                //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+                //                    UserDefaults.standard.synchronize()
+                //                }else{
+                //                    UserDefaults.standard.setValue(0, forKey: "request_read")
+                //                    UserDefaults.standard.synchronize()
+                //                }
+                
+            }
             }.resume()
     }
     

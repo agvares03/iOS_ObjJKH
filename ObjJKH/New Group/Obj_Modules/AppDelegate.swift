@@ -116,8 +116,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 body = alert["body"]!
                 title = alert["title"]!
             }
+            var news = 0
+            var apps = 0
+            if notification["gcm.notification.unreadedAnnouncements"] != nil{
+                news = Int(notification["gcm.notification.unreadedAnnouncements"]! as! String)!
+                UserDefaults.standard.set(news, forKey: "newsKol")
+            }
+            if notification["unreadedAnnouncements"] != nil{
+                news = Int(notification["unreadedAnnouncements"]! as! String)!
+                UserDefaults.standard.set(news, forKey: "newsKol")
+            }
+            if notification["gcm.notification.requestsUnreadedCount"] != nil{
+                apps = Int(notification["gcm.notification.requestsUnreadedCount"]! as! String)!
+                UserDefaults.standard.set(apps, forKey: "appsKol")
+            }
+            if notification["requestsUnreadedCount"] != nil{
+                apps = Int(notification["requestsUnreadedCount"]! as! String)!
+                UserDefaults.standard.set(apps, forKey: "appsKol")
+            }
+            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+            if (updatedBadgeNumber > -1) {
+                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+            }
             if notification["gcm.notification.type_push"] as? String == "announcement"{
-//                UserDefaults.standard.set(true, forKey: "newNotifi")
+                UserDefaults.standard.set(true, forKey: "newNotifi")
                 UserDefaults.standard.set(body, forKey: "bodyNotifi")
                 UserDefaults.standard.set(title, forKey: "titleNotifi")
                 UserDefaults.standard.synchronize()
@@ -129,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 self.window?.makeKeyAndVisible()
             }
         }
-        
+    
         return true
     }
     
@@ -175,6 +197,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         } else if let alert = notifi["alert"] as? [String : String] {
             body = alert["body"]!
             title = alert["title"]!
+        }
+        var news = 0
+        var apps = 0
+        if notifi["gcm.notification.unreadedAnnouncements"] != nil{
+            news = Int(notifi["gcm.notification.unreadedAnnouncements"]! as! String)!
+            UserDefaults.standard.set(news, forKey: "newsKol")
+        }
+        if notifi["unreadedAnnouncements"] != nil{
+            news = Int(notifi["unreadedAnnouncements"]! as! String)!
+            UserDefaults.standard.set(news, forKey: "newsKol")
+        }
+        if notifi["gcm.notification.requestsUnreadedCount"] != nil{
+            apps = Int(notifi["gcm.notification.requestsUnreadedCount"]! as! String)!
+            UserDefaults.standard.set(apps, forKey: "appsKol")
+        }
+        if notifi["requestsUnreadedCount"] != nil{
+            apps = Int(notifi["requestsUnreadedCount"]! as! String)!
+            UserDefaults.standard.set(apps, forKey: "appsKol")
+        }
+        let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+        if (updatedBadgeNumber > -1) {
+            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
         }
         if userInfo["gcm.notification.type_push"] as? String == "comment"{
 //            UserDefaults.standard.set(true, forKey: "newNotifi")

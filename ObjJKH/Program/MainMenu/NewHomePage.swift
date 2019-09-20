@@ -1015,8 +1015,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                     unfilteredData?.forEach { json in
                                                         if !json.readed! {
                                                             news_read += 1
-                                                            UserDefaults.standard.setValue(news_read, forKey: "news_read")
-                                                            UserDefaults.standard.synchronize()
                                                         }
                                                         let idNews = json.idNews
                                                         let Created = json.created
@@ -1033,6 +1031,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         self.newsArr.append($0)
                                                     }
                                                     i += 1
+                                                }
+                                                UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                DispatchQueue.main.async {
+                                                    let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+                                                    if (updatedBadgeNumber > -1) {
+                                                        UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                                                    }
+                                                    //                if request_read >= 0{
+                                                    //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+                                                    //                    UserDefaults.standard.synchronize()
+                                                    //                }else{
+                                                    //                    UserDefaults.standard.setValue(0, forKey: "request_read")
+                                                    //                    UserDefaults.standard.synchronize()
+                                                    //                }
+                                                    
                                                 }
                                                 DispatchQueue.main.async {
                                                     self.tableNews.reloadData()
@@ -1514,10 +1527,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     let isCons = defaults.string(forKey: "isCons")
                     // ЗАЯВКИ С КОММЕНТАРИЯМИ
                     db.del_db(table_name: "Comments")
+                    db.del_db(table_name: "Counters")
                     db.del_db(table_name: "Fotos")
                     db.del_db(table_name: "Applications")
+                    db.parse_Countrers(login: login as! String, pass: pass as! String)
                     db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!, isLoad: false)
-                    
+                    self.getDataCounter()
                     self.updateListApps()
                     
                 }

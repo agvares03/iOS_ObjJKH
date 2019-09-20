@@ -190,7 +190,11 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     if self.delegate != nil {
                         self.delegate?.newAddAppDone(addApp: self)
                     }
-                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    if self.fromMenu{
+                        self.navigationController?.popViewController(animated: true)
+                    }else{
+                        self.navigationController?.dismiss(animated: true, completion: nil)
+                    }
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
@@ -323,6 +327,8 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -477,10 +483,10 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
             self.typeTableHeight.constant = height2
             
-            var height3: CGFloat = 0
-            for cell in self.fileTable.visibleCells {
-                height3 += cell.bounds.height
-            }
+            let height3: CGFloat = CGFloat(33 * self.fileList.count)
+//            for cell in self.fileTable.visibleCells {
+//                height3 += cell.bounds.height
+//            }
             self.fileTableHeight.constant = height3
         }
         return count

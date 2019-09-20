@@ -774,6 +774,7 @@ class FirstController: UIViewController {
         let defaults = UserDefaults.standard
         let login = defaults.string(forKey: "login")
         let pass = defaults.string(forKey: "pass")
+        print(login, pass)
         if (login == "" || login == nil) && firstEnter == false{
             let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in }
@@ -824,7 +825,7 @@ class FirstController: UIViewController {
 //            edLogin.keyboardType = .asciiCapable
 //            edLogin.reloadInputViews()
             edLogin.text = ""
-            if login != nil && login != "" && login?.first == "+" && !maskPhone{
+            if login != nil && login != "" && login?.first == "+"{
                 numberSwitch.isOn = true
                 maskLogin = false
                 maskPhone = true
@@ -836,7 +837,14 @@ class FirstController: UIViewController {
                 loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
                 edLogin.placeholder = "Телефон"
                 edPass.text = pass
-            }else if login != nil && login != "" && !maskLogin && !maskPhone {//&& login!.count > 0{
+                if !UserDefaults.standard.bool(forKey: "exit"){
+                    // Сохраним значения
+                    saveUsersDefaults()
+                    
+                    // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
+                    get_LS()
+                }
+            }else if login != nil && login != ""{//&& login!.count > 0{
                 maskLogin = true
                 maskPhone = false
 //                var mask = ""
@@ -852,13 +860,13 @@ class FirstController: UIViewController {
                 loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
                 edPass.text = pass
                 edLogin.placeholder = "Логин"
-            }
-            if !UserDefaults.standard.bool(forKey: "exit"){
-                // Сохраним значения
-                saveUsersDefaults()
-                
-                // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-                get_LS()
+                if !UserDefaults.standard.bool(forKey: "exit"){
+                    // Сохраним значения
+                    saveUsersDefaults()
+                    
+                    // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
+                    get_LS()
+                }
             }
 //        }else{
 //            // Маска для ввода - телефон

@@ -369,7 +369,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         let currentDate = dateFormatter.string(from: date)
         dateLbl.text = "Показания на \(currentDate) г."
         if lastCheckDate != "" && lastCheckDate != "0"{
-            dateLbl.text = "Последняя проверка \(lastCheckDate) г."
+            dateLbl.text = "Последняя поверка \(lastCheckDate) г."
         }
         nameLbl.text = counterName
         numberLbl.text = counterNumber + ", л/сч " + ident
@@ -504,7 +504,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         }
         if recheckInter != "" && recheckInter != "0"{
             interLbl.isHidden = false
-            interLbl.text = "Межпроверочный интервал \(recheckInter) \(getInterYear(str: recheckInter))"
+            interLbl.text = "Межповерочный интервал \(recheckInter) \(getInterYear(str: recheckInter))"
         }else{
             interLbl.isHidden = true
             interLbl.text = ""

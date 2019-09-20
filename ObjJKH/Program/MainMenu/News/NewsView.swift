@@ -66,17 +66,23 @@ class NewsView: UIViewController {
             data, error, responce in
             print(String(data: data!, encoding: .utf8) ?? "")
             guard data != nil else { return }
-//            var news_read = UserDefaults.standard.integer(forKey: "news_read")
-//            news_read -= 1
-//            DispatchQueue.main.async {
-//                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-//                let updatedBadgeNumber = currentBadgeNumber - 1
-//                if (updatedBadgeNumber > -1) {
-//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-//                }
-//            }
-//            UserDefaults.standard.setValue(news_read, forKey: "news_read")
-//            UserDefaults.standard.synchronize()
+            var read_news = UserDefaults.standard.integer(forKey: "newsKol")
+            read_news -= 1
+            UserDefaults.standard.set(read_news, forKey: "newsKol")
+            DispatchQueue.main.async {
+                let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+                if (updatedBadgeNumber > -1) {
+                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                }
+                //                if request_read >= 0{
+                //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+                //                    UserDefaults.standard.synchronize()
+                //                }else{
+                //                    UserDefaults.standard.setValue(0, forKey: "request_read")
+                //                    UserDefaults.standard.synchronize()
+                //                }
+                
+            }
             
             }.resume()
     }

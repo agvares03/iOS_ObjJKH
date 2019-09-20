@@ -453,23 +453,23 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             guard data != nil else { return }
             
-            var request_read = UserDefaults.standard.integer(forKey: "request_read")
+            var request_read = UserDefaults.standard.integer(forKey: "appsKol")
             request_read -= 1
-//            DispatchQueue.main.async {
-//                let currentBadgeNumber = UIApplication.shared.applicationIconBadgeNumber
-//                let updatedBadgeNumber = currentBadgeNumber - 1
-//                if (updatedBadgeNumber > -1) {
-//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+            UserDefaults.standard.set(request_read, forKey: "appsKol")
+            DispatchQueue.main.async {
+                let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+                if (updatedBadgeNumber > -1) {
+                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                }
+//                if request_read >= 0{
+//                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+//                    UserDefaults.standard.synchronize()
+//                }else{
+//                    UserDefaults.standard.setValue(0, forKey: "request_read")
+//                    UserDefaults.standard.synchronize()
 //                }
-////                if request_read >= 0{
-////                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-////                    UserDefaults.standard.synchronize()
-////                }else{
-////                    UserDefaults.standard.setValue(0, forKey: "request_read")
-////                    UserDefaults.standard.synchronize()
-////                }
-//                
-//            }
+                
+            }
             
             }.resume()
     }
@@ -652,7 +652,6 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         }
                     }
                 }
-                print(comm.text, comm.dateK, showDate[i])
             }
         }
         table_comments.reloadData()
@@ -1010,6 +1009,49 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func closeAppDone(closeApp: CloseAppAlert) {
         self.load_data()
+        showDate.removeAll()
+        if let sections = fetchedResultsController?.sections {
+            //            print(sections[section].numberOfObjects, files.count)
+            for i in 0...sections[0].numberOfObjects - 1{
+                let indexPath = IndexPath(row: i, section: 0)
+                let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
+                let calendar = Calendar.current
+                if comm.dateK != nil{
+                    var hour = String(calendar.component(.hour, from: comm.dateK!))
+                    if hour.count == 1{
+                        hour = "0" + hour
+                    }
+                    var minute = String(calendar.component(.minute, from: comm.dateK!))
+                    if minute.count == 1{
+                        minute = "0" + minute
+                    }
+                    var day = String(calendar.component(.day, from: comm.dateK!))
+                    if day.count == 1{
+                        day = "0" + day
+                    }
+                    var month = String(calendar.component(.month, from: comm.dateK!))
+                    if month.count == 1{
+                        month = "0" + month
+                    }
+                    let year = String(calendar.component(.year, from: comm.dateK!))
+                    //                    let time = hour + ":" + minute
+                    let date = day + "." + month + "." + year
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                    if indexPath.row == 0{
+                        commDate = comm.dateK!
+                        showDate.append(true)
+                    }else{
+                        if dateFormatter.date(from: date)! > commDate{
+                            commDate = comm.dateK!
+                            showDate.append(true)
+                        }else{
+                            showDate.append(false)
+                        }
+                    }
+                }
+            }
+        }
         self.table_comments.reloadData()
         self.delegate?.showAppDone(showApp: self)
     }
