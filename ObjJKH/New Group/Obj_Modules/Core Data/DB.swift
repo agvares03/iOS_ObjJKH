@@ -476,8 +476,8 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.sum             = String(attributeDict["Sum"]!)
             CoreDataManager.instance.saveContext()
         }
+        UserDefaults.standard.set(self.request_read, forKey: "appsKol")
         DispatchQueue.main.async {
-            UserDefaults.standard.set(self.request_read, forKey: "appsKol")
             let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
             if (updatedBadgeNumber > -1) {
                 UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
