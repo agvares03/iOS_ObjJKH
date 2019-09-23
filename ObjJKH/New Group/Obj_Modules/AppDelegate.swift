@@ -200,20 +200,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         var news = 0
         var apps = 0
-        if notifi["gcm.notification.unreadedAnnouncements"] != nil{
-            news = Int(notifi["gcm.notification.unreadedAnnouncements"]! as! String)!
+        if userInfo["gcm.notification.unreadedAnnouncements"] != nil{
+            news = Int(userInfo["gcm.notification.unreadedAnnouncements"]! as! String)!
             UserDefaults.standard.set(news, forKey: "newsKol")
         }
-        if notifi["unreadedAnnouncements"] != nil{
-            news = Int(notifi["unreadedAnnouncements"]! as! String)!
+        if userInfo["unreadedAnnouncements"] != nil{
+            news = Int(userInfo["unreadedAnnouncements"]! as! String)!
             UserDefaults.standard.set(news, forKey: "newsKol")
         }
-        if notifi["gcm.notification.requestsUnreadedCount"] != nil{
-            apps = Int(notifi["gcm.notification.requestsUnreadedCount"]! as! String)!
+        if userInfo["gcm.notification.requestsUnreadedCount"] != nil{
+            apps = Int(userInfo["gcm.notification.requestsUnreadedCount"]! as! String)!
             UserDefaults.standard.set(apps, forKey: "appsKol")
         }
-        if notifi["requestsUnreadedCount"] != nil{
-            apps = Int(notifi["requestsUnreadedCount"]! as! String)!
+        if userInfo["requestsUnreadedCount"] != nil{
+            apps = Int(userInfo["requestsUnreadedCount"]! as! String)!
             UserDefaults.standard.set(apps, forKey: "appsKol")
         }
         let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
