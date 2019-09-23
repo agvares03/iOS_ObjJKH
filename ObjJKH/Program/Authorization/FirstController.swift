@@ -423,11 +423,11 @@ class FirstController: UIViewController {
         return Server.SERVER + Server.ENTER_DJ + "phone=" + loginText + "&pwd=" + txtPass
         #else
         if loginText == "test" {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass
         } else if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass
         } else {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass
             //return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
         }
         #endif
