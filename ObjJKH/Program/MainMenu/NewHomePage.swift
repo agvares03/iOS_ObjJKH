@@ -718,16 +718,28 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 // Fallback on earlier versions
             }
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         self.load_new_data()
         self.getNews()
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    @objc func appMovedToBackground() {
+        if showAD{
+            showAD = false
+        }else{
+            showAD = true
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         showAD = false
         self.StopIndicators()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         DispatchQueue.main.async{
             UserDefaults.standard.set(true, forKey: "fromMenu")
             //            UserDefaults.standard.synchronize()

@@ -79,6 +79,10 @@ class FirstController: UIViewController {
                 }
             }
         }
+        if !maskLogin && loginText.contains("*"){
+            message = "Не верно указан номер телефона"
+            ret = true
+        }
         if (edLogin.text == "") || (edLogin.text!.replacingOccurrences(of: " ", with: "").count == 0){
             message = "Не указан логин. "
             ret = true;

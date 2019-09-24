@@ -318,10 +318,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         targetName = "УК Паритет"
         #elseif isTSN_Ruble40
         targetName = "ТСН Рублевский 40"
-        print(debtArr)
         debtArr.forEach{
             if debtArr.count > 1{
-                if String($0["ident"] as! String) == selectLS{
+                if String($0["Ident"] as! String) == selectLS{
                     if String($0["HouseId"] as! String) == "3"{
                         shopCode = "272890"
                     }else if String($0["HouseId"] as! String) == "5"{
