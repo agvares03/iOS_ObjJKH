@@ -476,6 +476,7 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.sum             = String(attributeDict["Sum"]!)
             CoreDataManager.instance.saveContext()
         }
+        UserDefaults.standard.synchronize()
         UserDefaults.standard.set(self.request_read, forKey: "appsKol")
         DispatchQueue.main.async {
             let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
