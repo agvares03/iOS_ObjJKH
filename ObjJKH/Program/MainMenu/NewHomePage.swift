@@ -1044,7 +1044,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                     }
                                                     i += 1
                                                 }
-                                                UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                if news_read >= 0{
+                                                    UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                }else{
+                                                    UserDefaults.standard.set(0, forKey: "newsKol")
+                                                }
                                                 DispatchQueue.main.async {
                                                     let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
                                                     if (updatedBadgeNumber > -1) {

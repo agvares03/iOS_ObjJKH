@@ -455,7 +455,11 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             var request_read = UserDefaults.standard.integer(forKey: "appsKol")
             request_read -= 1
-            UserDefaults.standard.set(request_read, forKey: "appsKol")
+            if request_read >= 0{
+                UserDefaults.standard.set(request_read, forKey: "appsKol")
+            }else{
+                UserDefaults.standard.set(0, forKey: "appsKol")
+            }
             DispatchQueue.main.async {
                 let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
                 if (updatedBadgeNumber > -1) {

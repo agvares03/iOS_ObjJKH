@@ -967,7 +967,11 @@ class NewMainMenu2: UIViewController {
                     self.news_read += 1
                 }
             }
-            UserDefaults.standard.set(self.news_read, forKey: "newsKol")
+            if self.news_read >= 0{
+                UserDefaults.standard.set(self.news_read, forKey: "newsKol")
+            }else{
+                UserDefaults.standard.set(0, forKey: "newsKol")
+            }
             DispatchQueue.main.async {
                 let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
                 if (updatedBadgeNumber > -1) {
