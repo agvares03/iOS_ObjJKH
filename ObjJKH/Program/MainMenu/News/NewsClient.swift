@@ -89,8 +89,6 @@ class NewsClient {
                                                     unfilteredData?.forEach { json in
                                                         if !json.readed! {
                                                             news_read += 1
-                                                            UserDefaults.standard.setValue(news_read, forKey: "news_read")
-                                                            UserDefaults.standard.synchronize()
                                                         }
                                                         let idNews = json.idNews
                                                         let Created = json.created
@@ -100,7 +98,11 @@ class NewsClient {
                                                         let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
                                                         newsList.append(newsObj)
                                                     }
-                                                    
+                                                    if news_read >= 0{
+                                                        UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                    }else{
+                                                        UserDefaults.standard.set(0, forKey: "newsKol")
+                                                    }
                                                     
                                                 }
                                                 completedBlock(newsList)
