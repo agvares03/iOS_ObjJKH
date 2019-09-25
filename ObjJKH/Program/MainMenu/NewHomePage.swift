@@ -740,10 +740,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.StopIndicators()
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        DispatchQueue.main.async{
+//        DispatchQueue.main.async{
+        if UserDefaults.standard.synchronize(){
             UserDefaults.standard.set(true, forKey: "fromMenu")
-            //            UserDefaults.standard.synchronize()
         }
+            //            UserDefaults.standard.synchronize()
+//        }
 //        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.isNavigationBarHidden = false;
     }
@@ -1044,7 +1046,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                     }
                                                     i += 1
                                                 }
-                                                UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                if news_read >= 0{
+                                                    UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                }else{
+                                                    UserDefaults.standard.set(0, forKey: "newsKol")
+                                                }
                                                 DispatchQueue.main.async {
                                                     let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
                                                     if (updatedBadgeNumber > -1) {

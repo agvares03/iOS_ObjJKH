@@ -68,7 +68,11 @@ class NewsView: UIViewController {
             guard data != nil else { return }
             var read_news = UserDefaults.standard.integer(forKey: "newsKol")
             read_news -= 1
-            UserDefaults.standard.set(read_news, forKey: "newsKol")
+            if read_news >= 0{
+                UserDefaults.standard.set(read_news, forKey: "newsKol")
+            }else{
+                UserDefaults.standard.set(0, forKey: "newsKol")
+            }
             DispatchQueue.main.async {
                 let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
                 if (updatedBadgeNumber > -1) {
