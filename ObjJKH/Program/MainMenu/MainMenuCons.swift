@@ -52,7 +52,7 @@ class MainMenuCons: UIViewController {
     var load = false
     func getNews(){
         news_read = 0
-        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "login_const") ?? ""
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
         request.httpMethod = "GET"
         print(request)

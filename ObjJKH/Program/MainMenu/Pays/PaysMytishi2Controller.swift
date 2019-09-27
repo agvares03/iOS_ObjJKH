@@ -247,7 +247,7 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
                     DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0])|"
                 }
             }else{
-                DataStr = "ls1-\(selectLS)|"
+                DataStr = "ls1-\(selectLS.stringByAddingPercentEncodingForRFC3986() ?? "")|"
             }
             DataStr = DataStr + "|"
             i = 0

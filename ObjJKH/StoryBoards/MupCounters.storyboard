@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sbT-EO-itX">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sbT-EO-itX">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,20 +11,20 @@
         <!--Показания приборов-->
         <scene sceneID="L4q-LZ-Xsy">
             <objects>
-                <viewController storyboardIdentifier="Counters" id="ydz-rR-Nyk" customClass="MupCounterController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Counters" modalPresentationStyle="fullScreen" id="ydz-rR-Nyk" customClass="MupCounterController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wio-eB-1qy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spin.png" translatesAutoresizingMaskIntoConstraints="NO" id="mEb-hz-wml">
-                                <rect key="frame" x="342" y="71" width="21" height="26"/>
+                                <rect key="frame" x="342" y="51" width="21" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="JDI-ho-ay2"/>
                                     <constraint firstAttribute="width" constant="21" id="dWr-lW-Qj0"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лицевой счет:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7l-V3-B30">
-                                <rect key="frame" x="16" y="64" width="114" height="40"/>
+                                <rect key="frame" x="16" y="44" width="114" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="zgl-7f-fr0"/>
                                 </constraints>
@@ -35,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvT-t2-GUM">
-                                <rect key="frame" x="146" y="69" width="229" height="30"/>
+                                <rect key="frame" x="146" y="49" width="229" height="30"/>
                                 <state key="normal" title="Все">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -44,26 +42,26 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Январь 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhm-VM-igM">
-                                <rect key="frame" x="16" y="105" width="343" height="24"/>
+                                <rect key="frame" x="16" y="85" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возможность передавать показания доступна с 15 по 25 числа текущего месяца" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMs-Ls-Njl">
-                                <rect key="frame" x="32" y="137" width="327" height="57.5"/>
+                                <rect key="frame" x="32" y="117" width="327" height="57.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yKD-AC-FaJ">
-                                <rect key="frame" x="0.0" y="199.5" width="375" height="660.5"/>
+                                <rect key="frame" x="0.0" y="179.5" width="375" height="680.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MupCounterCell" rowHeight="556" id="pMl-oe-c33" customClass="MupCounterCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="556"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pMl-oe-c33" id="QfI-Ze-YYv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="555.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="прибор 1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjR-pe-cmh">
@@ -736,7 +734,7 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6Yf-sx-EPZ">
-                                <rect key="frame" x="169" y="356.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="346.5" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45m-Ac-MjE">
@@ -928,20 +926,20 @@
         <!--Показания приборов-->
         <scene sceneID="5XN-Wf-S8D">
             <objects>
-                <viewController id="BvK-wk-1lS" customClass="UniqCountersController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BvK-wk-1lS" customClass="UniqCountersController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jSZ-dh-a9H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kyw-Se-55P">
-                                <rect key="frame" x="0.0" y="250" width="375" height="417"/>
+                                <rect key="frame" x="0.0" y="230" width="375" height="437"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="uniqCounterCell" rowHeight="105" id="AhR-So-Cb8" customClass="UniqCounterCell" customModule="ADS_68" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AhR-So-Cb8" id="c6m-DW-dYa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="104.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdK-G3-Ky3">
@@ -1018,19 +1016,19 @@
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Л/с: 513275627" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dE7-5m-31N">
-                                <rect key="frame" x="15" y="124" width="109.5" height="18"/>
+                                <rect key="frame" x="15" y="104" width="109.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Водомер по ХВС" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz1-c2-Khp">
-                                <rect key="frame" x="16" y="76" width="192" height="18"/>
+                                <rect key="frame" x="16" y="56" width="192" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDQ-JA-AYn">
-                                <rect key="frame" x="0.0" y="202" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="182" width="375" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПЕРИОД" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W02-1H-P89">
                                         <rect key="frame" x="5" y="9" width="177.5" height="21"/>
@@ -1069,7 +1067,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfL-Mf-E4V">
-                                <rect key="frame" x="213" y="71" width="155" height="25"/>
+                                <rect key="frame" x="213" y="51" width="155" height="25"/>
                                 <color key="backgroundColor" red="0.0" green="0.74901960779999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="DVM-ME-eF5"/>
@@ -1083,13 +1081,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="513275627" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVC-F6-bkK">
-                                <rect key="frame" x="290" y="124" width="77.5" height="18"/>
+                                <rect key="frame" x="290" y="104" width="77.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показания не приняты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF2-1J-3gd">
-                                <rect key="frame" x="106" y="102" width="163" height="16"/>
+                                <rect key="frame" x="106" y="82" width="163" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="zrW-Jh-GmW"/>
                                 </constraints>
@@ -1098,25 +1096,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Последняя поверка:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnO-m0-XvK">
-                                <rect key="frame" x="16" y="150" width="145" height="18"/>
+                                <rect key="frame" x="16" y="130" width="145" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Межпроверочный интервал:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pA-GW-rgi">
-                                <rect key="frame" x="15" y="176" width="205" height="18"/>
+                                <rect key="frame" x="15" y="156" width="205" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 лет" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hR-Mc-pQL">
-                                <rect key="frame" x="327" y="175" width="40" height="18"/>
+                                <rect key="frame" x="327" y="155" width="40" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28.10.2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gQ-G0-ena">
-                                <rect key="frame" x="285" y="149" width="82" height="18"/>
+                                <rect key="frame" x="285" y="129" width="82" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1209,7 +1207,7 @@
         <!--Передать показания-->
         <scene sceneID="iaM-25-0Xx">
             <objects>
-                <viewController storyboardIdentifier="sendCount" id="Wwf-NL-cKm" customClass="AddCountersController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sendCount" modalPresentationStyle="fullScreen" id="Wwf-NL-cKm" customClass="AddCountersController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QJD-9l-F7U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1247,7 +1245,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNk-LI-zOf">
-                                <rect key="frame" x="0.0" y="64" width="375" height="796"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="816"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxQ-gL-cZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="715"/>
@@ -1335,7 +1333,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="MN4-o3-er6"/>
                                                                     <constraint firstAttribute="width" constant="30" id="az7-XZ-qa3"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1345,7 +1342,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="VOz-wO-paq"/>
                                                                     <constraint firstAttribute="height" constant="35" id="ZDX-Fl-7p7"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1355,7 +1351,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="WxY-ga-RGQ"/>
                                                                     <constraint firstAttribute="width" constant="30" id="sQ6-oh-lfe"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1365,7 +1360,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="IGj-yf-R4Y"/>
                                                                     <constraint firstAttribute="height" constant="35" id="mrm-Kj-JGc"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1375,7 +1369,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="NlJ-kA-XoX"/>
                                                                     <constraint firstAttribute="height" constant="35" id="iqa-b1-V6R"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1385,7 +1378,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="4Vd-Jo-teU"/>
                                                                     <constraint firstAttribute="height" constant="35" id="HFo-yt-5OQ"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1395,7 +1387,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="EpK-lM-hpz"/>
                                                                     <constraint firstAttribute="width" constant="30" id="Lmk-oE-ZSw"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1405,7 +1396,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="5nm-y9-4aK"/>
                                                                     <constraint firstAttribute="width" constant="30" id="ibz-tq-CQ8"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1644,7 +1634,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="3DZ-Gj-E8r"/>
                                                                     <constraint firstAttribute="height" constant="35" id="HO9-cV-4pW"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1654,7 +1643,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="4BA-Qc-MYn"/>
                                                                     <constraint firstAttribute="width" constant="30" id="x01-1b-7kk"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1664,7 +1652,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="DZo-SG-MeD"/>
                                                                     <constraint firstAttribute="width" constant="30" id="b79-dV-dgB"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1674,7 +1661,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="hl1-mD-Gbg"/>
                                                                     <constraint firstAttribute="height" constant="35" id="zYW-jf-fmg"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1684,7 +1670,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="9rv-Fh-RAV"/>
                                                                     <constraint firstAttribute="height" constant="35" id="O82-bY-7o0"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1694,7 +1679,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="SeZ-xB-3ru"/>
                                                                     <constraint firstAttribute="width" constant="30" id="u1I-n2-JZL"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1704,7 +1688,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="nfj-tq-wHy"/>
                                                                     <constraint firstAttribute="width" constant="30" id="x9U-ua-FDW"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1714,7 +1697,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="cJk-E1-Z4S"/>
                                                                     <constraint firstAttribute="height" constant="35" id="wyQ-lf-CY8"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1979,7 +1961,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="Xzb-eG-gYj"/>
                                                                     <constraint firstAttribute="height" constant="35" id="iIk-Z0-Ajv"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1989,7 +1970,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="E83-MW-Yst"/>
                                                                     <constraint firstAttribute="width" constant="30" id="Kx6-uw-zWg"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1999,7 +1979,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="gO6-ui-hxd"/>
                                                                     <constraint firstAttribute="height" constant="35" id="uNq-Un-guD"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -2009,7 +1988,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="fam-ac-FFN"/>
                                                                     <constraint firstAttribute="width" constant="30" id="zee-5U-WkK"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -2019,7 +1997,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="ptR-KT-GFD"/>
                                                                     <constraint firstAttribute="width" constant="30" id="zxa-Df-Ueh"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -2029,7 +2006,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="4e3-pC-hwy"/>
                                                                     <constraint firstAttribute="width" constant="30" id="p9l-lm-iYi"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -2039,7 +2015,6 @@
                                                                     <constraint firstAttribute="height" constant="35" id="9x4-QF-waw"/>
                                                                     <constraint firstAttribute="width" constant="30" id="IiM-fL-YFy"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -2049,7 +2024,6 @@
                                                                     <constraint firstAttribute="width" constant="30" id="LeI-vL-iXm"/>
                                                                     <constraint firstAttribute="height" constant="35" id="zW1-7s-aj0"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -2443,10 +2417,10 @@
         <!--Navigation Controller-->
         <scene sceneID="659-KO-hso">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sbT-EO-itX" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="sbT-EO-itX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8J7-me-QmW">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

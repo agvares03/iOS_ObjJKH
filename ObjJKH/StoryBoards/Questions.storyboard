@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SCC-uy-aVb">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SCC-uy-aVb">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,13 +11,13 @@
         <!--Опросы-->
         <scene sceneID="XX2-TX-kAo">
             <objects>
-                <viewController storyboardIdentifier="Questions" id="u6p-wC-ZDM" customClass="QuestionsTableVC" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Questions" modalPresentationStyle="fullScreen" id="u6p-wC-ZDM" customClass="QuestionsTableVC" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XHi-Pl-rke">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OAu-KI-Czf">
-                                <rect key="frame" x="0.0" y="64" width="375" height="563"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jxc-Du-Quj">
                                     <size key="itemSize" width="375" height="68"/>
@@ -36,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Опрос №1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxC-gk-atk">
-                                                    <rect key="frame" x="20" y="28" width="335" height="1.5"/>
+                                                    <rect key="frame" x="20" y="8" width="335" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -79,7 +77,7 @@
                                 </cells>
                             </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="pP7-xG-epR">
-                                <rect key="frame" x="169" y="347" width="37" height="37"/>
+                                <rect key="frame" x="169" y="337" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет данных" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEI-vW-9bQ">
@@ -210,7 +208,7 @@
         <!--Title-->
         <scene sceneID="icV-t2-Qbg">
             <objects>
-                <viewController storyboardIdentifier="final" id="BYY-xY-VhV" customClass="QuestionAnswerVC" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="final" modalPresentationStyle="fullScreen" id="BYY-xY-VhV" customClass="QuestionAnswerVC" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YD7-cm-aST">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,7 +234,7 @@
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hfw-Hx-mtt">
-                                <rect key="frame" x="0.0" y="64" width="375" height="537"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ma9-hf-IY8">
                                     <size key="itemSize" width="319" height="54"/>
@@ -295,7 +293,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pe-Xr-rch">
-                                                    <rect key="frame" x="58" y="33" width="237" height="20.5"/>
+                                                    <rect key="frame" x="58" y="13" width="237" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -402,19 +400,19 @@
         <!--Title-->
         <scene sceneID="sln-6C-bZK">
             <objects>
-                <viewController id="y3I-yJ-Hb4" customClass="QuestionFinal" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="y3I-yJ-Hb4" customClass="QuestionFinal" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Nw-DY-YSA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Спасибо за Ваши ответы!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM0-tp-L3i">
-                                <rect key="frame" x="85.5" y="112" width="204" height="21"/>
+                                <rect key="frame" x="85.5" y="92" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Они помогут нам сделать Ваш дом комфортнее" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huO-sa-ZeU">
-                                <rect key="frame" x="16" y="149" width="343" height="41"/>
+                                <rect key="frame" x="16" y="129" width="343" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -467,10 +465,10 @@
         <!--Navigation Controller-->
         <scene sceneID="Nw7-0K-Xdm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SCC-uy-aVb" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="SCC-uy-aVb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VA8-nj-Qlx">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A6q-Up-a9o">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A6q-Up-a9o">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,13 +11,13 @@
         <!--Support Controller-->
         <scene sceneID="Rq5-2a-wmB">
             <objects>
-                <viewController id="LSD-rN-4y5" customClass="SupportController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="LSD-rN-4y5" customClass="SupportController" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yvg-tp-wAD" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP9-HV-WTD">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9II-n9-OYT">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="549"/>
@@ -35,7 +33,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="2DE-Dd-hjt"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -66,7 +63,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="yxj-DD-k7c"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardType="emailAddress" textContentType="nickname"/>
                                             </textField>
@@ -309,7 +305,7 @@
         <!--Support Update-->
         <scene sceneID="FQG-Nn-vAb">
             <objects>
-                <viewController storyboardIdentifier="supportView" id="laX-Kn-2g9" customClass="SupportUpdate" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="supportView" modalPresentationStyle="fullScreen" id="laX-Kn-2g9" customClass="SupportUpdate" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kg2-fR-AAV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -418,10 +414,10 @@
         <!--Navigation Controller-->
         <scene sceneID="71d-Ow-1QP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A6q-Up-a9o" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="A6q-Up-a9o" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LJ0-kN-JJ8">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

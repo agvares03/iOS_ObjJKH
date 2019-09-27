@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81K-Yt-3gD">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81K-Yt-3gD">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,13 +11,13 @@
         <!--Main Menu Cons-->
         <scene sceneID="oAn-OX-A4b">
             <objects>
-                <viewController id="hIX-fI-jOU" customClass="MainMenuCons" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="hIX-fI-jOU" customClass="MainMenuCons" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ti6-XA-pNB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_DemoUC_White.png" translatesAutoresizingMaskIntoConstraints="NO" id="veq-ET-6Az">
-                                <rect key="frame" x="8" y="82" width="80" height="80"/>
+                                <rect key="frame" x="8" y="62" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Xaw-QR-MzG"/>
                                     <constraint firstAttribute="width" constant="80" id="nRW-gM-iNz"/>
@@ -29,7 +27,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-Te-LqA">
-                                <rect key="frame" x="96" y="72" width="216" height="100"/>
+                                <rect key="frame" x="96" y="52" width="216" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta1-pS-3ke">
                                         <rect key="frame" x="8" y="17" width="200" height="18"/>
@@ -59,7 +57,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGu-8z-SFW">
-                                <rect key="frame" x="8" y="180" width="304" height="164"/>
+                                <rect key="frame" x="8" y="160" width="304" height="164"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vi-lR-EPc">
                                         <rect key="frame" x="40" y="4" width="226" height="33"/>
@@ -318,10 +316,10 @@
         <!--Navigation Controller-->
         <scene sceneID="KNh-JC-fAi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="81K-Yt-3gD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="81K-Yt-3gD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DdR-HF-gLV">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -62,7 +62,11 @@ class NewsClient {
     
     func getNews(completedBlock: @escaping (_ list:[News]) -> ()){
         var news_read = 0
-        let phone = UserDefaults.standard.string(forKey: "login") ?? ""
+        var phone = UserDefaults.standard.string(forKey: "login") ?? ""
+        let isCons = UserDefaults.standard.string(forKey: "isCons")
+        if isCons == "1"{
+            phone = UserDefaults.standard.string(forKey: "login_cons") ?? ""
+        }
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
         request.httpMethod = "GET"

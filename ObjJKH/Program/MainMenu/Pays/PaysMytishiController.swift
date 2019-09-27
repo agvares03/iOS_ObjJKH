@@ -293,8 +293,40 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "261606"
         targetName = "Павловское ЖКХ"
         #elseif isNewOpaliha
-        shopCode = "262974"
-        targetName = "Новая Опалиха"
+        targetName = "ТСЖ Новая Опалиха"
+        debtArr.forEach{
+            if debtArr.count > 1{
+                if String($0["Ident"] as! String) == selectLS{
+                    if String($0["HouseId"] as! String) == "1"{
+                        shopCode = "275451"
+                    }else if String($0["HouseId"] as! String) == "2"{
+                        shopCode = "275443"
+                    }else if String($0["HouseId"] as! String) == "3"{
+                        shopCode = "275438"
+                    }else if String($0["HouseId"] as! String) == "4"{
+                        shopCode = "275399"
+                    }else if String($0["HouseId"] as! String) == "5"{
+                        shopCode = "275395"
+                    }else if String($0["HouseId"] as! String) == "6"{
+                        shopCode = "275374"
+                    }
+                }
+            }else{
+                if String($0["HouseId"] as! String) == "1"{
+                    shopCode = "275451"
+                }else if String($0["HouseId"] as! String) == "2"{
+                    shopCode = "275443"
+                }else if String($0["HouseId"] as! String) == "3"{
+                    shopCode = "275438"
+                }else if String($0["HouseId"] as! String) == "4"{
+                    shopCode = "275399"
+                }else if String($0["HouseId"] as! String) == "5"{
+                    shopCode = "275395"
+                }else if String($0["HouseId"] as! String) == "6"{
+                    shopCode = "275374"
+                }
+            }
+        }
         #elseif isPritomskoe
         shopCode = "263200"
         targetName = "Притомское РКЦ"
@@ -415,7 +447,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0])|"
                 }
             }else{
-                DataStr = "ls1-\(selectLS)|"
+                DataStr = "ls1-\(selectLS.stringByAddingPercentEncodingForRFC3986() ?? "")|"
             }
             DataStr = DataStr + "|"
             i = 0
@@ -496,7 +528,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
                 
             }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
+                UserDefaults.standard.set("_" + selectLS.stringByAddingPercentEncodingForRFC3986()!, forKey: "payIdent")
             }
             UserDefaults.standard.synchronize()
             Data["chargeFlag"] = "false"
