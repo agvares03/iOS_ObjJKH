@@ -447,7 +447,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0])|"
                 }
             }else{
-                DataStr = "ls1-\(selectLS)|"
+                DataStr = "ls1-\(selectLS.stringByAddingPercentEncodingForRFC3986() ?? "")|"
             }
             DataStr = DataStr + "|"
             i = 0
@@ -528,7 +528,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 UserDefaults.standard.set("_" + str_ls_arr[0], forKey: "payIdent")
                 
             }else{
-                UserDefaults.standard.set("_" + selectLS, forKey: "payIdent")
+                UserDefaults.standard.set("_" + selectLS.stringByAddingPercentEncodingForRFC3986()!, forKey: "payIdent")
             }
             UserDefaults.standard.synchronize()
             Data["chargeFlag"] = "false"
