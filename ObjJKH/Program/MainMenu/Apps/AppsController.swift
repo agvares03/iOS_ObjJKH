@@ -228,7 +228,12 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         db.del_db(table_name: "Comments")
         db.del_db(table_name: "Fotos")
-        db.parse_Apps(login: UserDefaults.standard.string(forKey: "login") ?? "", pass: UserDefaults.standard.string(forKey: "pass") ?? "", isCons: UserDefaults.standard.string(forKey: "isCons")!, isLoad: false)
+        if isCons == "1"{
+            db.parse_Apps(login: UserDefaults.standard.string(forKey: "login_cons") ?? "", pass: UserDefaults.standard.string(forKey: "pass_cons") ?? "", isCons: UserDefaults.standard.string(forKey: "isCons")!, isLoad: false)
+        }else{
+            db.parse_Apps(login: UserDefaults.standard.string(forKey: "login") ?? "", pass: UserDefaults.standard.string(forKey: "pass") ?? "", isCons: UserDefaults.standard.string(forKey: "isCons")!, isLoad: false)
+        }
+        
         load_data()
         updateTable()
     }
@@ -556,9 +561,13 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     // Экземпляр класса DB
                     let db = DB()
                     let defaults = UserDefaults.standard
-                    let login = defaults.object(forKey: "login")
-                    let pass = defaults.object(forKey: "pass")
+                    var login = defaults.object(forKey: "login")
+                    var pass = defaults.object(forKey: "pass")
                     let isCons = defaults.string(forKey: "isCons")
+                    if isCons == "1"{
+                        login = defaults.object(forKey: "login_cons")
+                        pass = defaults.object(forKey: "pass_cons")
+                    }
                     // ЗАЯВКИ С КОММЕНТАРИЯМИ
                     db.del_db(table_name: "Comments")
                     db.del_db(table_name: "Fotos")
@@ -598,9 +607,13 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     // Экземпляр класса DB
                     let db = DB()
                     let defaults = UserDefaults.standard
-                    let login = defaults.object(forKey: "login")
-                    let pass = defaults.object(forKey: "pass")
+                    var login = defaults.object(forKey: "login")
+                    var pass = defaults.object(forKey: "pass")
                     let isCons = defaults.string(forKey: "isCons")
+                    if isCons == "1"{
+                        login = defaults.object(forKey: "login_cons")
+                        pass = defaults.object(forKey: "pass_cons")
+                    }
                     // ЗАЯВКИ С КОММЕНТАРИЯМИ
                     db.del_db(table_name: "Comments")
                     db.del_db(table_name: "Fotos")
