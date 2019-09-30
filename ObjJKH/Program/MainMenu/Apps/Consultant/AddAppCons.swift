@@ -253,8 +253,8 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
         indicator.stopAnimating()
         indicator.isHidden = true
         let defaults = UserDefaults.standard
-        edLogin = defaults.string(forKey: "login")!
-        edPass = defaults.string(forKey: "pass")!
+        edLogin = defaults.string(forKey: "login_cons")!
+        edPass = defaults.string(forKey: "pass_cons")!
         // получим id текущего аккаунта
         id_author    = defaults.string(forKey: "id_account")!
         name_account = defaults.string(forKey: "name")!

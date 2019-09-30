@@ -621,9 +621,8 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
         // Экземпляр класса DB
         let db = DB()
         let defaults = UserDefaults.standard
-        let login = defaults.object(forKey: "login")
-        let pass = defaults.object(forKey: "pass")
-        
+        let login = defaults.object(forKey: "login_cons")
+        let pass = defaults.object(forKey: "pass_cons")
         // КОММЕНТАРИИ ПО УКАЗАННОЙ ЗАЯВКЕ
         db.del_comms_by_app(number_app: self.id_app)
         db.getComByID(login: login as! String, pass: pass as! String, number: self.id_app)
