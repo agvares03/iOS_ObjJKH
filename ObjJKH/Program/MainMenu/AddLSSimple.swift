@@ -77,7 +77,7 @@ class AddLSSimple: UIViewController {
                                                     }
                                                     
                                                     self.response_ident = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    // print("responseString = \(String(describing: self.response_add_ident))")
+                                                    print("responseString = \(String(describing: self.response_ident))")
                                                     self.choice_ident()
                                                     
             })
@@ -98,6 +98,17 @@ class AddLSSimple: UIViewController {
                         textField.placeholder = "Введите пин-код..."
                     }
                 #endif
+                #if isRKC_Samara
+                alert.addTextField { textField in
+                    textField.placeholder = "Фамилия..."
+                }
+                alert.addTextField { textField in
+                    textField.placeholder = "Имя..."
+                }
+                alert.addTextField { textField in
+                    textField.placeholder = "Отчество..."
+                }
+                #endif
                 
                 let addAction = UIAlertAction(title: "Добавить лицевой счет", style: .default, handler: { (_) -> Void in
                     
@@ -108,7 +119,9 @@ class AddLSSimple: UIViewController {
                             DispatchQueue.main.async(execute: {
                                 self.StopIndicator()
                                 let alert = UIAlertController(title: "Ошибка", message: "Укажите пин-код", preferredStyle: .alert)
-                                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                                    self.choice_ident()
+                                }
                                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                                     self.performSegue(withIdentifier: "support", sender: self)
                                 }
@@ -121,7 +134,46 @@ class AddLSSimple: UIViewController {
                         }
                     
                     #endif
-                    
+                    #if isRKC_Samara
+                    var ref = false
+                    var refStr = ""
+                    if (alert.textFields?[0].text == "") {
+                        ref = true
+                        refStr = "Укажите фамилию"
+                    }
+                    if (alert.textFields?[1].text == "") {
+                        ref = true
+                        if refStr == ""{
+                            refStr = "Укажите имя"
+                        }else{
+                            refStr = refStr + ", имя"
+                        }
+                    }
+                    if (alert.textFields?[2].text == "") {
+                        ref = true
+                        if refStr == ""{
+                            refStr = "Укажите отчество"
+                        }else{
+                            refStr = refStr + ", отчество"
+                        }
+                    }
+                    if ref{
+                        DispatchQueue.main.async(execute: {
+                            self.StopIndicator()
+                            let alert = UIAlertController(title: "Ошибка", message: refStr, preferredStyle: .alert)
+                            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                                self.choice_ident()
+                            }
+                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                self.performSegue(withIdentifier: "support", sender: self)
+                            }
+                            alert.addAction(cancelAction)
+                            alert.addAction(supportAction)
+                            self.present(alert, animated: true, completion: nil)
+                        })
+                        return
+                    }
+                    #endif
                     
                     self.StartIndicator()
                     // Добавление лицевого счета
@@ -129,17 +181,26 @@ class AddLSSimple: UIViewController {
                     urlPath = urlPath + "phone=" + self.phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                     urlPath = urlPath + "&ident=" + (self.edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
                     urlPath = urlPath + "&doAdd=1"
-                    
+                    #if isRKC_Samara
+                    urlPath = urlPath + "&f=" + (alert.textFields?[0].text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+                    urlPath = urlPath + "&i=" + (alert.textFields?[1].text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+                    urlPath = urlPath + "&o=" + (alert.textFields?[2].text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+                    #endif
                     #if isElectroSbitSaratov
                     
                         urlPath = urlPath + "&pin=" + (alert.textFields?.first!.text)!
                     
                     #endif
-                    
+                    var urlS = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_LS_SIMPLE
+                    urlS = urlS + "&f=" + (alert.textFields?[0].text)!
+                    urlS = urlS + "&i=" + (alert.textFields?[1].text)!
+                    urlS = urlS + "&o=" + (alert.textFields?[2].text)!
+                    print(urlS)
                     let url: NSURL = NSURL(string: urlPath)!
                     let request = NSMutableURLRequest(url: url as URL)
                     request.httpMethod = "GET"
                     print(request)
+                    
                     let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                           completionHandler: {
                                                             data, response, error in
@@ -259,7 +320,9 @@ class AddLSSimple: UIViewController {
                     let str = textField.text
                     self.checkSMS(smsCode: str!)
                 }
-                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
+                    self.StopIndicator()
+                }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                     self.performSegue(withIdentifier: "support", sender: self)
                 }
@@ -280,7 +343,9 @@ class AddLSSimple: UIViewController {
                     let str = textField.text
                     self.checkSMS(smsCode: str!)
                 }
-                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
+                    self.StopIndicator()
+                }
                 let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
                     self.performSegue(withIdentifier: "support", sender: self)
                 }
