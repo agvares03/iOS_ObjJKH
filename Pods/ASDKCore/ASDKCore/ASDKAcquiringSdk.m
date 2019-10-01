@@ -48,7 +48,7 @@
 @implementation ASDKAcquiringSdk
 
 + (ASDKAcquiringSdk *)acquiringSdkWithTerminalKey:(NSString *)terminalKey
-										  payType:(NSString *)payType
+                                          payType:(NSString *)payType
                                          password:(NSString *)password
                               publicKeyDataSource:(id<ASDKAcquiringSdkPublicKeyDataSource>)publicKeyDataSource
 {
@@ -57,10 +57,10 @@
     if (acquiringSdk)
     {
         acquiringSdk.terminalKey = terminalKey;
-		acquiringSdk.payType = payType;
+        acquiringSdk.payType = payType;
         acquiringSdk.password = password;
         acquiringSdk.publicKeyDataSource = publicKeyDataSource;
-		acquiringSdk.acquiringApi = [ASDKAcquiringApi acquiringApiWithDomainPath:[acquiringSdk domainPath] domainPath_v2:[acquiringSdk domainPath_v2]];
+        acquiringSdk.acquiringApi = [ASDKAcquiringApi acquiringApiWithDomainPath:[acquiringSdk domainPath] domainPath_v2:[acquiringSdk domainPath_v2]];
     }
     
     return acquiringSdk;
@@ -81,12 +81,7 @@
 
 - (NSString *)domainPath_v2
 {
-	return [self testDomain] ? kASDKTestDomainName_v2 : kASDKDomainName_v2;
-}
-
-- (NSString *)termPath
-{
-	return kASDKAPITermPath;
+    return [self testDomain] ? kASDKTestDomainName_v2 : kASDKDomainName_v2;
 }
 
 - (SecKeyRef)publicKeyRef
@@ -100,15 +95,15 @@
 
 - (void)setTestDomain:(BOOL)value
 {
-	_testDomain = value;
-	
-	self.acquiringApi.domainPath = [self domainPath];
-	self.acquiringApi.domainPath_v2 = [self domainPath_v2];
+    _testDomain = value;
+    
+    self.acquiringApi.domainPath = [self domainPath];
+    self.acquiringApi.domainPath_v2 = [self domainPath_v2];
 }
 
 - (NSInteger)apiRequestsTimeoutInterval
 {
-	return self.acquiringApi.requestTimeoutInterval;
+    return self.acquiringApi.requestTimeoutInterval;
 }
 
 - (void)initWithAmount:(NSNumber *)amount
@@ -118,29 +113,29 @@
            customerKey:(NSString *)customerKey
              recurrent:(BOOL)recurrent
  additionalPaymentData:(NSDictionary *)data
-		   receiptData:(NSDictionary *)receiptData
-			 shopsData:(NSArray *)shopsData
-	 shopsReceiptsData:(NSArray *)shopsReceiptsData
-			  location:(NSString *)location
+           receiptData:(NSDictionary *)receiptData
+             shopsData:(NSArray *)shopsData
+     shopsReceiptsData:(NSArray *)shopsReceiptsData
+              location:(NSString *)location
                success:(void (^)(ASDKInitResponse *response))success
                failure:(void (^)(ASDKAcquringSdkError *error))failure
 {
     ASDKAcquringSdkError *buildError;
     
     ASDKInitRequestBuilder *builder = [ASDKInitRequestBuilder builderWithAmount:amount
-																		orderId:orderId
-																	description:description
-																		payForm:payForm
-																		payType:self.payType
-																	customerKey:customerKey
-																	  recurrent:recurrent
-																	terminalKey:self.terminalKey
-																	   password:self.password
-														  additionalPaymentData:data
-																	receiptData:receiptData
-																	  shopsData:shopsData
-															  shopsReceiptsData:shopsReceiptsData
-																	   location:location];
+                                                                        orderId:orderId
+                                                                    description:description
+                                                                        payForm:payForm
+                                                                        payType:self.payType
+                                                                    customerKey:customerKey
+                                                                      recurrent:recurrent
+                                                                    terminalKey:self.terminalKey
+                                                                       password:self.password
+                                                          additionalPaymentData:data
+                                                                    receiptData:receiptData
+                                                                      shopsData:shopsData
+                                                              shopsReceiptsData:shopsReceiptsData
+                                                                       location:location];
     
     ASDKInitRequest *request = (ASDKInitRequest *)[builder buildError:&buildError];
     
@@ -163,7 +158,7 @@
 }
 
 - (void)finishAuthorizeWithPaymentId:(NSString *)paymentId
-				encryptedPaymentData:(NSString *)encryptedPaymentData
+                encryptedPaymentData:(NSString *)encryptedPaymentData
                             cardData:(NSString *)cardData
                            infoEmail:(NSString *)infoEmail
                              success:(void (^)(ASDKThreeDsData *data, ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status))success
@@ -172,11 +167,11 @@
     ASDKAcquringSdkError *buildError;
     
     ASDKFinishAuthorizeRequestBuilder *builder = [ASDKFinishAuthorizeRequestBuilder builderWithPaymentId:paymentId
-																								cardData:cardData
-																							   infoEmail:infoEmail
-																							 terminalKey:self.terminalKey
-																								password:self.password
-																					encryptedPaymentData:encryptedPaymentData];
+                                                                                                cardData:cardData
+                                                                                               infoEmail:infoEmail
+                                                                                             terminalKey:self.terminalKey
+                                                                                                password:self.password
+                                                                                    encryptedPaymentData:encryptedPaymentData];
     
     ASDKFinishAuthorizeRequest *request = (ASDKFinishAuthorizeRequest *)[builder buildError:&buildError];
     
@@ -206,9 +201,9 @@
     ASDKAcquringSdkError *buildError;
     
     ASDKChargeRequestBuilder *builder = [ASDKChargeRequestBuilder builderWithPaymentId:paymentId
-																			  rebillId:rebillId
-																		   terminalKey:self.terminalKey
-																			  password:self.password];
+                                                                              rebillId:rebillId
+                                                                           terminalKey:self.terminalKey
+                                                                              password:self.password];
     
     ASDKChargeRequest *request = (ASDKChargeRequest *)[builder buildError:&buildError];
     
@@ -323,137 +318,137 @@
 }
 
 - (void)rejectTrancastionWithPaymentId:(NSString *)paymentId
-							   success:(void (^)(ASDKCancelResponse *response))success
-							   failure:(void (^)(ASDKAcquringSdkError *error))failure
+                               success:(void (^)(ASDKCancelResponse *response))success
+                               failure:(void (^)(ASDKAcquringSdkError *error))failure
 {
-	ASDKAcquringSdkError *buildError;
-	
-	ASDKCancelRequestBuilder *builder = [ASDKCancelRequestBuilder builderWithPaymentId:paymentId
-																		   terminalKey:self.terminalKey
-																			  password:self.password];
-	
-	ASDKCancelRequest *request = (ASDKCancelRequest *)[builder buildError:&buildError];
-	
-	if (buildError)
-	{
-		failure(buildError);
-	}
-	else
-	{
-		[self.acquiringApi cancelWithRequest:request
-									 success:^(ASDKCancelResponse *data) {
-			success(data);
-		}
-									 failure:^(ASDKAcquringApiError *error) {
-			failure(error);
-		}];
-	}
+    ASDKAcquringSdkError *buildError;
+    
+    ASDKCancelRequestBuilder *builder = [ASDKCancelRequestBuilder builderWithPaymentId:paymentId
+                                                                           terminalKey:self.terminalKey
+                                                                              password:self.password];
+    
+    ASDKCancelRequest *request = (ASDKCancelRequest *)[builder buildError:&buildError];
+    
+    if (buildError)
+    {
+        failure(buildError);
+    }
+    else
+    {
+        [self.acquiringApi cancelWithRequest:request
+                                     success:^(ASDKCancelResponse *data) {
+            success(data);
+        }
+                                     failure:^(ASDKAcquringApiError *error) {
+            failure(error);
+        }];
+    }
 }
 
 - (void)initAttachCardWithCheckType:(NSString *)cardCheckType
-						customerKey:(NSString *)customerKey
-							success:(void (^)(ASDKResponseAddCardInit *response))success
-							failure:(void (^)(ASDKAcquringSdkError *error))failure
+                        customerKey:(NSString *)customerKey
+                            success:(void (^)(ASDKResponseAddCardInit *response))success
+                            failure:(void (^)(ASDKAcquringSdkError *error))failure
 {
-	ASDKAcquringSdkError *buildError;
+    ASDKAcquringSdkError *buildError;
 
-	ASDKRequestBuilderAddCardInit *builder = [[ASDKRequestBuilderAddCardInit alloc] initWithTerminalKey:self.terminalKey
-																							   password:self.password
-																							customerKey:customerKey
-																							  checkType:cardCheckType];
-	
-	ASDKRequestAddCardInit *request = (ASDKRequestAddCardInit *)[builder buildError:&buildError];
-	
-	if (buildError)
-	{
-		failure(buildError);
-	}
-	else
-	{
-		[self.acquiringApi initAddCardWithRequest:request success:^(ASDKResponseAddCardInit *info) {
-			success(info);
-		} failure:^(ASDKAcquringApiError *error) {
-			failure(error);
-		}];
-	}
+    ASDKRequestBuilderAddCardInit *builder = [[ASDKRequestBuilderAddCardInit alloc] initWithTerminalKey:self.terminalKey
+                                                                                               password:self.password
+                                                                                            customerKey:customerKey
+                                                                                              checkType:cardCheckType];
+    
+    ASDKRequestAddCardInit *request = (ASDKRequestAddCardInit *)[builder buildError:&buildError];
+    
+    if (buildError)
+    {
+        failure(buildError);
+    }
+    else
+    {
+        [self.acquiringApi initAddCardWithRequest:request success:^(ASDKResponseAddCardInit *info) {
+            success(info);
+        } failure:^(ASDKAcquringApiError *error) {
+            failure(error);
+        }];
+    }
 }
 
 - (void)finishAttachCardWithCardData:(NSString *)cardData aditionalInfo:(NSDictionary *)data requestKey:(NSString *)requestKey
-							 success:(void (^)(ASDKThreeDsData *data, ASDKResponseAttachCard *result, ASDKPaymentStatus status))success
-							 failure:(void (^)(ASDKAcquringSdkError *error))failure
+                             success:(void (^)(ASDKThreeDsData *data, ASDKResponseAttachCard *result, ASDKPaymentStatus status))success
+                             failure:(void (^)(ASDKAcquringSdkError *error))failure
 {
-	ASDKAcquringSdkError *buildError;
-	
-	ASDKRequestBuilderAttachCard *builder = [[ASDKRequestBuilderAttachCard alloc] initWithTerminalKey:self.terminalKey password:self.password
-																						   requestKey:requestKey
-																							 cardData:cardData additionalData:data];
-	
-	ASDKRequestAttachCard *request = (ASDKRequestAttachCard *)[builder buildError:&buildError];
-	
-	if (buildError)
-	{
-		failure(buildError);
-	}
-	else
-	{
-		[self.acquiringApi finishAddCardRequest:request success:^(ASDKThreeDsData *data, ASDKResponseAttachCard *result, ASDKPaymentStatus status) {
-			success(data, result, status);
-		} failure:^(ASDKAcquringApiError *error) {
-			failure(error);
-		}];
-	}
+    ASDKAcquringSdkError *buildError;
+    
+    ASDKRequestBuilderAttachCard *builder = [[ASDKRequestBuilderAttachCard alloc] initWithTerminalKey:self.terminalKey password:self.password
+                                                                                           requestKey:requestKey
+                                                                                             cardData:cardData additionalData:data];
+    
+    ASDKRequestAttachCard *request = (ASDKRequestAttachCard *)[builder buildError:&buildError];
+    
+    if (buildError)
+    {
+        failure(buildError);
+    }
+    else
+    {
+        [self.acquiringApi finishAddCardRequest:request success:^(ASDKThreeDsData *data, ASDKResponseAttachCard *result, ASDKPaymentStatus status) {
+            success(data, result, status);
+        } failure:^(ASDKAcquringApiError *error) {
+            failure(error);
+        }];
+    }
 }
 
 - (void)getStateAttachCardWithRequestKey:(NSString *)requestKey
-								 success:(void (^)(ASDKResponseGetAddCardState *response))success
-								 failure:(void (^)(ASDKAcquringSdkError *error))failure
+                                 success:(void (^)(ASDKResponseGetAddCardState *response))success
+                                 failure:(void (^)(ASDKAcquringSdkError *error))failure
 {
-	ASDKAcquringSdkError *buildError;
-	
-	ASDKRequestBuilderGetAttachCardState *builder = [[ASDKRequestBuilderGetAttachCardState alloc] initWithTerminalKey:self.terminalKey password:self.password
-																						   requestKey:requestKey];
-	
-	ASDKRequestGetAttachCardState *request = (ASDKRequestGetAttachCardState *)[builder buildError:&buildError];
-	
-	if (buildError)
-	{
-		failure(buildError);
-	}
-	else
-	{		
-		[self.acquiringApi getStateAttachCardRequest:request success:^(ASDKResponseGetAddCardState *response) {
-			success(response);
-		} failure:^(ASDKAcquringApiError *error) {
-			failure(error);
-		}];
-	}
+    ASDKAcquringSdkError *buildError;
+    
+    ASDKRequestBuilderGetAttachCardState *builder = [[ASDKRequestBuilderGetAttachCardState alloc] initWithTerminalKey:self.terminalKey password:self.password
+                                                                                           requestKey:requestKey];
+    
+    ASDKRequestGetAttachCardState *request = (ASDKRequestGetAttachCardState *)[builder buildError:&buildError];
+    
+    if (buildError)
+    {
+        failure(buildError);
+    }
+    else
+    {
+        [self.acquiringApi getStateAttachCardRequest:request success:^(ASDKResponseGetAddCardState *response) {
+            success(response);
+        } failure:^(ASDKAcquringApiError *error) {
+            failure(error);
+        }];
+    }
 }
 
 - (void)getStateSubmitRandomAmount:(NSNumber *)amount
-						requestKey:(NSString *)requestKey
-						   success:(void (^)(ASDKResponseGetAddCardState *response))success
-						   failure:(void (^)(ASDKAcquringSdkError *error))failure
+                        requestKey:(NSString *)requestKey
+                           success:(void (^)(ASDKResponseGetAddCardState *response))success
+                           failure:(void (^)(ASDKAcquringSdkError *error))failure
 {
-	ASDKAcquringSdkError *buildError;
-	
-	ASDKRequestBuilderSubmitRandomAmount *builder = [[ASDKRequestBuilderSubmitRandomAmount alloc] initWithTerminalKey:self.terminalKey
-																											 password:self.password
-																										   requestKey:requestKey amount:amount];
-	
-	ASDKRequestSubmitRandomAmount *request = (ASDKRequestSubmitRandomAmount *)[builder buildError:&buildError];
-	
-	if (buildError)
-	{
-		failure(buildError);
-	}
-	else
-	{
-		[self.acquiringApi getStateSubmitRandomAmount:request success:^(ASDKResponseGetAddCardState *response) {
-			success(response);
-		} failure:^(ASDKAcquringApiError *error) {
-			failure(error);
-		}];
-	}
+    ASDKAcquringSdkError *buildError;
+    
+    ASDKRequestBuilderSubmitRandomAmount *builder = [[ASDKRequestBuilderSubmitRandomAmount alloc] initWithTerminalKey:self.terminalKey
+                                                                                                             password:self.password
+                                                                                                           requestKey:requestKey amount:amount];
+    
+    ASDKRequestSubmitRandomAmount *request = (ASDKRequestSubmitRandomAmount *)[builder buildError:&buildError];
+    
+    if (buildError)
+    {
+        failure(buildError);
+    }
+    else
+    {
+        [self.acquiringApi getStateSubmitRandomAmount:request success:^(ASDKResponseGetAddCardState *response) {
+            success(response);
+        } failure:^(ASDKAcquringApiError *error) {
+            failure(error);
+        }];
+    }
 }
 
 + (void)getUrlWithSuccess:(void (^)(NSURL *url))success

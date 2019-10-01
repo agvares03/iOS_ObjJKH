@@ -29,17 +29,15 @@
 
 @property (nonatomic, strong) ASDKAcquiringSdk *acquiringSdk;
 
-@property (nonatomic, assign) BOOL isDissmissAfterCompletion;
-
 - (instancetype)initWithCardCheckType:(NSString *)cardCheckType
-							formTitle:(NSString *)title
-						   formHeader:(NSString *)header
-						  description:(NSString *)description
-								email:(NSString *)email
-						  customerKey:(NSString *)customerKey
-					   additionalData:(NSDictionary *)data
-							  success:(void (^)(ASDKResponseAttachCard *paymentInfo))success
-							cancelled:(void (^)(void))cancelled
-								error:(void (^)(ASDKAcquringSdkError *error))error;
+                            formTitle:(NSString *)title
+                           formHeader:(NSString *)header
+                          description:(NSString *)description
+                                email:(NSString *)email
+                          customerKey:(NSString *)customerKey
+                       additionalData:(NSDictionary *)data
+                              success:(void (^)(ASDKResponseAttachCard *paymentInfo))success
+                            cancelled:(void (^)(void))cancelled
+                                error:(void (^)(ASDKAcquringSdkError *error))error;
 
 @end

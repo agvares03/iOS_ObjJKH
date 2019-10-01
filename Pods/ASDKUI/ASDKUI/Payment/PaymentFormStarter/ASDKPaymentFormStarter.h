@@ -66,20 +66,20 @@
 + (instancetype)paymentFormStarterWithAcquiringSdk:(ASDKAcquiringSdk *)acquiringSdk;
 
 - (void)presentPaymentFormFromViewController:(UIViewController *)presentingViewController
-									 orderId:(NSString *)orderId
-									  amount:(NSNumber *)amount
-									   title:(NSString *)title
-								 description:(NSString *)description
-									  cardId:(NSString *)cardId
-									   email:(NSString *)email
-								 customerKey:(NSString *)customerKey
-								   recurrent:(BOOL)recurrent
-								  makeCharge:(BOOL)makeCharge
-					   additionalPaymentData:(NSDictionary *)data
-								 receiptData:(NSDictionary *)receiptData
-									 success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
-								   cancelled:(void (^)(void))onCancelled
-									   error:(void (^)(ASDKAcquringSdkError *error))onError;
+                                     orderId:(NSString *)orderId
+                                      amount:(NSNumber *)amount
+                                       title:(NSString *)title
+                                 description:(NSString *)description
+                                      cardId:(NSString *)cardId
+                                       email:(NSString *)email
+                                 customerKey:(NSString *)customerKey
+                                   recurrent:(BOOL)recurrent
+                                  makeCharge:(BOOL)makeCharge
+                       additionalPaymentData:(NSDictionary *)data
+                                 receiptData:(NSDictionary *)receiptData
+                                     success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+                                   cancelled:(void (^)(void))onCancelled
+                                       error:(void (^)(ASDKAcquringSdkError *error))onError;
 
 - (void)presentPaymentFormFromViewController:(UIViewController *)presentingViewController
                                      orderId:(NSString *)orderId
@@ -89,28 +89,28 @@
                                       cardId:(NSString *)cardId
                                        email:(NSString *)email
                                  customerKey:(NSString *)customerKey
-								   recurrent:(BOOL)recurrent
-								  makeCharge:(BOOL)makeCharge
-					   additionalPaymentData:(NSDictionary *)data
-								 receiptData:(NSDictionary *)receiptData
-								   shopsData:(NSArray *)shopsData
-						   shopsReceiptsData:(NSArray *)shopsReceiptsData
+                                   recurrent:(BOOL)recurrent
+                                  makeCharge:(BOOL)makeCharge
+                       additionalPaymentData:(NSDictionary *)data
+                                 receiptData:(NSDictionary *)receiptData
+                                   shopsData:(NSArray *)shopsData
+                           shopsReceiptsData:(NSArray *)shopsReceiptsData
                                      success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
                                    cancelled:(void (^)(void))onCancelled
                                        error:(void (^)(ASDKAcquringSdkError *error))onError;
 
 - (void)chargeWithRebillId:(NSNumber *)rebillId
-					amount:(NSNumber *)amount
-				   orderId:(NSString *)orderId
-			   description:(NSString *)description
-			   customerKey:(NSString *)customerKey
-	 additionalPaymentData:(NSDictionary *)data
-			   receiptData:(NSDictionary *)receiptData
-				 shopsData:(NSArray *)shopsData
-		 shopsReceiptsData:(NSArray *)shopsReceiptsData
-				   success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
-		   needShowConfirm:(void (^)(UIViewController *vc))paymentConfirm
-					 error:(void (^)(ASDKAcquringSdkError *error))onError;
+                    amount:(NSNumber *)amount
+                   orderId:(NSString *)orderId
+               description:(NSString *)description
+               customerKey:(NSString *)customerKey
+     additionalPaymentData:(NSDictionary *)data
+               receiptData:(NSDictionary *)receiptData
+                 shopsData:(NSArray *)shopsData
+         shopsReceiptsData:(NSArray *)shopsReceiptsData
+                   success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+           needShowConfirm:(void (^)(UIViewController *vc))paymentConfirm
+                     error:(void (^)(ASDKAcquringSdkError *error))onError;
 
 + (BOOL)isPayWithAppleAvailable NS_AVAILABLE_IOS(9_0);
 + (NSArray<PKPaymentNetwork> *)payWithAppleSupportedNetworks NS_AVAILABLE_IOS(9_0);
@@ -123,25 +123,25 @@
  * @param description - Краткое описание товара
  *
  * @param customerKey - Идентификатор покупателя в системе Продавца. Если передается, то для данного покупателя будет осуществлена
- * привязка карты к данному идентификатору клиента CustomerKey. В нотификации на AUTHORIZED будет передан параметр CardId, 
+ * привязка карты к данному идентификатору клиента CustomerKey. В нотификации на AUTHORIZED будет передан параметр CardId,
  * подробнее см. метод GetGardList https://oplata.tinkoff.ru/landing/develop/documentation/GetCardList
  *
  * @param appleMerchantId - берётся из Target->Capabilities -> ApplePay Merchant IDs.
  * Создается в https://developer.apple.com/account/ios/identifier/merchant
  * Настраивается в сертификате https://developer.apple.com/account/ios/identifier/bundle  iOS App IDs -> Edit -> Apple Pay
  *
- * @param shippingMethods - доставка и стоимость доставки, 
+ * @param shippingMethods - доставка и стоимость доставки,
  * например "доставка курьером стоимость 300руб." @[[PKShippingMethod summaryItemWithLabel:@"Доставка курьером" amount:[NSDecimalNumber decimalNumberWithString:@"300"]]]
  *
  * @param shippingContact - кому доставить и адрес доставки
  *
  * @param shippingEditableFields - какие поля можно показывать и редактировть на форме оплаты Apple Pay, например
- * PKAddressFieldNone - ни одного (и не показывать) 
+ * PKAddressFieldNone - ни одного (и не показывать)
  * PKAddressFieldPostalAddress|PKAddressFieldName|PKAddressFieldEmail|PKAddressFieldPhone - Адрес ФИО Email и Телефон
  *
- * @param additionalPaymentData - JSON объект содержащий дополнительные параметры в виде “ключ”:”значение”. 
- * Данные параметры будут переданы на страницу оплаты (в случае ее кастомизации). 
- * Максимальная длина для каждого передаваемого параметра: 
+ * @param additionalPaymentData - JSON объект содержащий дополнительные параметры в виде “ключ”:”значение”.
+ * Данные параметры будут переданы на страницу оплаты (в случае ее кастомизации).
+ * Максимальная длина для каждого передаваемого параметра:
  *  Ключ – 20 знаков,
  *  Значение – 100 знаков.
  * Максимальное количество пар «ключ-значение» не может превышать 20.
@@ -156,32 +156,32 @@
  */
 
 - (void)payWithApplePayFromViewController:(UIViewController *)presentingViewController
-								   amount:(NSNumber *)amount // цена товара
-								  orderId:(NSString *)orderId // идентификатор товара
-							  description:(NSString *)description // описание
-							  customerKey:(NSString *)customerKey // идетинификатор пользователя (для сохранеиня платежей)
-								sendEmail:(BOOL)sendEmail // отправлять чек на почту
-									email:(NSString *)email
-						  appleMerchantId:(NSString *)appleMerchantId // берётся из Target->Capabilities->ApplePay Merchant IDs
-						  shippingMethods:(NSArray<PKShippingMethod *> *)shippingMethods //доставка и стоимость доставки
-						  shippingContact:(PKContact *)shippingContact //кому доставить и адрес доставки
-				   shippingEditableFields:(PKAddressField)shippingEditableFields //какие поля можно показывать и редактировть на форме оплаты ApplePay
-								recurrent:(BOOL)recurrent
-					additionalPaymentData:(NSDictionary *)additionalPaymentData //JSON объект содержащий дополнительные параметры, например @{@"Email" : @"a@test.ru"}
-							  receiptData:(NSDictionary *)receiptData // JSON объект с данными чека, обязательно должен быть объект Items в который вложены позиции чека Email и Taxation - Система налогообложения, значения: osn, usn_income, usn_income_outcome, envd, esn, или patent
-								shopsData:(NSArray *)shopsData
-						shopsReceiptsData:(NSArray *)shopsReceiptsData
-								  success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
-								cancelled:(void (^)(void))onCancelled
-									error:(void (^)(ASDKAcquringSdkError *error))onError NS_AVAILABLE_IOS(9_0);
+                                   amount:(NSNumber *)amount // цена товара
+                                  orderId:(NSString *)orderId // идентификатор товара
+                              description:(NSString *)description // описание
+                              customerKey:(NSString *)customerKey // идетинификатор пользователя (для сохранеиня платежей)
+                                sendEmail:(BOOL)sendEmail // отправлять чек на почту
+                                    email:(NSString *)email
+                          appleMerchantId:(NSString *)appleMerchantId // берётся из Target->Capabilities->ApplePay Merchant IDs
+                          shippingMethods:(NSArray<PKShippingMethod *> *)shippingMethods //доставка и стоимость доставки
+                          shippingContact:(PKContact *)shippingContact //кому доставить и адрес доставки
+                   shippingEditableFields:(PKAddressField)shippingEditableFields //какие поля можно показывать и редактировть на форме оплаты ApplePay
+                                recurrent:(BOOL)recurrent
+                    additionalPaymentData:(NSDictionary *)additionalPaymentData //JSON объект содержащий дополнительные параметры, например @{@"Email" : @"a@test.ru"}
+                              receiptData:(NSDictionary *)receiptData // JSON объект с данными чека, обязательно должен быть объект Items в который вложены позиции чека Email и Taxation - Система налогообложения, значения: osn, usn_income, usn_income_outcome, envd, esn, или patent
+                                shopsData:(NSArray *)shopsData
+                        shopsReceiptsData:(NSArray *)shopsReceiptsData
+                                  success:(void (^)(ASDKPaymentInfo *paymentInfo))onSuccess
+                                cancelled:(void (^)(void))onCancelled
+                                    error:(void (^)(ASDKAcquringSdkError *error))onError NS_AVAILABLE_IOS(9_0);
 
 - (void)checkStatusTransaction:(NSString *)paymentId
-					   success:(void (^)(ASDKPaymentStatus status))onSuccess
-						 error:(void (^)(ASDKAcquringSdkError *error))onError;
+                       success:(void (^)(ASDKPaymentStatus status))onSuccess
+                         error:(void (^)(ASDKAcquringSdkError *error))onError;
 
 - (void)refundTransaction:(NSString *)paymentId
-				  success:(void (^)(void))onSuccess
-					error:(void (^)(ASDKAcquringSdkError *error))onError;
+                  success:(void (^)(void))onSuccess
+                    error:(void (^)(ASDKAcquringSdkError *error))onError;
 
 /*!
  * @bref привязка карты без оплаты, онлайн документация https://oplata.tinkoff.ru/landing/develop/documentation/Init
@@ -204,18 +204,6 @@
  */
 
 - (void)presentAttachFormFromViewController:(UIViewController *)presentingViewController
-								  formTitle:(NSString *)title //Заголовок экрана
-								 formHeader:(NSString *)header // заголовок для пояснения зачем надо привязывать карту
-								description:(NSString *)description //описание зачем надо привязывать карту
-									  email:(NSString *)email //
-							  cardCheckType:(NSString *)cardCheckType //описание возможных значений в ASDKCard.h
-								customerKey:(NSString *)customerKey // идетинификатор пользователя (для сохранеиня платежей и карт)
-							 additionalData:(NSDictionary *)data //JSON объект содержащий дополнительные параметры, например @{@"Phone" : @"+71234567890"}
-									success:(void (^)(ASDKResponseAttachCard *result))onSuccess
-								  cancelled:(void (^)(void))onCancelled
-									  error:(void (^)(ASDKAcquringSdkError *error))onError;
-
-- (void)presentAttachFormFromViewController:(UIViewController *)presentingViewController
                                   formTitle:(NSString *)title //Заголовок экрана
                                  formHeader:(NSString *)header // заголовок для пояснения зачем надо привязывать карту
                                 description:(NSString *)description //описание зачем надо привязывать карту
@@ -223,7 +211,6 @@
                               cardCheckType:(NSString *)cardCheckType //описание возможных значений в ASDKCard.h
                                 customerKey:(NSString *)customerKey // идетинификатор пользователя (для сохранеиня платежей и карт)
                              additionalData:(NSDictionary *)data //JSON объект содержащий дополнительные параметры, например @{@"Phone" : @"+71234567890"}
-                  isDissmissAfterCompletion:(BOOL)isDissmissAfterCompletion //Скрывать ли экран при окончании добавления карты автоматически или нет
                                     success:(void (^)(ASDKResponseAttachCard *result))onSuccess
                                   cancelled:(void (^)(void))onCancelled
                                       error:(void (^)(ASDKAcquringSdkError *error))onError;
