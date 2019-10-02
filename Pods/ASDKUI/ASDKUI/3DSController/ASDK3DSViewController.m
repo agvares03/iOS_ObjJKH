@@ -169,15 +169,19 @@ typedef NS_ENUM(NSInteger, CheckStateType)
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-	[self setupWebView];
-	
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self setupWebView];
+  
+    if (@available(iOS 13.0, *)) {
+        [self.view setBackgroundColor:[UIColor systemBackgroundColor]];
+    } else {
+        [self.view setBackgroundColor:[UIColor whiteColor]];
+    }
     
     self.navigationItem.leftBarButtonItem = [[ASDKBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel3DS)];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.threeDsData.ACSUrl];
 	request.timeoutInterval = _acquiringSdk.apiRequestsTimeoutInterval;
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod:@"POST"];
     NSString *dataString = [self stringFromParameters:[self parameters]];
 
