@@ -66,10 +66,10 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     NSString *_cardIdPriorityPass;
     NSString *_email;
     NSString *_customerKey;
-    BOOL    _requrent;
-    
+	BOOL	_requrent;
+	
     BOOL _shouldShowKeyboardWhenNewCardSelected;
-    BOOL _needSetupCardRequisitesCellForCVC;
+	BOOL _needSetupCardRequisitesCellForCVC;
 }
 
 @property (nonatomic, strong) ASDKPaymentFormHeaderCell *headerCell;
@@ -113,13 +113,13 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
                    description:(NSString *)description
                         cardId:(NSString *)cardId
                          email:(NSString *)email
-                   customerKey:(NSString *)customerKey
-                     recurrent:(BOOL)recurrent
-                    makeCharge:(BOOL)makeCharge
-         additionalPaymentData:(NSDictionary *)data
-                   receiptData:(NSDictionary *)receiptData
-                     shopsData:(NSArray *)shopsData
-             shopsReceiptsData:(NSArray *)shopsReceiptsData
+				   customerKey:(NSString *)customerKey
+					 recurrent:(BOOL)recurrent
+					makeCharge:(BOOL)makeCharge
+		 additionalPaymentData:(NSDictionary *)data
+				   receiptData:(NSDictionary *)receiptData
+					 shopsData:(NSArray *)shopsData
+			 shopsReceiptsData:(NSArray *)shopsReceiptsData
                        success:(void (^)(ASDKPaymentInfo *paymentInfo))success
                      cancelled:(void (^)(void))cancelled
                          error:(void (^)(ASDKAcquringSdkError *error))error
@@ -138,15 +138,15 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
         _onCancelled = cancelled;
         _onError = error;
         _customerKey = customerKey;
-        _requrent = recurrent;
-        _additionalPaymentData = data;
-        _receiptData = receiptData;
-        _shopsData = shopsData;
-        _shopsReceiptsData = shopsReceiptsData;
-        _updateCardCell = NO;
-        _makeCharge = makeCharge;
-        _chargeError = NO;
-        _needSetupCardRequisitesCellForCVC = NO;
+		_requrent = recurrent;
+		_additionalPaymentData = data;
+		_receiptData = receiptData;
+		_shopsData = shopsData;
+		_shopsReceiptsData = shopsReceiptsData;
+		_updateCardCell = NO;
+		_makeCharge = makeCharge;
+		_chargeError = NO;
+		_needSetupCardRequisitesCellForCVC = NO;
     }
 
     return self;
@@ -155,22 +155,22 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+	
     self.title = LOC(@"acq_screen_title");
-    
-    [self.navigationController.navigationBar setTranslucent:NO];
-    
-    self.tableView.sectionHeaderHeight = 0;
-    self.tableView.sectionFooterHeight = 0;
-    self.tableView.estimatedSectionHeaderHeight = 0;
-    self.tableView.estimatedSectionFooterHeight = 0;
-    self.tableView.rowHeight = 0;
-    
+	
+	[self.navigationController.navigationBar setTranslucent:NO];
+	
+	self.tableView.sectionHeaderHeight = 0;
+	self.tableView.sectionFooterHeight = 0;
+	self.tableView.estimatedSectionHeaderHeight = 0;
+	self.tableView.estimatedSectionFooterHeight = 0;
+	self.tableView.rowHeight = 0;
+	
     [self.tableView setBackgroundColor:[ASDKDesign colorTableViewBackground]];
-    [self.tableView registerNib:[UINib nibWithNibName:@"ASDKEmptyTableViewCell" bundle:[NSBundle bundleForClass:[self class]]] forCellReuseIdentifier:@"ASDKEmptyTableViewCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"ASDKPaymentFormHeaderCell" bundle:[NSBundle bundleForClass:[self class]]] forCellReuseIdentifier:@"ASDKPaymentFormHeaderCell"];
+	[self.tableView registerNib:[UINib nibWithNibName:@"ASDKEmptyTableViewCell" bundle:[NSBundle bundleForClass:[self class]]] forCellReuseIdentifier:@"ASDKEmptyTableViewCell"];
+	[self.tableView registerNib:[UINib nibWithNibName:@"ASDKPaymentFormHeaderCell" bundle:[NSBundle bundleForClass:[self class]]] forCellReuseIdentifier:@"ASDKPaymentFormHeaderCell"];
 
-    self.keyboardHeight = 0;
+	self.keyboardHeight = 0;
 
     ASDKBarButtonItem *cancelButton = [[ASDKBarButtonItem alloc] initWithTitle:LOC(@"acq_btn_cancel")
                                                                      style:UIBarButtonItemStylePlain
@@ -179,207 +179,207 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     
     ASDKPaymentFormStarter *paymentFormStarter = [ASDKPaymentFormStarter instance];
     ASDKDesignConfiguration *designConfiguration = paymentFormStarter.designConfiguration;
-    if ([designConfiguration payViewTitle] != nil)
-    {
-        self.title = [designConfiguration payViewTitle];
-    }
-    
-    self.customSecureLogo = designConfiguration.paymentsSecureLogosView;
-    
+	if ([designConfiguration payViewTitle] != nil)
+	{
+		self.title = [designConfiguration payViewTitle];
+	}
+	
+	self.customSecureLogo = designConfiguration.paymentsSecureLogosView;
+	
     cancelButton.tintColor = [designConfiguration navigationBarItemsTextColor];
-    [self.navigationItem setLeftBarButtonItem:cancelButton];
-    
-    if (designConfiguration.customBackButton)
-    {
-        [self.navigationItem setLeftBarButtonItem:nil];
-        
-        UIBarButtonItem *button = designConfiguration.customBackButton;
-        [button setAction:@selector(cancelAction:)];
-        [button setTarget:self];
+	[self.navigationItem setLeftBarButtonItem:cancelButton];
+	
+	if (designConfiguration.customBackButton)
+	{
+		[self.navigationItem setLeftBarButtonItem:nil];
+		
+		UIBarButtonItem *button = designConfiguration.customBackButton;
+		[button setAction:@selector(cancelAction:)];
+		[button setTarget:self];
 
-        [self.navigationItem setLeftBarButtonItem:button];
-    }
+		[self.navigationItem setLeftBarButtonItem:button];
+	}
 
-    NSMutableArray *dataSource = [NSMutableArray new];
-    if (designConfiguration.payFormItems != nil)
-    {
-        [dataSource addObjectsFromArray:designConfiguration.payFormItems];
-    }
+	NSMutableArray *dataSource = [NSMutableArray new];
+	if (designConfiguration.payFormItems != nil)
+	{
+		[dataSource addObjectsFromArray:designConfiguration.payFormItems];
+	}
 
-    if ([dataSource count] == 0)
-    {
-        [dataSource addObjectsFromArray:@[@(CellProductTitle),
-                                          @(CellProductDescription),
-                                          @(CellAmount),
-                                          @(CellPaymentCardRequisites),
-                                          @(CellEmail),
-                                          @(CellPayButton),
-                                          @(CellSecureLogos)
-                                          ]];
-    }
+	if ([dataSource count] == 0)
+	{
+		[dataSource addObjectsFromArray:@[@(CellProductTitle),
+										  @(CellProductDescription),
+										  @(CellAmount),
+										  @(CellPaymentCardRequisites),
+										  @(CellEmail),
+										  @(CellPayButton),
+										  @(CellSecureLogos)
+										  ]];
+	}
 
-    self.tableViewDataSource = [dataSource copy];
-    
+	self.tableViewDataSource = [dataSource copy];
+	
     [self updateExternalCardsList];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    
-    if (self.updateCardCell == YES)
-    {
-        self.updateCardCell = NO;
-        [self updateSelectedExternalCardOnStart];
-    }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+	[super viewWillAppear:animated];
+	
+	if (self.updateCardCell == YES)
+	{
+		self.updateCardCell = NO;
+		[self updateSelectedExternalCardOnStart];
+	}
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+	[super viewDidDisappear:animated];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification
 {
-    self.keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    
-    [self updateFlexibleSpace];
+	self.keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+	
+	[self updateFlexibleSpace];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    self.keyboardHeight = 0;
-    
-    [self updateFlexibleSpace];
+	self.keyboardHeight = 0;
+	
+	[self updateFlexibleSpace];
 }
 
 - (void)updateFlexibleSpace
 {
-    NSMutableArray<NSIndexPath *> *paths = [NSMutableArray new];
-    for (NSInteger index = 0; index < [self.tableViewDataSource count]; index++)
-    {
-        NSNumber *number = [self.tableViewDataSource objectAtIndex:index];
-        if ([number integerValue] == CellEmptyFlexibleSpace)
-        {
-            [paths addObject:[NSIndexPath indexPathForRow:index inSection:0]];
-        }
-    }
-    
-    if ([paths count] > 0)
-    {
-        [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+	NSMutableArray<NSIndexPath *> *paths = [NSMutableArray new];
+	for (NSInteger index = 0; index < [self.tableViewDataSource count]; index++)
+	{
+		NSNumber *number = [self.tableViewDataSource objectAtIndex:index];
+		if ([number integerValue] == CellEmptyFlexibleSpace)
+		{
+			[paths addObject:[NSIndexPath indexPathForRow:index inSection:0]];
+		}
+	}
+	
+	if ([paths count] > 0)
+	{
+		[self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
 }
 
 - (void)updateExternalCardsList
 {
     if (_customerKey.length > 0)
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationShowLoader object:nil];
-        
-        __weak typeof(self) weakSelf = self;
-        
-        [[ASDKCardsListDataController instance] updateCardsListWithSuccessBlock:^
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-            
-            __strong typeof(self) strongSelf = weakSelf;
-            
-            if (strongSelf)
-            {
-                [strongSelf updateSelectedExternalCardOnStart];
-            }
-        }
-                                                                     errorBlock:^(ASDKAcquringSdkError *error)
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-            
-            __strong typeof(self) strongSelf = weakSelf;
-            
-            if (strongSelf)
-            {
-                [strongSelf updateSelectedExternalCardOnStart];
-            }
-        }];
+		[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationShowLoader object:nil];
+		
+		__weak typeof(self) weakSelf = self;
+		
+		[[ASDKCardsListDataController instance] updateCardsListWithSuccessBlock:^
+		{
+			[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+			
+			__strong typeof(self) strongSelf = weakSelf;
+			
+			if (strongSelf)
+			{
+				[strongSelf updateSelectedExternalCardOnStart];
+			}
+		}
+																	 errorBlock:^(ASDKAcquringSdkError *error)
+		{
+			[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+			
+			__strong typeof(self) strongSelf = weakSelf;
+			
+			if (strongSelf)
+			{
+				[strongSelf updateSelectedExternalCardOnStart];
+			}
+		}];
     }
 }
 
 - (void)updateSelectedExternalCardOnStart
 {
-    if ([self filterCardList:[[ASDKCardsListDataController instance] externalCards]].count > 0)
+	if ([self filterCardList:[[ASDKCardsListDataController instance] externalCards]].count > 0)
     {
-        NSMutableArray *dataSource = [NSMutableArray arrayWithArray:self.tableViewDataSource];
-        NSUInteger index = [dataSource indexOfObjectIdenticalTo:@(CellPaymentCardRequisites)];
-        if (index != NSNotFound && [dataSource indexOfObjectIdenticalTo:@(CellPyamentCardID)] == NSNotFound)
-        {
-            [dataSource insertObject:@(CellPyamentCardID) atIndex:index];
-            self.tableViewDataSource = [dataSource copy];
-        }
+		NSMutableArray *dataSource = [NSMutableArray arrayWithArray:self.tableViewDataSource];
+		NSUInteger index = [dataSource indexOfObjectIdenticalTo:@(CellPaymentCardRequisites)];
+		if (index != NSNotFound && [dataSource indexOfObjectIdenticalTo:@(CellPyamentCardID)] == NSNotFound)
+		{
+			[dataSource insertObject:@(CellPyamentCardID) atIndex:index];
+			self.tableViewDataSource = [dataSource copy];
+		}
 
-        ASDKCard *card = _selectedCard;
+		ASDKCard *card = _selectedCard;
 
-        if (_selectedCard == nil)
-        {
-            if (_cardIdPriorityPass != nil)
-            {
-                card = [[ASDKCardsListDataController instance] cardWithIdentifier:_cardIdPriorityPass];
-            }
+		if (_selectedCard == nil)
+		{
+			if (_cardIdPriorityPass != nil)
+			{
+				card = [[ASDKCardsListDataController instance] cardWithIdentifier:_cardIdPriorityPass];
+			}
 
-            if (_makeCharge == YES && card == nil && _cardIdPriorityPass != nil)
-            {
-                card = [[ASDKCardsListDataController instance] cardWithIdentifier:_cardIdPriorityPass];
-                if (card.rebillId == nil)
-                {
-                    card = [[ASDKCardsListDataController instance] cardWithRebillId];
-                }
-            }
-            else if (card == nil && _cardIdPriorityPass != nil && _cardIdPriorityPass.length == 0)
-            {
-                card = [[[ASDKCardsListDataController instance] externalCards] firstObject];
-            }
+			if (_makeCharge == YES && card == nil && _cardIdPriorityPass != nil)
+			{
+				card = [[ASDKCardsListDataController instance] cardWithIdentifier:_cardIdPriorityPass];
+				if (card.rebillId == nil)
+				{
+					card = [[ASDKCardsListDataController instance] cardWithRebillId];
+				}
+			}
+			else if (card == nil && _cardIdPriorityPass != nil && _cardIdPriorityPass.length == 0)
+			{
+				card = [[[ASDKCardsListDataController instance] externalCards] firstObject];
+			}
 
-            [self setSelectedCard:card];
-            
-            if (card == nil)
-            {
-                _shouldShowKeyboardWhenNewCardSelected = YES;
-            }
-        }
+			[self setSelectedCard:card];
+			
+			if (card == nil)
+			{
+				_shouldShowKeyboardWhenNewCardSelected = YES;
+			}
+		}
     }
-    else
-    {
-        [self setSelectedCard:nil];
-        NSMutableArray *dataSource = [NSMutableArray arrayWithArray:self.tableViewDataSource];
-        
-        NSUInteger index = [dataSource indexOfObjectIdenticalTo:@(CellPyamentCardID)];
-        if (index != NSNotFound)
-        {
-            [dataSource removeObjectAtIndex:index];
-            self.tableViewDataSource = [dataSource copy];
-        }
-    }
+	else
+	{
+		[self setSelectedCard:nil];
+		NSMutableArray *dataSource = [NSMutableArray arrayWithArray:self.tableViewDataSource];
+		
+		NSUInteger index = [dataSource indexOfObjectIdenticalTo:@(CellPyamentCardID)];
+		if (index != NSNotFound)
+		{
+			[dataSource removeObjectAtIndex:index];
+			self.tableViewDataSource = [dataSource copy];
+		}
+	}
 
-    [self.tableView reloadData];
+	[self.tableView reloadData];
 
-    if (_needSetupCardRequisitesCellForCVC == YES)
-    {
-        self.makeCharge = NO;
-        self.chargeError = YES;
-        [[self cardRequisitesCell] setupForCVCInput];
-        [[self cardRequisitesCell] setUserInteractionEnabled:YES];
+	if (_needSetupCardRequisitesCellForCVC == YES)
+	{
+		self.makeCharge = NO;
+		self.chargeError = YES;
+		[[self cardRequisitesCell] setupForCVCInput];
+		[[self cardRequisitesCell] setUserInteractionEnabled:YES];
 
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[[self cardRequisitesCell] secretCVVTextField] becomeFirstResponder];
-        });
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[[[self cardRequisitesCell] secretCVVTextField] becomeFirstResponder];
+		});
 
-        _needSetupCardRequisitesCellForCVC = NO;
-    }
+		_needSetupCardRequisitesCellForCVC = NO;
+	}
 }
 
 #pragma mark - ASDKCustomKeyboardInputDelegate
@@ -409,20 +409,20 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
         
         if (selectedRange.location != NSNotFound)
         {
-            if (selectedRange.location > 0)
-            {
-                range.location = selectedRange.location - 1;
-            }
-            else
-            {
-                range.location = 0;
-            }
+			if (selectedRange.location > 0)
+			{
+				range.location = selectedRange.location - 1;
+			}
+			else
+			{
+				range.location = 0;
+			}
         }
-        
-        if (selectedRange.length > 0)
-        {
-            range.length = selectedRange.length;
-        }
+		
+		if (selectedRange.length > 0)
+		{
+			range.length = selectedRange.length;
+		}
         
         [self.cardRequisitesCell textField:textField shouldChangeCharactersInRange:range replacementString:@""];
     }
@@ -448,27 +448,27 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     if (_selectedCard)
     {
         NSString *cardNumber = _selectedCard.pan;
-        
-        if (_selectedCard.rebillId != nil)
-        {
-            [self updateCardRequisitesCellWithCardRequisites:cardNumber expiredData:nil];
-            [[self cardRequisitesCell] setUserInteractionEnabled:NO];
-            [self cardRequisitesCell].showSecretContainer = NO;
-            [[self cardRequisitesCell] setScanButtonHidden:YES animated:NO];
+		
+		if (_selectedCard.rebillId != nil)
+		{
+			[self updateCardRequisitesCellWithCardRequisites:cardNumber expiredData:nil];
+			[[self cardRequisitesCell] setUserInteractionEnabled:NO];
+			[self cardRequisitesCell].showSecretContainer = NO;
+			[[self cardRequisitesCell] setScanButtonHidden:YES animated:NO];
 
-            [[self cardRequisitesCell] setCardNumber:cardNumber];
-            [[[self cardRequisitesCell] textFieldCardNumber] setText:cardNumber];
-            [[[self cardRequisitesCell] textFieldCardNumber] setTextColor:[UIColor blackColor]];
-        }
-        else
-        {
-            [[self cardRequisitesCell] setUserInteractionEnabled:YES];
-            [self updateCardRequisitesCellWithCardRequisites:cardNumber expiredData:nil];
-            [self cardRequisitesCell].showSecretContainer = YES;
-        }
-        
+			[[self cardRequisitesCell] setCardNumber:cardNumber];
+			[[[self cardRequisitesCell] textFieldCardNumber] setText:cardNumber];
+			[[[self cardRequisitesCell] textFieldCardNumber] setTextColor:[UIColor blackColor]];
+		}
+		else
+		{
+			[[self cardRequisitesCell] setUserInteractionEnabled:YES];
+			[self updateCardRequisitesCellWithCardRequisites:cardNumber expiredData:nil];
+			[self cardRequisitesCell].showSecretContainer = YES;
+		}
+		
         [self externalCardsCell].titleLabel.text = LOC(@"acq_saved_card_label");
-        
+		
         if (_shouldShowKeyboardWhenNewCardSelected)
         {
             //[[self cardRequisitesCell].secretCVVTextField becomeFirstResponder];
@@ -480,7 +480,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     }
     else
     {
-        [[self cardRequisitesCell] setUserInteractionEnabled:YES];
+		[[self cardRequisitesCell] setUserInteractionEnabled:YES];
         [[self cardRequisitesCell].textFieldCardCVC setText:@""];
         [[self cardRequisitesCell].textFieldCardDate setText:@""];
         [self updateCardRequisitesCellWithCardRequisites:@"" expiredData:nil];
@@ -590,8 +590,8 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     if (!_emailCell)
     {
         _emailCell = [ASDKEmailCell cell];
-        [_emailCell.emailTextField setPlaceholder:LOC(@"acq_email_hint")];
-        [_emailCell.emailTextField setText:_email];
+		[_emailCell.emailTextField setPlaceholder:LOC(@"acq_email_hint")];
+		[_emailCell.emailTextField setText:_email];
         [_emailCell.emailTextField setDelegate:self];
     }
     
@@ -622,15 +622,15 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 
 - (void)needSetupCardRequisitesCellForCVC
 {
-    self.updateCardCell = YES;
-    _needSetupCardRequisitesCellForCVC = YES;
+	self.updateCardCell = YES;
+	_needSetupCardRequisitesCellForCVC = YES;
 }
 
 #pragma mark - button action
 
 - (void)buttonPayAction:(UIButton *)button
 {
-    [self performPayment];
+	[self performPayment];
 }
 
 #pragma mark - UITextField Delegate
@@ -679,220 +679,220 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
-    
-    switch ([[self.tableViewDataSource objectAtIndex:indexPath.row] integerValue])
-    {
-          case CellProductTitle:
-            {
-                ASDKPaymentFormHeaderCell *cellTitle = [tableView dequeueReusableCellWithIdentifier:@"ASDKPaymentFormHeaderCell"];
-                cellTitle.titleLabel.text = _paymentTitle;
-                cellTitle.descriptionLabel.text = nil;
-                [cellTitle layoutIfNeeded];
-                cell = cellTitle;
-            }
-            break;
+	UITableViewCell *cell = nil;
+	
+	switch ([[self.tableViewDataSource objectAtIndex:indexPath.row] integerValue])
+	{
+  		case CellProductTitle:
+			{
+				ASDKPaymentFormHeaderCell *cellTitle = [tableView dequeueReusableCellWithIdentifier:@"ASDKPaymentFormHeaderCell"];
+				cellTitle.titleLabel.text = _paymentTitle;
+				cellTitle.descriptionLabel.text = nil;
+				[cellTitle layoutIfNeeded];
+				cell = cellTitle;
+			}
+			break;
 
-        case CellProductDescription:
-            {
-                ASDKPaymentFormHeaderCell *cellTitle = [tableView dequeueReusableCellWithIdentifier:@"ASDKPaymentFormHeaderCell"];
-                cellTitle.titleLabel.text = nil;
-                cellTitle.descriptionLabel.text = _paymentDescription;
-                [cellTitle layoutIfNeeded];
-                cell = cellTitle;
-            }
-            break;
+		case CellProductDescription:
+			{
+				ASDKPaymentFormHeaderCell *cellTitle = [tableView dequeueReusableCellWithIdentifier:@"ASDKPaymentFormHeaderCell"];
+				cellTitle.titleLabel.text = nil;
+				cellTitle.descriptionLabel.text = _paymentDescription;
+				[cellTitle layoutIfNeeded];
+				cell = cellTitle;
+			}
+			break;
 
-        case CellAmount:
-            cell = [self summCell];
-            break;
+		case CellAmount:
+			cell = [self summCell];
+			break;
 
-        case CellEmail:
-            cell = [self emailCell];
-            break;
+		case CellEmail:
+			cell = [self emailCell];
+			break;
 
-        case CellSecureLogos:
-            cell = [self footerCell];
-            [[self footerCell] setCustomSecureLogos:self.customSecureLogo];
-            break;
+		case CellSecureLogos:
+			cell = [self footerCell];
+			[[self footerCell] setCustomSecureLogos:self.customSecureLogo];
+			break;
 
-        case CellPayButton:
-            {
-                ASDKPaymentFormStarter *paymentFormStarter = [ASDKPaymentFormStarter instance];
-                ASDKDesignConfiguration *designConfiguration = paymentFormStarter.designConfiguration;
-                if (designConfiguration.customPayButton == nil)
-                {
-                    ASDKPayButtonCell *paymentButtonCell = [self paymentButtonCell];
-                    
-                    [paymentButtonCell setButtonTitle:designConfiguration.payButtonTitle];
-                    [paymentButtonCell setAttributedButtonTitle:designConfiguration.payButtonAttributedTitle];
-                    
-                    cell = paymentButtonCell;
-                }
-                else
-                {
-                    cell = [tableView dequeueReusableCellWithIdentifier:@"ASDKEmptyTableViewCell" forIndexPath:indexPath];
-                    [designConfiguration.customPayButton setCenter:cell.contentView.center];
-                    [cell.contentView addSubview:designConfiguration.customPayButton];
-                    
-                    [designConfiguration.customPayButton addTarget:self action:@selector(buttonPayAction:) forControlEvents:UIControlEventTouchUpInside];
-                }
-            }
-            break;
+		case CellPayButton:
+			{
+				ASDKPaymentFormStarter *paymentFormStarter = [ASDKPaymentFormStarter instance];
+				ASDKDesignConfiguration *designConfiguration = paymentFormStarter.designConfiguration;
+				if (designConfiguration.customPayButton == nil)
+				{
+					ASDKPayButtonCell *paymentButtonCell = [self paymentButtonCell];
+					
+					[paymentButtonCell setButtonTitle:designConfiguration.payButtonTitle];
+					[paymentButtonCell setAttributedButtonTitle:designConfiguration.payButtonAttributedTitle];
+					
+					cell = paymentButtonCell;
+				}
+				else
+				{
+					cell = [tableView dequeueReusableCellWithIdentifier:@"ASDKEmptyTableViewCell" forIndexPath:indexPath];
+					[designConfiguration.customPayButton setCenter:cell.contentView.center];
+					[cell.contentView addSubview:designConfiguration.customPayButton];
+					
+					[designConfiguration.customPayButton addTarget:self action:@selector(buttonPayAction:) forControlEvents:UIControlEventTouchUpInside];
+				}
+			}
+			break;
 
-        case CellPyamentCardID:
-            cell = [self externalCardsCell];
-            break;
+		case CellPyamentCardID:
+			cell = [self externalCardsCell];
+			break;
 
-        case CellPaymentCardRequisites:
-            cell = [self cardRequisitesCell];
-            break;
-        
-        case CellEmpty20px:
-        case CellEmpty5px:
-        case CellEmptyFlexibleSpace:
-          default:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"ASDKEmptyTableViewCell"];
-            break;
-    }
-    
-    if (indexPath.row > 0)
-    {
-        NSInteger index = [[self.tableViewDataSource objectAtIndex:indexPath.row-1] integerValue];
-        NSInteger index1 = [[self.tableViewDataSource objectAtIndex:indexPath.row] integerValue];
-        if ((index == CellProductTitle || index == CellProductDescription || index == CellEmpty20px || index == CellEmpty5px || index == CellEmptyFlexibleSpace) &&
-           (index1 != CellProductDescription && index1 != CellEmpty20px && index1 != CellEmpty5px && index1 != CellEmptyFlexibleSpace))
-        {
-            if ([cell isKindOfClass:[ASDKBaseCell class]] && [cell respondsToSelector:@selector(shouldShowTopSeparator)])
-            {
-                ASDKBaseCell *baseCell = (ASDKBaseCell *)cell;
-                baseCell.shouldShowTopSeparator = YES;
-            }
-        }
-        else
-        {
-            if ([cell isKindOfClass:[ASDKBaseCell class]] && [cell respondsToSelector:@selector(shouldShowTopSeparator)])
-            {
-                ASDKBaseCell *baseCell = (ASDKBaseCell *)cell;
-                baseCell.shouldShowTopSeparator = NO;
-            }
-        }
-    }
+		case CellPaymentCardRequisites:
+			cell = [self cardRequisitesCell];
+			break;
+		
+		case CellEmpty20px:
+		case CellEmpty5px:
+		case CellEmptyFlexibleSpace:
+  		default:
+			cell = [tableView dequeueReusableCellWithIdentifier:@"ASDKEmptyTableViewCell"];
+			break;
+	}
+	
+	if (indexPath.row > 0)
+	{
+		NSInteger index = [[self.tableViewDataSource objectAtIndex:indexPath.row-1] integerValue];
+		NSInteger index1 = [[self.tableViewDataSource objectAtIndex:indexPath.row] integerValue];
+		if ((index == CellProductTitle || index == CellProductDescription || index == CellEmpty20px || index == CellEmpty5px || index == CellEmptyFlexibleSpace) &&
+		   (index1 != CellProductDescription && index1 != CellEmpty20px && index1 != CellEmpty5px && index1 != CellEmptyFlexibleSpace))
+		{
+			if ([cell isKindOfClass:[ASDKBaseCell class]] && [cell respondsToSelector:@selector(shouldShowTopSeparator)])
+			{
+				ASDKBaseCell *baseCell = (ASDKBaseCell *)cell;
+				baseCell.shouldShowTopSeparator = YES;
+			}
+		}
+		else
+		{
+			if ([cell isKindOfClass:[ASDKBaseCell class]] && [cell respondsToSelector:@selector(shouldShowTopSeparator)])
+			{
+				ASDKBaseCell *baseCell = (ASDKBaseCell *)cell;
+				baseCell.shouldShowTopSeparator = NO;
+			}
+		}
+	}
 
-    return cell;
+	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if ([[self.tableViewDataSource objectAtIndex:indexPath.row] integerValue] == CellPayButton )
-    {
-        [self performPayment];
-    }
+	
+	if ([[self.tableViewDataSource objectAtIndex:indexPath.row] integerValue] == CellPayButton )
+	{
+		[self performPayment];
+	}
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat result = 0;
+	CGFloat result = 0;
 
-    switch ([[self.tableViewDataSource objectAtIndex:indexPath.row] integerValue])
-    {
-        case CellProductTitle:
-            self.headerCell.titleLabel.text = _paymentTitle;
-            self.headerCell.descriptionLabel.text = nil;//_paymentDescription;
-            result = [self.headerCell cellHeightWithSuperviewWidth:self.view.frame.size.width];
-            break;
-            
-        case CellProductDescription:
-            self.headerCell.titleLabel.text = nil;//_paymentTitle;
-            self.headerCell.descriptionLabel.text = _paymentDescription;
-            result = [self.headerCell cellHeightWithSuperviewWidth:self.view.frame.size.width];
-            break;
-            
-        case CellSecureLogos:
-            if (self.customSecureLogo)
-            {
-                result = self.customSecureLogo.frame.size.height;
-            }
-            else
-            {
-                result = 44.0f;
-            }
+	switch ([[self.tableViewDataSource objectAtIndex:indexPath.row] integerValue])
+	{
+		case CellProductTitle:
+			self.headerCell.titleLabel.text = _paymentTitle;
+			self.headerCell.descriptionLabel.text = nil;//_paymentDescription;
+			result = [self.headerCell cellHeightWithSuperviewWidth:self.view.frame.size.width];
+			break;
+			
+		case CellProductDescription:
+			self.headerCell.titleLabel.text = nil;//_paymentTitle;
+			self.headerCell.descriptionLabel.text = _paymentDescription;
+			result = [self.headerCell cellHeightWithSuperviewWidth:self.view.frame.size.width];
+			break;
+			
+		case CellSecureLogos:
+			if (self.customSecureLogo)
+			{
+				result = self.customSecureLogo.frame.size.height;
+			}
+			else
+			{
+				result = 44.0f;
+			}
 
-            break;
-            
-        case CellPaymentCardRequisites:
-            result = 44.0f;
-            break;
-            
-        case CellAmount:
-        case CellEmail:
-            result = 44.0f;
-            break;
-            
-        case CellPayButton:
-            {
-                ASDKPaymentFormStarter *paymentFormStarter = [ASDKPaymentFormStarter instance];
-                ASDKDesignConfiguration *designConfiguration = paymentFormStarter.designConfiguration;
-                if (designConfiguration.customPayButton == nil)
-                {
-                    result = 44.0f;
-                }
-                else
-                {
-                    result = designConfiguration.customPayButton.frame.size.height;
-                }
-            }
-            break;
-            
-        case CellEmpty20px:
-            result = 20.0f;
-            break;
-            
-        case CellEmpty5px:
-            result = 5.0f;
-            break;
-            
-        case CellEmptyFlexibleSpace:
-            {
-                CGFloat height = 0;
-                NSInteger count = 0;
-                for ( NSInteger index = 0; index < [self.tableViewDataSource count]; index++)
-                {
-                    NSNumber *number = [self.tableViewDataSource objectAtIndex:index];
-                    if ([number integerValue] != CellEmptyFlexibleSpace)
-                    {
-                        height += [self tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-                    }
-                    else
-                    {
-                        count++;
-                    }
-                }
-                
-                if (count == 0) { count = 1; }
-                
-                result = (tableView.frame.size.height - height - self.keyboardHeight) / count;
-                
-                if (@available(iOS 11, *))
-                {
-                    result -= self.view.safeAreaInsets.bottom;
-                }
-                
-                if (result < 0)
-                {
-                    result = 0;
-                }
-            }
-            break;
+			break;
+			
+		case CellPaymentCardRequisites:
+			result = 44.0f;
+			break;
+			
+		case CellAmount:
+		case CellEmail:
+			result = 44.0f;
+			break;
+			
+		case CellPayButton:
+			{
+				ASDKPaymentFormStarter *paymentFormStarter = [ASDKPaymentFormStarter instance];
+				ASDKDesignConfiguration *designConfiguration = paymentFormStarter.designConfiguration;
+				if (designConfiguration.customPayButton == nil)
+				{
+					result = 44.0f;
+				}
+				else
+				{
+					result = designConfiguration.customPayButton.frame.size.height;
+				}
+			}
+			break;
+			
+		case CellEmpty20px:
+			result = 20.0f;
+			break;
+			
+		case CellEmpty5px:
+			result = 5.0f;
+			break;
+			
+		case CellEmptyFlexibleSpace:
+			{
+				CGFloat height = 0;
+				NSInteger count = 0;
+				for ( NSInteger index = 0; index < [self.tableViewDataSource count]; index++)
+				{
+					NSNumber *number = [self.tableViewDataSource objectAtIndex:index];
+					if ([number integerValue] != CellEmptyFlexibleSpace)
+					{
+						height += [self tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+					}
+					else
+					{
+						count++;
+					}
+				}
+				
+				if (count == 0) { count = 1; }
+				
+				result = (tableView.frame.size.height - height - self.keyboardHeight) / count;
+				
+				if (@available(iOS 11, *))
+				{
+					result -= self.view.safeAreaInsets.bottom;
+				}
+				
+				if (result < 0)
+				{
+					result = 0;
+				}
+			}
+			break;
 
-        default:
-            result = 44.0f;
-            break;
-    }
+		default:
+			result = 44.0f;
+			break;
+	}
 
-    return result;
+	return result;
 }
 
 
@@ -905,7 +905,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 {
     [[self cardRequisitesCell].textFieldCardNumber setText:@""];
     [[self cardRequisitesCell] setCardNumber:cardNumber];
-    [[[self cardRequisitesCell] textFieldCardDate] setText:expiredData];
+	[[[self cardRequisitesCell] textFieldCardDate] setText:expiredData];
     [[self cardRequisitesCell] textField:[self cardRequisitesCell].textFieldCardNumber shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:cardNumber];
 }
 
@@ -920,7 +920,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
         __weak typeof(self) weakSelf = self;
 
         [cardScanner scanCardSuccess:^(id<ASDKAcquiringSdkCardRequisites> cardRequisites) {
-             __strong typeof(weakSelf) strongSelf = weakSelf;
+			 __strong typeof(weakSelf) strongSelf = weakSelf;
 
              if (strongSelf)
              {
@@ -941,35 +941,35 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     NSNumber *realAmount = [NSNumber numberWithDouble:100 * _amount.doubleValue];
     
     __weak typeof(self) weakSelf = self;
-    
-    NSMutableDictionary *paymentData = [[NSMutableDictionary alloc] init];
-    if ([_additionalPaymentData count])
-    {
-        [paymentData addEntriesFromDictionary:_additionalPaymentData];
-    }
-    
-    if (self.selectedCard && self.selectedCard.rebillId && self.makeCharge == YES && self.chargeError == NO)
-    {
-        [paymentData setObject:@(YES) forKey:@"chargeFlag"];
-    }
-    
-    if (self.chargeError == YES && self.chargeErrorPaymentId.length > 0)
-    {
-        [paymentData setObject:self.chargeErrorPaymentId forKey:@"failMapiSessionId"];
-        [paymentData setObject:@(12) forKey:@"recurringType"];
-    }
-    
+	
+	NSMutableDictionary *paymentData = [[NSMutableDictionary alloc] init];
+	if ([_additionalPaymentData count])
+	{
+		[paymentData addEntriesFromDictionary:_additionalPaymentData];
+	}
+	
+	if (self.selectedCard && self.selectedCard.rebillId && self.makeCharge == YES && self.chargeError == NO)
+	{
+		[paymentData setObject:@(YES) forKey:@"chargeFlag"];
+	}
+	
+	if (self.chargeError == YES && self.chargeErrorPaymentId.length > 0)
+	{
+		[paymentData setObject:self.chargeErrorPaymentId forKey:@"failMapiSessionId"];
+		[paymentData setObject:@(12) forKey:@"recurringType"];
+	}
+	
     [self.acquiringSdk initWithAmount:realAmount
                               orderId:_orderId
                           description:nil
-                              payForm:nil
+							  payForm:nil
                           customerKey:_customerKey
-                            recurrent:_requrent
-                additionalPaymentData:[paymentData copy]
-                          receiptData:_receiptData
-                            shopsData:_shopsData
-                    shopsReceiptsData:_shopsReceiptsData
-                             location:ASDKLocalized.sharedInstance.localeIdentifier
+							recurrent:_requrent
+				additionalPaymentData:[paymentData copy]
+						  receiptData:_receiptData
+							shopsData:_shopsData
+					shopsReceiptsData:_shopsReceiptsData
+							 location:ASDKLocalized.sharedInstance.localeIdentifier
                               success:^(ASDKInitResponse *response)
     {
         __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -994,166 +994,165 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 
 - (void)performFinishAuthorizeRequestWithPaymentId:(ASDKInitResponse *)payment
 {
-    if (self.selectedCard && self.selectedCard.rebillId && self.makeCharge == YES && self.chargeError == NO)
-    {
-         __weak typeof(self) weakSelf = self;
-        [self.acquiringSdk chargeWithPaymentId:payment.paymentId rebillId:self.selectedCard.rebillId success:^(ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-            __strong typeof(weakSelf) strongSelf1 = weakSelf;
-            if (strongSelf1)
-            {
-                [strongSelf1 manageSuccessWithPaymentInfo:paymentInfo];
-            }
-        } failure:^(ASDKAcquringSdkError *error) {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-            
-            if (strongSelf)
-            {
-                ASDKAcquiringResponse *errorResponse = [error.userInfo objectForKey:@"acquringResponse"];
-                //пользователю необходимо подтвердить платеж через ввод cvc ASDK-432
-                //ErrorCode == 104
-                if ([[errorResponse.dictionary objectForKey:@"ErrorCode"] integerValue] == 104)
-                {
-                    strongSelf.makeCharge = NO;
-                    strongSelf.chargeError = YES;
-                    strongSelf.chargeErrorPaymentId = [errorResponse.dictionary objectForKey:@"PaymentId"];
-                    [[strongSelf cardRequisitesCell] setupForCVCInput];
-                    [[strongSelf cardRequisitesCell] setUserInteractionEnabled:YES];
-                    [[[strongSelf cardRequisitesCell] secretCVVTextField] becomeFirstResponder];
-                }
-                else
-                {
-                    [strongSelf manageError:error];
-                }
-            }
-        }];
-    }
-    else
-    {
-        NSString *cardNumber = [self cardRequisitesCell].cardNumber;
-        NSString *date = [self cardRequisitesCell].cardExpirationDate;
-        date = [date stringByReplacingOccurrencesOfString:@"/" withString:@""];
-        NSString *cvv = [self cardRequisitesCell].cardCVC;
-        
-        NSString *emailString = [self emailCell].emailTextField.text;
-        
-        ASDKCardData *cardData = [[ASDKCardData alloc] initWithPan:cardNumber
-                                                        expiryDate:date
-                                                      securityCode:cvv
-                                                            cardId:self.selectedCard.cardId
-                                                      publicKeyRef:[self.acquiringSdk publicKeyRef]];
-        
-        NSString *encryptedCardString = cardData.cardData;
-        
-        __weak typeof(self) weakSelf = self;
-        
-        [self.acquiringSdk finishAuthorizeWithPaymentId:payment.paymentId
-                                   encryptedPaymentData:nil
-                                               cardData:encryptedCardString
-                                              infoEmail:emailString
-                                                success:^(ASDKThreeDsData *data, ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status)
-         {
-             __strong typeof(weakSelf) strongSelf = weakSelf;
-             
-             if (status == ASDKPaymentStatus_3DS_CHECKING)
-             {
-                 if (strongSelf)
-                 {
-                     ASDK3DSViewController *threeDsController = [[ASDK3DSViewController alloc] initWithPaymentId:paymentInfo.paymentId
-                                                                                                     threeDsData:data
-                                                                                                    acquiringSdk:strongSelf.acquiringSdk];
-                     
-                     [threeDsController showFromViewController:strongSelf
-                                                       success:^(NSString *paymentId)
-                      {
-                          __strong typeof(weakSelf) strongSelf1 = weakSelf;
-                          
-                          if (strongSelf1)
-                          {
-                              [strongSelf1 manageSuccessWithPaymentInfo:paymentInfo];
-                          }
-                      }
-                                                       failure:^(ASDKAcquringSdkError *statusError)
-                      {
-                          __strong typeof(weakSelf) strongSelf1 = weakSelf;
-                          
-                          if (strongSelf1)
-                          {
-                              [strongSelf1 manageError:statusError];
-                          }
-                      }
-                                                        cancel:^()
-                      {
-                          __strong typeof(weakSelf) strongSelf1 = weakSelf;
-                          
-                          if (strongSelf1)
-                          {
-                              [strongSelf1 closeSelfWithCompletion:self.onCancelled];
-                          }
-                      }];
-                 }
-             }
-             else if (status == ASDKPaymentStatus_CONFIRMED || status == ASDKPaymentStatus_AUTHORIZED)
-             {
-                 [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-                 
-                 if (strongSelf)
-                 {
-                     [strongSelf manageSuccessWithPaymentInfo:paymentInfo];
-                 }
-             }
-             else
-             {
-                 [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+	if (self.selectedCard && self.selectedCard.rebillId && self.makeCharge == YES && self.chargeError == NO)
+	{
+		 __weak typeof(self) weakSelf = self;
+		[self.acquiringSdk chargeWithPaymentId:payment.paymentId rebillId:self.selectedCard.rebillId success:^(ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+			__strong typeof(weakSelf) strongSelf1 = weakSelf;
+			if (strongSelf1)
+			{
+				[strongSelf1 manageSuccessWithPaymentInfo:paymentInfo];
+			}
+		} failure:^(ASDKAcquringSdkError *error) {
+			__strong typeof(weakSelf) strongSelf = weakSelf;
+			[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+			
+			if (strongSelf)
+			{
+				ASDKAcquiringResponse *errorResponse = [error.userInfo objectForKey:@"acquringResponse"];
+				//пользователю необходимо подтвердить платеж через ввод cvc ASDK-432
+				//ErrorCode == 104
+				if ([[errorResponse.dictionary objectForKey:@"ErrorCode"] integerValue] == 104)
+				{
+					strongSelf.makeCharge = NO;
+					strongSelf.chargeError = YES;
+					strongSelf.chargeErrorPaymentId = [errorResponse.dictionary objectForKey:@"PaymentId"];
+					[[strongSelf cardRequisitesCell] setupForCVCInput];
+					[[strongSelf cardRequisitesCell] setUserInteractionEnabled:YES];
+					[[[strongSelf cardRequisitesCell] secretCVVTextField] becomeFirstResponder];
+				}
+				else
+				{
+					[strongSelf manageError:error];
+				}
+			}
+		}];
+	}
+	else
+	{
+		NSString *cardNumber = [self cardRequisitesCell].cardNumber;
+		NSString *date = [self cardRequisitesCell].cardExpirationDate;
+		date = [date stringByReplacingOccurrencesOfString:@"/" withString:@""];
+		NSString *cvv = [self cardRequisitesCell].cardCVC;
+		
+		NSString *emailString = [self emailCell].emailTextField.text;
+		
+		ASDKCardData *cardData = [[ASDKCardData alloc] initWithPan:cardNumber
+														expiryDate:date
+													  securityCode:cvv
+															cardId:self.selectedCard.cardId
+													  publicKeyRef:[self.acquiringSdk publicKeyRef]];
+		
+		NSString *encryptedCardString = cardData.cardData;
+		
+		__weak typeof(self) weakSelf = self;
+		
+		[self.acquiringSdk finishAuthorizeWithPaymentId:payment.paymentId
+								   encryptedPaymentData:nil
+											   cardData:encryptedCardString
+											  infoEmail:emailString
+												success:^(ASDKThreeDsData *data, ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status)
+		 {
+			 __strong typeof(weakSelf) strongSelf = weakSelf;
+			 
+			 if (status == ASDKPaymentStatus_3DS_CHECKING)
+			 {
+				 if (strongSelf)
+				 {
+					 ASDK3DSViewController *threeDsController = [[ASDK3DSViewController alloc] initWithPaymentId:paymentInfo.paymentId
+																									 threeDsData:data
+																									acquiringSdk:strongSelf.acquiringSdk];
+					 
+					 [threeDsController showFromViewController:strongSelf
+													   success:^(NSString *paymentId)
+					  {
+						  __strong typeof(weakSelf) strongSelf1 = weakSelf;
+						  
+						  if (strongSelf1)
+						  {
+							  [strongSelf1 manageSuccessWithPaymentInfo:paymentInfo];
+						  }
+					  }
+													   failure:^(ASDKAcquringSdkError *statusError)
+					  {
+						  __strong typeof(weakSelf) strongSelf1 = weakSelf;
+						  
+						  if (strongSelf1)
+						  {
+							  [strongSelf1 manageError:statusError];
+						  }
+					  }
+														cancel:^()
+					  {
+						  __strong typeof(weakSelf) strongSelf1 = weakSelf;
+						  
+						  if (strongSelf1)
+						  {
+							  [strongSelf1 closeSelfWithCompletion:self.onCancelled];
+						  }
+					  }];
+				 }
+			 }
+			 else if (status == ASDKPaymentStatus_CONFIRMED || status == ASDKPaymentStatus_AUTHORIZED)
+			 {
+				 [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+				 
+				 if (strongSelf)
+				 {
+					 [strongSelf manageSuccessWithPaymentInfo:paymentInfo];
+				 }
+			 }
+			 else
+			 {
+				 [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
 
-                 NSString *message = @"Payment state error";
-                 NSString *details = [NSString stringWithFormat:@"%@",paymentInfo];
-                 
-                 ASDKAcquringSdkError *error = [ASDKAcquringSdkError errorWithMessage:message
-                                                                              details:details
-                                                                                 code:0];
-                 
-                 if (strongSelf)
-                 {
-                     [strongSelf manageError:error];
-                 }
-             }
-         }
-                                                failure:^(ASDKAcquringSdkError *error)
-         {
-             [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-             
-             __strong typeof(weakSelf) strongSelf = weakSelf;
-             
-             if (strongSelf)
-             {
-                 [strongSelf manageError:error];
-             }
-         }];
-    }
+				 NSString *details = [NSString stringWithFormat:@"%@",paymentInfo];
+				 
+				 ASDKAcquringSdkError *error = [ASDKAcquringSdkError errorWithMessage:nil
+																			  details:details
+																				 code:0];
+				 
+				 if (strongSelf)
+				 {
+					 [strongSelf manageError:error];
+				 }
+			 }
+		 }
+												failure:^(ASDKAcquringSdkError *error)
+		 {			 
+			 [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+			 
+			 __strong typeof(weakSelf) strongSelf = weakSelf;
+			 
+			 if (strongSelf)
+			 {
+				 [strongSelf manageError:error];
+			 }
+		 }];
+	}
 }
 
 - (void)performPayment
 {
     [self.view endEditing:YES];
-    
+	
     if (![self validateForm])
     {
         return;
     }
-    
+	
     [self performInitRequest];
 }
 
 - (void)manageSuccessWithPaymentInfo:(ASDKPaymentInfo *)paymentInfo
 {
     __weak typeof(self) weakSelf = self;
-    
+	
     void (^paymentSuccessBlock)(void) = ^
     {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        
+		
         if (strongSelf)
         {
             [strongSelf closeSelfWithCompletion:^
@@ -1165,7 +1164,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
              }];
         }
     };
-    
+	
     if (!self.selectedCard)
     {
         [[ASDKCardsListDataController instance] updateCardsListWithSuccessBlock:^{ paymentSuccessBlock(); }
@@ -1179,35 +1178,13 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 
 - (void)manageError:(ASDKAcquringSdkError *)error
 {
-    if (error.isSdkError)
-    {
-        [self closeSelfWithCompletion:^
+    [self closeSelfWithCompletion:^
+     {
+         if (self.onError)
          {
-             if (self.onError)
-             {
-                 self.onError(error);
-             }
-         }];
-    }
-    else
-    {
-        NSString *alertTitle = error.errorMessage ? error.errorMessage : LOC(@"acq_default_error_title");
-        NSString *alertDetails = error.errorDetails ? error.errorDetails : error.userInfo[kASDKStatus];
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertDetails preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction
-                                       actionWithTitle:LOC(@"acq_btn_close")
-                                       style:UIAlertActionStyleCancel
-                                       handler:^(UIAlertAction *action)
-                                       {
-                                           [alertController dismissViewControllerAnimated:YES completion:nil];
-                                       }];
-        
-        [alertController addAction:cancelAction];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
+             self.onError(error);
+         }
+     }];
 }
 
 - (void)closeSelfWithCompletion: (void (^)(void))completion
@@ -1233,9 +1210,9 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     cardsListController.selectedCard = self.selectedCard;
     
     ASDKNavigationController *nc = [[ASDKNavigationController  alloc] initWithRootViewController:cardsListController];
-    ASDKPaymentFormStarter *paymentFormStarter = [ASDKPaymentFormStarter instance];
-    ASDKDesignConfiguration *designConfiguration = paymentFormStarter.designConfiguration;
-    [nc setModalPresentationStyle:designConfiguration.modalPresentationStyle];
+	ASDKPaymentFormStarter *paymentFormStarter = [ASDKPaymentFormStarter instance];
+	ASDKDesignConfiguration *designConfiguration = paymentFormStarter.designConfiguration;
+	[nc setModalPresentationStyle:designConfiguration.modalPresentationStyle];
     [self presentViewController:nc animated:YES completion:nil];
 }
 
@@ -1248,11 +1225,11 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 
 - (BOOL)validateCard
 {
-    if (_selectedCard && _selectedCard.rebillId)
-    {
-        return YES;
-    }
-    
+	if (_selectedCard && _selectedCard.rebillId)
+	{
+		return YES;
+	}
+	
     return  [[self cardRequisitesCell] validateForm];
 }
 
@@ -1299,11 +1276,11 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     summFormatter.groupingSeparator = @" ";
     summFormatter.groupingSize = 3;
     summFormatter.maximumFractionDigits = 2;
-    
-    summFormatter.currencyCode = kCurrencyCode;
-    summFormatter.currencySymbol = kTCSRubNoDotCap;
-    summFormatter.currencyDecimalSeparator = kDecimalSeparator;
-    summFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"ru_RU"];
+	
+	summFormatter.currencyCode = kCurrencyCode;
+	summFormatter.currencySymbol = kTCSRubNoDotCap;
+	summFormatter.currencyDecimalSeparator = kDecimalSeparator;
+	summFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"ru_RU"];
 
     return [summFormatter stringFromNumber:amount];
 }
@@ -1363,50 +1340,50 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 
 - (void)cardsListDidCancel
 {
-    if (self.view.window == nil)
-    {
-        self.updateCardCell = YES;
-    }
-    else
-    {
-        [self updateSelectedExternalCardOnStart];
-    }
+	if (self.view.window == nil)
+	{
+		self.updateCardCell = YES;
+	}
+	else
+	{
+		[self updateSelectedExternalCardOnStart];
+	}
 }
 
 - (void)cardListDidChanged
 {
-    if ([[ASDKCardsListDataController instance] cardWithIdentifier:_selectedCard.cardId] == nil)
-    {
-        _selectedCard = nil;
-    }
-    
-    if (self.view.window == nil)
-    {
-        self.updateCardCell = YES;
-    }
-    else
-    {
-        [self updateSelectedExternalCardOnStart];
-    }
+	if ([[ASDKCardsListDataController instance] cardWithIdentifier:_selectedCard.cardId] == nil)
+	{
+		_selectedCard = nil;
+	}
+	
+	if (self.view.window == nil)
+	{
+		self.updateCardCell = YES;
+	}
+	else
+	{
+		[self updateSelectedExternalCardOnStart];
+	}
 }
 
 - (NSArray<ASDKCard*>*)filterCardList:(NSArray<ASDKCard*>*)cardList
 {
-    if (self.makeCharge)
-    {
-        NSMutableArray *result = [NSMutableArray new];
-        for (ASDKCard *card in cardList)
-        {
-            if (card.rebillId)
-            {
-                [result addObject:card];
-            }
-        }
+	if (self.makeCharge)
+	{
+		NSMutableArray *result = [NSMutableArray new];
+		for (ASDKCard *card in cardList)
+		{
+			if (card.rebillId)
+			{
+				[result addObject:card];
+			}
+		}
 
-        return [result copy];
-    }
+		return [result copy];
+	}
 
-    return cardList;
+	return cardList;
 }
 
 @end

@@ -57,11 +57,12 @@
 
 - (NSString *)domainPath;
 - (NSString *)domainPath_v2;
+- (NSString *)termPath;
 - (SecKeyRef)publicKeyRef;
 - (NSInteger)apiRequestsTimeoutInterval;
 
 + (ASDKAcquiringSdk *)acquiringSdkWithTerminalKey:(NSString *)terminalKey
-                                          payType:(NSString *)payType
+										  payType:(NSString *)payType
                                          password:(NSString *)password
                               publicKeyDataSource:(id<ASDKAcquiringSdkPublicKeyDataSource>)publicKeyDataSource;
 
@@ -72,15 +73,15 @@
            customerKey:(NSString *)customerKey
              recurrent:(BOOL)recurrent
  additionalPaymentData:(NSDictionary *)data
-           receiptData:(NSDictionary *)receiptData
-             shopsData:(NSArray *)shopsData
-     shopsReceiptsData:(NSArray *)shopsReceiptsData
-              location:(NSString *)location
+		   receiptData:(NSDictionary *)receiptData
+			 shopsData:(NSArray *)shopsData
+	 shopsReceiptsData:(NSArray *)shopsReceiptsData
+			  location:(NSString *)location
                success:(void (^)(ASDKInitResponse *response))success
                failure:(void (^)(ASDKAcquringSdkError *error))failure;
 
 - (void)finishAuthorizeWithPaymentId:(NSString *)paymentId
-                encryptedPaymentData:(NSString *)encryptedPaymentData
+				encryptedPaymentData:(NSString *)encryptedPaymentData
                             cardData:(NSString *)cardData
                            infoEmail:(NSString *)infoEmail
                              success:(void (^)(ASDKThreeDsData *data, ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status))success
@@ -105,25 +106,25 @@
                           failure:(void (^)(ASDKAcquringSdkError *error))failure;
 
 - (void)rejectTrancastionWithPaymentId:(NSString *)paymentId
-                               success:(void (^)(ASDKCancelResponse *response))success
-                               failure:(void (^)(ASDKAcquringSdkError *error))failure;
+							   success:(void (^)(ASDKCancelResponse *response))success
+							   failure:(void (^)(ASDKAcquringSdkError *error))failure;
 
 - (void)initAttachCardWithCheckType:(NSString *)cardCheckType
-                        customerKey:(NSString *)customerKey
-                            success:(void (^)(ASDKResponseAddCardInit *response))success
-                            failure:(void (^)(ASDKAcquringSdkError *error))failure;
+						customerKey:(NSString *)customerKey
+							success:(void (^)(ASDKResponseAddCardInit *response))success
+							failure:(void (^)(ASDKAcquringSdkError *error))failure;
 
 - (void)finishAttachCardWithCardData:(NSString *)cardData aditionalInfo:(NSDictionary *)data requestKey:(NSString *)requestKey
-                             success:(void (^)(ASDKThreeDsData *data, ASDKResponseAttachCard *result, ASDKPaymentStatus status))success
-                             failure:(void (^)(ASDKAcquringSdkError *error))failure;
+							 success:(void (^)(ASDKThreeDsData *data, ASDKResponseAttachCard *result, ASDKPaymentStatus status))success
+							 failure:(void (^)(ASDKAcquringSdkError *error))failure;
 
 - (void)getStateAttachCardWithRequestKey:(NSString *)requestKey
-                                 success:(void (^)(ASDKResponseGetAddCardState *response))success
-                                 failure:(void (^)(ASDKAcquringSdkError *error))failure;
+								 success:(void (^)(ASDKResponseGetAddCardState *response))success
+								 failure:(void (^)(ASDKAcquringSdkError *error))failure;
 
 - (void)getStateSubmitRandomAmount:(NSNumber *)amount
-                        requestKey:(NSString *)requestKey
-                           success:(void (^)(ASDKResponseGetAddCardState *response))success
-                           failure:(void (^)(ASDKAcquringSdkError *error))failure;
+						requestKey:(NSString *)requestKey
+						   success:(void (^)(ASDKResponseGetAddCardState *response))success
+						   failure:(void (^)(ASDKAcquringSdkError *error))failure;
 
 @end
