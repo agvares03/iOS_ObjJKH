@@ -16,8 +16,8 @@ class DB: NSObject, XMLParserDelegate {
     var currYear: String = "";
     var currMonth: String = "";
     var login: String = ""
-    var request_read = 0
-    var request_read_cons = 0
+    var request_read: Int = 0
+    var request_read_cons: Int = 0
     // Вставить в Settings
     public func addSettings(id: Int64, name: String, diff: String) {
         let managedObject  = Settings()
@@ -476,25 +476,6 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.sum             = String(attributeDict["Sum"]!)
             CoreDataManager.instance.saveContext()
         }
-        if self.request_read >= 0{
-            UserDefaults.standard.set(self.request_read, forKey: "appsKol")
-        }else{
-            UserDefaults.standard.set(0, forKey: "appsKol")
-        }
-        DispatchQueue.main.async {
-            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
-            if (updatedBadgeNumber > -1) {
-                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-            }
-            //                if request_read >= 0{
-            //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-            //                    UserDefaults.standard.synchronize()
-            //                }else{
-            //                    UserDefaults.standard.setValue(0, forKey: "request_read")
-            //                    UserDefaults.standard.synchronize()
-            //                }
-            
-        }
     }
     
     // Ведомость
@@ -699,7 +680,6 @@ class DB: NSObject, XMLParserDelegate {
 
     // Заявки с комментариями
     func parse_Apps(login: String, pass: String, isCons: String, isLoad: Bool) {
-        request_read = 0
         // Если в БД нет заявок - получаем все заявки
         //        let fetchedResultsController: NSFetchedResultsController<Applications>?
         //        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["date"], predicateFormat: nil) as? NSFetchedResultsController<Applications>
@@ -721,7 +701,26 @@ class DB: NSObject, XMLParserDelegate {
         let success:Bool = parser.parse()
         
         if success {
-            print("parse success!")
+            print("parse APPS success!")
+            if self.request_read >= 0{
+                UserDefaults.standard.set(self.request_read, forKey: "appsKol")
+            }else{
+                UserDefaults.standard.set(0, forKey: "appsKol")
+            }
+            DispatchQueue.main.async {
+                let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+                if (updatedBadgeNumber > -1) {
+                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                }
+                //                if request_read >= 0{
+                //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+                //                    UserDefaults.standard.synchronize()
+                //                }else{
+                //                    UserDefaults.standard.setValue(0, forKey: "request_read")
+                //                    UserDefaults.standard.synchronize()
+                //                }
+                
+            }
         } else {
             print("parse failure!")
         }

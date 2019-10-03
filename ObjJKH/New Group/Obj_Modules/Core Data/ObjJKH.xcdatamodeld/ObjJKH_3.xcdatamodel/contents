@@ -1,98 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Applications" representedClassName=".Applications" syncable="YES">
-        <attribute name="acc_ident" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="adress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="customer_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="flat" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="is_answered" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="is_close" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="is_paid" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="is_pay" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="is_read" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="is_read_client" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="paid_sum" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="paid_text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tema" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type_app" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="acc_ident" optional="YES" attributeType="String"/>
+        <attribute name="adress" optional="YES" attributeType="String"/>
+        <attribute name="customer_id" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="flat" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_answered" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_close" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_paid" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="is_pay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="is_read" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_read_client" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <attribute name="owner" optional="YES" attributeType="String"/>
+        <attribute name="paid_sum" optional="YES" attributeType="String"/>
+        <attribute name="paid_text" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="tema" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="type_app" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Comments" representedClassName=".Comments" syncable="YES">
-        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dateK" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id_account" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id_app" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id_author" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="is_hidden" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="dateK" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id_account" optional="YES" attributeType="String"/>
+        <attribute name="id_app" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id_author" optional="YES" attributeType="String"/>
+        <attribute name="is_hidden" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Counters" representedClassName=".Counters" syncable="YES">
-        <attribute name="autoValueGettingOnly" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="count_ed_izm" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="count_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="diff" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="ident" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastCheckupDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="num_month" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="prev_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="recheckInterval" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sended" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sendError" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sendErrorText" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tariffNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uniq_num" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="unit_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="valueT2" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="valueT3" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="autoValueGettingOnly" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="count_ed_izm" optional="YES" attributeType="String"/>
+        <attribute name="count_name" optional="YES" attributeType="String"/>
+        <attribute name="diff" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="ident" optional="YES" attributeType="String"/>
+        <attribute name="lastCheckupDate" optional="YES" attributeType="String"/>
+        <attribute name="num_month" optional="YES" attributeType="String"/>
+        <attribute name="owner" optional="YES" attributeType="String"/>
+        <attribute name="prev_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="recheckInterval" optional="YES" attributeType="String"/>
+        <attribute name="sended" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sendError" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sendErrorText" optional="YES" attributeType="String"/>
+        <attribute name="tariffNumber" optional="YES" attributeType="String"/>
+        <attribute name="uniq_num" optional="YES" attributeType="String"/>
+        <attribute name="unit_name" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="valueT2" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="valueT3" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Fotos" representedClassName=".Fotos" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="foto_path" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="foto_small" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="foto_path" optional="YES" attributeType="String"/>
+        <attribute name="foto_small" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
     </entity>
     <entity name="PaymentApp" representedClassName=".PaymentApp" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id_pay" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="ident" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id_pay" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="ident" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="sum" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Saldo" representedClassName=".Saldo" syncable="YES">
-        <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="ident" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="minus" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="num_month" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="plus" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="usluga" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="ident" optional="YES" attributeType="String"/>
+        <attribute name="minus" optional="YES" attributeType="String"/>
+        <attribute name="num_month" optional="YES" attributeType="String"/>
+        <attribute name="plus" optional="YES" attributeType="String"/>
+        <attribute name="start" optional="YES" attributeType="String"/>
+        <attribute name="usluga" optional="YES" attributeType="String"/>
+        <attribute name="year" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Settings" representedClassName=".Settings" syncable="YES">
-        <attribute name="diff" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="diff" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Applications" positionX="333" positionY="81" width="128" height="345"/>
-        <element name="Comments" positionX="324" positionY="54" width="128" height="180"/>
-        <element name="Counters" positionX="394" positionY="-18" width="128" height="360"/>
+        <element name="Applications" positionX="333" positionY="81" width="128" height="343"/>
+        <element name="Comments" positionX="324" positionY="54" width="128" height="178"/>
+        <element name="Counters" positionX="394" positionY="-18" width="128" height="358"/>
         <element name="Fotos" positionX="342" positionY="144" width="128" height="135"/>
         <element name="PaymentApp" positionX="333" positionY="144" width="128" height="150"/>
         <element name="Saldo" positionX="250" positionY="-18" width="128" height="180"/>
