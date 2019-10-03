@@ -476,19 +476,7 @@
                     <view key="view" contentMode="scaleToFill" id="e5P-gr-ziE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ltF-hw-SWU">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ltF-hw-SWU" firstAttribute="leading" secondItem="IjO-VX-BCf" secondAttribute="leading" id="BCq-Qf-6bu"/>
-                            <constraint firstItem="ltF-hw-SWU" firstAttribute="top" secondItem="IjO-VX-BCf" secondAttribute="top" id="EoZ-O1-oJX"/>
-                            <constraint firstItem="IjO-VX-BCf" firstAttribute="bottom" secondItem="ltF-hw-SWU" secondAttribute="bottom" id="pEA-G2-WIb"/>
-                            <constraint firstItem="IjO-VX-BCf" firstAttribute="trailing" secondItem="ltF-hw-SWU" secondAttribute="trailing" id="yM5-oC-LCa"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="IjO-VX-BCf"/>
                     </view>
                     <navigationItem key="navigationItem" id="RdA-eB-FY1">
@@ -500,7 +488,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="back" destination="tUD-HB-udy" id="1rb-oB-sh6"/>
-                        <outlet property="webView" destination="ltF-hw-SWU" id="joY-aT-6Gs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9g-78-LHh" userLabel="First Responder" sceneMemberID="firstResponder"/>

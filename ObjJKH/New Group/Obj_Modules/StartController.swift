@@ -18,6 +18,9 @@ class StartController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *){
+            overrideUserInterfaceStyle = .light
+        }
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")
         UserDefaults.standard.set(true, forKey: "can_tech")

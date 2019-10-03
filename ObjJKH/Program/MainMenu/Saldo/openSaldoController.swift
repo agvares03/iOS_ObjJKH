@@ -8,19 +8,24 @@
 
 import UIKit
 import Foundation
+import WebKit
 
-class openSaldoController: UIViewController {
+class openSaldoController: UIViewController, WKUIDelegate {
     
-    @IBOutlet weak var webView: UIWebView!
+//    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var back: UIBarButtonItem!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
 
     public var urlLink = ""
-    
+    var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
         back.tintColor = myColors.btnColor.uiColor()
         print(urlLink)
 //        urlLink = urlLink.replacingOccurrences(of: "О", with: "O")
@@ -32,8 +37,16 @@ class openSaldoController: UIViewController {
 //            let downloadTask = urlSession.downloadTask(with: url)
 //            downloadTask.resume()
 //        }else{
+        if urlLink.contains(".pdf"){
+            if let url : NSURL = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
+                if let data = try? Data(contentsOf: url as URL){
+                    webView.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: url as URL)
+                }
+            }
+        }else{
             let url : NSURL! = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
-            webView.loadRequest(NSURLRequest(url: url as URL) as URLRequest)
+            webView.load(NSURLRequest(url: url as URL) as URLRequest)
+        }
 //        }
         // Do any additional setup after loading the view.
     }
@@ -41,7 +54,7 @@ class openSaldoController: UIViewController {
     func loadFromLocal(local: URL){
 //        let pdfPath = NSURL(fileURLWithPath: Bundle.main.path(forResource: local, ofType: "pdf")!)
         DispatchQueue.main.async {
-            self.webView?.loadRequest(NSURLRequest(url: local as URL) as URLRequest)
+            self.webView?.load(NSURLRequest(url: local as URL) as URLRequest)
         }
     }
     
