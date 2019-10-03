@@ -191,11 +191,6 @@ class AddLSSimple: UIViewController {
                         urlPath = urlPath + "&pin=" + (alert.textFields?.first!.text)!
                     
                     #endif
-                    var urlS = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_LS_SIMPLE
-                    urlS = urlS + "&f=" + (alert.textFields?[0].text)!
-                    urlS = urlS + "&i=" + (alert.textFields?[1].text)!
-                    urlS = urlS + "&o=" + (alert.textFields?[2].text)!
-                    print(urlS)
                     let url: NSURL = NSURL(string: urlPath)!
                     let request = NSMutableURLRequest(url: url as URL)
                     request.httpMethod = "GET"
