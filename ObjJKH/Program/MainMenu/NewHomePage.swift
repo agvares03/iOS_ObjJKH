@@ -1134,6 +1134,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         lastCheckArr.removeAll()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         fetchRequest.predicate = NSPredicate.init(format: "year <= %@", String(self.currYear))
+        #if isRKC_Samara
+        let sort = NSSortDescriptor(key: "count_name", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        #endif
         do {
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             var uniq_num = ""
