@@ -164,17 +164,17 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
             payController.urlLink = self.link
         }
         #if isMupRCMytishi
-        if segue.identifier == "paysMytishi" {
-            //let nav = segue.destination as! UINavigationController
-            let payController             = segue.destination as! PaysMytishiController
-            if choiceIdent == ""{
-                payController.saldoIdent = "Все"
-            }else{
-                payController.saldoIdent = choiceIdent
-            }
-            payController.endSum = self.endSum
-            payController.debtArr = self.debtArr
-        }
+//        if segue.identifier == "paysMytishi" {
+//            //let nav = segue.destination as! UINavigationController
+//            let payController             = segue.destination as! PaysMytishiController
+//            if choiceIdent == ""{
+//                payController.saldoIdent = "Все"
+//            }else{
+//                payController.saldoIdent = choiceIdent
+//            }
+//            payController.endSum = self.endSum
+//            payController.debtArr = self.debtArr
+//        }
         #elseif isUpravdomChe
         if segue.identifier == "paysMytishi" {
             //let nav = segue.destination as! UINavigationController

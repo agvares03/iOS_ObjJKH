@@ -702,11 +702,11 @@ class MainMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
 //            payController.debtArr = self.debtArr
 //        }
         #if isMupRCMytishi
-        if segue.identifier == "paysMytishi" {
-//            let nav = segue.destination as! UINavigationController
-            let payController             = segue.destination as! PaysMytishiController
-            payController.debtArr = self.debtArr
-        }
+//        if segue.identifier == "paysMytishi" {
+////            let nav = segue.destination as! UINavigationController
+//            let payController             = segue.destination as! PaysMytishiController
+//            payController.debtArr = self.debtArr
+//        }
         #elseif isUpravdomChe
         if segue.identifier == "paysMytishi" {
             //            let nav = segue.destination as! UINavigationController

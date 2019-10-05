@@ -2691,16 +2691,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.tariffNumber = selTariffNumber
         }
         
-        if segue.identifier == "paysMytishi" {
-            let payController             = segue.destination as! PaysMytishiController
-            if choiceIdent == ""{
-                payController.saldoIdent = "Все"
-            }else{
-                payController.saldoIdent = choiceIdent
-            }
-            payController.debtArr = self.debtArr
-            payController.isHomePage = true
-        }
         #if isMupRCMytishi
         if segue.identifier == "paysMytishi2" {
             let payController             = segue.destination as! PaysMytishi2Controller
@@ -2710,6 +2700,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 payController.saldoIdent = choiceIdent
             }
             payController.debtArr = self.debtArr
+        }
+        #else
+        if segue.identifier == "paysMytishi" {
+            let payController             = segue.destination as! PaysMytishiController
+            if choiceIdent == ""{
+                payController.saldoIdent = "Все"
+            }else{
+                payController.saldoIdent = choiceIdent
+            }
+            payController.debtArr = self.debtArr
+            payController.isHomePage = true
         }
         #endif
         if segue.identifier == "pays" {
