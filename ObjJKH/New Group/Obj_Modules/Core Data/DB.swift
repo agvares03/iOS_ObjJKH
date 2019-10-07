@@ -234,7 +234,7 @@ class DB: NSObject, XMLParserDelegate {
 //        #endif
 //        if k == 1{
             if (elementName == "Meter") {
-//                print(attributeDict)
+                print(attributeDict)
                 ident = attributeDict["Ident"]!
                 units = attributeDict["Units"]!
                 name = attributeDict["Name"]!
@@ -259,7 +259,7 @@ class DB: NSObject, XMLParserDelegate {
                 // Запишем показание прибора
             }
             if (elementName == "MeterValue"){
-//                print(attributeDict)
+                print(attributeDict)
                 let date = attributeDict["PeriodDate"]!.components(separatedBy: ".")
                 
                 let managedObject = Counters()

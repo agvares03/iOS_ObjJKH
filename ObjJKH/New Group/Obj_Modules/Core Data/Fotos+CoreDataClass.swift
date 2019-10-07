@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-
+@objc(Fotos)
 public class Fotos: NSManagedObject {
     
     convenience init() {

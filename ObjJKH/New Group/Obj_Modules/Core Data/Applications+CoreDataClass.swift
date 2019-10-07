@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-
+@objc(Applications)
 public class Applications: NSManagedObject {
     
     convenience init() {

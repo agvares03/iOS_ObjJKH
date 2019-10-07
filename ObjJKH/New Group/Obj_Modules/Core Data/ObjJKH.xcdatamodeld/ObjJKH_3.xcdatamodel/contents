@@ -22,7 +22,7 @@
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="type_app" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Comments" representedClassName=".Comments" syncable="YES">
+    <entity name="Comments" representedClassName="Comments" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="dateK" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -33,13 +33,13 @@
         <attribute name="is_hidden" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Counters" representedClassName=".Counters" syncable="YES">
+    <entity name="Counters" representedClassName="Counters" syncable="YES">
         <attribute name="autoValueGettingOnly" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="count_ed_izm" optional="YES" attributeType="String"/>
         <attribute name="count_name" optional="YES" attributeType="String"/>
-        <attribute name="diff" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="ident" optional="YES" attributeType="String"/>
+        <attribute name="diff" optional="YES" attributeType="Float" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="ident" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="lastCheckupDate" optional="YES" attributeType="String"/>
         <attribute name="num_month" optional="YES" attributeType="String"/>
         <attribute name="owner" optional="YES" attributeType="String"/>
@@ -56,7 +56,7 @@
         <attribute name="valueT3" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="year" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Fotos" representedClassName=".Fotos" syncable="YES">
+    <entity name="Fotos" representedClassName="Fotos" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="foto_path" optional="YES" attributeType="String"/>
         <attribute name="foto_small" optional="YES" attributeType="Binary"/>
@@ -64,7 +64,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="PaymentApp" representedClassName=".PaymentApp" syncable="YES">
+    <entity name="PaymentApp" representedClassName="PaymentApp" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -73,7 +73,7 @@
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="sum" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Saldo" representedClassName=".Saldo" syncable="YES">
+    <entity name="Saldo" representedClassName="Saldo" syncable="YES">
         <attribute name="end" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="ident" optional="YES" attributeType="String"/>
@@ -84,7 +84,7 @@
         <attribute name="usluga" optional="YES" attributeType="String"/>
         <attribute name="year" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Settings" representedClassName=".Settings" syncable="YES">
+    <entity name="Settings" representedClassName="Settings" syncable="YES">
         <attribute name="diff" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -93,9 +93,9 @@
         <element name="Applications" positionX="333" positionY="81" width="128" height="343"/>
         <element name="Comments" positionX="324" positionY="54" width="128" height="178"/>
         <element name="Counters" positionX="394" positionY="-18" width="128" height="358"/>
-        <element name="Fotos" positionX="342" positionY="144" width="128" height="135"/>
-        <element name="PaymentApp" positionX="333" positionY="144" width="128" height="150"/>
-        <element name="Saldo" positionX="250" positionY="-18" width="128" height="180"/>
-        <element name="Settings" positionX="324" positionY="135" width="128" height="90"/>
+        <element name="Fotos" positionX="342" positionY="144" width="128" height="133"/>
+        <element name="PaymentApp" positionX="333" positionY="144" width="128" height="148"/>
+        <element name="Saldo" positionX="250" positionY="-18" width="128" height="178"/>
+        <element name="Settings" positionX="324" positionY="135" width="128" height="88"/>
     </elements>
 </model>

@@ -1,9 +1,8 @@
 //
 //  Counters+CoreDataProperties.swift
-//  ObjJKH
+//  
 //
-//  Created by Роман Тузин on 29.08.2018.
-//  Copyright © 2018 The Best. All rights reserved.
+//  Created by Sergey Ivanov on 07/10/2019.
 //
 //
 
@@ -17,25 +16,26 @@ extension Counters {
         return NSFetchRequest<Counters>(entityName: "Counters")
     }
 
+    @NSManaged public var autoValueGettingOnly: Bool
     @NSManaged public var count_ed_izm: String?
     @NSManaged public var count_name: String?
     @NSManaged public var diff: Float
     @NSManaged public var id: Int64
+    @NSManaged public var ident: String?
+    @NSManaged public var lastCheckupDate: String?
     @NSManaged public var num_month: String?
-    @NSManaged public var unit_name: String?
     @NSManaged public var owner: String?
     @NSManaged public var prev_value: Float
-    @NSManaged public var uniq_num: String?
-    @NSManaged public var value: Float
-    @NSManaged public var valueT2: Float
-    @NSManaged public var valueT3: Float
-    @NSManaged public var year: String?
-    @NSManaged public var ident: String?
+    @NSManaged public var recheckInterval: String?
     @NSManaged public var sended: Bool
     @NSManaged public var sendError: Bool
     @NSManaged public var sendErrorText: String?
     @NSManaged public var tariffNumber: String?
-    @NSManaged public var lastCheckupDate: String?
-    @NSManaged public var recheckInterval: String?
-    @NSManaged public var autoValueGettingOnly: Bool
+    @NSManaged public var uniq_num: String?
+    @NSManaged public var unit_name: String?
+    @NSManaged public var value: Float
+    @NSManaged public var valueT2: Float
+    @NSManaged public var valueT3: Float
+    @NSManaged public var year: String?
+
 }
