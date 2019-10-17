@@ -120,18 +120,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             var apps = 0
             if notification["unreadedAnnouncements"] != nil{
                 news = Int(notification["unreadedAnnouncements"]! as! String)!
-                if news >= 0{
-                    UserDefaults.standard.set(news, forKey: "newsKol")
+                if news > 0{
+                     UserDefaults.standard.set(news, forKey: "newsKol")
                 }else{
-                    UserDefaults.standard.set(0, forKey: "newsKol")
+                     UserDefaults.standard.set(0, forKey: "newsKol")
                 }
             }
             if notification["requestsUnreadedCount"] != nil{
                 apps = Int(notification["requestsUnreadedCount"]! as! String)!
-                if apps >= 0{
-                    UserDefaults.standard.set(apps, forKey: "appsKol")
+                if apps > 0{
+                     UserDefaults.standard.set(apps, forKey: "appsKol")
                 }else{
-                    UserDefaults.standard.set(0, forKey: "appsKol")
+                     UserDefaults.standard.set(0, forKey: "appsKol")
                 }
             }
             let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
@@ -202,19 +202,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var apps = 0
         if userInfo["gcm.notification.unreadedAnnouncements"] != nil{
             news = Int(userInfo["gcm.notification.unreadedAnnouncements"]! as! String)!
-            UserDefaults.standard.set(news, forKey: "newsKol")
+            if news > 0{
+                 UserDefaults.standard.set(news, forKey: "newsKol")
+            }else{
+                 UserDefaults.standard.set(0, forKey: "newsKol")
+            }
         }
         if userInfo["unreadedAnnouncements"] != nil{
             news = Int(userInfo["unreadedAnnouncements"]! as! String)!
-            UserDefaults.standard.set(news, forKey: "newsKol")
+            if news > 0{
+                 UserDefaults.standard.set(news, forKey: "newsKol")
+            }else{
+                 UserDefaults.standard.set(0, forKey: "newsKol")
+            }
         }
         if userInfo["gcm.notification.requestsUnreadedCount"] != nil{
             apps = Int(userInfo["gcm.notification.requestsUnreadedCount"]! as! String)!
-            UserDefaults.standard.set(apps, forKey: "appsKol")
+            if apps > 0{
+                UserDefaults.standard.set(apps, forKey: "appsKol")
+            }else{
+                UserDefaults.standard.set(0, forKey: "appsKol")
+            }
         }
         if userInfo["requestsUnreadedCount"] != nil{
             apps = Int(userInfo["requestsUnreadedCount"]! as! String)!
-            UserDefaults.standard.set(apps, forKey: "appsKol")
+            if apps > 0{
+                UserDefaults.standard.set(apps, forKey: "appsKol")
+            }else{
+                UserDefaults.standard.set(0, forKey: "appsKol")
+            }
         }
         let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
         if (updatedBadgeNumber > -1) {

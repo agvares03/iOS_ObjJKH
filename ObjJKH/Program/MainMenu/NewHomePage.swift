@@ -1011,7 +1011,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, error, responce in
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 //                                                print("responseString = \(responseString)")
                                                 
                                                 //            if error != nil {
@@ -1020,6 +1019,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 //            }
                                                 
                                                 guard data != nil else { return }
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 var newsList: [News] = []
                                                 if !responseString.contains("error"){
                                                     let json = try? JSONSerialization.jsonObject(with: data!,
@@ -1046,10 +1046,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                     }
                                                     i += 1
                                                 }
-                                                if news_read >= 0{
-                                                    UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                if news_read > 0{
+                                                     UserDefaults.standard.set(news_read, forKey: "newsKol")
                                                 }else{
-                                                    UserDefaults.standard.set(0, forKey: "newsKol")
+                                                     UserDefaults.standard.set(0, forKey: "newsKol")
                                                 }
                                                 DispatchQueue.main.async {
                                                     let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")

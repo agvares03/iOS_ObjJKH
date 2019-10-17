@@ -102,10 +102,10 @@ class NewsClient {
                                                         let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
                                                         newsList.append(newsObj)
                                                     }
-                                                    if news_read >= 0{
-                                                        UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                    if news_read > 0{
+                                                         UserDefaults.standard.set(news_read, forKey: "newsKol")
                                                     }else{
-                                                        UserDefaults.standard.set(0, forKey: "newsKol")
+                                                         UserDefaults.standard.set(0, forKey: "newsKol")
                                                     }
                                                     
                                                 }

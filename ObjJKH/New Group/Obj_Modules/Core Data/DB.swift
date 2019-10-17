@@ -702,7 +702,7 @@ class DB: NSObject, XMLParserDelegate {
         
         if success {
             print("parse APPS success!")
-            if self.request_read >= 0{
+            if self.request_read > 0{
                 UserDefaults.standard.set(self.request_read, forKey: "appsKol")
             }else{
                 UserDefaults.standard.set(0, forKey: "appsKol")
