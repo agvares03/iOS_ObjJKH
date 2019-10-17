@@ -2814,7 +2814,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if isEditable(){
             var metrId = ""
             for i in 0...self.numberArr.count - 1{
-                if uniq_num == self.ownerArr[i]{
+                if uniq_num == self.ownerArr[i] && count_name == (nameArr[i] + ", " + unitArr[i]){
                     metrId = self.numberArr[i]
                 }
             }
