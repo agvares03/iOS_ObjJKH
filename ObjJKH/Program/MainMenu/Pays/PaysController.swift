@@ -11,7 +11,7 @@ import Dropper
 import CoreData
 import YandexMobileAds
 import GoogleMobileAds
-import YandexMobileMetrica
+//import YandexMobileMetrica
 import StoreKit
 
 private protocol MainDataProtocol:  class {}
@@ -213,13 +213,13 @@ class PaysController: UIViewController, DropperDelegate, UITableViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults     = UserDefaults.standard
-        let params : [String : Any] = ["Переход на страницу": "Оплата"]
+//        let params : [String : Any] = ["Переход на страницу": "Оплата"]
         UserDefaults.standard.set(false, forKey: "PaymentSucces")
         UserDefaults.standard.synchronize()
-        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
-            //            print("DID FAIL REPORT EVENT: %@", message)
-            print("REPORT ERROR: %@", error.localizedDescription)
-        })
+//        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+//            //            print("DID FAIL REPORT EVENT: %@", message)
+//            print("REPORT ERROR: %@", error.localizedDescription)
+//        })
         if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
             currPoint = 520
             paysViewHeight.constant = 110

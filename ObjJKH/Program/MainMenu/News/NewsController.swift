@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import YandexMobileMetrica
+//import YandexMobileMetrica
 
 class NewsController: UIViewController, UITableViewDelegate {
 
@@ -30,11 +30,11 @@ class NewsController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let params : [String : Any] = ["Переход на страницу": "Уведомления"]
-        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
-            //            print("DID FAIL REPORT EVENT: %@", message)
-            print("REPORT ERROR: %@", error.localizedDescription)
-        })
+//        let params : [String : Any] = ["Переход на страницу": "Уведомления"]
+//        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+//            //            print("DID FAIL REPORT EVENT: %@", message)
+//            print("REPORT ERROR: %@", error.localizedDescription)
+//        })
         NotificationCenter.default
             .addObserver(self,
                          selector: #selector(statusManager),

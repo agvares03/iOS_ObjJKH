@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import Dropper
-import YandexMobileMetrica
+//import YandexMobileMetrica
 import StoreKit
 
 protocol CountersCellDelegate: class {
@@ -109,11 +109,11 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         UserDefaults.standard.set(false, forKey: "PaymentSucces")
         UserDefaults.standard.synchronize()
         let defaults     = UserDefaults.standard
-        let params : [String : Any] = ["Переход на страницу": "Показания приборов"]
-        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
-            //            print("DID FAIL REPORT EVENT: %@", message)
-            print("REPORT ERROR: %@", error.localizedDescription)
-        })
+//        let params : [String : Any] = ["Переход на страницу": "Показания приборов"]
+//        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+//            //            print("DID FAIL REPORT EVENT: %@", message)
+//            print("REPORT ERROR: %@", error.localizedDescription)
+//        })
         nonConectView.isHidden = true
         lsView.isHidden = false
         ls_lbl.isHidden = false

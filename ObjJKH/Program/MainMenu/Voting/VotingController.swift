@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 import Gloss
-import YandexMobileMetrica
+//import YandexMobileMetrica
 
 protocol VotingCellDelegate: class {
     func sendPressed(name: String, id: Int64)
@@ -39,11 +39,11 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let params : [String : Any] = ["Переход на страницу": "Голосования"]
-        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
-            //            print("DID FAIL REPORT EVENT: %@", message)
-            print("REPORT ERROR: %@", error.localizedDescription)
-        })
+//        let params : [String : Any] = ["Переход на страницу": "Голосования"]
+//        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+//            //            print("DID FAIL REPORT EVENT: %@", message)
+//            print("REPORT ERROR: %@", error.localizedDescription)
+//        })
         self.StartIndicator()
         noDataLbl.isHidden = true
         let defaults = UserDefaults.standard

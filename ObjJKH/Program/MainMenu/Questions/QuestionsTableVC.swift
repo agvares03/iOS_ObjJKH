@@ -8,7 +8,7 @@
 
 import UIKit
 import Gloss
-import YandexMobileMetrica
+//import YandexMobileMetrica
 
 protocol QuestionTableDelegate {
     func update()
@@ -49,11 +49,11 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let params : [String : Any] = ["Переход на страницу": "Опросы"]
-        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
-            //            print("DID FAIL REPORT EVENT: %@", message)
-            print("REPORT ERROR: %@", error.localizedDescription)
-        })
+//        let params : [String : Any] = ["Переход на страницу": "Опросы"]
+//        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+//            //            print("DID FAIL REPORT EVENT: %@", message)
+//            print("REPORT ERROR: %@", error.localizedDescription)
+//        })
         automaticallyAdjustsScrollViewInsets = false
         collection.delegate     = self
         collection.dataSource   = self

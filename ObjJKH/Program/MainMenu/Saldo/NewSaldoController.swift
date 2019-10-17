@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Dropper
 import Gloss
-import YandexMobileMetrica
+//import YandexMobileMetrica
 
 class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewDataSource, GoUrlReceiptDelegate {    
 

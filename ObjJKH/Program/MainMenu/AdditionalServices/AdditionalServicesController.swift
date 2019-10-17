@@ -10,7 +10,7 @@ import UIKit
 import Dropper
 import SwiftyXMLParser
 import CoreData
-import YandexMobileMetrica
+//import YandexMobileMetrica
 
 struct Services {
     let id:            String?
@@ -71,11 +71,11 @@ class AdditionalServicesController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let params : [String : Any] = ["Переход на страницу": "Дополнительные услуги"]
-        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
-            //            print("DID FAIL REPORT EVENT: %@", message)
-            print("REPORT ERROR: %@", error.localizedDescription)
-        })
+//        let params : [String : Any] = ["Переход на страницу": "Дополнительные услуги"]
+//        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
+//            //            print("DID FAIL REPORT EVENT: %@", message)
+//            print("REPORT ERROR: %@", error.localizedDescription)
+//        })
         let defaults     = UserDefaults.standard
         nonConectView.isHidden = true
         tableView.isHidden = false
