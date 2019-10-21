@@ -170,7 +170,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         //        self.payedS()
         //        #elseif isStolitsa
         //        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
+        #if isKlimovsk12 || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
         l = true
         #else
         self.payedS()
@@ -371,6 +371,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
         }
+        #elseif isEnergoProgress
+        shopCode = "280632"
+        targetName = "Энергопрогресс"
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!

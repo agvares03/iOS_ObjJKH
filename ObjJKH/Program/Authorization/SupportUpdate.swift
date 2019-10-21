@@ -121,6 +121,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_Uk_First")
         #elseif isRKC_Samara
         imageApp.image = UIImage(named: "Logo_Samara")
+        #elseif isEnergoProgress
+        imageApp.image = UIImage(named: "Logo_EnergoProgress")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()

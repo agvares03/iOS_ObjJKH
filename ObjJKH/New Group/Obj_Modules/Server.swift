@@ -105,6 +105,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/ukpervaya/"
     #elseif isRKC_Samara
         static let SERVER          = "http://uk-gkh.org/ks_samara/"
+    #elseif isEnergoProgress
+        static let SERVER          = "http://uk-gkh.org/energoprogress54/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения
