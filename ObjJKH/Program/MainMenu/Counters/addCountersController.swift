@@ -51,6 +51,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var count16:         UITextField!
     @IBOutlet weak var count17:         UITextField!
     @IBOutlet weak var count18:         UITextField!
+    @IBOutlet weak var count19:         UITextField!
     @IBOutlet weak var teckLbl1:        UILabel!
     
     @IBOutlet weak var count21:         UITextField!
@@ -61,6 +62,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var count26:         UITextField!
     @IBOutlet weak var count27:         UITextField!
     @IBOutlet weak var count28:         UITextField!
+    @IBOutlet weak var count29:         UITextField!
     @IBOutlet weak var teckLbl2:        UILabel!
     
     @IBOutlet weak var count31:         UITextField!
@@ -71,6 +73,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var count36:         UITextField!
     @IBOutlet weak var count37:         UITextField!
     @IBOutlet weak var count38:         UITextField!
+    @IBOutlet weak var count39:         UITextField!
     @IBOutlet weak var teckLbl3:        UILabel!
     
     @IBOutlet weak var pred11:          UILabel!
@@ -81,6 +84,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var pred16:          UILabel!
     @IBOutlet weak var pred17:          UILabel!
     @IBOutlet weak var pred18:          UILabel!
+    @IBOutlet weak var pred19:          UILabel!
     @IBOutlet weak var predView1:       UIView!
     @IBOutlet weak var pred1Height:     NSLayoutConstraint!
     @IBOutlet weak var predLbl1:        UILabel!
@@ -93,6 +97,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var pred26:          UILabel!
     @IBOutlet weak var pred27:          UILabel!
     @IBOutlet weak var pred28:          UILabel!
+    @IBOutlet weak var pred29:          UILabel!
     @IBOutlet weak var predView2:       UIView!
     @IBOutlet weak var pred2Height:     NSLayoutConstraint!
     @IBOutlet weak var predLbl2:        UILabel!
@@ -105,6 +110,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var pred36:          UILabel!
     @IBOutlet weak var pred37:          UILabel!
     @IBOutlet weak var pred38:          UILabel!
+    @IBOutlet weak var pred39:          UILabel!
     @IBOutlet weak var predView3:       UIView!
     @IBOutlet weak var pred3Height:     NSLayoutConstraint!
     @IBOutlet weak var predLbl3:        UILabel!
@@ -305,6 +311,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         count1.append(count16)
         count1.append(count17)
         count1.append(count18)
+        count1.append(count19)
         
         pred1.append(pred11)
         pred1.append(pred12)
@@ -314,6 +321,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         pred1.append(pred16)
         pred1.append(pred17)
         pred1.append(pred18)
+        pred1.append(pred19)
         
         if tariffNumber == 0 || tariffNumber == 1{
             tariffOne.isHidden = true
@@ -334,6 +342,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         count2.append(count26)
         count2.append(count27)
         count2.append(count28)
+        count2.append(count29)
         
         count3.append(count35)
         count3.append(count34)
@@ -343,6 +352,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         count3.append(count36)
         count3.append(count37)
         count3.append(count38)
+        count3.append(count39)
         
         pred2.append(pred21)
         pred2.append(pred22)
@@ -352,6 +362,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         pred2.append(pred26)
         pred2.append(pred27)
         pred2.append(pred28)
+        pred2.append(pred29)
         
         pred3.append(pred31)
         pred3.append(pred32)
@@ -361,6 +372,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         pred3.append(pred36)
         pred3.append(pred37)
         pred3.append(pred38)
+        pred3.append(pred39)
         let date = Date()
         let calendar = NSCalendar.current
         let resultDay = calendar.component(.day, from: date as Date)
