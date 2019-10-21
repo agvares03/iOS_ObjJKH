@@ -453,27 +453,28 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             guard data != nil else { return }
             
-            var request_read = UserDefaults.standard.integer(forKey: "appsKol")
-            request_read -= 1
-            if request_read > 0{
-                 UserDefaults.standard.set(request_read, forKey: "appsKol")
-            }else{
-                 UserDefaults.standard.set(0, forKey: "appsKol")
-            }
-            DispatchQueue.main.async {
-                let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
-                if (updatedBadgeNumber > -1) {
-                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-                }
-//                if request_read >= 0{
-//                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-//                    UserDefaults.standard.synchronize()
-//                }else{
-//                    UserDefaults.standard.setValue(0, forKey: "request_read")
-//                    UserDefaults.standard.synchronize()
+            print(String(data: data!, encoding: .utf8) ?? "")
+//            var request_read = UserDefaults.standard.integer(forKey: "appsKol")
+//            request_read -= 1
+//            if request_read > 0{
+//                 UserDefaults.standard.set(request_read, forKey: "appsKol")
+//            }else{
+//                 UserDefaults.standard.set(0, forKey: "appsKol")
+//            }
+//            DispatchQueue.main.async {
+//                let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+//                if (updatedBadgeNumber > -1) {
+//                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
 //                }
-                
-            }
+////                if request_read >= 0{
+////                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+////                    UserDefaults.standard.synchronize()
+////                }else{
+////                    UserDefaults.standard.setValue(0, forKey: "request_read")
+////                    UserDefaults.standard.synchronize()
+////                }
+//
+//            }
             
             }.resume()
     }

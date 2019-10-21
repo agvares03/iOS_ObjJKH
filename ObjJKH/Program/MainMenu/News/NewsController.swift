@@ -42,7 +42,7 @@ class NewsController: UIViewController, UITableViewDelegate {
                          object: Network.reachability)
         let error = updateUserInterface()
         noDataLbl.isHidden = true
-        news_read = UserDefaults.standard.integer(forKey: "request_read")
+        news_read = UserDefaults.standard.integer(forKey: "newsKol")
         self.tableView.estimatedRowHeight = 71
         self.tableView.rowHeight = UITableViewAutomaticDimension
         nonConectView.isHidden = true
@@ -109,7 +109,7 @@ class NewsController: UIViewController, UITableViewDelegate {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        if UserDefaults.standard.integer(forKey: "news_read") < news_read{
+        if UserDefaults.standard.integer(forKey: "newsKol") < news_read{
             NewsManager.instance.loadNews()
             self.tableView.reloadData()
             if #available(iOS 10.0, *) {
