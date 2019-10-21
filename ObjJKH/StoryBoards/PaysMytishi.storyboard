@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eq-yJ-VH4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eq-yJ-VH4">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -994,10 +994,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbP-bm-P13">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возможность оплаты не подключена, обратитесь в Вашу Управляющую компанию" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egk-SJ-tfm">
                                 <rect key="frame" x="30" y="273" width="315" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1028,13 +1024,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="egk-SJ-tfm" firstAttribute="leading" secondItem="WVC-xc-Pj3" secondAttribute="leading" constant="30" id="30j-Q6-opu"/>
-                            <constraint firstItem="SbP-bm-P13" firstAttribute="leading" secondItem="Bej-wu-Hfc" secondAttribute="leading" id="B0l-B2-rD9"/>
-                            <constraint firstItem="SbP-bm-P13" firstAttribute="trailing" secondItem="Bej-wu-Hfc" secondAttribute="trailing" id="BqH-Xh-hKw"/>
-                            <constraint firstItem="SbP-bm-P13" firstAttribute="bottom" secondItem="Bej-wu-Hfc" secondAttribute="bottom" id="Xgu-gm-wcU"/>
                             <constraint firstItem="egk-SJ-tfm" firstAttribute="centerY" secondItem="WVC-xc-Pj3" secondAttribute="centerY" constant="-30" id="cw6-iT-oeb"/>
                             <constraint firstItem="A28-V9-jcr" firstAttribute="top" secondItem="egk-SJ-tfm" secondAttribute="bottom" constant="10" id="dIf-9d-sWq"/>
                             <constraint firstAttribute="trailing" secondItem="egk-SJ-tfm" secondAttribute="trailing" constant="30" id="eNH-ky-64K"/>
-                            <constraint firstItem="SbP-bm-P13" firstAttribute="top" secondItem="Bej-wu-Hfc" secondAttribute="top" id="gKD-f6-ZRj"/>
                             <constraint firstItem="A28-V9-jcr" firstAttribute="centerX" secondItem="WVC-xc-Pj3" secondAttribute="centerX" id="qBI-iP-SEx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bej-wu-Hfc"/>
@@ -1050,7 +1042,6 @@
                         <outlet property="appBtn" destination="A28-V9-jcr" id="qte-ol-Z8h"/>
                         <outlet property="appLbl" destination="egk-SJ-tfm" id="uKd-Yk-hUC"/>
                         <outlet property="backBtn" destination="xOn-7l-dNH" id="Maz-15-DMA"/>
-                        <outlet property="webView" destination="SbP-bm-P13" id="jWP-F7-HYt"/>
                         <segue destination="QtH-99-6Fb" kind="show" identifier="new_add_app" id="CSF-dI-oTy"/>
                         <segue destination="PvX-z7-cD9" kind="show" identifier="add_app" id="giE-de-eMv"/>
                     </connections>

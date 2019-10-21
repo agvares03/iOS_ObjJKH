@@ -222,6 +222,7 @@ class DB: NSObject, XMLParserDelegate {
     var autoValueGettingOnly = false
     var recheckInterval = ""
     var lastCheckDate = ""
+    var numberOfDecimal = ""
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
 //        var k = 0
@@ -238,6 +239,7 @@ class DB: NSObject, XMLParserDelegate {
                 ident = attributeDict["Ident"]!
                 units = attributeDict["Units"]!
                 name = attributeDict["Name"]!
+                numberOfDecimal = attributeDict["NumberOfDecimalPlaces"]!
                 meterUniqueNum = attributeDict["MeterUniqueNum"]!
                 factoryNumber = attributeDict["FactoryNumber"]!
                 if attributeDict["TariffNumber"]! != ""{
@@ -269,6 +271,7 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.recheckInterval = recheckInterval
                 managedObject.uniq_num      = meterUniqueNum
                 managedObject.owner         = factoryNumber
+                managedObject.numberOfDecimal = numberOfDecimal
                 managedObject.num_month     = attributeDict["PeriodDate"]!
                 managedObject.unit_name     = units
                 managedObject.year          = date[2]

@@ -8,22 +8,26 @@
 
 import UIKit
 import Foundation
+import WebKit
 
-class NoCounters: UIViewController {
+class NoCounters: UIViewController, WKUIDelegate{
 
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBOutlet weak var webView: UIWebView!
-    
+//    @IBOutlet weak var webView: UIWebView!
+    var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
         automaticallyAdjustsScrollViewInsets = false
         let localfilePath = Bundle.main.url(forResource: "no_counters", withExtension: "html");
-        let myRequest = URLRequest(url: localfilePath!);
-        webView.loadRequest(myRequest);
+//        let myRequest = URLRequest(url: localfilePath!);
+        webView.load(NSURLRequest(url: localfilePath!) as URLRequest)
     }
 
     override func didReceiveMemoryWarning() {

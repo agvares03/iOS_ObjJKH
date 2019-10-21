@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bN5-W8-3oO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bN5-W8-3oO">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -211,10 +211,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPf-R5-oWI">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cdO-Ui-rY4">
                                 <rect key="frame" x="169" y="337" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -222,12 +218,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="EPf-R5-oWI" firstAttribute="leading" secondItem="f5b-FD-qz2" secondAttribute="leading" id="23o-gg-NE3"/>
                             <constraint firstItem="cdO-Ui-rY4" firstAttribute="centerY" secondItem="f5b-FD-qz2" secondAttribute="centerY" id="2Um-mo-kRh"/>
                             <constraint firstItem="cdO-Ui-rY4" firstAttribute="centerX" secondItem="f5b-FD-qz2" secondAttribute="centerX" id="EcR-Bo-28J"/>
-                            <constraint firstItem="f5b-FD-qz2" firstAttribute="bottom" secondItem="EPf-R5-oWI" secondAttribute="bottom" id="cdw-hc-WY5"/>
-                            <constraint firstItem="EPf-R5-oWI" firstAttribute="top" secondItem="f5b-FD-qz2" secondAttribute="top" id="oEd-NA-4E6"/>
-                            <constraint firstItem="f5b-FD-qz2" firstAttribute="trailing" secondItem="EPf-R5-oWI" secondAttribute="trailing" id="waU-Lf-AHs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f5b-FD-qz2"/>
                     </view>
@@ -241,7 +233,6 @@
                     <connections>
                         <outlet property="back" destination="N0D-sj-wUW" id="5Y1-lD-CPd"/>
                         <outlet property="indicator" destination="cdO-Ui-rY4" id="kWT-r8-2LS"/>
-                        <outlet property="webView" destination="EPf-R5-oWI" id="EBx-HE-Jlg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBN-fB-vEU" userLabel="First Responder" sceneMemberID="firstResponder"/>

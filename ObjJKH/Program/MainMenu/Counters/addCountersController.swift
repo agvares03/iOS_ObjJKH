@@ -52,7 +52,12 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var count17:         UITextField!
     @IBOutlet weak var count18:         UITextField!
     @IBOutlet weak var count19:         UITextField!
+    @IBOutlet weak var count16Width:    NSLayoutConstraint!
+    @IBOutlet weak var count17Width:    NSLayoutConstraint!
+    @IBOutlet weak var count18Width:    NSLayoutConstraint!
+    @IBOutlet weak var count19Width:    NSLayoutConstraint!
     @IBOutlet weak var teckLbl1:        UILabel!
+    @IBOutlet weak var countDec1:       UILabel!
     
     @IBOutlet weak var count21:         UITextField!
     @IBOutlet weak var count22:         UITextField!
@@ -63,7 +68,12 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var count27:         UITextField!
     @IBOutlet weak var count28:         UITextField!
     @IBOutlet weak var count29:         UITextField!
+    @IBOutlet weak var count26Width:    NSLayoutConstraint!
+    @IBOutlet weak var count27Width:    NSLayoutConstraint!
+    @IBOutlet weak var count28Width:    NSLayoutConstraint!
+    @IBOutlet weak var count29Width:    NSLayoutConstraint!
     @IBOutlet weak var teckLbl2:        UILabel!
+    @IBOutlet weak var countDec2:       UILabel!
     
     @IBOutlet weak var count31:         UITextField!
     @IBOutlet weak var count32:         UITextField!
@@ -74,7 +84,12 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var count37:         UITextField!
     @IBOutlet weak var count38:         UITextField!
     @IBOutlet weak var count39:         UITextField!
+    @IBOutlet weak var count36Width:    NSLayoutConstraint!
+    @IBOutlet weak var count37Width:    NSLayoutConstraint!
+    @IBOutlet weak var count38Width:    NSLayoutConstraint!
+    @IBOutlet weak var count39Width:    NSLayoutConstraint!
     @IBOutlet weak var teckLbl3:        UILabel!
+    @IBOutlet weak var countDec3:       UILabel!
     
     @IBOutlet weak var pred11:          UILabel!
     @IBOutlet weak var pred12:          UILabel!
@@ -85,9 +100,14 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var pred17:          UILabel!
     @IBOutlet weak var pred18:          UILabel!
     @IBOutlet weak var pred19:          UILabel!
+    @IBOutlet weak var pred16Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred17Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred18Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred19Width:     NSLayoutConstraint!
     @IBOutlet weak var predView1:       UIView!
     @IBOutlet weak var pred1Height:     NSLayoutConstraint!
     @IBOutlet weak var predLbl1:        UILabel!
+    @IBOutlet weak var predDec1:        UILabel!
     
     @IBOutlet weak var pred21:          UILabel!
     @IBOutlet weak var pred22:          UILabel!
@@ -98,9 +118,14 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var pred27:          UILabel!
     @IBOutlet weak var pred28:          UILabel!
     @IBOutlet weak var pred29:          UILabel!
+    @IBOutlet weak var pred26Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred27Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred28Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred29Width:     NSLayoutConstraint!
     @IBOutlet weak var predView2:       UIView!
     @IBOutlet weak var pred2Height:     NSLayoutConstraint!
     @IBOutlet weak var predLbl2:        UILabel!
+    @IBOutlet weak var predDec2:        UILabel!
     
     @IBOutlet weak var pred31:          UILabel!
     @IBOutlet weak var pred32:          UILabel!
@@ -111,9 +136,14 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var pred37:          UILabel!
     @IBOutlet weak var pred38:          UILabel!
     @IBOutlet weak var pred39:          UILabel!
+    @IBOutlet weak var pred36Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred37Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred38Width:     NSLayoutConstraint!
+    @IBOutlet weak var pred39Width:     NSLayoutConstraint!
     @IBOutlet weak var predView3:       UIView!
     @IBOutlet weak var pred3Height:     NSLayoutConstraint!
     @IBOutlet weak var predLbl3:        UILabel!
+    @IBOutlet weak var predDec3:        UILabel!
     
     
     @IBOutlet weak var support: UIImageView!
@@ -296,6 +326,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     public var predValue2 = ""
     public var predValue3 = ""
     public var tariffNumber = 3
+    public var numberDecimal = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -308,21 +339,261 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         count1.append(count13)
         count1.append(count12)
         count1.append(count11)
-        count1.append(count16)
-        count1.append(count17)
-        count1.append(count18)
-        count1.append(count19)
         
         pred1.append(pred11)
         pred1.append(pred12)
         pred1.append(pred13)
         pred1.append(pred14)
         pred1.append(pred15)
-        pred1.append(pred16)
-        pred1.append(pred17)
-        pred1.append(pred18)
-        pred1.append(pred19)
         
+        count2.append(count25)
+        count2.append(count24)
+        count2.append(count23)
+        count2.append(count22)
+        count2.append(count21)
+        
+        count3.append(count35)
+        count3.append(count34)
+        count3.append(count33)
+        count3.append(count32)
+        count3.append(count31)
+        
+        pred2.append(pred21)
+        pred2.append(pred22)
+        pred2.append(pred23)
+        pred2.append(pred24)
+        pred2.append(pred25)
+        
+        pred3.append(pred31)
+        pred3.append(pred32)
+        pred3.append(pred33)
+        pred3.append(pred34)
+        pred3.append(pred35)
+        
+        if numberDecimal == 4{
+            count1.append(count16)
+            count1.append(count17)
+            count1.append(count18)
+            count1.append(count19)
+            
+            pred1.append(pred16)
+            pred1.append(pred17)
+            pred1.append(pred18)
+            pred1.append(pred19)
+            
+            count2.append(count26)
+            count2.append(count27)
+            count2.append(count28)
+            count2.append(count29)
+            
+            count3.append(count36)
+            count3.append(count37)
+            count3.append(count38)
+            count3.append(count39)
+            
+            pred2.append(pred26)
+            pred2.append(pred27)
+            pred2.append(pred28)
+            pred2.append(pred29)
+            
+            pred3.append(pred36)
+            pred3.append(pred37)
+            pred3.append(pred38)
+            pred3.append(pred39)
+            
+        }else if numberDecimal == 3{
+            count1.append(count16)
+            count1.append(count17)
+            count1.append(count18)
+            count19.isHidden = true
+            count19Width.constant = 0
+            
+            pred1.append(pred16)
+            pred1.append(pred17)
+            pred1.append(pred18)
+            pred19.isHidden = true
+            pred19Width.constant = 0
+            
+            count2.append(count26)
+            count2.append(count27)
+            count2.append(count28)
+            count29.isHidden = true
+            count29Width.constant = 0
+            
+            count3.append(count36)
+            count3.append(count37)
+            count3.append(count38)
+            count39.isHidden = true
+            count39Width.constant = 0
+            
+            pred2.append(pred26)
+            pred2.append(pred27)
+            pred2.append(pred28)
+            pred29.isHidden = true
+            pred29Width.constant = 0
+            
+            pred3.append(pred36)
+            pred3.append(pred37)
+            pred3.append(pred38)
+            pred39.isHidden = true
+            pred39Width.constant = 0
+            
+        }else if numberDecimal == 2{
+            count1.append(count16)
+            count1.append(count17)
+            count18.isHidden = true
+            count19.isHidden = true
+            count18Width.constant = 0
+            count19Width.constant = 0
+            
+            pred1.append(pred16)
+            pred1.append(pred17)
+            pred18.isHidden = true
+            pred19.isHidden = true
+            pred18Width.constant = 0
+            pred19Width.constant = 0
+            
+            count2.append(count26)
+            count2.append(count27)
+            count28.isHidden = true
+            count29.isHidden = true
+            count28Width.constant = 0
+            count29Width.constant = 0
+            
+            count3.append(count36)
+            count3.append(count37)
+            count38.isHidden = true
+            count39.isHidden = true
+            count38Width.constant = 0
+            count39Width.constant = 0
+            
+            pred2.append(pred26)
+            pred2.append(pred27)
+            pred28.isHidden = true
+            pred29.isHidden = true
+            pred28Width.constant = 0
+            pred29Width.constant = 0
+            
+            pred3.append(pred36)
+            pred3.append(pred37)
+            pred38.isHidden = true
+            pred39.isHidden = true
+            pred38Width.constant = 0
+            pred39Width.constant = 0
+            
+        }else if numberDecimal == 1{
+            count1.append(count16)
+            count17.isHidden = true
+            count18.isHidden = true
+            count19.isHidden = true
+            count17Width.constant = 0
+            count18Width.constant = 0
+            count19Width.constant = 0
+            
+            pred1.append(pred16)
+            pred17.isHidden = true
+            pred18.isHidden = true
+            pred19.isHidden = true
+            pred17Width.constant = 0
+            pred18Width.constant = 0
+            pred19Width.constant = 0
+            
+            count2.append(count26)
+            count27.isHidden = true
+            count28.isHidden = true
+            count29.isHidden = true
+            count27Width.constant = 0
+            count28Width.constant = 0
+            count29Width.constant = 0
+            
+            count3.append(count36)
+            count37.isHidden = true
+            count38.isHidden = true
+            count39.isHidden = true
+            count37Width.constant = 0
+            count38Width.constant = 0
+            count39Width.constant = 0
+            
+            pred2.append(pred26)
+            pred27.isHidden = true
+            pred28.isHidden = true
+            pred29.isHidden = true
+            pred27Width.constant = 0
+            pred28Width.constant = 0
+            pred29Width.constant = 0
+            
+            pred3.append(pred36)
+            pred37.isHidden = true
+            pred38.isHidden = true
+            pred39.isHidden = true
+            pred37Width.constant = 0
+            pred38Width.constant = 0
+            pred39Width.constant = 0
+        }else{
+            count16.isHidden = true
+            count17.isHidden = true
+            count18.isHidden = true
+            count19.isHidden = true
+            count16Width.constant = 0
+            count17Width.constant = 0
+            count18Width.constant = 0
+            count19Width.constant = 0
+            
+            pred16.isHidden = true
+            pred17.isHidden = true
+            pred18.isHidden = true
+            pred19.isHidden = true
+            pred16Width.constant = 0
+            pred17Width.constant = 0
+            pred18Width.constant = 0
+            pred19Width.constant = 0
+            
+            count26.isHidden = true
+            count27.isHidden = true
+            count28.isHidden = true
+            count29.isHidden = true
+            count26Width.constant = 0
+            count27Width.constant = 0
+            count28Width.constant = 0
+            count29Width.constant = 0
+            
+            count36.isHidden = true
+            count37.isHidden = true
+            count38.isHidden = true
+            count39.isHidden = true
+            count36Width.constant = 0
+            count37Width.constant = 0
+            count38Width.constant = 0
+            count39Width.constant = 0
+            
+            pred26.isHidden = true
+            pred27.isHidden = true
+            pred28.isHidden = true
+            pred29.isHidden = true
+            pred26Width.constant = 0
+            pred27Width.constant = 0
+            pred28Width.constant = 0
+            pred29Width.constant = 0
+            
+            pred36.isHidden = true
+            pred37.isHidden = true
+            pred38.isHidden = true
+            pred39.isHidden = true
+            pred36Width.constant = 0
+            pred37Width.constant = 0
+            pred38Width.constant = 0
+            pred39Width.constant = 0
+            
+            countDec1.isHidden = true
+            countDec2.isHidden = true
+            countDec3.isHidden = true
+            predDec1.isHidden = true
+            predDec2.isHidden = true
+            predDec3.isHidden = true
+            newCountersDrob1.isHidden = true
+            newCountersDrob2.isHidden = true
+            newCountersDrob3.isHidden = true
+        }
         if tariffNumber == 0 || tariffNumber == 1{
             tariffOne.isHidden = true
             tarif2View.isHidden = true
@@ -334,45 +605,6 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             tarif3Height.constant = 0
         }
         
-        count2.append(count25)
-        count2.append(count24)
-        count2.append(count23)
-        count2.append(count22)
-        count2.append(count21)
-        count2.append(count26)
-        count2.append(count27)
-        count2.append(count28)
-        count2.append(count29)
-        
-        count3.append(count35)
-        count3.append(count34)
-        count3.append(count33)
-        count3.append(count32)
-        count3.append(count31)
-        count3.append(count36)
-        count3.append(count37)
-        count3.append(count38)
-        count3.append(count39)
-        
-        pred2.append(pred21)
-        pred2.append(pred22)
-        pred2.append(pred23)
-        pred2.append(pred24)
-        pred2.append(pred25)
-        pred2.append(pred26)
-        pred2.append(pred27)
-        pred2.append(pred28)
-        pred2.append(pred29)
-        
-        pred3.append(pred31)
-        pred3.append(pred32)
-        pred3.append(pred33)
-        pred3.append(pred34)
-        pred3.append(pred35)
-        pred3.append(pred36)
-        pred3.append(pred37)
-        pred3.append(pred38)
-        pred3.append(pred39)
         let date = Date()
         let calendar = NSCalendar.current
         let resultDay = calendar.component(.day, from: date as Date)
@@ -388,8 +620,19 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
         
         if autoSend{
             var predV1 = predValue1.replacingOccurrences(of: ".", with: ",")
-            if predV1.count < 9{
-                for _ in predV1.count ... 8{
+            if numberDecimal == 0{
+                predV1.forEach{_ in
+                    if predV1.contains(","){
+                        predV1.removeLast()
+                    }
+                }
+            }
+            if predV1.count < 5 && numberDecimal == 0{
+                for _ in predV1.count ... 4{
+                    predV1 = "0" + predV1
+                }
+            }else if predV1.count < (6 + numberDecimal) && numberDecimal > 0{
+                for _ in predV1.count ... (5 + numberDecimal){
                     predV1 = "0" + predV1
                 }
             }
@@ -407,8 +650,19 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             count1[1].text = count1[3].text
             count1[3].text = k
             var predV2 = predValue2.replacingOccurrences(of: ".", with: ",")
-            if predV2.count < 9{
-                for _ in predV2.count ... 8{
+            if numberDecimal == 0{
+                predV2.forEach{_ in
+                    if predV2.contains(","){
+                        predV2.removeLast()
+                    }
+                }
+            }
+            if predV2.count < 5 && numberDecimal == 0{
+                for _ in predV2.count ... 4{
+                    predV2 = "0" + predV2
+                }
+            }else if predV2.count < (6 + numberDecimal) && numberDecimal > 0{
+                for _ in predV2.count ... (5 + numberDecimal){
                     predV2 = "0" + predV2
                 }
             }
@@ -426,8 +680,19 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             count2[1].text = count2[3].text
             count2[3].text = k
             var predV3 = predValue3.replacingOccurrences(of: ".", with: ",")
-            if predV3.count < 9{
-                for _ in predV3.count ... 8{
+            if numberDecimal == 0{
+                predV3.forEach{_ in
+                    if predV3.contains(","){
+                        predV3.removeLast()
+                    }
+                }
+            }
+            if predV3.count < 5 && numberDecimal == 0{
+                for _ in predV3.count ... 4{
+                    predV3 = "0" + predV3
+                }
+            }else if predV3.count < (6 + numberDecimal) && numberDecimal > 0{
+                for _ in predV3.count ... (5 + numberDecimal){
                     predV3 = "0" + predV3
                 }
             }
@@ -464,8 +729,19 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             newCounters3.isUserInteractionEnabled = false
         }else{
             var predV1 = predValue1.replacingOccurrences(of: ".", with: ",")
-            if predV1.count < 9{
-                for _ in predV1.count ... 8{
+            if numberDecimal == 0{
+                predV1.forEach{_ in
+                    if predV1.contains(","){
+                        predV1.removeLast()
+                    }
+                }
+            }
+            if predV1.count < 5 && numberDecimal == 0{
+                for _ in predV1.count ... 4{
+                    predV1 = "0" + predV1
+                }
+            }else if predV1.count < (6 + numberDecimal) && numberDecimal > 0{
+                for _ in predV1.count ... (5 + numberDecimal){
                     predV1 = "0" + predV1
                 }
             }
@@ -478,8 +754,19 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             }
             
             var predV2 = predValue2.replacingOccurrences(of: ".", with: ",")
-            if predV2.count < 9{
-                for _ in predV2.count ... 8{
+            if numberDecimal == 0{
+                predV2.forEach{_ in
+                    if predV2.contains(","){
+                        predV2.removeLast()
+                    }
+                }
+            }
+            if predV2.count < 5 && numberDecimal == 0{
+                for _ in predV2.count ... 4{
+                    predV2 = "0" + predV2
+                }
+            }else if predV2.count < (6 + numberDecimal) && numberDecimal > 0{
+                for _ in predV2.count ... (5 + numberDecimal){
                     predV2 = "0" + predV2
                 }
             }
@@ -492,8 +779,19 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             }
             
             var predV3 = predValue3.replacingOccurrences(of: ".", with: ",")
-            if predV3.count < 9{
-                for _ in predV3.count ... 8{
+            if numberDecimal == 0{
+                predV3.forEach{_ in
+                    if predV3.contains(","){
+                        predV3.removeLast()
+                    }
+                }
+            }
+            if predV3.count < 5 && numberDecimal == 0{
+                for _ in predV3.count ... 4{
+                    predV3 = "0" + predV3
+                }
+            }else if predV3.count < (6 + numberDecimal) && numberDecimal > 0{
+                for _ in predV3.count ... (5 + numberDecimal){
                     predV3 = "0" + predV3
                 }
             }
@@ -510,9 +808,9 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             predView1.isHidden = false
             predView2.isHidden = false
             predView3.isHidden = false
-            pred1Height.constant = 30
-            pred2Height.constant = 30
-            pred3Height.constant = 30
+            pred1Height.constant = 24
+            pred2Height.constant = 24
+            pred3Height.constant = 24
         }
         if recheckInter != "" && recheckInter != "0"{
             interLbl.isHidden = false
@@ -859,6 +1157,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             str = str + "," + String(l!)
             textField.text = str
         }
+        print(str)
         if str.contains(","){
             var k = 0
             str.forEach{
@@ -876,8 +1175,8 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                     }
                 }
                 str.removeFirst()
-                if str.count < 4{
-                    for i in 5...7{
+                if str.count < (numberDecimal + 1){
+                    for i in 5...(4 + numberDecimal){
                         if textField == newCounters1 || textField == newCountersDrob1{
                             count1[i].text = "0"
                         }else if textField == newCounters2 || textField == newCountersDrob2{
@@ -897,7 +1196,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                         str.removeFirst()
                     }
                 }else if str.count == 0{
-                    for i in 5...7{
+                    for i in 5...(5 + numberDecimal){
                         if textField == newCounters1 || textField == newCountersDrob1{
                             count1[i].text = "0"
                         }else if textField == newCounters2 || textField == newCountersDrob2{
@@ -906,12 +1205,12 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
                             count3[i].text = "0"
                         }
                     }
-                }else if str.count > 3{
+                }else if str.count > numberDecimal{
                     cnt.removeLast()
                     textField.text = cnt
                 }
             }else{
-                for i in 5...7{
+                for i in 5...(4 + numberDecimal){
                     if textField == newCounters1 || textField == newCountersDrob2{
                         count1[i].text = "0"
                     }else if textField == newCounters2 || textField == newCountersDrob2{

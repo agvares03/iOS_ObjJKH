@@ -8,21 +8,25 @@
 
 import UIKit
 import Foundation
+import WebKit
 
-class Web_Camera: UIViewController {
+class Web_Camera: UIViewController, WKUIDelegate {
 
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var webView: UIWebView!
+//    @IBOutlet weak var webView: UIWebView!
     open var web_camera: Web_Camera_json?
-    
+    var webView: WKWebView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
 //        let web_link: String = web_camera?.link ?? ""
 //        if (web_link.contains("rtsp")) {
 //
@@ -49,9 +53,8 @@ class Web_Camera: UIViewController {
 ////            }
 //
 //        } else {
-            let url = NSURL(string: (web_camera?.link)!)
-            let requestObj = NSURLRequest(url: url! as URL)
-            webView.loadRequest(requestObj as URLRequest)
+        let url : NSURL! = NSURL(string: (web_camera?.link!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!)
+        webView.load(NSURLRequest(url: url as URL) as URLRequest)
 //        }
         
         // Установим цвета для элементов в зависимости от Таргета

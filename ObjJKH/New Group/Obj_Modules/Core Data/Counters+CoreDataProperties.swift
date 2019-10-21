@@ -37,5 +37,6 @@ extension Counters {
     @NSManaged public var valueT2: Float
     @NSManaged public var valueT3: Float
     @NSManaged public var year: String?
+    @NSManaged public var numberOfDecimal: String?
 
 }

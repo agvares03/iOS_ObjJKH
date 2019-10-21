@@ -1103,10 +1103,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var autoValueArr     :[Bool]   = []
     var recheckInterArr  :[String] = []
     var lastCheckArr     :[String] = []
+    var numberDecimal    :[String] = []
     
     func getDataCounter(){
         let ident = "Все"
         identArr.removeAll()
+        numberDecimal.removeAll()
         tariffArr.removeAll()
         nameArr.removeAll()
         numberArr.removeAll()
@@ -1145,6 +1147,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             var uniq_num = ""
             var tariffNumber = ""
             var dateOne = ""
+            var numberOfDec = ""
             var valueOne:Float = 0.00
             var valueOne2:Float = 0.00
             var valueOne3:Float = 0.00
@@ -1177,6 +1180,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     if (object.value(forKey: "ident") as! String) == ident{
                         if i == 0{
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
+                            numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
                             valueOne = (object.value(forKey: "value") as! Float)
@@ -1196,6 +1200,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             i = 1
                         }else if i == 1 && uniq_num == (object.value(forKey: "uniq_num") as! String){
                             dateTwo = (object.value(forKey: "num_month") as! String)
+                            numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                             valueTwo = (object.value(forKey: "value") as! Float)
                             valueTwo2 = (object.value(forKey: "valueT2") as! Float)
                             valueTwo3 = (object.value(forKey: "valueT3") as! Float)
@@ -1220,6 +1225,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             nameArr.append(object.value(forKey: "count_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
                             tariffArr.append(object.value(forKey: "tariffNumber") as! String)
+                            numberDecimal.append(object.value(forKey: "numberOfDecimal") as! String)
                             ownerArr.append(object.value(forKey: "owner") as! String)
                             autoValueArr.append(object.value(forKey: "autoValueGettingOnly") as! Bool)
                             recheckInterArr.append(object.value(forKey: "recheckInterval") as! String)
@@ -1244,7 +1250,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             errorTextOneArr.append(errorOne)
                             errorTextTwoArr.append(errorTwo)
                             errorTextThreeArr.append(errorThree)
-                            
+                            numberOfDec = ""
                             uniq_num = ""
                             tariffNumber = ""
                             dateOne = ""
@@ -1279,6 +1285,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             identArr.append(identk)
                             nameArr.append(count_name)
                             numberArr.append(uniq_num)
+                            numberDecimal.append(numberOfDec)
                             tariffArr.append(tariffNumber)
                             ownerArr.append(owner)
                             predArr.append(valueOne)
@@ -1305,6 +1312,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             recheckInterArr.append(recheckInter)
                             lastCheckArr.append(lastCheck)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
+                            numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
                             valueOne = (object.value(forKey: "value") as! Float)
@@ -1340,6 +1348,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     if i == 0{
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
                         valueOne = (object.value(forKey: "value") as! Float)
                         valueOne2 = (object.value(forKey: "valueT2") as! Float)
@@ -1365,6 +1374,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         count_name = (object.value(forKey: "count_name") as! String)
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
                         sended = (object.value(forKey: "sended") as! Bool)
@@ -1379,6 +1389,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         sendThree = (object.value(forKey: "sendError") as! Bool)
                         errorThree = (object.value(forKey: "sendErrorText") as! String)
                         identArr.append(object.value(forKey: "ident") as! String)
+                        numberDecimal.append(object.value(forKey: "numberOfDecimal") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
                         tariffArr.append(object.value(forKey: "tariffNumber") as! String)
@@ -1408,6 +1419,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         errorTextThreeArr.append(errorThree)
                         uniq_num = ""
                         tariffNumber = ""
+                        numberOfDec = ""
                         dateOne = ""
                         valueOne = 0.00
                         valueOne2 = 0.00
@@ -1465,6 +1477,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         autoValueArr.append(autoSend)
                         recheckInterArr.append(recheckInter)
                         lastCheckArr.append(lastCheck)
+                        numberDecimal.append(numberOfDec)
+                        numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
@@ -1503,6 +1517,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 identArr.append(identk)
                 nameArr.append(count_name)
                 tariffArr.append(tariffNumber)
+                numberDecimal.append(numberOfDec)
                 numberArr.append(uniq_num)
                 ownerArr.append(owner)
                 predArr.append(valueOne)
@@ -2218,10 +2233,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.numberView.isHidden = false
                 cell.numberHeight.constant = 24
             }
+            let formatDec:String = "%." + numberDecimal[indexPath.row] + "f"
             countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
-            cell.pred1.text        = String(format:"%.3f", predArr[indexPath.row])
-            cell.teck1.text        = String(format:"%.3f", teckArr[indexPath.row])
-            cell.diff1.text        = String(format:"%.3f", diffArr[indexPath.row])
+            cell.pred1.text        = String(format:formatDec, predArr[indexPath.row])
+            cell.teck1.text        = String(format:formatDec, teckArr[indexPath.row])
+            cell.diff1.text        = String(format:formatDec, diffArr[indexPath.row])
             cell.predLbl1.text     = dateOneArr[indexPath.row]
             cell.teckLbl1.text     = dateTwoArr[indexPath.row]
             cell.diffLbl1.text     = dateThreeArr[indexPath.row]
@@ -2262,23 +2278,23 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             
             if Int(cell.tariffNumber) == 2{
-                cell.pred2.text        = String(format:"%.3f", predArr2[indexPath.row])
-                cell.teck2.text        = String(format:"%.3f", teckArr2[indexPath.row])
-                cell.diff2.text        = String(format:"%.3f", diffArr2[indexPath.row])
+                cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
+                cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
+                cell.diff2.text        = String(format:formatDec, diffArr2[indexPath.row])
                 cell.predLbl2.text     = dateOneArr[indexPath.row]
                 cell.teckLbl2.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl2.text     = dateThreeArr[indexPath.row]
             }else if Int(cell.tariffNumber) == 3{
-                cell.pred2.text        = String(format:"%.3f", predArr2[indexPath.row])
-                cell.teck2.text        = String(format:"%.3f", teckArr2[indexPath.row])
-                cell.diff2.text        = String(format:"%.3f", diffArr2[indexPath.row])
+                cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
+                cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
+                cell.diff2.text        = String(format:formatDec, diffArr2[indexPath.row])
                 cell.predLbl2.text     = dateOneArr[indexPath.row]
                 cell.teckLbl2.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl2.text     = dateThreeArr[indexPath.row]
                 
-                cell.pred3.text        = String(format:"%.3f", predArr3[indexPath.row])
-                cell.teck3.text        = String(format:"%.3f", teckArr3[indexPath.row])
-                cell.diff3.text        = String(format:"%.3f", diffArr3[indexPath.row])
+                cell.pred3.text        = String(format:formatDec, predArr3[indexPath.row])
+                cell.teck3.text        = String(format:formatDec, teckArr3[indexPath.row])
+                cell.diff3.text        = String(format:formatDec, diffArr3[indexPath.row])
                 cell.predLbl3.text     = dateOneArr[indexPath.row]
                 cell.teckLbl3.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl3.text     = dateThreeArr[indexPath.row]
@@ -2690,7 +2706,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.predValue2 = predVal2
             payController.predValue3 = predVal3
             payController.metrId = metrID
+            payController.autoSend = autoSend
+            payController.recheckInter = recheckInter
+            payController.lastCheckDate = lastCheckupDate
             payController.tariffNumber = selTariffNumber
+            payController.numberDecimal = Int(selNumDec)!
         }
         
         #if isMupRCMytishi
@@ -2738,11 +2758,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var selTariffNumber = 0
     var selectedUniqName = ""
     var selectedOwner = ""
+    var autoSend = false
+    var recheckInter = ""
+    var lastCheckDate = ""
     var countIdent = ""
     var predVal1 = ""
     var predVal2 = ""
     var predVal3 = ""
     var metrID = ""
+    var selNumDec = "0"
     var can_edit: String = ""
     var date1: String = ""
     var date2: String = ""
@@ -2810,7 +2834,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         task.resume()
     }
-    
+    var lastCheckupDate = ""
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String) {
         //        print(isEditable())
         if isEditable(){
@@ -2818,6 +2842,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             for i in 0...self.numberArr.count - 1{
                 if uniq_num == self.ownerArr[i] && count_name == (nameArr[i] + ", " + unitArr[i]){
                     metrId = self.numberArr[i]
+                    autoSend = autoValueArr[i]
+                    recheckInter = recheckInterArr[i]
+                    lastCheckupDate = lastCheckArr[i]
+                    selNumDec = numberDecimal[i]
                 }
             }
             selTariffNumber = Int(tariffNumber)!

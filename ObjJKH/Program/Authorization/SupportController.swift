@@ -63,18 +63,19 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     @IBOutlet weak var sendBtn: UIButton!
     
     @IBAction func sendClick(_ sender: UIButton) {
-        var login: String = phoneTxt.text!
-        print(login)
-        login = login.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "*", with: "")
+        var phone: String = phoneTxt.text!
+        print(phone)
+        phone = phone.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "*", with: "")
         let email: String = emailTxt.text!
         let text: String  = problemTxt.text!
-        if (!(login.contains("+7")) || (login.count < 12)){
+        if (!(phone.contains("+7")) || (phone.count < 12)){
             let alert = UIAlertController(title: "Ошибка", message: "Введите номер в формате +7хххххххххх", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
             return
         }
+        phone = phone.replacingOccurrences(of: "+", with: "")
         let validEmail = DB().isValidEmail(testStr: email)
         if validEmail{
             
@@ -98,6 +99,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         if UserDefaults.standard.string(forKey: "str_ls") != nil{
             str_ls = UserDefaults.standard.string(forKey: "str_ls")!
         }
+        let login:String = UserDefaults.standard.string(forKey: "login") ?? ""
         //        let str_ls_arr = str_ls?.components(separatedBy: ",")
         var info = "Аккаунт - \(login)"
         if UserDefaults.standard.bool(forKey: "fromMenu"){
@@ -107,7 +109,7 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
             let error: String = UserDefaults.standard.string(forKey: "errorStringSupport")!
             info = info + " Текст ошибки :" + error + ""
         }
-        let urlPath = Server.SERVER + Server.SEND_SUPPORT + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&text=" + text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&mail=" + email.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&os=iOS" + "&appVersion=" + version.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&info=" + info.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+        let urlPath = Server.SERVER + Server.SEND_SUPPORT + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&text=" + text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&mail=" + email.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&os=iOS" + "&appVersion=" + version.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&info=" + info.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&phone=" + phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)

@@ -355,8 +355,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 if String($0["Ident"] as! String) == selectLS{
                     if String($0["HouseId"] as! String) == "3"{
                         shopCode = "272890"
+                        if (selectLS.containsIgnoringCase(find: "k") || selectLS.containsIgnoringCase(find: "к")){
+                            shopCode = "281492"
+                        }
                     }else if String($0["HouseId"] as! String) == "5"{
                         shopCode = "272878"
+                        if (selectLS.containsIgnoringCase(find: "k") || selectLS.containsIgnoringCase(find: "к")){
+                            shopCode = "281496"
+                        }
                     }else if String($0["HouseId"] as! String) == "10"{
                         shopCode = "272890"
                     }
@@ -364,8 +370,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }else{
                 if String($0["HouseId"] as! String) == "3"{
                     shopCode = "272890"
+                    if (selectLS.containsIgnoringCase(find: "k") || selectLS.containsIgnoringCase(find: "к")){
+                        shopCode = "281492"
+                    }
                 }else if String($0["HouseId"] as! String) == "5"{
                     shopCode = "272878"
+                    if (selectLS.containsIgnoringCase(find: "k") || selectLS.containsIgnoringCase(find: "к")){
+                        shopCode = "281496"
+                    }
                 }else if String($0["HouseId"] as! String) == "10"{
                     shopCode = "272890"
                 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Applications" representedClassName="Applications" syncable="YES">
         <attribute name="acc_ident" optional="YES" attributeType="String"/>
         <attribute name="adress" optional="YES" attributeType="String"/>
@@ -42,6 +42,7 @@
         <attribute name="ident" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="lastCheckupDate" optional="YES" attributeType="String"/>
         <attribute name="num_month" optional="YES" attributeType="String"/>
+        <attribute name="numberOfDecimal" optional="YES" attributeType="String"/>
         <attribute name="owner" optional="YES" attributeType="String"/>
         <attribute name="prev_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="recheckInterval" optional="YES" attributeType="String"/>
@@ -92,7 +93,7 @@
     <elements>
         <element name="Applications" positionX="333" positionY="81" width="128" height="343"/>
         <element name="Comments" positionX="324" positionY="54" width="128" height="178"/>
-        <element name="Counters" positionX="394" positionY="-18" width="128" height="358"/>
+        <element name="Counters" positionX="394" positionY="-18" width="128" height="373"/>
         <element name="Fotos" positionX="342" positionY="144" width="128" height="133"/>
         <element name="PaymentApp" positionX="333" positionY="144" width="128" height="148"/>
         <element name="Saldo" positionX="250" positionY="-18" width="128" height="178"/>

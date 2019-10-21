@@ -20,6 +20,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     public var selTariffNumber = 0
     public var ls = ""
     public var owner = ""
+    public var selNumDec = 0
     
     public var lastCheckDate = ""
     public var recheckInter = ""
@@ -63,31 +64,36 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             payController.predValue3 = predVal3
             payController.metrId = uniq_num
             payController.tariffNumber = selTariffNumber
+            payController.numberDecimal = selNumDec
         }
     }
     
     @IBAction func sendAction(_ sender: UIButton){
-        if isEditable(){
-//            let alert = UIAlertController(title: uniq_name + "(" + owner + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
-//            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
-//            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-//            alert.addAction(cancelAction)
-//            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-//                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
-//            }
-//            alert.addAction(okAction)
-//            self.present(alert, animated: true, completion: nil)
-            selectedUniq = owner
-            selectedUniqName = uniq_name
-            predVal1 = String(format:"%.3f", teckArr[0])
-            self.performSegue(withIdentifier: "addCounters", sender: self)
+        if (autoSend) {
         }else{
-            let date1            = UserDefaults.standard.string(forKey: "date1")!
-            let date2            = UserDefaults.standard.string(forKey: "date2")!
-            let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
+            if isEditable(){
+            //            let alert = UIAlertController(title: uniq_name + "(" + owner + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
+            //            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
+            //            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+            //            alert.addAction(cancelAction)
+            //            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+            //                self.send_count(edLogin: self.login, edPass: self.pass, uniq_num: self.uniq_num, count: (alert.textFields?[0].text!.replacingOccurrences(of: ".", with: ","))!)
+            //            }
+            //            alert.addAction(okAction)
+            //            self.present(alert, animated: true, completion: nil)
+                        selectedUniq = owner
+                        selectedUniqName = uniq_name
+                        let formatDec:String = "%." + String(selNumDec) + "f"
+                        predVal1 = String(format:formatDec, teckArr[0])
+                        self.performSegue(withIdentifier: "addCounters", sender: self)
+                    }else{
+                        let date1            = UserDefaults.standard.string(forKey: "date1")!
+                        let date2            = UserDefaults.standard.string(forKey: "date2")!
+                        let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                        alert.addAction(cancelAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
         }
         
     }
@@ -310,7 +316,8 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "uniqCounterCell") as! UniqCounterCell
 //        var send = false
-        cell.teck.text        = String(format:"%.3f", teckArr[indexPath.row])
+        let formatDec:String = "%." + String(selNumDec) + "f"
+        cell.teck.text        = String(format:formatDec, teckArr[indexPath.row])
         cell.teckLbl.text     = dateOneArr[indexPath.row]
 //        send = sendedArr[indexPath.row]
         if sendError[0]{

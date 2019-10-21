@@ -18,6 +18,10 @@ extension String {
         return false
     }
     
+    func containsIgnoringCase(find: String) -> Bool{
+        return self.range(of: find, options: .caseInsensitive) != nil
+    }
+    
     var asPhoneNumberWithoutPlus:String? {
         
         guard isPhoneNumber else {

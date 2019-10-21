@@ -250,6 +250,10 @@ class SupportUpdate: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1369729534"
         #elseif isKlimovsk12
         str = "itms-apps://itunes.apple.com/ru/app/id1420424696"
+        #elseif isPocket
+        str = "itms-apps://itunes.apple.com/ru/app/id1290134819"
+        #elseif isReutKomfort
+        str = "itms-apps://itunes.apple.com/ru/app/id1454260301"
         #elseif isUKGarant
         str = "itms-apps://itunes.apple.com/ru/app/id1420424696"
         #elseif isSoldatova1
@@ -274,10 +278,52 @@ class SupportUpdate: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1466899004"
         #elseif isParus
         str = "itms-apps://itunes.apple.com/ru/app/id1468735380"
-        #elseif isPocket
-        str = "itms-apps://itunes.apple.com/ru/app/id1290134819"
-        #elseif isReutKomfort
-        str = "itms-apps://itunes.apple.com/ru/app/id1454260301"
+        #elseif isUyutService
+        str = "itms-apps://itunes.apple.com/ru/app/id1470932332"
+        #elseif isElectroSbitSaratov
+        str = "itms-apps://itunes.apple.com/ru/app/id1471595995"
+        #elseif isServicekom
+        str = "itms-apps://itunes.apple.com/ru"
+        #elseif isTeplovodoresources
+        str = "itms-apps://itunes.apple.com/ru/app/id1472868933"
+        #elseif isStroimBud
+        str = "itms-apps://itunes.apple.com/ru/app/id1473006651"
+        #elseif isRodnikMUP
+        str = "itms-apps://itunes.apple.com/ru/app/id1473009928"
+        #elseif isUKParitetKhab
+        str = "itms-apps://itunes.apple.com/ru/app/id1473393166"
+        #elseif isADS68
+        str = "itms-apps://itunes.apple.com/ru/app/id1473823262"
+        #elseif isAFregat
+        str = "itms-apps://itunes.apple.com/ru/app/id1474068547"
+        #elseif isNewOpaliha
+        str = "itms-apps://itunes.apple.com/ru/app/id1475455954"
+        #elseif isPritomskoe
+        str = "itms-apps://itunes.apple.com/ru/app/id1475863546"
+        #elseif isDJVladimir
+        str = "itms-apps://itunes.apple.com/ru/app/id1475739790"
+        #elseif isTSN_Dnestr
+        str = "itms-apps://itunes.apple.com/ru/app/id1475868876"
+        #elseif isCristall
+        str = "itms-apps://itunes.apple.com/ru/app/id1476048883"
+        #elseif isNarianMarEl
+        str = "itms-apps://itunes.apple.com/ru/app/id1476050205"
+        #elseif isSibAliance
+        str = "itms-apps://itunes.apple.com/ru/app/id1476223562"
+        #elseif isSpartak
+        str = "itms-apps://itunes.apple.com/ru/app/id1476227641"
+        #elseif isTSN_Ruble40
+        str = "itms-apps://itunes.apple.com/ru/app/id1475867400"
+        #elseif isKosm11
+        str = "itms-apps://itunes.apple.com/ru/app/id1476653129"
+        #elseif isTSJ_Rachangel
+        str = "itms-apps://itunes.apple.com/ru/app/id1476643331"
+        #elseif isMUP_IRKC
+        str = "itms-apps://itunes.apple.com/ru/app/id1477304362"
+        #elseif isUK_First
+        str = "itms-apps://itunes.apple.com/ru/app/id1478072913"
+        #elseif isRKC_Samara
+        str = "itms-apps://itunes.apple.com/ru/app/id1479682216"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

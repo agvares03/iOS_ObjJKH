@@ -8,8 +8,9 @@
 
 import UIKit
 import SafariServices
+import WebKit
 
-class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegate {
+class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate {
     func newAddAppDone(addApp: NewAddAppUser) {
     }
     
@@ -25,9 +26,9 @@ class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegat
     
     @IBOutlet weak var appBtn: UIButton!
     @IBOutlet weak var appLbl: UILabel!
-    @IBOutlet weak var webView: UIWebView!
+//    @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var backBtn: UIBarButtonItem!
-    
+    var webView: WKWebView!
     @IBAction func addAppAction(_ sender: UIButton){
         if UserDefaults.standard.bool(forKey: "newApps"){
             self.navigationController?.popViewController(animated: true)
@@ -57,7 +58,10 @@ class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegat
                 }
             }
         }
-        webView.delegate = self
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
         let defaults     = UserDefaults.standard
         
         // Логин и пароль
@@ -174,9 +178,16 @@ class Pay: UIViewController, UIWebViewDelegate, AddAppDelegate, NewAddAppDelegat
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             } else if (self.responseString != "") {
-                let url = NSURL(string: self.responseString)
-                let requestObj = NSURLRequest(url: url! as URL)
-                self.webView.loadRequest(requestObj as URLRequest)
+                if self.responseString.contains(".pdf"){
+                    if let url : NSURL = NSURL(string: self.responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
+                        if let data = try? Data(contentsOf: url as URL){
+                            self.webView.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: url as URL)
+                        }
+                    }
+                }else{
+                    let url : NSURL! = NSURL(string: self.responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
+                    self.webView.load(NSURLRequest(url: url as URL) as URLRequest)
+                }
             
                 // Отправлять в сафари-аналог
 //                if let url = URL(string: self.responseString) {

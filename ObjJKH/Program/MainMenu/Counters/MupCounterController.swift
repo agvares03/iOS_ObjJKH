@@ -259,6 +259,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var identArr         :[String] = []
     var nameArr          :[String] = []
     var numberArr        :[String] = []
+    var numberDecimal    :[String] = []
     var predArr          :[Float]  = []
     var teckArr          :[Float]  = []
     var diffArr          :[Float]  = []
@@ -287,6 +288,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     func getData(ident: String){
         let ident = "Все"
         identArr.removeAll()
+        numberDecimal.removeAll()
         tariffArr.removeAll()
         nameArr.removeAll()
         numberArr.removeAll()
@@ -324,6 +326,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             var uniq_num = ""
             var tariffNumber = ""
+            var numberOfDec = ""
             var dateOne = ""
             var valueOne:Float = 0.00
             var valueOne2:Float = 0.00
@@ -357,6 +360,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                     if (object.value(forKey: "ident") as! String) == ident{
                         if i == 0{
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
+                            numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
                             valueOne = (object.value(forKey: "value") as! Float)
@@ -382,6 +386,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
+                            numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
@@ -400,6 +405,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             nameArr.append(object.value(forKey: "count_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
                             tariffArr.append(object.value(forKey: "tariffNumber") as! String)
+                            numberDecimal.append(object.value(forKey: "numberOfDecimal") as! String)
                             ownerArr.append(object.value(forKey: "owner") as! String)
                             autoValueArr.append(object.value(forKey: "autoValueGettingOnly") as! Bool)
                             recheckInterArr.append(object.value(forKey: "recheckInterval") as! String)
@@ -424,7 +430,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             errorTextOneArr.append(errorOne)
                             errorTextTwoArr.append(errorTwo)
                             errorTextThreeArr.append(errorThree)
-                            
+                            numberOfDec = ""
                             uniq_num = ""
                             tariffNumber = ""
                             dateOne = ""
@@ -459,6 +465,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             identArr.append(identk)
                             nameArr.append(count_name)
                             numberArr.append(uniq_num)
+                            numberDecimal.append(numberOfDec)
                             tariffArr.append(tariffNumber)
                             ownerArr.append(owner)
                             predArr.append(valueOne)
@@ -485,6 +492,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             recheckInterArr.append(recheckInter)
                             lastCheckArr.append(lastCheck)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
+                            numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             dateOne = (object.value(forKey: "num_month") as! String)
                             valueOne = (object.value(forKey: "value") as! Float)
@@ -520,6 +528,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                     if i == 0{
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
                         valueOne = (object.value(forKey: "value") as! Float)
                         valueOne2 = (object.value(forKey: "valueT2") as! Float)
@@ -545,6 +554,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         count_name = (object.value(forKey: "count_name") as! String)
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
+                        numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
                         sended = (object.value(forKey: "sended") as! Bool)
@@ -559,6 +569,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         sendThree = (object.value(forKey: "sendError") as! Bool)
                         errorThree = (object.value(forKey: "sendErrorText") as! String)
                         identArr.append(object.value(forKey: "ident") as! String)
+                        numberDecimal.append(object.value(forKey: "numberOfDecimal") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
                         tariffArr.append(object.value(forKey: "tariffNumber") as! String)
@@ -588,6 +599,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         errorTextThreeArr.append(errorThree)
                         uniq_num = ""
                         tariffNumber = ""
+                        numberOfDec = ""
                         dateOne = ""
                         valueOne = 0.00
                         valueOne2 = 0.00
@@ -645,6 +657,8 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         autoValueArr.append(autoSend)
                         recheckInterArr.append(recheckInter)
                         lastCheckArr.append(lastCheck)
+                        numberDecimal.append(numberOfDec)
+                        numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         dateOne = (object.value(forKey: "num_month") as! String)
@@ -683,6 +697,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                 identArr.append(identk)
                 nameArr.append(count_name)
                 tariffArr.append(tariffNumber)
+                numberDecimal.append(numberOfDec)
                 numberArr.append(uniq_num)
                 ownerArr.append(owner)
                 predArr.append(valueOne)
@@ -770,35 +785,36 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "MupCounterCell") as! MupCounterCell
         var send = false
         var countName = ""
+        let formatDec:String = "%." + numberDecimal[indexPath.row] + "f"
         cell.tariffNumber     = tariffArr[indexPath.row]
         cell.ident.text       = identArr[indexPath.row]
         cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
         cell.number.text      = ownerArr[indexPath.row]
         countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
-        cell.pred1.text        = String(format:"%.3f", predArr[indexPath.row])
-        cell.teck1.text        = String(format:"%.3f", teckArr[indexPath.row])
-        cell.diff1.text        = String(format:"%.3f", diffArr[indexPath.row])
+        cell.pred1.text        = String(format:formatDec, predArr[indexPath.row])
+        cell.teck1.text        = String(format:formatDec, teckArr[indexPath.row])
+        cell.diff1.text        = String(format:formatDec, diffArr[indexPath.row])
         cell.predLbl1.text     = dateOneArr[indexPath.row]
         cell.teckLbl1.text     = dateTwoArr[indexPath.row]
         cell.diffLbl1.text     = dateThreeArr[indexPath.row]
         if Int(cell.tariffNumber) == 2{
-            cell.pred2.text        = String(format:"%.3f", predArr2[indexPath.row])
-            cell.teck2.text        = String(format:"%.3f", teckArr2[indexPath.row])
-            cell.diff2.text        = String(format:"%.3f", diffArr2[indexPath.row])
+            cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
+            cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
+            cell.diff2.text        = String(format:formatDec, diffArr2[indexPath.row])
             cell.predLbl2.text     = dateOneArr[indexPath.row]
             cell.teckLbl2.text     = dateTwoArr[indexPath.row]
             cell.diffLbl2.text     = dateThreeArr[indexPath.row]
         }else if Int(cell.tariffNumber) == 3{
-            cell.pred2.text        = String(format:"%.3f", predArr2[indexPath.row])
-            cell.teck2.text        = String(format:"%.3f", teckArr2[indexPath.row])
-            cell.diff2.text        = String(format:"%.3f", diffArr2[indexPath.row])
+            cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
+            cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
+            cell.diff2.text        = String(format:formatDec, diffArr2[indexPath.row])
             cell.predLbl2.text     = dateOneArr[indexPath.row]
             cell.teckLbl2.text     = dateTwoArr[indexPath.row]
             cell.diffLbl2.text     = dateThreeArr[indexPath.row]
             
-            cell.pred3.text        = String(format:"%.3f", predArr3[indexPath.row])
-            cell.teck3.text        = String(format:"%.3f", teckArr3[indexPath.row])
-            cell.diff3.text        = String(format:"%.3f", diffArr3[indexPath.row])
+            cell.pred3.text        = String(format:formatDec, predArr3[indexPath.row])
+            cell.teck3.text        = String(format:formatDec, teckArr3[indexPath.row])
+            cell.diff3.text        = String(format:formatDec, diffArr3[indexPath.row])
             cell.predLbl3.text     = dateOneArr[indexPath.row]
             cell.teckLbl3.text     = dateTwoArr[indexPath.row]
             cell.diffLbl3.text     = dateThreeArr[indexPath.row]
@@ -1020,6 +1036,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         autoSend = autoValueArr[indexPath.row]
         recheckInter = recheckInterArr[indexPath.row]
         lastCheckupDate = lastCheckArr[indexPath.row]
+        selNumDec = numberDecimal[indexPath.row]
         self.performSegue(withIdentifier: "uniqCounters", sender: self)
     }
     
@@ -1035,6 +1052,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var predVal2 = ""
     var predVal3 = ""
     var metrID = ""
+    var selNumDec = "0"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "support" {
@@ -1053,6 +1071,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             payController.autoSend = autoSend
             payController.recheckInter = recheckInter
             payController.lastCheckDate = lastCheckupDate
+            payController.selNumDec = Int(selNumDec)!
             
         }
         if segue.identifier == "addCounters"{
@@ -1068,6 +1087,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             payController.predValue3 = predVal3
             payController.metrId = metrID
             payController.tariffNumber = selTariffNumber
+            payController.numberDecimal = Int(selNumDec)!
         }
     }
     
@@ -1176,6 +1196,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                     autoSend = autoValueArr[i]
                     recheckInter = recheckInterArr[i]
                     lastCheckupDate = lastCheckArr[i]
+                    selNumDec = numberDecimal[i]
                 }
             }
             selTariffNumber = Int(tariffNumber)!
@@ -1357,6 +1378,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var autoValueGettingOnly = false
     var recheckInterval = ""
     var lastCheckupDate = ""
+    var numberOfDecimal = ""
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if (elementName == "Meter") {
@@ -1367,6 +1389,8 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             name = attributeDict["Name"]!
             meterUniqueNum = attributeDict["MeterUniqueNum"]!
             factoryNumber = attributeDict["FactoryNumber"]!
+            numberOfDecimal = attributeDict["NumberOfDecimalPlaces"]!
+//            numberOfDecimal = "4"
             if attributeDict["TariffNumber"]! != ""{
                 tariffNumber = attributeDict["TariffNumber"]!
             }else{
@@ -1395,6 +1419,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             managedObject.autoValueGettingOnly = autoValueGettingOnly
             managedObject.recheckInterval = recheckInterval
             managedObject.uniq_num      = meterUniqueNum
+            managedObject.numberOfDecimal = numberOfDecimal
             managedObject.owner         = factoryNumber
             managedObject.num_month     = attributeDict["PeriodDate"]!
             managedObject.unit_name     = units
