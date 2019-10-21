@@ -4158,6 +4158,167 @@
 		3089A2CB235D4B8100A5F7AC /* Logo_EnergoProgress.png in Resources */ = {isa = PBXBuildFile; fileRef = 3089A2CA235D4B8100A5F7AC /* Logo_EnergoProgress.png */; };
 		3089A2CC235D4B9000A5F7AC /* Logo_StroimBud.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DFE86A22DC1780004D5C31 /* Logo_StroimBud.png */; };
 		3089A2CE235D506900A5F7AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3089A2CD235D506900A5F7AC /* GoogleService-Info.plist */; };
+		3089A2D2235DB0F300A5F7AC /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
+		3089A2D3235DB0F300A5F7AC /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		3089A2D4235DB0F300A5F7AC /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		3089A2D5235DB0F300A5F7AC /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		3089A2D6235DB0F300A5F7AC /* MobilePaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C51CEBF22291F27003EFD8C /* MobilePaysController.swift */; };
+		3089A2D7235DB0F300A5F7AC /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		3089A2D8235DB0F300A5F7AC /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
+		3089A2D9235DB0F300A5F7AC /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		3089A2DA235DB0F300A5F7AC /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		3089A2DB235DB0F300A5F7AC /* ShemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F017214765B500FE0473 /* ShemeColor.swift */; };
+		3089A2DC235DB0F300A5F7AC /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		3089A2DD235DB0F300A5F7AC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF068F22C21F1C00700A7D /* NotificationController.swift */; };
+		3089A2DE235DB0F300A5F7AC /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		3089A2DF235DB0F300A5F7AC /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		3089A2E0235DB0F300A5F7AC /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F00F2147605E00FE0473 /* ImageConstant.swift */; };
+		3089A2E1235DB0F300A5F7AC /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		3089A2E2235DB0F300A5F7AC /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		3089A2E3235DB0F300A5F7AC /* AddLSSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303FAC1022F73512009EEE25 /* AddLSSimple.swift */; };
+		3089A2E4235DB0F300A5F7AC /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		3089A2E5235DB0F300A5F7AC /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC721708CB600857D4D /* Applications+CoreDataClass.swift */; };
+		3089A2E6235DB0F300A5F7AC /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		3089A2E7235DB0F300A5F7AC /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		3089A2E8235DB0F300A5F7AC /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		3089A2E9235DB0F300A5F7AC /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
+		3089A2EA235DB0F300A5F7AC /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		3089A2EB235DB0F300A5F7AC /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		3089A2EC235DB0F300A5F7AC /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		3089A2ED235DB0F300A5F7AC /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		3089A2EE235DB0F300A5F7AC /* NewEditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB84522605AA800DBD52E /* NewEditAccountController.swift */; };
+		3089A2EF235DB0F300A5F7AC /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		3089A2F0235DB0F300A5F7AC /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		3089A2F1235DB0F300A5F7AC /* ColorsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F0092147604400FE0473 /* ColorsConstant.swift */; };
+		3089A2F2235DB0F300A5F7AC /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		3089A2F3235DB0F300A5F7AC /* NewRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA73D3F23165ADA004CB73B /* NewRegistration.swift */; };
+		3089A2F4235DB0F300A5F7AC /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		3089A2F5235DB0F300A5F7AC /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		3089A2F6235DB0F300A5F7AC /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		3089A2F7235DB0F300A5F7AC /* OneVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB2C225498E500812964 /* OneVoteController.swift */; };
+		3089A2F8235DB0F300A5F7AC /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		3089A2F9235DB0F300A5F7AC /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
+		3089A2FA235DB0F300A5F7AC /* NewAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C625A3122B439A50053971C /* NewAppUser.swift */; };
+		3089A2FB235DB0F300A5F7AC /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		3089A2FC235DB0F300A5F7AC /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4C6209234AE2B9001FB7C7 /* Counters+CoreDataClass.swift */; };
+		3089A2FD235DB0F300A5F7AC /* openSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78BF78222CEC8A00F31938 /* openSaldoController.swift */; };
+		3089A2FE235DB0F300A5F7AC /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		3089A2FF235DB0F300A5F7AC /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */; };
+		3089A300235DB0F300A5F7AC /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		3089A301235DB0F300A5F7AC /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		3089A302235DB0F300A5F7AC /* FirstControllerCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */; };
+		3089A303235DB0F300A5F7AC /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		3089A304235DB0F300A5F7AC /* NewHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC3FF32223A3E2500FDBA82 /* NewHomePage.swift */; };
+		3089A305235DB0F300A5F7AC /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		3089A306235DB0F300A5F7AC /* NewAddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C625A3222B439A60053971C /* NewAddAppUser.swift */; };
+		3089A307235DB0F300A5F7AC /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
+		3089A308235DB0F300A5F7AC /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		3089A309235DB0F300A5F7AC /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC821708CB600857D4D /* Applications+CoreDataProperties.swift */; };
+		3089A30A235DB0F300A5F7AC /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		3089A30B235DB0F300A5F7AC /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		3089A30C235DB0F300A5F7AC /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		3089A30D235DB0F300A5F7AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		3089A30E235DB0F300A5F7AC /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		3089A30F235DB0F300A5F7AC /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		3089A310235DB0F300A5F7AC /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4C620A234AE2BA001FB7C7 /* Counters+CoreDataProperties.swift */; };
+		3089A311235DB0F300A5F7AC /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		3089A312235DB0F300A5F7AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		3089A313235DB0F300A5F7AC /* TwoPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6721FAC9F100313221 /* TwoPageController.swift */; };
+		3089A314235DB0F300A5F7AC /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		3089A315235DB0F300A5F7AC /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		3089A316235DB0F300A5F7AC /* UniqCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE0A222799F600C51656 /* UniqCountersController.swift */; };
+		3089A317235DB0F300A5F7AC /* MainMenuCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC455213FCA99002CEB62 /* MainMenuCons.swift */; };
+		3089A318235DB0F300A5F7AC /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		3089A319235DB0F300A5F7AC /* OnePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6421FAC9D500313221 /* OnePageController.swift */; };
+		3089A31A235DB0F300A5F7AC /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
+		3089A31B235DB0F300A5F7AC /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		3089A31C235DB0F300A5F7AC /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		3089A31D235DB0F300A5F7AC /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		3089A31E235DB0F300A5F7AC /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		3089A31F235DB0F300A5F7AC /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		3089A320235DB0F300A5F7AC /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */; };
+		3089A321235DB0F300A5F7AC /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		3089A322235DB0F300A5F7AC /* VotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB1F225372F300812964 /* VotingController.swift */; };
+		3089A323235DB0F300A5F7AC /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		3089A324235DB0F300A5F7AC /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		3089A325235DB0F300A5F7AC /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		3089A326235DB0F300A5F7AC /* MupCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE012226B31600C51656 /* MupCounterController.swift */; };
+		3089A327235DB0F300A5F7AC /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		3089A328235DB0F300A5F7AC /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		3089A329235DB0F300A5F7AC /* AdditionalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840D52232142BF00563BF3 /* AdditionalVC.swift */; };
+		3089A32A235DB0F300A5F7AC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
+		3089A32B235DB0F300A5F7AC /* SupportUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCD60EB22E18974009C4B5C /* SupportUpdate.swift */; };
+		3089A32C235DB0F300A5F7AC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		3089A32D235DB0F300A5F7AC /* NoCounters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F01F2147C28D00FE0473 /* NoCounters.swift */; };
+		3089A32E235DB0F300A5F7AC /* AppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC4682140B0D4002CEB62 /* AppCons.swift */; };
+		3089A32F235DB0F300A5F7AC /* NewSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAE79A3229D02F6005223C1 /* NewSaldoController.swift */; };
+		3089A330235DB0F300A5F7AC /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		3089A331235DB0F300A5F7AC /* EditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5153D021EF04A600DE36D9 /* EditAccountController.swift */; };
+		3089A332235DB0F300A5F7AC /* QuestionVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB3922550D0D00812964 /* QuestionVoteController.swift */; };
+		3089A333235DB0F300A5F7AC /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		3089A334235DB0F300A5F7AC /* TechWorkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B4E88F2309052C00E13DF9 /* TechWorkController.swift */; };
+		3089A335235DB0F300A5F7AC /* PaymentApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DC2282E89500B7F66C /* PaymentApp+CoreDataProperties.swift */; };
+		3089A336235DB0F300A5F7AC /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
+		3089A337235DB0F300A5F7AC /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		3089A338235DB0F300A5F7AC /* NewMainMenu2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB85422608CF900DBD52E /* NewMainMenu2.swift */; };
+		3089A339235DB0F300A5F7AC /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		3089A33A235DB0F300A5F7AC /* PaymentApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DB2282E89500B7F66C /* PaymentApp+CoreDataClass.swift */; };
+		3089A33B235DB0F300A5F7AC /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		3089A33C235DB0F300A5F7AC /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		3089A33D235DB0F300A5F7AC /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
+		3089A33F235DB0F300A5F7AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		3089A340235DB0F300A5F7AC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		3089A341235DB0F300A5F7AC /* Pods_StroimBud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE60B1B30E47ED0DC4CA548 /* Pods_StroimBud.framework */; };
+		3089A343235DB0F300A5F7AC /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		3089A344235DB0F300A5F7AC /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		3089A345235DB0F300A5F7AC /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		3089A346235DB0F300A5F7AC /* TechWork.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B4E8622309012800E13DF9 /* TechWork.storyboard */; };
+		3089A347235DB0F300A5F7AC /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		3089A348235DB0F300A5F7AC /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		3089A34A235DB0F300A5F7AC /* Voting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C66AB1122532BFF00812964 /* Voting.storyboard */; };
+		3089A34B235DB0F300A5F7AC /* Parus-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30CB571322B6690100AE34FC /* Parus-Info.plist */; };
+		3089A34C235DB0F300A5F7AC /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
+		3089A34D235DB0F300A5F7AC /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		3089A34E235DB0F300A5F7AC /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		3089A34F235DB0F300A5F7AC /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		3089A350235DB0F300A5F7AC /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		3089A351235DB0F300A5F7AC /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		3089A352235DB0F300A5F7AC /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		3089A353235DB0F300A5F7AC /* 2PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C33544322AFA34500D695C8 /* 2PaysMytishi.storyboard */; };
+		3089A354235DB0F300A5F7AC /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		3089A355235DB0F300A5F7AC /* Logo_UK_Garant_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AC2223CF3100B1D289 /* Logo_UK_Garant_White.png */; };
+		3089A356235DB0F300A5F7AC /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
+		3089A357235DB0F300A5F7AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		3089A358235DB0F300A5F7AC /* Logo_Parus.png in Resources */ = {isa = PBXBuildFile; fileRef = 307690F322B28CDC0043916F /* Logo_Parus.png */; };
+		3089A359235DB0F300A5F7AC /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		3089A35A235DB0F300A5F7AC /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		3089A35B235DB0F300A5F7AC /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		3089A35C235DB0F300A5F7AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		3089A35D235DB0F300A5F7AC /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		3089A35E235DB0F300A5F7AC /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		3089A35F235DB0F300A5F7AC /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
+		3089A361235DB0F300A5F7AC /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
+		3089A362235DB0F300A5F7AC /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		3089A363235DB0F300A5F7AC /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
+		3089A364235DB0F300A5F7AC /* ic_send_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA20D2140CA9600921C82 /* ic_send_app.png */; };
+		3089A365235DB0F300A5F7AC /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
+		3089A366235DB0F300A5F7AC /* MupCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C19ADFB2226845400C51656 /* MupCounters.storyboard */; };
+		3089A367235DB0F300A5F7AC /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		3089A368235DB0F300A5F7AC /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		3089A369235DB0F300A5F7AC /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
+		3089A36A235DB0F300A5F7AC /* NewRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30354A3A231610C5008874D3 /* NewRegistration.storyboard */; };
+		3089A36B235DB0F300A5F7AC /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		3089A36C235DB0F300A5F7AC /* MainMenuCons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */; };
+		3089A36D235DB0F300A5F7AC /* NewMainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */; };
+		3089A36E235DB0F300A5F7AC /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
+		3089A36F235DB0F300A5F7AC /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		3089A370235DB0F300A5F7AC /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		3089A371235DB0F300A5F7AC /* NewAddLS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302E31BF22F7C95D0043209D /* NewAddLS.storyboard */; };
+		3089A372235DB0F300A5F7AC /* Logo_UK_Garant.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */; };
+		3089A373235DB0F300A5F7AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		3089A374235DB0F300A5F7AC /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		3089A37E235DB62700A5F7AC /* Logo_Murmansk.png in Resources */ = {isa = PBXBuildFile; fileRef = 3089A37D235DB62700A5F7AC /* Logo_Murmansk.png */; };
+		3089A380235DB93C00A5F7AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3089A37F235DB93B00A5F7AC /* GoogleService-Info.plist */; };
 		30940B2022F80D7C00422C64 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		30940B2122F80D7C00422C64 /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
 		30940B2222F80D7C00422C64 /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
@@ -7763,6 +7924,10 @@
 		3089A2C8235D494C00A5F7AC /* EnergoProgress-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "EnergoProgress-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/EnergoProgress-Info.plist"; sourceTree = "<absolute>"; };
 		3089A2CA235D4B8100A5F7AC /* Logo_EnergoProgress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_EnergoProgress.png; sourceTree = "<group>"; };
 		3089A2CD235D506900A5F7AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/EnergoProgress/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3089A37A235DB0F300A5F7AC /* Murmansk_Partner_Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Murmansk_Partner_Plus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3089A37B235DB0F500A5F7AC /* MurmanskPartnerPlus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MurmanskPartnerPlus-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/MurmanskPartnerPlus-Info.plist"; sourceTree = "<absolute>"; };
+		3089A37D235DB62700A5F7AC /* Logo_Murmansk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Murmansk.png; sourceTree = "<group>"; };
+		3089A37F235DB93B00A5F7AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/MurmanskPartnerPlus/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		30940BBF22F80D7C00422C64 /* NewOpaliha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewOpaliha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30940BC022F80D7D00422C64 /* NewOpaliha-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NewOpaliha-Info.plist"; path = "../../NewOpaliha-Info.plist"; sourceTree = "<group>"; };
 		30940BC122F810CB00422C64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/NewOpaliha/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -8337,6 +8502,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3089A33E235DB0F300A5F7AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3089A33F235DB0F300A5F7AC /* CoreLocation.framework in Frameworks */,
+				3089A340235DB0F300A5F7AC /* (null) in Frameworks */,
+				3089A341235DB0F300A5F7AC /* Pods_StroimBud.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30940B8522F80D7C00422C64 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -8697,6 +8872,7 @@
 		30354B1223161901008874D3 /* Targets_Images */ = {
 			isa = PBXGroup;
 			children = (
+				3089A37C235DB43500A5F7AC /* MurmanskPartnerPlus */,
 				3089A2C9235D4B4100A5F7AC /* EnergoProgress */,
 				30E4B91E2328CC56003DBDAA /* RKC_Samara */,
 				30354B13231619DD008874D3 /* UK_First */,
@@ -8832,6 +9008,7 @@
 		307690F722B28DC70043916F /* Google_Services */ = {
 			isa = PBXGroup;
 			children = (
+				3089A37F235DB93B00A5F7AC /* GoogleService-Info.plist */,
 				3089A2CD235D506900A5F7AC /* GoogleService-Info.plist */,
 				30E4B9212328D015003DBDAA /* GoogleService-Info.plist */,
 				30354B1623161E6B008874D3 /* GoogleService-Info.plist */,
@@ -8886,6 +9063,7 @@
 		307690F822B28DEC0043916F /* Info_Plists */ = {
 			isa = PBXGroup;
 			children = (
+				3089A37B235DB0F500A5F7AC /* MurmanskPartnerPlus-Info.plist */,
 				3089A2C8235D494C00A5F7AC /* EnergoProgress-Info.plist */,
 				30E4B91D2328C99C003DBDAA /* RKC_Samara-Info.plist */,
 				30354B11231616A3008874D3 /* UK_First-Info.plist */,
@@ -8951,6 +9129,14 @@
 				3089A2CA235D4B8100A5F7AC /* Logo_EnergoProgress.png */,
 			);
 			path = EnergoProgress;
+			sourceTree = "<group>";
+		};
+		3089A37C235DB43500A5F7AC /* MurmanskPartnerPlus */ = {
+			isa = PBXGroup;
+			children = (
+				3089A37D235DB62700A5F7AC /* Logo_Murmansk.png */,
+			);
+			path = MurmanskPartnerPlus;
 			sourceTree = "<group>";
 		};
 		30940BC322F8120000422C64 /* NewOpaliha */ = {
@@ -9226,6 +9412,7 @@
 				30354B10231616A2008874D3 /* UK_First.app */,
 				30E4B91C2328C995003DBDAA /* RKC_Samara.app */,
 				3089A2C7235D494B00A5F7AC /* Энергопрогресс Новосибирск.app */,
+				3089A37A235DB0F300A5F7AC /* Murmansk_Partner_Plus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -10226,6 +10413,26 @@
 			productReference = 3089A2C7235D494B00A5F7AC /* Энергопрогресс Новосибирск.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3089A2CF235DB0F300A5F7AC /* Murmansk_Partner_Plus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3089A377235DB0F300A5F7AC /* Build configuration list for PBXNativeTarget "Murmansk_Partner_Plus" */;
+			buildPhases = (
+				3089A2D0235DB0F300A5F7AC /* [CP] Check Pods Manifest.lock */,
+				3089A2D1235DB0F300A5F7AC /* Sources */,
+				3089A33E235DB0F300A5F7AC /* Frameworks */,
+				3089A342235DB0F300A5F7AC /* Resources */,
+				3089A375235DB0F300A5F7AC /* [CP] Embed Pods Frameworks */,
+				3089A376235DB0F300A5F7AC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Murmansk_Partner_Plus;
+			productName = UK_Garant;
+			productReference = 3089A37A235DB0F300A5F7AC /* Murmansk_Partner_Plus.app */;
+			productType = "com.apple.product-type.application";
+		};
 		30940B1D22F80D7C00422C64 /* NewOpaliha */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30940BBC22F80D7C00422C64 /* Build configuration list for PBXNativeTarget "NewOpaliha" */;
@@ -10965,6 +11172,7 @@
 				30354A67231616A2008874D3 /* UK_First */,
 				30E4B8702328C995003DBDAA /* RKC_Samara */,
 				3089A21C235D494B00A5F7AC /* Energoprogress */,
+				3089A2CF235DB0F300A5F7AC /* Murmansk_Partner_Plus */,
 			);
 		};
 /* End PBXProject section */
@@ -12227,6 +12435,63 @@
 				3089A2BF235D494B00A5F7AC /* Logo_UK_Garant.png in Resources */,
 				3089A2C0235D494B00A5F7AC /* Assets.xcassets in Resources */,
 				3089A2C1235D494B00A5F7AC /* logo_SM.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3089A342235DB0F300A5F7AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3089A343235DB0F300A5F7AC /* MainMenu.storyboard in Resources */,
+				3089A344235DB0F300A5F7AC /* app_open.png in Resources */,
+				3089A345235DB0F300A5F7AC /* AdditionalServices.storyboard in Resources */,
+				3089A346235DB0F300A5F7AC /* TechWork.storyboard in Resources */,
+				3089A347235DB0F300A5F7AC /* Counters.storyboard in Resources */,
+				3089A348235DB0F300A5F7AC /* Pays.storyboard in Resources */,
+				3089A34A235DB0F300A5F7AC /* Voting.storyboard in Resources */,
+				3089A34B235DB0F300A5F7AC /* Parus-Info.plist in Resources */,
+				3089A34C235DB0F300A5F7AC /* ic_ok_app.png in Resources */,
+				3089A34D235DB0F300A5F7AC /* Logo_DemoUC_White.png in Resources */,
+				3089A34E235DB0F300A5F7AC /* WebCameras.storyboard in Resources */,
+				3089A34F235DB0F300A5F7AC /* ic_action_files_grey.png in Resources */,
+				3089A350235DB0F300A5F7AC /* app_close.png in Resources */,
+				3089A351235DB0F300A5F7AC /* account_icon_user.png in Resources */,
+				3089A352235DB0F300A5F7AC /* News.storyboard in Resources */,
+				3089A353235DB0F300A5F7AC /* 2PaysMytishi.storyboard in Resources */,
+				3089A354235DB0F300A5F7AC /* Logo_DemoUC.png in Resources */,
+				3089A355235DB0F300A5F7AC /* Logo_UK_Garant_White.png in Resources */,
+				3089A356235DB0F300A5F7AC /* ic_get_app.png in Resources */,
+				3089A357235DB0F300A5F7AC /* Main.storyboard in Resources */,
+				3089A358235DB0F300A5F7AC /* Logo_Parus.png in Resources */,
+				3089A359235DB0F300A5F7AC /* Questions.storyboard in Resources */,
+				3089A35A235DB0F300A5F7AC /* Registration.storyboard in Resources */,
+				3089A35B235DB0F300A5F7AC /* ForgotPass.storyboard in Resources */,
+				3089A37E235DB62700A5F7AC /* Logo_Murmansk.png in Resources */,
+				3089A35C235DB0F300A5F7AC /* LaunchScreen.storyboard in Resources */,
+				3089A35D235DB0F300A5F7AC /* Saldo.storyboard in Resources */,
+				3089A380235DB93C00A5F7AC /* GoogleService-Info.plist in Resources */,
+				3089A35E235DB0F300A5F7AC /* ic_close_action.png in Resources */,
+				3089A35F235DB0F300A5F7AC /* PaymentSuccessViewController.xib in Resources */,
+				3089A361235DB0F300A5F7AC /* Account.storyboard in Resources */,
+				3089A362235DB0F300A5F7AC /* main_background.png in Resources */,
+				3089A363235DB0F300A5F7AC /* NoCounters.storyboard in Resources */,
+				3089A364235DB0F300A5F7AC /* ic_send_app.png in Resources */,
+				3089A365235DB0F300A5F7AC /* Support.storyboard in Resources */,
+				3089A366235DB0F300A5F7AC /* MupCounters.storyboard in Resources */,
+				3089A367235DB0F300A5F7AC /* arrow_rigth.png in Resources */,
+				3089A368235DB0F300A5F7AC /* spin.png in Resources */,
+				3089A369235DB0F300A5F7AC /* AddLsPocket.storyboard in Resources */,
+				3089A36A235DB0F300A5F7AC /* NewRegistration.storyboard in Resources */,
+				3089A36B235DB0F300A5F7AC /* account_icon_cons.jpg in Resources */,
+				3089A36C235DB0F300A5F7AC /* MainMenuCons.storyboard in Resources */,
+				3089A36D235DB0F300A5F7AC /* NewMainMenu.storyboard in Resources */,
+				3089A36E235DB0F300A5F7AC /* PaysMytishi.storyboard in Resources */,
+				3089A36F235DB0F300A5F7AC /* Apps.storyboard in Resources */,
+				3089A370235DB0F300A5F7AC /* SelectItem.storyboard in Resources */,
+				3089A371235DB0F300A5F7AC /* NewAddLS.storyboard in Resources */,
+				3089A372235DB0F300A5F7AC /* Logo_UK_Garant.png in Resources */,
+				3089A373235DB0F300A5F7AC /* Assets.xcassets in Resources */,
+				3089A374235DB0F300A5F7AC /* logo_SM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14581,6 +14846,63 @@
 			showEnvVarsInLog = 0;
 		};
 		3089A2C3235D494B00A5F7AC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		3089A2D0235DB0F300A5F7AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StroimBud-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3089A375235DB0F300A5F7AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StroimBud/Pods-StroimBud-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StroimBud/Pods-StroimBud-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StroimBud/Pods-StroimBud-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3089A376235DB0F300A5F7AC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -18507,6 +18829,121 @@
 				3089A288235D494B00A5F7AC /* ForgotPass.swift in Sources */,
 				3089A289235D494B00A5F7AC /* CountersController.swift in Sources */,
 				3089A28A235D494B00A5F7AC /* SupportController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3089A2D1235DB0F300A5F7AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3089A2D2235DB0F300A5F7AC /* PayController.m in Sources */,
+				3089A2D3235DB0F300A5F7AC /* QuestionsTableVC.swift in Sources */,
+				3089A2D4235DB0F300A5F7AC /* AllLS.swift in Sources */,
+				3089A2D5235DB0F300A5F7AC /* NewsCell.swift in Sources */,
+				3089A2D6235DB0F300A5F7AC /* MobilePaysController.swift in Sources */,
+				3089A2D7235DB0F300A5F7AC /* FirstController.swift in Sources */,
+				3089A2D8235DB0F300A5F7AC /* HistoryPayController.swift in Sources */,
+				3089A2D9235DB0F300A5F7AC /* StartController.swift in Sources */,
+				3089A2DA235DB0F300A5F7AC /* AppsController.swift in Sources */,
+				3089A2DB235DB0F300A5F7AC /* ShemeColor.swift in Sources */,
+				3089A2DC235DB0F300A5F7AC /* CounterCell.swift in Sources */,
+				3089A2DD235DB0F300A5F7AC /* NotificationController.swift in Sources */,
+				3089A2DE235DB0F300A5F7AC /* Registration.swift in Sources */,
+				3089A2DF235DB0F300A5F7AC /* Comments+CoreDataProperties.swift in Sources */,
+				3089A2E0235DB0F300A5F7AC /* ImageConstant.swift in Sources */,
+				3089A2E1235DB0F300A5F7AC /* AppsCellClose.swift in Sources */,
+				3089A2E2235DB0F300A5F7AC /* Saldo+CoreDataClass.swift in Sources */,
+				3089A2E3235DB0F300A5F7AC /* AddLSSimple.swift in Sources */,
+				3089A2E4235DB0F300A5F7AC /* WebsCell.swift in Sources */,
+				3089A2E5235DB0F300A5F7AC /* Applications+CoreDataClass.swift in Sources */,
+				3089A2E6235DB0F300A5F7AC /* QuestionAnswerVC.swift in Sources */,
+				3089A2E7235DB0F300A5F7AC /* News.swift in Sources */,
+				3089A2E8235DB0F300A5F7AC /* SelectItemController.swift in Sources */,
+				3089A2E9235DB0F300A5F7AC /* AddAppCons.swift in Sources */,
+				3089A2EA235DB0F300A5F7AC /* Tinkoff_Pay_Decides.m in Sources */,
+				3089A2EB235DB0F300A5F7AC /* ASDKTestSettings.m in Sources */,
+				3089A2EC235DB0F300A5F7AC /* AdditionalServicesController.swift in Sources */,
+				3089A2ED235DB0F300A5F7AC /* Web_JSON.swift in Sources */,
+				3089A2EE235DB0F300A5F7AC /* NewEditAccountController.swift in Sources */,
+				3089A2EF235DB0F300A5F7AC /* PaysController.swift in Sources */,
+				3089A2F0235DB0F300A5F7AC /* Titles.swift in Sources */,
+				3089A2F1235DB0F300A5F7AC /* ColorsConstant.swift in Sources */,
+				3089A2F2235DB0F300A5F7AC /* Server.swift in Sources */,
+				3089A2F3235DB0F300A5F7AC /* NewRegistration.swift in Sources */,
+				3089A2F4235DB0F300A5F7AC /* News+UITableViewDataSource.swift in Sources */,
+				3089A2F5235DB0F300A5F7AC /* SendSMSCod.swift in Sources */,
+				3089A2F6235DB0F300A5F7AC /* NewsManager.swift in Sources */,
+				3089A2F7235DB0F300A5F7AC /* OneVoteController.swift in Sources */,
+				3089A2F8235DB0F300A5F7AC /* MainMenu.swift in Sources */,
+				3089A2F9235DB0F300A5F7AC /* addCountersController.swift in Sources */,
+				3089A2FA235DB0F300A5F7AC /* NewAppUser.swift in Sources */,
+				3089A2FB235DB0F300A5F7AC /* CommCellCons.swift in Sources */,
+				3089A2FC235DB0F300A5F7AC /* Counters+CoreDataClass.swift in Sources */,
+				3089A2FD235DB0F300A5F7AC /* openSaldoController.swift in Sources */,
+				3089A2FE235DB0F300A5F7AC /* QuestionFinal.swift in Sources */,
+				3089A2FF235DB0F300A5F7AC /* Settings+CoreDataClass.swift in Sources */,
+				3089A300235DB0F300A5F7AC /* ObjJKH.xcdatamodeld in Sources */,
+				3089A301235DB0F300A5F7AC /* Pay.swift in Sources */,
+				3089A302235DB0F300A5F7AC /* FirstControllerCons.swift in Sources */,
+				3089A303235DB0F300A5F7AC /* Saldo+CoreDataProperties.swift in Sources */,
+				3089A304235DB0F300A5F7AC /* NewHomePage.swift in Sources */,
+				3089A305235DB0F300A5F7AC /* AddLS.swift in Sources */,
+				3089A306235DB0F300A5F7AC /* NewAddAppUser.swift in Sources */,
+				3089A307235DB0F300A5F7AC /* resVoteController.swift in Sources */,
+				3089A308235DB0F300A5F7AC /* AppsCell.swift in Sources */,
+				3089A309235DB0F300A5F7AC /* Applications+CoreDataProperties.swift in Sources */,
+				3089A30A235DB0F300A5F7AC /* Fotos+CoreDataProperties.swift in Sources */,
+				3089A30B235DB0F300A5F7AC /* FloatRatingView.swift in Sources */,
+				3089A30C235DB0F300A5F7AC /* FilesController.swift in Sources */,
+				3089A30D235DB0F300A5F7AC /* AppDelegate.swift in Sources */,
+				3089A30E235DB0F300A5F7AC /* QuestionsJson.swift in Sources */,
+				3089A30F235DB0F300A5F7AC /* Fotos+CoreDataClass.swift in Sources */,
+				3089A310235DB0F300A5F7AC /* Counters+CoreDataProperties.swift in Sources */,
+				3089A311235DB0F300A5F7AC /* DB.swift in Sources */,
+				3089A312235DB0F300A5F7AC /* AppUser.swift in Sources */,
+				3089A313235DB0F300A5F7AC /* TwoPageController.swift in Sources */,
+				3089A314235DB0F300A5F7AC /* Comments+CoreDataClass.swift in Sources */,
+				3089A315235DB0F300A5F7AC /* TransactionHistoryModelController.m in Sources */,
+				3089A316235DB0F300A5F7AC /* UniqCountersController.swift in Sources */,
+				3089A317235DB0F300A5F7AC /* MainMenuCons.swift in Sources */,
+				3089A318235DB0F300A5F7AC /* AddAppUser.swift in Sources */,
+				3089A319235DB0F300A5F7AC /* OnePageController.swift in Sources */,
+				3089A31A235DB0F300A5F7AC /* UpdateAppController.swift in Sources */,
+				3089A31B235DB0F300A5F7AC /* WebsController.swift in Sources */,
+				3089A31C235DB0F300A5F7AC /* Web_Camera.swift in Sources */,
+				3089A31D235DB0F300A5F7AC /* NewPass.swift in Sources */,
+				3089A31E235DB0F300A5F7AC /* CloseAppAlert.swift in Sources */,
+				3089A31F235DB0F300A5F7AC /* PaymentSuccessViewController.m in Sources */,
+				3089A320235DB0F300A5F7AC /* Settings+CoreDataProperties.swift in Sources */,
+				3089A321235DB0F300A5F7AC /* SaldoController.swift in Sources */,
+				3089A322235DB0F300A5F7AC /* VotingController.swift in Sources */,
+				3089A323235DB0F300A5F7AC /* SaldoCell.swift in Sources */,
+				3089A324235DB0F300A5F7AC /* NewsClient.swift in Sources */,
+				3089A325235DB0F300A5F7AC /* CoreDataManager.swift in Sources */,
+				3089A326235DB0F300A5F7AC /* MupCounterController.swift in Sources */,
+				3089A327235DB0F300A5F7AC /* NewsController.swift in Sources */,
+				3089A328235DB0F300A5F7AC /* CommCell.swift in Sources */,
+				3089A329235DB0F300A5F7AC /* AdditionalVC.swift in Sources */,
+				3089A32A235DB0F300A5F7AC /* Reachability.swift in Sources */,
+				3089A32B235DB0F300A5F7AC /* SupportUpdate.swift in Sources */,
+				3089A32C235DB0F300A5F7AC /* Extensions.swift in Sources */,
+				3089A32D235DB0F300A5F7AC /* NoCounters.swift in Sources */,
+				3089A32E235DB0F300A5F7AC /* AppCons.swift in Sources */,
+				3089A32F235DB0F300A5F7AC /* NewSaldoController.swift in Sources */,
+				3089A330235DB0F300A5F7AC /* ASDKCardIOScanner.m in Sources */,
+				3089A331235DB0F300A5F7AC /* EditAccountController.swift in Sources */,
+				3089A332235DB0F300A5F7AC /* QuestionVoteController.swift in Sources */,
+				3089A333235DB0F300A5F7AC /* NewsView.swift in Sources */,
+				3089A334235DB0F300A5F7AC /* TechWorkController.swift in Sources */,
+				3089A335235DB0F300A5F7AC /* PaymentApp+CoreDataProperties.swift in Sources */,
+				3089A336235DB0F300A5F7AC /* PaysMytishiController.swift in Sources */,
+				3089A337235DB0F300A5F7AC /* QuestionsTableCell.swift in Sources */,
+				3089A338235DB0F300A5F7AC /* NewMainMenu2.swift in Sources */,
+				3089A339235DB0F300A5F7AC /* OnOffButton.swift in Sources */,
+				3089A33A235DB0F300A5F7AC /* PaymentApp+CoreDataClass.swift in Sources */,
+				3089A33B235DB0F300A5F7AC /* ForgotPass.swift in Sources */,
+				3089A33C235DB0F300A5F7AC /* CountersController.swift in Sources */,
+				3089A33D235DB0F300A5F7AC /* SupportController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -22568,6 +23005,59 @@
 			};
 			name = Release;
 		};
+		3089A378235DB0F300A5F7AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 468FA3E67F486BAD51C92CAB /* Pods-StroimBud.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-MurmanskPartnerPlus";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/MurmanskPartnerPlus-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.55;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DisMurmanskPartnerPlus";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.MurmanskPartnerPlus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isMurmanskPartnerPlus Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/StroimBud-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3089A379235DB0F300A5F7AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7331560221B1376EFF9BC92 /* Pods-StroimBud.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-MurmanskPartnerPlus";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/MurmanskPartnerPlus-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.55;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DisMurmanskPartnerPlus";
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.MurmanskPartnerPlus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isMurmanskPartnerPlus;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/StroimBud-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		30940BBD22F80D7C00422C64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5FE0B9C8DACF5D7DB3EA118C /* Pods-NewOpaliha.debug.xcconfig */;
@@ -24212,6 +24702,15 @@
 			buildConfigurations = (
 				3089A2C5235D494B00A5F7AC /* Debug */,
 				3089A2C6235D494B00A5F7AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3089A377235DB0F300A5F7AC /* Build configuration list for PBXNativeTarget "Murmansk_Partner_Plus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3089A378235DB0F300A5F7AC /* Debug */,
+				3089A379235DB0F300A5F7AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
