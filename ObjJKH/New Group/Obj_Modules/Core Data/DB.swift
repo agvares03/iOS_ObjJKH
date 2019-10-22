@@ -502,6 +502,12 @@ class DB: NSObject, XMLParserDelegate {
 //                                                if error != nil {
 //                                                    return
 //                                                } else {
+                                                guard data != nil else {
+                                                    DispatchQueue.main.sync {
+                                                        UserDefaults.standard.set(true, forKey: "successParse")
+                                                    }
+                                                    return
+                                                }
                                                     var i_month: Int = 0
                                                     var i_year: Int = 0
                                                     var i_ident: String = ""
@@ -708,12 +714,13 @@ class DB: NSObject, XMLParserDelegate {
         
         if success {
             print("parse APPS success!")
-            if self.request_read > 0{
-                UserDefaults.standard.set(self.request_read, forKey: "appsKol")
-            }else{
-                UserDefaults.standard.set(0, forKey: "appsKol")
-            }
             DispatchQueue.main.async {
+                UserDefaults.standard.synchronize()
+                if self.request_read > 0{
+                    UserDefaults.standard.set(self.request_read, forKey: "appsKol")
+                }else{
+                    UserDefaults.standard.set(0, forKey: "appsKol")
+                }
                 let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
                 if (updatedBadgeNumber > -1) {
                     UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber

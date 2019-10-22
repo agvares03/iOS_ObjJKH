@@ -470,13 +470,13 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                if (updatedBadgeNumber > -1) {
 //                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
 //                }
-////                if request_read >= 0{
-////                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-////                    UserDefaults.standard.synchronize()
-////                }else{
-////                    UserDefaults.standard.setValue(0, forKey: "request_read")
-////                    UserDefaults.standard.synchronize()
-////                }
+//                if request_read >= 0{
+//                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+//                    UserDefaults.standard.synchronize()
+//                }else{
+//                    UserDefaults.standard.setValue(0, forKey: "request_read")
+//                    UserDefaults.standard.synchronize()
+//                }
 //
 //            }
             
@@ -572,7 +572,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.removeObserver("reloadTheTable")
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "reloadTheTable"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

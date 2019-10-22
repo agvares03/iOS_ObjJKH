@@ -130,7 +130,6 @@ final class FilesImageCell: UICollectionViewCell {
                 
                 guard data != nil else { return }
                 DispatchQueue.main.async { [weak self] in
-                    
                     let img = UIImage(data: data!)
                     imgs[item.name!] = img
                     self?.image.image = img
