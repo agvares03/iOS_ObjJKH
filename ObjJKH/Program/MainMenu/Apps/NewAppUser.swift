@@ -26,6 +26,9 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
     
+    @IBOutlet weak var statusText: UILabel!
+    @IBOutlet weak var statusImage: UIImageView!
+    
     @IBAction func back_btn(_ sender: UIBarButtonItem) {
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.barTintColor = .white
@@ -108,6 +111,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     var txt_tema: String = ""
     var txt_date: String = ""
+    var txt_status: String = ""
     
     var responseString: String = ""
     var fetchedResultsController: NSFetchedResultsController<Comments>?
@@ -368,7 +372,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         load_data()
         updateTable()
-        
+        statusText.text = txt_status
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
@@ -622,6 +626,11 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             for i in 0...sections[0].numberOfObjects - 1{
                 let indexPath = IndexPath(row: i, section: 0)
                 let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
+                if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1){
+                    DispatchQueue.main.async{
+                        self.statusText.text = comm.serverStatus!
+                    }
+                }
                 let calendar = Calendar.current
                 if comm.dateK != nil{
                     var hour = String(calendar.component(.hour, from: comm.dateK!))

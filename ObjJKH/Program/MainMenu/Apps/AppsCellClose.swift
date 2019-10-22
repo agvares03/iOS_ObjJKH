@@ -14,7 +14,9 @@ class AppsCellClose: UITableViewCell {
     
     @IBOutlet weak var Number: UILabel!
     @IBOutlet weak var tema: UILabel!
-    @IBOutlet weak var date_app: UILabel!    
+    @IBOutlet weak var date_app: UILabel!
+    @IBOutlet weak var statusText: UILabel!
+    @IBOutlet weak var statusImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

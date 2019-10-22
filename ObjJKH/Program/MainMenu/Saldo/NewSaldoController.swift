@@ -65,10 +65,10 @@ class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewData
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, error, responce in
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("responseString = \(responseString)")
                                                 
                                                 guard data != nil else { return }
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
                                                 let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                                                 if json != nil{
                                                     let unfilteredData = PaysFileJson(json: json! as! JSON)?.data

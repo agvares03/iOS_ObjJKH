@@ -299,6 +299,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.date_app.text  = app.date
             cell.image_app.image = img
             cell.image_app.tintColor = myColors.btnColor.uiColor()
+            cell.statusText.text = app.serverStatus
 //            #if isGKRZS
 //            let server = Server()
 //            cell.Number.textColor = server.hexStringToUIColor(hex: "#1f287f")
@@ -328,7 +329,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.tema.text      = app.tema
             //            cell.text_app.text  = app.text
             cell.date_app.text  = app.date
-            
+            cell.statusText.text = app.serverStatus
             cell.delegate = self
             return cell
         }
@@ -412,6 +413,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.adress = app.adress!
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
+            AppUser.txt_status = app.serverStatus!
             if app.paid_text != nil{
                 AppUser.paid_text = app.paid_text!
             }
@@ -464,6 +466,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.adress = app.adress!
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
+            AppUser.txt_status = app.serverStatus!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!

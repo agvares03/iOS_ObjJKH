@@ -220,7 +220,7 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
                 // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
                 // Запишем заявку в БД
                 let db = DB()
-                db.add_app(id: 1, number: self.responseString, text: self.text_App.text!, tema: self.text_App.text!, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1, type_app: String(self.appType + 1))
+                db.add_app(id: 1, number: self.responseString, text: self.text_App.text!, tema: self.text_App.text!, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1, type_app: String(self.appType + 1), serverStatus: "новая заявка")
                 db.getComByID(login: self.edLogin, pass: self.edPass, number: self.responseString)
                 
                 self.StopIndicator()

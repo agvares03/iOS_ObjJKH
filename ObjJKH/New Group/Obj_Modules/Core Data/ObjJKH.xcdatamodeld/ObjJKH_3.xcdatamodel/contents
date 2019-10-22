@@ -18,6 +18,7 @@
         <attribute name="paid_sum" optional="YES" attributeType="String"/>
         <attribute name="paid_text" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="serverStatus" optional="YES" attributeType="String"/>
         <attribute name="tema" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="type_app" optional="YES" attributeType="String"/>
@@ -31,6 +32,7 @@
         <attribute name="id_app" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id_author" optional="YES" attributeType="String"/>
         <attribute name="is_hidden" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="serverStatus" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Counters" representedClassName="Counters" syncable="YES">
@@ -91,8 +93,8 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Applications" positionX="333" positionY="81" width="128" height="343"/>
-        <element name="Comments" positionX="324" positionY="54" width="128" height="178"/>
+        <element name="Applications" positionX="333" positionY="81" width="128" height="358"/>
+        <element name="Comments" positionX="324" positionY="54" width="128" height="193"/>
         <element name="Counters" positionX="394" positionY="-18" width="128" height="373"/>
         <element name="Fotos" positionX="342" positionY="144" width="128" height="133"/>
         <element name="PaymentApp" positionX="333" positionY="144" width="128" height="148"/>

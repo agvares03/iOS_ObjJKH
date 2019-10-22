@@ -2478,7 +2478,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.goApp.tintColor = myColors.btnColor.uiColor()
             cell.img.setImageColor(color: myColors.btnColor.uiColor())
             cell.nameApp.text    = "Заявка №" + app.number!
-            cell.comment.text      = app.tema
+            cell.comment.text    = app.tema
+            cell.statusText.text = app.serverStatus
             //            cell.text_app.text  = app.text
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
@@ -2677,6 +2678,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             AppUser.adress = app.adress!
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
+            AppUser.txt_status = app.serverStatus!
             AppUser.fromMenu = true
             if app.paid_text != nil{
                 AppUser.paid_text = app.paid_text!
@@ -3088,6 +3090,8 @@ class HomeAppsCell: UITableViewCell {
     @IBOutlet weak var comment: UILabel!
     @IBOutlet weak var goApp: UIButton!
     @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var statusText: UILabel!
+    @IBOutlet weak var statusImage: UIImageView!
     
     
     override func awakeFromNib() {

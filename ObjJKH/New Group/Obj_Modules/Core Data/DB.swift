@@ -353,6 +353,7 @@ class DB: NSObject, XMLParserDelegate {
             managedObject.flat            = attributeDict["FlatNumber"]
             managedObject.phone           = attributeDict["Phone"]
             managedObject.acc_ident       = attributeDict["AccountIdent"]
+            managedObject.serverStatus    = attributeDict["ServerStatus"]
             if attributeDict["PaidSumm"] == ""{
                 managedObject.paid_sum        = "0.00"
             }else{
@@ -428,6 +429,7 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.id_author       = attributeDict["id_Author"]
                 managedObject.author          = attributeDict["Name"]
                 managedObject.id_account      = attributeDict["id_account"]
+                managedObject.serverStatus    = attributeDict["ServerStatus"]
                 if attributeDict["isHidden"] == "1"{
                     managedObject.is_hidden   = true
                 }else{
@@ -442,6 +444,7 @@ class DB: NSObject, XMLParserDelegate {
                     managedObject.id              = Int64(attributeDict["ID"]!)!
                     managedObject.id_app          = Int64(attributeDict["id_request"]!)!
                     managedObject.text            = attributeDict["text"]
+                    managedObject.serverStatus    = attributeDict["ServerStatus"]
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
                     managedObject.dateK           = dateFormatter.date(from: attributeDict["added"]!)
@@ -750,7 +753,7 @@ class DB: NSObject, XMLParserDelegate {
     }
     
     // Добавить заявку
-    func add_app(id: Int64, number: String, text: String, tema: String, date: String, adress: String, flat: String, phone: String, owner: String, is_close: Int64, is_read: Int64, is_answered: Int64, type_app: String) {
+    func add_app(id: Int64, number: String, text: String, tema: String, date: String, adress: String, flat: String, phone: String, owner: String, is_close: Int64, is_read: Int64, is_answered: Int64, type_app: String, serverStatus: String) {
         
         let managedObject = Applications()
         managedObject.id              = 1
@@ -766,6 +769,7 @@ class DB: NSObject, XMLParserDelegate {
         managedObject.is_read         = is_read
         managedObject.is_answered     = is_answered
         managedObject.type_app        = type_app
+        managedObject.serverStatus    = serverStatus
         CoreDataManager.instance.saveContext()
     }
     
