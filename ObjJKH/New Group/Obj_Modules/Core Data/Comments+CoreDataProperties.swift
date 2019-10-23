@@ -26,5 +26,6 @@ extension Comments {
     @NSManaged public var date: String?
     @NSManaged public var author: String?
     @NSManaged public var is_hidden: Bool
+    @NSManaged public var serverStatus: String?
 
 }

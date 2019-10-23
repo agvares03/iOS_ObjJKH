@@ -37,4 +37,5 @@ extension Applications {
     @NSManaged public var paid_sum: String?
     @NSManaged public var paid_text: String?
     @NSManaged public var acc_ident: String?
+    @NSManaged public var serverStatus: String?
 }

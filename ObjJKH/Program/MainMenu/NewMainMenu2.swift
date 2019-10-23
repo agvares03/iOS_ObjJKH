@@ -899,7 +899,7 @@ class NewMainMenu2: UIViewController {
                 // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
                 // Запишем заявку в БД
                 let db = DB()
-                db.add_app(id: 1, number: self.responseString, text: self.txt_name, tema: self.txt_name, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1, type_app: "11")
+                db.add_app(id: 1, number: self.responseString, text: self.txt_name, tema: self.txt_name, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1, type_app: "11", serverStatus: "новая заявка")
                 db.getComByID(login: self.login, pass: self.pass, number: self.responseString)
                 
                 let alert = UIAlertController(title: "Успешно", message: "Создана запись на прием (см. в Заявках)" , preferredStyle: .alert)
