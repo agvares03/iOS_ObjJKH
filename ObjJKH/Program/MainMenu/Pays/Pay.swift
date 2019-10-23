@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import WebKit
 
-class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate {
+class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WKNavigationDelegate {
     func newAddAppDone(addApp: NewAddAppUser) {
     }
     
@@ -26,7 +26,6 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate {
     
     @IBOutlet weak var appBtn: UIButton!
     @IBOutlet weak var appLbl: UILabel!
-//    @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var backBtn: UIBarButtonItem!
     var webView: WKWebView!
     @IBAction func addAppAction(_ sender: UIButton){
@@ -61,6 +60,7 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
+        webView.navigationDelegate = self
         view = webView
         let defaults     = UserDefaults.standard
         
@@ -80,15 +80,23 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate {
         
     }
     var webViewCurrUrl = ""
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        if let text = webView.request?.url?.absoluteString{
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if let text = webView.url?.absoluteString{
             webViewCurrUrl = text
             print(text)
         }
-        let doc = webView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
-        webViewCurrUrl = doc!
+        var doc = ""
+        webView.evaluateJavaScript("document.documentElement.outerHTML") { (result, error) in
+            if error != nil {
+                doc = "\(String(describing: result))"
+            }
+        }
+//        let doc = webView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
+        webViewCurrUrl = doc
         
         URLCache.shared.removeAllCachedResponses()
+        print("loaded")
     }
 
     override func didReceiveMemoryWarning() {

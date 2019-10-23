@@ -16,7 +16,6 @@ class NoCounters: UIViewController, WKUIDelegate{
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
-//    @IBOutlet weak var webView: UIWebView!
     var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()

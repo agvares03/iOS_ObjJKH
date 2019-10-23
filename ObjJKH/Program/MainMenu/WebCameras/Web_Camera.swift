@@ -10,11 +10,11 @@ import UIKit
 import Foundation
 import WebKit
 
-class Web_Camera: UIViewController, WKUIDelegate {
+class Web_Camera: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-//    @IBOutlet weak var webView: UIWebView!
+    
     open var web_camera: Web_Camera_json?
     var webView: WKWebView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
@@ -26,6 +26,7 @@ class Web_Camera: UIViewController, WKUIDelegate {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
+        webView.navigationDelegate = self
         view = webView
 //        let web_link: String = web_camera?.link ?? ""
 //        if (web_link.contains("rtsp")) {
@@ -70,15 +71,15 @@ class Web_Camera: UIViewController, WKUIDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func webViewDidStartLoad(_ webView: UIWebView) {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         StartIndicator()
     }
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         StopIndicator()
     }
     
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         StopIndicator()
     }
     
