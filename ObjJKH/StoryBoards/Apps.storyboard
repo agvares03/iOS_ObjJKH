@@ -2643,19 +2643,7 @@
                     <view key="view" contentMode="scaleToFill" id="hYK-yE-PqU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hul-kV-dxQ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Hul-kV-dxQ" firstAttribute="top" secondItem="7Fk-G2-v2L" secondAttribute="top" id="HXP-TI-2mq"/>
-                            <constraint firstItem="Hul-kV-dxQ" firstAttribute="leading" secondItem="7Fk-G2-v2L" secondAttribute="leading" id="PXD-ec-ilC"/>
-                            <constraint firstItem="Hul-kV-dxQ" firstAttribute="trailing" secondItem="7Fk-G2-v2L" secondAttribute="trailing" id="hXY-9y-HwQ"/>
-                            <constraint firstItem="Hul-kV-dxQ" firstAttribute="bottom" secondItem="7Fk-G2-v2L" secondAttribute="bottom" id="ncr-cR-DHa"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7Fk-G2-v2L"/>
                     </view>
                     <navigationItem key="navigationItem" title="Оплата" id="Zz0-4F-7IX">
@@ -2665,9 +2653,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="webView" destination="Hul-kV-dxQ" id="XYP-Wt-kqj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbm-f2-Rd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
