@@ -59,9 +59,9 @@ class AddLSMup: UIViewController, UITextFieldDelegate {
         }
         // Регистрация лицевого счета
         var urlPath = "http://uk-gkh.org/muprcmytishi_admin/api/muprkcdatasync/startsync?"
-        urlPath = urlPath + "ident=" + (edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
-        urlPath = urlPath + "&pwd=" + (edPass.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
-        urlPath = urlPath + "&phone=" + phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        urlPath = urlPath + "ident=" + (edLS.text?.stringByAddingPercentEncodingForRFC3986() ?? "")!
+        urlPath = urlPath + "&pwd=" + (edPass.text?.stringByAddingPercentEncodingForRFC3986() ?? "")!
+        urlPath = urlPath + "&phone=" + (phone.stringByAddingPercentEncodingForRFC3986() ?? "")!
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
