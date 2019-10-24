@@ -528,6 +528,10 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
     }
     
+    deinit {
+        UserDefaults.standard.removeObserver(self, forKeyPath: "PaymentSucces", context: nil)
+    }
+    
     var onePay = 0
     var oneCheck = 0
     
