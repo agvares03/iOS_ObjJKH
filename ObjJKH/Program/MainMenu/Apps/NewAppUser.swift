@@ -426,8 +426,8 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
 //        timer = Timer(timeInterval: 20, target: self, selector: #selector(reload), userInfo: ["start" : "ok"], repeats: true)
 //        RunLoop.main.add(timer!, forMode: .defaultRunLoopMode)
-        let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
-        let count = tema_txt.frame.size.height * numberLine
+//        let numberLine: CGFloat = CGFloat(tema_txt!.numberOfVisibleLines)
+//        let count = tema_txt.frame.size.height * numberLine
         let temaHeight = heightForView(text: txt_tema, font: tema_txt.font, width: view.frame.size.width - 24)
         let adressHeight = heightForView(text: self.ls_adress.text!, font: self.ls_adress.font, width: view.frame.size.width - 76)
         headerHeight.constant = 160 + temaHeight + adressHeight - 30
@@ -584,6 +584,10 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: NSNotification.Name(rawValue: "reloadTheTable"), object: nil)
         UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
+    }
+    
+    deinit {
+        UserDefaults.standard.removeObserver(self, forKeyPath: "PaymentSucces", context: nil)
     }
     
     var onePay = 0

@@ -513,7 +513,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         getDebt()
         //        getNews()
         getDataCounter()
-        updateListApps()
+//        updateListApps()
         getQuestions()
         getWebs()
         get_Services(login: login!, pass: pass!)
@@ -722,7 +722,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        self.load_new_data()
+//        self.load_new_data()
+        updateListApps()
         self.getNews()
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
