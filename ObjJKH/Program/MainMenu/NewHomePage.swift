@@ -2306,10 +2306,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
             cell.imgCounter.image = UIImage(named: "water")
-            if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil){
+            if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil) || (countName.containsIgnoringCase(find: "гв")){
                 cell.imgCounter.setImageColor(color: .red)
             }
-            if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil) || (countName.lowercased().range(of: "х/в") != nil){
+            if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil) || (countName.lowercased().range(of: "х/в") != nil) || (countName.containsIgnoringCase(find: "хв")){
                 cell.imgCounter.setImageColor(color: .blue)
             }
             if (countName.lowercased().range(of: "газ") != nil){
