@@ -902,7 +902,7 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
                 }
             }
         }
-        if str != "" && str != "-"{
+        if str != "" && str != "-" && str != "." && str != ","{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]
                 //                if choiceIdent == "Все"{

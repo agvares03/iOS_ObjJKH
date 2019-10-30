@@ -68,6 +68,11 @@ class NewMainMenu2: UIViewController {
     @IBOutlet weak var btn_name_8: UIButton!
     @IBOutlet weak var btn_arr_8: UIImageView!
     @IBOutlet weak var line_bottom_8: UILabel!
+    // Осмотр
+    @IBOutlet weak var menu_9_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_9: UIButton!
+    @IBOutlet weak var btn_arr_9: UIImageView!
+    @IBOutlet weak var line_bottom_9: UILabel!
     // Голосования
     @IBOutlet weak var oss_heigth: NSLayoutConstraint!
     @IBOutlet weak var btn_name_oss: UIButton!
@@ -75,7 +80,7 @@ class NewMainMenu2: UIViewController {
     @IBOutlet weak var line_bottom_oss: UILabel!
     // Выход - только название
     @IBOutlet weak var line_bottom_10: UILabel!
-    @IBOutlet weak var btn_name_9: UIButton!
+    @IBOutlet weak var btn_name_10: UIButton!
     @IBOutlet weak var heigth_Questions: NSLayoutConstraint!
     @IBOutlet weak var btn_Questions: UIButton!
     @IBOutlet weak var Questions_arrow: UIImageView!
@@ -90,6 +95,7 @@ class NewMainMenu2: UIViewController {
     @IBOutlet weak var payment: UIImageView!
     @IBOutlet weak var webs_img: UIImageView!
     @IBOutlet weak var services: UIImageView!
+    @IBOutlet weak var object: UIImageView!
     @IBOutlet weak var exit_img: UIImageView!
     @IBOutlet weak var oss: UIImageView!
     
@@ -272,6 +278,8 @@ class NewMainMenu2: UIViewController {
         webs_img.setImageColor(color: myColors.btnColor.uiColor())
         services.image = myImages.services
         services.setImageColor(color: myColors.btnColor.uiColor())
+        object.image = myImages.meters_image
+        object.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
         oss.image = myImages.oss_image
@@ -285,6 +293,7 @@ class NewMainMenu2: UIViewController {
         line_bottom_6.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_7.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_8.backgroundColor = myColors.btnColor.uiColor()
+        line_bottom_9.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_10.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_oss.backgroundColor = myColors.btnColor.uiColor()
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
@@ -417,7 +426,7 @@ class NewMainMenu2: UIViewController {
         // Дополнительные услуги
         let str_menu_8 = defaults.string(forKey: "menu_8") ?? ""
         if (str_menu_8 != "") {
-            var answer = str_menu_8.components(separatedBy: ";")
+            let answer = str_menu_8.components(separatedBy: ";")
             if (answer[2] == "0") {
                 menu_8_heigth.constant   = -2
                 btn_name_8.isHidden      = true
@@ -429,6 +438,26 @@ class NewMainMenu2: UIViewController {
                 btn_name_8.setTitle(answer[1], for: .normal)
             }
         }
+        // Осмотр
+        menu_9_heigth.constant   = -2
+        btn_name_9.isHidden      = true
+        btn_arr_9.isHidden       = true
+        line_bottom_9.isHidden   = true
+        object.isHidden = true
+//        let str_menu_8 = defaults.string(forKey: "menu_8") ?? ""
+//        if (str_menu_8 != "") {
+//            var answer = str_menu_8.components(separatedBy: ";")
+//            if (answer[2] == "0") {
+//                menu_9_heigth.constant   = -2
+//                btn_name_9.isHidden      = true
+//                btn_arr_9.isHidden       = true
+//                line_bottom_9.isHidden   = true
+//                services.isHidden        = true
+                //heigth_view.constant     = //heigth_view.constant - 40
+//            } else {
+//                btn_name_8.setTitle(answer[1], for: .normal)
+//            }
+//        }
         // Голосования
         let str_menu_oss = defaults.bool(forKey: "enable_OSS")
         //        let str_menu_oss = true
@@ -451,7 +480,7 @@ class NewMainMenu2: UIViewController {
         let str_menu_9 = defaults.string(forKey: "menu_9") ?? ""
         if (str_menu_9 != "") {
             var answer = str_menu_9.components(separatedBy: ";")
-            btn_name_9.setTitle(answer[1], for: .normal)
+            btn_name_10.setTitle(answer[1], for: .normal)
         }
     }
     
@@ -580,12 +609,12 @@ class NewMainMenu2: UIViewController {
                                                                 do {
                                                                     u += 1
                                                                     if !responseStr.contains("error"){
-                                                                        var date        = ""
-                                                                        var sum         = ""
-                                                                        var sumFine     = ""
-                                                                        var insuranceSum = ""
-                                                                        var ls = ""
-                                                                        var houseId = ""
+                                                                        var date        = "0"
+                                                                        var sum         = "0"
+                                                                        var sumFine     = "0"
+                                                                        var insuranceSum = "0"
+                                                                        var ls = "-"
+                                                                        var houseId = "0"
                                                                         //                                                                var sumOver     = ""
                                                                         //                                                                var sumFineOver = ""
                                                                         var sumAll      = ""
@@ -630,6 +659,9 @@ class NewMainMenu2: UIViewController {
                                                                                             if obj.key == "HouseId" {
                                                                                                 if ((obj.value as? NSNull) == nil){
                                                                                                     houseId = String(describing: obj.value as! Int)
+                                                                                                    self.debtHouse.append(houseId)
+                                                                                                }else{
+                                                                                                    houseId = "0"
                                                                                                     self.debtHouse.append(houseId)
                                                                                                 }
                                                                                             }

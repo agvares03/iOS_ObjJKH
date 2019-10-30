@@ -392,7 +392,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
-        if (self.totalSum <= 0) {
+        if shopCode == ""{
+            let alert = UIAlertController(title: "Ошибка", message: "У данного Лс/ч отсутствует адрес для оплаты", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }else if (self.totalSum <= 0) {
             let alert = UIAlertController(title: "Ошибка", message: "Нет суммы к оплате", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
@@ -1386,7 +1392,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
         }
-        if str != "" && str != "-"{
+        if str != "" && str != "-" && str != "." && str != ","{
             for i in 0...osvc.count - 1{
                 var code:String = osvc[i]
                 if (textField.accessibilityIdentifier == code){

@@ -802,15 +802,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                 print(responseStr)
                                                                 
                                                                 if !responseStr.contains("error"){
-                                                                    var date1       = ""
-                                                                    var date2       = ""
-                                                                    var date        = ""
-                                                                    var sum         = ""
-                                                                    var sumFine     = ""
-                                                                    var insuranceSum = ""
-                                                                    var ls = ""
-                                                                    var address = ""
-                                                                    var houseId = ""
+                                                                    var date1       = "0"
+                                                                    var date2       = "0"
+                                                                    var date        = "0"
+                                                                    var sum         = "0"
+                                                                    var sumFine     = "0"
+                                                                    var insuranceSum = "0"
+                                                                    var ls = "-"
+                                                                    var address = "-"
+                                                                    var houseId = "0"
                                                                     
                                                                     //                                                                var sumOver     = ""
                                                                     //                                                                var sumFineOver = ""
@@ -854,6 +854,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                                     if obj.key == "HouseId" {
                                                                                         if ((obj.value as? NSNull) == nil){
                                                                                             houseId = String(describing: obj.value as! Int)
+                                                                                        }else{
+                                                                                            houseId = "0"
                                                                                         }
                                                                                     }
                                                                                     if obj.key == "DebtActualDate" {

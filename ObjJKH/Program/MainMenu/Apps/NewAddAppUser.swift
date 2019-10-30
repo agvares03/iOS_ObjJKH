@@ -175,6 +175,9 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     self.uploadPhoto(img)
                 }
             }
+            if self.images.count != 0{
+                self.sendEmailFile()
+            }
             DispatchQueue.main.async(execute: {
                 
                 // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
@@ -204,6 +207,45 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         DispatchQueue.main.async {
             self.view.isUserInteractionEnabled = true
         }
+    }
+    
+    func sendEmailFile(){
+        let reqID = responseString.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + "MobileAPI/SendRequestToMail.ashx?" + "requestId=" + reqID
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        print(request)
+    
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        self.StopIndicator()
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                        self.view.isUserInteractionEnabled = true
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
+                                                
+        })
+        task.resume()
     }
     
     @IBAction func attachFile(_ sender: UIButton) {
