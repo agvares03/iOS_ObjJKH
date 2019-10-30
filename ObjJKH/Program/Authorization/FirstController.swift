@@ -278,6 +278,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Samara")
         #elseif isEnergoProgress
         fon_top.image = UIImage(named: "Logo_EnergoProgress")
+        #elseif isMurmanskPartnerPlus
+        fon_top.image = UIImage(named: "Logo_Murmansk")
         #endif
         UserDefaults.standard.set("", forKey: "targetName")
         UserDefaults.standard.synchronize()

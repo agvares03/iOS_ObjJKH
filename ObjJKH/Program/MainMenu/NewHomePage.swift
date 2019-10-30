@@ -456,6 +456,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Samara")
         #elseif isEnergoProgress
         fon_top.image = UIImage(named: "Logo_EnergoProgress")
+        #elseif isMurmanskPartnerPlus
+        fon_top.image = UIImage(named: "Logo_Murmansk")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         suppBtn.tintColor = myColors.btnColor.uiColor()
