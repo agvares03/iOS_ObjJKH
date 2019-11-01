@@ -176,7 +176,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 }
             }
             if self.images.count != 0{
-                self.sendEmailFile()
+//                self.sendEmailFile()
             }
             DispatchQueue.main.async(execute: {
                 

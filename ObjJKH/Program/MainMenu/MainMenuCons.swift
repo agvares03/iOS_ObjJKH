@@ -17,6 +17,7 @@ class MainMenuCons: UIViewController {
     @IBOutlet weak var notice: UIImageView!
     @IBOutlet weak var application: UIImageView!
     @IBOutlet weak var webs_img: UIImageView!
+    @IBOutlet weak var obj_img: UIImageView!
     @IBOutlet weak var exit_img: UIImageView!
     @IBOutlet weak var news_indicator: UILabel!
     @IBOutlet weak var request_indicator: UILabel!
@@ -41,6 +42,8 @@ class MainMenuCons: UIViewController {
         application.setImageColor(color: myColors.btnColor.uiColor())
         webs_img.image = myImages.webs_image
         webs_img.setImageColor(color: myColors.btnColor.uiColor())
+        obj_img.image = myImages.obj_image
+        obj_img.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
         

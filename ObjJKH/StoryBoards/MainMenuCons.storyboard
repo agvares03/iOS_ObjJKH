@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81K-Yt-3gD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="81K-Yt-3gD">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -220,7 +220,7 @@
                                             <segue destination="Zxg-nU-TCa" kind="show" id="WiK-tF-Cq7"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bi3-Gh-wto">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bi3-Gh-wto">
                                         <rect key="frame" x="8" y="162" width="296" height="2"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -261,6 +261,7 @@
                                     <constraint firstItem="JrP-2R-yfW" firstAttribute="top" secondItem="gGu-8z-SFW" secondAttribute="top" constant="9" id="KRU-Wz-U62"/>
                                     <constraint firstItem="4mn-FP-W5v" firstAttribute="top" secondItem="LRB-Bz-a0w" secondAttribute="bottom" constant="2" id="LXZ-4P-py4"/>
                                     <constraint firstItem="LRB-Bz-a0w" firstAttribute="top" secondItem="54z-Ho-s8C" secondAttribute="bottom" constant="4" id="O85-rf-gy6"/>
+                                    <constraint firstItem="bi3-Gh-wto" firstAttribute="leading" secondItem="CbL-rf-Lhd" secondAttribute="leading" id="OXp-z8-3PP"/>
                                     <constraint firstItem="JrP-2R-yfW" firstAttribute="leading" secondItem="0Vi-lR-EPc" secondAttribute="trailing" constant="8" id="ObR-zY-3Q3"/>
                                     <constraint firstItem="JPZ-vy-0Xj" firstAttribute="leading" secondItem="SLY-Aj-71C" secondAttribute="trailing" constant="8" id="OtR-3V-RTB"/>
                                     <constraint firstItem="SFv-Gt-j6z" firstAttribute="top" secondItem="MZb-Ee-E3X" secondAttribute="bottom" constant="8" id="Rbz-xq-9eJ"/>
@@ -283,6 +284,7 @@
                                     <constraint firstAttribute="trailing" secondItem="X5v-Il-jKX" secondAttribute="trailing" constant="8" id="iBh-kJ-cFS"/>
                                     <constraint firstItem="gcY-E1-Kss" firstAttribute="leading" secondItem="gGu-8z-SFW" secondAttribute="leading" constant="8" id="jFe-Ao-lqy"/>
                                     <constraint firstAttribute="trailing" secondItem="4mn-FP-W5v" secondAttribute="trailing" id="joh-MP-6Gv"/>
+                                    <constraint firstItem="bi3-Gh-wto" firstAttribute="trailing" secondItem="4mn-FP-W5v" secondAttribute="trailing" id="kqk-rI-kdI"/>
                                     <constraint firstItem="e2R-hx-oXM" firstAttribute="leading" secondItem="CbL-rf-Lhd" secondAttribute="trailing" constant="8" id="mQO-Zw-vQ3"/>
                                     <constraint firstItem="qRW-Lh-rvl" firstAttribute="top" secondItem="gGu-8z-SFW" secondAttribute="top" constant="8" id="mdK-1o-lx1"/>
                                     <constraint firstItem="vZl-4s-Jyq" firstAttribute="top" secondItem="4mn-FP-W5v" secondAttribute="bottom" constant="9" id="ofb-WF-bIw"/>
@@ -323,6 +325,7 @@
                         <outlet property="fon_top" destination="veq-ET-6Az" id="8fD-Cu-ZyL"/>
                         <outlet property="news_indicator" destination="yti-nn-Zoi" id="uvl-61-AJI"/>
                         <outlet property="notice" destination="qRW-Lh-rvl" id="k80-lY-XCZ"/>
+                        <outlet property="obj_img" destination="CbL-rf-Lhd" id="1Fg-dZ-XHP"/>
                         <outlet property="request_indicator" destination="FRK-4F-NLP" id="2Ge-Zz-SPt"/>
                         <outlet property="webs_img" destination="gcY-E1-Kss" id="fik-dS-OAl"/>
                     </connections>

@@ -264,11 +264,12 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
                 cell.substring.text = "▶︎"
             }
             return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceTableCell", for: indexPath) as! ServiceTableCell
+            let service = objectArray[indexPath.section].sectionObjects[indexPath.row - 1]
+            cell.configure(item: service)
+            return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceTableCell", for: indexPath) as! ServiceTableCell
-        let service = objectArray[indexPath.section].sectionObjects[indexPath.row - 1]
-        cell.configure(item: service)
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -10,59 +10,67 @@ import UIKit
 
 class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var separator1: UILabel!
-    @IBOutlet weak var separator2: UILabel!
-    @IBOutlet weak var separator3: UILabel!
-    @IBOutlet weak var EntranceHeight: NSLayoutConstraint!
-    @IBOutlet weak var PremiseHeight: NSLayoutConstraint!
+    @IBOutlet weak var separator1:      UILabel!
+    @IBOutlet weak var separator2:      UILabel!
+    @IBOutlet weak var separator3:      UILabel!
+    @IBOutlet weak var EntranceHeight:  NSLayoutConstraint!
+    @IBOutlet weak var PremiseHeight:   NSLayoutConstraint!
+    @IBOutlet weak var indicator:       UIActivityIndicatorView!
     
-    @IBOutlet weak var support: UIImageView!
-    @IBOutlet weak var supportBtn: UIButton!
+    @IBOutlet weak var support:         UIImageView!
+    @IBOutlet weak var supportBtn:      UIButton!
     
     // Массивы для хранения данных
-    var home_names: [String] = []
-    var home_ids: [String] = []
-    var teck_home: Int = -1
+    var home_names: [String]    = []
+    var home_ids: [String]      = []
+    var teck_home: Int          = -1
     var homeString: String?
     
     var entrance_names: [String] = []
-    var entrance_ids: [String] = []
-    var teck_entrance: Int = -1
+    var entrance_ids: [String]   = []
+    var teck_entrance: Int       = -1
     
-    var premise_names: [String] = []
-    var premise_ids: [String] = []
-    var teck_premise: Int = -1
+    var premise_names: [String]  = []
+    var premise_ids: [String]    = []
+    var teck_premise: Int        = -1
     
-    @IBOutlet weak var back: UIBarButtonItem!
+    var object_names: [String]   = []
+    var object_ids: [String]     = []
+    var object_check: [Bool]     = []
+    
+    @IBOutlet weak var back:            UIBarButtonItem!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
-    @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var btnNext:         UIButton!
     
     // Телефон, который регистрируется
     var phone: String = ""
     var response_add_ident: String?
     
-    @IBOutlet weak var txtHome: UILabel!
-    @IBOutlet weak var edHome: UITextField!
-    @IBOutlet weak var indicator_home: UIActivityIndicatorView!
-    @IBOutlet weak var imgHome: UIImageView!
+    @IBOutlet weak var txtHome:         UILabel!
+    @IBOutlet weak var edHome:          UITextField!
+    @IBOutlet weak var indicator_home:  UIActivityIndicatorView!
+    @IBOutlet weak var imgHome:         UIImageView!
     
-    @IBOutlet weak var txtEntrance: UILabel!
-    @IBOutlet weak var edEntrance: UITextField!
+    @IBOutlet weak var txtEntrance:     UILabel!
+    @IBOutlet weak var edEntrance:      UITextField!
     @IBOutlet weak var indicator_entrance: UIActivityIndicatorView!
-    @IBOutlet weak var imgEntrance: UIImageView!
+    @IBOutlet weak var imgEntrance:     UIImageView!
     
-    @IBOutlet weak var txtPremise: UILabel!
-    @IBOutlet weak var edPremise: UITextField!
+    @IBOutlet weak var txtPremise:      UILabel!
+    @IBOutlet weak var edPremise:       UITextField!
     @IBOutlet weak var indicator_premise: UIActivityIndicatorView!
-    @IBOutlet weak var imgPremise: UIImageView!
+    @IBOutlet weak var imgPremise:      UIImageView!
     
     @IBOutlet weak var objectLbl: UILabel!
     
     @IBAction func NextAction(_ sender: UIButton){
-        if teck_premise != -1{
-            self.performSegue(withIdentifier: "nextOgrn", sender: self)
+        if teck_premise != -1 || teck_home != -1 || teck_entrance != -1{
+            self.indicator.isHidden = false
+            self.indicator.startAnimating()
+            self.btnNext.isHidden = true
+            getObject()
         }else{
             let alert = UIAlertController(title: "Ошибка", message: "Вы не выбрали Организацию", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
@@ -83,6 +91,8 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
         indicator_home.startAnimating()
         indicator_premise.startAnimating()
         indicator_entrance.startAnimating()
+        indicator.stopAnimating()
+        indicator.isHidden = true
         HideIndicators(num_ind: 1)
         ShowHideEntrance(show_hide: true)
         ShowHidePremise(show_hide: true)
@@ -106,6 +116,7 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
         separator3.backgroundColor = myColors.labelColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        indicator.color = myColors.btnColor.uiColor()
         
 //        #if isOur_Obj_Home
 //        txtEntranceLS.text = "Номер лицевого счета Сбербанка"
@@ -146,6 +157,8 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
@@ -270,7 +283,21 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
     
     // Переходы - выбор
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "get_home_new") {
+        if (segue.identifier == "choicePlace") {
+            let controller = segue.destination as! AllObjectPlace
+            if teck_home != -1{
+                controller.choiceHome = home_ids[teck_home]
+            }
+            if teck_entrance != -1{
+                controller.choiceEntrance = entrance_ids[teck_entrance]
+            }
+            if teck_premise != -1{
+                controller.choicePremise = premise_ids[teck_premise]
+            }
+            controller.object_names = object_names
+            controller.object_ids = object_ids
+            controller.object_check = object_check
+        }else if (segue.identifier == "get_home_new") {
             
             prepare_seque_for_choice(teck: teck_home, names: home_names, segue: segue, numb: 1)
             
@@ -446,6 +473,97 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
                                                     }
                                                 }
                                                 self.end_choice(num: 3)
+        })
+        task.resume()
+    }
+    
+    func getObject() {
+        object_check.removeAll()
+        object_ids.removeAll()
+        object_names.removeAll()
+        var urlPath = Server.SERVER + "MobileAPI/ControlObjects/GetControlObjects.ashx?"
+        
+        if teck_premise != -1{
+            urlPath = urlPath + "premiseId=" + premise_ids[teck_premise].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        }else if teck_entrance != -1{
+            urlPath = urlPath + "entranceId=" + entrance_ids[teck_entrance].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        }else if teck_home != -1{
+            urlPath = urlPath + "houseId=" + home_ids[teck_home].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        }
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    return
+                                                }
+                                                let objectString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("object = \(String(describing: objectString))")
+                                                if (objectString.containsIgnoringCase(find: "Name")){
+                                                    do {
+                                                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                        if let json_bills = json["data"] {
+                                                            print(json_bills.count!)
+                                                        
+                                                            if ((json_bills as? NSNull) == nil) && json_bills.count != 0{
+                                                                let int_end = (json_bills.count)!-1
+                                                                if (int_end < 0) {
+                                                                    
+                                                                } else {
+                                                                    for index in 0...int_end {
+                                                                        let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                                                        for obj in json_bill {
+                                                                            if obj.key == "Name" {
+                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                    let sum = String(describing: obj.value as! String)
+                                                                                    self.object_names.append(sum)
+                                                                                }
+                                                                            }
+                                                                            if obj.key == "ID" {
+                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                    let sum = String(describing: obj.value as! Int)
+                                                                                    self.object_ids.append(sum)
+                                                                                }
+                                                                            }
+                                                                            if obj.key == "IsInspected" {
+                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                    let sum = obj.value as! Bool
+                                                                                    self.object_check.append(sum)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        DispatchQueue.main.async{
+                                                            self.indicator.isHidden = true
+                                                            self.indicator.stopAnimating()
+                                                            self.btnNext.isHidden = false
+                                                            self.performSegue(withIdentifier: "choicePlace", sender: self)
+                                                        }
+                                                    } catch let error as NSError {
+                                                        print(error)
+                                                    }
+                                                }else{
+                                                    DispatchQueue.main.async{
+                                                        self.indicator.isHidden = true
+                                                        self.indicator.stopAnimating()
+                                                        self.btnNext.isHidden = false
+                                                        let alert = UIAlertController(title: "Ошибка", message: "Отсутствуют объекты контроля", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                                                            
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    }
+                                                }
+                                                
         })
         task.resume()
     }

@@ -2484,15 +2484,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.img.setImageColor(color: myColors.btnColor.uiColor())
             cell.nameApp.text    = "Заявка №" + app.number!
             cell.comment.text    = app.tema
-            cell.statusText.text = app.serverStatus
+            if app.serverStatus != nil{
+                cell.statusText.text = app.serverStatus
+            }
             //            cell.text_app.text  = app.text
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-            let date = dateFormatter.date(from: app.date!)
-            dateFormatter.dateFormat = "dd.MM.yyyy"
-            cell.date.text  = dateFormatter.string(from: date!)
-            //            cell = shadowCell(cell: cell) as! HomeAppsCell
-            //            cell.delegate = self
+            if app.date != nil{
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+                let date = dateFormatter.date(from: app.date!)
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                cell.date.text  = dateFormatter.string(from: date!)
+            }
             return cell
         }else if tableView == self.tableQuestion {
             let cell = self.tableQuestion.dequeueReusableCell(withIdentifier: "HomeQuestionsCell") as! HomeQuestionsCell
@@ -2683,7 +2685,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             AppUser.adress = app.adress!
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
-            AppUser.txt_status = app.serverStatus!
+            if app.serverStatus != nil{
+                AppUser.txt_status = app.serverStatus!
+            }
             AppUser.fromMenu = true
             if app.paid_text != nil{
                 AppUser.paid_text = app.paid_text!

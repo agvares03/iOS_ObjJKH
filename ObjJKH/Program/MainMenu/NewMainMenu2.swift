@@ -280,7 +280,7 @@ class NewMainMenu2: UIViewController {
         webs_img.setImageColor(color: myColors.btnColor.uiColor())
         services.image = myImages.services
         services.setImageColor(color: myColors.btnColor.uiColor())
-        object.image = myImages.meters_image
+        object.image = myImages.obj_image
         object.setImageColor(color: myColors.btnColor.uiColor())
         exit_img.image = myImages.exit_image
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
@@ -441,11 +441,11 @@ class NewMainMenu2: UIViewController {
             }
         }
         // Осмотр
-        menu_9_heigth.constant   = -2
-        btn_name_9.isHidden      = true
-        btn_arr_9.isHidden       = true
-        line_bottom_9.isHidden   = true
-        object.isHidden = true
+//        menu_9_heigth.constant   = -2
+//        btn_name_9.isHidden      = true
+//        btn_arr_9.isHidden       = true
+//        line_bottom_9.isHidden   = true
+//        object.isHidden = true
 //        let str_menu_8 = defaults.string(forKey: "menu_8") ?? ""
 //        if (str_menu_8 != "") {
 //            var answer = str_menu_8.components(separatedBy: ";")

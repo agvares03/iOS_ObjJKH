@@ -56,6 +56,7 @@ struct myImages {
     // webs_img
 //    #if isMupRCMytishi
         static let webs_image = UIImage(named: "webs_menu")
+    static let obj_image = UIImage(named: "oss_icon")
 //    #else
 //        static let webs_image = UIImage(named: "application")
 //    #endif
