@@ -10953,6 +10953,7 @@
 				30FA515F22CA07FE00D755DA /* Frameworks */,
 				30FA516222CA07FE00D755DA /* Resources */,
 				30FA519222CA07FE00D755DA /* [CP] Embed Pods Frameworks */,
+				3088CEF9236BEAC4000622AF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -15284,6 +15285,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ADS_68/Pods-ADS_68-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3088CEF9236BEAC4000622AF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		3089A21D235D494B00A5F7AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -24288,6 +24307,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.60;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisUyutService";
@@ -24313,6 +24333,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.60;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisUyutService";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.UyutService;
