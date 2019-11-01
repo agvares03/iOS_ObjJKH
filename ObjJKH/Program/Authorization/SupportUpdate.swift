@@ -127,6 +127,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_Murmansk")
         #elseif isEasyLife
         imageApp.image = UIImage(named: "Logo_EasyLife")
+        #elseif isRIC
+        imageApp.image = UIImage(named: "Logo_RIC")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()

@@ -460,6 +460,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Murmansk")
         #elseif isEasyLife
         fon_top.image = UIImage(named: "Logo_EasyLife")
+        #elseif isRIC
+        fon_top.image = UIImage(named: "Logo_RIC")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         suppBtn.tintColor = myColors.btnColor.uiColor()
