@@ -113,6 +113,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/ooo_yegkh/"
     #elseif isRIC
         static let SERVER          = "http://www.uk-gkh.org/ooo_ric/"
+    #elseif isMonolit
+        static let SERVER          = "http://uk-gkh.org/tsg_monolit/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения
