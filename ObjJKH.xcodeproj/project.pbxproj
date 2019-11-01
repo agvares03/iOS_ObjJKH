@@ -8516,7 +8516,7 @@
 		3088CFA9236C015D000622AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/RIC/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3088CFAC236C01CF000622AF /* Logo_RIC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_RIC.png; sourceTree = "<group>"; };
 		3088D05B236C07BE000622AF /* ТСЖ Монолит.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ТСЖ Монолит.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3088D05C236C07C0000622AF /* RIC copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RIC copy-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/RIC copy-Info.plist"; sourceTree = "<absolute>"; };
+		3088D05C236C07C0000622AF /* Monolit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Monolit-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/Monolit-Info.plist"; sourceTree = "<absolute>"; };
 		3088D05D236C0C79000622AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/TSJ_Monolit/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3088D060236C0CBB000622AF /* Logo_Monolit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Monolit.png; sourceTree = "<group>"; };
 		3089A2C7235D494B00A5F7AC /* Энергопрогресс Новосибирск.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Энергопрогресс Новосибирск.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -9712,6 +9712,7 @@
 		307690F822B28DEC0043916F /* Info_Plists */ = {
 			isa = PBXGroup;
 			children = (
+				3088D05C236C07C0000622AF /* Monolit-Info.plist */,
 				3088CFA8236BF92B000622AF /* RIC-Info.plist */,
 				302A1DFB236AE54600E1B2CE /* EasyLife-Info.plist */,
 				3089A37B235DB0F500A5F7AC /* MurmanskPartnerPlus-Info.plist */,
@@ -10025,7 +10026,6 @@
 				6EED220D6D9D4CDBD7DD198D /* Pods */,
 				30D6080922E73CE0003B004E /* ADS_68 copy-Info.plist */,
 				303DD1BA22FBC018006F4038 /* Recovered References */,
-				3088D05C236C07C0000622AF /* RIC copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 			wrapsLines = 0;
@@ -24610,7 +24610,7 @@
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "RIC copy-Info.plist";
+				INFOPLIST_FILE = "Monolit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -24637,7 +24637,7 @@
 				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
-				INFOPLIST_FILE = "RIC copy-Info.plist";
+				INFOPLIST_FILE = "Monolit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
