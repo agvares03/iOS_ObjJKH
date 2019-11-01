@@ -117,6 +117,12 @@ class TechWorkController: UIViewController {
         fon_top.image = UIImage(named: "Logo_EnergoProgress")
         #elseif isMurmanskPartnerPlus
         fon_top.image = UIImage(named: "Logo_Murmansk")
+        #elseif isEasyLife
+        fon_top.image = UIImage(named: "Logo_EasyLife")
+        #elseif isRIC
+        fon_top.image = UIImage(named: "Logo_RIC")
+        #elseif isMonolit
+        fon_top.image = UIImage(named: "Logo_Monolit")
         #endif
         
         btn_tech.backgroundColor = myColors.indicatorColor.uiColor()
