@@ -1151,6 +1151,10 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @objc func textFieldDidChange(_ textField: UITextField) {
         var cnt: String = textField.text!.replacingOccurrences(of: ".", with: ",")
         var str: String = textField.text!.replacingOccurrences(of: ".", with: ",")
+        if numberDecimal == 0{
+            cnt = cnt.replacingOccurrences(of: ",", with: "")
+            str = str.replacingOccurrences(of: ",", with: "")
+        }
         if (newCounters1.text!.count < newCountersDrob1.text!.count || newCounters2.text!.count < newCountersDrob2.text!.count || newCounters3.text!.count < newCountersDrob3.text!.count) && str.count > 0 && !str.contains(",") && (textField == newCountersDrob1 || textField == newCountersDrob2 || textField == newCountersDrob3){
             let l = str.last
             str.removeLast()

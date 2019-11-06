@@ -16,6 +16,13 @@ protocol ShowNewAppDelegate : class {
     func showAppDone(showApp: NewAppUser)
 }
 
+var hasSafeArea: Bool{
+    guard #available(iOS 11.0, *), let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top, topPadding > 24 else{
+        return false
+    }
+    return true
+}
+
 class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, CloseAppDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var hidden_Header: UIBarButtonItem!

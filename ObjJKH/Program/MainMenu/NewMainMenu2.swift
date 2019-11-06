@@ -447,11 +447,11 @@ class NewMainMenu2: UIViewController {
             }
         }
         // Осмотр
-//        menu_9_heigth.constant   = -2
-//        btn_name_9.isHidden      = true
-//        btn_arr_9.isHidden       = true
-//        line_bottom_9.isHidden   = true
-//        object.isHidden = true
+        menu_9_heigth.constant   = -2
+        btn_name_9.isHidden      = true
+        btn_arr_9.isHidden       = true
+        line_bottom_9.isHidden   = true
+        object.isHidden = true
 //        let str_menu_8 = defaults.string(forKey: "menu_8") ?? ""
 //        if (str_menu_8 != "") {
 //            var answer = str_menu_8.components(separatedBy: ";")

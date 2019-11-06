@@ -103,7 +103,7 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
         
         // Первый показ - подгрузим дома сразу
 //        let id = UserDefaults.standard.string(forKey: "id_account")?.stringByAddingPercentEncodingForRFC3986() ?? ""
-        let id = UserDefaults.standard.string(forKey: "login")?.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let id = UserDefaults.standard.string(forKey: "login_cons")?.stringByAddingPercentEncodingForRFC3986() ?? ""
         getHome(id: id)
         edPremise.delegate = self
         edEntrance.delegate = self
@@ -267,6 +267,15 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
                                                         
                                                     } catch let error as NSError {
                                                         print(error)
+                                                    }
+                                                }else{
+                                                    DispatchQueue.main.async{
+                                                        let alert = UIAlertController(title: "Ошибка", message: "Объекты осмотра отсутствуют", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                                                            self.navigationController?.popViewController(animated: true)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
                                                     }
                                                 }
                                                 
