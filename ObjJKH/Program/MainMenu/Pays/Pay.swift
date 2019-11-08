@@ -61,7 +61,7 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
         webView.navigationDelegate = self
-        view = webView
+        
         let defaults     = UserDefaults.standard
         
         // Логин и пароль
@@ -175,7 +175,6 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
 //                }
 //                alert.addAction(cancelAction)
 //                self.present(alert, animated: true, completion: nil)
-                self.webView.isHidden = true
                 self.appBtn.isHidden = false
                 self.appLbl.isHidden = false
             }else if (self.responseString.contains("Ошибка")) {
@@ -186,6 +185,7 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             } else if (self.responseString != "") {
+                self.view = self.webView
                 if self.responseString.contains(".pdf"){
                     if let url : NSURL = NSURL(string: self.responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
                         if let data = try? Data(contentsOf: url as URL){
