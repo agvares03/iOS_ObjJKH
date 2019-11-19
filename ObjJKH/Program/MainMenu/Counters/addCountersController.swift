@@ -330,6 +330,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("metrId: ", metrId)
         self.StopIndicator()
         let defaults     = UserDefaults.standard
         edLogin          = defaults.string(forKey: "login")!
