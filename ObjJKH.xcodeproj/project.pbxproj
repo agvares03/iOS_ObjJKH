@@ -541,6 +541,15 @@
 		1C7B34D421993A3800E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		1C7B34D521993A4400E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		1C7B34D621993A4D00E6BAA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		1C81AE17238BC23E0041B1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C81AE16238BC23E0041B1E0 /* AppDelegate.swift */; };
+		1C81AE19238BC23E0041B1E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C81AE18238BC23E0041B1E0 /* SceneDelegate.swift */; };
+		1C81AE1B238BC23E0041B1E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C81AE1A238BC23E0041B1E0 /* ViewController.swift */; };
+		1C81AE1E238BC23E0041B1E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C81AE1C238BC23E0041B1E0 /* Main.storyboard */; };
+		1C81AE21238BC23E0041B1E0 /* VodSergPosad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C81AE1F238BC23E0041B1E0 /* VodSergPosad.xcdatamodeld */; };
+		1C81AE23238BC2400041B1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C81AE22238BC2400041B1E0 /* Assets.xcassets */; };
+		1C81AE26238BC2400041B1E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C81AE24238BC2400041B1E0 /* LaunchScreen.storyboard */; };
+		1C81AE2C238BC2B10041B1E0 /* Logo_Pritomskoe.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C81AE2B238BC2B00041B1E0 /* Logo_Pritomskoe.png */; };
+		1C81AE2D238BC2B10041B1E0 /* Logo_Pritomskoe.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C81AE2B238BC2B00041B1E0 /* Logo_Pritomskoe.png */; };
 		1C840D53232142C000563BF3 /* AdditionalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840D52232142BF00563BF3 /* AdditionalVC.swift */; };
 		1C840D54232142C000563BF3 /* AdditionalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840D52232142BF00563BF3 /* AdditionalVC.swift */; };
 		1C840D55232142C000563BF3 /* AdditionalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840D52232142BF00563BF3 /* AdditionalVC.swift */; };
@@ -5415,7 +5424,7 @@
 		30C6041822FA72D40067FD4D /* Logo_UK_Garant.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF8B8AD2223CF3200B1D289 /* Logo_UK_Garant.png */; };
 		30C6041922FA72D40067FD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		30C6041A22FA72D40067FD4D /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
-		30C6042422FA79460067FD4D /* Logo_Pritomskoe.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6042322FA79460067FD4D /* Logo_Pritomskoe.png */; };
+		30C6042422FA79460067FD4D /* Logo_Pritomskoe_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6042322FA79460067FD4D /* Logo_Pritomskoe_White.png */; };
 		30C6042622FA79AF0067FD4D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30C6042522FA79AF0067FD4D /* GoogleService-Info.plist */; };
 		30C91AFF2269A49700B8E17D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30C91AFE2269A49700B8E17D /* GoogleService-Info.plist */; };
 		30CFB19D22696A2800723E61 /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
@@ -8477,6 +8486,16 @@
 		1C78BF78222CEC8A00F31938 /* openSaldoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openSaldoController.swift; sourceTree = "<group>"; };
 		1C7B2DFA219BFA4900787507 /* RegLSMup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegLSMup.swift; sourceTree = "<group>"; };
 		1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1C81AE14238BC23D0041B1E0 /* VodSergPosad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VodSergPosad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C81AE16238BC23E0041B1E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1C81AE18238BC23E0041B1E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1C81AE1A238BC23E0041B1E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1C81AE1D238BC23E0041B1E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1C81AE20238BC23E0041B1E0 /* VodSergPosad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VodSergPosad.xcdatamodel; sourceTree = "<group>"; };
+		1C81AE22238BC2400041B1E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C81AE25238BC2400041B1E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1C81AE27238BC2400041B1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C81AE2B238BC2B00041B1E0 /* Logo_Pritomskoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Pritomskoe.png; sourceTree = "<group>"; };
 		1C83D7AC22DD08AD0006A8E2 /* Parus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parus-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C83D7AF22DDCE150006A8E2 /* Teplovodoresources-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teplovodoresources-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C83D7B022DECE680006A8E2 /* StroimBud-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StroimBud-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -8644,7 +8663,7 @@
 		30C0181F22FAC882000773DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/TSN_Dnestr/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		30C6042022FA72D40067FD4D /* Pritomskoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pritomskoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30C6042122FA72D40067FD4D /* Pritomskoe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Pritomskoe-Info.plist"; path = "../../Pritomskoe-Info.plist"; sourceTree = "<group>"; };
-		30C6042322FA79460067FD4D /* Logo_Pritomskoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Pritomskoe.png; sourceTree = "<group>"; };
+		30C6042322FA79460067FD4D /* Logo_Pritomskoe_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Pritomskoe_White.png; sourceTree = "<group>"; };
 		30C6042522FA79AF0067FD4D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/Pritomskoe/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		30C91AFE2269A49700B8E17D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/UK_Paritet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30CB571322B6690100AE34FC /* Parus-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Parus-Info.plist"; sourceTree = "<group>"; };
@@ -8993,6 +9012,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1C81AE11238BC23D0041B1E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CF8B8D02223D66E00B1D289 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -9506,6 +9532,21 @@
 			path = Voting;
 			sourceTree = "<group>";
 		};
+		1C81AE15238BC23E0041B1E0 /* VodSergPosad */ = {
+			isa = PBXGroup;
+			children = (
+				1C81AE16238BC23E0041B1E0 /* AppDelegate.swift */,
+				1C81AE18238BC23E0041B1E0 /* SceneDelegate.swift */,
+				1C81AE1A238BC23E0041B1E0 /* ViewController.swift */,
+				1C81AE1C238BC23E0041B1E0 /* Main.storyboard */,
+				1C81AE22238BC2400041B1E0 /* Assets.xcassets */,
+				1C81AE24238BC2400041B1E0 /* LaunchScreen.storyboard */,
+				1C81AE27238BC2400041B1E0 /* Info.plist */,
+				1C81AE1F238BC23E0041B1E0 /* VodSergPosad.xcdatamodeld */,
+			);
+			path = VodSergPosad;
+			sourceTree = "<group>";
+		};
 		1CA6D7A42362F33A00E26BB9 /* ObjectControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -9932,7 +9973,8 @@
 		30C6042222FA78980067FD4D /* Pritomskoe */ = {
 			isa = PBXGroup;
 			children = (
-				30C6042322FA79460067FD4D /* Logo_Pritomskoe.png */,
+				30C6042322FA79460067FD4D /* Logo_Pritomskoe_White.png */,
+				1C81AE2B238BC2B00041B1E0 /* Logo_Pritomskoe.png */,
 			);
 			path = Pritomskoe;
 			sourceTree = "<group>";
@@ -10127,6 +10169,7 @@
 				41E8F0312147DF2900FE0473 /* no_counters.html */,
 				418ABF112133CC8C004DB75C /* Assets.xcassets */,
 				418ABF092133CC7B004DB75C /* ObjJKH */,
+				1C81AE15238BC23E0041B1E0 /* VodSergPosad */,
 				418ABF082133CC7B004DB75C /* Products */,
 				F0BAD5FABF0F698BF24700C4 /* Frameworks */,
 				6EED220D6D9D4CDBD7DD198D /* Pods */,
@@ -10190,6 +10233,7 @@
 				302A1DFA236AE50700E1B2CE /* УК Легкая жизнь.app */,
 				3088CFA7236BF929000622AF /* РИЦ Камень на Оби.app */,
 				3088D05B236C07BE000622AF /* ТСЖ Монолит.app */,
+				1C81AE14238BC23D0041B1E0 /* VodSergPosad.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -10761,6 +10805,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1C81AE13238BC23D0041B1E0 /* VodSergPosad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C81AE2A238BC2400041B1E0 /* Build configuration list for PBXNativeTarget "VodSergPosad" */;
+			buildPhases = (
+				1C81AE10238BC23D0041B1E0 /* Sources */,
+				1C81AE11238BC23D0041B1E0 /* Frameworks */,
+				1C81AE12238BC23D0041B1E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VodSergPosad;
+			productName = VodSergPosad;
+			productReference = 1C81AE14238BC23D0041B1E0 /* VodSergPosad.app */;
+			productType = "com.apple.product-type.application";
+		};
 		1CF8B8D22223D66E00B1D289 /* UK_Garant */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1CF8B8E52223D67000B1D289 /* Build configuration list for PBXNativeTarget "UK_Garant" */;
@@ -11771,10 +11832,13 @@
 		418ABEFF2133CC7B004DB75C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "The Best";
 				TargetAttributes = {
+					1C81AE13238BC23D0041B1E0 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
 					1CF8B8D22223D66E00B1D289 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
@@ -12016,11 +12080,22 @@
 				302A1D4D236AE50700E1B2CE /* EasyLife */,
 				3088CEFA236BF929000622AF /* RIC */,
 				3088CFAE236C07BE000622AF /* Monolit */,
+				1C81AE13238BC23D0041B1E0 /* VodSergPosad */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1C81AE12238BC23D0041B1E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C81AE26238BC2400041B1E0 /* LaunchScreen.storyboard in Resources */,
+				1C81AE23238BC2400041B1E0 /* Assets.xcassets in Resources */,
+				1C81AE1E238BC23E0041B1E0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CF8B8D12223D66E00B1D289 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -13642,6 +13717,7 @@
 				30C6040E22FA72D40067FD4D /* arrow_rigth.png in Resources */,
 				30C6040F22FA72D40067FD4D /* spin.png in Resources */,
 				30C6041022FA72D40067FD4D /* AddLsPocket.storyboard in Resources */,
+				1C81AE2D238BC2B10041B1E0 /* Logo_Pritomskoe.png in Resources */,
 				30C6041122FA72D40067FD4D /* account_icon_cons.jpg in Resources */,
 				30C6041222FA72D40067FD4D /* MainMenuCons.storyboard in Resources */,
 				30C6041322FA72D40067FD4D /* NewMainMenu.storyboard in Resources */,
@@ -13650,7 +13726,7 @@
 				30C6041622FA72D40067FD4D /* SelectItem.storyboard in Resources */,
 				30C6041822FA72D40067FD4D /* Logo_UK_Garant.png in Resources */,
 				30C6041922FA72D40067FD4D /* Assets.xcassets in Resources */,
-				30C6042422FA79460067FD4D /* Logo_Pritomskoe.png in Resources */,
+				30C6042422FA79460067FD4D /* Logo_Pritomskoe_White.png in Resources */,
 				30C6041A22FA72D40067FD4D /* logo_SM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -14605,6 +14681,7 @@
 				41EF59DC2137A20300789370 /* Saldo.storyboard in Resources */,
 				418ABF492134C156004DB75C /* main_background.png in Resources */,
 				30354A3B231610C5008874D3 /* NewRegistration.storyboard in Resources */,
+				1C81AE2C238BC2B10041B1E0 /* Logo_Pritomskoe.png in Resources */,
 				41EF5A2E2138EC8E00789370 /* account_icon_cons.jpg in Resources */,
 				41EF5A262138E52D00789370 /* ic_action_files_grey.png in Resources */,
 				1CA6D7732362AAAE00E26BB9 /* ObjectControl.storyboard in Resources */,
@@ -17547,6 +17624,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1C81AE10238BC23D0041B1E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C81AE1B238BC23E0041B1E0 /* ViewController.swift in Sources */,
+				1C81AE17238BC23E0041B1E0 /* AppDelegate.swift in Sources */,
+				1C81AE21238BC23E0041B1E0 /* VodSergPosad.xcdatamodeld in Sources */,
+				1C81AE19238BC23E0041B1E0 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CF8B8CF2223D66E00B1D289 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -23596,6 +23684,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1C81AE1C238BC23E0041B1E0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C81AE1D238BC23E0041B1E0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1C81AE24238BC2400041B1E0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C81AE25238BC2400041B1E0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		418ABF0E2133CC7B004DB75C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -23617,6 +23721,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1C81AE28238BC2400041B1E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = VodSergPosad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.VodSergPosad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1C81AE29238BC2400041B1E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = VodSergPosad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.VodSergPosad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		1CF8B8E62223D67000B1D289 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31397E3AB3FF6A66EB571107 /* Pods-UK_Garant.debug.xcconfig */;
@@ -26431,6 +26576,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1C81AE2A238BC2400041B1E0 /* Build configuration list for PBXNativeTarget "VodSergPosad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C81AE28238BC2400041B1E0 /* Debug */,
+				1C81AE29238BC2400041B1E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1CF8B8E52223D67000B1D289 /* Build configuration list for PBXNativeTarget "UK_Garant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -26902,6 +27056,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		1C81AE1F238BC23E0041B1E0 /* VodSergPosad.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1C81AE20238BC23E0041B1E0 /* VodSergPosad.xcdatamodel */,
+			);
+			currentVersion = 1C81AE20238BC23E0041B1E0 /* VodSergPosad.xcdatamodel */;
+			path = VodSergPosad.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
