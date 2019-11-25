@@ -18,7 +18,8 @@ class Web_Camera: UIViewController, WKUIDelegate, WKNavigationDelegate {
     open var web_camera: Web_Camera_json?
     var webView: WKWebView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+//        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -55,32 +56,38 @@ class Web_Camera: UIViewController, WKUIDelegate, WKNavigationDelegate {
 //
 //        } else {
         let url : NSURL! = NSURL(string: (web_camera?.link!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!)
+        print(url)
         webView.load(NSURLRequest(url: url as URL) as URLRequest)
 //        }
         
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
-        indicator.color = myColors.indicatorColor.uiColor()
+//        indicator.color = myColors.indicatorColor.uiColor()
         
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "7")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        StartIndicator()
+//        StartIndicator()
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        StopIndicator()
+//        StopIndicator()
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        StopIndicator()
+//        StopIndicator()
     }
     
     func StartIndicator() {

@@ -166,6 +166,8 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 }
             }
             guard data != nil else { return }
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            print("responseStringWEBS = \(responseString)")
             let json = try? JSONSerialization.jsonObject(with: data!,
                                                          options: .allowFragments)
             

@@ -1737,8 +1737,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
-            //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            //            print("responseString = \(responseString)")
+                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                        print("responseStringWEBS = \(responseString)")
             
             defer {
                 DispatchQueue.main.sync {
@@ -2516,6 +2516,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cell = self.tableWeb.dequeueReusableCell(withIdentifier: "HomeWebCell") as! HomeWebCell
             cell.goWeb.tintColor = myColors.btnColor.uiColor()
             cell.img.setImageColor(color: myColors.btnColor.uiColor())
+            cell.webText.text = webArr[indexPath.row].name
             //            cell = shadowCell(cell: cell) as! HomeWebCell
             //            cell.delegate = self
             return cell
@@ -2590,6 +2591,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }else{
                 self.performSegue(withIdentifier: "show_app", sender: self)
             }
+        }else if tableView == self.tableWeb{
+            performSegue(withIdentifier: "show_webs", sender: self)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -2642,6 +2645,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             vc.newsText  = newsObj.text
             vc.newsRead  = newsObj.readed
             vc.newsId    = newsObj.idNews
+        }
+        if segue.identifier == "show_webs" {
+            let indexPath = tableWeb.indexPathForSelectedRow!
+            let vc = segue.destination as! Web_Camera
+            vc.title = webArr[indexPath.row].name
+            vc.web_camera = webArr[indexPath.row]
+            //            //            vc.delegate = delegate
+            //            vc.questionDelegate = self
+            //            performName_ = ""
         }
         if segue.identifier == "show_app" {
             let indexPath = tableApps.indexPathForSelectedRow!
