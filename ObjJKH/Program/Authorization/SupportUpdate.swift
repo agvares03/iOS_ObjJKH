@@ -131,6 +131,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_RIC")
         #elseif isMonolit
         imageApp.image = UIImage(named: "Logo_Monolit")
+        #elseif isVodSergPosad
+        imageApp.image = UIImage(named: "Logo_VodSergPosad")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()

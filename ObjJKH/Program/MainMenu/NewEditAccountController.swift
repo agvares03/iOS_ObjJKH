@@ -314,6 +314,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         fon_top.image = UIImage(named: "Logo_RIC")
         #elseif isMonolit
         fon_top.image = UIImage(named: "Logo_Monolit")
+        #elseif isVodSergPosad
+        fon_top.image = UIImage(named: "Logo_VodSergPosad")
         #endif
         
         if UserDefaults.standard.string(forKey: "mail") != ""{
