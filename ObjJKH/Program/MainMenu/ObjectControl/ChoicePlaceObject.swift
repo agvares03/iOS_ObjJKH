@@ -226,9 +226,8 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
                                               completionHandler: {
                                                 data, response, error in
                                                 
-                                                if error != nil {
-                                                    return
-                                                }
+                                                guard data != nil else { return }
+                                                
                                                 self.homeString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("street = \(String(describing: self.homeString))")
                                                 if (self.homeString?.containsIgnoringCase(find: "Address"))!{
@@ -391,6 +390,8 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
                                               completionHandler: {
                                                 data, response, error in
                                                 
+                                                guard data != nil else { return }
+                                                
                                                 self.homeString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("entrance = \(String(describing: self.homeString))")
                                                 if (self.homeString?.containsIgnoringCase(find: "Number"))!{
@@ -443,6 +444,8 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
+                                                
+                                                guard data != nil else { return }
                                                 
                                                 self.homeString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("entrance = \(String(describing: self.homeString))")

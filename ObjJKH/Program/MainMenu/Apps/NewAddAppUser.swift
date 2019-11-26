@@ -358,6 +358,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         lsTextView.addTarget(self, action: #selector(lsTapped), for: .touchDown)
         typeTextView.addTarget(self, action: #selector(typeTapped), for: .touchDown)
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -430,6 +431,12 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self.appLS.append($0)
         }
         DispatchQueue.main.async{
+            if self.appLS.count == 1{
+                self.lsTextView.text = self.appLS[0]
+                self.showLS = false
+                self.lsImg.image = UIImage(named: "arrows_down")
+                self.lsImg.setImageColor(color: myColors.indicatorColor.uiColor())
+            }
             self.lsTable.reloadData()
         }
     }
