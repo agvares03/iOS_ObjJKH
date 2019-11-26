@@ -334,6 +334,18 @@ class SupportUpdate: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1478072913"
         #elseif isRKC_Samara
         str = "itms-apps://itunes.apple.com/ru/app/id1479682216"
+        #elseif isEnergoProgress
+        str = "itms-apps://itunes.apple.com/ru/app/id1484298695"
+        #elseif isMurmanskPartnerPlus
+        str = "itms-apps://itunes.apple.com/ru/app/id1484594347"
+        #elseif isEasyLife
+        str = "itms-apps://itunes.apple.com/ru/app/id1485818907"
+        #elseif isRIC
+        str = "itms-apps://itunes.apple.com/ru/app/id1486766639"
+        #elseif isMonolit
+        str = "itms-apps://itunes.apple.com/ru/app/id1487039783"
+        #elseif isVodSergPosad
+//        str = "itms-apps://itunes.apple.com/ru/app/id1479682216"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
