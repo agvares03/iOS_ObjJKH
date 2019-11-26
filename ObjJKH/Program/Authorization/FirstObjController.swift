@@ -238,11 +238,15 @@ class FirstObjController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    deinit {
+        UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UserDefaults.standard.set(false, forKey: "firstPerson")
         UserDefaults.standard.synchronize()
-        UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
+//        UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
         
         //        self.navigationController?.isNavigationBarHidden = false;
     }
