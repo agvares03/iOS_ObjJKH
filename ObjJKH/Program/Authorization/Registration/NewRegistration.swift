@@ -291,7 +291,7 @@ class NewRegistration: UIViewController {
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
-            //print(request)
+            print(request)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                   completionHandler: {
@@ -315,7 +315,7 @@ class NewRegistration: UIViewController {
                                                     }
                                                     
                                                     self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    //print("responseString = \(self.responseString)")
+                                                    print("responseString = \(self.responseString)")
                                                     
                                                     self.choice()
             })
@@ -359,6 +359,22 @@ class NewRegistration: UIViewController {
                     
                 }
                 alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }else if self.responseString.containsIgnoringCase(find: "уже зарегистрирован"){
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let resp = self.responseString.replacingOccurrences(of: "error: аккаунт", with: "Аккаунт")
+                let alert = UIAlertController(title: "Ошибка", message: resp, preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
+                alert.addAction(supportAction)
+                alert.addAction(cancelAction)
+                
                 self.present(alert, animated: true, completion: nil)
             })
         } else {
