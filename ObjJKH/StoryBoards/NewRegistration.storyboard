@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dtm-uz-E42">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dtm-uz-E42">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -274,6 +274,18 @@
                                     <constraint firstItem="0ec-mU-nlz" firstAttribute="leading" secondItem="eHe-Om-yKs" secondAttribute="trailing" constant="8" id="v33-3K-dtg"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HnJ-1P-avr">
+                                <rect key="frame" x="81" y="266.5" width="278" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ci2-z2-wEa"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptAction:" destination="zCK-9S-PKf" eventType="touchUpInside" id="cdU-7Y-ie1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -282,6 +294,7 @@
                             <constraint firstItem="DJw-Jw-5v4" firstAttribute="top" secondItem="ndk-7S-6B3" secondAttribute="bottom" constant="14" id="1oD-nF-vdk"/>
                             <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="kkJ-hH-baD" secondAttribute="trailing" constant="21" id="2bn-c7-Quw"/>
                             <constraint firstItem="1Rj-Wr-Qd1" firstAttribute="leading" secondItem="niJ-dS-u6V" secondAttribute="leading" constant="8" id="6az-mA-qSj"/>
+                            <constraint firstItem="HnJ-1P-avr" firstAttribute="leading" secondItem="DJw-Jw-5v4" secondAttribute="trailing" constant="8" id="86s-GX-QJI"/>
                             <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="ARH-Du-L6l" secondAttribute="trailing" constant="8" id="8Lg-QD-NHT"/>
                             <constraint firstItem="umi-rq-Uci" firstAttribute="top" secondItem="ndk-7S-6B3" secondAttribute="bottom" constant="30" id="BC2-aW-zuC"/>
                             <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="Kje-lZ-rAb" secondAttribute="trailing" constant="16" id="HOa-Ja-iyx"/>
@@ -289,11 +302,13 @@
                             <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="ndk-7S-6B3" secondAttribute="trailing" constant="8" id="Nmk-tE-QnJ"/>
                             <constraint firstItem="2v7-1Y-JHv" firstAttribute="top" secondItem="ndk-7S-6B3" secondAttribute="bottom" constant="65" id="PfC-Ad-rtW"/>
                             <constraint firstItem="kkJ-hH-baD" firstAttribute="centerY" secondItem="DJw-Jw-5v4" secondAttribute="centerY" id="RzY-50-n5b"/>
+                            <constraint firstItem="HnJ-1P-avr" firstAttribute="centerY" secondItem="kkJ-hH-baD" secondAttribute="centerY" id="U9X-Kr-NAz"/>
                             <constraint firstItem="ARH-Du-L6l" firstAttribute="leading" secondItem="niJ-dS-u6V" secondAttribute="leading" constant="8" id="UJI-oB-7v9"/>
                             <constraint firstItem="oJf-Ux-Caa" firstAttribute="centerX" secondItem="KrW-xD-8FU" secondAttribute="centerX" id="VNp-qL-NB1"/>
                             <constraint firstItem="ARH-Du-L6l" firstAttribute="top" secondItem="lej-fs-dWK" secondAttribute="bottom" constant="8" id="Vgz-M3-Z7l"/>
                             <constraint firstItem="lej-fs-dWK" firstAttribute="leading" secondItem="niJ-dS-u6V" secondAttribute="leading" constant="8" id="VvJ-Nd-u68"/>
                             <constraint firstItem="Kje-lZ-rAb" firstAttribute="top" secondItem="2v7-1Y-JHv" secondAttribute="bottom" constant="24" id="W5o-UI-mqa"/>
+                            <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="HnJ-1P-avr" secondAttribute="trailing" constant="16" id="YB1-hC-PZz"/>
                             <constraint firstItem="DJw-Jw-5v4" firstAttribute="leading" secondItem="niJ-dS-u6V" secondAttribute="leading" constant="24" id="Yno-n6-VXy"/>
                             <constraint firstItem="niJ-dS-u6V" firstAttribute="trailing" secondItem="2v7-1Y-JHv" secondAttribute="trailing" constant="16" id="Yue-2h-HOc"/>
                             <constraint firstItem="ndk-7S-6B3" firstAttribute="leading" secondItem="niJ-dS-u6V" secondAttribute="leading" constant="8" id="dzy-DI-mqJ"/>
@@ -316,6 +331,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="acceptBtn" destination="HnJ-1P-avr" id="MpK-uf-uc0"/>
+                        <outlet property="acceptLabel" destination="kkJ-hH-baD" id="xgU-U7-MLj"/>
                         <outlet property="authBtn" destination="oJf-Ux-Caa" id="Go9-OS-C0q"/>
                         <outlet property="authLbl" destination="Kje-lZ-rAb" id="Pgv-DQ-Ca4"/>
                         <outlet property="backBtn" destination="VH3-vK-YXR" id="STH-ti-VGF"/>

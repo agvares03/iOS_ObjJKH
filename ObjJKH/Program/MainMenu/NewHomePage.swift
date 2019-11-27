@@ -2693,40 +2693,45 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if segue.identifier == "new_show_app" {
             let indexPath = tableApps.indexPathForSelectedRow!
-            let app = fetchedResultsController!.object(at: indexPath)
-            
-            let AppUser             = segue.destination as! NewAppUser
-            if app.number != nil{
-                AppUser.title           = "Заявка №" + app.number!
+            if let sections = fetchedResultsController?.sections {
+                let count = sections[0].numberOfObjects
+                if indexPath.row < count{
+                    let app = fetchedResultsController!.object(at: indexPath)
+                    
+                    let AppUser             = segue.destination as! NewAppUser
+                    if app.number != nil{
+                       AppUser.title           = "Заявка №" + app.number!
+                    }
+                    AppUser.txt_tema   = app.tema!
+                    AppUser.str_type_app = app.type_app!
+                    AppUser.read = app.is_read_client
+                    AppUser.adress = app.adress!
+                    AppUser.flat = app.flat!
+                    AppUser.phone = app.phone!
+                    if app.serverStatus != nil{
+                       AppUser.txt_status = app.serverStatus!
+                    }
+                    AppUser.fromMenu = true
+                    if app.paid_text != nil{
+                       AppUser.paid_text = app.paid_text!
+                    }
+                    if app.paid_sum != nil{
+                       AppUser.paid_sum = Double(app.paid_sum!) as! Double
+                       AppUser.isPay = app.is_pay
+                       AppUser.isPaid = app.is_paid
+                    }
+                    if app.acc_ident != nil{
+                       AppUser.acc_ident = app.acc_ident!
+                    }
+
+                    //            AppUser.txt_text   = app.text!
+                    AppUser.txt_date   = app.date!
+                    AppUser.id_app     = app.number!
+                    //            AppUser.delegate   = self
+                    AppUser.App        = app
+                    //            AppUser.updDelegt = self
+                }
             }
-            AppUser.txt_tema   = app.tema!
-            AppUser.str_type_app = app.type_app!
-            AppUser.read = app.is_read_client
-            AppUser.adress = app.adress!
-            AppUser.flat = app.flat!
-            AppUser.phone = app.phone!
-            if app.serverStatus != nil{
-                AppUser.txt_status = app.serverStatus!
-            }
-            AppUser.fromMenu = true
-            if app.paid_text != nil{
-                AppUser.paid_text = app.paid_text!
-            }
-            if app.paid_sum != nil{
-                AppUser.paid_sum = Double(app.paid_sum!) as! Double
-                AppUser.isPay = app.is_pay
-                AppUser.isPaid = app.is_paid
-            }
-            if app.acc_ident != nil{
-                AppUser.acc_ident = app.acc_ident!
-            }
-            
-            //            AppUser.txt_text   = app.text!
-            AppUser.txt_date   = app.date!
-            AppUser.id_app     = app.number!
-            //            AppUser.delegate   = self
-            AppUser.App        = app
-            //            AppUser.updDelegt = self
         }
         if segue.identifier == "addCounters"{
             let payController             = segue.destination as! AddCountersController

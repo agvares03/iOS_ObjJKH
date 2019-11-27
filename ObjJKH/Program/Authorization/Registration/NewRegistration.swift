@@ -16,6 +16,8 @@ class NewRegistration: UIViewController {
     
     @IBOutlet weak var authBtn:     UIButton!
     @IBOutlet weak var authLbl:     UILabel!
+    @IBOutlet weak var acceptBtn:   UIButton!
+    @IBOutlet weak var acceptLabel: UILabel!
     @IBOutlet weak var edPhone:     AKMaskField!
     @IBOutlet weak var edFIO:       UITextField!
     @IBOutlet weak var edPass1:     UITextField!
@@ -68,6 +70,11 @@ class NewRegistration: UIViewController {
             eye2 = true
         }
         edPass2.isSecureTextEntry.toggle()
+    }
+    
+    @IBAction func acceptAction(_ sender: UIButton) {
+        let url = URL(string: "http://tvrbdb.ru/person-dan.html")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
     
     @IBAction func authAction(_ sender: UIButton) {
@@ -224,6 +231,17 @@ class NewRegistration: UIViewController {
         }
         
         switch_can.onTintColor = myColors.btnColor.uiColor()
+        #if isTeplovodoresources
+        let string = "Согласие на обработку персональных данных"
+        let attributedString    = NSMutableAttributedString(string: string)
+        let range               = (string as NSString).range(of: "Согласие на обработку персональных данных")
+        attributedString.addAttribute(.underlineStyle, value: NSNumber(value: 1), range: range)
+        attributedString.addAttribute(.underlineColor, value: UIColor(red:0/255.0, green: 122/255.0, blue: 255/255.0, alpha:1), range: range)
+        acceptLabel.attributedText = attributedString
+        acceptLabel.textColor = UIColor(red:0/255.0, green: 122/255.0, blue: 255/255.0, alpha:1)
+        #else
+        acceptBtn.isHidden = true
+        #endif
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

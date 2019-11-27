@@ -525,12 +525,14 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: NSNotification.Name(rawValue: "reloadTheTable"), object: nil)
-        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
+//        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
+//        UserDefaults.standard.set(true, forKey: "observeStart")
     }
     
-    deinit {
-        UserDefaults.standard.removeObserver(self, forKeyPath: "PaymentSucces", context: nil)
-    }
+//    deinit {
+//        UserDefaults.standard.removeObserver(self, forKeyPath: "PaymentSucces", context: nil)
+//        UserDefaults.standard.set(false, forKey: "observeStart")
+//    }
     
     var onePay = 0
     var oneCheck = 0

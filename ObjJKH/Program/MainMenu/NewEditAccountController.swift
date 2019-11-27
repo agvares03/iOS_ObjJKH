@@ -651,8 +651,11 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             }
             self.tableHeight.constant = height1
         }
-        
-        return lsArr.count
+        if lsArr.count > 0{
+            return lsArr.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

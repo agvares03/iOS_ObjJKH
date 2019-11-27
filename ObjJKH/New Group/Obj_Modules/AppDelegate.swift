@@ -105,7 +105,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //            configuration?.statisticsSending = true
 //            YMMYandexMetrica.activate(with: configuration!)
 //        }
-        
+//        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//            let array = notifications
+//            DispatchQueue.main.async {
+//                UIApplication.shared.applicationIconBadgeNumber = array.count
+//            }
+//        }
         if let notification = launchOptions?[.remoteNotification] as? [String:AnyObject]{
             let aps = notification["aps"] as! [String:AnyObject]
             var body: String = ""
@@ -253,8 +258,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTheTable"), object: nil)
         }
         if UIApplication.shared.applicationState == .active {
+//            UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//                let array = notifications
+//                DispatchQueue.main.async {
+//                    UIApplication.shared.applicationIconBadgeNumber = array.count
+//                }
+//            }
             //TODO: Handle foreground notification
         } else {
+//            UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//                let array = notifications
+//                DispatchQueue.main.async {
+//                    UIApplication.shared.applicationIconBadgeNumber = array.count
+//                }
+//            }
             //TODO: Handle background notification
         }
     }
@@ -290,20 +307,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
+//        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//            let array = notifications
+//            DispatchQueue.main.async {
+//                UIApplication.shared.applicationIconBadgeNumber = array.count
+//            }
+//        }
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+//        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//            let array = notifications
+//            DispatchQueue.main.async {
+//                UIApplication.shared.applicationIconBadgeNumber = array.count
+//            }
+//        }
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+//        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//            let array = notifications
+//            DispatchQueue.main.async {
+//                UIApplication.shared.applicationIconBadgeNumber = array.count
+//            }
+//        }
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+//        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//            let array = notifications
+//            DispatchQueue.main.async {
+//                UIApplication.shared.applicationIconBadgeNumber = array.count
+//            }
+//        }
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
@@ -405,7 +446,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let userInfo = notification.request.content.userInfo
         NSLog("[UserNotificationCenter] applicationState: \(applicationStateString) willPresentNotification: \(userInfo)")
         //TODO: Handle foreground notification
-        completionHandler([.alert])
+//        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//            let array = notifications
+//            DispatchQueue.main.async {
+//                UIApplication.shared.applicationIconBadgeNumber = array.count
+//            }
+//        }
+        completionHandler([.alert, .badge])
     }
     
     // iOS10+, called when received response (default open, dismiss or custom action) for a notification
@@ -422,6 +469,12 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             body = alert["body"]!
             title = alert["title"]!
         }
+//        UNUserNotificationCenter.current().getDeliveredNotifications { (notifications) in
+//            let array = notifications
+//            DispatchQueue.main.async {
+//                UIApplication.shared.applicationIconBadgeNumber = array.count
+//            }
+//        }
         if userInfo["gcm.notification.type_push"] as? String == "announcement"{
             if UIApplication.shared.applicationState == .active {
                 //TODO: Handle foreground notification

@@ -142,7 +142,12 @@ class StartController: UIViewController {
     var tech_now = false
     func setSettings() {
         DispatchQueue.main.sync {
-            if (self.responseLS?.contains("color"))!{
+            if (self.responseLS?.contains("color"))! && (self.responseLS?.contains("enableOSS"))! &&
+                (self.responseLS?.contains("menu"))! && (self.responseLS?.contains("useDispatcherAuth"))! &&
+                (self.responseLS?.contains("showAds"))! && (self.responseLS?.contains("adsType"))! &&
+                (self.responseLS?.contains("servicePercent"))! && (self.responseLS?.contains("adsCodeIOS"))! &&
+                (self.responseLS?.contains("DontShowDebt"))! && (self.responseLS?.contains("registerWithoutSMS"))! &&
+                (self.responseLS?.contains("сheckCrashSystem"))!{
                 let inputData = self.responseLS?.data(using: .utf8)!
                 let decoder = JSONDecoder()
                 let stat = try! decoder.decode(MenuData.self, from: inputData!)

@@ -416,6 +416,7 @@ class FirstController: UIViewController {
         //        UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
         // Hide the navigation bar on the this view controller
         UserDefaults.standard.addObserver(self, forKeyPath: "successParse", options:NSKeyValueObservingOptions.new, context: nil)
+        UserDefaults.standard.set(true, forKey: "observeStart")
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -424,7 +425,7 @@ class FirstController: UIViewController {
         UserDefaults.standard.set(false, forKey: "firstPerson")
         UserDefaults.standard.synchronize()
         UserDefaults.standard.removeObserver(self, forKeyPath: "successParse", context: nil)
-        
+        UserDefaults.standard.set(false, forKey: "observeStart")
         //        self.navigationController?.isNavigationBarHidden = false;
     }
     

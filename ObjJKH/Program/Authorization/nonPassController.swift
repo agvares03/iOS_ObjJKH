@@ -173,7 +173,7 @@ class nonPassController: UIViewController {
         let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
             self.StartIndicator()
             var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
-            urlPath = urlPath + "phone=" + phone + "&ident=" + ident
+            urlPath = urlPath + "phone=" + phone + "&ident=" + ident.stringByAddingPercentEncodingForRFC3986()!
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
