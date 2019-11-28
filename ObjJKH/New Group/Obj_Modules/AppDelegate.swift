@@ -139,10 +139,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                      UserDefaults.standard.set(0, forKey: "appsKol")
                 }
             }
-            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
-            if (updatedBadgeNumber > -1) {
-                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-            }
+//            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+//            if (updatedBadgeNumber > -1) {
+//                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+//            }
             if notification["gcm.notification.type_push"] as? String == "announcement"{
                 UserDefaults.standard.set(true, forKey: "newNotifi")
                 UserDefaults.standard.set(body, forKey: "bodyNotifi")
@@ -237,10 +237,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 UserDefaults.standard.set(0, forKey: "appsKol")
             }
         }
-        let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
-        if (updatedBadgeNumber > -1) {
-            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-        }
+//        let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+//        if (updatedBadgeNumber > -1) {
+//            UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+//        }
         if userInfo["gcm.notification.type_push"] as? String == "comment"{
 //            UserDefaults.standard.set(true, forKey: "newNotifi")
 //            UserDefaults.standard.synchronize()
