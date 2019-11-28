@@ -1173,7 +1173,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String) {
         print(isEditable())
-        if isEditable(){
+//        if isEditable(){
             //            let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
             //            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })
             //            let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
@@ -1212,15 +1212,15 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                 self.StopIndicator()
                 self.performSegue(withIdentifier: "addCounters", sender: self)
             }
-        }else{
-            DispatchQueue.main.async{
-                let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-                self.StopIndicator()
-            }
-        }
+//        }else{
+//            DispatchQueue.main.async{
+//                let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
+//                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                alert.addAction(cancelAction)
+//                self.present(alert, animated: true, completion: nil)
+//                self.StopIndicator()
+//            }
+//        }
     }
     
     func get_name_month(number_month: String) -> String {

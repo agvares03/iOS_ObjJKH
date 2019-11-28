@@ -2873,7 +2873,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var lastCheckupDate = ""
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String) {
         //        print(isEditable())
-        if isEditable(){
+//        if isEditable(){
             var metrId = ""
             for i in 0...self.numberArr.count - 1{
                 if uniq_num == self.ownerArr[i] && count_name == (nameArr[i] + ", " + unitArr[i]) && ident == self.identArr[i]{
@@ -2898,17 +2898,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.allCountersBtn.isHidden = false
                 self.performSegue(withIdentifier: "addCounters", sender: self)
             }
-        }else{
-            DispatchQueue.main.async{
-                let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-                self.counterIndicator.stopAnimating()
-                self.counterIndicator.isHidden = true
-                self.allCountersBtn.isHidden = false
-            }
-        }
+//        }else{
+//            DispatchQueue.main.async{
+//                let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
+//                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                alert.addAction(cancelAction)
+//                self.present(alert, animated: true, completion: nil)
+//                self.counterIndicator.stopAnimating()
+//                self.counterIndicator.isHidden = true
+//                self.allCountersBtn.isHidden = false
+//            }
+//        }
     }
     var choiceIdent = ""
     func goPaysPressed(ident: String) {
