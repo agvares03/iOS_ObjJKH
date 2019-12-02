@@ -11099,6 +11099,7 @@
 				30260BA522DA028C00D019DA /* Frameworks */,
 				30260BA822DA028C00D019DA /* Resources */,
 				30260BD822DA028C00D019DA /* [CP] Embed Pods Frameworks */,
+				1CDE14EC2394BFE60040DCE1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -15337,6 +15338,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		1CDE14EC2394BFE60040DCE1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		1E454B06D4E87353F784FC68 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
