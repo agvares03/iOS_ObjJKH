@@ -690,7 +690,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
                 })
                 
                 upload.responseJSON { response in
-                    print(response.result.value!)
+//                    print(response.result.value!)
                     group.leave()
                     
                 }

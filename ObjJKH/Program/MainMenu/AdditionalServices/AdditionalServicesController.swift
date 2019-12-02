@@ -240,7 +240,11 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
     
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return objectArray.count
+        if objectArray.count != 0{
+            return objectArray.count
+        }else{
+            return 0
+        }
     }
     
     

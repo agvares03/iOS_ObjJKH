@@ -267,6 +267,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_Monolit")
         #elseif isVodSergPosad
         fon_top.image = UIImage(named: "Logo_VodSergPosad")
+        #elseif isMobileMIR
+        fon_top.image = UIImage(named: "Logo_MobileMIR")
         #endif
         
         // Картинки для разных Таргетов
@@ -807,11 +809,11 @@ class NewMainMenu2: UIViewController {
     // Выход
     @IBAction func go_exit(_ sender: UIButton) {
         UserDefaults.standard.set(true, forKey: "exit")
-        if UserDefaults.standard.bool(forKey: "сheckCrashSystem"){
+//        if UserDefaults.standard.bool(forKey: "сheckCrashSystem"){
             Crashlytics.sharedInstance().crash()
-        }else{
-            exit(0)
-        }
+//        }else{
+//            exit(0)
+//        }
         //        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
     }
     

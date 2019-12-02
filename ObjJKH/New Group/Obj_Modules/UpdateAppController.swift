@@ -118,6 +118,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Monolit")
         #elseif isVodSergPosad
         imageApp.image = UIImage(named: "Logo_VodSergPosad")
+        #elseif isMobileMIR
+        imageApp.image = UIImage(named: "Logo_MobileMIR")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -238,7 +240,9 @@ class UpdateAppController: UIViewController {
         #elseif isMonolit
         str = "itms-apps://itunes.apple.com/ru/app/id1487039783"
         #elseif isVodSergPosad
-//        str = "itms-apps://itunes.apple.com/ru/app/id1479682216"
+        str = "itms-apps://itunes.apple.com/ru/app/id1489273745"
+        #elseif isMobileMIR
+        
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
