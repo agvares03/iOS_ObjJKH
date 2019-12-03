@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -433,8 +433,8 @@
                         <segue destination="qK7-Fk-Kmh" kind="show" identifier="addLS" id="Rkm-y0-Yxe"/>
                         <segue destination="1Wa-Am-5fg" kind="show" identifier="support" id="B4v-ZH-sO3"/>
                         <segue destination="q64-KO-FTk" kind="show" identifier="addLSPocket" id="Kbl-Qr-Dr2"/>
-                        <segue destination="08Q-5b-sMS" kind="show" identifier="CostPay_New" id="UyZ-4p-KNN"/>
                         <segue destination="dHb-25-y8d" kind="show" identifier="addLSSimple" id="gm7-F9-13E"/>
+                        <segue destination="08Q-5b-sMS" kind="show" identifier="CostPay_New" id="EZc-Yr-ufd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="px2-wU-oxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1048,12 +1048,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efk-Sw-vph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="134.48275862068968"/>
+            <point key="canvasLocation" x="2746" y="39"/>
         </scene>
         <!--addAppUserNew-->
         <scene sceneID="iMD-Rj-kzL">
             <objects>
-                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="addAppUserNew" id="QtH-99-6Fb" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="addAppUserNew" id="QtH-99-6Fb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="DoX-eB-2gz"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yP-Xb-4Va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3318" y="54"/>
@@ -1061,7 +1063,9 @@
         <!--addAppUser-->
         <scene sceneID="mR4-59-QHv">
             <objects>
-                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="addAppUser" id="PvX-z7-cD9" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="addAppUser" id="PvX-z7-cD9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lCd-LW-SGj"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZo-qD-JNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3296" y="-4"/>

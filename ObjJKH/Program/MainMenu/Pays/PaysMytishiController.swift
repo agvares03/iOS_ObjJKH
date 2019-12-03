@@ -236,7 +236,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         } else {
             defaults.setValue(String(describing: self.totalSum), forKey: "sum")
             defaults.synchronize()
-            self.performSegue(withIdentifier: "CostPay_New", sender: self)
+            self.get_link()
         }
     }
     
@@ -1306,6 +1306,65 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         return cell
     }
     
+    func getServerUrlByIdent() -> String {
+        let defaults     = UserDefaults.standard
+        var ident = ""
+        let login = defaults.string(forKey: "login")!
+        let pass  = defaults.string(forKey: "pass")!
+        let sum  = defaults.string(forKey: "sum")!
+        if choiceIdent == "Все"{
+            let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
+            let str_ls_arr = str_ls.components(separatedBy: ",")
+            for _ in 0...str_ls_arr.count - 1{
+                ident = str_ls_arr[0]
+            }
+        }else{
+            ident = choiceIdent
+        }
+        if ident != ""{
+            return Server.SERVER + Server.GET_LINK + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&sum=" + sum + "&ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        }else{
+            return Server.SERVER + Server.GET_LINK + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&sum=" + sum
+        }
+        
+    }
+    var responseURL = ""
+    func get_link() {
+        let urlPath = self.getServerUrlByIdent()
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                self.responseURL = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(self.responseURL)")
+                                                DispatchQueue.main.async{
+                                                    self.performSegue(withIdentifier: "CostPay_New", sender: self)
+                                                }
+        })
+        task.resume()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CostPay_New" {
             var ident = ""
@@ -1320,6 +1379,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             let payController             = segue.destination as! Pay
             payController.ident = ident
+            payController.responseString = self.responseURL
         }
     }
     

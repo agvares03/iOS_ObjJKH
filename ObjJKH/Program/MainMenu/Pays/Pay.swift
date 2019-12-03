@@ -21,7 +21,7 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
 //        navigationController?.dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBOutlet weak var appBtn: UIButton!
@@ -49,18 +49,6 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
         super.viewDidLoad()
         self.appBtn.isHidden = true
         self.appLbl.isHidden = true
-        if !UserDefaults.standard.bool(forKey: "settSaveCard"){
-            URLCache.shared.removeAllCachedResponses()
-            if let cookies = HTTPCookieStorage.shared.cookies {
-                for cookie in cookies {
-                    HTTPCookieStorage.shared.deleteCookie(cookie)
-                }
-            }
-        }
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
         
         let defaults     = UserDefaults.standard
         
@@ -68,14 +56,43 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
         login = defaults.string(forKey: "login")!
         pass  = defaults.string(forKey: "pass")!
         sum  = defaults.string(forKey: "sum")!
-        backBtn.tintColor = myColors.btnColor.uiColor()
-        appBtn.backgroundColor = myColors.btnColor.uiColor()
+        
+        if (self.responseString == "Ошибка: Недопустимый URI: Невозможно определить формат URI.") {
+            self.appBtn.isHidden = false
+            self.appLbl.isHidden = false
+        }else if (self.responseString.contains("Ошибка")) {
+            let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        } else if (self.responseString != "") {
+            let webConfiguration = WKWebViewConfiguration()
+            webView = WKWebView(frame: .zero, configuration: webConfiguration)
+            webView.uiDelegate = self
+            webView.navigationDelegate = self
+            view = webView
+            let url : NSURL! = NSURL(string: (responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!))
+//            print(url)
+            webView.load(NSURLRequest(url: url as URL) as URLRequest)
+        
+        } else {
+            let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+//        backBtn.tintColor = myColors.btnColor.uiColor()
+//        appBtn.backgroundColor = myColors.btnColor.uiColor()
 //        #if isStolitsa
 //            let url = NSURL(string: Server.SERVER + Server.GET_LINK_STOLITSA + "login=" + self.login + "&pwd=" + self.pass + "&sum=" + self.sum)
 //            let requestObj = NSURLRequest(url: url! as URL)
 //            self.webView.loadRequest(requestObj as URLRequest)
 //        #else
-            get_link()
+//            get_link()
 //        #endif
         
     }
@@ -93,8 +110,10 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
             }
         }
 //        let doc = webView.stringByEvaluatingJavaScript(from: "document.documentElement.outerHTML")
-        webViewCurrUrl = doc
-        
+        if doc != ""{
+            webViewCurrUrl = doc
+        }
+//        print(webViewCurrUrl)
         URLCache.shared.removeAllCachedResponses()
         print("loaded")
     }
@@ -124,7 +143,7 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
                 }
             }
         }
-        if webViewCurrUrl.contains("Платеж успешно выполнен"){
+        if webViewCurrUrl.containsIgnoringCase(find: "успешно") || webViewCurrUrl.containsIgnoringCase(find: "success"){
             UserDefaults.standard.set(true, forKey: "PaymentSucces")
             UserDefaults.standard.set("12345", forKey: "PaymentID")
             UserDefaults.standard.synchronize()
@@ -185,17 +204,13 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             } else if (self.responseString != "") {
+                let webConfiguration = WKWebViewConfiguration()
+                self.webView = WKWebView(frame: .zero, configuration: webConfiguration)
+                self.webView.uiDelegate = self
+                self.webView.navigationDelegate = self
                 self.view = self.webView
-                if self.responseString.contains(".pdf"){
-                    if let url : NSURL = NSURL(string: self.responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
-                        if let data = try? Data(contentsOf: url as URL){
-                            self.webView.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: url as URL)
-                        }
-                    }
-                }else{
-                    let url : NSURL! = NSURL(string: self.responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
-                    self.webView.load(NSURLRequest(url: url as URL) as URLRequest)
-                }
+                let url : NSURL! = NSURL(string: self.responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
+                self.webView.load(NSURLRequest(url: url as URL) as URLRequest)
             
                 // Отправлять в сафари-аналог
 //                if let url = URL(string: self.responseString) {
