@@ -201,6 +201,8 @@ class FirstObjController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Monolit")
         #elseif isVodSergPosad
         fon_top.image = UIImage(named: "Logo_VodSergPosad")
+        #elseif isMobileMIR
+        fon_top.image = UIImage(named: "Logo_MobileMIR")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

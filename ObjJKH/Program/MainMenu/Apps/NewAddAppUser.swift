@@ -608,7 +608,8 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 })
                 
                 upload.responseJSON { response in
-                    print(response.result.value!)
+//                    print("Upload Value: ")
+//                    print(response.result.value!)
                     group.leave()
                     
                 }

@@ -466,6 +466,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Monolit")
         #elseif isVodSergPosad
         fon_top.image = UIImage(named: "Logo_VodSergPosad")
+        #elseif isMobileMIR
+        fon_top.image = UIImage(named: "Logo_MobileMIR")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         suppBtn.tintColor = myColors.btnColor.uiColor()

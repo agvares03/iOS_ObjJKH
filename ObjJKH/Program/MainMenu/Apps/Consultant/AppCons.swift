@@ -562,7 +562,7 @@ class AppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UII
                 })
                 
                 upload.responseJSON { response in
-                    print(response.result.value!)
+//                    print(response.result.value!)
                     group.leave()
                     
                 }

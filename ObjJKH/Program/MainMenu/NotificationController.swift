@@ -158,6 +158,8 @@ class NotificationController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Monolit")
         #elseif isVodSergPosad
         fon_top.image = UIImage(named: "Logo_VodSergPosad")
+        #elseif isMobileMIR
+        fon_top.image = UIImage(named: "Logo_MobileMIR")
         #endif
         btn_name_1.setTitle(phoneOperator, for: .normal)
         targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
