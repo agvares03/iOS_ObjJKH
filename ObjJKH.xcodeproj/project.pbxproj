@@ -784,6 +784,7 @@
 		1C8E7A70238BDBC0006D2BE0 /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
 		1C8E7A71238BDC9D006D2BE0 /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
 		1C8E7A72238BDCA0006D2BE0 /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		1C93FE9B2396562C006AAD4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C93FE9A2396562B006AAD4C /* GoogleService-Info.plist */; };
 		1C953D6321FAAE7200313221 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C953D6221FAAE7100313221 /* GoogleService-Info.plist */; };
 		1C953D6621FAC9DD00313221 /* OnePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6421FAC9D500313221 /* OnePageController.swift */; };
 		1C953D6821FAC9F100313221 /* TwoPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6721FAC9F100313221 /* TwoPageController.swift */; };
@@ -1188,7 +1189,6 @@
 		1CDE155D2394E3260040DCE1 /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
 		1CDE155F2394E3260040DCE1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
 		1CDE15622394E3260040DCE1 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
-		1CDE15632394E3260040DCE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C45C002238CD085000719E3 /* GoogleService-Info.plist */; };
 		1CDE15642394E3260040DCE1 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
 		1CDE15652394E3260040DCE1 /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
 		1CDE15662394E3260040DCE1 /* MainMenuCons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */; };
@@ -8814,6 +8814,7 @@
 		1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaysMytishi.storyboard; sourceTree = "<group>"; };
 		1C85139721EC4E940003D587 /* PaysMytishiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaysMytishiController.swift; sourceTree = "<group>"; };
 		1C8E7A5C238BCF75006D2BE0 /* Logo_VodSergPosad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_VodSergPosad.png; sourceTree = "<group>"; };
+		1C93FE9A2396562B006AAD4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/MobileMIR/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1C953D6221FAAE7100313221 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Google-Services/DJ/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C953D6421FAC9D500313221 /* OnePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePageController.swift; sourceTree = "<group>"; };
 		1C953D6721FAC9F100313221 /* TwoPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPageController.swift; sourceTree = "<group>"; };
@@ -10148,6 +10149,7 @@
 		307690F722B28DC70043916F /* Google_Services */ = {
 			isa = PBXGroup;
 			children = (
+				1C93FE9A2396562B006AAD4C /* GoogleService-Info.plist */,
 				1C45C002238CD085000719E3 /* GoogleService-Info.plist */,
 				3088D05D236C0C79000622AF /* GoogleService-Info.plist */,
 				3088CFA9236C015D000622AF /* GoogleService-Info.plist */,
@@ -12537,7 +12539,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CDE15622394E3260040DCE1 /* WebCameras.storyboard in Resources */,
-				1CDE15632394E3260040DCE1 /* GoogleService-Info.plist in Resources */,
 				1CDE15642394E3260040DCE1 /* ForgotPass.storyboard in Resources */,
 				1CDE15652394E3260040DCE1 /* ic_get_app.png in Resources */,
 				1CDE15662394E3260040DCE1 /* MainMenuCons.storyboard in Resources */,
@@ -12565,6 +12566,7 @@
 				1CDE157B2394E3260040DCE1 /* NewMainMenu.storyboard in Resources */,
 				1CDE157C2394E3260040DCE1 /* ObjectControl.storyboard in Resources */,
 				1CDE157D2394E3260040DCE1 /* main_background.png in Resources */,
+				1C93FE9B2396562C006AAD4C /* GoogleService-Info.plist in Resources */,
 				1CDE157E2394E3260040DCE1 /* logo_SM.png in Resources */,
 				1CDE157F2394E3260040DCE1 /* Apps.storyboard in Resources */,
 				1CDE15802394E3260040DCE1 /* News.storyboard in Resources */,
