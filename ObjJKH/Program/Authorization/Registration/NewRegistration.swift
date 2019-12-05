@@ -29,6 +29,8 @@ class NewRegistration: UIViewController {
     @IBOutlet weak var regBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var showPass1:   UIButton!
     @IBOutlet weak var showPass2:   UIButton!
+    @IBOutlet weak var passImg1:    UIImageView!
+    @IBOutlet weak var passImg2:    UIImageView!
     
     @IBOutlet weak var separator1:  UIView!
     @IBOutlet weak var separator2:  UIView!
@@ -51,10 +53,10 @@ class NewRegistration: UIViewController {
     var eye = false
     @IBAction func showPassAction1(_ sender: UIBarButtonItem) {
         if eye {
-            showPass1.tintColor = .lightGray
+            passImg1.tintColor = .lightGray
             eye = false
         } else {
-            showPass1.tintColor = myColors.btnColor.uiColor()
+            passImg1.tintColor = myColors.btnColor.uiColor()
             eye = true
         }
         edPass1.isSecureTextEntry.toggle()
@@ -63,10 +65,10 @@ class NewRegistration: UIViewController {
     var eye2 = false
     @IBAction func showPassAction2(_ sender: UIBarButtonItem) {
         if eye2 {
-            showPass2.tintColor = .lightGray
+            passImg2.tintColor = .lightGray
             eye2 = false
         } else {
-            showPass2.tintColor = myColors.btnColor.uiColor()
+            passImg2.tintColor = myColors.btnColor.uiColor()
             eye2 = true
         }
         edPass2.isSecureTextEntry.toggle()
@@ -206,8 +208,8 @@ class NewRegistration: UIViewController {
         separator2.backgroundColor = myColors.labelColor.uiColor()
         separator3.backgroundColor = myColors.labelColor.uiColor()
         separator4.backgroundColor = myColors.labelColor.uiColor()
-        showPass1.tintColor = .lightGray
-        showPass2.tintColor = .lightGray
+        passImg1.tintColor = .lightGray
+        passImg2.tintColor = .lightGray
         indicator.color = myColors.indicatorColor.uiColor()
         btnCancel.isHidden = false
         authLbl.isHidden = true
