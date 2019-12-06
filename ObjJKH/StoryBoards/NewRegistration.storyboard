@@ -173,6 +173,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-Du-L6l">
                                 <rect key="frame" x="8" y="156" width="359" height="44"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="iQb-iu-PVt">
+                                        <rect key="frame" x="331" y="14" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="HXg-RY-MM0"/>
+                                            <constraint firstAttribute="height" constant="20" id="yD7-r0-YiX"/>
+                                        </constraints>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="f7P-Yc-OXU">
                                         <rect key="frame" x="24" y="16" width="16" height="16"/>
                                         <constraints>
@@ -201,7 +208,6 @@
                                             <constraint firstAttribute="height" constant="20" id="feK-i9-Csh"/>
                                             <constraint firstAttribute="width" constant="20" id="vp7-T8-VfV"/>
                                         </constraints>
-                                        <state key="normal" image="eye"/>
                                         <connections>
                                             <action selector="showPassAction1:" destination="zCK-9S-PKf" eventType="touchUpInside" id="UwO-av-CpN"/>
                                         </connections>
@@ -212,9 +218,11 @@
                                     <constraint firstAttribute="trailing" secondItem="ijN-EH-6e2" secondAttribute="trailing" constant="30" id="GaT-R9-c5H"/>
                                     <constraint firstItem="UmG-QS-OdC" firstAttribute="top" secondItem="ijN-EH-6e2" secondAttribute="bottom" id="KYe-4w-ZWL"/>
                                     <constraint firstAttribute="height" constant="44" id="UgV-C9-edB"/>
+                                    <constraint firstItem="iQb-iu-PVt" firstAttribute="centerY" secondItem="dYH-vr-in5" secondAttribute="centerY" id="WXe-wC-cgG"/>
                                     <constraint firstAttribute="trailing" secondItem="dYH-vr-in5" secondAttribute="trailing" constant="8" id="evP-42-JYU"/>
                                     <constraint firstItem="UmG-QS-OdC" firstAttribute="top" secondItem="dYH-vr-in5" secondAttribute="bottom" constant="9" id="iEG-C7-HMh"/>
                                     <constraint firstItem="UmG-QS-OdC" firstAttribute="leading" secondItem="ARH-Du-L6l" secondAttribute="leading" constant="16" id="k09-61-Fo9"/>
+                                    <constraint firstItem="iQb-iu-PVt" firstAttribute="centerX" secondItem="dYH-vr-in5" secondAttribute="centerX" id="kKa-53-Bff"/>
                                     <constraint firstItem="f7P-Yc-OXU" firstAttribute="leading" secondItem="ARH-Du-L6l" secondAttribute="leading" constant="24" id="kMm-t7-xCl"/>
                                     <constraint firstItem="f7P-Yc-OXU" firstAttribute="top" secondItem="ARH-Du-L6l" secondAttribute="top" constant="16" id="lQH-Lx-GP2"/>
                                     <constraint firstAttribute="trailing" secondItem="UmG-QS-OdC" secondAttribute="trailing" constant="8" id="ogI-RH-Igf"/>
@@ -230,6 +238,13 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="X1c-C5-LoV"/>
                                             <constraint firstAttribute="width" constant="16" id="sCM-Pz-S4M"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="kcJ-vJ-ytE">
+                                        <rect key="frame" x="331" y="14" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="UFE-zR-jYt"/>
+                                            <constraint firstAttribute="height" constant="20" id="eVB-gs-xII"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Подтверждение пароля" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ec-mU-nlz">
@@ -253,7 +268,6 @@
                                             <constraint firstAttribute="width" constant="20" id="9KJ-75-HMB"/>
                                             <constraint firstAttribute="height" constant="20" id="mwZ-Xw-Tzy"/>
                                         </constraints>
-                                        <state key="normal" image="eye"/>
                                         <connections>
                                             <action selector="showPassAction2:" destination="zCK-9S-PKf" eventType="touchUpInside" id="YT6-sM-tCc"/>
                                         </connections>
@@ -265,6 +279,8 @@
                                     <constraint firstAttribute="trailing" secondItem="0ec-mU-nlz" secondAttribute="trailing" constant="30" id="6Ta-Lc-Uh3"/>
                                     <constraint firstItem="Vpa-bo-7qu" firstAttribute="top" secondItem="0ec-mU-nlz" secondAttribute="bottom" id="8s8-LW-pkk"/>
                                     <constraint firstItem="Vpa-bo-7qu" firstAttribute="leading" secondItem="ndk-7S-6B3" secondAttribute="leading" constant="16" id="ERe-xa-bWe"/>
+                                    <constraint firstItem="kcJ-vJ-ytE" firstAttribute="centerX" secondItem="nOP-mx-hDr" secondAttribute="centerX" id="OHY-IB-vsz"/>
+                                    <constraint firstItem="kcJ-vJ-ytE" firstAttribute="centerY" secondItem="nOP-mx-hDr" secondAttribute="centerY" id="XsL-Vw-9jI"/>
                                     <constraint firstItem="eHe-Om-yKs" firstAttribute="leading" secondItem="ndk-7S-6B3" secondAttribute="leading" constant="24" id="doL-34-j4p"/>
                                     <constraint firstItem="eHe-Om-yKs" firstAttribute="top" secondItem="ndk-7S-6B3" secondAttribute="top" constant="16" id="hzV-ov-r8R"/>
                                     <constraint firstAttribute="height" constant="44" id="jik-Tr-W0C"/>
@@ -345,6 +361,8 @@
                         <outlet property="indicator" destination="umi-rq-Uci" id="LWV-JS-3xJ"/>
                         <outlet property="pass1" destination="f7P-Yc-OXU" id="oX9-HF-w13"/>
                         <outlet property="pass2" destination="eHe-Om-yKs" id="oLK-MK-HHI"/>
+                        <outlet property="passImg1" destination="iQb-iu-PVt" id="0vh-RP-UE0"/>
+                        <outlet property="passImg2" destination="kcJ-vJ-ytE" id="KzO-tE-BXf"/>
                         <outlet property="person" destination="xXr-L7-G8s" id="dHU-O1-xHw"/>
                         <outlet property="phone" destination="QD2-Ut-Y3W" id="dMa-wr-kGR"/>
                         <outlet property="regBtnWidth" destination="agu-KI-UJv" id="4fS-0X-Re1"/>

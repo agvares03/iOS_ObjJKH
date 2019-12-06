@@ -120,6 +120,10 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_VodSergPosad")
         #elseif isMobileMIR
         imageApp.image = UIImage(named: "Logo_MobileMIR")
+        #elseif isZarinsk
+        imageApp.image = UIImage(named: "Logo_Zarinsk")
+        #elseif isPedagog
+        imageApp.image = UIImage(named: "Logo_Pedagog")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -242,7 +246,9 @@ class UpdateAppController: UIViewController {
         #elseif isVodSergPosad
         str = "itms-apps://itunes.apple.com/ru/app/id1489273745"
         #elseif isMobileMIR
-        
+        str = "itms-apps://itunes.apple.com/ru/app/id1490057602"
+        #elseif isZarinsk
+        #elseif isPedagog
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

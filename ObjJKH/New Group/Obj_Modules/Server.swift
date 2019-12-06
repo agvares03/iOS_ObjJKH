@@ -119,6 +119,10 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/mup_vodokonal_sergposad/"
     #elseif isMobileMIR
         static let SERVER          = "http://uk-gkh.org/sklider/"
+    #elseif isZarinsk
+        static let SERVER          = "http://uk-gkh.org/ooo_gku/"
+    #elseif isPedagog
+        static let SERVER          = "http://uk-gkh.org/tsg_pedagogicheskii/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения
