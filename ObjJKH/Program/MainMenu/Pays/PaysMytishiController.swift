@@ -743,9 +743,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #endif
         if UserDefaults.standard.string(forKey: "periodPays") != ""{
             paysPeriodLbl.text = "Оплата производится по квитанции за \(UserDefaults.standard.string(forKey: "periodPays") ?? "")"
+            tableViewTop.constant = 150
+            if view.frame.size.height > 750{
+                tableViewTop.constant = 180
+            }
         }else{
             paysPeriodLbl.text = ""
             tableViewTop.constant = 110
+            if view.frame.size.height > 750{
+                tableViewTop.constant = 140
+            }
         }
         paysPeriodLbl.textColor = myColors.btnColor.uiColor()
         if isHomePage{
