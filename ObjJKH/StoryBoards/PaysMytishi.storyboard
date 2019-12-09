@@ -95,14 +95,14 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spin.png" translatesAutoresizingMaskIntoConstraints="NO" id="NqZ-RR-9oV">
-                                <rect key="frame" x="338" y="60" width="21" height="21"/>
+                                <rect key="frame" x="338" y="59.5" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="21" id="PB9-4q-iaL"/>
                                     <constraint firstAttribute="height" constant="21" id="SiZ-XE-7h0"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJY-xZ-v4L">
-                                <rect key="frame" x="150" y="56" width="225" height="30"/>
+                                <rect key="frame" x="150" y="55.5" width="225" height="30"/>
                                 <state key="normal" title="Все">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -114,6 +114,7 @@
                                 <rect key="frame" x="16" y="60" width="117" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="KWd-MU-8fz"/>
+                                    <constraint firstAttribute="width" constant="117" id="SvO-cP-ygz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -358,7 +359,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="enP-cC-omN" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="1aE-jz-ljR"/>
-                            <constraint firstItem="NqZ-RR-9oV" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="16" id="2L6-ax-yxy"/>
+                            <constraint firstItem="NqZ-RR-9oV" firstAttribute="top" secondItem="eJY-xZ-v4L" secondAttribute="top" constant="4" id="2L6-ax-yxy"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="1bO-cG-U4Q" secondAttribute="trailing" constant="15" id="5ZW-jD-fBD"/>
                             <constraint firstItem="os7-xk-ILO" firstAttribute="centerY" secondItem="ABp-Jo-kEA" secondAttribute="centerY" id="7x6-Qq-h70"/>
                             <constraint firstAttribute="trailing" secondItem="enP-cC-omN" secondAttribute="trailing" id="C3h-CT-89c"/>
@@ -366,17 +367,17 @@
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="eJY-xZ-v4L" secondAttribute="trailing" id="FKt-vO-zFP"/>
                             <constraint firstItem="tCL-un-6ER" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="16" id="Hec-2V-Yy4"/>
                             <constraint firstItem="tCL-un-6ER" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="16" id="Jjq-P9-HaA"/>
+                            <constraint firstItem="eJY-xZ-v4L" firstAttribute="centerY" secondItem="tCL-un-6ER" secondAttribute="centerY" id="L0l-3X-wuw"/>
                             <constraint firstItem="eJY-xZ-v4L" firstAttribute="leading" secondItem="tCL-un-6ER" secondAttribute="trailing" constant="17" id="Nvt-kn-1Tp"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="trailing" secondItem="MkC-gE-W0P" secondAttribute="trailing" id="Osw-K0-AM2"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="os7-xk-ILO" secondAttribute="trailing" constant="30" id="Rao-5a-00J"/>
                             <constraint firstItem="aPA-3J-M3o" firstAttribute="centerY" secondItem="ABp-Jo-kEA" secondAttribute="centerY" id="Sct-uk-wBm"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="trailing" secondItem="MkC-gE-W0P" secondAttribute="trailing" id="Sf4-h5-ZRu"/>
                             <constraint firstItem="os7-xk-ILO" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="30" id="Tov-gD-Bbz"/>
-                            <constraint firstItem="eJY-xZ-v4L" firstAttribute="top" secondItem="MkC-gE-W0P" secondAttribute="top" constant="12" id="UZ7-4g-ZgU"/>
                             <constraint firstItem="enP-cC-omN" firstAttribute="bottom" secondItem="MkC-gE-W0P" secondAttribute="bottom" id="WnE-zv-H0G"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="150" id="ZXi-fS-SkV"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ABp-Jo-kEA" secondAttribute="top" constant="462" id="a8l-2v-bU6"/>
-                            <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="NqZ-RR-9oV" secondAttribute="trailing" constant="16" id="bVh-S1-TLN"/>
+                            <constraint firstItem="eJY-xZ-v4L" firstAttribute="trailing" secondItem="NqZ-RR-9oV" secondAttribute="trailing" constant="16" id="bVh-S1-TLN"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="eAR-0d-ZC2"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="gFD-zk-WjN"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ds5-Ye-OVv" secondAttribute="bottom" constant="1" id="gcz-X2-OIH"/>
