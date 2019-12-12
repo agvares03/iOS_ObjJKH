@@ -34,6 +34,18 @@ class NoCounters: UIViewController, WKUIDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+//        StartIndicator()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//        StopIndicator()
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+//        StopIndicator()
+    }
+    
 
     /*
     // MARK: - Navigation

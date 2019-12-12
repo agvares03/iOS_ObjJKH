@@ -63,6 +63,23 @@ class openSaldoController: UIViewController, WKUIDelegate {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+//        StartIndicator()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//        StopIndicator()
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+//        StopIndicator()
+    }
 }
 
 extension openSaldoController:  URLSessionDownloadDelegate {

@@ -1042,7 +1042,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 guard data != nil else { return }
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 var newsList: [News] = []
-                                                if !responseString.contains("error"){
+                                                if !responseString.contains("error") || !responseString.contains("data"){
                                                     let json = try? JSONSerialization.jsonObject(with: data!,
                                                                                                  options: .allowFragments)
                                                     let unfilteredData = NewsJson(json: json! as! JSON)?.data
@@ -1745,8 +1745,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
-                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                        print("responseStringWEBS = \(responseString)")
             
             defer {
                 DispatchQueue.main.sync {
@@ -1769,6 +1767,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
             }
             guard data != nil else { return }
+//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//            print("responseStringWEBS = \(responseString)")
             let json = try? JSONSerialization.jsonObject(with: data!,
                                                          options: .allowFragments)
             
@@ -2708,31 +2708,63 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     if app.number != nil{
                        AppUser.title           = "Заявка №" + app.number!
                     }
-                    AppUser.txt_tema   = app.tema!
-                    AppUser.str_type_app = app.type_app!
+                    if app.tema != nil{
+                        AppUser.txt_tema   = app.tema!
+                    }else{
+                        AppUser.txt_tema   = ""
+                    }
+                    if app.type_app != nil{
+                        AppUser.str_type_app   = app.type_app!
+                    }else{
+                        AppUser.str_type_app   = ""
+                    }
                     AppUser.read = app.is_read_client
-                    AppUser.adress = app.adress!
-                    AppUser.flat = app.flat!
-                    AppUser.phone = app.phone!
+                    if app.adress != nil{
+                        AppUser.adress   = app.adress!
+                    }else{
+                        AppUser.adress   = ""
+                    }
+                    if app.flat != nil{
+                        AppUser.flat   = app.flat!
+                    }else{
+                        AppUser.flat   = ""
+                    }
+                    if app.phone != nil{
+                        AppUser.phone   = app.phone!
+                    }else{
+                        AppUser.phone   = ""
+                    }
                     if app.serverStatus != nil{
-                       AppUser.txt_status = app.serverStatus!
+                        AppUser.txt_status = app.serverStatus!
+                    }else{
+                        AppUser.txt_status = ""
                     }
                     AppUser.fromMenu = true
                     if app.paid_text != nil{
-                       AppUser.paid_text = app.paid_text!
+                        AppUser.paid_text = app.paid_text!
+                    }else{
+                        AppUser.paid_text = ""
                     }
                     if app.paid_sum != nil{
-                       AppUser.paid_sum = Double(app.paid_sum!) as! Double
-                       AppUser.isPay = app.is_pay
-                       AppUser.isPaid = app.is_paid
+                        AppUser.paid_sum = Double(app.paid_sum!)!
+                        AppUser.isPay = app.is_pay
+                        AppUser.isPaid = app.is_paid
                     }
                     if app.acc_ident != nil{
                        AppUser.acc_ident = app.acc_ident!
                     }
 
                     //            AppUser.txt_text   = app.text!
-                    AppUser.txt_date   = app.date!
-                    AppUser.id_app     = app.number!
+                    if app.date != nil{
+                        AppUser.txt_date = app.date!
+                    }else{
+                        AppUser.txt_date = ""
+                    }
+                    if app.number != nil{
+                        AppUser.id_app = app.number!
+                    }else{
+                        AppUser.id_app = ""
+                    }
                     //            AppUser.delegate   = self
                     AppUser.App        = app
                     //            AppUser.updDelegt = self

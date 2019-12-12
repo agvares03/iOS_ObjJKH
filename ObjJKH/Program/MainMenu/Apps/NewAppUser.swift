@@ -549,7 +549,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             })
-        } else if responseString != "-1" {
+        } else if responseString != "-1" && Int64(self.responseString) != nil {
             DispatchQueue.main.async(execute: {
                 
                 // Экземпляр класса DB
@@ -1010,25 +1010,28 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.backgroundColor = .black
         let imageView = sender.view as! UIImageView
         let newImageView = UIImageView(image: imageView.image)
-        let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
-        let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
-        if k > l{
-            newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
-        }else{
-            newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
+        if imageView.image != nil{
+            let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
+            let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
+            if k > l{
+                newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
+            }else{
+                newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
+            }
+            newImageView.frame.size.width = self.view.frame.size.width
+            let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
+            newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
+            newImageView.backgroundColor = .black
+            newImageView.contentMode = .scaleToFill
+            newImageView.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
+            view.addGestureRecognizer(tap)
+            view.addSubview(newImageView)
+            self.view.addSubview(view)
+            self.navigationController?.isNavigationBarHidden = true
+            self.tabBarController?.tabBar.isHidden = true
         }
-        newImageView.frame.size.width = self.view.frame.size.width
-        let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
-        newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleToFill
-        newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
-        view.addGestureRecognizer(tap)
-        view.addSubview(newImageView)
-        self.view.addSubview(view)
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
+        
     }
     
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
