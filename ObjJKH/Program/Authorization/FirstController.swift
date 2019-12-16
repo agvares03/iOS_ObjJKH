@@ -59,11 +59,11 @@ class FirstController: UIViewController {
         edPass.isSecureTextEntry.toggle()
     }
     @IBAction func regAction(_ sender: UIButton) {
-        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+//        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
             self.performSegue(withIdentifier: "reg_app2", sender: self)
-        }else{
-            self.performSegue(withIdentifier: "reg_app", sender: self)
-        }
+//        }else{
+//            self.performSegue(withIdentifier: "reg_app", sender: self)
+//        }
     }
     var loginText = ""
     @IBAction func Enter(_ sender: UIButton) {
@@ -294,6 +294,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Zarinsk")
         #elseif isPedagog
         fon_top.image = UIImage(named: "Logo_Pedagog")
+        #elseif isGorAntenService
+        fon_top.image = UIImage(named: "Logo_GorAntenService")
         #endif
         UserDefaults.standard.set("", forKey: "targetName")
         UserDefaults.standard.synchronize()

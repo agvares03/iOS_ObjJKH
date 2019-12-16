@@ -235,11 +235,11 @@ class StartController: UIViewController {
                 self.performSegue(withIdentifier: "start_app_OBJ", sender: self)
             #else
                 if login == "" || login == nil{
-                    if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+//                    if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
                         self.performSegue(withIdentifier: "reg_app2", sender: self)
-                    }else{
-                        self.performSegue(withIdentifier: "reg_app", sender: self)
-                    }
+//                    }else{
+//                        self.performSegue(withIdentifier: "reg_app", sender: self)
+//                    }
                 }else{
                     if (defaults.bool(forKey: "windowCons")) {
                         self.performSegue(withIdentifier: "start_app_cons", sender: self)

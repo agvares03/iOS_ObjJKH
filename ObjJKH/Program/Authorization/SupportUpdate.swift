@@ -139,6 +139,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_Zarinsk")
         #elseif isPedagog
         imageApp.image = UIImage(named: "Logo_Pedagog")
+        #elseif isGorAntenService
+        imageApp.image = UIImage(named: "Logo_GorAntenService")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -355,7 +357,10 @@ class SupportUpdate: UIViewController {
         #elseif isMobileMIR
         str = "itms-apps://itunes.apple.com/ru/app/id1490057602"
         #elseif isZarinsk
+        str = "itms-apps://itunes.apple.com/ru/app/id1490533229"
         #elseif isPedagog
+        str = "itms-apps://itunes.apple.com/ru/app/id1490557237"
+        #elseif isGorAntenService
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

@@ -472,6 +472,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Zarinsk")
         #elseif isPedagog
         fon_top.image = UIImage(named: "Logo_Pedagog")
+        #elseif isGorAntenService
+        fon_top.image = UIImage(named: "Logo_GorAntenService")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         suppBtn.tintColor = myColors.btnColor.uiColor()

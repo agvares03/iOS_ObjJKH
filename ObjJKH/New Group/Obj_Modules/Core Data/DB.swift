@@ -708,6 +708,7 @@ class DB: NSObject, XMLParserDelegate {
         }
         let urlPath = Server.SERVER + Server.GET_APPS_COMM + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + TextCons;
         let url: NSURL = NSURL(string: urlPath)!
+        print(url)
         parser = XMLParser(contentsOf: url as URL)!
         parser.delegate = self
         let success:Bool = parser.parse()

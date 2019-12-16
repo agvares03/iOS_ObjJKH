@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00BFCF80FD8156762059186A /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		00BFCF80FD8156762059186A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		01EEE4581771A853E67058CB /* Pods_RIC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1A1AC07CF7FA474755B3F2 /* Pods_RIC.framework */; };
 		03244EA2340F40BC6DF88FA4 /* Pods_Servicekom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D96C7D1087725F67E3D16C /* Pods_Servicekom.framework */; };
 		0D0D0BED09559EA8444083CC /* Pods_Zarinsk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2F2EBE4836428A6F2B8AB5 /* Pods_Zarinsk.framework */; };
@@ -16,13 +16,14 @@
 		125428DFEB43912C20A73DD7 /* Pods_DJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B7EA4A0A2CB233BB4A6F85 /* Pods_DJ.framework */; };
 		12772867287B10CB06976E2B /* Pods_TSN_Dnestr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4FF42C4D272C7E80BA3CAC5 /* Pods_TSN_Dnestr.framework */; };
 		12783016ABC597CE6305A9F4 /* Pods_UK_Garant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3812FAFB8B6F58CBB776AADB /* Pods_UK_Garant.framework */; };
-		128D47EE9322D6CDE0458465 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		128D47EE9322D6CDE0458465 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		13443F7B9ABC28697C1812C1 /* Pods_ElectroSbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26A37D2FA3DA51F312C1828 /* Pods_ElectroSbit.framework */; };
-		138D2D293EB28FCE3C08F02E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		148C329EC42FCD24B62A8A3D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		14C1E4A63EC675B15D524331 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		175C018860CAAB860B031DEF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		138D2D293EB28FCE3C08F02E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		148C329EC42FCD24B62A8A3D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		14C1E4A63EC675B15D524331 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		175C018860CAAB860B031DEF /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		18FF2454BCAF23643C2A278F /* Pods_Cristall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5FE5FBB50E892E5A80E626 /* Pods_Cristall.framework */; };
+		19421989641EED95CD9B72C3 /* Pods_GorAntenService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8B8F23F14E4BE7CD399B77 /* Pods_GorAntenService.framework */; };
 		1C009E4521494A65004E8BFD /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
 		1C009E4721494AC4004E8BFD /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
 		1C026E6B2265B90000E62FC6 /* ChoiceStreetPocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C026E6A2265B90000E62FC6 /* ChoiceStreetPocketController.swift */; };
@@ -1354,6 +1355,173 @@
 		1CCA98602249160900636270 /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
 		1CCA98612249160900636270 /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
 		1CCA98622249160900636270 /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
+		1CCB84D623A365FF007C7AEB /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
+		1CCB84D723A365FF007C7AEB /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF332133F6DB004DB75C /* Server.swift */; };
+		1CCB84D823A365FF007C7AEB /* Applications+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC721708CB600857D4D /* Applications+CoreDataClass.swift */; };
+		1CCB84D923A365FF007C7AEB /* Comments+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A0A2138D92E00789370 /* Comments+CoreDataProperties.swift */; };
+		1CCB84DA23A365FF007C7AEB /* FirstControllerCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEC7224DC59B00F78742 /* FirstControllerCons.swift */; };
+		1CCB84DB23A365FF007C7AEB /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3D213917C900789370 /* Fotos+CoreDataClass.swift */; };
+		1CCB84DC23A365FF007C7AEB /* NewRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA73D3F23165ADA004CB73B /* NewRegistration.swift */; };
+		1CCB84DD23A365FF007C7AEB /* Counters+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4C620A234AE2BA001FB7C7 /* Counters+CoreDataProperties.swift */; };
+		1CCB84DE23A365FF007C7AEB /* CloseAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3921390B8000789370 /* CloseAppAlert.swift */; };
+		1CCB84DF23A365FF007C7AEB /* AllObjectPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3EB601236A93D500574D3A /* AllObjectPlace.swift */; };
+		1CCB84E023A365FF007C7AEB /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
+		1CCB84E123A365FF007C7AEB /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A6B213BAF9600789370 /* FloatRatingView.swift */; };
+		1CCB84E223A365FF007C7AEB /* CommCellCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A35213903C100789370 /* CommCellCons.swift */; };
+		1CCB84E323A365FF007C7AEB /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
+		1CCB84E423A365FF007C7AEB /* FilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC36E213C0B5B002CEB62 /* FilesController.swift */; };
+		1CCB84E523A365FF007C7AEB /* ShemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F017214765B500FE0473 /* ShemeColor.swift */; };
+		1CCB84E623A365FF007C7AEB /* ImageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F00F2147605E00FE0473 /* ImageConstant.swift */; };
+		1CCB84E723A365FF007C7AEB /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4421341BF5004DB75C /* MainMenu.swift */; };
+		1CCB84E823A365FF007C7AEB /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8B21354274004DB75C /* News.swift */; };
+		1CCB84E923A365FF007C7AEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
+		1CCB84EA23A365FF007C7AEB /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE1217EF143009CDBB8 /* Settings+CoreDataProperties.swift */; };
+		1CCB84EB23A365FF007C7AEB /* SelectItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF7B2134FA4D004DB75C /* SelectItemController.swift */; };
+		1CCB84EC23A365FF007C7AEB /* AdditionalServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C009E4421494A64004E8BFD /* AdditionalServicesController.swift */; };
+		1CCB84ED23A365FF007C7AEB /* HistoryPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54D60821ACECEB00A82C71 /* HistoryPayController.swift */; };
+		1CCB84EE23A365FF007C7AEB /* TechWorkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B4E88F2309052C00E13DF9 /* TechWorkController.swift */; };
+		1CCB84EF23A365FF007C7AEB /* CounterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFEC21361F70004DB75C /* CounterCell.swift */; };
+		1CCB84F023A365FF007C7AEB /* NewsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF91213544E7004DB75C /* NewsClient.swift */; };
+		1CCB84F123A365FF007C7AEB /* SupportUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCD60EB22E18974009C4B5C /* SupportUpdate.swift */; };
+		1CCB84F223A365FF007C7AEB /* AddLSSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303FAC1022F73512009EEE25 /* AddLSSimple.swift */; };
+		1CCB84F323A365FF007C7AEB /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A3E213917C900789370 /* Fotos+CoreDataProperties.swift */; };
+		1CCB84F423A365FF007C7AEB /* AllLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410004B421C1EB200040D703 /* AllLS.swift */; };
+		1CCB84F523A365FF007C7AEB /* NewEditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB84522605AA800DBD52E /* NewEditAccountController.swift */; };
+		1CCB84F623A365FF007C7AEB /* PaymentApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DC2282E89500B7F66C /* PaymentApp+CoreDataProperties.swift */; };
+		1CCB84F723A365FF007C7AEB /* TwoPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6721FAC9F100313221 /* TwoPageController.swift */; };
+		1CCB84F823A365FF007C7AEB /* Saldo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC031213634CC004DB75C /* Saldo+CoreDataProperties.swift */; };
+		1CCB84F923A365FF007C7AEB /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
+		1CCB84FA23A365FF007C7AEB /* QuestionsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA721357B6C004DB75C /* QuestionsTableCell.swift */; };
+		1CCB84FB23A365FF007C7AEB /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC03E21363957004DB75C /* DB.swift */; };
+		1CCB84FC23A365FF007C7AEB /* Settings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FCFE0217EF143009CDBB8 /* Settings+CoreDataClass.swift */; };
+		1CCB84FD23A365FF007C7AEB /* ObjJKH.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF921362CBB004DB75C /* ObjJKH.xcdatamodeld */; };
+		1CCB84FE23A365FF007C7AEB /* CommCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A31213903A900789370 /* CommCell.swift */; };
+		1CCB84FF23A365FF007C7AEB /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF9A21355F1E004DB75C /* NewsView.swift */; };
+		1CCB850023A365FF007C7AEB /* AddLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF712134F07F004DB75C /* AddLS.swift */; };
+		1CCB850123A365FF007C7AEB /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
+		1CCB850223A365FF007C7AEB /* OneVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB2C225498E500812964 /* OneVoteController.swift */; };
+		1CCB850323A365FF007C7AEB /* SaldoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59DF2137B6BA00789370 /* SaldoCell.swift */; };
+		1CCB850423A365FF007C7AEB /* ChoicePlaceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6D7A52362F36500E26BB9 /* ChoicePlaceObject.swift */; };
+		1CCB850523A365FF007C7AEB /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0C2133CC7B004DB75C /* FirstController.swift */; };
+		1CCB850623A365FF007C7AEB /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
+		1CCB850723A365FF007C7AEB /* AppsCellClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A052138D41C00789370 /* AppsCellClose.swift */; };
+		1CCB850823A365FF007C7AEB /* Tinkoff_Pay_Decides.m in Sources */ = {isa = PBXBuildFile; fileRef = 410D51F121B6876700C21455 /* Tinkoff_Pay_Decides.m */; };
+		1CCB850923A365FF007C7AEB /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8E213544B9004DB75C /* NewsManager.swift */; };
+		1CCB850A23A365FF007C7AEB /* NewSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAE79A3229D02F6005223C1 /* NewSaldoController.swift */; };
+		1CCB850B23A365FF007C7AEB /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
+		1CCB850C23A365FF007C7AEB /* MobilePaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C51CEBF22291F27003EFD8C /* MobilePaysController.swift */; };
+		1CCB850D23A365FF007C7AEB /* WebsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4A213A821000789370 /* WebsController.swift */; };
+		1CCB850E23A365FF007C7AEB /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8521353DF8004DB75C /* NewsController.swift */; };
+		1CCB850F23A365FF007C7AEB /* SendSMSCod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3D2134109D004DB75C /* SendSMSCod.swift */; };
+		1CCB851023A365FF007C7AEB /* ASDKTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B521BD66AF001225DA /* ASDKTestSettings.m */; };
+		1CCB851123A365FF007C7AEB /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF068F22C21F1C00700A7D /* NotificationController.swift */; };
+		1CCB851223A365FF007C7AEB /* AddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A1D2138E23000789370 /* AddAppUser.swift */; };
+		1CCB851323A365FF007C7AEB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFF521362B81004DB75C /* CoreDataManager.swift */; };
+		1CCB851423A365FF007C7AEB /* NewMainMenu2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3DB85422608CF900DBD52E /* NewMainMenu2.swift */; };
+		1CCB851523A365FF007C7AEB /* addCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA98562249160900636270 /* addCountersController.swift */; };
+		1CCB851623A365FF007C7AEB /* VotingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB1F225372F300812964 /* VotingController.swift */; };
+		1CCB851723A365FF007C7AEB /* MainMenuCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC455213FCA99002CEB62 /* MainMenuCons.swift */; };
+		1CCB851823A365FF007C7AEB /* Web_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A52213A853900789370 /* Web_JSON.swift */; };
+		1CCB851923A365FF007C7AEB /* Counters+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4C6209234AE2B9001FB7C7 /* Counters+CoreDataClass.swift */; };
+		1CCB851A23A365FF007C7AEB /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5BC3521666D11003F4868 /* Titles.swift */; };
+		1CCB851B23A365FF007C7AEB /* QuestionVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AB3922550D0D00812964 /* QuestionVoteController.swift */; };
+		1CCB851C23A365FF007C7AEB /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
+		1CCB851D23A365FF007C7AEB /* OnePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C953D6421FAC9D500313221 /* OnePageController.swift */; };
+		1CCB851E23A365FF007C7AEB /* NewPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3F21341941004DB75C /* NewPass.swift */; };
+		1CCB851F23A365FF007C7AEB /* UniqCountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE0A222799F600C51656 /* UniqCountersController.swift */; };
+		1CCB852023A365FF007C7AEB /* Saldo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AC030213634CC004DB75C /* Saldo+CoreDataClass.swift */; };
+		1CCB852123A365FF007C7AEB /* resVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C406DE12255997D007B2887 /* resVoteController.swift */; };
+		1CCB852223A365FF007C7AEB /* NewAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C625A3122B439A50053971C /* NewAppUser.swift */; };
+		1CCB852323A365FF007C7AEB /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59EC2137F32300789370 /* Pay.swift */; };
+		1CCB852423A365FF007C7AEB /* ColorsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8F0092147604400FE0473 /* ColorsConstant.swift */; };
+		1CCB852523A365FF007C7AEB /* QuestionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA121357773004DB75C /* QuestionsTableVC.swift */; };
+		1CCB852623A365FF007C7AEB /* AppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC4682140B0D4002CEB62 /* AppCons.swift */; };
+		1CCB852723A365FF007C7AEB /* AdditionalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840D52232142BF00563BF3 /* AdditionalVC.swift */; };
+		1CCB852823A365FF007C7AEB /* Comments+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A092138D92D00789370 /* Comments+CoreDataClass.swift */; };
+		1CCB852923A365FF007C7AEB /* openSaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78BF78222CEC8A00F31938 /* openSaldoController.swift */; };
+		1CCB852A23A365FF007C7AEB /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41645B56216492A300C61AF9 /* StartController.swift */; };
+		1CCB852B23A365FF007C7AEB /* PaymentApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3822DB2282E89500B7F66C /* PaymentApp+CoreDataClass.swift */; };
+		1CCB852C23A365FF007C7AEB /* News+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF972135452F004DB75C /* News+UITableViewDataSource.swift */; };
+		1CCB852D23A365FF007C7AEB /* QuestionFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC376213CF14A002CEB62 /* QuestionFinal.swift */; };
+		1CCB852E23A365FF007C7AEB /* NewHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC3FF32223A3E2500FDBA82 /* NewHomePage.swift */; };
+		1CCB852F23A365FF007C7AEB /* MupCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19AE012226B31600C51656 /* MupCounterController.swift */; };
+		1CCB853023A365FF007C7AEB /* EditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5153D021EF04A600DE36D9 /* EditAccountController.swift */; };
+		1CCB853123A365FF007C7AEB /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5A213A8F0D00789370 /* OnOffButton.swift */; };
+		1CCB853223A365FF007C7AEB /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A192138E12100789370 /* AppUser.swift */; };
+		1CCB853323A365FF007C7AEB /* SaldoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59D72137A1DD00789370 /* SaldoController.swift */; };
+		1CCB853423A365FF007C7AEB /* QuestionAnswerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A5F213A906600789370 /* QuestionAnswerVC.swift */; };
+		1CCB853523A365FF007C7AEB /* NewAddAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C625A3222B439A60053971C /* NewAddAppUser.swift */; };
+		1CCB853623A365FF007C7AEB /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
+		1CCB853723A365FF007C7AEB /* ChoiceObjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3EB632236B08D100574D3A /* ChoiceObjectVC.swift */; };
+		1CCB853823A365FF007C7AEB /* PaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59E82137EFBE00789370 /* PaysController.swift */; };
+		1CCB853923A365FF007C7AEB /* TransactionHistoryModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A421BD64AC001225DA /* TransactionHistoryModelController.m */; };
+		1CCB853A23A365FF007C7AEB /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
+		1CCB853B23A365FF007C7AEB /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
+		1CCB853C23A365FF007C7AEB /* Applications+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193AEC821708CB600857D4D /* Applications+CoreDataProperties.swift */; };
+		1CCB853D23A365FF007C7AEB /* AppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A012138D40800789370 /* AppsCell.swift */; };
+		1CCB853E23A365FF007C7AEB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF2F2133E0D7004DB75C /* Extensions.swift */; };
+		1CCB853F23A365FF007C7AEB /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
+		1CCB854023A365FF007C7AEB /* PaymentSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B221BD6510001225DA /* PaymentSuccessViewController.m */; };
+		1CCB854123A365FF007C7AEB /* WebsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A4E213A825000789370 /* WebsCell.swift */; };
+		1CCB854223A365FF007C7AEB /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
+		1CCB854323A365FF007C7AEB /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
+		1CCB854523A365FF007C7AEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
+		1CCB854823A365FF007C7AEB /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
+		1CCB854923A365FF007C7AEB /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
+		1CCB854A23A365FF007C7AEB /* Logo_Pedagog.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC75A6A2398D13800EE59D8 /* Logo_Pedagog.png */; };
+		1CCB854B23A365FF007C7AEB /* ic_get_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2132140CB0000921C82 /* ic_get_app.png */; };
+		1CCB854C23A365FF007C7AEB /* MainMenuCons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC44E213FC4DD002CEB62 /* MainMenuCons.storyboard */; };
+		1CCB854D23A365FF007C7AEB /* TechWork.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B4E8622309012800E13DF9 /* TechWork.storyboard */; };
+		1CCB854E23A365FF007C7AEB /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
+		1CCB854F23A365FF007C7AEB /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
+		1CCB855023A365FF007C7AEB /* Logo_DemoUC.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF2B2133D83C004DB75C /* Logo_DemoUC.png */; };
+		1CCB855123A365FF007C7AEB /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
+		1CCB855223A365FF007C7AEB /* Logo_Pedagog_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC75A672398D11B00EE59D8 /* Logo_Pedagog_White.png */; };
+		1CCB855323A365FF007C7AEB /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
+		1CCB855423A365FF007C7AEB /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
+		1CCB855523A365FF007C7AEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CC75A6F2398DC2F00EE59D8 /* GoogleService-Info.plist */; };
+		1CCB855623A365FF007C7AEB /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
+		1CCB855723A365FF007C7AEB /* NewAddLS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302E31BF22F7C95D0043209D /* NewAddLS.storyboard */; };
+		1CCB855823A365FF007C7AEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
+		1CCB855923A365FF007C7AEB /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
+		1CCB855A23A365FF007C7AEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
+		1CCB855B23A365FF007C7AEB /* SelectItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF772134FA15004DB75C /* SelectItem.storyboard */; };
+		1CCB855C23A365FF007C7AEB /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
+		1CCB855D23A365FF007C7AEB /* spin.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF742134F321004DB75C /* spin.png */; };
+		1CCB855E23A365FF007C7AEB /* Logo_DemoUC_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF292133D834004DB75C /* Logo_DemoUC_White.png */; };
+		1CCB855F23A365FF007C7AEB /* Questions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF9E213576FF004DB75C /* Questions.storyboard */; };
+		1CCB856023A365FF007C7AEB /* account_icon_cons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A2D2138EC8E00789370 /* account_icon_cons.jpg */; };
+		1CCB856123A365FF007C7AEB /* MobileMIR-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CDE15982394E3DA0040DCE1 /* MobileMIR-Info.plist */; };
+		1CCB856223A365FF007C7AEB /* arrow_rigth.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF7E21352BB3004DB75C /* arrow_rigth.png */; };
+		1CCB856323A365FF007C7AEB /* PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C85139521EC4C0C0003D587 /* PaysMytishi.storyboard */; };
+		1CCB856423A365FF007C7AEB /* NewMainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC3FF25223A19D200FDBA82 /* NewMainMenu.storyboard */; };
+		1CCB856523A365FF007C7AEB /* ObjectControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CA6D7722362AAAE00E26BB9 /* ObjectControl.storyboard */; };
+		1CCB856623A365FF007C7AEB /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF482134C156004DB75C /* main_background.png */; };
+		1CCB856723A365FF007C7AEB /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
+		1CCB856823A365FF007C7AEB /* Apps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F02138CF3D00789370 /* Apps.storyboard */; };
+		1CCB856923A365FF007C7AEB /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF81213539DA004DB75C /* News.storyboard */; };
+		1CCB856A23A365FF007C7AEB /* Saldo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59DB2137A20300789370 /* Saldo.storyboard */; };
+		1CCB856B23A365FF007C7AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
+		1CCB856C23A365FF007C7AEB /* app_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F42138D13E00789370 /* app_close.png */; };
+		1CCB856D23A365FF007C7AEB /* Logo_MobileMIR_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CDE159F2394E8FD0040DCE1 /* Logo_MobileMIR_White.png */; };
+		1CCB856E23A365FF007C7AEB /* Logo_VodSergPosad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8E7A5C238BCF75006D2BE0 /* Logo_VodSergPosad.png */; };
+		1CCB856F23A365FF007C7AEB /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5153CE21EEFE9800DE36D9 /* Account.storyboard */; };
+		1CCB857023A365FF007C7AEB /* Counters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABFE321361949004DB75C /* Counters.storyboard */; };
+		1CCB857123A365FF007C7AEB /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
+		1CCB857223A365FF007C7AEB /* ic_send_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA20D2140CA9600921C82 /* ic_send_app.png */; };
+		1CCB857323A365FF007C7AEB /* MupCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C19ADFB2226845400C51656 /* MupCounters.storyboard */; };
+		1CCB857423A365FF007C7AEB /* 2PaysMytishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C33544322AFA34500D695C8 /* 2PaysMytishi.storyboard */; };
+		1CCB857523A365FF007C7AEB /* PaymentSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43655B021BD6510001225DA /* PaymentSuccessViewController.xib */; };
+		1CCB857623A365FF007C7AEB /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
+		1CCB857723A365FF007C7AEB /* Voting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C66AB1122532BFF00812964 /* Voting.storyboard */; };
+		1CCB857823A365FF007C7AEB /* Pays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59E32137ECDD00789370 /* Pays.storyboard */; };
+		1CCB857923A365FF007C7AEB /* NewRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30354A3A231610C5008874D3 /* NewRegistration.storyboard */; };
+		1CCB857A23A365FF007C7AEB /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
+		1CCB857B23A365FF007C7AEB /* Logo_MobileMIR.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CDE159C2394E8C40040DCE1 /* Logo_MobileMIR.png */; };
+		1CCB858523A368A5007C7AEB /* Logo_GorAntenService_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCB858423A368A5007C7AEB /* Logo_GorAntenService_White.png */; };
+		1CCB858623A368A5007C7AEB /* Logo_GorAntenService_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCB858423A368A5007C7AEB /* Logo_GorAntenService_White.png */; };
+		1CCB858B23A3692D007C7AEB /* Logo_GorAntenService.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCB858A23A3692C007C7AEB /* Logo_GorAntenService.png */; };
+		1CCB858C23A3692D007C7AEB /* Logo_GorAntenService.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCB858A23A3692C007C7AEB /* Logo_GorAntenService.png */; };
 		1CCD60EC22E18974009C4B5C /* SupportUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCD60EB22E18974009C4B5C /* SupportUpdate.swift */; };
 		1CCD60ED22E18974009C4B5C /* SupportUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCD60EB22E18974009C4B5C /* SupportUpdate.swift */; };
 		1CCD60EE22E18974009C4B5C /* SupportUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCD60EB22E18974009C4B5C /* SupportUpdate.swift */; };
@@ -1730,10 +1898,10 @@
 		1CF8FD8C21FB1AD30058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		1CF8FD8D21FB1AD40058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		2634C04815704A2D97F2C141 /* Pods_UK_Service_Comfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB46B23F8B123C151FD65A6 /* Pods_UK_Service_Comfort.framework */; };
-		265D6308F9C3077327185719 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		26C33F61AEC0026809A8A320 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		2CC3513A8EBBA84C3E5A0EDD /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		30082FB222699CB3005BF485 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		265D6308F9C3077327185719 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		26C33F61AEC0026809A8A320 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		2CC3513A8EBBA84C3E5A0EDD /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		30082FB222699CB3005BF485 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		30082FB322699CB3005BF485 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
 		30082FB422699CB3005BF485 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
 		30082FB522699CB3005BF485 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
@@ -1743,7 +1911,7 @@
 		30082FB922699CB3005BF485 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
 		30082FBA22699CB3005BF485 /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		30082FBB22699CB3005BF485 /* AddLsPocket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD2D3932264844D00494DE6 /* AddLsPocket.storyboard */; };
-		30082FBC22699CB3005BF485 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		30082FBC22699CB3005BF485 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		30082FBD22699CB3005BF485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		30082FBE22699CB3005BF485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		30082FBF22699CB3005BF485 /* logo_MupRCMytishi.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */; };
@@ -2862,7 +3030,7 @@
 		302F333E22CDB50B00305EF2 /* CountersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFE821361F56004DB75C /* CountersController.swift */; };
 		302F333F22CDB50B00305EF2 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A38AF22029FFE00774DED /* SupportController.swift */; };
 		302F334122CDB50B00305EF2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7B34CE21992DE100E6BAA3 /* CoreLocation.framework */; };
-		302F334222CDB50B00305EF2 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		302F334222CDB50B00305EF2 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		302F334422CDB50B00305EF2 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF4221341BCD004DB75C /* MainMenu.storyboard */; };
 		302F334522CDB50B00305EF2 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		302F334622CDB50B00305EF2 /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
@@ -2910,7 +3078,7 @@
 		302F337222CDB50B00305EF2 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
 		302F337A22CDB72F00305EF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302F337922CDB72F00305EF2 /* GoogleService-Info.plist */; };
 		302F337D22CDBF9F00305EF2 /* Logo_ElectrosbitSaratov.png in Resources */ = {isa = PBXBuildFile; fileRef = 302F337C22CDBF9F00305EF2 /* Logo_ElectrosbitSaratov.png */; };
-		302FA1832256F1A8006B7874 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		302FA1832256F1A8006B7874 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		302FA1842256F1A8006B7874 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
 		302FA1852256F1A8006B7874 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
 		302FA1862256F1A8006B7874 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
@@ -2919,7 +3087,7 @@
 		302FA1892256F1A8006B7874 /* logo_MupRCMytishi_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DD213CFD60002CEB62 /* logo_MupRCMytishi_White.png */; };
 		302FA18A2256F1A8006B7874 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
 		302FA18B2256F1A8006B7874 /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
-		302FA18C2256F1A8006B7874 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		302FA18C2256F1A8006B7874 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		302FA18D2256F1A8006B7874 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		302FA18E2256F1A8006B7874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		302FA18F2256F1A8006B7874 /* logo_MupRCMytishi.png in Resources */ = {isa = PBXBuildFile; fileRef = 41DFC3DF213CFE05002CEB62 /* logo_MupRCMytishi.png */; };
@@ -8051,13 +8219,13 @@
 		4120926C2158CB2D001E713E /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
 		4120926D2158CB2D001E713E /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
 		4120926E2158CB2D001E713E /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
-		412092722158CB2D001E713E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		412092722158CB2D001E713E /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		412092732158CB2D001E713E /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
 		412092742158CB2D001E713E /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		412092752158CB2D001E713E /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		412092762158CB2D001E713E /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
 		412092772158CB2D001E713E /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
-		412092782158CB2D001E713E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		412092782158CB2D001E713E /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		412092792158CB2D001E713E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		4120927A2158CB2D001E713E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		4120927B2158CB2D001E713E /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
@@ -8146,13 +8314,13 @@
 		412092E32159E603001E713E /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
 		412092E42159E603001E713E /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
 		412092E52159E603001E713E /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
-		412092E92159E603001E713E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		412092E92159E603001E713E /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		412092EA2159E603001E713E /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
 		412092EB2159E603001E713E /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		412092EC2159E603001E713E /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		412092ED2159E603001E713E /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
 		412092EE2159E603001E713E /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
-		412092EF2159E603001E713E /* (null) in Resources */ = {isa = PBXBuildFile; };
+		412092EF2159E603001E713E /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		412092F02159E603001E713E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		412092F12159E603001E713E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		412092F22159E603001E713E /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
@@ -8357,10 +8525,10 @@
 		418ABF532134CF1A004DB75C /* ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF4621341F71004DB75C /* ForgotPass.swift */; };
 		418ABF542134CF1A004DB75C /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF3B2134019E004DB75C /* Registration.swift */; };
 		418ABF552134CF1A004DB75C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
-		418ABF592134CF1A004DB75C /* (null) in Resources */ = {isa = PBXBuildFile; };
+		418ABF592134CF1A004DB75C /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		418ABF5A2134CF1A004DB75C /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		418ABF5B2134CF1A004DB75C /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
-		418ABF5C2134CF1A004DB75C /* (null) in Resources */ = {isa = PBXBuildFile; };
+		418ABF5C2134CF1A004DB75C /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		418ABF5D2134CF1A004DB75C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		418ABF5E2134CF1A004DB75C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		418ABF5F2134CF1A004DB75C /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
@@ -8423,10 +8591,10 @@
 		418ABFBF21357DA5004DB75C /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF8821353F19004DB75C /* NewsCell.swift */; };
 		418ABFC021357DA5004DB75C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABF0A2133CC7B004DB75C /* AppDelegate.swift */; };
 		418ABFC121357DA5004DB75C /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
-		418ABFC621357DA5004DB75C /* (null) in Resources */ = {isa = PBXBuildFile; };
+		418ABFC621357DA5004DB75C /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		418ABFC721357DA5004DB75C /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		418ABFC821357DA5004DB75C /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
-		418ABFC921357DA5004DB75C /* (null) in Resources */ = {isa = PBXBuildFile; };
+		418ABFC921357DA5004DB75C /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		418ABFCA21357DA5004DB75C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		418ABFCB21357DA5004DB75C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		418ABFCC21357DA5004DB75C /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
@@ -8666,12 +8834,12 @@
 		41DFC3B3213CF4E9002CEB62 /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
 		41DFC3B4213CF4E9002CEB62 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
 		41DFC3B5213CF4E9002CEB62 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
-		41DFC3B9213CF4E9002CEB62 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41DFC3B9213CF4E9002CEB62 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		41DFC3BA213CF4E9002CEB62 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
 		41DFC3BB213CF4E9002CEB62 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		41DFC3BC213CF4E9002CEB62 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		41DFC3BD213CF4E9002CEB62 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
-		41DFC3BE213CF4E9002CEB62 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41DFC3BE213CF4E9002CEB62 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		41DFC3BF213CF4E9002CEB62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		41DFC3C0213CF4E9002CEB62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		41DFC3C1213CF4E9002CEB62 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
@@ -8747,12 +8915,12 @@
 		41DFC41A213D206C002CEB62 /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
 		41DFC41B213D206C002CEB62 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
 		41DFC41C213D206C002CEB62 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
-		41DFC420213D206C002CEB62 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41DFC420213D206C002CEB62 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		41DFC421213D206C002CEB62 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
 		41DFC422213D206C002CEB62 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		41DFC423213D206C002CEB62 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		41DFC424213D206C002CEB62 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
-		41DFC425213D206C002CEB62 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41DFC425213D206C002CEB62 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		41DFC426213D206C002CEB62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		41DFC427213D206C002CEB62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		41DFC428213D206C002CEB62 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
@@ -8991,13 +9159,13 @@
 		41FDA285214229A0003D8110 /* Web_Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF5A56213A87E600789370 /* Web_Camera.swift */; };
 		41FDA286214229A0003D8110 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF59FD2138D3F200789370 /* AppsController.swift */; };
 		41FDA287214229A0003D8110 /* QuestionsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418ABFA421357B14004DB75C /* QuestionsJson.swift */; };
-		41FDA28C214229A0003D8110 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41FDA28C214229A0003D8110 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		41FDA28D214229A0003D8110 /* WebCameras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A45213A80D600789370 /* WebCameras.storyboard */; };
 		41FDA28E214229A0003D8110 /* app_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF59F82138D14700789370 /* app_open.png */; };
 		41FDA28F214229A0003D8110 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF352133FC5D004DB75C /* Registration.storyboard */; };
 		41FDA290214229A0003D8110 /* ForgotPass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF3821340003004DB75C /* ForgotPass.storyboard */; };
 		41FDA291214229A0003D8110 /* ic_ok_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ACA2072140CA4400921C82 /* ic_ok_app.png */; };
-		41FDA292214229A0003D8110 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		41FDA292214229A0003D8110 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		41FDA293214229A0003D8110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF132133CC8C004DB75C /* LaunchScreen.storyboard */; };
 		41FDA294214229A0003D8110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF112133CC8C004DB75C /* Assets.xcassets */; };
 		41FDA296214229A0003D8110 /* logo_SM.png in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF222133CF96004DB75C /* logo_SM.png */; };
@@ -9025,33 +9193,33 @@
 		4767CB22469BCC7DD7E62AA2 /* Pods_EasyLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9189286053AA05EC238031 /* Pods_EasyLife.framework */; };
 		4806B098DDFC7C83F814EA1E /* Pods_TSN_Ruble40.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64AF4071E5AA344656CC6DA /* Pods_TSN_Ruble40.framework */; };
 		4AEEEB4E3164BFBEBC3177AE /* Pods_UK_Upravdom_Che.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A50C912C4F79F1F90C177E2 /* Pods_UK_Upravdom_Che.framework */; };
-		4F273E88813D63BD485DA047 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		4F273E88813D63BD485DA047 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		511527C69789A3E9E6D52AB6 /* Pods_Parus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BDF0CCC6B22C7D44ED6A1D /* Pods_Parus.framework */; };
 		56279C75722BB00CB3E0EFEF /* Pods_Skyfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8BF8463432180A878BACE6 /* Pods_Skyfort.framework */; };
 		5744CA193F46F1702C9925E5 /* Pods_StroimBud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41280B564D3E484E2228C675 /* Pods_StroimBud.framework */; };
 		58E638C44A19695BEBCD3876 /* Pods_Tafgai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FF736481198B5057DC38F3 /* Pods_Tafgai.framework */; };
 		59AB60C74EA69B056978218C /* Pods_Klimovsk12.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F13DF11B08D4D582D61D0D2 /* Pods_Klimovsk12.framework */; };
-		5B6BEAD9D64B50999F858BEC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		5B6BEAD9D64B50999F858BEC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		5FFEBDED16E6143C8641A284 /* Pods_JKH_Pavlovskoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C98F6851A378B2BEC43A4C /* Pods_JKH_Pavlovskoe.framework */; };
 		624D31C93E9AF5F25A2F4576 /* Pods_UK_Paritet_Khab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54B316E9F25C5B08EC4900 /* Pods_UK_Paritet_Khab.framework */; };
-		67B7A789612E6E84FC324527 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		67B7A789612E6E84FC324527 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		74D9193FA29EA1CAEF147072 /* Pods_UK_Perspectiva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D2E04F207702CD9E47E7EB /* Pods_UK_Perspectiva.framework */; };
 		76002078399D6CF78B2962FD /* Pods_Pritomskoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B8EBBD488BAF8F82A2D9FB /* Pods_Pritomskoe.framework */; };
 		76976DECA3BC33F6B04FD9A8 /* Pods_Narian_Mar_el.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F057313E6FE1D0F041B71E71 /* Pods_Narian_Mar_el.framework */; };
 		7F320DCC2F3EA0D3E0DAA09F /* Pods_ObjJKH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5428DDDDBA3E4A0A69BCBC8D /* Pods_ObjJKH.framework */; };
 		807B3CD237EA6541C63CBD05 /* Pods_Stolitsa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0B17C963363C8850F6A8BA /* Pods_Stolitsa.framework */; };
 		80D9F109D4256C34D1726522 /* Pods_ChistDom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBA0E90ADE2FAE50B12C336 /* Pods_ChistDom.framework */; };
-		89A87CAAFB699F0CAA446730 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		8D6071120433C319FF614F1A /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		8F7D1037B8924DF550879355 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		91AA2A216112C6784F1697DF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		89A87CAAFB699F0CAA446730 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		8D6071120433C319FF614F1A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		8F7D1037B8924DF550879355 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		91AA2A216112C6784F1697DF /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		9242BA2A61E35556991F63A6 /* Pods_UK_Komfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 126F73D4F5E7682528FFF4D1 /* Pods_UK_Komfort.framework */; };
 		934908097E1E684387DF032F /* Pods_Fregat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB56EA33A54165288A2309E /* Pods_Fregat.framework */; };
 		935A0804E965A3B5FF2D7F60 /* Pods_ADS_68.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C69E7CE27CF580C2EDF8A70A /* Pods_ADS_68.framework */; };
 		988DD0CA68D3E3FC58293D52 /* Pods_OurObjHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E18311FD916634DB235975 /* Pods_OurObjHome.framework */; };
 		991C56901C349633B4F4576E /* Pods_MUP_IRKC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6F73C2F4B494CA557D83DC /* Pods_MUP_IRKC.framework */; };
 		998389282861D0FCBDDF7743 /* Pods_NewOpaliha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E1D250E88FCF49CADABAFE /* Pods_NewOpaliha.framework */; };
-		998D044E483B5897E321D937 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		998D044E483B5897E321D937 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		9AD7BA4A22FC29700059B5A5 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		9AD7BA4B22FC40860059B5A5 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		A1037F7ACDB7056EAC8C518E /* Pods_DJ_Vladimir.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A07BDB9A94B259683EE0C6C /* Pods_DJ_Vladimir.framework */; };
@@ -9062,14 +9230,14 @@
 		AA6B59219E6C382353A50456 /* Pods_Energoprogress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAA4A92318A7AF53238C4D /* Pods_Energoprogress.framework */; };
 		AB278CA0B5EFBA946A91852B /* Pods_Sib_Aliance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6F7A935F8F6D0C6731D8EF /* Pods_Sib_Aliance.framework */; };
 		B711D984C75C80163B795917 /* Pods_UyutService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0930D79EBDCC4C4F4AD349 /* Pods_UyutService.framework */; };
-		B8199B73BBE91DDAAD391AFD /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		BF952D90EE6C1C654A50FEBC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		B8199B73BBE91DDAAD391AFD /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		BF952D90EE6C1C654A50FEBC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		C22581C1D762219D8E013723 /* Pods_MobileMIR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8484C67A02A35684B1B91F /* Pods_MobileMIR.framework */; };
 		C23C2437FE8159C15A5B7892 /* Pods_UK_Komfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C026E682265993500E62FC6 /* Pods_UK_Komfort.framework */; };
 		CF1A5C4457E19D0C9D3B13E6 /* Pods_UK_Paritet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7394CE94721B15703703632 /* Pods_UK_Paritet.framework */; };
 		D93363A89C01A24996346BEE /* Pods_StroimBud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2298714608DF2D551302FB /* Pods_StroimBud.framework */; };
-		DD19A8CCE87D2EFA56108E03 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		DD2E3B2B1BE8FFC24613782F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		DD19A8CCE87D2EFA56108E03 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		DD2E3B2B1BE8FFC24613782F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		E088850E71E4334C2ADCB725 /* Pods_RodnikMUP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C5ACB0C9372D461C5BBC97 /* Pods_RodnikMUP.framework */; };
 		E682B5838AE0901838B6DA56 /* Pods_JKH_Pocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDBE253FE55124384C73FA1 /* Pods_JKH_Pocket.framework */; };
 		F0A97F8C043742A94D9E7770 /* Pods_VodSergPosad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D0DB48FA115B1CFB97BF5 /* Pods_VodSergPosad.framework */; };
@@ -9177,6 +9345,10 @@
 		1CC75A6D2398DBFE00EE59D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/Zarinsk/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1CC75A6F2398DC2F00EE59D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/TSJ_Pedagog/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1CCA98562249160900636270 /* addCountersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCountersController.swift; sourceTree = "<group>"; };
+		1CCB858123A365FF007C7AEB /* Городская Антенная Служба.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Городская Антенная Служба.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CCB858223A36606007C7AEB /* GorAntenService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GorAntenService-Info.plist"; sourceTree = "<group>"; };
+		1CCB858423A368A5007C7AEB /* Logo_GorAntenService_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_GorAntenService_White.png; sourceTree = "<group>"; };
+		1CCB858A23A3692C007C7AEB /* Logo_GorAntenService.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_GorAntenService.png; sourceTree = "<group>"; };
 		1CCD60EB22E18974009C4B5C /* SupportUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportUpdate.swift; sourceTree = "<group>"; };
 		1CCF068F22C21F1C00700A7D /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		1CD2D3912264841A00494DE6 /* ChoiceRegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceRegionController.swift; sourceTree = "<group>"; };
@@ -9387,9 +9559,11 @@
 		30FF5D7A2301B0BE00AD297B /* TSJ_Archangel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TSJ_Archangel-Info.plist"; path = "/Users/roman/Documents/Мобильные приложения/iOS/Obj_JKH/TSJ_Archangel-Info.plist"; sourceTree = "<absolute>"; };
 		30FF5D7C2301B27C00AD297B /* Logo_TSJ_Archangel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_TSJ_Archangel.png; sourceTree = "<group>"; };
 		31397E3AB3FF6A66EB571107 /* Pods-UK_Garant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Garant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Garant/Pods-UK_Garant.debug.xcconfig"; sourceTree = "<group>"; };
+		327B2A0E56BE25BAE5EE1067 /* Pods-GorAntenService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GorAntenService.release.xcconfig"; path = "Pods/Target Support Files/Pods-GorAntenService/Pods-GorAntenService.release.xcconfig"; sourceTree = "<group>"; };
 		34641B081E377E8D82EE8373 /* Pods-MupRCMytishi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MupRCMytishi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MupRCMytishi/Pods-MupRCMytishi.debug.xcconfig"; sourceTree = "<group>"; };
 		3812FAFB8B6F58CBB776AADB /* Pods_UK_Garant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UK_Garant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39AD89F4E62ED936DB7BC118 /* Pods-Narian_Mar_el.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Narian_Mar_el.release.xcconfig"; path = "Pods/Target Support Files/Pods-Narian_Mar_el/Pods-Narian_Mar_el.release.xcconfig"; sourceTree = "<group>"; };
+		3A8B8F23F14E4BE7CD399B77 /* Pods_GorAntenService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GorAntenService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB56EA33A54165288A2309E /* Pods_Fregat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fregat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1E047E67D67E64E9A68916 /* Pods-JKH_Pocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKH_Pocket.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKH_Pocket/Pods-JKH_Pocket.release.xcconfig"; sourceTree = "<group>"; };
 		3C407A2660F2B4657D069094 /* Pods-TSN_Ruble40.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSN_Ruble40.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TSN_Ruble40/Pods-TSN_Ruble40.debug.xcconfig"; sourceTree = "<group>"; };
@@ -9664,6 +9838,7 @@
 		E1571C3EF4B661F60077FAAD /* Pods-UK_Service_Comfort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UK_Service_Comfort.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UK_Service_Comfort/Pods-UK_Service_Comfort.debug.xcconfig"; sourceTree = "<group>"; };
 		E4FF42C4D272C7E80BA3CAC5 /* Pods_TSN_Dnestr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSN_Dnestr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D2E04F207702CD9E47E7EB /* Pods_UK_Perspectiva.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UK_Perspectiva.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E60DDAE9CC860F7E7E44D51E /* Pods-GorAntenService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GorAntenService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GorAntenService/Pods-GorAntenService.debug.xcconfig"; sourceTree = "<group>"; };
 		E660478A93B26675F667A396 /* Pods-NewOpaliha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewOpaliha.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewOpaliha/Pods-NewOpaliha.release.xcconfig"; sourceTree = "<group>"; };
 		E8A301911D950D79BAA66A7D /* Pods-TSJ_Kosm11.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSJ_Kosm11.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TSJ_Kosm11/Pods-TSJ_Kosm11.debug.xcconfig"; sourceTree = "<group>"; };
 		EC243C84ED7248F6402C4019 /* Pods_TSJ_Kosm11.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSJ_Kosm11.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -9724,6 +9899,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CCB854423A365FF007C7AEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CCB854523A365FF007C7AEB /* CoreLocation.framework in Frameworks */,
+				19421989641EED95CD9B72C3 /* Pods_GorAntenService.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CDE155E2394E3260040DCE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -9757,7 +9941,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				300F1D2922D4268D00C32229 /* CoreLocation.framework in Frameworks */,
-				175C018860CAAB860B031DEF /* (null) in Frameworks */,
+				175C018860CAAB860B031DEF /* BuildFile in Frameworks */,
 				03244EA2340F40BC6DF88FA4 /* Pods_Servicekom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9767,7 +9951,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3013F37C22E0089900AE0695 /* CoreLocation.framework in Frameworks */,
-				265D6308F9C3077327185719 /* (null) in Frameworks */,
+				265D6308F9C3077327185719 /* BuildFile in Frameworks */,
 				624D31C93E9AF5F25A2F4576 /* Pods_UK_Paritet_Khab.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9786,7 +9970,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30260BA622DA028C00D019DA /* CoreLocation.framework in Frameworks */,
-				148C329EC42FCD24B62A8A3D /* (null) in Frameworks */,
+				148C329EC42FCD24B62A8A3D /* BuildFile in Frameworks */,
 				10B05B6AE902F8B00AF2936F /* Pods_Teplovodoresources.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9814,8 +9998,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				302F334122CDB50B00305EF2 /* CoreLocation.framework in Frameworks */,
-				302F334222CDB50B00305EF2 /* (null) in Frameworks */,
-				00BFCF80FD8156762059186A /* (null) in Frameworks */,
+				302F334222CDB50B00305EF2 /* BuildFile in Frameworks */,
+				00BFCF80FD8156762059186A /* BuildFile in Frameworks */,
 				13443F7B9ABC28697C1812C1 /* Pods_ElectroSbit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9844,7 +10028,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30354AD4231616A2008874D3 /* CoreLocation.framework in Frameworks */,
-				2CC3513A8EBBA84C3E5A0EDD /* (null) in Frameworks */,
+				2CC3513A8EBBA84C3E5A0EDD /* BuildFile in Frameworks */,
 				F5BDB91363A52DCA01E3AC04 /* Pods_UK_First.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9881,8 +10065,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				304A317622DAEB7000008E1B /* CoreLocation.framework in Frameworks */,
-				4F273E88813D63BD485DA047 /* (null) in Frameworks */,
-				5B6BEAD9D64B50999F858BEC /* (null) in Frameworks */,
+				4F273E88813D63BD485DA047 /* BuildFile in Frameworks */,
+				5B6BEAD9D64B50999F858BEC /* BuildFile in Frameworks */,
 				D93363A89C01A24996346BEE /* Pods_StroimBud.framework in Frameworks */,
 				5744CA193F46F1702C9925E5 /* Pods_StroimBud.framework in Frameworks */,
 			);
@@ -9911,7 +10095,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3067172222FD16E900239C75 /* CoreLocation.framework in Frameworks */,
-				67B7A789612E6E84FC324527 /* (null) in Frameworks */,
+				67B7A789612E6E84FC324527 /* BuildFile in Frameworks */,
 				AB278CA0B5EFBA946A91852B /* Pods_Sib_Aliance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9929,7 +10113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				307690BC22B288C40043916F /* CoreLocation.framework in Frameworks */,
-				14C1E4A63EC675B15D524331 /* (null) in Frameworks */,
+				14C1E4A63EC675B15D524331 /* BuildFile in Frameworks */,
 				511527C69789A3E9E6D52AB6 /* Pods_Parus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9939,8 +10123,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				307C84B122E5E0BF00CFE739 /* CoreLocation.framework in Frameworks */,
-				998D044E483B5897E321D937 /* (null) in Frameworks */,
-				8D6071120433C319FF614F1A /* (null) in Frameworks */,
+				998D044E483B5897E321D937 /* BuildFile in Frameworks */,
+				8D6071120433C319FF614F1A /* BuildFile in Frameworks */,
 				935A0804E965A3B5FF2D7F60 /* Pods_ADS_68.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9985,10 +10169,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				30940B8622F80D7C00422C64 /* CoreLocation.framework in Frameworks */,
-				8F7D1037B8924DF550879355 /* (null) in Frameworks */,
-				DD19A8CCE87D2EFA56108E03 /* (null) in Frameworks */,
+				8F7D1037B8924DF550879355 /* BuildFile in Frameworks */,
+				DD19A8CCE87D2EFA56108E03 /* BuildFile in Frameworks */,
 				38EC162B214B946FAB73FA46 /* Pods_NewOpaliha.framework in Frameworks */,
-				B8199B73BBE91DDAAD391AFD /* (null) in Frameworks */,
+				B8199B73BBE91DDAAD391AFD /* BuildFile in Frameworks */,
 				FB093ADBE93ED159F1E4CDBD /* Pods_NewOpaliha.framework in Frameworks */,
 				998389282861D0FCBDDF7743 /* Pods_NewOpaliha.framework in Frameworks */,
 			);
@@ -10044,7 +10228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DFE8D522DC263B004D5C31 /* CoreLocation.framework in Frameworks */,
-				91AA2A216112C6784F1697DF /* (null) in Frameworks */,
+				91AA2A216112C6784F1697DF /* BuildFile in Frameworks */,
 				E088850E71E4334C2ADCB725 /* Pods_RodnikMUP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10072,7 +10256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30F3BDB722A50748007B24FB /* CoreLocation.framework in Frameworks */,
-				128D47EE9322D6CDE0458465 /* (null) in Frameworks */,
+				128D47EE9322D6CDE0458465 /* BuildFile in Frameworks */,
 				74D9193FA29EA1CAEF147072 /* Pods_UK_Perspectiva.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10100,7 +10284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30FDF50823010C3A0010B349 /* CoreLocation.framework in Frameworks */,
-				DD2E3B2B1BE8FFC24613782F /* (null) in Frameworks */,
+				DD2E3B2B1BE8FFC24613782F /* BuildFile in Frameworks */,
 				F1B03EB82DB6AA4419D49655 /* Pods_UK_Spartak.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10110,7 +10294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30FF5D3F2301B0BD00AD297B /* CoreLocation.framework in Frameworks */,
-				26C33F61AEC0026809A8A320 /* (null) in Frameworks */,
+				26C33F61AEC0026809A8A320 /* BuildFile in Frameworks */,
 				3D64A1836F8D60885C6031DF /* Pods_TSJ_Archangel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10120,7 +10304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				411F9B0722238A0E00C5F697 /* CoreLocation.framework in Frameworks */,
-				138D2D293EB28FCE3C08F02E /* (null) in Frameworks */,
+				138D2D293EB28FCE3C08F02E /* BuildFile in Frameworks */,
 				383FCB2C20A1FF43AB7F9677 /* Pods_ReutKomfort.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10157,7 +10341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C7B34D0219939FF00E6BAA3 /* CoreLocation.framework in Frameworks */,
-				BF952D90EE6C1C654A50FEBC /* (null) in Frameworks */,
+				BF952D90EE6C1C654A50FEBC /* BuildFile in Frameworks */,
 				7F320DCC2F3EA0D3E0DAA09F /* Pods_ObjJKH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10196,7 +10380,7 @@
 			files = (
 				1CC3FF242238D4D700FDBA82 /* PassKit.framework in Frameworks */,
 				1C7B34D121993A0C00E6BAA3 /* CoreLocation.framework in Frameworks */,
-				89A87CAAFB699F0CAA446730 /* (null) in Frameworks */,
+				89A87CAAFB699F0CAA446730 /* BuildFile in Frameworks */,
 				0F485A8EF999E1E7621ADA42 /* Pods_MupRCMytishi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10277,6 +10461,15 @@
 				1CC75A672398D11B00EE59D8 /* Logo_Pedagog_White.png */,
 			);
 			path = TSJ_Pedagog;
+			sourceTree = "<group>";
+		};
+		1CCB858323A36891007C7AEB /* GorAntenService */ = {
+			isa = PBXGroup;
+			children = (
+				1CCB858423A368A5007C7AEB /* Logo_GorAntenService_White.png */,
+				1CCB858A23A3692C007C7AEB /* Logo_GorAntenService.png */,
+			);
+			path = GorAntenService;
 			sourceTree = "<group>";
 		};
 		1CD2D3902264837C00494DE6 /* AddLsPocket */ = {
@@ -10393,6 +10586,7 @@
 		30354B1223161901008874D3 /* Targets_Images */ = {
 			isa = PBXGroup;
 			children = (
+				1CCB858323A36891007C7AEB /* GorAntenService */,
 				1CC75A662398D10700EE59D8 /* TSJ_Pedagog */,
 				1CC75A5F2398CB9600EE59D8 /* Zarinsk */,
 				1CDE159B2394E7680040DCE1 /* MobileMIR */,
@@ -10599,6 +10793,7 @@
 		307690F822B28DEC0043916F /* Info_Plists */ = {
 			isa = PBXGroup;
 			children = (
+				1CCB858223A36606007C7AEB /* GorAntenService-Info.plist */,
 				1CC75A5E2398CAD700EE59D8 /* TSJ_Pedagog-Info.plist */,
 				1CC759B02398C65A00EE59D8 /* Zarinsk-Info.plist */,
 				1CDE15982394E3DA0040DCE1 /* MobileMIR-Info.plist */,
@@ -10981,6 +11176,7 @@
 				1CDE15962394E3260040DCE1 /* Мобильный мир.app */,
 				1CC759AF2398C65800EE59D8 /* ЖКУ Заринск.app */,
 				1CC75A5D2398CAD600EE59D8 /* ТСЖ Педагогический.app */,
+				1CCB858123A365FF007C7AEB /* Городская Антенная Служба.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -11486,6 +11682,8 @@
 				2E02D607950FE26FBC0B1775 /* Pods-TSJ_Pedagog.release.xcconfig */,
 				7C6968C1668968E78097C3EC /* Pods-Zarinsk.debug.xcconfig */,
 				2ED6E2D76EB2A0DEEA3A20F2 /* Pods-Zarinsk.release.xcconfig */,
+				E60DDAE9CC860F7E7E44D51E /* Pods-GorAntenService.debug.xcconfig */,
+				327B2A0E56BE25BAE5EE1067 /* Pods-GorAntenService.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -11549,6 +11747,7 @@
 				41280B564D3E484E2228C675 /* Pods_StroimBud.framework */,
 				03B6F27E921933552CC67E05 /* Pods_TSJ_Pedagog.framework */,
 				0D2F2EBE4836428A6F2B8AB5 /* Pods_Zarinsk.framework */,
+				3A8B8F23F14E4BE7CD399B77 /* Pods_GorAntenService.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -11634,6 +11833,26 @@
 			name = TSJ_Pedagog;
 			productName = VodSergPosad;
 			productReference = 1CC75A5D2398CAD600EE59D8 /* ТСЖ Педагогический.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1CCB84D323A365FF007C7AEB /* GorAntenService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CCB857E23A365FF007C7AEB /* Build configuration list for PBXNativeTarget "GorAntenService" */;
+			buildPhases = (
+				1CCB84D423A365FF007C7AEB /* [CP] Check Pods Manifest.lock */,
+				1CCB84D523A365FF007C7AEB /* Sources */,
+				1CCB854423A365FF007C7AEB /* Frameworks */,
+				1CCB854723A365FF007C7AEB /* Resources */,
+				1CCB857C23A365FF007C7AEB /* Run Script */,
+				1CCB857D23A365FF007C7AEB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GorAntenService;
+			productName = VodSergPosad;
+			productReference = 1CCB858123A365FF007C7AEB /* Городская Антенная Служба.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1CDE14ED2394E3260040DCE1 /* MobileMIR */ = {
@@ -12917,6 +13136,7 @@
 				1CDE14ED2394E3260040DCE1 /* MobileMIR */,
 				1CC759032398C65800EE59D8 /* Zarinsk */,
 				1CC759B12398CAD600EE59D8 /* TSJ_Pedagog */,
+				1CCB84D323A365FF007C7AEB /* GorAntenService */,
 			);
 		};
 /* End PBXProject section */
@@ -13094,6 +13314,67 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CCB854723A365FF007C7AEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CCB854823A365FF007C7AEB /* WebCameras.storyboard in Resources */,
+				1CCB854923A365FF007C7AEB /* ForgotPass.storyboard in Resources */,
+				1CCB854A23A365FF007C7AEB /* Logo_Pedagog.png in Resources */,
+				1CCB854B23A365FF007C7AEB /* ic_get_app.png in Resources */,
+				1CCB854C23A365FF007C7AEB /* MainMenuCons.storyboard in Resources */,
+				1CCB854D23A365FF007C7AEB /* TechWork.storyboard in Resources */,
+				1CCB854E23A365FF007C7AEB /* account_icon_user.png in Resources */,
+				1CCB854F23A365FF007C7AEB /* app_open.png in Resources */,
+				1CCB855023A365FF007C7AEB /* Logo_DemoUC.png in Resources */,
+				1CCB855123A365FF007C7AEB /* NoCounters.storyboard in Resources */,
+				1CCB855223A365FF007C7AEB /* Logo_Pedagog_White.png in Resources */,
+				1CCB855323A365FF007C7AEB /* ic_action_files_grey.png in Resources */,
+				1CCB855423A365FF007C7AEB /* Support.storyboard in Resources */,
+				1CCB855523A365FF007C7AEB /* GoogleService-Info.plist in Resources */,
+				1CCB858C23A3692D007C7AEB /* Logo_GorAntenService.png in Resources */,
+				1CCB855623A365FF007C7AEB /* ic_close_action.png in Resources */,
+				1CCB855723A365FF007C7AEB /* NewAddLS.storyboard in Resources */,
+				1CCB858623A368A5007C7AEB /* Logo_GorAntenService_White.png in Resources */,
+				1CCB855823A365FF007C7AEB /* Main.storyboard in Resources */,
+				1CCB855923A365FF007C7AEB /* Registration.storyboard in Resources */,
+				1CCB855A23A365FF007C7AEB /* LaunchScreen.storyboard in Resources */,
+				1CCB855B23A365FF007C7AEB /* SelectItem.storyboard in Resources */,
+				1CCB855C23A365FF007C7AEB /* AdditionalServices.storyboard in Resources */,
+				1CCB855D23A365FF007C7AEB /* spin.png in Resources */,
+				1CCB855E23A365FF007C7AEB /* Logo_DemoUC_White.png in Resources */,
+				1CCB855F23A365FF007C7AEB /* Questions.storyboard in Resources */,
+				1CCB856023A365FF007C7AEB /* account_icon_cons.jpg in Resources */,
+				1CCB856123A365FF007C7AEB /* MobileMIR-Info.plist in Resources */,
+				1CCB856223A365FF007C7AEB /* arrow_rigth.png in Resources */,
+				1CCB856323A365FF007C7AEB /* PaysMytishi.storyboard in Resources */,
+				1CCB856423A365FF007C7AEB /* NewMainMenu.storyboard in Resources */,
+				1CCB856523A365FF007C7AEB /* ObjectControl.storyboard in Resources */,
+				1CCB856623A365FF007C7AEB /* main_background.png in Resources */,
+				1CCB856723A365FF007C7AEB /* logo_SM.png in Resources */,
+				1CCB856823A365FF007C7AEB /* Apps.storyboard in Resources */,
+				1CCB856923A365FF007C7AEB /* News.storyboard in Resources */,
+				1CCB856A23A365FF007C7AEB /* Saldo.storyboard in Resources */,
+				1CCB856B23A365FF007C7AEB /* Assets.xcassets in Resources */,
+				1CCB856C23A365FF007C7AEB /* app_close.png in Resources */,
+				1CCB856D23A365FF007C7AEB /* Logo_MobileMIR_White.png in Resources */,
+				1CCB856E23A365FF007C7AEB /* Logo_VodSergPosad.png in Resources */,
+				1CCB856F23A365FF007C7AEB /* Account.storyboard in Resources */,
+				1CCB857023A365FF007C7AEB /* Counters.storyboard in Resources */,
+				1CCB857123A365FF007C7AEB /* MainMenu.storyboard in Resources */,
+				1CCB857223A365FF007C7AEB /* ic_send_app.png in Resources */,
+				1CCB857323A365FF007C7AEB /* MupCounters.storyboard in Resources */,
+				1CCB857423A365FF007C7AEB /* 2PaysMytishi.storyboard in Resources */,
+				1CCB857523A365FF007C7AEB /* PaymentSuccessViewController.xib in Resources */,
+				1CCB857623A365FF007C7AEB /* AddLsPocket.storyboard in Resources */,
+				1CCB857723A365FF007C7AEB /* Voting.storyboard in Resources */,
+				1CCB857823A365FF007C7AEB /* Pays.storyboard in Resources */,
+				1CCB857923A365FF007C7AEB /* NewRegistration.storyboard in Resources */,
+				1CCB857A23A365FF007C7AEB /* ic_ok_app.png in Resources */,
+				1CCB857B23A365FF007C7AEB /* Logo_MobileMIR.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CDE15612394E3260040DCE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -13210,7 +13491,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30082FB222699CB3005BF485 /* (null) in Resources */,
+				30082FB222699CB3005BF485 /* BuildFile in Resources */,
 				30082FB322699CB3005BF485 /* WebCameras.storyboard in Resources */,
 				30082FB422699CB3005BF485 /* Support.storyboard in Resources */,
 				30082FB522699CB3005BF485 /* app_open.png in Resources */,
@@ -13221,7 +13502,7 @@
 				1C2EF7D422F7D76300581B16 /* NewAddLS.storyboard in Resources */,
 				30082FBA22699CB3005BF485 /* NoCounters.storyboard in Resources */,
 				30082FBB22699CB3005BF485 /* AddLsPocket.storyboard in Resources */,
-				30082FBC22699CB3005BF485 /* (null) in Resources */,
+				30082FBC22699CB3005BF485 /* BuildFile in Resources */,
 				30082FBD22699CB3005BF485 /* LaunchScreen.storyboard in Resources */,
 				30082FBE22699CB3005BF485 /* Assets.xcassets in Resources */,
 				30082FBF22699CB3005BF485 /* logo_MupRCMytishi.png in Resources */,
@@ -13672,7 +13953,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				302FA1832256F1A8006B7874 /* (null) in Resources */,
+				302FA1832256F1A8006B7874 /* BuildFile in Resources */,
 				302FA1842256F1A8006B7874 /* WebCameras.storyboard in Resources */,
 				1C2EF7D222F7D76100581B16 /* NewAddLS.storyboard in Resources */,
 				302FA1852256F1A8006B7874 /* Support.storyboard in Resources */,
@@ -13683,7 +13964,7 @@
 				302FA18A2256F1A8006B7874 /* ForgotPass.storyboard in Resources */,
 				302FA18B2256F1A8006B7874 /* NoCounters.storyboard in Resources */,
 				1CAA42A52265969F0057A36B /* AddLsPocket.storyboard in Resources */,
-				302FA18C2256F1A8006B7874 /* (null) in Resources */,
+				302FA18C2256F1A8006B7874 /* BuildFile in Resources */,
 				302FA18D2256F1A8006B7874 /* LaunchScreen.storyboard in Resources */,
 				302FA18E2256F1A8006B7874 /* Assets.xcassets in Resources */,
 				30354A48231610C5008874D3 /* NewRegistration.storyboard in Resources */,
@@ -15549,13 +15830,13 @@
 				1CE43D0021C76549001B42B6 /* PaymentSuccessViewController.xib in Resources */,
 				30B4E8692309012800E13DF9 /* TechWork.storyboard in Resources */,
 				1C66AB1822532BFF00812964 /* Voting.storyboard in Resources */,
-				412092722158CB2D001E713E /* (null) in Resources */,
+				412092722158CB2D001E713E /* BuildFile in Resources */,
 				412092732158CB2D001E713E /* WebCameras.storyboard in Resources */,
 				412092742158CB2D001E713E /* app_open.png in Resources */,
 				412092752158CB2D001E713E /* Registration.storyboard in Resources */,
 				412092762158CB2D001E713E /* ForgotPass.storyboard in Resources */,
 				412092772158CB2D001E713E /* ic_ok_app.png in Resources */,
-				412092782158CB2D001E713E /* (null) in Resources */,
+				412092782158CB2D001E713E /* BuildFile in Resources */,
 				412092792158CB2D001E713E /* LaunchScreen.storyboard in Resources */,
 				4120927A2158CB2D001E713E /* Assets.xcassets in Resources */,
 				4120927B2158CB2D001E713E /* logo_SM.png in Resources */,
@@ -15603,7 +15884,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				412092E92159E603001E713E /* (null) in Resources */,
+				412092E92159E603001E713E /* BuildFile in Resources */,
 				1C66AB1922532BFF00812964 /* Voting.storyboard in Resources */,
 				30ABD1E3225C343C00A5D6F1 /* GoogleService-Info.plist in Resources */,
 				30B4E86A2309012800E13DF9 /* TechWork.storyboard in Resources */,
@@ -15612,7 +15893,7 @@
 				412092EC2159E603001E713E /* Registration.storyboard in Resources */,
 				412092ED2159E603001E713E /* ForgotPass.storyboard in Resources */,
 				412092EE2159E603001E713E /* ic_ok_app.png in Resources */,
-				412092EF2159E603001E713E /* (null) in Resources */,
+				412092EF2159E603001E713E /* BuildFile in Resources */,
 				1CAA42A02265969B0057A36B /* AddLsPocket.storyboard in Resources */,
 				1CA6D77A2362AAAE00E26BB9 /* ObjectControl.storyboard in Resources */,
 				412092F02159E603001E713E /* LaunchScreen.storyboard in Resources */,
@@ -15741,6 +16022,7 @@
 				418ABF492134C156004DB75C /* main_background.png in Resources */,
 				1CB96BEE239A18C6005E35D0 /* Logo_StroimBud.png in Resources */,
 				30354A3B231610C5008874D3 /* NewRegistration.storyboard in Resources */,
+				1CCB858523A368A5007C7AEB /* Logo_GorAntenService_White.png in Resources */,
 				1C81AE2C238BC2B10041B1E0 /* Logo_Pritomskoe.png in Resources */,
 				1CC75A6B2398D13A00EE59D8 /* Logo_Pedagog.png in Resources */,
 				41EF5A2E2138EC8E00789370 /* account_icon_cons.jpg in Resources */,
@@ -15765,6 +16047,7 @@
 				1CD2D3942264844D00494DE6 /* AddLsPocket.storyboard in Resources */,
 				1CEFC88621F1C79A00A042AA /* Logo_DemoUC_White.png in Resources */,
 				41EF59E42137ECDD00789370 /* Pays.storyboard in Resources */,
+				1CCB858B23A3692D007C7AEB /* Logo_GorAntenService.png in Resources */,
 				1CC75A612398CBAA00EE59D8 /* Logo_Zarinsk_White.png in Resources */,
 				1CC3FF26223A19D200FDBA82 /* NewMainMenu.storyboard in Resources */,
 				1C009E4721494AC4004E8BFD /* AdditionalServices.storyboard in Resources */,
@@ -15785,14 +16068,14 @@
 				30B4E8642309012800E13DF9 /* TechWork.storyboard in Resources */,
 				1C66AB1322532BFF00812964 /* Voting.storyboard in Resources */,
 				418ABF83213539DA004DB75C /* News.storyboard in Resources */,
-				418ABF592134CF1A004DB75C /* (null) in Resources */,
+				418ABF592134CF1A004DB75C /* BuildFile in Resources */,
 				418ABF5A2134CF1A004DB75C /* Registration.storyboard in Resources */,
 				41E8F0382149EC3F00FE0473 /* AdditionalServices.storyboard in Resources */,
 				41ACA2152140CB0200921C82 /* ic_get_app.png in Resources */,
 				418ABF5B2134CF1A004DB75C /* ForgotPass.storyboard in Resources */,
 				41E8F0282147C61300FE0473 /* NoCounters.storyboard in Resources */,
 				41EF5A232138E50E00789370 /* ic_close_action.png in Resources */,
-				418ABF5C2134CF1A004DB75C /* (null) in Resources */,
+				418ABF5C2134CF1A004DB75C /* BuildFile in Resources */,
 				41E8F0322147DF2900FE0473 /* no_counters.html in Resources */,
 				418ABF5D2134CF1A004DB75C /* LaunchScreen.storyboard in Resources */,
 				418ABFA0213576FF004DB75C /* Questions.storyboard in Resources */,
@@ -15839,7 +16122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41EF5A282138E52D00789370 /* ic_action_files_grey.png in Resources */,
-				418ABFC621357DA5004DB75C /* (null) in Resources */,
+				418ABFC621357DA5004DB75C /* BuildFile in Resources */,
 				418ABFC721357DA5004DB75C /* Registration.storyboard in Resources */,
 				30B4E8652309012800E13DF9 /* TechWork.storyboard in Resources */,
 				41ACA2162140CB0200921C82 /* ic_get_app.png in Resources */,
@@ -15848,7 +16131,7 @@
 				418ABFC821357DA5004DB75C /* ForgotPass.storyboard in Resources */,
 				41E8F0292147C61300FE0473 /* NoCounters.storyboard in Resources */,
 				41EF5A242138E50E00789370 /* ic_close_action.png in Resources */,
-				418ABFC921357DA5004DB75C /* (null) in Resources */,
+				418ABFC921357DA5004DB75C /* BuildFile in Resources */,
 				30ABD1E5225C476000A5D6F1 /* GoogleService-Info.plist in Resources */,
 				418ABFCA21357DA5004DB75C /* LaunchScreen.storyboard in Resources */,
 				418ABFCB21357DA5004DB75C /* Assets.xcassets in Resources */,
@@ -15949,7 +16232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41DFC3B9213CF4E9002CEB62 /* (null) in Resources */,
+				41DFC3B9213CF4E9002CEB62 /* BuildFile in Resources */,
 				41DFC3BA213CF4E9002CEB62 /* WebCameras.storyboard in Resources */,
 				3050600C2251E22100F0132B /* Support.storyboard in Resources */,
 				30B4E8662309012800E13DF9 /* TechWork.storyboard in Resources */,
@@ -15961,7 +16244,7 @@
 				41E8F02A2147C61300FE0473 /* NoCounters.storyboard in Resources */,
 				1CAA429C226596990057A36B /* AddLsPocket.storyboard in Resources */,
 				1CA6D7762362AAAE00E26BB9 /* ObjectControl.storyboard in Resources */,
-				41DFC3BE213CF4E9002CEB62 /* (null) in Resources */,
+				41DFC3BE213CF4E9002CEB62 /* BuildFile in Resources */,
 				41DFC3BF213CF4E9002CEB62 /* LaunchScreen.storyboard in Resources */,
 				41DFC3C0213CF4E9002CEB62 /* Assets.xcassets in Resources */,
 				41DFC3E0213CFE05002CEB62 /* logo_MupRCMytishi.png in Resources */,
@@ -16007,7 +16290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41DFC420213D206C002CEB62 /* (null) in Resources */,
+				41DFC420213D206C002CEB62 /* BuildFile in Resources */,
 				41DFC421213D206C002CEB62 /* WebCameras.storyboard in Resources */,
 				41DFC422213D206C002CEB62 /* app_open.png in Resources */,
 				30B4E8672309012800E13DF9 /* TechWork.storyboard in Resources */,
@@ -16016,7 +16299,7 @@
 				41DFC424213D206C002CEB62 /* ForgotPass.storyboard in Resources */,
 				41DFC447213D2758002CEB62 /* logo_DJ.png in Resources */,
 				41E8F02B2147C61300FE0473 /* NoCounters.storyboard in Resources */,
-				41DFC425213D206C002CEB62 /* (null) in Resources */,
+				41DFC425213D206C002CEB62 /* BuildFile in Resources */,
 				41DFC426213D206C002CEB62 /* LaunchScreen.storyboard in Resources */,
 				1C51CEBC222917C3003EFD8C /* MupCounters.storyboard in Resources */,
 				1C953D6321FAAE7200313221 /* GoogleService-Info.plist in Resources */,
@@ -16063,14 +16346,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41FDA28C214229A0003D8110 /* (null) in Resources */,
+				41FDA28C214229A0003D8110 /* BuildFile in Resources */,
 				41FDA28D214229A0003D8110 /* WebCameras.storyboard in Resources */,
 				41FDA28E214229A0003D8110 /* app_open.png in Resources */,
 				30B4E8682309012800E13DF9 /* TechWork.storyboard in Resources */,
 				41FDA28F214229A0003D8110 /* Registration.storyboard in Resources */,
 				41FDA290214229A0003D8110 /* ForgotPass.storyboard in Resources */,
 				41FDA291214229A0003D8110 /* ic_ok_app.png in Resources */,
-				41FDA292214229A0003D8110 /* (null) in Resources */,
+				41FDA292214229A0003D8110 /* BuildFile in Resources */,
 				41E8F02C2147C61300FE0473 /* NoCounters.storyboard in Resources */,
 				41FDA293214229A0003D8110 /* LaunchScreen.storyboard in Resources */,
 				1C5153D621EF10C900DE36D9 /* Account.storyboard in Resources */,
@@ -16225,6 +16508,64 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		1CCB84D423A365FF007C7AEB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GorAntenService-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1CCB857C23A365FF007C7AEB /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		1CCB857D23A365FF007C7AEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GorAntenService/Pods-GorAntenService-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GorAntenService/Pods-GorAntenService-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GorAntenService/Pods-GorAntenService-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		1CDE14EC2394BFE60040DCE1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -19248,6 +19589,123 @@
 				1CC75A1F2398CAD600EE59D8 /* WebsCell.swift in Sources */,
 				1CC75A202398CAD600EE59D8 /* ASDKCardIOScanner.m in Sources */,
 				1CC75A212398CAD600EE59D8 /* CountersController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CCB84D523A365FF007C7AEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CCB84D623A365FF007C7AEB /* AddAppCons.swift in Sources */,
+				1CCB84D723A365FF007C7AEB /* Server.swift in Sources */,
+				1CCB84D823A365FF007C7AEB /* Applications+CoreDataClass.swift in Sources */,
+				1CCB84D923A365FF007C7AEB /* Comments+CoreDataProperties.swift in Sources */,
+				1CCB84DA23A365FF007C7AEB /* FirstControllerCons.swift in Sources */,
+				1CCB84DB23A365FF007C7AEB /* Fotos+CoreDataClass.swift in Sources */,
+				1CCB84DC23A365FF007C7AEB /* NewRegistration.swift in Sources */,
+				1CCB84DD23A365FF007C7AEB /* Counters+CoreDataProperties.swift in Sources */,
+				1CCB84DE23A365FF007C7AEB /* CloseAppAlert.swift in Sources */,
+				1CCB84DF23A365FF007C7AEB /* AllObjectPlace.swift in Sources */,
+				1CCB84E023A365FF007C7AEB /* PayController.m in Sources */,
+				1CCB84E123A365FF007C7AEB /* FloatRatingView.swift in Sources */,
+				1CCB84E223A365FF007C7AEB /* CommCellCons.swift in Sources */,
+				1CCB84E323A365FF007C7AEB /* UpdateAppController.swift in Sources */,
+				1CCB84E423A365FF007C7AEB /* FilesController.swift in Sources */,
+				1CCB84E523A365FF007C7AEB /* ShemeColor.swift in Sources */,
+				1CCB84E623A365FF007C7AEB /* ImageConstant.swift in Sources */,
+				1CCB84E723A365FF007C7AEB /* MainMenu.swift in Sources */,
+				1CCB84E823A365FF007C7AEB /* News.swift in Sources */,
+				1CCB84E923A365FF007C7AEB /* AppDelegate.swift in Sources */,
+				1CCB84EA23A365FF007C7AEB /* Settings+CoreDataProperties.swift in Sources */,
+				1CCB84EB23A365FF007C7AEB /* SelectItemController.swift in Sources */,
+				1CCB84EC23A365FF007C7AEB /* AdditionalServicesController.swift in Sources */,
+				1CCB84ED23A365FF007C7AEB /* HistoryPayController.swift in Sources */,
+				1CCB84EE23A365FF007C7AEB /* TechWorkController.swift in Sources */,
+				1CCB84EF23A365FF007C7AEB /* CounterCell.swift in Sources */,
+				1CCB84F023A365FF007C7AEB /* NewsClient.swift in Sources */,
+				1CCB84F123A365FF007C7AEB /* SupportUpdate.swift in Sources */,
+				1CCB84F223A365FF007C7AEB /* AddLSSimple.swift in Sources */,
+				1CCB84F323A365FF007C7AEB /* Fotos+CoreDataProperties.swift in Sources */,
+				1CCB84F423A365FF007C7AEB /* AllLS.swift in Sources */,
+				1CCB84F523A365FF007C7AEB /* NewEditAccountController.swift in Sources */,
+				1CCB84F623A365FF007C7AEB /* PaymentApp+CoreDataProperties.swift in Sources */,
+				1CCB84F723A365FF007C7AEB /* TwoPageController.swift in Sources */,
+				1CCB84F823A365FF007C7AEB /* Saldo+CoreDataProperties.swift in Sources */,
+				1CCB84F923A365FF007C7AEB /* SupportController.swift in Sources */,
+				1CCB84FA23A365FF007C7AEB /* QuestionsTableCell.swift in Sources */,
+				1CCB84FB23A365FF007C7AEB /* DB.swift in Sources */,
+				1CCB84FC23A365FF007C7AEB /* Settings+CoreDataClass.swift in Sources */,
+				1CCB84FD23A365FF007C7AEB /* ObjJKH.xcdatamodeld in Sources */,
+				1CCB84FE23A365FF007C7AEB /* CommCell.swift in Sources */,
+				1CCB84FF23A365FF007C7AEB /* NewsView.swift in Sources */,
+				1CCB850023A365FF007C7AEB /* AddLS.swift in Sources */,
+				1CCB850123A365FF007C7AEB /* NewsCell.swift in Sources */,
+				1CCB850223A365FF007C7AEB /* OneVoteController.swift in Sources */,
+				1CCB850323A365FF007C7AEB /* SaldoCell.swift in Sources */,
+				1CCB850423A365FF007C7AEB /* ChoicePlaceObject.swift in Sources */,
+				1CCB850523A365FF007C7AEB /* FirstController.swift in Sources */,
+				1CCB850623A365FF007C7AEB /* ForgotPass.swift in Sources */,
+				1CCB850723A365FF007C7AEB /* AppsCellClose.swift in Sources */,
+				1CCB850823A365FF007C7AEB /* Tinkoff_Pay_Decides.m in Sources */,
+				1CCB850923A365FF007C7AEB /* NewsManager.swift in Sources */,
+				1CCB850A23A365FF007C7AEB /* NewSaldoController.swift in Sources */,
+				1CCB850B23A365FF007C7AEB /* QuestionsJson.swift in Sources */,
+				1CCB850C23A365FF007C7AEB /* MobilePaysController.swift in Sources */,
+				1CCB850D23A365FF007C7AEB /* WebsController.swift in Sources */,
+				1CCB850E23A365FF007C7AEB /* NewsController.swift in Sources */,
+				1CCB850F23A365FF007C7AEB /* SendSMSCod.swift in Sources */,
+				1CCB851023A365FF007C7AEB /* ASDKTestSettings.m in Sources */,
+				1CCB851123A365FF007C7AEB /* NotificationController.swift in Sources */,
+				1CCB851223A365FF007C7AEB /* AddAppUser.swift in Sources */,
+				1CCB851323A365FF007C7AEB /* CoreDataManager.swift in Sources */,
+				1CCB851423A365FF007C7AEB /* NewMainMenu2.swift in Sources */,
+				1CCB851523A365FF007C7AEB /* addCountersController.swift in Sources */,
+				1CCB851623A365FF007C7AEB /* VotingController.swift in Sources */,
+				1CCB851723A365FF007C7AEB /* MainMenuCons.swift in Sources */,
+				1CCB851823A365FF007C7AEB /* Web_JSON.swift in Sources */,
+				1CCB851923A365FF007C7AEB /* Counters+CoreDataClass.swift in Sources */,
+				1CCB851A23A365FF007C7AEB /* Titles.swift in Sources */,
+				1CCB851B23A365FF007C7AEB /* QuestionVoteController.swift in Sources */,
+				1CCB851C23A365FF007C7AEB /* PaysMytishiController.swift in Sources */,
+				1CCB851D23A365FF007C7AEB /* OnePageController.swift in Sources */,
+				1CCB851E23A365FF007C7AEB /* NewPass.swift in Sources */,
+				1CCB851F23A365FF007C7AEB /* UniqCountersController.swift in Sources */,
+				1CCB852023A365FF007C7AEB /* Saldo+CoreDataClass.swift in Sources */,
+				1CCB852123A365FF007C7AEB /* resVoteController.swift in Sources */,
+				1CCB852223A365FF007C7AEB /* NewAppUser.swift in Sources */,
+				1CCB852323A365FF007C7AEB /* Pay.swift in Sources */,
+				1CCB852423A365FF007C7AEB /* ColorsConstant.swift in Sources */,
+				1CCB852523A365FF007C7AEB /* QuestionsTableVC.swift in Sources */,
+				1CCB852623A365FF007C7AEB /* AppCons.swift in Sources */,
+				1CCB852723A365FF007C7AEB /* AdditionalVC.swift in Sources */,
+				1CCB852823A365FF007C7AEB /* Comments+CoreDataClass.swift in Sources */,
+				1CCB852923A365FF007C7AEB /* openSaldoController.swift in Sources */,
+				1CCB852A23A365FF007C7AEB /* StartController.swift in Sources */,
+				1CCB852B23A365FF007C7AEB /* PaymentApp+CoreDataClass.swift in Sources */,
+				1CCB852C23A365FF007C7AEB /* News+UITableViewDataSource.swift in Sources */,
+				1CCB852D23A365FF007C7AEB /* QuestionFinal.swift in Sources */,
+				1CCB852E23A365FF007C7AEB /* NewHomePage.swift in Sources */,
+				1CCB852F23A365FF007C7AEB /* MupCounterController.swift in Sources */,
+				1CCB853023A365FF007C7AEB /* EditAccountController.swift in Sources */,
+				1CCB853123A365FF007C7AEB /* OnOffButton.swift in Sources */,
+				1CCB853223A365FF007C7AEB /* AppUser.swift in Sources */,
+				1CCB853323A365FF007C7AEB /* SaldoController.swift in Sources */,
+				1CCB853423A365FF007C7AEB /* QuestionAnswerVC.swift in Sources */,
+				1CCB853523A365FF007C7AEB /* NewAddAppUser.swift in Sources */,
+				1CCB853623A365FF007C7AEB /* AppsController.swift in Sources */,
+				1CCB853723A365FF007C7AEB /* ChoiceObjectVC.swift in Sources */,
+				1CCB853823A365FF007C7AEB /* PaysController.swift in Sources */,
+				1CCB853923A365FF007C7AEB /* TransactionHistoryModelController.m in Sources */,
+				1CCB853A23A365FF007C7AEB /* Web_Camera.swift in Sources */,
+				1CCB853B23A365FF007C7AEB /* Reachability.swift in Sources */,
+				1CCB853C23A365FF007C7AEB /* Applications+CoreDataProperties.swift in Sources */,
+				1CCB853D23A365FF007C7AEB /* AppsCell.swift in Sources */,
+				1CCB853E23A365FF007C7AEB /* Extensions.swift in Sources */,
+				1CCB853F23A365FF007C7AEB /* Registration.swift in Sources */,
+				1CCB854023A365FF007C7AEB /* PaymentSuccessViewController.m in Sources */,
+				1CCB854123A365FF007C7AEB /* WebsCell.swift in Sources */,
+				1CCB854223A365FF007C7AEB /* ASDKCardIOScanner.m in Sources */,
+				1CCB854323A365FF007C7AEB /* CountersController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -26289,6 +26747,289 @@
 			};
 			name = Release;
 		};
+		1CCB857F23A365FF007C7AEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E60DDAE9CC860F7E7E44D51E /* Pods-GorAntenService.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-GorAntenService";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/GorAntenService-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.73;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"CardIO\"",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"opencv_core\"",
+					"-l\"opencv_imgproc\"",
+					"-l\"sqlite3\"",
+					"-l\"xml2\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AKMaskField\"",
+					"-framework",
+					"\"ASDKCore\"",
+					"-framework",
+					"\"ASDKUI\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AdSupport\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Dropper\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseMessaging\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"Gloss\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleDataTransportCCTSupport\"",
+					"-framework",
+					"\"GoogleMobileAds\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"MessageUI\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"Protobuf\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SwiftyXMLParser\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"YandexMobileAds\"",
+					"-framework",
+					"\"YandexMobileMetrica\"",
+					"-framework",
+					"\"YandexMobileMetricaCrashes\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"AdSupport\"",
+					"-weak_framework",
+					"\"JavaScriptCore\"",
+					"-weak_framework",
+					"\"SafariServices\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
+					"-weak_framework",
+					"\"WebKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.gorAntenService;
+				PRODUCT_NAME = "Городская Антенная Служба";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isGorAntenService Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/StroimBud-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1CCB858023A365FF007C7AEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 327B2A0E56BE25BAE5EE1067 /* Pods-GorAntenService.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-GorAntenService";
+				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK4AR963E7;
+				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/GorAntenService-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.73;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"CardIO\"",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"opencv_core\"",
+					"-l\"opencv_imgproc\"",
+					"-l\"sqlite3\"",
+					"-l\"xml2\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AKMaskField\"",
+					"-framework",
+					"\"ASDKCore\"",
+					"-framework",
+					"\"ASDKUI\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AdSupport\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Dropper\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseMessaging\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"Gloss\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleDataTransportCCTSupport\"",
+					"-framework",
+					"\"GoogleMobileAds\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"MessageUI\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"Protobuf\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SwiftyXMLParser\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"YandexMobileAds\"",
+					"-framework",
+					"\"YandexMobileMetrica\"",
+					"-framework",
+					"\"YandexMobileMetricaCrashes\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"AdSupport\"",
+					"-weak_framework",
+					"\"JavaScriptCore\"",
+					"-weak_framework",
+					"\"SafariServices\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
+					"-weak_framework",
+					"\"WebKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rom.best.gorAntenService;
+				PRODUCT_NAME = "Городская Антенная Служба";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isGorAntenService;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/StroimBud-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		1CDE15942394E3260040DCE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 663D82F8E689164FB4CC2A9C /* Pods-MobileMIR.debug.xcconfig */;
@@ -29409,6 +30150,15 @@
 			buildConfigurations = (
 				1CC75A5B2398CAD600EE59D8 /* Debug */,
 				1CC75A5C2398CAD600EE59D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CCB857E23A365FF007C7AEB /* Build configuration list for PBXNativeTarget "GorAntenService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CCB857F23A365FF007C7AEB /* Debug */,
+				1CCB858023A365FF007C7AEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
