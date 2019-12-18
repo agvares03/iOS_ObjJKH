@@ -35,12 +35,12 @@ class CoreDataManager {
         return fetchedResultsController as! NSFetchedResultsController<Settings>
     }
     
-    func fetchedResultsController(entityName: String, keysForSort: [String], predicateFormat: String? = nil) -> NSFetchedResultsController<Counters> {
+    func fetchedResultsController(entityName: String, keysForSort: [String], predicateFormat: String? = nil, ascending: Bool) -> NSFetchedResultsController<Counters> {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         
         var sortDescriptors = [NSSortDescriptor]()
         for key in keysForSort {
-            let sortDescriptor = NSSortDescriptor(key: key, ascending: true)
+            let sortDescriptor = NSSortDescriptor(key: key, ascending: ascending)
             sortDescriptors.append(sortDescriptor)
         }
         fetchRequest.sortDescriptors = sortDescriptors

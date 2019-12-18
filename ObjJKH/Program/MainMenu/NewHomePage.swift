@@ -1619,7 +1619,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         //        } else {
         let close: NSNumber = 1
         let predicateFormat = String(format: " is_close =%@ ", close)
-        self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat) as? NSFetchedResultsController<Applications>
+        self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat, ascending: false) as? NSFetchedResultsController<Applications>
         //        }
         
         do {
@@ -1854,8 +1854,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if tableView == self.tableApps {
             if let sections = fetchedResultsController?.sections {
                 count = sections[section].numberOfObjects
-                if count! > 2{
-                    count = 2
+                if count! > 3{
+                    count = 3
                 }
             } else {
                 count = 0

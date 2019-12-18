@@ -551,7 +551,7 @@ class AppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, Clo
     
     func load_data() {
         let predicateFormat = String(format: "id_app = %@", id_app)
-        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Comments", keysForSort: ["dateK"], predicateFormat: predicateFormat) as? NSFetchedResultsController<Comments>
+        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Comments", keysForSort: ["dateK"], predicateFormat: predicateFormat, ascending: true) as? NSFetchedResultsController<Comments>
         do {
             try fetchedResultsController?.performFetch()
         } catch {

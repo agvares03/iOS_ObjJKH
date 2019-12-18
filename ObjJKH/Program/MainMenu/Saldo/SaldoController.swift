@@ -374,7 +374,7 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
     }
     
     func updateBorderDates() {
-        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Saldo", keysForSort: ["year"], predicateFormat: nil) as? NSFetchedResultsController<Saldo>
+        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Saldo", keysForSort: ["year"], predicateFormat: nil, ascending: true) as? NSFetchedResultsController<Saldo>
         do {
             try fetchedResultsController?.performFetch()
         } catch {

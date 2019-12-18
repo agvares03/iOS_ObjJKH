@@ -272,7 +272,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     }
     
     func updateBorderDates() {
-        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Counters", keysForSort: ["year"], predicateFormat: nil)
+        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Counters", keysForSort: ["year"], predicateFormat: nil, ascending: true)
         do {
             try fetchedResultsController?.performFetch()
         } catch {
@@ -339,7 +339,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
     
     func updateFetchedResultsController() {
         let predicateFormat = String(format: "num_month = %@ AND year = %@", iterMonth, iterYear)
-        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Counters", keysForSort: ["count_name"], predicateFormat: predicateFormat)
+        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Counters", keysForSort: ["count_name"], predicateFormat: predicateFormat, ascending: true)
         
         do {
             try fetchedResultsController?.performFetch()

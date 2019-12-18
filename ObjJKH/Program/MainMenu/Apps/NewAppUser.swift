@@ -615,7 +615,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     private var files: [Fotos] = []
     func load_data() {
         let predicateFormat = String(format: "id_app = %@", id_app)
-        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Comments", keysForSort: ["dateK"], predicateFormat: predicateFormat) as? NSFetchedResultsController<Comments>
+        fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Comments", keysForSort: ["dateK"], predicateFormat: predicateFormat, ascending: true) as? NSFetchedResultsController<Comments>
         do {
             try fetchedResultsController?.performFetch()
         } catch {
@@ -627,7 +627,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         files.removeAll()
         showDate.removeAll()
         let data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
-        let objs = (CoreDataManager.instance.fetchedResultsController(entityName: "Fotos", keysForSort: ["name"]) as? NSFetchedResultsController<Fotos>)
+        let objs = (CoreDataManager.instance.fetchedResultsController(entityName: "Fotos", keysForSort: ["name"], ascending: true) as? NSFetchedResultsController<Fotos>)
         try? objs?.performFetch()
         objs?.fetchedObjects?.forEach { obj in
             data_.forEach {
