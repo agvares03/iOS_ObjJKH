@@ -1479,7 +1479,6 @@
 		1CCB855223A365FF007C7AEB /* Logo_Pedagog_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC75A672398D11B00EE59D8 /* Logo_Pedagog_White.png */; };
 		1CCB855323A365FF007C7AEB /* ic_action_files_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A252138E52D00789370 /* ic_action_files_grey.png */; };
 		1CCB855423A365FF007C7AEB /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305060082251E22100F0132B /* Support.storyboard */; };
-		1CCB855523A365FF007C7AEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CC75A6F2398DC2F00EE59D8 /* GoogleService-Info.plist */; };
 		1CCB855623A365FF007C7AEB /* ic_close_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A212138E50E00789370 /* ic_close_action.png */; };
 		1CCB855723A365FF007C7AEB /* NewAddLS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302E31BF22F7C95D0043209D /* NewAddLS.storyboard */; };
 		1CCB855823A365FF007C7AEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF0E2133CC7B004DB75C /* Main.storyboard */; };
@@ -9220,6 +9219,7 @@
 		991C56901C349633B4F4576E /* Pods_MUP_IRKC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6F73C2F4B494CA557D83DC /* Pods_MUP_IRKC.framework */; };
 		998389282861D0FCBDDF7743 /* Pods_NewOpaliha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E1D250E88FCF49CADABAFE /* Pods_NewOpaliha.framework */; };
 		998D044E483B5897E321D937 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		9A1819E423AB2EC2001C2F57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A1819E323AB2EC1001C2F57 /* GoogleService-Info.plist */; };
 		9AD7BA4A22FC29700059B5A5 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		9AD7BA4B22FC40860059B5A5 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		A1037F7ACDB7056EAC8C518E /* Pods_DJ_Vladimir.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A07BDB9A94B259683EE0C6C /* Pods_DJ_Vladimir.framework */; };
@@ -9788,6 +9788,7 @@
 		92D46AB6ECBDDF74228AAFB4 /* Pods-DJ_Vladimir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ_Vladimir.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJ_Vladimir/Pods-DJ_Vladimir.debug.xcconfig"; sourceTree = "<group>"; };
 		964492CA0DB9008F249F3AD8 /* Pods-DJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DJ/Pods-DJ.debug.xcconfig"; sourceTree = "<group>"; };
 		971D08557661FD10E2032974 /* Pods-StroimBud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StroimBud.release.xcconfig"; path = "Pods/Target Support Files/Pods-StroimBud/Pods-StroimBud.release.xcconfig"; sourceTree = "<group>"; };
+		9A1819E323AB2EC1001C2F57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/GorAntenService/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9AE2AEC76446383B607AE88F /* Pods-RodnikMUP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RodnikMUP.release.xcconfig"; path = "Pods/Target Support Files/Pods-RodnikMUP/Pods-RodnikMUP.release.xcconfig"; sourceTree = "<group>"; };
 		9CC813AF3B67E2529AD80684 /* Pods-ObjJKH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjJKH.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjJKH/Pods-ObjJKH.release.xcconfig"; sourceTree = "<group>"; };
 		9E153E47D5D22676EE4DF870 /* Pods-StandartDV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StandartDV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StandartDV/Pods-StandartDV.debug.xcconfig"; sourceTree = "<group>"; };
@@ -10731,6 +10732,7 @@
 		307690F722B28DC70043916F /* Google_Services */ = {
 			isa = PBXGroup;
 			children = (
+				9A1819E323AB2EC1001C2F57 /* GoogleService-Info.plist */,
 				1CC75A6F2398DC2F00EE59D8 /* GoogleService-Info.plist */,
 				1CC75A6D2398DBFE00EE59D8 /* GoogleService-Info.plist */,
 				1C93FE9A2396562B006AAD4C /* GoogleService-Info.plist */,
@@ -13329,9 +13331,9 @@
 				1CCB855023A365FF007C7AEB /* Logo_DemoUC.png in Resources */,
 				1CCB855123A365FF007C7AEB /* NoCounters.storyboard in Resources */,
 				1CCB855223A365FF007C7AEB /* Logo_Pedagog_White.png in Resources */,
+				9A1819E423AB2EC2001C2F57 /* GoogleService-Info.plist in Resources */,
 				1CCB855323A365FF007C7AEB /* ic_action_files_grey.png in Resources */,
 				1CCB855423A365FF007C7AEB /* Support.storyboard in Resources */,
-				1CCB855523A365FF007C7AEB /* GoogleService-Info.plist in Resources */,
 				1CCB858C23A3692D007C7AEB /* Logo_GorAntenService.png in Resources */,
 				1CCB855623A365FF007C7AEB /* ic_close_action.png in Resources */,
 				1CCB855723A365FF007C7AEB /* NewAddLS.storyboard in Resources */,
