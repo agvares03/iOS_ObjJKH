@@ -30,11 +30,19 @@ class AddLSSimple: UIViewController {
     @IBOutlet weak var pinView:         UIView!
     @IBOutlet weak var pinViewHeight:   NSLayoutConstraint!
     @IBOutlet weak var btnAddOutlet:    UIButton!
+    @IBOutlet weak var openURLBtn:      UIButton!
     
     // Телефон, который регистрируется
     var phone: String = ""
     var response_add_ident: String?
     var response_ident: String?
+    
+    @IBAction func openURL(_ sender: UIButton) {
+        let url  = NSURL(string: "https://irkcm.ru/irkcm.htm")
+        if UIApplication.shared.canOpenURL(url! as URL) == true  {
+            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+        }
+    }
     
     @IBAction func btnAdd(_ sender: UIButton) {
         var err = false
@@ -391,7 +399,7 @@ class AddLSSimple: UIViewController {
 
         #if isMUP_IRKC
         pinView.isHidden = false
-        pinViewHeight.constant = 60
+        pinViewHeight.constant = 130
         #else
         pinView.isHidden = true
         pinViewHeight.constant = 0
