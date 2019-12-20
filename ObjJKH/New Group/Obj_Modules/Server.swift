@@ -100,7 +100,7 @@ class Server {
     #elseif isTSJ_Rachangel
         static let SERVER          = "http://uk-gkh.org/tsg_arhangelskoe/"
     #elseif isMUP_IRKC
-        static let SERVER          = "http://uk-gkh.org/eirkc_m/"
+        static let SERVER          = "http://uk-gkh.org/eirkc_mobapp/"
     #elseif isUK_First
         static let SERVER          = "http://uk-gkh.org/ukpervaya/"
     #elseif isRKC_Samara

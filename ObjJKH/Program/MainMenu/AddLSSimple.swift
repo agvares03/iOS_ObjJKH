@@ -18,14 +18,18 @@ class AddLSSimple: UIViewController {
         self.performSegue(withIdentifier: "support", sender: self)
     }
 
-    @IBOutlet weak var indicatior: UIActivityIndicatorView!
-    @IBOutlet weak var edLS: UITextField!
-    @IBOutlet weak var imgTech: UIImageView!
-    @IBOutlet weak var support: UIImageView!
-    @IBOutlet weak var supportBtn: UIButton!
-    @IBOutlet weak var back: UIBarButtonItem!
-    @IBOutlet weak var separator: UILabel!
-    @IBOutlet weak var btnAddOutlet: UIButton!
+    @IBOutlet weak var indicatior:      UIActivityIndicatorView!
+    @IBOutlet weak var edLS:            UITextField!
+    @IBOutlet weak var edPin:           UITextField!
+    @IBOutlet weak var imgTech:         UIImageView!
+    @IBOutlet weak var support:         UIImageView!
+    @IBOutlet weak var supportBtn:      UIButton!
+    @IBOutlet weak var back:            UIBarButtonItem!
+    @IBOutlet weak var separator:       UILabel!
+    @IBOutlet weak var separator2:      UILabel!
+    @IBOutlet weak var pinView:         UIView!
+    @IBOutlet weak var pinViewHeight:   NSLayoutConstraint!
+    @IBOutlet weak var btnAddOutlet:    UIButton!
     
     // Телефон, который регистрируется
     var phone: String = ""
@@ -33,14 +37,26 @@ class AddLSSimple: UIViewController {
     var response_ident: String?
     
     @IBAction func btnAdd(_ sender: UIButton) {
-        
-        if (edLS.text == "") {
+        var err = false
+        #if isMUP_IRKC
+        let textPin = edPin.text?.replacingOccurrences(of: " ", with: "")
+        if (edPin.text == "") || textPin == "" {
+            err = true
+        }
+        #endif
+        let textLS = edLS.text?.replacingOccurrences(of: " ", with: "")
+        if (edLS.text == "") || textLS == "" {
             
             let alert = UIAlertController(title: "Ошибка", message: "Укажите лицевой счет для подключения", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
             
+        }else if err{
+            let alert = UIAlertController(title: "Ошибка", message: "Укажите пин-код для подключения", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
         } else {
             
             StartIndicator()
@@ -49,7 +65,9 @@ class AddLSSimple: UIViewController {
             var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_LS_SIMPLE
             urlPath = urlPath + "phone=" + phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             urlPath = urlPath + "&ident=" + (edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
-
+            #if isMUP_IRKC
+            urlPath = urlPath + "&pin=" + (edPin.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+            #endif
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
@@ -180,6 +198,9 @@ class AddLSSimple: UIViewController {
                     var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_LS_SIMPLE
                     urlPath = urlPath + "phone=" + self.phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
                     urlPath = urlPath + "&ident=" + (self.edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+                    #if isMUP_IRKC
+                    urlPath = urlPath + "&pin=" + (self.edPin.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+                    #endif
                     urlPath = urlPath + "&doAdd=1"
                     #if isRKC_Samara
                     urlPath = urlPath + "&f=" + (alert.textFields?[0].text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
@@ -368,12 +389,20 @@ class AddLSSimple: UIViewController {
         
         StopIndicator()
 
+        #if isMUP_IRKC
+        pinView.isHidden = false
+        pinViewHeight.constant = 60
+        #else
+        pinView.isHidden = true
+        pinViewHeight.constant = 0
+        #endif
         back.tintColor = myColors.btnColor.uiColor()
         btnAddOutlet.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         imgTech.setImageColor(color: myColors.btnColor.uiColor())
         separator.backgroundColor = myColors.labelColor.uiColor()
+        separator2.backgroundColor = myColors.labelColor.uiColor()
     }
     
     override func viewWillAppear(_ animated: Bool) {
