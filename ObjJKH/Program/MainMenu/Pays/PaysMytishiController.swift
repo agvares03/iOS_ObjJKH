@@ -526,21 +526,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
             print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
+//            if payType == 1{
+//                let address = PKContact()
+//                address.emailAddress = defaults.object(forKey: "mail")! as? String
+//                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+//                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
+//
+//                }, cancelled:  {
+//
+//                }, error: { (error) in
+//                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+//                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                    alert.addAction(cancelAction)
+//                    self.present(alert, animated: true, completion: nil)
+//                })
+//            }else{
                 PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                     
                 }, cancelled: {
@@ -551,7 +551,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     alert.addAction(cancelAction)
                     self.present(alert, animated: true, completion: nil)
                 }
-            }
+//            }
             //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
             #elseif isKlimovsk12 || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
             if selectLS == "Все"{
@@ -574,21 +574,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             defaults.synchronize()
             print(receiptData)
             
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
+//            if payType == 1{
+//                let address = PKContact()
+//                address.emailAddress = defaults.object(forKey: "mail")! as? String
+//                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+//                PayController.buy(withApplePayAmount: amount, description: "", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.sm-center.ru", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+//
+//                }, cancelled:  {
+//
+//                }, error: { (error) in
+//                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+//                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                    alert.addAction(cancelAction)
+//                    self.present(alert, animated: true, completion: nil)
+//                })
+//            }else{
                 PayController.buyItem(withName: targetName, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
                     
                 }, cancelled:  {
@@ -599,7 +599,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     alert.addAction(cancelAction)
                     self.present(alert, animated: true, completion: nil)
                 })
-            }
+//            }
             #endif
         }
     }
