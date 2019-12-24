@@ -395,7 +395,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "295029"
         targetName = "УК Легкая жизнь"
         #elseif isMobileMIR
-        shopCode = "299859"
+        shopCode = "299850"
         targetName = "Мобильный мир"
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
