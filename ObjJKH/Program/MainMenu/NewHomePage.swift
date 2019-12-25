@@ -2097,7 +2097,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             //            print("Высота таблиц: ", self.tableNewsHeight.constant, self.tableCounterHeight.constant, self.tableAppsHeight.constant, self.tableQuestionHeight.constant, self.tableWebHeight.constant, self.tableServiceHeight.constant, self.tableReceiptsHeight.constant)
             //            print("Высота шапок: ", self.newsHeight.constant, self.counterHeight.constant, self.appsHeight.constant, self.questionLSHeight.constant, self.webLSHeight.constant, self.serviceHeight.constant, self.receipts1Height.constant + self.receipts2Height.constant)
         }
-        return count!
+        if count! > 0{
+            return count!
+        }else{
+            return 0
+        }
     }
     
     func get_name_month(number_month: String) -> String {
