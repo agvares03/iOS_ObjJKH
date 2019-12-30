@@ -202,12 +202,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let phone = defaults.string(forKey: "phone")
         let ident =  ls
         
-        if (phone == ident) {
-            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Невозможно отвязать лицевой счет " + ident + ". Вы зашли, используя этот лицевой счет.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-        } else {
+//        if (phone == ident) {
+//            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Невозможно отвязать лицевой счет " + ident + ". Вы зашли, используя этот лицевой счет.", preferredStyle: .alert)
+//            let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//            alert.addAction(okAction)
+//            self.present(alert, animated: true, completion: nil)
+//        } else {
             let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + ident + " от аккаунта?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
@@ -256,7 +256,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
-        }
+//        }
         
     }
     
