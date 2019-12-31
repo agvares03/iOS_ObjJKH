@@ -1044,7 +1044,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 guard data != nil else { return }
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 var newsList: [News] = []
-                                                if !responseString.contains("error") || !responseString.contains("data"){
+                                                if !responseString.contains("error") && responseString.contains("data"){
                                                     let json = try? JSONSerialization.jsonObject(with: data!,
                                                                                                  options: .allowFragments)
                                                     let unfilteredData = NewsJson(json: json! as! JSON)?.data

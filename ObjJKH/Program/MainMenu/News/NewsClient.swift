@@ -75,8 +75,6 @@ class NewsClient {
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
             data, error, responce in
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            print("responseString = \(responseString)")
                                                 
 //            if error != nil {
 //                print("ERROR")
@@ -84,6 +82,8 @@ class NewsClient {
 //            }
             
             guard data != nil else { return }
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
                                                 var newsList: [News] = []
                                                 if !responseString.contains("error"){
                                                     let json = try? JSONSerialization.jsonObject(with: data!,

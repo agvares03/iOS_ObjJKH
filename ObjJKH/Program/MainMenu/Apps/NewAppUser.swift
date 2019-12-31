@@ -462,7 +462,6 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
-            print(String(data: data!, encoding: .utf8) ?? "")
             
             guard data != nil else { return }
             

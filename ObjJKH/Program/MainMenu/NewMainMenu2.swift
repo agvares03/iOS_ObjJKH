@@ -618,6 +618,8 @@ class NewMainMenu2: UIViewController {
                     let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                           completionHandler: {
                                                             data, response, error in
+                                                            guard data != nil else { return }
+                                                            
                                                             let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                             print(responseStr)
                                                             
