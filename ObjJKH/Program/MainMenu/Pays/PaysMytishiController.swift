@@ -476,7 +476,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
                 for i in 0...str_ls_arr.count - 1{
-                    DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0])|"
+                    DataStr = DataStr + "ls\(i + 1)-\(str_ls_arr[0].stringByAddingPercentEncodingForRFC3986() ?? "")|"
                 }
             }else{
                 DataStr = "ls1-\(selectLS.stringByAddingPercentEncodingForRFC3986() ?? "")|"
@@ -573,7 +573,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
             print(receiptData)
-            
+            print(Data)
 //            if payType == 1{
 //                let address = PKContact()
 //                address.emailAddress = defaults.object(forKey: "mail")! as? String
