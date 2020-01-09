@@ -28,6 +28,7 @@
 		1C009E4721494AC4004E8BFD /* AdditionalServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C009E4621494AC4004E8BFD /* AdditionalServices.storyboard */; };
 		1C026E6B2265B90000E62FC6 /* ChoiceStreetPocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C026E6A2265B90000E62FC6 /* ChoiceStreetPocketController.swift */; };
 		1C026E6D2265C18500E62FC6 /* ChoiceLsPocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C026E6C2265C18500E62FC6 /* ChoiceLsPocketController.swift */; };
+		1C02956623C6E5EC008CCE15 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC3FF212237EB2600FDBA82 /* PassKit.framework */; };
 		1C081DED225B631F001A8F43 /* FirstObjController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C081DEC225B631F001A8F43 /* FirstObjController.swift */; };
 		1C0A4B6922A544BB00855BA6 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
 		1C13B8BB221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
@@ -9999,6 +10000,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302F334122CDB50B00305EF2 /* CoreLocation.framework in Frameworks */,
+				1C02956623C6E5EC008CCE15 /* PassKit.framework in Frameworks */,
 				302F334222CDB50B00305EF2 /* (null) in Frameworks */,
 				00BFCF80FD8156762059186A /* (null) in Frameworks */,
 				13443F7B9ABC28697C1812C1 /* Pods_ElectroSbit.framework in Frameworks */,
@@ -12123,6 +12125,7 @@
 				303EBCC7229B922900223A2B /* Frameworks */,
 				303EBCC9229B922900223A2B /* Resources */,
 				9B6C2ACE5FD8427E961C1490 /* [CP] Embed Pods Frameworks */,
+				1C02956823C705EB008CCE15 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -12554,6 +12557,7 @@
 				30EE012B229CECF80011BEE1 /* Frameworks */,
 				30EE012E229CECF80011BEE1 /* Resources */,
 				671A43E44E779809B2892499 /* [CP] Embed Pods Frameworks */,
+				1C02956723C702E8008CCE15 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -16472,6 +16476,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Komeks/Pods-Komeks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		1C02956723C702E8008CCE15 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		1C02956823C705EB008CCE15 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		1CC759AB2398C65800EE59D8 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;

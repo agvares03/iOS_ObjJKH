@@ -14,6 +14,8 @@
 #import <UIKit/UIKit.h>
 
 /// Rendered native ad.
+// TODO(burnse): Remove the dependency on GADMediatedUnifiedNativeAd by copying API to this protocol
+// directly once legacy mediation APIs have been deprecated.
 @protocol GADMediationNativeAd <GADMediationAd, GADMediatedUnifiedNativeAd>
 
 @optional
@@ -33,7 +35,6 @@
 - (BOOL)handlesUserImpressions;
 @end
 
-/// Native ad configuration.
 @interface GADMediationNativeAdConfiguration : GADMediationAdConfiguration
 
 /// Additional options configured by the publisher for requesting a native ad.
