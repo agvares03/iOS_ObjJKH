@@ -642,7 +642,7 @@ class DB: NSObject, XMLParserDelegate {
                                                         }
                                                         DispatchQueue.main.sync {
                                                             self.add_data_saldo(id: 1, usluga: "Я", num_month: String(i_month), year: bill_year, start: String(format: "%.2f", obj_plus), plus: String(format: "%.2f", obj_start), minus: String(format: "%.2f", obj_minus), end: String(format: "%.2f", obj_end), ident: bill_ident)
-                                                        }                                                        
+                                                        }
                                                     } catch let error as NSError {
                                                         print(error)
                                                     }

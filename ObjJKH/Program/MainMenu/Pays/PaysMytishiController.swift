@@ -166,7 +166,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     @IBAction func Payed(_ sender: UIButton) {
         var l = false
-        #if isKlimovsk12 || isMobileMIR || isEasyLife || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
+        #if isKlimovsk12 || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
         l = true
         #else
         self.payedS()
@@ -397,7 +397,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isMobileMIR
         shopCode = "299850"
         targetName = "Мобильный мир"
+        #elseif isPedagog
+        shopCode = "302866"
+        targetName = "ТСЖ Педагогический"
         #endif
+        let shopInsurance = ""
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
         if shopCode == ""{
@@ -452,8 +456,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                         items.append(ItemsData)
                         #else
-                        let ItemsData = ["ShopCode" : shopCode, "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
-                        items.append(ItemsData)
+                        if osvc[i] == "Страховка"{
+                            let ItemsData = ["ShopCode" : shopInsurance, "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                            items.append(ItemsData)
+                        }else{
+                            let ItemsData = ["ShopCode" : shopCode, "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
+                            items.append(ItemsData)
+                        }
                         #endif
                     }
                     i += 1
@@ -553,7 +562,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
 //            }
             //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-            #elseif isKlimovsk12 || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
+            #elseif isKlimovsk12 || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
@@ -565,7 +574,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             UserDefaults.standard.synchronize()
             Data["chargeFlag"] = "false"
             var shops:[Any] = []
-            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", self.totalSum).replacingOccurrences(of: ".", with: ""), "Name" : targetName] as [String : Any]
+            let insurance: String = UserDefaults.standard.string(forKey: "insurance")!
+            var tSum:Double = self.totalSum
+            if Double(insurance) != nil{
+                if Double(insurance)! > 0.00{
+                    tSum = tSum - Double(insurance)!
+                    let shopItem2 = ["ShopCode" : shopInsurance, "Amount" : insurance.replacingOccurrences(of: ".", with: ""), "Name" : "Страховка"] as [String : Any]
+                    shops.append(shopItem2)
+                }
+            }
+            let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", tSum).replacingOccurrences(of: ".", with: ""), "Name" : targetName] as [String : Any]
             shops.append(shopItem)
             print(shops)
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
@@ -575,21 +593,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             print(receiptData)
             print(Data)
             if payType == 1{
-                #if isElectroSbitSaratov
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "ЭлектроСбытСаратов", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields:  [PKAddressField.email, PKAddressField.phone, PKAddressField.name], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-
-                }, cancelled:  {
-
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-                #endif
+//                #if isElectroSbitSaratov
+//                let address = PKContact()
+//                address.emailAddress = defaults.object(forKey: "mail")! as? String
+//                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+//                PayController.buy(withApplePayAmount: amount, description: "ЭлектроСбытСаратов", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields:  [PKAddressField.email, PKAddressField.phone, PKAddressField.name], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+//
+//                }, cancelled:  {
+//
+//                }, error: { (error) in
+//                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+//                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                    alert.addAction(cancelAction)
+//                    self.present(alert, animated: true, completion: nil)
+//                })
+//                #endif
             }else{
                 PayController.buyItem(withName: targetName, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
                     
@@ -935,6 +953,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     var idArr      :[Int] = []
     
     func getData(ident: String){
+        let insurance: String = UserDefaults.standard.string(forKey: "insurance")!
         self.sum = 0
         select = false
         checkBox.removeAll()
@@ -1014,6 +1033,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     
                     DispatchQueue.main.async(execute: {
                         if (self.sum > 0) {
+                            if Double(insurance) != nil{
+                                if Double(insurance)! > 0.00{
+                                    self.sum = self.sum + Double(insurance)!
+                                }
+                            }
                             let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
                             self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                             self.totalSum = self.sum + serviceP
@@ -1039,6 +1063,23 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     idArr.append(0)
                     identOSV.append(ident)
                 }
+                
+                if Double(insurance) != nil{
+                    if Double(insurance)! > 0.00{
+                        print(insurance, Double(insurance)!)
+                        
+                        sumOSV.append(Double(insurance)!)
+                        checkBox.append(true)
+                        osvc.append("Страховка")
+                        idOSV.append(1)
+                        
+                        uslugaArr.append("Страховка")
+                        endArr.append(insurance)
+                        idArr.append(1)
+                        identOSV.append(ident)
+                    }
+                }
+                
                 #if isDJ
                 self.debtArr.forEach{
                     if String($0["Ident"] as! String) == ident{
@@ -1119,21 +1160,42 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
             if s > 0{
                 self.sum = s
+                if Double(insurance) != nil{
+                    if Double(insurance)! > 0.00{
+                        self.sum = self.sum + Double(insurance)!
+                    }
+                }
                 let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
                 self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
-                self.totalSum = s + serviceP
-                self.txt_sum_obj.text = String(format:"%.2f", s) + " руб."
+                self.totalSum = self.sum + serviceP
+                self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
             }
-            sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
+            sumOSV.append(Double(String(format:"%.2f", s)) as! Double)
             checkBox.append(true)
             osvc.append("Услуги ЖКУ")
             idOSV.append(0)
             
             uslugaArr.append("Услуги ЖКУ")
-            endArr.append(String(format:"%.2f", self.sum))
+            endArr.append(String(format:"%.2f", s))
             idArr.append(0)
             identOSV.append(ident)
+            
+            if Double(insurance) != nil{
+                if Double(insurance)! > 0.00{
+                    print(insurance, Double(insurance)!)
+                    
+                    sumOSV.append(Double(insurance)!)
+                    checkBox.append(true)
+                    osvc.append("Страховка")
+                    idOSV.append(1)
+                    
+                    uslugaArr.append("Страховка")
+                    endArr.append(insurance)
+                    idArr.append(1)
+                    identOSV.append(ident)
+                }
+            }
             #if isDJ
             self.debtArr.forEach{
                 if String($0["Ident"] as! String) == ident{
@@ -1259,37 +1321,37 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         if choiceIdent == ""{
             let osv = fetchedResultsController!.object(at: indexPath)
-            //            if (osv.usluga?.contains("газ"))! || osv.usluga == "Страховка"{
-            //                cell.end.isUserInteractionEnabled = false
-            //                cell.end.isHidden = true
-            //                cell.endL.isHidden = false
-            //                cell.endL.text = osv.end
-            //            }else{
-            cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-            cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
-            cell.end.isUserInteractionEnabled = true
-            cell.endL.isHidden = true
-            cell.end.isHidden = false
-            //                print(osv.end)
-            cell.end.text = osv.end
-            if osvc.count != 0{
-                for i in 0...osvc.count - 1{
-                    let code:String = osvc[i] + identOSV[i]
-                    if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
-                        //                            print(code, sumOSV[i])
-                        cell.end.text = String(sumOSV[i])
+            if osv.usluga == "Страховка" || osv.usluga == "Страховой сбор"{
+                cell.end.isUserInteractionEnabled = false
+                cell.end.isHidden = true
+                cell.endL.isHidden = false
+                cell.endL.text = osv.end
+            }else{
+                cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+                cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
+                cell.end.isUserInteractionEnabled = true
+                cell.endL.isHidden = true
+                cell.end.isHidden = false
+                //                print(osv.end)
+                cell.end.text = osv.end
+                if osvc.count != 0{
+                    for i in 0...osvc.count - 1{
+                        let code:String = osvc[i] + identOSV[i]
+                        if cell.end.accessibilityIdentifier == code && sumOSV[i] != 0.00{
+                            //                            print(code, sumOSV[i])
+                            cell.end.text = String(sumOSV[i])
+                        }
                     }
                 }
             }
-            //            }
         }else{
-            if uslugaArr[indexPath.row] == "Страховой сбор"{
-                #if isDJ
+            if uslugaArr[indexPath.row] == "Страховой сбор" || uslugaArr[indexPath.row] == "Страховка"{
+//                #if isDJ
                 cell.end.isUserInteractionEnabled = false
                 cell.end.isHidden = true
                 cell.endL.isHidden = false
                 cell.endL.text = endArr[indexPath.row]
-                #endif
+//                #endif
             }else{
                 cell.end.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
                 cell.end.addTarget(self, action: #selector(self.textFieldEditingDidEnd(_:)), for: .editingDidEnd)
