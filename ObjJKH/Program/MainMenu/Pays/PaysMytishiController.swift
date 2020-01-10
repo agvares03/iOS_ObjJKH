@@ -401,7 +401,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "302866"
         targetName = "ТСЖ Педагогический"
         #endif
-        let shopInsurance = ""
+        let shopInsurance = "303049"
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
         if shopCode == ""{
@@ -576,11 +576,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             var shops:[Any] = []
             let insurance: String = UserDefaults.standard.string(forKey: "insurance")!
             var tSum:Double = self.totalSum
-            if Double(insurance) != nil{
-                if Double(insurance)! > 0.00{
-                    tSum = tSum - Double(insurance)!
-                    let shopItem2 = ["ShopCode" : shopInsurance, "Amount" : insurance.replacingOccurrences(of: ".", with: ""), "Name" : "Страховка"] as [String : Any]
-                    shops.append(shopItem2)
+            osvc.forEach{
+                if Double(insurance) != nil && $0 == "Страховка"{
+                    if Double(insurance)! > 0.00{
+                        tSum = tSum - Double(insurance)!
+                        let shopItem2 = ["ShopCode" : shopInsurance, "Amount" : insurance.replacingOccurrences(of: ".", with: ""), "Name" : "Страховка"] as [String : Any]
+                        shops.append(shopItem2)
+                    }
                 }
             }
             let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", tSum).replacingOccurrences(of: ".", with: ""), "Name" : targetName] as [String : Any]
@@ -593,11 +595,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             print(receiptData)
             print(Data)
             if payType == 1{
-//                #if isElectroSbitSaratov
+//                #if isElectroSbitSaratov //!!!КОМИТИТЬ ЭТОТ КУСОК КОДА ЕСЛИ НУЖНО ВЫПУСКАТЬ ДРУГИЕ ПРИЛОЖЕНИЯ БЕЗ ОПЛАТЫ APPLE PAY
 //                let address = PKContact()
 //                address.emailAddress = defaults.object(forKey: "mail")! as? String
 //                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-//                PayController.buy(withApplePayAmount: amount, description: "ЭлектроСбытСаратов", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields:  [PKAddressField.email, PKAddressField.phone, PKAddressField.name], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+//                PayController.buy(withApplePayAmount: amount, description: "ЭлектроСбытСаратов", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone, PKAddressField.name], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
 //
 //                }, cancelled:  {
 //
