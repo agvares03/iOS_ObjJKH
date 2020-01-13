@@ -14,10 +14,58 @@ class openSaldoController: UIViewController, WKUIDelegate {
     
 //    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var back: UIBarButtonItem!
+    @IBOutlet weak var share: UIBarButtonItem!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func shareAction(_ sender: UIView) {
+        if urlLink.contains(".pdf"){
+            DispatchQueue.main.async {
+                let url = URL(string: self.urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
+                let pdfData = try? Data.init(contentsOf: url!)
+                let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+                let pdfNameFromUrl = "documento.pdf"
+                let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
+                do {
+                    try pdfData?.write(to: actualPath, options: .atomic)
+                    print("pdf successfully saved!")
+                    let fileManager = FileManager.default
+                    let documentoPath = (self.getDirectoryPath() as NSString).appendingPathComponent("documento.pdf")
 
+                    if fileManager.fileExists(atPath: documentoPath){
+                        let documento = NSData(contentsOfFile: documentoPath)
+                        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [documento!], applicationActivities: nil)
+                        activityViewController.popoverPresentationController?.sourceView=self.view
+                        self.present(activityViewController, animated: true, completion: nil)
+                     }
+                     else {
+                         print("document was not found")
+                     }
+                } catch {
+                    print("Pdf could not be saved")
+                }
+            }
+        }else{
+            DispatchQueue.main.async {
+                let url : URL = URL(string: self.urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+                        activityViewController.popoverPresentationController?.sourceView=self.view
+                        self.present(activityViewController, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func getDirectoryPath() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
     public var urlLink = ""
     var webView: WKWebView!
     override func viewDidLoad() {
@@ -27,6 +75,7 @@ class openSaldoController: UIViewController, WKUIDelegate {
         webView.uiDelegate = self
         view = webView
         back.tintColor = myColors.btnColor.uiColor()
+        share.tintColor = myColors.btnColor.uiColor()
         print(urlLink)
 //        urlLink = urlLink.replacingOccurrences(of: "О", with: "O")
 //        if urlLink.contains(".pdf"){
@@ -97,5 +146,24 @@ extension openSaldoController:  URLSessionDownloadDelegate {
         } catch let error {
             print("Copy Error: \(error.localizedDescription)")
         }
+    }
+}
+
+extension UIApplication {
+    class var topViewController: UIViewController? { return getTopViewController() }
+    private class func getTopViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController { return getTopViewController(base: nav.visibleViewController) }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController { return getTopViewController(base: selected) }
+        }
+        if let presented = base?.presentedViewController { return getTopViewController(base: presented) }
+        return base
+    }
+}
+
+extension Hashable {
+    func share() {
+        let activity = UIActivityViewController(activityItems: [self], applicationActivities: nil)
+        UIApplication.topViewController?.present(activity, animated: true, completion: nil)
     }
 }

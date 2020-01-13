@@ -61,6 +61,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var applePayIcon: UIImageView!
     @IBOutlet weak var applePayWidth: NSLayoutConstraint!
     @IBOutlet weak var applePayLeft: NSLayoutConstraint!
+    @IBOutlet weak var insurance:   UILabel!
+    @IBOutlet weak var insuranceHeight: NSLayoutConstraint!
     
     var fetchedResultsController: NSFetchedResultsController<Saldo>?
     var iterYear: String = "0"
@@ -651,6 +653,19 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             textSum.isHidden = false
             textService.isHidden = false
         }
+        let insurance1: String = UserDefaults.standard.string(forKey: "insurance")!
+        if Double(insurance1) != nil{
+            if Double(insurance1)! > 0.00{
+                self.insurance.isHidden = false
+                self.insuranceHeight.constant = 30
+            }else{
+                self.insurance.isHidden = true
+                self.insuranceHeight.constant = 0
+            }
+        }else{
+            self.insurance.isHidden = true
+            self.insuranceHeight.constant = 0
+        }
         #if isDJ
         currPoint = 522
         paysViewHeight.constant = 110
@@ -807,6 +822,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         })
         #endif
         // Do any additional setup after loading the view.
+        let tapInsurance = UITapGestureRecognizer(target: self, action: #selector(insuranceTapped(_:)))
+        insurance.isUserInteractionEnabled = true
+        insurance.addGestureRecognizer(tapInsurance)
+        // Do any additional setup after loading the view.
+    }
+        
+    @objc private func insuranceTapped(_ sender: UITapGestureRecognizer) {
+//        self.performSegue(withIdentifier: "start_app", sender: self)
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView){

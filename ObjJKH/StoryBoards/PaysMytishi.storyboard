@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eq-yJ-VH4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8eq-yJ-VH4">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ds5-Ye-OVv">
-                                <rect key="frame" x="0.0" y="150" width="375" height="311"/>
+                                <rect key="frame" x="0.0" y="150" width="375" height="282"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PayMupCell" rowHeight="55" id="YUA-0f-fvR" customClass="PayMupSaldoCell" customModule="ADS_68" customModuleProvider="target">
@@ -355,6 +355,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9D-1X-pKk">
+                                <rect key="frame" x="16" y="432" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TiI-Jh-lnM"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Условия страхования">
+                                        <attributes>
+                                            <color key="NSColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="17" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -362,6 +379,7 @@
                             <constraint firstItem="NqZ-RR-9oV" firstAttribute="top" secondItem="eJY-xZ-v4L" secondAttribute="top" constant="4" id="2L6-ax-yxy"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="1bO-cG-U4Q" secondAttribute="trailing" constant="15" id="5ZW-jD-fBD"/>
                             <constraint firstItem="os7-xk-ILO" firstAttribute="centerY" secondItem="ABp-Jo-kEA" secondAttribute="centerY" id="7x6-Qq-h70"/>
+                            <constraint firstItem="n9D-1X-pKk" firstAttribute="top" secondItem="ds5-Ye-OVv" secondAttribute="bottom" id="9HJ-no-cMn"/>
                             <constraint firstAttribute="trailing" secondItem="enP-cC-omN" secondAttribute="trailing" id="C3h-CT-89c"/>
                             <constraint firstItem="enP-cC-omN" firstAttribute="top" secondItem="GCU-rr-B6M" secondAttribute="bottom" id="DgU-tK-Q7p"/>
                             <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="eJY-xZ-v4L" secondAttribute="trailing" id="FKt-vO-zFP"/>
@@ -380,10 +398,12 @@
                             <constraint firstItem="eJY-xZ-v4L" firstAttribute="trailing" secondItem="NqZ-RR-9oV" secondAttribute="trailing" constant="16" id="bVh-S1-TLN"/>
                             <constraint firstItem="GCU-rr-B6M" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="eAR-0d-ZC2"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" id="gFD-zk-WjN"/>
-                            <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="ds5-Ye-OVv" secondAttribute="bottom" constant="1" id="gcz-X2-OIH"/>
+                            <constraint firstItem="GCU-rr-B6M" firstAttribute="top" secondItem="n9D-1X-pKk" secondAttribute="bottom" id="jPw-Nj-zCX"/>
+                            <constraint firstItem="MkC-gE-W0P" firstAttribute="trailing" secondItem="n9D-1X-pKk" secondAttribute="trailing" constant="16" id="qCZ-Ri-w7O"/>
                             <constraint firstItem="1bO-cG-U4Q" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="15" id="qzh-8C-scv"/>
                             <constraint firstItem="aPA-3J-M3o" firstAttribute="centerX" secondItem="ABp-Jo-kEA" secondAttribute="centerX" id="rq3-ss-sGa"/>
                             <constraint firstItem="1bO-cG-U4Q" firstAttribute="top" secondItem="tCL-un-6ER" secondAttribute="bottom" constant="5" id="s9A-Vq-ID4"/>
+                            <constraint firstItem="n9D-1X-pKk" firstAttribute="leading" secondItem="MkC-gE-W0P" secondAttribute="leading" constant="16" id="tpH-CP-fSB"/>
                             <constraint firstItem="ds5-Ye-OVv" firstAttribute="top" secondItem="1bO-cG-U4Q" secondAttribute="bottom" id="ybz-Ku-Jcm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MkC-gE-W0P"/>
@@ -410,6 +430,8 @@
                         <outlet property="back" destination="Cub-5c-2T4" id="mlG-vY-Z7N"/>
                         <outlet property="btnPay" destination="DaL-sh-I0s" id="cNa-G8-wVU"/>
                         <outlet property="historyPay" destination="2O7-uP-SgY" id="eBP-gm-e2D"/>
+                        <outlet property="insurance" destination="n9D-1X-pKk" id="cpm-7t-9oa"/>
+                        <outlet property="insuranceHeight" destination="TiI-Jh-lnM" id="cl8-dY-IMi"/>
                         <outlet property="lsLbl" destination="tCL-un-6ER" id="ctB-5n-YiG"/>
                         <outlet property="lsView" destination="os7-xk-ILO" id="iWz-Db-u4o"/>
                         <outlet property="ls_button" destination="eJY-xZ-v4L" id="eg5-K7-onF"/>
