@@ -930,6 +930,7 @@ class FirstController: UIViewController {
         defaults.setValue(phone_operator, forKey: "phone_operator")
         if insurance != ""{
             defaults.setValue(insurance, forKey: "insurance")
+//            defaults.setValue("5.00", forKey: "insurance")
         }else{
             defaults.setValue("0.00", forKey: "insurance")
         }
