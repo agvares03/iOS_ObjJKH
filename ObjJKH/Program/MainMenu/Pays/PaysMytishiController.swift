@@ -458,7 +458,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                         items.append(ItemsData)
                         #else
-                        if osvc[i] == "Страховка"{
+                        if osvc[i] == "Страхование"{
                             let ItemsData = ["ShopCode" : shopInsurance, "Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                             items.append(ItemsData)
                         }else{
@@ -579,10 +579,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let insurance: String = UserDefaults.standard.string(forKey: "insurance")!
             var tSum:Double = self.totalSum
             osvc.forEach{
-                if Double(insurance) != nil && $0 == "Страховка"{
+                if Double(insurance) != nil && $0 == "Страхование"{
                     if Double(insurance)! > 0.00{
                         tSum = tSum - Double(insurance)!
-                        let shopItem2 = ["ShopCode" : shopInsurance, "Amount" : insurance.replacingOccurrences(of: ".", with: ""), "Name" : "Страховка"] as [String : Any]
+                        let shopItem2 = ["ShopCode" : shopInsurance, "Amount" : insurance.replacingOccurrences(of: ".", with: ""), "Name" : "Страхование"] as [String : Any]
                         shops.append(shopItem2)
                     }
                 }
@@ -1098,10 +1098,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         
                         sumOSV.append(Double(insurance)!)
                         checkBox.append(true)
-                        osvc.append("Страховка")
+                        osvc.append("Страхование")
                         idOSV.append(1)
                         
-                        uslugaArr.append("Страховка")
+                        uslugaArr.append("Страхование")
                         endArr.append(insurance)
                         idArr.append(1)
                         identOSV.append(ident)
@@ -1215,10 +1215,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     
                     sumOSV.append(Double(insurance)!)
                     checkBox.append(true)
-                    osvc.append("Страховка")
+                    osvc.append("Страхование")
                     idOSV.append(1)
                     
-                    uslugaArr.append("Страховка")
+                    uslugaArr.append("Страхование")
                     endArr.append(insurance)
                     idArr.append(1)
                     identOSV.append(ident)
@@ -1349,7 +1349,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         if choiceIdent == ""{
             let osv = fetchedResultsController!.object(at: indexPath)
-            if osv.usluga == "Страховка" || osv.usluga == "Страховой сбор"{
+            if osv.usluga == "Страхование" || osv.usluga == "Страховой сбор"{
                 cell.end.isUserInteractionEnabled = false
                 cell.end.isHidden = true
                 cell.endL.isHidden = false
@@ -1373,7 +1373,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
         }else{
-            if uslugaArr[indexPath.row] == "Страховой сбор" || uslugaArr[indexPath.row] == "Страховка"{
+            if uslugaArr[indexPath.row] == "Страховой сбор" || uslugaArr[indexPath.row] == "Страхование"{
 //                #if isDJ
                 cell.end.isUserInteractionEnabled = false
                 cell.end.isHidden = true
