@@ -829,7 +829,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
         
     @objc private func insuranceTapped(_ sender: UITapGestureRecognizer) {
-//        self.performSegue(withIdentifier: "start_app", sender: self)
+        let url  = NSURL(string: "http://sm-center.ru/vsk_polis.pdf")
+        if UIApplication.shared.canOpenURL(url! as URL) == true  {
+            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+        }
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView){
