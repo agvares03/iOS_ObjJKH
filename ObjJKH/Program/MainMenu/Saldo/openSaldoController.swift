@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import WebKit
+import Crashlytics
 
 class openSaldoController: UIViewController, WKUIDelegate {
     
@@ -70,6 +71,7 @@ class openSaldoController: UIViewController, WKUIDelegate {
     var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("OpenSaldo", forKey: "last_UI_action")
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self

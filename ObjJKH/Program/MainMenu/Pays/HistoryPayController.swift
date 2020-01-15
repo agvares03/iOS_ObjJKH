@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -318,6 +319,7 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryPayCell", for: indexPath) as! HistoryPayCell
+        cell.delegate = self
         cell.display(values[indexPath.row])
         return cell
     }

@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import UserNotifications
 import Firebase
+import Crashlytics
 //import YandexMobileMetrica
 
 protocol AppsUserUpdateDelegate {
@@ -90,6 +91,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("AppsController", forKey: "last_UI_action")
 //        let defaults     = UserDefaults.standard
 //        let params : [String : Any] = ["Переход на страницу": "Заявки"]
 //        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
@@ -243,7 +245,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], ascending: true) as? NSFetchedResultsController<Applications>
         } else {
             let close: NSNumber = 1
-            let predicateFormat = String(format: " is_close =%@ ", close)
+            let predicateFormat = String(format: "is_close =%@", close)
             self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat, ascending: true) as? NSFetchedResultsController<Applications>
         }
         

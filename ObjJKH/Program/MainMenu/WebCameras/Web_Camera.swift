@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import WebKit
+import Crashlytics
 
 class Web_Camera: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
@@ -24,6 +25,7 @@ class Web_Camera: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("Web_Camera", forKey: "last_UI_action")
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self

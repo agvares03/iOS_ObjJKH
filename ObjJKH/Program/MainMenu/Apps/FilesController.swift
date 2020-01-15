@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Crashlytics
 
 protocol FilesDelegate {
     func imagePressed(_ sender: UITapGestureRecognizer)
@@ -22,7 +23,7 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
     public var fromNew: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Crashlytics.sharedInstance().setObjectValue("FilesController", forKey: "last_UI_action")
         let objs = (CoreDataManager.instance.fetchedResultsController(entityName: "Fotos", keysForSort: ["name"], ascending: true) as? NSFetchedResultsController<Fotos>)
         try? objs?.performFetch()
         objs?.fetchedObjects?.forEach { obj in
@@ -65,26 +66,28 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
         view.frame = UIScreen.main.bounds
         view.backgroundColor = .black
         let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
-        let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
-        let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
-        if k > l{
-            newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
-        }else{
-            newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
+        if imageView.image != nil{
+            let newImageView = UIImageView(image: imageView.image)
+            let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
+            let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
+            if k > l{
+                newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
+            }else{
+                newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
+            }
+            newImageView.frame.size.width = self.view.frame.size.width
+            let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
+            newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
+            newImageView.backgroundColor = .black
+            newImageView.contentMode = .scaleToFill
+            newImageView.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
+            view.addGestureRecognizer(tap)
+            view.addSubview(newImageView)
+            self.view.addSubview(view)
+            self.navigationController?.isNavigationBarHidden = true
+            self.tabBarController?.tabBar.isHidden = true
         }
-        newImageView.frame.size.width = self.view.frame.size.width
-        let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
-        newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleToFill
-        newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
-        view.addGestureRecognizer(tap)
-        view.addSubview(newImageView)
-        self.view.addSubview(view)
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
     }
     
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {

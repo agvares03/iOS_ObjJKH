@@ -13,6 +13,7 @@ import SwiftyXMLParser
 import YandexMobileAds
 import GoogleMobileAds
 import StoreKit
+import Crashlytics
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)
@@ -276,6 +277,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("HomePage", forKey: "last_UI_action")
         StopIndicators()
         self.ls_View.isHidden = true
         self.news_View.isHidden = true
@@ -1618,7 +1620,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         //            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"]) as? NSFetchedResultsController<Applications>
         //        } else {
         let close: NSNumber = 1
-        let predicateFormat = String(format: " is_close =%@ ", close)
+        let predicateFormat = String(format: "is_close =%@", close)
         self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat, ascending: false) as? NSFetchedResultsController<Applications>
         //        }
         
@@ -2502,8 +2504,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let app = (fetchedResultsController?.object(at: indexPath))! as Applications
             cell.goApp.tintColor = myColors.btnColor.uiColor()
             cell.img.setImageColor(color: myColors.btnColor.uiColor())
-            cell.nameApp.text    = "Заявка №" + app.number!
-            cell.comment.text    = app.tema
+            if app.number != nil{
+                cell.nameApp.text    = "Заявка №" + app.number!
+            }
+            if app.tema != nil{
+                cell.comment.text    = app.tema
+            }
             if app.serverStatus != nil{
                 cell.statusText.text = app.serverStatus
             }

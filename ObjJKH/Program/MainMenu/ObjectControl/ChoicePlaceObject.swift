@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
     
@@ -87,7 +88,7 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
     var idObject = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Crashlytics.sharedInstance().setObjectValue("ChoicePlaceObject", forKey: "last_UI_action")
         indicator_home.startAnimating()
         indicator_premise.startAnimating()
         indicator_entrance.startAnimating()

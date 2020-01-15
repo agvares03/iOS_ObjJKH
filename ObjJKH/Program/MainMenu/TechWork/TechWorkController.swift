@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class TechWorkController: UIViewController {
 
@@ -24,7 +25,7 @@ class TechWorkController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Crashlytics.sharedInstance().setObjectValue("TechWork", forKey: "last_UI_action")
         #if isOur_Obj_Home
         fon_top.image = UIImage(named: "logo_Our_Obj_Home_white")
         #elseif isChist_Dom

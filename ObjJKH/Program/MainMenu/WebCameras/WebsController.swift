@@ -8,6 +8,7 @@
 
 import UIKit
 import Gloss
+import Crashlytics
 //import YandexMobileMetrica
 
 class WebsController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -69,6 +70,7 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("WebsController", forKey: "last_UI_action")
 //        let params : [String : Any] = ["Переход на страницу": "Web-камеры"]
 //        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
 //            //            print("DID FAIL REPORT EVENT: %@", message)

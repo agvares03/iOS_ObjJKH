@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Alamofire
 import UserNotifications
+import Crashlytics
 import Firebase
 
 protocol ShowNewAppDelegate : class {
@@ -356,6 +357,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("NewAppUser", forKey: "last_UI_action")
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()
         self.StopIndicator()

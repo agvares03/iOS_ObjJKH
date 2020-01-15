@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Dropper
+import Crashlytics
 
 class UniqCountersController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource, XMLParserDelegate {
     
@@ -114,6 +115,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("UniqCounters", forKey: "last_UI_action")
         tableCounters.delegate = self
         tableCounters.dataSource = self
         lsLbl.text = "Л/с: " + countIdent

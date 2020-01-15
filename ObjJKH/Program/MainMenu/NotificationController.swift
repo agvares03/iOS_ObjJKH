@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class NotificationController: UIViewController {
 
@@ -24,6 +25,7 @@ class NotificationController: UIViewController {
     var phone: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("Notifi", forKey: "last_UI_action")
         let defaults = UserDefaults.standard
         phone = defaults.string(forKey: "phone_operator")
         var phone1 = defaults.string(forKey: "phone_operator")

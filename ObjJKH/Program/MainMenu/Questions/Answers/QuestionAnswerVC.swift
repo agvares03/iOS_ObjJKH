@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 var i = Int()
 var kek: [Int] = []
@@ -167,6 +168,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("QuestionAnswer", forKey: "last_UI_action")
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         stopAnimation()
         navigationItem.title    = question_?.name

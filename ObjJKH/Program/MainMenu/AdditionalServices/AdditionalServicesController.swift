@@ -10,6 +10,7 @@ import UIKit
 import Dropper
 import SwiftyXMLParser
 import CoreData
+import Crashlytics
 //import YandexMobileMetrica
 
 struct Services {
@@ -71,6 +72,7 @@ class AdditionalServicesController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("AdditionalService", forKey: "last_UI_action")
 //        let params : [String : Any] = ["Переход на страницу": "Дополнительные услуги"]
 //        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
 //            //            print("DID FAIL REPORT EVENT: %@", message)
@@ -252,8 +254,9 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSectionOpened(section){
             return objectArray[section].sectionObjects.count + 1
+        }else{
+            return 0
         }
-        return 1
     }
     
     // Получим данные для использования в ячейке

@@ -9,6 +9,7 @@
 import UIKit
 import YandexMobileAds
 import GoogleMobileAds
+import Crashlytics
 
 class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdLoaderDelegate, UITextFieldDelegate {
     
@@ -330,6 +331,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("AddCounter", forKey: "last_UI_action")
         print("metrId: ", metrId)
         self.StopIndicator()
         let defaults     = UserDefaults.standard

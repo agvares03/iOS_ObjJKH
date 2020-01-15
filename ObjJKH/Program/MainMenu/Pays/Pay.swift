@@ -9,6 +9,7 @@
 import UIKit
 import SafariServices
 import WebKit
+import Crashlytics
 
 class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WKNavigationDelegate {
     func newAddAppDone(addApp: NewAddAppUser) {
@@ -49,7 +50,7 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
         super.viewDidLoad()
         self.appBtn.isHidden = true
         self.appLbl.isHidden = true
-        
+        Crashlytics.sharedInstance().setObjectValue("Pay", forKey: "last_UI_action")
         let defaults     = UserDefaults.standard
         
         // Логин и пароль

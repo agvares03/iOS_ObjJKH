@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 //import YandexMobileMetrica
 
 class NewsController: UIViewController, UITableViewDelegate {
@@ -30,6 +31,7 @@ class NewsController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("News", forKey: "last_UI_action")
 //        let params : [String : Any] = ["Переход на страницу": "Уведомления"]
 //        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
 //            //            print("DID FAIL REPORT EVENT: %@", message)

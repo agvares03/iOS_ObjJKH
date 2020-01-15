@@ -543,11 +543,11 @@ class FirstController: UIViewController {
         var strLogin = ""
         if !maskLogin{
             strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-            print(strLogin)
+//            print(strLogin)
             strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-            print(strLogin)
+//            print(strLogin)
             strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-            print(strLogin)
+//            print(strLogin)
             strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         }else{
             strLogin = loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)

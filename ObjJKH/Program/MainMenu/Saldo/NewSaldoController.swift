@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Dropper
 import Gloss
+import Crashlytics
 //import YandexMobileMetrica
 
 class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewDataSource, GoUrlReceiptDelegate {    
@@ -34,6 +35,7 @@ class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("NewSaldo", forKey: "last_UI_action")
         tableReceipts.delegate = self
         tableReceipts.dataSource = self
         back.tintColor = myColors.btnColor.uiColor()

@@ -8,6 +8,7 @@
 
 import UIKit
 import Gloss
+import Crashlytics
 //import YandexMobileMetrica
 
 protocol QuestionTableDelegate {
@@ -49,6 +50,7 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("QuestionTable", forKey: "last_UI_action")
 //        let params : [String : Any] = ["Переход на страницу": "Опросы"]
 //        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
 //            //            print("DID FAIL REPORT EVENT: %@", message)

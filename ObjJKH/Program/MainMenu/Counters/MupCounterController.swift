@@ -11,6 +11,7 @@ import CoreData
 import Dropper
 //import YandexMobileMetrica
 import StoreKit
+import Crashlytics
 
 protocol CountersCellDelegate: class {
     func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String)
@@ -106,6 +107,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("MupController", forKey: "last_UI_action")
         UserDefaults.standard.set(false, forKey: "PaymentSucces")
         UserDefaults.standard.synchronize()
         let defaults     = UserDefaults.standard

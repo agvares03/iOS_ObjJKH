@@ -13,6 +13,7 @@ import StoreKit
 import PassKit
 import YandexMobileAds
 import GoogleMobileAds
+import Crashlytics
 //import YandexMobileMetrica
 
 private protocol MainDataProtocol:  class {}
@@ -630,6 +631,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("PaysController", forKey: "last_UI_action")
         let defaults     = UserDefaults.standard
 //        let params : [String : Any] = ["Переход на страницу": "Оплата"]
 //        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in

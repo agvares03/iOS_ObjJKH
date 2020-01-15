@@ -11,6 +11,7 @@ import CoreData
 import Alamofire
 import SwiftyXMLParser
 import Photos
+import Crashlytics
 
 protocol NewAddAppDelegate : class {
     func newAddAppDone(addApp: NewAddAppUser)
@@ -322,6 +323,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var appText = "Описание..."
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("NewAddAppUser", forKey: "last_UI_action")
         self.StopIndicator()
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()

@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Crashlytics
 import Gloss
 //import YandexMobileMetrica
 
@@ -39,6 +40,7 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("Voting", forKey: "last_UI_action")
 //        let params : [String : Any] = ["Переход на страницу": "Голосования"]
 //        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
 //            //            print("DID FAIL REPORT EVENT: %@", message)

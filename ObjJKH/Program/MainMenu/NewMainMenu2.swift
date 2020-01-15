@@ -127,6 +127,7 @@ class NewMainMenu2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("MainMenu", forKey: "last_UI_action")
         self.getQuestions()
         self.getNews()
         let defaults = UserDefaults.standard

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class NewEditAccountController: UIViewController, UITableViewDelegate, UITableViewDataSource, DebtCellDelegate, DelLSCellDelegate {
     
@@ -210,7 +211,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Crashlytics.sharedInstance().setObjectValue("EditAccount", forKey: "last_UI_action")
         tableView.delegate = self
         tableView.dataSource = self
         

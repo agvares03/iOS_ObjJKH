@@ -163,7 +163,14 @@ class nonPassController: UIViewController {
     }
     
     func delLS(){
-        let phone = login
+        var phone = login
+        if phone.contains("+7"){
+            phone = phone.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            phone = phone.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+            phone = phone.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+            phone = phone.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+            phone = phone.replacingOccurrences(of: "+", with: "", options: .literal, range: nil)
+        }
         let ident =  ls
         let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + ls + " от аккаунта?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
@@ -173,11 +180,15 @@ class nonPassController: UIViewController {
         let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
             self.StartIndicator()
             var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
-            urlPath = urlPath + "phone=" + phone + "&ident=" + ident.stringByAddingPercentEncodingForRFC3986()!
+            if phone != "" && ident != ""{
+                urlPath = urlPath + "phone=" + phone.stringByAddingPercentEncodingForRFC3986()! + "&ident=" + ident.stringByAddingPercentEncodingForRFC3986()!
+            }else{
+                return
+            }
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
-            
+            print(request)
             let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                   completionHandler: {
                                                     data, response, error in
