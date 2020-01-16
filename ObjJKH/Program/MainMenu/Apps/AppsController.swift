@@ -242,7 +242,9 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func load_data() {
         if (switchCloseApps.isOn) {
-            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], ascending: true) as? NSFetchedResultsController<Applications>
+            let close: NSNumber = 0
+            let predicateFormat = String(format: "is_close =%@", close)
+            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat, ascending: true) as? NSFetchedResultsController<Applications>
         } else {
             let close: NSNumber = 1
             let predicateFormat = String(format: "is_close =%@", close)

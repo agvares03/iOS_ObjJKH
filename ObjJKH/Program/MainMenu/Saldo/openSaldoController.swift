@@ -55,6 +55,10 @@ class openSaldoController: UIViewController, WKUIDelegate {
                         let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
                         activityViewController.popoverPresentationController?.sourceView=self.view
                         self.present(activityViewController, animated: true, completion: nil)
+                    }else{
+                        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                        activityViewController.popoverPresentationController?.sourceView=self.view
+                        self.present(activityViewController, animated: true, completion: nil)
                     }
                 }
             }
