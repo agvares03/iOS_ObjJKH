@@ -65,6 +65,7 @@ class NewCommFileCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var heightImg: NSLayoutConstraint!
     @IBOutlet weak var widthImg: NSLayoutConstraint!
+    @IBOutlet weak var text_comm: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

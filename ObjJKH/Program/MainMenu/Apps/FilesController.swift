@@ -19,6 +19,7 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
     @IBOutlet weak var collection: UICollectionView!
     
     open var data_: [Comments] = []
+    public var colorNav: Bool = false
     private var data: [Fotos] = []
     public var fromNew: Bool = false
     override func viewDidLoad() {
@@ -66,27 +67,45 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
         view.frame = UIScreen.main.bounds
         view.backgroundColor = .black
         let imageView = sender.view as! UIImageView
-        if imageView.image != nil{
-            let newImageView = UIImageView(image: imageView.image)
-            let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
-            let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
-            if k > l{
-                newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
-            }else{
-                newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
-            }
-            newImageView.frame.size.width = self.view.frame.size.width
-            let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
-            newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
-            newImageView.backgroundColor = .black
-            newImageView.contentMode = .scaleToFill
-            newImageView.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
-            view.addGestureRecognizer(tap)
-            view.addSubview(newImageView)
-            self.view.addSubview(view)
-            self.navigationController?.isNavigationBarHidden = true
-            self.tabBarController?.tabBar.isHidden = true
+//        let newImageView = UIImageView(image: imageView.image)
+        if imageView.image != nil && imageView.image != UIImage(named: "icon_file"){
+            self.link = imageView.accessibilityLabel ?? ""
+            self.pdf = false
+            self.performSegue(withIdentifier: "openURL", sender: self)
+//            let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
+//            let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
+//            if k > l{
+//                newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
+//            }else{
+//                newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
+//            }
+//            newImageView.frame.size.width = self.view.frame.size.width
+//            let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
+//            newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
+//            newImageView.backgroundColor = .black
+//            newImageView.contentMode = .scaleToFill
+//            newImageView.isUserInteractionEnabled = true
+//            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
+//            view.addGestureRecognizer(tap)
+//            view.addSubview(newImageView)
+//            self.view.addSubview(view)
+//            self.navigationController?.isNavigationBarHidden = true
+//            self.tabBarController?.tabBar.isHidden = true
+        }else{
+            self.link = imageView.accessibilityLabel ?? ""
+            self.pdf = true
+            self.performSegue(withIdentifier: "openURL", sender: self)
+        }
+    }
+    var link = ""
+    var pdf = false
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openURL" {
+            let payController = segue.destination as! openSaldoController
+            payController.urlLink = self.link
+            payController.pdf = self.pdf
+            payController.colorNav = colorNav
         }
     }
     
@@ -122,28 +141,46 @@ final class FilesImageCell: UICollectionViewCell {
         
         loader.isHidden = false
         loader.startAnimating()
-        
+        let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(item.id).stringByAddingPercentEncodingForRFC3986() ?? "")
         if !imgs.keys.contains(item.name ?? "") {
-            
-            var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(item.id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
-            request.httpMethod = "GET"
-            
-            URLSession.shared.dataTask(with: request) {
-                data, error, responce in
+            if (item.name?.contains(".pdf"))!{
+                let img = UIImage(named: "icon_file")
+                imgs[item.name!] = img
+                image.image = img
+                image.tintColor = myColors.btnColor.uiColor()
+                image.accessibilityLabel = url
+                loader.stopAnimating()
+                loader.isHidden = true
+            }else{
+                var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(item.id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
+                request.httpMethod = "GET"
                 
-                guard data != nil else { return }
-                DispatchQueue.main.async { [weak self] in
-                    let img = UIImage(data: data!)
-                    imgs[item.name!] = img
-                    self?.image.image = img
-                    self?.loader.stopAnimating()
-                    self?.loader.isHidden = true
-                }
-                
-                }.resume()
-            
+                URLSession.shared.dataTask(with: request) {
+                    data, error, responce in
+                    
+                    guard data != nil else { return }
+                    DispatchQueue.main.async { [weak self] in
+                        let img = UIImage(data: data!)
+                        imgs[item.name!] = img
+                        self?.image.accessibilityLabel = url
+                        self?.image.image = img
+                        self?.image.tintColor = .clear
+                        self?.loader.stopAnimating()
+                        self?.loader.isHidden = true
+                    }
+                    
+                    }.resume()
+            }
         } else {
-            image.image = imgs[item.name ?? ""]
+            if (item.name?.contains(".pdf"))!{
+                image.image = imgs[item.name ?? ""]
+                image.tintColor = myColors.btnColor.uiColor()
+                image.accessibilityLabel = url
+            }else{
+                image.image = imgs[item.name ?? ""]
+                image.accessibilityLabel = url
+                image.tintColor = .clear
+            }
         }
     }
     

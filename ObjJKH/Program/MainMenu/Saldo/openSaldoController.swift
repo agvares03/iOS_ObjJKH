@@ -72,6 +72,9 @@ class openSaldoController: UIViewController, WKUIDelegate {
     }
     
     public var urlLink = ""
+    public var pdf: Bool = false
+    public var colorNav: Bool = false
+    
     var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +86,12 @@ class openSaldoController: UIViewController, WKUIDelegate {
         back.tintColor = myColors.btnColor.uiColor()
         share.tintColor = myColors.btnColor.uiColor()
         print(urlLink)
+        if colorNav{
+            navigationController?.navigationBar.barStyle = .black
+            navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()
+            back.tintColor = .white
+            share.tintColor = .white
+        }
 //        urlLink = urlLink.replacingOccurrences(of: "О", with: "O")
 //        if urlLink.contains(".pdf"){
 //            guard let url = URL(string: urlLink) else {
@@ -92,7 +101,7 @@ class openSaldoController: UIViewController, WKUIDelegate {
 //            let downloadTask = urlSession.downloadTask(with: url)
 //            downloadTask.resume()
 //        }else{
-        if urlLink.contains(".pdf"){
+        if urlLink.contains(".pdf") || pdf{
             if let url : NSURL = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
                 if let data = try? Data(contentsOf: url as URL){
                     webView.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: url as URL)

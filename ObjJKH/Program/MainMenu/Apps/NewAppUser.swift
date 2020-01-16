@@ -811,6 +811,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     }
                 }
                 if id != 0{
+                    cell.text_comm.text = imgName
                     cell.loader.isHidden = false
                     let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(_:)))
                     cell.img.isUserInteractionEnabled = true
@@ -819,32 +820,57 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.loader.isHidden = false
                     cell.loader.startAnimating()
                     if !imgs.keys.contains(imgName ?? "") {
-                        
-                        var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
-                        request.httpMethod = "GET"
-                        print("REQUES`t = ", request)
-                        URLSession.shared.dataTask(with: request) {
-                            data, error, responce in
-                            
-                            guard data != nil else { return }
-                            DispatchQueue.main.async { [weak self] in
+                        if (imgName?.contains(".pdf"))!{
+                            let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
+                            let img = UIImage(named: "icon_file")
+                            imgs[imgName!] = img
+                            cell.img.accessibilityLabel = url
+                            cell.img.image = img
+                            cell.img.tintColor = myColors.btnColor.uiColor()
+                            cell.loader.stopAnimating()
+                            cell.loader.isHidden = true
+                            cell.heightImg.constant = 80
+                            cell.widthImg.constant = 80
+                        }else{
+                            let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
+                            var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
+                            request.httpMethod = "GET"
+//                                print("REQUES`t = ", request)
+                            URLSession.shared.dataTask(with: request) {
+                                data, error, responce in
                                 
-                                let img = UIImage(data: data!)
-                                imgs[imgName!] = img
-                                cell.img.image = img
-                                cell.loader.stopAnimating()
-                                cell.loader.isHidden = true
-                            }
-                            
+                                guard data != nil else { return }
+                                DispatchQueue.main.async { [weak self] in
+                                    if let image = UIImage(data: data!) {
+                                        let img = image
+                                        imgs[imgName!] = img
+                                        cell.img.image = img
+                                        cell.img.accessibilityLabel = url
+                                        cell.img.tintColor = .clear
+                                        cell.loader.stopAnimating()
+                                        cell.loader.isHidden = true
+                                    }
+                                }
+                                
                             }.resume()
-                        cell.heightImg.constant = 150
-                        cell.widthImg.constant = 150
+                            cell.heightImg.constant = 150
+                            cell.widthImg.constant = 150
+                        }
                     } else {
+                        let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
                         cell.loader.isHidden = true
                         cell.loader.stopAnimating()
+                        cell.img.accessibilityLabel = url
                         cell.img.image = imgs[imgName ?? ""]
-                        cell.heightImg.constant = 150
-                        cell.widthImg.constant = 150
+                        if (imgName?.contains(".pdf"))!{
+                            cell.img.tintColor = myColors.btnColor.uiColor()
+                            cell.heightImg.constant = 80
+                            cell.widthImg.constant = 80
+                        }else{
+                            cell.img.tintColor = .clear
+                            cell.heightImg.constant = 150
+                            cell.widthImg.constant = 150
+                        }
                     }
                 }
                 return cell
@@ -949,6 +975,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     }
                 }
                 if id != 0{
+                    cell.text_comm.text = imgName
                     cell.loader.isHidden = false
                     let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(_:)))
                     cell.img.isUserInteractionEnabled = true
@@ -957,32 +984,57 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.loader.isHidden = false
                     cell.loader.startAnimating()
                     if !imgs.keys.contains(imgName ?? "") {
-                        
-                        var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
-                        request.httpMethod = "GET"
-                        print("REQUES`t = ", request)
-                        URLSession.shared.dataTask(with: request) {
-                            data, error, responce in
-                            
-                            guard data != nil else { return }
-                            DispatchQueue.main.async { [weak self] in
+                        if (imgName?.contains(".pdf"))!{
+                            let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
+                            let img = UIImage(named: "icon_file")
+                            imgs[imgName!] = img
+                            cell.img.accessibilityLabel = url
+                            cell.img.image = img
+                            cell.img.tintColor = myColors.btnColor.uiColor()
+                            cell.loader.stopAnimating()
+                            cell.loader.isHidden = true
+                            cell.heightImg.constant = 80
+                            cell.widthImg.constant = 80
+                        }else{
+                            let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
+                            var request = URLRequest(url: URL(string: Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? ""))!)
+                            request.httpMethod = "GET"
+//                                print("REQUES`t = ", request)
+                            URLSession.shared.dataTask(with: request) {
+                                data, error, responce in
                                 
-                                let img = UIImage(data: data!)
-                                imgs[imgName!] = img
-                                cell.img.image = img
-                                cell.loader.stopAnimating()
-                                cell.loader.isHidden = true
-                            }
-                            
+                                guard data != nil else { return }
+                                DispatchQueue.main.async { [weak self] in
+                                    if let image = UIImage(data: data!) {
+                                        let img = image
+                                        imgs[imgName!] = img
+                                        cell.img.image = img
+                                        cell.img.accessibilityLabel = url
+                                        cell.img.tintColor = .clear
+                                        cell.loader.stopAnimating()
+                                        cell.loader.isHidden = true
+                                    }
+                                }
+                                
                             }.resume()
-                        cell.heightImg.constant = 150
-                        cell.widthImg.constant = 150
+                            cell.heightImg.constant = 150
+                            cell.widthImg.constant = 150
+                        }
                     } else {
+                        let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
                         cell.loader.isHidden = true
                         cell.loader.stopAnimating()
+                        cell.img.accessibilityLabel = url
                         cell.img.image = imgs[imgName ?? ""]
-                        cell.heightImg.constant = 150
-                        cell.widthImg.constant = 150
+                        if (imgName?.contains(".pdf"))!{
+                            cell.img.tintColor = myColors.btnColor.uiColor()
+                            cell.heightImg.constant = 80
+                            cell.widthImg.constant = 80
+                        }else{
+                            cell.img.tintColor = .clear
+                            cell.heightImg.constant = 150
+                            cell.widthImg.constant = 150
+                        }
                     }
                 }
                 return cell
@@ -1010,30 +1062,38 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.frame = UIScreen.main.bounds
         view.backgroundColor = .black
         let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
-        if imageView.image != nil{
-            let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
-            let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
-            if k > l{
-                newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
-            }else{
-                newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
-            }
-            newImageView.frame.size.width = self.view.frame.size.width
-            let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
-            newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
-            newImageView.backgroundColor = .black
-            newImageView.contentMode = .scaleToFill
-            newImageView.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
-            view.addGestureRecognizer(tap)
-            view.addSubview(newImageView)
-            self.view.addSubview(view)
-            self.navigationController?.isNavigationBarHidden = true
-            self.tabBarController?.tabBar.isHidden = true
+//        let newImageView = UIImageView(image: imageView.image)
+        if imageView.image != nil && imageView.image != UIImage(named: "icon_file"){
+            self.link = imageView.accessibilityLabel ?? ""
+            self.pdf = false
+            self.performSegue(withIdentifier: "openURL", sender: self)
+//            let k = Double((imageView.image?.size.height)!) / Double((imageView.image?.size.width)!)
+//            let l = Double((imageView.image?.size.width)!) / Double((imageView.image?.size.height)!)
+//            if k > l{
+//                newImageView.frame.size.height = self.view.frame.size.width * CGFloat(k)
+//            }else{
+//                newImageView.frame.size.height = self.view.frame.size.width / CGFloat(l)
+//            }
+//            newImageView.frame.size.width = self.view.frame.size.width
+//            let y = (UIScreen.main.bounds.size.height - newImageView.frame.size.height) / 2
+//            newImageView.frame = CGRect(x: 0, y: y, width: newImageView.frame.size.width, height: newImageView.frame.size.height)
+//            newImageView.backgroundColor = .black
+//            newImageView.contentMode = .scaleToFill
+//            newImageView.isUserInteractionEnabled = true
+//            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(_:)))
+//            view.addGestureRecognizer(tap)
+//            view.addSubview(newImageView)
+//            self.view.addSubview(view)
+//            self.navigationController?.isNavigationBarHidden = true
+//            self.tabBarController?.tabBar.isHidden = true
+        }else{
+            self.link = imageView.accessibilityLabel ?? ""
+            self.pdf = true
+            self.performSegue(withIdentifier: "openURL", sender: self)
         }
-        
     }
+    var pdf: Bool = true
+    var link: String = ""
     
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
@@ -1189,10 +1249,16 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             let vc = segue.destination as! FilesController
             vc.data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
             vc.fromNew = true
+            vc.colorNav = true
         }
         if segue.identifier == "CostPay_New" {
             let payController             = segue.destination as! Pay
             payController.ident = acc_ident
+        }else if segue.identifier == "openURL" {
+            let payController = segue.destination as! openSaldoController
+            payController.urlLink = self.link
+            payController.pdf = self.pdf
+            payController.colorNav = true
         }
     }
     

@@ -352,14 +352,14 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.performSegue(withIdentifier: "show_app", sender: self)
                 }
             } else {
-                self.performSegue(withIdentifier: "show_app_cons", sender: self)
+                self.performSegue(withIdentifier: "new_show_app_cons", sender: self)
             }
         } else {
             if (isCons == "0") {
 //                self.performSegue(withIdentifier: "show_app_close", sender: self)
                 self.performSegue(withIdentifier: "new_show_app_close", sender: self)
             } else {
-                self.performSegue(withIdentifier: "show_app_close_cons", sender: self)
+                self.performSegue(withIdentifier: "new_show_app_close_cons", sender: self)
             }
         }
         
@@ -477,29 +477,32 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             AppUser.delegate   = self
             AppUser.App        = app
             AppUser.updDelegt  = self
-        } else if segue.identifier == "show_app_cons" {
+        } else if segue.identifier == "new_show_app_cons" {
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
             
-            let AppUser             = segue.destination as! AppCons
+            let AppUser             = segue.destination as! NewAppCons
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
             AppUser.read = app.is_read
             AppUser.adress = app.adress!
+            print(app.adress!)
+            
             AppUser.flat = app.flat!
             AppUser.phone = app.phone!
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
-            AppUser.delegate   = self as? ShowAppConsDelegate
+            AppUser.delegate   = self as? ShowNewAppConsDelegate
             AppUser.App        = app
             AppUser.updDelegt = self
-        } else if (segue.identifier == "show_app_close_cons") {
+            AppUser.txt_status = app.serverStatus!
+        } else if (segue.identifier == "new_show_app_close_cons") {
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
             
-            let AppUser             = segue.destination as! AppCons
+            let AppUser             = segue.destination as! NewAppCons
             AppUser.title           = "Заявка №" + app.number!
             AppUser.txt_tema   = app.tema!
             AppUser.str_type_app = app.type_app!
@@ -510,9 +513,10 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
-            AppUser.delegate   = self as? ShowAppConsDelegate
+            AppUser.delegate   = self as? ShowNewAppConsDelegate
             AppUser.App        = app
             AppUser.updDelegt  = self
+            AppUser.txt_status = app.serverStatus!
         }else if (segue.identifier == "add_app") {
                 let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppUser
                 AddApp.delegate = self
