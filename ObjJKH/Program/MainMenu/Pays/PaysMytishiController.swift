@@ -169,7 +169,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     @IBAction func Payed(_ sender: UIButton) {
         var l = false
-        #if isKlimovsk12 || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
+        #if isKlimovsk12 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
         l = true
         #else
         self.payedS()
@@ -258,9 +258,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isReutKomfort
         shopCode = "234821"
         targetName = "УК РеутКомфорт"
-        //        #elseif isServiceKomfort
-        //        shopCode = "252187"
-        //        targetName = "УК Сервис и Комфорт"
+        #elseif isServiceKomfort
+//        shopCode = "252187"
+//        targetName = "УК Сервис и Комфорт"
         #elseif isServicekom
         shopCode = "254158"
         targetName = "Сервиском"
