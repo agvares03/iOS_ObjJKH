@@ -61,8 +61,23 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
         if (self.responseString == "Ошибка: Недопустимый URI: Невозможно определить формат URI.") {
             self.appBtn.isHidden = false
             self.appLbl.isHidden = false
+        }else if self.responseString.containsIgnoringCase(find: "Внутренняя ошибка сервера"){
+            var title = "Ошибка"
+            var message = "Не удалось подключиться к серверу оплаты"
+            #if isEasyLife
+            title = "Ваш платеж отклонен"
+            message = "Проверьте вводимые данные и сумму оплаты. Причина: Для данного пользователя невозможна оплата Фрисби"
+            #endif
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
         }else if (self.responseString.contains("Ошибка")) {
-            let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
+            var title = "Ошибка"
+            var message = "Не удалось подключиться к серверу оплаты"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                 self.navigationController?.popViewController(animated: true)
             }
