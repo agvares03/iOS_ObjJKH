@@ -1551,6 +1551,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @objc func textFieldDidChange(_ textField: UITextField) {
         var str: String = textField.text!
         str = str.replacingOccurrences(of: ",", with: ".")
+        print(str)
         if str.contains("."){
             if let index = str.index(of: ".") {
                 let distance = str.distance(from: str.startIndex, to: index)
@@ -1560,6 +1561,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     textField.text = str
                 }
             }
+        }
+        if str.contains(".."){
+            str.removeLast()
+            textField.text = str
         }
         if str != "" && str != "-" && str != "." && str != ","{
             for i in 0...osvc.count - 1{

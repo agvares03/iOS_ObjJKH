@@ -1702,7 +1702,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func getQuestions() {
         
         //        let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
-        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        var phone = ""
+        if UserDefaults.standard.string(forKey: "login") != nil{
+            phone = UserDefaults.standard.string(forKey: "login") ?? ""
+        }else{
+            return
+        }
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + phone)!)
         request.httpMethod = "GET"
@@ -1715,6 +1720,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             //            print("responseString = \(responseString)")
             
             guard data != nil else { return }
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            if responseString.containsIgnoringCase(find: "error"){
+                return
+            }
             let json = try? JSONSerialization.jsonObject(with: data!,
                                                          options: .allowFragments)
             let unfilteredData = QuestionsJson(json: json! as! JSON)?.data
@@ -1771,7 +1780,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
             }
             guard data != nil else { return }
-//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            if responseString.containsIgnoringCase(find: "error"){
+                return
+            }
 //            print("responseStringWEBS = \(responseString)")
             let json = try? JSONSerialization.jsonObject(with: data!,
                                                          options: .allowFragments)

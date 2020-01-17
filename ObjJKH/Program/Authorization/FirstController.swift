@@ -718,7 +718,7 @@ class FirstController: UIViewController {
     }
     var one = false
     func startApp(){
-        DispatchQueue.main.async {
+        DispatchQueue.main.async(execute: {
             if !UserDefaults.standard.bool(forKey: "error"){
                 UserDefaults.standard.set("", forKey: "errorStringSupport")
                 UserDefaults.standard.set(false, forKey: "successParse")
@@ -751,7 +751,7 @@ class FirstController: UIViewController {
                 alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
             }
-        }
+        })
         
     }
     

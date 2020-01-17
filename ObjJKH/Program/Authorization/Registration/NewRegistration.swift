@@ -422,31 +422,32 @@ class NewRegistration: UIViewController {
         if (urlPath == "xxx") {
             self.choice_LS(txtLogin: txtLogin, txtPass: txtPass)
         } else {
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            //print(request)
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        return
-                                                    }
-                                                    
-                                                    //                                                    let responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    
-                                                    if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
-                                                        self.data_ls = Services_ls_json(json: json!)?.data ?? []
-                                                    }
-                                                    self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    //print("responseString = \(self.responseString)")
-                                                    
-                                                    self.choice_LS(txtLogin: txtLogin, txtPass: txtPass)
-                                                    
-            })
-            task.resume()
+            if let url = NSURL(string: urlPath){
+                let request = NSMutableURLRequest(url: url as URL)
+                request.httpMethod = "GET"
+                //print(request)
+                
+                let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                      completionHandler: {
+                                                        data, response, error in
+                                                        
+                                                        if error != nil {
+                                                            return
+                                                        }
+                                                        
+                                                        //                                                    let responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                        
+                                                        if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
+                                                            self.data_ls = Services_ls_json(json: json!)?.data ?? []
+                                                        }
+                                                        self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                        //print("responseString = \(self.responseString)")
+                                                        
+                                                        self.choice_LS(txtLogin: txtLogin, txtPass: txtPass)
+                                                        
+                })
+                task.resume()
+            }
         }
     }
     
