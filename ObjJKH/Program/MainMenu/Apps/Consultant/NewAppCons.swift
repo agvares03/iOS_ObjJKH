@@ -241,7 +241,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         
         let titles = Titles()
-        self.title = titles.getSimpleTitle(numb: "2")
+        self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
         print(self.adress, self.flat, self.phone)
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         if self.flat.count > 0{
