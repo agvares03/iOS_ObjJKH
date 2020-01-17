@@ -86,7 +86,7 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
-//        backBtn.tintColor = myColors.btnColor.uiColor()
+        backBtn.tintColor = myColors.btnColor.uiColor()
 //        appBtn.backgroundColor = myColors.btnColor.uiColor()
 //        #if isStolitsa
 //            let url = NSURL(string: Server.SERVER + Server.GET_LINK_STOLITSA + "login=" + self.login + "&pwd=" + self.pass + "&sum=" + self.sum)
