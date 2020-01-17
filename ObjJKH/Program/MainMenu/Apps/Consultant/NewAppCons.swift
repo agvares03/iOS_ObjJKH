@@ -285,8 +285,10 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let temaHeight = heightForView(text: txt_tema, font: tema_txt.font, width: view.frame.size.width - 24)
         let adressHeight = heightForView(text: self.ls_adress.text!, font: self.ls_adress.font, width: view.frame.size.width - 76)
         headerHeight.constant = 160 + temaHeight + adressHeight - 30
-        headerView.isHidden = true
-        table_Const.constant = table_Const.constant - headerView.frame.size.height
+        hidden_Header.title = "△"
+        headerView.isHidden = false
+        table_Const.constant = headerView.frame.size.height + 5
+        isHidden = false
     }
     
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
