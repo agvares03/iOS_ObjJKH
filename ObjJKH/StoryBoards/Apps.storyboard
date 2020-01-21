@@ -2396,12 +2396,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="91t-3e-hLt">
-                                                    <rect key="frame" x="16" y="8" width="343" height="122"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите лицевой счет" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFE-gy-zLR">
                                                     <rect key="frame" x="16" y="11" width="142" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -2431,13 +2425,9 @@
                                                 <constraint firstItem="y0d-AJ-vOE" firstAttribute="leading" secondItem="jMc-Od-Dz7" secondAttribute="leadingMargin" id="CGT-XJ-0Nf"/>
                                                 <constraint firstItem="y0d-AJ-vOE" firstAttribute="trailing" secondItem="jMc-Od-Dz7" secondAttribute="trailingMargin" id="Mu7-FH-4Dr"/>
                                                 <constraint firstItem="Ml9-5I-6wi" firstAttribute="leading" secondItem="jMc-Od-Dz7" secondAttribute="leadingMargin" id="O11-AM-I0N"/>
-                                                <constraint firstAttribute="trailing" secondItem="91t-3e-hLt" secondAttribute="trailing" constant="16" id="O6i-1A-Y3b"/>
                                                 <constraint firstItem="qFE-gy-zLR" firstAttribute="top" secondItem="jMc-Od-Dz7" secondAttribute="topMargin" id="Wwr-Wj-K1d"/>
                                                 <constraint firstItem="qFE-gy-zLR" firstAttribute="leading" secondItem="jMc-Od-Dz7" secondAttribute="leadingMargin" id="bmp-uP-Ire"/>
                                                 <constraint firstItem="GW0-7x-45r" firstAttribute="trailing" secondItem="jMc-Od-Dz7" secondAttribute="trailingMargin" id="esr-Zg-FpD"/>
-                                                <constraint firstAttribute="bottom" secondItem="91t-3e-hLt" secondAttribute="bottom" id="jR9-wq-F8n"/>
-                                                <constraint firstItem="91t-3e-hLt" firstAttribute="top" secondItem="jMc-Od-Dz7" secondAttribute="top" constant="8" id="s4G-XE-l52"/>
-                                                <constraint firstItem="91t-3e-hLt" firstAttribute="leading" secondItem="jMc-Od-Dz7" secondAttribute="leading" constant="16" id="uMf-8x-2sq"/>
                                                 <constraint firstItem="Ml9-5I-6wi" firstAttribute="top" secondItem="GW0-7x-45r" secondAttribute="bottom" constant="5" id="uZd-NV-k60"/>
                                                 <constraint firstItem="GW0-7x-45r" firstAttribute="leading" secondItem="jMc-Od-Dz7" secondAttribute="leadingMargin" id="zZa-ga-ZfO"/>
                                             </constraints>
@@ -4419,11 +4409,11 @@
         <segue reference="Rp0-rn-Sjl"/>
         <segue reference="XWc-3W-CKW"/>
         <segue reference="ScW-NP-Vv0"/>
-        <segue reference="7Bx-Gg-BxB"/>
+        <segue reference="zAn-2v-hHp"/>
         <segue reference="tMO-ch-tff"/>
         <segue reference="M7G-ag-hjx"/>
         <segue reference="lq2-6F-1pC"/>
         <segue reference="x4h-mP-Bcg"/>
-        <segue reference="chi-GF-50Z"/>
+        <segue reference="deB-u2-yJl"/>
     </inferredMetricsTieBreakers>
 </document>
