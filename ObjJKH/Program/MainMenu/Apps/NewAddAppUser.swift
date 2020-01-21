@@ -112,7 +112,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
             
-            //            print(request.url)
+//            print("RequestURL: ", request.url)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                   completionHandler: {
@@ -137,7 +137,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                                     }
                                                     
                                                     self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    print("responseString = \(self.responseString)")
+//                                                    print("responseString = \(self.responseString)")
                                                     
                                                     self.choice()
             })
@@ -176,9 +176,9 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     self.uploadPhoto(img)
                 }
             }
-            if self.images.count != 0{
-//                self.sendEmailFile()
-            }
+//            if self.images.count != 0{
+                self.sendEmailFile()
+//            }
             DispatchQueue.main.async(execute: {
                 
                 // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
@@ -218,7 +218,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
         
-        print(request)
+//        print(request)
     
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
@@ -242,8 +242,8 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                                     return
                                                 }
                                                 
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("responseString = \(responseString)")
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(responseString)")
                                                 
         })
         task.resume()
@@ -653,7 +653,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let delAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
             self.fileList.remove(at: ident)
             self.images.remove(at: ident)
-            print(self.images.count)
+//            print(self.images.count)
             self.fileTable.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Нет", style: .default) { (_) -> Void in }
