@@ -401,7 +401,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "299850"
         targetName = "Мобильный мир"
         #elseif isPedagog
-        shopCode = "302866"
+        if (selectLS.containsIgnoringCase(find: "k") || selectLS.containsIgnoringCase(find: "к")){
+            shopCode = "304185"
+        }else{
+            shopCode = "302866"
+        }
         targetName = "ТСЖ Педагогический"
         #endif
         let shopInsurance = "303049"
