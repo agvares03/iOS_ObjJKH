@@ -27,6 +27,7 @@ class NewRegistration: UIViewController {
     @IBOutlet weak var indicator:   UIActivityIndicatorView!
     @IBOutlet weak var backBtn:     UIBarButtonItem!
     @IBOutlet weak var regBtnWidth: NSLayoutConstraint!
+    @IBOutlet weak var pass2Height: NSLayoutConstraint!
     @IBOutlet weak var showPass1:   UIButton!
     @IBOutlet weak var showPass2:   UIButton!
     @IBOutlet weak var passImg1:    UIImageView!
@@ -36,6 +37,7 @@ class NewRegistration: UIViewController {
     @IBOutlet weak var separator2:  UIView!
     @IBOutlet weak var separator3:  UIView!
     @IBOutlet weak var separator4:  UIView!
+    @IBOutlet weak var pass2View:   UIView!
     @IBOutlet weak var phone:       UIImageView!
     @IBOutlet weak var person:      UIImageView!
     @IBOutlet weak var pass1:       UIImageView!
@@ -55,22 +57,38 @@ class NewRegistration: UIViewController {
         if eye {
             passImg1.tintColor = .lightGray
             eye = false
+            passImg2.tintColor = .lightGray
+            eye2 = false
+            pass2Height.constant = 44
+            pass2View.isHidden = false
         } else {
             passImg1.tintColor = myColors.btnColor.uiColor()
             eye = true
+            passImg2.tintColor = myColors.btnColor.uiColor()
+            eye2 = true
+            if edPass2.text == ""{
+                pass2Height.constant = 0
+                pass2View.isHidden = true
+            }
         }
         edPass1.isSecureTextEntry.toggle()
+        edPass2.isSecureTextEntry.toggle()
     }
     
     var eye2 = false
     @IBAction func showPassAction2(_ sender: UIBarButtonItem) {
         if eye2 {
+            passImg1.tintColor = .lightGray
+            eye = false
             passImg2.tintColor = .lightGray
             eye2 = false
         } else {
+            passImg1.tintColor = myColors.btnColor.uiColor()
+            eye = true
             passImg2.tintColor = myColors.btnColor.uiColor()
             eye2 = true
         }
+        edPass1.isSecureTextEntry.toggle()
         edPass2.isSecureTextEntry.toggle()
     }
     
