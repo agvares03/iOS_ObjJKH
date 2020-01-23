@@ -171,7 +171,7 @@ class NewRegistration: UIViewController {
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-        } else if (self.edPass1.text != self.edPass2.text) {
+        } else if (self.edPass1.text != self.edPass2.text) && (self.pass2View.isHidden != true) {
             let alert = UIAlertController(title: "Ошибка", message: "Введенные пароли не совпадают. Введите еще раз", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                 self.edPass1.text = ""
