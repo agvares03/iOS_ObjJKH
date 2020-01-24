@@ -552,10 +552,10 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             })
         } else if responseString != "-1" && Int64(self.responseString) != nil {
             DispatchQueue.main.async(execute: {
-                
+                self.load_new_data()
                 // Экземпляр класса DB
-                let db = DB()
-                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: comm!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
+//                let db = DB()
+//                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: comm!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
 //                self.timer = Timer(timeInterval: 20, target: self, selector: #selector(self.reload), userInfo: ["start" : "ok"], repeats: true)
 //                RunLoop.main.add(self.timer!, forMode: .defaultRunLoopMode)
                 self.ed_comment.text = ""

@@ -379,10 +379,10 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                // Экземпляр класса DB
 //                let db = DB()
 //                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: self.ed_comment.text!, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
-//                self.ed_comment.text = ""
-//                self.StopIndicator()
-//                self.load_data()
-//                self.updateTable()
+                self.ed_comment.text = ""
+                self.StopIndicator()
+                self.load_data()
+                self.updateTable()
                 
                 self.view.endEditing(true)
                 
@@ -1292,9 +1292,9 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 self.load_new_data()
 //                let db = DB()
 //                db.add_comm(ID: self.teckID, id_request: Int64(self.id_app)!, text: "Заявка принята специалистом " + self.name_account, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
-//                self.StopIndicator()
-//                self.load_data()
-//                self.updateTable()
+                self.StopIndicator()
+                self.load_data()
+                self.updateTable()
             })
         }
     }
@@ -1321,9 +1321,9 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                // Экземпляр класса DB
 //                let db = DB()
 //                db.add_comm(ID: Int64(self.responseString)!, id_request: Int64(self.id_app)!, text: text, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
-//                self.StopIndicator()
-//                self.load_data()
-//                self.updateTable()
+                self.StopIndicator()
+                self.load_data()
+                self.updateTable()
                 
             })
         }
@@ -1426,11 +1426,11 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                // Экземпляр класса DB
 //                let db = DB()
 //                db.add_comm(ID: self.teckID, id_request: Int64(self.id_app)!, text: "Заявка №" + self.id_app + " выполнена специалистом - " + self.name_account, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
-//                // Подумать, как можно удалить потом
-//                //                db.del_app(number: self.id_app)
-//                self.StopIndicator()
-//                self.load_data()
-//                self.updateTable()
+                // Подумать, как можно удалить потом
+                //                db.del_app(number: self.id_app)
+                self.StopIndicator()
+                self.load_data()
+                self.updateTable()
                 
             })
         }
@@ -1472,11 +1472,11 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                // Экземпляр класса DB
 //                let db = DB()
 //                db.add_comm(ID: self.teckID, id_request: Int64(self.id_app)!, text: "Заявка №" + self.id_app + " закрыта специалистом - " + self.name_account, added: self.date_teck()!, id_Author: self.id_author, name: self.name_account, id_account: self.id_account)
-//                // Подумать, как можно удалить потом
-//                //                db.del_app(number: self.id_app)
-//                self.StopIndicator()
-//                self.load_data()
-//                self.updateTable()
+                // Подумать, как можно удалить потом
+                //                db.del_app(number: self.id_app)
+                self.StopIndicator()
+                self.load_data()
+                self.updateTable()
             })
         }
     }
