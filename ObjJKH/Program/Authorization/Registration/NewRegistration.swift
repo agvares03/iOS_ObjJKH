@@ -29,9 +29,7 @@ class NewRegistration: UIViewController {
     @IBOutlet weak var regBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var pass2Height: NSLayoutConstraint!
     @IBOutlet weak var showPass1:   UIButton!
-    @IBOutlet weak var showPass2:   UIButton!
     @IBOutlet weak var passImg1:    UIImageView!
-    @IBOutlet weak var passImg2:    UIImageView!
     
     @IBOutlet weak var separator1:  UIView!
     @IBOutlet weak var separator2:  UIView!
@@ -57,40 +55,38 @@ class NewRegistration: UIViewController {
         if eye {
             passImg1.tintColor = .lightGray
             eye = false
-            passImg2.tintColor = .lightGray
             eye2 = false
             pass2Height.constant = 44
             pass2View.isHidden = false
         } else {
             passImg1.tintColor = myColors.btnColor.uiColor()
             eye = true
-            passImg2.tintColor = myColors.btnColor.uiColor()
             eye2 = true
-            if edPass2.text == ""{
+//            if edPass2.text == ""{
                 pass2Height.constant = 0
                 pass2View.isHidden = true
-            }
+//            }
         }
         edPass1.isSecureTextEntry.toggle()
         edPass2.isSecureTextEntry.toggle()
     }
     
     var eye2 = false
-    @IBAction func showPassAction2(_ sender: UIBarButtonItem) {
-        if eye2 {
-            passImg1.tintColor = .lightGray
-            eye = false
-            passImg2.tintColor = .lightGray
-            eye2 = false
-        } else {
-            passImg1.tintColor = myColors.btnColor.uiColor()
-            eye = true
-            passImg2.tintColor = myColors.btnColor.uiColor()
-            eye2 = true
-        }
-        edPass1.isSecureTextEntry.toggle()
-        edPass2.isSecureTextEntry.toggle()
-    }
+//    @IBAction func showPassAction2(_ sender: UIBarButtonItem) {
+//        if eye2 {
+//            passImg1.tintColor = .lightGray
+//            eye = false
+//            passImg2.tintColor = .lightGray
+//            eye2 = false
+//        } else {
+//            passImg1.tintColor = myColors.btnColor.uiColor()
+//            eye = true
+//            passImg2.tintColor = myColors.btnColor.uiColor()
+//            eye2 = true
+//        }
+//        edPass1.isSecureTextEntry.toggle()
+//        edPass2.isSecureTextEntry.toggle()
+//    }
     
     @IBAction func acceptAction(_ sender: UIButton) {
         let url = URL(string: "http://tvrbdb.ru/person-dan.html")
@@ -227,7 +223,6 @@ class NewRegistration: UIViewController {
         separator3.backgroundColor = myColors.labelColor.uiColor()
         separator4.backgroundColor = myColors.labelColor.uiColor()
         passImg1.tintColor = .lightGray
-        passImg2.tintColor = .lightGray
         indicator.color = myColors.indicatorColor.uiColor()
         btnCancel.isHidden = false
         authLbl.isHidden = true
