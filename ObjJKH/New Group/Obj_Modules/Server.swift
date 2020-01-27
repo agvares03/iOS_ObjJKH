@@ -127,6 +127,16 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/ooo_gor_anten_service/"
     #elseif isTestAds
         static let SERVER          = "http://uk-gkh.org/test_ads/"
+    #elseif isElectroTech
+        static let SERVER          = "http://uk-gkh.org/uk_elektrotehnikov/"
+    #elseif isElectroTech
+        static let SERVER          = "http://uk-gkh.org/uk_elektrotehnikov/"
+    #elseif isTSJ_Lider
+        static let SERVER          = "http://uk-gkh.org/tsg_lider/"
+    #elseif isUK_Drujba
+        static let SERVER          = "http://uk-gkh.org/domodedovo_rkc/"
+    #elseif isKFH_Ryab
+        static let SERVER          = "http://uk-gkh.org/kfh/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения

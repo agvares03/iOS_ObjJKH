@@ -126,6 +126,14 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Pedagog")
         #elseif isGorAntenService
         imageApp.image = UIImage(named: "Logo_GorAntenService")
+        #elseif isElectroTech
+        imageApp.image = UIImage(named: "Logo_ElectroTech")
+        #elseif isTSJ_Lider
+        imageApp.image = UIImage(named: "Logo_TSJLider")
+        #elseif isUK_Drujba
+        imageApp.image = UIImage(named: "Logo_UkDrujba")
+        #elseif isKFH_Ryab
+        imageApp.image = UIImage(named: "Logo_KFHRyab")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -254,6 +262,11 @@ class UpdateAppController: UIViewController {
         #elseif isPedagog
         str = "itms-apps://itunes.apple.com/ru/app/id1490557237"
         #elseif isGorAntenService
+        str = "itms-apps://itunes.apple.com/ru/app/id1492064766"
+        #elseif isElectroTech
+        #elseif isTSJ_Lider
+        #elseif isUK_Drujba
+        #elseif isKFH_Ryab
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
