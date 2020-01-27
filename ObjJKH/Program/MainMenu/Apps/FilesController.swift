@@ -160,13 +160,15 @@ final class FilesImageCell: UICollectionViewCell {
                     
                     guard data != nil else { return }
                     DispatchQueue.main.async { [weak self] in
-                        let img = UIImage(data: data!)
-                        imgs[item.name!] = img
-                        self?.image.accessibilityLabel = url
-                        self?.image.image = img
-                        self?.image.tintColor = .clear
-                        self?.loader.stopAnimating()
-                        self?.loader.isHidden = true
+                        if UIImage(data: data!) != nil{
+                            let img = UIImage(data: data!)
+                            imgs[item.name!] = img
+                            self?.image.accessibilityLabel = url
+                            self?.image.image = img
+                            self?.image.tintColor = .clear
+                            self?.loader.stopAnimating()
+                            self?.loader.isHidden = true
+                        }
                     }
                     
                     }.resume()

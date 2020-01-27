@@ -928,11 +928,11 @@ class FirstController: UIViewController {
         defaults.setValue(strah, forKey: "strah")
         defaults.setValue(history_counters, forKey: "history_counters")
         defaults.setValue(phone_operator, forKey: "phone_operator")
-        if insurance != ""{
-            defaults.setValue(insurance, forKey: "insurance")
-//            defaults.setValue("5.00", forKey: "insurance")
+        if insurance != "" && Double(insurance) != nil{
+            defaults.set(insurance, forKey: "insurance")
+//            defaults.set(insurance, forKey: "insurance")
         }else{
-            defaults.setValue("0.00", forKey: "insurance")
+            defaults.set("0.00", forKey: "insurance")
         }
         print("encoding_Pays: ", encoding_Pays)
         defaults.setValue(encoding_Pays, forKey: "encoding_Pays")

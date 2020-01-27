@@ -821,7 +821,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                 let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                                 print(responseStr)
                                                                 
-                                                                if !responseStr.contains("error"){
+                                                                if !responseStr.contains("error") && responseStr.containsIgnoringCase(find: "data"){
                                                                     var date1       = "0"
                                                                     var date2       = "0"
                                                                     var date        = "0"
@@ -835,7 +835,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                     //                                                                var sumOver     = ""
                                                                     //                                                                var sumFineOver = ""
                                                                     //                                                                    var sumAll      = ""
-                                                                    var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
                                                                     //                                                                                                                                        print(json)
                                                                     
                                                                     if let json_bills = json["data"] {
@@ -984,7 +984,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         var bill_ident   = ""
                                                         var bill_sum = ""
                                                         var bill_status = ""
-                                                        var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
                                                         if let json_bills = json["data"] {
                                                             let int_end = (json_bills.count)!-1
                                                             if (int_end < 0) {
@@ -1047,21 +1047,22 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 var newsList: [News] = []
                                                 if !responseString.contains("error") && responseString.contains("data"){
-                                                    let json = try? JSONSerialization.jsonObject(with: data!,
-                                                                                                 options: .allowFragments)
-                                                    let unfilteredData = NewsJson(json: json! as! JSON)?.data
-                                                    
-                                                    unfilteredData?.forEach { json in
-                                                        if !json.readed! {
-                                                            news_read += 1
+                                                    if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                                                                    options: .allowFragments){
+                                                        let unfilteredData = NewsJson(json: json as! JSON)?.data
+                                                        
+                                                        unfilteredData?.forEach { json in
+                                                            if !json.readed! {
+                                                                news_read += 1
+                                                            }
+                                                            let idNews = json.idNews
+                                                            let Created = json.created
+                                                            let Header = json.header
+                                                            let Text = json.text
+                                                            let IsReaded = json.readed
+                                                            let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
+                                                            newsList.append(newsObj)
                                                         }
-                                                        let idNews = json.idNews
-                                                        let Created = json.created
-                                                        let Header = json.header
-                                                        let Text = json.text
-                                                        let IsReaded = json.readed
-                                                        let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
-                                                        newsList.append(newsObj)
                                                     }
                                                 }
                                                 var i = 0
@@ -1652,9 +1653,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 guard data != nil else {
                                                     self.endRefresh()
                                                     return }
-                                                let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                                                if json != nil{
-                                                    let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
+                                                if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments){
+                                                    let unfilteredData = PaysFileJson(json: json as! JSON)?.data
                                                     unfilteredData?.forEach { json in
                                                         let ident = json.ident
                                                         let year = json.year
@@ -1724,29 +1724,30 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             if responseString.containsIgnoringCase(find: "error"){
                 return
             }
-            let json = try? JSONSerialization.jsonObject(with: data!,
-                                                         options: .allowFragments)
-            let unfilteredData = QuestionsJson(json: json! as! JSON)?.data
-            var filtered: [QuestionDataJson] = []
-            var i = 0
-            unfilteredData?.forEach { json in
-                
-                var isContains = false
-                json.questions?.forEach {
-                    if !($0.isCompleteByUser ?? false) {
-                        isContains = false
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let unfilteredData = QuestionsJson(json: json as! JSON)?.data
+                var filtered: [QuestionDataJson] = []
+                var i = 0
+                unfilteredData?.forEach { json in
+                    
+                    var isContains = false
+                    json.questions?.forEach {
+                        if !($0.isCompleteByUser ?? false) {
+                            isContains = false
+                        }
                     }
-                }
-                if !isContains {
-                    if i < 2{
-                        filtered.append(json)
+                    if !isContains {
+                        if i < 2{
+                            filtered.append(json)
+                        }
                     }
+                    i += 1
                 }
-                i += 1
-            }
-            self.questionArr = filtered
-            DispatchQueue.main.async {
-                self.tableQuestion.reloadData()
+                self.questionArr = filtered
+                DispatchQueue.main.async {
+                    self.tableQuestion.reloadData()
+                }
             }
             }.resume()
     }
@@ -1755,7 +1756,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_WEB_CAMERAS)!)
         request.httpMethod = "GET"
-        
+        print("RequestWEB: ", request)
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
             
@@ -1763,35 +1764,26 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 DispatchQueue.main.sync {
                     if self.webArr.count == 0 {
                         self.tableWeb.isHidden = true
-                        
                     } else {
                         self.tableWeb.isHidden = false
                     }
-                    
-                    //                    if (self.webArr != nil) {
-                    //                        for (index, item) in (self.webArr.enumerated()) {
-                    //                            //                        if item.name == self.performName_ {
-                    //                            //                            self.index = index
-                    //                            //                            self.performSegue(withIdentifier: Segues.fromQuestionsTableVC.toQuestion, sender: self)
-                    //                            //                        }
-                    //                        }
-                    //                    }
-                    
                 }
             }
             guard data != nil else { return }
             let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            print(responseString)
+            
             if responseString.containsIgnoringCase(find: "error"){
                 return
             }
 //            print("responseStringWEBS = \(responseString)")
-            let json = try? JSONSerialization.jsonObject(with: data!,
-                                                         options: .allowFragments)
-            
-            let Data = Web_Cameras_json(json: json! as! JSON)?.data
-            self.webArr = Data!
-            DispatchQueue.main.async {
-                self.tableWeb.reloadData()
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let Data = Web_Cameras_json(json: json as! JSON)?.data
+                self.webArr = Data!
+                DispatchQueue.main.async {
+                    self.tableWeb.reloadData()
+                }
             }
             }.resume()
         

@@ -659,7 +659,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             textSum.isHidden = false
             textService.isHidden = false
         }
-        let insurance1: String = UserDefaults.standard.string(forKey: "insurance")!
+        let insurance1: String = UserDefaults.standard.string(forKey: "insurance") as! String
         if Double(insurance1) != nil{
             if Double(insurance1)! > 0.00{
                 self.insurance.isHidden = false
