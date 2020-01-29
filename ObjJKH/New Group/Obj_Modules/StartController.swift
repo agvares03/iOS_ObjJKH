@@ -12,7 +12,7 @@ import Foundation
 class StartController: UIViewController {
     
     var responseLS: String?
-
+    @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var progress: UIProgressView!
     var progressValue = 0.0
     
@@ -21,11 +21,130 @@ class StartController: UIViewController {
         if #available(iOS 13.0, *){
             overrideUserInterfaceStyle = .light
         }
+        #if isOur_Obj_Home
+        fon_top.image = UIImage(named: "logo_Our_Obj_Home")
+        #elseif isChist_Dom
+        fon_top.image = UIImage(named: "Logo_Chist_Dom")
+        #elseif isMupRCMytishi
+        fon_top.image = UIImage(named: "logo_MupRCMytishi")
+        #elseif isDJ
+        fon_top.image = UIImage(named: "logo_DJ")
+        #elseif isStolitsa
+        fon_top.image = UIImage(named: "logo_Stolitsa")
+        #elseif isKomeks
+        fon_top.image = UIImage(named: "Logo_Komeks")
+        #elseif isUKKomfort
+        fon_top.image = UIImage(named: "logo_UK_Komfort")
+        #elseif isKlimovsk12
+        fon_top.image = UIImage(named: "logo_Klimovsk12")
+        #elseif isPocket
+        fon_top.image = UIImage(named: "Logo_Pocket")
+        #elseif isReutKomfort
+        fon_top.image = UIImage(named: "Logo_ReutKomfort")
+        #elseif isUKGarant
+        fon_top.image = UIImage(named: "Logo_UK_Garant")
+        #elseif isSoldatova1
+        fon_top.image = UIImage(named: "Logo_Soldatova1")
+        #elseif isTafgai
+        fon_top.image = UIImage(named: "Logo_Tafgai")
+        #elseif isServiceKomfort
+        fon_top.image = UIImage(named: "Logo_ServiceKomfort")
+        #elseif isParitet
+        fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isSkyfort
+        fon_top.image = UIImage(named: "Logo_Skyfort")
+        #elseif isStandartDV
+        fon_top.image = UIImage(named: "Logo_StandartDV")
+        #elseif isGarmonia
+        fon_top.image = UIImage(named: "Logo_UkGarmonia")
+        #elseif isUpravdomChe
+        fon_top.image = UIImage(named: "Logo_UkUpravdomChe")
+        #elseif isJKH_Pavlovskoe
+        fon_top.image = UIImage(named: "Logo_JKH_Pavlovskoe")
+        #elseif isPerspectiva
+        fon_top.image = UIImage(named: "Logo_UkPerspectiva")
+        #elseif isParus
+        fon_top.image = UIImage(named: "Logo_Parus")
+        #elseif isUyutService
+        fon_top.image = UIImage(named: "Logo_UyutService")
+        #elseif isElectroSbitSaratov
+        fon_top.image = UIImage(named: "Logo_ElectrosbitSaratov")
+        #elseif isServicekom
+        fon_top.image = UIImage(named: "Logo_Servicekom")
+        #elseif isTeplovodoresources
+        fon_top.image = UIImage(named: "Logo_Teplovodoresources")
+        #elseif isStroimBud
+        fon_top.image = UIImage(named: "Logo_StroimBud")
+        #elseif isRodnikMUP
+        fon_top.image = UIImage(named: "Logo_RodnikMUP")
+        #elseif isUKParitetKhab
+        fon_top.image = UIImage(named: "Logo_Paritet")
+        #elseif isADS68
+        fon_top.image = UIImage(named: "Logo_ADS68")
+        #elseif isAFregat
+        fon_top.image = UIImage(named: "Logo_Fregat")
+        #elseif isNewOpaliha
+        fon_top.image = UIImage(named: "Logo_NewOpaliha")
+        #elseif isPritomskoe
+        fon_top.image = UIImage(named: "Logo_Pritomskoe")
+        #elseif isDJVladimir
+        fon_top.image = UIImage(named: "Logo_DJVladimir")
+        #elseif isTSN_Dnestr
+        fon_top.image = UIImage(named: "Logo_TSN_Dnestr")
+        #elseif isCristall
+        fon_top.image = UIImage(named: "Logo_Cristall")
+        #elseif isNarianMarEl
+        fon_top.image = UIImage(named: "Logo_Narian_Mar_El")
+        #elseif isSibAliance
+        fon_top.image = UIImage(named: "Logo_SibAliance")
+        #elseif isSpartak
+        fon_top.image = UIImage(named: "Logo_Spartak")
+        #elseif isTSN_Ruble40
+        fon_top.image = UIImage(named: "Logo_Ruble40")
+        #elseif isKosm11
+        fon_top.image = UIImage(named: "Logo_Kosm11")
+        #elseif isTSJ_Rachangel
+        fon_top.image = UIImage(named: "Logo_TSJ_Archangel")
+        #elseif isMUP_IRKC
+        fon_top.image = UIImage(named: "Logo_MUP_IRKC")
+        #elseif isUK_First
+        fon_top.image = UIImage(named: "Logo_Uk_First")
+        #elseif isRKC_Samara
+        fon_top.image = UIImage(named: "Logo_Samara")
+        #elseif isEnergoProgress
+        fon_top.image = UIImage(named: "Logo_EnergoProgress")
+        #elseif isMurmanskPartnerPlus
+        fon_top.image = UIImage(named: "Logo_Murmansk")
+        #elseif isEasyLife
+        fon_top.image = UIImage(named: "Logo_EasyLife")
+        #elseif isRIC
+        fon_top.image = UIImage(named: "Logo_RIC")
+        #elseif isMonolit
+        fon_top.image = UIImage(named: "Logo_Monolit")
+        #elseif isVodSergPosad
+        fon_top.image = UIImage(named: "Logo_VodSergPosad")
+        #elseif isMobileMIR
+        fon_top.image = UIImage(named: "Logo_MobileMIR")
+        #elseif isZarinsk
+        fon_top.image = UIImage(named: "Logo_Zarinsk")
+        #elseif isPedagog
+        fon_top.image = UIImage(named: "Logo_Pedagog")
+        #elseif isGorAntenService
+        fon_top.image = UIImage(named: "Logo_GorAntenService")
+        #elseif isElectroTech
+        fon_top.image = UIImage(named: "Logo_ElectroTech")
+        #elseif isTSJ_Lider
+        fon_top.image = UIImage(named: "Logo_TSJLider")
+        #elseif isUK_Drujba
+        fon_top.image = UIImage(named: "Logo_UkDrujba")
+        #elseif isKFH_Ryab
+        fon_top.image = UIImage(named: "Logo_KFHRyab")
+        #endif
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")
         UserDefaults.standard.set(true, forKey: "can_tech")
         UserDefaults.standard.synchronize()
-        self.perform(#selector(updateProgress), with: nil, afterDelay: 0.01)
+//        self.perform(#selector(updateProgress), with: nil, afterDelay: 0.01)
         UserDefaults.standard.set(false, forKey: "successParse")
         UserDefaults.standard.set(false, forKey: "NewMain")
         UserDefaults.standard.removeObject(forKey: "newsKol")
@@ -62,13 +181,13 @@ class StartController: UIViewController {
         updateUserInterface()
     }
     
-    @objc func updateProgress() {
-        progressValue = progressValue + 0.01
-        self.progress.progress = Float(progressValue)
-        if progressValue != 1.0 {
-            self.perform(#selector(updateProgress), with: nil, afterDelay: 0.01)
-        }
-    }
+//    @objc func updateProgress() {
+//        progressValue = progressValue + 0.01
+//        self.progress.progress = Float(progressValue)
+//        if progressValue != 1.0 {
+//            self.perform(#selector(updateProgress), with: nil, afterDelay: 0.01)
+//        }
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -102,6 +221,7 @@ class StartController: UIViewController {
                                                 }
                                                 
                                                 self.responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                self.responseLS = "обновить"
                                                 print("Response: \(self.responseLS!)")
                                                 if (self.responseLS?.contains("обновить"))!{
                                                     self.updateApp = true
@@ -218,17 +338,17 @@ class StartController: UIViewController {
     }
     
     @objc func update_app() {
-        if progressValue < 1.0 {
-            self.perform(#selector(update_app), with: nil, afterDelay: 0.01)
-        } else {
+//        if progressValue < 1.0 {
+//            self.perform(#selector(update_app), with: nil, afterDelay: 0.01)
+//        } else {
             self.performSegue(withIdentifier: "update_app", sender: self)
-        }
+//        }
     }
     
     @objc func start_app() {
-        if progressValue < 1.0 {
-            self.perform(#selector(start_app), with: nil, afterDelay: 0.01)
-        } else {
+//        if progressValue < 1.0 {
+//            self.perform(#selector(start_app), with: nil, afterDelay: 0.01)
+//        } else {
             let defaults = UserDefaults.standard
             let login = defaults.string(forKey: "login")
             #if isDemoUC
@@ -248,7 +368,7 @@ class StartController: UIViewController {
                     }
                 }
             #endif
-        }
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

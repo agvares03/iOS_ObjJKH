@@ -678,9 +678,9 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "HomeLSCell1") as! HomeLSCell
         //            cell = shadowCell(cell: cell) as! HomeLSCell
-        #if isDJ
-        cell.del_ls_btn.isHidden = true
-        #endif
+//        #if isDJ
+//        cell.del_ls_btn.isHidden = true
+//        #endif
         cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
         cell.separator.backgroundColor = myColors.btnColor.uiColor()
         cell.payDebt.backgroundColor = myColors.btnColor.uiColor()

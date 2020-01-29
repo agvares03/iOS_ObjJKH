@@ -140,6 +140,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var isPay: Bool = false
     var isPaid: Bool = false
     var acc_ident = ""
+    var filesComm:[Fotos] = []
     
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
@@ -627,6 +628,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func updateTable() {
         files.removeAll()
         showDate.removeAll()
+        filesComm.removeAll()
         let data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
         let objs = (CoreDataManager.instance.fetchedResultsController(entityName: "Fotos", keysForSort: ["name"], ascending: true) as? NSFetchedResultsController<Fotos>)
         try? objs?.performFetch()
@@ -637,48 +639,64 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 }
             }
         }
-        if let sections = fetchedResultsController?.sections {
-//            print(sections[section].numberOfObjects, files.count)
-            for i in 0...sections[0].numberOfObjects - 1{
-                let indexPath = IndexPath(row: i, section: 0)
-                let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
-                if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1){
-                    DispatchQueue.main.async{
-                        self.statusText.text = comm.serverStatus!
+        if fetchedResultsController != nil{
+            if let sections = fetchedResultsController?.sections {
+                for i in 0...sections[0].numberOfObjects - 1{
+                    let indexPath = IndexPath(row: i, section: 0)
+                    let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
+                    if (comm.text?.contains("Отправлен новый файл"))!{
+                        let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
+                        var i = false
+                        files.forEach{
+                            if i == false{
+                                let file = $0
+                                if file.name == imgName{
+                                    i = true
+                                    if !filesComm.contains(file){
+                                        filesComm.append(file)
+                                    }
+                                }
+                            }
+                        }
                     }
-                }
-                let calendar = Calendar.current
-                if comm.dateK != nil{
-                    var hour = String(calendar.component(.hour, from: comm.dateK!))
-                    if hour.count == 1{
-                        hour = "0" + hour
+                    if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1){
+                        DispatchQueue.main.async{
+                            self.statusText.text = comm.serverStatus!
+                        }
                     }
-                    var minute = String(calendar.component(.minute, from: comm.dateK!))
-                    if minute.count == 1{
-                        minute = "0" + minute
-                    }
-                    var day = String(calendar.component(.day, from: comm.dateK!))
-                    if day.count == 1{
-                        day = "0" + day
-                    }
-                    var month = String(calendar.component(.month, from: comm.dateK!))
-                    if month.count == 1{
-                        month = "0" + month
-                    }
-                    let year = String(calendar.component(.year, from: comm.dateK!))
-//                    let time = hour + ":" + minute
-                    let date = day + "." + month + "." + year
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd.MM.yyyy"
-                    if indexPath.row == 0{
-                        commDate = comm.dateK!
-                        showDate.append(true)
-                    }else{
-                        if dateFormatter.date(from: date)! > commDate{
+                    let calendar = Calendar.current
+                    if comm.dateK != nil{
+                        var hour = String(calendar.component(.hour, from: comm.dateK!))
+                        if hour.count == 1{
+                            hour = "0" + hour
+                        }
+                        var minute = String(calendar.component(.minute, from: comm.dateK!))
+                        if minute.count == 1{
+                            minute = "0" + minute
+                        }
+                        var day = String(calendar.component(.day, from: comm.dateK!))
+                        if day.count == 1{
+                            day = "0" + day
+                        }
+                        var month = String(calendar.component(.month, from: comm.dateK!))
+                        if month.count == 1{
+                            month = "0" + month
+                        }
+                        let year = String(calendar.component(.year, from: comm.dateK!))
+    //                    let time = hour + ":" + minute
+                        let date = day + "." + month + "." + year
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "dd.MM.yyyy"
+                        if indexPath.row == 0{
                             commDate = comm.dateK!
                             showDate.append(true)
                         }else{
-                            showDate.append(false)
+                            if dateFormatter.date(from: date)! > commDate{
+                                commDate = comm.dateK!
+                                showDate.append(true)
+                            }else{
+                                showDate.append(false)
+                            }
                         }
                     }
                 }
@@ -686,14 +704,16 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         table_comments.reloadData()
         if kolR == 0{
-            if let sections = fetchedResultsController?.sections {
-                if sections[0].numberOfObjects > 0{
-                    DispatchQueue.main.async {
-                        self.table_comments.scrollToRow(at: IndexPath(item: self.table_comments.numberOfRows(inSection: 0) - 1, section: 0), at: .top, animated: true)
+            if fetchedResultsController != nil{
+                if let sections = fetchedResultsController?.sections {
+                    if sections[0].numberOfObjects > 0{
+                        DispatchQueue.main.async {
+                            self.table_comments.scrollToRow(at: IndexPath(item: self.table_comments.numberOfRows(inSection: 0) - 1, section: 0), at: .top, animated: true)
+                        }
+                        kolR = 1
                     }
-                    kolR = 1
+                    
                 }
-                
             }
         }
     }
@@ -1250,6 +1270,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             vc.data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
             vc.fromNew = true
             vc.colorNav = true
+            vc.data = filesComm
         }
         if segue.identifier == "CostPay_New" {
             let payController             = segue.destination as! Pay

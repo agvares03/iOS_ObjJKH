@@ -417,8 +417,10 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     var kolR = 0
     var showDate:[Bool] = []
+    var filesComm:[Fotos] = []
     private var files: [Fotos] = []
     func updateTable() {
+        filesComm.removeAll()
         files.removeAll()
         showDate.removeAll()
         let data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
@@ -431,48 +433,64 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 }
             }
         }
-        if let sections = fetchedResultsController?.sections {
-//            print(sections[section].numberOfObjects, files.count)
-            for i in 0...sections[0].numberOfObjects - 1{
-                let indexPath = IndexPath(row: i, section: 0)
-                let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
-                if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1){
-                    DispatchQueue.main.async{
-                        self.statusText.text = comm.serverStatus!
+        if fetchedResultsController != nil{
+            if let sections = fetchedResultsController?.sections {
+                for i in 0...sections[0].numberOfObjects - 1{
+                    let indexPath = IndexPath(row: i, section: 0)
+                    let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
+                    if (comm.text?.contains("Отправлен новый файл"))!{
+                        let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
+                        var i = false
+                        files.forEach{
+                            if i == false{
+                                let file = $0
+                                if file.name == imgName{
+                                    i = true
+                                    if !filesComm.contains(file){
+                                        filesComm.append(file)
+                                    }
+                                }
+                            }
+                        }
                     }
-                }
-                let calendar = Calendar.current
-                if comm.dateK != nil{
-                    var hour = String(calendar.component(.hour, from: comm.dateK!))
-                    if hour.count == 1{
-                        hour = "0" + hour
+                    if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1){
+                        DispatchQueue.main.async{
+                            self.statusText.text = comm.serverStatus!
+                        }
                     }
-                    var minute = String(calendar.component(.minute, from: comm.dateK!))
-                    if minute.count == 1{
-                        minute = "0" + minute
-                    }
-                    var day = String(calendar.component(.day, from: comm.dateK!))
-                    if day.count == 1{
-                        day = "0" + day
-                    }
-                    var month = String(calendar.component(.month, from: comm.dateK!))
-                    if month.count == 1{
-                        month = "0" + month
-                    }
-                    let year = String(calendar.component(.year, from: comm.dateK!))
-//                    let time = hour + ":" + minute
-                    let date = day + "." + month + "." + year
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd.MM.yyyy"
-                    if indexPath.row == 0{
-                        commDate = comm.dateK!
-                        showDate.append(true)
-                    }else{
-                        if dateFormatter.date(from: date)! > commDate{
+                    let calendar = Calendar.current
+                    if comm.dateK != nil{
+                        var hour = String(calendar.component(.hour, from: comm.dateK!))
+                        if hour.count == 1{
+                            hour = "0" + hour
+                        }
+                        var minute = String(calendar.component(.minute, from: comm.dateK!))
+                        if minute.count == 1{
+                            minute = "0" + minute
+                        }
+                        var day = String(calendar.component(.day, from: comm.dateK!))
+                        if day.count == 1{
+                            day = "0" + day
+                        }
+                        var month = String(calendar.component(.month, from: comm.dateK!))
+                        if month.count == 1{
+                            month = "0" + month
+                        }
+                        let year = String(calendar.component(.year, from: comm.dateK!))
+    //                    let time = hour + ":" + minute
+                        let date = day + "." + month + "." + year
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "dd.MM.yyyy"
+                        if indexPath.row == 0{
                             commDate = comm.dateK!
                             showDate.append(true)
                         }else{
-                            showDate.append(false)
+                            if dateFormatter.date(from: date)! > commDate{
+                                commDate = comm.dateK!
+                                showDate.append(true)
+                            }else{
+                                showDate.append(false)
+                            }
                         }
                     }
                 }
@@ -1015,6 +1033,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if segue.identifier == "files" {
             let vc = segue.destination as! FilesController
             vc.data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
+            vc.data = filesComm
         } else if segue.identifier == "select_cons" {
             let selectItemController = (segue.destination as! UINavigationController).viewControllers.first as! SelectItemController
             selectItemController.strings = names_cons

@@ -20,20 +20,12 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
     
     open var data_: [Comments] = []
     public var colorNav: Bool = false
-    private var data: [Fotos] = []
+    public var data: [Fotos] = []
+    public var img: [String:UIImage] = [:]
     public var fromNew: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("FilesController", forKey: "last_UI_action")
-        let objs = (CoreDataManager.instance.fetchedResultsController(entityName: "Fotos", keysForSort: ["name"], ascending: true) as? NSFetchedResultsController<Fotos>)
-        try? objs?.performFetch()
-        objs?.fetchedObjects?.forEach { obj in
-            data_.forEach {
-                if $0.text?.contains(obj.name ?? "") ?? false {
-                    self.data.append(obj)
-                }
-            }
-        }
         
         collection.dataSource = self
         collection.delegate   = self
@@ -47,6 +39,7 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(data.count, img.count)
         return data.count
     }
     

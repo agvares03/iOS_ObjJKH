@@ -1779,12 +1779,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             guard data != nil else { return }
             let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            print(responseString)
+            print("responseWEB = \(responseString)")
             
             if responseString.containsIgnoringCase(find: "error"){
                 return
             }
-//            print("responseStringWEBS = \(responseString)")
             if let json = try? JSONSerialization.jsonObject(with: data!,
                                                             options: .allowFragments){
                 let Data = Web_Cameras_json(json: json as! JSON)?.data
@@ -2154,9 +2153,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if tableView == self.tableLS {
             let cell = self.tableLS.dequeueReusableCell(withIdentifier: "HomeLSCell") as! HomeLSCell
             //            cell = shadowCell(cell: cell) as! HomeLSCell
-            #if isDJ
-            cell.del_ls_btn.isHidden = true
-            #endif
+//            #if isDJ
+//            cell.del_ls_btn.isHidden = true
+//            #endif
             cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.payDebt.backgroundColor = myColors.btnColor.uiColor()

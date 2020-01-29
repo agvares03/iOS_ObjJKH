@@ -264,9 +264,13 @@ class UpdateAppController: UIViewController {
         #elseif isGorAntenService
         str = "itms-apps://itunes.apple.com/ru/app/id1492064766"
         #elseif isElectroTech
+        str = "itms-apps://itunes.apple.com/ru/app/id1496749470"
         #elseif isTSJ_Lider
+        str = "itms-apps://itunes.apple.com/ru/app/id1496750652"
         #elseif isUK_Drujba
+        str = "itms-apps://itunes.apple.com/ru/app/id1496751363"
         #elseif isKFH_Ryab
+        str = "itms-apps://itunes.apple.com/ru/app/id1496752748"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
