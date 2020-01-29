@@ -33,6 +33,9 @@
 		1C02956623C6E5EC008CCE15 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC3FF212237EB2600FDBA82 /* PassKit.framework */; };
 		1C081DED225B631F001A8F43 /* FirstObjController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C081DEC225B631F001A8F43 /* FirstObjController.swift */; };
 		1C0A4B6922A544BB00855BA6 /* PaysMytishiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85139721EC4E940003D587 /* PaysMytishiController.swift */; };
+		1C11D7CE23E1B5BC00E0A9E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C11D7CD23E1B5BB00E0A9E7 /* GoogleService-Info.plist */; };
+		1C11D7D023E1B5F600E0A9E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C11D7CF23E1B5F500E0A9E7 /* GoogleService-Info.plist */; };
+		1C11D7D223E1B65000E0A9E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C11D7D123E1B64F00E0A9E7 /* GoogleService-Info.plist */; };
 		1C13B8BB221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		1C13B8BC221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
 		1C13B8BD221ACDCC0011D343 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13B8BA221ACDCC0011D343 /* Reachability.swift */; };
@@ -10174,6 +10177,9 @@
 		1C026E6C2265C18500E62FC6 /* ChoiceLsPocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceLsPocketController.swift; sourceTree = "<group>"; };
 		1C081DEC225B631F001A8F43 /* FirstObjController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstObjController.swift; sourceTree = "<group>"; };
 		1C0A4B6822A53DCE00855BA6 /* UK_Upravdom_Che-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UK_Upravdom_Che-Bridging-Header.h"; sourceTree = "<group>"; };
+		1C11D7CD23E1B5BB00E0A9E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/ElectroTech/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1C11D7CF23E1B5F500E0A9E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/TSJ_Lider/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1C11D7D123E1B64F00E0A9E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "ObjJKH/Google-Services/KFH_Ryab/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1C13B8BA221ACDCC0011D343 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		1C19ADFB2226845400C51656 /* MupCounters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MupCounters.storyboard; sourceTree = "<group>"; };
 		1C19ADFE222690BA00C51656 /* nonPassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nonPassController.swift; sourceTree = "<group>"; };
@@ -11757,6 +11763,9 @@
 		307690F722B28DC70043916F /* Google_Services */ = {
 			isa = PBXGroup;
 			children = (
+				1C11D7D123E1B64F00E0A9E7 /* GoogleService-Info.plist */,
+				1C11D7CF23E1B5F500E0A9E7 /* GoogleService-Info.plist */,
+				1C11D7CD23E1B5BB00E0A9E7 /* GoogleService-Info.plist */,
 				1CB4DD9423E1400F004ABA6E /* GoogleService-Info.plist */,
 				9A1819E323AB2EC1001C2F57 /* GoogleService-Info.plist */,
 				1CC75A6F2398DC2F00EE59D8 /* GoogleService-Info.plist */,
@@ -14381,6 +14390,7 @@
 				1C63A4CB23DEC886000DD3E2 /* WebCameras.storyboard in Resources */,
 				1C63A4CC23DEC886000DD3E2 /* ObjectControl.storyboard in Resources */,
 				1C63A4CD23DEC886000DD3E2 /* ic_action_files_grey.png in Resources */,
+				1C11D7CE23E1B5BC00E0A9E7 /* GoogleService-Info.plist in Resources */,
 				1C63A4CE23DEC886000DD3E2 /* app_close.png in Resources */,
 				1C63A4D023DEC886000DD3E2 /* account_icon_user.png in Resources */,
 				1C63A4D123DEC886000DD3E2 /* News.storyboard in Resources */,
@@ -14439,6 +14449,7 @@
 				1C63A58423DED3C2000DD3E2 /* WebCameras.storyboard in Resources */,
 				1C63A58523DED3C2000DD3E2 /* ObjectControl.storyboard in Resources */,
 				1C63A58623DED3C2000DD3E2 /* ic_action_files_grey.png in Resources */,
+				1C11D7D023E1B5F600E0A9E7 /* GoogleService-Info.plist in Resources */,
 				1C63A58723DED3C2000DD3E2 /* app_close.png in Resources */,
 				1C63A58923DED3C2000DD3E2 /* account_icon_user.png in Resources */,
 				1C63A58A23DED3C2000DD3E2 /* News.storyboard in Resources */,
@@ -14556,6 +14567,7 @@
 				1C63A6FC23DEDE5F000DD3E2 /* WebCameras.storyboard in Resources */,
 				1C63A6FD23DEDE5F000DD3E2 /* ObjectControl.storyboard in Resources */,
 				1C63A6FE23DEDE5F000DD3E2 /* ic_action_files_grey.png in Resources */,
+				1C11D7D223E1B65000E0A9E7 /* GoogleService-Info.plist in Resources */,
 				1C63A6FF23DEDE5F000DD3E2 /* app_close.png in Resources */,
 				1C63A73823DEE01F000DD3E2 /* Logo_KFHRyab_White.png in Resources */,
 				1C63A70123DEDE5F000DD3E2 /* account_icon_user.png in Resources */,
