@@ -521,7 +521,7 @@ class DB: NSObject, XMLParserDelegate {
                                                         var bill_pay      = ""
                                                         var bill_total    = ""
                                                         var bill_ident    = ""
-                                                        var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                                                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
 //                                                        print(json)
                                                         
                                                         // Общие итоговые значения
@@ -555,7 +555,7 @@ class DB: NSObject, XMLParserDelegate {
                                                                             }
                                                                         }
                                                                     }
-                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month)! == i_month) && (bill_ident != i_ident)) || ((Int(bill_month) == 1) && (i_month == 12)) {
+                                                                    if (Int(bill_month)! > i_month) || ((Int(bill_month)! == i_month) && (bill_ident != i_ident)) || ((Int(bill_month) == 1) && (i_month == 12)) || ((Int(bill_month) == 1) && (Int(bill_year)! > i_year)){
                                                                         if (itsFirst) {
                                                                             itsFirst = false
                                                                         } else {
@@ -675,7 +675,9 @@ class DB: NSObject, XMLParserDelegate {
     }
     
     func add_data_saldo(id: Int64, usluga: String?, num_month: String?, year: String?, start: String?, plus: String?, minus: String?, end: String?, ident: String?) {
-//        print(id, usluga, num_month, year, start, plus, minus, end, ident)
+//        if year! == "2020"{
+//            print("SALDO: ", id, usluga!, num_month!, year!, start!, plus!, minus!, end!, ident!)
+//        }
         let managedObject = Saldo()
         managedObject.id               = id
         managedObject.usluga           = usluga
