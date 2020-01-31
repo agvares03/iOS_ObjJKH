@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import LocalAuthentication
 
 class Server {
     
@@ -112,7 +113,7 @@ class Server {
     #elseif isEasyLife
         static let SERVER          = "http://uk-gkh.org/ooo_yegkh/"
     #elseif isRIC
-        static let SERVER          = "http://www.uk-gkh.org/ooo_ric/"
+        static let SERVER          = "http://uk-gkh.org/goroduktestnew/"
     #elseif isMonolit
         static let SERVER          = "http://uk-gkh.org/tsg_monolit/"
     #elseif isVodSergPosad
@@ -137,6 +138,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/domodedovo_rkc/"
     #elseif isKFH_Ryab
         static let SERVER          = "http://uk-gkh.org/kfh/"
+    #elseif isDOM24
+        static let SERVER          = "http://uk-gkh.org/dgservicnew/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения
@@ -239,6 +242,33 @@ class Server {
         let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
         let result = urlTest.evaluate(with: url)
         return result
+    }
+    
+    func machineName() -> String {
+      var systemInfo = utsname()
+      uname(&systemInfo)
+      let machineMirror = Mirror(reflecting: systemInfo.machine)
+      return machineMirror.children.reduce("") { identifier, element in
+        guard let value = element.value as? Int8, value != 0 else { return identifier }
+        return identifier + String(UnicodeScalar(UInt8(value)))
+      }
+    }
+    
+    func biometricType() -> String {
+        let authContext = LAContext()
+        if #available(iOS 11, *) {
+            let _ = authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+            switch(authContext.biometryType) {
+            case .none:
+                return "none"
+            case .touchID:
+                return "touch"
+            case .faceID:
+                return "face"
+            }
+        } else {
+            return "touch"
+        }
     }
     
 }

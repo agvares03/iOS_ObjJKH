@@ -139,6 +139,8 @@ class StartController: UIViewController {
         fon_top.image = UIImage(named: "Logo_UkDrujba")
         #elseif isKFH_Ryab
         fon_top.image = UIImage(named: "Logo_KFHRyab")
+        #elseif isDOM24
+        fon_top.image = UIImage(named: "Logo_DOM24")
         #endif
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")
@@ -356,7 +358,11 @@ class StartController: UIViewController {
             #else
                 if login == "" || login == nil{
 //                    if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+                    if UIImage(named: "iPhone_touch_1") != nil{
+                        self.performSegue(withIdentifier: "goMockup", sender: self)
+                    }else{
                         self.performSegue(withIdentifier: "reg_app2", sender: self)
+                    }
 //                    }else{
 //                        self.performSegue(withIdentifier: "reg_app", sender: self)
 //                    }
@@ -380,6 +386,11 @@ class StartController: UIViewController {
         if segue.identifier == "reg_app2" {
             let nav = segue.destination as! UINavigationController
             let payController             = nav.topViewController as! NewRegistration
+            payController.firstEnter = true
+        }
+        if segue.identifier == "goMockup" {
+            let payController = segue.destination as! MockupController
+//            let payController             = nav.topViewController as! MockupController
             payController.firstEnter = true
         }
     }
