@@ -79,6 +79,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var tableReceipts: UITableView!
     @IBOutlet weak var tableReceiptsHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var fonLS: UIImageView!
+    @IBOutlet weak var fonNews: UIImageView!
+    @IBOutlet weak var fonCounter: UIImageView!
+    @IBOutlet weak var fonApps: UIImageView!
+    @IBOutlet weak var fonQuestion: UIImageView!
+    @IBOutlet weak var fonWeb: UIImageView!
+    @IBOutlet weak var fonService: UIImageView!
+    @IBOutlet weak var fonReceipts: UIImageView!
+    
     @IBOutlet weak var newsHeight: NSLayoutConstraint!
     @IBOutlet weak var counterHeight: NSLayoutConstraint!
     @IBOutlet weak var appsHeight: NSLayoutConstraint!
@@ -499,6 +508,24 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         webIndicator.color = myColors.btnColor.uiColor()
         serviceIndicator.color = myColors.btnColor.uiColor()
         receiptsIndicator.color = myColors.btnColor.uiColor()
+        
+        fonLS.tintColor = myColors.btnColor.uiColor()
+        fonNews.tintColor = myColors.btnColor.uiColor()
+        fonCounter.tintColor = myColors.btnColor.uiColor()
+        fonApps.tintColor = myColors.btnColor.uiColor()
+        fonQuestion.tintColor = myColors.btnColor.uiColor()
+        fonWeb.tintColor = myColors.btnColor.uiColor()
+        fonService.tintColor = myColors.btnColor.uiColor()
+        fonReceipts.tintColor = myColors.btnColor.uiColor()
+        
+        fonLS.isHidden = true
+        fonNews.isHidden = true
+        fonCounter.isHidden = true
+        fonApps.isHidden = true
+        fonQuestion.isHidden = true
+        fonWeb.isHidden = true
+        fonService.isHidden = true
+        fonReceipts.isHidden = true
         
         allAppsBtn.tintColor = myColors.btnColor.uiColor()
         allQuestionsBtn.tintColor = myColors.btnColor.uiColor()
@@ -2163,10 +2190,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
+            cell.insurance_btn.tintColor = myColors.btnColor.uiColor()
             cell.addressText.text = lsArr[indexPath.row].address!
             cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
             cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
             cell.sumText.textColor = myColors.btnColor.uiColor()
+//            cell.insuranceLbl.isHidden = true
+//            cell.insurance_btn.isHidden = true
             //            var sumAll = 0.00
             //            var isPayToDate = false
             //            var isPayBoDate = false
@@ -2258,7 +2288,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cell = self.tableCounter.dequeueReusableCell(withIdentifier: "HomeCounterCell") as! HomeCounterCell
             var countName = ""
             cell.tariffNumber     = tariffArr[indexPath.row]
-            cell.ident.text       = identArr[indexPath.row]
+            cell.ident.text       = " " + identArr[indexPath.row]
             if identArr[indexPath.row] == "" || identArr[indexPath.row] == " " || identArr[indexPath.row] == "-" || identArr[indexPath.row] == nil{
                 cell.identView.isHidden = true
                 cell.identHeight.constant = 0
@@ -2266,8 +2296,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.identView.isHidden = false
                 cell.identHeight.constant = 24
             }
-            cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
-            cell.number.text      = ownerArr[indexPath.row]
+            cell.name.text        = " " + nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+            cell.number.text      = " " + ownerArr[indexPath.row]
             if ownerArr[indexPath.row] == "" || ownerArr[indexPath.row] == " " || ownerArr[indexPath.row] == "-" || ownerArr[indexPath.row] == nil{
                 cell.numberView.isHidden = true
                 cell.numberHeight.constant = 0
@@ -2277,15 +2307,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             let formatDec:String = "%." + numberDecimal[indexPath.row] + "f"
             countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
-            cell.pred1.text        = String(format:formatDec, predArr[indexPath.row])
-            cell.teck1.text        = String(format:formatDec, teckArr[indexPath.row])
-            cell.diff1.text        = String(format:formatDec, diffArr[indexPath.row])
+            cell.pred1.text        = " " + String(format:formatDec, predArr[indexPath.row])
+            cell.teck1.text        = " " + String(format:formatDec, teckArr[indexPath.row])
+            cell.diff1.text        = " " + String(format:formatDec, diffArr[indexPath.row])
             cell.predLbl1.text     = dateOneArr[indexPath.row]
             cell.teckLbl1.text     = dateTwoArr[indexPath.row]
             cell.diffLbl1.text     = dateThreeArr[indexPath.row]
             
             // Проверка и интервал
-            cell.checkup_date.text = lastCheckArr[indexPath.row]
+            cell.checkup_date.text = " " + lastCheckArr[indexPath.row]
             if lastCheckArr[indexPath.row] == "" || lastCheckArr[indexPath.row] == " " || lastCheckArr[indexPath.row] == "-" || lastCheckArr[indexPath.row] == nil{
                 cell.checkView.isHidden = true
                 cell.chechHeight.constant = 0
@@ -2293,7 +2323,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.checkView.isHidden = false
                 cell.chechHeight.constant = 24
             }
-            cell.recheckup_diff.text = recheckInterArr[indexPath.row] + getAge(age: recheckInterArr[indexPath.row])
+            cell.recheckup_diff.text = " " + recheckInterArr[indexPath.row] + getAge(age: recheckInterArr[indexPath.row])
             if recheckInterArr[indexPath.row] == "" || recheckInterArr[indexPath.row] == " " || recheckInterArr[indexPath.row] == "-" || recheckInterArr[indexPath.row] == nil{
                 cell.recheckView.isHidden = true
                 cell.recheckHeight.constant = 0
@@ -2320,23 +2350,23 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             
             if Int(cell.tariffNumber) == 2{
-                cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
-                cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
-                cell.diff2.text        = String(format:formatDec, diffArr2[indexPath.row])
+                cell.pred2.text        = " " + String(format:formatDec, predArr2[indexPath.row])
+                cell.teck2.text        = " " + String(format:formatDec, teckArr2[indexPath.row])
+                cell.diff2.text        = " " + String(format:formatDec, diffArr2[indexPath.row])
                 cell.predLbl2.text     = dateOneArr[indexPath.row]
                 cell.teckLbl2.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl2.text     = dateThreeArr[indexPath.row]
             }else if Int(cell.tariffNumber) == 3{
-                cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
-                cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
-                cell.diff2.text        = String(format:formatDec, diffArr2[indexPath.row])
+                cell.pred2.text        = " " + String(format:formatDec, predArr2[indexPath.row])
+                cell.teck2.text        = " " + String(format:formatDec, teckArr2[indexPath.row])
+                cell.diff2.text        = " " + String(format:formatDec, diffArr2[indexPath.row])
                 cell.predLbl2.text     = dateOneArr[indexPath.row]
                 cell.teckLbl2.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl2.text     = dateThreeArr[indexPath.row]
                 
-                cell.pred3.text        = String(format:formatDec, predArr3[indexPath.row])
-                cell.teck3.text        = String(format:formatDec, teckArr3[indexPath.row])
-                cell.diff3.text        = String(format:formatDec, diffArr3[indexPath.row])
+                cell.pred3.text        = " " + String(format:formatDec, predArr3[indexPath.row])
+                cell.teck3.text        = " " + String(format:formatDec, teckArr3[indexPath.row])
+                cell.diff3.text        = " " + String(format:formatDec, diffArr3[indexPath.row])
                 cell.predLbl3.text     = dateOneArr[indexPath.row]
                 cell.teckLbl3.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl3.text     = dateThreeArr[indexPath.row]
@@ -3016,6 +3046,10 @@ class HomeLSCell: UITableViewCell {
     @IBOutlet weak var payDebtHeight: NSLayoutConstraint!
     @IBOutlet weak var statusImg: UIImageView!
     @IBOutlet weak var del_ls_btn: UIButton!
+    @IBOutlet weak var insurance_btn: UIButton!
+    @IBOutlet weak var insuranceLbl: UILabel!
+    @IBOutlet weak var insurance_btnHeight: NSLayoutConstraint!
+    @IBOutlet weak var insuranceLblHeight: NSLayoutConstraint!
     
     
     override func awakeFromNib() {
@@ -3025,6 +3059,12 @@ class HomeLSCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
     }
+    
+    @IBAction func insuranceAction(_ sender: UIButton) {
+        let str = lsText.text!
+        delegate?.goPaysPressed(ident: str.replacingOccurrences(of: "Лицевой счет:№ ", with: ""))
+    }
+    
     @IBAction func sendAction(_ sender: UIButton) {
         let str = lsText.text!
         delegate?.goPaysPressed(ident: str.replacingOccurrences(of: "Лицевой счет:№ ", with: ""))
@@ -3082,13 +3122,25 @@ class HomeCounterCell: UITableViewCell {
     @IBOutlet weak var teck1: UILabel!
     @IBOutlet weak var diff1: UILabel!
     
+    @IBOutlet weak var predPoint1: UILabel!
+    @IBOutlet weak var teckPoint1: UILabel!
+    @IBOutlet weak var diffPoint1: UILabel!
+    
     @IBOutlet weak var pred2: UILabel!
     @IBOutlet weak var teck2: UILabel!
     @IBOutlet weak var diff2: UILabel!
     
+    @IBOutlet weak var predPoint2: UILabel!
+    @IBOutlet weak var teckPoint2: UILabel!
+    @IBOutlet weak var diffPoint2: UILabel!
+    
     @IBOutlet weak var pred3: UILabel!
     @IBOutlet weak var teck3: UILabel!
     @IBOutlet weak var diff3: UILabel!
+    
+    @IBOutlet weak var predPoint3: UILabel!
+    @IBOutlet weak var teckPoint3: UILabel!
+    @IBOutlet weak var diffPoint3: UILabel!
     
     @IBOutlet weak var predLbl1: UILabel!
     @IBOutlet weak var teckLbl1: UILabel!

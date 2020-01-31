@@ -383,7 +383,9 @@ class SupportUpdate: UIViewController {
         #elseif isKFH_Ryab
         str = "itms-apps://itunes.apple.com/ru/app/id1496752748"
         #elseif isDOM24
+        str = "itms-apps://itunes.apple.com/ru/app/id1497257910"
         #elseif isLefortovo
+        str = "itms-apps://itunes.apple.com/ru/app/id1497293040"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
