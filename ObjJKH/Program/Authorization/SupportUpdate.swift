@@ -151,6 +151,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_KFHRyab")
         #elseif isDOM24
         imageApp.image = UIImage(named: "Logo_DOM24")
+        #elseif isLefortovo
+        imageApp.image = UIImage(named: "Logo_Lefortovo")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -381,6 +383,7 @@ class SupportUpdate: UIViewController {
         #elseif isKFH_Ryab
         str = "itms-apps://itunes.apple.com/ru/app/id1496752748"
         #elseif isDOM24
+        #elseif isLefortovo
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
