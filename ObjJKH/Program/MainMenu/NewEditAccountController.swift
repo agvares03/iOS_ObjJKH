@@ -685,13 +685,18 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
 //        #if isDJ
 //        cell.del_ls_btn.isHidden = true
 //        #endif
-        cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
+        cell.lsText.text = "№ " + lsArr[indexPath.row].ident!
         cell.separator.backgroundColor = myColors.btnColor.uiColor()
         cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
         cell.addressText.text = lsArr[indexPath.row].address!
         cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
         cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
         cell.sumText.textColor = myColors.btnColor.uiColor()
+        
+        cell.insuranceLbl.isHidden = true
+        cell.insurance_btn.isHidden = true
+        cell.insuranceLblHeight.constant = 0
+        cell.insurance_btnHeight.constant = 0
         //            var sumAll = 0.00
         //            var isPayToDate = false
         //            var isPayBoDate = false

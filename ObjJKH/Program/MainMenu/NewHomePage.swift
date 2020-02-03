@@ -518,14 +518,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fonService.tintColor = myColors.btnColor.uiColor()
         fonReceipts.tintColor = myColors.btnColor.uiColor()
         
-        fonLS.isHidden = true
-        fonNews.isHidden = true
-        fonCounter.isHidden = true
-        fonApps.isHidden = true
-        fonQuestion.isHidden = true
-        fonWeb.isHidden = true
-        fonService.isHidden = true
-        fonReceipts.isHidden = true
+//        fonLS.isHidden = true
+//        fonNews.isHidden = true
+//        fonCounter.isHidden = true
+//        fonApps.isHidden = true
+//        fonQuestion.isHidden = true
+//        fonWeb.isHidden = true
+//        fonService.isHidden = true
+//        fonReceipts.isHidden = true
         
         allAppsBtn.tintColor = myColors.btnColor.uiColor()
         allQuestionsBtn.tintColor = myColors.btnColor.uiColor()
@@ -2195,8 +2195,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
             cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
             cell.sumText.textColor = myColors.btnColor.uiColor()
-//            cell.insuranceLbl.isHidden = true
-//            cell.insurance_btn.isHidden = true
+            cell.insuranceLbl.isHidden = true
+            cell.insurance_btn.isHidden = true
+            cell.insuranceLblHeight.constant = 0
+            cell.insurance_btnHeight.constant = 0
             //            var sumAll = 0.00
             //            var isPayToDate = false
             //            var isPayBoDate = false
@@ -2589,6 +2591,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cell = self.tableService.dequeueReusableCell(withIdentifier: "HomeServiceCell") as! HomeServiceCell
             cell.serviceText.text = serviceArr[indexPath.section].sectionObjects[indexPath.row].name
             cell.imgPhone.setImageColor(color: myColors.btnColor.uiColor())
+            cell.separator1.backgroundColor = myColors.btnColor.uiColor()
             var str:String = serviceArr[indexPath.section].sectionObjects[indexPath.row].address!
             if str == ""{
                 cell.urlBtn.isHidden = true
@@ -3063,8 +3066,7 @@ class HomeLSCell: UITableViewCell {
     }
     
     @IBAction func insuranceAction(_ sender: UIButton) {
-        let str = lsText.text!
-        delegate?.goPaysPressed(ident: str.replacingOccurrences(of: "Лицевой счет:№ ", with: ""))
+        
     }
     
     @IBAction func sendAction(_ sender: UIButton) {
@@ -3302,6 +3304,7 @@ class HomeServiceCell: UITableViewCell {
     var delegate: UIViewController?
     
     @IBOutlet weak var serviceText: UILabel!
+    @IBOutlet weak var separator1: UILabel!
     @IBOutlet weak var urlHeight: NSLayoutConstraint!
     @IBOutlet weak var phoneHeight: NSLayoutConstraint!
     @IBOutlet weak var imgUrlHeight: NSLayoutConstraint!
