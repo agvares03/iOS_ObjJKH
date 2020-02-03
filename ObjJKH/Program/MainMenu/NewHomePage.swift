@@ -2187,7 +2187,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //            #if isDJ
 //            cell.del_ls_btn.isHidden = true
 //            #endif
-            cell.lsText.text = "Лицевой счет:№ " + lsArr[indexPath.row].ident!
+            cell.lsText.text = " № " + lsArr[indexPath.row].ident!
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
             cell.insurance_btn.tintColor = myColors.btnColor.uiColor()
