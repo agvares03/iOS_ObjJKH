@@ -85,10 +85,11 @@ class AdditionalServicesController: UIViewController{
         pass  = defaults.string(forKey: "pass")
         noDataLbl.isHidden = true
         automaticallyAdjustsScrollViewInsets = false
-        
+        tableView.dataSource = self
+        tableView.delegate = self
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        self.get_Services(login: self.login!, pass: self.pass!)
+//        self.get_Services(login: self.login!, pass: self.pass!)
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
@@ -255,7 +256,7 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
         if isSectionOpened(section){
             return objectArray[section].sectionObjects.count + 1
         }else{
-            return 0
+            return 1
         }
     }
     
