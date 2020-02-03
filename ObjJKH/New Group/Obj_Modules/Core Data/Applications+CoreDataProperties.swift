@@ -38,4 +38,5 @@ extension Applications {
     @NSManaged public var paid_text: String?
     @NSManaged public var acc_ident: String?
     @NSManaged public var serverStatus: String?
+    @NSManaged public var reqNumber: String?
 }

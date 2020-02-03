@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G2022" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Applications" representedClassName="Applications" syncable="YES">
         <attribute name="acc_ident" optional="YES" attributeType="String"/>
         <attribute name="adress" optional="YES" attributeType="String"/>
@@ -18,6 +18,7 @@
         <attribute name="paid_sum" optional="YES" attributeType="String"/>
         <attribute name="paid_text" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="reqNumber" optional="YES" attributeType="String"/>
         <attribute name="serverStatus" optional="YES" attributeType="String"/>
         <attribute name="tema" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
@@ -93,7 +94,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Applications" positionX="333" positionY="81" width="128" height="358"/>
+        <element name="Applications" positionX="333" positionY="81" width="128" height="373"/>
         <element name="Comments" positionX="324" positionY="54" width="128" height="193"/>
         <element name="Counters" positionX="394" positionY="-18" width="128" height="373"/>
         <element name="Fotos" positionX="342" positionY="144" width="128" height="133"/>

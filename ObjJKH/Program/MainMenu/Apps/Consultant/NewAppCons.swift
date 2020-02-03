@@ -91,6 +91,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var flat: String = ""
     var phone: String = ""
     var read: Int64 = 0
+    var reqNumber: String = ""
     
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
@@ -241,7 +242,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         
         let titles = Titles()
-        self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
+        self.title = titles.getSimpleTitle(numb: "2") + " №" + reqNumber
         print(self.adress, self.flat, self.phone)
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         if self.flat.count > 0{

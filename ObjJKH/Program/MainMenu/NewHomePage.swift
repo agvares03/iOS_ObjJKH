@@ -2822,6 +2822,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }else{
                         AppUser.id_app = ""
                     }
+                    
+                    AppUser.reqNumber  = app.reqNumber!
                     //            AppUser.delegate   = self
                     AppUser.App        = app
                     //            AppUser.updDelegt = self

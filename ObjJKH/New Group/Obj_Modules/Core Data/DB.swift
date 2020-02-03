@@ -345,6 +345,7 @@ class DB: NSObject, XMLParserDelegate {
             // Запишем заявку в БД
             let managedObject = Applications()
             managedObject.id              = 1
+            managedObject.reqNumber       = attributeDict["RequestNumber"]
             managedObject.number          = attributeDict["ID"]
             managedObject.text            = attributeDict["text"]
             managedObject.tema            = attributeDict["name"]
