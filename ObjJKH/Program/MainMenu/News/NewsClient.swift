@@ -86,28 +86,28 @@ class NewsClient {
                                                 print("responseString = \(responseString)")
                                                 var newsList: [News] = []
                                                 if !responseString.contains("error"){
-                                                    let json = try? JSONSerialization.jsonObject(with: data!,
-                                                                                                 options: .allowFragments)
-                                                    let unfilteredData = NewsJson(json: json! as! JSON)?.data
-                                                    
-                                                    unfilteredData?.forEach { json in
-                                                        if !json.readed! {
-                                                            news_read += 1
+                                                    if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                                                                    options: .allowFragments){
+                                                        let unfilteredData = NewsJson(json: json as! JSON)?.data
+                                                        
+                                                        unfilteredData?.forEach { json in
+                                                            if !json.readed! {
+                                                                news_read += 1
+                                                            }
+                                                            let idNews = json.idNews
+                                                            let Created = json.created
+                                                            let Header = json.header
+                                                            let Text = json.text
+                                                            let IsReaded = json.readed
+                                                            let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
+                                                            newsList.append(newsObj)
                                                         }
-                                                        let idNews = json.idNews
-                                                        let Created = json.created
-                                                        let Header = json.header
-                                                        let Text = json.text
-                                                        let IsReaded = json.readed
-                                                        let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
-                                                        newsList.append(newsObj)
+                                                        if news_read > 0{
+                                                             UserDefaults.standard.set(news_read, forKey: "newsKol")
+                                                        }else{
+                                                             UserDefaults.standard.set(0, forKey: "newsKol")
+                                                        }
                                                     }
-                                                    if news_read > 0{
-                                                         UserDefaults.standard.set(news_read, forKey: "newsKol")
-                                                    }else{
-                                                         UserDefaults.standard.set(0, forKey: "newsKol")
-                                                    }
-                                                    
                                                 }
                                                 completedBlock(newsList)
         })

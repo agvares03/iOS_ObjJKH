@@ -739,31 +739,32 @@ class SaldoController: UIViewController, DropperDelegate, UITableViewDelegate, U
                                                 print("responseString = \(responseString)")
                                                 
                                                 guard data != nil else { return }
-                                                let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                                                if json != nil{
-                                                    let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
-                                                    unfilteredData?.forEach { json in
-                                                        let ident = json.ident
-                                                        let year = json.year
-                                                        let month = json.month
-                                                        let link = json.link
-                                                        let sum = json.sum
-                                                        var i = 0
-                                                        if self.currYear == String(json.year!) && self.currMonth == String(json.month!) && (json.link!.contains(".png") || json.link!.contains(".jpg") || json.link!.contains(".pdf")){
-                                                            print(String(json.year!), String(json.month!))
-                                                            self.link = json.link!
-                                                            DispatchQueue.main.async {
-                                                                self.btnPdf.isHidden = false
-                                                            }
-                                                            i = 1
-                                                        }else{
-                                                            if i == 0{
+                                                if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments){
+                                                    if json != nil{
+                                                        let unfilteredData = PaysFileJson(json: json as! JSON)?.data
+                                                        unfilteredData?.forEach { json in
+                                                            let ident = json.ident
+                                                            let year = json.year
+                                                            let month = json.month
+                                                            let link = json.link
+                                                            let sum = json.sum
+                                                            var i = 0
+                                                            if self.currYear == String(json.year!) && self.currMonth == String(json.month!) && (json.link!.contains(".png") || json.link!.contains(".jpg") || json.link!.contains(".pdf")){
+                                                                print(String(json.year!), String(json.month!))
+                                                                self.link = json.link!
                                                                 DispatchQueue.main.async {
-                                                                    self.btnPdf.isHidden = true
+                                                                    self.btnPdf.isHidden = false
                                                                 }
-                                                            }                                                    }
-                                                        let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
-                                                        self.fileList.append(fileObj)
+                                                                i = 1
+                                                            }else{
+                                                                if i == 0{
+                                                                    DispatchQueue.main.async {
+                                                                        self.btnPdf.isHidden = true
+                                                                    }
+                                                                }                                                    }
+                                                            let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
+                                                            self.fileList.append(fileObj)
+                                                        }
                                                     }
                                                 }
                                                 

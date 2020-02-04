@@ -224,23 +224,24 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
             print("responseString = \(responseString)")
             
             guard data != nil else { return }
-            let json = try? JSONSerialization.jsonObject(with: data!,
-                                                         options: .allowFragments)
-            let unfilteredData = QuestionsJson(json: json! as! JSON)?.data
-            var filtered: [QuestionDataJson] = []
-            unfilteredData?.forEach { json in
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let unfilteredData = QuestionsJson(json: json as! JSON)?.data
+                var filtered: [QuestionDataJson] = []
+                unfilteredData?.forEach { json in
 
-                var isContains = false
-                json.questions?.forEach {
-                    if !($0.isCompleteByUser ?? false) {
-                        isContains = false
+                    var isContains = false
+                    json.questions?.forEach {
+                        if !($0.isCompleteByUser ?? false) {
+                            isContains = false
+                        }
+                    }
+                    if !isContains {
+                        filtered.append(json)
                     }
                 }
-                if !isContains {
-                    filtered.append(json)
-                }
+                self.questions = filtered
             }
-            self.questions = filtered
             }.resume()
     }
     

@@ -190,24 +190,25 @@ class MainMenuCons: UIViewController {
             //            print("responseString = \(responseString)")
             
             guard data != nil else { return }
-            let json = try? JSONSerialization.jsonObject(with: data!,
-                                                         options: .allowFragments)
-            let unfilteredData = NewsJson(json: json! as! JSON)?.data
-            unfilteredData?.forEach { json in
-                if !json.readed! {
-                    self.news_read += 1
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let unfilteredData = NewsJson(json: json as! JSON)?.data
+                unfilteredData?.forEach { json in
+                    if !json.readed! {
+                        self.news_read += 1
+                    }
                 }
-            }
-            DispatchQueue.main.async {
-                UserDefaults.standard.setValue(self.news_read, forKey: "news_read")
-                UserDefaults.standard.synchronize()
-                if self.news_read > 0{
-                    self.news_indicator.text = String(self.news_read)
-                    self.news_indicator.isHidden = false
-                }else{
-                    self.news_indicator.isHidden = true
+                DispatchQueue.main.async {
+                    UserDefaults.standard.setValue(self.news_read, forKey: "news_read")
+                    UserDefaults.standard.synchronize()
+                    if self.news_read > 0{
+                        self.news_indicator.text = String(self.news_read)
+                        self.news_indicator.isHidden = false
+                    }else{
+                        self.news_indicator.isHidden = true
+                    }
+                    
                 }
-                
             }
             }.resume()
     }
