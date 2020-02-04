@@ -205,6 +205,7 @@ class Server {
     static let ADD_LS_SIMPLE       = "AddIdentToAccountSimple.ashx?";// Добавить лицевой счет - новая схема
     
     static let GET_ADDITIONAL_SERVICES = "GetAdditionalServices.ashx?" // Получить дополнительные услуги
+    static let GET_INSURANCE       = "GetPaymentsRegistryInsuranceByMobAccount.ashx?" // Получение страховки
 
     static let MOBILE_API_PATH     = "MobileAPI/"
     

@@ -583,14 +583,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             var shops:[Any] = []
             let insurance: String = UserDefaults.standard.string(forKey: "insurance")!
             var tSum:Double = self.totalSum
+            var kS = 0
             osvc.forEach{
-                if Double(insurance) != nil && $0 == "Страхование"{
+                if Double(insurance) != nil && $0 == "Страхование" && checkBox[kS]{
                     if Double(insurance)! > 0.00{
                         tSum = tSum - Double(insurance)!
                         let shopItem2 = ["ShopCode" : shopInsurance, "Amount" : insurance.replacingOccurrences(of: ".", with: ""), "Name" : "Страхование"] as [String : Any]
                         shops.append(shopItem2)
                     }
                 }
+                kS += 1
             }
             let shopItem = ["ShopCode" : shopCode, "Amount" : String(format:"%.2f", tSum).replacingOccurrences(of: ".", with: ""), "Name" : targetName] as [String : Any]
             shops.append(shopItem)
@@ -1319,7 +1321,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             cell.check.setImage(UIImage(named: "Check.png"), for: .normal)
         }else{
             if selectedRow >= 0{
-                if checkBox[selectedRow]{
+                if kol == 2 && uslugaArr.contains("Услуги ЖКУ") && uslugaArr.contains("Страхование") && uslugaArr[selectedRow] == "Услуги ЖКУ"{
+                    checkBox[selectedRow] = true
+                }else if kol == 1 && uslugaArr[selectedRow] == "Услуги ЖКУ"{
+                    checkBox[selectedRow] = true
+                }else if checkBox[selectedRow]{
                     cell.check.setImage(UIImage(named: "unCheck.png"), for: .normal)
                     checkBox[selectedRow] = false
                 }else{
@@ -1407,12 +1413,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         cell.delegate = self
-        if kol == 2{
+        if kol == 2 && uslugaArr.contains("Услуги ЖКУ") && uslugaArr.contains("Страхование"){
             if uslugaArr[indexPath.row] == "Услуги ЖКУ"{
+                checkBox[indexPath.row] = true
                 cell.check.isHidden = true
             }
-        }else if kol == 1{
+        }else if kol == 1 && uslugaArr.contains("Услуги ЖКУ"){
             cell.check.isHidden = true
+        }
+        if uslugaArr[indexPath.row] == "Страхование"{
+            cell.check.isHidden = false
         }
         select = false
         selectedRow = -1

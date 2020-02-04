@@ -995,15 +995,15 @@ class NewMainMenu2: UIViewController {
             data, error, responce in
             
             guard data != nil else { return }
-            let json = try? JSONSerialization.jsonObject(with: data!,
-                                                         options: .allowFragments)
-            let unfilteredData = QuestionsJson(json: json! as! JSON)?.data
-            unfilteredData?.forEach { json in
-                if !json.readed!{
-                    self.question_read += 1
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let unfilteredData = QuestionsJson(json: json as! JSON)?.data
+                unfilteredData?.forEach { json in
+                    if !json.readed!{
+                        self.question_read += 1
+                    }
                 }
             }
-            
             }.resume()
         
     }
@@ -1027,12 +1027,13 @@ class NewMainMenu2: UIViewController {
             //            print("responseString = \(responseString)")
             
             guard data != nil else { return }
-            let json = try? JSONSerialization.jsonObject(with: data!,
-                                                         options: .allowFragments)
-            let unfilteredData = NewsJson(json: json! as! JSON)?.data
-            unfilteredData?.forEach { json in
-                if !json.readed! {
-                    self.news_read += 1
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let unfilteredData = NewsJson(json: json as! JSON)?.data
+                unfilteredData?.forEach { json in
+                    if !json.readed! {
+                        self.news_read += 1
+                    }
                 }
             }
             if self.news_read > 0{
