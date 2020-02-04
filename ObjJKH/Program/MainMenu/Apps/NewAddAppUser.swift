@@ -100,8 +100,9 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
             DispatchQueue.main.async {
                 self.view.isUserInteractionEnabled = false
             }
+            let ident: String = lsTextView.text!.stringByAddingPercentEncodingForRFC3986() ?? ""
             let urlPath = Server.SERVER + Server.ADD_APP +
-                "ident=" + txtLogin +
+                "ident=" + ident +
                 "&pwd=" + txtPass +
                 "&name=" + txtText +
                 "&text=" + txtText +
