@@ -175,25 +175,26 @@ class OneVoteController: UIViewController, UITableViewDelegate, UITableViewDataS
                                                 //            }
                                                 
                                                 guard data != nil else { return }
-                                                let json = try? JSONSerialization.jsonObject(with: data!,
-                                                                                             options: .allowFragments)
-                                                let unfilteredData = VoteJson(json: json! as! JSON)?.data
-                                                var filtered: [VoteDataJson] = []
-                                                unfilteredData?.forEach { json in
-                                                    
-                                                    //                                                    var isContains = false
-                                                    //                                                    json.questions?.forEach {
-                                                    //                                                        if !($0.isCompleteByUser ?? false) {
-                                                    //                                                            isContains = false
-                                                    //                                                        }
-                                                    //                                                    }
-                                                    //                                                    if !isContains {
-                                                    filtered.append(json)
-                                                    //                                                    }
-                                                }
-                                                filtered.forEach{
-                                                    if $0.id == self.idOSS{
-                                                        self.vote = $0
+                                                if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                                                                options: .allowFragments){
+                                                    let unfilteredData = VoteJson(json: json as! JSON)?.data
+                                                    var filtered: [VoteDataJson] = []
+                                                    unfilteredData?.forEach { json in
+                                                        
+                                                        //                                                    var isContains = false
+                                                        //                                                    json.questions?.forEach {
+                                                        //                                                        if !($0.isCompleteByUser ?? false) {
+                                                        //                                                            isContains = false
+                                                        //                                                        }
+                                                        //                                                    }
+                                                        //                                                    if !isContains {
+                                                        filtered.append(json)
+                                                        //                                                    }
+                                                    }
+                                                    filtered.forEach{
+                                                        if $0.id == self.idOSS{
+                                                            self.vote = $0
+                                                        }
                                                     }
                                                 }
                                                 DispatchQueue.main.async {

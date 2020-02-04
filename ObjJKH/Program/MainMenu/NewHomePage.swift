@@ -224,11 +224,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let okAction = UIAlertAction(title: "Да", style: .default) { (_) -> Void in
                 
                 var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.DEL_IDENT_ACC
-                urlPath = urlPath + "phone=" + phone! + "&ident=" + ident.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+                urlPath = urlPath + "phone=" + phone! + "&ident=" + ident.stringByAddingPercentEncodingForRFC3986()!
                 let url: NSURL = NSURL(string: urlPath)!
                 let request = NSMutableURLRequest(url: url as URL)
                 request.httpMethod = "GET"
-                
+//                print("DelLsURL: " , ident, request)
                 let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                       completionHandler: {
                                                         data, response, error in
@@ -249,15 +249,31 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             return
                                                         }
                                                         
-                                                        //                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                        //                                                        print("responseString = \(responseString)")
-                                                        DispatchQueue.main.async{
-                                                            let defaults = UserDefaults.standard
-                                                            
-                                                            defaults.set(true, forKey: "go_to_app")
-                                                            defaults.synchronize()
-                                                            // Перейдем на главную страницу со входом в приложение
-                                                            self.performSegue(withIdentifier: "go_to_app", sender: self)
+                                                        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                        print("responseStringDEL = \(responseString)")
+                                                        if responseString.containsIgnoringCase(find: "error"){
+                                                            DispatchQueue.main.async(execute: {
+                                                                UserDefaults.standard.set(responseString, forKey: "errorStringSupport")
+                                                                UserDefaults.standard.synchronize()
+                                                                let alert = UIAlertController(title: "Ошибка", message: responseString, preferredStyle: .alert)
+                                                                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                                    self.performSegue(withIdentifier: "support", sender: self)
+                                                                }
+                                                                alert.addAction(cancelAction)
+                                                                alert.addAction(supportAction)
+                                                                self.present(alert, animated: true, completion: nil)
+                                                            })
+                                                            return
+                                                        }else{
+                                                            DispatchQueue.main.async{
+                                                                let defaults = UserDefaults.standard
+                                                                
+                                                                defaults.set(true, forKey: "go_to_app")
+                                                                defaults.synchronize()
+                                                                // Перейдем на главную страницу со входом в приложение
+                                                                self.performSegue(withIdentifier: "go_to_app", sender: self)
+                                                            }
                                                         }
                                                         
                 })
@@ -518,14 +534,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fonService.tintColor = myColors.btnColor.uiColor()
         fonReceipts.tintColor = myColors.btnColor.uiColor()
         
-        fonLS.isHidden = true
-        fonNews.isHidden = true
-        fonCounter.isHidden = true
-        fonApps.isHidden = true
-        fonQuestion.isHidden = true
-        fonWeb.isHidden = true
-        fonService.isHidden = true
-        fonReceipts.isHidden = true
+//        fonLS.isHidden = true
+//        fonNews.isHidden = true
+//        fonCounter.isHidden = true
+//        fonApps.isHidden = true
+//        fonQuestion.isHidden = true
+//        fonWeb.isHidden = true
+//        fonService.isHidden = true
+//        fonReceipts.isHidden = true
         
         allAppsBtn.tintColor = myColors.btnColor.uiColor()
         allQuestionsBtn.tintColor = myColors.btnColor.uiColor()
@@ -570,6 +586,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             adTopConst.constant = 0
         }
         getDebt()
+        getInsurance()
         //        getNews()
         getDataCounter()
 //        updateListApps()
@@ -858,7 +875,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             do {
                                                                 u += 1
                                                                 let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                                print(responseStr)
+//                                                                print(responseStr)
                                                                 
                                                                 if !responseStr.contains("error") && responseStr.containsIgnoringCase(find: "data"){
                                                                     var date1       = "0"
@@ -1001,6 +1018,56 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
         }
     }
+    
+    func getInsurance(){
+        let phone = UserDefaults.standard.string(forKey: "login") ?? ""
+        //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.MOBILE_API_PATH + Server.GET_INSURANCE + "phone=" + phone)!)
+        request.httpMethod = "GET"
+//        print("InsuranceURL", request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, error, responce in
+                                                //                                                print("responseString = \(responseString)")
+                                                
+                                                //            if error != nil {
+                                                //                print("ERROR")
+                                                //                return
+                                                //            }
+                                                
+                                                guard data != nil else { return }
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("INSURANCE: ", responseString)
+                                                var insuranceList: [Insurance] = []
+                                                if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                                                                options: .allowFragments){
+                                                    let unfilteredData = InsuranceJson(json: json as! JSON)?.data
+                                                    
+                                                    unfilteredData?.forEach { json in
+                                                        let dataBeg: String = json.dataBeg ?? ""
+                                                        let dataEnd: String = json.dataEnd ?? ""
+                                                        let date: String = json.date ?? ""
+                                                        let shopCode: String = json.shopCode ?? ""
+                                                        let orgName: String = json.orgName ?? ""
+                                                        let dateCredited: String = json.dateCredited ?? ""
+                                                        let paymentId: String = json.paymentId ?? ""
+                                                        let ident: String = json.ident ?? ""
+                                                        let sumDecimal: String = json.sumDecimal ?? ""
+                                                        let sumCreditedDecimal: String = json.sumCreditedDecimal ?? ""
+                                                        let comissionDecimal: String = json.comissionDecimal ?? ""
+                                                        let newsObj = Insurance(dataBeg:dataBeg,dataEnd:dataEnd,date:date,shopCode:shopCode,orgName:orgName,dateCredited:dateCredited,paymentId:paymentId,ident:ident,sumDecimal:sumDecimal,sumCreditedDecimal:sumCreditedDecimal,comissionDecimal:comissionDecimal)
+                                                        insuranceList.append(newsObj)
+                                                    }
+                                                }
+                                                
+                                                DispatchQueue.main.async {
+                                                    self.tableLS.reloadData()
+                                                }
+        })
+        task.resume()
+    }
+    
     private var values: [HistoryPayCellData] = []
     
     func parse_Mobile(login: String) {
@@ -1795,7 +1862,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_WEB_CAMERAS)!)
         request.httpMethod = "GET"
-        print("RequestWEB: ", request)
+//        print("RequestWEB: ", request)
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
             
@@ -1810,7 +1877,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             guard data != nil else { return }
             let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            print("responseWEB = \(responseString)")
+//            print("responseWEB = \(responseString)")
             
             if responseString.containsIgnoringCase(find: "error"){
                 return
@@ -1878,7 +1945,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count:Int?
-        self.tableLSHeight.constant = 400
+        self.tableLSHeight.constant = 1000
         self.tableNewsHeight.constant = 400
         self.tableCounterHeight.constant = 2000
         self.tableAppsHeight.constant = 400
@@ -2187,7 +2254,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //            #if isDJ
 //            cell.del_ls_btn.isHidden = true
 //            #endif
-            cell.lsText.text = " № " + lsArr[indexPath.row].ident!
+            cell.lsText.text = "№ " + lsArr[indexPath.row].ident!
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
             cell.insurance_btn.tintColor = myColors.btnColor.uiColor()
@@ -2195,8 +2262,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
             cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
             cell.sumText.textColor = myColors.btnColor.uiColor()
-//            cell.insuranceLbl.isHidden = true
-//            cell.insurance_btn.isHidden = true
+            cell.insuranceLbl.isHidden = true
+            cell.insurance_btn.isHidden = true
+            cell.insuranceLblHeight.constant = 0
+            cell.insurance_btnHeight.constant = 0
             //            var sumAll = 0.00
             //            var isPayToDate = false
             //            var isPayBoDate = false
@@ -2589,6 +2658,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cell = self.tableService.dequeueReusableCell(withIdentifier: "HomeServiceCell") as! HomeServiceCell
             cell.serviceText.text = serviceArr[indexPath.section].sectionObjects[indexPath.row].name
             cell.imgPhone.setImageColor(color: myColors.btnColor.uiColor())
+            cell.separator1.backgroundColor = myColors.btnColor.uiColor()
             var str:String = serviceArr[indexPath.section].sectionObjects[indexPath.row].address!
             if str == ""{
                 cell.urlBtn.isHidden = true
@@ -2822,6 +2892,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }else{
                         AppUser.id_app = ""
                     }
+                    
+                    AppUser.reqNumber  = app.reqNumber!
                     //            AppUser.delegate   = self
                     AppUser.App        = app
                     //            AppUser.updDelegt = self
@@ -3061,17 +3133,16 @@ class HomeLSCell: UITableViewCell {
     }
     
     @IBAction func insuranceAction(_ sender: UIButton) {
-        let str = lsText.text!
-        delegate?.goPaysPressed(ident: str.replacingOccurrences(of: "Лицевой счет:№ ", with: ""))
+        
     }
     
     @IBAction func sendAction(_ sender: UIButton) {
         let str = lsText.text!
-        delegate?.goPaysPressed(ident: str.replacingOccurrences(of: "Лицевой счет:№ ", with: ""))
+        delegate?.goPaysPressed(ident: str.replacingOccurrences(of: "№ ", with: ""))
     }
     @IBAction func delAction(_ sender: UIButton) {
         let str = lsText.text!
-        delegate2?.try_del_ls_from_acc(ls: str.replacingOccurrences(of: "Лицевой счет:№ ", with: ""))
+        delegate2?.try_del_ls_from_acc(ls: str.replacingOccurrences(of: "№ ", with: ""))
     }
 }
 
@@ -3300,6 +3371,7 @@ class HomeServiceCell: UITableViewCell {
     var delegate: UIViewController?
     
     @IBOutlet weak var serviceText: UILabel!
+    @IBOutlet weak var separator1: UILabel!
     @IBOutlet weak var urlHeight: NSLayoutConstraint!
     @IBOutlet weak var phoneHeight: NSLayoutConstraint!
     @IBOutlet weak var imgUrlHeight: NSLayoutConstraint!

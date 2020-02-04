@@ -433,6 +433,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
+            AppUser.reqNumber  = app.reqNumber!
             AppUser.delegate   = self
             AppUser.App        = app
             AppUser.updDelegt = self
@@ -474,6 +475,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
+            AppUser.reqNumber  = app.reqNumber!
             AppUser.delegate   = self
             AppUser.App        = app
             AppUser.updDelegt  = self
@@ -494,6 +496,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
+            AppUser.reqNumber  = app.reqNumber!
             AppUser.delegate   = self as? ShowNewAppConsDelegate
             AppUser.App        = app
             AppUser.updDelegt = self
@@ -513,6 +516,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //            AppUser.txt_text   = app.text!
             AppUser.txt_date   = app.date!
             AppUser.id_app     = app.number!
+            AppUser.reqNumber  = app.reqNumber!
             AppUser.delegate   = self as? ShowNewAppConsDelegate
             AppUser.App        = app
             AppUser.updDelegt  = self

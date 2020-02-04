@@ -141,6 +141,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var isPaid: Bool = false
     var acc_ident = ""
     var filesComm:[Fotos] = []
+    var reqNumber: String = ""
     
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle?
@@ -405,7 +406,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         hidden_Header.tintColor = .white
         
         let titles = Titles()
-        self.title = titles.getSimpleTitle(numb: "2") + " №" + id_app
+        self.title = titles.getSimpleTitle(numb: "2") + " №" + reqNumber
         self.type_app.text = defaults.string(forKey: self.str_type_app + "_type")
         if self.flat.count > 0{
             var ls_12_end = ""

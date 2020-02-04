@@ -71,21 +71,22 @@ class NewSaldoController: UIViewController, UITableViewDelegate, UITableViewData
                                                 guard data != nil else { return }
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("responseString = \(responseString)")
-                                                let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                                                if json != nil{
-                                                    let unfilteredData = PaysFileJson(json: json! as! JSON)?.data
-                                                    unfilteredData?.forEach { json in
-                                                        let ident = json.ident
-                                                        let year = json.year
-                                                        let month = json.month
-                                                        let link = json.link
-                                                        let sum = json.sum
-                                                        let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
-                                                        self.fileList.append(fileObj)
-                                                    }
-                                                    DispatchQueue.main.async {
-                                                        self.fileList.reverse()
-                                                        self.tableReceipts.reloadData()
+                                                if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments){
+                                                    if json != nil{
+                                                        let unfilteredData = PaysFileJson(json: json as! JSON)?.data
+                                                        unfilteredData?.forEach { json in
+                                                            let ident = json.ident
+                                                            let year = json.year
+                                                            let month = json.month
+                                                            let link = json.link
+                                                            let sum = json.sum
+                                                            let fileObj = File(month: month!, year: year!, ident: ident!, link: link!, sum: sum!)
+                                                            self.fileList.append(fileObj)
+                                                        }
+                                                        DispatchQueue.main.async {
+                                                            self.fileList.reverse()
+                                                            self.tableReceipts.reloadData()
+                                                        }
                                                     }
                                                 }
                                                 

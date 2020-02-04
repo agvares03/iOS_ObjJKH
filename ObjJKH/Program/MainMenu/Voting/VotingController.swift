@@ -80,23 +80,25 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
                                                 //            }
                                                 
                                                 guard data != nil else { return }
-                                                let json = try? JSONSerialization.jsonObject(with: data!,
-                                                                                             options: .allowFragments)
-                                                let unfilteredData = VoteJson(json: json! as! JSON)?.data
-                                                var filtered: [VoteDataJson] = []
-                                                unfilteredData?.forEach { json in
+                                                if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                                                                options: .allowFragments){
+                                                    let unfilteredData = VoteJson(json: json as! JSON)?.data
+                                                    var filtered: [VoteDataJson] = []
+                                                    unfilteredData?.forEach { json in
+                                                        
+    //                                                    var isContains = false
+    //                                                    json.questions?.forEach {
+    //                                                        if !($0.isCompleteByUser ?? false) {
+    //                                                            isContains = false
+    //                                                        }
+    //                                                    }
+    //                                                    if !isContains {
+                                                            filtered.append(json)
+    //                                                    }
+                                                    }
                                                     
-//                                                    var isContains = false
-//                                                    json.questions?.forEach {
-//                                                        if !($0.isCompleteByUser ?? false) {
-//                                                            isContains = false
-//                                                        }
-//                                                    }
-//                                                    if !isContains {
-                                                        filtered.append(json)
-//                                                    }
+                                                    self.voting = filtered
                                                 }
-                                                self.voting = filtered
                                                 DispatchQueue.main.async {
                                                     self.StopIndicator()
                                                     if self.voting?.count == 0{
