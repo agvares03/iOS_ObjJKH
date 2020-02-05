@@ -98,7 +98,9 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
         ShowHideEntrance(show_hide: true)
         ShowHidePremise(show_hide: true)
         let defaults = UserDefaults.standard
-        phone = defaults.string(forKey: "phone")!
+        if defaults.string(forKey: "phone") != nil{
+            phone = defaults.string(forKey: "phone")!
+        }
         
         initListeners()
         
@@ -394,7 +396,7 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
                                                 guard data != nil else { return }
                                                 
                                                 self.homeString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("entrance = \(String(describing: self.homeString))")
+//                                                print("entrance = \(String(describing: self.homeString))")
                                                 if (self.homeString?.containsIgnoringCase(find: "Number"))!{
                                                     do {
                                                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
@@ -449,7 +451,7 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
                                                 guard data != nil else { return }
                                                 
                                                 self.homeString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("entrance = \(String(describing: self.homeString))")
+//                                                print("entrance = \(String(describing: self.homeString))")
                                                 if (self.homeString?.containsIgnoringCase(find: "Number"))!{
                                                     do {
                                                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
@@ -511,12 +513,12 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
-                                                
+                                                guard data != nil else { return }
                                                 if error != nil {
                                                     return
                                                 }
                                                 let objectString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("object = \(String(describing: objectString))")
+//                                                print("object = \(String(describing: objectString))")
                                                 if (objectString.containsIgnoringCase(find: "Name")){
                                                     do {
                                                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]

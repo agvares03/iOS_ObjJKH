@@ -1725,7 +1725,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         //            self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"]) as? NSFetchedResultsController<Applications>
         //        } else {
         let close: NSNumber = 1
-        let predicateFormat = String(format: "is_close =%@", close)
+        let predicateFormat = String(format: "is_close = %@", close)
         self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat, ascending: false) as? NSFetchedResultsController<Applications>
         //        }
         
@@ -2261,17 +2261,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
             cell.sumText.textColor = myColors.btnColor.uiColor()
             if insuranceArr.count != 0{
-                if insuranceArr[0].sumDecimal != "0.00"{
-                    cell.insuranceLbl.text = "Подключено страхование от ВСК с " + insuranceArr[0].dataBeg! + " по " + insuranceArr[0].dataEnd!
-                    cell.insuranceLbl.isHidden = false
-                    cell.insurance_btn.isHidden = false
-                    cell.insuranceLblHeight.constant = heightForView(text: cell.insuranceLbl.text ?? "", font: cell.insuranceLbl.font, width: view.frame.size.width - 70)
-                    cell.insurance_btnHeight.constant = 20
-                }else{
-                    cell.insuranceLbl.isHidden = true
-                    cell.insurance_btn.isHidden = true
-                    cell.insuranceLblHeight.constant = 0
-                    cell.insurance_btnHeight.constant = 0
+                insuranceArr.forEach{
+                    if $0.sumDecimal != "0.00" && $0.ident == lsArr[indexPath.row].ident!{
+                        cell.insuranceLbl.text = "Подключено страхование от ВСК с " + $0.dataBeg! + " по " + $0.dataEnd!
+                        cell.insuranceLbl.isHidden = false
+                        cell.insurance_btn.isHidden = false
+                        cell.insuranceLblHeight.constant = heightForView(text: cell.insuranceLbl.text ?? "", font: cell.insuranceLbl.font, width: view.frame.size.width - 70)
+                        cell.insurance_btnHeight.constant = 20
+                    }else{
+                        cell.insuranceLbl.isHidden = true
+                        cell.insurance_btn.isHidden = true
+                        cell.insuranceLblHeight.constant = 0
+                        cell.insurance_btnHeight.constant = 0
+                    }
                 }
             }else{
                 cell.insuranceLbl.isHidden = true

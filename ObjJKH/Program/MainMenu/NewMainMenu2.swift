@@ -1010,52 +1010,55 @@ class NewMainMenu2: UIViewController {
     
     func getNews(){
         news_read = 0
-        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        var phone = ""
         
-        var strLogin = phone.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + strLogin)!)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) {
-            data, error, responce in
+        if UserDefaults.standard.string(forKey: "phone") != nil{
+            phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+            var strLogin = phone.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+            strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
             
-            //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            //            print("responseString = \(responseString)")
+            var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + strLogin)!)
+            request.httpMethod = "GET"
             
-            guard data != nil else { return }
-            if let json = try? JSONSerialization.jsonObject(with: data!,
-                                                            options: .allowFragments){
-                let unfilteredData = NewsJson(json: json as! JSON)?.data
-                unfilteredData?.forEach { json in
-                    if !json.readed! {
-                        self.news_read += 1
+            URLSession.shared.dataTask(with: request) {
+                data, error, responce in
+                
+                //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                //            print("responseString = \(responseString)")
+                
+                guard data != nil else { return }
+                if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                                options: .allowFragments){
+                    let unfilteredData = NewsJson(json: json as! JSON)?.data
+                    unfilteredData?.forEach { json in
+                        if !json.readed! {
+                            self.news_read += 1
+                        }
                     }
                 }
-            }
-            if self.news_read > 0{
-                 UserDefaults.standard.set(self.news_read, forKey: "newsKol")
-            }else{
-                 UserDefaults.standard.set(0, forKey: "newsKol")
-            }
-            DispatchQueue.main.async {
-                let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
-                if (updatedBadgeNumber > -1) {
-                    UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                if self.news_read > 0{
+                     UserDefaults.standard.set(self.news_read, forKey: "newsKol")
+                }else{
+                     UserDefaults.standard.set(0, forKey: "newsKol")
                 }
-                //                if request_read >= 0{
-                //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-                //                    UserDefaults.standard.synchronize()
-                //                }else{
-                //                    UserDefaults.standard.setValue(0, forKey: "request_read")
-                //                    UserDefaults.standard.synchronize()
-                //                }
-                
-            }
-            }.resume()
+                DispatchQueue.main.async {
+                    let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+                    if (updatedBadgeNumber > -1) {
+                        UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+                    }
+                    //                if request_read >= 0{
+                    //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+                    //                    UserDefaults.standard.synchronize()
+                    //                }else{
+                    //                    UserDefaults.standard.setValue(0, forKey: "request_read")
+                    //                    UserDefaults.standard.synchronize()
+                    //                }
+                    
+                }
+                }.resume()
+        }
     }
     
     func date_teck() -> (String)? {
