@@ -600,6 +600,11 @@ class NewMainMenu2: UIViewController {
             payController.debtArr = self.debtArr
         }
         #endif
+        
+        if segue.identifier == "mupCounters"{
+            let payController             = segue.destination as! MupCounterController
+            payController.lsArr = self.lsArr
+        }
 //        if segue.identifier == "pays" {
 //            let payController             = segue.destination as! PaysController
 //            payController.debtArr = self.debtArr
@@ -611,7 +616,15 @@ class NewMainMenu2: UIViewController {
     }
     
     var dateOld = "01.01"
+    var lsArr:[lsData] = []
     func getDebt() {
+        var dIdent:[String] = []
+        var dSum:[String] = []
+        var dSumFine:[String] = []
+        var dDate:[String] = []
+        var dAddress:[String] = []
+        var dInsurance:[String] = []
+        var dHouse:[String] = []
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
@@ -642,11 +655,14 @@ class NewMainMenu2: UIViewController {
                                                                 do {
                                                                     u += 1
                                                                     if !responseStr.contains("error"){
+                                                                        var date1       = "0"
+                                                                        var date2       = "0"
                                                                         var date        = "0"
                                                                         var sum         = "0"
                                                                         var sumFine     = "0"
                                                                         var insuranceSum = "0"
                                                                         var ls = "-"
+                                                                        var address = "-"
                                                                         var houseId = "0"
                                                                         //                                                                var sumOver     = ""
                                                                         //                                                                var sumFineOver = ""
@@ -689,6 +705,16 @@ class NewMainMenu2: UIViewController {
                                                                                                     self.debtIdent.append(ls)
                                                                                                 }
                                                                                             }
+                                                                                            if obj.key == "DebtActualDate" {
+                                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                                    date = String(describing: obj.value as! String)
+                                                                                                }
+                                                                                            }
+                                                                                            if obj.key == "Address" {
+                                                                                                if ((obj.value as? NSNull) == nil){
+                                                                                                    address = String(describing: obj.value as! String)
+                                                                                                }
+                                                                                            }
                                                                                             if obj.key == "HouseId" {
                                                                                                 if ((obj.value as? NSNull) == nil){
                                                                                                     houseId = String(describing: obj.value as! Int)
@@ -726,6 +752,14 @@ class NewMainMenu2: UIViewController {
                                                                             }
                                                                             
                                                                         }
+                                                                        dIdent.append(ls)
+                                                                        dSum.append(sum)
+                                                                        dSumFine.append(sumFine)
+                                                                        dAddress.append(address)
+                                                                        dDate.append(date)
+                                                                        dInsurance.append(insuranceSum)
+                                                                        dHouse.append(houseId)
+                                                                        self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum, houseId: houseId))
                                                                     }
                                                                     
                                                                 } catch let error as NSError {
