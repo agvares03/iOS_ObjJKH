@@ -112,14 +112,20 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
     
     var login: String = ""
     var pass: String = ""
+    var lsArr:[lsData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("UniqCounters", forKey: "last_UI_action")
         tableCounters.delegate = self
         tableCounters.dataSource = self
-        lsLbl.text = "Л/с: " + countIdent
-        
+//        lsLbl.text = "Л/с: " + countIdent
+        lsArr.forEach{
+        //                print($0.ident , identArr[indexPath.row])
+            if $0.ident == countIdent{
+                lsLbl.text = $0.address!
+            }
+        }
         uniqNum.text = owner
         uniqName.text = uniq_name
         
@@ -250,7 +256,12 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                     if (object.value(forKey: "ident") as! String) == ident{
                         if (object.value(forKey: "uniq_num") as! String) == self.uniq_num{
                             countIdent = String(object.value(forKey: "ident") as! String)
-                            lsLbl.text = "Л/с: " + String(object.value(forKey: "ident") as! String)
+                            lsArr.forEach{
+                            //                print($0.ident , identArr[indexPath.row])
+                                if $0.ident == countIdent{
+                                    lsLbl.text = $0.address!
+                                }
+                            }
                             identArr.append(object.value(forKey: "ident") as! String)
                             nameArr.append(object.value(forKey: "count_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
@@ -265,7 +276,12 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                 }else{
                     if (object.value(forKey: "uniq_num") as! String) == self.uniq_num{
                         countIdent = String(object.value(forKey: "ident") as! String)
-                        lsLbl.text = "Л/с: " + String(object.value(forKey: "ident") as! String)
+                        lsArr.forEach{
+                        //                print($0.ident , identArr[indexPath.row])
+                            if $0.ident == countIdent{
+                                lsLbl.text = $0.address!
+                            }
+                        }
                         identArr.append(object.value(forKey: "ident") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)

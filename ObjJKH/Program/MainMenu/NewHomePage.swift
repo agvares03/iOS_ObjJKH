@@ -97,9 +97,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var receipts1Height: NSLayoutConstraint!
     @IBOutlet weak var receipts2Height: NSLayoutConstraint!
     
-    @IBOutlet weak var can_count_label: UILabel!
-    @IBOutlet weak var canCountHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var menu_1_const: NSLayoutConstraint!
     @IBOutlet weak var menu_2_const: NSLayoutConstraint!
     @IBOutlet weak var menu_3_const: NSLayoutConstraint!
@@ -368,11 +365,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if defaults.object(forKey: "can_count") != nil{
             can_edit         = defaults.string(forKey: "can_count")!
         }
-        if (date1 == "0") && (date2 == "0") {
-            can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
-        } else {
-            can_count_label.text = "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!"
-        }
+        
         tableLS.delegate = self
         tableLS.dataSource = self
         tableNews.delegate = self
@@ -985,12 +978,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                     defaults.synchronize()
                                                                     self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
                                                                     DispatchQueue.main.async {
-                                                                        if (self.date1 == "0") && (self.date2 == "0") {
-                                                                            self.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
-                                                                        } else {
-                                                                            self.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
-                                                                        }
+//                                                                        if (self.date1 == "0") && (self.date2 == "0") {
+//                                                                            self.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+//                                                                        } else {
+//                                                                            self.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
+//                                                                        }
                                                                         self.tableLS.reloadData()
+                                                                        self.tableCounter.reloadData()
                                                                     }
                                                                 }
                                                                 
@@ -1019,9 +1013,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
+    var insuranceArr: [Insurance] = []
     func getInsurance(){
         let phone = UserDefaults.standard.string(forKey: "login") ?? ""
-        //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
+//        var request = URLRequest(url: URL(string: "http://uk-gkh.org/newjkh/MobileAPI/GetPaymentsRegistryInsuranceByMobAccount.ashx?phone=test")!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.MOBILE_API_PATH + Server.GET_INSURANCE + "phone=" + phone)!)
         request.httpMethod = "GET"
 //        print("InsuranceURL", request)
@@ -1037,7 +1032,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 //            }
                                                 
                                                 guard data != nil else { return }
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
 //                                                print("INSURANCE: ", responseString)
                                                 var insuranceList: [Insurance] = []
                                                 if let json = try? JSONSerialization.jsonObject(with: data!,
@@ -1060,7 +1055,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         insuranceList.append(newsObj)
                                                     }
                                                 }
-                                                
+                                                if insuranceList.count != 0{
+                                                    self.insuranceArr = insuranceList
+                                                }
+//                                                print("INSURANCE: ", self.insuranceArr)
                                                 DispatchQueue.main.async {
                                                     self.tableLS.reloadData()
                                                 }
@@ -2033,7 +2031,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             if height3 == 0{
                 self.menu_2_const.constant = 0
                 self.counterHeight.constant = 0
-                self.canCountHeight.constant = 0
+//                self.canCountHeight.constant = 0
                 self.tableCounterHeight.constant = height3
             }else{
                 let str_menu_4 = UserDefaults.standard.string(forKey: "menu_4") ?? ""
@@ -2042,12 +2040,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     if (answer[2] == "0") {
                         self.menu_2_const.constant = 0
                         self.counterHeight.constant = 0
-                        self.canCountHeight.constant = 0
+//                        self.canCountHeight.constant = 0
                         self.tableCounterHeight.constant = 0
                     }else{
                         self.menu_2_const.constant = 15
                         self.counterHeight.constant = 45
-                        self.canCountHeight.constant = 30
+//                        self.canCountHeight.constant = 30
                         self.tableCounterHeight.constant = height3
                     }
                 }
@@ -2262,10 +2260,25 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
             cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
             cell.sumText.textColor = myColors.btnColor.uiColor()
-            cell.insuranceLbl.isHidden = true
-            cell.insurance_btn.isHidden = true
-            cell.insuranceLblHeight.constant = 0
-            cell.insurance_btnHeight.constant = 0
+            if insuranceArr.count != 0{
+                if insuranceArr[0].sumDecimal != "0.00"{
+                    cell.insuranceLbl.text = "Подключено страхование от ВСК с " + insuranceArr[0].dataBeg! + " по " + insuranceArr[0].dataEnd!
+                    cell.insuranceLbl.isHidden = false
+                    cell.insurance_btn.isHidden = false
+                    cell.insuranceLblHeight.constant = heightForView(text: cell.insuranceLbl.text ?? "", font: cell.insuranceLbl.font, width: view.frame.size.width - 70)
+                    cell.insurance_btnHeight.constant = 20
+                }else{
+                    cell.insuranceLbl.isHidden = true
+                    cell.insurance_btn.isHidden = true
+                    cell.insuranceLblHeight.constant = 0
+                    cell.insurance_btnHeight.constant = 0
+                }
+            }else{
+                cell.insuranceLbl.isHidden = true
+                cell.insurance_btn.isHidden = true
+                cell.insuranceLblHeight.constant = 0
+                cell.insurance_btnHeight.constant = 0
+            }
             //            var sumAll = 0.00
             //            var isPayToDate = false
             //            var isPayBoDate = false
@@ -2357,13 +2370,19 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cell = self.tableCounter.dequeueReusableCell(withIdentifier: "HomeCounterCell") as! HomeCounterCell
             var countName = ""
             cell.tariffNumber     = tariffArr[indexPath.row]
-            cell.ident.text       = " " + identArr[indexPath.row]
-            if identArr[indexPath.row] == "" || identArr[indexPath.row] == " " || identArr[indexPath.row] == "-" || identArr[indexPath.row] == nil{
+            lsArr.forEach{
+                if $0.ident == identArr[indexPath.row]{
+                    cell.adress.text = $0.address!
+                }
+            }
+            cell.ident = identArr[indexPath.row]
+            if cell.adress.text == "" || cell.adress.text == " " || cell.adress.text == "-" || cell.adress.text == nil{
                 cell.identView.isHidden = true
                 cell.identHeight.constant = 0
             }else{
                 cell.identView.isHidden = false
                 cell.identHeight.constant = 24
+                cell.identHeight.constant = heightForView(text: cell.adress.text!, font: cell.adress.font, width: view.frame.size.width - 135)
             }
             cell.name.text        = " " + nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
             cell.number.text      = " " + ownerArr[indexPath.row]
@@ -2412,10 +2431,70 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.recheckView.isHidden = true
                 cell.recheckHeight.constant = 0
             }else{
+                cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
                 cell.sendBtnHeight.constant = 36
                 cell.sendButton.isHidden = false
                 cell.autoLbl.isHidden = true
                 cell.autoLblHeight.constant = 0
+                let date = Date()
+                let format = DateFormatter()
+                format.dateFormat = "dd-MM-yyyy"
+                let sendDate = format.date(from: dateOneArr[indexPath.row])
+                let calendar = Calendar.current
+                let currDay = calendar.component(.day, from: date)
+                let currMonth = calendar.component(.month, from: date)
+                let sendMonth = calendar.component(.month, from: sendDate!)
+                let d1: Int = Int(self.date1)!
+                let d2: Int = Int(self.date2)!
+                if (self.date1 == "0") && (self.date2 == "0") {
+                    if currMonth == sendMonth{
+                        cell.can_count_label.text = "Показания переданы " + dateOneArr[indexPath.row]
+                        cell.can_count_label.isHidden = false
+                        cell.canCountHeight.constant = 17
+                        cell.sendBtnHeight.constant = 20
+                        cell.sendButton.setTitle("Исправить", for: .normal)
+                        cell.sendButton.isHidden = false
+                        cell.sendButton.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+                        cell.sendButton.backgroundColor = .white
+                    }else{
+                        cell.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+                        cell.can_count_label.isHidden = true
+                        cell.canCountHeight.constant = 0
+                        cell.sendBtnHeight.constant = 36
+                        cell.sendButton.setTitle("Передать показания", for: .normal)
+                        cell.sendButton.isHidden = false
+                        cell.sendButton.setTitleColor(.white, for: .normal)
+                        cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
+                    }
+                } else if (Int(self.date1) != nil) && (Int(self.date2) != nil) {
+                    if currDay < d1 || currDay > d2{
+                        cell.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
+                        cell.can_count_label.isHidden = false
+                        cell.canCountHeight.constant = 30
+                        cell.sendBtnHeight.constant = 0
+                        cell.sendButton.isHidden = true
+                    }else{
+                        if currMonth == sendMonth{
+                            cell.can_count_label.text = "Показания переданы " + dateOneArr[indexPath.row]
+                            cell.can_count_label.isHidden = false
+                            cell.canCountHeight.constant = 17
+                            cell.sendBtnHeight.constant = 20
+                            cell.sendButton.setTitle("Исправить", for: .normal)
+                            cell.sendButton.isHidden = false
+                            cell.sendButton.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+                            cell.sendButton.backgroundColor = .white
+                        }else{
+                            cell.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+                            cell.can_count_label.isHidden = true
+                            cell.canCountHeight.constant = 0
+                            cell.sendBtnHeight.constant = 36
+                            cell.sendButton.setTitle("Передать показания", for: .normal)
+                            cell.sendButton.isHidden = false
+                            cell.sendButton.setTitleColor(.white, for: .normal)
+                            cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
+                        }
+                    }
+                }
             }
             
             if Int(cell.tariffNumber) == 2{
@@ -2440,13 +2519,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.teckLbl3.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl3.text     = dateThreeArr[indexPath.row]
             }
-            cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
-            cell.imgCounter.image = UIImage(named: "water")
+            cell.imgCounter.image = UIImage(named: "coldWater")
             if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil) || (countName.containsIgnoringCase(find: "гв")){
-                cell.imgCounter.setImageColor(color: .red)
+                cell.imgCounter.image = UIImage(named: "hotWater")
             }
             if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil) || (countName.lowercased().range(of: "х/в") != nil) || (countName.containsIgnoringCase(find: "хв")){
-                cell.imgCounter.setImageColor(color: .blue)
+                cell.imgCounter.image = UIImage(named: "coldWater")
             }
             if (countName.lowercased().range(of: "газ") != nil){
                 cell.imgCounter.image = UIImage(named: "fire")
@@ -2458,7 +2536,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             if (countName.lowercased().range(of: "элект") != nil) || (countName.contains("кВт")){
                 cell.imgCounter.image = UIImage(named: "lamp")
-                cell.imgCounter.setImageColor(color: .yellow)
             }
             if dateTwoArr[indexPath.row] == ""{
                 cell.lblHeight11.constant = 0
@@ -2586,7 +2663,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.tariffOne.textColor = myColors.btnColor.uiColor()
             cell.tariffTwo.textColor = myColors.btnColor.uiColor()
             cell.tariffThree.textColor = myColors.btnColor.uiColor()
-            cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
             cell.separator.backgroundColor = myColors.btnColor.uiColor()
             if Int(cell.tariffNumber) == 0 || Int(cell.tariffNumber) == 1{
                 cell.tariffHeight2.constant = 0
@@ -2916,6 +2992,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             payController.numberDecimal = Int(selNumDec)!
         }
         
+        if segue.identifier == "goCounter"{
+            let payController             = segue.destination as! MupCounterController
+            payController.lsArr = self.lsArr
+        }
+        
         #if isMupRCMytishi
         if segue.identifier == "paysMytishi2" {
             let payController             = segue.destination as! PaysMytishi2Controller
@@ -3133,7 +3214,10 @@ class HomeLSCell: UITableViewCell {
     }
     
     @IBAction func insuranceAction(_ sender: UIButton) {
-        
+        let url  = NSURL(string: "http://sm-center.ru/vsk_polis.pdf")
+        if UIApplication.shared.canOpenURL(url! as URL) == true  {
+            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+        }
     }
     
     @IBAction func sendAction(_ sender: UIButton) {
@@ -3167,14 +3251,14 @@ class HomeCounterCell: UITableViewCell {
     
     var delegate: CountersCellDelegate?
     var tariffNumber = "0"
-    
+    var ident = ""
     // Поверка и интервал
     @IBOutlet weak var checkup_date: UILabel!
     @IBOutlet weak var recheckup_diff: UILabel!
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
-    @IBOutlet weak var ident: UILabel!
+    @IBOutlet weak var adress: UILabel!
     @IBOutlet weak var imgCounter: UIImageView!
     @IBOutlet weak var viewImgCounter: UIView!
     @IBOutlet weak var sendButton: UIButton!
@@ -3288,6 +3372,9 @@ class HomeCounterCell: UITableViewCell {
     @IBOutlet weak var autoLbl: UILabel!
     @IBOutlet weak var autoLblHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var can_count_label: UILabel!
+    @IBOutlet weak var canCountHeight: NSLayoutConstraint!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -3298,7 +3385,7 @@ class HomeCounterCell: UITableViewCell {
     }
     
     @IBAction func sendAction(_ sender: UIButton) {
-        delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred1.text!, predValue2: pred2.text!, predValue3: pred3.text!, tariffNumber: tariffNumber)
+        delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident, predValue: pred1.text!, predValue2: pred2.text!, predValue3: pred3.text!, tariffNumber: tariffNumber)
         //        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
     }
 }

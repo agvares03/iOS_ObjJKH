@@ -56,6 +56,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var maxYear: String = ""
     var maxMonth: String = ""
     var choiceIdent = "Все"
+    var lsArr:[lsData] = []
     
     var responseString:NSString = ""
     
@@ -762,6 +763,17 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         // Dispose of any resources that can be recreated.
     }
     
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        //        print(label.frame.height, width)
+        return label.frame.height
+    }
+    
     func isEditable() -> Bool {
         //        if self.nextMonthLabel.isHidden == false{
         //            return false
@@ -789,7 +801,20 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         var countName = ""
         let formatDec:String = "%." + numberDecimal[indexPath.row] + "f"
         cell.tariffNumber     = tariffArr[indexPath.row]
-        cell.ident.text       = identArr[indexPath.row]
+        lsArr.forEach{
+        //                print($0.ident , identArr[indexPath.row])
+            if $0.ident == identArr[indexPath.row]{
+                cell.adress.text = $0.address!
+            }
+        }
+        cell.ident = identArr[indexPath.row]
+        if cell.adress.text == "" || cell.adress.text == " " || cell.adress.text == "-" || cell.adress.text == nil{
+            cell.adress.isHidden = true
+            cell.adressHeight.constant = 0
+        }else{
+            cell.adress.isHidden = false
+            cell.adressHeight.constant = heightForView(text: cell.adress.text!, font: cell.adress.font, width: view.frame.size.width - 135)
+        }
         cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
         cell.number.text      = ownerArr[indexPath.row]
         countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
@@ -823,24 +848,23 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         }
         send = sendedArr[indexPath.row]
         cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
-        cell.imgCounter.image = UIImage(named: "water")
+        cell.imgCounter.image = UIImage(named: "coldWater")
         if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil) || (countName.containsIgnoringCase(find: "гв")){
-            cell.viewImgCounter.backgroundColor = .red
+            cell.imgCounter.image = UIImage(named: "hotWater")
         }
         if (countName.lowercased().range(of: "хвс") != nil) || (countName.lowercased().range(of: "хвc") != nil) || (countName.lowercased().range(of: "х/в") != nil) || (countName.containsIgnoringCase(find: "хв")){
-            cell.viewImgCounter.backgroundColor = .blue
+            cell.imgCounter.image = UIImage(named: "coldWater")
         }
         if (countName.lowercased().range(of: "газ") != nil){
             cell.imgCounter.image = UIImage(named: "fire")
-            cell.viewImgCounter.backgroundColor = .yellow
+            cell.imgCounter.setImageColor(color: .yellow)
         }
         if (countName.lowercased().range(of: "тепло") != nil){
             cell.imgCounter.image = UIImage(named: "fire")
-            cell.viewImgCounter.backgroundColor = .red
+            cell.imgCounter.setImageColor(color: .red)
         }
         if (countName.lowercased().range(of: "элект") != nil) || (countName.contains("кВт")){
             cell.imgCounter.image = UIImage(named: "lamp")
-            cell.viewImgCounter.backgroundColor = .yellow
         }
         if dateTwoArr[indexPath.row] == ""{
             cell.lblHeight11.constant = 0
@@ -1018,17 +1042,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         return cell
     }
     
-    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = font
-        label.text = text
-        label.sizeToFit()
-        print(label.frame.height, width)
-        return label.frame.height
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         selectedUniq = numberArr[indexPath.row]
@@ -1069,7 +1082,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             payController.ls = choiceIdent
             payController.countIdent = countIdent
             payController.selTariffNumber = selTariffNumber
-            
+            payController.lsArr = lsArr
             payController.autoSend = autoSend
             payController.recheckInter = recheckInter
             payController.lastCheckDate = lastCheckupDate
@@ -1469,12 +1482,13 @@ class MupCounterCell: UITableViewCell {
     
     var delegate: CountersCellDelegate?
     var tariffNumber = "0"
+    var ident = ""
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
-    @IBOutlet weak var ident: UILabel!
+    @IBOutlet weak var adress: UILabel!
+    @IBOutlet weak var adressHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCounter: UIImageView!
-    @IBOutlet weak var viewImgCounter: UIView!
     @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var pred1: UILabel!
@@ -1570,7 +1584,7 @@ class MupCounterCell: UITableViewCell {
     @IBOutlet weak var nonCounterHeight: NSLayoutConstraint!
     
     @IBAction func sendAction(_ sender: UIButton) {
-        delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred1.text!, predValue2: pred2.text!, predValue3: pred3.text!, tariffNumber: tariffNumber)
+        delegate?.сheckSend(uniq_num: number.text!, count_name: name.text!, ident: ident, predValue: pred1.text!, predValue2: pred2.text!, predValue3: pred3.text!, tariffNumber: tariffNumber)
         //        delegate?.sendPressed(uniq_num: number.text!, count_name: name.text!, ident: ident.text!, predValue: pred.text!)
     }
     

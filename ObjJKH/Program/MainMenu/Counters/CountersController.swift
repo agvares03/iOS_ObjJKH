@@ -502,7 +502,7 @@ class CountersController: UIViewController, DropperDelegate, UITableViewDelegate
             cell.lblHeight5.constant = 0
             cell.lblHeight6.constant = 0
         }
-        cell.imgCounter.image = UIImage(named: "water")
+        cell.imgCounter.image = UIImage(named: "coldWater")
         if (countName.lowercased().range(of: "гвс") != nil){
             cell.viewImgCounter.backgroundColor = .red
         }

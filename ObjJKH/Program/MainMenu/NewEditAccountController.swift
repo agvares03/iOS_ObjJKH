@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import Gloss
 
 class NewEditAccountController: UIViewController, UITableViewDelegate, UITableViewDataSource, DebtCellDelegate, DelLSCellDelegate {
     
@@ -626,6 +627,59 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         task.resume()
     }
     
+    var insuranceArr: [Insurance] = []
+        func getInsurance(){
+            let phone = UserDefaults.standard.string(forKey: "login") ?? ""
+//            var request = URLRequest(url: URL(string: "http://uk-gkh.org/newjkh/MobileAPI/GetPaymentsRegistryInsuranceByMobAccount.ashx?phone=test")!)
+            var request = URLRequest(url: URL(string: Server.SERVER + Server.MOBILE_API_PATH + Server.GET_INSURANCE + "phone=" + phone)!)
+            request.httpMethod = "GET"
+    //        print("InsuranceURL", request)
+            
+            let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                                  completionHandler: {
+                                                    data, error, responce in
+                                                    //                                                print("responseString = \(responseString)")
+                                                    
+                                                    //            if error != nil {
+                                                    //                print("ERROR")
+                                                    //                return
+                                                    //            }
+                                                    
+                                                    guard data != nil else { return }
+    //                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+    //                                                print("INSURANCE: ", responseString)
+                                                    var insuranceList: [Insurance] = []
+                                                    if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                                                                    options: .allowFragments){
+                                                        let unfilteredData = InsuranceJson(json: json as! JSON)?.data
+                                                        
+                                                        unfilteredData?.forEach { json in
+                                                            let dataBeg: String = json.dataBeg ?? ""
+                                                            let dataEnd: String = json.dataEnd ?? ""
+                                                            let date: String = json.date ?? ""
+                                                            let shopCode: String = json.shopCode ?? ""
+                                                            let orgName: String = json.orgName ?? ""
+                                                            let dateCredited: String = json.dateCredited ?? ""
+                                                            let paymentId: String = json.paymentId ?? ""
+                                                            let ident: String = json.ident ?? ""
+                                                            let sumDecimal: String = json.sumDecimal ?? ""
+                                                            let sumCreditedDecimal: String = json.sumCreditedDecimal ?? ""
+                                                            let comissionDecimal: String = json.comissionDecimal ?? ""
+                                                            let newsObj = Insurance(dataBeg:dataBeg,dataEnd:dataEnd,date:date,shopCode:shopCode,orgName:orgName,dateCredited:dateCredited,paymentId:paymentId,ident:ident,sumDecimal:sumDecimal,sumCreditedDecimal:sumCreditedDecimal,comissionDecimal:comissionDecimal)
+                                                            insuranceList.append(newsObj)
+                                                        }
+                                                    }
+                                                    if insuranceList.count != 0{
+                                                        self.insuranceArr = insuranceList
+                                                    }
+    //                                                print("INSURANCE: ", self.insuranceArr)
+                                                    DispatchQueue.main.async {
+                                                        self.tableView.reloadData()
+                                                    }
+            })
+            task.resume()
+        }
+    
     @objc private func viewTapped(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
@@ -679,6 +733,17 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        //        print(label.frame.height, width)
+        return label.frame.height
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "HomeLSCell1") as! HomeLSCell
         //            cell = shadowCell(cell: cell) as! HomeLSCell
@@ -693,10 +758,25 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
         cell.sumText.textColor = myColors.btnColor.uiColor()
         
-        cell.insuranceLbl.isHidden = true
-        cell.insurance_btn.isHidden = true
-        cell.insuranceLblHeight.constant = 0
-        cell.insurance_btnHeight.constant = 0
+        if insuranceArr.count != 0{
+            if insuranceArr[0].sumDecimal != "0.00"{
+                cell.insuranceLbl.text = "Подключено страхование от ВСК с " + insuranceArr[0].dataBeg! + " по " + insuranceArr[0].dataEnd!
+                cell.insuranceLbl.isHidden = false
+                cell.insurance_btn.isHidden = false
+                cell.insuranceLblHeight.constant = heightForView(text: cell.insuranceLbl.text ?? "", font: cell.insuranceLbl.font, width: view.frame.size.width - 70)
+                cell.insurance_btnHeight.constant = 20
+            }else{
+                cell.insuranceLbl.isHidden = true
+                cell.insurance_btn.isHidden = true
+                cell.insuranceLblHeight.constant = 0
+                cell.insurance_btnHeight.constant = 0
+            }
+        }else{
+            cell.insuranceLbl.isHidden = true
+            cell.insurance_btn.isHidden = true
+            cell.insuranceLblHeight.constant = 0
+            cell.insurance_btnHeight.constant = 0
+        }
         //            var sumAll = 0.00
         //            var isPayToDate = false
         //            var isPayBoDate = false
@@ -924,6 +1004,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         }
         lsArr.removeAll()
         getDebt()
+        getInsurance()
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tap)

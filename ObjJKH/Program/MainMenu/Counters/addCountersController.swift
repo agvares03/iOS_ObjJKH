@@ -32,7 +32,6 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     @IBOutlet weak var autoSendLbl:     UILabel!
     @IBOutlet weak var backBtn:         UIBarButtonItem!
     @IBOutlet weak var imgCounter:      UIImageView!
-    @IBOutlet weak var viewImgCounter:  UIView!
     @IBOutlet weak var indicator:       UIActivityIndicatorView!
     @IBOutlet weak var viewTop:         NSLayoutConstraint!
     @IBOutlet weak var tarif2Height:    NSLayoutConstraint!
@@ -822,24 +821,23 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
             interLbl.isHidden = true
             interLbl.text = ""
         }
-        imgCounter.image = UIImage(named: "water")
+        imgCounter.image = UIImage(named: "coldWater")
         if (nameLbl.text!.lowercased().range(of: "гвс") != nil) || (nameLbl.text!.lowercased().range(of: "ф/в") != nil){
-            viewImgCounter.backgroundColor = .red
+            imgCounter.image = UIImage(named: "hotWater")
         }
         if (nameLbl.text!.lowercased().range(of: "хвс") != nil) || (nameLbl.text!.lowercased().range(of: "хвc") != nil){
-            viewImgCounter.backgroundColor = .blue
+            imgCounter.image = UIImage(named: "coldWater")
         }
         if (nameLbl.text!.lowercased().range(of: "газ") != nil){
             imgCounter.image = UIImage(named: "fire")
-            viewImgCounter.backgroundColor = .yellow
+            imgCounter.setImageColor(color: .yellow)
         }
         if (nameLbl.text!.lowercased().range(of: "тепло") != nil){
             imgCounter.image = UIImage(named: "fire")
-            viewImgCounter.backgroundColor = .red
+            imgCounter.setImageColor(color: .red)
         }
         if (nameLbl.text!.lowercased().range(of: "элект") != nil) || (nameLbl.text!.contains("кВт")){
             imgCounter.image = UIImage(named: "lamp")
-            viewImgCounter.backgroundColor = .yellow
         }
         cancelCount.tintColor = myColors.btnColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()

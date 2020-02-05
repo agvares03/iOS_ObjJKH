@@ -26,25 +26,26 @@ class openSaldoController: UIViewController, WKUIDelegate {
                 let url = URL(string: self.urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
                 let pdfData = try? Data.init(contentsOf: url!)
                 let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
-                let pdfNameFromUrl = "documento.pdf"
+                var pdfNameFromUrl = self.urlLink.replacingOccurrences(of: "http://", with: "")
+                pdfNameFromUrl = pdfNameFromUrl.replacingOccurrences(of: pdfNameFromUrl.prefix(through: pdfNameFromUrl.index(of: ":")!), with: "")
                 let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
                 do {
                     try pdfData?.write(to: actualPath, options: .atomic)
-                    print("pdf successfully saved!")
+//                    print("pdf successfully saved!")
                     let fileManager = FileManager.default
-                    let documentoPath = (self.getDirectoryPath() as NSString).appendingPathComponent("documento.pdf")
+                    let documentoPath = (self.getDirectoryPath() as NSString).appendingPathComponent(pdfNameFromUrl)
 
                     if fileManager.fileExists(atPath: documentoPath){
-                        let documento = NSData(contentsOfFile: documentoPath)
-                        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [documento!], applicationActivities: nil)
+//                        let documento = NSData(contentsOfFile: documentoPath)
+                        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [URL(fileURLWithPath: documentoPath)], applicationActivities: nil)
                         activityViewController.popoverPresentationController?.sourceView=self.view
                         self.present(activityViewController, animated: true, completion: nil)
                      }
                      else {
-                         print("document was not found")
+//                         print("document was not found")
                      }
                 } catch {
-                    print("Pdf could not be saved")
+//                    print("Pdf could not be saved")
                 }
             }
         }else{
