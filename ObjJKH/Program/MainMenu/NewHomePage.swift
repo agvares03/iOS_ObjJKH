@@ -2446,8 +2446,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 let currDay = calendar.component(.day, from: date)
                 let currMonth = calendar.component(.month, from: date)
                 let sendMonth = calendar.component(.month, from: sendDate!)
-                let d1: Int = Int(self.date1)!
-                let d2: Int = Int(self.date2)!
+                var d1: Int = 0
+                if Int(self.date1) != nil{
+                    d1 = Int(self.date1)!
+                }
+                var d2: Int = 0
+                if Int(self.date2) != nil{
+                    d2 = Int(self.date2)!
+                }
                 if (self.date1 == "0") && (self.date2 == "0") {
                     if currMonth == sendMonth{
                         cell.can_count_label.text = "Показания переданы " + dateOneArr[indexPath.row]
