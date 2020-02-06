@@ -59,9 +59,9 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         self.StartIndicator()
         
-        let txtLogin: String = edLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        let txtPass: String  = edPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        let txtText: String  = descText.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let txtLogin: String = edLogin.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let txtPass: String  = edPass.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let txtText: String  = descText.text!.stringByAddingPercentEncodingForRFC3986() ?? ""
         
         var itsOk: Bool = true
         if (txtText == "") {
@@ -103,7 +103,7 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let ident: String = lsTextView.text!.stringByAddingPercentEncodingForRFC3986() ?? ""
             let urlPath = Server.SERVER + Server.ADD_APP +
                 "ident=" + ident +
-                "&pwd=" + txtPass +
+//                "&pwd=" + txtPass +
                 "&name=" + txtText +
                 "&text=" + txtText +
                 "&type=" + String(self.selectType + 1) +
@@ -170,6 +170,14 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
+            })
+        } else if Int(responseString) == nil || Int(responseString)! < 1{
+            DispatchQueue.main.async(execute: {
+               self.StopIndicator()
+               let alert = UIAlertController(title: "Ошибка", message: "Сервер не отвечает. Попробуйте позже", preferredStyle: .alert)
+               let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+               alert.addAction(cancelAction)
+               self.present(alert, animated: true, completion: nil)
             })
         } else {
             self.images.forEach {

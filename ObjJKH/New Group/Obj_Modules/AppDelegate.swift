@@ -206,7 +206,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var news = 0
         var apps = 0
         if userInfo["gcm.notification.unreadedAnnouncements"] != nil{
-            news = Int(userInfo["gcm.notification.unreadedAnnouncements"]! as! String)!
+            if Int(userInfo["gcm.notification.unreadedAnnouncements"]! as! String) != nil{
+                news = Int(userInfo["gcm.notification.unreadedAnnouncements"]! as! String)!
+            }
             if news > 0{
                  UserDefaults.standard.set(news, forKey: "newsKol")
             }else{
@@ -214,7 +216,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
         if userInfo["unreadedAnnouncements"] != nil{
-            news = Int(userInfo["unreadedAnnouncements"]! as! String)!
+            if Int(userInfo["unreadedAnnouncements"]! as! String) != nil{
+                news = Int(userInfo["unreadedAnnouncements"]! as! String)!
+            }
             if news > 0{
                  UserDefaults.standard.set(news, forKey: "newsKol")
             }else{
@@ -222,7 +226,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
         if userInfo["gcm.notification.requestsUnreadedCount"] != nil{
-            apps = Int(userInfo["gcm.notification.requestsUnreadedCount"]! as! String)!
+            if Int(userInfo["gcm.notification.requestsUnreadedCount"]! as! String) != nil{
+                apps = Int(userInfo["gcm.notification.requestsUnreadedCount"]! as! String)!
+            }
             if apps > 0{
                 UserDefaults.standard.set(apps, forKey: "appsKol")
             }else{
@@ -230,7 +236,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
         if userInfo["requestsUnreadedCount"] != nil{
-            apps = Int(userInfo["requestsUnreadedCount"]! as! String)!
+            if Int(userInfo["requestsUnreadedCount"]! as! String) != nil{
+                apps = Int(userInfo["requestsUnreadedCount"]! as! String)!
+            }
             if apps > 0{
                 UserDefaults.standard.set(apps, forKey: "appsKol")
             }else{
