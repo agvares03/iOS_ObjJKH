@@ -660,6 +660,16 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                                             cell.img.tintColor = .clear
                                             cell.loader.stopAnimating()
                                             cell.loader.isHidden = true
+                                        }else{
+                                            let img = UIImage(named: "icon_file")
+                                            imgs[imgName!] = img
+                                            cell.img.accessibilityLabel = url
+                                            cell.img.image = img
+                                            cell.img.tintColor = myColors.btnColor.uiColor()
+                                            cell.loader.stopAnimating()
+                                            cell.loader.isHidden = true
+                                            cell.heightImg.constant = 80
+                                            cell.widthImg.constant = 80
                                         }
                                     }
                                     
@@ -824,6 +834,16 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                                             cell.img.tintColor = .clear
                                             cell.loader.stopAnimating()
                                             cell.loader.isHidden = true
+                                        }else{
+                                            let img = UIImage(named: "icon_file")
+                                            imgs[imgName!] = img
+                                            cell.img.accessibilityLabel = url
+                                            cell.img.image = img
+                                            cell.img.tintColor = myColors.btnColor.uiColor()
+                                            cell.loader.stopAnimating()
+                                            cell.loader.isHidden = true
+                                            cell.heightImg.constant = 80
+                                            cell.widthImg.constant = 80
                                         }
                                     }
                                     

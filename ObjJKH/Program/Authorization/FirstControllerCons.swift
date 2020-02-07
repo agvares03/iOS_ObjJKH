@@ -110,7 +110,8 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
                                                 }
                                                 
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                                                //                                                self.responseString = "error: смена пароля: 12345678"
+//                                                self.responseString = "error: смена пароля: 12345678"
+//                                                self.responseString = "error"
                                                 print("responseString = \(self.responseString)")
                                                 self.choice()
         })
@@ -323,7 +324,8 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
             AddApp.fromAuth = true
         }
         if (segue.identifier == "support_cons"){
-            let AddApp = segue.destination as! SupportUpdate
+            let nav = segue.destination as! UINavigationController
+            let AddApp = nav.topViewController as! SupportUpdate
             AddApp.fromAuth = true
         }
     }
