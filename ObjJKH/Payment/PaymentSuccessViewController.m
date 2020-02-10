@@ -40,8 +40,8 @@ NSString *const kCurrencyRubSymbol = @"₽";
 
 - (void)closeSelf
 {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"PaymentSucces"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"PaymentSucces"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -61,7 +61,8 @@ NSString *const kCurrencyRubSymbol = @"₽";
     NSMutableAttributedString *resultString = [[NSMutableAttributedString alloc] initWithString:amountFull];
     NSRange range = [resultString.string rangeOfString:amountWithCurrency];
     [resultString addAttribute:NSForegroundColorAttributeName value:kMainBlueColor range:range];
-    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"PaymentSucces"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     self.paymentSuccessLabel.attributedText = resultString;
 }
 
