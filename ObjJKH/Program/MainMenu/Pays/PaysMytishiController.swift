@@ -644,6 +644,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
 //            //            print("DID FAIL REPORT EVENT: %@", message)
 //            print("REPORT ERROR: %@", error.localizedDescription)
 //        })
+        UserDefaults.standard.set("", forKey: "PaymentID")
+        UserDefaults.standard.set("", forKey: "PaysError")
+        UserDefaults.standard.set(false, forKey: "PaymentSucces")
+        UserDefaults.standard.addObserver(self, forKeyPath: "PaymentSucces", options:NSKeyValueObservingOptions.new, context: nil)
+//        UserDefaults.standard.set(true, forKey: "observeStart")
         UserDefaults.standard.set("", forKey: "payIdent")
         if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
             currPoint = 492
@@ -699,9 +704,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         // Заполним тек. год и тек. месяц
         iterYear         = defaults.string(forKey: "year_osv")!
         iterMonth        = defaults.string(forKey: "month_osv")!
-        defaults.set("", forKey: "PaymentID")
-        defaults.set("", forKey: "PaysError")
-        defaults.set(false, forKey: "PaymentSucces")
+        
         // Заполним лиц. счетами отбор
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
@@ -1682,9 +1685,19 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        // Подхватываем показ клавиатуры
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        print(UserDefaults.standard.string(forKey: "PaysError"), UserDefaults.standard.string(forKey: "PaymentID"), UserDefaults.standard.bool(forKey: "PaymentSucces"))
         if (UserDefaults.standard.string(forKey: "PaysError") != "" || (UserDefaults.standard.string(forKey: "PaymentID") != "" && UserDefaults.standard.bool(forKey: "PaymentSucces"))) && onePay == 0{
             onePay = 1
             addMobilePay()
+        }
+        if (UserDefaults.standard.string(forKey: "PaysError") == "" && UserDefaults.standard.string(forKey: "PaymentID") == "" && !UserDefaults.standard.bool(forKey: "PaymentSucces")){
+            onePay = 0
         }
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1
@@ -1694,9 +1707,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 // Fallback on earlier versions
             }
         }
-        // Подхватываем показ клавиатуры
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     var onePay = 0
