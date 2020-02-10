@@ -2715,9 +2715,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             if app.date != nil{
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-                let date = dateFormatter.date(from: app.date!)
-                dateFormatter.dateFormat = "dd.MM.yyyy"
-                cell.date.text  = dateFormatter.string(from: date!)
+                if dateFormatter.date(from: app.date!) != nil{
+                    let date = dateFormatter.date(from: app.date!)
+                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                    cell.date.text  = dateFormatter.string(from: date!)
+                }else{
+                    cell.date.text = ""
+                }
             }
             return cell
         }else if tableView == self.tableQuestion {
@@ -2976,8 +2980,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }else{
                         AppUser.id_app = ""
                     }
-                    
-                    AppUser.reqNumber  = app.reqNumber!
+                    if app.reqNumber != nil{
+                        AppUser.reqNumber  = app.reqNumber!
+                    }else{
+                        AppUser.reqNumber = ""
+                    }
                     //            AppUser.delegate   = self
                     AppUser.App        = app
                     //            AppUser.updDelegt = self

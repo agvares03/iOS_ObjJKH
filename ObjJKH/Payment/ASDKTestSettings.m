@@ -25,6 +25,9 @@
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return @[kASDKTestTerminalKey];
     }
+    if ([savedValue  isEqual: @"DOM24"]){
+        return @[kASDKTestTerminalKeyDOM24];
+    }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
 //        return @[kASDKTestTerminalKeyKlimovsk];
 //    }
@@ -77,6 +80,9 @@
                                 stringForKey:@"targetName"];
         if ([savedValue  isEqual: @"MupRCMytishi"]){
             result = kASDKTestTerminalKey;
+        }
+        if ([savedValue  isEqual: @"DOM24"]){
+            result = kASDKTestTerminalKeyDOM24;
         }
 //        if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
 //            result = kASDKTestTerminalKeyKlimovsk;
@@ -134,6 +140,9 @@
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return kASDKTestPassword;
     }
+    if ([savedValue  isEqual: @"DOM24"]){
+        return kASDKTestPasswordDOM24;
+    }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
 //        return kASDKTestPasswordKlimovsk;
 //    }
@@ -182,6 +191,9 @@
                             stringForKey:@"targetName"];
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return kASDKTestPublicKey;
+    }
+    if ([savedValue  isEqual: @"DOM24"]){
+        return kASDKTestPublicKeyDOM24;
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
 //        return kASDKTestPublicKeyKlimovsk;
