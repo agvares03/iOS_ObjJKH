@@ -374,6 +374,8 @@ class FirstController: UIViewController {
         #elseif isUKParitetKhab
         UserDefaults.standard.set("UKParitetKhab", forKey: "targetName")
         UserDefaults.standard.synchronize()
+        #elseif isDOM24
+        UserDefaults.standard.set("DOM24", forKey: "targetName")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
