@@ -610,21 +610,21 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             print(receiptData)
             print(Data)
             if payType == 1{
-                #if isElectroSbitSaratov //!!!КОМИТИТЬ ЭТОТ КУСОК КОДА ЕСЛИ НУЖНО ВЫПУСКАТЬ ДРУГИЕ ПРИЛОЖЕНИЯ БЕЗ ОПЛАТЫ APPLE PAY
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                PayController.buy(withApplePayAmount: amount, description: "ЭлектроСбытСаратов", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.TinkoffApplePay", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone, PKAddressField.name], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
-
-                }, cancelled:  {
-
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-                #endif
+//                #if isElectroSbitSaratov //!!!КОМИТИТЬ ЭТОТ КУСОК КОДА ЕСЛИ НУЖНО ВЫПУСКАТЬ ДРУГИЕ ПРИЛОЖЕНИЯ БЕЗ ОПЛАТЫ APPLE PAY
+//                let address = PKContact()
+//                address.emailAddress = defaults.object(forKey: "mail")! as? String
+//                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+//                PayController.buy(withApplePayAmount: amount, description: "ЭлектроСбытСаратов", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.TinkoffApplePay", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone, PKAddressField.name], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
+//
+//                }, cancelled:  {
+//
+//                }, error: { (error) in
+//                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+//                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                    alert.addAction(cancelAction)
+//                    self.present(alert, animated: true, completion: nil)
+//                })
+//                #endif
             }else{
                 PayController.buyItem(withName: targetName, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, shopsData: shops, shopsReceiptsData: nil, from: self, success: { (paymentInfo) in
                     
