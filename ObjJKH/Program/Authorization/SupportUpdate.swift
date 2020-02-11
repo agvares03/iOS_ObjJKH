@@ -391,7 +391,9 @@ class SupportUpdate: UIViewController {
         #elseif isLefortovo
         str = "itms-apps://itunes.apple.com/ru/app/id1497293040"
         #elseif isERC_UDM
+        str = "itms-apps://itunes.apple.com/ru/app/id1498589004"
         #elseif isAvalon
+        str = "itms-apps://itunes.apple.com/ru/app/id1498589295"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
