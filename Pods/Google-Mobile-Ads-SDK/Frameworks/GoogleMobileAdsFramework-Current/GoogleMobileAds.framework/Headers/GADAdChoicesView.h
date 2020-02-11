@@ -10,8 +10,9 @@
 
 /// Displays AdChoices content.
 ///
-/// If a GADAdChoicesView is set on GADUnifiedNativeAdView prior to calling -setNativeAd:, AdChoices
-/// content will render inside the GADAdChoicesView. By default, AdChoices is placed in the top
-/// right corner of GADUnifiedNativeAdView.
+/// If a GADAdChoicesView is set on GADNativeAppInstallAdView or GADNativeContentAdView prior to
+/// calling -setNativeAppInstallAd: or -setNativeContentAd:, AdChoices content will render inside
+/// the GADAdChoicesView. By default, AdChoices is placed in the top right corner of
+/// GADNativeAppInstallAdView and GADNativeContentAdView.
 @interface GADAdChoicesView : UIView
 @end

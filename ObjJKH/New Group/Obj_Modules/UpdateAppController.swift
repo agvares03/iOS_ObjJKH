@@ -138,6 +138,10 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_DOM24")
         #elseif isLefortovo
         imageApp.image = UIImage(named: "Logo_Lefortovo")
+        #elseif isERC_UDM
+        imageApp.image = UIImage(named: "Logo_ERC_UDM")
+        #elseif isAvalon
+        imageApp.image = UIImage(named: "Logo_Avalon")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -279,6 +283,8 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1497257910"
         #elseif isLefortovo
         str = "itms-apps://itunes.apple.com/ru/app/id1497293040"
+        #elseif isERC_UDM
+        #elseif isAvalon
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

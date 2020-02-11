@@ -143,6 +143,10 @@ class StartController: UIViewController {
         fon_top.image = UIImage(named: "Logo_DOM24")
         #elseif isLefortovo
         fon_top.image = UIImage(named: "Logo_Lefortovo")
+        #elseif isERC_UDM
+        fon_top.image = UIImage(named: "Logo_ERC_UDM")
+        #elseif isAvalon
+        fon_top.image = UIImage(named: "Logo_Avalon")
         #endif
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")
