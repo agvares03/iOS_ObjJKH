@@ -569,12 +569,16 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc private func refresh(_ sender: UIRefreshControl) {
+        let db = DB()
+        db.del_db(table_name: "Comments")
+        db.del_db(table_name: "Fotos")
+        db.del_db(table_name: "Applications")
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.global(qos: .background).async {
                 sleep(2)
                 DispatchQueue.main.sync {
                     // Экземпляр класса DB
-                    let db = DB()
+//                    let db = DB()
                     let defaults = UserDefaults.standard
                     var login = defaults.object(forKey: "login")
                     var pass = defaults.object(forKey: "pass")
@@ -584,9 +588,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         pass = defaults.object(forKey: "pass_cons")
                     }
                     // ЗАЯВКИ С КОММЕНТАРИЯМИ
-                    db.del_db(table_name: "Comments")
-                    db.del_db(table_name: "Fotos")
-                    db.del_db(table_name: "Applications")
+                    
                     db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!, isLoad: false)
                     
                     self.load_data()
@@ -615,12 +617,15 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.view.isUserInteractionEnabled = false
             self.StartIndicator()
         }
+        let db = DB()
+        db.del_db(table_name: "Comments")
+        db.del_db(table_name: "Fotos")
+        db.del_db(table_name: "Applications")
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.global(qos: .background).async {
                 sleep(2)
                 DispatchQueue.main.sync {
                     // Экземпляр класса DB
-                    let db = DB()
                     let defaults = UserDefaults.standard
                     var login = defaults.object(forKey: "login")
                     var pass = defaults.object(forKey: "pass")
@@ -630,9 +635,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         pass = defaults.object(forKey: "pass_cons")
                     }
                     // ЗАЯВКИ С КОММЕНТАРИЯМИ
-                    db.del_db(table_name: "Comments")
-                    db.del_db(table_name: "Fotos")
-                    db.del_db(table_name: "Applications")
+                    
                     db.parse_Apps(login: login as! String, pass: pass as! String, isCons: isCons!, isLoad: false)
                     
                     self.load_data()

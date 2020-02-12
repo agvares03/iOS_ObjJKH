@@ -35,6 +35,7 @@ class Registration: UIViewController {
         self.performSegue(withIdentifier: "start_app", sender: self)
     }
     @IBAction func backClick(_ sender: UIBarButtonItem) {
+        DispatchQueue.main.async(execute: {
         let alert = UIAlertController(title: "", message: "Вы действительно хотите прервать регистрацию?", preferredStyle: .alert)
         let exitAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
             self.navigationController?.dismiss(animated: true, completion: nil)
@@ -43,6 +44,7 @@ class Registration: UIViewController {
         alert.addAction(exitAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+        })
     }
     
     @IBAction func canRegistration(_ sender: UISwitch) {
@@ -58,6 +60,7 @@ class Registration: UIViewController {
     }
     
     @IBAction func btnCancelGo(_ sender: UIButton) {
+        DispatchQueue.main.async(execute: {
         let alert = UIAlertController(title: "", message: "Вы действительно хотите прервать регистрацию?", preferredStyle: .alert)
         let exitAction = UIAlertAction(title: "Да", style: .destructive) { (_) -> Void in
             self.navigationController?.dismiss(animated: true, completion: nil)
@@ -66,26 +69,33 @@ class Registration: UIViewController {
         alert.addAction(exitAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+        })
     }
     
     @IBAction func btnRegGo(_ sender: UIButton) {
         self.view.endEditing(true)
         // Проверка на правильность поля номер телефона
         if (edPhone.text == "") {
+            DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона или логин", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
+            })
         } else if (edPhone.text?.contains("*") == true) {
+            DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона или логин", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
+            })
         } else if (edFIO.text == "") {
+            DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать фамилию, имя, отчество", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
+            })
         } else {
             
             let defaults = UserDefaults.standard
@@ -194,11 +204,13 @@ class Registration: UIViewController {
     func get_registration() {
         let urlPath = self.getServerUrlBy(phone: self.edPhone.text!, fio: self.edFIO.text!)
         if (urlPath == "xxx") {
+            DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Ошибка", message: "Необходимо указать номер телефона в формате +7XXXXXXXXXX", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
             self.StopIndicator()
+            })
         } else {
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)

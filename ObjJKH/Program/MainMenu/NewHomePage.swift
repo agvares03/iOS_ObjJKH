@@ -1026,7 +1026,12 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     var insuranceArr: [Insurance] = []
     func getInsurance(){
-        let phone = UserDefaults.standard.string(forKey: "login") ?? ""
+        var phone = ""
+        if UserDefaults.standard.string(forKey: "login") != nil{
+            phone = UserDefaults.standard.string(forKey: "login") ?? ""
+        }else{
+            return
+        }
 //        var request = URLRequest(url: URL(string: "http://uk-gkh.org/newjkh/MobileAPI/GetPaymentsRegistryInsuranceByMobAccount.ashx?phone=test")!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.MOBILE_API_PATH + Server.GET_INSURANCE + "phone=" + phone)!)
         request.httpMethod = "GET"
@@ -2397,8 +2402,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.identHeight.constant = 24
                 cell.identHeight.constant = heightForView(text: cell.adress.text!, font: cell.adress.font, width: view.frame.size.width - 135)
             }
-            cell.name.text        = " " + nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
-            cell.number.text      = " " + ownerArr[indexPath.row]
+            cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+            cell.number.text      = ownerArr[indexPath.row]
             if ownerArr[indexPath.row] == "" || ownerArr[indexPath.row] == " " || ownerArr[indexPath.row] == "-" || ownerArr[indexPath.row] == nil{
                 cell.numberView.isHidden = true
                 cell.numberHeight.constant = 0
@@ -2408,15 +2413,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             let formatDec:String = "%." + numberDecimal[indexPath.row] + "f"
             countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
-            cell.pred1.text        = " " + String(format:formatDec, predArr[indexPath.row])
-            cell.teck1.text        = " " + String(format:formatDec, teckArr[indexPath.row])
-            cell.diff1.text        = " " + String(format:formatDec, diffArr[indexPath.row])
+            cell.pred1.text        = String(format:formatDec, predArr[indexPath.row])
+            cell.teck1.text        = String(format:formatDec, teckArr[indexPath.row])
+            cell.diff1.text        = String(format:formatDec, diffArr[indexPath.row])
             cell.predLbl1.text     = dateOneArr[indexPath.row]
             cell.teckLbl1.text     = dateTwoArr[indexPath.row]
             cell.diffLbl1.text     = dateThreeArr[indexPath.row]
             
             // Проверка и интервал
-            cell.checkup_date.text = " " + lastCheckArr[indexPath.row]
+            cell.checkup_date.text = lastCheckArr[indexPath.row]
             if lastCheckArr[indexPath.row] == "" || lastCheckArr[indexPath.row] == " " || lastCheckArr[indexPath.row] == "-" || lastCheckArr[indexPath.row] == nil{
                 cell.checkView.isHidden = true
                 cell.chechHeight.constant = 0
@@ -2424,7 +2429,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.checkView.isHidden = false
                 cell.chechHeight.constant = 24
             }
-            cell.recheckup_diff.text = " " + recheckInterArr[indexPath.row] + getAge(age: recheckInterArr[indexPath.row])
+            cell.recheckup_diff.text = recheckInterArr[indexPath.row] + getAge(age: recheckInterArr[indexPath.row])
             if recheckInterArr[indexPath.row] == "" || recheckInterArr[indexPath.row] == " " || recheckInterArr[indexPath.row] == "-" || recheckInterArr[indexPath.row] == nil{
                 cell.recheckView.isHidden = true
                 cell.recheckHeight.constant = 0
@@ -2517,23 +2522,23 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             
             if Int(cell.tariffNumber) == 2{
-                cell.pred2.text        = " " + String(format:formatDec, predArr2[indexPath.row])
-                cell.teck2.text        = " " + String(format:formatDec, teckArr2[indexPath.row])
-                cell.diff2.text        = " " + String(format:formatDec, diffArr2[indexPath.row])
+                cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
+                cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
+                cell.diff2.text        = String(format:formatDec, diffArr2[indexPath.row])
                 cell.predLbl2.text     = dateOneArr[indexPath.row]
                 cell.teckLbl2.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl2.text     = dateThreeArr[indexPath.row]
             }else if Int(cell.tariffNumber) == 3{
-                cell.pred2.text        = " " + String(format:formatDec, predArr2[indexPath.row])
-                cell.teck2.text        = " " + String(format:formatDec, teckArr2[indexPath.row])
-                cell.diff2.text        = " " + String(format:formatDec, diffArr2[indexPath.row])
+                cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
+                cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
+                cell.diff2.text        = String(format:formatDec, diffArr2[indexPath.row])
                 cell.predLbl2.text     = dateOneArr[indexPath.row]
                 cell.teckLbl2.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl2.text     = dateThreeArr[indexPath.row]
                 
-                cell.pred3.text        = " " + String(format:formatDec, predArr3[indexPath.row])
-                cell.teck3.text        = " " + String(format:formatDec, teckArr3[indexPath.row])
-                cell.diff3.text        = " " + String(format:formatDec, diffArr3[indexPath.row])
+                cell.pred3.text        = String(format:formatDec, predArr3[indexPath.row])
+                cell.teck3.text        = String(format:formatDec, teckArr3[indexPath.row])
+                cell.diff3.text        = String(format:formatDec, diffArr3[indexPath.row])
                 cell.predLbl3.text     = dateOneArr[indexPath.row]
                 cell.teckLbl3.text     = dateTwoArr[indexPath.row]
                 cell.diffLbl3.text     = dateThreeArr[indexPath.row]
@@ -3151,6 +3156,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //        if isEditable(){
             var metrId = ""
             for i in 0...self.numberArr.count - 1{
+                print(self.ownerArr[i], nameArr[i] + ", " + unitArr[i], self.identArr[i])
                 if uniq_num == self.ownerArr[i] && count_name == (nameArr[i] + ", " + unitArr[i]) && ident == self.identArr[i]{
                     metrId = self.numberArr[i]
                     autoSend = autoValueArr[i]

@@ -172,13 +172,14 @@ class StartController: UIViewController {
     func updateUserInterface() {
         switch Network.reachability.status {
         case .unreachable:
+            DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Ошибка загрузки данных", message: "Проверьте соединение с интернетом", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Повторить", style: .default) { (_) -> Void in
                 self.viewDidLoad()
             }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-            
+            })
         case .wifi: break
             
         case .wwan: break
