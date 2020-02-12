@@ -169,7 +169,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     @IBAction func Payed(_ sender: UIButton) {
         var l = false
-        #if isKlimovsk12 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
+        #if isKlimovsk12 || isDOM24 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
         l = true
         #else
         self.payedS()
@@ -408,7 +408,25 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         targetName = "ТСЖ Педагогический"
         #elseif isDOM24
-        shopCode = ""
+        debtArr.forEach{
+            if debtArr.count > 1{
+                if String($0["Ident"] as! String) == selectLS{
+                    if String($0["INN"] as! String) == "5038083460"{
+                        shopCode = "-"
+                    }else{
+                        shopCode = ""
+                    }
+                }
+            }else{
+                if String($0["Ident"] as! String) == selectLS{
+                    if String($0["INN"] as! String) == "5038083460"{
+                        shopCode = "-"
+                    }else{
+                        shopCode = ""
+                    }
+                }
+            }
+        }
         targetName = "ДОМ24"
         #endif
         let shopInsurance = "303049"

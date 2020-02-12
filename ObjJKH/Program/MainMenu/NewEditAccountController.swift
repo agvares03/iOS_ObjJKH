@@ -435,6 +435,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         var debtDate:[String] = []
         var debtAddress:[String] = []
         var debtHouse:[String] = []
+        var debtInn:[String] = []
         let defaults = UserDefaults.standard
         let str_ls = defaults.string(forKey: "str_ls")
         let str_ls_arr = str_ls?.components(separatedBy: ",")
@@ -469,7 +470,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                 var ls = "-"
                                                                 var address = "-"
                                                                 var houseId = "0"
-                                                                
+                                                                var inn = ""
                                                                 //                                                                var sumOver     = ""
                                                                 //                                                                var sumFineOver = ""
                                                                 //                                                                    var sumAll      = ""
@@ -521,6 +522,12 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                                         houseId = "0"
                                                                                     }
                                                                                 }
+                                                                                if obj.key == "INN" {
+                                                                                    if ((obj.value as? NSNull) == nil){
+                                                                                        inn = String(describing: obj.value as! String)
+                                                                                    }
+                                                                                }
+
                                                                                 
                                                                             }
                                                                             //                                                                                if date == ""{
@@ -534,7 +541,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                                                                             debtAddress.append(address)
                                                                             debtDate.append(date)
                                                                             debtHouse.append(houseId)
-                                                                            self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum, houseId: houseId))
+                                                                            debtInn.append(inn)
+                                                                            self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum, houseId: houseId, inn: inn))
                                                                         }
                                                                         
                                                                         //                                                                            defaults.set(date, forKey: "dateDebt")
@@ -875,6 +883,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
                 debt["SumFine"] = lsArr[i].sumFine
                 debt["InsuranceSum"] = lsArr[i].insuranceSum
                 debt["HouseId"] = lsArr[i].houseId
+                debt["INN"] = lsArr[i].inn
                 debtArr.append(debt as AnyObject)
             }
         }
