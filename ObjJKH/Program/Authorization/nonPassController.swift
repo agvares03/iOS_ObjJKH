@@ -39,12 +39,14 @@ class nonPassController: UIViewController {
                 self.sendNewPass(ls: ls, pass: str!)
             }else{
                 lsPass.text = ""
+                DispatchQueue.main.async(execute: {
                 let alert = UIAlertController(title: "Ошибка", message: "Укажите пароль!", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
                 return
+                })
             }
         }else{
             DispatchQueue.main.async {
@@ -172,7 +174,8 @@ class nonPassController: UIViewController {
             phone = phone.replacingOccurrences(of: "+", with: "", options: .literal, range: nil)
         }
         let ident =  ls
-        let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + ls + " от аккаунта?", preferredStyle: .alert)
+        DispatchQueue.main.async(execute: {
+            let alert = UIAlertController(title: "Удаление лицевого счета", message: "Отвязать лицевой счет " + self.ls + " от аккаунта?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
             
         }
@@ -239,6 +242,7 @@ class nonPassController: UIViewController {
         }
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+        })
     }
     
     func StartIndicator(){

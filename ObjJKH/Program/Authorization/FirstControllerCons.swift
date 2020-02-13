@@ -57,10 +57,12 @@ class FirstControllerCons: UIViewController, UITextFieldDelegate {
             ret = true
         }
         if ret {
+            DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ок", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
+            })
         }
         
         // Сохраним значения

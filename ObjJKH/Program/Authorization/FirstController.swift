@@ -96,10 +96,12 @@ class FirstController: UIViewController {
             ret = true
         }
         if ret {
+            DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ок", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
+            })
         }
         
         // Сохраним значения
@@ -819,10 +821,12 @@ class FirstController: UIViewController {
         let pass = defaults.string(forKey: "pass")
         print(login, pass)
         if (login == "" || login == nil) && firstEnter == false{
+            DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in }
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
+            })
         }
 //        #if isDJ
 //        maskLogin = true
