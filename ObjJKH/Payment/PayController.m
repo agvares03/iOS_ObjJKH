@@ -414,9 +414,11 @@
                         error:(void (^)(ASDKAcquringSdkError *error))onError
 {
     ASDKPaymentFormStarter *paymentFormStarter = [PayController paymentFormStarter];
+    NSString *payIdent = [[NSUserDefaults standardUserDefaults] stringForKey:@"payIdent"];
+    NSLog(@"%@", payIdent);
     [paymentFormStarter payWithApplePayFromViewController:viewController
                                                    amount:amount
-                                                  orderId:[NSNumber numberWithDouble:(arc4random()%10000000)].stringValue
+                                                  orderId:[[NSNumber numberWithDouble:(arc4random()%10000000)].stringValue stringByAppendingString:payIdent]
                                               description:description
                                               customerKey:[PayController customerKey]
                                                 sendEmail:([email length] > 0)
