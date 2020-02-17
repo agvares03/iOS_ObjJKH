@@ -160,6 +160,7 @@ class ChoicePlaceObject: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Crashlytics.sharedInstance().setObjectValue("ChoicePlaceObject", forKey: "last_UI_action")
         self.tabBarController?.tabBar.isHidden = true
 //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if UserDefaults.standard.bool(forKey: "NewMain"){

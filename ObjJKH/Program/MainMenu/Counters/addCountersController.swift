@@ -331,7 +331,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("AddCounter", forKey: "last_UI_action")
-        print("metrId: ", metrId)
+//        print("metrId: ", metrId)
         self.StopIndicator()
         let defaults     = UserDefaults.standard
         edLogin          = defaults.string(forKey: "login")!
@@ -987,6 +987,7 @@ class AddCountersController: UIViewController, YMANativeAdDelegate, YMANativeAdL
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Crashlytics.sharedInstance().setObjectValue("AddCounter", forKey: "last_UI_action")
         self.tabBarController?.tabBar.isHidden = true
         // Подхватываем показ клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)

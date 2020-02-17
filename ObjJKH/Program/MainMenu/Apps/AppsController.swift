@@ -657,6 +657,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Crashlytics.sharedInstance().setObjectValue("TechWork", forKey: "last_UI_action")
 //        UserDefaults.standard.set(false, forKey: "fromMenu")
 //        UserDefaults.standard.synchronize()
         self.tabBarController?.tabBar.isHidden = true

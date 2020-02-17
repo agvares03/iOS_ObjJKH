@@ -93,6 +93,29 @@ class openSaldoController: UIViewController, WKUIDelegate {
             back.tintColor = .white
             share.tintColor = .white
         }
+        if NSURL(string: urlLink) != nil && urlLink.containsIgnoringCase(find: "http"){
+            let webConfiguration = WKWebViewConfiguration()
+            webView = WKWebView(frame: .zero, configuration: webConfiguration)
+            webView.uiDelegate = self
+            view = webView
+            if urlLink.contains(".pdf") || pdf{
+                if let url : NSURL = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
+                    if let data = try? Data(contentsOf: url as URL){
+                        webView.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: url as URL)
+                    }
+                }
+            }else{
+                let url : NSURL! = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
+                webView.load(NSURLRequest(url: url as URL) as URLRequest)
+            }
+        }else{
+            let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
 //        urlLink = urlLink.replacingOccurrences(of: "О", with: "O")
 //        if urlLink.contains(".pdf"){
 //            guard let url = URL(string: urlLink) else {
@@ -102,16 +125,6 @@ class openSaldoController: UIViewController, WKUIDelegate {
 //            let downloadTask = urlSession.downloadTask(with: url)
 //            downloadTask.resume()
 //        }else{
-        if urlLink.contains(".pdf") || pdf{
-            if let url : NSURL = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
-                if let data = try? Data(contentsOf: url as URL){
-                    webView.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: url as URL)
-                }
-            }
-        }else{
-            let url : NSURL! = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
-            webView.load(NSURLRequest(url: url as URL) as URLRequest)
-        }
 //        }
         // Do any additional setup after loading the view.
     }

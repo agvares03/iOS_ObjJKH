@@ -783,12 +783,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Crashlytics.sharedInstance().setObjectValue("TechWork", forKey: "last_UI_action")
         showAD = true
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1
             UserDefaults.standard.set(false, forKey: "PaymentSucces")
             if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
+                DispatchQueue.main.async{
+                    SKStoreReviewController.requestReview()
+                }
             } else {
                 // Fallback on earlier versions
             }
@@ -1733,7 +1736,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func updateListApps() {
         load_data_Apps()
-        self.tableApps.reloadData()
+        DispatchQueue.main.async {
+            self.tableApps.reloadData()
+        }
     }
     
     func load_data_Apps() {

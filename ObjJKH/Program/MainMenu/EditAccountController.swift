@@ -71,7 +71,7 @@ class EditAccountController: UIViewController, UITableViewDelegate, UITableViewD
             let phone:String = defaults.string(forKey: "phone")!
             let fio:String = fioText.text!
             var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.SET_EMAIL_ACC
-            urlPath = urlPath + "phone=" + phone + "&email=" + email + "&fio" + fio.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            urlPath = urlPath + "phone=" + phone + "&email=" + email + "&fio=" + fio.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"

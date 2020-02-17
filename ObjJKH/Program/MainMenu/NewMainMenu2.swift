@@ -879,6 +879,7 @@ class NewMainMenu2: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Crashlytics.sharedInstance().setObjectValue("TechWork", forKey: "last_UI_action")
 //        if !load{
 //            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "question_read") + UserDefaults.standard.integer(forKey: "news_read") + UserDefaults.standard.integer(forKey: "request_read")
 //            if (updatedBadgeNumber > -1) {

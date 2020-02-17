@@ -147,7 +147,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             let phone:String = defaults.string(forKey: "phone")!
             let fio:String = fioText.text!
             var urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.SET_EMAIL_ACC
-            urlPath = urlPath + "phone=" + phone + "&email=" + email + "&fio" + fio.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            urlPath = urlPath + "phone=" + phone + "&email=" + email + "&fio=" + fio.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
@@ -1013,6 +1013,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Crashlytics.sharedInstance().setObjectValue("TechWork", forKey: "last_UI_action")
         self.tabBarController?.tabBar.isHidden = false
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(true, animated: animated)
