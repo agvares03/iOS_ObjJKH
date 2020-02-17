@@ -17,7 +17,7 @@ protocol ShowNewAppConsDelegate : class {
     func showAppDoneCons(showApp: NewAppCons)
 }
 
-class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate {
 
     @IBOutlet weak var hidden_Header: UIBarButtonItem!
     @IBOutlet weak var back: UIBarButtonItem!
@@ -149,6 +149,13 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 imagePicker.allowsEditing = false
                 self.present(imagePicker, animated: true, completion: nil)
             }
+        }))
+        action.addAction(UIAlertAction(title: "Документ", style: .default, handler: { (_) in
+            
+            let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key", "public.image", "public.composite-content", "com.microsoft.word.doc", "com.microsoft.excel.xls"], in: UIDocumentPickerMode.import)
+            documentPicker.delegate = self
+            documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(documentPicker, animated: true, completion: nil)
         }))
         action.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
         present(action, animated: true, completion: nil)
@@ -631,7 +638,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         cell.loader.isHidden = false
                         cell.loader.startAnimating()
                         if !imgs.keys.contains(imgName ?? "") {
-                            if (imgName?.contains(".pdf"))!{
+                            if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                                 let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
                                 let img = UIImage(named: "icon_file")
                                 imgs[imgName!] = img
@@ -683,7 +690,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             cell.loader.stopAnimating()
                             cell.img.accessibilityLabel = url
                             cell.img.image = imgs[imgName ?? ""]
-                            if (imgName?.contains(".pdf"))!{
+                            if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                                 cell.img.tintColor = myColors.btnColor.uiColor()
                                 cell.heightImg.constant = 80
                                 cell.widthImg.constant = 80
@@ -805,7 +812,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         cell.loader.isHidden = false
                         cell.loader.startAnimating()
                         if !imgs.keys.contains(imgName ?? "") {
-                            if (imgName?.contains(".pdf"))!{
+                            if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                                 let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
                                 let img = UIImage(named: "icon_file")
                                 imgs[imgName!] = img
@@ -857,7 +864,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             cell.loader.stopAnimating()
                             cell.img.accessibilityLabel = url
                             cell.img.image = imgs[imgName ?? ""]
-                            if (imgName?.contains(".pdf"))!{
+                            if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                                 cell.img.tintColor = myColors.btnColor.uiColor()
                                 cell.heightImg.constant = 80
                                 cell.widthImg.constant = 80
@@ -1000,20 +1007,68 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        StartIndicator()
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                self.uploadPhoto(img)
+            StartIndicator()
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                    self.uploadPhoto(img)
+                }
+                DispatchQueue.main.async {
+                    self.StopIndicator()
+                    self.updDelegt?.updateList()
+                    self.load_data()
+                    self.updateTable()
+                }
             }
-            DispatchQueue.main.async {
-                self.StopIndicator()
-                self.updDelegt?.updateList()
-                self.load_data()
-                self.updateTable()
+            dismiss(animated: true, completion: nil)
+        }
+        
+        func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+            StartIndicator()
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.uploadFile(url)
+                DispatchQueue.main.async {
+                    self.StopIndicator()
+                    self.updDelegt?.updateList()
+                    self.load_data()
+                    self.updateTable()
+                }
             }
         }
-        dismiss(animated: true, completion: nil)
-    }
+        
+        private func uploadFile(_ urlPath: URL) {
+                
+                let group = DispatchGroup()
+                let reqID = id_app.stringByAddingPercentEncodingForRFC3986() ?? ""
+                let id = UserDefaults.standard.string(forKey: "id_account")?.stringByAddingPercentEncodingForRFC3986() ?? ""
+                
+                print(reqID)
+                
+                group.enter()
+                let uid = UUID().uuidString
+                Alamofire.upload(multipartFormData: { multipartFromdata in
+                    multipartFromdata.append(urlPath, withName: uid)
+                }, to: Server.SERVER + Server.ADD_FILE + "reqID=" + reqID + "&accID=" + id + "&isConsultant=1") { (result) in
+                    
+                    switch result {
+                    case .success(let upload, _, _):
+                        
+                        upload.uploadProgress(closure: { (progress) in
+                            print("Upload Progress: \(progress.fractionCompleted)")
+                        })
+                        
+                        upload.responseJSON { response in
+        //                    print(response.result.value!)
+                            group.leave()
+                            
+                        }
+                        
+                    case .failure(let encodingError):
+                        print(encodingError)
+                    }
+                }
+                group.wait()
+                return
+            }
     
     private func uploadPhoto(_ img: UIImage) {
         

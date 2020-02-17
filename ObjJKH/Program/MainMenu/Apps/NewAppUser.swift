@@ -24,7 +24,7 @@ var hasSafeArea: Bool{
     return true
 }
 
-class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, CloseAppDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, CloseAppDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate {
     
     @IBOutlet weak var hidden_Header: UIBarButtonItem!
     @IBOutlet weak var back: UIBarButtonItem!
@@ -247,6 +247,13 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 imagePicker.allowsEditing = false
                 self.present(imagePicker, animated: true, completion: nil)
             }
+        }))
+        action.addAction(UIAlertAction(title: "Документ", style: .default, handler: { (_) in
+            
+            let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key", "public.image", "public.composite-content", "com.microsoft.word.doc", "com.microsoft.excel.xls"], in: UIDocumentPickerMode.import)
+            documentPicker.delegate = self
+            documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(documentPicker, animated: true, completion: nil)
         }))
         action.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in }))
         present(action, animated: true, completion: nil)
@@ -845,7 +852,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.loader.isHidden = false
                     cell.loader.startAnimating()
                     if !imgs.keys.contains(imgName ?? "") {
-                        if (imgName?.contains(".pdf"))!{
+                        if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                             let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
                             let img = UIImage(named: "icon_file")
                             imgs[imgName!] = img
@@ -897,7 +904,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         cell.loader.stopAnimating()
                         cell.img.accessibilityLabel = url
                         cell.img.image = imgs[imgName ?? ""]
-                        if (imgName?.contains(".pdf"))!{
+                        if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                             cell.img.tintColor = myColors.btnColor.uiColor()
                             cell.heightImg.constant = 80
                             cell.widthImg.constant = 80
@@ -1019,7 +1026,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.loader.isHidden = false
                     cell.loader.startAnimating()
                     if !imgs.keys.contains(imgName ?? "") {
-                        if (imgName?.contains(".pdf"))!{
+                        if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                             let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
                             let img = UIImage(named: "icon_file")
                             imgs[imgName!] = img
@@ -1071,7 +1078,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         cell.loader.stopAnimating()
                         cell.img.accessibilityLabel = url
                         cell.img.image = imgs[imgName ?? ""]
-                        if (imgName?.contains(".pdf"))!{
+                        if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                             cell.img.tintColor = myColors.btnColor.uiColor()
                             cell.heightImg.constant = 80
                             cell.widthImg.constant = 80
@@ -1239,8 +1246,17 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 self.uploadPhoto(img)
             }
             DispatchQueue.main.async {
+//                print("-STOP UPLOAD-")
                 self.StopIndicator()
-                self.updDelegt?.updateList()
+                let db = DB()
+                let defaults = UserDefaults.standard
+                let login = defaults.object(forKey: "login")
+                let pass = defaults.object(forKey: "pass")
+                self.kolR = 0
+                // КОММЕНТАРИИ ПО УКАЗАННОЙ ЗАЯВКЕ
+                db.del_comms_by_app(number_app: self.id_app)
+                db.getComByID(login: login as! String, pass: pass as! String, number: self.id_app)
+                
                 self.load_data()
                 self.updateTable()
             }
@@ -1248,11 +1264,66 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         dismiss(animated: true, completion: nil)
     }
     
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        StartIndicator()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.uploadFile(url)
+            DispatchQueue.main.async {
+//                print("-STOP UPLOAD-")
+                self.StopIndicator()
+                let db = DB()
+                let defaults = UserDefaults.standard
+                let login = defaults.object(forKey: "login")
+                let pass = defaults.object(forKey: "pass")
+                self.kolR = 0
+                // КОММЕНТАРИИ ПО УКАЗАННОЙ ЗАЯВКЕ
+                db.del_comms_by_app(number_app: self.id_app)
+                db.getComByID(login: login as! String, pass: pass as! String, number: self.id_app)
+                
+                self.load_data()
+                self.updateTable()
+            }
+        }
+    }
+    
+    private func uploadFile(_ urlPath: URL) {
+
+            let group = DispatchGroup()
+            let reqID = id_app.stringByAddingPercentEncodingForRFC3986() ?? ""
+//            let id = UserDefaults.standard.string(forKey: "id_account")?.stringByAddingPercentEncodingForRFC3986() ?? ""
+            let phone = UserDefaults.standard.string(forKey: "phone")?.stringByAddingPercentEncodingForRFC3986() ?? ""
+            group.enter()
+            let uid = UUID().uuidString
+            Alamofire.upload(multipartFormData: { multipartFromdata in
+                multipartFromdata.append(urlPath, withName: uid)
+            }, to: Server.SERVER + Server.ADD_FILE + "reqID=" + reqID + "&phone=" + phone) { (result) in
+
+                switch result {
+                case .success(let upload, _, _):
+
+                    upload.uploadProgress(closure: { (progress) in
+                        print("Upload Progress: \(progress.fractionCompleted)")
+                    })
+
+                    upload.responseJSON { response in
+    //                    print(response.result.value!)
+                        group.leave()
+
+                    }
+
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+            }
+            group.wait()
+            return
+        }
+    
     private func uploadPhoto(_ img: UIImage) {
         
         let group = DispatchGroup()
         let reqID = id_app.stringByAddingPercentEncodingForRFC3986() ?? ""
-        let id = UserDefaults.standard.string(forKey: "id_account")?.stringByAddingPercentEncodingForRFC3986() ?? ""
+//        let id = UserDefaults.standard.string(forKey: "id_account")?.stringByAddingPercentEncodingForRFC3986() ?? ""
         let phone = UserDefaults.standard.string(forKey: "phone")?.stringByAddingPercentEncodingForRFC3986() ?? ""
         group.enter()
         let uid = UUID().uuidString
