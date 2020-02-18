@@ -16,6 +16,7 @@ class openSaldoController: UIViewController, WKUIDelegate {
 //    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var back: UIBarButtonItem!
     @IBOutlet weak var share: UIBarButtonItem!
+    @IBOutlet weak var backView: UIView!
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
@@ -80,13 +81,9 @@ class openSaldoController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("OpenSaldo", forKey: "last_UI_action")
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
-        view = webView
         back.tintColor = myColors.btnColor.uiColor()
         share.tintColor = myColors.btnColor.uiColor()
-        print(urlLink)
+//        print(urlLink)
         if colorNav{
             navigationController?.navigationBar.barStyle = .black
             navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()
@@ -94,20 +91,29 @@ class openSaldoController: UIViewController, WKUIDelegate {
             share.tintColor = .white
         }
         if NSURL(string: urlLink) != nil && urlLink.containsIgnoringCase(find: "http"){
-            let webConfiguration = WKWebViewConfiguration()
-            webView = WKWebView(frame: .zero, configuration: webConfiguration)
-            webView.uiDelegate = self
-            view = webView
-            if urlLink.contains(".pdf") || pdf{
-                if let url : NSURL = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
-                    if let data = try? Data(contentsOf: url as URL){
-                        webView.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: url as URL)
+            DispatchQueue.main.async(execute: {
+                let webConfiguration = WKWebViewConfiguration()
+                let customFrame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 0.0, height: self.backView.frame.size.height))
+                self.webView = WKWebView (frame: customFrame , configuration: webConfiguration)
+                self.webView.translatesAutoresizingMaskIntoConstraints = false
+                self.backView.addSubview(self.webView)
+                self.webView.topAnchor.constraint(equalTo: self.backView.topAnchor).isActive = true
+                self.webView.rightAnchor.constraint(equalTo: self.backView.rightAnchor).isActive = true
+                self.webView.leftAnchor.constraint(equalTo: self.backView.leftAnchor).isActive = true
+                self.webView.bottomAnchor.constraint(equalTo: self.backView.bottomAnchor).isActive = true
+                self.webView.heightAnchor.constraint(equalTo: self.backView.heightAnchor).isActive = true
+                self.webView.uiDelegate = self
+                if self.urlLink.contains(".pdf") || self.pdf{
+                    if let url : NSURL = NSURL(string: self.urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!){
+                        if let data = try? Data(contentsOf: url as URL){
+                            self.webView.load(data, mimeType: "application/pdf", characterEncodingName: "", baseURL: url as URL)
+                        }
                     }
+                }else{
+                    let url : NSURL! = NSURL(string: self.urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
+                    self.webView.load(NSURLRequest(url: url as URL) as URLRequest)
                 }
-            }else{
-                let url : NSURL! = NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
-                webView.load(NSURLRequest(url: url as URL) as URLRequest)
-            }
+            })
         }else{
             let alert = UIAlertController(title: "Ошибка сервера", message: "Попробуйте позже", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
@@ -116,16 +122,6 @@ class openSaldoController: UIViewController, WKUIDelegate {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         }
-//        urlLink = urlLink.replacingOccurrences(of: "О", with: "O")
-//        if urlLink.contains(".pdf"){
-//            guard let url = URL(string: urlLink) else {
-//                return
-//            }
-//            let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-//            let downloadTask = urlSession.downloadTask(with: url)
-//            downloadTask.resume()
-//        }else{
-//        }
         // Do any additional setup after loading the view.
     }
     

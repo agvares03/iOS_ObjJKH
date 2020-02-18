@@ -39,7 +39,7 @@ class FilesController: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(data.count, img.count)
+//        print(data.count, img.count)
         return data.count
     }
     
@@ -135,10 +135,10 @@ final class FilesImageCell: UICollectionViewCell {
         loader.isHidden = false
         loader.startAnimating()
         let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(item.id).stringByAddingPercentEncodingForRFC3986() ?? "")
-        if !imgs.keys.contains(item.name ?? "") {
-            if (item.name?.contains(".pdf"))!{
+        if !imgs.keys.contains(String(item.id)) {
+            if (item.name?.contains(".pdf"))! || (item.name?.contains(".doc"))! || (item.name?.contains(".xls"))! || (item.name?.contains(".numbers"))!{
                 let img = UIImage(named: "icon_file")
-                imgs[item.name!] = img
+                imgs[String(item.id)] = img
                 image.image = img
                 image.tintColor = myColors.btnColor.uiColor()
                 image.accessibilityLabel = url
@@ -155,7 +155,7 @@ final class FilesImageCell: UICollectionViewCell {
                     DispatchQueue.main.async { [weak self] in
                         if UIImage(data: data!) != nil{
                             let img = UIImage(data: data!)
-                            imgs[item.name!] = img
+                            imgs[String(item.id)] = img
                             self?.image.accessibilityLabel = url
                             self?.image.image = img
                             self?.image.tintColor = .clear
@@ -167,14 +167,18 @@ final class FilesImageCell: UICollectionViewCell {
                     }.resume()
             }
         } else {
-            if (item.name?.contains(".pdf"))!{
-                image.image = imgs[item.name ?? ""]
+            if (item.name?.contains(".pdf"))! || (item.name?.contains(".doc"))! || (item.name?.contains(".xls"))! || (item.name?.contains(".numbers"))!{
+                image.image = imgs[String(item.id)]
                 image.tintColor = myColors.btnColor.uiColor()
                 image.accessibilityLabel = url
+                loader.stopAnimating()
+                loader.isHidden = true
             }else{
-                image.image = imgs[item.name ?? ""]
+                image.image = imgs[String(item.id)]
                 image.accessibilityLabel = url
                 image.tintColor = .clear
+                loader.stopAnimating()
+                loader.isHidden = true
             }
         }
     }

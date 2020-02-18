@@ -27,5 +27,6 @@ extension Comments {
     @NSManaged public var author: String?
     @NSManaged public var is_hidden: Bool
     @NSManaged public var serverStatus: String?
+    @NSManaged public var id_file: Int64
 
 }

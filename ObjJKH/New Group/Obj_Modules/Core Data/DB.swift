@@ -431,6 +431,7 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.author          = attributeDict["Name"]
                 managedObject.id_account      = attributeDict["id_account"]
                 managedObject.serverStatus    = attributeDict["ServerStatus"]
+                managedObject.id_file         = Int64(attributeDict["id_file"]!)!
                 if attributeDict["isHidden"] == "1"{
                     managedObject.is_hidden   = true
                 }else{
@@ -452,6 +453,7 @@ class DB: NSObject, XMLParserDelegate {
                     managedObject.id_author       = attributeDict["id_Author"]
                     managedObject.author          = attributeDict["Name"]
                     managedObject.id_account      = attributeDict["id_account"]
+                    managedObject.id_file         = Int64(attributeDict["id_file"]!)!
                     managedObject.is_hidden   = false
                     CoreDataManager.instance.saveContext()
                 }

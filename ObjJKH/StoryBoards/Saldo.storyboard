@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0le-ts-X98">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0le-ts-X98">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -476,7 +476,19 @@
                     <view key="view" contentMode="scaleToFill" id="e5P-gr-ziE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydw-Zq-gb1">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ydw-Zq-gb1" firstAttribute="top" secondItem="IjO-VX-BCf" secondAttribute="top" id="8ge-vb-cGj"/>
+                            <constraint firstItem="IjO-VX-BCf" firstAttribute="trailing" secondItem="Ydw-Zq-gb1" secondAttribute="trailing" id="Z4g-Up-irD"/>
+                            <constraint firstItem="IjO-VX-BCf" firstAttribute="bottom" secondItem="Ydw-Zq-gb1" secondAttribute="bottom" id="pwH-fi-nUp"/>
+                            <constraint firstItem="Ydw-Zq-gb1" firstAttribute="leading" secondItem="IjO-VX-BCf" secondAttribute="leading" id="xBs-Qf-Xhe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="IjO-VX-BCf"/>
                     </view>
                     <navigationItem key="navigationItem" id="RdA-eB-FY1">
@@ -493,6 +505,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="back" destination="tUD-HB-udy" id="1rb-oB-sh6"/>
+                        <outlet property="backView" destination="Ydw-Zq-gb1" id="VX4-VT-XNY"/>
                         <outlet property="share" destination="zYo-NM-dlP" id="HNs-MA-J6i"/>
                     </connections>
                 </viewController>

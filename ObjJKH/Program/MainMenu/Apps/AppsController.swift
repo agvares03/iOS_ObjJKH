@@ -362,8 +362,6 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.performSegue(withIdentifier: "new_show_app_close_cons", sender: self)
             }
         }
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -406,18 +404,41 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }else if segue.identifier == "new_show_app" {
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
-            
-            let AppUser             = (segue.destination as! UINavigationController).viewControllers.first as! NewAppUser
+            let AppUser = (segue.destination as! UINavigationController).viewControllers.first as! NewAppUser
             if app.number != nil{
-                AppUser.title           = "Заявка №" + app.number!
+                AppUser.title = "Заявка №" + app.number!
             }
-            AppUser.txt_tema   = app.tema!
-            AppUser.str_type_app = app.type_app!
+            if app.tema != nil{
+                AppUser.txt_tema = app.tema!
+            }else{
+                AppUser.txt_tema = ""
+            }
+            if app.type_app != nil{
+                AppUser.str_type_app = app.type_app!
+            }else{
+                AppUser.str_type_app = ""
+            }
             AppUser.read = app.is_read_client
-            AppUser.adress = app.adress!
-            AppUser.flat = app.flat!
-            AppUser.phone = app.phone!
-            AppUser.txt_status = app.serverStatus!
+            if app.adress != nil{
+                AppUser.adress = app.adress!
+            }else{
+                AppUser.adress = ""
+            }
+            if app.flat != nil{
+                AppUser.flat = app.flat!
+            }else{
+                AppUser.flat = ""
+            }
+            if app.phone != nil{
+                AppUser.phone = app.phone!
+            }else{
+                AppUser.phone = ""
+            }
+            if app.serverStatus != nil{
+                AppUser.txt_status = app.serverStatus!
+            }else{
+                AppUser.txt_status = ""
+            }
             if app.paid_text != nil{
                 AppUser.paid_text = app.paid_text!
             }
@@ -429,11 +450,22 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if app.acc_ident != nil{
                 AppUser.acc_ident = app.acc_ident!
             }
-            
             //            AppUser.txt_text   = app.text!
-            AppUser.txt_date   = app.date!
-            AppUser.id_app     = app.number!
-            AppUser.reqNumber  = app.reqNumber!
+            if app.date != nil{
+                AppUser.txt_date = app.date!
+            }else{
+                AppUser.txt_date = ""
+            }
+            if app.number != nil{
+                AppUser.id_app = app.number!
+            }else{
+                AppUser.id_app = ""
+            }
+            if app.reqNumber != nil{
+                AppUser.reqNumber = app.reqNumber!
+            }else{
+                AppUser.reqNumber = ""
+            }
             AppUser.delegate   = self
             AppUser.App        = app
             AppUser.updDelegt = self
@@ -460,67 +492,169 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else if (segue.identifier == "new_show_app_close") {
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
-            
-            let AppUser             = (segue.destination as! UINavigationController).viewControllers.first as! NewAppUser
+            let AppUser = (segue.destination as! UINavigationController).viewControllers.first as! NewAppUser
             if app.number != nil{
-                AppUser.title           = "Заявка №" + app.number!
+                AppUser.title = "Заявка №" + app.number!
             }
-            AppUser.txt_tema   = app.tema!
-            AppUser.str_type_app = app.type_app!
+            if app.tema != nil{
+                AppUser.txt_tema = app.tema!
+            }else{
+                AppUser.txt_tema = ""
+            }
+            if app.type_app != nil{
+                AppUser.str_type_app = app.type_app!
+            }else{
+                AppUser.str_type_app = ""
+            }
             AppUser.read = app.is_read_client
-            AppUser.adress = app.adress!
-            AppUser.flat = app.flat!
-            AppUser.phone = app.phone!
-            AppUser.txt_status = app.serverStatus!
+            if app.adress != nil{
+                AppUser.adress = app.adress!
+            }else{
+                AppUser.adress = ""
+            }
+            if app.flat != nil{
+                AppUser.flat = app.flat!
+            }else{
+                AppUser.flat = ""
+            }
+            if app.phone != nil{
+                AppUser.phone = app.phone!
+            }else{
+                AppUser.phone = ""
+            }
+            if app.serverStatus != nil{
+                AppUser.txt_status = app.serverStatus!
+            }else{
+                AppUser.txt_status = ""
+            }
             //            AppUser.txt_text   = app.text!
-            AppUser.txt_date   = app.date!
-            AppUser.id_app     = app.number!
-            AppUser.reqNumber  = app.reqNumber!
+            if app.date != nil{
+                AppUser.txt_date = app.date!
+            }else{
+                AppUser.txt_date = ""
+            }
+            if app.number != nil{
+                AppUser.id_app = app.number!
+            }else{
+                AppUser.id_app = ""
+            }
+            if app.reqNumber != nil{
+                AppUser.reqNumber = app.reqNumber!
+            }else{
+                AppUser.reqNumber = ""
+            }
             AppUser.delegate   = self
             AppUser.App        = app
             AppUser.updDelegt  = self
         } else if segue.identifier == "new_show_app_cons" {
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
-            
-            let AppUser             = segue.destination as! NewAppCons
-            AppUser.title           = "Заявка №" + app.number!
-            AppUser.txt_tema   = app.tema!
-            AppUser.str_type_app = app.type_app!
+            let AppUser = segue.destination as! NewAppCons
+            AppUser.title = "Заявка №" + app.number!
+            if app.tema != nil{
+                AppUser.txt_tema = app.tema!
+            }else{
+                AppUser.txt_tema = ""
+            }
+            if app.type_app != nil{
+                AppUser.str_type_app = app.type_app!
+            }else{
+                AppUser.str_type_app = ""
+            }
             AppUser.read = app.is_read
-            AppUser.adress = app.adress!
-            print(app.adress!)
-            
-            AppUser.flat = app.flat!
-            AppUser.phone = app.phone!
-            //            AppUser.txt_text   = app.text!
-            AppUser.txt_date   = app.date!
-            AppUser.id_app     = app.number!
-            AppUser.reqNumber  = app.reqNumber!
+            if app.adress != nil{
+                AppUser.adress = app.adress!
+            }else{
+                AppUser.adress = ""
+            }
+            if app.flat != nil{
+                AppUser.flat = app.flat!
+            }else{
+                AppUser.flat = ""
+            }
+            if app.phone != nil{
+                AppUser.phone = app.phone!
+            }else{
+                AppUser.phone = ""
+            }
+            if app.serverStatus != nil{
+                AppUser.txt_status = app.serverStatus!
+            }else{
+                AppUser.txt_status = ""
+            }
+            if app.date != nil{
+                AppUser.txt_date = app.date!
+            }else{
+                AppUser.txt_date = ""
+            }
+            if app.number != nil{
+                AppUser.id_app = app.number!
+            }else{
+                AppUser.id_app = ""
+            }
+            if app.reqNumber != nil{
+                AppUser.reqNumber = app.reqNumber!
+            }else{
+                AppUser.reqNumber = ""
+            }
             AppUser.delegate   = self as? ShowNewAppConsDelegate
             AppUser.App        = app
             AppUser.updDelegt = self
-            AppUser.txt_status = app.serverStatus!
         } else if (segue.identifier == "new_show_app_close_cons") {
             let indexPath = tableApps.indexPathForSelectedRow!
             let app = fetchedResultsController!.object(at: indexPath)
             
-            let AppUser             = segue.destination as! NewAppCons
-            AppUser.title           = "Заявка №" + app.number!
-            AppUser.txt_tema   = app.tema!
-            AppUser.str_type_app = app.type_app!
+            let AppUser = segue.destination as! NewAppCons
+            AppUser.title = "Заявка №" + app.number!
+            if app.tema != nil{
+                AppUser.txt_tema = app.tema!
+            }else{
+                AppUser.txt_tema = ""
+            }
+            if app.type_app != nil{
+                AppUser.str_type_app = app.type_app!
+            }else{
+                AppUser.str_type_app = ""
+            }
             AppUser.read = app.is_read
-            AppUser.adress = app.adress!
-            AppUser.flat = app.flat!
-            AppUser.phone = app.phone!
-            //            AppUser.txt_text   = app.text!
-            AppUser.txt_date   = app.date!
-            AppUser.id_app     = app.number!
-            AppUser.reqNumber  = app.reqNumber!
+            if app.adress != nil{
+                AppUser.adress = app.adress!
+            }else{
+                AppUser.adress = ""
+            }
+            if app.flat != nil{
+                AppUser.flat = app.flat!
+            }else{
+                AppUser.flat = ""
+            }
+            if app.phone != nil{
+                AppUser.phone = app.phone!
+            }else{
+                AppUser.phone = ""
+            }
+            if app.serverStatus != nil{
+                AppUser.txt_status = app.serverStatus!
+            }else{
+                AppUser.txt_status = ""
+            }
+            if app.date != nil{
+                AppUser.txt_date = app.date!
+            }else{
+                AppUser.txt_date = ""
+            }
+            if app.number != nil{
+                AppUser.id_app = app.number!
+            }else{
+                AppUser.id_app = ""
+            }
+            if app.reqNumber != nil{
+                AppUser.reqNumber = app.reqNumber!
+            }else{
+                AppUser.reqNumber = ""
+            }
             AppUser.delegate   = self as? ShowNewAppConsDelegate
             AppUser.App        = app
             AppUser.updDelegt  = self
-            AppUser.txt_status = app.serverStatus!
         }else if (segue.identifier == "add_app") {
                 let AddApp = (segue.destination as! UINavigationController).viewControllers.first as! AddAppUser
                 AddApp.delegate = self

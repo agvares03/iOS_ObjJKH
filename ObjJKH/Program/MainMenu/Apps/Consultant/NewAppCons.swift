@@ -425,10 +425,8 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     var kolR = 0
     var showDate:[Bool] = []
-    var filesComm:[Fotos] = []
     private var files: [Fotos] = []
     func updateTable() {
-        filesComm.removeAll()
         files.removeAll()
         showDate.removeAll()
         let data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
@@ -436,7 +434,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         try? objs?.performFetch()
         objs?.fetchedObjects?.forEach { obj in
             data_.forEach {
-                if $0.text?.contains(obj.name ?? "") ?? false {
+                if $0.id_file == obj.id {
                     self.files.append(obj)
                 }
             }
@@ -446,21 +444,6 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 for i in 0...sections[0].numberOfObjects - 1{
                     let indexPath = IndexPath(row: i, section: 0)
                     let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
-                    if (comm.text?.contains("Отправлен новый файл"))!{
-                        let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
-                        var i = false
-                        files.forEach{
-                            if i == false{
-                                let file = $0
-                                if file.name == imgName{
-                                    i = true
-                                    if !filesComm.contains(file){
-                                        filesComm.append(file)
-                                    }
-                                }
-                            }
-                        }
-                    }
                     if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1){
                         DispatchQueue.main.async{
                             self.statusText.text = comm.serverStatus!
@@ -624,7 +607,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
                     var id = 0
                     files.forEach{
-                        if $0.name == imgName{
+                        if $0.id == comm.id_file{
                             id = Int($0.id)
                         }
                     }
@@ -637,11 +620,11 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         
                         cell.loader.isHidden = false
                         cell.loader.startAnimating()
-                        if !imgs.keys.contains(imgName ?? "") {
+                        if !imgs.keys.contains(String(id)) {
                             if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                                 let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
                                 let img = UIImage(named: "icon_file")
-                                imgs[imgName!] = img
+                                imgs[String(id)] = img
                                 cell.img.accessibilityLabel = url
                                 cell.img.image = img
                                 cell.img.tintColor = myColors.btnColor.uiColor()
@@ -661,7 +644,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                                     DispatchQueue.main.async { [weak self] in
                                         if let image = UIImage(data: data!) {
                                             let img = image
-                                            imgs[imgName!] = img
+                                            imgs[String(id)] = img
                                             cell.img.image = img
                                             cell.img.accessibilityLabel = url
                                             cell.img.tintColor = .clear
@@ -669,7 +652,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                                             cell.loader.isHidden = true
                                         }else{
                                             let img = UIImage(named: "icon_file")
-                                            imgs[imgName!] = img
+                                            imgs[String(id)] = img
                                             cell.img.accessibilityLabel = url
                                             cell.img.image = img
                                             cell.img.tintColor = myColors.btnColor.uiColor()
@@ -689,7 +672,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             cell.loader.isHidden = true
                             cell.loader.stopAnimating()
                             cell.img.accessibilityLabel = url
-                            cell.img.image = imgs[imgName ?? ""]
+                            cell.img.image = imgs[String(id)]
                             if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                                 cell.img.tintColor = myColors.btnColor.uiColor()
                                 cell.heightImg.constant = 80
@@ -798,7 +781,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     let imgName = comm.text?.replacingOccurrences(of: "Отправлен новый файл: ", with: "")
                     var id = 0
                     files.forEach{
-                        if $0.name == imgName{
+                        if $0.id == comm.id_file{
                             id = Int($0.id)
                         }
                     }
@@ -811,11 +794,11 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         
                         cell.loader.isHidden = false
                         cell.loader.startAnimating()
-                        if !imgs.keys.contains(imgName ?? "") {
+                        if !imgs.keys.contains(String(id)) {
                             if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                                 let url = Server.SERVER + Server.DOWNLOAD_PIC + "id=" + (String(id).stringByAddingPercentEncodingForRFC3986() ?? "")
                                 let img = UIImage(named: "icon_file")
-                                imgs[imgName!] = img
+                                imgs[String(id)] = img
                                 cell.img.accessibilityLabel = url
                                 cell.img.image = img
                                 cell.img.tintColor = myColors.btnColor.uiColor()
@@ -835,7 +818,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                                     DispatchQueue.main.async { [weak self] in
                                         if let image = UIImage(data: data!) {
                                             let img = image
-                                            imgs[imgName!] = img
+                                            imgs[String(id)] = img
                                             cell.img.image = img
                                             cell.img.accessibilityLabel = url
                                             cell.img.tintColor = .clear
@@ -843,7 +826,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                                             cell.loader.isHidden = true
                                         }else{
                                             let img = UIImage(named: "icon_file")
-                                            imgs[imgName!] = img
+                                            imgs[String(id)] = img
                                             cell.img.accessibilityLabel = url
                                             cell.img.image = img
                                             cell.img.tintColor = myColors.btnColor.uiColor()
@@ -863,7 +846,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             cell.loader.isHidden = true
                             cell.loader.stopAnimating()
                             cell.img.accessibilityLabel = url
-                            cell.img.image = imgs[imgName ?? ""]
+                            cell.img.image = imgs[String(id)]
                             if (imgName?.contains(".pdf"))! || (imgName?.contains(".doc"))! || (imgName?.contains(".xls"))! || (imgName?.contains(".numbers"))!{
                                 cell.img.tintColor = myColors.btnColor.uiColor()
                                 cell.heightImg.constant = 80
@@ -1109,7 +1092,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if segue.identifier == "files" {
             let vc = segue.destination as! FilesController
             vc.data_ = (fetchedResultsController?.fetchedObjects?.filter { $0.text?.contains("файл") ?? false }) ?? []
-            vc.data = filesComm
+            vc.data = files
         } else if segue.identifier == "select_cons" {
             let selectItemController = (segue.destination as! UINavigationController).viewControllers.first as! SelectItemController
             selectItemController.strings = names_cons
