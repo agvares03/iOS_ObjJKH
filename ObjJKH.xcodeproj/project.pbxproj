@@ -15114,6 +15114,7 @@
 				30FDC8E822701E7500CC48C5 /* Frameworks */,
 				30FDC8EB22701E7500CC48C5 /* Resources */,
 				1A003C756041F2E65BFF9BEB /* [CP] Embed Pods Frameworks */,
+				9A9294BB23FD51BB00965734 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -22615,6 +22616,24 @@
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
+		};
+		9A9294BB23FD51BB00965734 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -32456,7 +32475,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.99;
+				MARKETING_VERSION = 2.100;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisAvalon";
@@ -32483,7 +32502,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.99;
+				MARKETING_VERSION = 2.100;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisAvalon";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.avalon;
