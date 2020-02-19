@@ -220,8 +220,8 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
                     
                 }
             }
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            print("responseString = \(responseString)")
+//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//            print("responseString = \(responseString)")
             
             guard data != nil else { return }
             if let json = try? JSONSerialization.jsonObject(with: data!,

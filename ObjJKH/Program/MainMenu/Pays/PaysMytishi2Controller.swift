@@ -12,6 +12,7 @@ import StoreKit
 import PassKit
 import YandexMobileAds
 import GoogleMobileAds
+import Crashlytics
 //import YandexMobileMetrica
 
 private protocol MainDataProtocol:  class {}
@@ -311,6 +312,7 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("PaysControllerMUP", forKey: "last_UI_action")
         let defaults     = UserDefaults.standard
 //        let params : [String : Any] = ["Переход на страницу": "Оплата"]
         print("---МЫТИЩИ---")

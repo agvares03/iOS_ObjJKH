@@ -300,6 +300,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("HomePage", forKey: "last_UI_action")
+        Crashlytics.sharedInstance().setObjectValue(UserDefaults.standard.string(forKey: "login"), forKey: "login_text")
         StopIndicators()
         self.ls_View.isHidden = true
         self.news_View.isHidden = true
