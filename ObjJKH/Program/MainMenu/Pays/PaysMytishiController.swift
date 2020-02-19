@@ -706,7 +706,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.insurance.isHidden = true
             self.insuranceHeight.constant = 0
         }
-        #if isDJ
+        #if isDJ || isSkyfort
         currPoint = 522
         paysViewHeight.constant = 110
         txt_sum_jkh.isHidden = true
@@ -1118,6 +1118,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                             self.txt_sum_jkh.text = "0.00 руб."
                             self.servicePay.text  = "0.00 руб."
                         }
+                        #if isDJ || isSkyfort
+                        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                        self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
+                        #endif
                     })
                     //                }
                 }
@@ -1239,6 +1243,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.totalSum = self.sum + serviceP
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                #if isDJ || isSkyfort
+                self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
+                #endif
             }
             sumOSV.append(Double(String(format:"%.2f", s)) as! Double)
             checkBox.append(true)
@@ -1568,6 +1576,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.servicePay.text = "Комиссия не взимается"
                 self.servicePay.textColor = .lightGray
             }
+            #if isDJ || isSkyfort
+            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+            self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
+            #endif
         }else{
             self.txt_sum_obj.text = "0.00 руб."
             self.txt_sum_jkh.text = "0.00 руб."
@@ -1634,6 +1646,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.totalSum = self.sum + serviceP
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                #if isDJ || isSkyfort
+                self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
+                #endif
             }else{
                 self.txt_sum_obj.text = "0.00 руб."
                 self.txt_sum_jkh.text = "0.00 руб."
@@ -1660,6 +1676,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.totalSum = self.sum + serviceP
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                #if isDJ || isSkyfort
+                self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
+                #endif
             }else{
                 self.txt_sum_obj.text = "0.00 руб."
                 self.txt_sum_jkh.text = "0.00 руб."
