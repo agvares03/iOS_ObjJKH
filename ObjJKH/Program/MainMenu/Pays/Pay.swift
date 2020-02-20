@@ -89,9 +89,15 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
             webView.uiDelegate = self
             webView.navigationDelegate = self
             view = webView
-            let url : NSURL! = NSURL(string: (responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!))
-//            print(url)
-            webView.load(NSURLRequest(url: url as URL) as URLRequest)
+            
+            if responseString.contains("к"){
+                let k = "к"
+                responseString = responseString.replacingOccurrences(of: "к", with: k.stringByAddingPercentEncodingForRFC3986() ?? "")
+            }else if responseString.contains("К"){
+                let k = "К"
+                responseString = responseString.replacingOccurrences(of: "К", with: k.stringByAddingPercentEncodingForRFC3986() ?? "")
+            }
+            webView.load(NSURLRequest(url: URL(string: responseString)!) as URLRequest)
         
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу оплаты", preferredStyle: .alert)
@@ -233,7 +239,7 @@ class Pay: UIViewController, WKUIDelegate, AddAppDelegate, NewAddAppDelegate, WK
                 self.webView.uiDelegate = self
                 self.webView.navigationDelegate = self
                 self.view = self.webView
-                let url : NSURL! = NSURL(string: self.responseString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)
+                let url : NSURL! = NSURL(string: self.responseString)
                 self.webView.load(NSURLRequest(url: url as URL) as URLRequest)
             
                 // Отправлять в сафари-аналог
