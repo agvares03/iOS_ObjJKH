@@ -1748,7 +1748,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         //        } else {
         let close: NSNumber = 1
         let predicateFormat = String(format: "is_close = %@", close)
-        self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["number"], predicateFormat: predicateFormat, ascending: false) as? NSFetchedResultsController<Applications>
+        self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["id"], predicateFormat: predicateFormat, ascending: false) as? NSFetchedResultsController<Applications>
         //        }
         
         do {
