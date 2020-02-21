@@ -3675,6 +3675,7 @@
 		1CF8FD8B21FB1AD30058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		1CF8FD8C21FB1AD30058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
 		1CF8FD8D21FB1AD40058D852 /* UpdateAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1C6B2B21F7106900DD6938 /* UpdateAppController.swift */; };
+		1CFFB3F323FE9C1900C42D21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		1E4800444D0A96B9FB0BD00E /* Pods_TSJ_Lider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 619C70C7B89D06F4517BC212 /* Pods_TSJ_Lider.framework */; };
 		207B284A78CE76C243438636 /* Pods_UK_Drujba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EF5778E9178DB51F5F66F1 /* Pods_UK_Drujba.framework */; };
 		2634C04815704A2D97F2C141 /* Pods_UK_Service_Comfort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB46B23F8B123C151FD65A6 /* Pods_UK_Service_Comfort.framework */; };
@@ -9935,7 +9936,6 @@
 		411F9B2C22238A0E00C5F697 /* NoCounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E8F0262147C61300FE0473 /* NoCounters.storyboard */; };
 		411F9B2D22238A0E00C5F697 /* account_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 41EF5A292138EC7E00789370 /* account_icon_user.png */; };
 		411F9B38222390B300C5F697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 411F9B37222390B200C5F697 /* GoogleService-Info.plist */; };
-		411F9B4622239D9D00C5F697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 418ABF262133D5CF004DB75C /* GoogleService-Info.plist */; };
 		411F9B4722239F4500C5F697 /* PayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655A321BD64AC001225DA /* PayController.m */; };
 		411F9B4822239F4800C5F697 /* ASDKCardIOScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F43655B821BD66AF001225DA /* ASDKCardIOScanner.m */; };
 		4120922E2158CB2D001E713E /* AddAppCons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFC462213FFFF5002CEB62 /* AddAppCons.swift */; };
@@ -19110,7 +19110,6 @@
 				4137E27D22128AE6009C6A7F /* ic_send_app.png in Resources */,
 				4137E27E22128AE6009C6A7F /* PaymentSuccessViewController.xib in Resources */,
 				4137E27F22128AE6009C6A7F /* SelectItem.storyboard in Resources */,
-				411F9B4622239D9D00C5F697 /* GoogleService-Info.plist in Resources */,
 				305060122251E22100F0132B /* Support.storyboard in Resources */,
 				1C51CEB7222917C0003EFD8C /* MupCounters.storyboard in Resources */,
 				4137E28022128AE6009C6A7F /* Questions.storyboard in Resources */,
@@ -19122,6 +19121,7 @@
 				4137E28422128AE6009C6A7F /* Account.storyboard in Resources */,
 				4137E28522128AE6009C6A7F /* Apps.storyboard in Resources */,
 				1CC3FF2F223A19D200FDBA82 /* NewMainMenu.storyboard in Resources */,
+				1CFFB3F323FE9C1900C42D21 /* GoogleService-Info.plist in Resources */,
 				4137E28622128AE6009C6A7F /* Logo_DemoUC_White.png in Resources */,
 				4137E28722128AE6009C6A7F /* Pays.storyboard in Resources */,
 				4137E28822128AE6009C6A7F /* AdditionalServices.storyboard in Resources */,
@@ -20426,7 +20426,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		300F1CC122D4268D00C32229 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -22205,7 +22205,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n\"${PODS_ROOT}/Fabric/upload-symbols\" -gsp \"${PROJECT_DIR}/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		429E606E201D5654804C81C6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

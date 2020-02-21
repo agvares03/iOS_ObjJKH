@@ -2725,7 +2725,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.goApp.tintColor = myColors.btnColor.uiColor()
             cell.img.setImageColor(color: myColors.btnColor.uiColor())
             if app.number != nil{
-                cell.nameApp.text    = "Заявка №" + app.number!
+                cell.nameApp.text    = "Заявка №" + app.reqNumber!
             }
             if app.tema != nil{
                 cell.comment.text    = app.tema

@@ -297,7 +297,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.date_app.textColor = .black
             }
             
-            cell.Number.text    = app.number
+            cell.Number.text    = app.reqNumber
             cell.tema.text      = app.tema
             //            cell.text_app.text  = app.text
             cell.date_app.text  = app.date
@@ -329,7 +329,7 @@ class AppsController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.date_app.font = UIFont.systemFont(ofSize: 13.0)
                 cell.date_app.textColor = .black
             }
-            cell.Number.text    = app.number
+            cell.Number.text    = app.reqNumber
             cell.tema.text      = app.tema
             //            cell.text_app.text  = app.text
             cell.date_app.text  = app.date
