@@ -8,8 +8,9 @@
 
 import UIKit
 import Crashlytics
+import Dropper
 
-class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDataSource, DropperDelegate {
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
 //        if UserDefaults.standard.bool(forKey: "fromMenu"){
@@ -25,6 +26,10 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     @IBOutlet weak var updateConectBtn: UIButton!
     @IBOutlet weak var nonConectView: UIView!
+    
+    @IBOutlet weak var lsLbl: UILabel!
+    @IBOutlet weak var spinImg: UIImageView!
+    @IBOutlet weak var ls_button: UIButton!
     
     @IBOutlet weak var allPaysBtn: UIButton!
     @IBOutlet weak var mobilePaysBtn: UIButton!
@@ -44,6 +49,8 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet private weak var sumLabel:        UILabel!
     
     private var values: [HistoryPayCellData] = []
+    private var valuesData: [HistoryPayCellData] = []
+    let dropper = Dropper(width: 150, height: 400)
     
     var paysType = 0
     @IBAction func allPaysAction(_ sender: UIButton) {
@@ -66,8 +73,21 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         selectMobilePay.backgroundColor = myColors.btnColor.uiColor()
     }
     
+    @IBAction func choice_ls_button(_ sender: UIButton) {
+        if dropper.status == .hidden {
+            
+            dropper.theme = Dropper.Themes.white
+            //            dropper.cornerRadius = 3
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.center, button: ls_button)
+            view.addSubview(dropper)
+        } else {
+            dropper.hideWithAnimation(0.1)
+        }
+    }
+    
     var login = ""
     var pass  = ""
+    var selectLS = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         nonConectView.isHidden = true
@@ -79,6 +99,18 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         selectAllPay.isHidden = false
         login = UserDefaults.standard.string(forKey: "login")!
         pass  = UserDefaults.standard.string(forKey: "pass")!
+        let str_ls = UserDefaults.standard.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        selectLS = "Все"
+        dropper.delegate = self
+        dropper.items.append("Все")
+        if ((str_ls_arr?.count)! > 0) && str_ls_arr![0] != ""{
+            for i in 0..<(str_ls_arr?.count ?? 1 - 1) {
+                dropper.items.append((str_ls_arr?[i])!)
+            }
+        }
+        dropper.showWithAnimation(0.001, options: Dropper.Alignment.center, button: ls_button)
+        dropper.hideWithAnimation(0.001)
         parse_all(login: login, pass: pass)
         #if isMupRCMytishi
         #elseif isKlimovsk12
@@ -114,6 +146,25 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
         updateUserInterface()
     }
     
+    func DropperSelectedRow(_ path: IndexPath, contents: String) {
+        ls_button.setTitle(contents, for: UIControlState.normal)
+        valuesData.removeAll()
+        if (contents == "Все"){
+            selectLS = "Все"
+            valuesData = values
+        } else {
+            selectLS = contents
+            self.values.forEach{
+                if $0.ident == contents{
+                    self.valuesData.append($0)
+                }
+            }
+        }
+        DispatchQueue.main.async(execute: {
+            self.tableView.reloadData()
+        })
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
@@ -142,6 +193,7 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func parse_all(login: String, pass: String) {
         values.removeAll()
+        valuesData.removeAll()
         let urlPath = Server.SERVER + Server.GET_PAYMENTS + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -199,6 +251,15 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
                                                             }
                                                             
                                                         }
+                                                        if (self.selectLS == "Все"){
+                                                            self.valuesData = self.values
+                                                        } else {
+                                                            self.values.forEach{
+                                                                if $0.ident == self.selectLS{
+                                                                    self.valuesData.append($0)
+                                                                }
+                                                            }
+                                                        }
                                                         DispatchQueue.main.async(execute: {
                                                             self.tableView.reloadData()
                                                         })
@@ -216,6 +277,7 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func parse_Mobile(login: String, pass: String) {
         values.removeAll()
+        valuesData.removeAll()
         let urlPath = Server.SERVER + "MobileAPI/GetPays.ashx?" + "phone=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -294,6 +356,15 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
                                                             }
                                                             
                                                         }
+                                                        if (self.selectLS == "Все"){
+                                                            self.valuesData = self.values
+                                                        } else {
+                                                            self.values.forEach{
+                                                                if $0.ident == self.selectLS{
+                                                                    self.valuesData.append($0)
+                                                                }
+                                                            }
+                                                        }
                                                         DispatchQueue.main.async(execute: {
                                                             self.tableView.reloadData()
                                                         })
@@ -310,8 +381,8 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.values.count > 0{
-            return self.values.count
+        if self.valuesData.count > 0{
+            return self.valuesData.count
         }else{
             return 0
         }
@@ -320,7 +391,7 @@ class HistoryPayController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryPayCell", for: indexPath) as! HistoryPayCell
         cell.delegate = self
-        cell.display(values[indexPath.row])
+        cell.display(valuesData[indexPath.row])
         return cell
     }
     

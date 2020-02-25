@@ -43,6 +43,7 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
     
     @IBOutlet weak var lsLbl: UILabel!
     @IBOutlet weak var spinImg: UIImageView!
+    @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var servicePay: UILabel!
 //    @IBOutlet weak var viewTop: NSLayoutConstraint!
     @IBOutlet weak var viewBot: NSLayoutConstraint!
@@ -85,7 +86,6 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
     public var endSum = ""
     
     @IBOutlet weak var tableViewTop: NSLayoutConstraint!
-    @IBOutlet weak var ls_button: UIButton!
     @IBOutlet weak var txt_sum_jkh: UILabel!
     @IBOutlet weak var txt_sum_obj: UILabel!
     @IBOutlet weak var textSum: UILabel!
