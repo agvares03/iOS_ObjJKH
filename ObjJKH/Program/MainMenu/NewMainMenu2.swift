@@ -85,6 +85,9 @@ class NewMainMenu2: UIViewController {
     @IBOutlet weak var btn_Questions: UIButton!
     @IBOutlet weak var Questions_arrow: UIImageView!
     
+    @IBOutlet weak var callBtnImg: UIImageView!
+    @IBOutlet weak var callLbl1: UILabel!
+    @IBOutlet weak var callLbl2: UILabel!
     // Картинки - для разных Таргетов
     @IBOutlet weak var notice: UIImageView!
     @IBOutlet weak var support: UIImageView!
@@ -140,9 +143,28 @@ class NewMainMenu2: UIViewController {
         }
         var phoneOperator = ""
         if phone1!.count > 10{
-            phone1 = phone1?.replacingOccurrences(of: " ", with: "")
-            phone1 = phone1?.replacingOccurrences(of: "-", with: "")
+//            phone1 = phone1?.replacingOccurrences(of: " ", with: "")
+//            phone1 = phone1?.replacingOccurrences(of: "-", with: "")
             if !(phone1?.contains(")"))! && phone1 != ""{
+                for i in 0...11{
+                    if i == 2{
+                        phoneOperator = phoneOperator + " (" + String(phone1!.first!)
+                    }else if i == 5{
+                        phoneOperator = phoneOperator + ") " + String(phone1!.first!)
+                    }else if i == 8{
+                        phoneOperator = phoneOperator + "-" + String(phone1!.first!)
+                    }else if i == 10{
+                        phoneOperator = phoneOperator + "-" + String(phone1!.first!)
+                    }else{
+                        phoneOperator = phoneOperator + String(phone1!.first!)
+                    }
+                    phone1?.removeFirst()
+                }
+            }else if !(phone1?.contains("-"))! && phone1 != ""{
+                phone1 = phone1?.replacingOccurrences(of: " ", with: "")
+                phone1 = phone1?.replacingOccurrences(of: "-", with: "")
+                phone1 = phone1?.replacingOccurrences(of: ")", with: "")
+                phone1 = phone1?.replacingOccurrences(of: "(", with: "")
                 for i in 0...11{
                     if i == 2{
                         phoneOperator = phoneOperator + " (" + String(phone1!.first!)
@@ -163,7 +185,8 @@ class NewMainMenu2: UIViewController {
         }else{
             phoneOperator = phone1!
         }
-        
+        callLbl1.text = String(phoneOperator.prefix(through: phoneOperator.index(of: ")")!))
+        callLbl2.text = phoneOperator.replacingOccurrences(of: phoneOperator.prefix(through: phoneOperator.index(of: ")")!), with: "")
         btn_name_1.setTitle(phoneOperator, for: .normal)
         targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
         #if isOur_Obj_Home
@@ -297,6 +320,9 @@ class NewMainMenu2: UIViewController {
         // Картинки для разных Таргетов
         notice.image = myImages.notice_image
         notice.setImageColor(color: myColors.btnColor.uiColor())
+        callBtnImg.setImageColor(color: myColors.btnColor.uiColor())
+        callLbl1.textColor = myColors.btnColor.uiColor()
+        callLbl2.textColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         application.image = myImages.application_image

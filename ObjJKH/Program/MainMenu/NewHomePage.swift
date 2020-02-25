@@ -110,6 +110,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var callBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var callBtn: UIButton!
     @IBOutlet weak var callBtnImg: UIImageView!
+    @IBOutlet weak var callLbl1: UILabel!
+    @IBOutlet weak var callLbl2: UILabel!
     // Письмо в техподдержку
     @IBOutlet weak var suppBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var suppBtn: UIButton!
@@ -321,9 +323,28 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         var phoneOperator = ""
         if phone!.count > 10{
-            phone = phone?.replacingOccurrences(of: " ", with: "")
-            phone = phone?.replacingOccurrences(of: "-", with: "")
+//            phone = phone?.replacingOccurrences(of: " ", with: "")
+//            phone = phone?.replacingOccurrences(of: "-", with: "")
             if !(phone?.contains(")"))! && phone != ""{
+                for i in 0...11{
+                    if i == 2{
+                        phoneOperator = phoneOperator + " (" + String(phone!.first!)
+                    }else if i == 5{
+                        phoneOperator = phoneOperator + ") " + String(phone!.first!)
+                    }else if i == 8{
+                        phoneOperator = phoneOperator + "-" + String(phone!.first!)
+                    }else if i == 10{
+                        phoneOperator = phoneOperator + "-" + String(phone!.first!)
+                    }else{
+                        phoneOperator = phoneOperator + String(phone!.first!)
+                    }
+                    phone?.removeFirst()
+                }
+            }else if !(phone?.contains("-"))! && phone != ""{
+                phone = phone?.replacingOccurrences(of: " ", with: "")
+                phone = phone?.replacingOccurrences(of: "-", with: "")
+                phone = phone?.replacingOccurrences(of: ")", with: "")
+                phone = phone?.replacingOccurrences(of: "(", with: "")
                 for i in 0...11{
                     if i == 2{
                         phoneOperator = phoneOperator + " (" + String(phone!.first!)
@@ -344,6 +365,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else{
             phoneOperator = phone!
         }
+        callLbl1.text = String(phoneOperator.prefix(through: phoneOperator.index(of: ")")!))
+        callLbl2.text = phoneOperator.replacingOccurrences(of: phoneOperator.prefix(through: phoneOperator.index(of: ")")!), with: "")
         callBtn.setTitle(phoneOperator, for: .normal)
         if defaults.object(forKey: "year") != nil && defaults.object(forKey: "month") != nil{
             currYear         = defaults.string(forKey: "year")!
@@ -513,6 +536,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Avalon")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
+        callBtnImg.setImageColor(color: myColors.btnColor.uiColor())
+        callLbl1.textColor = myColors.btnColor.uiColor()
+        callLbl2.textColor = myColors.btnColor.uiColor()
         suppBtn.tintColor = myColors.btnColor.uiColor()
         
         newsIndicator.color = myColors.btnColor.uiColor()
