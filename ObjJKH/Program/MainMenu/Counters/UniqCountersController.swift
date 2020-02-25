@@ -202,7 +202,9 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         DB().del_db(table_name: "Counters")
         // Получим данные в базу данных
         //        if ls == "Все"{
-        parse_Countrers(login: login, pass: pass)
+        if self.login != nil && self.pass != nil{
+            parse_Countrers(login: login, pass: pass)
+        }
     }
     
     var identArr    :[String] = []
@@ -220,7 +222,7 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
         // Получим данные из xml
         let urlPath:String = Server.SERVER + Server.GET_METERS_MUP + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&meter=" + self.uniq_num
         let url: NSURL = NSURL(string: urlPath)!
-        print(url)
+//        print(url)
         
         parser = XMLParser(contentsOf: url as URL)!
         parser.delegate = self
@@ -580,7 +582,9 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
                 let alert = UIAlertController(title: "Успешно", message: "Показания переданы", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                     DB().del_db(table_name: "Counters")
-                    self.parse_Countrers(login: self.ls, pass: self.pass)
+                    if self.ls != nil && self.pass != nil{
+                        self.parse_Countrers(login: self.ls, pass: self.pass)
+                    }
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)

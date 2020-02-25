@@ -810,7 +810,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Crashlytics.sharedInstance().setObjectValue("TechWork", forKey: "last_UI_action")
+        Crashlytics.sharedInstance().setObjectValue("HomePage", forKey: "last_UI_action")
         showAD = true
         if UserDefaults.standard.bool(forKey: "PaymentSucces") && oneCheck == 0{
             oneCheck = 1

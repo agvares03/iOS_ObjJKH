@@ -594,7 +594,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Crashlytics.sharedInstance().setObjectValue("TechWork", forKey: "last_UI_action")
+        Crashlytics.sharedInstance().setObjectValue("NewAppUser", forKey: "last_UI_action")
         self.tabBarController?.tabBar.isHidden = true
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(false, animated: animated)

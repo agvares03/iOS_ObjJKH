@@ -18,6 +18,7 @@ class StartController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set(true, forKey: "newApps")
         if #available(iOS 13.0, *){
             overrideUserInterfaceStyle = .light
         }

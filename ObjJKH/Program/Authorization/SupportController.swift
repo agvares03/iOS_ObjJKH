@@ -40,12 +40,15 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
     }
     
     @IBAction func addAppAction(_ sender: UIButton){
-        if UserDefaults.standard.bool(forKey: "newApps"){
-//            self.navigationController?.popViewController(animated: true)
-            self.performSegue(withIdentifier: "new_add_app", sender: self)
-        }else{
-//            self.navigationController?.popViewController(animated: true)
-            self.performSegue(withIdentifier: "add_app", sender: self)
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "login") != nil{
+            if UserDefaults.standard.bool(forKey: "newApps"){
+    //            self.navigationController?.popViewController(animated: true)
+                self.performSegue(withIdentifier: "new_add_app", sender: self)
+            }else{
+    //            self.navigationController?.popViewController(animated: true)
+                self.performSegue(withIdentifier: "add_app", sender: self)
+            }
         }
     }
     

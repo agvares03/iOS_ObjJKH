@@ -8,6 +8,7 @@
 
 import UIKit
 import Gloss
+import Crashlytics
 
 class MainMenuCons: UIViewController {
 
@@ -22,14 +23,15 @@ class MainMenuCons: UIViewController {
     @IBOutlet weak var news_indicator: UILabel!
     @IBOutlet weak var request_indicator: UILabel!
     
-    @IBAction func goExit(_ sender: UIButton)
-    {
+    @IBAction func goExit(_ sender: UIButton){
         exit(0)
         //UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Crashlytics.sharedInstance().setObjectValue("MenuCons", forKey: "last_UI_action")
+        Crashlytics.sharedInstance().setObjectValue(UserDefaults.standard.string(forKey: "login_cons"), forKey: "login_text")
         self.getNews()
         let defaults = UserDefaults.standard
         #if isOur_Obj_Home

@@ -1013,7 +1013,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Crashlytics.sharedInstance().setObjectValue("TechWork", forKey: "last_UI_action")
+        Crashlytics.sharedInstance().setObjectValue("EditAccount", forKey: "last_UI_action")
         self.tabBarController?.tabBar.isHidden = false
         if UserDefaults.standard.bool(forKey: "NewMain"){
             self.navigationController?.setNavigationBarHidden(true, animated: animated)
