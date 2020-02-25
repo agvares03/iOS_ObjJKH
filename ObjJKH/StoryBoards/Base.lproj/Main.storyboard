@@ -462,7 +462,9 @@
         <!--Registration-->
         <scene sceneID="47n-GO-9Jd">
             <objects>
-                <viewControllerPlaceholder storyboardName="Registration" id="CSW-ZA-Agb" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Registration" id="CSW-ZA-Agb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="tnS-Ol-QtX"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGv-MD-7Nu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2013" y="120"/>
@@ -524,6 +526,7 @@
                         <outlet property="pageControl" destination="cLO-4d-VUh" id="Sqf-g7-fFJ"/>
                         <outlet property="pagerView" destination="Sxl-QZ-M81" id="SyY-sj-f5i"/>
                         <segue destination="qkS-8C-Jrs" kind="show" identifier="reg_app2" id="JOY-4P-eL1"/>
+                        <segue destination="3yR-lJ-WvS" kind="show" identifier="reg_app" id="y9E-7r-d5c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTR-Au-BbA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1449,6 +1452,16 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9U-ad-3td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3023" y="62"/>
+        </scene>
+        <!--reg-->
+        <scene sceneID="nL6-nx-zOE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Registration" referencedIdentifier="reg" id="3yR-lJ-WvS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="TLK-KU-bsY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SQA-oJ-abf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3195" y="137"/>
         </scene>
     </scenes>
     <resources>

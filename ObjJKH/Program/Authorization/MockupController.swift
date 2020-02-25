@@ -27,7 +27,11 @@ class MockupController: UIViewController, FSPagerViewDataSource, FSPagerViewDele
         
     @IBAction func SwipeLeft(_ sender: UISwipeGestureRecognizer) {
         if selectImg >= 5{
-            self.performSegue(withIdentifier: "reg_app2", sender: self)
+            if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+                self.performSegue(withIdentifier: "reg_app2", sender: self)
+            }else{
+                self.performSegue(withIdentifier: "reg_app", sender: self)
+            }
         }
     }
     
@@ -78,12 +82,20 @@ class MockupController: UIViewController, FSPagerViewDataSource, FSPagerViewDele
             let payController = segue.destination as! NewRegistration
             payController.firstEnter = true
         }
+        if segue.identifier == "reg_app" {
+            let payController = segue.destination as! Registration
+            payController.firstEnter = true
+        }
     }
     
     func pagerViewDidEndDecelerating(_ pagerView: FSPagerView) {
         print("pagerViewDidEndDecelerating", pagerView.currentIndex, end)
         if pagerView.currentIndex == imgs.count - 1 && end{
-            self.performSegue(withIdentifier: "reg_app2", sender: self)
+            if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+                self.performSegue(withIdentifier: "reg_app2", sender: self)
+            }else{
+                self.performSegue(withIdentifier: "reg_app", sender: self)
+            }
         }else if pagerView.currentIndex == imgs.count - 1{
             end = true
         }else{

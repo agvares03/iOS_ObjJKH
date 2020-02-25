@@ -368,7 +368,11 @@ class StartController: UIViewController {
                     if UIImage(named: "iPhone_touch_1") != nil{
                         self.performSegue(withIdentifier: "goMockup", sender: self)
                     }else{
-                        self.performSegue(withIdentifier: "reg_app2", sender: self)
+                        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+                            self.performSegue(withIdentifier: "reg_app2", sender: self)
+                        }else{
+                            self.performSegue(withIdentifier: "reg_app", sender: self)
+                        }
                     }
 //                    }else{
 //                        self.performSegue(withIdentifier: "reg_app", sender: self)
