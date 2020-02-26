@@ -185,8 +185,18 @@ class NewMainMenu2: UIViewController {
         }else{
             phoneOperator = phone1!
         }
-        callLbl1.text = String(phoneOperator.prefix(through: phoneOperator.index(of: ")")!))
-        callLbl2.text = phoneOperator.replacingOccurrences(of: phoneOperator.prefix(through: phoneOperator.index(of: ")")!), with: "")
+        if phoneOperator.contains(")"){
+            callLbl1.text = String(phoneOperator.prefix(through: phoneOperator.index(of: ")")!))
+            callLbl2.text = phoneOperator.replacingOccurrences(of: phoneOperator.prefix(through: phoneOperator.index(of: ")")!), with: "")
+        }else if !phoneOperator.contains("+7"){
+            btn_name_1.isHidden = true
+            callBtnImg.isHidden = true
+            callLbl1.isHidden = true
+            callLbl2.isHidden = true
+        }else{
+            callLbl1.text = ""
+            callLbl2.text = phoneOperator
+        }
         btn_name_1.setTitle(phoneOperator, for: .normal)
         targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
         #if isOur_Obj_Home

@@ -220,19 +220,19 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
                     
                 }
             }
+            guard data != nil else { return }
 //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
 //            print("responseString = \(responseString)")
-            
-            guard data != nil else { return }
+
             if let json = try? JSONSerialization.jsonObject(with: data!,
                                                             options: .allowFragments){
                 let unfilteredData = QuestionsJson(json: json as! JSON)?.data
                 var filtered: [QuestionDataJson] = []
                 unfilteredData?.forEach { json in
 
-                    var isContains = false
+                    var isContains = true
                     json.questions?.forEach {
-                        if !($0.isCompleteByUser ?? false) {
+                        if !$0.isCompleteByUser! {
                             isContains = false
                         }
                     }

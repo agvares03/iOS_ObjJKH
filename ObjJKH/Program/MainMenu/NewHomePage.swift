@@ -365,8 +365,18 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }else{
             phoneOperator = phone!
         }
-        callLbl1.text = String(phoneOperator.prefix(through: phoneOperator.index(of: ")")!))
-        callLbl2.text = phoneOperator.replacingOccurrences(of: phoneOperator.prefix(through: phoneOperator.index(of: ")")!), with: "")
+        if phoneOperator.contains(")"){
+            callLbl1.text = String(phoneOperator.prefix(through: phoneOperator.index(of: ")")!))
+            callLbl2.text = phoneOperator.replacingOccurrences(of: phoneOperator.prefix(through: phoneOperator.index(of: ")")!), with: "")
+        }else if !phoneOperator.contains("+7"){
+            callBtn.isHidden = true
+            callBtnImg.isHidden = true
+            callLbl1.isHidden = true
+            callLbl2.isHidden = true
+        }else{
+            callLbl1.text = ""
+            callLbl2.text = phoneOperator
+        }
         callBtn.setTitle(phoneOperator, for: .normal)
         if defaults.object(forKey: "year") != nil && defaults.object(forKey: "month") != nil{
             currYear         = defaults.string(forKey: "year")!
@@ -1883,9 +1893,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 var i = 0
                 unfilteredData?.forEach { json in
                     
-                    var isContains = false
+                    var isContains = true
                     json.questions?.forEach {
-                        if !($0.isCompleteByUser ?? false) {
+                        if !($0.isCompleteByUser)! {
                             isContains = false
                         }
                     }
