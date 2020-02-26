@@ -13867,13 +13867,12 @@
 			isa = PBXGroup;
 			children = (
 				2B09A7C6DA427C96ACCD0100 /* Pods-ChistDom.debug.xcconfig */,
-				4C2118D4FE0783F048094DD4 /* Pods-ChistDom.release.xcconfig */,
 				964492CA0DB9008F249F3AD8 /* Pods-DJ.debug.xcconfig */,
 				04EB0FDD95E9CF52F0ED4671 /* Pods-DJ.release.xcconfig */,
 				D4E90038DF15E20075586543 /* Pods-Komeks.debug.xcconfig */,
 				61122CA92A8C5C96D150BF57 /* Pods-Komeks.release.xcconfig */,
-				34641B081E377E8D82EE8373 /* Pods-MupRCMytishi.debug.xcconfig */,
 				5BC510EF4115DB2914F6CA52 /* Pods-MupRCMytishi.release.xcconfig */,
+				34641B081E377E8D82EE8373 /* Pods-MupRCMytishi.debug.xcconfig */,
 				506FB076571D10AD6C93A0BB /* Pods-OurObjHome.debug.xcconfig */,
 				ECC64F85A305C9C283A87E25 /* Pods-OurObjHome.release.xcconfig */,
 				4BBF34895412B82A851AA58D /* Pods-Stolitsa.debug.xcconfig */,
@@ -13883,6 +13882,7 @@
 				296AEE95442ECF4E01E51D6F /* Pods-Klimovsk12.debug.xcconfig */,
 				207A06D68FE4B447690F8B5B /* Pods-Klimovsk12.release.xcconfig */,
 				1E7B655A63C375E7709122DB /* Pods-ObjJKH.debug.xcconfig */,
+				AF0F43C730EDC44BF7CAB605 /* Pods-Skyfort.release.xcconfig */,
 				9CC813AF3B67E2529AD80684 /* Pods-ObjJKH.release.xcconfig */,
 				911B653B53BE285B8E0F33C1 /* Pods-JKH_Pocket.debug.xcconfig */,
 				3C1E047E67D67E64E9A68916 /* Pods-JKH_Pocket.release.xcconfig */,
@@ -13895,8 +13895,8 @@
 				31397E3AB3FF6A66EB571107 /* Pods-UK_Garant.debug.xcconfig */,
 				DFE18997918A9D42C3A1860A /* Pods-UK_Garant.release.xcconfig */,
 				B85459C6F6EB0E7B29ED5685 /* Pods-Skyfort.debug.xcconfig */,
-				AF0F43C730EDC44BF7CAB605 /* Pods-Skyfort.release.xcconfig */,
 				E1571C3EF4B661F60077FAAD /* Pods-UK_Service_Comfort.debug.xcconfig */,
+				4C2118D4FE0783F048094DD4 /* Pods-ChistDom.release.xcconfig */,
 				EDC9A1DEB62EB56531D4103F /* Pods-UK_Service_Comfort.release.xcconfig */,
 				9E153E47D5D22676EE4DF870 /* Pods-StandartDV.debug.xcconfig */,
 				A4919958CB6F30B2B9885A31 /* Pods-StandartDV.release.xcconfig */,
@@ -31067,7 +31067,7 @@
 			baseConfigurationReference = 15559CA068B97C4EA6E49760 /* Pods-TestADS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/TestAds-Info.plist";
@@ -31094,7 +31094,7 @@
 			baseConfigurationReference = F2CE41D09AC457A0710D4F7E /* Pods-TestADS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/TestAds-Info.plist";
@@ -31617,7 +31617,7 @@
 			baseConfigurationReference = 7C6968C1668968E78097C3EC /* Pods-Zarinsk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Zarinsk";
-				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/Zarinsk-Info.plist";
@@ -31759,7 +31759,7 @@
 			baseConfigurationReference = 2ED6E2D76EB2A0DEEA3A20F2 /* Pods-Zarinsk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Zarinsk";
-				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/Zarinsk-Info.plist";
@@ -33605,7 +33605,7 @@
 			baseConfigurationReference = DDBCFEE53E8459C7200BD2DF /* Pods-StroimBud.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-StroimBud";
-				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/StroimBud-Info.plist";
@@ -33614,7 +33614,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.102;
+				MARKETING_VERSION = 2.105;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisStroimBud";
@@ -33632,7 +33632,7 @@
 			baseConfigurationReference = 971D08557661FD10E2032974 /* Pods-StroimBud.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-StroimBud";
-				CODE_SIGN_ENTITLEMENTS = UK_Garant.entitlements;
+				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/StroimBud-Info.plist";
@@ -33641,7 +33641,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.102;
+				MARKETING_VERSION = 2.105;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisStroimBud";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.StroimBud;
