@@ -225,6 +225,8 @@ class FirstObjController: UIViewController {
         fon_top.image = UIImage(named: "Logo_ERC_UDM")
         #elseif isAvalon
         fon_top.image = UIImage(named: "Logo_Avalon")
+        #elseif isDoka
+        fon_top.image = UIImage(named: "Logo_Doka")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

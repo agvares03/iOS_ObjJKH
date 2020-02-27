@@ -157,6 +157,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_ERC_UDM")
         #elseif isAvalon
         imageApp.image = UIImage(named: "Logo_Avalon")
+        #elseif isDoka
+        imageApp.image = UIImage(named: "Logo_Doka")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -394,6 +396,8 @@ class SupportUpdate: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1498589004"
         #elseif isAvalon
         str = "itms-apps://itunes.apple.com/ru/app/id1498589295"
+        #elseif isDoka
+        str = "itms-apps://itunes.apple.com/ru/app/id1500730892"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
