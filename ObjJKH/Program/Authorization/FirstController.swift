@@ -325,6 +325,8 @@ class FirstController: UIViewController {
         #elseif isVodSergPosad
         fon_top.image = UIImage(named: "Logo_VodSergPosad")
         #elseif isMobileMIR
+        UserDefaults.standard.set("MobileMIR", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_MobileMIR")
         #elseif isZarinsk
         fon_top.image = UIImage(named: "Logo_Zarinsk")
