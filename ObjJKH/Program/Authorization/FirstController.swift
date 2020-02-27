@@ -185,7 +185,8 @@ class FirstController: UIViewController {
         hideKeyboard_byTap()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
+        UserDefaults.standard.set("", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         // Картинка в зависимости от Таргета
         #if isOur_Obj_Home
         fon_top.image = UIImage(named: "logo_Our_Obj_Home")
@@ -272,6 +273,8 @@ class FirstController: UIViewController {
         #elseif isTSJ_Rachangel
         fon_top.image = UIImage(named: "Logo_TSJ_Archangel")
         #elseif isMUP_IRKC
+        UserDefaults.standard.set("MUP_IRKC", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_MUP_IRKC")
         #elseif isUK_First
         fon_top.image = UIImage(named: "Logo_Uk_First")
@@ -314,8 +317,6 @@ class FirstController: UIViewController {
         #elseif isAvalon
         fon_top.image = UIImage(named: "Logo_Avalon")
         #endif
-        UserDefaults.standard.set("", forKey: "targetName")
-        UserDefaults.standard.synchronize()
         // targetName - используется для определения ключа терминала (оплата Мытищи)
         #if isOur_Obj_Home
         #elseif isChist_Dom
