@@ -193,6 +193,8 @@ class FirstController: UIViewController {
         #elseif isChist_Dom
         fon_top.image = UIImage(named: "Logo_Chist_Dom")
         #elseif isMupRCMytishi
+        UserDefaults.standard.set("MupRCMytishi", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "logo_MupRCMytishi")
         #elseif isDJ
         fon_top.image = UIImage(named: "logo_DJ")
@@ -203,18 +205,26 @@ class FirstController: UIViewController {
         #elseif isUKKomfort
         fon_top.image = UIImage(named: "logo_UK_Komfort")
         #elseif isKlimovsk12
+        UserDefaults.standard.set("Klimovsk12", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "logo_Klimovsk12")
         #elseif isPocket
         fon_top.image = UIImage(named: "Logo_Pocket")
         #elseif isReutKomfort
+        UserDefaults.standard.set("ReutComfort", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_ReutKomfort")
         #elseif isUKGarant
+        UserDefaults.standard.set("UK_Garant", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_UK_Garant")
         #elseif isSoldatova1
         fon_top.image = UIImage(named: "Logo_Soldatova1")
         #elseif isTafgai
         fon_top.image = UIImage(named: "Logo_Tafgai")
         #elseif isServiceKomfort
+        UserDefaults.standard.set("UK_Service_Comfort", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_ServiceKomfort")
         #elseif isParitet
         fon_top.image = UIImage(named: "Logo_Paritet")
@@ -225,32 +235,54 @@ class FirstController: UIViewController {
         #elseif isGarmonia
         fon_top.image = UIImage(named: "Logo_UkGarmonia")
         #elseif isUpravdomChe
+        UserDefaults.standard.set("UK_Upravdom_Che", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_UkUpravdomChe")
         #elseif isJKH_Pavlovskoe
+        UserDefaults.standard.set("JKH_Pavlovskoe", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_JKH_Pavlovskoe")
         #elseif isPerspectiva
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #elseif isParus
+        UserDefaults.standard.set("Parus", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Parus")
         #elseif isUyutService
         fon_top.image = UIImage(named: "Logo_UyutService")
         #elseif isElectroSbitSaratov
+        UserDefaults.standard.set("ElectroSbitSaratov", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_ElectrosbitSaratov")
         #elseif isServicekom
+        UserDefaults.standard.set("Servicekom", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Servicekom")
         #elseif isTeplovodoresources
+        UserDefaults.standard.set("Teplovodoresources", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Teplovodoresources")
         #elseif isStroimBud
+        UserDefaults.standard.set("StroimBud", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_StroimBud")
         #elseif isRodnikMUP
+        UserDefaults.standard.set("RodnikMUP", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_RodnikMUP")
         #elseif isUKParitetKhab
+        UserDefaults.standard.set("UKParitetKhab", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Paritet")
         #elseif isADS68
         fon_top.image = UIImage(named: "Logo_ADS68")
         #elseif isAFregat
+        UserDefaults.standard.set("AFregat", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Fregat")
         #elseif isNewOpaliha
+        UserDefaults.standard.set("NewOpaliha", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_NewOpaliha")
         #elseif isPritomskoe
         fon_top.image = UIImage(named: "Logo_Pritomskoe")
@@ -309,6 +341,8 @@ class FirstController: UIViewController {
         #elseif isKFH_Ryab
         fon_top.image = UIImage(named: "Logo_KFHRyab")
         #elseif isDOM24
+        UserDefaults.standard.set("DOM24", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_DOM24")
         #elseif isLefortovo
         fon_top.image = UIImage(named: "Logo_Lefortovo")
@@ -316,72 +350,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_ERC_UDM")
         #elseif isAvalon
         fon_top.image = UIImage(named: "Logo_Avalon")
-        #endif
-        // targetName - используется для определения ключа терминала (оплата Мытищи)
-        #if isOur_Obj_Home
-        #elseif isChist_Dom
-        #elseif isMupRCMytishi
-        UserDefaults.standard.set("MupRCMytishi", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isDJ
-        #elseif isStolitsa
-        #elseif isKomeks
-        #elseif isUKKomfort
-        #elseif isElectroSbitSaratov
-        UserDefaults.standard.set("ElectroSbitSaratov", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isRodnikMUP
-        UserDefaults.standard.set("RodnikMUP", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isAFregat
-        UserDefaults.standard.set("AFregat", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isKlimovsk12
-        UserDefaults.standard.set("Klimovsk12", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isPocket
-        #elseif isReutKomfort
-        UserDefaults.standard.set("ReutComfort", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isUKGarant
-        UserDefaults.standard.set("UK_Garant", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isSoldatova1
-        #elseif isTafgai
-        #elseif isServiceKomfort
-        UserDefaults.standard.set("UK_Service_Comfort", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isParus
-        UserDefaults.standard.set("Parus", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isParitet
-        #elseif isNewOpaliha
-        UserDefaults.standard.set("NewOpaliha", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isSkyfort
-        #elseif isStandartDV
-        #elseif isGarmonia
-        #elseif isUpravdomChe
-        UserDefaults.standard.set("UK_Upravdom_Che", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isJKH_Pavlovskoe
-        UserDefaults.standard.set("JKH_Pavlovskoe", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isPerspectiva
-        #elseif isServicekom
-        UserDefaults.standard.set("Servicekom", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isTeplovodoresources
-        UserDefaults.standard.set("Teplovodoresources", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isStroimBud
-        UserDefaults.standard.set("StroimBud", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isUKParitetKhab
-        UserDefaults.standard.set("UKParitetKhab", forKey: "targetName")
-        UserDefaults.standard.synchronize()
-        #elseif isDOM24
-        UserDefaults.standard.set("DOM24", forKey: "targetName")
+        #elseif isDoka
+        fon_top.image = UIImage(named: "Logo_Doka")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

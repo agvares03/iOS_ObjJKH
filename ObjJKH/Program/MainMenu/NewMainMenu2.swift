@@ -325,6 +325,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_ERC_UDM")
         #elseif isAvalon
         fon_top.image = UIImage(named: "Logo_Avalon")
+        #elseif isDoka
+        fon_top.image = UIImage(named: "Logo_Doka")
         #endif
         
         // Картинки для разных Таргетов

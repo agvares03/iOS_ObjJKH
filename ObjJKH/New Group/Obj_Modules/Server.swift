@@ -146,6 +146,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/erc_udm/"
     #elseif isAvalon
         static let SERVER          = "http://uk-gkh.org/avalon_all/"
+    #elseif isDoka
+        static let SERVER          = "http://uk-gkh.org/ooo_doka_stroi/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения
