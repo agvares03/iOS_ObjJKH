@@ -22,11 +22,15 @@
 {
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"targetName"];
+    NSLog(@"%@TARGET_NAME: ", savedValue);
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return @[kASDKTestTerminalKey];
     }
     if ([savedValue  isEqual: @"DOM24"]){
         return @[kASDKTestTerminalKeyDOM24];
+    }
+    if ([savedValue  isEqual: @"MUP_IRKC"]){
+        return @[kASDKTestTerminalKeyMUP_IRKC];
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
 //        return @[kASDKTestTerminalKeyKlimovsk];
@@ -78,11 +82,15 @@
         result = kASDKTestTerminalKeyKlimovsk;
         NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                                 stringForKey:@"targetName"];
+        NSLog(@"%@TARGET_NAME: ", savedValue);
         if ([savedValue  isEqual: @"MupRCMytishi"]){
             result = kASDKTestTerminalKey;
         }
         if ([savedValue  isEqual: @"DOM24"]){
             result = kASDKTestTerminalKeyDOM24;
+        }
+        if ([savedValue  isEqual: @"MUP_IRKC"]){
+            result = kASDKTestTerminalKeyMUP_IRKC;
         }
 //        if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
 //            result = kASDKTestTerminalKeyKlimovsk;
@@ -137,11 +145,15 @@
 {
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"targetName"];
+    NSLog(@"%@TARGET_NAME: ", savedValue);
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return kASDKTestPassword;
     }
     if ([savedValue  isEqual: @"DOM24"]){
         return kASDKTestPasswordDOM24;
+    }
+    if ([savedValue  isEqual: @"MUP_IRKC"]){
+        return kASDKTestPasswordMUP_IRKC;
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
 //        return kASDKTestPasswordKlimovsk;
@@ -189,11 +201,15 @@
 {
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"targetName"];
+    NSLog(@"%@TARGET_NAME: ", savedValue);
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return kASDKTestPublicKey;
     }
     if ([savedValue  isEqual: @"DOM24"]){
         return kASDKTestPublicKeyDOM24;
+    }
+    if ([savedValue  isEqual: @"MUP_IRKC"]){
+        return kASDKTestPublicKeyMUP_IRKC;
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
 //        return kASDKTestPublicKeyKlimovsk;
