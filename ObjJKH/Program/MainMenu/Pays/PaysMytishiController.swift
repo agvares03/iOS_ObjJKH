@@ -339,7 +339,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "265024"
         targetName = "ТСЖ Архангельское"
         #elseif isMUP_IRKC
-        shopCode = "266061"
+        shopCode = "315318"
         targetName = "МУП ИРКЦ"
         #elseif isNarianMarEl
         shopCode = "259873"
@@ -398,7 +398,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
 //        shopCode = "295029"
 //        targetName = "УК Легкая жизнь"
         #elseif isMobileMIR
-        shopCode = "299850"
+        shopCode = "315713"
         targetName = "Мобильный мир"
         #elseif isPedagog
         if (selectLS.containsIgnoringCase(find: "k") || selectLS.containsIgnoringCase(find: "к")){
