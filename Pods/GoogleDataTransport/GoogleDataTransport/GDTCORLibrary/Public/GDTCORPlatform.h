@@ -15,10 +15,8 @@
  */
 
 #import <Foundation/Foundation.h>
-
-#if !TARGET_OS_WATCH
 #import <SystemConfiguration/SystemConfiguration.h>
-#endif
+
 #if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
 #elif TARGET_OS_OSX
@@ -26,9 +24,6 @@
 #endif  // TARGET_OS_IOS || TARGET_OS_TV
 
 NS_ASSUME_NONNULL_BEGIN
-
-/** The GoogleDataTransport library version. */
-FOUNDATION_EXPORT NSString *const kGDTCORVersion;
 
 /** A notification sent out if the app is backgrounding. */
 FOUNDATION_EXPORT NSString *const kGDTCORApplicationDidEnterBackgroundNotification;
@@ -39,14 +34,12 @@ FOUNDATION_EXPORT NSString *const kGDTCORApplicationWillEnterForegroundNotificat
 /** A notification sent out if the app is terminating. */
 FOUNDATION_EXPORT NSString *const kGDTCORApplicationWillTerminateNotification;
 
-#if !TARGET_OS_WATCH
 /** Compares flags with the WWAN reachability flag, if available, and returns YES if present.
  *
  * @param flags The set of reachability flags.
  * @return YES if the WWAN flag is set, NO otherwise.
  */
 BOOL GDTCORReachabilityFlagsContainWWAN(SCNetworkReachabilityFlags flags);
-#endif
 
 /** A typedef identify background identifiers. */
 typedef volatile NSUInteger GDTCORBackgroundIdentifier;

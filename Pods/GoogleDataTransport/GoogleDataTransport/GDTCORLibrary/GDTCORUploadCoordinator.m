@@ -51,7 +51,6 @@
 
 - (void)forceUploadForTarget:(GDTCORTarget)target {
   dispatch_async(_coordinationQueue, ^{
-    GDTCORLogDebug("Forcing an upload of target %ld", (long)target);
     GDTCORUploadConditions conditions = [self uploadConditions];
     conditions |= GDTCORUploadConditionHighPriority;
     [self uploadTargets:@[ @(target) ] conditions:conditions];
@@ -83,11 +82,9 @@
     dispatch_source_set_event_handler(self->_timer, ^{
       if (![[GDTCORApplication sharedApplication] isRunningInBackground]) {
         GDTCORUploadConditions conditions = [self uploadConditions];
-        GDTCORLogDebug("%@", @"Upload timer fired");
         [self uploadTargets:[self.registrar.targetToUploader allKeys] conditions:conditions];
       }
     });
-    GDTCORLogDebug("%@", @"Upload timer started");
     dispatch_resume(self->_timer);
   });
 }
@@ -112,25 +109,20 @@
     for (NSNumber *target in targets) {
       // Don't trigger uploads for targets that have an in-flight package already.
       if (self->_targetToInFlightPackages[target]) {
-        GDTCORLogDebug("Target %@ will not upload, there's an upload in flight", target);
         continue;
       }
       // Ask the uploader if they can upload and do so, if it can.
       id<GDTCORUploader> uploader = self.registrar.targetToUploader[target];
-      if ([uploader readyToUploadTarget:target.intValue conditions:conditions]) {
+      if ([uploader readyToUploadWithConditions:conditions]) {
         id<GDTCORPrioritizer> prioritizer = self.registrar.targetToPrioritizer[target];
-        GDTCORUploadPackage *package = [prioritizer uploadPackageWithTarget:target.intValue
-                                                                 conditions:conditions];
+        GDTCORUploadPackage *package = [prioritizer uploadPackageWithConditions:conditions];
         if (package.events.count) {
           self->_targetToInFlightPackages[target] = package;
-          GDTCORLogDebug("Package of %ld events is being handed over to an uploader",
-                         (long)package.events.count);
           [uploader uploadPackage:package];
         } else {
           [package completeDelivery];
         }
       }
-      GDTCORLogDebug("Target %@ is not ready to upload", target);
     }
   });
 }
@@ -140,9 +132,6 @@
  * @return The current upload conditions.
  */
 - (GDTCORUploadConditions)uploadConditions {
-#if TARGET_OS_WATCH
-  return GDTCORUploadConditionNoNetwork;
-#else
   SCNetworkReachabilityFlags currentFlags = [GDTCORReachability currentFlags];
   BOOL reachable =
       (currentFlags & kSCNetworkReachabilityFlagsReachable) == kSCNetworkReachabilityFlagsReachable;
@@ -160,7 +149,6 @@
   } else {
     return GDTCORUploadConditionWifiData;
   }
-#endif
 }
 
 #pragma mark - NSSecureCoding support

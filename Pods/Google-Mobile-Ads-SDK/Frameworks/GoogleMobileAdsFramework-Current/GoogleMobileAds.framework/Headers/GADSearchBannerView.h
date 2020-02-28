@@ -12,10 +12,8 @@
 /// A view that displays search ads.
 /// To show search ads:
 ///   1) Create a GADSearchBannerView and add it to your view controller's view hierarchy.
-///   2) Create a GADDynamicHeightSearchRequest object to hold the search query and other search
-///   data.
-///   3) Call GADSearchBannerView's -loadRequest: method with the
-///   GADDynamicHeightSearchRequest object.
+///   2) Create a GADSearchRequest ad request object to hold the search query and other search data.
+///   3) Call GADSearchBannerView's -loadRequest: method with the GADSearchRequest object.
 @interface GADSearchBannerView : GADBannerView
 
 /// If the banner view is initialized with kGADAdSizeFluid and the corresponding request is created
