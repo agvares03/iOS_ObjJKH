@@ -796,28 +796,29 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func StopIndicators() {
-        
-        self.newsIndicator.stopAnimating()
-        self.newsIndicator.isHidden = true
-        self.appsIndicator.stopAnimating()
-        self.appsIndicator.isHidden = true
-        self.questionIndicator.stopAnimating()
-        self.questionIndicator.isHidden = true
-        self.counterIndicator.stopAnimating()
-        self.counterIndicator.isHidden = true
-        self.webIndicator.stopAnimating()
-        self.webIndicator.isHidden = true
-        self.serviceIndicator.stopAnimating()
-        self.serviceIndicator.isHidden = true
-        self.allNewsBtn.isHidden = false
-        self.allAppsBtn.isHidden = false
-        self.allCountersBtn.isHidden = false
-        self.allQuestionsBtn.isHidden = false
-        self.allWebsBtn.isHidden = false
-        self.allServicesBtn.isHidden = false
-        self.receiptsIndicator.stopAnimating()
-        self.receiptsIndicator.isHidden = true
-        self.allReceiptsBtn.isHidden = false
+        DispatchQueue.main.async{
+            self.newsIndicator.stopAnimating()
+            self.newsIndicator.isHidden = true
+            self.appsIndicator.stopAnimating()
+            self.appsIndicator.isHidden = true
+            self.questionIndicator.stopAnimating()
+            self.questionIndicator.isHidden = true
+            self.counterIndicator.stopAnimating()
+            self.counterIndicator.isHidden = true
+            self.webIndicator.stopAnimating()
+            self.webIndicator.isHidden = true
+            self.serviceIndicator.stopAnimating()
+            self.serviceIndicator.isHidden = true
+            self.allNewsBtn.isHidden = false
+            self.allAppsBtn.isHidden = false
+            self.allCountersBtn.isHidden = false
+            self.allQuestionsBtn.isHidden = false
+            self.allWebsBtn.isHidden = false
+            self.allServicesBtn.isHidden = false
+            self.receiptsIndicator.stopAnimating()
+            self.receiptsIndicator.isHidden = true
+            self.allReceiptsBtn.isHidden = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -2762,7 +2763,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let app = (fetchedResultsController?.object(at: indexPath))! as Applications
             cell.goApp.tintColor = myColors.btnColor.uiColor()
             cell.img.setImageColor(color: myColors.btnColor.uiColor())
-            if app.number != nil{
+            if app.reqNumber != nil{
                 cell.nameApp.text    = "Заявка №" + app.reqNumber!
             }
             if app.tema != nil{
