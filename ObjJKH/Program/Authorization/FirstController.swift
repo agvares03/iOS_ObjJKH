@@ -329,6 +329,8 @@ class FirstController: UIViewController {
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_MobileMIR")
         #elseif isZarinsk
+        UserDefaults.standard.set("Zarinsk", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Zarinsk")
         #elseif isPedagog
         fon_top.image = UIImage(named: "Logo_Pedagog")
@@ -351,6 +353,8 @@ class FirstController: UIViewController {
         #elseif isERC_UDM
         fon_top.image = UIImage(named: "Logo_ERC_UDM")
         #elseif isAvalon
+        UserDefaults.standard.set("Avalon", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Avalon")
         #elseif isDoka
         fon_top.image = UIImage(named: "Logo_Doka")
