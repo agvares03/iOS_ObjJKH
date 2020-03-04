@@ -761,17 +761,17 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "HomeLSCell1") as! HomeLSCell
         //            cell = shadowCell(cell: cell) as! HomeLSCell
-//        #if isDJ
-//        cell.del_ls_btn.isHidden = true
-//        #endif
+//            #if isDJ
+//            cell.del_ls_btn.isHidden = true
+//            #endif
         cell.lsText.text = "№ " + lsArr[indexPath.row].ident!
         cell.separator.backgroundColor = myColors.btnColor.uiColor()
         cell.payDebt.backgroundColor = myColors.btnColor.uiColor()
+        cell.insurance_btn.tintColor = myColors.btnColor.uiColor()
         cell.addressText.text = lsArr[indexPath.row].address!
         cell.sumInfo.text = "Сумма к оплате на " + lsArr[indexPath.row].date! + " г."
         cell.sumText.text = lsArr[indexPath.row].sum! + " руб."
         cell.sumText.textColor = myColors.btnColor.uiColor()
-        
         if insuranceArr.count != 0{
             insuranceArr.forEach{
                 if $0.sumDecimal != "0.00" && $0.ident == lsArr[indexPath.row].ident!{
