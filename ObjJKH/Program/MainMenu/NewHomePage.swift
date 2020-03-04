@@ -134,39 +134,53 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var fetchedResultsController: NSFetchedResultsController<Applications>?
     
     @IBAction func goNewsAction(_ sender: UIButton) {
-        self.newsIndicator.startAnimating()
-        self.newsIndicator.isHidden = false
-        self.allNewsBtn.isHidden = true
+        DispatchQueue.main.async{
+            self.newsIndicator.startAnimating()
+            self.newsIndicator.isHidden = false
+            self.allNewsBtn.isHidden = true
+        }
     }
     @IBAction func goAppsAction(_ sender: UIButton) {
-        self.appsIndicator.startAnimating()
-        self.appsIndicator.isHidden = false
-        self.allAppsBtn.isHidden = true
+        DispatchQueue.main.async{
+            self.appsIndicator.startAnimating()
+            self.appsIndicator.isHidden = false
+            self.allAppsBtn.isHidden = true
+        }
     }
     @IBAction func goCounterAction(_ sender: UIButton) {
-        self.counterIndicator.startAnimating()
-        self.counterIndicator.isHidden = false
-        self.allCountersBtn.isHidden = true
+        DispatchQueue.main.async{
+            self.counterIndicator.startAnimating()
+            self.counterIndicator.isHidden = false
+            self.allCountersBtn.isHidden = true
+        }
     }
     @IBAction func goQuestionAction(_ sender: UIButton) {
-        self.questionIndicator.startAnimating()
-        self.questionIndicator.isHidden = false
-        self.allQuestionsBtn.isHidden = true
+        DispatchQueue.main.async{
+            self.questionIndicator.startAnimating()
+            self.questionIndicator.isHidden = false
+            self.allQuestionsBtn.isHidden = true
+        }
     }
     @IBAction func goWebAction(_ sender: UIButton) {
-        self.webIndicator.startAnimating()
-        self.webIndicator.isHidden = false
-        self.allWebsBtn.isHidden = true
+        DispatchQueue.main.async{
+            self.webIndicator.startAnimating()
+            self.webIndicator.isHidden = false
+            self.allWebsBtn.isHidden = true
+        }
     }
     @IBAction func goServiceAction(_ sender: UIButton) {
-        self.serviceIndicator.startAnimating()
-        self.serviceIndicator.isHidden = false
-        self.allServicesBtn.isHidden = true
+        DispatchQueue.main.async{
+            self.serviceIndicator.startAnimating()
+            self.serviceIndicator.isHidden = false
+            self.allServicesBtn.isHidden = true
+        }
     }
     @IBAction func goReceiptsAction(_ sender: UIButton) {
-        self.receiptsIndicator.startAnimating()
-        self.receiptsIndicator.isHidden = false
-        self.allReceiptsBtn.isHidden = true
+        DispatchQueue.main.async{
+            self.receiptsIndicator.startAnimating()
+            self.receiptsIndicator.isHidden = false
+            self.allReceiptsBtn.isHidden = true
+        }
         self.performSegue(withIdentifier: "goSaldo", sender: self)
     }
     @IBAction func goSaldoAction(_ sender: UIButton) {
@@ -856,7 +870,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         showAD = false
-        self.StopIndicators()
+//        self.StopIndicators()
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
 //        DispatchQueue.main.async{
