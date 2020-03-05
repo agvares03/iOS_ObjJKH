@@ -144,6 +144,12 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Avalon")
         #elseif isDoka
         imageApp.image = UIImage(named: "Logo_Doka")
+        #elseif isInvest
+        imageApp.image = UIImage(named: "Logo_Invest")
+        #elseif isUniversSol
+        imageApp.image = UIImage(named: "Logo_UniversSol")
+        #elseif isClearCity
+        imageApp.image = UIImage(named: "Logo_ClearCity")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -291,6 +297,12 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1498589295"
         #elseif isDoka
         str = "itms-apps://itunes.apple.com/ru/app/id1500730892"
+        #elseif isInvest
+        str = "itms-apps://itunes.apple.com/ru/app/id1501656936"
+        #elseif isUniversSol
+        str = "itms-apps://itunes.apple.com/ru/app/id1501657000"
+        #elseif isClearCity
+        str = "itms-apps://itunes.apple.com/ru/app/id1501658364"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

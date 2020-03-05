@@ -358,6 +358,18 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Avalon")
         #elseif isDoka
         fon_top.image = UIImage(named: "Logo_Doka")
+        #elseif isInvest
+        UserDefaults.standard.set("Invest", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_Invest")
+        #elseif isUniversSol
+        UserDefaults.standard.set("UniversSol", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_UniversSol")
+        #elseif isClearCity
+        UserDefaults.standard.set("ClearCity", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_ClearCity")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
