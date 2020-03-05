@@ -111,7 +111,11 @@ class CloseAppAlert: UIViewController, FloatRatingViewDelegate {
         } else {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка", message: "Не удалось закрыть заявку, попробуйте позже", preferredStyle: .alert)
+                var stringError: String = String(self.responseString)
+                if stringError.containsIgnoringCase(find: "error:"){
+                    stringError = stringError.replacingOccurrences(of: "error: ", with: "")
+                }
+                let alert = UIAlertController(title: "Ошибка", message: stringError, preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
