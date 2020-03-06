@@ -876,7 +876,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         showAD = false
-//        self.StopIndicators()
+        self.StopIndicators()
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
 //        DispatchQueue.main.async{
