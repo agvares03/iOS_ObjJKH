@@ -156,6 +156,8 @@ class StartController: UIViewController {
         fon_top.image = UIImage(named: "Logo_UniversSol")
         #elseif isClearCity
         fon_top.image = UIImage(named: "Logo_ClearCity")
+        #elseif isAlternative
+        fon_top.image = UIImage(named: "Logo_Alternative")
         #endif
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")

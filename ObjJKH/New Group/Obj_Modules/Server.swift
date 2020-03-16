@@ -154,6 +154,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/avalon_all/"
     #elseif isClearCity
         static let SERVER          = "http://uk-gkh.org/avalon_all/"
+    #elseif isAlternative
+        static let SERVER          = "http://uk-gkh.org/ooo_uk_alternativa/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения

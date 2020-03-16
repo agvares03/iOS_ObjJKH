@@ -158,6 +158,8 @@ class TechWorkController: UIViewController {
         fon_top.image = UIImage(named: "Logo_UniversSol")
         #elseif isClearCity
         fon_top.image = UIImage(named: "Logo_ClearCity")
+        #elseif isAlternative
+        fon_top.image = UIImage(named: "Logo_Alternative")
         #endif
         
         btn_tech.backgroundColor = myColors.indicatorColor.uiColor()

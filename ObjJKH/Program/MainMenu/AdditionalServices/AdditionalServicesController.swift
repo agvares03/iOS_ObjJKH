@@ -328,9 +328,21 @@ class ServiceTableCell: UITableViewCell {
     
     func configure(item: Services?) {
         guard let item = item else { return }
-        let url:NSURL = NSURL(string: (item.logo)!)!
-        let data = try? Data(contentsOf: url as URL) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        
+//        let url:NSURL = NSURL(string: (item.logo)!)!
+//        let data = try? Data(contentsOf: url as URL) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        var request = URLRequest(url: URL(string: item.logo!)!)
+        request.httpMethod = "GET"
+        print("REQUES`t = ", request)
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            
+            guard data != nil else { return }
+            DispatchQueue.main.async { [weak self] in
+                if let image = UIImage(data: data!) {
+                    self!.imgService.image = image
+                }
+            }
+        }
         name.text = item.name
         substring.text = item.description
         var str:String = item.address!
@@ -349,7 +361,7 @@ class ServiceTableCell: UITableViewCell {
         }else{
             phoneBtn.setTitle(item.phone, for: .normal)
         }        
-        imgService.image = UIImage(data: data!)
+        
         if imgService.image == nil{
             imgWidth.constant = 0
         }

@@ -370,6 +370,10 @@ class FirstController: UIViewController {
         UserDefaults.standard.set("ClearCity", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_ClearCity")
+        #elseif isAlternative
+        UserDefaults.standard.set("Alternative", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_Alternative")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

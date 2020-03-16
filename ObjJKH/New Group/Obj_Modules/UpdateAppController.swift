@@ -150,6 +150,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_UniversSol")
         #elseif isClearCity
         imageApp.image = UIImage(named: "Logo_ClearCity")
+        #elseif isAlternative
+        imageApp.image = UIImage(named: "Logo_Alternative")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -303,6 +305,8 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1501657000"
         #elseif isClearCity
         str = "itms-apps://itunes.apple.com/ru/app/id1501658364"
+        #elseif isAlternative
+        str = "itms-apps://itunes.apple.com/ru/app/id1502953021"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
