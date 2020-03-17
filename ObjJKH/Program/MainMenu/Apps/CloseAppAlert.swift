@@ -125,7 +125,7 @@ class CloseAppAlert: UIViewController, FloatRatingViewDelegate {
     }
     
     // Оценка
-    var mark = "3.5"
+    var mark = "3"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,9 +139,9 @@ class CloseAppAlert: UIViewController, FloatRatingViewDelegate {
         self.floatRatingView.contentMode = UIViewContentMode.scaleAspectFit
         self.floatRatingView.maxRating = 5
         self.floatRatingView.minRating = 1
-        self.floatRatingView.rating = 3.5
+        self.floatRatingView.rating = 3
         self.floatRatingView.editable = true
-        self.floatRatingView.halfRatings = true
+        self.floatRatingView.halfRatings = false
         self.floatRatingView.floatRatings = false
         
         self.StopIndicator()
