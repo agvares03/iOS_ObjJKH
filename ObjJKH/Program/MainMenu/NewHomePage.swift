@@ -1817,6 +1817,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         } catch {
             print(error)
         }
+        DispatchQueue.main.async {
+            self.tableApps.reloadData()
+        }
     }
     var link: String = ""
     var fileList: [File] = []

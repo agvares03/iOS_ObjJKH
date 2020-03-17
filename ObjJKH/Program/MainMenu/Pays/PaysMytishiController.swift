@@ -169,7 +169,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     @IBAction func Payed(_ sender: UIButton) {
         var l = false
-        #if isKlimovsk12 || isInvest || isUniversSol || isClearCity || isZarinsk || isDOM24 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
+        #if isKlimovsk12 || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isDOM24 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
         l = true
         #else
         self.payedS()
@@ -532,6 +532,35 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         targetName = "Чистый город Немчиновка"
+        #elseif isPerspectiva
+        debtArr.forEach{
+            if debtArr.count > 1{
+                if String($0["Ident"] as! String) == selectLS{
+                    if String($0["INN"] as! String) == "2630804149"{
+                        shopCode = "319897"
+                    }else if String($0["INN"] as! String) == "2630048929"{
+                        shopCode = "319898"
+                    }else if String($0["INN"] as! String) == "2630046103"{
+                        shopCode = "319899"
+                    }else{
+                        shopCode = ""
+                    }
+                }
+            }else{
+                if String($0["Ident"] as! String) == selectLS{
+                    if String($0["INN"] as! String) == "2630804149"{
+                        shopCode = "319897"
+                    }else if String($0["INN"] as! String) == "2630048929"{
+                        shopCode = "319898"
+                    }else if String($0["INN"] as! String) == "2630046103"{
+                        shopCode = "319899"
+                    }else{
+                        shopCode = ""
+                    }
+                }
+            }
+        }
+        targetName = "УК Перспектива"
         #endif
         let shopInsurance = "303049"
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
@@ -694,7 +723,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
 //            }
             //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-            #elseif isKlimovsk12 || isInvest || isUniversSol || isClearCity || isZarinsk || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
+            #elseif isKlimovsk12 || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isPritomskoe || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
