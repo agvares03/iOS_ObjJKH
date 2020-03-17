@@ -43,7 +43,8 @@ class CloseAppAlert: UIViewController, FloatRatingViewDelegate {
         let urlPath = Server.SERVER + Server.CLOSE_APP +
             "&reqID=" + self.number.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
             "&text=" + self.closeComm.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
-            "&mark=" + self.mark.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+            "&mark=" + self.mark.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! +
+            "&base=5"
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -124,7 +125,7 @@ class CloseAppAlert: UIViewController, FloatRatingViewDelegate {
     }
     
     // Оценка
-    var mark = "7"
+    var mark = "3.5"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,12 +181,12 @@ class CloseAppAlert: UIViewController, FloatRatingViewDelegate {
     
     func floatRatingView(ratingView: FloatRatingView, isUpdating rating:Float) {
         print(NSString(format: "%.0f", self.floatRatingView.rating) as String)
-        self.mark = NSString(format: "%.0f", self.floatRatingView.rating * 2) as String
+        self.mark = NSString(format: "%.0f", self.floatRatingView.rating) as String
     }
     
     func floatRatingView(ratingView: FloatRatingView, didUpdate rating: Float) {
-        print(NSString(format: "%.0f", self.floatRatingView.rating * 2) as String)
-        self.mark = NSString(format: "%f.0", self.floatRatingView.rating * 2) as String
+        print(NSString(format: "%.0f", self.floatRatingView.rating) as String)
+        self.mark = NSString(format: "%.0f", self.floatRatingView.rating) as String
     }
 
 }
