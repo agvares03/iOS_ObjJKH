@@ -398,7 +398,29 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
 //        shopCode = "295029"
 //        targetName = "УК Легкая жизнь"
         #elseif isMobileMIR
-        shopCode = "315713"
+        debtArr.forEach{
+            if debtArr.count > 1{
+                if String($0["Ident"] as! String) == selectLS{
+                    if String($0["INN"] as! String) == "7224038518"{
+                        shopCode = "320923"
+                    }else if String($0["INN"] as! String) == "7203350719"{
+                        shopCode = "315713"
+                    }else{
+                        shopCode = ""
+                    }
+                }
+            }else{
+                if String($0["Ident"] as! String) == selectLS{
+                    if String($0["INN"] as! String) == "7224038518"{
+                        shopCode = "320923"
+                    }else if String($0["INN"] as! String) == "7203350719"{
+                        shopCode = "315713"
+                    }else{
+                        shopCode = ""
+                    }
+                }
+            }
+        }
         targetName = "Мобильный мир"
         #elseif isPedagog
         if (selectLS.containsIgnoringCase(find: "k") || selectLS.containsIgnoringCase(find: "к")){
