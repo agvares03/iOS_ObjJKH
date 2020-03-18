@@ -34904,6 +34904,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Alternative";
 				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -34913,12 +34914,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.113;
+				MARKETING_VERSION = 2.114;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisAlternative";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.alternative;
 				PRODUCT_NAME = "ООО УК Альтернатива";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isAlternative Debug";
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/StroimBud-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -34932,6 +34934,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Alternative";
 				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/Alternative-Info.plist";
@@ -34940,11 +34943,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.113;
+				MARKETING_VERSION = 2.114;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisAlternative";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.alternative;
 				PRODUCT_NAME = "ООО УК Альтернатива";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isAlternative;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/StroimBud-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -38069,7 +38073,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.76;
+				MARKETING_VERSION = 2.114;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisPerspectiva";
@@ -38096,7 +38100,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.76;
+				MARKETING_VERSION = 2.114;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisPerspectiva";
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.UK-Perspectiva";
