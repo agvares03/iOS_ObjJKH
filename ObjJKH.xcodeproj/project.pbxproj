@@ -21251,7 +21251,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e -p ios\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
 		};
 		1C4089472407BFB400D4C068 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -21953,7 +21953,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e -p ios\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
 		};
 		1C40896E2407C69300D4C068 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -38930,7 +38930,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.113;
+				MARKETING_VERSION = 2.114;
 				OTHER_SWIFT_FLAGS = "-DisMupRCMytishi";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -38960,7 +38960,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.113;
+				MARKETING_VERSION = 2.114;
 				OTHER_SWIFT_FLAGS = "-DisMupRCMytishi";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
