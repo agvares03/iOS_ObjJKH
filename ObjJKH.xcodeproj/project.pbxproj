@@ -15913,7 +15913,6 @@
 				30F3BDB822A50748007B24FB /* Resources */,
 				E264A5B86E77A3314CFCE7AE /* [CP] Embed Pods Frameworks */,
 				1C6D33C52420B561001E7FD7 /* ShellScript */,
-				1C6D33C62420B572001E7FD7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -22491,24 +22490,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a  -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
-		};
-		1C6D33C62420B572001E7FD7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e -p ios\n";
 		};
 		1C99ACB9241F475800D8D7B9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

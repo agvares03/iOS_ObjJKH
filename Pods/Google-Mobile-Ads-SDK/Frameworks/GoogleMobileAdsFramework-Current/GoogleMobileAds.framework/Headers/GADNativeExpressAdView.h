@@ -12,7 +12,20 @@
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 #import <UIKit/UIKit.h>
 
-/// A view that displays native express ads.
+/// The view that displays native ads. A minimum implementation to get an ad from within a
+/// UIViewController class is:
+///
+///   <pre>
+///   // Create and setup the ad view, specifying the size and origin at {0, 0}.
+///   GADNativeExpressAdView *adView =
+///       [[GADNativeExpressAdView alloc] initWithAdSize:kGADAdSizeBanner];
+///   adView.rootViewController = self;
+///   adView.adUnitID = @"ID created when registering your app";
+///   // Place the ad view onto the screen.
+///   [self.view addSubview:adView];
+///   // Request an ad without any additional targeting information.
+///   [adView loadRequest:[GADRequest request]];
+///   </pre>
 GAD_DEPRECATED_ATTRIBUTE
 @interface GADNativeExpressAdView : UIView
 
