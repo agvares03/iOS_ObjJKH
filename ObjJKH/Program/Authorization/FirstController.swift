@@ -243,6 +243,8 @@ class FirstController: UIViewController {
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_JKH_Pavlovskoe")
         #elseif isPerspectiva
+        UserDefaults.standard.set("Perspectiva", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #elseif isParus
         UserDefaults.standard.set("Parus", forKey: "targetName")
