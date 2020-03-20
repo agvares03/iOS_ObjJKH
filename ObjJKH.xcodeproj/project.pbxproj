@@ -15913,7 +15913,6 @@
 				30F3BDB822A50748007B24FB /* Resources */,
 				E264A5B86E77A3314CFCE7AE /* [CP] Embed Pods Frameworks */,
 				1C6D33C52420B561001E7FD7 /* ShellScript */,
-				1C6D33C62420B572001E7FD7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -22491,24 +22490,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a  -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
-		};
-		1C6D33C62420B572001E7FD7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e -p ios\n";
 		};
 		1C99ACB9241F475800D8D7B9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -34904,6 +34885,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Alternative";
 				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UK4AR963E7;
@@ -34919,6 +34901,7 @@
 				OTHER_SWIFT_FLAGS = "-DisAlternative";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.alternative;
 				PRODUCT_NAME = "ООО УК Альтернатива";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "isAlternative Debug";
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/StroimBud-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -34932,6 +34915,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Alternative";
 				CODE_SIGN_ENTITLEMENTS = UK_Komfort.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK4AR963E7;
 				INFOPLIST_FILE = "$(SRCROOT)/ObjJKH/Info_Plists/Alternative-Info.plist";
@@ -34945,6 +34929,7 @@
 				OTHER_SWIFT_FLAGS = "-DisAlternative";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.alternative;
 				PRODUCT_NAME = "ООО УК Альтернатива";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = isAlternative;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjJKH/Program/Bridges/StroimBud-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -38069,7 +38054,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.76;
+				MARKETING_VERSION = 2.114;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisPerspectiva";
@@ -38097,7 +38082,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.76;
+				MARKETING_VERSION = 2.114;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisPerspectiva";
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.UK-Perspectiva";

@@ -41,6 +41,11 @@
 /// Tells the connector that the adapter received an interstitial.
 - (void)adapterDidReceiveInterstitial:(id<GADMAdNetworkAdapter>)adapter;
 
+/// Tells the connector that the adapter has received a mediated native ad. |mediatedNativeAd| is
+/// used by the Google Mobile Ads SDK to construct a native ad object.
+- (void)adapter:(id<GADMAdNetworkAdapter>)adapter
+    didReceiveMediatedNativeAd:(id<GADMediatedNativeAd>)mediatedNativeAd;
+
 /// Tells the connector that the adapter has received a unified mediated native ad.
 /// mediatedUnifiedNativeAd is used by the Google Mobile Ads SDK to construct a unified native ad
 /// object.
