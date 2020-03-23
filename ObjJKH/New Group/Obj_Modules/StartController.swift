@@ -158,6 +158,8 @@ class StartController: UIViewController {
         fon_top.image = UIImage(named: "Logo_ClearCity")
         #elseif isAlternative
         fon_top.image = UIImage(named: "Logo_Alternative")
+        #elseif isMUP_Severnoe
+        fon_top.image = UIImage(named: "Logo_MUP_Severnoe")
         #endif
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")

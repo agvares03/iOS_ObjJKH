@@ -64,7 +64,12 @@ typedef NS_ENUM(NSUInteger, YMAAdErrorCode) {
      The AppMetrica library hasn't been initialized.
      */
     YMAAdErrorCodeMetricaNotStarted,
-    /** A rewarded ad can be shown only once.
+    /**
+     A rewarded ad can be shown only once.
      */
-    YMAAdErrorCodeRewardedHasAlreadyBeenPresented
+    YMAAdErrorCodeRewardedHasAlreadyBeenPresented,
+    /**
+     ViewController passed for presenting full-screen ad is nil
+     */
+    YMAAdErrorCodeNilPresentingViewController
 };

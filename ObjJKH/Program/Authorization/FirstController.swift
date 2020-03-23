@@ -376,6 +376,10 @@ class FirstController: UIViewController {
         UserDefaults.standard.set("Alternative", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Alternative")
+        #elseif isMUP_Severnoe
+        UserDefaults.standard.set("MUP_Severnoe", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_MUP_Severnoe")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
