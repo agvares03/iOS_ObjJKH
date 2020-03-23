@@ -247,16 +247,18 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     private func payedT(){
         let k:String = txt_sum_jkh.text!
         let l:String = txt_sum_obj.text!
+        var shopInsurance = "303049"
         var shopCode = ""
         var targetName = ""
         #if isKlimovsk12
         shopCode = "215944"
         targetName = "ТСЖ Климовск 12"
         #elseif isUpravdomChe
+        shopInsurance = "322367"
         shopCode = "245322"
         targetName = "УК Упрадом Чебоксары"
         #elseif isReutKomfort
-        shopCode = "234821"
+        shopCode = "322345"
         targetName = "УК РеутКомфорт"
         #elseif isServiceKomfort
 //        shopCode = "252187"
@@ -268,7 +270,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "256133"
         targetName = "УК Гарант"
         #elseif isParus
-        shopCode = "256138"
+        shopCode = "322344"
         targetName = "РКЦ Парус"
         #elseif isTeplovodoresources
         shopCode = "256310"
@@ -286,7 +288,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "252087"
         targetName = "МУП Родник"
         #elseif isElectroSbitSaratov
-        shopCode = "252095"
+        shopCode = "322348"
         targetName = "Электросбыт Саратов"
         #elseif isJKH_Pavlovskoe
         shopCode = "261606"
@@ -342,12 +344,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "315431"
         targetName = "МУП ИРКЦ"
         #elseif isNarianMarEl
-        shopCode = "259873"
+        shopCode = "322342"
         targetName = "Нарьян-Марская электростанция"
         #elseif isParitet
         shopCode = "300478"
         targetName = "УК Паритет"
         #elseif isTSN_Ruble40
+        shopInsurance = "303049"
         targetName = "ТСН Рублевский 40"
         debtArr.forEach{
             if debtArr.count > 1{
@@ -383,10 +386,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }
         #elseif isEnergoProgress
-        shopCode = "280632"
+        shopCode = "322343"
         targetName = "Энергопрогресс"
         #elseif isStolitsa
-        shopCode = "282498"
+        shopInsurance = "322366"
+        shopCode = "322340"
         targetName = "УК Жилищник Столица"
         #elseif isRIC
         shopCode = "281053"
@@ -584,7 +588,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         targetName = "УК Перспектива"
         #endif
-        let shopInsurance = "303049"
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
         if shopCode == ""{
