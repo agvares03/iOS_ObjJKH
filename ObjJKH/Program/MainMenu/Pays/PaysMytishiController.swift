@@ -758,7 +758,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             Data["chargeFlag"] = "false"
             var shops:[Any] = []
             var insurance: String = ""
-            if UserDefaults.standard.string(forKey: "insurance") != nil{
+            if UserDefaults.standard.string(forKey: "insurance") != nil && !UserDefaults.standard.bool(forKey: "DontShowInsurance"){
                 insurance = UserDefaults.standard.string(forKey: "insurance") ?? ""
             }
             var tSum:Double = self.totalSum
@@ -846,7 +846,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             textService.isHidden = false
         }
         var insurance1: String = ""
-        if UserDefaults.standard.string(forKey: "insurance") != nil{
+        if UserDefaults.standard.string(forKey: "insurance") != nil && !UserDefaults.standard.bool(forKey: "DontShowInsurance"){
             insurance1 = UserDefaults.standard.string(forKey: "insurance") ?? ""
         }
         if Double(insurance1) != nil{
@@ -1175,7 +1175,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     func getData(ident: String){
         var insurance: String = "0.00"
-        if UserDefaults.standard.string(forKey: "insurance") != nil{
+        if UserDefaults.standard.string(forKey: "insurance") != nil && !UserDefaults.standard.bool(forKey: "DontShowInsurance"){
             insurance = UserDefaults.standard.string(forKey: "insurance") ?? ""
         }
         self.sum = 0
@@ -1309,45 +1309,48 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 
                 #if isDJ
-                self.debtArr.forEach{
-                    if String($0["Ident"] as! String) == ident{
-                        if String($0["InsuranceSum"] as! String) != "" && String($0["InsuranceSum"] as! String) != "0.00" && String($0["InsuranceSum"] as! String) != "0"{
-                            let suInsur: Double = Double($0["InsuranceSum"] as! String)!
-                            sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
-                            checkBox.append(true)
-                            osvc.append("Страховой сбор")
-                            idOSV.append(1)
-                            
-                            uslugaArr.append("Страховой сбор")
-                            endArr.append(String(format:"%.2f", suInsur))
-                            idArr.append(1)
-                            identOSV.append(ident)
-                            DispatchQueue.main.async(execute: {
-                                self.totalSum = self.sum + suInsur
-                                self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
-                                self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                            })
-                        }
-                    }else if ident == "Все"{
-                        if String(self.debtArr[0]["InsuranceSum"] as! String) != "" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0.00" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0"{
-                            let suInsur: Double = Double(self.debtArr[0]["InsuranceSum"] as! String)!
-                            sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
-                            checkBox.append(true)
-                            osvc.append("Страховой сбор")
-                            idOSV.append(1)
-                            
-                            uslugaArr.append("Страховой сбор")
-                            endArr.append(String(format:"%.2f", suInsur))
-                            idArr.append(1)
-                            identOSV.append(ident)
-                            DispatchQueue.main.async(execute: {
-                                self.totalSum = self.sum + suInsur
-                                self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
-                                self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                            })
+                if !UserDefaults.standard.bool(forKey: "DontShowInsurance"){
+                    self.debtArr.forEach{
+                        if String($0["Ident"] as! String) == ident{
+                            if String($0["InsuranceSum"] as! String) != "" && String($0["InsuranceSum"] as! String) != "0.00" && String($0["InsuranceSum"] as! String) != "0"{
+                                let suInsur: Double = Double($0["InsuranceSum"] as! String)!
+                                sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
+                                checkBox.append(true)
+                                osvc.append("Страховой сбор")
+                                idOSV.append(1)
+                                
+                                uslugaArr.append("Страховой сбор")
+                                endArr.append(String(format:"%.2f", suInsur))
+                                idArr.append(1)
+                                identOSV.append(ident)
+                                DispatchQueue.main.async(execute: {
+                                    self.totalSum = self.sum + suInsur
+                                    self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
+                                    self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                                })
+                            }
+                        }else if ident == "Все"{
+                            if String(self.debtArr[0]["InsuranceSum"] as! String) != "" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0.00" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0"{
+                                let suInsur: Double = Double(self.debtArr[0]["InsuranceSum"] as! String)!
+                                sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
+                                checkBox.append(true)
+                                osvc.append("Страховой сбор")
+                                idOSV.append(1)
+                                
+                                uslugaArr.append("Страховой сбор")
+                                endArr.append(String(format:"%.2f", suInsur))
+                                idArr.append(1)
+                                identOSV.append(ident)
+                                DispatchQueue.main.async(execute: {
+                                    self.totalSum = self.sum + suInsur
+                                    self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
+                                    self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                                })
+                            }
                         }
                     }
                 }
+                
                 #endif
                 DispatchQueue.main.async(execute: {
                     if UserDefaults.standard.double(forKey: "servPercent") == 0.00{
@@ -1429,42 +1432,44 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
             }
             #if isDJ
-            self.debtArr.forEach{
-                if String($0["Ident"] as! String) == ident{
-                    if String($0["InsuranceSum"] as! String) != "" && String($0["InsuranceSum"] as! String) != "0.00" && String($0["InsuranceSum"] as! String) != "0"{
-                        let suInsur: Double = Double($0["InsuranceSum"] as! String)!
-                        sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
-                        checkBox.append(true)
-                        osvc.append("Страховой сбор")
-                        idOSV.append(1)
-                        
-                        uslugaArr.append("Страховой сбор")
-                        endArr.append(String(format:"%.2f", suInsur))
-                        idArr.append(1)
-                        identOSV.append(ident)
-                        DispatchQueue.main.async(execute: {
-                            self.totalSum = self.sum + suInsur
-                            self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
-                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                        })
-                    }
-                }else if ident == "Все"{
-                    if String(self.debtArr[0]["InsuranceSum"] as! String) != "" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0.00" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0"{
-                        let suInsur: Double = Double(self.debtArr[0]["InsuranceSum"] as! String)!
-                        sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
-                        checkBox.append(true)
-                        osvc.append("Страховой сбор")
-                        idOSV.append(1)
-                        
-                        uslugaArr.append("Страховой сбор")
-                        endArr.append(String(format:"%.2f", suInsur))
-                        idArr.append(1)
-                        identOSV.append(ident)
-                        DispatchQueue.main.async(execute: {
-                            self.totalSum = self.sum + suInsur
-                            self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
-                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                        })
+            if !UserDefaults.standard.bool(forKey: "DontShowInsurance"){
+                self.debtArr.forEach{
+                    if String($0["Ident"] as! String) == ident{
+                        if String($0["InsuranceSum"] as! String) != "" && String($0["InsuranceSum"] as! String) != "0.00" && String($0["InsuranceSum"] as! String) != "0"{
+                            let suInsur: Double = Double($0["InsuranceSum"] as! String)!
+                            sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
+                            checkBox.append(true)
+                            osvc.append("Страховой сбор")
+                            idOSV.append(1)
+                            
+                            uslugaArr.append("Страховой сбор")
+                            endArr.append(String(format:"%.2f", suInsur))
+                            idArr.append(1)
+                            identOSV.append(ident)
+                            DispatchQueue.main.async(execute: {
+                                self.totalSum = self.sum + suInsur
+                                self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
+                                self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                            })
+                        }
+                    }else if ident == "Все"{
+                        if String(self.debtArr[0]["InsuranceSum"] as! String) != "" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0.00" && String(self.debtArr[0]["InsuranceSum"] as! String) != "0"{
+                            let suInsur: Double = Double(self.debtArr[0]["InsuranceSum"] as! String)!
+                            sumOSV.append(Double(String(format:"%.2f", suInsur)) as! Double)
+                            checkBox.append(true)
+                            osvc.append("Страховой сбор")
+                            idOSV.append(1)
+                            
+                            uslugaArr.append("Страховой сбор")
+                            endArr.append(String(format:"%.2f", suInsur))
+                            idArr.append(1)
+                            identOSV.append(ident)
+                            DispatchQueue.main.async(execute: {
+                                self.totalSum = self.sum + suInsur
+                                self.txt_sum_obj.text = String(format:"%.2f", self.totalSum) + " руб."
+                                self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                            })
+                        }
                     }
                 }
             }
