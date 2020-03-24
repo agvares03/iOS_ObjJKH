@@ -568,6 +568,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_ClearCity")
         #elseif isAlternative
         fon_top.image = UIImage(named: "Logo_Alternative")
+        #elseif isMUP_Severnoe
+        fon_top.image = UIImage(named: "Logo_MUP_Severnoe")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         callBtnImg.setImageColor(color: myColors.btnColor.uiColor())
@@ -926,7 +928,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 let url: NSURL = NSURL(string: urlPath)!
                 let request = NSMutableURLRequest(url: url as URL)
                 request.httpMethod = "GET"
-//                print("DebtURL = ", request)
+                print("DebtURL = ", request)
                 
                 let task = URLSession.shared.dataTask(with: request as URLRequest,
                                                       completionHandler: {
@@ -938,7 +940,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                             do {
                                                                 u += 1
                                                                 let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                                print(responseStr)
+                                                                print(responseStr)
                                                                 
                                                                 if !responseStr.contains("error") && responseStr.containsIgnoringCase(find: "data"){
                                                                     var date1       = "0"
@@ -951,6 +953,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                     var address = "-"
                                                                     var houseId = "0"
                                                                     var inn = ""
+                                                                    var dontShow = false
                                                                     //                                                                var sumOver     = ""
                                                                     //                                                                var sumFineOver = ""
                                                                     //                                                                    var sumAll      = ""
@@ -1017,12 +1020,18 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                                             inn = String(describing: obj.value as! String)
                                                                                         }
                                                                                     }
+                                                                                    if obj.key == "DontShowInsurance" {
+                                                                                        if ((obj.value as? NSNull) == nil){
+                                                                                            dontShow = obj.value as! Bool
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                                 //                                                                                if date == ""{
                                                                                 //                                                                                    let dateFormatter = DateFormatter()
                                                                                 //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
                                                                                 //                                                                                    date = dateFormatter.string(from: Date())
                                                                                 //                                                                                }
+                                                                                UserDefaults.standard.set(true, forKey: "DontShowInsurance")
                                                                                 debtIdent.append(ls)
                                                                                 debtSum.append(sum)
                                                                                 debtSumFine.append(sumFine)

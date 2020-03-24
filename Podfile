@@ -1915,3 +1915,31 @@ target 'Alternative' do
   pod 'AKMaskField'
   
 end
+
+target 'MUP_Severnoe' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  # Оплата - Тинькофф
+  pod 'CardIO'
+  pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
+  pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
+  
+  pod 'Fabric'
+  pod 'Crashlytics'
+  
+  use_frameworks!
+  
+  # Pods for Pritomskoe
+  pod 'YandexMobileAds'
+  
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
+  pod 'FSPagerView'
+  pod 'Alamofire', '~> 4.0'
+  pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+  pod 'Gloss'
+  pod 'Dropper'
+  pod 'AKMaskField'
+  
+end

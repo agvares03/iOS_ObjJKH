@@ -199,6 +199,8 @@ class FirstController: UIViewController {
         #elseif isDJ
         fon_top.image = UIImage(named: "logo_DJ")
         #elseif isStolitsa
+        UserDefaults.standard.set("Stolitsa", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "logo_Stolitsa")
         #elseif isKomeks
         fon_top.image = UIImage(named: "Logo_Komeks")
@@ -301,6 +303,8 @@ class FirstController: UIViewController {
         #elseif isSpartak
         fon_top.image = UIImage(named: "Logo_Spartak")
         #elseif isTSN_Ruble40
+        UserDefaults.standard.set("TSN_Ruble40", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Ruble40")
         #elseif isKosm11
         fon_top.image = UIImage(named: "Logo_Kosm11")
@@ -376,6 +380,10 @@ class FirstController: UIViewController {
         UserDefaults.standard.set("Alternative", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Alternative")
+        #elseif isMUP_Severnoe
+        UserDefaults.standard.set("MUP_Severnoe", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_MUP_Severnoe")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
