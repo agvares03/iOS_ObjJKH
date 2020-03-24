@@ -29,7 +29,7 @@
     if ([savedValue  isEqual: @"DOM24"]){
         return @[kASDKTestTerminalKeyDOM24];
     }
-    if ([savedValue  isEqual: @"MUP_IRKC"] || [savedValue  isEqual: @"UK_Upravdom_Che"] || [savedValue  isEqual: @"TSN_Ruble40"] || [savedValue  isEqual: @"Stolitsa"] || [savedValue  isEqual: @"Perspectiva"] || [savedValue  isEqual: @"MobileMIR"] || [savedValue  isEqual: @"Zarinsk"] || [savedValue  isEqual: @"Invest"] || [savedValue  isEqual: @"UniversSol"] || [savedValue  isEqual: @"ClearCity"]){
+    if ([savedValue  isEqual: @"New_Terminal_IRKC"]){
         return @[kASDKTestTerminalKeyMUP_IRKC];
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
@@ -89,7 +89,7 @@
         if ([savedValue  isEqual: @"DOM24"]){
             result = kASDKTestTerminalKeyDOM24;
         }
-        if ([savedValue  isEqual: @"MUP_IRKC"] || [savedValue  isEqual: @"UK_Upravdom_Che"] || [savedValue  isEqual: @"TSN_Ruble40"] || [savedValue  isEqual: @"Stolitsa"] || [savedValue  isEqual: @"Perspectiva"] || [savedValue  isEqual: @"MobileMIR"] || [savedValue  isEqual: @"Zarinsk"] || [savedValue  isEqual: @"Invest"] || [savedValue  isEqual: @"UniversSol"] || [savedValue  isEqual: @"ClearCity"]){
+        if ([savedValue  isEqual: @"New_Terminal_IRKC"]){
             result = kASDKTestTerminalKeyMUP_IRKC;
         }
 //        if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
@@ -152,7 +152,7 @@
     if ([savedValue  isEqual: @"DOM24"]){
         return kASDKTestPasswordDOM24;
     }
-    if ([savedValue  isEqual: @"MUP_IRKC"] || [savedValue  isEqual: @"UK_Upravdom_Che"] || [savedValue  isEqual: @"TSN_Ruble40"] || [savedValue  isEqual: @"Stolitsa"] || [savedValue  isEqual: @"Perspectiva"] || [savedValue  isEqual: @"MobileMIR"] || [savedValue  isEqual: @"Zarinsk"] || [savedValue  isEqual: @"Invest"] || [savedValue  isEqual: @"UniversSol"] || [savedValue  isEqual: @"ClearCity"]){
+    if ([savedValue  isEqual: @"New_Terminal_IRKC"]){
         return kASDKTestPasswordMUP_IRKC;
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
@@ -208,7 +208,7 @@
     if ([savedValue  isEqual: @"DOM24"]){
         return kASDKTestPublicKeyDOM24;
     }
-    if ([savedValue  isEqual: @"MUP_IRKC"] || [savedValue  isEqual: @"UK_Upravdom_Che"] || [savedValue  isEqual: @"TSN_Ruble40"] || [savedValue  isEqual: @"Stolitsa"] || [savedValue  isEqual: @"Perspectiva"] || [savedValue  isEqual: @"MobileMIR"] || [savedValue  isEqual: @"Zarinsk"] || [savedValue  isEqual: @"Invest"] || [savedValue  isEqual: @"UniversSol"] || [savedValue  isEqual: @"ClearCity"]){
+    if ([savedValue  isEqual: @"New_Terminal_IRKC"]){
         return kASDKTestPublicKeyMUP_IRKC;
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){

@@ -199,7 +199,7 @@ class FirstController: UIViewController {
         #elseif isDJ
         fon_top.image = UIImage(named: "logo_DJ")
         #elseif isStolitsa
-        UserDefaults.standard.set("Stolitsa", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "logo_Stolitsa")
         #elseif isKomeks
@@ -213,7 +213,7 @@ class FirstController: UIViewController {
         #elseif isPocket
         fon_top.image = UIImage(named: "Logo_Pocket")
         #elseif isReutKomfort
-        UserDefaults.standard.set("ReutComfort", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_ReutKomfort")
         #elseif isUKGarant
@@ -237,7 +237,7 @@ class FirstController: UIViewController {
         #elseif isGarmonia
         fon_top.image = UIImage(named: "Logo_UkGarmonia")
         #elseif isUpravdomChe
-        UserDefaults.standard.set("UK_Upravdom_Che", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_UkUpravdomChe")
         #elseif isJKH_Pavlovskoe
@@ -245,17 +245,17 @@ class FirstController: UIViewController {
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_JKH_Pavlovskoe")
         #elseif isPerspectiva
-        UserDefaults.standard.set("Perspectiva", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_UkPerspectiva")
         #elseif isParus
-        UserDefaults.standard.set("Parus", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Parus")
         #elseif isUyutService
         fon_top.image = UIImage(named: "Logo_UyutService")
         #elseif isElectroSbitSaratov
-        UserDefaults.standard.set("ElectroSbitSaratov", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_ElectrosbitSaratov")
         #elseif isServicekom
@@ -297,13 +297,15 @@ class FirstController: UIViewController {
         #elseif isCristall
         fon_top.image = UIImage(named: "Logo_Cristall")
         #elseif isNarianMarEl
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Narian_Mar_El")
         #elseif isSibAliance
         fon_top.image = UIImage(named: "Logo_SibAliance")
         #elseif isSpartak
         fon_top.image = UIImage(named: "Logo_Spartak")
         #elseif isTSN_Ruble40
-        UserDefaults.standard.set("TSN_Ruble40", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Ruble40")
         #elseif isKosm11
@@ -311,7 +313,7 @@ class FirstController: UIViewController {
         #elseif isTSJ_Rachangel
         fon_top.image = UIImage(named: "Logo_TSJ_Archangel")
         #elseif isMUP_IRKC
-        UserDefaults.standard.set("MUP_IRKC", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_MUP_IRKC")
         #elseif isUK_First
@@ -319,6 +321,8 @@ class FirstController: UIViewController {
         #elseif isRKC_Samara
         fon_top.image = UIImage(named: "Logo_Samara")
         #elseif isEnergoProgress
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_EnergoProgress")
         #elseif isMurmanskPartnerPlus
         fon_top.image = UIImage(named: "Logo_Murmansk")
@@ -331,11 +335,11 @@ class FirstController: UIViewController {
         #elseif isVodSergPosad
         fon_top.image = UIImage(named: "Logo_VodSergPosad")
         #elseif isMobileMIR
-        UserDefaults.standard.set("MobileMIR", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_MobileMIR")
         #elseif isZarinsk
-        UserDefaults.standard.set("Zarinsk", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Zarinsk")
         #elseif isPedagog
@@ -365,15 +369,15 @@ class FirstController: UIViewController {
         #elseif isDoka
         fon_top.image = UIImage(named: "Logo_Doka")
         #elseif isInvest
-        UserDefaults.standard.set("Invest", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Invest")
         #elseif isUniversSol
-        UserDefaults.standard.set("UniversSol", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_UniversSol")
         #elseif isClearCity
-        UserDefaults.standard.set("ClearCity", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_ClearCity")
         #elseif isAlternative
