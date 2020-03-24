@@ -15621,7 +15621,6 @@
 				302FB40B230D2A750024A90D /* Resources */,
 				302FB43F230D2A750024A90D /* [CP] Embed Pods Frameworks */,
 				302FB440230D2A750024A90D /* ShellScript */,
-				1C4089632407C52B00D4C068 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -21964,24 +21963,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e -p ios\n";
 		};
-		1C4089632407C52B00D4C068 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e -p ios\n";
-		};
 		1C4089642407C54300D4C068 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -23522,7 +23503,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n\"${PODS_ROOT}/Fabric/upload-symbols\" -a 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a  -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1ff04c98fb40c3bf61bfd45db1077ab61a6c064a 907e670e1a533dbdf201a28c61358d8052a0a84b6a83eae713a96d5ba572bf6e\n";
 		};
 		30354B0C231616A2008874D3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
