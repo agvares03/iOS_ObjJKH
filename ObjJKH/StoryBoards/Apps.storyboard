@@ -2375,6 +2375,7 @@
                         <outlet property="typeTableHeight" destination="6Th-dw-63N" id="G5M-FJ-rxG"/>
                         <outlet property="typeTextView" destination="lp2-ag-cid" id="O8Z-HQ-wLn"/>
                         <outlet property="viewTop" destination="1yk-dD-5hN" id="0fA-Le-hyS"/>
+                        <segue destination="KNB-u0-oJp" kind="show" identifier="support" id="czn-Ea-g6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3o-PX-HsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2585,7 +2586,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxJ-5A-oeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4439" y="730"/>
+            <point key="canvasLocation" x="5082" y="-1743"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k1e-xv-4Gh">
@@ -3434,7 +3435,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="BCE-5o-WMX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nuf-WZ-9kV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.084393614219999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -4410,9 +4410,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4hW-dt-Lsq"/>
-        <segue reference="28h-Co-dS9"/>
+        <segue reference="XWc-3W-CKW"/>
         <segue reference="ScW-NP-Vv0"/>
-        <segue reference="7Bx-Gg-BxB"/>
+        <segue reference="czn-Ea-g6a"/>
         <segue reference="Uzh-Xt-wze"/>
         <segue reference="M7G-ag-hjx"/>
         <segue reference="lq2-6F-1pC"/>

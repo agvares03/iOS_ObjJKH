@@ -197,13 +197,15 @@ class SupportController: UIViewController, UITextViewDelegate, UITextFieldDelega
         phoneTxt.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
         
         if UserDefaults.standard.bool(forKey: "fromMenu"){
-            phoneTxt.text = UserDefaults.standard.string(forKey: "login")
-            var login: String = UserDefaults.standard.string(forKey: "login")!
-            if login.first == "7"{
-                phoneTxt.text = "+" + login
-            }else if login.first == "8"{
-                login = "+" + login
-                phoneTxt.text = login.replacingOccurrences(of: "+8", with: "+7")
+            if UserDefaults.standard.string(forKey: "login") != nil{
+                phoneTxt.text = UserDefaults.standard.string(forKey: "login")
+                var login: String = UserDefaults.standard.string(forKey: "login")!
+                if login.first == "7"{
+                    phoneTxt.text = "+" + login
+                }else if login.first == "8"{
+                    login = "+" + login
+                    phoneTxt.text = login.replacingOccurrences(of: "+8", with: "+7")
+                }
             }
             emailTxt.text = UserDefaults.standard.string(forKey: "mail")
         }

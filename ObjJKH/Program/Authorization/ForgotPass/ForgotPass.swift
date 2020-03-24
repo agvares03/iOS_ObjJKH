@@ -52,6 +52,8 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
                                                   completionHandler: {
                                                     data, response, error in
                                                     
+                                                    guard data != nil else { return }
+                                                    
                                                     if error != nil {
                                                         DispatchQueue.main.async(execute: {
                                                             let alert = UIAlertController(title: "Результат", message: "Не удалось. Попробуйте позже", preferredStyle: UIAlertControllerStyle.alert)
