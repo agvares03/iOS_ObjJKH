@@ -367,6 +367,8 @@ class FirstController: UIViewController {
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Avalon")
         #elseif isDoka
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Doka")
         #elseif isInvest
         UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
