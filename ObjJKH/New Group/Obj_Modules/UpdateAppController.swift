@@ -154,6 +154,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Alternative")
         #elseif isMUP_Severnoe
         imageApp.image = UIImage(named: "Logo_MUP_Severnoe")
+        #elseif isAlphaJKH
+        imageApp.image = UIImage(named: "Logo_AlphaJKH")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -311,6 +313,8 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1502953021"
         #elseif isMUP_Severnoe
         str = "itms-apps://itunes.apple.com/ru/app/id1504031191"
+        #elseif isAlphaJKH
+        str = "itms-apps://itunes.apple.com/ru/app/id1504417660"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
