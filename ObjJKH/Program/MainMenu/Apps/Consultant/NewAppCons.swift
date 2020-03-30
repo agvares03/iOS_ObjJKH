@@ -446,7 +446,7 @@ class NewAppCons: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
                     if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1){
                         DispatchQueue.main.async{
-                            self.statusText.text = comm.serverStatus!
+                            self.statusText.text = comm.serverStatus ?? ""
                         }
                     }
                     let calendar = Calendar.current

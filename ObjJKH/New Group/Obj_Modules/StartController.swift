@@ -241,7 +241,7 @@ class StartController: UIViewController {
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
-                                                
+                                                guard data != nil else { return }
                                                 if error != nil {
                                                     return
                                                 }
