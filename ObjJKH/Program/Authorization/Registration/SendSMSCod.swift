@@ -33,7 +33,7 @@ class SendSMSCod: UIViewController {
             DispatchQueue.main.async(execute: {
                 self.sendSMS.setTitle("Позвонить ещё раз", for: .normal)
                 self.sendSMS.setTitleColor(myColors.labelColor.uiColor(), for: .normal)
-                self.sendSMS.backgroundColor = myColors.labelColor.uiColor()
+                self.sendSMS.backgroundColor = .white
             })
             send_sms(itsAgain: false)
             again = true
@@ -89,30 +89,20 @@ class SendSMSCod: UIViewController {
                                                 self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("CallResponseString = \(String(describing: self.responseString))")
                                                 
-                                                if itsAgain {
-                                                    self.choice_sms_again()
-                                                } else {
-                                                    self.stop()
-                                                }
+                                                self.choice_sms_again()
         })
         task.resume()
     }
     
-    func stop() {
-        DispatchQueue.main.async(execute: {
-            self.StopIndicator()
-        })
-    }
-    
     func choice_sms_again() {
         if (responseString == "ok") {
-//            DispatchQueue.main.async(execute: {
-//                self.StopIndicator()
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
 //                let alert = UIAlertController(title: "", message: "Проверочный код доступа отправлен", preferredStyle: .alert)
 //                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
 //                alert.addAction(cancelAction)
 //                self.present(alert, animated: true, completion: nil)
-//            })
+            })
         } else {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
@@ -225,7 +215,7 @@ class SendSMSCod: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.StopIndicator()
         hideKeyboard_byTap()
         
         self.phone = UserDefaults.standard.string(forKey: "phone")
