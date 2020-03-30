@@ -392,6 +392,10 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_MUP_Severnoe")
         #elseif isAlphaJKH
         fon_top.image = UIImage(named: "Logo_AlphaJKH")
+        #elseif isSuhanovo
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_Suhanovo")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

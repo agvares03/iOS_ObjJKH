@@ -162,6 +162,8 @@ class StartController: UIViewController {
         fon_top.image = UIImage(named: "Logo_MUP_Severnoe")
         #elseif isAlphaJKH
         fon_top.image = UIImage(named: "Logo_AlphaJKH")
+        #elseif isSuhanovo
+        fon_top.image = UIImage(named: "Logo_Suhanovo")
         #endif
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")
@@ -239,7 +241,7 @@ class StartController: UIViewController {
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
-                                                
+                                                guard data != nil else { return }
                                                 if error != nil {
                                                     return
                                                 }

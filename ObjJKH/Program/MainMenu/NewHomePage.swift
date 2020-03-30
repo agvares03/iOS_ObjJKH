@@ -572,6 +572,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_MUP_Severnoe")
         #elseif isAlphaJKH
         fon_top.image = UIImage(named: "Logo_AlphaJKH")
+        #elseif isSuhanovo
+        fon_top.image = UIImage(named: "Logo_Suhanovo")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         callBtnImg.setImageColor(color: myColors.btnColor.uiColor())

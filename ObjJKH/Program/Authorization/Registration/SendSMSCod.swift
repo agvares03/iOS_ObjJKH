@@ -24,8 +24,20 @@ class SendSMSCod: UIViewController {
     @IBOutlet weak var phone_img: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     
+    var again: Bool = false
+    
     @IBAction func sendSMSAgain(_ sender: UIButton) {
-        send_sms(itsAgain: true)
+        if again{
+            send_sms(itsAgain: true)
+        }else{
+            DispatchQueue.main.async(execute: {
+                self.sendSMS.setTitle("Позвонить ещё раз", for: .normal)
+                self.sendSMS.setTitleColor(myColors.labelColor.uiColor(), for: .normal)
+                self.sendSMS.backgroundColor = .white
+            })
+            send_sms(itsAgain: false)
+            again = true
+        }
     }
     
     public var firstEnter = false
@@ -52,7 +64,7 @@ class SendSMSCod: UIViewController {
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        
+        print("CallURL: ", request)
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
@@ -75,31 +87,21 @@ class SendSMSCod: UIViewController {
                                                 }
                                                 
                                                 self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                           //     print("responseString = \(String(describing: self.responseString))")
+                                                print("CallResponseString = \(String(describing: self.responseString))")
                                                 
-                                                if itsAgain {
-                                                    self.choice_sms_again()
-                                                } else {
-                                                    self.stop()
-                                                }
+                                                self.choice_sms_again()
         })
         task.resume()
-    }
-    
-    func stop() {
-        DispatchQueue.main.async(execute: {
-            self.StopIndicator()
-        })
     }
     
     func choice_sms_again() {
         if (responseString == "ok") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "", message: "Проверочный код доступа отправлен", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
+//                let alert = UIAlertController(title: "", message: "Проверочный код доступа отправлен", preferredStyle: .alert)
+//                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                alert.addAction(cancelAction)
+//                self.present(alert, animated: true, completion: nil)
             })
         } else {
             DispatchQueue.main.async(execute: {
@@ -213,17 +215,15 @@ class SendSMSCod: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.StopIndicator()
         hideKeyboard_byTap()
         
         self.phone = UserDefaults.standard.string(forKey: "phone")
-        edSMSInfo.text = "отправлен на телефон " + self.phone! + " (действует в течение 10 минут)"
-        
-        send_sms(itsAgain: false)
+        edSMSInfo.text = "Звонок будет осуществлен на телефон " + self.phone!
         
         // Установим цвета для элементов в зависимости от Таргета
         btnGo.backgroundColor = myColors.btnColor.uiColor()
-        sendSMS.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+        sendSMS.backgroundColor = myColors.labelColor.uiColor()
         separator1.backgroundColor = myColors.labelColor.uiColor()
         indicator.color = myColors.indicatorColor.uiColor()
         
@@ -250,7 +250,7 @@ class SendSMSCod: UIViewController {
     }
     
     func getServerUrlSendSMSAgain(phone PhoneText:String) -> String {
-        return Server.SERVER + Server.MOBILE_API_PATH + Server.SEND_CHECK_PASS + "phone=" + PhoneText.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        return Server.SERVER + Server.MOBILE_API_PATH + Server.SEND_CALL_CHECK + "phone=" + PhoneText.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
     }
     
     func getServerUrlSendSMS(phone PhoneText:String, sms txtSMS:String) -> String {

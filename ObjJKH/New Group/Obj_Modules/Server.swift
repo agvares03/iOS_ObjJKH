@@ -160,6 +160,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/mupirsevernoe/"
     #elseif isAlphaJKH
         static let SERVER          = "http://uk-gkh.org/avalon_alfagkh/"
+    #elseif isSuhanovo
+        static let SERVER          = "http://uk-gkh.org/suhanovo_park/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения
@@ -211,6 +213,7 @@ class Server {
     static let VALIDATE_SMS        = "ValidateCheckCode.ashx?"       // Отправка смс-кода на проверку
     static let SEND_NEW_PASS       = "SetAccountPassword.ashx?"      // Отправка нового пароля
     static let SEND_CHECK_PASS     = "SendCheckCode.ashx?"           // Повторная отправка
+    static let SEND_CALL_CHECK     = "CallCheckCode.ashx?"           // Звонок с кодом
     static let GET_STREETS         = "GetHouseStreets.ashx?"         // Подтянуть улицы
     static let GET_NUMBERS_HOUSE   = "GetHouses.ashx?"               // Подтянуть номер домов
     static let GET_HOUSE_DATA      = "GetHouseData.ashx?"            // Подтянуть квартиры по дому

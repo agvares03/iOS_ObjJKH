@@ -27,53 +27,59 @@ class ForgotPass: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnForgotGo(_ sender: UIButton) {
-        StartIndicator()
         
-        var strLogin = FogLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        if strLogin.contains("*"){
-            DispatchQueue.main.async(execute: {
-                self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка", message: "Введите номер телефона", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                return
-            })
+        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
+            self.performSegue(withIdentifier: "reg2", sender: self)
         }else{
-            let urlPath = Server.SERVER + Server.FORGOT + "login=" + strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-            let url: NSURL = NSURL(string: urlPath)!
-            
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    guard data != nil else { return }
-                                                    
-                                                    if error != nil {
-                                                        DispatchQueue.main.async(execute: {
-                                                            let alert = UIAlertController(title: "Результат", message: "Не удалось. Попробуйте позже", preferredStyle: UIAlertControllerStyle.alert)
-                                                            alert.addAction(UIAlertAction(title: "Ок", style: UIAlertActionStyle.default, handler: nil))
-                                                            self.present(alert, animated: true, completion: nil)
-                                                            self.responseString = "xxx";
-                                                            self.choice()
-                                                            return
-                                                        })
-                                                    }
-                                                    
-                                                    self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
-                                                    print("responseString = \(self.responseString)")
-                                                    
-                                                    self.choice()
-                                                    
-            })
-            
-            task.resume()
+            self.performSegue(withIdentifier: "reg", sender: self)
         }
+//        StartIndicator()
+//
+//        var strLogin = FogLogin.text!.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
+//        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
+//        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
+//        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+//        if strLogin.contains("*"){
+//            DispatchQueue.main.async(execute: {
+//                self.StopIndicator()
+//                let alert = UIAlertController(title: "Ошибка", message: "Введите номер телефона", preferredStyle: UIAlertControllerStyle.alert)
+//                alert.addAction(UIAlertAction(title: "Ок", style: UIAlertActionStyle.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//                return
+//            })
+//        }else{
+//            let urlPath = Server.SERVER + Server.FORGOT + "login=" + strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+//            let url: NSURL = NSURL(string: urlPath)!
+//
+//            let request = NSMutableURLRequest(url: url as URL)
+//            request.httpMethod = "GET"
+//
+//            let task = URLSession.shared.dataTask(with: request as URLRequest,
+//                                                  completionHandler: {
+//                                                    data, response, error in
+//
+//                                                    guard data != nil else { return }
+//
+//                                                    if error != nil {
+//                                                        DispatchQueue.main.async(execute: {
+//                                                            let alert = UIAlertController(title: "Результат", message: "Не удалось. Попробуйте позже", preferredStyle: UIAlertControllerStyle.alert)
+//                                                            alert.addAction(UIAlertAction(title: "Ок", style: UIAlertActionStyle.default, handler: nil))
+//                                                            self.present(alert, animated: true, completion: nil)
+//                                                            self.responseString = "xxx";
+//                                                            self.choice()
+//                                                            return
+//                                                        })
+//                                                    }
+//
+//                                                    self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
+//                                                    print("responseString = \(self.responseString)")
+//
+//                                                    self.choice()
+//
+//            })
+//
+//            task.resume()
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
