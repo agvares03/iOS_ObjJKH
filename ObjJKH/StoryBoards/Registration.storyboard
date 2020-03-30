@@ -225,7 +225,7 @@
             </objects>
             <point key="canvasLocation" x="1272.8" y="26.53673163418291"/>
         </scene>
-        <!--Введите SMS код-->
+        <!--Введите код-->
         <scene sceneID="3dc-bS-FiK">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="MvW-De-vpp" customClass="SendSMSCod" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
@@ -251,7 +251,7 @@
                                             <constraint firstAttribute="height" constant="2" id="ZR8-as-NdV"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Код доступа из смс" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRF-nD-boi">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Код доступа" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRF-nD-boi">
                                         <rect key="frame" x="48" y="10" width="281" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="q2p-eX-aIo"/>
@@ -298,11 +298,11 @@
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1g-Th-Tok">
-                                <rect key="frame" x="25" y="194" width="230" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="uqO-7r-ocv"/>
-                                </constraints>
-                                <state key="normal" title="Отправить код доступа еще раз"/>
+                                <rect key="frame" x="25" y="194" width="334" height="30"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Запросить звонок с кодом">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="sendSMSAgain:" destination="MvW-De-vpp" eventType="touchUpInside" id="o42-G4-osV"/>
                                 </connections>
@@ -313,7 +313,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не пришло SMS?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laB-MG-pKm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не поступил звонок?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laB-MG-pKm">
                                 <rect key="frame" x="25" y="279" width="325" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -342,6 +342,7 @@
                         <constraints>
                             <constraint firstItem="y0C-5j-bYI" firstAttribute="top" secondItem="aMW-7w-f7D" secondAttribute="bottom" constant="32" id="06G-aE-PoT"/>
                             <constraint firstItem="o1g-Th-Tok" firstAttribute="leading" secondItem="QZ5-wY-j80" secondAttribute="leading" constant="25" id="1iq-JT-TFF"/>
+                            <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="o1g-Th-Tok" secondAttribute="trailing" constant="16" id="3Hx-9b-iaG"/>
                             <constraint firstItem="WmY-F0-Ke8" firstAttribute="leading" secondItem="QZ5-wY-j80" secondAttribute="leading" constant="25" id="3V1-GI-abN"/>
                             <constraint firstItem="WmY-F0-Ke8" firstAttribute="leading" secondItem="y0C-5j-bYI" secondAttribute="trailing" constant="-342" id="4h1-nz-gyc"/>
                             <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="aMW-7w-f7D" secondAttribute="trailing" constant="16" id="5tc-7A-Jj5"/>
@@ -366,7 +367,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QZ5-wY-j80"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Введите SMS код" id="Evc-rv-wAJ">
+                    <navigationItem key="navigationItem" title="Введите код" id="Evc-rv-wAJ">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="e1S-ui-atL">
                             <connections>
                                 <action selector="backClick:" destination="MvW-De-vpp" id="Gor-ZD-m38"/>
@@ -644,7 +645,7 @@
         <image name="phone" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8NC-1r-Q06"/>
-        <segue reference="BRR-sj-Z8H"/>
+        <segue reference="qca-ii-V6F"/>
+        <segue reference="aJc-v5-YaR"/>
     </inferredMetricsTieBreakers>
 </document>
