@@ -333,6 +333,8 @@ class FirstController: UIViewController {
         #elseif isMonolit
         fon_top.image = UIImage(named: "Logo_Monolit")
         #elseif isVodSergPosad
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_VodSergPosad")
         #elseif isMobileMIR
         UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
