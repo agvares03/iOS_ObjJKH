@@ -281,7 +281,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBs-QR-UBI">
-                                <rect key="frame" x="25" y="239" width="334" height="30"/>
+                                <rect key="frame" x="25" y="252" width="334" height="30"/>
                                 <color key="backgroundColor" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="ДАЛЕЕ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -294,12 +294,15 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Eoz-IW-gwj">
-                                <rect key="frame" x="173.5" y="235.5" width="37" height="37"/>
+                                <rect key="frame" x="173.5" y="248.5" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1g-Th-Tok">
-                                <rect key="frame" x="25" y="194" width="334" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="o1g-Th-Tok">
+                                <rect key="frame" x="25" y="197" width="334" height="40"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jRy-gh-m7H"/>
+                                </constraints>
                                 <state key="normal" title="Запросить звонок с кодом">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -314,13 +317,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не поступил звонок?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laB-MG-pKm">
-                                <rect key="frame" x="25" y="279" width="325" height="18"/>
+                                <rect key="frame" x="25" y="292" width="325" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LdF-Kg-O5G">
-                                <rect key="frame" x="25" y="302" width="334" height="46"/>
+                                <rect key="frame" x="25" y="315" width="334" height="46"/>
                                 <color key="backgroundColor" red="0.085386164489999999" green="0.48004096750000003" blue="0.9989228845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Pkr-C9-3mb"/>
@@ -347,7 +350,7 @@
                             <constraint firstItem="WmY-F0-Ke8" firstAttribute="leading" secondItem="y0C-5j-bYI" secondAttribute="trailing" constant="-342" id="4h1-nz-gyc"/>
                             <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="aMW-7w-f7D" secondAttribute="trailing" constant="16" id="5tc-7A-Jj5"/>
                             <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="WmY-F0-Ke8" secondAttribute="trailing" constant="16" id="Ay1-dx-McQ"/>
-                            <constraint firstItem="o1g-Th-Tok" firstAttribute="top" secondItem="WmY-F0-Ke8" secondAttribute="bottom" constant="4" id="DSB-Qk-d3d"/>
+                            <constraint firstItem="o1g-Th-Tok" firstAttribute="top" secondItem="WmY-F0-Ke8" secondAttribute="bottom" constant="7" id="DSB-Qk-d3d"/>
                             <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="dBs-QR-UBI" secondAttribute="trailing" constant="16" id="FJC-1w-7S2"/>
                             <constraint firstItem="Eoz-IW-gwj" firstAttribute="centerX" secondItem="dBs-QR-UBI" secondAttribute="centerX" id="FJj-cq-ehK"/>
                             <constraint firstItem="QZ5-wY-j80" firstAttribute="trailing" secondItem="LdF-Kg-O5G" secondAttribute="trailing" constant="16" id="VBa-hw-Oe3"/>
