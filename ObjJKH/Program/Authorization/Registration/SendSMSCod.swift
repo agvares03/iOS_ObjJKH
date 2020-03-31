@@ -8,6 +8,49 @@
 
 import UIKit
 
+class GlobalTimer: NSObject {
+    static let sharedTimer: GlobalTimer = {
+       let timer = GlobalTimer()
+        return timer
+    }()
+
+    var internalTimer: Timer?
+    var jobs = [() -> Void]()
+    var timeLeft = 0
+    func startTimer(withInterval interval: Double, andJob job: @escaping () -> Void) {
+        if internalTimer != nil {
+            internalTimer?.invalidate()
+        }
+        jobs.append(job)
+        internalTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(doJob), userInfo: nil, repeats: true)
+    }
+
+    func pauseTimer() {
+        guard internalTimer != nil else {
+            print("No timer active, start the timer before you stop it.")
+            return
+        }
+        internalTimer?.invalidate()
+    }
+
+    func stopTimer() {
+        guard internalTimer != nil else {
+            print("No timer active, start the timer before you stop it.")
+            return
+        }
+        jobs = [()->()]()
+        internalTimer?.invalidate()
+    }
+
+    @objc func doJob() {
+        guard jobs.count > 0 else { return }
+        for job in jobs {
+            job()
+        }
+    }
+
+}
+
 class SendSMSCod: UIViewController {
     
     var phone: String? = ""
@@ -24,19 +67,11 @@ class SendSMSCod: UIViewController {
     @IBOutlet weak var phone_img: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     
-    var again: Bool = false
+    var again: Bool = true
     
     @IBAction func sendSMSAgain(_ sender: UIButton) {
-        if again{
-            send_sms(itsAgain: true)
-        }else{
-            DispatchQueue.main.async(execute: {
-                self.sendSMS.setTitle("Позвонить ещё раз", for: .normal)
-                self.sendSMS.setTitleColor(myColors.labelColor.uiColor(), for: .normal)
-                self.sendSMS.backgroundColor = .white
-            })
+        if GlobalTimer.sharedTimer.timeLeft == 0{
             send_sms(itsAgain: false)
-            again = true
         }
     }
     
@@ -93,11 +128,23 @@ class SendSMSCod: UIViewController {
         })
         task.resume()
     }
-    
     func choice_sms_again() {
         if (responseString == "ok") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
+                GlobalTimer.sharedTimer.timeLeft = 60
+                GlobalTimer.sharedTimer.startTimer(withInterval: 1.0, andJob: {
+                    GlobalTimer.sharedTimer.timeLeft -= 1
+                    if self.sendSMS != nil{
+                        self.sendSMS.setTitle("Запросить повторный звонок можно \n           будет через: \(GlobalTimer.sharedTimer.timeLeft) секунд", for: .normal)
+                    }
+                    if GlobalTimer.sharedTimer.timeLeft <= 0{
+                        if self.sendSMS != nil{
+                            self.sendSMS.setTitle("Запросить повторный звонок", for: .normal)
+                        }
+                        GlobalTimer.sharedTimer.stopTimer()
+                    }
+                })
 //                let alert = UIAlertController(title: "", message: "Проверочный код доступа отправлен", preferredStyle: .alert)
 //                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
 //                alert.addAction(cancelAction)
@@ -219,7 +266,7 @@ class SendSMSCod: UIViewController {
         hideKeyboard_byTap()
         
         self.phone = UserDefaults.standard.string(forKey: "phone")
-        edSMSInfo.text = "Звонок будет осуществлен на телефон " + self.phone!
+        edSMSInfo.text = "Чтобы получить код доступа нажмите \"запросить звонок с кодом\", Вам позвонит робот на номер " + self.phone! + " и сообщит код"
         
         // Установим цвета для элементов в зависимости от Таргета
         btnGo.backgroundColor = myColors.btnColor.uiColor()
@@ -231,6 +278,21 @@ class SendSMSCod: UIViewController {
         phone_img.setImageColor(color: myColors.btnColor.uiColor())
         backBtn.tintColor = myColors.btnColor.uiColor()
         supportBtn.backgroundColor = myColors.btnColor.uiColor()
+        if GlobalTimer.sharedTimer.timeLeft != 0{
+            GlobalTimer.sharedTimer.stopTimer()
+            GlobalTimer.sharedTimer.startTimer(withInterval: 1.0, andJob: {
+                GlobalTimer.sharedTimer.timeLeft -= 1
+                if self.sendSMS != nil{
+                    self.sendSMS.setTitle("Запросить повторный звонок можно \n           будет через: \(GlobalTimer.sharedTimer.timeLeft) секунд", for: .normal)
+                }
+                if GlobalTimer.sharedTimer.timeLeft <= 0{
+                    if self.sendSMS != nil{
+                        self.sendSMS.setTitle("Запросить повторный звонок", for: .normal)
+                    }
+                    GlobalTimer.sharedTimer.stopTimer()
+                }
+            })
+        }
 //        supportLbl.textColor = myColors.indicatorColor.uiColor()
 //        let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
 //        let underlineAttributedString = NSAttributedString(string: "Напишите в тех.поддержку. \nПоможем зарегистрироваться!", attributes: underlineAttribute)
