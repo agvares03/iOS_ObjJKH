@@ -1035,7 +1035,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                                 //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
                                                                                 //                                                                                    date = dateFormatter.string(from: Date())
                                                                                 //                                                                                }
-                                                                                UserDefaults.standard.set(true, forKey: "DontShowInsurance")
+                                                                                UserDefaults.standard.set(dontShow, forKey: "DontShowInsurance")
                                                                                 debtIdent.append(ls)
                                                                                 debtSum.append(sum)
                                                                                 debtSumFine.append(sumFine)

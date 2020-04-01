@@ -674,7 +674,7 @@ class NewAppUser: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 for i in 0...sections[section].numberOfObjects - 1{
                     let indexPath = IndexPath(row: i, section: section)
                     let comm = (fetchedResultsController?.object(at: indexPath))! as Comments
-                    if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1){
+                    if comm.serverStatus != nil && i == (sections[0].numberOfObjects - 1) && self.statusText != nil{
                         DispatchQueue.main.async{
                             self.statusText.text = comm.serverStatus!
                         }
