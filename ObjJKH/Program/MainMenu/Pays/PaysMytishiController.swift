@@ -1232,7 +1232,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                     self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                                 }
                                 if sumOSV.count == 0{
-                                    print(self.sum, String(format:"%.2f", self.sum))
                                     sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
                                     checkBox.append(true)
                                     osvc.append("Услуги ЖКУ")
@@ -1266,32 +1265,32 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                             }
                         }
                     }
-                    
-                    DispatchQueue.main.async(execute: {
-                        if (self.sum > 0) {
-                            if Double(insurance) != nil{
-                                if Double(insurance)! > 0.00{
-                                    self.sum = self.sum + Double(insurance)!
-                                }
-                            }
-                            let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
-                            self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
-                            self.totalSum = self.sum + serviceP
-                            self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
-                            self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                        } else {
-                            //                    self.txt_sum_jkh.text = "0,00 р."
-                            self.txt_sum_obj.text = "0.00 руб."
-                            self.txt_sum_jkh.text = "0.00 руб."
-                            self.servicePay.text  = "0.00 руб."
-                        }
-                        #if isDJ || isSkyfort
-                        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
-                        self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
-                        #endif
-                    })
                     //                }
                 }
+                DispatchQueue.main.async(execute: {
+                    if (self.sum > 0) {
+                        if Double(insurance) != nil{
+                            if Double(insurance)! > 0.00{
+                                self.sum = self.sum + Double(insurance)!
+                            }
+                        }
+                        let serviceP = (self.sum / (1 - (UserDefaults.standard.double(forKey: "servPercent") / 100))) - self.sum
+                        self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
+                        self.totalSum = self.sum + serviceP
+                        self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                        print(self.txt_sum_obj.text)
+                        self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
+                    } else {
+                        //                    self.txt_sum_jkh.text = "0,00 р."
+                        self.txt_sum_obj.text = "0.00 руб."
+                        self.txt_sum_jkh.text = "0.00 руб."
+                        self.servicePay.text  = "0.00 руб."
+                    }
+                    #if isDJ || isSkyfort
+                    self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
+                    self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
+                    #endif
+                })
                 if (uslugaArr.count == 0) {
                     sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
                     checkBox.append(true)
