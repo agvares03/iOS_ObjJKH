@@ -359,6 +359,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_Maximum")
         #elseif isEJF
         fon_top.image = UIImage(named: "Logo_EJF")
+        #elseif isClean_Tid
+        fon_top.image = UIImage(named: "Logo_Clean_Tid")
         #endif
         
         // Картинки для разных Таргетов

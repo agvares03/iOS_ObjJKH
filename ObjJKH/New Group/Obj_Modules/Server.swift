@@ -166,6 +166,8 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/ooo_uo_maksimum/"
     #elseif isEJF
         static let SERVER          = "http://uk-gkh.org/ooo_egf/"
+    #elseif isClean_Tid
+        static let SERVER          = "http://uk-gkh.org/ooo_uk_chistota_i_poryadok/"
     #endif
     
     static let SEND_SUPPORT        = "SendEmailMessage.ashx?"            // Получение настроек для приложения

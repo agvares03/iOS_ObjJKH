@@ -177,6 +177,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_Maximum")
         #elseif isEJF
         imageApp.image = UIImage(named: "Logo_EJF")
+        #elseif isClean_Tid
+        imageApp.image = UIImage(named: "Logo_Clean_Tid")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -434,6 +436,8 @@ class SupportUpdate: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1505985526"
         #elseif isEJF
         str = "itms-apps://itunes.apple.com/ru/app/id1505990646"
+        #elseif isClean_Tid
+        str = "itms-apps://itunes.apple.com/ru/app/id1506004920"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

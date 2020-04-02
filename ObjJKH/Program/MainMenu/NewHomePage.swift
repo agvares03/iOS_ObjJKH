@@ -592,6 +592,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Maximum")
         #elseif isEJF
         fon_top.image = UIImage(named: "Logo_EJF")
+        #elseif isClean_Tid
+        fon_top.image = UIImage(named: "Logo_Clean_Tid")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         callBtnImg.setImageColor(color: myColors.btnColor.uiColor())
