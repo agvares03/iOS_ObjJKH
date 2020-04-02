@@ -825,27 +825,41 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func StopIndicators() {
         DispatchQueue.main.async{
-            self.newsIndicator.stopAnimating()
-            self.newsIndicator.isHidden = true
-            self.appsIndicator.stopAnimating()
-            self.appsIndicator.isHidden = true
-            self.questionIndicator.stopAnimating()
-            self.questionIndicator.isHidden = true
-            self.counterIndicator.stopAnimating()
-            self.counterIndicator.isHidden = true
-            self.webIndicator.stopAnimating()
-            self.webIndicator.isHidden = true
-            self.serviceIndicator.stopAnimating()
-            self.serviceIndicator.isHidden = true
-            self.allNewsBtn.isHidden = false
-            self.allAppsBtn.isHidden = false
-            self.allCountersBtn.isHidden = false
-            self.allQuestionsBtn.isHidden = false
-            self.allWebsBtn.isHidden = false
-            self.allServicesBtn.isHidden = false
-            self.receiptsIndicator.stopAnimating()
-            self.receiptsIndicator.isHidden = true
-            self.allReceiptsBtn.isHidden = false
+            if self.newsIndicator != nil{
+                self.newsIndicator.stopAnimating()
+                self.newsIndicator.isHidden = true
+                self.allNewsBtn.isHidden = false
+            }
+            if self.appsIndicator != nil{
+                self.appsIndicator.stopAnimating()
+                self.appsIndicator.isHidden = true
+                self.allAppsBtn.isHidden = false
+            }
+            if self.questionIndicator != nil{
+                self.questionIndicator.stopAnimating()
+                self.questionIndicator.isHidden = true
+                self.allQuestionsBtn.isHidden = false
+            }
+            if self.counterIndicator != nil{
+                self.counterIndicator.stopAnimating()
+                self.counterIndicator.isHidden = true
+                self.allCountersBtn.isHidden = false
+            }
+            if self.webIndicator != nil{
+                self.webIndicator.stopAnimating()
+                self.webIndicator.isHidden = true
+                self.allWebsBtn.isHidden = false
+            }
+            if self.serviceIndicator != nil{
+                self.serviceIndicator.stopAnimating()
+                self.serviceIndicator.isHidden = true
+                self.allServicesBtn.isHidden = false
+            }
+            if self.receiptsIndicator != nil{
+                self.receiptsIndicator.stopAnimating()
+                self.receiptsIndicator.isHidden = true
+                self.allReceiptsBtn.isHidden = false
+            }
         }
     }
     
