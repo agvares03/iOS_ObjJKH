@@ -200,6 +200,8 @@ class NotificationController: UIViewController {
         fon_top.image = UIImage(named: "Logo_AlphaJKH")
         #elseif isSuhanovo
         fon_top.image = UIImage(named: "Logo_Suhanovo")
+        #elseif isMaximum
+        fon_top.image = UIImage(named: "Logo_Maximum")
         #endif
         btn_name_1.setTitle(phoneOperator, for: .normal)
         targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)

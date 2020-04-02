@@ -47,6 +47,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var elipseBackground: UIView!
+    @IBOutlet weak var elipseBackground2: UIView!
+    @IBOutlet weak var fon_Samara: UIImageView!
+    @IBOutlet weak var name_Samara: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var ls_View: UIView!
@@ -318,6 +321,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         Crashlytics.sharedInstance().setObjectValue("HomePage", forKey: "last_UI_action")
         Crashlytics.sharedInstance().setObjectValue(UserDefaults.standard.string(forKey: "login"), forKey: "login_text")
         StopIndicators()
+        #if isRKC_Samara
+        name_Samara.isHidden = false
+        elipseBackground.isHidden = true
+        elipseBackground2.isHidden = true
+        fon_Samara.isHidden = false
+        #else
+        name_Samara.isHidden = true
+        elipseBackground.isHidden = false
+        elipseBackground2.isHidden = false
+        fon_Samara.isHidden = true
+        #endif
         self.ls_View.isHidden = true
         self.news_View.isHidden = true
         self.counters_View.isHidden = true
@@ -574,6 +588,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_AlphaJKH")
         #elseif isSuhanovo
         fon_top.image = UIImage(named: "Logo_Suhanovo")
+        #elseif isMaximum
+        fon_top.image = UIImage(named: "Logo_Maximum")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         callBtnImg.setImageColor(color: myColors.btnColor.uiColor())

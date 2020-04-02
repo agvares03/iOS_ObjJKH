@@ -176,6 +176,8 @@ class MainMenuCons: UIViewController {
         fon_top.image = UIImage(named: "Logo_AlphaJKH")
         #elseif isSuhanovo
         fon_top.image = UIImage(named: "Logo_Suhanovo")
+        #elseif isMaximum
+        fon_top.image = UIImage(named: "Logo_Maximum")
         #endif
         // Приветствие
         LabelTime.text = "Здравствуйте,"

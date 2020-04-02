@@ -398,6 +398,10 @@ class FirstController: UIViewController {
         UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Suhanovo")
+        #elseif isMaximum
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_Maximum")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

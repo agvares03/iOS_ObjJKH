@@ -15,6 +15,9 @@ class NewMainMenu2: UIViewController {
     // Запись на прием - Наш Общий Дом
     @IBOutlet weak var targetName: UILabel!
     @IBOutlet weak var elipseBackground: UIView!
+    @IBOutlet weak var elipseBackground2: UIView!
+    @IBOutlet weak var fon_Samara: UIImageView!
+    @IBOutlet weak var name_Samara: UILabel!
     var responseString: String = ""
     var name_account: String = ""
     var login: String = ""
@@ -133,6 +136,17 @@ class NewMainMenu2: UIViewController {
         Crashlytics.sharedInstance().setObjectValue("MainMenu", forKey: "last_UI_action")
         self.getQuestions()
         self.getNews()
+        #if isRKC_Samara
+        name_Samara.isHidden = false
+        elipseBackground.isHidden = true
+        elipseBackground2.isHidden = true
+        fon_Samara.isHidden = false
+        #else
+        name_Samara.isHidden = true
+        elipseBackground.isHidden = false
+        elipseBackground2.isHidden = false
+        fon_Samara.isHidden = true
+        #endif
         let defaults = UserDefaults.standard
         // Телефон диспетчера
         phone = defaults.string(forKey: "phone_operator")
@@ -341,6 +355,8 @@ class NewMainMenu2: UIViewController {
         fon_top.image = UIImage(named: "Logo_AlphaJKH")
         #elseif isSuhanovo
         fon_top.image = UIImage(named: "Logo_Suhanovo")
+        #elseif isMaximum
+        fon_top.image = UIImage(named: "Logo_Maximum")
         #endif
         
         // Картинки для разных Таргетов

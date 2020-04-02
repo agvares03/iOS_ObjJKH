@@ -14,6 +14,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var elipseBackground: UIView!
+    @IBOutlet weak var elipseBackground2: UIView!
+    @IBOutlet weak var fon_Samara: UIImageView!
     
     @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var keyboardHeight: NSLayoutConstraint!
@@ -215,7 +217,15 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         Crashlytics.sharedInstance().setObjectValue("EditAccount", forKey: "last_UI_action")
         tableView.delegate = self
         tableView.dataSource = self
-        
+        #if isRKC_Samara
+        elipseBackground.isHidden = true
+        elipseBackground2.isHidden = true
+        fon_Samara.isHidden = false
+        #else
+        elipseBackground.isHidden = false
+        elipseBackground2.isHidden = false
+        fon_Samara.isHidden = true
+        #endif
         #if isOur_Obj_Home
         fon_top.image = UIImage(named: "logo_Our_Obj_Home")
         #elseif isChist_Dom
@@ -358,6 +368,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         fon_top.image = UIImage(named: "Logo_AlphaJKH")
         #elseif isSuhanovo
         fon_top.image = UIImage(named: "Logo_Suhanovo")
+        #elseif isMaximum
+        fon_top.image = UIImage(named: "Logo_Maximum")
         #endif
         
         if UserDefaults.standard.string(forKey: "mail") != ""{
