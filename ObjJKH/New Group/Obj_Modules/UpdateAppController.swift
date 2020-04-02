@@ -160,6 +160,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Suhanovo")
         #elseif isMaximum
         imageApp.image = UIImage(named: "Logo_Maximum")
+        #elseif isEJF
+        imageApp.image = UIImage(named: "Logo_EJF")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -323,6 +325,8 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1505286500"
         #elseif isMaximum
         str = "itms-apps://itunes.apple.com/ru/app/id1505985526"
+        #elseif isEJF
+        str = "itms-apps://itunes.apple.com/ru/app/id1505990646"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

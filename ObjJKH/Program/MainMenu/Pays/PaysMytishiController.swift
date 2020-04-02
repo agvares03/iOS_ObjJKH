@@ -169,7 +169,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     @IBAction func Payed(_ sender: UIButton) {
         var l = false
-        #if isKlimovsk12 || isMaximum || isVodSergPosad || isSuhanovo || isDoka || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isDOM24 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isStroiDom || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
+        #if isKlimovsk12 || isEJF || isMaximum || isVodSergPosad || isSuhanovo || isDoka || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isDOM24 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isStroiDom || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
         l = true
         #else
         self.payedS()
@@ -599,6 +599,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isMaximum
         shopCode = "326070"
         targetName = "УО Максимум"
+        #elseif isEJF
+        shopCode = "326078"
+        targetName = "ЭЖФ"
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
@@ -760,7 +763,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
 //            }
             //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-            #elseif isKlimovsk12 || isMaximum || isVodSergPosad || isSuhanovo || isDoka || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isStroiDom || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
+            #elseif isKlimovsk12 || isEJF || isMaximum || isVodSergPosad || isSuhanovo || isDoka || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isStroiDom || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")

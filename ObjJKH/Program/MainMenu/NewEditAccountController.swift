@@ -370,6 +370,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         fon_top.image = UIImage(named: "Logo_Suhanovo")
         #elseif isMaximum
         fon_top.image = UIImage(named: "Logo_Maximum")
+        #elseif isEJF
+        fon_top.image = UIImage(named: "Logo_EJF")
         #endif
         
         if UserDefaults.standard.string(forKey: "mail") != ""{

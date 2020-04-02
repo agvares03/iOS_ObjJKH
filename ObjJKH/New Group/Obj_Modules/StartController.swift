@@ -166,6 +166,8 @@ class StartController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Suhanovo")
         #elseif isMaximum
         fon_top.image = UIImage(named: "Logo_Maximum")
+        #elseif isEJF
+        fon_top.image = UIImage(named: "Logo_EJF")
         #endif
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")

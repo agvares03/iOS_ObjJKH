@@ -402,6 +402,10 @@ class FirstController: UIViewController {
         UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Maximum")
+        #elseif isEJF
+        UserDefaults.standard.set("New_Terminal_IRKC", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_EJF")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
