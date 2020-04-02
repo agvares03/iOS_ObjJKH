@@ -179,6 +179,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_EJF")
         #elseif isClean_Tid
         imageApp.image = UIImage(named: "Logo_Clean_Tid")
+        #elseif isJilUpravKom
+        imageApp.image = UIImage(named: "Logo_JilUpravKom")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -438,6 +440,8 @@ class SupportUpdate: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1505990646"
         #elseif isClean_Tid
         str = "itms-apps://itunes.apple.com/ru/app/id1506004920"
+        #elseif isJilUpravKom
+        str = "itms-apps://itunes.apple.com/ru/app/id1506021980"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
