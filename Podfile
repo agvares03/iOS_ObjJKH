@@ -825,7 +825,7 @@ target 'NewOpaliha' do
   
 end
 
-target 'Pritomskoe' do
+target 'StroiDom' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   # Оплата - Тинькофф
   pod 'CardIO'

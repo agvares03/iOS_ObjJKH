@@ -288,8 +288,8 @@ class FirstController: UIViewController {
         UserDefaults.standard.set("NewOpaliha", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_NewOpaliha")
-        #elseif isPritomskoe
-        fon_top.image = UIImage(named: "Logo_Pritomskoe")
+        #elseif isStroiDom
+        fon_top.image = UIImage(named: "Logo_StroiDom")
         #elseif isDJVladimir
         fon_top.image = UIImage(named: "Logo_DJVladimir")
         #elseif isTSN_Dnestr

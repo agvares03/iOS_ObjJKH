@@ -80,7 +80,7 @@ class Server {
         static let SERVER          = "http://uk-gkh.org/tsg_fregat/"
     #elseif isNewOpaliha
         static let SERVER          = "http://www.uk-gkh.org/tsgopaliha/"
-    #elseif isPritomskoe
+    #elseif isStroiDom
         static let SERVER          = "http://uk-gkh.org/pritomnew/"
     #elseif isDJVladimir
         static let SERVER          = "http://uk-gkh.org/domshilservice/"

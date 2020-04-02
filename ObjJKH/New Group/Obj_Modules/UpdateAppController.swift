@@ -80,8 +80,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Fregat")
         #elseif isNewOpaliha
         imageApp.image = UIImage(named: "Logo_NewOpaliha")
-        #elseif isPritomskoe
-        imageApp.image = UIImage(named: "Logo_Pritomskoe")
+        #elseif isStroiDom
+        imageApp.image = UIImage(named: "Logo_StroiDom")
         #elseif isDJVladimir
         imageApp.image = UIImage(named: "Logo_DJVladimir")
         #elseif isTSN_Dnestr
@@ -241,7 +241,7 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1474068547"
         #elseif isNewOpaliha
         str = "itms-apps://itunes.apple.com/ru/app/id1475455954"
-        #elseif isPritomskoe
+        #elseif isStroiDom
         str = "itms-apps://itunes.apple.com/ru/app/id1475863546"
         #elseif isDJVladimir
         str = "itms-apps://itunes.apple.com/ru/app/id1475739790"
