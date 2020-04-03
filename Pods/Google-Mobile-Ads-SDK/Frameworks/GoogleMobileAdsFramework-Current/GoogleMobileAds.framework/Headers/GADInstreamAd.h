@@ -5,7 +5,6 @@
 //  Copyright 2019 Google LLC. All rights reserved.
 //
 
-#import <GoogleMobileAds/GADAdValue.h>
 #import <GoogleMobileAds/GADMediaAspectRatio.h>
 #import <GoogleMobileAds/GADMediaContent.h>
 #import <GoogleMobileAds/GADRequest.h>
@@ -42,8 +41,5 @@ typedef void (^GADInstreamAdLoadCompletionHandler)(GADInstreamAd *_Nullable inst
 
 /// Information about the ad response that returned the ad.
 @property(nonatomic, readonly, nonnull) GADResponseInfo *responseInfo;
-
-/// Called when the ad is estimated to have earned money. Available for whitelisted accounts only.
-@property(nonatomic, nullable, copy) GADPaidEventHandler paidEventHandler;
 
 @end

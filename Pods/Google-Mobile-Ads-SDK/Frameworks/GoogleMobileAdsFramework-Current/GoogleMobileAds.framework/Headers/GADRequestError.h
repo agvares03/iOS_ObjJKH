@@ -8,8 +8,10 @@
 #import <Foundation/Foundation.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
+@class GADRequest;
+
 /// Google AdMob Ads error domain.
-GAD_EXTERN NSString *_Nonnull const kGADErrorDomain;
+GAD_EXTERN NSString *const kGADErrorDomain;
 
 /// NSError codes for GAD error domain.
 typedef NS_ENUM(NSInteger, GADErrorCode) {
@@ -34,7 +36,7 @@ typedef NS_ENUM(NSInteger, GADErrorCode) {
   kGADErrorTimeout = 5,
 
   /// Will not send request because the interstitial object has already been used.
-  kGADErrorInterstitialAlreadyUsed GAD_DEPRECATED_MSG_ATTRIBUTE("Use kGADErrorAdAlreadyUsed.") = 6,
+  kGADErrorInterstitialAlreadyUsed = 6,
 
   /// The mediation response was invalid.
   kGADErrorMediationDataError = 7,
@@ -55,16 +57,10 @@ typedef NS_ENUM(NSInteger, GADErrorCode) {
   kGADErrorReceivedInvalidResponse = 13,
 
   /// Will not send request because the rewarded ad object has already been used.
-  kGADErrorRewardedAdAlreadyUsed GAD_DEPRECATED_MSG_ATTRIBUTE("Use kGADErrorAdAlreadyUsed.") = 14,
+  kGADErrorRewardedAdAlreadyUsed = 14,
 
   /// Deprecated error code, use kGADErrorNoFill.
   kGADErrorMediationNoFill GAD_DEPRECATED_MSG_ATTRIBUTE("Use kGADErrorNoFill.") = 9,
-
-  /// Will not send request because the ad object has already been used.
-  kGADErrorAdAlreadyUsed = 19,
-
-  /// Will not send request because the application identifier is missing.
-  kGADErrorApplicationIdentifierMissing = 20,
 };
 
 /// Represents the error generated due to invalid request parameters.
