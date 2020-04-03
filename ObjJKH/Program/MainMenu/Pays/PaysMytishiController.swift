@@ -340,9 +340,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isTSJ_Rachangel
         shopCode = "265024"
         targetName = "ТСЖ Архангельское"
-//        #elseif isMUP_IRKC
-//        shopCode = "323467"
-//        targetName = "МУП ИРКЦ"
+        #elseif isMUP_IRKC
+        shopCode = "-"
+        targetName = "МУП ИРКЦ"
         #elseif isNarianMarEl
         shopCode = "322342"
         targetName = "Нарьян-Марская электростанция"
