@@ -29,7 +29,10 @@
     if ([savedValue  isEqual: @"DOM24"]){
         return @[kASDKTestTerminalKeyDOM24];
     }
-    if ([savedValue  isEqual: @"New_Terminal_IRKC"]){
+    if ([savedValue  isEqual: @"New_Terminal"]){
+        return @[kASDKTestTerminalKeyNEW];
+    }
+    if ([savedValue  isEqual: @"MUP_IRKC"]){
         return @[kASDKTestTerminalKeyMUP_IRKC];
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
@@ -89,7 +92,10 @@
         if ([savedValue  isEqual: @"DOM24"]){
             result = kASDKTestTerminalKeyDOM24;
         }
-        if ([savedValue  isEqual: @"New_Terminal_IRKC"]){
+        if ([savedValue  isEqual: @"New_Terminal"]){
+            result = kASDKTestTerminalKeyNEW;
+        }
+        if ([savedValue  isEqual: @"MUP_IRKC"]){
             result = kASDKTestTerminalKeyMUP_IRKC;
         }
 //        if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
@@ -152,7 +158,10 @@
     if ([savedValue  isEqual: @"DOM24"]){
         return kASDKTestPasswordDOM24;
     }
-    if ([savedValue  isEqual: @"New_Terminal_IRKC"]){
+    if ([savedValue  isEqual: @"New_Terminal"]){
+        return kASDKTestPasswordNEW;
+    }
+    if ([savedValue  isEqual: @"MUP_IRKC"]){
         return kASDKTestPasswordMUP_IRKC;
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
@@ -208,7 +217,10 @@
     if ([savedValue  isEqual: @"DOM24"]){
         return kASDKTestPublicKeyDOM24;
     }
-    if ([savedValue  isEqual: @"New_Terminal_IRKC"]){
+    if ([savedValue  isEqual: @"New_Terminal"]){
+        return kASDKTestPublicKeyNEW;
+    }
+    if ([savedValue  isEqual: @"MUP_IRKC"]){
         return kASDKTestPublicKeyMUP_IRKC;
     }
 //    if ([savedValue  isEqual: @"UK_Upravdom_Che"]){
