@@ -340,9 +340,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isTSJ_Rachangel
         shopCode = "265024"
         targetName = "ТСЖ Архангельское"
-        #elseif isMUP_IRKC
-        shopCode = "323467"
-        targetName = "МУП ИРКЦ"
+//        #elseif isMUP_IRKC
+//        shopCode = "323467"
+//        targetName = "МУП ИРКЦ"
         #elseif isNarianMarEl
         shopCode = "322342"
         targetName = "Нарьян-Марская электростанция"
@@ -642,7 +642,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     ItemsData = ["ShopCode" : shopCode, "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                     items.append(ItemsData)
                 }
-                #elseif isMupRCMytishi || isDOM24
+                #elseif isMupRCMytishi || isDOM24 || isMUP_IRKC
                 let ItemsData = ["Name" : "Услуга ЖКУ", "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                 items.append(ItemsData)
                 #else
@@ -659,7 +659,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                             ItemsData = ["ShopCode" : shopCode, "Name" : "Услуга ЖКУ", "Price" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Quantity" : Double(1.00), "Amount" : Int(String(format:"%.2f", self.sum).replacingOccurrences(of: ".", with: ""))!, "Tax" : "none", "QUANTITY_SCALE_FACTOR" : 3] as [String : Any]
                             items.append(ItemsData)
                         }
-                        #elseif isMupRCMytishi || isDOM24
+                        #elseif isMupRCMytishi || isDOM24 || isMUP_IRKC
                         let ItemsData = ["Name" : osvc[i], "Price" : Int(price)!, "Quantity" : Double(1.00), "Amount" : Int(price)!, "Tax" : "none"] as [String : Any]
                         items.append(ItemsData)
                         #else
@@ -676,7 +676,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
                 if servicePay != 0{
                     let servicePrice = String(format:"%.2f", servicePay).replacingOccurrences(of: ".", with: "")
-                    #if isMupRCMytishi || isDOM24
+                    #if isMupRCMytishi || isDOM24 || isMUP_IRKC
                     let ItemsData = ["Name" : "Сервисный сбор", "Price" : Int(servicePrice)!, "Quantity" : Double(1.00), "Amount" : Int(servicePrice)!, "Tax" : "none"] as [String : Any]
                     items.append(ItemsData)
                     #else
@@ -704,7 +704,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }else{
                 #if isKlimovsk12
                 DataStr = DataStr + "1-\(String(format:"%.2f", self.sum))|"
-                #elseif isMupRCMytishi || isDOM24
+                #elseif isMupRCMytishi || isDOM24 || isMUP_IRKC
                 if k{
                     DataStr = DataStr + "usluga-\(String(format:"%.2f", self.totalSum))|"
                 }else{
@@ -735,7 +735,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let defaults = UserDefaults.standard
             self.onePay = 0
             self.oneCheck = 0
-            #if isMupRCMytishi || isDOM24
+            #if isMupRCMytishi || isDOM24 || isMUP_IRKC
             let receiptData = ["Items" : items, "Email" : defaults.string(forKey: "mail")!, "Phone" : defaults.object(forKey: "login")! as? String ?? "", "Taxation" : "osn"] as [String : Any]
             let name = "ДОМ24"
             let amount = NSNumber(floatLiteral: self.totalSum)
