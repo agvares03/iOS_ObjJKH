@@ -603,7 +603,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "326078"
         targetName = "ЭЖФ"
         #elseif isClean_Tid
-        shopCode = "326086"
+        shopCode = "326628"
         targetName = "Чистота и порядок"
         #elseif isJilUpravKom
         shopCode = "326087"
