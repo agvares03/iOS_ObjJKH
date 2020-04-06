@@ -258,7 +258,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         shopCode = "322906"
         targetName = "УК Упрадом Чебоксары"
         #elseif isReutKomfort
-        shopCode = "322345"
+        shopCode = "326704"
         targetName = "УК РеутКомфорт"
         #elseif isServiceKomfort
 //        shopCode = "252187"
@@ -885,7 +885,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.insurance.isHidden = true
             self.insuranceHeight.constant = 0
         }
-        #if isDJ || isSkyfort
+        #if isDJ || isSkyfort || isReutKomfort
         currPoint = 522
         paysViewHeight.constant = 110
         txt_sum_jkh.isHidden = true
@@ -1298,7 +1298,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         self.txt_sum_jkh.text = "0.00 руб."
                         self.servicePay.text  = "0.00 руб."
                     }
-                    #if isDJ || isSkyfort
+                    #if isDJ || isSkyfort || isReutKomfort
                     self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                     self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
                     #endif
@@ -1424,7 +1424,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.totalSum = self.sum + serviceP
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                #if isDJ || isSkyfort
+                #if isDJ || isSkyfort || isReutKomfort
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
                 #endif
@@ -1759,7 +1759,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.servicePay.text = "Комиссия не взимается"
                 self.servicePay.textColor = .lightGray
             }
-            #if isDJ || isSkyfort
+            #if isDJ || isSkyfort || isReutKomfort
             self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
             self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
             #endif
@@ -1829,7 +1829,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.totalSum = self.sum + serviceP
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                #if isDJ || isSkyfort
+                #if isDJ || isSkyfort || isReutKomfort
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
                 #endif
@@ -1859,7 +1859,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.totalSum = self.sum + serviceP
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
-                #if isDJ || isSkyfort
+                #if isDJ || isSkyfort || isReutKomfort
                 self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
                 self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
                 #endif
