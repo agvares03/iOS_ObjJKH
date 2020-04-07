@@ -20,6 +20,8 @@ class AddLSSimple: UIViewController {
 
     @IBOutlet weak var indicatior:      UIActivityIndicatorView!
     @IBOutlet weak var edLS:            UITextField!
+    @IBOutlet weak var helpLSImg:       UIImageView!
+    @IBOutlet weak var helpLSHeight:    NSLayoutConstraint!
     @IBOutlet weak var edPin:           UITextField!
     @IBOutlet weak var imgTech:         UIImageView!
     @IBOutlet weak var support:         UIImageView!
@@ -118,21 +120,25 @@ class AddLSSimple: UIViewController {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 
-                let alert = UIAlertController(title: "Проверьте правильность адреса", message: self.response_ident?.replacingOccurrences(of: "ok: ", with: ""), preferredStyle: .alert)
+                var alert = UIAlertController(title: "Проверьте правильность адреса", message: self.response_ident?.replacingOccurrences(of: "ok: ", with: ""), preferredStyle: .alert)
                 #if isElectroSbitSaratov
                     alert.addTextField { textField in
                         textField.placeholder = "Введите пин-код..."
                     }
                 #endif
                 #if isRKC_Samara
+                alert = UIAlertController(title: "Введите ФИО", message: "Необходимо указывать ФИО, обозначенные в ваших квитанциях на оплату, соблюдая написание в точности до знака.", preferredStyle: .alert)
                 alert.addTextField { textField in
                     textField.placeholder = "Фамилия..."
+                    textField.textContentType = .name
                 }
                 alert.addTextField { textField in
                     textField.placeholder = "Имя..."
+                    textField.textContentType = .name
                 }
                 alert.addTextField { textField in
                     textField.placeholder = "Отчество..."
+                    textField.textContentType = .name
                 }
                 #endif
                 
@@ -396,7 +402,13 @@ class AddLSSimple: UIViewController {
         phone = defaults.string(forKey: "phone")!
         
         StopIndicator()
-
+        #if isRKC_Samara
+        helpLSImg.isHidden = false
+        helpLSHeight.constant = 112
+        #else
+        helpLSImg.isHidden = true
+        helpLSHeight.constant = 0
+        #endif
         #if isMUP_IRKC
         pinView.isHidden = false
         pinViewHeight.constant = 130

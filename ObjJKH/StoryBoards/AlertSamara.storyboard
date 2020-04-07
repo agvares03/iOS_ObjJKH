@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mAU-b9-Gsc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Телефоны при аварии-->
+        <scene sceneID="Nyb-TO-1Dj">
+            <objects>
+                <viewController storyboardIdentifier="phoneAlert" id="KXw-9L-4Bx" customClass="PhoneAlertVC" customModule="RKC_Samara" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K1f-ew-y6f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   ТЕЛЕФОНЫ по вопросам аварийных ситуаций на уличных сетях холодного водоснабжения и водоотведения" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WQ-FY-qAe">
+                                <rect key="frame" x="20" y="60" width="335" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0qu-KM-wrF">
+                                <rect key="frame" x="137.5" y="137.5" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7IV-gC-7vy"/>
+                                    <constraint firstAttribute="width" constant="100" id="B1G-Y4-Ml9"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="334-75-12">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="onePhoneAction:" destination="KXw-9L-4Bx" eventType="touchUpInside" id="UH8-39-pev"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GLO-mh-Hof">
+                                <rect key="frame" x="137.5" y="177.5" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="8u1-lU-Ni9"/>
+                                    <constraint firstAttribute="height" constant="30" id="AfR-B5-PSy"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="336-86-51">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="twoPhoneAction:" destination="KXw-9L-4Bx" eventType="touchUpInside" id="haP-CJ-b2u"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GLO-mh-Hof" firstAttribute="centerX" secondItem="K1f-ew-y6f" secondAttribute="centerX" id="0vA-jY-78W"/>
+                            <constraint firstItem="0qu-KM-wrF" firstAttribute="top" secondItem="8WQ-FY-qAe" secondAttribute="bottom" constant="20" id="1K6-uh-S1R"/>
+                            <constraint firstItem="8WQ-FY-qAe" firstAttribute="leading" secondItem="D0O-0s-jTn" secondAttribute="leading" constant="20" id="7nr-Jp-d3b"/>
+                            <constraint firstAttribute="trailing" secondItem="8WQ-FY-qAe" secondAttribute="trailing" constant="20" id="Sry-Vu-Bl5"/>
+                            <constraint firstItem="0qu-KM-wrF" firstAttribute="centerX" secondItem="D0O-0s-jTn" secondAttribute="centerX" id="YYJ-3B-Rw2"/>
+                            <constraint firstItem="8WQ-FY-qAe" firstAttribute="top" secondItem="D0O-0s-jTn" secondAttribute="top" constant="16" id="dJh-fH-jKS"/>
+                            <constraint firstItem="GLO-mh-Hof" firstAttribute="top" secondItem="0qu-KM-wrF" secondAttribute="bottom" constant="10" id="zyc-zJ-RlK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="D0O-0s-jTn"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Телефоны при аварии" id="TIB-3H-hPA">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="M1P-og-eHk">
+                            <connections>
+                                <action selector="btnCancelGo:" destination="KXw-9L-4Bx" id="Voa-nl-2Jh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backBtn" destination="M1P-og-eHk" id="Et1-kL-IgK"/>
+                        <outlet property="onePhoneBtn" destination="0qu-KM-wrF" id="oX7-au-g2c"/>
+                        <outlet property="twoPhoneBtn" destination="GLO-mh-Hof" id="yi5-7O-yBz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYE-JD-5gY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1068" y="112.89355322338831"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8qh-U8-rVY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mAU-b9-Gsc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qf9-Jr-PuX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KXw-9L-4Bx" kind="relationship" relationship="rootViewController" id="b1K-Ud-e4t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ORb-sp-ojd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128.80000000000001" y="112.89355322338831"/>
+        </scene>
+        <!--Сообщить об аварии-->
+        <scene sceneID="QLu-g5-5uS">
+            <objects>
+                <viewController storyboardIdentifier="reportAlert" id="EpD-dI-m7s" customClass="ReportAlertVC" customModule="RKC_Samara" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S89-bd-LCn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Вы стали свидетелем коммунальной аварии, незаконной врезки или открытого люка? Сообщите об этом водоканалу!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIN-Sy-xIM">
+                                <rect key="frame" x="20" y="49" width="335" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfF-XT-hgh">
+                                <rect key="frame" x="20" y="103" width="335" height="90"/>
+                                <string key="text">  Расскажите диспетчеру водоканала о любых проблемах с водоснабжением - перебоях с водой, открытых колодцах, некачественно выполненных заявках или других сбоях на водопроводных или канализационных сетях.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00M-9t-qfH">
+                                <rect key="frame" x="10" y="198" width="50" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="0VS-uX-7vt"/>
+                                    <constraint firstAttribute="height" constant="60" id="HLQ-9d-HyX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="70"/>
+                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_icon" translatesAutoresizingMaskIntoConstraints="NO" id="x7t-Js-Kd9">
+                                <rect key="frame" x="65" y="205.5" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="x7t-Js-Kd9" secondAttribute="height" id="5zJ-jG-Ypx"/>
+                                    <constraint firstAttribute="height" constant="45" id="eTE-WW-fMZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сделайте фотографию коммунальной аварии" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeF-6w-GQa">
+                                <rect key="frame" x="120" y="210" width="245" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vs-Zq-EqB">
+                                <rect key="frame" x="15" y="263" width="345" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="HZx-4V-YcJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foh-Bk-4Pr">
+                                <rect key="frame" x="10" y="285" width="50" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="9hp-Dz-HEx"/>
+                                    <constraint firstAttribute="width" constant="50" id="TD3-Oe-Ml4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="70"/>
+                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="galeryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IiR-AO-fPZ">
+                                <rect key="frame" x="65" y="292.5" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IiR-AO-fPZ" secondAttribute="height" id="4te-bX-bkt"/>
+                                    <constraint firstAttribute="height" constant="45" id="Gjx-JP-eT2"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9E-ob-FRu">
+                                <rect key="frame" x="120" y="264" width="245" height="102"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отправьте фото на электронную почту" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOi-DG-Ndt">
+                                        <rect key="frame" x="0.0" y="0.0" width="245" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-Pd-QY6">
+                                        <rect key="frame" x="0.0" y="36" width="245" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="WNj-5v-oex"/>
+                                        </constraints>
+                                        <state key="normal" title="vodasignal@samcomsys.ru"/>
+                                        <connections>
+                                            <action selector="sendEmailAction:" destination="EpD-dI-m7s" eventType="touchUpInside" id="HBs-HM-gyK"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="или оставьте заявку на" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka4-go-5Z8">
+                                        <rect key="frame" x="0.0" y="60" width="245" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjd-Ij-RSO">
+                                        <rect key="frame" x="0.0" y="78" width="245" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Wad-lC-rSq"/>
+                                        </constraints>
+                                        <state key="normal" title="https://samcomsys.ru/appeals"/>
+                                        <connections>
+                                            <action selector="goWebAction:" destination="EpD-dI-m7s" eventType="touchUpInside" id="oN9-i3-Jp9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="9Yc-Pd-QY6" firstAttribute="top" secondItem="kOi-DG-Ndt" secondAttribute="bottom" id="0xD-6o-Ufi"/>
+                                    <constraint firstItem="Ka4-go-5Z8" firstAttribute="leading" secondItem="T9E-ob-FRu" secondAttribute="leading" id="8ie-3i-jln"/>
+                                    <constraint firstItem="Ka4-go-5Z8" firstAttribute="top" secondItem="9Yc-Pd-QY6" secondAttribute="bottom" id="CiU-fY-4nP"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Yc-Pd-QY6" secondAttribute="trailing" id="IJU-sg-jpx"/>
+                                    <constraint firstItem="kjd-Ij-RSO" firstAttribute="top" secondItem="Ka4-go-5Z8" secondAttribute="bottom" id="Iqd-rn-ej2"/>
+                                    <constraint firstItem="kOi-DG-Ndt" firstAttribute="top" secondItem="T9E-ob-FRu" secondAttribute="top" id="TwG-zQ-0nf"/>
+                                    <constraint firstItem="kjd-Ij-RSO" firstAttribute="leading" secondItem="T9E-ob-FRu" secondAttribute="leading" id="WhL-J0-fVn"/>
+                                    <constraint firstAttribute="bottom" secondItem="kjd-Ij-RSO" secondAttribute="bottom" id="ZAa-Vh-9ge"/>
+                                    <constraint firstItem="kOi-DG-Ndt" firstAttribute="leading" secondItem="T9E-ob-FRu" secondAttribute="leading" id="bUC-eh-7kT"/>
+                                    <constraint firstItem="9Yc-Pd-QY6" firstAttribute="leading" secondItem="T9E-ob-FRu" secondAttribute="leading" id="jX2-zz-6NI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ka4-go-5Z8" secondAttribute="trailing" id="pOQ-MW-Aof"/>
+                                    <constraint firstAttribute="trailing" secondItem="kOi-DG-Ndt" secondAttribute="trailing" id="r3L-Og-4Fu"/>
+                                    <constraint firstAttribute="trailing" secondItem="kjd-Ij-RSO" secondAttribute="trailing" id="yQ4-YP-IRI"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-Tt-P5H">
+                                <rect key="frame" x="15" y="366" width="345" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="azK-f7-EG4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pG0-37-uxu">
+                                <rect key="frame" x="117.5" y="367" width="247.5" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Или на номер" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxR-pb-EwN">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="SP3-6B-mg4"/>
+                                            <constraint firstAttribute="height" constant="24" id="Wcs-w2-nnl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="через мессенджеры WhatsApp и Viber" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPB-li-8aq">
+                                        <rect key="frame" x="0.0" y="24" width="247.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yc-Zj-eLK">
+                                        <rect key="frame" x="100" y="0.0" width="147.5" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Y3Y-nO-zVr"/>
+                                        </constraints>
+                                        <state key="normal" title="+7-917-013-70-07"/>
+                                        <connections>
+                                            <action selector="onePhoneAction:" destination="EpD-dI-m7s" eventType="touchUpInside" id="p0a-LC-in5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yPB-li-8aq" secondAttribute="trailing" id="2S1-Zm-vwS"/>
+                                    <constraint firstItem="yPB-li-8aq" firstAttribute="leading" secondItem="pG0-37-uxu" secondAttribute="leading" id="4Yp-fX-DZN"/>
+                                    <constraint firstItem="6yc-Zj-eLK" firstAttribute="top" secondItem="pG0-37-uxu" secondAttribute="top" id="Bpk-p3-YVQ"/>
+                                    <constraint firstItem="WxR-pb-EwN" firstAttribute="leading" secondItem="pG0-37-uxu" secondAttribute="leading" id="EYU-gd-kCb"/>
+                                    <constraint firstAttribute="trailing" secondItem="yPB-li-8aq" secondAttribute="trailing" id="IcW-xs-xRb"/>
+                                    <constraint firstAttribute="trailing" secondItem="6yc-Zj-eLK" secondAttribute="trailing" id="MNu-8t-meb"/>
+                                    <constraint firstItem="6yc-Zj-eLK" firstAttribute="leading" secondItem="WxR-pb-EwN" secondAttribute="trailing" id="Xi3-K8-4Ut"/>
+                                    <constraint firstItem="yPB-li-8aq" firstAttribute="top" secondItem="WxR-pb-EwN" secondAttribute="bottom" id="ZA9-s8-3E9"/>
+                                    <constraint firstItem="WxR-pb-EwN" firstAttribute="top" secondItem="pG0-37-uxu" secondAttribute="top" id="phu-Jh-WXK"/>
+                                    <constraint firstAttribute="bottom" secondItem="yPB-li-8aq" secondAttribute="bottom" id="qGe-4i-2El"/>
+                                    <constraint firstItem="yPB-li-8aq" firstAttribute="leading" secondItem="pG0-37-uxu" secondAttribute="leading" id="wm1-nT-Ytl"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Все обращения будут рассмотрены и переданы специалистам для оперативного устранения проблемы в кратчайшие сроки!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epT-xK-VzK">
+                                <rect key="frame" x="20" y="437" width="335" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezM-Nm-bJn">
+                                <rect key="frame" x="20" y="491" width="335" height="90"/>
+                                <string key="text">  За каждое подтвердившееся сообщение о врезке компания гарантирует выплату вознаграждения в размере 10 000 рублей. Выявите мошенников, ворующих воду из городских сетей, а значит - у вас!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyf-ft-yDP">
+                                <rect key="frame" x="15" y="377" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="1kq-nM-oED"/>
+                                    <constraint firstAttribute="height" constant="40" id="ecF-H0-gD3"/>
+                                </constraints>
+                                <state key="normal" image="whatsAppIcon"/>
+                                <connections>
+                                    <action selector="goWhatsAppAction:" destination="EpD-dI-m7s" eventType="touchUpInside" id="Q2D-Eq-lT1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3F-kw-WqZ">
+                                <rect key="frame" x="67.5" y="377" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ePZ-PX-DvQ"/>
+                                    <constraint firstAttribute="width" constant="40" id="xAe-1u-hik"/>
+                                </constraints>
+                                <state key="normal" image="viberIcon"/>
+                                <connections>
+                                    <action selector="goViberAction:" destination="EpD-dI-m7s" eventType="touchUpInside" id="fEA-R1-Jt6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LfF-XT-hgh" firstAttribute="top" secondItem="EIN-Sy-xIM" secondAttribute="bottom" id="05g-sI-8Fn"/>
+                            <constraint firstItem="IiR-AO-fPZ" firstAttribute="leading" secondItem="foh-Bk-4Pr" secondAttribute="trailing" constant="5" id="2ia-ml-kmP"/>
+                            <constraint firstItem="epT-xK-VzK" firstAttribute="leading" secondItem="S89-bd-LCn" secondAttribute="leading" constant="20" id="30R-bZ-ywU"/>
+                            <constraint firstItem="IiR-AO-fPZ" firstAttribute="centerY" secondItem="T9E-ob-FRu" secondAttribute="centerY" id="6qj-4K-jbo"/>
+                            <constraint firstItem="KLO-O9-W5y" firstAttribute="trailing" secondItem="epT-xK-VzK" secondAttribute="trailing" constant="20" id="CP8-ac-ori"/>
+                            <constraint firstItem="IiR-AO-fPZ" firstAttribute="centerY" secondItem="foh-Bk-4Pr" secondAttribute="centerY" id="CtY-mO-jda"/>
+                            <constraint firstItem="x7t-Js-Kd9" firstAttribute="centerY" secondItem="00M-9t-qfH" secondAttribute="centerY" id="Dl8-71-kAN"/>
+                            <constraint firstItem="7Vs-Zq-EqB" firstAttribute="leading" secondItem="KLO-O9-W5y" secondAttribute="leading" constant="15" id="HCS-a2-2yw"/>
+                            <constraint firstItem="T9E-ob-FRu" firstAttribute="leading" secondItem="IiR-AO-fPZ" secondAttribute="trailing" constant="10" id="ILP-ZP-ZRc"/>
+                            <constraint firstItem="KLO-O9-W5y" firstAttribute="trailing" secondItem="T9E-ob-FRu" secondAttribute="trailing" constant="10" id="Los-tT-7Ow"/>
+                            <constraint firstItem="pG0-37-uxu" firstAttribute="leading" secondItem="c3F-kw-WqZ" secondAttribute="trailing" constant="10" id="MT5-xT-cG5"/>
+                            <constraint firstAttribute="trailing" secondItem="EIN-Sy-xIM" secondAttribute="trailing" constant="20" id="NBF-RQ-wBD"/>
+                            <constraint firstItem="epT-xK-VzK" firstAttribute="top" secondItem="pG0-37-uxu" secondAttribute="bottom" constant="10" id="QSb-0X-OKC"/>
+                            <constraint firstItem="LfF-XT-hgh" firstAttribute="leading" secondItem="S89-bd-LCn" secondAttribute="leading" constant="20" id="T4l-Oe-QyI"/>
+                            <constraint firstItem="c3F-kw-WqZ" firstAttribute="centerY" secondItem="pG0-37-uxu" secondAttribute="centerY" id="UZb-E0-Rmm"/>
+                            <constraint firstItem="KLO-O9-W5y" firstAttribute="trailing" secondItem="pG0-37-uxu" secondAttribute="trailing" constant="10" id="WNV-qw-0g8"/>
+                            <constraint firstItem="pG0-37-uxu" firstAttribute="top" secondItem="WH5-Tt-P5H" secondAttribute="bottom" id="XEe-2n-Bir"/>
+                            <constraint firstItem="KLO-O9-W5y" firstAttribute="trailing" secondItem="zeF-6w-GQa" secondAttribute="trailing" constant="10" id="Xkj-ef-iJX"/>
+                            <constraint firstItem="EIN-Sy-xIM" firstAttribute="leading" secondItem="KLO-O9-W5y" secondAttribute="leading" constant="20" id="Xrx-Kc-w0A"/>
+                            <constraint firstItem="c3F-kw-WqZ" firstAttribute="centerX" secondItem="IiR-AO-fPZ" secondAttribute="centerX" id="Zzy-G2-K53"/>
+                            <constraint firstItem="EIN-Sy-xIM" firstAttribute="top" secondItem="KLO-O9-W5y" secondAttribute="top" constant="5" id="afo-dZ-9Nw"/>
+                            <constraint firstItem="zeF-6w-GQa" firstAttribute="leading" secondItem="x7t-Js-Kd9" secondAttribute="trailing" constant="10" id="asb-u3-On2"/>
+                            <constraint firstItem="foh-Bk-4Pr" firstAttribute="leading" secondItem="KLO-O9-W5y" secondAttribute="leading" constant="10" id="bya-AD-AMW"/>
+                            <constraint firstItem="00M-9t-qfH" firstAttribute="top" secondItem="LfF-XT-hgh" secondAttribute="bottom" constant="5" id="dch-LW-d5V"/>
+                            <constraint firstItem="Eyf-ft-yDP" firstAttribute="centerY" secondItem="pG0-37-uxu" secondAttribute="centerY" id="deU-hO-XeM"/>
+                            <constraint firstItem="KLO-O9-W5y" firstAttribute="trailing" secondItem="ezM-Nm-bJn" secondAttribute="trailing" constant="20" id="dvw-oI-Ys7"/>
+                            <constraint firstItem="Eyf-ft-yDP" firstAttribute="centerX" secondItem="foh-Bk-4Pr" secondAttribute="centerX" id="dzP-J0-EhK"/>
+                            <constraint firstItem="KLO-O9-W5y" firstAttribute="trailing" secondItem="LfF-XT-hgh" secondAttribute="trailing" constant="20" id="eEN-cZ-E1f"/>
+                            <constraint firstItem="00M-9t-qfH" firstAttribute="leading" secondItem="KLO-O9-W5y" secondAttribute="leading" constant="10" id="lwn-Ce-qj1"/>
+                            <constraint firstItem="ezM-Nm-bJn" firstAttribute="top" secondItem="epT-xK-VzK" secondAttribute="bottom" id="mHR-nl-YZw"/>
+                            <constraint firstItem="KLO-O9-W5y" firstAttribute="trailing" secondItem="7Vs-Zq-EqB" secondAttribute="trailing" constant="15" id="nfK-jI-zr6"/>
+                            <constraint firstItem="WH5-Tt-P5H" firstAttribute="leading" secondItem="S89-bd-LCn" secondAttribute="leading" constant="15" id="pQQ-kr-hcL"/>
+                            <constraint firstItem="T9E-ob-FRu" firstAttribute="top" secondItem="7Vs-Zq-EqB" secondAttribute="bottom" id="q4B-gK-Lhd"/>
+                            <constraint firstItem="ezM-Nm-bJn" firstAttribute="leading" secondItem="S89-bd-LCn" secondAttribute="leading" constant="20" id="qxo-Fr-Wgh"/>
+                            <constraint firstItem="zeF-6w-GQa" firstAttribute="centerY" secondItem="x7t-Js-Kd9" secondAttribute="centerY" id="sgE-45-F7h"/>
+                            <constraint firstItem="x7t-Js-Kd9" firstAttribute="leading" secondItem="00M-9t-qfH" secondAttribute="trailing" constant="5" id="tQd-y9-c9U"/>
+                            <constraint firstAttribute="trailing" secondItem="WH5-Tt-P5H" secondAttribute="trailing" constant="15" id="uGj-3U-gIR"/>
+                            <constraint firstItem="WH5-Tt-P5H" firstAttribute="top" secondItem="T9E-ob-FRu" secondAttribute="bottom" id="uha-El-AAK"/>
+                            <constraint firstItem="7Vs-Zq-EqB" firstAttribute="top" secondItem="00M-9t-qfH" secondAttribute="bottom" constant="5" id="yoG-ty-JIL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KLO-O9-W5y"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Сообщить об аварии" id="YhV-bz-b7U">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="OfP-u6-vsa">
+                            <connections>
+                                <action selector="btnCancelGo:" destination="EpD-dI-m7s" id="4M9-Dv-9t1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backBtn" destination="OfP-u6-vsa" id="8mF-td-tJe"/>
+                        <outlet property="emailBtn" destination="9Yc-Pd-QY6" id="5ul-J6-k4B"/>
+                        <outlet property="phoneBtn" destination="6yc-Zj-eLK" id="vBv-mM-5pa"/>
+                        <outlet property="webBtn" destination="kjd-Ij-RSO" id="DGN-Ly-ArI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h23-Aj-yxy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1068" y="810.94452773613204"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Dp0-io-hql">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wpp-5f-H2p" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fUX-Dr-8ls">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EpD-dI-m7s" kind="relationship" relationship="rootViewController" id="4ZP-bL-hK3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n57-Ii-tBP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="129" y="811"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="17" height="17"/>
+        <image name="camera_icon" width="145" height="110"/>
+        <image name="galeryIcon" width="100" height="100"/>
+        <image name="viberIcon" width="240" height="240"/>
+        <image name="whatsAppIcon" width="256" height="256"/>
+    </resources>
+</document>
