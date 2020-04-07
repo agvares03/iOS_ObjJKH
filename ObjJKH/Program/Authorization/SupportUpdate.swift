@@ -381,7 +381,7 @@ class SupportUpdate: UIViewController {
         #elseif isUK_First
         str = "itms-apps://itunes.apple.com/ru/app/id1478072913"
         #elseif isRKC_Samara
-        str = "itms-apps://itunes.apple.com/ru/app/id1479682216"
+        str = "itms-apps://itunes.apple.com/ru/app/id1506706207"
         #elseif isEnergoProgress
         str = "itms-apps://itunes.apple.com/ru/app/id1484298695"
         #elseif isMurmanskPartnerPlus

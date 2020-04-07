@@ -76,6 +76,16 @@ class NewMainMenu2: UIViewController {
     @IBOutlet weak var btn_name_9: UIButton!
     @IBOutlet weak var btn_arr_9: UIImageView!
     @IBOutlet weak var line_bottom_9: UILabel!
+    // Телефоны при аварии РКС Самара
+    @IBOutlet weak var menu_11_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_11: UIButton!
+    @IBOutlet weak var btn_arr_11: UIImageView!
+    @IBOutlet weak var line_bottom_11: UILabel!
+    // Сообщить об аварии РКС Самара
+    @IBOutlet weak var menu_12_heigth: NSLayoutConstraint!
+    @IBOutlet weak var btn_name_12: UIButton!
+    @IBOutlet weak var btn_arr_12: UIImageView!
+    @IBOutlet weak var line_bottom_12: UILabel!
     // Голосования
     @IBOutlet weak var oss_heigth: NSLayoutConstraint!
     @IBOutlet weak var btn_name_oss: UIButton!
@@ -104,6 +114,8 @@ class NewMainMenu2: UIViewController {
     @IBOutlet weak var object: UIImageView!
     @IBOutlet weak var exit_img: UIImageView!
     @IBOutlet weak var oss: UIImageView!
+    @IBOutlet weak var phoneSamara: UIImageView!
+    @IBOutlet weak var alertSamara: UIImageView!
     
     var phone: String?
     
@@ -393,6 +405,8 @@ class NewMainMenu2: UIViewController {
         exit_img.setImageColor(color: myColors.btnColor.uiColor())
         oss.image = myImages.oss_image
         oss.setImageColor(color: myColors.btnColor.uiColor())
+        phoneSamara.setImageColor(color: myColors.btnColor.uiColor())
+        alertSamara.setImageColor(color: myColors.btnColor.uiColor())
         
         line_bottom_0.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_2.backgroundColor = myColors.btnColor.uiColor()
@@ -404,6 +418,8 @@ class NewMainMenu2: UIViewController {
         line_bottom_8.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_9.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_10.backgroundColor = myColors.btnColor.uiColor()
+        line_bottom_11.backgroundColor = myColors.btnColor.uiColor()
+        line_bottom_12.backgroundColor = myColors.btnColor.uiColor()
         line_bottom_oss.backgroundColor = myColors.btnColor.uiColor()
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
         getDebt()
@@ -584,7 +600,31 @@ class NewMainMenu2: UIViewController {
                 //heigth_view.constant = //heigth_view.constant + 21
             }
         }
+        #if isRKC_Samara
+//        menu_11_heigth.constant   = -2
+//        btn_name_11.isHidden      = true
+//        btn_arr_11.isHidden       = true
+//        line_bottom_11.isHidden   = true
+//        phoneSamara.isHidden      = true
+//
+//        menu_12_heigth.constant   = -2
+//        btn_name_12.isHidden      = true
+//        btn_arr_12.isHidden       = true
+//        line_bottom_12.isHidden   = true
+//        alertSamara.isHidden      = true
+        #else
+        menu_11_heigth.constant   = -2
+        btn_name_11.isHidden      = true
+        btn_arr_11.isHidden       = true
+        line_bottom_11.isHidden   = true
+        phoneSamara.isHidden      = true
         
+        menu_12_heigth.constant   = -2
+        btn_name_12.isHidden      = true
+        btn_arr_12.isHidden       = true
+        line_bottom_12.isHidden   = true
+        alertSamara.isHidden      = true
+        #endif
         // Выход - только название
         let str_menu_9 = defaults.string(forKey: "menu_9") ?? ""
         if (str_menu_9 != "") {
