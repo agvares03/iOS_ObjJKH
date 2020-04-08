@@ -184,6 +184,8 @@ class MainMenuCons: UIViewController {
         fon_top.image = UIImage(named: "Logo_Clean_Tid")
         #elseif isJilUpravKom
         fon_top.image = UIImage(named: "Logo_JilUpravKom")
+        #elseif isTihGavan
+        fon_top.image = UIImage(named: "Logo_TihGavan")
         #endif
         // Приветствие
         LabelTime.text = "Здравствуйте,"
