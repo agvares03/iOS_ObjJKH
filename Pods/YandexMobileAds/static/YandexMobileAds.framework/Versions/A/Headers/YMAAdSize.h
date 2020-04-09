@@ -63,6 +63,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (instancetype)flexibleSizeWithCGSize:(CGSize)size;
 
+/**
+ Creates an object of the YMAAdSize class with the specified width of the banner.
+ @discussion Returns sticky banner size with the given width.
+ @param width Width of the banner.
+ @return An object of the YMAAdSize class with the specified width of the sticky banner.
+ */
++ (instancetype)stickySizeWithContainerWidth:(CGFloat)width;
+
 @end
 
 NS_ASSUME_NONNULL_END

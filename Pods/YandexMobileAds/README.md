@@ -1,7 +1,7 @@
 # Yandex Advertising Network Mobile
 This package contains Yandex Advertising Network Mobile SDK and source code of samples of SDK usage.
 
-## [**Download**](https://storage.mds.yandex.net/get-ads-mobile-sdk/212922/YandexMobileAds-2.13.2-ios-483935f7-60de-4c1c-9eab-fd5eb770ba3b.zip) latest SDK archive
+## [**Download**](https://storage.mds.yandex.net/get-ads-mobile-sdk/2817166/YandexMobileAds-2.14.0-ios-c53c1fa8-72f8-41df-88b5-d23a46fa143c.zip) latest SDK archive
 
 ## Documentation
 Documentation could be found at the [official website][DOCUMENTATION]
@@ -14,11 +14,6 @@ EULA is available at [EULA website][LICENSE]
 
 2. Go to one of example projects:
 #### Objective C
-  * /Examples/ObjectiveC/AdFoxMediationBannerExample
-  * /Examples/ObjectiveC/AdFoxMediationInterstitialExample
-  * /Examples/ObjectiveC/AdFoxMediationNativeExample
-  * /Examples/ObjectiveC/AdFoxMediationRewardedExample
-  * /Examples/ObjectiveC/AdFoxNativeExample
   * /Examples/ObjectiveC/AdMobBannerAdapterExample
   * /Examples/ObjectiveC/AdMobInterstitialAdapterExample
   * /Examples/ObjectiveC/AdMobNativeAdapterExample
@@ -26,6 +21,10 @@ EULA is available at [EULA website][LICENSE]
   * /Examples/ObjectiveC/BannerExample
   * /Examples/ObjectiveC/GDPRExample
   * /Examples/ObjectiveC/InterstitialExample
+  * /Examples/ObjectiveC/MobileMediationBannerExample
+  * /Examples/ObjectiveC/MobileMediationInterstitialExample
+  * /Examples/ObjectiveC/MobileMediationNativeExample
+  * /Examples/ObjectiveC/MobileMediationRewardedExample
   * /Examples/ObjectiveC/MoPubBannerAdapterExample
   * /Examples/ObjectiveC/MoPubInterstitialAdapterExample
   * /Examples/ObjectiveC/MoPubNativeAdaptersExample
@@ -37,10 +36,6 @@ EULA is available at [EULA website][LICENSE]
   * /Examples/ObjectiveC/VASTExample
   
 #### Swift
-  * /Examples/Swift/AdFoxMediationBannerExample
-  * /Examples/Swift/AdFoxMediationInterstitialExample
-  * /Examples/Swift/AdFoxMediationNativeExample
-  * /Examples/Swift/AdFoxMediationRewardedExample
   * /Examples/Swift/AdMobBannerAdapterExample
   * /Examples/Swift/AdMobInterstitialAdapterExample
   * /Examples/Swift/AdMobNativeAdapterExample
@@ -48,6 +43,10 @@ EULA is available at [EULA website][LICENSE]
   * /Examples/Swift/BannerExample
   * /Examples/Swift/GDPRExample
   * /Examples/Swift/InterstitialExample
+  * /Examples/Swift/MobileMediationBannerExample
+  * /Examples/Swift/MobileMediationInterstitialExample
+  * /Examples/Swift/MobileMediationNativeExample
+  * /Examples/Swift/MobileMediationRewardedExample
   * /Examples/Swift/MoPubBannerAdapterExample
   * /Examples/Swift/MoPubInterstitialAdapterExample
   * /Examples/Swift/MoPubNativeAdaptersExample
