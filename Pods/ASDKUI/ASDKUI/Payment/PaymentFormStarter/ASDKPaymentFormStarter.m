@@ -608,6 +608,8 @@ static ASDKPaymentFormStarter * __paymentFormStarterInstance = nil;
 								   encryptedPaymentData:encryptedPaymentData
 											   cardData:nil
 											  infoEmail:payment.billingContact.emailAddress
+												   data:nil
+													 ip:nil
 												success:^(ASDKThreeDsData *data, ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status) {
 													self.onCompleteSuccessPaymentInfo = paymentInfo;
 													self.onCompleteStatus = status;
@@ -635,6 +637,8 @@ static ASDKPaymentFormStarter * __paymentFormStarterInstance = nil;
 								   encryptedPaymentData:encryptedPaymentData
 											   cardData:nil
 											  infoEmail:payment.billingContact.emailAddress
+												   data:nil
+													 ip:nil
 												success:^(ASDKThreeDsData *data, ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status) {
 													self.onCompleteSuccessPaymentInfo = paymentInfo;
 													self.onCompleteStatus = status;
@@ -650,7 +654,7 @@ static ASDKPaymentFormStarter * __paymentFormStarterInstance = nil;
 
 - (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
 {
-	[self.presentingViewControllerApplePay dismissViewControllerAnimated:YES completion:^{
+	[controller dismissViewControllerAnimated:YES completion:^{
 		if (self.onCompleteSuccessPaymentInfo != nil && self.onCompleteError == nil && (self.onCompleteStatus == ASDKPaymentStatus_CONFIRMED || self.onCompleteStatus == ASDKPaymentStatus_AUTHORIZED))
 		{
 			self.onSuccess(self.onCompleteSuccessPaymentInfo);

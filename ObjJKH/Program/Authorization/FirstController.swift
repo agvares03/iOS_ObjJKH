@@ -418,6 +418,10 @@ class FirstController: UIViewController {
         UserDefaults.standard.set("New_Terminal", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_TihGavan")
+        #elseif isOptimumService
+        UserDefaults.standard.set("New_Terminal", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        fon_top.image = UIImage(named: "Logo_OptimumService")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

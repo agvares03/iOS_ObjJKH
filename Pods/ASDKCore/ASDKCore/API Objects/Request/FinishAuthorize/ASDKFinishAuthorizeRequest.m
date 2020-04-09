@@ -29,6 +29,8 @@
                                           infoEmail:(NSString *)infoEmail
 											  token:(NSString *)token
 							   encryptedPaymentData:(NSString *)encryptedPaymentData
+											   data:(NSDictionary *)data
+												 ip:(NSString * )ipAddress
 {
     ASDKFinishAuthorizeRequest *request = [[ASDKFinishAuthorizeRequest alloc] init];
     
@@ -41,6 +43,8 @@
         request.infoEmail = infoEmail;
         request.token = token;
 		request.encryptedPaymentData = encryptedPaymentData;
+		request.data = data;
+		request.ipAddress = ipAddress;
     }
 
     return request;

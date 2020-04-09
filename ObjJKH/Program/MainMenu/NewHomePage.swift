@@ -14,6 +14,7 @@ import YandexMobileAds
 import GoogleMobileAds
 import StoreKit
 import Crashlytics
+import FSPagerView
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)
@@ -25,7 +26,7 @@ protocol GoUrlReceiptDelegate: class {
     func goUrlReceipt(url: String)
 }
 
-class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate, YMANativeAdDelegate, YMANativeAdLoaderDelegate, GoUrlReceiptDelegate, GADBannerViewDelegate {
+class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate, CountersCellDelegate, DebtCellDelegate, DelLSCellDelegate, YMANativeAdDelegate, YMANativeAdLoaderDelegate, GoUrlReceiptDelegate, GADBannerViewDelegate, FSPagerViewDataSource, FSPagerViewDelegate {
     
     @IBOutlet weak var view_no_ls: UIView!
     
@@ -77,7 +78,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var tableQuestionHeight: NSLayoutConstraint!
     @IBOutlet weak var tableWeb: UITableView!
     @IBOutlet weak var tableWebHeight: NSLayoutConstraint!
-    @IBOutlet weak var tableService: UITableView!
     @IBOutlet weak var tableServiceHeight: NSLayoutConstraint!
     @IBOutlet weak var tableReceipts: UITableView!
     @IBOutlet weak var tableReceiptsHeight: NSLayoutConstraint!
@@ -88,7 +88,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var fonApps: UIImageView!
     @IBOutlet weak var fonQuestion: UIImageView!
     @IBOutlet weak var fonWeb: UIImageView!
-    @IBOutlet weak var fonService: UIImageView!
+//    @IBOutlet weak var fonService: UIImageView!
     @IBOutlet weak var fonReceipts: UIImageView!
     
     @IBOutlet weak var newsHeight: NSLayoutConstraint!
@@ -440,8 +440,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         tableQuestion.dataSource = self
         tableWeb.delegate = self
         tableWeb.dataSource = self
-        tableService.delegate = self
-        tableService.dataSource = self
         tableReceipts.delegate = self
         tableReceipts.dataSource = self
         
@@ -598,6 +596,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_JilUpravKom")
         #elseif isTihGavan
         fon_top.image = UIImage(named: "Logo_TihGavan")
+        #elseif isOptimumService
+        fon_top.image = UIImage(named: "Logo_OptimumService")
         #endif
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         callBtnImg.setImageColor(color: myColors.btnColor.uiColor())
@@ -619,7 +619,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fonApps.tintColor = myColors.btnColor.uiColor()
         fonQuestion.tintColor = myColors.btnColor.uiColor()
         fonWeb.tintColor = myColors.btnColor.uiColor()
-        fonService.tintColor = myColors.btnColor.uiColor()
+//        fonService.tintColor = myColors.btnColor.uiColor()
         fonReceipts.tintColor = myColors.btnColor.uiColor()
         
 //        fonLS.isHidden = true
@@ -941,7 +941,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var appsArr = ["123"]
     var questionArr:[QuestionDataJson] = []
     var webArr:[Web_Camera_json] = []
-    var serviceArr = [Objects]()
+    var serviceArr: [Services] = []
     var rowComms: [String : [Services]]  = [:]
     
     var dateOld = "01.01"
@@ -2052,30 +2052,73 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 row.forEach { row in
                     self.rowComms[row.attributes["name"]!] = []
                     row["AdditionalService"].forEach {
-                        self.rowComms[row.attributes["name"]!]?.append( Services(row: $0) )
+//                        self.rowComms[row.attributes["name"]!]?.append( Services(row: $0) )
+                        self.serviceArr.append(Services(row: $0))
                     }
                 }
-                for (key, value) in self.rowComms {
-                    self.serviceArr.append(Objects(sectionName: key, sectionObjects: value))
-                }
-                if self.serviceArr.count > self.rowComms.count{
-                    self.serviceArr.removeAll()
-                    for (key, value) in self.rowComms {
-                        self.serviceArr.append(Objects(sectionName: key, sectionObjects: value))
+//                for (key, value) in self.rowComms {
+//                    self.serviceArr.append(Objects(sectionName: key, sectionObjects: value))
+//                }
+//                if self.serviceArr.count > self.rowComms.count{
+//                    self.serviceArr.removeAll()
+//                    for (key, value) in self.rowComms {
+//                        self.serviceArr.append(Objects(sectionName: key, sectionObjects: value))
+//                    }
+//                }
+                DispatchQueue.main.async{
+                    if self.serviceArr.count == 0{
+                        self.tableServiceHeight.constant = 0
+                        self.menu_6_const.constant = 0
+                        self.serviceHeight.constant = 0
+                    }else{
+                        let str_menu_2 = UserDefaults.standard.string(forKey: "menu_8") ?? ""
+                        if (str_menu_2 != "") {
+                            let answer = str_menu_2.components(separatedBy: ";")
+                            if (answer[2] == "0") {
+                                self.menu_6_const.constant = 0
+                                self.serviceHeight.constant = 0
+                                self.tableServiceHeight.constant = 0
+                            }else{
+                                self.menu_6_const.constant = 15
+                                self.serviceHeight.constant = 45
+                                self.tableServiceHeight.constant = (self.view.frame.size.width - 30) / 2 + 4
+                            }
+                        }
                     }
+                    self.pagerView.interitemSpacing = 20
+                    self.pagerView.dataSource = self
+                    self.pagerView.delegate   = self
+                    self.pagerView.reloadData()
+                    self.pagerView.automaticSlidingInterval = 3.0
                 }
-                if self.serviceArr.count == 0{
-                    DispatchQueue.main.async{
-                        self.tableService.isHidden = true
-                    }
-                }else{
-                    DispatchQueue.main.sync {
-                        self.tableService.reloadData()
-                    }
-                }
-                
                 }.resume()
         }
+    }
+    
+    @IBOutlet private weak var pagerView:   FSPagerView! {
+        didSet {
+            self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+        }
+    }
+    
+    public func numberOfItems(in pagerView: FSPagerView) -> Int {
+        return serviceArr.count
+    }
+    
+    public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+        let url:NSURL = NSURL(string: (serviceArr[index].logo)!)!
+        let data = try? Data(contentsOf: url as URL)
+        if UIImage(data: data!) == nil{
+        //            imgWidth.constant = 0
+        }else{
+            cell.imageView?.image = UIImage(data: data!)
+        }
+        return cell
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -2086,7 +2129,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.tableAppsHeight.constant = 400
         self.tableQuestionHeight.constant = 400
         self.tableWebHeight.constant = 400
-        self.tableServiceHeight.constant = 1000
         self.tableReceiptsHeight.constant = 1000
         if tableView == self.tableLS {
             count = lsArr.count
@@ -2114,16 +2156,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             count =  webArr.count
             if count! > 2{
                 count = 2
-            }
-        }
-        if tableView == self.tableService {
-            if serviceArr.count != 0{
-                count =  serviceArr[0].sectionObjects.count
-            }else{
-                count = 0
-            }
-            if count! > 3{
-                count = 3
             }
         }
         if tableView == self.tableReceipts {
@@ -2296,29 +2328,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         self.menu_6_const.constant = 15
                         self.webLSHeight.constant = 45
                         self.tableWebHeight.constant = height6
-                    }
-                }
-            }
-            var height7: CGFloat = 0
-            for cell in self.tableService.visibleCells {
-                height7 += cell.bounds.height
-            }
-            if height7 == 0{
-                self.menu_6_const.constant = 0
-                self.serviceHeight.constant = 0
-                self.tableServiceHeight.constant = height7
-            }else{
-                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_8") ?? ""
-                if (str_menu_2 != "") {
-                    var answer = str_menu_2.components(separatedBy: ";")
-                    if (answer[2] == "0") {
-                        self.menu_6_const.constant = 0
-                        self.serviceHeight.constant = 0
-                        self.tableServiceHeight.constant = 0
-                    }else{
-                        self.menu_6_const.constant = 15
-                        self.serviceHeight.constant = 45
-                        self.tableServiceHeight.constant = height7
                     }
                 }
             }
@@ -2878,34 +2887,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.webText.text = webArr[indexPath.row].name
             //            cell = shadowCell(cell: cell) as! HomeWebCell
             //            cell.delegate = self
-            return cell
-        }else if tableView == self.tableService {
-            let cell = self.tableService.dequeueReusableCell(withIdentifier: "HomeServiceCell") as! HomeServiceCell
-            cell.serviceText.text = serviceArr[indexPath.section].sectionObjects[indexPath.row].name
-            cell.imgPhone.setImageColor(color: myColors.btnColor.uiColor())
-            cell.separator1.backgroundColor = myColors.btnColor.uiColor()
-            var str:String = serviceArr[indexPath.section].sectionObjects[indexPath.row].address!
-            if str == ""{
-                cell.urlBtn.isHidden = true
-                cell.imgUrl.isHidden = true
-                cell.imgUrlHeight.constant = 0
-                cell.urlHeight.constant = 0
-                cell.constant2.constant = 0
-            }else{
-                if !str.contains("http"){
-                    str = "http://" + str
-                }
-                cell.urlBtn.setTitle(str, for: .normal)
-            }
-            if serviceArr[indexPath.section].sectionObjects[indexPath.row].phone == ""{
-                cell.phoneBtn.isHidden = true
-                cell.imgPhone.isHidden = true
-                cell.imgPhoneHeight.constant = 0
-                cell.phoneHeight.constant = 0
-                cell.constant1.constant = 0
-            }else{
-                cell.phoneBtn.setTitle(serviceArr[indexPath.section].sectionObjects[indexPath.row].phone, for: .normal)
-            }
             return cell
         }else if tableView == self.tableReceipts {
             let cell = self.tableReceipts.dequeueReusableCell(withIdentifier: "HomeReceiptsCell") as! HomeReceiptsCell

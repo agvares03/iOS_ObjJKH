@@ -16,13 +16,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "ASDKPaymentFormViewController.h"
 
+#import "ASDKPaymentFormViewController.h"
+#import <WebKit/WebKit.h>
 #import "ASDKPaymentFormHeaderCell.h"
 #import "ASDKPaymentFormSummCell.h"
 
 #import "ASDKExternalCardsCell.h"
-//#import "ASDKCardInputTableViewCell.h"
+
 #import "ASDKEmailCell.h"
 
 #import "ASDKPayButtonCell.h"
@@ -101,6 +102,8 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 @property (nonatomic, assign) BOOL chargeError;
 @property (nonatomic, copy) NSString *chargeErrorPaymentId;
 
+@property (nonatomic, assign) BOOL needCheck3DS2;
+
 @end
 
 @implementation ASDKPaymentFormViewController
@@ -147,6 +150,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 		_makeCharge = makeCharge;
 		_chargeError = NO;
 		_needSetupCardRequisitesCellForCVC = NO;
+		_needCheck3DS2 = YES;
     }
 
     return self;
@@ -159,6 +163,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     self.title = LOC(@"acq_screen_title");
 	
 	[self.navigationController.navigationBar setTranslucent:NO];
+    self.navigationController.presentationController.delegate = self;
 	
 	self.tableView.sectionHeaderHeight = 0;
 	self.tableView.sectionFooterHeight = 0;
@@ -235,6 +240,19 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+
+	if ( self.isMovingFromParentViewController || self.isBeingDismissed)
+	{
+		if (self.onCancelled)
+		{
+			self.onCancelled();
+		}
+	}
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -510,10 +528,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 - (IBAction)cancelAction:(id)sender
 {
     [self closeSelfWithCompletion:^{
-        if (self.onCancelled)
-        {
-            self.onCancelled();
-        }
+		
     }];
 }
 
@@ -939,16 +954,14 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     {
         __weak typeof(self) weakSelf = self;
 
-        [cardScanner scanCardSuccess:^(id<ASDKAcquiringSdkCardRequisites> cardRequisites) {
-			 __strong typeof(weakSelf) strongSelf = weakSelf;
-
-             if (strongSelf)
-             {
-                 [strongSelf updateCardRequisitesCellWithCardRequisites:cardRequisites.cardNumber expiredData:cardRequisites.cardExpireDate];
-             }
-         }
-                             failure:nil
-                              cancel:nil];
+		[cardScanner scanCardSuccess:^(id<ASDKAcquiringSdkCardRequisites> cardRequisites) {
+			__strong typeof(weakSelf) strongSelf = weakSelf;
+			
+			if (strongSelf)
+			{
+				[strongSelf updateCardRequisitesCellWithCardRequisites:cardRequisites.cardNumber expiredData:cardRequisites.cardExpireDate];
+			}
+		} failure:nil cancel:nil];
     }
 }
 
@@ -993,7 +1006,6 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
                               success:^(ASDKInitResponse *response)
     {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        
         if (strongSelf)
         {
             [strongSelf performFinishAuthorizeRequestWithPaymentId:response];
@@ -1002,9 +1014,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
                               failure:^(ASDKAcquringSdkError *error)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-        
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        
         if (strongSelf)
         {
             [strongSelf manageError:error];
@@ -1012,42 +1022,161 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     }];
 }
 
+- (void)performFinishChargeWithPayment:(ASDKInitResponse *)payment
+{
+	__weak typeof(self) weakSelf = self;
+	[self.acquiringSdk chargeWithPaymentId:payment.paymentId rebillId:self.selectedCard.rebillId success:^(ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+		__strong typeof(weakSelf) strongSelf1 = weakSelf;
+		if (strongSelf1)
+		{
+			[strongSelf1 manageSuccessWithPaymentInfo:paymentInfo];
+		}
+	} failure:^(ASDKAcquringSdkError *error) {
+		__strong typeof(weakSelf) strongSelf = weakSelf;
+		[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+		
+		if (strongSelf)
+		{
+			ASDKAcquiringResponse *errorResponse = [error.userInfo objectForKey:@"acquringResponse"];
+			//пользователю необходимо подтвердить платеж через ввод cvc ASDK-432
+			//ErrorCode == 104
+			if ([[errorResponse.dictionary objectForKey:@"ErrorCode"] integerValue] == 104)
+			{
+				strongSelf.makeCharge = NO;
+				strongSelf.chargeError = YES;
+				strongSelf.chargeErrorPaymentId = [errorResponse.dictionary objectForKey:@"PaymentId"];
+				[[strongSelf cardRequisitesCell] setupForCVCInput];
+				[[strongSelf cardRequisitesCell] setUserInteractionEnabled:YES];
+				[[[strongSelf cardRequisitesCell] secretCVVTextField] becomeFirstResponder];
+			}
+			else
+			{
+				[strongSelf manageError:error];
+			}
+		}
+	}];
+}
+
+- (void)confirmPaymentBy3dsCheckingWithCard:(ASDKThreeDsData *)data paymentInfo:(ASDKPaymentInfo *)paymentInfo
+{
+	ASDK3DSViewController *threeDsController = [[ASDK3DSViewController alloc] initWithPaymentId:paymentInfo.paymentId threeDsData:data acquiringSdk:self.acquiringSdk];
+	
+	__weak typeof(self) weakSelf = self;
+
+	[threeDsController showFromViewController:self success:^(NSString *paymentId) {
+		__strong typeof(weakSelf) strongSelf = weakSelf;
+		[strongSelf manageSuccessWithPaymentInfo:paymentInfo];
+	} failure:^(ASDKAcquringSdkError *statusError) {
+		__strong typeof(weakSelf) strongSelf = weakSelf;
+		[strongSelf manageError:statusError];
+	} cancel:^() {
+		__strong typeof(weakSelf) strongSelf = weakSelf;
+		[strongSelf closeSelfWithCompletion:strongSelf.onCancelled];
+	}];
+}
+
+- (NSDictionary *)threeDSMethodCheckURL:(NSString *)threeDSMethodURL tdsServerTransID:(NSString *)tdsServerTransID
+{
+	if (threeDSMethodURL != nil && tdsServerTransID != nil)
+	{
+		WKWebViewConfiguration *wkWebConfig = [WKWebViewConfiguration new];
+		WKWebView *webView = [[WKWebView alloc] initWithFrame: CGRectZero configuration: wkWebConfig];
+		[webView setHidden:true];
+		[self.view addSubview:webView];
+		
+		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:threeDSMethodURL]];
+		request.timeoutInterval = _acquiringSdk.apiRequestsTimeoutInterval;
+		[request setHTTPMethod: @"POST"];
+		[request setValue: @"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
+
+		NSString *threeDSMethodNotificationURL = [NSString stringWithFormat:@"%@%@", [self.acquiringSdk domainPath_v2], kASDKComplete3DSMethodv2];
+		NSString *paramsString = [NSString stringWithFormat:@"{\"threeDSServerTransID\":\"%@\",\"threeDSMethodNotificationURL\":\"%@\"}", tdsServerTransID, threeDSMethodNotificationURL];
+		NSData *plainData = [paramsString dataUsingEncoding:NSUTF8StringEncoding];
+		NSString *postString = [NSString stringWithFormat:@"%@", [plainData base64EncodedStringWithOptions:0]];
+		NSData *postData = [[NSString stringWithFormat:@"threeDSMethodData=%@", postString] dataUsingEncoding: NSUTF8StringEncoding];
+		[request setHTTPBody: postData];
+		[webView loadRequest:request];
+	}
+	
+	if (threeDSMethodURL != nil || tdsServerTransID != nil)
+	{
+		NSString *cresCallbackUrl = [NSString stringWithFormat:@"%@%@", [self.acquiringSdk domainPath_v2], kASDKSubmit3DSAuthorizationV2];
+		NSMutableDictionary *result = [NSMutableDictionary dictionary];
+		
+		[result setObject:@"Y" forKey:@"threeDSCompInd"];
+		[result setObject:@"true" forKey:@"javaEnabled"];
+		[result setObject:ASDKLocalized.sharedInstance.localeIdentifier forKey:@"language"];
+		[result setObject:@"32" forKey:@"colorDepth"];
+		[result setObject:@([[NSTimeZone localTimeZone] secondsFromGMT] / 60) forKey:@"timezone"];
+		[result setObject:@(UIScreen.mainScreen.bounds.size.height) forKey:@"screen_height"];
+		[result setObject:@(UIScreen.mainScreen.bounds.size.width) forKey:@"screen_width"];
+		[result setObject:cresCallbackUrl forKey:@"cresCallbackUrl"];
+		
+		return result;
+	}
+	
+	return nil;
+}
+
+- (void)performFinishAuthorize:(NSDictionary *)additionalData ip:(NSString *)ipAddress emailString:(NSString *)emailString encryptedCardString:(NSString *)encryptedCardString payment:(ASDKInitResponse *)payment threeDSVersion:(NSString *)threeDSVersion
+{
+	__weak typeof(self) weakSelf = self;
+
+	[self.acquiringSdk finishAuthorizeWithPaymentId:payment.paymentId encryptedPaymentData:nil cardData:encryptedCardString infoEmail:emailString data:additionalData ip:ipAddress success:^(ASDKThreeDsData *data, ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status) {
+		__strong typeof(weakSelf) strongSelf = weakSelf;
+		[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+
+		data.threeDSVersion = threeDSVersion;
+		if (strongSelf)
+		{
+			if (data.fallbackOnTdsV1 == true)
+			{
+				[strongSelf setNeedCheck3DS2:NO];
+				[strongSelf performPayment];
+			}
+			else if (status == ASDKPaymentStatus_3DS_CHECKING)
+			{
+				[strongSelf confirmPaymentBy3dsCheckingWithCard:data paymentInfo:paymentInfo];
+			}
+			else if (status == ASDKPaymentStatus_CONFIRMED || status == ASDKPaymentStatus_AUTHORIZED)
+			{
+				[strongSelf manageSuccessWithPaymentInfo:paymentInfo];
+			}
+			else
+			{
+				ASDKAcquiringResponse *result = [[ASDKAcquiringResponse alloc] initWithDictionary: paymentInfo.dictionary];
+				NSString *errorMessage = result.message;
+				NSString *errorDetails = result.details == nil ? [NSString stringWithFormat: @"%@", paymentInfo] : result.details;
+				NSInteger errorCode = result.errorCode == nil ? 0 : [result.errorCode integerValue];
+				
+				ASDKAcquringSdkError *error = [ASDKAcquringSdkError errorWithMessage:errorMessage  details:errorDetails code:errorCode];
+				[strongSelf manageError:error];
+			}
+		}
+	} failure:^(ASDKAcquringSdkError *error) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+		__strong typeof(weakSelf) strongSelf = weakSelf;
+		if (strongSelf)
+		{
+			if (error.code == 106)
+			{
+				[strongSelf setNeedCheck3DS2:NO];
+				[strongSelf performPayment];
+			}
+			else
+			{
+				[strongSelf manageError:error];
+			}
+		}
+	}];
+}
+
 - (void)performFinishAuthorizeRequestWithPaymentId:(ASDKInitResponse *)payment
 {
 	if (self.selectedCard && self.selectedCard.rebillId && self.makeCharge == YES && self.chargeError == NO)
 	{
-		 __weak typeof(self) weakSelf = self;
-		[self.acquiringSdk chargeWithPaymentId:payment.paymentId rebillId:self.selectedCard.rebillId success:^(ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status) {
-			[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-			__strong typeof(weakSelf) strongSelf1 = weakSelf;
-			if (strongSelf1)
-			{
-				[strongSelf1 manageSuccessWithPaymentInfo:paymentInfo];
-			}
-		} failure:^(ASDKAcquringSdkError *error) {
-			__strong typeof(weakSelf) strongSelf = weakSelf;
-			[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-			
-			if (strongSelf)
-			{
-				ASDKAcquiringResponse *errorResponse = [error.userInfo objectForKey:@"acquringResponse"];
-				//пользователю необходимо подтвердить платеж через ввод cvc ASDK-432
-				//ErrorCode == 104
-				if ([[errorResponse.dictionary objectForKey:@"ErrorCode"] integerValue] == 104)
-				{
-					strongSelf.makeCharge = NO;
-					strongSelf.chargeError = YES;
-					strongSelf.chargeErrorPaymentId = [errorResponse.dictionary objectForKey:@"PaymentId"];
-					[[strongSelf cardRequisitesCell] setupForCVCInput];
-					[[strongSelf cardRequisitesCell] setUserInteractionEnabled:YES];
-					[[[strongSelf cardRequisitesCell] secretCVVTextField] becomeFirstResponder];
-				}
-				else
-				{
-					[strongSelf manageError:error];
-				}
-			}
-		}];
+		[self performFinishChargeWithPayment:payment];
 	}
 	else
 	{
@@ -1055,104 +1184,31 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 		NSString *date = [self cardRequisitesCell].cardExpirationDate;
 		date = [date stringByReplacingOccurrencesOfString:@"/" withString:@""];
 		NSString *cvv = [self cardRequisitesCell].cardCVC;
-		
 		NSString *emailString = [self emailCell].emailTextField.text;
-		
-		ASDKCardData *cardData = [[ASDKCardData alloc] initWithPan:cardNumber
-														expiryDate:date
-													  securityCode:cvv
-															cardId:self.selectedCard.cardId
-													  publicKeyRef:[self.acquiringSdk publicKeyRef]];
-		
+		ASDKCardData *cardData = [[ASDKCardData alloc] initWithPan:cardNumber expiryDate:date securityCode:cvv cardId:self.selectedCard.cardId publicKeyRef:[self.acquiringSdk publicKeyRef]];
 		NSString *encryptedCardString = cardData.cardData;
 		
 		__weak typeof(self) weakSelf = self;
-		
-		[self.acquiringSdk finishAuthorizeWithPaymentId:payment.paymentId
-								   encryptedPaymentData:nil
-											   cardData:encryptedCardString
-											  infoEmail:emailString
-												success:^(ASDKThreeDsData *data, ASDKPaymentInfo *paymentInfo, ASDKPaymentStatus status)
-		 {
-			 __strong typeof(weakSelf) strongSelf = weakSelf;
-			 
-			 if (status == ASDKPaymentStatus_3DS_CHECKING)
-			 {
-				 if (strongSelf)
-				 {
-					 ASDK3DSViewController *threeDsController = [[ASDK3DSViewController alloc] initWithPaymentId:paymentInfo.paymentId
-																									 threeDsData:data
-																									acquiringSdk:strongSelf.acquiringSdk];
-					 
-					 [threeDsController showFromViewController:strongSelf
-													   success:^(NSString *paymentId)
-					  {
-						  __strong typeof(weakSelf) strongSelf1 = weakSelf;
-						  
-						  if (strongSelf1)
-						  {
-							  [strongSelf1 manageSuccessWithPaymentInfo:paymentInfo];
-						  }
-					  }
-													   failure:^(ASDKAcquringSdkError *statusError)
-					  {
-						  __strong typeof(weakSelf) strongSelf1 = weakSelf;
-						  
-						  if (strongSelf1)
-						  {
-							  [strongSelf1 manageError:statusError];
-						  }
-					  }
-														cancel:^()
-					  {
-						  __strong typeof(weakSelf) strongSelf1 = weakSelf;
-						  
-						  if (strongSelf1)
-						  {
-							  [strongSelf1 closeSelfWithCompletion:self.onCancelled];
-						  }
-					  }];
-				 }
-			 }
-			 else if (status == ASDKPaymentStatus_CONFIRMED || status == ASDKPaymentStatus_AUTHORIZED)
-			 {
-				 [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-				 
-				 if (strongSelf)
-				 {
-					 [strongSelf manageSuccessWithPaymentInfo:paymentInfo];
-				 }
-			 }
-			 else
-			 {
-				 [[NSNotificationCenter defaultCenter] postNotificationName: ASDKNotificationHideLoader object: nil];
-				 
-				 ASDKAcquiringResponse *result = [[ASDKAcquiringResponse alloc] initWithDictionary: paymentInfo.dictionary];
-				 NSString *errorMessage = result.message;
-				 NSString *errorDetails = result.details == nil ? [NSString stringWithFormat: @"%@", paymentInfo] : result.details;
-				 NSInteger errorCode = result.errorCode == nil ? 0 : [result.errorCode integerValue];
-				 
-				 ASDKAcquringSdkError *error = [ASDKAcquringSdkError errorWithMessage: errorMessage
-																			  details: errorDetails
-																				 code: errorCode];
-				 
-				 if (strongSelf)
-				 {
-					 [strongSelf manageError:error];
-				 }
-			 }
-		 }
-												failure:^(ASDKAcquringSdkError *error)
-		 {			 
-			 [[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
-			 
-			 __strong typeof(weakSelf) strongSelf = weakSelf;
-			 
-			 if (strongSelf)
-			 {
-				 [strongSelf manageError:error];
-			 }
-		 }];
+		if ([self needCheck3DS2] == YES)
+		{
+			[self.acquiringSdk check3dsVersionWithPaymentId:payment.paymentId cardData:encryptedCardString success:^(ASDKResponseCheck3dsVersion *response) {
+				__strong typeof(weakSelf) strongSelf = weakSelf;
+				NSDictionary *additionalData = [strongSelf threeDSMethodCheckURL:[response threeDSMethodURL] tdsServerTransID:[response tdsServerTransID]];
+				NSString *ipAddress = ASDKUtils.getIPAddress;
+				[strongSelf performFinishAuthorize:additionalData ip:ipAddress emailString:emailString encryptedCardString:encryptedCardString payment:payment threeDSVersion:[response threeDSVersion]];
+			} failure: ^(ASDKAcquringSdkError *error) {
+				[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationHideLoader object:nil];
+				__strong typeof(weakSelf) strongSelf = weakSelf;
+				if (strongSelf)
+				{
+					[strongSelf manageError:error];
+				}
+			}];
+		}
+		else
+		{
+			[self performFinishAuthorize:nil ip:nil emailString:emailString encryptedCardString:encryptedCardString payment:payment threeDSVersion:nil];
+		}
 	}
 }
 
@@ -1172,14 +1228,13 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 {
     __weak typeof(self) weakSelf = self;
 	
-    void (^paymentSuccessBlock)(void) = ^
-    {
+    void (^paymentSuccessBlock)(void) = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
 		
         if (strongSelf)
         {
-            [strongSelf closeSelfWithCompletion:^
-             {
+			strongSelf.onCancelled = nil;
+            [strongSelf closeSelfWithCompletion:^{
                  if (strongSelf.onSuccess)
                  {
                      strongSelf.onSuccess(paymentInfo);
@@ -1191,7 +1246,7 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
     if (!self.selectedCard)
     {
         [[ASDKCardsListDataController instance] updateCardsListWithSuccessBlock:^{ paymentSuccessBlock(); }
-                                                                     errorBlock:^(ASDKAcquringSdkError *error) { paymentSuccessBlock(); } ];
+																	 errorBlock:^(ASDKAcquringSdkError *error) { paymentSuccessBlock(); } ];
     }
     else
     {
@@ -1201,20 +1256,20 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 
 - (void)manageError:(ASDKAcquringSdkError *)error
 {
-    [self closeSelfWithCompletion:^
-     {
-         if (self.onError)
-         {
-             self.onError(error);
-         }
-     }];
+	self.onCancelled = nil;
+	[self closeSelfWithCompletion:^{
+		if (self.onError)
+		{
+			self.onError(error);
+		}
+	}];
 }
 
 - (void)closeSelfWithCompletion: (void (^)(void))completion
 {
     [self.view endEditing:YES];
     
-    [self dismissViewControllerAnimated:YES completion:^{
+	[self dismissViewControllerAnimated:YES completion:^{
          if (completion)
          {
              completion();
@@ -1270,15 +1325,10 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 
 - (BOOL)validateEmail:(NSString *)emailString
 {
-    NSRegularExpression *regExp = [NSRegularExpression regularExpressionWithPattern:kASDKEmailRegexp
-                                                                            options:NSRegularExpressionCaseInsensitive
-                                                                              error:nil];
+    NSRegularExpression *regExp = [NSRegularExpression regularExpressionWithPattern:kASDKEmailRegexp options:NSRegularExpressionCaseInsensitive error:nil];
     
     __block NSTextCheckingType checkingType;
-    [regExp enumerateMatchesInString:emailString options:0 range:NSMakeRange(0, emailString.length) usingBlock:^(NSTextCheckingResult *result,
-                                                                                                                 NSMatchingFlags flags,
-                                                                                                                 BOOL *stop)
-     {
+    [regExp enumerateMatchesInString:emailString options:0 range:NSMakeRange(0, emailString.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
          checkingType = result.resultType;
      }];
     
@@ -1407,6 +1457,13 @@ NSUInteger const CellPyamentCardID = CellEmptyFlexibleSpace + 1;
 	}
 
 	return cardList;
+}
+
+#pragma mark - UIAdaptivePresentationControllerDelegate
+
+- (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController
+{
+    [self closeSelfWithCompletion:self.onCancelled];
 }
 
 @end

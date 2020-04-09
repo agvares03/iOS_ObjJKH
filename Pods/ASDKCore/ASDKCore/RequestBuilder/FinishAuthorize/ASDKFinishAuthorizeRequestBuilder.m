@@ -20,11 +20,13 @@
 
 @interface ASDKFinishAuthorizeRequestBuilder ()
 
-@property (nonatomic, strong) NSString *paymentId;
-@property (nonatomic) NSString *sendEmail;
+@property (nonatomic, copy) NSString *paymentId;
+@property (nonatomic, copy) NSString *sendEmail;
 @property (nonatomic, copy) NSString *cardData;
-@property (nonatomic, strong) NSString *infoEmail;
+@property (nonatomic, copy) NSString *infoEmail;
 @property (nonatomic, copy) NSString *encryptedPaymentData;
+@property (nonatomic, strong) NSDictionary *data;
+@property (nonatomic, copy) NSString *ipAddress;
 
 @end
 
@@ -36,6 +38,8 @@
 												terminalKey:(NSString *)terminalKey
 												   password:(NSString *)password
 									   encryptedPaymentData:(NSString *)encryptedPaymentData
+													   data:(NSDictionary *)data
+														 ip:(NSString * )ipAddress
 {
     ASDKFinishAuthorizeRequestBuilder *builder = [[ASDKFinishAuthorizeRequestBuilder alloc] init];
     
@@ -48,6 +52,8 @@
         builder.terminalKey = terminalKey;
         builder.password = password;
 		builder.encryptedPaymentData = encryptedPaymentData;
+		builder.data = data;
+		builder.ipAddress = ipAddress;
     }
     
     return builder;
@@ -79,7 +85,9 @@
                                                                                          cardData:self.cardData
                                                                                         infoEmail:self.infoEmail
                                                                                             token:token
-																			 encryptedPaymentData:self.encryptedPaymentData];
+																			 encryptedPaymentData:self.encryptedPaymentData
+																							 data:self.data
+																							   ip:self.ipAddress];
     
     return request;
 }
@@ -127,7 +135,6 @@
     {
         [parameters setObject:self.paymentId forKey:kASDKPaymentId];
     }
-
     if (self.cardData.length > 0)
     {
         [parameters setObject:self.cardData forKey:kASDKCardData];
@@ -139,6 +146,10 @@
 	if (self.encryptedPaymentData.length > 0)
 	{
 		[parameters setObject:self.encryptedPaymentData forKey:@"EncryptedPaymentData"];
+	}
+	if (self.ipAddress.length > 0)
+	{
+		[parameters setObject:self.ipAddress forKey:@"IP"];
 	}
 
     return parameters;

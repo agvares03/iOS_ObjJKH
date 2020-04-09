@@ -23,15 +23,14 @@
 
 @implementation ASDKThreeDsData
 
-- (NSURL *)ACSUrl
+- (NSString *)acsUrl
 {
-    if (!_ACSUrl)
+    if (!_acsUrl)
     {
-        NSString *urlString = _dictionary[kASDKASCUrl];
-        _ACSUrl = [NSURL URLWithString:urlString];
+        _acsUrl = _dictionary[kASDKASCUrl];
     }
     
-    return _ACSUrl;
+    return _acsUrl;
 }
 
 - (NSString *)MD
@@ -56,9 +55,35 @@
 
 - (void)clearAllProperties
 {
-    _ACSUrl = nil;
+    _acsUrl = nil;
     _MD = nil;
     _paReq = nil;
+	_acsTransId = nil;
+}
+
+- (NSString *)acsTransId
+{
+	if (!_acsTransId)
+	{
+		_acsTransId = _dictionary[kASDKAcsTransId];
+	}
+	
+	return _acsTransId;
+}
+
+- (NSString *)tdsServerTransId
+{
+	if (!_tdsServerTransId)
+	{
+		_tdsServerTransId = _dictionary[kASDKTdsServerTransId];
+	}
+	
+	return _tdsServerTransId;
+}
+
+- (BOOL)fallbackOnTdsV1
+{
+	return [_dictionary[@"FallbackOnTdsV1"] boolValue];
 }
 
 @end

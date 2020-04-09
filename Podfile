@@ -15,6 +15,7 @@ target 'ChistDom' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -42,6 +43,7 @@ target 'DJ' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -67,6 +69,7 @@ pod 'Fabric'
 
   # Pods for Klimovsk12
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
@@ -94,6 +97,7 @@ target 'Komeks' do
 
   # Pods for Komeks
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
@@ -123,6 +127,7 @@ target 'MupRCMytishi' do
 
     # Pods for Наш Общий Дом
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
@@ -149,6 +154,7 @@ target 'ObjJKH' do
 
     # Pods for Мобильное ЖКХ
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
@@ -176,6 +182,7 @@ target 'OurObjHome' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -201,6 +208,7 @@ target 'Stolitsa' do
 
     # Pods for Наш Общий Дом
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
@@ -228,6 +236,7 @@ target 'UK_Komfort' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -256,6 +265,7 @@ target 'ReutKomfort' do
     
     # Pods for UK_Komfort
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
@@ -281,6 +291,7 @@ pod 'Fabric'
 
   # Pods for UK_Garant
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
     pod 'Firebase/Core'
@@ -309,6 +320,7 @@ target 'Soldatova1' do
   
   # Pods for UK_Komfort
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -337,6 +349,7 @@ target 'Tafgai' do
   
   # Pods for UK_Komfort
     pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -364,6 +377,7 @@ use_frameworks!
 
 # Pods for JKH_Pocket
 pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
 pod 'Firebase/Core'
@@ -391,6 +405,7 @@ target 'StandartDV' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
     pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -419,6 +434,7 @@ target 'Skyfort' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -447,6 +463,7 @@ target 'UK_Service_Comfort' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
     
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -475,6 +492,7 @@ target 'UK_Upravdom_Che' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -503,6 +521,7 @@ target 'UK_Perspectiva' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -531,6 +550,7 @@ target 'Parus' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -559,6 +579,7 @@ target 'UK_Paritet' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -587,6 +608,7 @@ target 'UyutService' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -615,6 +637,7 @@ target 'ElectroSbit' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -643,6 +666,7 @@ target 'Servicekom' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -671,6 +695,7 @@ target 'Teplovodoresources' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -699,6 +724,7 @@ target 'StroimBud' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -727,6 +753,7 @@ target 'RodnikMUP' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -755,6 +782,7 @@ target 'UK_Paritet_Khab' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -783,6 +811,7 @@ target 'ADS_68' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -811,6 +840,7 @@ target 'NewOpaliha' do
   
   # Pods for UK_Komfort
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -839,6 +869,7 @@ target 'StroiDom' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -867,6 +898,7 @@ target 'DJ_Vladimir' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -895,6 +927,7 @@ target 'TSN_Dnestr' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -923,6 +956,7 @@ target 'TSN_Ruble40' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -951,6 +985,7 @@ target 'JKH_Pavlovskoe' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -979,6 +1014,7 @@ target 'Fregat' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1007,6 +1043,7 @@ target 'Cristall' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1035,6 +1072,7 @@ target 'Narian_Mar_el' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1063,6 +1101,7 @@ target 'Sib_Aliance' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1091,6 +1130,7 @@ target 'UK_Spartak' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1119,6 +1159,7 @@ target 'TSJ_Kosm11' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1146,6 +1187,7 @@ target 'TSJ_Archangel' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1174,6 +1216,7 @@ target 'MUP_IRKC' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1202,6 +1245,7 @@ target 'UK_First' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1230,6 +1274,7 @@ target 'RKC_Samara' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1258,6 +1303,7 @@ target 'Energoprogress' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1286,6 +1332,7 @@ target 'EasyLife' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1314,6 +1361,7 @@ target 'RIC' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1342,6 +1390,7 @@ target 'Monolit' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1370,6 +1419,7 @@ target 'VodSergPosad' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1398,6 +1448,7 @@ target 'MobileMIR' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1426,6 +1477,7 @@ target 'Zarinsk' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1454,6 +1506,7 @@ target 'TSJ_Pedagog' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1482,6 +1535,7 @@ target 'GorAntenService' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1510,6 +1564,7 @@ target 'Murmansk_Partner_Plus' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1538,6 +1593,7 @@ target 'TestADS' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1566,6 +1622,7 @@ target 'ElectroTech' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1594,6 +1651,7 @@ target 'TSJ_Lider' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1622,6 +1680,7 @@ target 'UK_Drujba' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1650,6 +1709,7 @@ target 'KFH_Ryab' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1678,6 +1738,7 @@ target 'DOM24' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1706,6 +1767,7 @@ target 'Lefortovo' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1734,6 +1796,7 @@ target 'ERC_UDM' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1762,6 +1825,7 @@ target 'Avalon' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1790,6 +1854,7 @@ target 'Doka' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1818,6 +1883,7 @@ target 'Invest' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1846,6 +1912,7 @@ target 'UniversSol' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1874,6 +1941,7 @@ target 'ClearCity' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1902,6 +1970,7 @@ target 'Alternative' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1930,6 +1999,7 @@ target 'MUP_Severnoe' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1958,6 +2028,7 @@ target 'AlphaJKH' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -1986,6 +2057,7 @@ target 'Suhanovo' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -2014,6 +2086,7 @@ target 'Maximum' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -2042,6 +2115,7 @@ target 'EJF' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -2070,6 +2144,7 @@ target 'Clean_Tid' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -2098,6 +2173,7 @@ target 'JilUpravKom' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
   
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
@@ -2126,7 +2202,35 @@ target 'TihGavan' do
   
   # Pods for Pritomskoe
   pod 'YandexMobileAds'
+  pod 'FSPagerView'
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
+  pod 'FSPagerView'
+  pod 'Alamofire', '~> 4.0'
+  pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+  pod 'Gloss'
+  pod 'Dropper'
+  pod 'AKMaskField'
   
+end
+
+target 'OptimumService' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  # Оплата - Тинькофф
+  pod 'CardIO'
+  pod 'ASDKCore', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKCore.podspec"
+  pod 'ASDKUI', :podspec =>  "https://raw.githubusercontent.com/TinkoffCreditSystems/tinkoff-asdk-ios/master/ASDKUI.podspec"
+  
+  pod 'Fabric'
+  pod 'Crashlytics'
+  
+  use_frameworks!
+  
+  # Pods for Pritomskoe
+  pod 'YandexMobileAds'
+  pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/Database'

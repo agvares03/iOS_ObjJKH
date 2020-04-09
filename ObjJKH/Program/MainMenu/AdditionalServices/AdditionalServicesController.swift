@@ -14,20 +14,33 @@ import Crashlytics
 //import YandexMobileMetrica
 
 struct Services {
-    let id:            String?
-    let name:          String?
-    let address:       String?
-    let description:   String?
-    let logo:          String?
-    let phone:         String?
+    let id:             String?
+    let name:           String?
+    let address:        String?
+    let description:    String?
+    let logo:           String?
+    let phone:          String?
+    let canbeordered:   String?
+    let id_account:     String?
+    let id_requesttype: String?
+    let showinadblock:  String?
+    let shopName:       String?
+    let shopIDphone:    String?
+
     
     init(row: XML.Accessor) {
-        id          = row.attributes["id"]
-        name        = row.attributes["name"]
-        address     = row.attributes["address"]
-        description = row.attributes["description"]
-        logo        = row.attributes["logo"]
-        phone       = row.attributes["phone"]
+        id              = row.attributes["id"]
+        name            = row.attributes["name"]
+        address         = row.attributes["address"]
+        description     = row.attributes["description"]
+        logo            = row.attributes["logo"]
+        phone           = row.attributes["phone"]
+        canbeordered    = row.attributes["canbeordered"]
+        id_account      = row.attributes["id_account"]
+        id_requesttype  = row.attributes["id_requesttype"]
+        showinadblock   = row.attributes["showinadblock"]
+        shopName        = row.attributes["shopName"]
+        shopIDphone     = row.attributes["shopIDphone"]
     }
 }
 
@@ -221,22 +234,22 @@ class AdditionalServicesController: UIViewController{
         }
     }
     
-    func isSectionOpened(_ section: Int) -> Bool{
-        if let status = openedSection[section]{
-            return status
-        }
-//        openedSection[section] = true
-        return false
-    }
+//    func isSectionOpened(_ section: Int) -> Bool{
+//        if let status = openedSection[section]{
+//            return status
+//        }
+////        openedSection[section] = true
+//        return false
+//    }
     
-    func changeSectionStatus(_ section: Int){
-        if let status = openedSection[section]{
-            openedSection[section] = !status
-        }else{
-            openedSection[section] = true
-        }
-        tableView.reloadSections(IndexSet(integer: section), with: .automatic)
-    }
+//    func changeSectionStatus(_ section: Int){
+//        if let status = openedSection[section]{
+//            openedSection[section] = !status
+//        }else{
+//            openedSection[section] = true
+//        }
+//        tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+//    }
 }
 
 extension AdditionalServicesController: UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
@@ -253,48 +266,48 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
     
     // Получим количество строк для конкретной секции
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSectionOpened(section){
-            return objectArray[section].sectionObjects.count + 1
-        }else{
-            return 1
-        }
+//        if isSectionOpened(section){
+            return objectArray[section].sectionObjects.count
+//        }else{
+//            return 1
+//        }
     }
     
     // Получим данные для использования в ячейке
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceTableHeader", for: indexPath) as! ServiceTableHeader
-            cell.title.text = objectArray[indexPath.section].sectionName
-            cell.substring.textColor = myColors.btnColor.uiColor()
-            if isSectionOpened(indexPath.section){
-                cell.substring.text = "▼"
-            }else{
-                cell.substring.text = "▶︎"
-            }
-            return cell
-        }else{
+//        if indexPath.row == 0{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceTableHeader", for: indexPath) as! ServiceTableHeader
+//            cell.title.text = objectArray[indexPath.section].sectionName
+//            cell.substring.textColor = myColors.btnColor.uiColor()
+//            if isSectionOpened(indexPath.section){
+//                cell.substring.text = "▼"
+//            }else{
+//                cell.substring.text = "▶︎"
+//            }
+//            return cell
+//        }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceTableCell", for: indexPath) as! ServiceTableCell
-            let service = objectArray[indexPath.section].sectionObjects[indexPath.row - 1]
+            let service = objectArray[indexPath.section].sectionObjects[indexPath.row]
             cell.configure(item: service)
             return cell
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
-            changeSectionStatus(indexPath.section)
-        }else{
+//        if indexPath.row == 0{
+//            changeSectionStatus(indexPath.section)
+//        }else{
             sectionNum = indexPath
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "goService", sender: self)
             }
-        }
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goService") {
             let AddApp = segue.destination as! AdditionalVC
-            AddApp.item = objectArray[sectionNum.section].sectionObjects[sectionNum.row - 1]
+            AddApp.item = objectArray[sectionNum.section].sectionObjects[sectionNum.row]
         }
     }
     // MARK: UITableViewDelegate
@@ -303,54 +316,55 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
 class ServiceTableCell: UITableViewCell {
     
     // MARK: Outlets
-    @IBOutlet weak var urlHeight: NSLayoutConstraint!
-    @IBOutlet weak var phoneHeight: NSLayoutConstraint!
-    @IBOutlet weak var imgWidth: NSLayoutConstraint!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var substring: UILabel!
-    @IBOutlet weak var urlBtn: UIButton!
-    @IBOutlet weak var phoneBtn: UIButton!
+//    @IBOutlet weak var urlHeight: NSLayoutConstraint!
+//    @IBOutlet weak var phoneHeight: NSLayoutConstraint!
+//    @IBOutlet weak var imgWidth: NSLayoutConstraint!
+//    @IBOutlet weak var name: UILabel!
+//    @IBOutlet weak var substring: UILabel!
+//    @IBOutlet weak var urlBtn: UIButton!
+//    @IBOutlet weak var phoneBtn: UIButton!
     @IBOutlet weak var imgService: UIImageView!
-    @IBAction func urlBtnPressed(_ sender: UIButton) {
-        let url = URL(string: (urlBtn.titleLabel?.text)!)
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-    }
-    @IBAction func phoneBtnPressed(_ sender: UIButton) {
-        let newPhone = phoneBtn.titleLabel?.text?.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
-        if let url = URL(string: "tel://" + newPhone!) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
-    }
+    
+//    @IBAction func urlBtnPressed(_ sender: UIButton) {
+//        let url = URL(string: (urlBtn.titleLabel?.text)!)
+//        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+//    }
+//    @IBAction func phoneBtnPressed(_ sender: UIButton) {
+//        let newPhone = phoneBtn.titleLabel?.text?.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+//        if let url = URL(string: "tel://" + newPhone!) {
+//            if #available(iOS 10.0, *) {
+//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            } else {
+//                UIApplication.shared.openURL(url)
+//            }
+//        }
+//    }
     
     func configure(item: Services?) {
         guard let item = item else { return }
         let url:NSURL = NSURL(string: (item.logo)!)!
         let data = try? Data(contentsOf: url as URL)
-        name.text = item.name
-        substring.text = item.description
-        var str:String = item.address!
-        if str == ""{
-            urlBtn.isHidden = true
-            urlHeight.constant = 0
-        }else{
-            if !str.contains("http"){
-                str = "http://" + str
-            }
-            urlBtn.setTitle(str, for: .normal)
-        }
-        if item.phone == ""{
-            phoneBtn.isHidden = true
-            phoneHeight.constant = 0
-        }else{
-            phoneBtn.setTitle(item.phone, for: .normal)
-        }        
+//        name.text = item.name
+//        substring.text = item.description
+//        var str:String = item.address!
+//        if str == ""{
+//            urlBtn.isHidden = true
+//            urlHeight.constant = 0
+//        }else{
+//            if !str.contains("http"){
+//                str = "http://" + str
+//            }
+//            urlBtn.setTitle(str, for: .normal)
+//        }
+//        if item.phone == ""{
+//            phoneBtn.isHidden = true
+//            phoneHeight.constant = 0
+//        }else{
+//            phoneBtn.setTitle(item.phone, for: .normal)
+//        }
         
         if UIImage(data: data!) == nil{
-            imgWidth.constant = 0
+//            imgWidth.constant = 0
         }else{
             imgService.image = UIImage(data: data!)
         }

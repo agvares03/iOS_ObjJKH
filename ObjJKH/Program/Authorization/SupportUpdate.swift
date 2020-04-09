@@ -183,6 +183,8 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_JilUpravKom")
         #elseif isTihGavan
         imageApp.image = UIImage(named: "Logo_TihGavan")
+        #elseif isOptimumService
+        imageApp.image = UIImage(named: "Logo_OptimumService")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -446,6 +448,8 @@ class SupportUpdate: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1506021980"
         #elseif isTihGavan
         str = "itms-apps://itunes.apple.com/ru/app/id1506917131"
+        #elseif isOptimumService
+        str = "itms-apps://itunes.apple.com/ru/app/id1507156564"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

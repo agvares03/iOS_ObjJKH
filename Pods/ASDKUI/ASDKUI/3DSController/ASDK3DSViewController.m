@@ -19,9 +19,9 @@
 #import "ASDK3DSViewController.h"
 #import <ASDKCore/ASDKApiKeys.h>
 #import <ASDKCore/ASDKAcquiringSdk.h>
-#import "ASDKLoaderViewController.h"
+#import <ASDKCore/ASDKUtilsRequest.h>
 
-#define kASDKSubmit3DSAuthorization @"Submit3DSAuthorization"
+#import "ASDKLoaderViewController.h"
 
 #import "ASDKNavigationController.h"
 
@@ -30,6 +30,7 @@
 #import "ASDKBarButtonItem.h"
 
 #import <WebKit/WebKit.h>
+
 
 typedef NS_ENUM(NSInteger, CheckStateType)
 {
@@ -53,14 +54,11 @@ typedef NS_ENUM(NSInteger, CheckStateType)
 @property (nonatomic, strong) void (^onError)(ASDKAcquringSdkError *error);
 
 @property (nonatomic, assign) CheckStateType checkStateType;
+@property (nonatomic, copy) NSString *termURL;
 
 @end
 
 @implementation ASDK3DSViewController
-
-#pragma mark - Getters
-
-#pragma mark - Init
 
 - (void)dealloc
 {
@@ -117,10 +115,15 @@ typedef NS_ENUM(NSInteger, CheckStateType)
 - (void)setupWebView
 {
 	WKWebViewConfiguration *wkWebConfig = [WKWebViewConfiguration new];
+
+	[wkWebConfig.preferences setJavaScriptEnabled:YES];
+	[wkWebConfig.preferences setJavaScriptCanOpenWindowsAutomatically:YES];
+	
     self.webView = [[WKWebView alloc] initWithFrame: CGRectZero configuration: wkWebConfig];
     self.webView.navigationDelegate = self;
     self.webView.allowsBackForwardNavigationGestures = YES;
-    [self.view addSubview: self.webView];
+
+	[self.view addSubview: self.webView];
 
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -178,33 +181,41 @@ typedef NS_ENUM(NSInteger, CheckStateType)
     
     self.navigationItem.leftBarButtonItem = [[ASDKBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel3DS)];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: self.threeDsData.ACSUrl];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: self.threeDsData.acsUrl]];
 	request.timeoutInterval = _acquiringSdk.apiRequestsTimeoutInterval;
-	[request setValue: @"application/x-www-form-urlencoded" forHTTPHeaderField: @"Content-Type"];
+	[request setAllHTTPHeaderFields:[ASDKUtilsRequest defaultHTTPHeaders]];
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod: @"POST"];
-    NSString *dataString = [self stringFromParameters: [self parameters]];
-
-    NSData *postData = [dataString dataUsingEncoding: NSUTF8StringEncoding];
-    
-    [request setHTTPBody: postData];
+	
+	if (self.threeDsData.tdsServerTransId != nil && self.threeDsData.acsTransId != nil)
+	{
+		self.termURL = [NSString stringWithFormat:@"%@%@", [self.acquiringSdk domainPath_v2], kASDKSubmit3DSAuthorization];
+		NSString *paramsString = [NSString stringWithFormat:@"{\"threeDSServerTransID\":\"%@\",\"acsTransID\":\"%@\",\"messageVersion\":\"%@\",\"challengeWindowSize\":\"05\",\"messageType\":\"CReq\"}",
+								  self.threeDsData.tdsServerTransId, self.threeDsData.acsTransId, self.threeDsData.threeDSVersion];
+		
+		NSData *plainData = [paramsString dataUsingEncoding:NSUTF8StringEncoding];
+		NSString *postString = [NSString stringWithFormat:@"%@", [plainData base64EncodedStringWithOptions:0]];
+		NSData *postData = [[NSString stringWithFormat:@"creq=%@", postString] dataUsingEncoding: NSUTF8StringEncoding];
+		
+		[request setHTTPBody: postData];
+	}
+	else if (self.threeDsData.paReq != nil && self.threeDsData.MD != nil)
+	{
+		self.termURL = [NSString stringWithFormat:@"%@%@", [self.acquiringSdk domainPath], kASDKSubmit3DSAuthorization];
+		
+		NSMutableDictionary *params = [NSMutableDictionary dictionary];
+		[params setValue:self.threeDsData.paReq forKey:kASDKPaReq];
+		[params setValue:self.threeDsData.MD forKey:kASDKMD];
+		[params setValue:self.termURL forKey:kASDKTermUrl];
+		
+		NSString *dataString = [self stringFromParameters:params];
+		
+		NSData *postData = [dataString dataUsingEncoding: NSUTF8StringEncoding];
+		[request setHTTPBody: postData];
+	}
 		
 	[[NSNotificationCenter defaultCenter] postNotificationName:ASDKNotificationShowLoader object:nil];
-	
-    [self.webView loadRequest:request];
-}
-
-- (NSString *)termUrl
-{
-	return [NSString stringWithFormat:@"%@%@", [self.acquiringSdk domainPath], kASDKSubmit3DSAuthorization];
-}
-
-- (NSDictionary *)parameters
-{
-    NSString *termUrl = [self termUrl];
-    
-    return @{kASDKPaReq : self.threeDsData.paReq,
-             kASDKMD : self.threeDsData.MD,
-             kASDKTermUrl : termUrl};
+	[self.webView loadRequest:request];
 }
 
 - (NSString *)stringFromParameters:(NSDictionary *)parameters
@@ -245,7 +256,7 @@ typedef NS_ENUM(NSInteger, CheckStateType)
 				{
 					[self cancel3DS];
 				}
-				else if ([termUrl rangeOfString:[self termUrl]].location != NSNotFound)
+				else if ([termUrl rangeOfString:self.termURL].location != NSNotFound)
 				{
 					[self.webView evaluateJavaScript:@"document.getElementsByTagName('pre')[0].innerHTML" completionHandler:^(id _Nullable value, NSError * _Nullable error) {
 						NSString *responce = (NSString *)value;
