@@ -8,6 +8,7 @@
 
 import UIKit
 import Gloss
+import SwiftyXMLParser
 import Crashlytics
 
 class NewMainMenu2: UIViewController {
@@ -427,10 +428,44 @@ class NewMainMenu2: UIViewController {
         line_bottom_oss.backgroundColor = myColors.btnColor.uiColor()
         elipseBackground.backgroundColor = myColors.btnColor.uiColor()
         getDebt()
-        
+        let login = defaults.string(forKey: "login")
+        let pass  = defaults.string(forKey: "pass")
+        get_Services(login: login!, pass: pass!)
         // Настройки для меню
         settings_for_menu()
     }
+    
+    var serviceArr: [Services] = []
+    var mainScreenXml:  XML.Accessor?
+    func get_Services(login: String, pass: String){
+            serviceArr.removeAll()
+            let urlPath = "http://uk-gkh.org/gbu_lefortovo/GetAdditionalServices.ashx?login=qw&pwd=qw"
+//            let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+            DispatchQueue.global(qos: .userInteractive).async {
+                var request = URLRequest(url: URL(string: urlPath)!)
+                request.httpMethod = "GET"
+                print(request)
+                
+                URLSession.shared.dataTask(with: request) {
+                    data, error, responce in
+                    
+                    guard data != nil else { return }
+                    //                let responseString = String(data: data!, encoding: .utf8) ?? ""
+                    //                #if DEBUG
+                    //                print("responseString = \(responseString)")
+                    //                #endif
+                    let xml = XML.parse(data!)
+                    self.mainScreenXml = xml
+                    let requests = xml["AdditionalServices"]
+                    let row = requests["Group"]
+                    row.forEach { row in
+                        row["AdditionalService"].forEach {
+                            self.serviceArr.append(Services(row: $0))
+                        }
+                    }
+                    }.resume()
+            }
+        }
     
     func settings_for_menu() {
         let defaults = UserDefaults.standard
@@ -713,19 +748,20 @@ class NewMainMenu2: UIViewController {
         #if isMupRCMytishi
         if segue.identifier == "paysMytishi2" {
             let payController             = segue.destination as! PaysMytishi2Controller
+            payController.serviceArr = self.serviceArr 
             payController.debtArr = self.debtArr
         }
         #else
         if segue.identifier == "paysMytishi" {
             let payController             = segue.destination as! PaysMytishiController
-            print(self.debtArr)
-            
+            payController.serviceArr = self.serviceArr
             payController.debtArr = self.debtArr
         }
         #endif
         
         if segue.identifier == "mupCounters"{
             let payController             = segue.destination as! MupCounterController
+            payController.serviceArr = self.serviceArr
             payController.lsArr = self.lsArr
         }
 //        if segue.identifier == "pays" {

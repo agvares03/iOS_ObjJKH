@@ -652,27 +652,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         } else {
             scrollView.addSubview(refreshControl!)
         }
-        if defaults.bool(forKey: "show_Ad"){
-            if defaults.integer(forKey: "ad_Type") == 2{
-                let configuration = YMANativeAdLoaderConfiguration(blockID: defaults.string(forKey: "adsCode")!,
-                                                                   imageSizes: [kYMANativeImageSizeMedium],
-                                                                   loadImagesAutomatically: true)
-                self.adLoader = YMANativeAdLoader(configuration: configuration)
-                self.adLoader.delegate = self
-                loadAd()
-            }else if defaults.integer(forKey: "ad_Type") == 3{
-                gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
-                //                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
-                gadBannerView.adUnitID = defaults.string(forKey: "adsCode")
-                gadBannerView.rootViewController = self
-                addBannerViewToView(gadBannerView)
-                gadBannerView.delegate = self
-                gadBannerView.load(request)
-            }
-        }else{
-            bottomViewHeight.constant = 0
-            adTopConst.constant = 0
-        }
         getDebt()
         getInsurance()
         //        getNews()
@@ -682,15 +661,6 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         getWebs()
         get_Services(login: login!, pass: pass!)
         getPaysFile()
-        Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { (t) in
-            if defaults.bool(forKey: "show_Ad") && self.showAD{
-                if defaults.integer(forKey: "ad_Type") == 2{
-                    self.loadAd()
-                }else if defaults.integer(forKey: "ad_Type") == 3{
-                    self.gadBannerView.load(self.request)
-                }
-            }
-        })
         // Do any additional setup after loading the view.
     }
     
@@ -942,6 +912,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var questionArr:[QuestionDataJson] = []
     var webArr:[Web_Camera_json] = []
     var serviceArr: [Services] = []
+    var serviceAdBlock: [Services] = []
     var rowComms: [String : [Services]]  = [:]
     
     var dateOld = "01.01"
@@ -2032,15 +2003,22 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var mainScreenXml:  XML.Accessor?
     func get_Services(login: String, pass: String){
         serviceArr.removeAll()
-        let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+        let urlPath = "http://uk-gkh.org/gbu_lefortovo/GetAdditionalServices.ashx?login=qw&pwd=qw"
+//        let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         DispatchQueue.global(qos: .userInteractive).async {
             var request = URLRequest(url: URL(string: urlPath)!)
             request.httpMethod = "GET"
+            print(request)
             
             URLSession.shared.dataTask(with: request) {
                 data, error, responce in
                 
-                guard data != nil else { return }
+                guard data != nil else {
+                    DispatchQueue.main.async{
+                        self.loadAdBanner()
+                    }
+                    return
+                }
                 //                let responseString = String(data: data!, encoding: .utf8) ?? ""
                 //                #if DEBUG
                 //                print("responseString = \(responseString)")
@@ -2071,6 +2049,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         self.menu_6_const.constant = 0
                         self.serviceHeight.constant = 0
                     }else{
+                        self.serviceArr.forEach{
+                            if $0.showinadblock == "mainpage"{
+                                self.serviceAdBlock.append($0)
+                            }
+                        }
                         let str_menu_2 = UserDefaults.standard.string(forKey: "menu_8") ?? ""
                         if (str_menu_2 != "") {
                             let answer = str_menu_2.components(separatedBy: ";")
@@ -2085,40 +2068,112 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             }
                         }
                     }
-                    self.pagerView.interitemSpacing = 20
-                    self.pagerView.dataSource = self
-                    self.pagerView.delegate   = self
-                    self.pagerView.reloadData()
-                    self.pagerView.automaticSlidingInterval = 3.0
+                    self.servicePagerView.interitemSpacing = 20
+                    self.servicePagerView.dataSource = self
+                    self.servicePagerView.delegate   = self
+                    self.servicePagerView.reloadData()
+                    self.servicePagerView.automaticSlidingInterval = 3.0
+                    self.loadAdBanner()
                 }
                 }.resume()
         }
     }
     
-    @IBOutlet private weak var pagerView:   FSPagerView! {
+    func loadAdBanner(){
+        if self.serviceAdBlock.count != 0{
+            self.adPagerView.interitemSpacing = 20
+            self.adPagerView.dataSource = self
+            self.adPagerView.delegate   = self
+            self.adPagerView.reloadData()
+            self.adPagerView.automaticSlidingInterval = 10.0
+            self.bottomViewHeight.constant = (self.view.frame.size.width - 30) / 2 + 4
+        }else if UserDefaults.standard.bool(forKey: "show_Ad"){
+            if UserDefaults.standard.integer(forKey: "ad_Type") == 2{
+                let configuration = YMANativeAdLoaderConfiguration(blockID: UserDefaults.standard.string(forKey: "adsCode")!,
+                                                                   imageSizes: [kYMANativeImageSizeMedium],
+                                                                   loadImagesAutomatically: true)
+                self.adLoader = YMANativeAdLoader(configuration: configuration)
+                self.adLoader.delegate = self
+                self.loadAd()
+            }else if UserDefaults.standard.integer(forKey: "ad_Type") == 3{
+                self.gadBannerView = GADBannerView(adSize: kGADAdSizeBanner)
+                //                gadBannerView.adUnitID = "ca-app-pub-5483542352686414/5099103340"
+                self.gadBannerView.adUnitID = UserDefaults.standard.string(forKey: "adsCode")
+                self.gadBannerView.rootViewController = self
+                self.addBannerViewToView(self.gadBannerView)
+                self.gadBannerView.delegate = self
+                self.gadBannerView.load(self.request)
+            }
+            Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { (t) in
+                if UserDefaults.standard.bool(forKey: "show_Ad") && self.showAD{
+                    if UserDefaults.standard.integer(forKey: "ad_Type") == 2{
+                        self.loadAd()
+                    }else if UserDefaults.standard.integer(forKey: "ad_Type") == 3{
+                        self.gadBannerView.load(self.request)
+                    }
+                }
+            })
+        }else{
+            self.bottomViewHeight.constant = 0
+            self.adTopConst.constant = 0
+        }
+    }
+    
+    @IBOutlet private weak var adPagerView:   FSPagerView! {
         didSet {
-            self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+            self.adPagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+        }
+    }
+    
+    @IBOutlet private weak var servicePagerView:   FSPagerView! {
+        didSet {
+            self.servicePagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
         }
     }
     
     public func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return serviceArr.count
+        if pagerView == servicePagerView{
+            return serviceArr.count
+        }else{
+            return serviceAdBlock.count
+        }
     }
     
     public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        let url:NSURL = NSURL(string: (serviceArr[index].logo)!)!
-        let data = try? Data(contentsOf: url as URL)
-        if UIImage(data: data!) == nil{
-        //            imgWidth.constant = 0
+        if pagerView == servicePagerView{
+            let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+            let url:NSURL = NSURL(string: (serviceArr[index].logo)!)!
+            let data = try? Data(contentsOf: url as URL)
+            if UIImage(data: data!) == nil{
+            //            imgWidth.constant = 0
+            }else{
+                cell.imageView?.image = UIImage(data: data!)
+            }
+            return cell
         }else{
-            cell.imageView?.image = UIImage(data: data!)
+            let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+            let url:NSURL = NSURL(string: (serviceAdBlock[index].logo)!)!
+            let data = try? Data(contentsOf: url as URL)
+            if UIImage(data: data!) == nil{
+            //            imgWidth.constant = 0
+            }else{
+                cell.imageView?.image = UIImage(data: data!)
+            }
+            return cell
         }
-        return cell
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        
+        if pagerView == servicePagerView{
+            if serviceArr[index].canbeordered == "1" && serviceArr[index].id_requesttype != ""{
+                self.addAppAction(checkService: index, allService: true)
+            }
+        }else{
+            if serviceAdBlock[index].canbeordered == "1" && serviceAdBlock[index].id_requesttype != ""{
+                self.addAppAction(checkService: index, allService: false)
+            }
+        }
+        pagerView.deselectItem(at: index, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -3128,6 +3183,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         if segue.identifier == "goCounter"{
             let payController             = segue.destination as! MupCounterController
+            payController.serviceArr = self.serviceArr
             payController.lsArr = self.lsArr
         }
         
@@ -3139,6 +3195,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }else{
                 payController.saldoIdent = choiceIdent
             }
+            payController.serviceArr = self.serviceArr
             payController.debtArr = self.debtArr
         }
         #else
@@ -3149,6 +3206,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }else{
                 payController.saldoIdent = choiceIdent
             }
+            payController.serviceArr = self.serviceArr
             payController.debtArr = self.debtArr
             payController.isHomePage = true
         }
@@ -3309,6 +3367,185 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     var oneCheck = 0
+    
+    var descText:String = ""
+    var temaText:String = ""
+    var type:String = ""
+    var name_account:String = ""
+    var id_account:String = ""
+    var edLogin:String = ""
+    var edPass:String = ""
+    
+    func addAppAction(checkService: Int, allService: Bool) {
+//        self.startAnimation()
+        name_account = UserDefaults.standard.string(forKey: "name")!
+        id_account   = UserDefaults.standard.string(forKey: "id_account")!
+        edLogin      = UserDefaults.standard.string(forKey: "login")!
+        edPass       = UserDefaults.standard.string(forKey: "pass")!
+        let ident: String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        if allService{
+            descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + serviceArr[checkService].name!
+            temaText = serviceArr[checkService].name!.stringByAddingPercentEncodingForRFC3986() ?? ""
+            type = serviceArr[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        }else{
+            descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + serviceAdBlock[checkService].name!
+            temaText = serviceAdBlock[checkService].name!.stringByAddingPercentEncodingForRFC3986() ?? ""
+            type = serviceAdBlock[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        }
+        descText = descText.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + Server.ADD_APP +
+            "ident=" + ident +
+            "&name=" + temaText +
+            "&text=" + descText +
+            "&type=" + type +
+            "&priority=" + "2" +
+            "&phonenum=" + ident
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+//        print("RequestURL: ", request.url)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+//                                                        self.stopAnimation()
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                        self.view.isUserInteractionEnabled = true
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(self.responseString)")
+                                                
+                                                self.choice()
+        })
+        task.resume()
+        
+    }
+        
+    func choice() {
+        if (responseString == "1") {
+            DispatchQueue.main.async(execute: {
+//                self.stopAnimation()
+                let alert = UIAlertController(title: "Ошибка", message: "Не переданы обязательные параметры", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if (responseString == "2") {
+            DispatchQueue.main.async(execute: {
+//                self.stopAnimation()
+                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if (responseString == "xxx") {
+            DispatchQueue.main.async(execute: {
+//                self.stopAnimation()
+                let alert = UIAlertController(title: "Ошибка", message: "Не удалось. Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if Int(responseString) == nil || Int(responseString)! < 1{
+            DispatchQueue.main.async(execute: {
+//               self.stopAnimation()
+               let alert = UIAlertController(title: "Ошибка", message: "Сервер не отвечает. Попробуйте позже", preferredStyle: .alert)
+               let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+               alert.addAction(cancelAction)
+               self.present(alert, animated: true, completion: nil)
+            })
+        } else {
+//            if self.images.count != 0{
+                self.sendEmailFile()
+//            }
+            DispatchQueue.main.async(execute: {
+                
+                // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
+                // Запишем заявку в БД
+                let db = DB()
+                db.add_app(id: 1, number: self.responseString, text: self.descText, tema: self.temaText, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1, type_app: self.type, serverStatus: "новая заявка")
+                db.getComByID(login: self.edLogin, pass: self.edPass, number: self.responseString)
+                
+//                self.stopAnimation()
+                
+                let alert = UIAlertController(title: "Успешно", message: "Создана заявка №" + self.responseString, preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    
+                }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+                
+            })
+        }
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = true
+        }
+    }
+    
+    func date_teck() -> (String)? {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        let dateString = dateFormatter.string(from: date as Date)
+        return dateString
+        
+    }
+    
+    var responseString = ""
+    func sendEmailFile(){
+        let reqID = responseString.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + "MobileAPI/SendRequestToMail.ashx?" + "requestId=" + reqID
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        print(request)
+    
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+//                                                        self.stopAnimation()
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                        self.view.isUserInteractionEnabled = true
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
+                                                
+        })
+        task.resume()
+    }
 }
 
 class HomeLSCell: UITableViewCell {

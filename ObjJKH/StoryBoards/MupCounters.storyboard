@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sbT-EO-itX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sbT-EO-itX">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1198,6 +1198,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcF-dt-pWb">
+                                <rect key="frame" x="0.0" y="710" width="375" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8a-uT-atg" customClass="FSPagerView" customModule="FSPagerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="o8a-uT-atg" firstAttribute="leading" secondItem="fcF-dt-pWb" secondAttribute="leading" id="0g7-Vs-rbt"/>
+                                    <constraint firstAttribute="bottom" secondItem="o8a-uT-atg" secondAttribute="bottom" id="90i-tO-Oez"/>
+                                    <constraint firstAttribute="height" constant="150" id="YPl-d9-itz"/>
+                                    <constraint firstAttribute="trailing" secondItem="o8a-uT-atg" secondAttribute="trailing" id="cuD-pN-1Fi"/>
+                                    <constraint firstItem="o8a-uT-atg" firstAttribute="top" secondItem="fcF-dt-pWb" secondAttribute="top" id="j9R-6l-JmN"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeL-TE-BHw">
                                 <rect key="frame" x="0.0" y="860" width="375" height="40"/>
                                 <subviews>
@@ -1231,7 +1248,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNk-LI-zOf">
-                                <rect key="frame" x="0.0" y="44" width="375" height="816"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxQ-gL-cZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="715"/>
@@ -2341,11 +2358,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fcF-dt-pWb" firstAttribute="leading" secondItem="TXq-Ov-ZgN" secondAttribute="leading" id="23p-k7-VYv"/>
                             <constraint firstItem="YxQ-gL-cZ1" firstAttribute="width" secondItem="QJD-9l-F7U" secondAttribute="width" id="3RI-Ro-WAY"/>
                             <constraint firstItem="LNk-LI-zOf" firstAttribute="leading" secondItem="TXq-Ov-ZgN" secondAttribute="leading" id="7ov-XF-U8o"/>
+                            <constraint firstAttribute="trailing" secondItem="fcF-dt-pWb" secondAttribute="trailing" id="81h-ux-Wm9"/>
+                            <constraint firstItem="UeL-TE-BHw" firstAttribute="top" secondItem="fcF-dt-pWb" secondAttribute="bottom" id="9MB-6n-iAt"/>
                             <constraint firstItem="UeL-TE-BHw" firstAttribute="trailing" secondItem="TXq-Ov-ZgN" secondAttribute="trailing" id="AF3-km-yIw"/>
                             <constraint firstItem="TXq-Ov-ZgN" firstAttribute="bottom" secondItem="UeL-TE-BHw" secondAttribute="bottom" id="LmZ-Ja-McR"/>
-                            <constraint firstItem="UeL-TE-BHw" firstAttribute="top" secondItem="LNk-LI-zOf" secondAttribute="bottom" id="aI6-bI-DbS"/>
+                            <constraint firstItem="fcF-dt-pWb" firstAttribute="top" secondItem="LNk-LI-zOf" secondAttribute="bottom" id="aI6-bI-DbS"/>
                             <constraint firstItem="LNk-LI-zOf" firstAttribute="top" secondItem="TXq-Ov-ZgN" secondAttribute="top" id="iwM-nS-eQe"/>
                             <constraint firstItem="UeL-TE-BHw" firstAttribute="leading" secondItem="TXq-Ov-ZgN" secondAttribute="leading" id="txQ-C1-v3i"/>
                             <constraint firstItem="TXq-Ov-ZgN" firstAttribute="trailing" secondItem="LNk-LI-zOf" secondAttribute="trailing" id="wzL-du-d1l"/>
@@ -2361,8 +2381,10 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="adPagerView" destination="o8a-uT-atg" id="WbQ-Gx-PjL"/>
                         <outlet property="autoSendLbl" destination="aJa-R9-Jyx" id="ab2-Ja-BhV"/>
                         <outlet property="backBtn" destination="jdf-LO-ilh" id="agQ-ac-IJT"/>
+                        <outlet property="backgroundView" destination="fcF-dt-pWb" id="uED-q8-6Za"/>
                         <outlet property="cancelCount" destination="qrJ-24-XUI" id="SK5-3i-eA6"/>
                         <outlet property="count11" destination="HZH-vw-G9z" id="iyD-rR-qym"/>
                         <outlet property="count12" destination="t25-LF-u1S" id="5Hs-wl-gEm"/>
@@ -2472,6 +2494,8 @@
                         <outlet property="sendCount" destination="RKS-jJ-SpV" id="buJ-VY-B5h"/>
                         <outlet property="support" destination="dP7-pN-k0n" id="etc-t5-jb6"/>
                         <outlet property="supportBtn" destination="9Lx-mw-xyb" id="Qdt-hr-EFQ"/>
+                        <outlet property="supportHeight" destination="pPJ-uF-2gD" id="pDB-Z7-7oV"/>
+                        <outlet property="supportView" destination="UeL-TE-BHw" id="Cyb-ei-ODg"/>
                         <outlet property="tarif2Height" destination="Ndj-fl-fhH" id="lfg-tq-bGw"/>
                         <outlet property="tarif2View" destination="7Rt-LJ-MTo" id="Xxz-QO-NvM"/>
                         <outlet property="tarif3Height" destination="yeU-cO-Tlx" id="sby-XJ-VTj"/>
@@ -2482,7 +2506,7 @@
                         <outlet property="teckLbl1" destination="goL-B8-9tJ" id="c2n-nV-Cdq"/>
                         <outlet property="teckLbl2" destination="KrK-aG-wW1" id="AQm-xr-5Y8"/>
                         <outlet property="teckLbl3" destination="TOg-q3-Kq7" id="dIe-5r-3ce"/>
-                        <outlet property="viewTop" destination="LmZ-Ja-McR" id="hf9-i1-rCm"/>
+                        <outlet property="viewTop" destination="YPl-d9-itz" id="Sb2-qF-9cO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8L-gy-Xte" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2508,6 +2532,10 @@
             <point key="canvasLocation" x="328.80000000000001" y="147.97601199400302"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nPm-iE-IOA"/>
+        <segue reference="d7h-Fz-fUI"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="17" height="17"/>
         <image name="coldWater" width="31" height="48"/>
@@ -2516,8 +2544,4 @@
         <image name="poll_Mup" width="60" height="60"/>
         <image name="spin.png" width="840" height="840"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="nPm-iE-IOA"/>
-        <segue reference="Set-AI-sEC"/>
-    </inferredMetricsTieBreakers>
 </document>

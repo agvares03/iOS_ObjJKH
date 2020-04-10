@@ -14,11 +14,12 @@ import PassKit
 import YandexMobileAds
 import GoogleMobileAds
 import Crashlytics
+import FSPagerView
 //import YandexMobileMetrica
 
 private protocol MainDataProtocol:  class {}
 
-class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource, YMANativeAdDelegate, YMANativeAdLoaderDelegate, GADBannerViewDelegate {
+class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDelegate, UITableViewDataSource, YMANativeAdDelegate, YMANativeAdLoaderDelegate, GADBannerViewDelegate, FSPagerViewDataSource, FSPagerViewDelegate {
     
     var adLoader: YMANativeAdLoader!
     var bannerView: YMANativeBannerView?
@@ -35,6 +36,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     @IBOutlet weak var lsView: UIView!
     @IBOutlet weak var addLS: UILabel!
+    
+    @IBOutlet weak var backgroundView: UIView!
     
     @IBAction func updateConect(_ sender: UIButton) {
         self.viewDidLoad()
@@ -88,6 +91,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     public var saldoIdent = "Все"
     public var debtArr:[AnyObject] = []
     public var endSum = ""
+    public var serviceArr:[Services] = []
+    public var serviceAdBlock:[Services] = []
     
     @IBOutlet weak var tableViewTop: NSLayoutConstraint!
     @IBOutlet weak var ls_button: UIButton!
@@ -969,7 +974,22 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                          name: .flagsChanged,
                          object: Network.reachability)
         updateUserInterface()
-        if defaults.bool(forKey: "show_Ad"){
+        self.serviceArr.forEach{
+            if $0.showinadblock == "pay"{
+                self.serviceAdBlock.append($0)
+            }
+        }
+        if self.serviceAdBlock.count != 0{
+            self.supportView.isHidden = true
+            self.adPagerView.shadow = false
+            self.adPagerView.interitemSpacing = 20
+            self.adPagerView.dataSource = self
+            self.adPagerView.delegate   = self
+            self.adPagerView.reloadData()
+            self.adPagerView.automaticSlidingInterval = 10.0
+            self.adHeight = (self.view.frame.size.width - 30) / 2
+            self.viewBot.constant = (self.view.frame.size.width - 30) / 2
+        }else if UserDefaults.standard.bool(forKey: "show_Ad"){
             self.supportView.isHidden = true
             if defaults.integer(forKey: "ad_Type") == 2{
                 let configuration = YMANativeAdLoaderConfiguration(blockID: defaults.string(forKey: "adsCode")!,
@@ -987,6 +1007,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 gadBannerView.delegate = self
                 gadBannerView.load(request)
             }
+        }else{
+            self.adHeight = 0
+            self.viewBot.constant = 0
         }
         #if isElectroSbitSaratov
         applePayIcon.setImageColor(color: .white)
@@ -1052,12 +1075,214 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
     }
     
+    var descText:String = ""
+    var temaText:String = ""
+    var type:String = ""
+    var name_account:String = ""
+    var id_account:String = ""
+    var edLogin:String = ""
+    var edPass:String = ""
+    
+    func addAppAction(checkService: Int) {
+//        self.startAnimation()
+        name_account = UserDefaults.standard.string(forKey: "name")!
+        id_account   = UserDefaults.standard.string(forKey: "id_account")!
+        edLogin      = UserDefaults.standard.string(forKey: "login")!
+        edPass       = UserDefaults.standard.string(forKey: "pass")!
+        let ident: String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        temaText = serviceAdBlock[checkService].name!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + serviceAdBlock[checkService].name!
+        type = serviceAdBlock[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        descText = descText.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + Server.ADD_APP +
+            "ident=" + ident +
+            "&name=" + temaText +
+            "&text=" + descText +
+            "&type=" + type +
+            "&priority=" + "2" +
+            "&phonenum=" + ident
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+//        print("RequestURL: ", request.url)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+//                                                        self.stopAnimation()
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                        self.view.isUserInteractionEnabled = true
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(self.responseString)")
+                                                
+                                                self.choice()
+        })
+        task.resume()
+        
+    }
+        
+    func choice() {
+        if (responseString == "1") {
+            DispatchQueue.main.async(execute: {
+//                self.stopAnimation()
+                let alert = UIAlertController(title: "Ошибка", message: "Не переданы обязательные параметры", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if (responseString == "2") {
+            DispatchQueue.main.async(execute: {
+//                self.stopAnimation()
+                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if (responseString == "xxx") {
+            DispatchQueue.main.async(execute: {
+//                self.stopAnimation()
+                let alert = UIAlertController(title: "Ошибка", message: "Не удалось. Попробуйте позже", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        } else if Int(responseString) == nil || Int(responseString)! < 1{
+            DispatchQueue.main.async(execute: {
+//               self.stopAnimation()
+               let alert = UIAlertController(title: "Ошибка", message: "Сервер не отвечает. Попробуйте позже", preferredStyle: .alert)
+               let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+               alert.addAction(cancelAction)
+               self.present(alert, animated: true, completion: nil)
+            })
+        } else {
+//            if self.images.count != 0{
+                self.sendEmailFile()
+//            }
+            DispatchQueue.main.async(execute: {
+                
+                // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
+                // Запишем заявку в БД
+                let db = DB()
+                db.add_app(id: 1, number: self.responseString, text: self.descText, tema: self.temaText, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1, type_app: self.type, serverStatus: "новая заявка")
+                db.getComByID(login: self.edLogin, pass: self.edPass, number: self.responseString)
+                
+//                self.stopAnimation()
+                
+                let alert = UIAlertController(title: "Успешно", message: "Создана заявка №" + self.responseString, preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                    
+                }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+                
+            })
+        }
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = true
+        }
+    }
+    
+    func date_teck() -> (String)? {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        let dateString = dateFormatter.string(from: date as Date)
+        return dateString
+        
+    }
+    
+    var responseString = ""
+    func sendEmailFile(){
+        let reqID = responseString.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + "MobileAPI/SendRequestToMail.ashx?" + "requestId=" + reqID
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        print(request)
+    
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+//                                                        self.stopAnimation()
+                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                        self.view.isUserInteractionEnabled = true
+                                                    })
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
+                                                
+        })
+        task.resume()
+    }
+    
+    @IBOutlet private weak var adPagerView:   FSPagerView! {
+        didSet {
+            self.adPagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+        }
+    }
+    
+    public func numberOfItems(in pagerView: FSPagerView) -> Int {
+        return serviceAdBlock.count
+    }
+    
+    public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+        let url:NSURL = NSURL(string: (serviceAdBlock[index].logo)!)!
+        let data = try? Data(contentsOf: url as URL)
+        if UIImage(data: data!) == nil{
+        //            imgWidth.constant = 0
+        }else{
+            cell.imageView?.image = UIImage(data: data!)
+        }
+        return cell
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+        if serviceAdBlock[index].canbeordered == "1" && serviceAdBlock[index].id_requesttype != ""{
+            self.addAppAction(checkService: index)
+        }
+        pagerView.deselectItem(at: index, animated: true)
+    }
+    
     func addBannerViewToView(_ bannerView: GADBannerView){
         bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
+        backgroundView.addSubview(bannerView)
         if #available(iOS 11.0, *) {
             let bannerView = bannerView
-            let layoutGuide = self.view.safeAreaLayoutGuide
+            let layoutGuide = self.backgroundView.safeAreaLayoutGuide
             let constraints = [
                 bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
                 bannerView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -10),
@@ -1074,13 +1299,13 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                           options: [],
                                                           metrics: nil,
                                                           views: views)
-            self.view.addConstraints(horizontal)
-            self.view.addConstraints(vertical)
+            self.backgroundView.addConstraints(horizontal)
+            self.backgroundView.addConstraints(vertical)
         }
         DispatchQueue.main.async {
-            self.adHeight = bannerView.frame.size.height - 35
+            self.adHeight = bannerView.frame.size.height
 //            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
-            self.viewBot.constant = bannerView.frame.size.height - 35
+            self.viewBot.constant = bannerView.frame.size.height
         }
     }
     
@@ -1093,19 +1318,18 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         self.bannerView?.removeFromSuperview()
         let bannerView = YMANativeBannerView(frame: CGRect.zero)
         bannerView.ad = ad
-        view.addSubview(bannerView)
+        backgroundView.addSubview(bannerView)
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         self.bannerView = bannerView
+        DispatchQueue.main.async {
+            self.adHeight = bannerView.frame.size.height
+            self.viewBot.constant = bannerView.frame.size.height
+        }
+        
         if #available(iOS 11.0, *) {
             displayAdAtBottomOfSafeArea();
         } else {
             displayAdAtBottom();
-        }
-        DispatchQueue.main.async {
-            self.adHeight = bannerView.frame.size.height - 35
-//            self.viewTop.constant = self.getPoint() - bannerView.frame.size.height + 10
-            self.viewBot.constant = bannerView.frame.size.height - 35
-            //            print("ViewTOP: ", self.viewTop.constant)
         }
     }
     
@@ -1119,14 +1343,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                       options: [],
                                                       metrics: nil,
                                                       views: views)
-        self.view.addConstraints(horizontal)
-        self.view.addConstraints(vertical)
+        self.backgroundView.addConstraints(horizontal)
+        self.backgroundView.addConstraints(vertical)
     }
     
     @available(iOS 11.0, *)
     func displayAdAtBottomOfSafeArea() {
         let bannerView = self.bannerView!
-        let layoutGuide = self.view.safeAreaLayoutGuide
+        let layoutGuide = self.backgroundView.safeAreaLayoutGuide
         let constraints = [
             bannerView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 10),
             bannerView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -10),
@@ -1880,7 +2104,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         if let keyboardSize = (sender?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardH = keyboardSize.height
 //            viewTop.constant = getPoint() - keyboardH + 50
-            viewBot.constant = keyboardH - 40
+            viewBot.constant = keyboardH
         }
     }
     
