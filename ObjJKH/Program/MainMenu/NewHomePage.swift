@@ -2003,8 +2003,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var mainScreenXml:  XML.Accessor?
     func get_Services(login: String, pass: String){
         serviceArr.removeAll()
-        let urlPath = "http://uk-gkh.org/gbu_lefortovo/GetAdditionalServices.ashx?login=qw&pwd=qw"
-//        let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+//        let urlPath = "http://uk-gkh.org/gbu_lefortovo/GetAdditionalServices.ashx?login=qw&pwd=qw"
+        let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
         DispatchQueue.global(qos: .userInteractive).async {
             var request = URLRequest(url: URL(string: urlPath)!)
             request.httpMethod = "GET"
