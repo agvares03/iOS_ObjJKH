@@ -41,6 +41,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     @IBOutlet weak var lsView: UIView!
     var edLogin: String = ""
     var edPass: String = ""
+    public var serviceArr:[Services] = []
     
     let dropper = Dropper(width: 150, height: 400)
     
@@ -1091,6 +1092,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         }
         if segue.identifier == "addCounters"{
             let payController             = segue.destination as! AddCountersController
+            payController.serviceArr = self.serviceArr
             payController.autoSend = autoSend
             payController.recheckInter = recheckInter
             payController.lastCheckDate = lastCheckupDate
@@ -1169,17 +1171,17 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                                                 
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("responseString = \(responseString)")
-                                                if (responseString == "0") {
-                                                    DispatchQueue.main.async{
-                                                        let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
-                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                                                        alert.addAction(cancelAction)
-                                                        self.present(alert, animated: true, completion: nil)
-                                                        self.StopIndicator()
-                                                    }
-                                                } else if (responseString == "1") {
+//                                                if (responseString == "0") {
+//                                                    DispatchQueue.main.async{
+//                                                        let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
+//                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                                                        alert.addAction(cancelAction)
+//                                                        self.present(alert, animated: true, completion: nil)
+//                                                        self.StopIndicator()
+//                                                    }
+//                                                } else if (responseString == "1") {
                                                     self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
-                                                }
+//                                                }
                                                 
         })
         
@@ -1187,7 +1189,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String) {
-        print(isEditable())
+//        print(isEditable())
 //        if isEditable(){
             //            let alert = UIAlertController(title: count_name + "(" + uniq_num + ")", message: "Введите текущие показания прибора", preferredStyle: .alert)
             //            alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "Введите показание..."; textField.keyboardType = .decimalPad })

@@ -84,6 +84,7 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
     public var saldoIdent = "Все"
     public var debtArr:[AnyObject] = []
     public var endSum = ""
+    public var serviceArr:[Services] = []
     
     @IBOutlet weak var tableViewTop: NSLayoutConstraint!
     @IBOutlet weak var txt_sum_jkh: UILabel!
