@@ -53,14 +53,14 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="SMs-2A-P1i" customClass="NewHomePage" customModule="ADS_68" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ix-ip-Am6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="2600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="3000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="samara_background" translatesAutoresizingMaskIntoConstraints="NO" id="j6R-N5-auG">
-                                <rect key="frame" x="0.0" y="44" width="375" height="2507"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="2907"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9i4-AQ-5Ne">
-                                <rect key="frame" x="0.0" y="44" width="375" height="2507"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="2907"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYi-MM-SD4">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="2841"/>
@@ -2695,7 +2695,7 @@
                         <viewLayoutGuide key="safeArea" id="6Bm-gC-uTP"/>
                     </view>
                     <navigationItem key="navigationItem" id="lc2-8a-G9t"/>
-                    <size key="freeformSize" width="375" height="2600"/>
+                    <size key="freeformSize" width="375" height="3000"/>
                     <connections>
                         <outlet property="adPagerView" destination="r4d-fb-Yn0" id="o4L-Hv-bJg"/>
                         <outlet property="adTopConst" destination="mMV-2N-94I" id="2SW-ph-NOK"/>
@@ -2710,6 +2710,7 @@
                         <outlet property="allWebsBtn" destination="8Zp-Po-4Xe" id="tTf-g2-hu9"/>
                         <outlet property="appsHeight" destination="rG0-aw-kAv" id="6pB-RC-jBO"/>
                         <outlet property="appsIndicator" destination="q6e-4d-U89" id="zzd-Ch-jPM"/>
+                        <outlet property="apps_Title" destination="L39-89-gid" id="1tw-42-b7N"/>
                         <outlet property="apps_View" destination="oV6-ni-kqT" id="Lyg-He-beF"/>
                         <outlet property="backgroundView" destination="yVO-r9-b4b" id="r7K-ws-qiR"/>
                         <outlet property="bottomViewHeight" destination="HhT-PA-QI7" id="9w5-v5-rdi"/>
@@ -2722,6 +2723,7 @@
                         <outlet property="callLbl2" destination="alj-ch-Xem" id="v8j-oc-Gdn"/>
                         <outlet property="counterHeight" destination="K6g-bt-I2h" id="jgf-eH-OUH"/>
                         <outlet property="counterIndicator" destination="oej-Wo-5rV" id="DWb-OZ-eR6"/>
+                        <outlet property="counters_Title" destination="kYf-bm-btl" id="5SS-0i-FhJ"/>
                         <outlet property="counters_View" destination="dE5-L1-TZW" id="yoI-LX-2EH"/>
                         <outlet property="elipseBackground" destination="ONq-x6-9Vk" id="HfB-ET-02E"/>
                         <outlet property="elipseBackground2" destination="eZE-Qd-PYW" id="ARA-TN-Zoi"/>
@@ -2734,6 +2736,7 @@
                         <outlet property="fonWeb" destination="FDy-yP-VFR" id="wFV-pY-Cm2"/>
                         <outlet property="fon_Samara" destination="j6R-N5-auG" id="jXs-JI-3i1"/>
                         <outlet property="fon_top" destination="zFs-UV-dqi" id="hRF-uK-ZX9"/>
+                        <outlet property="ls_Title" destination="G6q-vw-P5J" id="Re6-8R-PND"/>
                         <outlet property="ls_View" destination="QiJ-xU-ZDT" id="3cM-pD-57U"/>
                         <outlet property="menu_1_const" destination="ijo-ct-Fzo" id="LZZ-wk-JV4"/>
                         <outlet property="menu_2_const" destination="ANy-tr-ZXA" id="bvG-bp-Dt8"/>
@@ -2745,18 +2748,22 @@
                         <outlet property="name_Samara" destination="dEz-Dt-GVi" id="j37-1Y-XOq"/>
                         <outlet property="newsHeight" destination="CKG-3C-gUK" id="zvg-B6-2IG"/>
                         <outlet property="newsIndicator" destination="Thz-0b-0Yj" id="YpD-9K-aYy"/>
+                        <outlet property="news_Title" destination="YnF-0s-nSa" id="3w1-2C-zhH"/>
                         <outlet property="news_View" destination="LPQ-KX-vwg" id="eb4-EG-pbP"/>
                         <outlet property="questionIndicator" destination="chi-iC-Whi" id="Upb-tf-NDq"/>
                         <outlet property="questionLSHeight" destination="KE7-9k-sIl" id="Qdy-FA-wk7"/>
+                        <outlet property="questions_Title" destination="zT2-Hw-FUj" id="obi-ey-mx4"/>
                         <outlet property="questions_View" destination="V2F-tl-Bwz" id="qHh-gI-0v9"/>
                         <outlet property="receipts1Height" destination="pbQ-th-fBG" id="63K-ZK-TZB"/>
                         <outlet property="receipts2Height" destination="16e-GR-rGV" id="YtD-h3-QF3"/>
                         <outlet property="receiptsIndicator" destination="Ega-z2-M6n" id="y13-F7-NLt"/>
+                        <outlet property="receipts_Title" destination="jwA-uD-uJ6" id="rqw-mF-BPD"/>
                         <outlet property="receipts_View" destination="gV8-JP-MPH" id="47y-QV-28C"/>
                         <outlet property="scrollView" destination="9i4-AQ-5Ne" id="ogm-uR-7UU"/>
                         <outlet property="serviceHeight" destination="3qt-cQ-q5b" id="VR4-2W-mfa"/>
                         <outlet property="serviceIndicator" destination="h8N-BQ-ni0" id="0h0-Se-DJs"/>
                         <outlet property="servicePagerView" destination="ZvH-Pk-ngv" id="ZaK-hY-VBC"/>
+                        <outlet property="services_Title" destination="8he-xm-bse" id="sIW-ZM-IFE"/>
                         <outlet property="services_View" destination="zUG-ya-8gk" id="g39-ae-S2e"/>
                         <outlet property="suppBtn" destination="SET-ZL-cqD" id="anG-Yk-xmP"/>
                         <outlet property="suppBtnImg" destination="pSd-9l-IzV" id="fLz-i7-KEg"/>
@@ -2779,6 +2786,7 @@
                         <outlet property="view_no_ls" destination="m7d-a3-jrd" id="Uep-dI-egW"/>
                         <outlet property="webIndicator" destination="viC-JP-w6k" id="f7z-fW-n35"/>
                         <outlet property="webLSHeight" destination="xya-Sj-Nr8" id="uwt-OV-lNt"/>
+                        <outlet property="webs_Title" destination="57H-FJ-0l2" id="1tX-oQ-7h8"/>
                         <outlet property="webs_View" destination="giL-EP-QWs" id="ArB-ns-cMB"/>
                         <segue destination="YWZ-xH-Xk7" kind="show" identifier="addLS" id="2dh-Vt-jmR"/>
                         <segue destination="0xi-OZ-8pe" kind="show" identifier="addLS_Mup" id="jYg-pB-5lL"/>
