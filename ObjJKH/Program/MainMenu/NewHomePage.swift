@@ -15,6 +15,7 @@ import GoogleMobileAds
 import StoreKit
 import Crashlytics
 import FSPagerView
+import DeviceCheck
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)
@@ -61,6 +62,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var webs_View: UIView!
     @IBOutlet weak var services_View: UIView!
     @IBOutlet weak var receipts_View: UIView!
+    
+    @IBOutlet weak var ls_Title:         UILabel!
+    @IBOutlet weak var news_Title:       UILabel!
+    @IBOutlet weak var counters_Title:   UILabel!
+    @IBOutlet weak var apps_Title:       UILabel!
+    @IBOutlet weak var questions_Title:  UILabel!
+    @IBOutlet weak var webs_Title:       UILabel!
+    @IBOutlet weak var services_Title:   UILabel!
+    @IBOutlet weak var receipts_Title:   UILabel!
     
     @IBOutlet weak var btn_Add_LS: UIButton!
     @IBOutlet weak var btn_add_Apps: UIButton!
@@ -599,6 +609,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         #elseif isOptimumService
         fon_top.image = UIImage(named: "Logo_OptimumService")
         #endif
+        if view.frame.size.width == 320{
+            ls_Title.font = ls_Title.font.withSize(12)
+            news_Title.font = news_Title.font.withSize(13.0)
+            counters_Title.font = counters_Title.font.withSize(13.0)
+            apps_Title.font = apps_Title.font.withSize(13.0)
+            questions_Title.font = questions_Title.font.withSize(13.0)
+            webs_Title.font = webs_Title.font.withSize(13.0)
+            services_Title.font = services_Title.font.withSize(13.0)
+            receipts_Title.font = receipts_Title.font.withSize(13.0)
+        }
+        
         suppBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         callBtnImg.setImageColor(color: myColors.btnColor.uiColor())
         callLbl1.textColor = myColors.btnColor.uiColor()
