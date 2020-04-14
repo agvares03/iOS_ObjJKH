@@ -18,6 +18,7 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
     var bannerView: YMANativeBannerView?
     var gadBannerView: GADBannerView!
     var request = GADRequest()
+    @IBOutlet weak var adIndicator: UIActivityIndicatorView!
     @IBOutlet weak var backgroundView:  UIView!
     @IBOutlet weak var supportView:     UIView!
     @IBOutlet weak var dateLbl:         UILabel!
@@ -336,6 +337,8 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("AddCounter", forKey: "last_UI_action")
+        adIndicator.color = myColors.btnColor.uiColor()
+        adIndicator.isHidden = true
 //        print("metrId: ", metrId)
         self.StopIndicator()
         let defaults     = UserDefaults.standard
@@ -959,6 +962,11 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
     
     func addAppAction(checkService: Int) {
 //        self.startAnimation()
+        DispatchQueue.main.async {
+            self.adIndicator.startAnimating()
+            self.adIndicator.isHidden = false
+            self.adPagerView.isHidden = true
+        }
         name_account = UserDefaults.standard.string(forKey: "name")!
         id_account   = UserDefaults.standard.string(forKey: "id_account")!
         edLogin      = UserDefaults.standard.string(forKey: "login")!
@@ -1001,6 +1009,9 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
                                                         alert.addAction(supportAction)
                                                         self.present(alert, animated: true, completion: nil)
                                                         self.view.isUserInteractionEnabled = true
+                                                        self.adIndicator.stopAnimating()
+                                                        self.adIndicator.isHidden = true
+                                                        self.adPagerView.isHidden = false
                                                     })
                                                     return
                                                 }
@@ -1071,6 +1082,9 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
             })
         }
         DispatchQueue.main.async {
+            self.adIndicator.stopAnimating()
+            self.adIndicator.isHidden = true
+            self.adPagerView.isHidden = false
             self.view.isUserInteractionEnabled = true
         }
     }

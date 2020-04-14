@@ -110,7 +110,7 @@ class AdditionalServicesController: UIViewController{
         }
         self.get_Services(login: self.login!, pass: self.pass!)
         startAnimation()
-        
+        loader.color = myColors.btnColor.uiColor()
         let titles = Titles()
         self.title = titles.getTitle(numb: "8")
         backBtn.tintColor = myColors.btnColor.uiColor()

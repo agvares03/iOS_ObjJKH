@@ -2337,21 +2337,16 @@
                                                                     <segue destination="hdy-sD-q64" kind="show" id="Ar1-qe-Hp4"/>
                                                                 </connections>
                                                             </button>
-                                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="h8N-BQ-ni0">
-                                                                <rect key="frame" x="296" y="12.666666666666515" width="20" height="20"/>
-                                                            </activityIndicatorView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="8he-xm-bse" firstAttribute="top" secondItem="Lx8-qP-UIC" secondAttribute="top" id="1QZ-PO-zyZ"/>
                                                             <constraint firstAttribute="height" constant="45" id="3qt-cQ-q5b"/>
                                                             <constraint firstItem="JeW-K8-rIa" firstAttribute="top" secondItem="Lx8-qP-UIC" secondAttribute="top" id="9mu-TX-5e6"/>
-                                                            <constraint firstItem="h8N-BQ-ni0" firstAttribute="centerY" secondItem="Lx8-qP-UIC" secondAttribute="centerY" id="Aoi-VX-yW8"/>
                                                             <constraint firstAttribute="trailing" secondItem="JeW-K8-rIa" secondAttribute="trailing" constant="15" id="MCr-y4-xjC"/>
                                                             <constraint firstAttribute="bottom" secondItem="JeW-K8-rIa" secondAttribute="bottom" id="OSI-Ai-VA0"/>
                                                             <constraint firstAttribute="bottom" secondItem="8he-xm-bse" secondAttribute="bottom" id="PXl-Sf-VOi"/>
                                                             <constraint firstItem="8he-xm-bse" firstAttribute="leading" secondItem="Lx8-qP-UIC" secondAttribute="leading" constant="5" id="j0e-68-kja"/>
-                                                            <constraint firstAttribute="trailing" secondItem="h8N-BQ-ni0" secondAttribute="trailing" constant="29" id="kpA-jL-Rk7"/>
                                                             <constraint firstItem="JeW-K8-rIa" firstAttribute="leading" secondItem="Lx8-qP-UIC" secondAttribute="leading" id="zUp-tT-RwA"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
@@ -2361,6 +2356,10 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5a7-K3-FR2">
+                                                        <rect key="frame" x="154" y="113" width="37" height="37"/>
+                                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZvH-Pk-ngv" customClass="FSPagerView" customModule="FSPagerView">
                                                         <rect key="frame" x="0.0" y="44.999999999999986" width="345" height="172.66666666666663"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2380,8 +2379,10 @@
                                                     <constraint firstItem="ZvH-Pk-ngv" firstAttribute="top" secondItem="Lx8-qP-UIC" secondAttribute="bottom" id="Mri-gV-KTL"/>
                                                     <constraint firstAttribute="trailing" secondItem="ZvH-Pk-ngv" secondAttribute="trailing" id="PcW-yU-1F8"/>
                                                     <constraint firstItem="Lx8-qP-UIC" firstAttribute="top" secondItem="zUG-ya-8gk" secondAttribute="top" id="aet-Vf-85c"/>
+                                                    <constraint firstItem="5a7-K3-FR2" firstAttribute="centerX" secondItem="ZvH-Pk-ngv" secondAttribute="centerX" id="e1T-sG-apS"/>
                                                     <constraint firstAttribute="bottom" secondItem="ZvH-Pk-ngv" secondAttribute="bottom" id="fab-uf-SQu"/>
                                                     <constraint firstAttribute="trailing" secondItem="Lx8-qP-UIC" secondAttribute="trailing" id="gzt-1V-FOs"/>
+                                                    <constraint firstItem="5a7-K3-FR2" firstAttribute="centerY" secondItem="ZvH-Pk-ngv" secondAttribute="centerY" id="kQP-XE-ILL"/>
                                                     <constraint firstItem="ZvH-Pk-ngv" firstAttribute="leading" secondItem="zUG-ya-8gk" secondAttribute="leading" id="sfo-R4-UjE"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -2617,6 +2618,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVO-r9-b4b">
                                                 <rect key="frame" x="0.0" y="535.33333333333337" width="375" height="187"/>
                                                 <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9ZZ-SB-Tll">
+                                                        <rect key="frame" x="169" y="75" width="37" height="37"/>
+                                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4d-fb-Yn0" customClass="FSPagerView" customModule="FSPagerView">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="187"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2627,6 +2632,8 @@
                                                     <constraint firstItem="r4d-fb-Yn0" firstAttribute="top" secondItem="yVO-r9-b4b" secondAttribute="top" id="2v9-vi-kX2"/>
                                                     <constraint firstAttribute="trailing" secondItem="r4d-fb-Yn0" secondAttribute="trailing" constant="10" id="6HY-cS-CaA"/>
                                                     <constraint firstAttribute="height" constant="187" id="HhT-PA-QI7"/>
+                                                    <constraint firstItem="9ZZ-SB-Tll" firstAttribute="centerX" secondItem="yVO-r9-b4b" secondAttribute="centerX" id="MMb-U9-FIf"/>
+                                                    <constraint firstItem="9ZZ-SB-Tll" firstAttribute="centerY" secondItem="yVO-r9-b4b" secondAttribute="centerY" id="XvP-A5-xEq"/>
                                                     <constraint firstItem="r4d-fb-Yn0" firstAttribute="leading" secondItem="yVO-r9-b4b" secondAttribute="leading" constant="10" id="ZjS-SI-GiP"/>
                                                     <constraint firstAttribute="bottom" secondItem="r4d-fb-Yn0" secondAttribute="bottom" id="t1x-pK-GSm"/>
                                                 </constraints>
@@ -2697,6 +2704,7 @@
                     <navigationItem key="navigationItem" id="lc2-8a-G9t"/>
                     <size key="freeformSize" width="375" height="3000"/>
                     <connections>
+                        <outlet property="adIndicator" destination="9ZZ-SB-Tll" id="nR9-OG-MaC"/>
                         <outlet property="adPagerView" destination="r4d-fb-Yn0" id="o4L-Hv-bJg"/>
                         <outlet property="adTopConst" destination="mMV-2N-94I" id="2SW-ph-NOK"/>
                         <outlet property="allAppsBtn" destination="BJ1-R0-2ul" id="CnX-zo-eUa"/>
@@ -2761,7 +2769,7 @@
                         <outlet property="receipts_View" destination="gV8-JP-MPH" id="47y-QV-28C"/>
                         <outlet property="scrollView" destination="9i4-AQ-5Ne" id="ogm-uR-7UU"/>
                         <outlet property="serviceHeight" destination="3qt-cQ-q5b" id="VR4-2W-mfa"/>
-                        <outlet property="serviceIndicator" destination="h8N-BQ-ni0" id="0h0-Se-DJs"/>
+                        <outlet property="serviceIndicator" destination="5a7-K3-FR2" id="aS0-xV-ahB"/>
                         <outlet property="servicePagerView" destination="ZvH-Pk-ngv" id="ZaK-hY-VBC"/>
                         <outlet property="services_Title" destination="8he-xm-bse" id="sIW-ZM-IFE"/>
                         <outlet property="services_View" destination="zUG-ya-8gk" id="g39-ae-S2e"/>

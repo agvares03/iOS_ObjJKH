@@ -1171,17 +1171,17 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                                                 
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("responseString = \(responseString)")
-//                                                if (responseString == "0") {
-//                                                    DispatchQueue.main.async{
-//                                                        let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
-//                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-//                                                        alert.addAction(cancelAction)
-//                                                        self.present(alert, animated: true, completion: nil)
-//                                                        self.StopIndicator()
-//                                                    }
-//                                                } else if (responseString == "1") {
+                                                if (responseString == "0") {
+                                                    DispatchQueue.main.async{
+                                                        let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                        self.StopIndicator()
+                                                    }
+                                                } else if (responseString == "1") {
                                                     self.sendPressed(uniq_num: uniq_num, count_name: count_name, ident: ident, predValue: predValue, predValue2: predValue2, predValue3: predValue3, tariffNumber: tariffNumber)
-//                                                }
+                                                }
                                                 
         })
         

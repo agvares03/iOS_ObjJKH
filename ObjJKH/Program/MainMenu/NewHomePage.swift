@@ -46,6 +46,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var questionIndicator: UIActivityIndicatorView!
     @IBOutlet weak var counterIndicator: UIActivityIndicatorView!
     @IBOutlet weak var receiptsIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var adIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var fon_top: UIImageView!
     @IBOutlet weak var elipseBackground: UIView!
@@ -626,14 +627,17 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         callLbl2.textColor = myColors.btnColor.uiColor()
         suppBtn.tintColor = myColors.btnColor.uiColor()
         
+        serviceIndicator.color = myColors.btnColor.uiColor()
+        serviceIndicator.isHidden = true
+        adIndicator.color = myColors.btnColor.uiColor()
+        adIndicator.isHidden = true
+        
         newsIndicator.color = myColors.btnColor.uiColor()
         appsIndicator.color = myColors.btnColor.uiColor()
         counterIndicator.color = myColors.btnColor.uiColor()
         questionIndicator.color = myColors.btnColor.uiColor()
         webIndicator.color = myColors.btnColor.uiColor()
-        serviceIndicator.color = myColors.btnColor.uiColor()
         receiptsIndicator.color = myColors.btnColor.uiColor()
-        
         fonLS.tintColor = myColors.btnColor.uiColor()
         fonNews.tintColor = myColors.btnColor.uiColor()
         fonCounter.tintColor = myColors.btnColor.uiColor()
@@ -3406,11 +3410,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var consId   = ""
         let ident: String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
         if allService{
+            DispatchQueue.main.async{
+                self.serviceIndicator.startAnimating()
+                self.serviceIndicator.isHidden = false
+                self.servicePagerView.isHidden = true
+            }
             descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + serviceArr[checkService].name!
             temaText = serviceArr[checkService].name!.stringByAddingPercentEncodingForRFC3986() ?? ""
             type = serviceArr[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
             consId = serviceArr[checkService].id_account!.stringByAddingPercentEncodingForRFC3986() ?? ""
         }else{
+            DispatchQueue.main.async{
+                self.adIndicator.startAnimating()
+                self.adIndicator.isHidden = false
+                self.adPagerView.isHidden = true
+            }
             descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + serviceAdBlock[checkService].name!
             temaText = serviceAdBlock[checkService].name!.stringByAddingPercentEncodingForRFC3986() ?? ""
             type = serviceAdBlock[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
@@ -3429,7 +3443,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
         
-//        print("RequestURL: ", request.url)
+        print("RequestURL: ", request.url)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
@@ -3450,19 +3464,32 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                         self.present(alert, animated: true, completion: nil)
                                                         self.view.isUserInteractionEnabled = true
                                                     })
+                                                    if allService{
+                                                        DispatchQueue.main.async{
+                                                            self.serviceIndicator.stopAnimating()
+                                                            self.serviceIndicator.isHidden = true
+                                                            self.servicePagerView.isHidden = false
+                                                        }
+                                                    }else{
+                                                        DispatchQueue.main.async{
+                                                            self.adIndicator.stopAnimating()
+                                                            self.adIndicator.isHidden = true
+                                                            self.adPagerView.isHidden = false
+                                                        }
+                                                    }
                                                     return
                                                 }
                                                 
                                                 self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("responseString = \(self.responseString)")
                                                 
-                                                self.choice()
+                                                self.choice(allService: allService)
         })
         task.resume()
         
     }
         
-    func choice() {
+    func choice(allService: Bool) {
         if (responseString == "1") {
             DispatchQueue.main.async(execute: {
 //                self.stopAnimation()
@@ -3519,6 +3546,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             })
         }
         DispatchQueue.main.async {
+            if allService{
+                self.serviceIndicator.stopAnimating()
+                self.serviceIndicator.isHidden = true
+                self.servicePagerView.isHidden = false
+            }else{
+                self.adIndicator.stopAnimating()
+                self.adIndicator.isHidden = true
+                self.adPagerView.isHidden = false
+            }
             self.view.isUserInteractionEnabled = true
         }
     }

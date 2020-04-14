@@ -19,6 +19,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hwr-Q1-svx">
                                 <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                                 <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HMt-Ay-Bgk">
+                                        <rect key="frame" x="169" y="56.5" width="37" height="37"/>
+                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhC-C5-XBp" customClass="FSPagerView" customModule="FSPagerView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -31,6 +35,8 @@
                                     <constraint firstAttribute="height" constant="150" id="Ioh-fl-xaF"/>
                                     <constraint firstItem="IhC-C5-XBp" firstAttribute="top" secondItem="Hwr-Q1-svx" secondAttribute="top" id="X5R-Da-FHP"/>
                                     <constraint firstAttribute="trailing" secondItem="IhC-C5-XBp" secondAttribute="trailing" id="dty-9G-gqK"/>
+                                    <constraint firstItem="HMt-Ay-Bgk" firstAttribute="centerX" secondItem="Hwr-Q1-svx" secondAttribute="centerX" id="xgI-6B-fuf"/>
+                                    <constraint firstItem="HMt-Ay-Bgk" firstAttribute="centerY" secondItem="Hwr-Q1-svx" secondAttribute="centerY" id="yWd-xu-otW"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ds5-Ye-OVv">
@@ -441,6 +447,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="adIndicator" destination="HMt-Ay-Bgk" id="9Ap-QV-ryt"/>
                         <outlet property="adPagerView" destination="IhC-C5-XBp" id="mhf-is-mkC"/>
                         <outlet property="addLS" destination="S7u-X2-Nsr" id="hev-Rg-Ffi"/>
                         <outlet property="applePayBtn" destination="srL-cB-ctb" id="0ey-md-T60"/>

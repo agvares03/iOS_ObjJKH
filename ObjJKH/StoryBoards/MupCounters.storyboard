@@ -1201,6 +1201,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcF-dt-pWb">
                                 <rect key="frame" x="0.0" y="710" width="375" height="150"/>
                                 <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="65k-pL-19F">
+                                        <rect key="frame" x="169" y="56.5" width="37" height="37"/>
+                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8a-uT-atg" customClass="FSPagerView" customModule="FSPagerView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1210,9 +1214,11 @@
                                 <constraints>
                                     <constraint firstItem="o8a-uT-atg" firstAttribute="leading" secondItem="fcF-dt-pWb" secondAttribute="leading" id="0g7-Vs-rbt"/>
                                     <constraint firstAttribute="bottom" secondItem="o8a-uT-atg" secondAttribute="bottom" id="90i-tO-Oez"/>
+                                    <constraint firstItem="65k-pL-19F" firstAttribute="centerY" secondItem="fcF-dt-pWb" secondAttribute="centerY" id="Fg3-mC-RfY"/>
                                     <constraint firstAttribute="height" constant="150" id="YPl-d9-itz"/>
                                     <constraint firstAttribute="trailing" secondItem="o8a-uT-atg" secondAttribute="trailing" id="cuD-pN-1Fi"/>
                                     <constraint firstItem="o8a-uT-atg" firstAttribute="top" secondItem="fcF-dt-pWb" secondAttribute="top" id="j9R-6l-JmN"/>
+                                    <constraint firstItem="65k-pL-19F" firstAttribute="centerX" secondItem="fcF-dt-pWb" secondAttribute="centerX" id="ycP-yQ-AaR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeL-TE-BHw">
@@ -2381,6 +2387,7 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="adIndicator" destination="65k-pL-19F" id="3gV-he-OwC"/>
                         <outlet property="adPagerView" destination="o8a-uT-atg" id="WbQ-Gx-PjL"/>
                         <outlet property="autoSendLbl" destination="aJa-R9-Jyx" id="ab2-Ja-BhV"/>
                         <outlet property="backBtn" destination="jdf-LO-ilh" id="agQ-ac-IJT"/>

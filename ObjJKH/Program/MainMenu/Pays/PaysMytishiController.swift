@@ -38,6 +38,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     @IBOutlet weak var addLS: UILabel!
     
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var adIndicator: UIActivityIndicatorView!
     
     @IBAction func updateConect(_ sender: UIButton) {
         self.viewDidLoad()
@@ -957,6 +958,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         
         // Установим цвета для элементов в зависимости от Таргета
+        adIndicator.color = myColors.btnColor.uiColor()
+        adIndicator.isHidden = true
         back.tintColor = myColors.btnColor.uiColor()
         btnPay.backgroundColor = myColors.btnColor.uiColor()
         historyPay.backgroundColor = myColors.btnColor.uiColor()
@@ -1008,8 +1011,8 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 gadBannerView.load(request)
             }
         }else{
-            self.adHeight = 0
-            self.viewBot.constant = 0
+            self.adHeight = 40
+            self.viewBot.constant = 40
         }
         #if isElectroSbitSaratov
         applePayIcon.setImageColor(color: .white)
@@ -1085,6 +1088,11 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     
     func addAppAction(checkService: Int) {
 //        self.startAnimation()
+        DispatchQueue.main.async{
+            self.adIndicator.startAnimating()
+            self.adIndicator.isHidden = false
+            self.adPagerView.isHidden = true
+        }
         name_account = UserDefaults.standard.string(forKey: "name")!
         id_account   = UserDefaults.standard.string(forKey: "id_account")!
         edLogin      = UserDefaults.standard.string(forKey: "login")!
@@ -1127,6 +1135,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                                         alert.addAction(supportAction)
                                                         self.present(alert, animated: true, completion: nil)
                                                         self.view.isUserInteractionEnabled = true
+                                                        self.adIndicator.stopAnimating()
+                                                        self.adIndicator.isHidden = true
+                                                        self.adPagerView.isHidden = false
                                                     })
                                                     return
                                                 }
@@ -1197,6 +1208,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             })
         }
         DispatchQueue.main.async {
+            self.adIndicator.stopAnimating()
+            self.adIndicator.isHidden = true
+            self.adPagerView.isHidden = false
             self.view.isUserInteractionEnabled = true
         }
     }
@@ -2113,7 +2127,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     // И вниз при исчезновении
     @objc func keyboardWillHide(sender: NSNotification?) {
 //        viewTop.constant = getPoint()
-        viewBot.constant = 0
+        viewBot.constant = 40
         if UserDefaults.standard.bool(forKey: "show_Ad"){
 //            viewTop.constant = getPoint() - adHeight + 10
             viewBot.constant = adHeight

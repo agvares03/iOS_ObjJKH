@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dhx-Xd-GFn">
-                                <rect key="frame" x="169" y="347.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="337" width="37" height="37"/>
                                 <color key="color" red="0.1333333333" green="0.65098039220000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-xL-9hC">
@@ -151,11 +151,6 @@
                             <constraint firstItem="QQZ-cH-kBr" firstAttribute="centerX" secondItem="7Cf-v0-fLM" secondAttribute="centerX" id="rUX-iO-zle"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Je2-15-Kcz"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="dhx-Xd-GFn"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Доп. услуги" id="1rM-Nh-gGf">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="back" id="Tlh-3s-0au">
