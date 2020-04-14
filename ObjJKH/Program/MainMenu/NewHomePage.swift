@@ -2186,11 +2186,11 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         if pagerView == servicePagerView{
-            if serviceArr[index].canbeordered == "1" && serviceArr[index].id_requesttype != ""{
+            if serviceArr[index].canbeordered == "1" && serviceArr[index].id_requesttype != "" && serviceArr[index].id_account != ""{
                 self.addAppAction(checkService: index, allService: true)
             }
         }else{
-            if serviceAdBlock[index].canbeordered == "1" && serviceAdBlock[index].id_requesttype != ""{
+            if serviceAdBlock[index].canbeordered == "1" && serviceAdBlock[index].id_requesttype != "" && serviceAdBlock[index].id_account != ""{
                 self.addAppAction(checkService: index, allService: false)
             }
         }
@@ -3403,15 +3403,18 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         id_account   = UserDefaults.standard.string(forKey: "id_account")!
         edLogin      = UserDefaults.standard.string(forKey: "login")!
         edPass       = UserDefaults.standard.string(forKey: "pass")!
+        var consId   = ""
         let ident: String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
         if allService{
             descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + serviceArr[checkService].name!
             temaText = serviceArr[checkService].name!.stringByAddingPercentEncodingForRFC3986() ?? ""
             type = serviceArr[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
+            consId = serviceArr[checkService].id_account!.stringByAddingPercentEncodingForRFC3986() ?? ""
         }else{
             descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + serviceAdBlock[checkService].name!
             temaText = serviceAdBlock[checkService].name!.stringByAddingPercentEncodingForRFC3986() ?? ""
             type = serviceAdBlock[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
+            consId = serviceAdBlock[checkService].id_account!.stringByAddingPercentEncodingForRFC3986() ?? ""
         }
         descText = descText.stringByAddingPercentEncodingForRFC3986() ?? ""
         let urlPath = Server.SERVER + Server.ADD_APP +
@@ -3420,7 +3423,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             "&text=" + descText +
             "&type=" + type +
             "&priority=" + "2" +
-            "&phonenum=" + ident
+            "&phonenum=" + ident +
+            "&consultantId=" + consId
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"

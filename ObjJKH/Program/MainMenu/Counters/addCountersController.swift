@@ -945,7 +945,7 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        if serviceAdBlock[index].canbeordered == "1" && serviceAdBlock[index].id_requesttype != ""{
+        if serviceAdBlock[index].canbeordered == "1" && serviceAdBlock[index].id_requesttype != "" && serviceAdBlock[index].id_account != ""{
             self.addAppAction(checkService: index)
         }
         pagerView.deselectItem(at: index, animated: true)
@@ -968,13 +968,15 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
         descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + serviceAdBlock[checkService].name!
         type = serviceAdBlock[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
         descText = descText.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let consId = serviceAdBlock[checkService].id_account!.stringByAddingPercentEncodingForRFC3986() ?? ""
         let urlPath = Server.SERVER + Server.ADD_APP +
             "ident=" + ident +
             "&name=" + temaText +
             "&text=" + descText +
             "&type=" + type +
             "&priority=" + "2" +
-            "&phonenum=" + ident
+            "&phonenum=" + ident +
+            "&consultantId=" + consId
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"

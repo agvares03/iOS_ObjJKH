@@ -29,18 +29,18 @@ struct Services {
 
     
     init(row: XML.Accessor) {
-        id              = row.attributes["id"]
-        name            = row.attributes["name"]
-        address         = row.attributes["address"]
-        description     = row.attributes["description"]
-        logo            = row.attributes["logo"]
-        phone           = row.attributes["phone"]
-        canbeordered    = row.attributes["canbeordered"]
-        id_account      = row.attributes["id_account"]
-        id_requesttype  = row.attributes["id_requesttype"]
-        showinadblock   = row.attributes["showinadblock"]
-        shopName        = row.attributes["shopName"]
-        shopIDphone     = row.attributes["shopIDphone"]
+        id             = row.attributes["id"]
+        name           = row.attributes["name"]
+        address        = row.attributes["address"]
+        description    = row.attributes["description"]
+        logo           = row.attributes["logo"]
+        phone          = row.attributes["phone"]
+        canbeordered   = row.attributes["canbeordered"]
+        id_account     = row.attributes["id_account"]
+        id_requesttype = row.attributes["id_requesttype"]
+        showinadblock  = row.attributes["showinadblock"]
+        shopName       = row.attributes["shopName"]
+        shopIDphone    = row.attributes["shopIDphone"]
     }
 }
 
@@ -253,13 +253,15 @@ class AdditionalServicesController: UIViewController{
         descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + objectArray[checkService].name!
         type = objectArray[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
         descText = descText.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let consId = objectArray[checkService].id_account!.stringByAddingPercentEncodingForRFC3986() ?? ""
         let urlPath = Server.SERVER + Server.ADD_APP +
             "ident=" + ident +
             "&name=" + temaText +
             "&text=" + descText +
             "&type=" + type +
             "&priority=" + "2" +
-            "&phonenum=" + ident
+            "&phonenum=" + ident +
+            "&consultantId=" + consId
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -471,7 +473,7 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
 //            changeSectionStatus(indexPath.section)
 //        }else{
         sectionNum = indexPath
-        if objectArray[indexPath.row].canbeordered == "1" && objectArray[indexPath.row].id_requesttype != ""{
+        if objectArray[indexPath.row].canbeordered == "1" && objectArray[indexPath.row].id_requesttype != "" && objectArray[indexPath.row].id_account != ""{
             self.addAppAction(checkService: indexPath.row)
         }
 //            DispatchQueue.main.async {
