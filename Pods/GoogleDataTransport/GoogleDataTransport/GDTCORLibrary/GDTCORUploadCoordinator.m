@@ -231,7 +231,6 @@ static NSString *const ktargetToInFlightPackagesKey =
     if (targetToInFlightPackages) {
       [targetToInFlightPackages removeObjectForKey:targetNumber];
     }
-    NSSet<GDTCOREvent *> *packageEvents = [package.events copy];
     if (registrar) {
       id<GDTCORPrioritizer> prioritizer = registrar.targetToPrioritizer[targetNumber];
       if (!prioritizer) {
@@ -239,11 +238,11 @@ static NSString *const ktargetToInFlightPackagesKey =
                        @"A prioritizer should be registered for this target: %@", targetNumber);
       }
       if ([prioritizer respondsToSelector:@selector(packageDelivered:successful:)]) {
-        [prioritizer packageDelivered:[package copy] successful:successful];
+        [prioritizer packageDelivered:package successful:successful];
       }
     }
-    if (successful && packageEvents.count) {
-      [self.storage removeEvents:packageEvents];
+    if (successful && package.events) {
+      [self.storage removeEvents:package.events];
     }
   });
 }

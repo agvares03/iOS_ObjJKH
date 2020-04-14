@@ -367,7 +367,6 @@ static FIRInstanceID *gInstanceID;
   if (!handler) {
     FIRInstanceIDLoggerError(kFIRInstanceIDMessageCodeInstanceID001,
                              kFIRInstanceIDInvalidNilHandlerError);
-    return;
   }
 
   // comparing enums to ints directly throws a warning
@@ -983,12 +982,12 @@ static FIRInstanceID *gInstanceID;
     // Apps distributed via AppStore or TestFlight use the Production APNS certificates.
     return defaultAppTypeProd;
   }
-#if TARGET_OS_OSX || TARGET_OS_MACCATALYST
-  NSString *path = [[[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
-      stringByAppendingPathComponent:@"embedded.provisionprofile"];
-#elif TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
   NSString *path = [[[NSBundle mainBundle] bundlePath]
       stringByAppendingPathComponent:@"embedded.mobileprovision"];
+#elif TARGET_OS_OSX
+  NSString *path = [[[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
+      stringByAppendingPathComponent:@"embedded.provisionprofile"];
 #endif
 
   if ([GULAppEnvironmentUtil isAppStoreReceiptSandbox] && !path.length) {

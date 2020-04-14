@@ -50,14 +50,6 @@ NSURL *GDTCORRootDirectory(void) {
     GDTPath =
         [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/google-sdks-events", cachePath]];
     GDTCORLogDebug("GDT's state will be saved to: %@", GDTPath);
-    if (![[NSFileManager defaultManager] fileExistsAtPath:GDTPath.path]) {
-      NSError *error;
-      [[NSFileManager defaultManager] createDirectoryAtPath:GDTPath.path
-                                withIntermediateDirectories:YES
-                                                 attributes:nil
-                                                      error:&error];
-      GDTCORAssert(error == nil, @"There was an error creating GDT's path");
-    }
   });
   return GDTPath;
 }
