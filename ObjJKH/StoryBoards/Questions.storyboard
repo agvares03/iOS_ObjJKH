@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SCC-uy-aVb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SCC-uy-aVb">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,33 +21,39 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jxc-Du-Quj">
-                                    <size key="itemSize" width="375" height="68"/>
+                                    <size key="itemSize" width="375" height="113"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QuestionsTableCell" id="Iob-TF-wQ4" customClass="QuestionsTableCell" customModule="ADS_68" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NFy-Br-kvm">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Опрос №1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxC-gk-atk">
-                                                    <rect key="frame" x="20" y="8" width="335" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Какой вариант использования лобби-бара является для Вас предпочтительным" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxC-gk-atk">
+                                                    <rect key="frame" x="20" y="8" width="335" height="66.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="61" id="78b-b9-uJ8"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="6 вопросов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODu-g8-FP7">
-                                                    <rect key="frame" x="20" y="35" width="335" height="18"/>
+                                                    <rect key="frame" x="20" y="80" width="335" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="Kjf-sS-Hp8"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDG-ZY-ibS">
-                                                    <rect key="frame" x="12" y="65" width="363" height="1"/>
+                                                    <rect key="frame" x="12" y="110" width="363" height="1"/>
                                                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="hA4-ug-NL4"/>
@@ -56,22 +63,23 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="yDG-ZY-ibS" secondAttribute="trailing" id="1eS-HG-H2c"/>
-                                            <constraint firstItem="yDG-ZY-ibS" firstAttribute="leading" secondItem="Iob-TF-wQ4" secondAttribute="leading" constant="12" id="6QQ-RA-gl2"/>
-                                            <constraint firstItem="kxC-gk-atk" firstAttribute="top" secondItem="Iob-TF-wQ4" secondAttribute="topMargin" id="NBq-ZH-ZaL"/>
-                                            <constraint firstItem="ODu-g8-FP7" firstAttribute="top" secondItem="kxC-gk-atk" secondAttribute="bottom" constant="5.5" id="O9b-lZ-jdj"/>
-                                            <constraint firstItem="kxC-gk-atk" firstAttribute="leading" secondItem="Iob-TF-wQ4" secondAttribute="leadingMargin" constant="12" id="VoG-3o-Tjl"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="kxC-gk-atk" secondAttribute="trailing" constant="12" id="ZTU-Rb-gC2"/>
-                                            <constraint firstItem="ODu-g8-FP7" firstAttribute="leading" secondItem="Iob-TF-wQ4" secondAttribute="leadingMargin" constant="12" id="arB-Y7-DGL"/>
-                                            <constraint firstAttribute="bottom" secondItem="yDG-ZY-ibS" secondAttribute="bottom" constant="2" id="qPm-TR-bhL"/>
-                                            <constraint firstItem="yDG-ZY-ibS" firstAttribute="top" secondItem="ODu-g8-FP7" secondAttribute="bottom" constant="12" id="qs9-Sr-LAW"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="ODu-g8-FP7" secondAttribute="trailing" constant="12" id="yY1-PW-g6c"/>
-                                        </constraints>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yDG-ZY-ibS" secondAttribute="trailing" id="1eS-HG-H2c"/>
+                                                <constraint firstItem="yDG-ZY-ibS" firstAttribute="leading" secondItem="NFy-Br-kvm" secondAttribute="leading" constant="12" id="6QQ-RA-gl2"/>
+                                                <constraint firstItem="kxC-gk-atk" firstAttribute="top" secondItem="NFy-Br-kvm" secondAttribute="topMargin" id="NBq-ZH-ZaL"/>
+                                                <constraint firstItem="ODu-g8-FP7" firstAttribute="top" secondItem="kxC-gk-atk" secondAttribute="bottom" constant="5.5" id="O9b-lZ-jdj"/>
+                                                <constraint firstItem="kxC-gk-atk" firstAttribute="leading" secondItem="NFy-Br-kvm" secondAttribute="leadingMargin" constant="12" id="VoG-3o-Tjl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kxC-gk-atk" secondAttribute="trailing" constant="12" id="ZTU-Rb-gC2"/>
+                                                <constraint firstItem="ODu-g8-FP7" firstAttribute="leading" secondItem="NFy-Br-kvm" secondAttribute="leadingMargin" constant="12" id="arB-Y7-DGL"/>
+                                                <constraint firstAttribute="bottom" secondItem="yDG-ZY-ibS" secondAttribute="bottom" constant="2" id="qPm-TR-bhL"/>
+                                                <constraint firstItem="yDG-ZY-ibS" firstAttribute="top" secondItem="ODu-g8-FP7" secondAttribute="bottom" constant="12" id="qs9-Sr-LAW"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ODu-g8-FP7" secondAttribute="trailing" constant="12" id="yY1-PW-g6c"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="desc" destination="ODu-g8-FP7" id="6a3-kY-6V5"/>
                                             <outlet property="title" destination="kxC-gk-atk" id="O4h-5P-U8X"/>
+                                            <outlet property="titleHeight" destination="78b-b9-uJ8" id="lzh-g0-HZN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -238,13 +246,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ma9-hf-IY8">
                                     <size key="itemSize" width="319" height="54"/>
-                                    <size key="headerReferenceSize" width="50" height="90"/>
+                                    <size key="headerReferenceSize" width="50" height="120"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QuestionAnswerCell" id="bUL-NT-88Z" customClass="QuestionAnswerCell" customModule="ADS_68" customModuleProvider="target">
-                                        <rect key="frame" x="28" y="90" width="319" height="54"/>
+                                        <rect key="frame" x="28" y="120" width="319" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="54"/>
@@ -318,23 +326,26 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QuestionAnswerHeader" id="Bcg-NM-Jb0" customClass="QuestionAnswerHeader" customModule="ADS_68" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Какой вариант использования лобби-бара является для Вас предпочтительным" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-uF-LPC">
-                                            <rect key="frame" x="20" y="5" width="335" height="57"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Какой вариант использования лобби-бара является для Вас предпочтительным" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-uF-LPC">
+                                            <rect key="frame" x="20" y="5" width="335" height="71"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3 из 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXm-6y-iBS">
-                                            <rect key="frame" x="30" y="70" width="317" height="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 из 6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXm-6y-iBS">
+                                            <rect key="frame" x="30" y="84" width="317" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="3bb-pk-LIi"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTu-QT-7TU">
-                                            <rect key="frame" x="0.0" y="88" width="375" height="2"/>
+                                            <rect key="frame" x="0.0" y="118" width="375" height="2"/>
                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="2" id="HyR-X0-TzL"/>
@@ -395,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="veC-bX-tT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1428.75" y="139.43661971830986"/>
+            <point key="canvasLocation" x="1428" y="138.98050974512745"/>
         </scene>
         <!--Title-->
         <scene sceneID="sln-6C-bZK">
@@ -481,12 +492,12 @@
             <point key="canvasLocation" x="-242.40000000000001" y="146.17691154422789"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dec-of-5a4"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="17" height="17"/>
         <image name="nonConect" width="100" height="100"/>
         <image name="poll_Mup" width="60" height="60"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dec-of-5a4"/>
-    </inferredMetricsTieBreakers>
 </document>
