@@ -8,8 +8,12 @@
 
 import UIKit
 import Crashlytics
+import Gloss
 
-class NotificationController: UIViewController {
+class NotificationController: UIViewController, QuestionTableDelegate {
+    func update() {
+        print("")
+    }
 
     @IBOutlet weak var targetName: UILabel!
     @IBOutlet weak var elipseBackground: UIView!
@@ -23,6 +27,18 @@ class NotificationController: UIViewController {
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var bodyText: UILabel!
     var phone: String?
+    var questionID: Int?
+    private var questions: [QuestionDataJson]? = []
+    
+    @IBOutlet weak var questionBtn: UIButton!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var btnHeight: NSLayoutConstraint!
+    
+    @IBAction func goAnswers(_ sender: UIButton) {
+        startAnimation()
+        getQuestions()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("Notifi", forKey: "last_UI_action")
@@ -213,6 +229,18 @@ class NotificationController: UIViewController {
         #elseif isOptimumService
         fon_top.image = UIImage(named: "Logo_OptimumService")
         #endif
+        loader.color = myColors.btnColor.uiColor()
+        questionBtn.backgroundColor = myColors.btnColor.uiColor()
+        questionID = UserDefaults.standard.integer(forKey: "notifiQuestID")
+        if questionID! > 0{
+            questionBtn.isHidden = false
+            btnHeight.constant = 40
+            loader.isHidden = true
+        }else{
+            questionBtn.isHidden = true
+            btnHeight.constant = 0
+            loader.isHidden = true
+        }
         btn_name_1.setTitle(phoneOperator, for: .normal)
         targetName.text = (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
         
@@ -236,6 +264,99 @@ class NotificationController: UIViewController {
         UserDefaults.standard.set("", forKey: "titleNotifi")
         UserDefaults.standard.synchronize()
         // Do any additional setup after loading the view.
+    }
+    
+    func startAnimation(){
+        DispatchQueue.main.async{
+            self.loader.startAnimating()
+            self.loader.isHidden = false
+            self.questionBtn.isHidden = true
+        }
+    }
+    
+    func stopAnimation(){
+        DispatchQueue.main.async{
+            self.loader.stopAnimating()
+            self.loader.isHidden = true
+            self.questionBtn.isHidden = false
+        }
+    }
+    
+    func getQuestions() {
+//        let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+    //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + phone)!)
+        request.httpMethod = "GET"
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            
+            guard data != nil else { return }
+//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//            print("responseString = \(responseString)")
+
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let unfilteredData = QuestionsJson(json: json as! JSON)?.data
+                var filtered: [QuestionDataJson] = []
+                unfilteredData?.forEach { json in
+
+                    var isContains = true
+                    json.questions?.forEach {
+                        if !$0.isCompleteByUser! {
+                            isContains = false
+                        }
+                    }
+                    if !isContains {
+                        filtered.append(json)
+                    }
+                }
+                self.questions = filtered
+            }
+            var questTrue = false
+            self.questions!.forEach{
+                if $0.id! == self.questionID{
+                    questTrue = true
+                    self.stopAnimation()
+                    DispatchQueue.main.async{
+                        self.performSegue(withIdentifier: "go_answers", sender: self)
+                    }
+                }
+            }
+            if !questTrue{
+                self.stopAnimation()
+                DispatchQueue.main.async{
+                    let alert = UIAlertController(title: "Ошибка", message: "Опрос не найден", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+            }.resume()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "go_answers" {
+            //            let vc = segue.destination as! QuestionAnswerVC
+            //            vc.title = questionArr[indexQuestion].name
+            //            vc.question_ = questionArr[indexQuestion]
+            //            //            vc.delegate = delegate
+            //            vc.questionDelegate = self
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! QuestionsTableVC
+            var question: QuestionDataJson?
+            questions!.forEach{
+                if $0.id! == questionID{
+                    question = $0
+                }
+            }
+            vc.questionTitle = question?.name ?? ""
+            vc.question_ = question
+            //            vc.delegate = delegate
+            vc.questionDelegate = self
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

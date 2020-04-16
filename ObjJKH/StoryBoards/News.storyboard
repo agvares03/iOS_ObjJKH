@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jdm-0b-Qi4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jdm-0b-Qi4">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -246,13 +246,39 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEn-Z8-zYC">
+                                                <rect key="frame" x="20" y="50.5" width="335" height="40"/>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="a3C-WB-4us"/>
+                                                </constraints>
+                                                <state key="normal" title="Пройти опрос">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="goAnswers:" destination="7sO-5R-Vij" eventType="touchUpInside" id="Tzt-l9-Q2c"/>
+                                                </connections>
+                                            </button>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="0Cc-vj-dfD">
+                                                <rect key="frame" x="177" y="61" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="0Cc-vj-dfD" firstAttribute="centerX" secondItem="tEn-Z8-zYC" secondAttribute="centerX" id="02p-5a-SmF"/>
                                             <constraint firstItem="Lz0-Rj-54P" firstAttribute="top" secondItem="9rn-0f-sqV" secondAttribute="top" constant="10" id="PHf-xs-DDz"/>
                                             <constraint firstAttribute="height" constant="1000" id="W4h-5L-9kW"/>
+                                            <constraint firstItem="0Cc-vj-dfD" firstAttribute="centerY" secondItem="tEn-Z8-zYC" secondAttribute="centerY" id="WZ2-zz-G6d"/>
                                             <constraint firstItem="Lz0-Rj-54P" firstAttribute="leading" secondItem="9rn-0f-sqV" secondAttribute="leading" constant="10" id="YfZ-fC-rKL"/>
+                                            <constraint firstItem="tEn-Z8-zYC" firstAttribute="top" secondItem="Lz0-Rj-54P" secondAttribute="bottom" constant="20" id="Zua-Ld-MEN"/>
+                                            <constraint firstAttribute="trailing" secondItem="tEn-Z8-zYC" secondAttribute="trailing" constant="20" id="kh8-hO-Qxu"/>
                                             <constraint firstAttribute="trailing" secondItem="Lz0-Rj-54P" secondAttribute="trailing" constant="10" id="l8O-H1-FcG"/>
+                                            <constraint firstItem="tEn-Z8-zYC" firstAttribute="leading" secondItem="9rn-0f-sqV" secondAttribute="leading" constant="20" id="v39-SQ-OUZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -292,8 +318,12 @@
                         <outlet property="NewsText" destination="Lz0-Rj-54P" id="TeX-M0-rTh"/>
                         <outlet property="NewsTitle" destination="vT9-Mm-r0N" id="Ngq-yJ-KIg"/>
                         <outlet property="back" destination="Bqp-ET-6dV" id="hwl-SV-7AN"/>
+                        <outlet property="btnHeight" destination="a3C-WB-4us" id="7zJ-RT-css"/>
+                        <outlet property="loader" destination="0Cc-vj-dfD" id="x3P-aN-D4L"/>
                         <outlet property="nav_bottom" destination="iP3-ha-slI" id="Ofj-a4-WS6"/>
                         <outlet property="newsHeight" destination="W4h-5L-9kW" id="NsP-LL-66B"/>
+                        <outlet property="questionBtn" destination="tEn-Z8-zYC" id="cn6-Nt-Th8"/>
+                        <segue destination="ZvT-R8-HB1" kind="show" identifier="go_answers" id="2ie-Vh-5gg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znZ-e9-dHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -317,6 +347,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rhx-CY-xqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="142.57871064467767"/>
+        </scene>
+        <!--Questions-->
+        <scene sceneID="FG4-lS-E3h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Questions" id="ZvT-R8-HB1" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HQx-4z-GWS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9C-Fg-j9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2402" y="54"/>
         </scene>
     </scenes>
     <resources>

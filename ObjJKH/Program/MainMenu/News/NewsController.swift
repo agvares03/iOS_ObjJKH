@@ -155,6 +155,7 @@ class NewsController: UIViewController, UITableViewDelegate {
             vc.newsText  = newsObj.text
             vc.newsRead  = newsObj.readed
             vc.newsId    = newsObj.idNews
+            vc.questionID = newsObj.questionID
         }
     }
     

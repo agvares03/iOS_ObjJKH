@@ -99,7 +99,8 @@ class NewsClient {
                                                             let Header = json.header
                                                             let Text = json.text
                                                             let IsReaded = json.readed
-                                                            let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!)
+                                                            let questionID = json.questionID
+                                                            let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!, QuestionID: String(questionID!))
                                                             newsList.append(newsObj)
                                                         }
                                                         if news_read > 0{

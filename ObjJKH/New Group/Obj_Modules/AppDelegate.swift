@@ -144,6 +144,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
 //            }
             if notification["gcm.notification.type_push"] as? String == "announcement"{
+                var questionID = 0
+                if notification["QuestionGroupID"] != nil{
+                    questionID = Int(notification["QuestionGroupID"]! as! String)!
+                    if questionID > 0{
+                         UserDefaults.standard.set(questionID, forKey: "notifiQuestID")
+                    }else{
+                         UserDefaults.standard.set(0, forKey: "notifiQuestID")
+                    }
+                }
                 UserDefaults.standard.set(true, forKey: "newNotifi")
                 UserDefaults.standard.set(body, forKey: "bodyNotifi")
                 UserDefaults.standard.set(title, forKey: "titleNotifi")

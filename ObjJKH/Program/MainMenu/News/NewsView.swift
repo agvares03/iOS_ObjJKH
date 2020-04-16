@@ -7,22 +7,37 @@
 //
 
 import UIKit
+import Gloss
 
-class NewsView: UIViewController {
+class NewsView: UIViewController, QuestionTableDelegate {
+    func update() {
+        print("")
+    }
+    
     
     var newsTitle: String?
     var newsData: String?
     var newsText: String?
     var newsRead: Bool?
     var newsId: String?
+    var questionID: String?
+    private var questions: [QuestionDataJson]? = []
     
     @IBOutlet weak var NewsTitle: UILabel!
     @IBOutlet weak var NewsData: UILabel!
     @IBOutlet weak var NewsText: UILabel!
+    @IBOutlet weak var questionBtn: UIButton!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var btnHeight: NSLayoutConstraint!
     @IBOutlet weak var newsHeight: NSLayoutConstraint!
     
     @IBOutlet weak var nav_bottom: UINavigationItem!
     @IBOutlet weak var back: UIBarButtonItem!
+    
+    @IBAction func goAnswers(_ sender: UIButton) {
+        startAnimation()
+        getQuestions()
+    }
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
 //        navigationController?.dismiss(animated: true, completion: nil)
@@ -39,13 +54,39 @@ class NewsView: UIViewController {
         NewsTitle.text = newsTitle
         NewsData.text = newsData
         NewsText.text = newsText
-        
+        loader.color = myColors.btnColor.uiColor()
+        questionBtn.backgroundColor = myColors.btnColor.uiColor()
+        if Int(questionID!)! > 0{
+            questionBtn.isHidden = false
+            btnHeight.constant = 40
+            loader.isHidden = true
+        }else{
+            questionBtn.isHidden = true
+            btnHeight.constant = 0
+            loader.isHidden = true
+        }
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
         newsHeight.constant = estimatedHeight(text: NewsText.text!, width: view.frame.width, font: UIFont.systemFont(ofSize: 17)) + 50
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "0")
         
+    }
+    
+    func startAnimation(){
+        DispatchQueue.main.async{
+            self.loader.startAnimating()
+            self.loader.isHidden = false
+            self.questionBtn.isHidden = true
+        }
+    }
+    
+    func stopAnimation(){
+        DispatchQueue.main.async{
+            self.loader.stopAnimating()
+            self.loader.isHidden = true
+            self.questionBtn.isHidden = false
+        }
     }
     
     func estimatedHeight(text: String, width: CGFloat, font: UIFont) -> CGFloat{
@@ -89,6 +130,83 @@ class NewsView: UIViewController {
             }
             
             }.resume()
+    }
+    
+    func getQuestions() {
+//        let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+    //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
+        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + phone)!)
+        request.httpMethod = "GET"
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) {
+            data, error, responce in
+            
+            guard data != nil else { return }
+//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//            print("responseString = \(responseString)")
+
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let unfilteredData = QuestionsJson(json: json as! JSON)?.data
+                var filtered: [QuestionDataJson] = []
+                unfilteredData?.forEach { json in
+
+                    var isContains = true
+                    json.questions?.forEach {
+                        if !$0.isCompleteByUser! {
+                            isContains = false
+                        }
+                    }
+                    if !isContains {
+                        filtered.append(json)
+                    }
+                }
+                self.questions = filtered
+            }
+            var questTrue = false
+            self.questions!.forEach{
+                if String($0.id!) == self.questionID{
+                    questTrue = true
+                    self.stopAnimation()
+                    DispatchQueue.main.async{
+                        self.performSegue(withIdentifier: "go_answers", sender: self)
+                    }
+                }
+            }
+            if !questTrue{
+                self.stopAnimation()
+                DispatchQueue.main.async{
+                    let alert = UIAlertController(title: "Ошибка", message: "Опрос не найден", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+            }.resume()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "go_answers" {
+            //            let vc = segue.destination as! QuestionAnswerVC
+            //            vc.title = questionArr[indexQuestion].name
+            //            vc.question_ = questionArr[indexQuestion]
+            //            //            vc.delegate = delegate
+            //            vc.questionDelegate = self
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! QuestionsTableVC
+            var question: QuestionDataJson?
+            questions!.forEach{
+                if String($0.id!) == questionID{
+                    question = $0
+                }
+            }
+            vc.questionTitle = question?.name ?? ""
+            vc.question_ = question
+            //            vc.delegate = delegate
+            vc.questionDelegate = self
+        }
     }
 
     override func didReceiveMemoryWarning() {
