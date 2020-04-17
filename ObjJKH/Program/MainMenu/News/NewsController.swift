@@ -150,12 +150,13 @@ class NewsController: UIViewController, UITableViewDelegate {
             let indexPath = tableView.indexPathForSelectedRow!
             let newsObj = NewsManager.instance.getNewsList()[indexPath.row]
             let vc = segue.destination as! NewsView
-            vc.newsTitle = newsObj.header
-            vc.newsData  = newsObj.created
-            vc.newsText  = newsObj.text
-            vc.newsRead  = newsObj.readed
-            vc.newsId    = newsObj.idNews
-            vc.questionID = newsObj.questionID
+            vc.newsTitle    = newsObj.header
+            vc.newsData     = newsObj.created
+            vc.newsText     = newsObj.text
+            vc.newsRead     = newsObj.readed
+            vc.newsId       = newsObj.idNews
+            vc.questionID   = newsObj.questionID
+            vc.serviceID    = newsObj.serviceID
         }
     }
     

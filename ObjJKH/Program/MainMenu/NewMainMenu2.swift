@@ -440,44 +440,44 @@ class NewMainMenu2: UIViewController {
     var serviceArr: [Services] = []
     var mainScreenXml:  XML.Accessor?
     func get_Services(login: String, pass: String){
-            serviceArr.removeAll()
+        serviceArr.removeAll()
 //            let urlPath = "http://uk-gkh.org/gbu_lefortovo/GetAdditionalServices.ashx?login=qw&pwd=qw"
-            let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-            DispatchQueue.global(qos: .userInteractive).async {
-                var request = URLRequest(url: URL(string: urlPath)!)
-                request.httpMethod = "GET"
-                print(request)
+        let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
+        DispatchQueue.global(qos: .userInteractive).async {
+            var request = URLRequest(url: URL(string: urlPath)!)
+            request.httpMethod = "GET"
+            print(request)
+            
+            URLSession.shared.dataTask(with: request) {
+                data, error, responce in
                 
-                URLSession.shared.dataTask(with: request) {
-                    data, error, responce in
-                    
-                    guard data != nil else { return }
-                    //                let responseString = String(data: data!, encoding: .utf8) ?? ""
-                    //                #if DEBUG
-                    //                print("responseString = \(responseString)")
-                    //                #endif
-                    var obj: [Services] = []
-                    let xml = XML.parse(data!)
-                    self.mainScreenXml = xml
-                    let requests = xml["AdditionalServices"]
-                    let row = requests["Group"]
-                    row.forEach { row in
-                        row["AdditionalService"].forEach {
-                            self.serviceArr.append(Services(row: $0))
-                        }
+                guard data != nil else { return }
+                //                let responseString = String(data: data!, encoding: .utf8) ?? ""
+                //                #if DEBUG
+                //                print("responseString = \(responseString)")
+                //                #endif
+                var obj: [Services] = []
+                let xml = XML.parse(data!)
+                self.mainScreenXml = xml
+                let requests = xml["AdditionalServices"]
+                let row = requests["Group"]
+                row.forEach { row in
+                    row["AdditionalService"].forEach {
+                        obj.append(Services(row: $0))
                     }
-                    obj.forEach{
-                        let url:NSURL = NSURL(string: ($0.logo)!)!
-                        let data = try? Data(contentsOf: url as URL)
-                        if UIImage(data: data!) == nil{
-                            
-                        }else{
-                            self.serviceArr.append($0)
-                        }
+                }
+                obj.forEach{
+                    let url:NSURL = NSURL(string: ($0.logo)!)!
+                    let data = try? Data(contentsOf: url as URL)
+                    if UIImage(data: data!) == nil{
+                        
+                    }else{
+                        self.serviceArr.append($0)
                     }
-                    }.resume()
-            }
+                }
+                }.resume()
         }
+    }
     
     func settings_for_menu() {
         let defaults = UserDefaults.standard

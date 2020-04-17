@@ -27,14 +27,16 @@ struct NewsDataJson: JSONDecodable {
     let header:String?
     let readed:Bool?
     let questionID:Int64?
+    let serviceID:Int64?
     
     init?(json: JSON) {
-        idNews      = "ID"              <~~ json
-        created     = "Created"         <~~ json
-        text        = "Text"            <~~ json
-        header      = "Header"          <~~ json
-        readed      = "IsReaded"        <~~ json
-        questionID  = "QuestionGroupID" <~~ json
+        idNews      = "ID"                  <~~ json
+        created     = "Created"             <~~ json
+        text        = "Text"                <~~ json
+        header      = "Header"              <~~ json
+        readed      = "IsReaded"            <~~ json
+        questionID  = "QuestionGroupID"     <~~ json
+        serviceID   = "AdditionalServiceId" <~~ json
     }
 }
 
@@ -45,13 +47,15 @@ class News {
     let header:String
     let readed:Bool
     let questionID:String
+    let serviceID: String
     
-    init(IdNews:String,Created:String,Text:String,Header:String,Readed:Bool,QuestionID:String) {
+    init(IdNews:String,Created:String,Text:String,Header:String,Readed:Bool,QuestionID:String, ServiceID:String) {
         self.idNews = IdNews
         self.created = Created
         self.text = Text
         self.header = Header
         self.readed = Readed
         self.questionID = QuestionID
+        self.serviceID = ServiceID
     }
 }

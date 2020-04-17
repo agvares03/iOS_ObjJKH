@@ -145,12 +145,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //            }
             if notification["gcm.notification.type_push"] as? String == "announcement"{
                 var questionID = 0
+                var serviceID = 0
                 if notification["QuestionGroupID"] != nil{
                     questionID = Int(notification["QuestionGroupID"]! as! String)!
                     if questionID > 0{
                          UserDefaults.standard.set(questionID, forKey: "notifiQuestID")
                     }else{
                          UserDefaults.standard.set(0, forKey: "notifiQuestID")
+                    }
+                }
+                if notification["AdditionalServiceId"] != nil{
+                    serviceID = Int(notification["AdditionalServiceId"]! as! String)!
+                    if serviceID > 0{
+                         UserDefaults.standard.set(serviceID, forKey: "notifiServiceID")
+                    }else{
+                         UserDefaults.standard.set(0, forKey: "notifiServiceID")
                     }
                 }
                 UserDefaults.standard.set(true, forKey: "newNotifi")
