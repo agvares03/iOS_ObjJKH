@@ -380,6 +380,8 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         fon_top.image = UIImage(named: "Logo_TihGavan")
         #elseif isOptimumService
         fon_top.image = UIImage(named: "Logo_OptimumService")
+        #elseif isSibir
+        fon_top.image = UIImage(named: "Logo_Sibir")
         #endif
         
         if UserDefaults.standard.string(forKey: "mail") != ""{

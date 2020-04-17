@@ -228,6 +228,8 @@ class NotificationController: UIViewController, QuestionTableDelegate {
         fon_top.image = UIImage(named: "Logo_TihGavan")
         #elseif isOptimumService
         fon_top.image = UIImage(named: "Logo_OptimumService")
+        #elseif isSibir
+        fon_top.image = UIImage(named: "Logo_Sibir")
         #endif
         loader.color = myColors.btnColor.uiColor()
         questionBtn.backgroundColor = myColors.btnColor.uiColor()
