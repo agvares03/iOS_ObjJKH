@@ -161,16 +161,6 @@ class AdditionalServicesController: UIViewController{
         DispatchQueue.global(qos: .userInitiated).async {
             self.get_Services(login: self.login!, pass: self.pass!)
             sleep(2)
-            DispatchQueue.main.sync {
-                self.tableView.reloadData()
-            }
-            DispatchQueue.main.async {
-                if #available(iOS 10.0, *) {
-                    self.tableView.refreshControl?.endRefreshing()
-                } else {
-                    self.refreshControl?.endRefreshing()
-                }
-            }
         }
     }
     
@@ -194,6 +184,7 @@ class AdditionalServicesController: UIViewController{
                 //                #if DEBUG
                 //                print("responseString = \(responseString)")
                 //                #endif
+                var obj: [Services] = []
                 let xml = XML.parse(data!)
                 self.mainScreenXml = xml
                 let requests = xml["AdditionalServices"]
@@ -202,10 +193,19 @@ class AdditionalServicesController: UIViewController{
                     rowComms[row.attributes["name"]!] = []
                     row["AdditionalService"].forEach {
 //                        rowComms[row.attributes["name"]!]?.append( Services(row: $0) )
-                        objectArray.append(Services(row: $0))
+                        obj.append(Services(row: $0))
                     }
                 }
-                print(objectArray.count)
+                obj.forEach{
+                    let url:NSURL = NSURL(string: ($0.logo)!)!
+                    let data = try? Data(contentsOf: url as URL)
+                    if UIImage(data: data!) == nil{
+                        
+                    }else{
+                        objectArray.append($0)
+                    }
+                }
+//                print(objectArray.count)
 //                for (key, value) in rowComms {
 //                    objectArray.append(Objects(sectionName: key, sectionObjects: value))
 //                }
@@ -215,12 +215,18 @@ class AdditionalServicesController: UIViewController{
 //                        objectArray.append(Objects(sectionName: key, sectionObjects: value))
 //                    }
 //                }
-                if objectArray.count == 0{
-                    DispatchQueue.main.async{
-                        self.noDataLbl.isHidden = false
-                        self.tableView.isHidden = true
-                    }
-                }else{
+//                if objectArray.count == 0{
+//                    DispatchQueue.main.async{
+//                        if #available(iOS 10.0, *) {
+//                            self.tableView.refreshControl?.endRefreshing()
+//                        } else {
+//                            self.refreshControl?.endRefreshing()
+//                        }
+//                        self.noDataLbl.isHidden = false
+//                        self.tableView.isHidden = true
+//                        self.stopAnimation()
+//                    }
+//                }else{
                     DispatchQueue.main.sync {
                         if #available(iOS 10.0, *) {
                             self.tableView.refreshControl?.endRefreshing()
@@ -230,7 +236,7 @@ class AdditionalServicesController: UIViewController{
                         self.tableView.reloadData()
                         self.stopAnimation()
                     }
-                }
+//                }
                 
                 }.resume()
         }
@@ -443,10 +449,11 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
     // Получим количество строк для конкретной секции
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        if isSectionOpened(section){
+        if objectArray.count > 0{
             return objectArray.count
-//        }else{
-//            return 1
-//        }
+        }else{
+            return 0
+        }
     }
     
     // Получим данные для использования в ячейке

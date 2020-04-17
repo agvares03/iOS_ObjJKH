@@ -454,6 +454,7 @@ class NewMainMenu2: UIViewController {
                     //                #if DEBUG
                     //                print("responseString = \(responseString)")
                     //                #endif
+                    var obj: [Services] = []
                     let xml = XML.parse(data!)
                     self.mainScreenXml = xml
                     let requests = xml["AdditionalServices"]
@@ -461,6 +462,15 @@ class NewMainMenu2: UIViewController {
                     row.forEach { row in
                         row["AdditionalService"].forEach {
                             self.serviceArr.append(Services(row: $0))
+                        }
+                    }
+                    obj.forEach{
+                        let url:NSURL = NSURL(string: ($0.logo)!)!
+                        let data = try? Data(contentsOf: url as URL)
+                        if UIImage(data: data!) == nil{
+                            
+                        }else{
+                            self.serviceArr.append($0)
                         }
                     }
                     }.resume()

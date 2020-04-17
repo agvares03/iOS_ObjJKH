@@ -2049,6 +2049,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 //                #if DEBUG
                 //                print("responseString = \(responseString)")
                 //                #endif
+                var obj: [Services] = []
                 let xml = XML.parse(data!)
                 self.mainScreenXml = xml
                 let requests = xml["AdditionalServices"]
@@ -2057,7 +2058,16 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.rowComms[row.attributes["name"]!] = []
                     row["AdditionalService"].forEach {
 //                        self.rowComms[row.attributes["name"]!]?.append( Services(row: $0) )
-                        self.serviceArr.append(Services(row: $0))
+                        obj.append(Services(row: $0))
+                    }
+                }
+                obj.forEach{
+                    let url:NSURL = NSURL(string: ($0.logo)!)!
+                    let data = try? Data(contentsOf: url as URL)
+                    if UIImage(data: data!) == nil{
+                        
+                    }else{
+                        self.serviceArr.append($0)
                     }
                 }
 //                for (key, value) in self.rowComms {
