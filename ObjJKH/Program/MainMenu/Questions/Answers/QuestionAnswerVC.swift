@@ -21,6 +21,8 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var question: UILabel!
+    @IBOutlet weak var titleQuestion: UILabel!
     
     @IBAction func goButtonPressed(_ sender: UIButton) {
         // Добавляем опрос в список начатых опросов
@@ -284,25 +286,27 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionAnswerCell", for: indexPath) as! QuestionAnswerCell
+        question.text = question_?.questions![currQuestion].question
+        titleQuestion.text = "\(currQuestion + 1) из \(question_?.questions?.count ?? 0)"
         cell.display((question_?.questions![currQuestion].answers![indexPath.row])!, index: indexPath.row)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        switch kind {
-            
-        case UICollectionElementKindSectionHeader:
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "QuestionAnswerHeader", for: indexPath) as! QuestionAnswerHeader
-            header.display((question_?.questions![currQuestion])!, currentQuestion: currQuestion, questionCount: question_?.questions?.count ?? 0)
-            return header
-            
-        default:
-            
-            assert(false, "Unexpected element kind")
-            return UICollectionReusableView()
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        
+//        switch kind {
+//            
+//        case UICollectionElementKindSectionHeader:
+//            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "QuestionAnswerHeader", for: indexPath) as! QuestionAnswerHeader
+//            header.display((question_?.questions![currQuestion])!, currentQuestion: currQuestion, questionCount: question_?.questions?.count ?? 0)
+//            return header
+//            
+//        default:
+//            
+//            assert(false, "Unexpected element kind")
+//            return UICollectionReusableView()
+//        }
+//    }
     
     private func startAnimation() {
         loader.isHidden = false

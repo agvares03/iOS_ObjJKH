@@ -8,11 +8,10 @@
 
 import UIKit
 
-class QuestionsTableCell: UICollectionViewCell {
+class QuestionsTableCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var desc: UILabel!
-    @IBOutlet weak var titleHeight: NSLayoutConstraint!
     
     func display(_ item: QuestionDataJson, width: CGFloat) {
         
@@ -24,7 +23,6 @@ class QuestionsTableCell: UICollectionViewCell {
                 isAnswered = false
             }
         }
-        titleHeight.constant = heightForView(text: item.name ?? "", font: title.font, width: width - 40)
         var txt = " вопроса"
         if ((item.questions?.count)! == 1) {
             txt = " вопрос"
@@ -37,17 +35,6 @@ class QuestionsTableCell: UICollectionViewCell {
         desc.textColor = (isAnswered)
             ? .gray
             : UIColor(red: 1/255, green: 122/255, blue: 255/255, alpha: 1)
-    }
-    
-    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = font
-        label.text = text
-        label.sizeToFit()
-        print(label.frame.height, width)
-        return label.frame.height
     }
     
 }

@@ -15,9 +15,10 @@ protocol QuestionTableDelegate {
     func update()
 }
 
-class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, QuestionTableDelegate {
+class QuestionsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource, QuestionTableDelegate {
+       
 
-    @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var table: UITableView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var support: UIImageView!
@@ -57,16 +58,16 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
 //            print("REPORT ERROR: %@", error.localizedDescription)
 //        })
         automaticallyAdjustsScrollViewInsets = false
-        collection.delegate     = self
-        collection.dataSource   = self
+        table.delegate     = self
+        table.dataSource   = self
         nonConectView.isHidden = true
-        collection.isHidden = false
+        table.isHidden = false
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         if #available(iOS 10.0, *) {
-            collection.refreshControl = refreshControl
+            table.refreshControl = refreshControl
         } else {
-            collection.addSubview(refreshControl!)
+            table.addSubview(refreshControl!)
         }
         
         loader.isHidden = false
@@ -96,7 +97,7 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         switch Network.reachability.status {
         case .unreachable:
             nonConectView.isHidden = false
-            collection.isHidden = true
+            table.isHidden = true
         case .wifi: break
             
         case .wwan: break
@@ -135,7 +136,7 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if questions?.count != 0{
             return questions!.count
         }else{
@@ -143,34 +144,17 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionsTableCell", for: indexPath) as! QuestionsTableCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionsTableCell") as! QuestionsTableCell
         cell.display(questions![indexPath.row], width: view.frame.size.width)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionsTableCell", for: indexPath) as! QuestionsTableCell
-//        let height = heightForView(text: questions![indexPath.row].name ?? "", font: UIFont(name: "regular", size: 17)!, width: view.frame.size.width - 40)
-        return CGSize(width: view.frame.size.width, height: 120)
-    }
-    
-    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = font
-        label.text = text
-        label.sizeToFit()
-        print(label.frame.height, width)
-        return label.frame.height
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         index = indexPath.row
         performSegue(withIdentifier: "go_answers", sender: self)
     }
+    
     var prep = false
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -207,12 +191,12 @@ class QuestionsTableVC: UIViewController, UICollectionViewDelegate, UICollection
             
             defer {
                 DispatchQueue.main.sync {
-                    self.collection.reloadData()
+                    self.table.reloadData()
                     self.loader.stopAnimating()
                     self.loader.isHidden = true
                     
                     if #available(iOS 10.0, *) {
-                        self.collection.refreshControl?.endRefreshing()
+                        self.table.refreshControl?.endRefreshing()
                     } else {
                         self.refreshControl?.endRefreshing()
                     }

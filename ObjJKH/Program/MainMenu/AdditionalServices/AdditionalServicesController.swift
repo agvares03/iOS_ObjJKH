@@ -185,7 +185,7 @@ class AdditionalServicesController: UIViewController{
         DispatchQueue.global(qos: .userInteractive).async {
             var request = URLRequest(url: URL(string: urlPath)!)
             request.httpMethod = "GET"
-            
+            print(request)
             URLSession.shared.dataTask(with: request) {
                 data, error, responce in
                 
@@ -205,6 +205,7 @@ class AdditionalServicesController: UIViewController{
                         objectArray.append(Services(row: $0))
                     }
                 }
+                print(objectArray.count)
 //                for (key, value) in rowComms {
 //                    objectArray.append(Objects(sectionName: key, sectionObjects: value))
 //                }
