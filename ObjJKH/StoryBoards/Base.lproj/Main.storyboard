@@ -1499,6 +1499,7 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
                         <outlet property="titleText" destination="bTC-Af-YZ8" id="WNp-Oq-cx6"/>
                         <segue destination="bKP-oD-pKt" kind="show" identifier="goApp" id="r7o-hp-7ic"/>
                         <segue destination="2sH-a6-Lzw" kind="show" identifier="go_answers" id="pF7-AS-9aE"/>
+                        <segue destination="4HW-Y6-PYp" kind="show" identifier="goService" id="fUZ-iQ-fEf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hB8-21-NBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1534,6 +1535,16 @@ Unicode: U+2B07 U+FE0E, UTF-8: E2 AC 87 EF B8 8E</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyo-xe-7aK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="46" y="-859"/>
+        </scene>
+        <!--serviceView-->
+        <scene sceneID="iXW-mq-91B">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AdditionalServices" referencedIdentifier="serviceView" id="4HW-Y6-PYp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="v1a-nD-pLe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PD7-Pr-3GZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="-786"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

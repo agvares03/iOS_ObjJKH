@@ -2815,6 +2815,7 @@
                         <segue destination="X83-QV-uAE" kind="show" identifier="new_add_app" id="YLe-8c-WdY"/>
                         <segue destination="IR4-2n-JMB" kind="show" identifier="addLSSimple" id="Txi-5R-Pta"/>
                         <segue destination="zv7-pe-M0c" kind="show" identifier="show_webs" id="cJc-Rt-sQT"/>
+                        <segue destination="epn-6A-lSO" kind="show" identifier="goService" id="UNI-rH-D0l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76W-eJ-S4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2883,6 +2884,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7l-b1-lM1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282" y="-287"/>
+        </scene>
+        <!--serviceView-->
+        <scene sceneID="ILR-aj-FWs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AdditionalServices" referencedIdentifier="serviceView" id="epn-6A-lSO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SPE-YR-9xt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mf2-EB-3PB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="240" y="-380"/>
         </scene>
         <!--AddLsPocket-->
         <scene sceneID="ZM9-eD-9Gr">

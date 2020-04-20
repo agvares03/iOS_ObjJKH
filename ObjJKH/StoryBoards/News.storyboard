@@ -356,6 +356,7 @@
                         <outlet property="serviceHeight" destination="qjx-5A-AzH" id="mhM-pn-ZDr"/>
                         <outlet property="serviceIMG" destination="cc3-00-vlF" id="baw-xc-0Js"/>
                         <segue destination="ZvT-R8-HB1" kind="show" identifier="go_answers" id="2ie-Vh-5gg"/>
+                        <segue destination="XWF-Bk-tsY" kind="show" identifier="goService" id="dtv-fM-bUa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znZ-e9-dHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -389,6 +390,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9C-Fg-j9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2402" y="54"/>
+        </scene>
+        <!--serviceView-->
+        <scene sceneID="hIE-ct-Gtt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AdditionalServices" referencedIdentifier="serviceView" id="XWF-Bk-tsY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6Td-kR-d5O"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GEq-Cj-5Ay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2410" y="120"/>
         </scene>
     </scenes>
     <resources>

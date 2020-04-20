@@ -2514,6 +2514,7 @@
                         <outlet property="teckLbl2" destination="KrK-aG-wW1" id="AQm-xr-5Y8"/>
                         <outlet property="teckLbl3" destination="TOg-q3-Kq7" id="dIe-5r-3ce"/>
                         <outlet property="viewTop" destination="YPl-d9-itz" id="Sb2-qF-9cO"/>
+                        <segue destination="ElQ-1F-a7N" kind="show" identifier="goService" id="W33-6r-eYk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8L-gy-Xte" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2537,6 +2538,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5P-d5-XY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="328.80000000000001" y="147.97601199400302"/>
+        </scene>
+        <!--serviceView-->
+        <scene sceneID="tB8-tl-ecG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AdditionalServices" referencedIdentifier="serviceView" id="ElQ-1F-a7N" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="u0i-vG-IFw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCv-EF-NEG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1774" y="906"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

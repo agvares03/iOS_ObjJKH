@@ -2201,16 +2201,27 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             return cell
         }
     }
-    
+    var serviceNum = -1
+    var allService = false
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         if pagerView == servicePagerView{
-            if serviceArr[index].canbeordered == "1" && serviceArr[index].id_requesttype != "" && serviceArr[index].id_account != ""{
-                self.addAppAction(checkService: index, allService: true)
+            //if serviceArr[index].canbeordered == "1" && serviceArr[index].id_requesttype != "" && serviceArr[index].id_account != ""{
+                //self.addAppAction(checkService: index, allService: true)
+            //}
+            serviceNum = index
+            allService = true
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "goService", sender: self)
             }
         }else{
-            if serviceAdBlock[index].canbeordered == "1" && serviceAdBlock[index].id_requesttype != "" && serviceAdBlock[index].id_account != ""{
-                self.addAppAction(checkService: index, allService: false)
+            serviceNum = index
+            allService = false
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "goService", sender: self)
             }
+            //if serviceAdBlock[index].canbeordered == "1" && serviceAdBlock[index].id_requesttype != "" && serviceAdBlock[index].id_account != ""{
+                //self.addAppAction(checkService: index, allService: false)
+            //}
         }
         pagerView.deselectItem(at: index, animated: true)
     }
@@ -3269,6 +3280,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             //            let payController             = segue.destination as! SaldoController
             //            print(self.debtArr.count)
             //            payController.debtArr = self.debtArr
+        }
+        if (segue.identifier == "goService") {
+            let AddApp = segue.destination as! AdditionalVC
+            if allService{
+                AddApp.item = serviceArr[serviceNum]
+            }else{
+                AddApp.item = serviceAdBlock[serviceNum]
+            }
         }
     }
     var selectedUniq = ""

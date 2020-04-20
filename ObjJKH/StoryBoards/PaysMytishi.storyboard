@@ -487,6 +487,7 @@
                         <segue destination="q64-KO-FTk" kind="show" identifier="addLSPocket" id="Kbl-Qr-Dr2"/>
                         <segue destination="dHb-25-y8d" kind="show" identifier="addLSSimple" id="gm7-F9-13E"/>
                         <segue destination="08Q-5b-sMS" kind="show" identifier="CostPay_New" id="EZc-Yr-ufd"/>
+                        <segue destination="Z6d-Qg-dZa" kind="show" identifier="goService" id="Bq0-PV-Veh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="px2-wU-oxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1518,6 +1519,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOE-cT-Rkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1337" y="887"/>
+        </scene>
+        <!--serviceView-->
+        <scene sceneID="kbt-r2-Hhe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AdditionalServices" referencedIdentifier="serviceView" id="Z6d-Qg-dZa" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="n2B-LF-G3i"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yJI-KM-Ght" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2132" y="155"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

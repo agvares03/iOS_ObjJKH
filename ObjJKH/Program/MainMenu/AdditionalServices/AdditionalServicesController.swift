@@ -205,233 +205,19 @@ class AdditionalServicesController: UIViewController{
                         objectArray.append($0)
                     }
                 }
-//                print(objectArray.count)
-//                for (key, value) in rowComms {
-//                    objectArray.append(Objects(sectionName: key, sectionObjects: value))
-//                }
-//                if objectArray.count > rowComms.count{
-//                    objectArray.removeAll()
-//                    for (key, value) in rowComms {
-//                        objectArray.append(Objects(sectionName: key, sectionObjects: value))
-//                    }
-//                }
-//                if objectArray.count == 0{
-//                    DispatchQueue.main.async{
-//                        if #available(iOS 10.0, *) {
-//                            self.tableView.refreshControl?.endRefreshing()
-//                        } else {
-//                            self.refreshControl?.endRefreshing()
-//                        }
-//                        self.noDataLbl.isHidden = false
-//                        self.tableView.isHidden = true
-//                        self.stopAnimation()
-//                    }
-//                }else{
-                    DispatchQueue.main.sync {
-                        if #available(iOS 10.0, *) {
-                            self.tableView.refreshControl?.endRefreshing()
-                        } else {
-                            self.refreshControl?.endRefreshing()
-                        }
-                        self.tableView.reloadData()
-                        self.stopAnimation()
+                DispatchQueue.main.sync {
+                    if #available(iOS 10.0, *) {
+                        self.tableView.refreshControl?.endRefreshing()
+                    } else {
+                        self.refreshControl?.endRefreshing()
                     }
-//                }
+                    self.tableView.reloadData()
+                    self.stopAnimation()
+                }
                 
                 }.resume()
         }
     }
-    var descText:String = ""
-    var temaText:String = ""
-    var type:String = ""
-    var name_account:String = ""
-    var id_account:String = ""
-    var edLogin:String = ""
-    var edPass:String = ""
-    
-    func addAppAction(checkService: Int) {
-        self.startAnimation()
-        name_account = UserDefaults.standard.string(forKey: "name")!
-        id_account   = UserDefaults.standard.string(forKey: "id_account")!
-        edLogin      = UserDefaults.standard.string(forKey: "login")!
-        edPass       = UserDefaults.standard.string(forKey: "pass")!
-        let ident: String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
-        temaText = objectArray[checkService].name!.stringByAddingPercentEncodingForRFC3986() ?? ""
-        descText = "Ваш заказ принят. В ближайшее время сотрудник свяжется с Вами для уточнения деталей " + objectArray[checkService].name!
-        type = objectArray[checkService].id_requesttype!.stringByAddingPercentEncodingForRFC3986() ?? ""
-        descText = descText.stringByAddingPercentEncodingForRFC3986() ?? ""
-        let consId = objectArray[checkService].id_account!.stringByAddingPercentEncodingForRFC3986() ?? ""
-        let urlPath = Server.SERVER + Server.ADD_APP +
-            "ident=" + ident +
-            "&name=" + temaText +
-            "&text=" + descText +
-            "&type=" + type +
-            "&priority=" + "2" +
-            "&phonenum=" + ident +
-            "&consultantId=" + consId
-        let url: NSURL = NSURL(string: urlPath)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "GET"
-        
-        print("RequestURL: ", request.url)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, response, error in
-                                                
-                                                if error != nil {
-                                                    DispatchQueue.main.async(execute: {
-                                                        self.stopAnimation()
-                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
-                                                        UserDefaults.standard.synchronize()
-                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
-                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                                                            self.performSegue(withIdentifier: "support", sender: self)
-                                                        }
-                                                        alert.addAction(cancelAction)
-                                                        alert.addAction(supportAction)
-                                                        self.present(alert, animated: true, completion: nil)
-                                                        self.view.isUserInteractionEnabled = true
-                                                    })
-                                                    return
-                                                }
-                                                
-                                                self.responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("responseString = \(self.responseString)")
-                                                
-                                                self.choice()
-        })
-        task.resume()
-        
-    }
-        
-    func choice() {
-        if (responseString == "1") {
-            DispatchQueue.main.async(execute: {
-                self.stopAnimation()
-                let alert = UIAlertController(title: "Ошибка", message: "Не переданы обязательные параметры", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-            })
-        } else if (responseString == "2") {
-            DispatchQueue.main.async(execute: {
-                self.stopAnimation()
-                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-            })
-        } else if (responseString == "xxx") {
-            DispatchQueue.main.async(execute: {
-                self.stopAnimation()
-                let alert = UIAlertController(title: "Ошибка", message: "Не удалось. Попробуйте позже", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-            })
-        } else if Int(responseString) == nil || Int(responseString)! < 1{
-            DispatchQueue.main.async(execute: {
-               self.stopAnimation()
-               let alert = UIAlertController(title: "Ошибка", message: "Сервер не отвечает. Попробуйте позже", preferredStyle: .alert)
-               let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-               alert.addAction(cancelAction)
-               self.present(alert, animated: true, completion: nil)
-            })
-        } else {
-//            if self.images.count != 0{
-                self.sendEmailFile()
-//            }
-            DispatchQueue.main.async(execute: {
-                
-                // все ок - запишем заявку в БД (необходимо получить и записать авт. комментарий в БД
-                // Запишем заявку в БД
-                let db = DB()
-                db.add_app(id: 1, number: self.responseString, text: self.descText, tema: self.temaText, date: self.date_teck()!, adress: "", flat: "", phone: "", owner: self.name_account, is_close: 1, is_read: 1, is_answered: 1, type_app: self.type, serverStatus: "новая заявка")
-                db.getComByID(login: self.edLogin, pass: self.edPass, number: self.responseString)
-                
-                self.stopAnimation()
-                
-                let alert = UIAlertController(title: "Успешно", message: "Создана заявка №" + self.responseString, preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    
-                }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-                
-            })
-        }
-        DispatchQueue.main.async {
-            self.view.isUserInteractionEnabled = true
-        }
-    }
-    
-    func date_teck() -> (String)? {
-        let date = NSDate()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-        let dateString = dateFormatter.string(from: date as Date)
-        return dateString
-        
-    }
-    
-    var responseString = ""
-    func sendEmailFile(){
-        let reqID = responseString.stringByAddingPercentEncodingForRFC3986() ?? ""
-        let urlPath = Server.SERVER + "MobileAPI/SendRequestToMail.ashx?" + "requestId=" + reqID
-        
-        let url: NSURL = NSURL(string: urlPath)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "GET"
-        
-        print(request)
-    
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, response, error in
-                                                
-                                                if error != nil {
-                                                    DispatchQueue.main.async(execute: {
-                                                        self.stopAnimation()
-                                                        UserDefaults.standard.set("Ошибка соединения с сервером", forKey: "errorStringSupport")
-                                                        UserDefaults.standard.synchronize()
-                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
-                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                                                            self.performSegue(withIdentifier: "support", sender: self)
-                                                        }
-                                                        alert.addAction(cancelAction)
-                                                        alert.addAction(supportAction)
-                                                        self.present(alert, animated: true, completion: nil)
-                                                        self.view.isUserInteractionEnabled = true
-                                                    })
-                                                    return
-                                                }
-                                                
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("responseString = \(responseString)")
-                                                
-        })
-        task.resume()
-    }
-    
-//    func isSectionOpened(_ section: Int) -> Bool{
-//        if let status = openedSection[section]{
-//            return status
-//        }
-////        openedSection[section] = true
-//        return false
-//    }
-    
-//    func changeSectionStatus(_ section: Int){
-//        if let status = openedSection[section]{
-//            openedSection[section] = !status
-//        }else{
-//            openedSection[section] = true
-//        }
-//        tableView.reloadSections(IndexSet(integer: section), with: .automatic)
-//    }
 }
 
 extension AdditionalServicesController: UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
@@ -481,12 +267,9 @@ extension AdditionalServicesController: UITableViewDataSource, UITableViewDelega
 //            changeSectionStatus(indexPath.section)
 //        }else{
         sectionNum = indexPath
-        if objectArray[indexPath.row].canbeordered == "1" && objectArray[indexPath.row].id_requesttype != "" && objectArray[indexPath.row].id_account != ""{
-            self.addAppAction(checkService: indexPath.row)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "goService", sender: self)
         }
-//            DispatchQueue.main.async {
-//                self.performSegue(withIdentifier: "goService", sender: self)
-//            }
 //        }
     }
     
