@@ -263,7 +263,7 @@ class FirstController: UIViewController {
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Servicekom")
         #elseif isTeplovodoresources
-        UserDefaults.standard.set("Teplovodoresources", forKey: "targetName")
+        UserDefaults.standard.set("New_Terminal", forKey: "targetName")
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Teplovodoresources")
         #elseif isStroimBud
