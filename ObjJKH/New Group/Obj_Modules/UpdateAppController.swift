@@ -346,7 +346,7 @@ class UpdateAppController: UIViewController {
         #elseif isOptimumService
         str = "itms-apps://itunes.apple.com/ru/app/id1507156564"
         #elseif isSibir
-        str = "itms-apps://itunes.apple.com/ru/app/id1508465701"
+        str = "itms-apps://itunes.apple.com/ru/app/id1508963988"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

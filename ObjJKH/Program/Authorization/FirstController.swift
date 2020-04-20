@@ -319,6 +319,8 @@ class FirstController: UIViewController {
         #elseif isUK_First
         fon_top.image = UIImage(named: "Logo_Uk_First")
         #elseif isRKC_Samara
+        UserDefaults.standard.set("New_Terminal", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Samara")
         #elseif isEnergoProgress
         UserDefaults.standard.set("New_Terminal", forKey: "targetName")
