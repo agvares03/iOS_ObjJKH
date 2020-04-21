@@ -418,7 +418,7 @@ class NotificationController: UIViewController, QuestionTableDelegate {
                                 }else{
                                     self.serviceBtn.isHidden = true
                                 }
-                                self.serviceHeight.constant = self.view.frame.size.width / 2
+                                self.serviceHeight.constant = (self.view.frame.size.width - 30) / 2
                                 self.serviceIMG.image = UIImage(data: data!)
                             }
                         }

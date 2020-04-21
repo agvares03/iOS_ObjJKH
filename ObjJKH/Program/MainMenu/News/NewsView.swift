@@ -91,7 +91,7 @@ class NewsView: UIViewController, QuestionTableDelegate {
         }
         // Установим цвета для элементов в зависимости от Таргета
         back.tintColor = myColors.btnColor.uiColor()
-        newsHeight.constant = estimatedHeight(text: NewsText.text!, width: view.frame.width, font: UIFont.systemFont(ofSize: 17)) + 50
+        newsHeight.constant = heightForView(text: newsText ?? "", font: NewsText.font, width: view.frame.size.width - 20)
         let titles = Titles()
         self.title = titles.getSimpleTitle(numb: "0")
         
@@ -111,12 +111,15 @@ class NewsView: UIViewController, QuestionTableDelegate {
         }
     }
     
-    func estimatedHeight(text: String, width: CGFloat, font: UIFont) -> CGFloat{
-        let size = CGSize(width: width, height: 1000)
-        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        let attributes = [NSAttributedStringKey.font: font]
-        let rectangleHeight = String(text).boundingRect(with: size, options: options, attributes: attributes, context: nil).height
-        return rectangleHeight
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        print(label.frame.height, width)
+        return label.frame.height
     }
     
     func read_news(){
@@ -259,7 +262,7 @@ class NewsView: UIViewController, QuestionTableDelegate {
                                 }else{
                                     self.serviceBtn.isHidden = true
                                 }                                
-                                self.serviceHeight.constant = self.view.frame.size.width / 2
+                                self.serviceHeight.constant = (self.view.frame.size.width - 30) / 2
                                 self.serviceIMG.image = UIImage(data: data!)
                             }
                         }

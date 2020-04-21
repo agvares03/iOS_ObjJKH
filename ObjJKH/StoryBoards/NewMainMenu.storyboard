@@ -3,7 +3,7 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2621,18 +2621,18 @@
                                                         <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </activityIndicatorView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4d-fb-Yn0" customClass="FSPagerView" customModule="FSPagerView">
-                                                        <rect key="frame" x="10" y="0.0" width="355" height="187"/>
+                                                        <rect key="frame" x="15" y="0.0" width="345" height="187"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="r4d-fb-Yn0" firstAttribute="top" secondItem="yVO-r9-b4b" secondAttribute="top" id="2v9-vi-kX2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="r4d-fb-Yn0" secondAttribute="trailing" constant="10" id="6HY-cS-CaA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="r4d-fb-Yn0" secondAttribute="trailing" constant="15" id="6HY-cS-CaA"/>
                                                     <constraint firstAttribute="height" constant="187" id="HhT-PA-QI7"/>
                                                     <constraint firstItem="9ZZ-SB-Tll" firstAttribute="centerX" secondItem="yVO-r9-b4b" secondAttribute="centerX" id="MMb-U9-FIf"/>
                                                     <constraint firstItem="9ZZ-SB-Tll" firstAttribute="centerY" secondItem="yVO-r9-b4b" secondAttribute="centerY" id="XvP-A5-xEq"/>
-                                                    <constraint firstItem="r4d-fb-Yn0" firstAttribute="leading" secondItem="yVO-r9-b4b" secondAttribute="leading" constant="10" id="ZjS-SI-GiP"/>
+                                                    <constraint firstItem="r4d-fb-Yn0" firstAttribute="leading" secondItem="yVO-r9-b4b" secondAttribute="leading" constant="15" id="ZjS-SI-GiP"/>
                                                     <constraint firstAttribute="bottom" secondItem="r4d-fb-Yn0" secondAttribute="bottom" id="t1x-pK-GSm"/>
                                                 </constraints>
                                             </view>

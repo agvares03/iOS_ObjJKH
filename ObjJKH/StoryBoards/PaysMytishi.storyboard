@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,17 +24,17 @@
                                         <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhC-C5-XBp" customClass="FSPagerView" customModule="FSPagerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                        <rect key="frame" x="15" y="0.0" width="345" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="IhC-C5-XBp" firstAttribute="leading" secondItem="Hwr-Q1-svx" secondAttribute="leading" id="4Vv-7R-RKP"/>
+                                    <constraint firstItem="IhC-C5-XBp" firstAttribute="leading" secondItem="Hwr-Q1-svx" secondAttribute="leading" constant="15" id="4Vv-7R-RKP"/>
                                     <constraint firstAttribute="bottom" secondItem="IhC-C5-XBp" secondAttribute="bottom" id="FdD-zl-gP8"/>
                                     <constraint firstAttribute="height" constant="150" id="Ioh-fl-xaF"/>
                                     <constraint firstItem="IhC-C5-XBp" firstAttribute="top" secondItem="Hwr-Q1-svx" secondAttribute="top" id="X5R-Da-FHP"/>
-                                    <constraint firstAttribute="trailing" secondItem="IhC-C5-XBp" secondAttribute="trailing" id="dty-9G-gqK"/>
+                                    <constraint firstAttribute="trailing" secondItem="IhC-C5-XBp" secondAttribute="trailing" constant="15" id="dty-9G-gqK"/>
                                     <constraint firstItem="HMt-Ay-Bgk" firstAttribute="centerX" secondItem="Hwr-Q1-svx" secondAttribute="centerX" id="xgI-6B-fuf"/>
                                     <constraint firstItem="HMt-Ay-Bgk" firstAttribute="centerY" secondItem="Hwr-Q1-svx" secondAttribute="centerY" id="yWd-xu-otW"/>
                                 </constraints>
