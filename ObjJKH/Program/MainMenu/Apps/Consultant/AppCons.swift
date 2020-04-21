@@ -11,6 +11,7 @@ import CoreData
 import Alamofire
 import UserNotifications
 import Firebase
+import FirebaseDatabase
 
 
 protocol ShowAppConsDelegate : class {

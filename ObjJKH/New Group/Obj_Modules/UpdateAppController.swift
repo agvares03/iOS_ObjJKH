@@ -172,6 +172,8 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_OptimumService")
         #elseif isSibir
         imageApp.image = UIImage(named: "Logo_Sibir")
+        #elseif isNovogorskoe
+        imageApp.image = UIImage(named: "Logo_Novogorskoe")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -347,6 +349,8 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1507156564"
         #elseif isSibir
         str = "itms-apps://itunes.apple.com/ru/app/id1508963988"
+        #elseif isNovogorskoe
+        str = "itms-apps://itunes.apple.com/ru/app/id1509196166"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {

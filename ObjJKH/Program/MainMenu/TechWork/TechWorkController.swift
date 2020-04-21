@@ -180,6 +180,8 @@ class TechWorkController: UIViewController {
         fon_top.image = UIImage(named: "Logo_OptimumService")
         #elseif isSibir
         fon_top.image = UIImage(named: "Logo_Sibir")
+        #elseif isNovogorskoe
+        fon_top.image = UIImage(named: "Logo_Novogorskoe")
         #endif
         
         btn_tech.backgroundColor = myColors.indicatorColor.uiColor()

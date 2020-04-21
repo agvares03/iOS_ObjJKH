@@ -12,6 +12,7 @@ import Alamofire
 import UserNotifications
 import Crashlytics
 import Firebase
+import FirebaseDatabase
 
 protocol ShowNewAppDelegate : class {
     func showAppDone(showApp: NewAppUser)
