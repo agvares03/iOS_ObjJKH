@@ -360,6 +360,10 @@ class StartController: UIViewController {
             defaults.set(true, forKey: "launchedBefore")
             defaults.set(true, forKey: "exit")
         }
+        if defaults.bool(forKey: "dontSavePass"){
+            defaults.setValue("", forKey: "pass")
+            defaults.set(true, forKey: "exit")
+        }
         defaults.set(servPercent, forKey: "servPercent")
         defaults.removeObject(forKey: "show_Ad")//удалить через месяц
         defaults.setValue(color, forKey: "hex_color")

@@ -34,10 +34,10 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var support: UIImageView!
     @IBOutlet weak var supportBtn: UIButton!
     
+    @IBOutlet weak var dontSavePassSwitch: UISwitch!
     @IBOutlet weak var nonSaveSwitch: UISwitch!
     @IBOutlet weak var settingsView: UIView!
     @IBOutlet weak var settingsViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var settingsViewTop: NSLayoutConstraint!
     
     @IBAction func backClick(_ sender: UIBarButtonItem) {
         if (isModified) {
@@ -407,6 +407,15 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         supportBtn.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
         nonSaveSwitch.tintColor = myColors.btnColor.uiColor()
         nonSaveSwitch.onTintColor = myColors.btnColor.uiColor()
+        dontSavePassSwitch.tintColor = myColors.btnColor.uiColor()
+        dontSavePassSwitch.onTintColor = myColors.btnColor.uiColor()
+        if UserDefaults.standard.bool(forKey: "dontSavePass"){
+            dontSavePassSwitch.isOn = true
+            UserDefaults.standard.set(true, forKey: "dontSavePass")
+        }else{
+            dontSavePassSwitch.isOn = false
+            UserDefaults.standard.set(false, forKey: "dontSavePass")
+        }
         #if isStolitsa
         if UserDefaults.standard.bool(forKey: "settSaveCard"){
             nonSaveSwitch.isOn = true
@@ -415,8 +424,7 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             nonSaveSwitch.isOn = false
             UserDefaults.standard.set(false, forKey: "settSaveCard")
         }
-        settingsViewHeight.constant = 110
-        settingsViewTop.constant = 15
+        settingsViewHeight.constant = 60
         settingsView.isHidden = false
         #elseif isUKKomfort
         if UserDefaults.standard.bool(forKey: "settSaveCard"){
@@ -426,17 +434,14 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             nonSaveSwitch.isOn = false
             UserDefaults.standard.set(false, forKey: "settSaveCard")
         }
-        settingsViewHeight.constant = 110
-        settingsViewTop.constant = 15
+        settingsViewHeight.constant = 60
         settingsView.isHidden = false
         #else
         settingsViewHeight.constant = 0
-        settingsViewTop.constant = 0
         settingsView.isHidden = true
         #endif
         if UserDefaults.standard.bool(forKey: "dontShowDebt"){
             settingsViewHeight.constant = 0
-            settingsViewTop.constant = 0
             settingsView.isHidden = true
         }
         //        tableView.setEditing(true, animated: true)
@@ -447,6 +452,14 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
             UserDefaults.standard.set(true, forKey: "settSaveCard")
         }else{
             UserDefaults.standard.set(false, forKey: "settSaveCard")
+        }
+    }
+    
+    @IBAction func dontSavePass(_ sender: UISwitch) {
+        if dontSavePassSwitch.isOn{
+            UserDefaults.standard.set(true, forKey: "dontSavePass")
+        }else{
+            UserDefaults.standard.set(false, forKey: "dontSavePass")
         }
     }
     
