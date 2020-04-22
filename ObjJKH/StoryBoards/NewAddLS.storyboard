@@ -3,7 +3,7 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -126,10 +126,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пин-код можно узнать в личном кабинете на сайте https://irkcm.ru/, на закладке &quot;настройки&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwX-2L-D4Z">
-                                        <rect key="frame" x="0.0" y="60" width="374" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="ncs-yp-WF4"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="60" width="374" height="33.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -215,6 +212,7 @@
                         <outlet property="edPin" destination="nks-W0-p0D" id="oV1-vU-kHY"/>
                         <outlet property="helpLSHeight" destination="UT2-sd-uH9" id="28V-Iy-b2g"/>
                         <outlet property="helpLSImg" destination="D7M-CH-cHP" id="P6O-Mz-9yJ"/>
+                        <outlet property="helpLbl" destination="nwX-2L-D4Z" id="h61-cz-IXA"/>
                         <outlet property="imgTech" destination="Xth-hi-1lE" id="2Hn-YK-pl2"/>
                         <outlet property="indicatior" destination="dIz-tm-fRg" id="4qK-tg-lff"/>
                         <outlet property="openURLBtn" destination="zKN-dy-0ab" id="dlT-2Q-dKL"/>
@@ -224,6 +222,7 @@
                         <outlet property="separator2" destination="4p3-BB-EYW" id="HHT-ot-mgP"/>
                         <outlet property="support" destination="Xth-hi-1lE" id="qzg-cd-vRN"/>
                         <outlet property="supportBtn" destination="PMa-sN-J6Z" id="A9k-Re-3oG"/>
+                        <outlet property="urlHeight" destination="mp5-Ep-VG0" id="8JM-lx-ed4"/>
                         <segue destination="6sE-1m-hEP" kind="show" identifier="support" id="diW-HJ-kML"/>
                         <segue destination="0Zz-CE-XOw" kind="show" identifier="go_to_app" id="eti-lP-0no"/>
                     </connections>

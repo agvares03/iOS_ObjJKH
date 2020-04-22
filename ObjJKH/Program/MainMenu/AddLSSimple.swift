@@ -31,6 +31,8 @@ class AddLSSimple: UIViewController {
     @IBOutlet weak var separator2:      UILabel!
     @IBOutlet weak var pinView:         UIView!
     @IBOutlet weak var pinViewHeight:   NSLayoutConstraint!
+    @IBOutlet weak var urlHeight:       NSLayoutConstraint!
+    @IBOutlet weak var helpLbl:         UILabel!
     @IBOutlet weak var btnAddOutlet:    UIButton!
     @IBOutlet weak var openURLBtn:      UIButton!
     
@@ -54,6 +56,12 @@ class AddLSSimple: UIViewController {
             err = true
         }
         #endif
+        if UserDefaults.standard.string(forKey: "enablePin") == "1"{
+            let textPin = edPin.text?.replacingOccurrences(of: " ", with: "")
+            if (edPin.text == "") || textPin == "" {
+                err = true
+            }
+        }
         let textLS = edLS.text?.replacingOccurrences(of: " ", with: "")
         if (edLS.text == "") || textLS == "" {
             
@@ -78,6 +86,9 @@ class AddLSSimple: UIViewController {
             #if isMUP_IRKC
             urlPath = urlPath + "&pin=" + (edPin.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
             #endif
+            if UserDefaults.standard.string(forKey: "enablePin") == "1"{
+                urlPath = urlPath + "&pin=" + (edPin.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+            }
             let url: NSURL = NSURL(string: urlPath)!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "GET"
@@ -215,6 +226,9 @@ class AddLSSimple: UIViewController {
                     #if isMUP_IRKC
                     urlPath = urlPath + "&pin=" + (self.edPin.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
                     #endif
+                    if UserDefaults.standard.string(forKey: "enablePin") == "1"{
+                        urlPath = urlPath + "&pin=" + (self.edPin.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+                    }
                     urlPath = urlPath + "&doAdd=1"
                     #if isRKC_Samara
                     urlPath = urlPath + "&f=" + (alert.textFields?[0].text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
@@ -416,6 +430,17 @@ class AddLSSimple: UIViewController {
         pinView.isHidden = true
         pinViewHeight.constant = 0
         #endif
+        if UserDefaults.standard.string(forKey: "enablePin") == "1"{
+            pinView.isHidden = false
+            pinViewHeight.constant = 100
+            urlHeight.constant = 0
+            openURLBtn.isHidden = true
+            helpLbl.textAlignment = .left
+            helpLbl.text = "Лицевой счет и пин-код указывается на квитанции"
+        }else{
+            pinView.isHidden = true
+            pinViewHeight.constant = 0
+        }
         back.tintColor = myColors.btnColor.uiColor()
         btnAddOutlet.backgroundColor = myColors.btnColor.uiColor()
         support.setImageColor(color: myColors.btnColor.uiColor())

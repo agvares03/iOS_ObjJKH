@@ -758,8 +758,9 @@ class FirstController: UIViewController {
                 // авторизация на сервере - получение данных пользователя
                 let answer = self.responseString.components(separatedBy: ";")
 //                print(answer.count)
+                
                 // сохраним значения в defaults
-                self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8])
+                self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: answer[16])
                 
                 // отправим на сервер данные об ид. устройства для отправки уведомлений
                 let token = Messaging.messaging().fcmToken
@@ -984,7 +985,7 @@ class FirstController: UIViewController {
     }
     
     // сохранение глобальных значений
-    func save_global_data(date1: String, date2: String, can_count: String, mail: String, id_account: String, isCons: String, name: String, history_counters: String, strah: String, phone_operator: String, encoding_Pays: String, insurance: String) {
+    func save_global_data(date1: String, date2: String, can_count: String, mail: String, id_account: String, isCons: String, name: String, history_counters: String, strah: String, phone_operator: String, encoding_Pays: String, insurance: String, enablePin: String) {
         let defaults = UserDefaults.standard
         //        defaults.setValue(date1, forKey: "date1")
         //        defaults.setValue(date2, forKey: "date2")
@@ -996,6 +997,7 @@ class FirstController: UIViewController {
         defaults.setValue(strah, forKey: "strah")
         defaults.setValue(history_counters, forKey: "history_counters")
         defaults.setValue(phone_operator, forKey: "phone_operator")
+        defaults.setValue(enablePin, forKey: "enablePin")
         if insurance != "" && Double(insurance) != nil{
             defaults.set(insurance, forKey: "insurance")
 //            defaults.set(insurance, forKey: "insurance")
