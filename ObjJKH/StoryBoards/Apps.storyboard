@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JRv-6a-mre">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JRv-6a-mre">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1955,10 +1955,10 @@
                                 <rect key="frame" x="16" y="60" width="343" height="674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kV-Lc-0SK">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="644"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="624"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxU-Ek-Pyx">
-                                                <rect key="frame" x="0.0" y="608" width="343" height="36"/>
+                                                <rect key="frame" x="0.0" y="588" width="343" height="36"/>
                                                 <color key="backgroundColor" red="0.3940429688" green="0.24642592669999999" blue="0.3478758931" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="OqP-we-yHp"/>
@@ -2063,7 +2063,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqt-wJ-qpk">
-                                                <rect key="frame" x="22" y="281" width="299" height="90"/>
+                                                <rect key="frame" x="22" y="281" width="299" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud3-C1-Cxl">
                                                         <rect key="frame" x="0.0" y="0.0" width="63.5" height="30"/>
@@ -2075,10 +2075,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SzC-qr-aiV">
-                                                        <rect key="frame" x="0.0" y="30" width="299" height="60"/>
+                                                        <rect key="frame" x="0.0" y="30" width="299" height="40"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="oNf-Lu-sdi"/>
+                                                            <constraint firstAttribute="height" constant="40" id="oNf-Lu-sdi"/>
                                                         </constraints>
                                                         <string key="text">Описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -2188,7 +2188,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKh-jT-9Cs" customClass="DashedBorderView" customModule="ADS_68" customModuleProvider="target">
-                                                <rect key="frame" x="22" y="381" width="299" height="100"/>
+                                                <rect key="frame" x="22" y="361" width="299" height="100"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addFile" translatesAutoresizingMaskIntoConstraints="NO" id="rqI-H3-qlb">
                                                         <rect key="frame" x="138" y="23" width="23" height="28"/>
@@ -2226,7 +2226,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qem-nG-VpG">
-                                                <rect key="frame" x="22" y="491" width="299" height="107"/>
+                                                <rect key="frame" x="22" y="471" width="299" height="107"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="107" id="Can-JP-o9T"/>
@@ -2297,7 +2297,7 @@
                                                 </connections>
                                             </tableView>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1ZU-9c-WnU">
-                                                <rect key="frame" x="161.5" y="616" width="20" height="20"/>
+                                                <rect key="frame" x="161.5" y="596" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2362,6 +2362,7 @@
                         <outlet property="addFileImg" destination="rqI-H3-qlb" id="Lbw-rE-FtS"/>
                         <outlet property="addFileText" destination="Lw6-u6-7ez" id="GJB-Ui-w7A"/>
                         <outlet property="backBtn" destination="ChW-K0-PsC" id="EoS-8x-pTC"/>
+                        <outlet property="descHeight" destination="oNf-Lu-sdi" id="1g1-Lr-JKp"/>
                         <outlet property="descText" destination="SzC-qr-aiV" id="BDe-B5-F0R"/>
                         <outlet property="fileTable" destination="Qem-nG-VpG" id="VYQ-YV-7ai"/>
                         <outlet property="fileTableHeight" destination="Can-JP-o9T" id="Vwe-Od-HQO"/>
@@ -3435,6 +3436,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="BCE-5o-WMX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nuf-WZ-9kV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.084393614219999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -4381,6 +4383,17 @@
             <point key="canvasLocation" x="926" y="977"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4hW-dt-Lsq"/>
+        <segue reference="XWc-3W-CKW"/>
+        <segue reference="ScW-NP-Vv0"/>
+        <segue reference="czn-Ea-g6a"/>
+        <segue reference="Uzh-Xt-wze"/>
+        <segue reference="M7G-ag-hjx"/>
+        <segue reference="lq2-6F-1pC"/>
+        <segue reference="x4h-mP-Bcg"/>
+        <segue reference="deB-u2-yJl"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="StarEmpty" width="22" height="22"/>
         <image name="StarFull" width="22" height="22"/>
@@ -4408,15 +4421,4 @@
         <image name="sendComm" width="39" height="39"/>
         <image name="unCheck" width="60" height="60"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="4hW-dt-Lsq"/>
-        <segue reference="XWc-3W-CKW"/>
-        <segue reference="ScW-NP-Vv0"/>
-        <segue reference="czn-Ea-g6a"/>
-        <segue reference="Uzh-Xt-wze"/>
-        <segue reference="M7G-ag-hjx"/>
-        <segue reference="lq2-6F-1pC"/>
-        <segue reference="x4h-mP-Bcg"/>
-        <segue reference="deB-u2-yJl"/>
-    </inferredMetricsTieBreakers>
 </document>

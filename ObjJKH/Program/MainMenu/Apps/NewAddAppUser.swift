@@ -489,6 +489,24 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let height = heightForView(text: descText.text, font: descText.font!, width: view.frame.size.width - 76)
+        if height > 40.0 && height < 100{
+            DispatchQueue.main.async{
+                self.descHeight.constant = height
+            }
+        }else if height > 100{
+            DispatchQueue.main.async{
+                self.descHeight.constant = 100
+            }
+        }else{
+            DispatchQueue.main.async{
+                self.descHeight.constant = 40
+            }
+        }
+        return true
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
@@ -640,6 +658,14 @@ class NewAddAppUser: UIViewController, UITableViewDelegate, UITableViewDataSourc
         textView.sizeToFit()
         
         return textView.frame.height
+    }
+    
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UITextView = UITextView(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        return label.frame.height
     }
     
     func StartIndicator() {
