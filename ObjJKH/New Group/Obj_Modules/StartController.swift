@@ -180,6 +180,8 @@ class StartController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Sibir")
         #elseif isNovogorskoe
         fon_top.image = UIImage(named: "Logo_Novogorskoe")
+        #elseif isION
+        fon_top.image = UIImage(named: "Logo_ION")
         #endif
 //        UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.set("", forKey: "errorStringSupport")

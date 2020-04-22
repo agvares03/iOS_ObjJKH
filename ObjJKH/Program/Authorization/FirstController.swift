@@ -428,6 +428,8 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Sibir")
         #elseif isNovogorskoe
         fon_top.image = UIImage(named: "Logo_Novogorskoe")
+        #elseif isION
+        fon_top.image = UIImage(named: "Logo_ION")
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета
