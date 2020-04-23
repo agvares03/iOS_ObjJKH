@@ -65,6 +65,29 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYi-MM-SD4">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="2941"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVO-r9-b4b">
+                                                <rect key="frame" x="0.0" y="535.33333333333337" width="375" height="187"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9ZZ-SB-Tll">
+                                                        <rect key="frame" x="169" y="75" width="37" height="37"/>
+                                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4d-fb-Yn0" customClass="FSPagerView" customModule="FSPagerView">
+                                                        <rect key="frame" x="15" y="0.0" width="345" height="187"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="r4d-fb-Yn0" firstAttribute="top" secondItem="yVO-r9-b4b" secondAttribute="top" id="2v9-vi-kX2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="r4d-fb-Yn0" secondAttribute="trailing" constant="15" id="6HY-cS-CaA"/>
+                                                    <constraint firstAttribute="height" constant="187" id="HhT-PA-QI7"/>
+                                                    <constraint firstItem="9ZZ-SB-Tll" firstAttribute="centerX" secondItem="yVO-r9-b4b" secondAttribute="centerX" id="MMb-U9-FIf"/>
+                                                    <constraint firstItem="9ZZ-SB-Tll" firstAttribute="centerY" secondItem="yVO-r9-b4b" secondAttribute="centerY" id="XvP-A5-xEq"/>
+                                                    <constraint firstItem="r4d-fb-Yn0" firstAttribute="leading" secondItem="yVO-r9-b4b" secondAttribute="leading" constant="15" id="ZjS-SI-GiP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="r4d-fb-Yn0" secondAttribute="bottom" id="t1x-pK-GSm"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ONq-x6-9Vk">
                                                 <rect key="frame" x="120" y="-145" width="269" height="269"/>
                                                 <color key="backgroundColor" red="0.39404296875" green="0.24642592668533325" blue="0.34787589311599731" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2613,29 +2636,6 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVO-r9-b4b">
-                                                <rect key="frame" x="0.0" y="535.33333333333337" width="375" height="187"/>
-                                                <subviews>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9ZZ-SB-Tll">
-                                                        <rect key="frame" x="169" y="75" width="37" height="37"/>
-                                                        <color key="color" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </activityIndicatorView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4d-fb-Yn0" customClass="FSPagerView" customModule="FSPagerView">
-                                                        <rect key="frame" x="15" y="0.0" width="345" height="187"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="r4d-fb-Yn0" firstAttribute="top" secondItem="yVO-r9-b4b" secondAttribute="top" id="2v9-vi-kX2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="r4d-fb-Yn0" secondAttribute="trailing" constant="15" id="6HY-cS-CaA"/>
-                                                    <constraint firstAttribute="height" constant="187" id="HhT-PA-QI7"/>
-                                                    <constraint firstItem="9ZZ-SB-Tll" firstAttribute="centerX" secondItem="yVO-r9-b4b" secondAttribute="centerX" id="MMb-U9-FIf"/>
-                                                    <constraint firstItem="9ZZ-SB-Tll" firstAttribute="centerY" secondItem="yVO-r9-b4b" secondAttribute="centerY" id="XvP-A5-xEq"/>
-                                                    <constraint firstItem="r4d-fb-Yn0" firstAttribute="leading" secondItem="yVO-r9-b4b" secondAttribute="leading" constant="15" id="ZjS-SI-GiP"/>
-                                                    <constraint firstAttribute="bottom" secondItem="r4d-fb-Yn0" secondAttribute="bottom" id="t1x-pK-GSm"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -4932,14 +4932,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mCg-qu-B3k"/>
-        <segue reference="qZW-oS-uRV"/>
-        <segue reference="oI7-of-Hvs"/>
-        <segue reference="QyU-aW-HIx"/>
-        <segue reference="8Cn-1r-0Af"/>
-        <segue reference="Pwj-1d-22M"/>
-        <segue reference="kVR-59-EJo"/>
-        <segue reference="eE3-sw-gUi"/>
+        <segue reference="XoR-sX-4nR"/>
+        <segue reference="dzo-rQ-cnH"/>
+        <segue reference="Txi-5R-Pta"/>
+        <segue reference="jYg-pB-5lL"/>
+        <segue reference="2dh-Vt-jmR"/>
+        <segue reference="VI0-A3-yGV"/>
+        <segue reference="KAh-TB-RwK"/>
+        <segue reference="Xov-w8-Ys4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo_DemoUC.png" width="120" height="120"/>

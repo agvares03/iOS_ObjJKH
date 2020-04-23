@@ -726,15 +726,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.webArr.removeAll()
                 self.serviceArr.removeAll()
                 self.rowComms.removeAll()
-                let login = UserDefaults.standard.string(forKey: "login")
-                let pass  = UserDefaults.standard.string(forKey: "pass")
+//                let login = UserDefaults.standard.string(forKey: "login")
+//                let pass  = UserDefaults.standard.string(forKey: "pass")
                 self.getDebt()
                 self.getNews()
                 self.getDataCounter()
                 self.updateListApps()
                 self.getQuestions()
                 self.getWebs()
-                self.get_Services(login: login!, pass: pass!)
+//                self.get_Services(login: login!, pass: pass!)
                 self.getPaysFile()
                 if #available(iOS 10.0, *) {
                     self.scrollView.refreshControl?.endRefreshing()
@@ -2116,7 +2116,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }.resume()
         }
     }
-    
+    var firstAd = false
     func loadAdBanner(){
         if self.serviceAdBlock.count != 0{
             self.adPagerView.interitemSpacing = 20
@@ -2125,7 +2125,8 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.adPagerView.reloadData()
             self.adPagerView.automaticSlidingInterval = 10.0
             self.bottomViewHeight.constant = (self.view.frame.size.width - 30) / 2 + 4
-        }else if UserDefaults.standard.bool(forKey: "show_Ad"){
+        }else if UserDefaults.standard.bool(forKey: "show_Ad") && !firstAd{
+            firstAd = true
             if UserDefaults.standard.integer(forKey: "ad_Type") == 2{
                 let configuration = YMANativeAdLoaderConfiguration(blockID: UserDefaults.standard.string(forKey: "adsCode")!,
                                                                    imageSizes: [kYMANativeImageSizeMedium],
