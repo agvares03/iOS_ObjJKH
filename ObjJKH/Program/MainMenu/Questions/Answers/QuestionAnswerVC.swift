@@ -34,20 +34,22 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         }
         
         var answerArr: [Int] = []
-        
+        guard selectedAnswers.count != 0 else { return }
         selectedAnswers.forEach {
             answerArr.append((question_?.questions![currQuestion].answers![$0].id)!)
         }
         guard answerArr.count != 0 else { return }
         answers[(question_?.questions![currQuestion].id!)!] = answerArr
-        print(answers)
+//        print(answers)
         isAccepted = false
         if (currQuestion + 1) < question_?.questions?.count ?? 0 {
             if answers.count > currQuestion + 1{
                 kek = answers[(question_?.questions![currQuestion + 1].id!)!]!
             }
             i = 0
-            collection.reloadData()
+            DispatchQueue.main.async{
+                self.collection.reloadData()
+            }
             currQuestion += 1
             NotificationCenter.default.post(name: NSNotification.Name("Uncheck"), object: nil)
             
@@ -96,7 +98,7 @@ class QuestionAnswerVC: UIViewController, UICollectionViewDelegate, UICollection
         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         request.httpBody = jsonData
         
-//        print(request.url)
+        print(request.url)
 //        print(String(data: request.httpBody!, encoding: .utf8))
         
         URLSession.shared.dataTask(with: request) {

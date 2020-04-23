@@ -82,19 +82,23 @@ class UniqCountersController: UIViewController, DropperDelegate, UITableViewDele
             //            }
             //            alert.addAction(okAction)
             //            self.present(alert, animated: true, completion: nil)
-                        selectedUniq = owner
-                        selectedUniqName = uniq_name
-                        let formatDec:String = "%." + String(selNumDec) + "f"
-                        predVal1 = String(format:formatDec, teckArr[0])
-                        self.performSegue(withIdentifier: "addCounters", sender: self)
-                    }else{
-                        let date1            = UserDefaults.standard.string(forKey: "date1")!
-                        let date2            = UserDefaults.standard.string(forKey: "date2")!
-                        let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
-                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                        alert.addAction(cancelAction)
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                selectedUniq = owner
+                selectedUniqName = uniq_name
+                let formatDec:String = "%." + String(selNumDec) + "f"
+                predVal1 = String(format:formatDec, teckArr[0])
+                DispatchQueue.main.async{
+                    self.performSegue(withIdentifier: "addCounters", sender: self)
+                }
+            }else{
+                let date1            = UserDefaults.standard.string(forKey: "date1")!
+                let date2            = UserDefaults.standard.string(forKey: "date2")!
+                let alert = UIAlertController(title: "Ошибка", message: "Возможность передавать показания доступна с " + date1 + " по " + date2 + " числа текущего месяца!", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                DispatchQueue.main.async{
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
         
     }
