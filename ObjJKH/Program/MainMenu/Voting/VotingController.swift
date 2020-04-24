@@ -64,7 +64,7 @@ class VotingController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func getVote(){
-        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+        let phone = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
         //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
         var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_OSS + "phone=" + phone + "&pwd=" + pass)!)
         request.httpMethod = "GET"

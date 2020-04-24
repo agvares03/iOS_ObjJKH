@@ -123,14 +123,14 @@ class NewsView: UIViewController, QuestionTableDelegate {
     }
     
     func read_news(){
-        let phone = UserDefaults.standard.string(forKey: "login")!
+        let phone = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
         let url: String = "SetAnnouncementIsReaded.ashx?"
         var request = URLRequest(url: URL(string: Server.SERVER + url + "id=" + newsId! + "&phone=" + phone)!)
         request.httpMethod = "GET"
         print(request)
         URLSession.shared.dataTask(with: request) {
             data, error, responce in
-            print(String(data: data!, encoding: .utf8) ?? "")
+//            print(String(data: data!, encoding: .utf8) ?? "")
             guard data != nil else { return }
             var read_news = UserDefaults.standard.integer(forKey: "newsKol")
             read_news -= 1

@@ -237,7 +237,7 @@ class AddLSSimple: UIViewController {
                     #endif
                     #if isElectroSbitSaratov
                     
-                        urlPath = urlPath + "&pin=" + (alert.textFields?.first!.text)!
+                        urlPath = urlPath + "&pin=" + (alert.textFields?.first!.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
                     
                     #endif
                     let url: NSURL = NSURL(string: urlPath)!
@@ -471,7 +471,7 @@ class AddLSSimple: UIViewController {
     }
     
     func checkSMS(smsCode: String){
-        let urlPath = Server.SERVER + Server.MOBILE_API_PATH + "ValidateCheckCodeIdent.ashx?phone=" + phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&code=" + smsCode + "&ident=" + (edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
+        let urlPath = Server.SERVER + Server.MOBILE_API_PATH + "ValidateCheckCodeIdent.ashx?phone=" + phone.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&code=" + smsCode.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&ident=" + (edLS.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
