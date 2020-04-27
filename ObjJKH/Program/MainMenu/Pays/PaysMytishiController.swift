@@ -1281,7 +1281,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     if UserDefaults.standard.string(forKey: "encoding_Pays") == "1"{
                         if (object.value(forKey: "ident") as! String) == ident{
                             if (object.value(forKey: "usluga") as! String) != "Я"{
-                                sumOSV.append(Double(String(format:"%.2f", Double(object.value(forKey: "end") as! String)!)) as! Double)
+                                sumOSV.append(Double(String(format:"%.2f", Double(object.value(forKey: "end") as! String)!))!)
                                 checkBox.append(true)
                                 osvc.append(object.value(forKey: "usluga") as! String)
                                 idOSV.append(Int(object.value(forKey: "id") as! Int64))
@@ -1302,7 +1302,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                     self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                                 }
                                 if sumOSV.count == 0{
-                                    sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
+                                    sumOSV.append(Double(String(format:"%.2f", self.sum))!)
                                     checkBox.append(true)
                                     osvc.append("Услуги ЖКУ")
                                     idOSV.append(Int(object.value(forKey: "id") as! Int64))
@@ -1312,14 +1312,14 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                     idArr.append(Int(object.value(forKey: "id") as! Int64))
                                     identOSV.append(object.value(forKey: "ident") as! String)
                                 }else{
-                                    sumOSV[0] = Double(String(format:"%.2f", self.sum)) as! Double
+                                    sumOSV[0] = Double(String(format:"%.2f", self.sum))!
                                     endArr[0] = String(format:"%.2f", self.sum)
                                 }
                             }else if results.count == 1{
                                 self.sum = self.sum + Double(object.value(forKey: "end") as! String)!
                                 if sumOSV.count == 0{
                                     print(self.sum, String(format:"%.2f", self.sum))
-                                    sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
+                                    sumOSV.append(Double(String(format:"%.2f", self.sum))!)
                                     checkBox.append(true)
                                     osvc.append("Услуги ЖКУ")
                                     idOSV.append(Int(object.value(forKey: "id") as! Int64))
@@ -1329,7 +1329,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                                     idArr.append(Int(object.value(forKey: "id") as! Int64))
                                     identOSV.append(object.value(forKey: "ident") as! String)
                                 }else{
-                                    sumOSV[0] = Double(String(format:"%.2f", self.sum)) as! Double
+                                    sumOSV[0] = Double(String(format:"%.2f", self.sum))!
                                     endArr[0] = String(format:"%.2f", self.sum)
                                 }
                             }
@@ -1348,7 +1348,6 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         self.servicePay.text  = String(format:"%.2f", serviceP) + " руб."
                         self.totalSum = self.sum + serviceP
                         self.txt_sum_obj.text = String(format:"%.2f", self.sum) + " руб."
-                        print(self.txt_sum_obj.text)
                         self.txt_sum_jkh.text = String(format:"%.2f", self.totalSum) + " руб."
                     } else {
                         //                    self.txt_sum_jkh.text = "0,00 р."
@@ -1362,7 +1361,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                     #endif
                 })
                 if (uslugaArr.count == 0) {
-                    sumOSV.append(Double(String(format:"%.2f", self.sum)) as! Double)
+                    sumOSV.append(Double(String(format:"%.2f", self.sum))!)
                     checkBox.append(true)
                     osvc.append("Услуги ЖКУ")
                     idOSV.append(0)
@@ -1487,7 +1486,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 self.txt_sum_jkh.text = String(format:"%.2f", self.sum) + " руб."
                 #endif
             }
-            sumOSV.append(Double(String(format:"%.2f", s)) as! Double)
+            sumOSV.append(Double(String(format:"%.2f", s))!)
             checkBox.append(true)
             osvc.append("Услуги ЖКУ")
             idOSV.append(0)
@@ -1774,7 +1773,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             if choiceIdent == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")
-                for i in 0...str_ls_arr.count - 1{
+                for _ in 0...str_ls_arr.count - 1{
                     ident = str_ls_arr[0]
                 }
             }else{
@@ -1848,23 +1847,22 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         if str.suffix(1) == "."{
             str = str + "00"
         }
-        let s: Double = Double(str) as! Double
+        let s: Double = Double(str)!
         textField.text = String(format:"%.2f", s)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         var str: String = textField.text!
         str = str.replacingOccurrences(of: ",", with: ".")
-        print(str)
-        if str.contains("."){
-            if let index = str.index(of: ".") {
-                let distance = str.distance(from: str.startIndex, to: index)
-                let k = str.count - distance - 1
-                if k > 2{
-                    str.removeLast()
-                    textField.text = str
-                }
+        var k = 0
+        str.forEach{
+            if $0 == "."{
+                k += 1
             }
+        }
+        if k > 1{
+            str.removeLast()
+            textField.text = str
         }
         if str.contains(".."){
             str.removeLast()
@@ -1872,7 +1870,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         }
         if str != "" && str != "-" && str != "." && str != ","{
             for i in 0...osvc.count - 1{
-                var code:String = osvc[i]
+                let code:String = osvc[i]
                 if (textField.accessibilityIdentifier == code){
                     sumOSV[i] = Double(str)!
                 }
@@ -1902,7 +1900,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }
         }else{
             for i in 0...osvc.count - 1{
-                var code:String = osvc[i]
+                let code:String = osvc[i]
                 if textField.accessibilityIdentifier == code{
                     sumOSV[i] = 0.00
                 }
@@ -2020,7 +2018,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         if selectLS == "Все"{
             let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
             let str_ls_arr = str_ls.components(separatedBy: ",")
-            for i in 0...str_ls_arr.count - 1{
+            for _ in 0...str_ls_arr.count - 1{
                 ident = str_ls_arr[0]
             }
         }else{

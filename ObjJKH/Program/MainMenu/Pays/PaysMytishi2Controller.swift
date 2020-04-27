@@ -896,15 +896,19 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
     @objc func textFieldDidChange(_ textField: UITextField) {
         var str: String = textField.text!
         str = str.replacingOccurrences(of: ",", with: ".")
-        if str.contains("."){
-            if let index = str.index(of: ".") {
-                let distance = str.distance(from: str.startIndex, to: index)
-                let k = str.count - distance - 1
-                if k > 2{
-                    str.removeLast()
-                    textField.text = str
-                }
+        var k = 0
+        str.forEach{
+            if $0 == "."{
+                k += 1
             }
+        }
+        if k > 1{
+            str.removeLast()
+            textField.text = str
+        }
+        if str.contains(".."){
+            str.removeLast()
+            textField.text = str
         }
         if str != "" && str != "-" && str != "." && str != ","{
             for i in 0...osvc.count - 1{

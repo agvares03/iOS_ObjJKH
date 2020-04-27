@@ -2072,18 +2072,20 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }
                 }
                 obj.forEach{
-                    let url:NSURL = NSURL(string: ($0.logo)!)!
-                    let data = try? Data(contentsOf: url as URL)
-                    if UIImage(data: data!) == nil{
-                        
-                    }else{
-                        if $0.showinadblock == "mainpage"{
-                            self.serviceAdBlock.append($0)
+                    if ($0.logo?.contains("http"))!{
+                        let url:NSURL = NSURL(string: ($0.logo)!)!
+                        let data = try? Data(contentsOf: url as URL)
+                        if UIImage(data: data!) == nil{
+                            
+                        }else{
+                            if $0.showinadblock == "mainpage"{
+                                self.serviceAdBlock.append($0)
+                            }
+                            if $0.showinadblock == "notset" || $0.showinadblock == "disable"{
+                                self.serviceArr.append($0)
+                            }
+                            self.allServiceArr.append($0)
                         }
-                        if $0.showinadblock == "notset" || $0.showinadblock == "disable"{
-                            self.serviceArr.append($0)
-                        }
-                        self.allServiceArr.append($0)
                     }
                 }
                 DispatchQueue.main.async{
