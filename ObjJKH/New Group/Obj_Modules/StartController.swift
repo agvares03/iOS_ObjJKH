@@ -249,8 +249,10 @@ class StartController: UIViewController {
     func getSettings() {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
-        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
-        
+        var urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version
+        #if isUpravdomChe
+        urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "appVersionIOS=" + version + "&dontCheckAppBlocking=1"
+        #endif
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -279,8 +281,10 @@ class StartController: UIViewController {
     }
     
     func getSettings2() {
-        let urlPath = Server.SERVER + Server.GET_MOBILE_MENU
-        
+        var urlPath = Server.SERVER + Server.GET_MOBILE_MENU
+        #if isUpravdomChe
+        urlPath = Server.SERVER + Server.GET_MOBILE_MENU + "dontCheckAppBlocking=1"
+        #endif
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
