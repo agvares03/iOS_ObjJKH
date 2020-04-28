@@ -337,6 +337,7 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("AddCounter", forKey: "last_UI_action")
+        addMetrics()
         adIndicator.color = myColors.btnColor.uiColor()
         adIndicator.isHidden = true
 //        print("metrId: ", metrId)
@@ -911,6 +912,31 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
             self.viewTop.constant = 0
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func addMetrics() {
+        let edLogin:String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_METRICS + "phone=" + edLogin + "&object=metervalues"
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+//        print("RequestURL: ", request.url)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    return
+                                                }
+                                                
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(responseString)")
+                                                
+        })
+        task.resume()
+        
     }
     
     func getInterYear(str: String) -> String{

@@ -332,6 +332,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         Crashlytics.sharedInstance().setObjectValue("HomePage", forKey: "last_UI_action")
         Crashlytics.sharedInstance().setObjectValue(UserDefaults.standard.string(forKey: "login"), forKey: "login_text")
         StopIndicators()
+        addMetrics()
         #if isRKC_Samara
         name_Samara.isHidden = false
         elipseBackground.isHidden = true
@@ -693,6 +694,31 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         get_Services(login: login!, pass: pass!)
         getPaysFile()
         // Do any additional setup after loading the view.
+    }
+    
+    func addMetrics() {
+        let edLogin:String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_METRICS + "phone=" + edLogin + "&object=login"
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+//        print("RequestURL: ", request.url)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    return
+                                                }
+                                                
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(responseString)")
+                                                
+        })
+        task.resume()
+        
     }
     
     var showAD = true

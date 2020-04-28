@@ -850,6 +850,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         Crashlytics.sharedInstance().setObjectValue("PaysController", forKey: "last_UI_action")
+        addMetrics()
         let defaults     = UserDefaults.standard
 //        let params : [String : Any] = ["Переход на страницу": "Оплата"]
 //        YMMYandexMetrica.reportEvent("EVENT", parameters: params, onFailure: { (error) in
@@ -1072,6 +1073,31 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         insurance.isUserInteractionEnabled = true
         insurance.addGestureRecognizer(tapInsurance)
         // Do any additional setup after loading the view.
+    }
+    
+    func addMetrics() {
+        let edLogin:String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + Server.MOBILE_API_PATH + Server.ADD_METRICS + "phone=" + edLogin + "&object=pay"
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+//        print("RequestURL: ", request.url)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    return
+                                                }
+                                                
+//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                                                print("responseString = \(responseString)")
+                                                
+        })
+        task.resume()
+        
     }
         
     @objc private func insuranceTapped(_ sender: UITapGestureRecognizer) {
