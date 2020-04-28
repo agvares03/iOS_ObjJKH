@@ -471,12 +471,14 @@ class NewMainMenu2: UIViewController {
                     }
                 }
                 obj.forEach{
-                    let url:NSURL = NSURL(string: ($0.logo)!)!
-                    let data = try? Data(contentsOf: url as URL)
-                    if UIImage(data: data!) == nil{
-                        
-                    }else{
-                        self.serviceArr.append($0)
+                    if ($0.logo?.contains("http"))!{
+                        let url:NSURL = NSURL(string: ($0.logo)!)!
+                        let data = try? Data(contentsOf: url as URL)
+                        if UIImage(data: data!) == nil{
+                            
+                        }else{
+                            self.serviceArr.append($0)
+                        }
                     }
                 }
                 }.resume()

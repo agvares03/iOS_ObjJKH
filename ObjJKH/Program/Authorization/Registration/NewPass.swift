@@ -340,7 +340,7 @@ class NewPass: UIViewController {
         } else {
             
             DispatchQueue.main.async(execute: {
-                
+                self.StopIndicator()
                 // авторизация на сервере - получение данных пользователя
                 var answer = responseString.components(separatedBy: ";")
                 
@@ -360,8 +360,6 @@ class NewPass: UIViewController {
 //                self.performSegue(withIdentifier: "GoToApp", sender: self)
                 UserDefaults.standard.set(true, forKey: "NewMain")
                 self.performSegue(withIdentifier: "NewMainMenu", sender: self)
-                
-                self.StopIndicator()
             })
         }
     }
