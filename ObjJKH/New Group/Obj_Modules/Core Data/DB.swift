@@ -789,7 +789,7 @@ class DB: NSObject, XMLParserDelegate {
     // Удалить заявку
     func del_app(number: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Applications")
-        fetchRequest.predicate = NSPredicate.init(format: "number==\(number)")
+        fetchRequest.predicate = NSPredicate.init(format: "number = \(number)")
         do {
             let results = try CoreDataManager.instance.managedObjectContext.fetch(fetchRequest)
             for result in results {

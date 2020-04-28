@@ -116,7 +116,7 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            let ident = self.edLS.text!
+            let ident = self.edLS.text!.stringByAddingPercentEncodingForRFC3986() ?? ""
             var urlPath = Server.SERVER + Server.ADD_APP +
                 "ident=" + ident +
                 "&name=" + txtText +
@@ -125,7 +125,7 @@ class AddAppCons: UITableViewController, UIImagePickerControllerDelegate, UINavi
                 "&priority=2"
             let phone = self.edPhone.text!
             if phone != ""{
-                urlPath = urlPath + "&phonenum=" + phone
+                urlPath = urlPath + "&phonenum=" + phone.stringByAddingPercentEncodingForRFC3986()!
             }
             
             let url: NSURL = NSURL(string: urlPath)!
