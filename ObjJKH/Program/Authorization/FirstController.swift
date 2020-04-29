@@ -425,6 +425,8 @@ class FirstController: UIViewController {
         UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_OptimumService")
         #elseif isSibir
+        UserDefaults.standard.set("New_Terminal", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Sibir")
         #elseif isNovogorskoe
         fon_top.image = UIImage(named: "Logo_Novogorskoe")
