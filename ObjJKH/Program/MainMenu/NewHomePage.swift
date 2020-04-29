@@ -1368,6 +1368,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var identArr         :[String] = []
     var tariffArr        :[String] = []
     var nameArr          :[String] = []
+    var customNameArr    :[String] = []
     var numberArr        :[String] = []
     var predArr          :[Float]  = []
     var teckArr          :[Float]  = []
@@ -1402,6 +1403,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         numberDecimal.removeAll()
         tariffArr.removeAll()
         nameArr.removeAll()
+        customNameArr.removeAll()
         numberArr.removeAll()
         predArr.removeAll()
         teckArr.removeAll()
@@ -1457,6 +1459,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             var errorTwo = ""
             var errorThree = ""
             var count_name = ""
+            var custom_name = ""
             var owner = ""
             var unit_name = ""
             var sended = true
@@ -1479,6 +1482,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             valueOne3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
+                            custom_name = (object.value(forKey: "custom_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
@@ -1497,6 +1501,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             valueTwo3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
+                            custom_name = (object.value(forKey: "custom_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                             owner = (object.value(forKey: "owner") as! String)
@@ -1514,6 +1519,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             errorThree = (object.value(forKey: "sendErrorText") as! String)
                             identArr.append(object.value(forKey: "ident") as! String)
                             nameArr.append(object.value(forKey: "count_name") as! String)
+                            customNameArr.append(object.value(forKey: "custom_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
                             tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                             numberDecimal.append(object.value(forKey: "numberOfDecimal") as! String)
@@ -1557,6 +1563,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             valueThree2 = 0.00
                             valueThree3 = 0.00
                             count_name = ""
+                            custom_name = ""
                             owner = ""
                             unit_name = ""
                             sended = true
@@ -1575,6 +1582,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             i = 1
                             identArr.append(identk)
                             nameArr.append(count_name)
+                            customNameArr.append(custom_name)
                             numberArr.append(uniq_num)
                             numberDecimal.append(numberOfDec)
                             tariffArr.append(tariffNumber)
@@ -1611,6 +1619,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             valueOne3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
+                            custom_name = (object.value(forKey: "custom_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
@@ -1646,6 +1655,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         valueOne3 = (object.value(forKey: "valueT3") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
+                        custom_name = (object.value(forKey: "custom_name") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
@@ -1663,6 +1673,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         valueTwo3 = (object.value(forKey: "valueT3") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
+                        custom_name = (object.value(forKey: "custom_name") as! String)
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
@@ -1682,6 +1693,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         identArr.append(object.value(forKey: "ident") as! String)
                         numberDecimal.append(object.value(forKey: "numberOfDecimal") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
+                        customNameArr.append(object.value(forKey: "custom_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
                         tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                         ownerArr.append(object.value(forKey: "owner") as! String)
@@ -1724,6 +1736,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         valueThree2 = 0.00
                         valueThree3 = 0.00
                         count_name = ""
+                        custom_name = ""
                         owner = ""
                         unit_name = ""
                         sended = true
@@ -1742,6 +1755,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         i = 1
                         identArr.append(identk)
                         nameArr.append(count_name)
+                        customNameArr.append(custom_name)
                         numberArr.append(uniq_num)
                         tariffArr.append(tariffNumber)
                         ownerArr.append(owner)
@@ -1778,6 +1792,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         valueOne3 = (object.value(forKey: "valueT3") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
+                        custom_name = (object.value(forKey: "custom_name") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
@@ -1807,6 +1822,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             if i == 2 || i == 1{
                 identArr.append(identk)
                 nameArr.append(count_name)
+                customNameArr.append(custom_name)
                 tariffArr.append(tariffNumber)
                 numberDecimal.append(numberOfDec)
                 numberArr.append(uniq_num)
@@ -2645,6 +2661,9 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cell = self.tableCounter.dequeueReusableCell(withIdentifier: "HomeCounterCell") as! HomeCounterCell
             var countName = ""
             cell.tariffNumber     = tariffArr[indexPath.row]
+            cell.editImg.tintColor = myColors.btnColor.uiColor()
+            cell.nameTextView.isHidden = true
+            cell.unit_name = ", " + unitArr[indexPath.row]
             lsArr.forEach{
                 if $0.ident == identArr[indexPath.row]{
                     cell.adress.text = $0.address!
@@ -2659,9 +2678,16 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.identHeight.constant = 24
                 cell.identHeight.constant = heightForView(text: cell.adress.text!, font: cell.adress.font, width: view.frame.size.width - 135)
             }
-            cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+            if customNameArr[indexPath.row] != "" && customNameArr[indexPath.row] != "-"{
+                cell.name.text = customNameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+                cell.nameTextView.text = customNameArr[indexPath.row]
+            }else{
+                cell.nameTextView.text = nameArr[indexPath.row]
+                cell.name.text = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+            }
+            cell.count_name = nameArr[indexPath.row]
             cell.number.text      = ownerArr[indexPath.row]
-            if ownerArr[indexPath.row] == "" || ownerArr[indexPath.row] == " " || ownerArr[indexPath.row] == "-" || ownerArr[indexPath.row] == nil{
+            if ownerArr[indexPath.row] == "" || ownerArr[indexPath.row] == " " || ownerArr[indexPath.row] == "-"{
                 cell.numberView.isHidden = true
                 cell.numberHeight.constant = 0
             }else{
@@ -2679,7 +2705,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             // Проверка и интервал
             cell.checkup_date.text = lastCheckArr[indexPath.row]
-            if lastCheckArr[indexPath.row] == "" || lastCheckArr[indexPath.row] == " " || lastCheckArr[indexPath.row] == "-" || lastCheckArr[indexPath.row] == nil{
+            if lastCheckArr[indexPath.row] == "" || lastCheckArr[indexPath.row] == " " || lastCheckArr[indexPath.row] == "-"{
                 cell.checkView.isHidden = true
                 cell.chechHeight.constant = 0
             }else{
@@ -2687,7 +2713,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.chechHeight.constant = 24
             }
             cell.recheckup_diff.text = recheckInterArr[indexPath.row] + getAge(age: recheckInterArr[indexPath.row])
-            if recheckInterArr[indexPath.row] == "" || recheckInterArr[indexPath.row] == " " || recheckInterArr[indexPath.row] == "-" || recheckInterArr[indexPath.row] == nil{
+            if recheckInterArr[indexPath.row] == "" || recheckInterArr[indexPath.row] == " " || recheckInterArr[indexPath.row] == "-"{
                 cell.recheckView.isHidden = true
                 cell.recheckHeight.constant = 0
             }else{
@@ -2695,7 +2721,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cell.recheckHeight.constant = 24
             }
             if (autoValueArr[indexPath.row]) {
-//                cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
+    //                cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
                 cell.sendBtnHeight.constant = 0
                 cell.sendButton.isHidden = true
                 cell.autoLbl.isHidden = false
@@ -3398,8 +3424,13 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //        if isEditable(){
             var metrId = ""
             for i in 0...self.numberArr.count - 1{
-                print(self.ownerArr[i], nameArr[i] + ", " + unitArr[i], self.identArr[i])
-                if uniq_num == self.ownerArr[i] && count_name == (nameArr[i] + ", " + unitArr[i]) && ident == self.identArr[i]{
+                var name = ""
+                if customNameArr[i] != "" && customNameArr[i] != "-"{
+                    name = customNameArr[i] + ", " + unitArr[i]
+                }else{
+                    name = nameArr[i] + ", " + unitArr[i]
+                }
+                if uniq_num == self.ownerArr[i] && count_name == name && ident == self.identArr[i]{
                     metrId = self.numberArr[i]
                     autoSend = autoValueArr[i]
                     recheckInter = recheckInterArr[i]
@@ -3433,6 +3464,44 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //            }
 //        }
     }
+    
+    func editName(custom_name: String, uniq_num: String, count_name: String, ident: String) {
+        var metrId = ""
+        for i in 0...self.numberArr.count - 1{
+            if uniq_num == self.ownerArr[i] && count_name == nameArr[i] && ident == self.identArr[i]{
+                metrId = self.numberArr[i]
+            }
+        }
+        let login:String = UserDefaults.standard.string(forKey: "login")!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let pass:String = UserDefaults.standard.string(forKey: "pass")!.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let customName:String = custom_name.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let uniqnum = metrId.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + Server.EDIT_NAME_METERS +
+            "phone=" + login +
+            "&pwd=" + pass +
+            "&MeterUniqueNum=" + uniqnum +
+            "&CustomName=" + customName
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        print("RequestURL: ", request.url)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
+                                                
+        })
+        task.resume()
+    }
+    
     var choiceIdent = ""
     func goPaysPressed(ident: String) {
         choiceIdent = ident
@@ -3527,6 +3596,8 @@ class HomeCounterCell: UITableViewCell {
     var delegate: CountersCellDelegate?
     var tariffNumber = "0"
     var ident = ""
+    var count_name = ""
+    var unit_name = ""
     // Поверка и интервал
     @IBOutlet weak var checkup_date: UILabel!
     @IBOutlet weak var recheckup_diff: UILabel!
@@ -3537,6 +3608,9 @@ class HomeCounterCell: UITableViewCell {
     @IBOutlet weak var imgCounter: UIImageView!
     @IBOutlet weak var viewImgCounter: UIView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var editNameButton: UIButton!
+    @IBOutlet weak var nameTextView: UITextView!
+    @IBOutlet weak var editImg: UIImageView!
     
     @IBOutlet weak var numberView:  UIView!
     @IBOutlet weak var identView:   UIView!
@@ -3657,6 +3731,24 @@ class HomeCounterCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+    }
+    var edit = false
+    @IBAction func editNameAction(_ sender: UIButton) {
+        if edit{
+            nameTextView.endEditing(true)
+            edit = false
+            name.text = nameTextView.text! + unit_name
+            name.isHidden = false
+            nameTextView.isHidden = true
+            editImg.image = UIImage(named: "edit_name")
+            delegate?.editName(custom_name: nameTextView.text ?? "", uniq_num: number.text ?? "", count_name: count_name, ident: ident)
+        }else{
+            edit = true
+            editImg.image = UIImage(named: "ic_get_app")
+            name.isHidden = true
+            nameTextView.isHidden = false
+            nameTextView.becomeFirstResponder()
+        }
     }
     
     @IBAction func sendAction(_ sender: UIButton) {
