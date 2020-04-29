@@ -216,6 +216,7 @@ class DB: NSObject, XMLParserDelegate {
     var ident = ""
     var units = ""
     var name = ""
+    var customName = ""
     var meterUniqueNum = ""
     var factoryNumber = ""
     var tariffNumber = ""
@@ -239,6 +240,7 @@ class DB: NSObject, XMLParserDelegate {
                 ident = attributeDict["Ident"]!
                 units = attributeDict["Units"]!
                 name = attributeDict["Name"]!
+                customName = attributeDict["CustomName"]!
                 numberOfDecimal = attributeDict["NumberOfDecimalPlaces"]!
                 meterUniqueNum = attributeDict["MeterUniqueNum"]!
                 factoryNumber = attributeDict["FactoryNumber"]!
@@ -277,6 +279,7 @@ class DB: NSObject, XMLParserDelegate {
                 managedObject.year          = date[2]
                 managedObject.ident         = ident
                 managedObject.count_name    = name
+                managedObject.custom_name   = customName
                 managedObject.count_ed_izm  = units
                 managedObject.tariffNumber  = tariffNumber
                 managedObject.prev_value    = 123.53

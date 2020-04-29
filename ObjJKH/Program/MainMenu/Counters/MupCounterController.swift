@@ -15,6 +15,7 @@ import Crashlytics
 
 protocol CountersCellDelegate: class {
     func сheckSend(uniq_num: String, count_name: String, ident: String, predValue: String, predValue2: String, predValue3: String, tariffNumber: String)
+    func editName(custom_name: String, uniq_num: String, count_name: String, ident: String)
     //    func sendPressed(uniq_num: String, count_name: String, ident: String, predValue: String)
 }
 
@@ -262,6 +263,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     
     var identArr         :[String] = []
     var nameArr          :[String] = []
+    var customNameArr    :[String] = []
     var numberArr        :[String] = []
     var numberDecimal    :[String] = []
     var predArr          :[Float]  = []
@@ -295,6 +297,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         numberDecimal.removeAll()
         tariffArr.removeAll()
         nameArr.removeAll()
+        customNameArr.removeAll()
         numberArr.removeAll()
         predArr.removeAll()
         teckArr.removeAll()
@@ -350,6 +353,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             var errorTwo = ""
             var errorThree = ""
             var count_name = ""
+            var custom_name = ""
             var owner = ""
             var unit_name = ""
             var sended = true
@@ -372,6 +376,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             valueOne3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
+                            custom_name = (object.value(forKey: "custom_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
@@ -389,6 +394,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             valueTwo3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
+                            custom_name = (object.value(forKey: "custom_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
                             tariffNumber = (object.value(forKey: "tariffNumber") as! String)
@@ -407,6 +413,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             errorThree = (object.value(forKey: "sendErrorText") as! String)
                             identArr.append(object.value(forKey: "ident") as! String)
                             nameArr.append(object.value(forKey: "count_name") as! String)
+                            customNameArr.append(object.value(forKey: "custom_name") as! String)
                             numberArr.append(object.value(forKey: "uniq_num") as! String)
                             tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                             numberDecimal.append(object.value(forKey: "numberOfDecimal") as! String)
@@ -450,6 +457,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             valueThree2 = 0.00
                             valueThree3 = 0.00
                             count_name = ""
+                            custom_name = ""
                             owner = ""
                             unit_name = ""
                             sended = true
@@ -468,6 +476,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             i = 1
                             identArr.append(identk)
                             nameArr.append(count_name)
+                            customNameArr.append(custom_name)
                             numberArr.append(uniq_num)
                             numberDecimal.append(numberOfDec)
                             tariffArr.append(tariffNumber)
@@ -504,6 +513,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                             valueOne3 = (object.value(forKey: "valueT3") as! Float)
                             identk = (object.value(forKey: "ident") as! String)
                             count_name = (object.value(forKey: "count_name") as! String)
+                            custom_name = (object.value(forKey: "custom_name") as! String)
                             uniq_num = (object.value(forKey: "uniq_num") as! String)
                             owner = (object.value(forKey: "owner") as! String)
                             unit_name = (object.value(forKey: "unit_name") as! String)
@@ -539,6 +549,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         valueOne3 = (object.value(forKey: "valueT3") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
+                        custom_name = (object.value(forKey: "custom_name") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
@@ -556,6 +567,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         valueTwo3 = (object.value(forKey: "valueT3") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
+                        custom_name = (object.value(forKey: "custom_name") as! String)
                         tariffNumber = (object.value(forKey: "tariffNumber") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         numberOfDec = (object.value(forKey: "numberOfDecimal") as! String)
@@ -575,6 +587,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         identArr.append(object.value(forKey: "ident") as! String)
                         numberDecimal.append(object.value(forKey: "numberOfDecimal") as! String)
                         nameArr.append(object.value(forKey: "count_name") as! String)
+                        customNameArr.append(object.value(forKey: "custom_name") as! String)
                         numberArr.append(object.value(forKey: "uniq_num") as! String)
                         tariffArr.append(object.value(forKey: "tariffNumber") as! String)
                         ownerArr.append(object.value(forKey: "owner") as! String)
@@ -617,6 +630,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         valueThree2 = 0.00
                         valueThree3 = 0.00
                         count_name = ""
+                        custom_name = ""
                         owner = ""
                         unit_name = ""
                         sended = true
@@ -635,6 +649,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         i = 1
                         identArr.append(identk)
                         nameArr.append(count_name)
+                        customNameArr.append(custom_name)
                         numberArr.append(uniq_num)
                         tariffArr.append(tariffNumber)
                         ownerArr.append(owner)
@@ -671,6 +686,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                         valueOne3 = (object.value(forKey: "valueT3") as! Float)
                         identk = (object.value(forKey: "ident") as! String)
                         count_name = (object.value(forKey: "count_name") as! String)
+                        custom_name = (object.value(forKey: "custom_name") as! String)
                         uniq_num = (object.value(forKey: "uniq_num") as! String)
                         owner = (object.value(forKey: "owner") as! String)
                         unit_name = (object.value(forKey: "unit_name") as! String)
@@ -700,6 +716,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             if i == 2 || i == 1{
                 identArr.append(identk)
                 nameArr.append(count_name)
+                customNameArr.append(custom_name)
                 tariffArr.append(tariffNumber)
                 numberDecimal.append(numberOfDec)
                 numberArr.append(uniq_num)
@@ -791,33 +808,45 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         }
     }
     
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return 170.0
-    //    }
-    
     var sendedArr:[Bool] = []
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "MupCounterCell") as! MupCounterCell
-        var send = false
+        let cell = self.tableCounters.dequeueReusableCell(withIdentifier: "HomeCounterCell1") as! HomeCounterCell
         var countName = ""
-        let formatDec:String = "%." + numberDecimal[indexPath.row] + "f"
         cell.tariffNumber     = tariffArr[indexPath.row]
+        cell.editImg.tintColor = myColors.btnColor.uiColor()
+        cell.nameTextView.isHidden = true
+        cell.unit_name = ", " + unitArr[indexPath.row]
         lsArr.forEach{
-        //                print($0.ident , identArr[indexPath.row])
             if $0.ident == identArr[indexPath.row]{
                 cell.adress.text = $0.address!
             }
         }
         cell.ident = identArr[indexPath.row]
         if cell.adress.text == "" || cell.adress.text == " " || cell.adress.text == "-" || cell.adress.text == nil{
-            cell.adress.isHidden = true
-            cell.adressHeight.constant = 0
+            cell.identView.isHidden = true
+            cell.identHeight.constant = 0
         }else{
-            cell.adress.isHidden = false
-            cell.adressHeight.constant = heightForView(text: cell.adress.text!, font: cell.adress.font, width: view.frame.size.width - 135)
+            cell.identView.isHidden = false
+            cell.identHeight.constant = 24
+            cell.identHeight.constant = heightForView(text: cell.adress.text!, font: cell.adress.font, width: view.frame.size.width - 135)
         }
-        cell.name.text        = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        if customNameArr[indexPath.row] != "" && customNameArr[indexPath.row] != "-"{
+            cell.name.text = customNameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+            cell.nameTextView.text = customNameArr[indexPath.row]
+        }else{
+            cell.nameTextView.text = nameArr[indexPath.row]
+            cell.name.text = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        }
+        cell.count_name = nameArr[indexPath.row]
         cell.number.text      = ownerArr[indexPath.row]
+        if ownerArr[indexPath.row] == "" || ownerArr[indexPath.row] == " " || ownerArr[indexPath.row] == "-"{
+            cell.numberView.isHidden = true
+            cell.numberHeight.constant = 0
+        }else{
+            cell.numberView.isHidden = false
+            cell.numberHeight.constant = 24
+        }
+        let formatDec:String = "%." + numberDecimal[indexPath.row] + "f"
         countName             = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
         cell.pred1.text        = String(format:formatDec, predArr[indexPath.row])
         cell.teck1.text        = String(format:formatDec, teckArr[indexPath.row])
@@ -825,6 +854,117 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         cell.predLbl1.text     = dateOneArr[indexPath.row]
         cell.teckLbl1.text     = dateTwoArr[indexPath.row]
         cell.diffLbl1.text     = dateThreeArr[indexPath.row]
+        
+        // Проверка и интервал
+        cell.checkup_date.text = lastCheckArr[indexPath.row]
+        if lastCheckArr[indexPath.row] == "" || lastCheckArr[indexPath.row] == " " || lastCheckArr[indexPath.row] == "-"{
+            cell.checkView.isHidden = true
+            cell.chechHeight.constant = 0
+        }else{
+            cell.checkView.isHidden = false
+            cell.chechHeight.constant = 24
+        }
+        cell.recheckup_diff.text = recheckInterArr[indexPath.row] + getAge(age: recheckInterArr[indexPath.row])
+        if recheckInterArr[indexPath.row] == "" || recheckInterArr[indexPath.row] == " " || recheckInterArr[indexPath.row] == "-"{
+            cell.recheckView.isHidden = true
+            cell.recheckHeight.constant = 0
+        }else{
+            cell.recheckView.isHidden = false
+            cell.recheckHeight.constant = 24
+        }
+        if (autoValueArr[indexPath.row]) {
+//                cell.sendButton.setTitle("Автоматическое снятие", for: .normal)
+            cell.sendBtnHeight.constant = 0
+            cell.sendButton.isHidden = true
+            cell.autoLbl.isHidden = false
+            cell.autoLbl.textColor = myColors.btnColor.uiColor()
+            cell.autoLblHeight.constant = 40
+            cell.checkView.isHidden = true
+            cell.chechHeight.constant = 0
+            cell.recheckView.isHidden = true
+            cell.recheckHeight.constant = 0
+        }else{
+            cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
+            cell.sendBtnHeight.constant = 36
+            cell.sendButton.isHidden = false
+            cell.autoLbl.isHidden = true
+            cell.autoLblHeight.constant = 0
+            let date = Date()
+            let format = DateFormatter()
+            format.dateFormat = "dd-MM-yyyy"
+            let sendDate = format.date(from: dateOneArr[indexPath.row])
+            let calendar = Calendar.current
+            let currDay = calendar.component(.day, from: date)
+            let currMonth = calendar.component(.month, from: date)
+            let sendMonth = calendar.component(.month, from: sendDate!)
+            var d1: Int = 0
+            if Int(self.date1) != nil{
+                d1 = Int(self.date1)!
+            }
+            var d2: Int = 0
+            if Int(self.date2) != nil{
+                d2 = Int(self.date2)!
+            }
+            if (self.date1 == "0") && (self.date2 == "0") {
+                if currMonth == sendMonth{
+                    cell.can_count_label.text = "Показания переданы " + dateOneArr[indexPath.row]
+                    cell.can_count_label.isHidden = false
+                    cell.canCountHeight.constant = 17
+                    cell.sendBtnHeight.constant = 20
+                    cell.sendButton.setTitle("Исправить", for: .normal)
+                    cell.sendButton.isHidden = false
+                    cell.sendButton.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+                    cell.sendButton.backgroundColor = .white
+                }else{
+                    cell.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+                    cell.can_count_label.isHidden = true
+                    cell.canCountHeight.constant = 0
+                    cell.sendBtnHeight.constant = 36
+                    cell.sendButton.setTitle("Передать показания", for: .normal)
+                    cell.sendButton.isHidden = false
+                    cell.sendButton.setTitleColor(.white, for: .normal)
+                    cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
+                }
+            } else if (Int(self.date1) != nil) && (Int(self.date2) != nil) {
+                if currDay < d1 || currDay > d2{
+                    cell.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
+                    cell.can_count_label.isHidden = false
+                    cell.canCountHeight.constant = 30
+                    cell.sendBtnHeight.constant = 0
+                    cell.sendButton.isHidden = true
+                }else{
+                    if currMonth == sendMonth{
+                        cell.can_count_label.text = "Показания переданы " + dateOneArr[indexPath.row]
+                        cell.can_count_label.isHidden = false
+                        cell.canCountHeight.constant = 17
+                        cell.sendBtnHeight.constant = 20
+                        cell.sendButton.setTitle("Исправить", for: .normal)
+                        cell.sendButton.isHidden = false
+                        cell.sendButton.setTitleColor(myColors.btnColor.uiColor(), for: .normal)
+                        cell.sendButton.backgroundColor = .white
+                    }else{
+                        cell.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+                        cell.can_count_label.isHidden = true
+                        cell.canCountHeight.constant = 0
+                        cell.sendBtnHeight.constant = 36
+                        cell.sendButton.setTitle("Передать показания", for: .normal)
+                        cell.sendButton.isHidden = false
+                        cell.sendButton.setTitleColor(.white, for: .normal)
+                        cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
+                    }
+                }
+            }
+        }
+        
+//        cell.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
+//        cell.can_count_label.isHidden = true
+//        cell.canCountHeight.constant = 0
+//        cell.sendBtnHeight.constant = 36
+//        cell.sendButton.setTitle("Передать показания", for: .normal)
+//        cell.sendButton.isHidden = false
+//        cell.sendButton.setTitleColor(.white, for: .normal)
+//        cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
+        
         if Int(cell.tariffNumber) == 2{
             cell.pred2.text        = String(format:formatDec, predArr2[indexPath.row])
             cell.teck2.text        = String(format:formatDec, teckArr2[indexPath.row])
@@ -847,8 +987,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             cell.teckLbl3.text     = dateTwoArr[indexPath.row]
             cell.diffLbl3.text     = dateThreeArr[indexPath.row]
         }
-        send = sendedArr[indexPath.row]
-        cell.sendButton.backgroundColor = myColors.btnColor.uiColor()
         cell.imgCounter.image = UIImage(named: "coldWater")
         if (countName.lowercased().range(of: "гвс") != nil) || (countName.lowercased().range(of: "ф/в") != nil) || (countName.containsIgnoringCase(find: "гв")){
             cell.imgCounter.image = UIImage(named: "hotWater")
@@ -922,9 +1060,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             }
         }
         if errorOneArr[indexPath.row]{
-            cell.nonCounter.isHidden = false
-            cell.nonCounterHeight.constant = 16
-            cell.sendButton.setTitle("Передать ещё раз", for: .normal)
             cell.nonCounterOne1.isHidden = false
             cell.nonCounterOne1.setImageColor(color: .red)
             cell.errorTextOne1.isHidden = false
@@ -937,9 +1072,6 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             cell.errorTextOne3.isHidden = true
             cell.errorOneHeight3.constant = 0
         }else{
-            cell.nonCounter.isHidden = true
-            cell.nonCounterHeight.constant = 0
-            cell.sendButton.setTitle("Передать показания", for: .normal)
             cell.nonCounterOne1.isHidden = true
             cell.errorTextOne1.isHidden = true
             cell.errorOneHeight1.constant = 0
@@ -999,6 +1131,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
         cell.tariffOne.textColor = myColors.btnColor.uiColor()
         cell.tariffTwo.textColor = myColors.btnColor.uiColor()
         cell.tariffThree.textColor = myColors.btnColor.uiColor()
+        cell.separator.backgroundColor = myColors.btnColor.uiColor()
         if Int(cell.tariffNumber) == 0 || Int(cell.tariffNumber) == 1{
             cell.tariffHeight2.constant = 0
             cell.tariffHeight3.constant = 0
@@ -1014,31 +1147,14 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             cell.tariffHeight3.constant = 0
             cell.tariff3.isHidden = true
         }else if Int(cell.tariffNumber) == 3{
-            cell.tariffOne.isHidden = false
             cell.tariffOneHeight.constant = 20
+            cell.tariffOne.isHidden = false
             cell.tariffHeight2.constant = 100
             cell.tariff2.isHidden = false
             cell.tariffHeight3.constant = 100
             cell.tariff3.isHidden = false
         }
-        //        if isEditable(){
-        cell.sendButton.isEnabled = true
-        cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(1.0)
-        //        }else{
-        //            cell.sendButton.isEnabled = false
-        //            cell.sendButton.backgroundColor = cell.sendButton.backgroundColor?.withAlphaComponent(0.5)
-        //        }
-        if (autoValueArr[indexPath.row]) {
-            cell.sendButton.isHidden = true
-            cell.autoLbl.isHidden = false
-            cell.autoLbl.textColor = myColors.btnColor.uiColor()
-            cell.nonCounter.isHidden = true
-            cell.nonCounterHeight.constant = 16
-        }else{
-            cell.sendButton.isHidden = false
-            cell.autoLbl.isHidden = true
-            cell.nonCounter.isHidden = false
-        }
+        //            cell = shadowCell(cell: cell) as! HomeCounterCell
         cell.delegate = self
         return cell
     }
@@ -1046,7 +1162,11 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         selectedUniq = numberArr[indexPath.row]
-        selectedUniqName = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        if customNameArr[indexPath.row] != "" && customNameArr[indexPath.row] != "-"{
+            selectedUniqName = customNameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        }else{
+            selectedUniqName = nameArr[indexPath.row] + ", " + unitArr[indexPath.row]
+        }
         selTariffNumber = Int(tariffArr[indexPath.row])!
         selectedOwner = ownerArr[indexPath.row]
         autoSend = autoValueArr[indexPath.row]
@@ -1208,7 +1328,13 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             //            self.present(alert, animated: true, completion: nil)
             var metrId = ""
             for i in 0...self.numberArr.count - 1{
-                if uniq_num == self.ownerArr[i] && count_name == (nameArr[i] + ", " + unitArr[i]) && ident == self.identArr[i]{
+                var name = ""
+                if customNameArr[i] != "" && customNameArr[i] != "-"{
+                    name = customNameArr[i] + ", " + unitArr[i]
+                }else{
+                    name = nameArr[i] + ", " + unitArr[i]
+                }
+                if uniq_num == self.ownerArr[i] && count_name == name && ident == self.identArr[i]{
                     metrId = self.numberArr[i]
                     autoSend = autoValueArr[i]
                     recheckInter = recheckInterArr[i]
@@ -1238,6 +1364,43 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
 //                self.StopIndicator()
 //            }
 //        }
+    }
+    
+    func editName(custom_name: String, uniq_num: String, count_name: String, ident: String){
+        var metrId = ""
+        for i in 0...self.numberArr.count - 1{
+            if uniq_num == self.ownerArr[i] && count_name == nameArr[i] && ident == self.identArr[i]{
+                metrId = self.numberArr[i]
+            }
+        }
+        let login:String = edLogin.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let pass:String = edPass.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let customName:String = custom_name.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let uniqnum = metrId.stringByAddingPercentEncodingForRFC3986() ?? ""
+        let urlPath = Server.SERVER + Server.EDIT_NAME_METERS +
+            "phone=" + login +
+            "&pwd=" + pass +
+            "&MeterUniqueNum=" + uniqnum +
+            "&CustomName=" + customName
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        
+        print("RequestURL: ", request.url)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                if error != nil {
+                                                    return
+                                                }
+                                                
+                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                                                print("responseString = \(responseString)")
+                                                
+        })
+        task.resume()
     }
     
     func get_name_month(number_month: String) -> String {
@@ -1396,6 +1559,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     var recheckInterval = ""
     var lastCheckupDate = ""
     var numberOfDecimal = ""
+    var customName = ""
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if (elementName == "Meter") {
@@ -1404,6 +1568,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             ident = attributeDict["Ident"]!
             units = attributeDict["Units"]!
             name = attributeDict["Name"]!
+            customName = attributeDict["CustomName"]!
             meterUniqueNum = attributeDict["MeterUniqueNum"]!
             factoryNumber = attributeDict["FactoryNumber"]!
             numberOfDecimal = attributeDict["NumberOfDecimalPlaces"]!
@@ -1442,6 +1607,7 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
             managedObject.unit_name     = units
             managedObject.year          = date[2]
             managedObject.ident         = ident
+            managedObject.custom_name   = customName
             managedObject.count_name    = name
             managedObject.count_ed_izm  = units
             managedObject.tariffNumber  = tariffNumber

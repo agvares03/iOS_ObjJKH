@@ -762,8 +762,11 @@ class FirstController: UIViewController {
 //                print(answer.count)
                 
                 // сохраним значения в defaults
-                self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: answer[16])
-                
+                if answer.count > 15{
+                    self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: answer[16])
+                }else{
+                    self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: "0")
+                }
                 // отправим на сервер данные об ид. устройства для отправки уведомлений
                 let token = Messaging.messaging().fcmToken
                 if (token != nil) {

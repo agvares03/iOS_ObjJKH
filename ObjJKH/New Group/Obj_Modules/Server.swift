@@ -246,6 +246,7 @@ class Server {
     static let GET_ADDITIONAL_SERVICES = "GetAdditionalServices.ashx?" // Получить дополнительные услуги
     static let GET_INSURANCE       = "GetPaymentsRegistryInsuranceByMobAccount.ashx?" // Получение страховки
     static let ADD_METRICS         = "AddMetrics.ashx?" // Заполнение табицы Metrics
+    static let EDIT_NAME_METERS    = "SetMeterCustomName.ashx?" // Установить кастомное имя для счетчика
 
     static let MOBILE_API_PATH     = "MobileAPI/"
     
