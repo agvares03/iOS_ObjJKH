@@ -445,44 +445,36 @@ class NewMainMenu2: UIViewController {
     var mainScreenXml:  XML.Accessor?
     func get_Services(login: String, pass: String){
         serviceArr.removeAll()
-//            let urlPath = "http://uk-gkh.org/gbu_lefortovo/GetAdditionalServices.ashx?login=qw&pwd=qw"
-        let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-        DispatchQueue.global(qos: .userInteractive).async {
-            var request = URLRequest(url: URL(string: urlPath)!)
-            request.httpMethod = "GET"
-            print(request)
-            
-            URLSession.shared.dataTask(with: request) {
-                data, error, responce in
-                
-                guard data != nil else { return }
-                //                let responseString = String(data: data!, encoding: .utf8) ?? ""
-                //                #if DEBUG
-                //                print("responseString = \(responseString)")
-                //                #endif
-                var obj: [Services] = []
-                let xml = XML.parse(data!)
-                self.mainScreenXml = xml
-                let requests = xml["AdditionalServices"]
-                let row = requests["Group"]
-                row.forEach { row in
-                    row["AdditionalService"].forEach {
-                        obj.append(Services(row: $0))
-                    }
-                }
-                obj.forEach{
-                    if ($0.logo?.contains("http"))!{
-                        let url:NSURL = NSURL(string: ($0.logo)!)!
-                        let data = try? Data(contentsOf: url as URL)
-                        if UIImage(data: data!) == nil{
-                            
-                        }else{
-                            self.serviceArr.append($0)
-                        }
-                    }
-                }
-                }.resume()
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getAdditionalServices?.data(using: .utf8)
+        guard data != nil else { return }
+        //                let responseString = String(data: data!, encoding: .utf8) ?? ""
+        //                #if DEBUG
+        //                print("responseString = \(responseString)")
+        //                #endif
+        var obj: [Services] = []
+        let xml = XML.parse(data!)
+        self.mainScreenXml = xml
+        let requests = xml["AdditionalServices"]
+        let row = requests["Group"]
+        row.forEach { row in
+            row["AdditionalService"].forEach {
+                obj.append(Services(row: $0))
+            }
         }
+        obj.forEach{
+            if ($0.logo?.contains("http"))!{
+                let url:NSURL = NSURL(string: ($0.logo)!)!
+                let data = try? Data(contentsOf: url as URL)
+                if data != nil{
+                    if UIImage(data: data!) == nil{
+                        
+                    }else{
+                        self.serviceArr.append($0)
+                    }
+                }
+            }
+        }
+        
     }
     
     func settings_for_menu() {
@@ -795,147 +787,130 @@ class NewMainMenu2: UIViewController {
     var dateOld = "01.01"
     var lsArr:[lsData] = []
     func getDebt() {
-            var debtIdent:[String] = []
-            var debtSum:[String] = []
-            var debtSumFine:[String] = []
-            var debtDate:[String] = []
-            var debtAddress:[String] = []
-            var debtHouse:[String] = []
-            var debtInn:[String] = []
-            let defaults = UserDefaults.standard
-            let str_ls = defaults.string(forKey: "str_ls")
-            let str_ls_arr = str_ls?.components(separatedBy: ",")
-            var sumObj = 0.00
-            var u = 0
-            let login = defaults.string(forKey: "login")
-            if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
-                //            str_ls_arr?.forEach{
-                let urlPath = Server.SERVER + "MobileAPI/GetDebt.ashx?" + "phone=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-                let url: NSURL = NSURL(string: urlPath)!
-                let request = NSMutableURLRequest(url: url as URL)
-                request.httpMethod = "GET"
-                print(request)
+        var debtIdent:[String] = []
+        var debtSum:[String] = []
+        var debtSumFine:[String] = []
+        var debtDate:[String] = []
+        var debtAddress:[String] = []
+        var debtHouse:[String] = []
+        var debtInn:[String] = []
+        let defaults = UserDefaults.standard
+        let str_ls = defaults.string(forKey: "str_ls")
+        let str_ls_arr = str_ls?.components(separatedBy: ",")
+        var sumObj = 0.00
+        var u = 0
+        let login = defaults.string(forKey: "login")
+        if (str_ls_arr?.count)! > 0 && str_ls_arr?[0] != ""{
+            //            str_ls_arr?.forEach{
+            let data: Data? = TemporaryHolder.instance.AccountDataAll?.getDebt?.data(using: .utf8)
+            do {
+                u += 1
+                let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+                print(responseStr)
                 
-                let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                      completionHandler: {
-                                                        data, response, error in
-                                                        
-                                                        if error != nil {
-                                                            return
-                                                        } else {
-                                                            do {
-                                                                u += 1
-                                                                let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                                print(responseStr)
-                                                                
-                                                                if !responseStr.contains("error"){
-                                                                    var date        = "0"
-                                                                    var sum         = "0"
-                                                                    var sumFine     = "0"
-                                                                    var insuranceSum = "0"
-                                                                    var ls = "-"
-                                                                    var address = "-"
-                                                                    var houseId = "0"
-                                                                    var inn = ""
-                                                                    //                                                                var sumOver     = ""
-                                                                    //                                                                var sumFineOver = ""
-                                                                    //                                                                    var sumAll      = ""
-                                                                    var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                                    //                                                                                                                                        print(json)
-                                                                    
-                                                                    if let json_bills = json["data"] {
-                                                                        let int_end = (json_bills.count)!-1
-                                                                        if (int_end < 0) {
-                                                                            
-                                                                        } else {
-                                                                            for index in 0...int_end {
-                                                                                let json_bill = json_bills.object(at: index) as! [String:AnyObject]
-                                                                                for obj in json_bill {
-                                                                                    if obj.key == "Sum" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            sum = String(describing: obj.value as! Double)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "SumFine" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            sumFine = String(describing: obj.value as! Double)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "Address" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            address = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "Ident" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            ls = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "DebtActualDate" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            date = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "InsuranceSum" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            insuranceSum = String(describing: obj.value as! Double)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "HouseId" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            houseId = String(describing: obj.value as! Int)
-                                                                                        }else{
-                                                                                            houseId = "0"
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "INN" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            inn = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
+                if !responseStr.contains("error"){
+                    var date        = "0"
+                    var sum         = "0"
+                    var sumFine     = "0"
+                    var insuranceSum = "0"
+                    var ls = "-"
+                    var address = "-"
+                    var houseId = "0"
+                    var inn = ""
+                    //                                                                var sumOver     = ""
+                    //                                                                var sumFineOver = ""
+                    //                                                                    var sumAll      = ""
+                    var json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+                    //                                                                                                                                        print(json)
+                    
+                    if let json_bills = json["data"] {
+                        let int_end = (json_bills.count)!-1
+                        if (int_end < 0) {
+                            
+                        } else {
+                            for index in 0...int_end {
+                                let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                for obj in json_bill {
+                                    if obj.key == "Sum" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            sum = String(describing: obj.value as! Double)
+                                        }
+                                    }
+                                    if obj.key == "SumFine" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            sumFine = String(describing: obj.value as! Double)
+                                        }
+                                    }
+                                    if obj.key == "Address" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            address = String(describing: obj.value as! String)
+                                        }
+                                    }
+                                    if obj.key == "Ident" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            ls = String(describing: obj.value as! String)
+                                        }
+                                    }
+                                    if obj.key == "DebtActualDate" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            date = String(describing: obj.value as! String)
+                                        }
+                                    }
+                                    if obj.key == "InsuranceSum" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            insuranceSum = String(describing: obj.value as! Double)
+                                        }
+                                    }
+                                    if obj.key == "HouseId" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            houseId = String(describing: obj.value as! Int)
+                                        }else{
+                                            houseId = "0"
+                                        }
+                                    }
+                                    if obj.key == "INN" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            inn = String(describing: obj.value as! String)
+                                        }
+                                    }
 
-                                                                                    
-                                                                                }
-                                                                                //                                                                                if date == ""{
-                                                                                //                                                                                    let dateFormatter = DateFormatter()
-                                                                                //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
-                                                                                //                                                                                    date = dateFormatter.string(from: Date())
-                                                                                //                                                                                }
-                                                                                debtIdent.append(ls)
-                                                                                debtSum.append(sum)
-                                                                                debtSumFine.append(sumFine)
-                                                                                debtAddress.append(address)
-                                                                                debtDate.append(date)
-                                                                                debtHouse.append(houseId)
-                                                                                debtInn.append(inn)
-                                                                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum, houseId: houseId, inn: inn))
-                                                                            }
-                                                                            
-                                                                            //                                                                            defaults.set(date, forKey: "dateDebt")
-                                                                            //                                                                            if Double(sumAll) != 0.00{
-                                                                            //                                                                                let d = date.components(separatedBy: ".")
-                                                                            //                                                                                let d1 = self.dateOld.components(separatedBy: ".")
-                                                                            //                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
-                                                                            //                                                                                    DispatchQueue.main.async {
-                                                                            //                                                                                        self.dateOld = date
-                                                                            //                                                                                    }
-                                                                            //                                                                                }
-                                                                            //                                                                                sumObj = sumObj + Double(sumAll)!
-                                                                            //                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                                
-                                                            } catch let error as NSError {
-                                                                print(error)
-                                                            }
-                                                            
-                                                        }
-                })
-                task.resume()
-                //            }
+                                    
+                                }
+                                //                                                                                if date == ""{
+                                //                                                                                    let dateFormatter = DateFormatter()
+                                //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                                //                                                                                    date = dateFormatter.string(from: Date())
+                                //                                                                                }
+                                debtIdent.append(ls)
+                                debtSum.append(sum)
+                                debtSumFine.append(sumFine)
+                                debtAddress.append(address)
+                                debtDate.append(date)
+                                debtHouse.append(houseId)
+                                debtInn.append(inn)
+                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum, houseId: houseId, inn: inn))
+                            }
+                            
+                            //                                                                            defaults.set(date, forKey: "dateDebt")
+                            //                                                                            if Double(sumAll) != 0.00{
+                            //                                                                                let d = date.components(separatedBy: ".")
+                            //                                                                                let d1 = self.dateOld.components(separatedBy: ".")
+                            //                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                            //                                                                                    DispatchQueue.main.async {
+                            //                                                                                        self.dateOld = date
+                            //                                                                                    }
+                            //                                                                                }
+                            //                                                                                sumObj = sumObj + Double(sumAll)!
+                            //                                                                            }
+                        }
+                    }
+                }
+                
+            } catch let error as NSError {
+                print(error)
             }
         }
+    }
     
     // Запись на прием
     @IBAction func go_record(_ sender: UIButton) {
@@ -1178,32 +1153,18 @@ class NewMainMenu2: UIViewController {
     
     func getQuestions() {
         question_read = 0
-        let phone = UserDefaults.standard.string(forKey: "phone") ?? ""
-        //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
-        
-        var strLogin = phone.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + strLogin)!)
-        request.httpMethod = "GET"
-        print(request)
-        URLSession.shared.dataTask(with: request) {
-            data, error, responce in
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getQuestions?.data(using: .utf8)
             
-            guard data != nil else { return }
-            if let json = try? JSONSerialization.jsonObject(with: data!,
-                                                            options: .allowFragments){
-                let unfilteredData = QuestionsJson(json: json as! JSON)?.data
-                unfilteredData?.forEach { json in
-                    if !json.readed!{
-                        self.question_read += 1
-                    }
+        guard data != nil else { return }
+        if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                        options: .allowFragments){
+            let unfilteredData = QuestionsJson(json: json as! JSON)?.data
+            unfilteredData?.forEach { json in
+                if !json.readed!{
+                    self.question_read += 1
                 }
             }
-            }.resume()
-        
+        }
     }
     
     func getNews(){

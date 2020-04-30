@@ -48,6 +48,7 @@ class FirstController: UIViewController {
     
     var iconClick = false
     var eye = false
+    
     @IBAction func showPassAction(_ sender: UIButton) {
         if eye{
             showPass.tintColor = .lightGray
@@ -70,7 +71,6 @@ class FirstController: UIViewController {
         // Проверка на заполнение
         var ret: Bool = false;
         var message: String = ""
-        print(edLogin.text!)
         loginText = edLogin.text!
         if loginText.last == " "{
             for _ in 0...loginText.count - 1{
@@ -108,7 +108,7 @@ class FirstController: UIViewController {
         saveUsersDefaults()
         
         // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-        get_LS()
+        enter()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -167,7 +167,7 @@ class FirstController: UIViewController {
             defaults.set(false, forKey: "go_to_app")
             defaults.synchronize()
             
-            self.get_LS()
+            self.enter()
             
         }
         
@@ -518,11 +518,11 @@ class FirstController: UIViewController {
         return Server.SERVER + Server.ENTER_DJ + "phone=" + loginText + "&pwd=" + txtPass
         #else
         if loginText == "test" {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass
+            return Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + loginText + "&pwd=" + txtPass
         } else if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass
+            return Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + phone + "&pwd=" + txtPass
         } else {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass
+            return Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + loginText + "&pwd=" + txtPass
             //return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
         }
         #endif
@@ -539,66 +539,22 @@ class FirstController: UIViewController {
     
     // Подтянем лиц. счета для указанного логина
     func get_LS() {
-        StartIndicator()
-        // Авторизация пользователя
-        var strLogin = ""
-        if !maskLogin{
-            strLogin = loginText.replacingOccurrences(of: "(", with: "", options: .literal, range: nil)
-            strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-            strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-            strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        }else{
-            strLogin = loginText.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getAccountIdents?.data(using: .utf8)
+        if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
+            self.data_ls = Services_ls_json(json: json!)?.data ?? []
         }
-        
-        let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        
-        let urlPath = self.getServerUrlByIdent(login: txtLogin)
-        if (urlPath == "xxx") {
-            self.choice_LS()
-        } else {
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        return
-                                                    }
-                                                    
-                                                    self.responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    
-                                                    if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
-                                                        self.data_ls = Services_ls_json(json: json!)?.data ?? []
-                                                    }
-                                                    
-                                                    self.choice_LS()
-                                                    
-            })
-            task.resume()
-        }
-    }
-    
-    func choice_LS() {
-        DispatchQueue.main.async(execute: {
-            var itsFirst: Bool = true
-            for item in self.data_ls {
-                if (itsFirst) {
-                    self.str_ls = item
-                    itsFirst = false
-                } else {
-                    self.str_ls = self.str_ls + "," + item
-                }
+        var itsFirst: Bool = true
+        for item in self.data_ls {
+            if (itsFirst) {
+                self.str_ls = item
+                itsFirst = false
+            } else {
+                self.str_ls = self.str_ls + "," + item
             }
-            let defaults = UserDefaults.standard
-            defaults.set(self.str_ls, forKey: "str_ls")
-            defaults.synchronize()
-            
-            self.enter()
-        })
+        }
+        let defaults = UserDefaults.standard
+        defaults.set(self.str_ls, forKey: "str_ls")
+        defaults.synchronize()
     }
     
     func enter() {
@@ -626,8 +582,8 @@ class FirstController: UIViewController {
         
         let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let txtPass: String = edPass.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        
-        let urlPath = self.getServerUrlBy(login: txtLogin, password: txtPass)
+        let token = Messaging.messaging().fcmToken
+        let urlPath = self.getServerUrlBy(login: txtLogin, password: txtPass) + "&did=" + token!
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -636,6 +592,8 @@ class FirstController: UIViewController {
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
+                                                
+                                                guard data != nil else { return }
                                                 
                                                 if error != nil {
                                                     DispatchQueue.main.async(execute: {
@@ -653,10 +611,13 @@ class FirstController: UIViewController {
                                                     })
                                                     return
                                                 }
-                                                
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                                                //                                                self.responseString = "error: смена пароля: 12345678"
-                                                print("responseString = \(self.responseString)")
+//                                                self.responseString = "error: смена пароля: 12345678"
+//                                                print("responseString = \(self.responseString)")
+                                                if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! JSON{
+                                                    let Data = AccountJSON(json: json)?.data
+                                                    TemporaryHolder.instance.AccountDataAll = Data!
+                                                }
                                                 
                                                 self.choice()
         })
@@ -742,7 +703,7 @@ class FirstController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 #endif
             })
-        }else if (responseString.contains("error")){
+        }else if (responseString.contains("error")) && !(responseString.contains("GetSupportRequestTypes")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
@@ -760,7 +721,7 @@ class FirstController: UIViewController {
             DispatchQueue.main.async(execute: {
                 
                 // авторизация на сервере - получение данных пользователя
-                let answer = self.responseString.components(separatedBy: ";")
+                let answer: [String] = TemporaryHolder.instance.AccountDataAll?.authenticateAccount!.components(separatedBy: ";") ?? []
 //                print(answer.count)
                 
                 // сохраним значения в defaults
@@ -769,13 +730,7 @@ class FirstController: UIViewController {
                 }else{
                     self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: "0")
                 }
-                // отправим на сервер данные об ид. устройства для отправки уведомлений
-                let token = Messaging.messaging().fcmToken
-                if (token != nil) {
-                    let server = Server()
-                    server.send_id_app(id_account: answer[4], token: token!)
-                }
-                
+                self.get_LS()
                 let db = DB()
                 db.getDataByEnter(login: self.loginText, pass: self.edPass.text!)
                 self.getTypesApps()
@@ -873,7 +828,6 @@ class FirstController: UIViewController {
         let defaults = UserDefaults.standard
         let login = defaults.string(forKey: "login")
         let pass = defaults.string(forKey: "pass")
-        print(login, pass)
         if (login == "" || login == nil) && firstEnter == false{
             DispatchQueue.main.async(execute: {
             let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
@@ -882,49 +836,6 @@ class FirstController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             })
         }
-//        #if isDJ
-//        maskLogin = true
-//        edLogin.keyboardType = .asciiCapable
-//        if (login == "") {
-//            edLogin.text = ""
-//        } else {
-//            edLogin.text = login
-//            loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
-//            if loginText.first == "+"{
-//                numberSwitch.isOn = true
-//                maskLogin = false
-//                maskPhone = true
-//                edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-//                edLogin.maskTemplate = "*"
-//                edLogin.keyboardType = .phonePad
-//                edLogin.reloadInputViews()
-//                edLogin.text = login
-//                edLogin.placeholder = "Телефон"
-//            }else{
-//                maskLogin = true
-//                maskPhone = false
-//                edLogin.maskExpression = "{..........................}"
-//                edLogin.maskTemplate = " "
-//                edLogin.keyboardType = .asciiCapable
-//                edLogin.reloadInputViews()
-//                edLogin.text = login
-//                edLogin.placeholder = "Логин"
-//            }
-//            edPass.text = pass
-//            if !UserDefaults.standard.bool(forKey: "exit"){
-//                // Сохраним значения
-//                saveUsersDefaults()
-//
-//                // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-//                get_LS()
-//            }
-//        }
-//        #else
-//        if UserDefaults.standard.bool(forKey: "registerWithoutSMS"){
-//            edLogin.maskDelegate = self
-//            edLogin.maskExpression = "{.}"
-//            edLogin.keyboardType = .asciiCapable
-//            edLogin.reloadInputViews()
             edLogin.text = ""
             if login != nil && login != "" && login?.first == "+"{
                 numberSwitch.isOn = true
@@ -943,7 +854,7 @@ class FirstController: UIViewController {
                     saveUsersDefaults()
                     
                     // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-                    get_LS()
+                    enter()
                 }
             }else if login != nil && login != ""{//&& login!.count > 0{
                 maskLogin = true
@@ -966,29 +877,9 @@ class FirstController: UIViewController {
                     saveUsersDefaults()
                     
                     // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-                    get_LS()
+                    enter()
                 }
             }
-//        }else{
-//            // Маска для ввода - телефон
-//            edLogin.maskExpression = "+7 ({ddd}) {ddd}-{dd}-{dd}"
-//            if (login == "") {
-//                edLogin.text = "+7"
-//            } else {
-//                edLogin.text = login
-//                loginText = edLogin.text!.replacingOccurrences(of: " ", with: "")
-//                edPass.text = pass
-//                if !UserDefaults.standard.bool(forKey: "exit"){
-//                    // Сохраним значения
-//                    saveUsersDefaults()
-//
-//                    // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-//                    get_LS()
-//                }
-//            }
-//        }
-//        #endif
-        //        print(login)
     }
     
     // сохранение глобальных значений
@@ -1011,7 +902,6 @@ class FirstController: UIViewController {
         }else{
             defaults.set("0.00", forKey: "insurance")
         }
-        print("encoding_Pays: ", encoding_Pays)
         defaults.setValue(encoding_Pays, forKey: "encoding_Pays")
         defaults.synchronize()
     }
@@ -1026,30 +916,69 @@ class FirstController: UIViewController {
     
     // Получить типы заявок
     func getTypesApps() {
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_REQUEST_TYPES + "table=Support_RequestTypes")!)
-        request.httpMethod = "GET"
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getSupportRequestTypes?.data(using: .utf8)
+            
+        guard data != nil else { return }
         
-        URLSession.shared.dataTask(with: request) {
-            data, error, responce in
-            
-            defer {
-                DispatchQueue.main.async {
-                }
-            }
-            
-            guard data != nil else { return }
-            
-            let defaults = UserDefaults.standard
-            let xml = XML.parse(data!)
-            xml["Table"]["Row"].forEach {
-                defaults.setValue($0.attributes["name"], forKey: $0.attributes["id"]! + "_type")
-            }
-            defaults.synchronize()
-            #if DEBUG
-            print(String(data: data!, encoding: .utf8) ?? "")
-            #endif
-            
-            }.resume()
+        let defaults = UserDefaults.standard
+        let xml = XML.parse(data!)
+        xml["Table"]["Row"].forEach {
+            defaults.setValue($0.attributes["name"], forKey: $0.attributes["id"]! + "_type")
+        }
+        defaults.synchronize()
+    }
+}
+
+final class TemporaryHolder {
+    
+    static let instance = TemporaryHolder()
+    
+    public var AccountDataAll: AccountAllDATA?
+}
+
+struct AccountJSON: JSONDecodable {
+    let data: AccountAllDATA?
+        
+        init?(json: JSON) {
+            data = "data" <~~ json
+        }
+        
+}
+
+struct AccountAllDATA: JSONDecodable {
+    
+    let authenticateAccount:                        String?
+    let registerClientDevice:                       String?
+    let getAccountIdents:                           String?
+    let getDebt:                                    String?
+    let getPaymentsRegistryInsuranceByMobAccount:   String?
+    let getAnnouncements:                           String?
+    let getAdditionalServices:                      String?
+    let getRequestWithMessages:                     String?
+    let getBillServicesFull:                        String?
+    let getPays:                                    String?
+    let getPayments: String?
+    let getHousesWebCams: String?
+    let getMobileMenu: String?
+    let getQuestions: String?
+    let getSupportRequestTypes: String?
+    
+    init?(json: JSON) {
+        authenticateAccount                         = "AuthenticateAccount" <~~ json
+        registerClientDevice                        = "RegisterClientDevice" <~~ json
+        getAccountIdents                            = "GetAccountIdents" <~~ json
+        getDebt                                     = "GetDebt" <~~ json
+        getPaymentsRegistryInsuranceByMobAccount    = "GetPaymentsRegistryInsuranceByMobAccount" <~~ json
+        getAnnouncements                            = "GetAnnouncements" <~~ json
+        getAdditionalServices                       = "GetAdditionalServices" <~~ json
+        getRequestWithMessages                      = "GetRequestWithMessages" <~~ json
+        getBillServicesFull                         = "GetBillServicesFull" <~~ json
+        getPays                                     = "GetPays" <~~ json
+        getPayments                                 = "GetPayments" <~~ json
+        getHousesWebCams                            = "GetHousesWebCams" <~~ json
+        getMobileMenu                               = "GetMobileMenu" <~~ json
+        getQuestions                                = "GetQuestions" <~~ json
+        getSupportRequestTypes                      = "GetSupportRequestTypes" <~~ json
     }
     
 }
