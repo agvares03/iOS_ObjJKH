@@ -1367,6 +1367,15 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
     }
     
     func editName(custom_name: String, uniq_num: String, count_name: String, ident: String){
+        if custom_name == ""{
+            DispatchQueue.main.async(execute: {
+                let alert = UIAlertController(title: "Ошибка", message: "Название не может быть пустым", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+            return
+        }
         var metrId = ""
         for i in 0...self.numberArr.count - 1{
             if uniq_num == self.ownerArr[i] && count_name == nameArr[i] && ident == self.identArr[i]{
@@ -1398,7 +1407,21 @@ class MupCounterController:UIViewController, DropperDelegate, CountersCellDelega
                                                 
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("responseString = \(responseString)")
-                                                
+                                                if responseString == "ok"{
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "", message: "Название успешно сохранено", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }else{
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Ошибка", message: responseString, preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }
         })
         task.resume()
     }
