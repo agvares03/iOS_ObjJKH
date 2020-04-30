@@ -3466,6 +3466,15 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func editName(custom_name: String, uniq_num: String, count_name: String, ident: String) {
+        if custom_name == ""{
+            DispatchQueue.main.async(execute: {
+                let alert = UIAlertController(title: "Ошибка", message: "Название не может быть пустым", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+            return
+        }
         var metrId = ""
         for i in 0...self.numberArr.count - 1{
             if uniq_num == self.ownerArr[i] && count_name == nameArr[i] && ident == self.identArr[i]{
@@ -3497,7 +3506,21 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
                                                 print("responseString = \(responseString)")
-                                                
+                                                if responseString == "ok"{
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "", message: "Название успешно сохранено", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }else{
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Ошибка", message: responseString, preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }
         })
         task.resume()
     }
@@ -3737,11 +3760,15 @@ class HomeCounterCell: UITableViewCell {
         if edit{
             nameTextView.endEditing(true)
             edit = false
+            let customName:String = nameTextView.text ?? ""
+            if nameTextView.text == ""{
+                nameTextView.text = count_name
+            }
             name.text = nameTextView.text! + unit_name
             name.isHidden = false
             nameTextView.isHidden = true
             editImg.image = UIImage(named: "edit_name")
-            delegate?.editName(custom_name: nameTextView.text ?? "", uniq_num: number.text ?? "", count_name: count_name, ident: ident)
+            delegate?.editName(custom_name: customName, uniq_num: number.text ?? "", count_name: count_name, ident: ident)
         }else{
             edit = true
             editImg.image = UIImage(named: "ic_get_app")
