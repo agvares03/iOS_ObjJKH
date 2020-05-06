@@ -42,7 +42,7 @@ class FirstObjController: UIViewController {
         saveUsersDefaults()
         enterCons = false
         // Запрос - получение данных !!! (прежде попытаемся получить лиц. счета)
-        get_LS()
+        enter()
     }
     
     @IBAction func EnterCons(_ sender: UIButton) {
@@ -317,9 +317,9 @@ class FirstObjController: UIViewController {
         return Server.SERVER + Server.ENTER_DJ + "phone=" + loginText + "&pwd=" + txtPass
         #else
         if loginText.isPhoneNumber , let phone = loginText.asPhoneNumberWithoutPlus  {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + phone + "&pwd=" + txtPass
+            return Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + phone + "&pwd=" + txtPass
         } else if loginText == "test" {
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + loginText + "&pwd=" + txtPass
+            return Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + loginText + "&pwd=" + txtPass
         } else {
             return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
         }
@@ -337,54 +337,22 @@ class FirstObjController: UIViewController {
     
     // Подтянем лиц. счета для указанного логина
     func get_LS() {
-        StartIndicator()
-        // Авторизация пользователя
-//        strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
-//        strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
-//        strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-        let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        
-        let urlPath = self.getServerUrlByIdent(login: txtLogin)
-        if (urlPath == "xxx") {
-            self.choice_LS()
-        } else {
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            print(request)
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        DispatchQueue.main.async(execute: {
-                                                            self.StopIndicator()
-                                                            UserDefaults.standard.set("Ошибка соединения сервера", forKey: "errorStringSupport")
-                                                            UserDefaults.standard.synchronize()
-                                                            let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
-                                                            let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
-                                                            let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                                                                self.performSegue(withIdentifier: "support", sender: self)
-                                                            }
-                                                            alert.addAction(cancelAction)
-                                                            alert.addAction(supportAction)
-                                                            self.present(alert, animated: true, completion: nil)
-                                                        })
-                                                        return
-                                                    }
-                                                    
-                                                    self.responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    
-                                                    if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
-                                                        self.data_ls = Services_ls_json(json: json!)?.data ?? []
-                                                    }
-                                                    
-                                                    self.choice_LS()
-                                                    
-            })
-            task.resume()
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getAccountIdents?.data(using: .utf8)
+        if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
+            self.data_ls = Services_ls_json(json: json!)?.data ?? []
         }
+        var itsFirst: Bool = true
+        for item in self.data_ls {
+            if (itsFirst) {
+                self.str_ls = item
+                itsFirst = false
+            } else {
+                self.str_ls = self.str_ls + "," + item
+            }
+        }
+        let defaults = UserDefaults.standard
+        defaults.set(self.str_ls, forKey: "str_ls")
+        defaults.synchronize()
     }
     
     func choice_LS() {
@@ -418,8 +386,8 @@ class FirstObjController: UIViewController {
         
         let txtLogin: String = strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         let txtPass: String = strPass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        
-        let urlPath = self.getServerUrlBy(login: txtLogin, password: txtPass)
+        let token = Messaging.messaging().fcmToken
+        let urlPath = self.getServerUrlBy(login: txtLogin, password: txtPass) + "&did=" + token!
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -428,6 +396,8 @@ class FirstObjController: UIViewController {
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
                                                 data, response, error in
+                                                
+                                                guard data != nil else { return }
                                                 
                                                 if error != nil {
                                                     DispatchQueue.main.async(execute: {
@@ -445,10 +415,14 @@ class FirstObjController: UIViewController {
                                                     })
                                                     return
                                                 }
-                                                
                                                 self.responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-                                                //                                                self.responseString = "error: смена пароля: 12345678"
-                                                print("responseString = \(self.responseString)")
+//                                                self.responseString = "error: смена пароля: 12345678"
+//                                                print("responseString = \(self.responseString)")
+                                                if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! JSON{
+                                                    let Data = AccountJSON(json: json)?.data
+                                                    TemporaryHolder.instance.AccountDataAll = Data!
+                                                }
+                                                
                                                 self.choice()
         })
         task.resume()
@@ -458,14 +432,6 @@ class FirstObjController: UIViewController {
         if (responseString == "1") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let alert = UIAlertController(title: "Ошибка", message: "Не переданы обязательные параметры", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-            })
-        }else if (responseString == "2") || (responseString.contains("еверный логин")){
-            DispatchQueue.main.async(execute: {
-                self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
                     let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. Номер телефона укажите в формате +7xxxxxxxxxx \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
@@ -473,6 +439,14 @@ class FirstObjController: UIViewController {
                     alert.addAction(cancelAction)
                     self.present(alert, animated: true, completion: nil)
                 }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }else if (responseString == "2") || (responseString.contains("еверный логин")){
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
@@ -493,7 +467,7 @@ class FirstObjController: UIViewController {
                     if ls[0] != "" && ls[0] != " "{
                         vc.ls = ls[0]
                         vc.lsLbl.text = "У лицевого счета \(ls[0]) был изменён пароль"
-                        vc.login = self.edLogin.text!
+                        vc.login = self.loginText
                         self.addChildViewController(vc)
                         self.view.addSubview(vc.view)
                     }else{
@@ -520,10 +494,20 @@ class FirstObjController: UIViewController {
                     alert.addAction(supportAction)
                     self.present(alert, animated: true, completion: nil)
                 }
-                
+                #else
+                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.synchronize()
+                let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                    self.performSegue(withIdentifier: "support", sender: self)
+                }
+                alert.addAction(cancelAction)
+                alert.addAction(supportAction)
+                self.present(alert, animated: true, completion: nil)
                 #endif
             })
-        }else if (responseString.contains("error")){
+        }else if (responseString.contains("error")) && !(responseString.contains("GetSupportRequestTypes")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
@@ -541,21 +525,16 @@ class FirstObjController: UIViewController {
             DispatchQueue.main.async(execute: {
                 
                 // авторизация на сервере - получение данных пользователя
-                var answer = self.responseString.components(separatedBy: ";")
-                print(answer.count)
+                let answer: [String] = TemporaryHolder.instance.AccountDataAll?.authenticateAccount!.components(separatedBy: ";") ?? []
+//                print(answer.count)
+                
                 // сохраним значения в defaults
                 if answer.count > 15{
                     self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: answer[16])
                 }else{
                     self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: "0")
                 }
-                // отправим на сервер данные об ид. устройства для отправки уведомлений
-                let token = Messaging.messaging().fcmToken
-                if (token != nil) {
-                    let server = Server()
-                    server.send_id_app(id_account: answer[4], token: token!)
-                }
-                
+                self.get_LS()
                 let db = DB()
                 db.getDataByEnter(login: self.strLogin, pass: self.strPass)
                 self.getTypesApps()

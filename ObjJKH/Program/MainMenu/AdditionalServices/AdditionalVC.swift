@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AdditionalVC: UIViewController {
 
@@ -52,6 +53,7 @@ class AdditionalVC: UIViewController {
         addAppAction()
     }
     
+    var fetchedResultsController: NSFetchedResultsController<Applications>?
     public var item: Services?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,7 +217,7 @@ class AdditionalVC: UIViewController {
                 
                 let alert = UIAlertController(title: "Успешно", message: "Создана заявка №" + self.responseString, preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    
+                    self.updateList()
                 }
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
@@ -287,15 +289,108 @@ class AdditionalVC: UIViewController {
         loader.stopAnimating()
         loader.isHidden     = true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func updateList() {
+        let db = DB()
+        fetchedResultsController?.fetchedObjects?.forEach {
+            db.del_app(number: $0.number ?? "")
+        }
+        db.del_db(table_name: "Comments")
+        db.del_db(table_name: "Fotos")
+        db.parse_Apps(login: UserDefaults.standard.string(forKey: "login") ?? "", pass: UserDefaults.standard.string(forKey: "pass") ?? "", isCons: UserDefaults.standard.string(forKey: "isCons")!, isLoad: false)
+        
+        load_data()
+        self.performSegue(withIdentifier: "new_show_app", sender: self)
     }
-    */
+    
+    func load_data() {
+        let close: NSNumber = 1
+        let predicateFormat = String(format: "is_close = %@", close)
+        self.fetchedResultsController = CoreDataManager.instance.fetchedResultsController(entityName: "Applications", keysForSort: ["id"], predicateFormat: predicateFormat, ascending: true) as? NSFetchedResultsController<Applications>
+        
+        do {
+            try fetchedResultsController!.performFetch()
+        } catch {
+            print(error)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "new_show_app" {
+            var i = 0
+            if let sections = fetchedResultsController?.sections {
+                i = sections[0].numberOfObjects
+            }
+            let indexPath = IndexPath(row: i - 1, section: 0)
+            let app = fetchedResultsController!.object(at: indexPath)
+            let AppUser             = segue.destination as! NewAppUser
+            if app.number != nil{
+               AppUser.title           = "Заявка №" + app.number!
+            }
+            if app.tema != nil{
+                AppUser.txt_tema   = app.tema!
+            }else{
+                AppUser.txt_tema   = ""
+            }
+            if app.type_app != nil{
+                AppUser.str_type_app   = app.type_app!
+            }else{
+                AppUser.str_type_app   = ""
+            }
+            AppUser.read = app.is_read_client
+            if app.adress != nil{
+                AppUser.adress   = app.adress!
+            }else{
+                AppUser.adress   = ""
+            }
+            if app.flat != nil{
+                AppUser.flat   = app.flat!
+            }else{
+                AppUser.flat   = ""
+            }
+            if app.phone != nil{
+                AppUser.phone   = app.phone!
+            }else{
+                AppUser.phone   = ""
+            }
+            if app.serverStatus != nil{
+                AppUser.txt_status = app.serverStatus!
+            }else{
+                AppUser.txt_status = ""
+            }
+            AppUser.fromMenu = true
+            if app.paid_text != nil{
+                AppUser.paid_text = app.paid_text!
+            }else{
+                AppUser.paid_text = ""
+            }
+            if app.paid_sum != nil{
+                AppUser.paid_sum = Double(app.paid_sum!)!
+                AppUser.isPay = app.is_pay
+                AppUser.isPaid = app.is_paid
+            }
+            if app.acc_ident != nil{
+               AppUser.acc_ident = app.acc_ident!
+            }
 
+            //            AppUser.txt_text   = app.text!
+            if app.date != nil{
+                AppUser.txt_date = app.date!
+            }else{
+                AppUser.txt_date = ""
+            }
+            if app.number != nil{
+                AppUser.id_app = app.number!
+            }else{
+                AppUser.id_app = ""
+            }
+            if app.reqNumber != nil{
+                AppUser.reqNumber  = app.reqNumber!
+            }else{
+                AppUser.reqNumber = ""
+            }
+            //            AppUser.delegate   = self
+            AppUser.App        = app
+        }
+    }
 }
