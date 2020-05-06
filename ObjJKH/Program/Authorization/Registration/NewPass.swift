@@ -130,8 +130,7 @@ class NewPass: UIViewController {
                     strLogin = strLogin.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
                     strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
                     strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
-                    
-                    self.get_LS(txtLogin: (strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!), txtPass: (self.edPass.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!)
+                    self.enter(txtLogin: (strLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!), txtPass: (self.edPass.text?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!)!)
                     
                 }
                 alert.addAction(cancelAction)
@@ -219,38 +218,25 @@ class NewPass: UIViewController {
     
     // ВХОД В ПРИЛОЖЕНИЕ (СДУБЛИРОВАН - БЫТЬ ВНИМАТЕЛЬНЕЙ, ПОСЛЕ СДЕЛАТЬ ОДНИМ МОДУЛЕМ)
     // Подтянем лиц. счета для указанного логина
-    func get_LS(txtLogin: String, txtPass: String) {
-        // Авторизация пользователя
-//        txtLogin = txtLogin.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
-        
-        let urlPath = self.getServerUrlByIdent(login: txtLogin)
-        if (urlPath == "xxx") {
-            self.choice_LS(txtLogin: txtLogin, txtPass: txtPass)
-        } else {
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(url: url as URL)
-            request.httpMethod = "GET"
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                  completionHandler: {
-                                                    data, response, error in
-                                                    
-                                                    if error != nil {
-                                                        return
-                                                    }
-                                                    
-//                                                    let responseLS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                    
-                                                    if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
-                                                        self.data_ls = Services_ls_json(json: json!)?.data ?? []
-                                                    }
-                                                    
-                                                    self.choice_LS(txtLogin: txtLogin, txtPass: txtPass)
-                                                    
-            })
-            task.resume()
+    func get_LS() {
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getAccountIdents?.data(using: .utf8)
+        if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSON {
+            self.data_ls = Services_ls_json(json: json!)?.data ?? []
         }
+        var itsFirst: Bool = true
+        for item in self.data_ls {
+            if (itsFirst) {
+                self.str_ls = item
+                itsFirst = false
+            } else {
+                self.str_ls = self.str_ls + "," + item
+            }
+        }
+        let defaults = UserDefaults.standard
+        defaults.set(self.str_ls, forKey: "str_ls")
+        defaults.synchronize()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "start_app"{
             let defaults = UserDefaults.standard
@@ -266,27 +252,9 @@ class NewPass: UIViewController {
         }
     }
     
-    func choice_LS(txtLogin: String, txtPass: String) {
-        DispatchQueue.main.async(execute: {
-            var itsFirst: Bool = true
-            for item in self.data_ls {
-                if (itsFirst) {
-                    self.str_ls = item
-                    itsFirst = false
-                } else {
-                    self.str_ls = self.str_ls + "," + item
-                }
-            }
-            let defaults = UserDefaults.standard
-            defaults.set(self.str_ls, forKey: "str_ls")
-            defaults.synchronize()
-            
-            self.enter(txtLogin: txtLogin, txtPass: txtPass)
-        })
-    }
-    
     func enter(txtLogin: String, txtPass: String) {
-        let urlPath = self.getServerUrlBy(login: txtLogin, password: txtPass)
+        let token = Messaging.messaging().fcmToken
+        let urlPath = self.getServerUrlBy(login: txtLogin, password: txtPass) + "&did=" + token!
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
@@ -314,7 +282,10 @@ class NewPass: UIViewController {
                                                 
                                                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
 //                                                print("responseString = \(self.responseString)")
-                                                
+                                                if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! JSON{
+                                                    let Data = AccountJSON(json: json)?.data
+                                                    TemporaryHolder.instance.AccountDataAll = Data!
+                                                }
                                                 self.choice(responseString: responseString, login: txtLogin, pass: txtPass)
         })
         task.resume()
@@ -342,21 +313,14 @@ class NewPass: UIViewController {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 // авторизация на сервере - получение данных пользователя
-                var answer = responseString.components(separatedBy: ";")
-                
+                let answer: [String] = TemporaryHolder.instance.AccountDataAll?.authenticateAccount!.components(separatedBy: ";") ?? []
                 // сохраним значения в defaults
                 if answer.count > 15{
                     self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: answer[16])
                 }else{
                     self.save_global_data(date1: answer[0], date2: answer[1], can_count: answer[2], mail: answer[3], id_account: answer[4], isCons: answer[5], name: answer[6], history_counters: answer[7], strah: "0", phone_operator: answer[10], encoding_Pays: answer[11], insurance: answer[8], enablePin: "0")
                 }
-                // отправим на сервер данные об ид. устройства для отправки уведомлений
-                let token = Messaging.messaging().fcmToken
-                if (token != nil) {
-                    let server = Server()
-                    server.send_id_app(id_account: answer[4], token: token!)
-                }
-                
+                self.get_LS()
                 let db = DB()
                 db.getDataByEnter(login: login, pass: pass)
                 
@@ -375,7 +339,7 @@ class NewPass: UIViewController {
         strLogin = strLogin.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
         strLogin = strLogin.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
         
-            return Server.SERVER + Server.ENTER_MOBILE + "phone=" + strLogin + "&pwd=" + txtPass
+            return Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + strLogin + "&pwd=" + txtPass
 //        } else {
 //            return Server.SERVER + Server.ENTER + "login=" + loginText + "&pwd=" + txtPass;
 //        }
