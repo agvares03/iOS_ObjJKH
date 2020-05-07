@@ -444,6 +444,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             if debtArr.count > 1{
                 if String($0["Ident"] as! String) == selectLS{
                     if String($0["INN"] as! String) == "5038083460"{
+                        UserDefaults.standard.set("DOM24_5038083460", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029186950"{
+                        UserDefaults.standard.set("DOM24_5029186950", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029140514"{
+                        UserDefaults.standard.set("DOM24_5029140514", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
                         shopCode = "-"
                     }else{
                         shopCode = ""
@@ -452,6 +462,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }else{
                 if String($0["Ident"] as! String) == selectLS{
                     if String($0["INN"] as! String) == "5038083460"{
+                        UserDefaults.standard.set("DOM24_5038083460", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029186950"{
+                        UserDefaults.standard.set("DOM24_5029186950", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029140514"{
+                        UserDefaults.standard.set("DOM24_5029140514", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
                         shopCode = "-"
                     }else{
                         shopCode = ""

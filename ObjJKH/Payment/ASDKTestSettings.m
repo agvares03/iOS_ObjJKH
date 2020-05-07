@@ -26,8 +26,14 @@
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return @[kASDKTestTerminalKey];
     }
-    if ([savedValue  isEqual: @"DOM24"]){
-        return @[kASDKTestTerminalKeyDOM24];
+    if ([savedValue  isEqual: @"DOM24_5038083460"]){
+        return @[kASDKTestTerminalKeyDOM24_5038083460];
+    }
+    if ([savedValue  isEqual: @"DOM24_5029186950"]){
+        return @[kASDKTestTerminalKeyDOM24_5029186950];
+    }
+    if ([savedValue  isEqual: @"DOM24_5029140514"]){
+        return @[kASDKTestTerminalKeyDOM24_5029140514];
     }
     if ([savedValue  isEqual: @"New_Terminal"]){
         return @[kASDKTestTerminalKeyNEW];
@@ -89,8 +95,14 @@
         if ([savedValue  isEqual: @"MupRCMytishi"]){
             result = kASDKTestTerminalKey;
         }
-        if ([savedValue  isEqual: @"DOM24"]){
-            result = kASDKTestTerminalKeyDOM24;
+        if ([savedValue  isEqual: @"DOM24_5038083460"]){
+            result = kASDKTestTerminalKeyDOM24_5038083460;
+        }
+        if ([savedValue  isEqual: @"DOM24_5029186950"]){
+            result = kASDKTestTerminalKeyDOM24_5029186950;
+        }
+        if ([savedValue  isEqual: @"DOM24_5029140514"]){
+            result = kASDKTestTerminalKeyDOM24_5029140514;
         }
         if ([savedValue  isEqual: @"New_Terminal"]){
             result = kASDKTestTerminalKeyNEW;
@@ -155,8 +167,14 @@
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return kASDKTestPassword;
     }
-    if ([savedValue  isEqual: @"DOM24"]){
-        return kASDKTestPasswordDOM24;
+    if ([savedValue  isEqual: @"DOM24_5038083460"]){
+        return kASDKTestPasswordDOM24_5038083460;
+    }
+    if ([savedValue  isEqual: @"DOM24_5029186950"]){
+        return kASDKTestPasswordDOM24_5029186950;
+    }
+    if ([savedValue  isEqual: @"DOM24_5029140514"]){
+        return kASDKTestPasswordDOM24_5029140514;
     }
     if ([savedValue  isEqual: @"New_Terminal"]){
         return kASDKTestPasswordNEW;
@@ -214,8 +232,14 @@
     if ([savedValue  isEqual: @"MupRCMytishi"]){
         return kASDKTestPublicKey;
     }
-    if ([savedValue  isEqual: @"DOM24"]){
-        return kASDKTestPublicKeyDOM24;
+    if ([savedValue  isEqual: @"DOM24_5038083460"]){
+        return kASDKTestPublicKeyDOM24_5038083460;
+    }
+    if ([savedValue  isEqual: @"DOM24_5029186950"]){
+        return kASDKTestPublicKeyDOM24_5029186950;
+    }
+    if ([savedValue  isEqual: @"DOM24_5029140514"]){
+        return kASDKTestPublicKeyDOM24_5029140514;
     }
     if ([savedValue  isEqual: @"New_Terminal"]){
         return kASDKTestPublicKeyNEW;

@@ -515,7 +515,7 @@ class FirstController: UIViewController {
     // РАБОТА С СЕРВЕРОМ
     func getServerUrlBy(login loginText:String ,password txtPass:String) -> String {
         #if isDJ
-        return Server.SERVER + Server.ENTER_DJ + "phone=" + loginText + "&pwd=" + txtPass
+        return Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + loginText + "&pwd=" + txtPass
         #else
         if loginText == "test" {
             return Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + loginText + "&pwd=" + txtPass
@@ -625,7 +625,7 @@ class FirstController: UIViewController {
     }
     
     private func choice() {
-        if (responseString == "1") {
+        if (TemporaryHolder.instance.AccountDataAll?.authenticateAccount! == "1") {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
@@ -638,7 +638,7 @@ class FirstController: UIViewController {
                 alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             })
-        }else if (responseString == "2") || (responseString.contains("еверный логин")){
+        }else if (TemporaryHolder.instance.AccountDataAll?.authenticateAccount! == "2") || (responseString.contains("неверный логин")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
@@ -649,7 +649,7 @@ class FirstController: UIViewController {
         } else if (responseString.contains("смена пароля")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
-                let str = self.responseString.replacingOccurrences(of: "error: смена пароля: ", with: "")
+                let str = TemporaryHolder.instance.AccountDataAll?.authenticateAccount!.replacingOccurrences(of: "error: смена пароля: ", with: "") ?? ""
                 var ls: [String] = []
                 if str.contains(";"){
                     ls = str.components(separatedBy: ";")
@@ -667,7 +667,7 @@ class FirstController: UIViewController {
                         self.addChildViewController(vc)
                         self.view.addSubview(vc.view)
                     }else{
-                        UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                        UserDefaults.standard.set(TemporaryHolder.instance.AccountDataAll?.authenticateAccount!, forKey: "errorStringSupport")
                         UserDefaults.standard.synchronize()
                         let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
                         let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
@@ -679,7 +679,7 @@ class FirstController: UIViewController {
                         self.present(alert, animated: true, completion: nil)
                     }
                 }else{
-                    UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                    UserDefaults.standard.set(TemporaryHolder.instance.AccountDataAll?.authenticateAccount!, forKey: "errorStringSupport")
                     UserDefaults.standard.synchronize()
                     let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
@@ -691,7 +691,7 @@ class FirstController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
                 #else
-                UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
+                UserDefaults.standard.set(TemporaryHolder.instance.AccountDataAll?.authenticateAccount!, forKey: "errorStringSupport")
                 UserDefaults.standard.synchronize()
                 let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + self.responseString + ">", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
@@ -703,7 +703,7 @@ class FirstController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 #endif
             })
-        }else if (responseString.contains("error")) && !(responseString.contains("GetSupportRequestTypes")){
+        }else if responseString.contains("error") && !((TemporaryHolder.instance.AccountDataAll?.authenticateAccount!.contains("GetSupportRequestTypes"))!){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")
@@ -722,7 +722,7 @@ class FirstController: UIViewController {
                 
                 // авторизация на сервере - получение данных пользователя
                 let answer: [String] = TemporaryHolder.instance.AccountDataAll?.authenticateAccount!.components(separatedBy: ";") ?? []
-//                print(answer.count)
+                print(answer.count)
                 
                 // сохраним значения в defaults
                 if answer.count > 15{
