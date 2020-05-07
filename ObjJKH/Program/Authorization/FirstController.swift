@@ -223,6 +223,8 @@ class FirstController: UIViewController {
         #elseif isSoldatova1
         fon_top.image = UIImage(named: "Logo_Soldatova1")
         #elseif isTafgai
+        UserDefaults.standard.set("New_Terminal", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         fon_top.image = UIImage(named: "Logo_Tafgai")
         #elseif isServiceKomfort
         UserDefaults.standard.set("UK_Service_Comfort", forKey: "targetName")
