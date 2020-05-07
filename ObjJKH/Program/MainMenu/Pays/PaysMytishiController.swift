@@ -175,7 +175,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
     }
     @IBAction func Payed(_ sender: UIButton) {
         var l = false
-        #if isKlimovsk12 || isSibir || isRKC_Samara || isJilUpravKom || isClean_Tid || isEJF || isMaximum || isVodSergPosad || isSuhanovo || isDoka || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isDOM24 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isStroiDom || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
+        #if isKlimovsk12 || isTafgai || isSibir || isRKC_Samara || isJilUpravKom || isClean_Tid || isEJF || isMaximum || isVodSergPosad || isSuhanovo || isDoka || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isDOM24 || isPedagog || isMobileMIR || isMonolit || isRIC || isStolitsa || isMupRCMytishi || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isStroiDom || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40 || isEnergoProgress
         l = true
         #else
         self.payedS()
@@ -444,6 +444,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             if debtArr.count > 1{
                 if String($0["Ident"] as! String) == selectLS{
                     if String($0["INN"] as! String) == "5038083460"{
+                        UserDefaults.standard.set("DOM24_5038083460", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029186950"{
+                        UserDefaults.standard.set("DOM24_5029186950", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029140514"{
+                        UserDefaults.standard.set("DOM24_5029140514", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
                         shopCode = "-"
                     }else{
                         shopCode = ""
@@ -452,6 +462,16 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             }else{
                 if String($0["Ident"] as! String) == selectLS{
                     if String($0["INN"] as! String) == "5038083460"{
+                        UserDefaults.standard.set("DOM24_5038083460", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029186950"{
+                        UserDefaults.standard.set("DOM24_5029186950", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029140514"{
+                        UserDefaults.standard.set("DOM24_5029140514", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
                         shopCode = "-"
                     }else{
                         shopCode = ""
@@ -620,6 +640,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
         #elseif isSibir
         shopCode = "335009"
         targetName = "УК Сибирь"
+        #elseif isTafgai
+        shopCode = "336919"
+        targetName = "УК Тафгай"
         #endif
         self.totalSum = Double(k.replacingOccurrences(of: " руб.", with: ""))!
         self.sum = Double(l.replacingOccurrences(of: " руб.", with: ""))!
@@ -781,7 +804,7 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                 }
 //            }
             //            #elseif isKlimovsk12 || isUpravdomChe || isReutKomfort || isServiceKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab
-            #elseif isKlimovsk12 || isSibir || isRKC_Samara || isJilUpravKom || isClean_Tid || isEJF || isMaximum || isVodSergPosad || isSuhanovo || isDoka || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isStroiDom || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
+            #elseif isKlimovsk12 || isTafgai || isSibir || isRKC_Samara || isJilUpravKom || isClean_Tid || isEJF || isMaximum || isVodSergPosad || isSuhanovo || isDoka || isPerspectiva || isInvest || isUniversSol || isClearCity || isZarinsk || isPedagog || isMobileMIR || isEasyLife || isMonolit || isRIC || isEnergoProgress || isStolitsa || isUpravdomChe || isReutKomfort || isServicekom || isUKGarant || isParus || isTeplovodoresources || isStroimBud || isRodnikMUP || isUKParitetKhab || isAFregat || isRodnikMUP || isElectroSbitSaratov || isJKH_Pavlovskoe || isNewOpaliha || isStroiDom || isDJVladimir || isSibAliance || isTSJ_Rachangel || isMUP_IRKC || isNarianMarEl || isParitet || isTSN_Ruble40
             if selectLS == "Все"{
                 let str_ls = UserDefaults.standard.string(forKey: "str_ls")!
                 let str_ls_arr = str_ls.components(separatedBy: ",")

@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -356,6 +356,7 @@
                         <outlet property="urlHeight" destination="4u8-6u-V79" id="eyc-MR-Ii3"/>
                         <outlet property="urlLbl" destination="ODS-oc-k3B" id="IlQ-aj-V7X"/>
                         <outlet property="urlLblHeight" destination="NwT-F0-rdK" id="nMj-A6-hT7"/>
+                        <segue destination="dhO-uv-v8r" kind="show" identifier="new_show_app" id="hW8-eT-pyN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INE-JZ-brm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -395,6 +396,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNk-18-ULq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="357.60000000000002" y="138.98050974512745"/>
+        </scene>
+        <!--appUserNew-->
+        <scene sceneID="XyE-Xu-0iw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Apps" referencedIdentifier="appUserNew" id="dhO-uv-v8r" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cCQ-8M-mWz"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BmC-x2-ere" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563" y="139"/>
         </scene>
     </scenes>
     <resources>

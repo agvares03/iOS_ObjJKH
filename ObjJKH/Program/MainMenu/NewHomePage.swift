@@ -16,6 +16,7 @@ import StoreKit
 import Crashlytics
 import FSPagerView
 import DeviceCheck
+import FirebaseMessaging
 
 protocol DebtCellDelegate: class {
     func goPaysPressed(ident: String)
@@ -691,7 +692,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //        updateListApps()
         getQuestions()
         getWebs()
-        get_Services(login: login!, pass: pass!)
+        get_Services()
         getPaysFile()
         // Do any additional setup after loading the view.
     }
@@ -754,14 +755,14 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.rowComms.removeAll()
 //                let login = UserDefaults.standard.string(forKey: "login")
 //                let pass  = UserDefaults.standard.string(forKey: "pass")
-                self.getDebt()
-                self.getNews()
-                self.getDataCounter()
-                self.updateListApps()
-                self.getQuestions()
-                self.getWebs()
-//                self.get_Services(login: login!, pass: pass!)
-                self.getPaysFile()
+                self.getAllData()
+//                self.getDebt()
+//                self.getNews()
+//                self.getDataCounter()
+//                self.updateListApps()
+//                self.getQuestions()
+//                self.getWebs()
+//                self.getPaysFile()
                 if #available(iOS 10.0, *) {
                     self.scrollView.refreshControl?.endRefreshing()
                 } else {
@@ -769,6 +770,95 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
             }
         }
+    }
+    
+    func getAllData() {
+        let txtLogin: String = UserDefaults.standard.string(forKey: "login")!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let txtPass: String  = UserDefaults.standard.string(forKey: "pass")!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        let token = Messaging.messaging().fcmToken
+        let urlPath = Server.SERVER + Server.ENTER_ALL_DATA + "phone=" + txtLogin + "&pwd=" + txtPass + "&did=" + token!
+        let url: NSURL = NSURL(string: urlPath)!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+        print(request)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest,
+                                              completionHandler: {
+                                                data, response, error in
+                                                
+                                                guard data != nil else { return }
+                                                
+                                                if error != nil {
+                                                    DispatchQueue.main.async(execute: {
+                                                        UserDefaults.standard.set("Ошибка соединения сервера", forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                    return
+                                                }
+                                                let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+//                                                self.responseString = "error: смена пароля: 12345678"
+//                                                print("responseString = \(self.responseString)")
+                                                if let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! JSON{
+                                                    let Data = AccountJSON(json: json)?.data
+                                                    TemporaryHolder.instance.AccountDataAll = Data!
+                                                }
+                                                if (responseString == "1") {
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+                                                            let alert = UIAlertController(title: "Для работы в приложении необходимо зарегистрироваться", message: "\nДля регистрации в приложении необходимо указать № телефона и Ваше имя. Номер телефона укажите в формате +7xxxxxxxxxx \n \nПосле регистрации Вы сможете привязать Ваши лицевые счета.", preferredStyle: .alert)
+                                                            let cancelAction = UIAlertAction(title: "ОK", style: .default) { (_) -> Void in }
+                                                            alert.addAction(cancelAction)
+                                                            self.present(alert, animated: true, completion: nil)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }else if (responseString == "2") || (responseString.contains("еверный логин")){
+                                                    DispatchQueue.main.async(execute: {
+                                                        let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+                                                        alert.addAction(cancelAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                }else if (responseString.contains("error")) && !(responseString.contains("GetSupportRequestTypes")){
+                                                    DispatchQueue.main.async(execute: {
+                                                        UserDefaults.standard.set(responseString, forKey: "errorStringSupport")
+                                                        UserDefaults.standard.synchronize()
+                                                        let alert = UIAlertController(title: "Сервер временно не отвечает", message: "Возможно на устройстве отсутствует интернет или сервер временно не доступен. \nОтвет с сервера: <" + responseString + ">", preferredStyle: .alert)
+                                                        let cancelAction = UIAlertAction(title: "Попробовать ещё раз", style: .default) { (_) -> Void in }
+                                                        let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+                                                            self.performSegue(withIdentifier: "support", sender: self)
+                                                        }
+                                                        alert.addAction(cancelAction)
+                                                        alert.addAction(supportAction)
+                                                        self.present(alert, animated: true, completion: nil)
+                                                    })
+                                                } else {
+                                                    DispatchQueue.main.async(execute: {
+                                                        let db = DB()
+                                                        let txtLogin: String = UserDefaults.standard.string(forKey: "login") ?? ""
+                                                        let txtPass: String  = UserDefaults.standard.string(forKey: "pass") ?? ""
+                                                        db.getDataByEnter(login: txtLogin, pass: txtPass)
+                                                        self.getDebt()
+                                                        self.getNews()
+                                                        self.getDataCounter()
+                                                        self.updateListApps()
+                                                        self.getQuestions()
+                                                        self.getWebs()
+                                                        self.getPaysFile()
+                                                    })
+                                                }
+        })
+        task.resume()
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView){
@@ -994,165 +1084,142 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if (str_ls_arr?.count)! > 0{
             if str_ls_arr?[0] != ""{
                 self.view_no_ls.isHidden = true
-                //            str_ls_arr?.forEach{
-                let urlPath = Server.SERVER + "MobileAPI/GetDebt.ashx?" + "phone=" + login!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-                let url: NSURL = NSURL(string: urlPath)!
-                let request = NSMutableURLRequest(url: url as URL)
-                request.httpMethod = "GET"
-                print("DebtURL = ", request)
-                
-                let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                                      completionHandler: {
-                                                        data, response, error in
-                                                        
-                                                        if error != nil {
-                                                            return
-                                                        } else {
-                                                            do {
-                                                                u += 1
-                                                                let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                                print(responseStr)
+                let data: Data? = TemporaryHolder.instance.AccountDataAll?.getDebt?.data(using: .utf8)
+                u += 1
+                let responseStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//                print(responseStr)
                                                                 
-                                                                if !responseStr.contains("error") && responseStr.containsIgnoringCase(find: "data"){
-                                                                    var date1       = "0"
-                                                                    var date2       = "0"
-                                                                    var date        = "0"
-                                                                    var sum         = "0"
-                                                                    var sumFine     = "0"
-                                                                    var insuranceSum = "0"
-                                                                    var ls = "-"
-                                                                    var address = "-"
-                                                                    var houseId = "0"
-                                                                    var inn = ""
-                                                                    var dontShow = false
-                                                                    //                                                                var sumOver     = ""
-                                                                    //                                                                var sumFineOver = ""
-                                                                    //                                                                    var sumAll      = ""
-                                                                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                                    //                                                                                                                                        print(json)
-                                                                    
-                                                                    if let json_bills = json["data"] {
-                                                                        let int_end = (json_bills.count)!-1
-                                                                        if (int_end < 0) {
-                                                                            
-                                                                        } else {
-                                                                            for index in 0...int_end {
-                                                                                let json_bill = json_bills.object(at: index) as! [String:AnyObject]
-                                                                                for obj in json_bill {
-                                                                                    if obj.key == "Sum" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            sum = String(describing: obj.value as! Double)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "SumFine" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            sumFine = String(describing: obj.value as! Double)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "InsuranceSum" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            insuranceSum = String(describing: obj.value as! Double)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "Address" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            address = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "Ident" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            ls = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "HouseId" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            houseId = String(describing: obj.value as! Int)
-                                                                                        }else{
-                                                                                            houseId = "0"
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "DebtActualDate" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            date = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "MetersStartDay" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            date1 = String(describing: obj.value as! Int)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "MetersEndDay" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            date2 = String(describing: obj.value as! Int)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "INN" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            inn = String(describing: obj.value as! String)
-                                                                                        }
-                                                                                    }
-                                                                                    if obj.key == "DontShowInsurance" {
-                                                                                        if ((obj.value as? NSNull) == nil){
-                                                                                            dontShow = obj.value as! Bool
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                                //                                                                                if date == ""{
-                                                                                //                                                                                    let dateFormatter = DateFormatter()
-                                                                                //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
-                                                                                //                                                                                    date = dateFormatter.string(from: Date())
-                                                                                //                                                                                }
-                                                                                UserDefaults.standard.set(dontShow, forKey: "DontShowInsurance")
-                                                                                debtIdent.append(ls)
-                                                                                debtSum.append(sum)
-                                                                                debtSumFine.append(sumFine)
-                                                                                debtAddress.append(address)
-                                                                                debtDate.append(date)
-                                                                                debtInsurance.append(insuranceSum)
-                                                                                debtHouse.append(houseId)
-                                                                                debtINN.append(inn)
-                                                                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum, houseId: houseId, inn: inn))
-                                                                            }
-                                                                            
-                                                                            //                                                                            defaults.set(date, forKey: "dateDebt")
-                                                                            //                                                                            if Double(sumAll) != 0.00{
-                                                                            //                                                                                let d = date.components(separatedBy: ".")
-                                                                            //                                                                                let d1 = self.dateOld.components(separatedBy: ".")
-                                                                            //                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
-                                                                            //                                                                                    DispatchQueue.main.async {
-                                                                            //                                                                                        self.dateOld = date
-                                                                            //                                                                                    }
-                                                                            //                                                                                }
-                                                                            //                                                                                sumObj = sumObj + Double(sumAll)!
-                                                                            //                                                                            }
-                                                                        }
-                                                                    }
-                                                                    self.date1 = date1
-                                                                    self.date2 = date2
-                                                                    defaults.setValue(date1, forKey: "date1")
-                                                                    defaults.setValue(date2, forKey: "date2")
-                                                                    defaults.synchronize()
-                                                                    self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
-                                                                    DispatchQueue.main.async {
+                if !responseStr.contains("error") && responseStr.containsIgnoringCase(find: "data"){
+                    var date1       = "0"
+                    var date2       = "0"
+                    var date        = "0"
+                    var sum         = "0"
+                    var sumFine     = "0"
+                    var insuranceSum = "0"
+                    var ls = "-"
+                    var address = "-"
+                    var houseId = "0"
+                    var inn = ""
+                    var dontShow = false
+                    //                                                                var sumOver     = ""
+                    //                                                                var sumFineOver = ""
+                    //                                                                    var sumAll      = ""
+                    let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+//                    print(json)
+                    
+                    if let json_bills = json!["data"] {
+                        let int_end = (json_bills.count)!-1
+                        if (int_end < 0) {
+                            
+                        } else {
+                            for index in 0...int_end {
+                                let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                                for obj in json_bill {
+                                    if obj.key == "Sum" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            sum = String(describing: obj.value as! Double)
+                                        }
+                                    }
+                                    if obj.key == "SumFine" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            sumFine = String(describing: obj.value as! Double)
+                                        }
+                                    }
+                                    if obj.key == "InsuranceSum" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            insuranceSum = String(describing: obj.value as! Double)
+                                        }
+                                    }
+                                    if obj.key == "Address" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            address = String(describing: obj.value as! String)
+                                        }
+                                    }
+                                    if obj.key == "Ident" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            ls = String(describing: obj.value as! String)
+                                        }
+                                    }
+                                    if obj.key == "HouseId" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            houseId = String(describing: obj.value as! Int)
+                                        }else{
+                                            houseId = "0"
+                                        }
+                                    }
+                                    if obj.key == "DebtActualDate" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            date = String(describing: obj.value as! String)
+                                        }
+                                    }
+                                    if obj.key == "MetersStartDay" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            date1 = String(describing: obj.value as! Int)
+                                        }
+                                    }
+                                    if obj.key == "MetersEndDay" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            date2 = String(describing: obj.value as! Int)
+                                        }
+                                    }
+                                    if obj.key == "INN" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            inn = String(describing: obj.value as! String)
+                                        }
+                                    }
+                                    if obj.key == "DontShowInsurance" {
+                                        if ((obj.value as? NSNull) == nil){
+                                            dontShow = obj.value as! Bool
+                                        }
+                                    }
+                                }
+                                //                                                                                if date == ""{
+                                //                                                                                    let dateFormatter = DateFormatter()
+                                //                                                                                    dateFormatter.dateFormat = "dd.MM.yyyy"
+                                //                                                                                    date = dateFormatter.string(from: Date())
+                                //                                                                                }
+                                UserDefaults.standard.set(dontShow, forKey: "DontShowInsurance")
+                                debtIdent.append(ls)
+                                debtSum.append(sum)
+                                debtSumFine.append(sumFine)
+                                debtAddress.append(address)
+                                debtDate.append(date)
+                                debtInsurance.append(insuranceSum)
+                                debtHouse.append(houseId)
+                                debtINN.append(inn)
+                                self.lsArr.append(lsData.init(ident: ls, sum: sum, sumFine: sumFine, date: date, address: address, insuranceSum: insuranceSum, houseId: houseId, inn: inn))
+                            }
+                            
+                            //                                                                            defaults.set(date, forKey: "dateDebt")
+                            //                                                                            if Double(sumAll) != 0.00{
+                            //                                                                                let d = date.components(separatedBy: ".")
+                            //                                                                                let d1 = self.dateOld.components(separatedBy: ".")
+                            //                                                                                if (Int(d[0])! >= Int(d1[0])!) && (Int(d[1])! >= Int(d1[1])!){
+                            //                                                                                    DispatchQueue.main.async {
+                            //                                                                                        self.dateOld = date
+                            //                                                                                    }
+                            //                                                                                }
+                            //                                                                                sumObj = sumObj + Double(sumAll)!
+                            //                                                                            }
+                        }
+                    }
+                    self.date1 = date1
+                    self.date2 = date2
+                    defaults.setValue(date1, forKey: "date1")
+                    defaults.setValue(date2, forKey: "date2")
+                    defaults.synchronize()
+                    self.parse_Mobile(login: UserDefaults.standard.string(forKey: "login")!)
+                    DispatchQueue.main.async {
 //                                                                        if (self.date1 == "0") && (self.date2 == "0") {
 //                                                                            self.can_count_label.text = "Возможность передавать показания доступна в текущем месяце!"
 //                                                                        } else {
 //                                                                            self.can_count_label.text = "Возможность передавать показания доступна с " + self.date1 + " по " + self.date2 + " числа текущего месяца!"
 //                                                                        }
-                                                                        self.tableLS.reloadData()
-                                                                        self.tableCounter.reloadData()
-                                                                    }
-                                                                }
-                                                                
-                                                            } catch let error as NSError {
-                                                                print(error)
-                                                            }
-                                                            
-                                                        }
-                })
-                task.resume()
+                        self.tableLS.reloadData()
+                        self.tableCounter.reloadData()
+                    }
+                }
             }
-            //            }
         }else{
             self.view_no_ls.isHidden = false
             let str_menu_6 = UserDefaults.standard.string(forKey: "menu_6") ?? ""
@@ -1171,198 +1238,145 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     var insuranceArr: [Insurance] = []
     func getInsurance(){
-        var phone = ""
-        if UserDefaults.standard.string(forKey: "login") != nil{
-            phone = UserDefaults.standard.string(forKey: "login") ?? ""
-        }else{
-            return
-        }
-//        var request = URLRequest(url: URL(string: "http://uk-gkh.org/newjkh/MobileAPI/GetPaymentsRegistryInsuranceByMobAccount.ashx?phone=test")!)
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.MOBILE_API_PATH + Server.GET_INSURANCE + "phone=" + phone)!)
-        request.httpMethod = "GET"
-//        print("InsuranceURL", request)
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getPaymentsRegistryInsuranceByMobAccount?.data(using: .utf8)
+        guard data != nil else { return }
+//        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//        print("INSURANCE: ", responseString)
         
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, error, responce in
-                                                //                                                print("responseString = \(responseString)")
-                                                
-                                                //            if error != nil {
-                                                //                print("ERROR")
-                                                //                return
-                                                //            }
-                                                
-                                                guard data != nil else { return }
-//                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//                                                print("INSURANCE: ", responseString)
-                                                var insuranceList: [Insurance] = []
-                                                if let json = try? JSONSerialization.jsonObject(with: data!,
-                                                                                                options: .allowFragments){
-                                                    let unfilteredData = InsuranceJson(json: json as! JSON)?.data
-                                                    
-                                                    unfilteredData?.forEach { json in
-                                                        let dataBeg: String = json.dataBeg ?? ""
-                                                        let dataEnd: String = json.dataEnd ?? ""
-                                                        let date: String = json.date ?? ""
-                                                        let shopCode: String = json.shopCode ?? ""
-                                                        let orgName: String = json.orgName ?? ""
-                                                        let dateCredited: String = json.dateCredited ?? ""
-                                                        let paymentId: String = json.paymentId ?? ""
-                                                        let ident: String = json.ident ?? ""
-                                                        let sumDecimal: String = json.sumDecimal ?? ""
-                                                        let sumCreditedDecimal: String = json.sumCreditedDecimal ?? ""
-                                                        let comissionDecimal: String = json.comissionDecimal ?? ""
-                                                        let newsObj = Insurance(dataBeg:dataBeg,dataEnd:dataEnd,date:date,shopCode:shopCode,orgName:orgName,dateCredited:dateCredited,paymentId:paymentId,ident:ident,sumDecimal:sumDecimal,sumCreditedDecimal:sumCreditedDecimal,comissionDecimal:comissionDecimal)
-                                                        insuranceList.append(newsObj)
-                                                    }
-                                                }
-                                                if insuranceList.count != 0{
-                                                    self.insuranceArr = insuranceList
-                                                }
+        var insuranceList: [Insurance] = []
+        if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                        options: .allowFragments){
+            let unfilteredData = InsuranceJson(json: json as! JSON)?.data
+            
+            unfilteredData?.forEach { json in
+                let dataBeg: String = json.dataBeg ?? ""
+                let dataEnd: String = json.dataEnd ?? ""
+                let date: String = json.date ?? ""
+                let shopCode: String = json.shopCode ?? ""
+                let orgName: String = json.orgName ?? ""
+                let dateCredited: String = json.dateCredited ?? ""
+                let paymentId: String = json.paymentId ?? ""
+                let ident: String = json.ident ?? ""
+                let sumDecimal: String = json.sumDecimal ?? ""
+                let sumCreditedDecimal: String = json.sumCreditedDecimal ?? ""
+                let comissionDecimal: String = json.comissionDecimal ?? ""
+                let newsObj = Insurance(dataBeg:dataBeg,dataEnd:dataEnd,date:date,shopCode:shopCode,orgName:orgName,dateCredited:dateCredited,paymentId:paymentId,ident:ident,sumDecimal:sumDecimal,sumCreditedDecimal:sumCreditedDecimal,comissionDecimal:comissionDecimal)
+                insuranceList.append(newsObj)
+            }
+        }
+        if insuranceList.count != 0{
+            self.insuranceArr = insuranceList
+        }
 //                                                print("INSURANCE: ", self.insuranceArr)
-                                                DispatchQueue.main.async {
-                                                    self.tableLS.reloadData()
-                                                }
-        })
-        task.resume()
+        DispatchQueue.main.async {
+            self.tableLS.reloadData()
+        }
     }
     
     private var values: [HistoryPayCellData] = []
     
     func parse_Mobile(login: String) {
         values.removeAll()
-        let urlPath = Server.SERVER + "MobileAPI/GetPays.ashx?" + "phone=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-        let url: NSURL = NSURL(string: urlPath)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, response, error in
-                                                //                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                //                                                print("responseString = \(responseString)")
-                                                
-                                                if error != nil {
-                                                    return
-                                                } else {
-                                                    do {
-                                                        var bill_date    = ""
-                                                        var bill_ident   = ""
-                                                        var bill_sum = ""
-                                                        var bill_status = ""
-                                                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                                                        if let json_bills = json["data"] {
-                                                            let int_end = (json_bills.count)!-1
-                                                            if (int_end < 0) {
-                                                                
-                                                            } else {
-                                                                
-                                                                for index in 0...int_end {
-                                                                    let json_bill = json_bills.object(at: index) as! [String:AnyObject]
-                                                                    for obj in json_bill {
-                                                                        if obj.key == "Date" {
-                                                                            bill_date = obj.value as! String
-                                                                        }
-                                                                        if obj.key == "Ident" {
-                                                                            bill_ident = obj.value as! String
-                                                                        }
-                                                                        if obj.key == "Sum" {
-                                                                            bill_sum = String(describing: obj.value as! NSNumber)
-                                                                        }
-                                                                        if obj.key == "Status" {
-                                                                            bill_status = obj.value as! String
-                                                                        }
-                                                                    }
-                                                                    if bill_status == "Оплачен"{
-                                                                        self.values.append(HistoryPayCellData(date: bill_date, id: "", ident: bill_ident, period: "", sum: bill_sum, width: 0, payType: 0))
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                        DispatchQueue.main.async {
-                                                            self.tableLS.reloadData()
-                                                        }
-                                                    } catch let error as NSError {
-                                                        print(error)
-                                                    }
-                                                }
-        })
-        task.resume()
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getPays?.data(using: .utf8)
+        do {
+            var bill_date    = ""
+            var bill_ident   = ""
+            var bill_sum = ""
+            var bill_status = ""
+            let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+            if let json_bills = json["data"] {
+                let int_end = (json_bills.count)!-1
+                if (int_end < 0) {
+                    
+                } else {
+                    
+                    for index in 0...int_end {
+                        let json_bill = json_bills.object(at: index) as! [String:AnyObject]
+                        for obj in json_bill {
+                            if obj.key == "Date" {
+                                bill_date = obj.value as! String
+                            }
+                            if obj.key == "Ident" {
+                                bill_ident = obj.value as! String
+                            }
+                            if obj.key == "Sum" {
+                                bill_sum = String(describing: obj.value as! NSNumber)
+                            }
+                            if obj.key == "Status" {
+                                bill_status = obj.value as! String
+                            }
+                        }
+                        if bill_status == "Оплачен"{
+                            self.values.append(HistoryPayCellData(date: bill_date, id: "", ident: bill_ident, period: "", sum: bill_sum, width: 0, payType: 0))
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.tableLS.reloadData()
+            }
+        } catch let error as NSError {
+            print(error)
+        }
     }
     
     func getNews(){
         self.newsArr.removeAll()
         var news_read = 0
-        let phone = UserDefaults.standard.string(forKey: "login") ?? ""
-        //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_NEWS + "phone=" + phone)!)
-        request.httpMethod = "GET"
-        //        print(request)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest,
-                                              completionHandler: {
-                                                data, error, responce in
-                                                //                                                print("responseString = \(responseString)")
-                                                
-                                                //            if error != nil {
-                                                //                print("ERROR")
-                                                //                return
-                                                //            }
-                                                
-                                                guard data != nil else { return }
-                                                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                var newsList: [News] = []
-                                                if !responseString.contains("error") && responseString.contains("data"){
-                                                    if let json = try? JSONSerialization.jsonObject(with: data!,
-                                                                                                    options: .allowFragments){
-                                                        let unfilteredData = NewsJson(json: json as! JSON)?.data
-                                                        
-                                                        unfilteredData?.forEach { json in
-                                                            if !json.readed! {
-                                                                news_read += 1
-                                                            }
-                                                            let idNews = json.idNews
-                                                            let Created = json.created
-                                                            let Header = json.header
-                                                            let Text = json.text
-                                                            let IsReaded = json.readed
-                                                            let questionID = json.questionID
-                                                            let serviceID = json.serviceID
-                                                            let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!, QuestionID: String(questionID!), ServiceID: String(serviceID!))
-                                                            newsList.append(newsObj)
-                                                        }
-                                                    }
-                                                }
-                                                var i = 0
-                                                newsList.forEach{
-                                                    if i < 2{
-                                                        self.newsArr.append($0)
-                                                    }
-                                                    i += 1
-                                                }
-                                                if news_read > 0{
-                                                     UserDefaults.standard.set(news_read, forKey: "newsKol")
-                                                }else{
-                                                     UserDefaults.standard.set(0, forKey: "newsKol")
-                                                }
-                                                DispatchQueue.main.async {
-                                                    let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
-                                                    if (updatedBadgeNumber > -1) {
-                                                        UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
-                                                    }
-                                                    //                if request_read >= 0{
-                                                    //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
-                                                    //                    UserDefaults.standard.synchronize()
-                                                    //                }else{
-                                                    //                    UserDefaults.standard.setValue(0, forKey: "request_read")
-                                                    //                    UserDefaults.standard.synchronize()
-                                                    //                }
-                                                    
-                                                }
-                                                DispatchQueue.main.async {
-                                                    self.tableNews.reloadData()
-                                                }
-        })
-        task.resume()
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getAnnouncements?.data(using: .utf8)
+        guard data != nil else { return }
+        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+        var newsList: [News] = []
+        if !responseString.contains("error") && responseString.contains("data"){
+            if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                            options: .allowFragments){
+                let unfilteredData = NewsJson(json: json as! JSON)?.data
+                
+                unfilteredData?.forEach { json in
+                    if !json.readed! {
+                        news_read += 1
+                    }
+                    let idNews = json.idNews
+                    let Created = json.created
+                    let Header = json.header
+                    let Text = json.text
+                    let IsReaded = json.readed
+                    let questionID = json.questionID
+                    let serviceID = json.serviceID
+                    let newsObj = News(IdNews: String(idNews!), Created: Created!, Text: Text!, Header: Header!, Readed: IsReaded!, QuestionID: String(questionID!), ServiceID: String(serviceID!))
+                    newsList.append(newsObj)
+                }
+            }
+        }
+        var i = 0
+        newsList.forEach{
+            if i < 2{
+                self.newsArr.append($0)
+            }
+            i += 1
+        }
+        if news_read > 0{
+             UserDefaults.standard.set(news_read, forKey: "newsKol")
+        }else{
+             UserDefaults.standard.set(0, forKey: "newsKol")
+        }
+        DispatchQueue.main.async {
+            let updatedBadgeNumber = UserDefaults.standard.integer(forKey: "appsKol") + UserDefaults.standard.integer(forKey: "newsKol")
+            if (updatedBadgeNumber > -1) {
+                UIApplication.shared.applicationIconBadgeNumber = updatedBadgeNumber
+            }
+            //                if request_read >= 0{
+            //                    UserDefaults.standard.setValue(request_read, forKey: "request_read")
+            //                    UserDefaults.standard.synchronize()
+            //                }else{
+            //                    UserDefaults.standard.setValue(0, forKey: "request_read")
+            //                    UserDefaults.standard.synchronize()
+            //                }
+            
+        }
+        DispatchQueue.main.async {
+            self.tableNews.reloadData()
+        }
     }
     
     var identArr         :[String] = []
@@ -1930,7 +1944,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let url: NSURL = NSURL(string: urlPath)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
-        //        print(request)
+        print(request)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
@@ -1988,176 +2002,136 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func getQuestions() {
-        
-        //        let id = UserDefaults.standard.string(forKey: "id_account") ?? ""
-        var phone = ""
-        if UserDefaults.standard.string(forKey: "login") != nil{
-            phone = UserDefaults.standard.string(forKey: "login") ?? ""
-        }else{
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getQuestions?.data(using: .utf8)
+        guard data != nil else { return }
+        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+        if responseString.containsIgnoringCase(find: "error"){
             return
         }
-        //        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "accID=" + id)!)
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_QUESTIONS + "phone=" + phone)!)
-        request.httpMethod = "GET"
-        //        print(request)
-        
-        URLSession.shared.dataTask(with: request) {
-            data, error, responce in
-            
-            //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            //            print("responseString = \(responseString)")
-            
-            guard data != nil else { return }
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            if responseString.containsIgnoringCase(find: "error"){
-                return
-            }
-            if let json = try? JSONSerialization.jsonObject(with: data!,
-                                                            options: .allowFragments){
-                let unfilteredData = QuestionsJson(json: json as! JSON)?.data
-                var filtered: [QuestionDataJson] = []
-                var i = 0
-                unfilteredData?.forEach { json in
-                    
-                    var isContains = true
-                    json.questions?.forEach {
-                        if !($0.isCompleteByUser)! {
-                            isContains = false
-                        }
+        if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                        options: .allowFragments){
+            let unfilteredData = QuestionsJson(json: json as! JSON)?.data
+            var filtered: [QuestionDataJson] = []
+            var i = 0
+            unfilteredData?.forEach { json in
+                
+                var isContains = true
+                json.questions?.forEach {
+                    if !($0.isCompleteByUser)! {
+                        isContains = false
                     }
-                    if !isContains {
-                        if i < 2{
-                            filtered.append(json)
-                        }
+                }
+                if !isContains {
+                    if i < 2{
+                        filtered.append(json)
                     }
-                    i += 1
                 }
-                self.questionArr = filtered
-                DispatchQueue.main.async {
-                    self.tableQuestion.reloadData()
-                }
+                i += 1
             }
-            }.resume()
+            self.questionArr = filtered
+            DispatchQueue.main.async {
+                self.tableQuestion.reloadData()
+            }
+        }
     }
     
     func getWebs() {
-        
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_WEB_CAMERAS)!)
-        request.httpMethod = "GET"
-//        print("RequestWEB: ", request)
-        URLSession.shared.dataTask(with: request) {
-            data, error, responce in
-            
-            defer {
-                DispatchQueue.main.sync {
-                    if self.webArr.count == 0 {
-                        self.tableWeb.isHidden = true
-                    } else {
-                        self.tableWeb.isHidden = false
-                    }
-                }
-            }
-            guard data != nil else { return }
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getHousesWebCams?.data(using: .utf8)
+        guard data != nil else { return }
+        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
 //            print("responseWEB = \(responseString)")
-            
-            if responseString.containsIgnoringCase(find: "error"){
-                return
-            }
-            if let json = try? JSONSerialization.jsonObject(with: data!,
-                                                            options: .allowFragments){
-                let Data = Web_Cameras_json(json: json as! JSON)?.data
-                self.webArr = Data!
-                DispatchQueue.main.async {
-                    self.tableWeb.reloadData()
-                }
-            }
-            }.resume()
         
+        if responseString.containsIgnoringCase(find: "error"){
+            return
+        }
+        if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                        options: .allowFragments){
+            let Data = Web_Cameras_json(json: json as! JSON)?.data
+            self.webArr = Data!
+            DispatchQueue.main.async {
+                if self.webArr.count == 0 {
+                    self.tableWeb.isHidden = true
+                } else {
+                    self.tableWeb.isHidden = false
+                }
+                self.tableWeb.reloadData()
+            }
+        }
     }
     
     var mainScreenXml:  XML.Accessor?
-    func get_Services(login: String, pass: String){
+    func get_Services(){
         serviceArr.removeAll()
         allServiceArr.removeAll()
         serviceAdBlock.removeAll()
-//        let urlPath = "http://uk-gkh.org/gbu_lefortovo/GetAdditionalServices.ashx?login=qw&pwd=qw"
-        let urlPath = Server.SERVER + Server.GET_ADDITIONAL_SERVICES + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!;
-        DispatchQueue.global(qos: .userInteractive).async {
-            var request = URLRequest(url: URL(string: urlPath)!)
-            request.httpMethod = "GET"
-            print(request)
-            
-            URLSession.shared.dataTask(with: request) {
-                data, error, responce in
-                
-                guard data != nil else {
-                    DispatchQueue.main.async{
-                        self.loadAdBanner()
-                    }
-                    return
-                }
-                //                let responseString = String(data: data!, encoding: .utf8) ?? ""
-                //                #if DEBUG
-                //                print("responseString = \(responseString)")
-                //                #endif
-                var obj: [Services] = []
-                let xml = XML.parse(data!)
-                self.mainScreenXml = xml
-                let requests = xml["AdditionalServices"]
-                let row = requests["Group"]
-                row.forEach { row in
-                    self.rowComms[row.attributes["name"]!] = []
-                    row["AdditionalService"].forEach {
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getAdditionalServices?.data(using: .utf8)
+        guard data != nil else {
+            DispatchQueue.main.async{
+                self.loadAdBanner()
+            }
+            return
+        }
+        //                let responseString = String(data: data!, encoding: .utf8) ?? ""
+        //                #if DEBUG
+        //                print("responseString = \(responseString)")
+        //                #endif
+        var obj: [Services] = []
+        let xml = XML.parse(data!)
+        self.mainScreenXml = xml
+        let requests = xml["AdditionalServices"]
+        let row = requests["Group"]
+        row.forEach { row in
+            self.rowComms[row.attributes["name"]!] = []
+            row["AdditionalService"].forEach {
 //                        self.rowComms[row.attributes["name"]!]?.append( Services(row: $0) )
-                        obj.append(Services(row: $0))
-                    }
-                }
-                obj.forEach{
-                    if ($0.logo?.contains("http"))!{
-                        let url:NSURL = NSURL(string: ($0.logo)!)!
-                        let data = try? Data(contentsOf: url as URL)
-                        if UIImage(data: data!) == nil{
-                            
-                        }else{
-                            if $0.showinadblock == "mainpage"{
-                                self.serviceAdBlock.append($0)
-                            }
-                            if $0.showinadblock == "notset" || $0.showinadblock == "disable"{
-                                self.serviceArr.append($0)
-                            }
-                            self.allServiceArr.append($0)
+                obj.append(Services(row: $0))
+            }
+        }
+        obj.forEach{
+            if ($0.logo?.contains("http"))!{
+                let url:NSURL = NSURL(string: ($0.logo)!)!
+                let data = try? Data(contentsOf: url as URL)
+                if data != nil{
+                    if UIImage(data: data!) == nil{
+                        
+                    }else{
+                        if $0.showinadblock == "mainpage"{
+                            self.serviceAdBlock.append($0)
                         }
+                        if $0.showinadblock == "notset" || $0.showinadblock == "disable"{
+                            self.serviceArr.append($0)
+                        }
+                        self.allServiceArr.append($0)
                     }
                 }
-                DispatchQueue.main.async{
-                    if self.serviceArr.count == 0{
-                        self.tableServiceHeight.constant = 0
+            }
+        }
+        DispatchQueue.main.async{
+            if self.serviceArr.count == 0{
+                self.tableServiceHeight.constant = 0
+                self.menu_6_const.constant = 0
+                self.serviceHeight.constant = 0
+            }else{
+                let str_menu_2 = UserDefaults.standard.string(forKey: "menu_8") ?? ""
+                if (str_menu_2 != "") {
+                    let answer = str_menu_2.components(separatedBy: ";")
+                    if (answer[2] == "0") {
                         self.menu_6_const.constant = 0
                         self.serviceHeight.constant = 0
+                        self.tableServiceHeight.constant = 0
                     }else{
-                        let str_menu_2 = UserDefaults.standard.string(forKey: "menu_8") ?? ""
-                        if (str_menu_2 != "") {
-                            let answer = str_menu_2.components(separatedBy: ";")
-                            if (answer[2] == "0") {
-                                self.menu_6_const.constant = 0
-                                self.serviceHeight.constant = 0
-                                self.tableServiceHeight.constant = 0
-                            }else{
-                                self.menu_6_const.constant = 15
-                                self.serviceHeight.constant = 45
-                                self.tableServiceHeight.constant = (self.view.frame.size.width - 30) / 2 + 4
-                            }
-                        }
+                        self.menu_6_const.constant = 15
+                        self.serviceHeight.constant = 45
+                        self.tableServiceHeight.constant = (self.view.frame.size.width - 30) / 2 + 4
                     }
-                    self.servicePagerView.interitemSpacing = 20
-                    self.servicePagerView.dataSource = self
-                    self.servicePagerView.delegate   = self
-                    self.servicePagerView.reloadData()
-                    self.servicePagerView.automaticSlidingInterval = 3.0
-                    self.loadAdBanner()
                 }
-                }.resume()
+            }
+            self.servicePagerView.interitemSpacing = 20
+            self.servicePagerView.dataSource = self
+            self.servicePagerView.delegate   = self
+            self.servicePagerView.reloadData()
+            self.servicePagerView.automaticSlidingInterval = 3.0
+            self.loadAdBanner()
         }
     }
     var firstAd = false
@@ -3494,7 +3468,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "GET"
         
-        print("RequestURL: ", request.url)
+//        print("RequestURL: ", request.url)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest,
                                               completionHandler: {
@@ -3505,7 +3479,7 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                 }
                                                 
                                                 let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                print("responseString = \(responseString)")
+//                                                print("responseString = \(responseString)")
                                                 if responseString == "ok"{
                                                     DispatchQueue.main.async(execute: {
                                                         let alert = UIAlertController(title: "", message: "Название успешно сохранено", preferredStyle: .alert)

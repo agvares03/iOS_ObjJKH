@@ -189,6 +189,7 @@ class Server {
     static let ENTER_DJ            = "MobileAPI/AuthenticateAccountDJ.ashx?"   // Авторизация пользователя (ДомЖилСервис)
     static let ENTER               = "AutenticateUserAndroid.ashx?"  // Авторизация пользователя
     static let ENTER_MOBILE        = "MobileAPI/AuthenticateAccount.ashx?"  // Авторизация пользователя
+    static let ENTER_ALL_DATA      = "MobileAPI/AuthenticateAccountWithCommonData.ashx?"  // Авторизация пользователя
     static let SEND_ID_GOOGLE      = "RegisterClientDevice.ashx?"    // Передача ид устройства для уведомлений
     static let FORGOT              = "remember.ashx?"                // Забыли пароль
     static let GET_APPS_COMM       = "GetRequestWithMessages.ashx?"  // Получить заявки с комментариями

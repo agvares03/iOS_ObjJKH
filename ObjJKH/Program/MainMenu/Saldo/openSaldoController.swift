@@ -83,14 +83,14 @@ class openSaldoController: UIViewController, WKUIDelegate {
         Crashlytics.sharedInstance().setObjectValue("OpenSaldo", forKey: "last_UI_action")
         back.tintColor = myColors.btnColor.uiColor()
         share.tintColor = myColors.btnColor.uiColor()
-//        print(urlLink)
+        print(urlLink)
         if colorNav{
             navigationController?.navigationBar.barStyle = .black
             navigationController?.navigationBar.barTintColor = myColors.btnColor.uiColor()
             back.tintColor = .white
             share.tintColor = .white
         }
-        if NSURL(string: urlLink) != nil && urlLink.containsIgnoringCase(find: "http"){
+        if NSURL(string: urlLink.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!) != nil && urlLink.containsIgnoringCase(find: "http"){
             DispatchQueue.main.async(execute: {
                 let webConfiguration = WKWebViewConfiguration()
                 let customFrame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 0.0, height: self.backView.frame.size.height))
