@@ -705,7 +705,7 @@ class FirstController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 #endif
             })
-        }else if responseString.contains("error") && !((TemporaryHolder.instance.AccountDataAll?.authenticateAccount!.contains("GetSupportRequestTypes"))!){
+        }else if responseString.contains("error") && !(responseString.contains("GetSupportRequestTypes")){
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
                 UserDefaults.standard.set(self.responseString, forKey: "errorStringSupport")

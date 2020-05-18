@@ -1260,9 +1260,19 @@ class AddCountersController: UIViewController, UITextFieldDelegate, YMANativeAdD
             str = str.replacingOccurrences(of: ",", with: "")
         }
         if (newCounters1.text!.count < newCountersDrob1.text!.count || newCounters2.text!.count < newCountersDrob2.text!.count || newCounters3.text!.count < newCountersDrob3.text!.count) && str.count > 0 && !str.contains(",") && (textField == newCountersDrob1 || textField == newCountersDrob2 || textField == newCountersDrob3){
-            let l = str.last
-            str.removeLast()
-            str = str + "," + String(l!)
+//            let l = str.first
+//            str.removeFirst()
+            var l = ""
+            if textField == newCountersDrob1{
+                l = newCounters1.text ?? ""
+            }else if textField == newCountersDrob2{
+                l = newCounters2.text ?? ""
+            }else if textField == newCountersDrob3{
+                l = newCounters3.text ?? ""
+            }
+            let k = str.replacingOccurrences(of: l, with: "") 
+            str = l + "," + k
+//            str = str + "," + String(l!)
             textField.text = str
         }
         print(str)
