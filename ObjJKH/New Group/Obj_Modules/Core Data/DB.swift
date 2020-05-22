@@ -673,8 +673,19 @@ class DB: NSObject, XMLParserDelegate {
         //
         //        } else {
         if enter{
-            let data: Data? = TemporaryHolder.instance.AccountDataAll?.getRequestWithMessages?.data(using: .utf8)
-            parser = XMLParser(data: data!)
+            if (isCons == "1") {
+                self.login = login
+                let pass  = pass
+                var TextCons = ""
+                TextCons = "&isConsultant=true&isActive=1;isPerformed=0"
+                let urlPath = Server.SERVER + Server.GET_APPS_COMM + "login=" + login.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + "&pwd=" + pass.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)! + TextCons;
+                let url: NSURL = NSURL(string: urlPath)!
+                print(url)
+                parser = XMLParser(contentsOf: url as URL)!
+            }else{
+                let data: Data? = TemporaryHolder.instance.AccountDataAll?.getRequestWithMessages?.data(using: .utf8)
+                parser = XMLParser(data: data!)
+            }
         }else{
             self.login = login
             let pass  = pass
