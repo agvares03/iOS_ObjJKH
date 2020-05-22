@@ -281,22 +281,23 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
             defaults.set(defaults.string(forKey: "login"), forKey: "CustomerKey")
             defaults.synchronize()
             print(receiptData)
-            if payType == 1{
-                let address = PKContact()
-                address.emailAddress = defaults.object(forKey: "mail")! as? String
-                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
-                
-                PayController.buy(withApplePayAmount: amount, description: "МУП_РЦ_Мытищи", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone, PKAddressField.name], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
-                    
-                }, cancelled:  {
-                    
-                }, error: { (error) in
-                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }else{
+            //Отключение ApplePay
+//            if payType == 1{
+//                let address = PKContact()
+//                address.emailAddress = defaults.object(forKey: "mail")! as? String
+//                address.phoneNumber = CNPhoneNumber.init(stringValue: (defaults.object(forKey: "login")! as? String)!)
+//
+//                PayController.buy(withApplePayAmount: amount, description: "МУП_РЦ_Мытищи", email: defaults.object(forKey: "mail")! as? String, appleMerchantId: "merchant.ru.Mytischi", shippingMethods: nil, shippingContact: address, shippingEditableFields: [PKAddressField.email, PKAddressField.phone, PKAddressField.name], recurrent: false, additionalPaymentData: Data, receiptData: receiptData, from: self, success: { (paymentInfo) in
+//
+//                }, cancelled:  {
+//
+//                }, error: { (error) in
+//                    let alert = UIAlertController(title: "Ошибка", message: "Сервер оплаты не отвечает. Попробуйте позже", preferredStyle: .alert)
+//                    let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
+//                    alert.addAction(cancelAction)
+//                    self.present(alert, animated: true, completion: nil)
+//                })
+//            }else{
                 PayController.buyItem(withName: name, description: "", amount: amount, recurrent: false, makeCharge: false, additionalPaymentData: Data, receiptData: receiptData, email: defaults.object(forKey: "mail")! as? String, from: self, success: { (paymentInfo) in
                     
                 }, cancelled: {
@@ -307,7 +308,7 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
                     alert.addAction(cancelAction)
                     self.present(alert, animated: true, completion: nil)
                 }
-            }
+//            }
         }
     }
     
@@ -433,9 +434,13 @@ class PaysMytishi2Controller: UIViewController, DropperDelegate, UITableViewDele
             }
         }
         applePayIcon.setImageColor(color: .white)
-        applePayView.isHidden = false
-        applePayWidth.constant = 160
-        applePayLeft.constant = 10
+//        applePayView.isHidden = false
+//        applePayWidth.constant = 160
+//        applePayLeft.constant = 10
+        //Отключение ApplePay
+        applePayView.isHidden = true
+        applePayWidth.constant = 0
+        applePayLeft.constant = 0
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView){
