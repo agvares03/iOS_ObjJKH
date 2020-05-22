@@ -1044,16 +1044,17 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.adHeight = 40
             self.viewBot.constant = 40
         }
-        #if isElectroSbitSaratov
-        applePayIcon.setImageColor(color: .white)
-        applePayView.isHidden = false
-        applePayWidth.constant = 160
-        applePayLeft.constant = 10
-        #else
+//        #if isElectroSbitSaratov
+//        applePayIcon.setImageColor(color: .white)
+//        applePayView.isHidden = false
+//        applePayWidth.constant = 160
+//        applePayLeft.constant = 10
+//        #else
+        //Отключение ApplePay
         applePayView.isHidden = true
         applePayWidth.constant = 0
         applePayLeft.constant = 0
-        #endif
+//        #endif
         if UserDefaults.standard.string(forKey: "periodPays") != ""{
             paysPeriodLbl.text = "Оплата производится по квитанции за \(UserDefaults.standard.string(forKey: "periodPays") ?? "")"
             tableViewTop.constant = 150
