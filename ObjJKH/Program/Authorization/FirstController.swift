@@ -434,6 +434,18 @@ class FirstController: UIViewController {
         fon_top.image = UIImage(named: "Logo_Novogorskoe")
         #elseif isION
         fon_top.image = UIImage(named: "Logo_ION")
+        #elseif isGrinvay
+        fon_top.image = UIImage(named: "Logo_Grinvay")
+        UserDefaults.standard.set("New_Terminal", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        #elseif isGumse
+        fon_top.image = UIImage(named: "Logo_Gumse")
+        UserDefaults.standard.set("New_Terminal", forKey: "targetName")
+        UserDefaults.standard.synchronize()
+        #elseif isSV14
+        fon_top.image = UIImage(named: "Logo_SV14")
+        UserDefaults.standard.set("New_Terminal", forKey: "targetName")
+        UserDefaults.standard.synchronize()
         #endif
         
         // Установим цвета для элементов в зависимости от Таргета

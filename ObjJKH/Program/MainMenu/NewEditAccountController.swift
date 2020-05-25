@@ -386,6 +386,12 @@ class NewEditAccountController: UIViewController, UITableViewDelegate, UITableVi
         fon_top.image = UIImage(named: "Logo_Novogorskoe")
         #elseif isION
         fon_top.image = UIImage(named: "Logo_ION")
+        #elseif isGrinvay
+        fon_top.image = UIImage(named: "Logo_Grinvay")
+        #elseif isGumse
+        fon_top.image = UIImage(named: "Logo_Gumse")
+        #elseif isSV14
+        fon_top.image = UIImage(named: "Logo_SV14")
         #endif
         
         if UserDefaults.standard.string(forKey: "mail") != ""{

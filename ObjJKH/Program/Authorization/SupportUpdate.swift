@@ -191,6 +191,12 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_Novogorskoe")
         #elseif isION
         imageApp.image = UIImage(named: "Logo_ION")
+        #elseif isGrinvay
+        imageApp.image = UIImage(named: "Logo_Grinvay")
+        #elseif isGumse
+        imageApp.image = UIImage(named: "Logo_Gumse")
+        #elseif isSV14
+        imageApp.image = UIImage(named: "Logo_SV14")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -462,6 +468,12 @@ class SupportUpdate: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1509196166"
         #elseif isION
         str = "itms-apps://itunes.apple.com/ru/app/id1509419405"
+        #elseif isGrinvay
+        str = "itms-apps://itunes.apple.com/ru/app/id1515075006"
+        #elseif isGumse
+        str = "itms-apps://itunes.apple.com/ru/app/id1515083553"
+        #elseif isSV14
+        str = "itms-apps://itunes.apple.com/ru/app/id1515083991"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
