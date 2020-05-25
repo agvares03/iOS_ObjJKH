@@ -267,7 +267,7 @@ class AddLSSimple: UIViewController {
                                                             }
                                                             
                                                             self.response_add_ident = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-                                                            // print("responseString = \(String(describing: self.response_add_ident))")
+                                                            print("responseString = \(String(describing: self.response_add_ident))")
                                                             self.choice_add_ident()
                                                             
                     })
@@ -281,47 +281,61 @@ class AddLSSimple: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             })
         } else if (self.response_ident?.contains("проверочный код уже отправлен"))! {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Проверочный код уже отправлен", message: "Введите код из уведомления", preferredStyle: .alert)
-                alert.addTextField { (textField) in
-                    textField.placeholder = "Код из уведомления..."
-                    textField.keyboardType = .decimalPad
-                }
-                let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    let textField = alert.textFields![0]
-                    let str = textField.text
-                    self.checkSMS(smsCode: str!)
-                }
-                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                    self.performSegue(withIdentifier: "support", sender: self)
-                }
-                alert.addAction(okAction)
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Лицевой счет уже привязан к данному аккаунту", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
-                alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
-            }
+            })
+//            DispatchQueue.main.async {
+//                let alert = UIAlertController(title: "Проверочный код уже отправлен", message: "Введите код из уведомления", preferredStyle: .alert)
+//                alert.addTextField { (textField) in
+//                    textField.placeholder = "Код из уведомления..."
+//                    textField.keyboardType = .decimalPad
+//                }
+//                let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+//                    let textField = alert.textFields![0]
+//                    let str = textField.text
+//                    self.checkSMS(smsCode: str!)
+//                }
+//                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+//                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+//                    self.performSegue(withIdentifier: "support", sender: self)
+//                }
+//                alert.addAction(okAction)
+//                alert.addAction(cancelAction)
+//                alert.addAction(supportAction)
+//                self.present(alert, animated: true, completion: nil)
+//            }
         } else if (self.response_ident?.contains("уже привязан"))! {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: self.response_add_ident, message: "Введите код из уведомления", preferredStyle: .alert)
-                alert.addTextField { (textField) in
-                    textField.placeholder = "Код из уведомления..."
-                    textField.keyboardType = .decimalPad
-                }
-                let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    let textField = alert.textFields![0]
-                    let str = textField.text
-                    self.checkSMS(smsCode: str!)
-                }
-                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
-                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                    self.performSegue(withIdentifier: "support", sender: self)
-                }
-                alert.addAction(okAction)
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Лицевой счет уже привязан к данному аккаунту", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
-                alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
-            }
+            })
+//            DispatchQueue.main.async {
+//                let alert = UIAlertController(title: self.response_add_ident, message: "Введите код из уведомления", preferredStyle: .alert)
+//                alert.addTextField { (textField) in
+//                    textField.placeholder = "Код из уведомления..."
+//                    textField.keyboardType = .decimalPad
+//                }
+//                let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+//                    let textField = alert.textFields![0]
+//                    let str = textField.text
+//                    self.checkSMS(smsCode: str!)
+//                }
+//                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in }
+//                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+//                    self.performSegue(withIdentifier: "support", sender: self)
+//                }
+//                alert.addAction(okAction)
+//                alert.addAction(cancelAction)
+//                alert.addAction(supportAction)
+//                self.present(alert, animated: true, completion: nil)
+//            }
         } else {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
@@ -353,51 +367,65 @@ class AddLSSimple: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 })
         } else if (self.response_add_ident?.contains("проверочный код уже отправлен"))! {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Проверочный код уже отправлен", message: "Введите код из уведомления", preferredStyle: .alert)
-                alert.addTextField { (textField) in
-                    textField.placeholder = "Код из уведомления..."
-                    textField.keyboardType = .decimalPad
-                }
-                let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    let textField = alert.textFields![0]
-                    let str = textField.text
-                    self.checkSMS(smsCode: str!)
-                }
-                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
-                    self.StopIndicator()
-                }
-                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                    self.performSegue(withIdentifier: "support", sender: self)
-                }
-                alert.addAction(okAction)
+//            DispatchQueue.main.async {
+//                let alert = UIAlertController(title: "Проверочный код уже отправлен", message: "Введите код из уведомления", preferredStyle: .alert)
+//                alert.addTextField { (textField) in
+//                    textField.placeholder = "Код из уведомления..."
+//                    textField.keyboardType = .decimalPad
+//                }
+//                let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+//                    let textField = alert.textFields![0]
+//                    let str = textField.text
+//                    self.checkSMS(smsCode: str!)
+//                }
+//                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
+//                    self.StopIndicator()
+//                }
+//                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+//                    self.performSegue(withIdentifier: "support", sender: self)
+//                }
+//                alert.addAction(okAction)
+//                alert.addAction(cancelAction)
+//                alert.addAction(supportAction)
+//                self.present(alert, animated: true, completion: nil)
+//            }
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Лицевой счет уже привязан к данному аккаунту", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
-                alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
-            }
+            })
         } else if (self.response_add_ident?.contains("уже привязан"))! {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: self.response_add_ident?.replacingOccurrences(of: "error:", with: ""), message: "Введите код из уведомления", preferredStyle: .alert)
-                alert.addTextField { (textField) in
-                    textField.placeholder = "Код из уведомления..."
-                    textField.keyboardType = .decimalPad
-                }
-                let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
-                    let textField = alert.textFields![0]
-                    let str = textField.text
-                    self.checkSMS(smsCode: str!)
-                }
-                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
-                    self.StopIndicator()
-                }
-                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
-                    self.performSegue(withIdentifier: "support", sender: self)
-                }
-                alert.addAction(okAction)
+//            DispatchQueue.main.async {
+//                let alert = UIAlertController(title: self.response_add_ident?.replacingOccurrences(of: "error:", with: ""), message: "Введите код из уведомления", preferredStyle: .alert)
+//                alert.addTextField { (textField) in
+//                    textField.placeholder = "Код из уведомления..."
+//                    textField.keyboardType = .decimalPad
+//                }
+//                let okAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in
+//                    let textField = alert.textFields![0]
+//                    let str = textField.text
+//                    self.checkSMS(smsCode: str!)
+//                }
+//                let cancelAction = UIAlertAction(title: "Отмена", style: .default) { (_) -> Void in
+//                    self.StopIndicator()
+//                }
+//                let supportAction = UIAlertAction(title: "Написать в техподдержку", style: .default) { (_) -> Void in
+//                    self.performSegue(withIdentifier: "support", sender: self)
+//                }
+//                alert.addAction(okAction)
+//                alert.addAction(cancelAction)
+//                alert.addAction(supportAction)
+//                self.present(alert, animated: true, completion: nil)
+//            }
+            DispatchQueue.main.async(execute: {
+                self.StopIndicator()
+                let alert = UIAlertController(title: "Ошибка", message: "Лицевой счет уже привязан к данному аккаунту", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
                 alert.addAction(cancelAction)
-                alert.addAction(supportAction)
                 self.present(alert, animated: true, completion: nil)
-            }
+            })
         } else {
             DispatchQueue.main.async(execute: {
                 self.StopIndicator()
