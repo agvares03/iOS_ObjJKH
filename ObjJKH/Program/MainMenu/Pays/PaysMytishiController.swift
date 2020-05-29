@@ -455,6 +455,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         UserDefaults.standard.set("DOM24_5029140514", forKey: "targetName")
                         UserDefaults.standard.synchronize()
                         shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029129662"{
+                        UserDefaults.standard.set("DOM24_5029140514", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
                     }else{
                         shopCode = ""
                     }
@@ -470,6 +474,10 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
                         UserDefaults.standard.synchronize()
                         shopCode = "-"
                     }else if String($0["INN"] as! String) == "5029140514"{
+                        UserDefaults.standard.set("DOM24_5029140514", forKey: "targetName")
+                        UserDefaults.standard.synchronize()
+                        shopCode = "-"
+                    }else if String($0["INN"] as! String) == "5029129662"{
                         UserDefaults.standard.set("DOM24_5029140514", forKey: "targetName")
                         UserDefaults.standard.synchronize()
                         shopCode = "-"
