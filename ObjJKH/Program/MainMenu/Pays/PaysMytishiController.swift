@@ -141,6 +141,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             self.present(alert, animated: true, completion: nil)
             return
         }
+        if (ls_button.titleLabel?.text == "Все") && ((str_ls_arr?.count)! == 1){
+            selectLS = str_ls_arr![0]
+        }
         if defaults.string(forKey: "mail")! == "" || defaults.string(forKey: "mail")! == "-"{
             let alert = UIAlertController(title: "Электронный чек", message: "Укажите e-mail", preferredStyle: .alert)
             alert.addTextField { (textField) in
@@ -184,6 +187,9 @@ class PaysMytishiController: UIViewController, DropperDelegate, UITableViewDeleg
             let defaults = UserDefaults.standard
             let str_ls = defaults.string(forKey: "str_ls")
             let str_ls_arr = str_ls?.components(separatedBy: ",")
+            if (ls_button.titleLabel?.text == "Все") && ((str_ls_arr?.count)! == 1){
+                selectLS = str_ls_arr![0]
+            }
             if (ls_button.titleLabel?.text == "Все") && ((str_ls_arr?.count)! > 1){
                 let alert = UIAlertController(title: "", message: "Для совершения оплаты укажите лицевой счет", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Ок", style: .default) { (_) -> Void in }
