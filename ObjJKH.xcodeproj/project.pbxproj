@@ -14285,6 +14285,7 @@
 		C78BAE976F0947B459696573 /* Pods_Doka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD66EC2172B7CF065F8A9A6 /* Pods_Doka.framework */; };
 		CE6E51936B68238BA92D63DC /* Pods_Murmansk_Partner_Plus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D225FCA7090AB660743990 /* Pods_Murmansk_Partner_Plus.framework */; };
 		CF1A5C4457E19D0C9D3B13E6 /* Pods_UK_Paritet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7394CE94721B15703703632 /* Pods_UK_Paritet.framework */; };
+		CF66A06DBE0E64308666F91D /* Pods_Grinvay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FFB8B34A5A5C9F65B9166C1 /* Pods_Grinvay.framework */; };
 		D7C700528D3C686DEED31276 /* Pods_SV14.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742852F1AA7AA1154F87FA30 /* Pods_SV14.framework */; };
 		D93363A89C01A24996346BEE /* Pods_StroimBud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2298714608DF2D551302FB /* Pods_StroimBud.framework */; };
 		D99D2931A821309CEB2B584F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -14591,6 +14592,7 @@
 		2D566781BB6085F7724240AA /* Pods-Sibir.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sibir.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sibir/Pods-Sibir.release.xcconfig"; sourceTree = "<group>"; };
 		2E02D607950FE26FBC0B1775 /* Pods-TSJ_Pedagog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSJ_Pedagog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TSJ_Pedagog/Pods-TSJ_Pedagog.release.xcconfig"; sourceTree = "<group>"; };
 		2ED6E2D76EB2A0DEEA3A20F2 /* Pods-Zarinsk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zarinsk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zarinsk/Pods-Zarinsk.release.xcconfig"; sourceTree = "<group>"; };
+		2FFB8B34A5A5C9F65B9166C1 /* Pods_Grinvay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grinvay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3008305122699CB3005BF485 /* UK_Paritet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UK_Paritet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3008305222699CB4005BF485 /* Tafgai copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tafgai copy2-Info.plist"; sourceTree = "<group>"; };
 		300ECC63231E2F8300B36682 /* Logo_ReutKomfort_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_ReutKomfort_White.png; sourceTree = "<group>"; };
@@ -15384,6 +15386,7 @@
 			files = (
 				1C6C7E44247B9F44000E9499 /* CoreLocation.framework in Frameworks */,
 				9B6A7D0EF177678BD3442184 /* (null) in Frameworks */,
+				CF66A06DBE0E64308666F91D /* Pods_Grinvay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -17772,6 +17775,7 @@
 				92A0D9237D32255906217F44 /* Pods_ION.framework */,
 				6FC6557851A4D397BE53AAEF /* Pods_Gumse.framework */,
 				742852F1AA7AA1154F87FA30 /* Pods_SV14.framework */,
+				2FFB8B34A5A5C9F65B9166C1 /* Pods_Grinvay.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -40880,7 +40884,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.119;
+				MARKETING_VERSION = 2.133;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisSuhanovo";
@@ -40907,7 +40911,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.119;
+				MARKETING_VERSION = 2.133;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisSuhanovo";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.suhanovo;
@@ -40934,7 +40938,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.128;
+				MARKETING_VERSION = 2.133;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisGrinvay";
@@ -40961,7 +40965,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.128;
+				MARKETING_VERSION = 2.133;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisGrinvay";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.grinvay;
@@ -40988,7 +40992,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.128;
+				MARKETING_VERSION = 2.133;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisGumse";
@@ -41015,7 +41019,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.128;
+				MARKETING_VERSION = 2.133;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisGumse";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.gumse;
@@ -41042,7 +41046,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.128;
+				MARKETING_VERSION = 2.133;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisSV14";
@@ -41069,7 +41073,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.128;
+				MARKETING_VERSION = 2.133;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisSV14";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.sv14;
@@ -43351,7 +43355,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.129;
+				MARKETING_VERSION = 2.133;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisUpravdomChe";
@@ -43379,7 +43383,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.129;
+				MARKETING_VERSION = 2.133;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-DisUpravdomChe";
 				PRODUCT_BUNDLE_IDENTIFIER = "rom.best.UK-Upravdom-Che";
@@ -45459,7 +45463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.129;
+				MARKETING_VERSION = "2.133\t";
 				OTHER_SWIFT_FLAGS = "-DisMupRCMytishi";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -45489,7 +45493,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.129;
+				MARKETING_VERSION = "2.133\t";
 				OTHER_SWIFT_FLAGS = "-DisMupRCMytishi";
 				PRODUCT_BUNDLE_IDENTIFIER = rom.best.muprcmytishi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
