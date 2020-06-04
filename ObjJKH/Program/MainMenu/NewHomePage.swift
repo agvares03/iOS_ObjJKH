@@ -623,6 +623,10 @@ class NewHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource,
         fon_top.image = UIImage(named: "Logo_Gumse")
         #elseif isSV14
         fon_top.image = UIImage(named: "Logo_SV14")
+        #elseif isTSJ_Life
+        fon_top.image = UIImage(named: "Logo_TSJ_Life")
+        #elseif isSouthValley
+        fon_top.image = UIImage(named: "Logo_SouthValley")
         #endif
         if view.frame.size.width == 320{
             ls_Title.font = ls_Title.font.withSize(12)
