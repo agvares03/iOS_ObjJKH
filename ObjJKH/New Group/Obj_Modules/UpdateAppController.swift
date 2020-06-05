@@ -182,6 +182,10 @@ class UpdateAppController: UIViewController {
         imageApp.image = UIImage(named: "Logo_Gumse")
         #elseif isSV14
         imageApp.image = UIImage(named: "Logo_SV14")
+        #elseif isTSJ_Life
+        imageApp.image = UIImage(named: "Logo_TSJ_Life")
+        #elseif isSouthValley
+        imageApp.image = UIImage(named: "Logo_SouthValley")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -367,6 +371,10 @@ class UpdateAppController: UIViewController {
         str = "itms-apps://itunes.apple.com/ru/app/id1515083553"
         #elseif isSV14
         str = "itms-apps://itunes.apple.com/ru/app/id1515083991"
+        #elseif isTSJ_Life
+        str = "itms-apps://itunes.apple.com/ru/app/id1516805785"
+        #elseif isSouthValley
+        str = "itms-apps://itunes.apple.com/ru/app/id1516805704"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
