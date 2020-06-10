@@ -128,55 +128,97 @@ class WebsController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func getWebs() {
+        let data: Data? = TemporaryHolder.instance.AccountDataAll?.getHousesWebCams?.data(using: .utf8)
+        guard data != nil else { return }
+        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//            print("responseWEB = \(responseString)")
         
-        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_WEB_CAMERAS)!)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) {
-            data, error, responce in
-            
-            defer {
-                DispatchQueue.main.sync {
-                    self.collection.reloadData()
-                    self.indicator.stopAnimating()
-                    self.indicator.isHidden = true
-                    
-                    //                    if #available(iOS 10.0, *) {
-                    //                        self.collection.refreshControl?.endRefreshing()
-                    //                    } else {
-                    //                        self.refreshControl?.endRefreshing()
-                    //                    }
-                    
-                    if self.web_cameras?.count == 0 {
-                        self.collection.isHidden = true
-                        self.emptyLabel.isHidden = false
-                        
-                    } else {
-                        self.collection.isHidden = false
-                        self.emptyLabel.isHidden = true
-                    }
-                    
-                    if (self.web_cameras != nil) {
-                        for (index, item) in (self.web_cameras?.enumerated())! {
-                            //                        if item.name == self.performName_ {
-                            //                            self.index = index
-                            //                            self.performSegue(withIdentifier: Segues.fromQuestionsTableVC.toQuestion, sender: self)
-                            //                        }
-                        }
-                    }
-                    
-                }
+        if responseString.containsIgnoringCase(find: "error"){
+            return
+        }
+        if let json = try? JSONSerialization.jsonObject(with: data!,
+                                                        options: .allowFragments){
+            let Data = Web_Cameras_json(json: json as! JSON)?.data
+            self.web_cameras = Data!
+        }
+        DispatchQueue.main.async {
+            self.collection.reloadData()
+            self.indicator.stopAnimating()
+            self.indicator.isHidden = true
+
+            //                    if #available(iOS 10.0, *) {
+            //                        self.collection.refreshControl?.endRefreshing()
+            //                    } else {
+            //                        self.refreshControl?.endRefreshing()
+            //                    }
+
+            if self.web_cameras?.count == 0 {
+                self.collection.isHidden = true
+                self.emptyLabel.isHidden = false
+
+            } else {
+                self.collection.isHidden = false
+                self.emptyLabel.isHidden = true
             }
-            guard data != nil else { return }
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-            print("responseStringWEBS = \(responseString)")
-            if let json = try? JSONSerialization.jsonObject(with: data!,
-                                                            options: .allowFragments){
-            
-                let Data = Web_Cameras_json(json: json as! JSON)?.data
-                self.web_cameras = Data
-            }
-            }.resume()
+
+//            if (self.web_cameras != nil) {
+//                for (index, item) in (self.web_cameras?.enumerated())! {
+//                    //                        if item.name == self.performName_ {
+//                    //                            self.index = index
+//                    //                            self.performSegue(withIdentifier: Segues.fromQuestionsTableVC.toQuestion, sender: self)
+//                    //                        }
+//                }
+//            }
+
+        }
+//        var request = URLRequest(url: URL(string: Server.SERVER + Server.GET_WEB_CAMERAS)!)
+//        request.httpMethod = "GET"
+//        print(request)
+//        URLSession.shared.dataTask(with: request) {
+//            data, error, responce in
+//
+//            defer {
+//                DispatchQueue.main.sync {
+//                    self.collection.reloadData()
+//                    self.indicator.stopAnimating()
+//                    self.indicator.isHidden = true
+//
+//                    //                    if #available(iOS 10.0, *) {
+//                    //                        self.collection.refreshControl?.endRefreshing()
+//                    //                    } else {
+//                    //                        self.refreshControl?.endRefreshing()
+//                    //                    }
+//
+//                    if self.web_cameras?.count == 0 {
+//                        self.collection.isHidden = true
+//                        self.emptyLabel.isHidden = false
+//
+//                    } else {
+//                        self.collection.isHidden = false
+//                        self.emptyLabel.isHidden = true
+//                    }
+//
+//                    if (self.web_cameras != nil) {
+//                        for (index, item) in (self.web_cameras?.enumerated())! {
+//                            //                        if item.name == self.performName_ {
+//                            //                            self.index = index
+//                            //                            self.performSegue(withIdentifier: Segues.fromQuestionsTableVC.toQuestion, sender: self)
+//                            //                        }
+//                        }
+//                    }
+//
+//                }
+//            }
+//            guard data != nil else { return }
+//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+//            print("responseStringWEBS = \(responseString)")
+//            if let json = try? JSONSerialization.jsonObject(with: data!,
+//                                                            options: .allowFragments){
+//
+//                let Data = Web_Cameras_json(json: json as! JSON)?.data
+//                self.web_cameras = Data
+//            }
+//            }.resume()
         
     }
     
