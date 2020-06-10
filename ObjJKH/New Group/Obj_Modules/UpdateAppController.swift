@@ -372,7 +372,7 @@ class UpdateAppController: UIViewController {
         #elseif isSV14
         str = "itms-apps://itunes.apple.com/ru/app/id1515083991"
         #elseif isTSJ_Life
-        str = "itms-apps://itunes.apple.com/ru/app/id1516805785"
+        str = "itms-apps://itunes.apple.com/ru/app/id1517749626"
         #elseif isSouthValley
         str = "itms-apps://itunes.apple.com/ru/app/id1516805704"
         #endif
