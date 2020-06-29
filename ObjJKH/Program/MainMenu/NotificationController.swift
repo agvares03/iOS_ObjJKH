@@ -259,6 +259,10 @@ class NotificationController: UIViewController, QuestionTableDelegate {
         fon_top.image = UIImage(named: "Logo_TSJ_Life")
         #elseif isSouthValley
         fon_top.image = UIImage(named: "Logo_SouthValley")
+        #elseif isRamenLefortovo
+        fon_top.image = UIImage(named: "Logo_RamenLefortovo")
+        #elseif isVestSnab
+        fon_top.image = UIImage(named: "Logo_VestSnab")
         #endif
         loader.color = myColors.btnColor.uiColor()
         questionBtn.backgroundColor = myColors.btnColor.uiColor()

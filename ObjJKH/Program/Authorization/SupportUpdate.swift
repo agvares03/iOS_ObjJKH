@@ -201,6 +201,10 @@ class SupportUpdate: UIViewController {
         imageApp.image = UIImage(named: "Logo_TSJ_Life")
         #elseif isSouthValley
         imageApp.image = UIImage(named: "Logo_SouthValley")
+        #elseif isRamenLefortovo
+        imageApp.image = UIImage(named: "Logo_RamenLefortovo")
+        #elseif isVestSnab
+        imageApp.image = UIImage(named: "Logo_VestSnab")
         #endif
         updateBtn.backgroundColor = myColors.indicatorColor.uiColor()
         goLbl.textColor = myColors.indicatorColor.uiColor()
@@ -479,9 +483,13 @@ class SupportUpdate: UIViewController {
         #elseif isSV14
         str = "itms-apps://itunes.apple.com/ru/app/id1515083991"
         #elseif isTSJ_Life
-        str = "itms-apps://itunes.apple.com/ru/app/id1516805785"
+        str = "itms-apps://itunes.apple.com/ru/app/id1517749626"
         #elseif isSouthValley
         str = "itms-apps://itunes.apple.com/ru/app/id1516805704"
+        #elseif isRamenLefortovo
+        str = "itms-apps://itunes.apple.com/ru/app/id1521236227"
+        #elseif isVestSnab
+        str = "itms-apps://itunes.apple.com/ru/app/id1521235023"
         #endif
         let url  = NSURL(string: str)
         if UIApplication.shared.canOpenURL(url! as URL) == true  {
